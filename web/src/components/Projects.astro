@@ -1,0 +1,20 @@
+---
+import Badge from './Badge.astro'
+---
+
+<article>
+  <a class="unset relative flex gap-x-8 w-full group no-underline hover:bg-black/20 rounded p-4 transition" href='https://github.com/midudev/pruebas-tecnicas/tree/main/pruebas/01-reading-list'>
+  <div class="flex justify-center items-center relative">
+    <img src="/images/1.webp" alt="Una persona en una escalera rodeado de libros" class="w-48 h-48 rounded overflow-hidden shadow-lg transform group-hover:scale-105 transition" />
+    <span class="absolute group-hover:opacity-100 group-hover:scale-125 transition block text-5xl text-white opacity-90 -rotate-6 left-2 top-2">#01</span>
+  </div>
+  <div class="flex-1">
+    <Badge />
+    
+      <h2 class="text-3xl dark:text-yellow-300 text-yellow-950">
+        Lista de lectura
+      </h2>
+      <p>Implementar una pequeña aplicación de lista de libros utilizando el framework de frontend de tu elección (React, Angular, Vue, Svelte, Qwik, etc).</p>
+    </div>
+  </a>
+</article>
