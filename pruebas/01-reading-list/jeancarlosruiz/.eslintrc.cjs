@@ -1,20 +1,34 @@
-/* eslint-env node */
-
 module.exports = {
-  env: { browser: true, es2020: true },
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
-    'plugin:react-hooks/recommended',
-  ],
-  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-  settings: { react: { version: '18.2' } },
-  plugins: ['react-refresh'],
-  rules: {
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
-  },
+	env: {
+		browser: true,
+		es2021: true
+	},
+	settings: {
+		react: {
+			version: 'detect'
+		}
+	},
+	extends: [
+		'standard',
+		'plugin:react/recommended',
+		'plugin:react/jsx-runtime',
+		'eslint-config-prettier'
+	],
+	overrides: [
+		{
+			env: {
+				node: true
+			},
+			files: ['.eslintrc.{js,cjs}'],
+			parserOptions: {
+				sourceType: 'script'
+			}
+		}
+	],
+	parserOptions: {
+		ecmaVersion: 'latest',
+		sourceType: 'module'
+	},
+	plugins: ['react'],
+	rules: {}
 }
