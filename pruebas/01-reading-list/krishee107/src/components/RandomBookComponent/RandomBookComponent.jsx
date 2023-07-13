@@ -18,7 +18,7 @@ export const RandomBookComponent = ({ bookList }) => {
 
     return (
         <div>
-            <h1>Random Book</h1>
+            <h1 className='title'>Random Book</h1>
             <div className="bookInspiration">
                 {randomBook &&
                     <BookItemComponent book={randomBook} />}
