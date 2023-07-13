@@ -7,6 +7,15 @@
 - React Testing Library
 - Jest
 
+### Proceso de desarrollo
+
+- Implentar ESLint y Prettier [X].
+- Crear sistema de diseño con Tailwind CSS [].
+- Instalar Tailwind Merge [].
+- Usar Skeleton para simular carga de datos y reflejarlo en la app [].
+- Crear componente root Layout [].
+- Usar Zustand para el manejo de estado global [].
+
 ### Funcionalidad
 
 1. **Visualización de Libros Disponibles**: La aplicación debe mostrar una lista de libros disponibles que el usuario pueda revisar.
