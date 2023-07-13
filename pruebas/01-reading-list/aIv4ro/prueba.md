@@ -1,4 +1,14 @@
-## READING LIST
+# 01 - Desarrollo de una Aplicación de Lista de Libros
+
+
+El objetivo de esta prueba es diseñar e implementar una pequeña aplicación web de lista de libros utilizando las herramientas de tu elección.
+
+- [¿Cómo puedo participar?](https://github.com/midudev/pruebas-tecnicas#c%C3%B3mo-participar)
+- **La prueba está abierta a revisión hasta el 27 de julio de 2023**
+
+Este proyecto busca probar tus habilidades en el manejo de interacciones con el usuario, gestión del estado, filtrado de datos y la estructuración del código.
+![Sin título-2023-03-24-0943 (1)](https://github.com/midudev/pruebas-tecnicas/assets/1561955/a829323d-07e6-4937-91c6-5498481148c5)
+
 ## Contexto
 
 Somos un sello editorial de libros multinacional. Queremos ofrecer a nuestro público una forma de ver nuestro catálogo y poder guardar los libros que les interesan en una lista de lectura.
@@ -14,7 +24,7 @@ Usa el archivo `books.json` para obtener los datos de los libros. Puedes añadir
 
 ### Funcionalidad
 
-1. **Visualización de Libros Disponibles**: La aplicación debe mostrar una lista de libros disponibles que el usuario pueda revisar.
+1. **Visualización de Libros Disponibles**: La aplicación debe mostrar una lista de libros disponibles que el usuario pueda revisar. ✔
 
 2. **Creación de Lista de Lectura**: El usuario debe ser capaz de crear una lista de lectura a partir de los libros disponibles. En la UI debe quedar claro qué libros están en la lista de lectura y cuáles no. También debe ser posible mover un libro de la lista de lectura a la lista de disponibles.
 
@@ -51,3 +61,23 @@ Usa el archivo `books.json` para obtener los datos de los libros. Puedes añadir
 - Permitir la reorganización de los libros en la lista de lectura por prioridad.
 - Añadir una funcionalidad para guardar la lista de lectura en el almacenamiento local del navegador para su recuperación posterior.
 - Haz que tu diseño sea responsive.
+
+## Entrevista
+
+Si pasas a la siguiente fase, te pediremos que hagas una entrevista con nosotros. Durante la entrevista, te pediremos que expliques tu código y que hagas algunos cambios en el mismo.
+
+- Nos tendrás que explicar el código que has escrito y las decisiones que has tomado.
+- Haremos cambios en el JSON y tendrás que adaptar el código en vivo.
+- Añadiremos un nuevo filtro a la aplicación y tendrás que implementarlo.
+
+Buena suerte y ¡diviértete programando!
+
+## Referencias
+
+- Diseño de Josh W. Comeau para una aplicación de libros pendientes de leer: https://twitter.com/JoshWComeau/status/1678893330480898049
+
+- Dribbble con rediseño de Goodreads: https://dribbble.com/shots/2523654-Books-listing-page-goodreads
+
+- Concepto de uso de arrastrar libros: https://dribbble.com/shots/19351938-Mybooks-Page-Board
+
+- Concepto de landing para una aplicación de libros: https://dribbble.com/shots/16279204-Book-Web-Store-Concept
