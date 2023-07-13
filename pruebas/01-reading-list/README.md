@@ -4,6 +4,8 @@ El objetivo de esta prueba es diseñar e implementar una pequeña aplicación de
 
 Este proyecto busca probar tus habilidades en el manejo de interacciones con el usuario, gestión del estado, filtrado de datos y la estructuración del código.
 
+![Sin título-2023-03-24-0943 (1)](https://github.com/midudev/pruebas-tecnicas/assets/1561955/1297fea6-3539-4107-9708-17ce04cc61b8)
+
 ## Contexto
 
 Somos un sello editorial de libros multinacional. Queremos ofrecer a nuestro público una forma de ver nuestro catálogo y poder guardar los libros que les interesan en una lista de lectura.
