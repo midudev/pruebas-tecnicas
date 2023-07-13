@@ -4,7 +4,7 @@ El objetivo de esta prueba es diseñar e implementar una pequeña aplicación de
 
 Este proyecto busca probar tus habilidades en el manejo de interacciones con el usuario, gestión del estado, filtrado de datos y la estructuración del código.
 
-## Contexto
+## Contexto
 
 Somos un sello editorial de libros multinacional. Queremos ofrecer a nuestro público una forma de ver nuestro catálogo y poder guardar los libros que les interesan en una lista de lectura.
 
@@ -13,9 +13,9 @@ Para ello, queremos desarrollar una aplicación web que permita a los usuarios v
 - La aplicación debe ser fácil de usar y agradable a la vista.
 - Tenemos un 80% de usuarios que vienen de navegadores de escritorio.
 
-## Requisitos
+## Requisitos
 
-### Funcionalidad
+### Funcionalidad
 
 1. Visualización de Libros Disponibles: La aplicación debe mostrar una lista de libros disponibles que el usuario pueda revisar.
 
@@ -33,7 +33,7 @@ Para ello, queremos desarrollar una aplicación web que permita a los usuarios v
 
 8. Test: La aplicación debe tener AL MENOS un test. Haz el test que consideres más importante para tu aplicación.
 
-## Consejos sobre el código
+## Consejos sobre el código
 
 1. Estructura del Código: El código debe estar bien organizado y fácil de leer.
 
@@ -43,7 +43,7 @@ Para ello, queremos desarrollar una aplicación web que permita a los usuarios v
 
 4. Formatea tu código: Asegúrate de que tu código está formateado de forma consistente. Puedes usar Prettier o cualquier otra herramienta que te guste.
 
-## Desafíos adicionales
+## Desafíos adicionales
 
 ¿Quieres ir más allá? Estos son algunos desafíos adicionales que puedes intentar:
 
@@ -52,7 +52,7 @@ Para ello, queremos desarrollar una aplicación web que permita a los usuarios v
 - Añadir una funcionalidad para guardar la lista de lectura en el almacenamiento local del navegador para su recuperación posterior.
 - Haz que tu diseño sea responsive.
 
-## Entrevista
+## Entrevista
 
 Si pasas a la siguiente fase, te pediremos que hagas una entrevista con nosotros. Durante la entrevista, te pediremos que expliques tu código y que hagas algunos cambios en el mismo.
 
@@ -62,7 +62,7 @@ Si pasas a la siguiente fase, te pediremos que hagas una entrevista con nosotros
 
 Buena suerte y ¡diviértete programando!
 
-## Referencias
+## Referencias
 
 - Diseño de Josh W. Comeau para una aplicación de libros pendientes de leer: https://twitter.com/JoshWComeau/status/1678893330480898049
 
