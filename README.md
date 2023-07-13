@@ -10,7 +10,7 @@ Pruebas técnicas de programación para desarrolladores frontend y backend.
 
 1. Haz un fork de este repositorio
 2. Crea una carpeta con tu nombre de usuario dentro de la carpeta `pruebas/[nombre-de-la-prueba]`, por ejemplo: `pruebas/01-reading-list/midudev`.
-3. Siempre sólo modifica los ficheros y carpetas dentro de tu carpeta, de otra manera, tu pull request será rechazada. 
+3. Siempre **sólo modifica los ficheros y carpetas dentro de tu carpeta**, de otra manera, tu pull request será rechazada. Nunca formatees o modifiques el código de otros participantes.
 
 ## Sígueme en las redes sociales
 
