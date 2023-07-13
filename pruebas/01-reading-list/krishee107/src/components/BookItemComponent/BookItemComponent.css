@@ -1,8 +1,33 @@
-body {
-    background-color: 'red';
+.bookItem {
+    font-family: 'Poppins', sans-serif;
 }
 
 .bookCover {
     width: 100%;
+    height: 450px;
+    /* Establecer el tamaño fijo deseado */
     object-fit: cover;
+}
+
+.bookTitle {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #000000;
+    margin: 0;
+    height: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.bookAuthor {
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: #000000;
+    margin: 0;
+}
+
+.bookAuthorName {
+    font-weight: 600;
+    color: #07e162;
 }
