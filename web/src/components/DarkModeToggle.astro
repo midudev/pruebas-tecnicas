@@ -19,6 +19,16 @@
   </button>
 </mode-toggle>
 
+<style>
+  @media (max-width: 767.98px) {
+    mode-toggle {
+      grid-row: 1/1;
+      grid-column: 1/4;
+      justify-self: end;
+    }
+  }
+</style>
+
 <script>
   function updateHTMLTheme(mode: "light" | "dark") {
     const themeColorMetaTag = document.head.querySelector(
