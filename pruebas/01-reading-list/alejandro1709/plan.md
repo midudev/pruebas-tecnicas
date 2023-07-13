@@ -10,10 +10,10 @@
 ### Proceso de desarrollo
 
 - Implentar ESLint y Prettier [X].
-- Crear sistema de diseño con Tailwind CSS [].
+- Crear sistema de diseño con Tailwind CSS [X].
 - Instalar Tailwind Merge [].
 - Usar Skeleton para simular carga de datos y reflejarlo en la app [].
-- Crear componente root Layout [].
+- Crear componente root Layout [X].
 - Usar Zustand para el manejo de estado global [].
 
 ### Funcionalidad
