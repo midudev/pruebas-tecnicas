@@ -1,5 +1,8 @@
 # 01 - Desarrollo de una Aplicación de Lista de Libros
 
+- [¿Cómo puedo participar?](https://github.com/midudev/pruebas-tecnicas#c%C3%B3mo-participar)
+- **La prueba está abierta a revisión hasta el 27 de julio de 2023**
+
 El objetivo de esta prueba es diseñar e implementar una pequeña aplicación de lista de libros utilizando el framework de frontend de tu elección (React, Angular, Vue, Svelte, Qwik, etc). O, si lo prefieres, sin framework (VanillaJS).
 
 Este proyecto busca probar tus habilidades en el manejo de interacciones con el usuario, gestión del estado, filtrado de datos y la estructuración del código.
