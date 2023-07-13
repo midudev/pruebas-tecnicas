@@ -1,0 +1,15 @@
+.bookInspiration {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.bookInspiration .bookItem img {
+    width: 300px;
+    height: 400px;
+    object-fit: contain;
+    margin: 0 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
