@@ -12,7 +12,7 @@
 - Implentar ESLint y Prettier [X].
 - Crear sistema de diseño con Tailwind CSS [X].
 - Instalar Tailwind Merge [X].
-- Usar Skeleton para simular carga de datos y reflejarlo en la app [].
+- Usar Skeleton para simular carga de datos y reflejarlo en la app [X].
 - Crear componente root Layout [X].
 - Usar Zustand para el manejo de estado global [].
 

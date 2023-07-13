@@ -25,7 +25,7 @@ export default function RootLayout({
         <section className='absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center'>
           <dialog
             open
-            className='fixed bottom-0 w-full md:right-0 md:w-[460px] md:top-0 md:mr-0 md:h-full p-4 bg-secondary shadow h-2/4 md:rounded-t-none rounded-t-3xl text-white'
+            className='fixed bottom-0 animate-fade-up md:animate-fade-left w-full md:right-0 md:w-[460px] md:top-0 md:mr-0 md:h-full p-4 bg-secondary shadow h-2/4 md:rounded-t-none rounded-t-3xl text-white'
           >
             <div className='flex flex-row justify-between items-center'>
               <button>Close</button>
