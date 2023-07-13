@@ -13,6 +13,8 @@ Para ello, queremos desarrollar una aplicación web que permita a los usuarios v
 - La aplicación debe ser fácil de usar y agradable a la vista.
 - Tenemos un 80% de usuarios que vienen de navegadores de escritorio.
 
+Usa el archivo `books.json` para obtener los datos de los libros. Puedes añadir más libros si lo deseas, siempre y cuando siga la misma estructura.
+
 ## Requisitos
 
 ### Funcionalidad
@@ -35,7 +37,7 @@ Para ello, queremos desarrollar una aplicación web que permita a los usuarios v
 
 ## Consejos sobre el código
 
-1. **Estructura del Código**: El código debe estar bien organizado y fácil de leer.
+1. **Estructura del código**: El código debe estar bien organizado y fácil de leer.
 
 2. **Semántica HTML**: El HTML debe ser semántico y accesible.
 
@@ -43,11 +45,14 @@ Para ello, queremos desarrollar una aplicación web que permita a los usuarios v
 
 4. **Formatea tu código**: Asegúrate de que tu código está formateado de forma consistente. Puedes usar Prettier o cualquier otra herramienta que te guste.
 
+5. **Preparado para producción**: Asegúrate de que tu aplicación está lista para producción. Minimiza el código, optimiza las imágenes, etc.
+
 ## Desafíos adicionales
 
 **¿Quieres ir más allá?** Estos son algunos desafíos adicionales que puedes intentar:
 
 - Implementar una funcionalidad de búsqueda en la lista de libros disponibles.
+- Añade un nuevo filtro para filtrar los libros por número de páginas.
 - Permitir la reorganización de los libros en la lista de lectura por prioridad.
 - Añadir una funcionalidad para guardar la lista de lectura en el almacenamiento local del navegador para su recuperación posterior.
 - Haz que tu diseño sea responsive.
