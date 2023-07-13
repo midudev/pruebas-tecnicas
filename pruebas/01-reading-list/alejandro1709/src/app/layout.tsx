@@ -1,8 +1,6 @@
-import './globals.css';
+import Navbar from '@/components/Navbar';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-
-const inter = Inter({ subsets: ['latin'] });
+import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Reading List',
@@ -16,7 +14,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={inter.className}>{children}</body>
+      <body className='flex min-h-screen flex-col md:max-w-screen-md md:mx-auto lg:max-w-screen-lg lg:mx-auto xl:max-w-screen-xl xl:mx-auto'>
+        <div className='flex-1 flex flex-col gap-3 md:gap-4 lg:gap-5 xl:gap-6 m-4 md:m-6 lg:m-8 xl:m-10'>
+          {/* Navbar */}
+          <Navbar />
+          {/* Main */}
+          <main className='flex-1'>{children}</main>
+          {/* Popup modal */}
+          <footer>djdjfj</footer>
+        </div>
+      </body>
     </html>
   );
 }
