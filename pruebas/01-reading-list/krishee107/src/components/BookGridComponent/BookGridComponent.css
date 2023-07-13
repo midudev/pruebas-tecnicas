@@ -1,5 +1,35 @@
+.gridContainer {
+    display: grid;
+    grid-gap: 2rem;
+    /* margin-top: 2rem; */
+}
+
 .bookGrid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    grid-gap: 1rem;
+    grid-gap: 3rem;
+}
+
+.filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.filterButtonContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    align-items: center;
+    cursor: pointer;
+}
+
+.filterButtonText {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.filterButtonContainer:hover {
+    color: #75563c;
 }

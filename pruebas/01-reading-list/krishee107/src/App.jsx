@@ -6,12 +6,10 @@ import { RandomBookComponent } from './components/RandomBookComponent/RandomBook
 export const App = () => {
   const [bookList, setBookList] = useState(books['library']);
 
-  return (
-    <div>
-      <RandomBookComponent bookList={bookList} />
-      <BookGridComponent bookList={bookList} />
+  return (<>
+    <RandomBookComponent bookList={bookList} />
+    <BookGridComponent bookList={bookList} />
+  </>
 
-
-    </div>
   )
 }
