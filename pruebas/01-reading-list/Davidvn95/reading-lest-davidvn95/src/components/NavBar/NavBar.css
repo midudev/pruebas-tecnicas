@@ -1,0 +1,33 @@
+.navbar{
+    max-width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: #f5f2f2;
+}
+
+.title{
+    color: rgb(110, 84, 18);
+}
+
+.title-light{
+    font-weight: lighter;
+}
+
+.navbar-nav{
+    display: flex;
+    flex-direction: row;
+    font-weight: 500;
+    gap: 2rem;
+}
+
+.navbar-nav > a{
+    text-decoration: none;
+    color: black;
+}
