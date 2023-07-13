@@ -1,0 +1,59 @@
+---
+import HeaderSocialLink from "./HeaderSocialLink.astro";
+import DarkModeToggle from "./DarkModeToggle.astro";
+---
+
+<header class="">
+  <a
+    class="unset absolute z-10 left-[50%] -top-[100rem] translate-x-[-50%] bg-white text-black px-8 py-2 focus:top-[initial]"
+    href="#main"
+  >
+    Saltar al contenido
+  </a>
+
+  <div
+    class="justify-self-center py-2 gap-x-2 flex items-center content-center text-text-bold"
+  >
+  <HeaderSocialLink
+    class="dark:hover:text-purple-400"
+    href="https://twitch.tv/midudev"
+  >
+    <i class="fa-brands fa-twitch" aria-hidden="true" title="Canal de Twitch"></i>
+    <span>Twitch</span>
+  </HeaderSocialLink>
+
+    <HeaderSocialLink
+    class="dark:hover:text-yellow-400"
+      href="https://github.com/midudev/pruebas-tecnicas"
+    >
+      <i class="fa-brands fa-github" aria-hidden="true" title="Repositorio en GitHub"></i>
+      <span>GitHub</span>
+    </HeaderSocialLink>
+    <HeaderSocialLink
+      class="dark:hover:text-blue-400"
+      href="https://twitter.com/midudev"
+    >
+      <i class="fa-brands fa-twitter" aria-hidden="true" title="midudev en Twitter"></i>
+      <span>Twitter</span>
+    </HeaderSocialLink>
+    <HeaderSocialLink
+      class="dark:hover:text-indigo-500"
+      href="https://discord.gg/midudev"
+    >
+      <i class="fa-brands fa-discord" aria-hidden="true" title="midudev en Twitter"></i>
+      <span>Discord</span>
+    </HeaderSocialLink>
+  </div>
+  <DarkModeToggle />
+</header>
+<style>
+  header {
+    grid-area: header;
+    display: grid;
+    align-items: center;
+    grid-template-columns: minmax(0, 1fr) minmax(0, max-content) minmax(
+        0,
+        max-content
+      );
+  }
+</style>
