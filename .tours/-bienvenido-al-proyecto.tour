@@ -1,0 +1,12 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "👋 Bienvenido al proyecto",
+  "steps": [
+    {
+      "file": "pruebas/01-reading-list/manuelsanchez2/README.md",
+      "description": "Este es el porqué del proyecto. Aquí encontrarás los requisitos y los extras que el cliente quiere, además del tech stack actual.",
+      "line": 11,
+      "title": "Motivación - Empezamos en el README"
+    }
+  ]
+}
