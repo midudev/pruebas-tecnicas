@@ -1,4 +1,4 @@
-# Reading _ist - Technical Test
+# Reading List - Technical Test
 
 🔗 URL: _URL not allowed yet_
 
