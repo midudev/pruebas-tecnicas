@@ -1,0 +1,31 @@
+.book-grid-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .book-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Cambia el número para ajustar la cantidad de columnas */
+    gap: 20px;
+  }
+  
+  .book-grid img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .genre-filter {
+    margin-bottom: 20px;
+  }
+  
+  .genre-filter-label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .genre-filter-select {
+    padding: 6px 12px;
+    font-size: 16px;
+  }
+  
+  
