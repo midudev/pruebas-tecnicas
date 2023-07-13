@@ -1,0 +1,16 @@
+.bc-section {
+  background-color: grey;
+  width: 740px;
+  min-height: 400px;
+  border-radius: 16px;
+}
+
+.bc-title {
+  margin-bottom: 16px;
+}
+
+.bc-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
