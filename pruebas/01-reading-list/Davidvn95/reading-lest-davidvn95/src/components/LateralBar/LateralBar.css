@@ -1,0 +1,9 @@
+.lateral{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    height: 100%;
+    border-right: 1px solid gray;
+    position: sticky;
+    top: 7rem;
+}
