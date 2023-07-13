@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar';
 import type { Metadata } from 'next';
 import './globals.css';
+import Modal from '@/components/Modal';
 
 export const metadata: Metadata = {
   title: 'Reading List',
@@ -22,18 +23,7 @@ export default function RootLayout({
           <main className='flex-1'>{children}</main>
         </div>
         {/* Popup modal */}
-        <section className='absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center'>
-          <dialog
-            open
-            className='fixed bottom-0 animate-fade-up md:animate-fade-left w-full md:right-0 md:w-[460px] md:top-0 md:mr-0 md:h-full p-4 bg-secondary shadow h-2/4 md:rounded-t-none rounded-t-3xl text-white'
-          >
-            <div className='flex flex-row justify-between items-center'>
-              <button>Close</button>
-              <h2 className='text-2xl font-medium'>Lista de Lectura</h2>
-              <button>Close</button>
-            </div>
-          </dialog>
-        </section>
+        <Modal />
       </body>
     </html>
   );
