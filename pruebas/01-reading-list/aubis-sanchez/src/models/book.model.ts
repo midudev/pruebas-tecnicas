@@ -9,7 +9,7 @@ export interface Book {
   author: Author;
 }
 
-export type Author = {
+export interface Author {
   name: string;
   otherBooks: string[];
-};
+}

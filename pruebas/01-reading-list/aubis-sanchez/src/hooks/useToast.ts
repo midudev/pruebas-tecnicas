@@ -5,7 +5,12 @@ export const useToast = () => {
     return toast.success(label);
   };
 
+  const throwErrorToast = (label: string) => {
+    return toast.error(label);
+  };
+
   return {
     throwSuccessToast,
+    throwErrorToast,
   };
 };

@@ -1,6 +1,5 @@
 import {
   Card,
-  CardActionArea,
   CardMedia,
   CardContent,
   Typography,
@@ -10,20 +9,16 @@ import {
 import { Book } from "../models";
 import { BookContext, BookContextType } from "../context/bookContext";
 import { useContext } from "react";
-import { useToast } from "../hooks/useToast";
 
 interface Props {
   book: Book;
+  lectureBook?: boolean;
 }
 
-export const BookItem = ({ book }: Props) => {
-  const { addToLectureList } = useContext(BookContext) as BookContextType;
-  const { throwSuccessToast } = useToast();
-
-  const handleAddLectureBook = () => {
-    addToLectureList(book);
-    throwSuccessToast("Book added successfully");
-  };
+export const BookItem = ({ book, lectureBook }: Props) => {
+  const { addToLectureList, removeFromLectureList } = useContext(
+    BookContext
+  ) as BookContextType;
 
   return (
     <Card sx={{ maxWidth: 250 }} component="article">
@@ -58,13 +53,17 @@ export const BookItem = ({ book }: Props) => {
       </CardContent>
       <CardActions>
         <Button
-          onClick={handleAddLectureBook}
+          onClick={() =>
+            lectureBook
+              ? removeFromLectureList(book.ISBN)
+              : addToLectureList(book)
+          }
           variant="contained"
           size="small"
           fullWidth
-          color="primary"
+          color={`${lectureBook ? "error" : "primary"}`}
         >
-          Add to Lecture List
+          {lectureBook ? "Remove book" : "Add to lecture List"}
         </Button>
       </CardActions>
     </Card>

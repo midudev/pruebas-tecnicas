@@ -25,7 +25,12 @@ function App() {
       >
         {sectionOnView === Views.books ? <Books /> : <LectureList />}
       </Box>
-      <Toaster richColors position="bottom-right" closeButton duration={2000} />
+      <Toaster
+        richColors
+        expand={true}
+        position="bottom-right"
+        duration={1500}
+      />
     </main>
   );
 }

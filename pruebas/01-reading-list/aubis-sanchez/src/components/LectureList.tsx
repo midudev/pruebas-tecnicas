@@ -15,7 +15,7 @@ export const LectureList = () => {
       <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         {userLectureList.map((book) => (
           <Grid item xs={3}>
-            <BookItem book={book} />
+            <BookItem book={book} lectureBook />
           </Grid>
         ))}
       </Grid>
