@@ -1,0 +1,14 @@
+.book{
+display: flex;
+border: 2px solid blue;
+border-radius: 4%;
+overflow: hidden;
+max-width: 200px;
+  
+}
+
+.cover{
+    display: flex;
+    width: 50px;
+    height: auto;
+}
