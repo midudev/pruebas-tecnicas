@@ -68,3 +68,7 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+main {
+  padding: 1rem;
+}

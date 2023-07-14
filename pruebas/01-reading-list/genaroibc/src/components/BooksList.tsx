@@ -11,7 +11,7 @@ export const BooksList = component$(({ books }: Props) => {
       {books.map(({ cover, title, ISBN }) => (
         <article
           key={ISBN}
-          class="aspect-[1/1.6] flex flex-col justify-center items-center group brightness-95 grayscale-[0.3] hover:grayscale-0 hover:brightness-105 hover:shadow-lg transition-all duration-300 ease-in-out hover:scale-105"
+          class="aspect-[1/1.6] flex flex-col justify-center items-center group brightness-95 grayscale-[0.3] hover:grayscale-0 hover:brightness-110 hover:shadow-lg transition-all duration-300 ease-in-out hover:scale-105"
         >
           <img
             src={cover}
