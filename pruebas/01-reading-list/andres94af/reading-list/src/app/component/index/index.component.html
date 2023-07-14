@@ -1,0 +1,12 @@
+<h2>Reading List</h2>
+
+<div *ngIf="books">
+  <div *ngFor="let book of books.library">
+    <h1>{{ book.book.title }}</h1>
+    <img [src]="book.book.cover" alt="Portada del libro">
+    <p>Author: {{ book.book.author.name }}</p>
+    <p>Genre: {{ book.book.genre }}</p>
+    <p>Pages: {{ book.book.pages }}</p>
+    <p>Synopsis: {{ book.book.synopsis }}</p>
+  </div>
+</div>
