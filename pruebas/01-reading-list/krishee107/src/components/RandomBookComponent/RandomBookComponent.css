@@ -31,12 +31,12 @@
 
 .randomBookCover img {
     border-radius: 15px;
-    max-height: 400px;
-    max-width: 250px;
+    max-height: 500px;
+    max-width: 350px;
     object-fit: cover;
     height: 100%;
     width: 100%;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .randomBookTitle {
