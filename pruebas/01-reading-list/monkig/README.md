@@ -41,4 +41,16 @@ Build script allows to build the code to production:
     npm run build
 ```
 
-## To do
+## To Do
+- Display available books ✅
+- Create reading list ✅
+- State synchronization ✅
+- Data persistence ✅
+- Filter books by genre 🕥
+- Synchronization between tabs
+- Search for available books
+- Filter by pages
+- Organize books by priority
+- Responsive design
+- Deployment
+- Testing

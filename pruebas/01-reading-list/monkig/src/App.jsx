@@ -1,33 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useContext } from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
+import { UserContext } from './context/UserContext'
+import Header from './components/Header'
+
+function App () {
+  const { availableBooks, userReadingList, addToReadingList, deleteToReadingList, readingListCounter } = useContext(UserContext)
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <Header counter={readingListCounter}/>
+      <div className='bg-red-500 mt-1'>
+        <h2 className='p-2'>Available books</h2>
+        <ul className='grid grid-cols-5 gap-1 p-2 items-center'>
+          {availableBooks && availableBooks.map(book => <li className='text-center cursor-pointer' key={book.ISBN} onClick={() => addToReadingList(book)}>{book.title}</li>)}
+        </ul>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className='bg-blue-500 mt-1'>
+        <h2 className='p-2'>User reading list </h2>
+        <ul className='grid grid-cols-5 gap-1 p-2'>
+          {userReadingList && userReadingList.map(book => <li className='text-center cursor-pointer' key={book.ISBN} onClick={() => deleteToReadingList(book)}>{book.title}</li>)}
+        </ul>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
