@@ -1,6 +1,8 @@
 /* Imports */
 /*Poppins font*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/*Dancing Script font*/
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
 
 html,
 body {
@@ -16,4 +18,21 @@ body {
     color: #000000;
     margin: 0;
     padding: 10px 0;
+}
+
+.padre {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 10px;
+    grid-template-areas: "nav content";
+    position: relative;
+    /* Asegura que el contenido de .padre se muestre correctamente */
+}
+
+
+
+.content {
+    grid-area: content;
+    position: relative;
+    z-index: 1;
 }

@@ -1,18 +1,80 @@
 .randomBookContainer {
-    padding: 5%;
+    padding: 4% 5%;
 }
 
-.bookInspiration {
-    display: flex;
-    justify-content: center;
+.randomBookContainer .title {
     padding: 10px 0;
+    font-size: 2rem;
 }
 
-.bookInspiration .bookItem img {
-    object-fit: contain;
-    overflow: hidden;
+.randomBookContainer .title span {
+    font-size: 4.2rem;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
 }
 
-.bookItem {
-    overflow: hidden;
+
+
+.randomBook {
+    display: grid;
+    gap: 8%;
+    grid-template-columns: 0.9fr 1fr;
+    margin: 0 auto;
+    justify-content: center;
+    padding: 3% 0;
+}
+
+.randomBookCover {
+    display: flex;
+    justify-content: right;
+}
+
+.randomBookCover img {
+    border-radius: 15px;
+    max-height: 400px;
+    max-width: 250px;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    /* overflow: hidden; */
+}
+
+.randomBookTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: 'Dancing Script', cursive;
+    padding: 0;
+    margin: 0;
+}
+
+.randomBookTitle h2 {
+    padding: 5% 0 2%;
+    margin: 0;
+}
+
+.randomBookAuthor {
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: #000000;
+    margin: 0;
+}
+
+.randomBookAuthor span {
+    font-weight: 600;
+    color: #07e162;
+}
+
+.randomBookGenre {
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: #000000;
+    margin: 0;
+}
+
+.randomBookDescription {
+    font-weight: 400;
+    font-size: 1.2rem;
+    max-width: 70%;
+    color: #000000;
+    padding: 10px 0;
 }
