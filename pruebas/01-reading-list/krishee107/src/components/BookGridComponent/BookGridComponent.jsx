@@ -66,7 +66,7 @@ export const BookGridComponent = ({ bookList }) => {
                     <span className="disponiblesNumber"> {books.length} </span> libros disponibles, ¡elige el tuyo!
                 </div>
                 <div className="pendientes">
-                    <span className="pendientesNumber"> 0 </span> libros en tu lista de lectura
+                    Actualmente tienes  <span className="pendientesNumber"> 0 </span> libros en tu lista de lectura
                 </div>
             </div>
 
