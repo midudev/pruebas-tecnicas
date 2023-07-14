@@ -1,6 +1,6 @@
 .bookCover {
     width: 100%;
-    height: 230px;
+    height: 350px;
     /* Establecer el tamaño fijo deseado */
     object-fit: contain;
 }

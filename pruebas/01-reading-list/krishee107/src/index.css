@@ -26,10 +26,7 @@ body {
     gap: 10px;
     grid-template-areas: "nav content";
     position: relative;
-    /* Asegura que el contenido de .padre se muestre correctamente */
 }
-
-
 
 .content {
     grid-area: content;
