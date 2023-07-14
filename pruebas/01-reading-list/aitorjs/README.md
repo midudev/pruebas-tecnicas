@@ -11,3 +11,9 @@
 - [ ] Sincronización de pestañas
 - [ ] Test
 - [ ] Despliegue en Vercel
+
+## Como levantar el proyecto
+
+- git clone
+- npm install
+- npm run dev
