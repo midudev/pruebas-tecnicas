@@ -1,9 +1,32 @@
 #card-list{
     padding: 20px;
     border-radius: 30px;
-    width: 300px; 
-    height: 40vh;
+    width: 300px;
+    height: 70vh;
     background-color: #303331;
     margin: 0 auto;
     width: 50%;
+}
+
+@font-face {
+    font-family: "Creampuff";
+    src: local("Creampuff"), url(../../assets/CREAMPUF.TTF) format("truetype");
+}
+
+h2{
+    color: #F2E7AB;
+    font-size: 20px;
+    text-align: center;
+    font-family: fantasy;
+    height: auto;
+    margin: 0;
+}
+
+img{
+    width: 100px;
+    height: auto;
+}
+
+book{
+    width: 100px;
 }

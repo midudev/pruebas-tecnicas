@@ -1,3 +1,11 @@
 <div id="card-list">
-    testing
+    <h2>LIBROS DISPONIBLES</h2>
+    <div class="books-container">
+        <div class="book" *ngFor="let book of books">
+            <img [src]="book.cover" [alt]="book.title">  <br>
+            {{book.title}} - {{book.pages}}
+            
+        </div>
+        
+    </div>
 </div>

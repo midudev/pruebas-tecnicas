@@ -1,37 +1,49 @@
-header{
+header {
     background-color: #4CB0B2;
-    width: 100%;    
-    top:0%;
+    width: 100%;
+    top: 0%;
     height: 80px;
     cursor: default;
     user-select: none;
     color: #F2E7AB;
     position: fixed;
 }
+
 @font-face {
     font-family: "Creampuff";
     src: local("Creampuff"), url(../../assets/CREAMPUF.TTF) format("truetype");
 }
-header h1{
+
+header h1 {
     font-size: 50px;
     text-align: center;
     font-family: fantasy;
     height: auto;
+    margin: 10px 0 0 0;
 }
 
-#github-icon{
+#github-icon {
     width: 50px;
     height: 50px;
     position: absolute;
     right: 0%;
     margin: 15px;
-    margin-right: 550px;
+    margin-right: 25%;
     color: #F2E7AB;
+    transition: all .25s;
 }
-#img{
+
+#github-icon:hover,
+#github-icon:focus,
+#github-icon:active {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+#img {
     margin-top: 5px;
-    margin-left: 550px ;
+    margin-left: 550px;
     width: 100px;
     height: auto;
-    position: absolute ;
+    position: absolute;
 }
