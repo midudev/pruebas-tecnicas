@@ -1,0 +1,40 @@
+<header class="flex justify-between items-center mb-4 overflow-auto">
+   <div>
+      <h2 class="text-xl font-semibold">
+         <span class="text-primary text-2xl" id="avaiableBooks">10</span> Books Available
+      </h2>
+      <select
+      class="focus:outline-none border-2 rounded-md border-primary"
+      name="books"
+      id="typeOfbooks"
+      >
+      <option value="all">ALL</option>
+      <option value="Fiction">Fiction</option>
+      <option value="Sciencefiction">Science Fiction</option>
+      <option value="Horror">Horror</option>
+   </select>
+</div>
+   
+   <div class="relative">
+      <label id="bookIcon"  for="bookIcon">
+         <span id="booksInread" class="text-primary absolute bottom-4 right-5 font-bold text-xl cursor-pointer">3</span>
+
+			<i  class="fa-solid fa-book fa-xl cursor-pointer"></i>
+      </label>
+
+   </div>
+   <article id="readbooks" class="absolute bg-books  w-48 h-[100%] top-0 -right-56 transition-all duration-200">
+      
+      <h2>List of read</h2>
+   </article>
+</header>
+
+<script>
+	const bookIcon = document.getElementById("bookIcon")
+	const readbooks = document.getElementById("readbooks")
+
+	bookIcon.addEventListener("click", () =>{
+		readbooks.classList.toggle("right-0")
+		readbooks.classList.toggle("-right-56")
+	})
+</script>
