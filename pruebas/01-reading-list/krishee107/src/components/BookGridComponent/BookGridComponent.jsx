@@ -9,12 +9,19 @@ export const BookGridComponent = ({ bookList }) => {
             <div className="filter">
                 <h1 className='title'>Explorar</h1>
                 <div className="filterButtonContainer">
-                    <div className="filterButtonText">
+                    {/*<div className="filterButtonText">
                         Filtrar
                     </div>
                     <div className="filterButton">
                         <i class="fa-solid fa-arrow-up-wide-short"></i>
-                    </div>
+                    </div>*/}
+                    <select name="filter" id="filterSelect" className="filterSelect">
+                        <option value="all">Todos</option>
+                        <option value='Fantasía'>Fantasía</option>
+                        <option value='Ciencia Ficción'>Ciencia Ficción</option>
+                        <option value="Zombies">Zombies</option>
+                        <option value="Terror">Terror</option>
+                    </select>
                 </div>
             </div>
 

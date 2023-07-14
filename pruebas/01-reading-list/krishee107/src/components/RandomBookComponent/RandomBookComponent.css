@@ -1,3 +1,7 @@
+.randomBookContainer {
+    padding: 5%;
+}
+
 .bookInspiration {
     display: flex;
     justify-content: center;
@@ -5,11 +9,12 @@
 }
 
 .bookInspiration .bookItem img {
-    width: 300px;
-    height: 400px;
     object-fit: contain;
-    margin: 0 10px;
-    border-radius: 5px;
+    border-radius: 15px;
     overflow: hidden;
-    position: relative;
+}
+
+.bookItem {
+    overflow: hidden;
+    border-radius: 15px;
 }
