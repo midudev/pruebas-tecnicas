@@ -1,95 +1,83 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client';
+
+import { useRouter, useSearchParams } from 'next/navigation';
+import Image from 'next/image';
+import styles from './page.module.css';
+import { MouseEventHandler, useEffect, useState } from 'react';
+import booksFromJson from '../../json/books.json';
+import { ILibrery, Library } from '../../lib/interfaces/interfaces';
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+	const router = useRouter();
+	const [books, setBooks] = useState<ILibrery>(booksFromJson);
+	const [rbooks, setRbooks] = useState<ILibrery>();
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+	useEffect(() => {
+		console.log('rbooks: ', rbooks);
+	}, [rbooks]);
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+	const moreInfo = (isbn: string) => {
+		const result = books.library.find((e) => {
+			return e.book.ISBN == isbn;
+		});
+		console.log(result?.book.author);
+	};
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+	const setToList = (isbn: string) => {
+		const result = books.library.find((e) => {
+			return e.book.ISBN == isbn;
+		});
+		if (result) {
+			if (rbooks) {
+				const newObject = { ...rbooks };
+				newObject.library.push(result);
+				setRbooks(newObject);
+			} else {
+				let primerValor = { ...books };
+				primerValor.library = primerValor.library.filter((e) => {
+					return e.book.ISBN == isbn;
+				});
+				setRbooks(primerValor);
+			}
+		}
+	};
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+	return (
+		<main className={styles.main}>
+			<div className={styles.booksList}>
+				{books.library.map((e) => {
+					return (
+						<Image
+							src={e.book.cover}
+							alt={e.book.title}
+							className={styles.imgBooksList}
+							id={e.book.ISBN}
+							key={e.book.ISBN}
+							layout="fill"
+							onClick={(e) => setToList(e.currentTarget.id)}
+							onDoubleClick={(e) => moreInfo(e.currentTarget.id)}
+							priority
+						/>
+					);
+				})}
+			</div>
+			<div className={styles.readingList}>
+				{rbooks?.library.map((e) => {
+					return (
+						<Image
+							src={e.book.cover}
+							alt={e.book.title}
+							className={styles.imgReadingList}
+							id={e.book.ISBN}
+							key={e.book.ISBN}
+							layout="fill"
+							onClick={(e) => setToList(e.currentTarget.id)}
+							onDoubleClick={(e) => moreInfo(e.currentTarget.id)}
+							priority
+						/>
+					);
+				})}
+			</div>
+		</main>
+	);
 }
