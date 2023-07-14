@@ -11,7 +11,7 @@ const props = defineProps({
 // console.log(props.book)
 
 onMounted(() => {
-    console.log(props.book)
+    // console.log(props.book)
 })
 </script>
 
