@@ -9,6 +9,7 @@ export interface LibraryHook {
   addBookToReadingList: (book: IBook) => void
   removeBookFromReadingList: (book: IBook) => void
   readingList: IBook[]
+  remainingBooks: number
 }
 
 export function useLibrary () {
@@ -53,5 +54,5 @@ export function useLibrary () {
     })
   }
 
-  return { filteredBooks, readingList, addBookToReadingList, removeBookFromReadingList, setGenre }
+  return { filteredBooks, readingList, addBookToReadingList, removeBookFromReadingList, setGenre, remainingBooks: books.length - readingList.length }
 }

@@ -7,7 +7,8 @@ const defaultLibrary: LibraryHook = {
   setGenre: () => { console.log('set genre') },
   addBookToReadingList: () => { console.log('add book to reading list') },
   removeBookFromReadingList: () => { console.log('remove book from reading list') },
-  readingList: []
+  readingList: [],
+  remainingBooks: 0
 }
 
 export const LibraryContext = createContext<LibraryHook>(defaultLibrary)
