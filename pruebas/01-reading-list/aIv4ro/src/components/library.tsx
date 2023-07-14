@@ -6,8 +6,8 @@ export function Library () {
   return (
     <>
       <BooksFilters />
-      <div className='grid grid-cols-3'>
-        <section className='col-span-2'>
+      <div className='grid grid-cols-2 2xl:grid-cols-3 p-2'>
+        <section className='2xl:col-span-2'>
           <BookList />
         </section>
         <section>
