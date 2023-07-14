@@ -22,12 +22,18 @@ export default function BooksProvider ({ children }) {
     return () => window.removeEventListener('storage', handleStorageEvent)
   }, [])
 
+  const filterAvailableBooks = () => {
+
+  }
+
   return (
     <BooksContext.Provider value={{
       availableBooks,
       setAvailableBooks,
       userReadingList,
-      setUserReadingList
+      setUserReadingList,
+      availableBooksCounter: availableBooks.length,
+      readingListCounter: userReadingList.length
     }}>
         {children}
     </BooksContext.Provider>

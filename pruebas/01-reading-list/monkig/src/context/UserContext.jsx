@@ -1,15 +1,10 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext } from 'react'
 import { BooksContext } from './BooksContext'
 
 export const UserContext = createContext()
 
 export default function UserProvider ({ children }) {
-  const { userReadingList, setAvailableBooks, setUserReadingList } = useContext(BooksContext)
-  const [readingListCounter, setReadingListCounter] = useState(userReadingList.length)
-
-  useEffect(() => {
-    setReadingListCounter(userReadingList.length)
-  }, [userReadingList])
+  const { setAvailableBooks, setUserReadingList } = useContext(BooksContext)
 
   const addToReadingList = (book) => {
     setUserReadingList(prevUserListBooks => addData(prevUserListBooks, book, 'userReadingList'))
@@ -17,15 +12,14 @@ export default function UserProvider ({ children }) {
   }
 
   const deleteToReadingList = (book) => {
-    setAvailableBooks(prevAvailableBooks => addData(prevAvailableBooks, book, 'availableBooks'))
     setUserReadingList(prevUserListBooks => updateData(prevUserListBooks, book, 'userReadingList'))
+    setAvailableBooks(prevAvailableBooks => addData(prevAvailableBooks, book, 'availableBooks'))
   }
 
   return (
         <UserContext.Provider value={{
           addToReadingList,
-          deleteToReadingList,
-          readingListCounter
+          deleteToReadingList
         }}>
             {children}
         </UserContext.Provider>

@@ -48,8 +48,8 @@ Build script allows to build the code to production:
 - Data persistence ✅
 - Filter books by genre 🕥
 - Synchronization between tabs ✅
-- Search for available books
-- Filter by pages
+- Search for available books 🕥
+- Filter by pages 🕥
 - Organize books by priority
 - Responsive design
 - Deployment

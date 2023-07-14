@@ -20,7 +20,7 @@ export default function Search () {
   }
 
   return (
-    <form action="" className={`flex items-center bg-red-600 p-2 rounded-full active:outline-slate-300 ${isFocused && 'border-2'}`}
+    <form action="" className={`flex mr-2 items-center bg-red-600 p-2 rounded-full active:outline-slate-300 ${isFocused && 'border-2'}`}
     onClick={handleOnClick}
     onBlur={handleOnBlur}
     onSubmit={(e) => e.preventDefault()}
@@ -28,7 +28,7 @@ export default function Search () {
         <label htmlFor="" className='px-2 text-2xl'>
             <BiSearchAlt/>
         </label>
-        <input ref={inputRef} className='text-sm p-1 bg-transparent outline-none placeholder-black' value={inputValue} type="text" name="searchBook" id="searchBook" placeholder='Programación... ' onChange={handleOnChangeValue}/>
+        <input ref={inputRef} className='text-sm p-1 bg-transparent outline-none' value={inputValue} type="text" name="searchBook" id="searchBook" placeholder='Search' onChange={handleOnChangeValue}/>
     </form>
   )
 }
