@@ -10,11 +10,9 @@
 
 .bookInspiration .bookItem img {
     object-fit: contain;
-    border-radius: 15px;
     overflow: hidden;
 }
 
 .bookItem {
     overflow: hidden;
-    border-radius: 15px;
 }
