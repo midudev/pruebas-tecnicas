@@ -2,8 +2,13 @@ import Logo from '../../assets/images/logo-icon.png'
 import { useState } from 'react';
 import { BiBookContent } from "react-icons/bi";
 
-
 function Navbar() {
+
+  const [toggleNav, setToggleNav] = useState(false);
+
+    const toggleNavbar = () => {
+        setToggleNav(!toggleNav);
+    }
 
   const [darkMode, setDarkMode] = useState(false);
 
@@ -37,10 +42,11 @@ function Navbar() {
             <div className={`absolute inset-y-0 left-0 w-6 h-6 bg-white rounded-full shadow transition-transform duration-300 ease-in-out transform ${darkMode ? 'translate-x-4' : ''}`}></div>
           </div>
         </label>
-
+       
         <div>
-          <button className=" p-3  bg-white border text-xl rounded-md flex justify-center items-center  "><BiBookContent className='mr-3' /> Lista de lectura</button>
+            <button className=" p-3  bg-white border text-xl rounded-md flex justify-center items-center  "><BiBookContent className='mr-3' onClick={toggleNavbar} /> Lista de lectura</button>
         </div>
+    
       </div>
     </nav>
   )
