@@ -1,13 +1,12 @@
 import { useBookContext } from '../hooks/useBookContext'
 
 function CardList ({ book }) {
-  const { setBookInList, bookInList } = useBookContext()
+  const { setBookInListSave, bookInListSave, setFilterGenre } = useBookContext()
 
   const removeBookList = () => {
-    const removed = bookInList.filter(bookList => bookList.title !== book.title)
-    setBookInList(
-      removed
-    )
+    const removed = bookInListSave.filter(bookList => bookList.title !== book.title)
+    setBookInListSave(removed)
+    setFilterGenre('')
   }
 
   return (

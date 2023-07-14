@@ -1,19 +1,19 @@
 import { useBookContext } from '../hooks/useBookContext'
 
 function CardMovie ({ book }) {
-  const { setBookInList, bookInList } = useBookContext()
+  const { setBookInListSave, bookInListSave } = useBookContext()
 
   const addToList = () => {
-    const list = bookInList.find(bookList => bookList.title === book.title)
+    const list = bookInListSave.find(bookList => bookList.title === book.title)
     if (list) return
-    setBookInList([
-      ...bookInList,
+    setBookInListSave([
+      ...bookInListSave,
       book
     ])
   }
 
   const disableBook = () => {
-    const disable = bookInList.find(bookList => bookList.title === book.title)
+    const disable = bookInListSave.find(bookList => bookList.title === book.title)
     if (disable) {
       return 'duration-300 flex flex-col gap-2 max-w-[150px] opacity-30'
     } else {

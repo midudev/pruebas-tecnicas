@@ -3,7 +3,7 @@ import { useBookContext } from '../hooks/useBookContext'
 
 function List () {
   const { bookInList } = useBookContext()
-  console.log(bookInList)
+
   return (
     <div>
       <h2 className='text-center font-bold text-2xl my-5'>My List</h2>

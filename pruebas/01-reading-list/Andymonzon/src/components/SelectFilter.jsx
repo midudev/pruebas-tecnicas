@@ -3,7 +3,7 @@ import { useBookContext } from '../hooks/useBookContext'
 
 function SelectFilter () {
   const [genre, setGenre] = useState([])
-  const { book } = useBookContext()
+  const { book, setFilterGenre, filterGenre } = useBookContext()
 
   useEffect(() => {
     genreFilter()
@@ -15,13 +15,13 @@ function SelectFilter () {
   }
 
   const handleChange = (e) => {
-    console.log(e.target.value)
+    setFilterGenre(e.target.value)
   }
 
   return (
         <form className='text-black'>
-            <select onChange={handleChange}>
-                <option defaultValue=''>Select a genre</option>
+            <select onChange={handleChange} value={filterGenre || ''}>
+                <option value=''>Select a genre</option>
                 {
                     genre.map((genre, index) => (
                         <option value={genre} key={index}>{genre}</option>
