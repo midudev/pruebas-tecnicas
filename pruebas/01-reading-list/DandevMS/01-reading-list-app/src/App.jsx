@@ -1,11 +1,10 @@
-import './App.css'
+import { Route} from 'wouter'
+import Home from './pages/home/Home'
 
 function App() {
-
-
   return (
     <>
-      <h1>inicio</h1>
+     <Route path="/" component={Home} />
     </>
   )
 }
