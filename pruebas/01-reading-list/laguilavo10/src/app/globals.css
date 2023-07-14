@@ -16,12 +16,18 @@
   }
 }
 
+li{
+  list-style: none;
+}
+
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #000000;
+  opacity: 1;
+  background-image:  radial-gradient(#64748b 1.1500000000000001px, transparent 1.1500000000000001px), radial-gradient(#64748b 1.1500000000000001px, #000000 1.1500000000000001px);
+  background-size: 46px 46px;
+  background-position: 0 0,23px 23px;
+}
+
+#readList::-webkit-scrollbar {
+  display: none;
 }

@@ -1,46 +1,41 @@
 'use client'
-import Image from 'next/image'
 import books from '../../../books.json'
 import { useState } from 'react'
+import { BookIcon } from './assets/icons'
+import BookCard from './components/BookCard'
+import ReadingList from './components/ReadingList'
+import type { Book } from './types'
 export default function Home() {
   const { library } = books
-  const [isShowReadingList, setIsShowReadingList] = useState<boolean>(true)
+  const [isShowingReadList, setIsShowingReadList] = useState<boolean>(true)
+  const [readList, setReadList] = useState<Book[]>([])
   return (
     <>
-      <header>
-        <button onClick={() => setIsShowReadingList((prev) => !prev)}>
-          Reading List
+      <header className='fixed top-0 flex h-16  w-screen items-center bg-[#596886] bg-brandImage bg-contain bg-no-repeat px-10 sm:bg-center'>
+        <button
+          onClick={() => setIsShowingReadList((prev) => !prev)}
+          className={`flex gap-3 justify-self-end rounded-lg border-2 border-slate-800 bg-white p-2 text-black  ${
+            isShowingReadList ? 'bg-opacity-100' : 'bg-opacity-60'
+          } absolute right-14 transition-colors duration-300 ease-linear`}
+        >
+          <BookIcon />
+          <span className='hidden font-bold sm:block'>Reading List</span>
         </button>
       </header>
       <main
         className={` ${
-          isShowReadingList ? 'w-4/6' : 'w-full'
-        } flex transition-all delay-100 duration-300 ease-out overflow-x-hidden gap-5`}
+          isShowingReadList ? 'w-4/6' : 'w-full'
+        } mb-10 mt-24 flex gap-5 overflow-x-hidden px-10 transition-all delay-100 duration-300 ease-out `}
       >
-        <ul className='grid grid-cols-auto-fit w-full gap-5'>
+        <ul className='grid w-full grid-cols-auto-fit gap-5'>
           {library.map(({ book }) => (
-            <li key={book.title}>
-              <Image
-                src={book.cover}
-                alt={book.title}
-                width={200}
-                height={300}
-                className='h-80 w-56 m-auto'
-              />
-            </li>
+            <BookCard key={book.title} book={book} setReadList={setReadList} />
           ))}
         </ul>
-        {/* <section className='relative w-1/3'> */}
-        <div
-          className={`w-[32%] h-full fixed bg-red-500 left-full ${
-            isShowReadingList
-              ? '-translate-x-full'
-              : 'translate-x-full invisible'
-          } duration-500 ease-in-out fixed`}
-        >
-          dasjdhas
-        </div>
-        {/* </section> */}
+        <ReadingList
+          isShowingReadList={isShowingReadList}
+          readList={readList}
+        />
       </main>
     </>
   )
