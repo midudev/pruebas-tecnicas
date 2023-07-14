@@ -8,16 +8,41 @@
     z-index: 1000;
     display: flex;
     align-items: center;
-    justify-content: center;
-
-
 }
 
 .readingList {
-    width: 50%;
-    align-self: center;
-    background-color: rgb(215, 215, 215);
-    padding: 1em 1.5em;
+    width: 30%;
+    height: 90%;
+    background-color: #fff;
+    overflow: hidden;
     border-radius: 25px;
-    margin: 0 auto;
+    margin-left: 250px;
+}
+
+.readingListHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+    padding: 0.5em 1em;
+    background-color: #faf2e9;
+}
+
+.readingListHeader h1 {
+    font-size: 1em;
+    font-weight: 700;
+    color: #d0c2b4
+}
+
+.readingListHeader .closeButton {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #d0c2b4;
+    cursor: pointer;
+}
+
+.readingListContent {
+    height: 100%;
+    overflow-y: auto;
+    padding: 0 1em;
 }

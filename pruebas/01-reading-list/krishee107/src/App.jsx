@@ -18,7 +18,7 @@ export const App = () => {
     <div className="padre">
       <NavComponent handleReadingList={handleReadingList} />
       <div className="content">
-        <ReadingListComponent readingListVisible={readingListVisible} />
+        <ReadingListComponent readingListVisible={readingListVisible} handleReadingList={handleReadingList} />
         <RandomBookComponent bookList={bookList} />
         <BookGridComponent bookList={bookList} />
       </div>
