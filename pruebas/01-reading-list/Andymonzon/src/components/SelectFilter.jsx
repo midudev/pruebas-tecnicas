@@ -19,16 +19,14 @@ function SelectFilter () {
   }
 
   return (
-        <form className='text-black'>
-            <select onChange={handleChange} value={filterGenre || ''}>
-                <option value=''>Select a genre</option>
-                {
-                    genre.map((genre, index) => (
-                        <option value={genre} key={index}>{genre}</option>
-                    ))
-                }
-            </select>
-        </form>
+    <select onChange={handleChange} value={filterGenre || ''}>
+      <option value=''>Select a genre</option>
+      {
+        genre.map((genre, index) => (
+          <option value={genre} key={index}>{genre}</option>
+        ))
+      }
+    </select>
   )
 }
 

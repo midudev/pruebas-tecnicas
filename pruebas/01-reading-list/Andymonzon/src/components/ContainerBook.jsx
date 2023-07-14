@@ -1,7 +1,7 @@
-import { CardMovie } from './CardMovie'
+import { CardBook } from './CardBook'
 import { useBookContext } from '../hooks/useBookContext'
 
-function ContainerMovies () {
+function ContainerBook () {
   const { book } = useBookContext()
 
   return (
@@ -9,7 +9,7 @@ function ContainerMovies () {
             <main className='w-full grid grid-cols-[repeat(auto-fill,minmax(135px,1fr))] gap-3 grid-rows-[repeat(auto-fill,minmax(240px,240px))] p-5'>
                 {
                     book.map((book, index) => (
-                        <CardMovie book={book.book} key={index} />
+                        <CardBook book={book.book} key={index} />
                     ))
                 }
             </main>
@@ -17,4 +17,4 @@ function ContainerMovies () {
   )
 }
 
-export { ContainerMovies }
+export { ContainerBook }

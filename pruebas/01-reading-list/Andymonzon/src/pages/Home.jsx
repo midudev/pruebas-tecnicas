@@ -1,8 +1,8 @@
-import { ContainerMovies } from '../components/ContainerMovies'
+import { ContainerBook } from '../components/ContainerBook'
 
 function Home () {
   return (
-    <ContainerMovies />
+    <ContainerBook />
   )
 }
 

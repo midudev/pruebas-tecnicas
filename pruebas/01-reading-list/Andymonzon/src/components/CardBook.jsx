@@ -1,6 +1,6 @@
 import { useBookContext } from '../hooks/useBookContext'
 
-function CardMovie ({ book }) {
+function CardBook ({ book }) {
   const { setBookInListSave, bookInListSave } = useBookContext()
 
   const addToList = () => {
@@ -28,4 +28,4 @@ function CardMovie ({ book }) {
   )
 }
 
-export { CardMovie }
+export { CardBook }
