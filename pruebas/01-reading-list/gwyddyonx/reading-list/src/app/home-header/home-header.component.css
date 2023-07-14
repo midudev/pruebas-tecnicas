@@ -6,7 +6,7 @@ header{
     cursor: default;
     user-select: none;
     color: #F2E7AB;
-    position: absolute;
+    position: fixed;
 }
 @font-face {
     font-family: "Creampuff";

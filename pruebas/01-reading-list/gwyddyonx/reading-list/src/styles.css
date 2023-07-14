@@ -1,7 +1,10 @@
 html,
 body {
     padding: 0px;
-    background-color: #4CB0B2;
     height: 100%;
     margin: 0;
+}
+
+body{
+    background-color: #4CB0B2;
 }
