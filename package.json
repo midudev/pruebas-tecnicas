@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/midudev/pruebas-tecnicas/issues"
   },
-  "homepage": "https://github.com/midudev/pruebas-tecnicas#readme"
+  "homepage": "https://github.com/midudev/pruebas-tecnicas#readme",
+  "dependencies": {
+    "primeicons": "^6.0.1",
+    "primeng": "^16.0.2"
+  }
 }
