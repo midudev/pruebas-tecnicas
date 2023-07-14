@@ -16,6 +16,7 @@ useEffect(()=>{
 
   return (
     <div className={styles.header}>
+      Header
         <h1>Book Lover</h1>
         <p className={styles.availables}>{`Tienes ${availables.length} libros disponibles`}</p>
         <p>{`Tienes 0 libros en tu lista de tectura`}</p>
