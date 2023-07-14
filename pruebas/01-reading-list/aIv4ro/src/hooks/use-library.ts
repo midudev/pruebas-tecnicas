@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { IBook } from '../types/book'
 import { getBooks } from '../services/getBooks'
-import { updateLocalStorage } from '../services/local-storage'
+import { getLocalStorageReadingList, updateLocalStorage } from '../services/local-storage'
 
 export interface LibraryHook {
   filteredBooks: IBook[]
@@ -19,10 +19,17 @@ export function useLibrary () {
   const [genre, setGenre] = useState<string | null>(null)
 
   useEffect(() => {
-    const readingListString = localStorage.getItem('readingList')
-    if (readingListString == null) return
-    const json = JSON.parse(readingListString) as IBook[]
-    setReadingList(json)
+    const savedData = getLocalStorageReadingList()
+    setReadingList(savedData)
+    const onStorage = (e: StorageEvent) => {
+      if (e.key !== 'readingList') return
+      const json = JSON.parse(e.newValue ?? '[]') as IBook[]
+      setReadingList(json)
+    }
+    addEventListener('storage', onStorage)
+    return () => {
+      removeEventListener('storage', onStorage)
+    }
   }, [])
 
   useEffect(() => {
