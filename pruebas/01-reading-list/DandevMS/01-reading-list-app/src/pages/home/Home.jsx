@@ -3,6 +3,7 @@ import Jumbotron from "../../components/header/Jumbotron"
 import CardsBook from "../../components/Books/CardsBook"
 
 
+
 function Home() {
   return (
     <>
@@ -10,6 +11,7 @@ function Home() {
     <main className="container mx-auto bg-[#F7F5F6]">
       <Jumbotron />
       <CardsBook />
+      
     </main>
     </>
     
