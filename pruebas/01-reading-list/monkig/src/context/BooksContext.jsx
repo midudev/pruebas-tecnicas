@@ -21,6 +21,7 @@ export default function BooksProvider ({ children }) {
 
     return () => window.removeEventListener('storage', handleStorageEvent)
   }, [])
+
   return (
     <BooksContext.Provider value={{
       availableBooks,

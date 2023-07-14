@@ -5,9 +5,8 @@ import useLocalStorage from './useLocalStorage'
 const parseredBooks = jsonData.library.map(item => item.book)
 export default function useBooks () {
   const [availableBooks, setAvailableBooks] = useLocalStorage('availableBooks')
-
   useEffect(() => {
-    if (!availableBooks) {
+    if (availableBooks.length && availableBooks.length <= 0) {
       setAvailableBooks(parseredBooks)
     }
   }, [])
