@@ -6,6 +6,8 @@ export const BookContext = createContext()
 const BookLibrary = books.library
 
 export const BookContextProvider = ({ children }) => {
+  // el bookInListSave guarda los libors que se van agregando,
+  // para que cuando se filtre no se pierdan los libros que ya estaban en la lista
   const [bookInListSave, setBookInListSave] = useState([])
   const [bookInList, setBookInList] = useState([])
   const [book, setBook] = useState(BookLibrary)
@@ -13,10 +15,20 @@ export const BookContextProvider = ({ children }) => {
   const [filterGenre, setFilterGenre] = useState('')
   const [filterPage, setFilterPage] = useState(0)
 
+  // seteo los valores de bookInListSave a bookInList cada vez que cambia el bookInListSave
   useEffect(() => {
     setBookInList(bookInListSave)
   }, [bookInListSave])
 
+  useEffect(() => {
+    // si hay items en el localStorage, los guardo en bookInListSave
+    const storedBookList = localStorage.getItem('bookList')
+    if (storedBookList) {
+      setBookInListSave(JSON.parse(storedBookList))
+    }
+  }, [])
+
+  // filter
   useEffect(() => {
     if (filterGenre) {
       return (

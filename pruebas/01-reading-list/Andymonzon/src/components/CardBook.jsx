@@ -1,3 +1,4 @@
+// import { useEffect } from 'react'
 import { useBookContext } from '../hooks/useBookContext'
 
 function CardBook ({ book }) {
@@ -6,10 +7,9 @@ function CardBook ({ book }) {
   const addToList = () => {
     const list = bookInListSave.find(bookList => bookList.title === book.title)
     if (list) return
-    setBookInListSave([
-      ...bookInListSave,
-      book
-    ])
+    const updatedList = [...bookInListSave, book]
+    localStorage.setItem('bookList', JSON.stringify(updatedList))
+    setBookInListSave(updatedList)
   }
 
   const disableBook = () => {
@@ -20,6 +20,13 @@ function CardBook ({ book }) {
       return 'hover:scale-105 duration-300 flex flex-col gap-2 max-w-[150px]'
     }
   }
+
+  window.addEventListener('storage', e => {
+    if (e.key === 'bookList') {
+      setBookInListSave(JSON.parse(e.newValue))
+    }
+  }
+  )
 
   return (
     <div className={disableBook()} onClick={addToList}>

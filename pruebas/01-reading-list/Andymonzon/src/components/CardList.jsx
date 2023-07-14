@@ -6,6 +6,7 @@ function CardList ({ book }) {
   const removeBookList = () => {
     const removed = bookInListSave.filter(bookList => bookList.title !== book.title)
     setBookInListSave(removed)
+    localStorage.setItem('bookList', JSON.stringify(removed))
     setFilterGenre('')
   }
 

@@ -5,15 +5,18 @@ function SelectFilter () {
   const [genre, setGenre] = useState([])
   const { book, setFilterGenre, filterGenre } = useBookContext()
 
+  // cuando se renderiza el componente se ejecuta la funcion genreFilter
   useEffect(() => {
     genreFilter()
   }, [])
 
   const genreFilter = () => {
+    // obtengo todos los generos de los libros sin repetirlos y los guardo en un array
     const uniqueGenres = [...new Set(book.map((item) => item.book.genre))]
     setGenre(uniqueGenres)
   }
 
+  // cuando cambie el valor del select se setea el valor a filterGenre
   const handleChange = (e) => {
     setFilterGenre(e.target.value)
   }
