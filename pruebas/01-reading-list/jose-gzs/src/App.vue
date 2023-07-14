@@ -5,11 +5,11 @@ import ReadingList from './components/ReadingList.vue'
 </script>
 
 <template>
-  <div class="container mx-auto py-8">
+  <div class="max-w-7xl mx-auto py-8">
     <header>
       <PageTitle msg="Reading List" />
     </header>
-    <main>
+    <main class="mt-8">
       <ReadingList />
     </main>
   </div>
