@@ -32,5 +32,8 @@
 		"vite": "^4.4.2",
 		"vitest": "^0.32.2"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@fontsource-variable/roboto-slab": "^5.0.5"
+	}
 }

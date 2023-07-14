@@ -1,79 +1,84 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="826 384 165 165">
-	<g class="logo__item" data-item="Business" data-item-type="text">
-		<text
-			fill="#D9ECD4"
-			alignment-baseline="auto"
-			class="logo__item__inner"
-			data-font-family="Montserrat"
-			data-font-style="normal"
-			data-font-weight="bold"
-			data-part-id="logo__item--business"
-			data-ttf-url="/builder_assets/fontsttf/font-montserrat-bold-normal.ttf"
-			dy="0"
-			font-family="Montserrat"
-			font-size="32"
-			font-weight="bold"
-			letter-spacing="0"
-			transform="translate(827.156 546.574)">DavBooks</text
-		>
-	</g>
-	<g class="logo__item" data-item="Image" data-item-type="image">
-		<g class="logo__item__inner">
-			<path
-				fill="none"
-				d="M875.494 446.054h16.68v11.454h-16.68z"
-				data-part-id="logo__item--logo_0__0"
-			/>
-			<path
-				fill="none"
-				d="M875.494 483.948V490.934h16.68V479.414h-16.68z"
-				data-part-id="logo__item--logo_0__1"
-			/>
-			<path
-				fill="none"
-				d="M875.494 468.769v5.42h16.68v-11.456h-16.68z"
-				data-part-id="logo__item--logo_0__2"
-			/>
-			<path
-				fill="none"
-				d="M875.494 431.384v9.378h16.68v-9.64l-9.339.262z"
-				data-part-id="logo__item--logo_0__3"
-			/>
-			<path
-				fill="#D9ECD4"
-				d="M868.842 444.982c-4.18 0-7.59 3.115-7.59 7.308 0 4.18 3.403 7.295 7.59 7.295h.422v-14.603h-.422z"
-				data-part-id="logo__item--logo_0__4"
-			/>
-			<path
-				fill="#D9ECD4"
-				d="M897.465 468.963h50.106v14.67h-50.106z"
-				data-part-id="logo__item--logo_0__5"
-			/>
-			<path
-				fill="#D9ECD4"
-				d="M897.465 444.982h59.485v14.603h-59.485z"
-				data-part-id="logo__item--logo_0__6"
-			/>
-			<path
-				fill="#D9ECD4"
-				d="M869.498 430.198c.168-5.486 4.663-6.049 4.663-6.049h26.292c-2.25 1.005-1.983 3.282-2.988 5.714v3.664h53.188V419.93H860.2c-2.305 1.005-3.879 3.463-3.879 6.29 0 4.187 3.403 7.308 7.59 7.308h5.352v-3.188c0-.027.188-.114.234-.141z"
-				data-part-id="logo__item--logo_0__7"
-			/>
-			<path
-				fill="#D9ECD4"
-				d="M864.287 468.963h-3.035c-4.18 0-7.583 3.149-7.583 7.335 0 4.18 3.403 7.335 7.583 7.335h8.012v-14.67h-4.977z"
-				data-part-id="logo__item--logo_0__8"
-			/>
-			<path
-				fill="#003941"
-				d="M967.4 444.982v-6.297H962.175V433.615l-7-13.686h8.071v-8.507l-20.002-23.848H873.37l-18.02 28.215c-3.08 2.505-5.097 6.19-5.097 10.457 0 7.482 6.056 13.524 13.525 13.605-5.024 2.016-8.595 6.893-8.595 12.633 0 4.16 1.916 7.838 4.87 10.343-6.96.623-12.453 6.37-12.453 13.485 0 7.529 6.123 13.611 13.66 13.611h8.004v-6.29h-8.012c-4.18 0-7.583-3.148-7.583-7.335 0-4.186 3.403-7.335 7.583-7.335h8.012v-9.378h-.422c-4.18 0-7.59-3.115-7.59-7.295 0-4.187 3.403-7.308 7.59-7.308h.422v-11.455h-5.352c-4.18 0-7.59-3.121-7.59-7.308 0-2.827 1.574-5.285 3.879-6.29h90.452v13.598h-53.188v11.455h59.485v14.603h-59.485v9.378h50.106v14.67h-50.106V489.93h62.566v-6.297h-6.23v-14.67h6.23v-3.081h7.369v-6.297h-4.154v-14.603h4.154z"
-				data-part-id="logo__item--logo_0__9"
-			/>
-			<path
-				fill="#1eb5cc"
-				d="M897.465 483.948V429.87c1.005-2.432.737-4.71 2.988-5.714h-26.292s-4.495.562-4.663 6.049c-.04.026-.234.114-.234.14v74.161c0 1.695 1.42 3.068 3.115 3.068 1.695 0 3.115-1.373 3.115-3.068v-8.413h16.68v8.413c0 1.695.95 3.068 2.645 3.068s2.646-1.373 2.646-3.068V483.95zm-5.292 0V490.934h-16.68V479.414h16.68v4.535zm0-15.18v5.42h-16.68v-11.455h16.68v6.036zm0-11.26h-16.68v-11.454h16.68v11.454zm0-23.753v7.007h-16.68v-9.378h7.342l9.338-.262v2.633z"
-				data-part-id="logo__item--logo_0__10"
-			/>
-		</g>
-	</g>
+<script lang="ts">
+  export let width = '200px';
+  export let height = width;
+</script>
+
+<svg {width} {height} xmlns="http://www.w3.org/2000/svg" viewBox="826 384 165 165">
+  <g class="logo__item" data-item="Business" data-item-type="text">
+    <text
+      fill="#dde6ed"
+      alignment-baseline="auto"
+      class="logo__item__inner"
+      data-font-family="Montserrat"
+      data-font-style="normal"
+      data-font-weight="bold"
+      data-part-id="logo__item--business"
+      data-ttf-url="/builder_assets/fontsttf/font-montserrat-bold-normal.ttf"
+      dy="0"
+      font-family="Montserrat"
+      font-size="30"
+      font-weight="bold"
+      letter-spacing="0"
+      transform="translate(824 528)">DavBooks</text
+    >
+  </g>
+  <g class="logo__item" data-item="Image" data-item-type="image">
+    <g class="logo__item__inner">
+      <path
+        fill="none"
+        d="M875.494 446.054h16.68v11.454h-16.68z"
+        data-part-id="logo__item--logo_0__0"
+      />
+      <path
+        fill="none"
+        d="M875.494 483.948V490.934h16.68V479.414h-16.68z"
+        data-part-id="logo__item--logo_0__1"
+      />
+      <path
+        fill="none"
+        d="M875.494 468.769v5.42h16.68v-11.456h-16.68z"
+        data-part-id="logo__item--logo_0__2"
+      />
+      <path
+        fill="none"
+        d="M875.494 431.384v9.378h16.68v-9.64l-9.339.262z"
+        data-part-id="logo__item--logo_0__3"
+      />
+      <path
+        fill="#dde6ed"
+        d="M868.842 444.982c-4.18 0-7.59 3.115-7.59 7.308 0 4.18 3.403 7.295 7.59 7.295h.422v-14.603h-.422z"
+        data-part-id="logo__item--logo_0__4"
+      />
+      <path
+        fill="#dde6ed"
+        d="M897.465 468.963h50.106v14.67h-50.106z"
+        data-part-id="logo__item--logo_0__5"
+      />
+      <path
+        fill="#dde6ed"
+        d="M897.465 444.982h59.485v14.603h-59.485z"
+        data-part-id="logo__item--logo_0__6"
+      />
+      <path
+        fill="#dde6ed"
+        d="M869.498 430.198c.168-5.486 4.663-6.049 4.663-6.049h26.292c-2.25 1.005-1.983 3.282-2.988 5.714v3.664h53.188V419.93H860.2c-2.305 1.005-3.879 3.463-3.879 6.29 0 4.187 3.403 7.308 7.59 7.308h5.352v-3.188c0-.027.188-.114.234-.141z"
+        data-part-id="logo__item--logo_0__7"
+      />
+      <path
+        fill="#dde6ed"
+        d="M864.287 468.963h-3.035c-4.18 0-7.583 3.149-7.583 7.335 0 4.18 3.403 7.335 7.583 7.335h8.012v-14.67h-4.977z"
+        data-part-id="logo__item--logo_0__8"
+      />
+      <path
+        fill="#005c69"
+        d="M967.4 444.982v-6.297H962.175V433.615l-7-13.686h8.071v-8.507l-20.002-23.848H873.37l-18.02 28.215c-3.08 2.505-5.097 6.19-5.097 10.457 0 7.482 6.056 13.524 13.525 13.605-5.024 2.016-8.595 6.893-8.595 12.633 0 4.16 1.916 7.838 4.87 10.343-6.96.623-12.453 6.37-12.453 13.485 0 7.529 6.123 13.611 13.66 13.611h8.004v-6.29h-8.012c-4.18 0-7.583-3.148-7.583-7.335 0-4.186 3.403-7.335 7.583-7.335h8.012v-9.378h-.422c-4.18 0-7.59-3.115-7.59-7.295 0-4.187 3.403-7.308 7.59-7.308h.422v-11.455h-5.352c-4.18 0-7.59-3.121-7.59-7.308 0-2.827 1.574-5.285 3.879-6.29h90.452v13.598h-53.188v11.455h59.485v14.603h-59.485v9.378h50.106v14.67h-50.106V489.93h62.566v-6.297h-6.23v-14.67h6.23v-3.081h7.369v-6.297h-4.154v-14.603h4.154z"
+        data-part-id="logo__item--logo_0__9"
+      />
+      <path
+        fill="#1eb5cc"
+        d="M897.465 483.948V429.87c1.005-2.432.737-4.71 2.988-5.714h-26.292s-4.495.562-4.663 6.049c-.04.026-.234.114-.234.14v74.161c0 1.695 1.42 3.068 3.115 3.068 1.695 0 3.115-1.373 3.115-3.068v-8.413h16.68v8.413c0 1.695.95 3.068 2.645 3.068s2.646-1.373 2.646-3.068V483.95zm-5.292 0V490.934h-16.68V479.414h16.68v4.535zm0-15.18v5.42h-16.68v-11.455h16.68v6.036zm0-11.26h-16.68v-11.454h16.68v11.454zm0-23.753v7.007h-16.68v-9.378h7.342l9.338-.262v2.633z"
+        data-part-id="logo__item--logo_0__10"
+      />
+    </g>
+  </g>
 </svg>
