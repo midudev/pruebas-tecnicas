@@ -1,26 +1,57 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { IBook } from '../types/book'
 import { getBooks } from '../services/getBooks'
-
-interface LibraryFilter {
-  genre?: string
-}
+import { updateLocalStorage } from '../services/local-storage'
 
 export interface LibraryHook {
   filteredBooks: IBook[]
-  filterBooks: (filter: LibraryFilter) => void
+  setGenre: React.Dispatch<React.SetStateAction<string | null>>
+  addBookToReadingList: (book: IBook) => void
+  removeBookFromReadingList: (book: IBook) => void
   readingList: IBook[]
 }
 
-export function useLibrary (): LibraryHook {
+export function useLibrary () {
   const [books] = useState<IBook[]>(getBooks())
   const [filteredBooks, setFilteredBooks] = useState<IBook[]>([...books])
-  const [readingList] = useState<IBook[]>([])
+  const [readingList, setReadingList] = useState<IBook[]>([])
+  const [genre, setGenre] = useState<string | null>(null)
 
-  function filterBooks ({ genre }: LibraryFilter) {
-    const newFilteredBooks = genre == null || genre === '' ? [...books] : books.filter(book => book.genre === genre)
+  useEffect(() => {
+    const readingListString = localStorage.getItem('readingList')
+    if (readingListString == null) return
+    const json = JSON.parse(readingListString) as IBook[]
+    setReadingList(json)
+  }, [])
+
+  useEffect(() => {
+    const newFilteredBooks = books.filter(book => {
+      const isBookinReadingList = readingList.findIndex(b => b.ISBN === book.ISBN) !== -1
+      return !isBookinReadingList && (genre == null || genre === '' || book.genre === genre)
+    })
     setFilteredBooks([...newFilteredBooks])
+  }, [books, genre, readingList])
+
+  function addBookToReadingList (book: IBook) {
+    setReadingList(prev => {
+      const index = prev.findIndex(b => b.ISBN === book.ISBN)
+      if (index !== -1) return prev
+      const newReadingList = [...prev, book]
+      updateLocalStorage(newReadingList)
+      return newReadingList
+    })
   }
 
-  return { filteredBooks, filterBooks, readingList }
+  function removeBookFromReadingList (book: IBook) {
+    setReadingList(prev => {
+      const index = prev.findIndex(b => b.ISBN === book.ISBN)
+      if (index === -1) return prev
+      const newReadingList = [...prev]
+      newReadingList.splice(index, 1)
+      updateLocalStorage(newReadingList)
+      return newReadingList
+    })
+  }
+
+  return { filteredBooks, readingList, addBookToReadingList, removeBookFromReadingList, setGenre }
 }

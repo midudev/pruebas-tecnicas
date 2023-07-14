@@ -2,9 +2,11 @@ import { createContext } from 'react'
 import { LibraryHook, useLibrary } from './hooks/use-library'
 import { Library } from './components/library'
 
-const defaultLibrary = {
+const defaultLibrary: LibraryHook = {
   filteredBooks: [],
-  filterBooks: () => { console.log('filter books') },
+  setGenre: () => { console.log('set genre') },
+  addBookToReadingList: () => { console.log('add book to reading list') },
+  removeBookFromReadingList: () => { console.log('remove book from reading list') },
   readingList: []
 }
 

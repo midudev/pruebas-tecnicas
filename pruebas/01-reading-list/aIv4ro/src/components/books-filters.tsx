@@ -3,11 +3,11 @@ import { genres } from '../services/data'
 import { LibraryContext } from '../App'
 
 export function BooksFilters () {
-  const { filterBooks } = useContext(LibraryContext)
+  const { setGenre } = useContext(LibraryContext)
 
   function handleGenreChange (event: ChangeEvent<HTMLSelectElement>): void {
     const currentValue = event.target.value
-    filterBooks({ genre: currentValue })
+    setGenre(currentValue)
   }
 
   return (

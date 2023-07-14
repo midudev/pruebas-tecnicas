@@ -1,13 +1,17 @@
+import { LibraryContext } from '../App'
 import { IBook } from '../types/book'
 import { Icons } from './icons'
+import { useContext } from 'react'
 
 interface Props {
   book: IBook
 }
 
 export function Book ({ book }: Props) {
+  const { addBookToReadingList } = useContext(LibraryContext)
+
   function handleClick () {
-    console.log(book)
+    addBookToReadingList(book)
   }
 
   return (
