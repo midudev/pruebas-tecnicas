@@ -21,6 +21,7 @@ export function Filters () {
     return genres
   }
   const genres = getGenres()
+
   function handlePriceChange (event) {
   }
 
@@ -56,7 +57,7 @@ export function Filters () {
         </select>
       </div>
       <div>
-        <label htmlFor='orderByPrice'>Sort by name</label>
+        <label htmlFor='orderByPages'>Sort by pages</label>
         <input type='checkbox' onChange={handleSortChange} />
 
       </div>

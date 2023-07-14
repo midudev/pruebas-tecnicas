@@ -1,6 +1,7 @@
 import './App.css'
 import Books from './components/books/books'
 import { Header } from './components/commonComponents/header/header'
+import ListOfLecture from './components/listOfLecture/listOfLecture'
 import { library } from './mocks/books'
 
 function App () {
@@ -16,6 +17,7 @@ function App () {
   return (
     <>
       <Header />
+      <ListOfLecture />
       <Books books={mappedBooks} />
       <footer className='footer'>el footer</footer>
     </>

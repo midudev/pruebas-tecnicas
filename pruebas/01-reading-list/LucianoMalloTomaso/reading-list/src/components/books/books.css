@@ -1,12 +1,13 @@
 .books {
-    width: 100%;
+    width: 800px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 1rem;
   }
 
-  .products ul {
+  .books ul {
     display: grid;
     grid-template-columns: repeat(
       auto-fit,
@@ -19,7 +20,7 @@
     width: 100%;
   }
 
-  .products li {
+  .books li {
     display: flex;
     position: relative;
     flex-direction: column;
@@ -29,4 +30,13 @@
     background: #111;
     color: #fff;
     padding: 1rem;
+  }
+  .book-photo {
+    border-radius: 4px;
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: block;
+    object-fit: cover;
+    background: #fff;
+    box-shadow: 0 0 20px 20px #c9c9c91a;
   }
