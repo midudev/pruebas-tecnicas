@@ -48,7 +48,9 @@ export const BookGridComponent = ({ bookList }) => {
     return (
         <div className="gridContainer">
             <div className="filter">
-                <h1 className='title'>Explorar</h1>
+                <h1 className='title'>
+                    Explorar todos los libros
+                </h1>
 
                 <div className="filterButtonContainer">
                     <select name="filter" id="filterSelect" className="filterSelect" onChange={handleFilterChange}>

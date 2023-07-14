@@ -27,3 +27,8 @@
     font-weight: 600;
     color: #07e162;
 }
+
+.bookItemListed {
+    filter: grayscale(80%) blur(2px);
+    opacity: 0.5;
+}
