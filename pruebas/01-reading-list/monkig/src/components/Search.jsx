@@ -1,17 +1,19 @@
 import { BiSearchAlt } from 'react-icons/bi'
-import { useState, useRef } from 'react'
+import { useState } from 'react'
+
 export default function Search () {
-  const inputRef = useRef(null)
+  const input = document.querySelector('input')
+
   const [isFocused, setIsFocused] = useState(false)
   const [inputValue, setInputValue] = useState('')
 
   const handleOnChangeValue = (e) => {
-    setInputValue(inputRef.current.value)
+    setInputValue(e.target.value)
   }
 
   const handleOnClick = () => {
     setIsFocused(true)
-    inputRef.current.focus()
+    input.focus()
   }
 
   const handleOnBlur = () => {
@@ -27,7 +29,7 @@ export default function Search () {
         <label htmlFor="" className='px-2 text-2xl'>
             <BiSearchAlt/>
         </label>
-        <input className='text-sm p-1 bg-transparent outline-none placeholder-black' value={inputValue} type="text" name="searchBook" id="searchBook" placeholder='Programación... ' ref={inputRef} onChange={handleOnChangeValue}/>
+        <input className='text-sm p-1 bg-transparent outline-none placeholder-black' value={inputValue} type="text" name="searchBook" id="searchBook" placeholder='Programación... ' onChange={handleOnChangeValue}/>
     </form>
   )
 }

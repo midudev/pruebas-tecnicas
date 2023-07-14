@@ -2,9 +2,11 @@ import { useContext } from 'react'
 
 import { UserContext } from './context/UserContext'
 import Header from './components/Header'
+import { BooksContext } from './context/BooksContext'
 
 function App () {
-  const { availableBooks, userReadingList, addToReadingList, deleteToReadingList, readingListCounter } = useContext(UserContext)
+  const { addToReadingList, deleteToReadingList, readingListCounter } = useContext(UserContext)
+  const { availableBooks, userReadingList } = useContext(BooksContext)
 
   return (
     <>

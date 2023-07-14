@@ -1,14 +1,11 @@
-import { createContext, useEffect, useState } from 'react'
-import useBooks from '../hooks/useBooks'
-import useLocalStorage from '../hooks/useLocalStorage'
+import { createContext, useContext, useEffect, useState } from 'react'
+import { BooksContext } from './BooksContext'
 
 export const UserContext = createContext()
 
 export default function UserProvider ({ children }) {
-  const { availableBooks, setAvailableBooks } = useBooks()
-  const [userReadingList, setUserReadingList] = useState([])
+  const { userReadingList, setAvailableBooks, setUserReadingList } = useContext(BooksContext)
   const [readingListCounter, setReadingListCounter] = useState(userReadingList.length)
-  useLocalStorage('userReadingList', setUserReadingList)
 
   useEffect(() => {
     setReadingListCounter(userReadingList.length)
@@ -26,8 +23,6 @@ export default function UserProvider ({ children }) {
 
   return (
         <UserContext.Provider value={{
-          availableBooks,
-          userReadingList,
           addToReadingList,
           deleteToReadingList,
           readingListCounter
@@ -39,7 +34,7 @@ export default function UserProvider ({ children }) {
 
 const addData = (prevData, book, item) => {
   const updatedUserListBooks = [...prevData, book]
-  localStorage.setItem('userReadingList', JSON.stringify(updatedUserListBooks))
+  localStorage.setItem(item, JSON.stringify(updatedUserListBooks))
   return updatedUserListBooks
 }
 
