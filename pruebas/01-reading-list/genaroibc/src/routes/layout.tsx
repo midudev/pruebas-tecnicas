@@ -24,7 +24,7 @@ export const useServerTimeLoader = routeLoader$(() => {
 export default component$(() => {
   useStyles$(styles)
   return (
-    <main>
+    <main class="max-w-7xl mx-auto">
       <Slot />
     </main>
   )
