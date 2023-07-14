@@ -18,12 +18,14 @@
   .container-book {
     display: flex;
     flex-direction: column;
+    gap:10px
   }
 
   .add-to-read {
     padding: 12px 24px;
     border: 1px solid #f2f2f2;
     box-sizing: border-box;
+    border-radius: 10px;
   }
 
   .book {

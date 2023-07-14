@@ -1,7 +1,11 @@
 <script>
   import booksLibrary from "$lib/books.json";
-  import Book from "../components/Book.svelte"; 
+  import Book from "../components/Book.svelte";
   let { library: books } = booksLibrary;
+  const genres = books.map(({ book }) => {
+    return book.genre;
+  });
+  const genresSet = new Set(genres);
   
 </script>
 
@@ -22,7 +26,7 @@
     margin: auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 10px;
-    
+    gap: 30px;
+    row-gap: 20px;
   }
 </style>
