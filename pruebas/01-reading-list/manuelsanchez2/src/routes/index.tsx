@@ -1,63 +1,50 @@
 import { component$ } from '@builder.io/qwik'
-import type { DocumentHead } from '@builder.io/qwik-city'
+import { type DocumentHead } from '@builder.io/qwik-city'
+import { BookItem } from '~/components/book-item/book-item'
+import { Filters } from '~/components/filters/filters'
+import { Logo } from '~/components/logo/logo'
+import { ReadingList } from '~/components/reading-list/reading-list'
+import { useGlobalState } from '~/ctx/ctx'
 import { css } from '~/styled-system/css'
 
-interface BookProps {
-  title: string
-}
-export const Book = component$<BookProps>(({ title }) => {
-  const bookStyles = css({
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
-    gap: '1rem',
-    bg: 'blue.400',
-    width: '150px',
-    height: '200px',
-  })
-  return <div class={bookStyles}>{title}</div>
-})
+const NUMBER_OF_BOOKS_PER_PAGE = 8
 
-export const Logo = component$(() => {
-  return (
-    <h1
-      class={css({
-        fontSize: { base: 'lg', md: '3xl' },
-        my: '2rem',
-        fontWeight: 'bold',
-        textAlign: 'center',
-      })}
-    >
-      <img
-        class={css({
-          display: 'inline-block',
-          mr: '1rem',
-          borderRadius: '50%',
-        })}
-        width={75}
-        height={75}
-        src="./1.webp"
-        alt="Logo Lista de Lectura"
-      />
-      Lista de lectura
-    </h1>
-  )
+const wrapperStyles = css({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'column',
+  minH: '75vh',
+  px: '20px',
 })
 
 export default component$(() => {
-  const wrapperStyles = css({
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
-    minH: '75vh',
-    px: '20px',
-  })
+  const { books, booksWithUserPreferences, readingList } = useGlobalState()
 
   return (
     <>
       <Logo />
+
+      <p
+        class={css({
+          fontSize: '1.5rem',
+          fontWeight: 'bold',
+          textAlign: 'center',
+        })}
+      >
+        Número total de libros: {books.value.length}
+      </p>
+      <p
+        class={css({
+          fontSize: '1.5rem',
+          fontWeight: 'bold',
+          textAlign: 'center',
+        })}
+      >
+        Libros en la lista de lectura: {readingList.value.length}
+      </p>
+
+      <Filters />
 
       <div class={wrapperStyles}>
         <div
@@ -77,26 +64,15 @@ export default component$(() => {
               width: '50%',
             })}
           >
-            <Book title="Libro 1" />
-            <Book title="Libro 2" />
-            <Book title="Libro 3" />
-            <Book title="Libro 4" />
-            <Book title="Libro 5" />
-            <Book title="Libro 6" />
+            {booksWithUserPreferences.value
+              .slice(0, NUMBER_OF_BOOKS_PER_PAGE)
+              .map((book) => (
+                <li key={book.ISBN}>
+                  <BookItem book={book} />
+                </li>
+              ))}
           </ul>
-          <ul
-            class={css({
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
-              gap: '2rem',
-              width: '30%',
-            })}
-          >
-            <Book title="Libro 7" />
-            <Book title="Libro 8" />
-            <Book title="Libro 9" />
-            <Book title="Libro 10" />
-          </ul>
+          <ReadingList />
         </div>
       </div>
     </>

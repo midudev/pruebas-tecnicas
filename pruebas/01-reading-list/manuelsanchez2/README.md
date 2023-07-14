@@ -34,10 +34,10 @@ Podríamos dividir los objetivos en dos tipos: must y nice-to-have.
 - [ ] Creación de la vista general de libros disponibles
 - [ ] Creación de la vista general de lista de lectura
 - [ ] Añadir la posibilidad de filtrar los libros disponibles por género
-- [ ] Sincronización de estado (tanto de libros disponibles como de lista de lectura)
-- [ ] Persistencia de datos (local storage)
+- [x] Sincronización de estado (tanto de libros disponibles como de lista de lectura)
+- [x] Persistencia de datos (local storage)
 - [ ] Sincronización entre pestañas
-- [ ] Despliegue en Vercel
+- [x] Despliegue en Vercel
 - [ ] Test (en este caso unit test)
 
 ### Nice-to-have
