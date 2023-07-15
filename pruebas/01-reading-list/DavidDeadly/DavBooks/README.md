@@ -25,7 +25,7 @@
 - [x] Visualización de Libros Disponibles
 - [x] Creación de Lista de Lectura
 - [ ] Filtrado de Libros por Género
-- [ ] Sincronización de Estado
-- [ ] Persistencia de Datos
+- [x] Sincronización de Estado
+- [X] Persistencia de Datos
 - [ ] Sincronización entre pestañas
 - [x] Despliegue
