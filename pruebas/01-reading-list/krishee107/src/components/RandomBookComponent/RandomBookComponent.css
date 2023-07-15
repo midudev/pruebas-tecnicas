@@ -1,14 +1,15 @@
 .randomBookContainer {
-    padding: 4% 5%;
+    padding: 2% 5%;
 }
 
 .randomBookContainer .title {
     padding: 10px 0;
-    font-size: 2rem;
+    font-size: 3rem;
+    line-height: 1.2;
 }
 
 .randomBookContainer .title span {
-    font-size: 4.2rem;
+    font-size: 6rem;
     font-family: 'Dancing Script', cursive;
     font-weight: 600;
 }

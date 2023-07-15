@@ -2,7 +2,7 @@
     display: grid;
     grid-gap: 2rem;
     /* margin-top: 2rem; */
-    padding: 5%;
+    padding: 2% 5%;
 }
 
 .bookGrid {
@@ -21,8 +21,8 @@
 
 #filterSelect {
     cursor: pointer;
-    border: 2px solid #f0e7dd;
-    color: #d0c2b4;
+    border: 2px solid #000000;
+    /*color: #d0c2b4;*/
     padding: 0.5rem;
     border-radius: 5px;
     font-size: 1rem;
@@ -36,5 +36,5 @@
 .gridContainerInfo span {
     font-weight: 600;
     color: #d0c2b4;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
 }
