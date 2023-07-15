@@ -25,21 +25,37 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1em;
-    padding: 0.5em 1em;
+    padding: 1em 2em;
     background-color: #faf2e9;
 }
 
 .readingListHeader h1 {
-    font-size: 1em;
-    font-weight: 700;
-    color: #d0c2b4
+
+    color: #d0c2b4;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    font-family: 'Dancing Script', cursive;
+
 }
 
 .readingListHeader .closeButton {
-    font-size: 1.5em;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #d1c1b4;
+    color: #eee5da;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-weight: 700;
-    color: #d0c2b4;
+    font-size: 1rem;
     cursor: pointer;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
 }
 
 .readingListContent {
