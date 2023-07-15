@@ -25,7 +25,7 @@ export const App = () => {
   return (
 
     <div className="padre">
-      <NavComponent handleReadingList={handleReadingList} />
+      <NavComponent handleReadingList={handleReadingList} selectedBooks={selectedBooks} />
       <div className="content">
         <ReadingListComponent readingListVisible={readingListVisible} handleReadingList={handleReadingList} selectedBooks={selectedBooks}
           setSelectedBooks={setSelectedBooks} />

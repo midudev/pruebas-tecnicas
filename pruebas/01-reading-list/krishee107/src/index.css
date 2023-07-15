@@ -9,13 +9,14 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
+    color: #292929;
 }
 
 /* General */
 .title {
     font-weight: 600;
     font-size: 2rem;
-    color: #000000;
+    color: #292929;
     margin: 0;
     padding: 10px 0 5px;
 }
@@ -32,4 +33,13 @@ body {
     grid-area: content;
     position: relative;
     z-index: 1;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 900px) {
+    .title {
+        font-size: 3rem !important;
+        padding: 20px 0;
+    }
 }

@@ -5,7 +5,8 @@
 .randomBookContainer .title {
     padding: 10px 0;
     font-size: 3rem;
-    line-height: 1.2;
+    word-spacing: 0.3rem;
+    line-height: 4rem;
 }
 
 .randomBookContainer .title span {
@@ -38,6 +39,7 @@
     height: 100%;
     width: 100%;
     overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .randomBookTitle {
@@ -51,12 +53,15 @@
 .randomBookTitle h2 {
     padding: 5% 0 2%;
     margin: 0;
+    font-size: 2em;
+    max-width: 90%;
 }
 
-.randomBookAuthor {
+.randomBookAuthor,
+.randomBookGenre {
     font-weight: 400;
-    font-size: 0.8rem;
-    color: #000000;
+    font-size: 1rem;
+    color: #292929;
     margin: 0;
 }
 
@@ -65,17 +70,49 @@
     color: #07e162;
 }
 
-.randomBookGenre {
-    font-weight: 400;
-    font-size: 0.8rem;
-    color: #000000;
-    margin: 0;
-}
-
 .randomBookDescription {
     font-weight: 400;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     max-width: 70%;
-    color: #000000;
-    padding: 10px 0;
+    color: #292929;
+    padding: 1rem 0;
+    letter-spacing: 1px;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 900px) {
+    .randomBook {
+        grid-template-columns: 1fr;
+        gap: 5%;
+        padding: 4rem 0;
+    }
+
+    .randomBookCover {
+        justify-content: center;
+    }
+
+    .randomBookCover img {
+        max-width: unset;
+        max-height: unset;
+    }
+
+    .randomBookTitle {
+        font-size: 2rem;
+    }
+
+    .randomBookAuthor,
+    .randomBookGenre {
+        font-size: 1.5rem;
+    }
+
+    .randomBookAuthor {
+        padding-top: 1em;
+    }
+
+    .randomBookDescription {
+        font-size: 2rem;
+        max-width: 90%;
+        padding: 2rem 0;
+    }
 }

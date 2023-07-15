@@ -24,3 +24,27 @@
     color: #d0c2b4;
     font-size: 1.6rem;
 }
+
+
+/* Responsive */
+
+@media screen and (max-width: 900px) {
+
+    .gridContainerInfo {
+        font-size: 1.4rem;
+        padding: 1rem 0;
+    }
+
+    .gridContainer {
+        all: unset;
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .bookGrid {
+        grid-template-columns: unset;
+    }
+}

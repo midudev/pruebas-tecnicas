@@ -6,13 +6,10 @@
 
 #filterSelect {
     cursor: pointer;
-    border: 2px solid #000000;
-    /*color: #d0c2b4;*/
     padding: 0.5rem;
     border-radius: 5px;
     font-size: 1rem;
     font-family: 'Poppins', sans-serif;
-    color: #b0b0b0;
     background-color: #d0c2b4;
     border-color: #d0c2b4;
     color: #eee5da;
@@ -25,7 +22,7 @@
     grid-template-columns: 1.5fr 1fr;
     gap: 2%;
     width: 100%;
-    color: #b0b0b0;
+    color: #292929;
     font-weight: 600;
 }
 
@@ -52,4 +49,26 @@
 .sidebarMin,
 .sidebarMax {
     font-size: 0.8rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 1150px) {
+    .filter {
+        display: unset;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .filterButtonContainer {
+        grid-template-columns: 1fr;
+        gap: 10%;
+        align-items: center;
+    }
+
+    .sidebarTitle,
+    .sidebarMin,
+    .sidebarMax,
+    #filterSelect {
+        font-size: 1.4rem;
+    }
 }
