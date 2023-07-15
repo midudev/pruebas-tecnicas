@@ -10,13 +10,14 @@ interface BookProps {
 }
 
 export default function Book({ book }: BookProps) {
-  const { addReadingList } = useStore()
+  const { addReadingList, getAnimated } = useStore()
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
 
   function handleAddBook() {
     handleOpen()
     addReadingList(book)
+    getAnimated()
   }
 
   return (

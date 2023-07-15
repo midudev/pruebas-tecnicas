@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { library } from '@/data/books.json'
+import library from '@/data/books.json'
 import { Book } from '@/types/books'
 
 type Const = {
@@ -7,19 +7,22 @@ type Const = {
     dataFiltered: Book[]
     refFilterPages: Book[]
     readingList: Book[]
+    animate: boolean
 }
 
 type Methos = {
     filterPages: (num: number) => void
     filterGenre: (category: string) => void
     addReadingList: (book: Book) => void
+    getAnimated: () => void
 }
 
 export const useStore = create<Const & Methos>((set, get) => ({
-    data: library,
+    data: library.library,
     dataFiltered: [],
     refFilterPages: [],
     readingList: [],
+    animate: false,
     filterPages: (num) => {
         const list = get().data
         const filter = list.filter(book => book.pages <= num)
@@ -38,5 +41,13 @@ export const useStore = create<Const & Methos>((set, get) => ({
     },
     addReadingList: (book) => {
         set(state => ({ readingList: [...state.readingList, book] }))
+    },
+    getAnimated: () => {
+        setTimeout(() => {
+            set({ animate: true })
+        }, 500)
+        setTimeout(() => {
+            set({ animate: false })
+        }, 1200)
     }
 }))
