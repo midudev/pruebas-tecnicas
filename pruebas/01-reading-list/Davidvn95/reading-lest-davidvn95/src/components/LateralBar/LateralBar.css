@@ -1,9 +1,23 @@
 .lateral{
     display: flex;
     flex-direction: column;
-    width: 25%;
+    width: 30%;
     height: 100%;
     border-right: 1px solid gray;
     position: sticky;
     top: 7rem;
+    color: rgb(110, 84, 18);
+    padding: 0 1.5rem;
+    gap: 2rem;
+}
+
+.select{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 1rem;
+}
+
+.select select{
+    width: 100%;
 }
