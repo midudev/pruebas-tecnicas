@@ -1,27 +1,65 @@
 .homeMain {
   display: grid;
   grid-template-areas:
-    'search search'
+    'suggest suggest'
     'bookGenres books';
-  grid-template-columns: 15.625rem 1fr;
-  grid-template-rows: 12.5rem 1fr;
+  grid-template-columns: 12.5rem 1fr;
+  grid-template-rows: 15.625rem 1fr;
   flex-grow: 1;
   margin: 0 auto;
   width: 100%;
   max-width: var(--max-width-content);
 }
 
-.homeMain__searchSection,
+.homeMain__suggestSection,
 .homeMain__bookGenresSection,
 .homeMain__booksSection {
   border-style: solid;
   border-color: transparent;
 }
 
-.homeMain__searchSection {
-  grid-area: search;
+.homeMain__suggestSection {
+  grid-area: suggest;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  padding: var(--padding-section) var(--padding-content);
   border-width: 0 1px 1px;
   border-bottom-color: var(--border-section-color);
+}
+
+.homeMain__suggestSection__info {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.homeMain__suggestSection__info__button {
+  padding: 0.2em 0.8em;
+  width: fit-content;
+  border-radius: 0.375rem;
+  border-width: 0;
+  font-weight: 600;
+}
+
+.homeMain__suggestSection__synopsis {
+  margin-bottom: 1.4em;
+  max-width: 40ch;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.homeMain__suggestSection__title {
+  margin-bottom: 0.15em;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.homeMain__suggestSection__subtitle {
+  margin-bottom: 0.65em;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .homeMain__bookGenresSection {
@@ -68,7 +106,7 @@
 }
 
 @media (min-width: 90.0625rem) {
-  .homeMain__searchSection {
+  .homeMain__suggestSection {
     border-right-color: var(--border-section-color);
     border-left-color: var(--border-section-color);
   }
