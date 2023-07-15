@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { BookItemComponent } from '../BookItemComponent/BookItemComponent';
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
 import './BookGridComponent.css';
 import { FilterComponent } from '../FilterComponent.jsx/FilterComponent';
 
-export const BookGridComponent = ({ bookList }) => {
+export const BookGridComponent = ({ bookList, selectedBooks, setSelectedBooks, addBookToReadingList }) => {
     const [filteredBooks, setFilteredBooks] = useState(bookList);
     //Contadores de género
     const [fantasia, setFantasia] = useState(0);
@@ -91,7 +89,7 @@ export const BookGridComponent = ({ bookList }) => {
                 {filteredBooks.length > 0 &&
                     filteredBooks.map((book, index) => {
                         if (filter === 'Todos' || book.book.genre === filter) {
-                            return <BookItemComponent key={index} book={book.book} />;
+                            return <BookItemComponent key={index} book={book.book} selectedBooks={selectedBooks} setSelectedBooks={setSelectedBooks} addBookToReadingList={addBookToReadingList} />;
                         }
                         return null;
                     })}
