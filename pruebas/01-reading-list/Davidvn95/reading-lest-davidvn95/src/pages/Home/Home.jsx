@@ -5,7 +5,7 @@ import Card from '../../components/Card/Card';
 
 export default function Home() {
 
-    const books = useSelector(state => state.books?.render);
+    const books = useSelector(state => state.books?.show);
 
     return (
         <section className="home">

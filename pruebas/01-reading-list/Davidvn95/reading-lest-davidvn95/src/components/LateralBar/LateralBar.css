@@ -21,3 +21,27 @@
 .select select{
     width: 100%;
 }
+
+.range{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 1rem;
+}
+
+.range >div{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.range > div > input{
+    width: 100%;
+}
+
+.range > div > span{
+    font-weight: 500;
+    font-size: larger;
+}
