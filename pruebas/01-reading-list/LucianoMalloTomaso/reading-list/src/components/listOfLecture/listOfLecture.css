@@ -1,4 +1,4 @@
-.list {
+.list-of-lecture {
     background: #000;
     display: none;
     padding: 32px;
@@ -9,24 +9,29 @@
     z-index: 1;
   }
   
-  .list img {
-    aspect-ratio: 16/9;
+  .list-of-lecture img {
+    border-radius: 4px;
     width: 100%;
+    aspect-ratio: 16/9;
+    display: block;
+    object-fit: cover;
+    background: #fff;
+    box-shadow: 0 0 20px 20px #c9c9c91a;
   }
   
-  .list li {
+  .list-of-lecture li {
     border-bottom: 1px solid #444;
     padding-bottom: 16px;
   }
   
-  .list footer {
+  .list-of-lecture footer {
     display: flex;
     gap: 8px;
     justify-content: center;
     align-items: center;
   }
   
-  .list footer button {
+  .list-of-lecture footer button {
     padding: 8px;
   }
   
@@ -51,7 +56,7 @@
     scale: 1.1;
   }
   
-  .list-button ~ input:checked ~ .list {
+  .list-button ~ input:checked ~ .list-of-lecture {
     height: 75%;
     margin-top: 30px;
     display: block;

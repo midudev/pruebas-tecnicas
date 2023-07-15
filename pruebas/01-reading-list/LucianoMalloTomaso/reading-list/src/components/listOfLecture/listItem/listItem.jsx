@@ -7,7 +7,8 @@ export default function ListItem ({ cover, title, pages }) {
         alt={title}
       />
       <div>
-        <strong>{title}</strong> - {pages} Pages
+        <strong>{title}</strong>
+        <p> {pages} Pages</p>
       </div>
       <footer>
         <button>

@@ -1,24 +1,24 @@
 import { useContext } from 'react'
-import { FiltersContext } from '../context/filters.jsx'
+import { FiltersContext } from '../contexts/filters.jsx'
 
 export function useFilters () {
   const { filters, setFilters } = useContext(FiltersContext)
-  const filterProducts = (products) => {
-    return products.filter(product => {
+  const filterBooks = (books) => {
+    return books.filter(book => {
       return (
-        product.price >= filters.minPrice &&
+        book.pages >= filters.minPages &&
          (
-           filters.category === 'all' ||
-          product.category === filters.category
+           filters.genre === 'all' ||
+          book.genre === filters.genre
          )
       )
     })
   }
-  const sortProducts = (products) => {
-    return filters.orderByPrice
-      ? [...products].sort((a, b) => a.price - b.price)
-      : products
+  const sortBooks = (books) => {
+    return filters.orderByTitle
+      ? [...books].sort((a, b) => a.title.localeCompare(b.title))
+      : books
   }
 
-  return { filters, filterProducts, setFilters, sortProducts }
+  return { filters, filterBooks, setFilters, sortBooks }
 }

@@ -3,22 +3,31 @@ import Books from './components/books/books'
 import { Header } from './components/commonComponents/header/header'
 import ListOfLecture from './components/listOfLecture/listOfLecture'
 import { library } from './mocks/books'
+import { useFilters } from './hooks/useFilters'
+import { useState } from 'react'
 
 function App () {
-  const mappedBooks = library.map((book) => {
+  const [products] = useState(library)
+  const { filterBooks, sortBooks } = useFilters()
+  const mappedBooks = products.map((book) => {
     return {
       title: book.book.title,
+      genre: book.book.genre,
       cover: book.book.cover,
       pages: book.book.pages,
       author: book.book.author.name,
       otherBooks: book.book.author.otherBooks
     }
   })
+
+  const filteredProducts = filterBooks(mappedBooks)
+  const sortedProducts = sortBooks(filteredProducts)
+
   return (
     <>
       <Header />
       <ListOfLecture />
-      <Books books={mappedBooks} />
+      <Books books={sortedProducts} />
       <footer className='footer'>el footer</footer>
     </>
   )

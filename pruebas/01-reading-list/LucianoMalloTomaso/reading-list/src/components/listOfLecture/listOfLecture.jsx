@@ -20,7 +20,7 @@ export default function ListOfLecture () {
       </label>
       <input id={bookListCheckboxId} type='checkbox' hidden onChange={() => handleChangeIcon()} />
 
-      <aside className='list'>
+      <aside className='list-of-lecture'>
         <button>
           <RemoveAllBooks />
         </button>

@@ -1,15 +1,14 @@
 import { useId } from 'react'
 import './Filters.css'
-// import { useFilters } from '../../hooks/useFilters'
+import { useFilters } from '../../hooks/useFilters'
 import { library } from '../../mocks/books.json'
 
 export function Filters () {
-  // const { filters, setFilters } = useFilters()
-  const minQuantityOfBooks = useId()
+  const { filters, setFilters } = useFilters()
+  const minQuantityOfPages = useId()
   const categoryFilteredId = useId()
 
-  // 2. Create a function that take all the categories inside the object and create a new object with all the categories with the inicial in capital letter and the original.
-
+  // Create a function that take all the genres inside the array and create a new array with all the genres.
   function getGenres () {
     const genres = []
     library.forEach((element) => {
@@ -22,25 +21,43 @@ export function Filters () {
   }
   const genres = getGenres()
 
-  function handlePriceChange (event) {
+  function handlePagesQtyChange (event) {
+    setFilters(preState => (
+      {
+        ...preState,
+        minPages: event.target.value
+      }
+    ))
   }
 
-  function handleCategoryChange (event) {
+  function handleGenreChange (event) {
+    setFilters(preState => (
+      {
+        ...preState,
+        genre: event.target.value
+      }
+    ))
   }
   function handleSortChange (event) {
+    setFilters(preState => (
+      {
+        ...preState,
+        orderByTitle: event.target.checked
+      }
+    ))
   }
 
   return (
     <section className='filters'>
       <div>
-        <label htmlFor={minQuantityOfBooks}>Min.Books</label>
+        <label htmlFor={minQuantityOfPages}>Min.Books</label>
         <input
           type='range'
-          id={minQuantityOfBooks}
+          id={minQuantityOfPages}
           min='0'
           max='1000'
-          onChange={handlePriceChange}
-          value={0}
+          onChange={handlePagesQtyChange}
+          value={filters.minPages}
         />
         <span>$ {0}</span>
       </div>
@@ -48,7 +65,7 @@ export function Filters () {
         <label htmlFor={categoryFilteredId}>Category</label>
         <select
           id={categoryFilteredId}
-          onChange={handleCategoryChange}
+          onChange={handleGenreChange}
         >
           <option value='all'>All</option>
           {genres.map(category => (
@@ -57,7 +74,7 @@ export function Filters () {
         </select>
       </div>
       <div>
-        <label htmlFor='orderByPages'>Sort by pages</label>
+        <label htmlFor='orderByTitle'>Sort by title</label>
         <input type='checkbox' onChange={handleSortChange} />
 
       </div>
