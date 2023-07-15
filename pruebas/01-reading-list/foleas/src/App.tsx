@@ -15,6 +15,8 @@ function App() {
     currentGenre,
     filteredBooks,
     setFilteredBooks,
+    selectedBooks,
+    setSelectedBooks,
   } = useStore();
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -42,11 +44,13 @@ function App() {
 
   useEffect(() => {
     setFilteredBooks(
-      books?.filter(({ book: { genre } }) =>
-        currentGenre !== "" ? genre === currentGenre : true
-      )
+      books
+        ?.filter(({ book: { genre } }) =>
+          currentGenre !== "" ? genre === currentGenre : true
+        )
+        .filter(({ book: { ISBN } }) => !selectedBooks.includes(ISBN))
     );
-  }, [currentGenre, books, setFilteredBooks]);
+  }, [currentGenre, books, selectedBooks, setFilteredBooks]);
 
   return (
     <main className="flex">
@@ -65,18 +69,45 @@ function App() {
             <div className="grid grid-cols-4 gap-10">
               {filteredBooks
                 ?.slice(perPage * (page - 1), perPage * page)
-                .map(({ book: { title, cover } }, index) => {
+                .map(({ book: { title, cover, ISBN } }) => {
                   return (
                     <BookCard
-                      key={`${title}-${index}`}
+                      key={ISBN}
                       title={title}
                       imageUrl={cover}
+                      onClickHandler={() =>
+                        setSelectedBooks([...selectedBooks, ISBN])
+                      }
                     />
                   );
                 })}
             </div>
           </div>
-          <div className="lecture-books-wrapper w-1/5"></div>
+          <div className="lecture-books-wrapper w-1/5">
+            {selectedBooks && (
+              <>
+                <h2 className="text-2xl font-bold mb-5">Lista de Lectura</h2>
+                <div className="grid grid-cols-2 gap-10">
+                  {books
+                    ?.filter(({ book: { ISBN } }) =>
+                      selectedBooks.includes(ISBN)
+                    )
+                    .map(({ book: { title, cover, ISBN } }) => {
+                      return (
+                        <BookCard
+                          key={ISBN}
+                          title={title}
+                          imageUrl={cover}
+                          onClickHandler={() =>
+                            setSelectedBooks([...selectedBooks, ISBN])
+                          }
+                        />
+                      );
+                    })}
+                </div>
+              </>
+            )}
+          </div>
         </>
       )}
     </main>

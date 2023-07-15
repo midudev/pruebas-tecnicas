@@ -1,11 +1,12 @@
 interface BookCardProps {
   title: string;
   imageUrl: string;
+  onClickHandler: () => void;
 }
 
-const BookCard = ({ title, imageUrl }: BookCardProps) => {
+const BookCard = ({ title, imageUrl, onClickHandler }: BookCardProps) => {
   return (
-    <article>
+    <article onClick={onClickHandler}>
       <figure>
         <img
           className="w-full h-full object-cover"

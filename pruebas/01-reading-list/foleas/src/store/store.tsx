@@ -13,4 +13,6 @@ export const useStore = create<Store>((set) => ({
   setBooks: (books) => set(() => ({ books })),
   filteredBooks: [],
   setFilteredBooks: (filteredBooks) => set(() => ({ filteredBooks })),
+  selectedBooks: [],
+  setSelectedBooks: (selectedBooks) => set(() => ({ selectedBooks })),
 }));

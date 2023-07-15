@@ -13,4 +13,6 @@ export type Store = {
   setBooks: (books: Array<Book>) => void;
   filteredBooks: Array<Book>;
   setFilteredBooks: (filteredBooks: Array<Book>) => void;
+  selectedBooks: Array<string>;
+  setSelectedBooks: (selectedBooks: Array<string>) => void;
 };
