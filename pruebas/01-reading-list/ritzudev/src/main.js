@@ -1,5 +1,10 @@
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
+import { createApp } from "vue";
+import "./style.css";
+import App from "./App.vue";
 
-createApp(App).mount('#app')
+const app = createApp(App);
+
+// Habilitar Vue Devtools en producción
+app.config.devtools = true;
+
+app.mount("#app");

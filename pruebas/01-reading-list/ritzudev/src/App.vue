@@ -380,6 +380,7 @@ export default {
       localStorage.getItem("init") !== ""
     ) {
       if (JSON.parse(localStorage.getItem("init")) !== null) {
+        console.log("libros lista", this.listBooks);
         this.listBooks = JSON.parse(localStorage.getItem("init"));
       }
     }
@@ -390,7 +391,6 @@ export default {
     ) {
       if (JSON.parse(localStorage.getItem("reading")) !== null) {
         this.readingList = JSON.parse(localStorage.getItem("reading"));
-        console.log(this.readingList);
       }
     }
   },
@@ -415,7 +415,9 @@ export default {
   },
   methods: {
     moverItem(title, origen, destino) {
-      console.log(origen);
+      console.log("title", title);
+      console.log("origen", origen);
+      console.log("destino", destino);
       const itemIndex = origen.library.findIndex((item) => {
         return item.book.title === title;
       });
@@ -425,6 +427,7 @@ export default {
         destino.library.push(item);
       }
 
+      console.log("mover books", this.listBooks);
       localStorage.setItem("init", JSON.stringify(this.listBooks));
       localStorage.setItem("reading", JSON.stringify(this.readingList));
     },
