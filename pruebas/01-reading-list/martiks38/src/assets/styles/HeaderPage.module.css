@@ -3,6 +3,7 @@
   justify-content: space-between;
   margin: 0 auto;
   padding: 0.625rem var(--padding-content);
+  width: 100%;
   max-width: var(--max-width-content);
   background-color: #fff1;
 }

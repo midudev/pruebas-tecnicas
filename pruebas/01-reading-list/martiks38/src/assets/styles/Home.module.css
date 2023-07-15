@@ -1,0 +1,69 @@
+.homeMain {
+  display: grid;
+  grid-template-areas:
+    'search search'
+    'bookGenres books';
+  grid-template-columns: 15.625rem 1fr;
+  grid-template-rows: 12.5rem 1fr;
+  flex-grow: 1;
+  margin: 0 auto;
+  width: 100%;
+  max-width: var(--max-width-content);
+}
+
+.homeMain__searchSection,
+.homeMain__bookGenresSection,
+.homeMain__booksSection {
+  border-style: solid;
+  border-color: transparent;
+}
+
+.homeMain__searchSection {
+  grid-area: search;
+  border-width: 0 1px 1px;
+  border-bottom-color: var(--border-section-color);
+}
+
+.homeMain__bookGenresSection {
+  grid-area: bookGenres;
+  padding: 1em var(--padding-section) 1em var(--padding-content);
+  border-width: 0 1px 0;
+  border-right-color: var(--border-section-color);
+}
+
+.homeMain__booksSection {
+  grid-area: books;
+  border-width: 0 1px 0 0;
+}
+
+.booksGenresSection__title {
+  margin-bottom: 0.4em;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.booksGenresSection__list {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.booksGenresSection__listItem {
+  margin-bottom: 0.4em;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+@media (min-width: 90.0625rem) {
+  .homeMain__searchSection {
+    border-right-color: var(--border-section-color);
+    border-left-color: var(--border-section-color);
+  }
+
+  .homeMain__bookGenresSection {
+    border-left-color: var(--border-section-color);
+  }
+
+  .homeMain__booksSection {
+    border-right-color: var(--border-section-color);
+  }
+}
