@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { Library, Book } from "./types";
+import BookCard from "./components/BookCard";
+import PageFilter from "./components/PageFilter";
 
 function App() {
+  const [loading, setLoading] = useState<boolean>(false);
   const [books, setBooks] = useState<Array<Book>>([]);
 
   const getBooks = async (endpoint: string): Promise<void> => {
@@ -17,11 +20,31 @@ function App() {
   }, []);
 
   return (
-    <main>
-      <h1 className="text-3xl font-bold">{`${books.length} libros disponibles`}</h1>
-      {books?.map(({ book }) => {
-        return <p>{book.title}</p>;
-      })}
+    <main className="flex">
+      {loading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <>
+          <div className="available-books-wrapper w-4/5">
+            <h1 className="text-3xl font-bold">{`${books.length} libros disponibles`}</h1>
+
+            <PageFilter />
+
+            <div className="grid grid-cols-4 gap-10">
+              {books?.map(({ book: { title, cover } }, index) => {
+                return (
+                  <BookCard
+                    key={`${title}-${index}`}
+                    title={title}
+                    imageUrl={cover}
+                  />
+                );
+              })}
+            </div>
+          </div>
+          <div className="lecture-books-wrapper w-1/5"></div>
+        </>
+      )}
     </main>
   );
 }
