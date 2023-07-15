@@ -46,3 +46,20 @@
         align-items: center;
         justify-content: center;
     }
+
+    /* Responsive */
+
+    @media screen and (max-width: 900px) {
+        nav {
+            all: unset;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            z-index: 50;
+        }
+
+
+        .navItem {
+            margin: 2rem 1rem;
+        }
+    }

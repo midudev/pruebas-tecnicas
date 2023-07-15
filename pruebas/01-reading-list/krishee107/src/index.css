@@ -38,6 +38,11 @@ body {
 /* Responsive */
 
 @media screen and (max-width: 900px) {
+
+    .padre {
+        grid-template-columns: 1fr;
+    }
+
     .title {
         font-size: 3rem !important;
         padding: 20px 0;

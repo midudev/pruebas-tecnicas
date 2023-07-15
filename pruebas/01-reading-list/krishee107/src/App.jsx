@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import books from '../../books.json';
 import { BookGridComponent } from './components/BookGridComponent/BookGridComponent';
 import { RandomBookComponent } from './components/RandomBookComponent/RandomBookComponent';
-import { NavComponent } from './components/navComponent/navComponent';
 import { ReadingListComponent } from './components/ReadingListComponent/ReadingListComponent';
+import { NavComponent } from './components/NavComponent/NavComponent';
 
 export const App = () => {
   const [bookList, setBookList] = useState(books['library']);
@@ -26,9 +26,9 @@ export const App = () => {
 
     <div className="padre">
       <NavComponent handleReadingList={handleReadingList} selectedBooks={selectedBooks} />
+      <ReadingListComponent readingListVisible={readingListVisible} handleReadingList={handleReadingList} selectedBooks={selectedBooks} setSelectedBooks={setSelectedBooks} />
       <div className="content">
-        <ReadingListComponent readingListVisible={readingListVisible} handleReadingList={handleReadingList} selectedBooks={selectedBooks}
-          setSelectedBooks={setSelectedBooks} />
+
         <RandomBookComponent bookList={bookList} />
         <BookGridComponent bookList={bookList} selectedBooks={selectedBooks} setSelectedBooks={setSelectedBooks} />
       </div>

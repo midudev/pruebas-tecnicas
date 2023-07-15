@@ -118,3 +118,22 @@
 .stackedBook:last-child:hover {
     transform: scale(1.10);
 }
+
+/* Responsive */
+
+@media screen and (max-width: 900px) {
+    .readingListContainer {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        z-index: 100;
+        /* Ajusta el valor del z-index según tus necesidades */
+    }
+
+    .readingList {
+        width: 90%;
+        margin: 0 auto;
+        z-index: 1000;
+        /* Ajusta el valor del z-index según tus necesidades */
+    }
+}
