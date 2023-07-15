@@ -1,5 +1,5 @@
 .main {
-  @apply flex w-full h-full min-h-screen max-w-[1400px] m-auto gap-6 !mt-[100px];
+  @apply flex w-full h-full flex-col min-h-screen max-w-[1400px] m-auto gap-6 !mt-[100px] mb-20;
 }
 
 @media (max-width: 1400px) {
