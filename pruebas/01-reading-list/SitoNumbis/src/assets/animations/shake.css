@@ -1,0 +1,37 @@
+.shake {
+  animation: shake 1 0.5s linear;
+}
+
+.horizontal-shake {
+  animation: horizontalShake 1 0.5s linear;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(-15deg);
+  }
+  20% {
+    transform: rotate(15deg);
+  }
+  30% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes horizontalShake {
+  0% {
+    transform: translateX(-10px);
+  }
+  20% {
+    transform: translateX(+10px);
+  }
+  30% {
+    transform: translateX(-10px);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+}

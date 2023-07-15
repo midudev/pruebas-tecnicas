@@ -1,0 +1,3 @@
+.infoRow {
+  @apply flex gap-2;
+}

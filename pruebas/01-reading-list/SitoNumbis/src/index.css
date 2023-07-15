@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-dark-bg;
+}
+
+*:focus {
+  outline: none;
+}
+
+textarea {
+  resize: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p,
+input,
+textarea,
+label,
+button,
+span {
+  @apply text-dark-text;
+}
+
+h2 {
+  @apply text-2xl;
+}
+
+textarea,
+input[type="text"] {
+  @apply rounded-3xl px-2 py-1 bg-dark-alt-bg-opacity shadow-sm w-full backdrop-blur-xl;
+}
+
+/* range 2 */
+
+.range {
+  display: flex;
+  @apply w-full mt-2;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  border-radius: 15px;
+  height: 6px;
+  @apply bg-dark-alt-bg;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  transition: 0.2s ease-in-out;
+  border: 3px solid;
+  @apply bg-dark-text border-dark-bg;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  transition: 0.2s ease-in-out;
+  border: 3px solid;
+  @apply bg-dark-text border-dark-bg;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 10px rgba(255, 85, 0, 0.1);
+}
+input[type="range"]:active::-webkit-slider-thumb {
+  box-shadow: 0 0 0 13px rgba(255, 85, 0, 0.2);
+}
+input[type="range"]:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 13px rgba(255, 85, 0, 0.2);
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  box-shadow: 0 0 0 10px rgba(255, 85, 0, 0.1);
+}
+input[type="range"]:active::-moz-range-thumb {
+  box-shadow: 0 0 0 13px rgba(255, 85, 0, 0.2);
+}
+input[type="range"]:focus::-moz-range-thumb {
+  box-shadow: 0 0 0 13px rgba(255, 85, 0, 0.2);
+}
+
+.button {
+  @apply transition hover:text-primary cursor-default;
+}
+
+.cta {
+  @apply text-dark-text bg-primary px-5 py-2 rounded-3xl cursor-default 
+}

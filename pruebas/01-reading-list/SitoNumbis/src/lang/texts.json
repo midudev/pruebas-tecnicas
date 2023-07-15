@@ -1,0 +1,28 @@
+{
+  "es": {
+    "logo": "SitoLibrary",
+    "error": {
+      "title": "Ha ocurrido un error",
+      "reload": "Recargar"
+    },
+    "library": {
+      "title": "Sito Library",
+      "body": "'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. "
+    },
+    "book": {
+      "title": "Título",
+      "pages": "Cantidad de páginas",
+      "genre": "Género",
+      "year": "Año",
+      "author": "Autor",
+      "synopsis": "Sinopsis",
+      "otherBooks": "Otros libros",
+      "add": "Agregar"
+    },
+    "ariaLabels": {
+      "logo": "Logo Sito Book ",
+      "toTop": "Ir al tope",
+      "reload": "Recargar"
+    }
+  }
+}

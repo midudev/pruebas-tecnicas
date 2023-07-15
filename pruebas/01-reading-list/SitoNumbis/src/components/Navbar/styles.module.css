@@ -1,0 +1,21 @@
+.main {
+  backdrop-filter: blur(24px);
+  @apply fixed top-0 left-0 h-20 w-full bg-dark-alt-bg-opacity shadow-[black] shadow-sm flex items-center justify-center;
+}
+
+.navContainer {
+  @apply max-w-[1400px] w-full flex items-center justify-between;
+}
+
+@media (max-width: 1400px) {
+  .navContainer {
+    max-width: calc(80%);
+  }
+}
+
+@media (max-width: 800px) {
+  .navContainer {
+    max-width: 100%;
+    @apply px-5;
+  }
+}

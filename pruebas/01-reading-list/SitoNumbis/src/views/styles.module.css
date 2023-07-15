@@ -1,0 +1,23 @@
+.main {
+  @apply flex w-full h-full min-h-screen max-w-[1400px] m-auto gap-6 !mt-[100px];
+}
+
+@media (max-width: 1400px) {
+  .main {
+    max-width: calc(80%);
+  }
+}
+
+@media (max-width: 800px) {
+  .main {
+    max-width: 100%;
+    @apply px-5;
+  }
+}
+
+.bookGrid {
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: 360px;
+  display: grid;
+  @apply grid w-full h-full gap-10;
+}
