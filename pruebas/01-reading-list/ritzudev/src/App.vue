@@ -4,17 +4,16 @@ import HelloWorld from "./components/HelloWorld.vue";
 
 <template>
   <div>
-    <nav class="font-sans text-3xl text-gray-400">
+    <nav class="font-sans text-3xl text-gray-400 mx-10">
       good<span class="text-green-400">reads</span>
     </nav>
     <section class="min-h-screen mx-auto">
-      <div class="flex flex-col mx-10 py-8 sm:w-72">
+      <div class="flex flex-col sm:flex-row mx-10 py-8 gap-8 items-center">
         <!-- Filtro por Genero -->
         <select
-          name=""
-          id=""
-          class="block py-2.5 px-2 bg-[#f9f3ee] text-md border-0 border-b-2 border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200"
+          class="block w-full sm:w-72 py-2.5 px-2 bg-[#f9f3ee] text-md border-0 border-b-2 border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200"
           v-model="gender"
+          title="filterGender"
         >
           <option value="null">Selecciona Genero</option>
           <option value="Fantasía">Fantasía</option>
@@ -22,13 +21,27 @@ import HelloWorld from "./components/HelloWorld.vue";
           <option value="Zombies">Zombies</option>
           <option value="Terror">Terror</option>
         </select>
+        <div class="flex flex-col justify-center items-center font-mono">
+          <span class="text-2xl"> Nro. de Páginas: {{ rangeSlider }}</span>
+          <div class="flex gap-4">
+            <span>40</span>
+            <input
+              class="sm:w-72 appearance-none"
+              min="40"
+              max="1500"
+              type="range"
+              v-model="rangeSlider"
+            />
+            <span>1500</span>
+          </div>
+        </div>
       </div>
 
       <div
         :class="[
           readingList.library.length == 0
             ? 'grid-cols-1'
-            : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4',
+            : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4',
         ]"
         class="grid gap-4 my-4 mx-10"
       >
@@ -50,16 +63,18 @@ import HelloWorld from "./components/HelloWorld.vue";
           >
             <!-- new -->
             <h1 class="text-center">Libros</h1>
-            <h4>Cantidad de Libros: {{ filtro.library.length }}</h4>
+            <h4>Libros: {{ filtro.library.length }}</h4>
           </div>
           <div v-for="(item, index) in filtro.library" :key="index">
             <div
               @click="moverItem(item.book.title, listBooks, readingList)"
-              class="bg-white flex gap-4 rounded-lg overflow-hidden py-6 px-2 h-72"
+              class="bg-white flex justify-center gap-4 rounded-lg overflow-hidden py-6 px-2 h-72"
             >
               <div
                 :class="[
-                  readingList.library.length == 0 ? 'w-[50%]' : 'w-full',
+                  readingList.library.length == 0
+                    ? 'w-[50%]'
+                    : 'w-[70%] xl:w-[50%]',
                 ]"
                 class="h-full overflow-hidden"
               >
@@ -70,8 +85,10 @@ import HelloWorld from "./components/HelloWorld.vue";
                 />
               </div>
               <div
-                :class="[readingList.library.length == 0 ? 'block' : 'hidden']"
-                class="flex justify-evenly flex-col w-[50%]"
+                :class="[
+                  readingList.library.length == 0 ? 'block' : 'hidden xl:flex',
+                ]"
+                class="justify-evenly flex-col w-[50%] font-mono h-full"
               >
                 <h3>{{ item.book.title }}</h3>
                 <h4>{{ item.book.author.name }}</h4>
@@ -82,18 +99,21 @@ import HelloWorld from "./components/HelloWorld.vue";
         </div>
         <div
           v-if="readingList.library.length != 0"
-          class="col-span-1 lg:col-span-1 xl:col-span-1 bg-[#f9f3ee] h-min rounded-lg p-4"
+          class="hidden sm:block col-span-1 lg:col-span-1 xl:col-span-1 bg-[#f9f3ee] h-min rounded-lg p-4"
         >
-          <h1 class="text-center text-2xl font-mono">Reading List</h1>
-          <h4 class="text-2xl font-mono pb-2">
-            Cantidad de Libros: {{ readingList.library.length }}
+          <h1 class="text-center text-lg sm:text-3xl font-mono">
+            Reading List
+          </h1>
+          <h4 class="sm:text-2xl 2xl:text-start font-mono pb-2">
+            Libros: {{ readingList.library.length }}
           </h4>
           <div v-for="(item, index) in readingList.library" :key="index">
             <div
               @click="moverItem(item.book.title, readingList, listBooks)"
-              class="bg-white flex gap-4 rounded-lg overflow-hidden p-6 h-72 my-2 justify-center"
+              class="bg-white flex flex-col gap-4 rounded-lg overflow-hidden p-6 h-72 my-2 items-center font-mono"
             >
-              <img :src="item.book.cover" alt="cover" class="" />
+              <img :src="item.book.cover" alt="cover" class="h-52 w-48" />
+              <h3>{{ item.book.title }}</h3>
               <!-- <div class="flex justify-evenly flex-col">
                 <h3>{{ item.book.title }}</h3>
                 <h4>{{ item.book.author.name }}</h4>
@@ -104,6 +124,31 @@ import HelloWorld from "./components/HelloWorld.vue";
         </div>
       </div>
     </section>
+    <div class=" ">
+      <div
+        v-for="(item, index) in readingList.library"
+        :key="index"
+        :style="{ 'bottom': index * 100 + 'px' }"
+        class="fixed w-[65px] right-10 mb-4 sm:hidden"
+      >
+        <img :src="item.book.cover" alt="coverfloating" class="h-[90px] w-full" />
+      </div>
+      <!--       <div class="float">
+        <img
+          src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1550337333i/15868.jpg"
+        />
+      </div>
+      <div class="float">
+        <img
+          src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1555447414i/44767458.jpg"
+        />
+      </div>
+      <div class="float">
+        <img
+          src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1550337333i/15868.jpg"
+        />
+      </div> -->
+    </div>
   </div>
 </template>
 
@@ -359,36 +404,66 @@ export default {
       readingList: {
         library: [],
       },
+      rangeSlider: 1500,
+      newList: [],
     };
   },
   created() {
-    if (
-      localStorage.getItem("init") !== null ||
-      localStorage.getItem("init") !== ""
-    ) {
-      if (JSON.parse(localStorage.getItem("init")) !== null) {
-        console.log("libros lista", this.listBooks);
-        this.listBooks = JSON.parse(localStorage.getItem("init"));
-      }
+    if (localStorage.getItem("init") !== null) {
+      this.listBooks = JSON.parse(localStorage.getItem("init"));
     }
 
-    if (
-      localStorage.getItem("reading") !== null ||
-      localStorage.getItem("reading") !== ""
-    ) {
-      if (JSON.parse(localStorage.getItem("reading")) !== null) {
-        this.readingList = JSON.parse(localStorage.getItem("reading"));
-      }
+    if (localStorage.getItem("reading") !== null) {
+      this.readingList = JSON.parse(localStorage.getItem("reading"));
     }
   },
   mounted() {
     window.addEventListener("storage", this.actualizar);
   },
-  computed: {
-    filtro() {
+  watch: {
+    rangeSlider() {
+      /* const items = this.listBooks.library.filter(
+        (item) => this.rangeSlider >= item.book.pages
+      );
+      items.forEach((element) => {
+        console.log(element.book.pages);
+      });
+      this.newList = items; */
+      //this.filtro(true);
+    },
+
+    gender() {
       if (this.gender != "null") {
         const items = this.listBooks.library.filter(
-          (item) => item.book.genre === this.gender
+          (item) => item.book.genre === this.gender /* &&
+            this.rangeSlider >= item.book.pages */
+        );
+        /* return {
+          library: items,
+        }; */
+        this.newList = items;
+      } else {
+        this.newList = this.listBooks;
+        /* return {
+          library: this.listBooks.library,
+        }; */
+      }
+    },
+  },
+  computed: {
+    filtro(value) {
+      if (this.gender != "null") {
+        const items = this.listBooks.library.filter(
+          (item) =>
+            item.book.genre === this.gender &&
+            this.rangeSlider >= item.book.pages
+        );
+        return {
+          library: items,
+        };
+      } else if (this.gender == "null") {
+        const items = this.listBooks.library.filter(
+          (item) => this.rangeSlider >= item.book.pages
         );
         return {
           library: items,
@@ -402,9 +477,6 @@ export default {
   },
   methods: {
     moverItem(title, origen, destino) {
-      console.log("title", title);
-      console.log("origen", origen);
-      console.log("destino", destino);
       const itemIndex = origen.library.findIndex((item) => {
         return item.book.title === title;
       });
@@ -414,7 +486,6 @@ export default {
         destino.library.push(item);
       }
 
-      console.log("mover books", this.listBooks);
       localStorage.setItem("init", JSON.stringify(this.listBooks));
       localStorage.setItem("reading", JSON.stringify(this.readingList));
     },
@@ -430,16 +501,47 @@ export default {
 </script>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+/* img {
+  object-fit: contain;
+} */
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: #f1e6dd;
+  border-radius: 10px;
+  border: 0px solid #000000;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+input[type="range"]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px #000000;
+  height: 18px;
+  width: 18px;
+  border-radius: 25px;
+  background: #eca871;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -5px;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+.float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #0c9;
+  color: #fff;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+}
+
+.float:nth-child(2) {
+  bottom: 140px;
+}
+
+.float:nth-child(3) {
+  bottom: 240px;
 }
 </style>
