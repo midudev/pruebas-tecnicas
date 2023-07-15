@@ -109,15 +109,6 @@ import HelloWorld from "./components/HelloWorld.vue";
       </div>
     </section>
   </div>
-  <!-- <div class="flex w-full items-center justify-center bg-green-300">
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div> -->
-  <!--   <HelloWorld msg="Vite + Vue" /> -->
 </template>
 
 <script>
@@ -374,7 +365,7 @@ export default {
       },
     };
   },
-  created() {
+  /* created() {
     if (
       localStorage.getItem("init") !== null ||
       localStorage.getItem("init") !== ""
@@ -393,10 +384,10 @@ export default {
         this.readingList = JSON.parse(localStorage.getItem("reading"));
       }
     }
-  },
-  mounted() {
+  }, */
+  /* mounted() {
     window.addEventListener("storage", this.actualizar);
-  },
+  }, */
   computed: {
     filtro() {
       if (this.gender != "null") {
@@ -428,8 +419,8 @@ export default {
       }
 
       console.log("mover books", this.listBooks);
-      localStorage.setItem("init", JSON.stringify(this.listBooks));
-      localStorage.setItem("reading", JSON.stringify(this.readingList));
+      /* localStorage.setItem("init", JSON.stringify(this.listBooks));
+      localStorage.setItem("reading", JSON.stringify(this.readingList)); */
     },
     actualizar(event) {
       if (event.key == "init") {
