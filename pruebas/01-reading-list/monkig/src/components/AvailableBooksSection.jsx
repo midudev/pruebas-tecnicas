@@ -6,7 +6,7 @@ export default function AvailableBooksSection () {
   const { availableBooksCounter, availableBooks } = useContext(BooksContext)
   const { addToReadingList } = useContext(UserContext)
   return (
-    <section className='bg-red-500 mt-1'>
+    <section id='availableBooksSection' className='bg-red-500 mt-1'>
         <h2 className='p-2'>Available books: {availableBooksCounter}</h2>
         <Filters/>
         <ul className='grid grid-cols-5 gap-1 p-2 items-center'>

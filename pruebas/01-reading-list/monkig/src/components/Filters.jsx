@@ -23,7 +23,7 @@ export default function Filters () {
                     const nextPage = pages[index + 1]
                     const pageRange = nextPage !== undefined ? `${page} - ${nextPage}` : `${page}`
                     return (
-                        <option key={pageRange} value={pageRange}>
+                        <option className='text-center' key={pageRange} value={pageRange}>
                             {pageRange}
                         </option>
                     )

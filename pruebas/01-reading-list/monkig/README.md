@@ -53,4 +53,4 @@ Build script allows to build the code to production:
 - Organize books by priority
 - Responsive design
 - Deployment
-- Testing
+- Testing 🕥
