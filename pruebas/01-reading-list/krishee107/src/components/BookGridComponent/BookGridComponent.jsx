@@ -5,7 +5,7 @@ import { FilterComponent } from '../FilterComponent.jsx/FilterComponent';
 
 export const BookGridComponent = ({ bookList, selectedBooks, setSelectedBooks, addBookToReadingList }) => {
     const [filteredBooks, setFilteredBooks] = useState(bookList);
-    //Contadores de género
+    // Contadores de género
     const [fantasia, setFantasia] = useState(0);
     const [cienciaFiccion, setCienciaFiccion] = useState(0);
     const [zombies, setZombies] = useState(0);
@@ -87,9 +87,17 @@ export const BookGridComponent = ({ bookList, selectedBooks, setSelectedBooks, a
 
             <div className="bookGrid">
                 {filteredBooks.length > 0 &&
-                    filteredBooks.map((book, index) => {
+                    filteredBooks.map((book) => {
                         if (filter === 'Todos' || book.book.genre === filter) {
-                            return <BookItemComponent key={index} book={book.book} selectedBooks={selectedBooks} setSelectedBooks={setSelectedBooks} addBookToReadingList={addBookToReadingList} />;
+                            return (
+                                <BookItemComponent
+                                    key={book.book.title}
+                                    book={book.book}
+                                    selectedBooks={selectedBooks}
+                                    setSelectedBooks={setSelectedBooks}
+                                    addBookToReadingList={addBookToReadingList}
+                                />
+                            );
                         }
                         return null;
                     })}

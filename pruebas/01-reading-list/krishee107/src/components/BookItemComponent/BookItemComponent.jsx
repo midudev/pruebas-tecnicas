@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './BookItemComponent.css';
 
 export const BookItemComponent = ({ book, selectedBooks, setSelectedBooks }) => {
@@ -6,6 +6,12 @@ export const BookItemComponent = ({ book, selectedBooks, setSelectedBooks }) => 
         // Verificar si el libro está en la lista de lectura
         return selectedBooks.some(selectedBook => selectedBook.book.title === book.title);
     });
+
+    useEffect(() => {
+        // Verificar si el libro está en la lista de lectura
+        const isSelected = selectedBooks.some(selectedBook => selectedBook.book.title === book.title);
+        setIsSelected(isSelected);
+    }, [selectedBooks]);
 
     const handleReadingList = () => {
         setIsSelected(!isSelected);

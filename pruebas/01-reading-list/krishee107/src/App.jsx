@@ -27,7 +27,8 @@ export const App = () => {
     <div className="padre">
       <NavComponent handleReadingList={handleReadingList} />
       <div className="content">
-        <ReadingListComponent readingListVisible={readingListVisible} handleReadingList={handleReadingList} selectedBooks={selectedBooks} />
+        <ReadingListComponent readingListVisible={readingListVisible} handleReadingList={handleReadingList} selectedBooks={selectedBooks}
+          setSelectedBooks={setSelectedBooks} />
         <RandomBookComponent bookList={bookList} />
         <BookGridComponent bookList={bookList} selectedBooks={selectedBooks} setSelectedBooks={setSelectedBooks} />
       </div>

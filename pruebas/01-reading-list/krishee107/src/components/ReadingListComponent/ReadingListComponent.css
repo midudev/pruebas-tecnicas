@@ -11,8 +11,9 @@
 }
 
 .readingList {
-    width: 30%;
-    height: 90%;
+    width: 50%;
+    height: 100%;
+    max-width: 600px;
     background-color: #fff;
     overflow: hidden;
     border-radius: 25px;
@@ -43,8 +44,8 @@
 
 .readingListContent {
     height: 100%;
+    padding-top: 10%;
     overflow-y: auto;
-    padding: 0 1em;
 }
 
 .readingListBooks {
@@ -58,15 +59,46 @@
     position: absolute;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.stackedBookClose {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #6b6b6a5c;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.stackedBookClose:hover {
+    background-color: #6b6b6a;
+}
+
+.stackedBook img {
+    width: 100%;
+    object-fit: contain
 }
 
 .stackedBook:hover {
     cursor: pointer;
-    transform: scale(1.15);
+    transform: scale(1.10);
     transition: transform 0.5s;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .stackedBook:last-child:hover {
-    transform: scale(1.15);
+    transform: scale(1.10);
 }
