@@ -1,10 +1,13 @@
-import './App.css'
+import Navigation from "./components/Navigation"
+import GlobalContextProvider from "./contexts/GlobalContext"
 
 function App() {
 
   return (
-    <div className="App">
-      
+    <div>
+      <GlobalContextProvider>
+        <Navigation></Navigation>
+      </GlobalContextProvider>
     </div>
   )
 }
