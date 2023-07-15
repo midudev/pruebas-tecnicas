@@ -44,7 +44,7 @@ export default function Book({ book }: BookProps) {
   return (
     <>
       <article>
-          <div onClick={handleOpen} className='w-full h-[350px] cursor-pointer'>
+          <div onClick={handleOpen} className='w-full sm:h-[350px] h-[250px] cursor-pointer'>
               <Image className='w-full h-full object-cover' src={book.cover} alt={`libro ${book.title}`} width={200} height={300} />
           </div>
       </article>

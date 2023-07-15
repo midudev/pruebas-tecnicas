@@ -12,7 +12,7 @@ export default function DrawerComponent() {
   return (
     <>
       <Badge content={readingList.length} color="green">
-        <Button className={`self-baseline ${animate ? 'animate-shake animate-twice animate-duration-[350ms]' : ''}`} onClick={drawerRight}>Open Drawer Right</Button>
+        <Button className={`self-baseline ${animate ? 'animate-shake animate-twice animate-duration-[350ms]' : ''}`} onClick={drawerRight}>Lista de Lectura</Button>
       </Badge>
       <Drawer
         size={500}
@@ -34,13 +34,11 @@ export default function DrawerComponent() {
             <IoMdClose strokeWidth={1} className="h-6 w-6" />
           </Button>
         </div>
-        <section>
+        <section className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4">
             {readingList.length === 0 ? <span>Lista vacía :(</span> : 
-            <div className="flex flex-wrap">
-                {readingList.map(book => (
-                    <Book key={book.title} book={book} />
-                ))}
-            </div>}
+            readingList.map(book => (
+                <Book key={book.title} book={book} />
+            ))}
         </section>
       </Drawer>
     </>
