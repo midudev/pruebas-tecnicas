@@ -5,7 +5,7 @@ export const Library = ({ library, addToReadingList }) => {
     <section>
       <h3 className="text-left text-3xl text-slate-800">Books</h3>
       <p className="text-left">{library.length} libro(s)</p>
-      <ul className="flex flex-row gap-4">
+      <ul className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {library.map(({ book }) => {
           return (
             <li key={book.title}>

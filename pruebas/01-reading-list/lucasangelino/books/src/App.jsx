@@ -23,11 +23,16 @@ function App() {
 
   const addToReadingList = (book) => {
     setReadingList([...readingList, book]);
+    setBooks(books.filter((item) => item.book.title !== book.title));
     localStorage.setItem("readingList", JSON.stringify([...readingList, book]));
   };
 
   const removeFromReadingList = (book) => {
     setReadingList(readingList.filter((item) => item.title !== book));
+    setBooks([
+      ...books,
+      { book: readingList.find((item) => item.title === book) },
+    ]);
     localStorage.setItem(
       "readingList",
       JSON.stringify(readingList.filter((item) => item.title !== book))
@@ -48,13 +53,6 @@ function App() {
       <span>Tu biblioteca interactiva</span>
       <section className="m-4">
         <div>
-          <label
-            for="HeadlineAct"
-            className="block text-sm font-medium text-gray-900"
-          >
-            Headliner
-          </label>
-
           <select
             onChange={(e) => filterByGenre(e.target.value)}
             name="genre"
