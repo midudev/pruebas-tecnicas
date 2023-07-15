@@ -1,0 +1,6 @@
+<div *ngIf="book !== undefined" class="flex flex-col items-center" style="min-height: 200px; max-height: 200px;">
+  <p>{{book.title}}</p>
+  <div class="w-full h-screen flex justify-center overflow-hidden">
+    <img src="{{book.cover}}" class="max-w-full" />
+  </div>
+</div>

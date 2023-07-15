@@ -1,4 +1,5 @@
-<div *ngFor="let book of books; let i = index">
-  <p>{{book.title}}</p>
-  <button mat-button (click)="moveToList(book, i)">X</button>
-</div>
+<main *ngIf="books.length > 0" class="h-full">
+  <div class="p-4">
+    <book *ngFor="let book of books; let i = index" [book]="book" (click)="moveToList(book, i)"></book>
+  </div>
+</main>

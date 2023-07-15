@@ -4,6 +4,7 @@ import { BookListComponent } from './book-list/book-list.component';
 import { ReadBookListComponent } from './read-book-list/read-book-list.component';
 import { BooksComponent } from './books.component';
 import { FilterBooksListComponent } from './filter-books-list/filter-books-list.component';
+import { BookComponent } from './book/book.component';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { FilterBooksListComponent } from './filter-books-list/filter-books-list.
     BooksComponent,
     BookListComponent,
     ReadBookListComponent,
-    FilterBooksListComponent
+    FilterBooksListComponent,
+    BookComponent
   ],
   imports: [
     CommonModule
