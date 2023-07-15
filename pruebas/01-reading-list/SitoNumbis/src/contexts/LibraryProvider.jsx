@@ -10,30 +10,22 @@ const LibraryContext = createContext();
 const libraryReducer = (libraryState, action) => {
   const { type } = action;
   switch (type) {
-    case "add-book": {
+    case "toggle-to-reading-list": {
       const { id } = action;
-      const { readingList, books, genres } = libraryState;
-      readingList[id] = books[id];
-      delete books[id];
-      return { readingList, books, genres };
-    }
-    case "remove-book": {
-      const { id } = action;
-      const { readingList, books, genres } = libraryState;
-      books[id] = readingList[id];
-      delete readingList[id];
-      return { readingList, books, genres };
+      const { readingList } = libraryState;
+      if (readingList[id]) delete readingList[id];
+      else readingList[id] = id;
+      return { ...libraryState, readingList };
     }
     case "init-books": {
       const { books } = action;
       const genres = Array.from(new Set(books.map((book) => book.genre)));
-      const readingList = [];
+      const readingList = {};
       return { books, genres, readingList };
     }
     case "init-reading-list": {
       const { readingList } = libraryState;
-      const { books, genres } = libraryState;
-      return { books, readingList, genres };
+      return { ...libraryState, readingList };
     }
     default:
       throw new Error(`Unhandled action type: ${action.type}`);

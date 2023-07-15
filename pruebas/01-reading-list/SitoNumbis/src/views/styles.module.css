@@ -21,3 +21,27 @@
   display: grid;
   @apply grid w-full h-full gap-10;
 }
+
+@media (max-width: 1400px) {
+  .bookGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1200px) {
+  .bookGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .bookGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 450px) {
+  .bookGrid {
+    grid-template-columns: 1fr;
+  }
+}

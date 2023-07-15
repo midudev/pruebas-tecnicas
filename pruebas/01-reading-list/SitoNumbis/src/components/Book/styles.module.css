@@ -1,3 +1,7 @@
 .infoRow {
   @apply flex gap-2;
 }
+
+.infoAnimation {
+  @apply transition duration-500 group-hover:opacity-100 group-hover:translate-y-0 opacity-0 translate-y-5;
+}

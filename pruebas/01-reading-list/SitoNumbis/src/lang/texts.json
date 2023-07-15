@@ -17,14 +17,19 @@
       "author": "Autor",
       "synopsis": "Sinopsis",
       "otherBooks": "Otros libros",
-      "add": "Agregar"
+      "add": "Agregar",
+      "remove": "Remover",
+      "reading": "En la lista"
     },
     "ariaLabels": {
+      "add": "Agregar a la lista de lectura",
+      "remove": "Remover de la lista de lectura",
       "logo": "Logo Sito Book ",
       "toTop": "Ir al tope",
       "reload": "Recargar",
       "genreLeft": "Swipe genres to the right",
-      "genreRight": "Swipe genres to the left"
+      "genreRight": "Swipe genres to the left",
+      "clickToAlter": "Click para ver sinopsis"
     }
   }
 }
