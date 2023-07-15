@@ -27,6 +27,11 @@
     border-radius: 5px;
     font-size: 1rem;
     font-family: 'Poppins', sans-serif;
+    color: #b0b0b0;
+    background-color: #d0c2b4;
+    border-color: #d0c2b4;
+    color: #eee5da;
+    font-weight: 500;
 }
 
 .gridContainerInfo {
@@ -56,11 +61,18 @@
 
 .sidebar {
     display: flex;
-    gap: 5px;
+    gap: 15px;
+    width: 90%;
+    align-items: center;
 }
 
-.sidebarSlider {
-    width: 100%;
+.rc-slider-track {
+    background-color: #d1c1b4;
+    ;
+}
+
+.rc-slider-handle {
+    border-color: #d1c1b4;
 }
 
 .sidebarMin,
