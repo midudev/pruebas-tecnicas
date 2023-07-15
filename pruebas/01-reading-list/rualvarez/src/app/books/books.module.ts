@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BooksFilterComponent } from './books-filter/books-filter.component';
-import { BooksListComponent } from './books-list/books-list.component';
-import { BooksListReadComponent } from './books-list-read/books-list-read.component';
+import { BookListComponent } from './book-list/book-list.component';
+import { ReadBookListComponent } from './read-book-list/read-book-list.component';
 import { BooksComponent } from './books.component';
+import { FilterBooksListComponent } from './filter-books-list/filter-books-list.component';
 
 
 @NgModule({
   declarations: [
     BooksComponent,
-    BooksFilterComponent,
-    BooksListComponent,
-    BooksListReadComponent
+    BookListComponent,
+    ReadBookListComponent,
+    FilterBooksListComponent
   ],
   imports: [
     CommonModule

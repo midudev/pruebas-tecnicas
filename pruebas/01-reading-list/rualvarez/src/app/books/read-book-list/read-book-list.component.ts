@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { BookService } from '../books.service';
 import { Book } from '../books.model';
+import { BookService } from '../books.service';
 
 @Component({
-  selector: 'books-list-read',
-  templateUrl: './books-list-read.component.html',
-  styleUrls: ['./books-list-read.component.scss']
+  selector: 'read-book-list',
+  templateUrl: './read-book-list.component.html',
+  styleUrls: ['./read-book-list.component.scss']
 })
-export class BooksListReadComponent implements OnInit {
+export class ReadBookListComponent implements OnInit {
 
   books: Array<Book> = [];
 
