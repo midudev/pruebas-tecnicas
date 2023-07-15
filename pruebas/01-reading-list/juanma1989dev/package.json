@@ -1,0 +1,23 @@
+{
+	"name": "juanma1989dev",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"test": "vitest",
+		"lint": "prettier --plugin-search-dir . --check .",
+		"format": "prettier --plugin-search-dir . --write ."
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^2.0.0",
+		"@sveltejs/kit": "^1.20.4",
+		"prettier": "^2.8.0",
+		"prettier-plugin-svelte": "^2.10.1",
+		"svelte": "^4.0.5",
+		"vite": "^4.4.2",
+		"vitest": "^0.32.2"
+	},
+	"type": "module"
+}
