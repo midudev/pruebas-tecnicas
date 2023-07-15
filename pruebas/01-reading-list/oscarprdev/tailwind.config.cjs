@@ -14,12 +14,18 @@ module.exports = {
             },
         },
         backgroundColor: {
-            light: '#FFFFFF',
-            dark: '#000000',
+            light: '#F5EFE7',
+            dark: '#161617cc',
+            bookItem: '#F5F5F5'
         },
         textColor: {
             light: '#000000',
             dark: '#FFFFFF',
+        },
+        extend: {
+            maxHeight: {
+                '400': '400px',
+            },
         },
     },
     plugins: [require('@tailwindcss/forms')],

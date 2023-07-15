@@ -1,10 +1,13 @@
 <script lang="ts">
-    import { appState } from '../store/store'
-    import BookItem from './BookItem.svelte'
+  import type { Book } from '../types'
+  import BookItem from './BookItem.svelte'
+  import type { Readable } from 'svelte/motion'
+
+  export let booksList: Readable<Book[]>
 </script>
 
-<ul class="flex flex-wrap gap-5 w-full h-full p-5">
-  {#each $appState.books as book}
-    <BookItem {book}/>
+<ul class="flex flex-wrap gap-5 w-full p-5">
+  {#each $booksList as book}
+    <BookItem {book} />
   {/each}
 </ul>
