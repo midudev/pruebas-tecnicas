@@ -9,8 +9,11 @@ function App() {
 
   return (
     <main className="container">
-      <Typography variant="h1" color="orange" fontSize={60}>
-        Welcome to the Bookstore
+      <Typography variant="h1" color="AppWorkspace" fontSize={60} py={3}>
+        Welcome to the{" "}
+        <Box component="span" color="#039296">
+          Bookstore
+        </Box>
       </Typography>
       <Switch
         sectionOnView={sectionOnView}

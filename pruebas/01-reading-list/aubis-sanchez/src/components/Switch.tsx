@@ -1,7 +1,7 @@
 import { Box, Button, Slide } from "@mui/material";
 import { Views } from "../models";
 import { BookContext, BookContextType } from "../context/bookContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 interface Props {
   sectionOnView: Views;
@@ -10,6 +10,17 @@ interface Props {
 
 export const Switch = ({ sectionOnView, setSectionOnView }: Props) => {
   const { userLectureList, books } = useContext(BookContext) as BookContextType;
+  const [availableBooksAmount, setAvailableBooksAmount] = useState(
+    books.length
+  );
+
+  useEffect(() => {
+    const availableBooks = books.filter(
+      (book) =>
+        !userLectureList.some((lectureBook) => book.ISBN === lectureBook.ISBN)
+    ).length;
+    setAvailableBooksAmount(availableBooks);
+  }, [books, userLectureList]);
 
   return (
     <Box component="div" display="flex" flexDirection="row" width="100%">
@@ -17,27 +28,26 @@ export const Switch = ({ sectionOnView, setSectionOnView }: Props) => {
         onClick={() => setSectionOnView(Views.books)}
         sx={{
           width: "50%",
+          borderRadius: 0,
           display: "flex",
-          justifyContent: sectionOnView === Views.books ? "center" : "flex-end",
+          justifyContent: "center",
           textAlign: "right",
-          transitionDuration: 600,
+          transitionDuration: 300,
           color: sectionOnView === Views.books ? "white" : "primary",
-          bgcolor:
-            sectionOnView === Views.books
-              ? "rgba(38,91,167,1)"
-              : "rgba(255,255,255,0.08)",
+          bgcolor: sectionOnView === Views.books ? "rgba(38,91,167,1)" : "",
         }}
       >
-        Available books {`(${books.length})`}
+        Available books {`(${availableBooksAmount})`}
       </Button>
       <Button
         onClick={() => setSectionOnView(Views.list)}
         sx={{
           width: "50%",
+          borderRadius: 0,
           display: "flex",
-          justifyContent: sectionOnView === Views.list ? "center" : "start",
+          justifyContent: "center",
           textAlign: "left",
-          transitionDuration: 600,
+          transitionDuration: 300,
           color: sectionOnView === Views.list ? "white" : "primary",
           bgcolor: sectionOnView === Views.list ? "rgba(38,91,167,1)" : "",
         }}

@@ -16,9 +16,8 @@ interface Props {
 }
 
 export const BookItem = ({ book, lectureBook }: Props) => {
-  const { addToLectureList, removeFromLectureList } = useContext(
-    BookContext
-  ) as BookContextType;
+  const { addToLectureList, removeFromLectureList, findBookOnLecture } =
+    useContext(BookContext) as BookContextType;
 
   return (
     <Card sx={{ maxWidth: 250 }} component="article">
@@ -53,6 +52,7 @@ export const BookItem = ({ book, lectureBook }: Props) => {
       </CardContent>
       <CardActions>
         <Button
+          disabled={!lectureBook && findBookOnLecture(book.ISBN)}
           onClick={() =>
             lectureBook
               ? removeFromLectureList(book.ISBN)

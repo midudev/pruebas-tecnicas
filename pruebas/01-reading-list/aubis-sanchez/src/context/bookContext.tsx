@@ -7,7 +7,6 @@ import {
 } from "react";
 import { Book } from "../models";
 import { getBooksBySelectedGenres, getDefaultBooks } from "../utils";
-import { toast } from "sonner";
 import { useToast } from "../hooks/useToast";
 
 export interface BookContextType {
@@ -17,6 +16,7 @@ export interface BookContextType {
   setSelectedGenres: Dispatch<React.SetStateAction<string[]>>;
   books: Book[];
   removeFromLectureList: (bookToRemoveISBN: string) => void;
+  findBookOnLecture: (bookISBN: string) => boolean;
 }
 
 export const BookContext = createContext<BookContextType | null>(null);
@@ -48,8 +48,12 @@ const BookProvider = ({ children }: PropsWithChildren) => {
 
   const removeFromLectureList = (bookToRemoveISBN: string) => {
     setUserLectureList((prevState) =>
-      prevState.filter((book) => book.ISBN !== bookToRemoveISBN)
+      prevState.filter((book) => book.ISBN === bookToRemoveISBN)
     );
+  };
+
+  const findBookOnLecture = (bookISBN: string) => {
+    return !!userLectureList.find((book) => book.ISBN === bookISBN);
   };
 
   return (
@@ -61,6 +65,7 @@ const BookProvider = ({ children }: PropsWithChildren) => {
         setSelectedGenres,
         books,
         removeFromLectureList,
+        findBookOnLecture,
       }}
     >
       {children}

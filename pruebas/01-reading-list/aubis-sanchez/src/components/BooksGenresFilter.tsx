@@ -38,18 +38,22 @@ export const BooksGenresFilter = () => {
   };
 
   return (
-    <div>
+    <>
       <FormControl
         sx={{
-          m: 1,
+          my: 2,
           width: 300,
-          border: "2px solid rgba(255,255,255,0.5)",
+          border: "1px solid rgba(255,255,255,0.05)",
           borderRadius: "5px",
+          bgcolor: "rgba(255,255,255,0.1)",
         }}
       >
-        <InputLabel sx={{ color: "white" }}>Filter by Genres</InputLabel>
+        <InputLabel id="genres" sx={{ color: "white" }}>
+          Filter by Genres
+        </InputLabel>
         <Select
           multiple
+          labelId="genres"
           value={selectedGenres}
           onChange={handleChange}
           input={<OutlinedInput id="select-multiple-chip" label="" />}
@@ -80,6 +84,6 @@ export const BooksGenresFilter = () => {
           ))}
         </Select>
       </FormControl>
-    </div>
+    </>
   );
 };

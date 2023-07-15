@@ -11,7 +11,32 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 80vh;
-  width: 70vw;
+  height: auto;
+  min-height: 80vh;
+  width: 80vw;
   margin: auto;
+  background: #161b22;
+  border-right: 2px solid rgba(255,255,255,0.2);
+  border-left: 2px solid rgba(255,255,255,0.2)
+}
+
+.css-hfutr2-MuiSvgIcon-root-MuiSelect-icon{
+  color: white !important
+}
+
+.css-bpeome-MuiSvgIcon-root-MuiSelect-icon{
+  color: white !important
+}
+
+.css-1lwyua3-MuiChip-root{
+  background-color: rgba(255,255,255,0.2) !important
+}
+
+.css-1vzzde7-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+  margin-top: -14px !important;
+  color: white !important;
+}
+
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected{
+  background-color: rgba(25, 118, 210, 0.2) !important;
 }

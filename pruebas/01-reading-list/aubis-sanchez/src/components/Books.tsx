@@ -13,7 +13,7 @@ export const Books = () => {
       <BooksGenresFilter />
       <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         {books.map((book: Book) => (
-          <Grid item xs={3}>
+          <Grid key={book.ISBN} item xs={3}>
             <BookItem book={book} />
           </Grid>
         ))}

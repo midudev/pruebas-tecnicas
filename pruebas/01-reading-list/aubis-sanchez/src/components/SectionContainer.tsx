@@ -7,12 +7,14 @@ export const SectionContainer = ({ children }: PropsWithChildren) => {
       component="article"
       height="auto"
       minHeight="80vh"
-      width="100%"
+      width="90%"
       border={1}
       borderColor="rgba(145,159,144,0.1)"
       borderRadius="6px"
       color="white"
+      m="auto"
       p={2}
+      mb={4}
     >
       {children}
     </Box>
