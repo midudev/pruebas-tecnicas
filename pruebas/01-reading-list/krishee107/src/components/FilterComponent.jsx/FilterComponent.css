@@ -46,9 +46,12 @@
     border-color: #d1c1b4;
 }
 
-.sidebarMin,
-.sidebarMax {
-    font-size: 0.8rem;
+.inputPages {
+    width: 50px;
+    border-radius: 5px;
+    border: 1px solid #d1c1b4;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
 }
 
 /* Responsive */

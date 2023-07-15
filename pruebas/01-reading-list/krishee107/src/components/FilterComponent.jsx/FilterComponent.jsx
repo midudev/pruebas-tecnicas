@@ -23,7 +23,7 @@ export const FilterComponent = ({
                 <div className="sidebarContainer">
                     <span className="sidebarTitle">Páginas</span>
                     <div className="sidebar">
-                        <div className="sidebarMin">{pageRange.min}</div>
+                        <input type="number" className='inputPages' value={pageRange.min} onChange={(e) => setPageRange({ min: e.target.value, max: pageRange.max })} />
                         <Slider
                             min={0}
                             max={maxPageCount}
@@ -31,7 +31,7 @@ export const FilterComponent = ({
                             onChange={(values) => setPageRange({ min: values[0], max: values[1] })}
                             range
                         />
-                        <div className="sidebarMax">{pageRange.max}</div>
+                        <input type="number" className='inputPages' value={pageRange.max} onChange={(e) => setPageRange({ min: pageRange.min, max: e.target.value })} />
                     </div>
                 </div>
 
