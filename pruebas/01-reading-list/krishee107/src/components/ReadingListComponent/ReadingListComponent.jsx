@@ -1,7 +1,7 @@
 import React from 'react'
 import './ReadingListComponent.css';
 
-export const ReadingListComponent = ({ readingListVisible, handleReadingList }) => {
+export const ReadingListComponent = ({ readingListVisible, handleReadingList, selectedBooks }) => {
 
     return (
         <>
@@ -18,11 +18,19 @@ export const ReadingListComponent = ({ readingListVisible, handleReadingList }) 
                         </div>
                         <div className="readingListContent">
                             <h2>Reading List</h2>
-                            <ul>
-                                <li>Book 1</li>
-                                <li>Book 2</li>
-                                <li>Book 3</li>
-                            </ul>
+                            <div className="readingListBooks">
+                                {selectedBooks.length > 0 ?
+                                    selectedBooks.map((book, index) => {
+                                        return (
+                                            <div key={index} className="readingListBook">
+                                                <img src={book.book.cover} alt={book.book.title} />
+                                            </div>
+                                        )
+                                    })
+                                    :
+                                    <div className="readingListBook">No hay libros en tu lista de lectura</div>
+                                }
+                            </div>
                         </div>
 
                     </div>
