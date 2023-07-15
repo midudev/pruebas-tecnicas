@@ -1,18 +1,18 @@
-import { useCallback, useMemo } from "react";
+import { useMemo } from "react";
 
 import PropTypes from "prop-types";
 
 // contexts
 import { useLanguage } from "../../contexts/LanguageProvider";
+import { useLightBox } from "../LightBox/LightBoxProvider";
 import { useLibrary } from "../../contexts/LibraryProvider";
 
 // components
 import Marker from "./Marker/Marker";
 
-// styles
-import styles from "./styles.module.css";
+function Book({ title, pages, genre, cover, year, ISBN, author }) {
+  const { setLightBoxState } = useLightBox();
 
-function Book({ title, pages, genre, cover, synopsis, year, ISBN, author }) {
   const { setLibraryState, libraryState } = useLibrary();
 
   const { languageState } = useLanguage();
@@ -22,16 +22,20 @@ function Book({ title, pages, genre, cover, synopsis, year, ISBN, author }) {
     setLibraryState({ type: "toggle-to-reading-list", id: ISBN });
   };
 
-  const alter = useCallback(() => {}, [libraryState]);
-
   const memoAnimation = useMemo(
     () =>
       "transition duration-500 group-hover:opacity-100 group-hover:translate-y-0 opacity-0 translate-y-5",
     []
   );
 
+  const activateLightBox = (e) => {
+    // ignoring add to reading list action
+    if (e.target.nodeName === "BUTTON") return;
+    setLightBoxState({ type: "set", id: ISBN });
+  };
+
   return (
-    <article className="w-full relative">
+    <article onClick={activateLightBox} className="w-full relative">
       <img
         className="w-full h-full object-cover object-center shadow-[black] shadow-md transition"
         src={cover}
@@ -41,28 +45,24 @@ function Book({ title, pages, genre, cover, synopsis, year, ISBN, author }) {
       <Marker show={libraryState.readingList[ISBN]} />
       <div
         role="info"
-        aria-label={languageState.texts.ariaLabels.clickToAlter}
-        onClick={alter}
         className={`group absolute top-0 left-0 w-full h-full bg-dark-alt-bg-opacity opacity-0 transition hover:opacity-100 flex flex-col justify-between items-start p-3 ${
           libraryState.readingList[ISBN] ? "opacity-100" : ""
         }`}
       >
-        {!libraryState.readingList[ISBN] ? (
-          <div className={memoAnimation}>
-            <p className="text-dark-text">{title}</p>
-            <p className="text-dark-alt-text">
-              {genre} ({pages}) {languageState.texts.book.pages}
-            </p>
-            <p className="text-dark-text mt-2">
-              {author.name} <span className="text-dark-alt-text">({year})</span>
-            </p>
-          </div>
-        ) : (
-          <div className={`mr-6 appear`}>
-            <p className="text-dark-text">{languageState.texts.book.reading}</p>
-            <p className="text-dark-alt-text">{synopsis}</p>
-          </div>
-        )}
+        <div
+          className={`${memoAnimation} ${
+            libraryState.readingList[ISBN] ? "opacity-100" : ""
+          }`}
+        >
+          <p className="">{title}</p>
+          <p className="text-dark-alt-text">
+            {genre} ({pages}) {languageState.texts.book.pages}
+          </p>
+          <p className="mt-2">
+            {author.name} <span className="text-dark-alt-text">({year})</span>
+          </p>
+        </div>
+
         <button
           onClick={addToReadingList}
           aria-label={
@@ -86,7 +86,6 @@ Book.propTypes = {
   pages: PropTypes.number,
   genre: PropTypes.string,
   cover: PropTypes.string,
-  synopsis: PropTypes.string,
   year: PropTypes.number,
   ISBN: PropTypes.string,
   author: PropTypes.shape({

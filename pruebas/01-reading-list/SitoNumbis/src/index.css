@@ -102,5 +102,5 @@ input[type="range"]:focus::-moz-range-thumb {
 }
 
 .cta {
-  @apply text-dark-text bg-primary hover:bg-primary-dark transition px-5 py-2 rounded-3xl cursor-default;
+  @apply bg-primary hover:bg-primary-dark transition px-5 py-2 rounded-3xl cursor-default;
 }
