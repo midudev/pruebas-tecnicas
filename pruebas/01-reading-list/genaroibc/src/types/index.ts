@@ -1,3 +1,4 @@
+export type BookISBN = string
 export type BookAuthor = {
   name: string
   otherBooks: string[]
@@ -10,6 +11,6 @@ export type Book = {
   cover: string
   synopsis: string
   year: number
-  ISBN: string
+  ISBN: BookISBN
   author: BookAuthor
 }

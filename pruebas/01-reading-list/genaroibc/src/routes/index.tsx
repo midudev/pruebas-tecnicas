@@ -1,20 +1,36 @@
-import type { Book } from "~/types"
+import type { Book, BookISBN } from "~/types"
 
-import { component$ } from "@builder.io/qwik"
+import { $, component$, useStore } from "@builder.io/qwik"
 import type { DocumentHead } from "@builder.io/qwik-city"
 import { BooksList } from "~/components/BooksList"
-import books from "../../../books.json"
-import { ReadingList } from "~/components/router-head/ReadingList"
+import INITIAL_BOOKS from "../../../books.json"
+import { ReadingList } from "~/components/ReadingList"
 
 export default component$(() => {
-  const mappedBooks: Book[] = books.library.map(({ book }) => book)
+  const allBooks: Book[] = INITIAL_BOOKS.library.map(({ book }) => book)
+
+  const readingList: Book[] = useStore([])
+
+  const updateReadingList = $((newBookISBN: BookISBN) => {
+    const index = allBooks.findIndex(book => book.ISBN === newBookISBN)
+
+    const bookExists = index !== -1
+    if (!bookExists) return
+
+    const isAlreadyInReadingList = readingList.some(
+      book => book.ISBN === newBookISBN
+    )
+    if (isAlreadyInReadingList) return
+
+    readingList.push(allBooks[index])
+  })
 
   return (
     <section class="relative">
-      <BooksList books={mappedBooks} />
+      <BooksList books={allBooks} onBookSelect={updateReadingList} />
 
       <div class="sticky bottom-0 mt-8">
-        <ReadingList books={mappedBooks} />
+        <ReadingList books={readingList} />
       </div>
     </section>
   )

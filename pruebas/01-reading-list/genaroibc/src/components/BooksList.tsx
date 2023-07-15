@@ -1,11 +1,12 @@
-import { component$ } from "@builder.io/qwik"
-import type { Book } from "~/types"
+import { component$, type PropFunction } from "@builder.io/qwik"
+import type { Book, BookISBN } from "~/types"
 
 type Props = {
   books: Book[]
+  onBookSelect: PropFunction<(BookISBN: BookISBN) => void>
 }
 
-export const BooksList = component$(({ books }: Props) => {
+export const BooksList = component$(({ books, onBookSelect }: Props) => {
   return (
     <section class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,200px),1fr))] gap-6">
       {books.map(({ cover, title, ISBN }) => (
@@ -14,6 +15,7 @@ export const BooksList = component$(({ books }: Props) => {
           class="aspect-[1/1.6] flex flex-col justify-center items-center group brightness-95 grayscale-[0.3] hover:grayscale-0 hover:brightness-110 hover:shadow-lg transition-all duration-300 ease-in-out hover:scale-105"
         >
           <img
+            onClick$={() => onBookSelect(ISBN)}
             src={cover}
             width={300}
             height={500}

@@ -20,8 +20,8 @@ export const ReadingList = component$(({ books }: Props) => {
             <img
               src={book.cover}
               alt={book.title}
-              width={300}
-              height={500}
+              width={100}
+              height={300}
               class="h-full shadow-2xl group-hover/list:grayscale-[1] group-hover/list:brightness-75 hover:!grayscale-0 hover:!brightness-110 group-hover:-translate-x-5 transition-all duration-300"
             />
           </li>
