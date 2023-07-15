@@ -18,22 +18,16 @@ function Book({ title, pages, genre, cover, synopsis, year, ISBN, author }) {
       />
       <div
         role="info"
-        className="absolute top-0 left-0 w-full h-full bg-dark-alt-bg-opacity opacity-0 transition hover:opacity-100 flex flex-col justify-between items-start p-5"
+        className="absolute top-0 left-0 w-full h-full bg-dark-alt-bg-opacity opacity-0 transition hover:opacity-100 flex flex-col justify-between items-start p-3"
       >
-        <div>
-          <div className={styles.infoRow}>
-            <p className="text-dark-alt-text">
-              {languageState.texts.book.title}:
-            </p>
-            <span className="text-dark-text">{title}</span>
-          </div>
-          <div className={styles.infoRow}>
-            <p className="text-dark-alt-text">
-              {languageState.texts.book.genre}:
-            </p>
-            <span className="text-dark-text">{genre}</span>
-          </div>
-          <p></p>
+        <div className="">
+          <p className="text-dark-text">{title}</p>
+          <p className="text-dark-alt-text">
+            {genre} ({pages}) {languageState.texts.book.pages}
+          </p>
+          <p className="text-dark-text mt-2">
+            {author.name} <span className="text-dark-alt-text">({year})</span>
+          </p>
         </div>
         <button className="cta">{languageState.texts.book.add}</button>
       </div>
