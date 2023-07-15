@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useStore } from "./store/store";
-import { Library, Book } from "./types";
+import { Library } from "./types";
 import BookCard from "./components/BookCard";
 import PageFilter from "./components/PageFilter";
 
 function App() {
-  const { page, perPage } = useStore();
+  const { page, perPage, books, setBooks } = useStore();
 
   const [loading, setLoading] = useState<boolean>(false);
-  const [books, setBooks] = useState<Array<Book>>([]);
+  // const [books, setBooks] = useState<Array<Book>>([]);
 
   const getBooks = async (endpoint: string): Promise<void> => {
     const response = await fetch(endpoint);
@@ -33,7 +33,7 @@ function App() {
       ) : (
         <>
           <div className="available-books-wrapper w-4/5">
-            <h1 className="text-3xl font-bold">{`${books.length} libros disponibles`}</h1>
+            <h1 className="text-3xl font-bold mb-5">{`${books.length} libros disponibles`}</h1>
 
             <PageFilter />
 
