@@ -1,35 +1,51 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import DATA from '../../books.json'
+import BookGrid from './components/BookGrid'
 
 function App() {
-  const [count, setCount] = useState(0)
+	const [books, setBooks] = useState(DATA.library)
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	function toggleBook(toggledBook) {
+		const nextBooks = books.filter(book => book.isbn !== toggledBook.isbn)
+
+		nextBooks.push({
+			...toggledBook,
+			selected: !toggledBook.selected
+		})
+
+		setBooks(nextBooks)
+	}
+
+	const selectedBooks = books.filter(book => book.selected)
+	const unselectedBooks = books.filter(book => !book.selected)
+
+	return (
+		<main>
+			<h1 className='text-center py-2 font-bold text-2xl'>Reading List</h1>
+			<BookGrid books={unselectedBooks} handleSelect={toggleBook} />
+			{unselectedBooks.length > 0 && (
+				<section>
+					<h2 className='text-center py-2 font-bold text-2xl'>
+						Selected Books
+					</h2>
+					{unselectedBooks.map(book => (
+						<div key={book.ISBN} className='flex flex-col items-center'>
+							<img
+								src={book.cover}
+								className='block object-cover rounded-lg will-change-transform aspect-[7.25/11]'
+							/>
+							<button
+								className='text-center py-2 font-bold text-2xl'
+								onClick={() => toggleBook(book)}
+							>
+								{book.title}
+							</button>
+						</div>
+					))}
+				</section>
+			)}
+		</main>
+	)
 }
 
 export default App
