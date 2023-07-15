@@ -14,9 +14,9 @@
 }
 
 .filter {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-    justify-content: space-between;
 }
 
 #filterSelect {
@@ -37,4 +37,33 @@
     font-weight: 600;
     color: #d0c2b4;
     font-size: 1.6rem;
+}
+
+/* Número de páginas */
+.filterButtonContainer {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2%;
+    width: 100%;
+    color: #b0b0b0;
+    font-weight: 600;
+}
+
+.sidebarTitle {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.sidebar {
+    display: flex;
+    gap: 5px;
+}
+
+.sidebarSlider {
+    width: 100%;
+}
+
+.sidebarMin,
+.sidebarMax {
+    font-size: 0.8rem;
 }
