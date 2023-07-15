@@ -80,7 +80,7 @@ export const BookGridComponent = ({ bookList }) => {
             <div className="gridContainerInfo">
                 <div className="disponibles">
                     Actualmente tenemos
-                    <span className="disponiblesNumber"> {filteredBooks.length} </span> libros disponibles, ¡elige el tuyo!
+                    <span className="disponiblesNumber"> {filteredBooks.length} </span> libros disponibles con un mínimo de <span className='minPag'>{pageRange.min}</span> páginas y  un máximo  de <span className='maxPag'>{pageRange.max}</span>, ¡elige el tuyo!
                 </div>
                 <div className="pendientes">
                     Actualmente tienes <span className="pendientesNumber">0</span> libros en tu lista de lectura
