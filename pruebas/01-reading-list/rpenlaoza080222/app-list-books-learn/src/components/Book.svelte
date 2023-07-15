@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Book } from "$lib/types/Book";
   export let book: Book;
+  export let addBookToWishList: Function;
 </script>
 
 <div class="container-book">
@@ -11,14 +12,16 @@
       <span class="year"> Año: {book.year}</span>
     </div>
   </div>
-  <button class="add-to-read"> Añadir a la lista </button>
+  <button class="add-to-read" on:click={() => addBookToWishList(book)}>
+    Añadir a la lista
+  </button>
 </div>
 
 <style>
   .container-book {
     display: flex;
     flex-direction: column;
-    gap:10px
+    gap: 10px;
   }
 
   .add-to-read {
@@ -61,6 +64,11 @@
     font-size: 20px;
     color: yellow;
     line-height: 1.1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 
   .info .year {
