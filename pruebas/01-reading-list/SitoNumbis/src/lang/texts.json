@@ -11,7 +11,7 @@
     },
     "book": {
       "title": "Título",
-      "pages": "Cantidad de páginas",
+      "pages": "páginas",
       "genre": "Género",
       "year": "Año",
       "author": "Autor",
@@ -22,7 +22,9 @@
     "ariaLabels": {
       "logo": "Logo Sito Book ",
       "toTop": "Ir al tope",
-      "reload": "Recargar"
+      "reload": "Recargar",
+      "genreLeft": "Swipe genres to the right",
+      "genreRight": "Swipe genres to the left"
     }
   }
 }
