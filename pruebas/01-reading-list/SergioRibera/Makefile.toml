@@ -1,0 +1,75 @@
+[config]
+default_to_workspace = true
+skip_core_tasks = true
+skip_git_env_info = true
+skip_rust_env_info = true
+skip_crate_env_info = true
+
+[tasks.default]
+alias = "check"
+
+# Application Tasks
+[tasks.dev]
+dependencies = ["dev-tailwind"]
+command = "trunk"
+args = ["serve", "--open"]
+
+[tasks.build]
+dependencies = ["fmt", "clippy", "test", "prod-tailwind"]
+command = "trunk"
+args = ["build", "--release"]
+
+#
+# Compile tailwind
+#
+[tasks.dev-tailwind]
+command = "tailwindcss"
+args = ["-c", "./tailwind.config.js", "-o", "./tailwind.css"]
+
+[tasks.prod-tailwind]
+env = { NODE_ENV = "production" }
+command = "tailwindcss"
+args = ["-c", "./tailwind.config.js", "-o", "./tailwind.css", "--minify"]
+
+#
+# Format Tasks
+#
+[tasks.fmt]
+description = "Check format quality"
+command = "cargo"
+args = ["fmt", "--all", "--", "--check"]
+
+[tasks.fix-fmt]
+description = "Fix format"
+command = "cargo"
+args = ["fmt", "--all"]
+
+#
+# Code Quality Tasks
+#
+[tasks.clippy]
+description = "Check code quality"
+command = "cargo"
+args = ["clippy", "--", "-D", "warnings"]
+
+[tasks.fix-clippy]
+description = "Fix code quality"
+command = "cargo"
+args = ["fix", "--allow-dirty"]
+
+[tasks.test]
+description = "Check all unit test"
+command = "cargo"
+args = ["test"]
+dependencies = ["fmt", "clippy"]
+
+#
+# Extra Tasks
+#
+[tasks.check]
+description = "Check all issues, format and code quality"
+dependencies = ["fmt", "clippy", "test"]
+
+[tasks.fix-all]
+description = "Try fix all clippy and format issues"
+dependencies = ["fix-fmt", "fix-clippy"]

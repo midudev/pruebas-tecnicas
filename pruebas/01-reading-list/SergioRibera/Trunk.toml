@@ -1,0 +1,11 @@
+# Learn more: https://trunkrs.dev/configuration/#trunk-toml
+[build]
+target = "index.html"
+
+[watch]
+watch = [
+    "src",
+    "tailwind.css",
+    "index.html",
+    "main.scss",
+]
