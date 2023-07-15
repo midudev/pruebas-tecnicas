@@ -32,3 +32,52 @@
     filter: grayscale(80%) blur(2px);
     opacity: 0.5;
 }
+
+
+.bookCoverCopy {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 300px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+    opacity: 0;
+    animation: bookItemAnimation 0.3s linear forwards;
+}
+
+@keyframes bookItemAnimation {
+    0% {
+        transform: translateX(0);
+        opacity: 0;
+    }
+
+    25% {
+        transform: translateX(-25%);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateX(-40%);
+        opacity: 0.8;
+    }
+
+    75% {
+        transform: translateX(-50%);
+        opacity: 0.6;
+    }
+
+    80% {
+        transform: translateX(-75%);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+/* Resto de los estilos... */
