@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
 import { BookItemComponent } from '../BookItemComponent/BookItemComponent';
 import './BookGridComponent.css';
 
@@ -68,13 +70,12 @@ export const BookGridComponent = ({ bookList }) => {
                         <span className="sidebarTitle">Páginas</span>
                         <div className="sidebar">
                             <div className="sidebarMin">{pageRange[0]}</div>
-                            <input
-                                className="sidebarSlider"
-                                type="range"
+                            <Slider
                                 min={0}
                                 max={getMaxPageCount()}
-                                value={pageRange[1]}
-                                onChange={(e) => setPageRange([pageRange[0], parseInt(e.target.value)])}
+                                value={pageRange}
+                                onChange={(values) => setPageRange(values)}
+                                range
                             />
                             <div className="sidebarMax">{pageRange[1]}</div>
                         </div>
