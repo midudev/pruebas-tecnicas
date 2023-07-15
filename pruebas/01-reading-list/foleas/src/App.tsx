@@ -59,7 +59,13 @@ function App() {
       ) : (
         <>
           <div className="available-books-wrapper w-4/5">
-            <h1 className="text-3xl font-bold mb-5">{`${books.length} libros disponibles`}</h1>
+            <h1 className="text-3xl font-bold mb-5">{`${
+              books.length - selectedBooks.length
+            } libros disponibles`}</h1>
+
+            {selectedBooks.length > 0 && (
+              <h3 className="text-1xl font-bold mb-5">{`${selectedBooks.length} en la lista de lectura`}</h3>
+            )}
 
             <div className="filters-wrapper mb-5 flex">
               <PageFilter />
@@ -67,26 +73,32 @@ function App() {
             </div>
 
             <div className="grid grid-cols-4 gap-10">
-              {filteredBooks
-                ?.slice(perPage * (page - 1), perPage * page)
-                .map(({ book: { title, cover, ISBN } }) => {
-                  return (
-                    <BookCard
-                      key={ISBN}
-                      title={title}
-                      imageUrl={cover}
-                      onClickHandler={() =>
-                        setSelectedBooks([...selectedBooks, ISBN])
-                      }
-                    />
-                  );
-                })}
+              {filteredBooks.length ? (
+                filteredBooks
+                  .slice(perPage * (page - 1), perPage * page)
+                  .map(({ book: { title, cover, ISBN } }) => {
+                    return (
+                      <BookCard
+                        key={ISBN}
+                        title={title}
+                        imageUrl={cover}
+                        onClickHandler={() =>
+                          setSelectedBooks([...selectedBooks, ISBN])
+                        }
+                      />
+                    );
+                  })
+              ) : (
+                <h3 className="text-1xl font-bold mb-5">
+                  No hay libros disponibles
+                </h3>
+              )}
             </div>
           </div>
           <div className="lecture-books-wrapper w-1/5">
             {selectedBooks && (
               <>
-                <h2 className="text-2xl font-bold mb-5">Lista de Lectura</h2>
+                <h2 className="text-3xl font-bold mb-5">Lista de Lectura</h2>
                 <div className="grid grid-cols-2 gap-10">
                   {books
                     ?.filter(({ book: { ISBN } }) =>
