@@ -60,19 +60,10 @@
     }
 
     50% {
-        transform: translateX(-40%);
-        opacity: 0.8;
-    }
-
-    75% {
         transform: translateX(-50%);
         opacity: 0.6;
     }
 
-    80% {
-        transform: translateX(-75%);
-        opacity: 0.5;
-    }
 
     100% {
         transform: translateX(-100%);
