@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { HomeHeaderComponent } from './home-header/home-header.component';
 import { ListBooksComponent } from './list-books/list-books.component';
 import { BackgroundComponent } from './background/background.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BackgroundComponent } from './background/background.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

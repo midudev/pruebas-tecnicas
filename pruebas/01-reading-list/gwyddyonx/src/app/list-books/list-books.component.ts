@@ -44,6 +44,15 @@ type Book = {
 export class ListBooksComponent {
 
   books: Book[] = [];
+  current_books: Book[] = [];
+  read_books: Book[] = [];
+  min_pages: number = 0;
+  max_pages: number = 0;
+  pages: number = 0;
+  genres: string[] = [];
+  genre: string = "Todos";
+  books_read: string[] = [];
+  storageKey: string = "books";
 
   constructor(private bookService: BooksService) {
   }
@@ -51,6 +60,86 @@ export class ListBooksComponent {
   ngOnInit(): void {
     //init array books
     this.books = this.bookService.getBooks();
+    this.getLimitPages()
+    this.pages = this.max_pages
+    this.getGenres()
+
+    const storedBooks = localStorage.getItem(this.storageKey);
+    if (storedBooks) {
+      this.books_read = JSON.parse(storedBooks);
+    }
+
+    window.addEventListener('storage', (event) => {
+      if (event.key === this.storageKey) {
+        this.books_read = JSON.parse(event.newValue ? event.newValue : "");
+        this.getCurrentsBooks();
+      }
+    });
+    this.getCurrentsBooks()
+  }
+
+  //set the max and min pages
+  getLimitPages() {
+    this.books.forEach((book) => {
+      if (book.pages < this.min_pages || this.min_pages == 0) {
+        this.min_pages = book.pages
+      }
+      if (this.max_pages < book.pages) {
+        this.max_pages = book.pages
+      }
+    });
+  }
+
+  changePages(pages: number) {
+    this.pages = pages
+    this.getCurrentsBooks()
+  }
+
+  getGenres() {
+    this.genres.push("Todos")
+    this.books.forEach(book => {
+      if (this.genres.indexOf(book.genre) < 0) {
+        this.genres.push(book.genre)
+      }
+    });
+
+  }
+
+  //this function apply the current filters from all books
+  getCurrentsBooks() {
+    this.current_books = this.books.filter((book) => {
+
+      if (this.genre != 'Todos') {
+        if (this.genre != book.genre) {
+          return false
+        }
+      }
+
+      if (this.books_read.indexOf(book.title) >= 0) {
+        return false
+      }
+
+      return book.pages <= this.pages
+    })
+
+    this.read_books = this.books.filter((book) => {
+      if (this.books_read.indexOf(book.title) < 0) {
+        return false
+      }
+      return true
+    })
+  }
+
+  addBook(book: Book) {
+    this.books_read.push(book.title)
+    this.getCurrentsBooks()
+    localStorage.setItem(this.storageKey, JSON.stringify(this.books_read));
+  }
+
+  removeBook(book: Book) {
+    this.books_read.splice(this.books_read.indexOf(book.title), 1);
+    this.getCurrentsBooks()
+    localStorage.setItem(this.storageKey, JSON.stringify(this.books_read));
   }
 
 }
