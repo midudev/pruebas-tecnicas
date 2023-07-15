@@ -1,7 +1,6 @@
 {
     "library": [
         {
-            "book": {
                 "title": "El Señor de los Anillos",
                 "pages": 1200,
                 "genre": "Fantasía",
@@ -16,10 +15,8 @@
                         "El Silmarillion"
                     ]
                 }
-            }
         },
         {
-          "book": {
               "title": "Juego de Tronos",
               "pages": 694,
               "genre": "Fantasía",
@@ -35,10 +32,8 @@
                       "Festín de Cuervos"
                   ]
               }
-          }
       },
       {
-        "book": {
             "title": "Harry Potter y la piedra filosofal",
             "pages": 223,
             "genre": "Fantasía",
@@ -54,10 +49,8 @@
                     "Harry Potter y el cáliz de fuego"
                 ]
             }
-        }
     },
     {
-      "book": {
           "title": "1984",
           "pages": 328,
           "genre": "Ciencia ficción",
@@ -71,10 +64,8 @@
                   "Rebelión en la granja"
               ]
           }
-      }
   },
     {
-      "book": {
           "title": "Apocalipsis Zombie",
           "pages": 444,
           "genre": "Zombies",
@@ -86,10 +77,8 @@
               "name": "Manel Loreiro",
               "otherBooks": []
           }
-      }
   },
   {
-    "book": {
         "title": "Dune",
         "pages": 412,
         "genre": "Ciencia ficción",
@@ -104,10 +93,8 @@
                 "Hijos de Dune"
             ]
         }
-    }
   },
   {
-    "book": {
         "title": "La Guía del Autoestopista Galáctico",
         "pages": 216,
         "genre": "Ciencia ficción",
@@ -122,10 +109,8 @@
                 "La vida, el universo y todo lo demás"
             ]
         }
-    }
   },
   {
-    "book": {
         "title": "Neuromante",
         "pages": 271,
         "genre": "Ciencia ficción",
@@ -140,10 +125,8 @@
                 "Mona Lisa Acelerada"
             ]
         }
-    }
   },
   {
-    "book": {
         "title": "Fahrenheit 451",
         "pages": 249,
         "genre": "Ciencia ficción",
@@ -158,10 +141,8 @@
                 "El hombre ilustrado"
             ]
         }
-    }
   },
     {
-      "book": {
           "title": "El resplandor",
           "pages": 688,
           "genre": "Terror",
@@ -176,10 +157,8 @@
                   "It"
               ]
           }
-      }
   },
   {
-      "book": {
           "title": "Drácula",
           "pages": 418,
           "genre": "Terror",
@@ -194,10 +173,8 @@
                   "La madriguera del gusano blanco"
               ]
           }
-      }
   },
   {
-      "book": {
           "title": "Frankenstein",
           "pages": 280,
           "genre": "Terror",
@@ -212,10 +189,8 @@
                   "Valperga"
               ]
           }
-      }
   },
   {
-    "book": {
         "title": "La llamada de Cthulhu",
         "pages": 43,
         "genre": "Terror",
@@ -231,6 +206,5 @@
             ]
         }
       }
-    }
   ]}
   
