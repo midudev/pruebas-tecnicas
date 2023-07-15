@@ -62,7 +62,11 @@
 
 .stackedBook:hover {
     cursor: pointer;
-    transform: scale(1.1);
+    transform: scale(1.15);
     transition: transform 0.5s;
-    z-index: 100;
+    margin-top: 20px;
+}
+
+.stackedBook:last-child:hover {
+    transform: scale(1.15);
 }
