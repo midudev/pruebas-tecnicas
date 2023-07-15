@@ -10,7 +10,6 @@ export default function Book({ book }: { book: IBook }) {
   const { addToFavorites } = useContext(AppContext)
 
   const handleClick = () => {
-    const width = Math.min(document.documentElement.clientWidth, 1152)
     const favorites = document.getElementById('favorites')
     if (favorites == null) return
 
