@@ -1,33 +1,55 @@
-import { useState } from 'preact/hooks'
-import preactLogo from './assets/preact.svg'
-import viteLogo from '/vite.svg'
-import './app.css'
+import "./app.css";
+import libros from "../../books.json";
+import { BookComponent } from "./components/book.component";
+import { useState } from "preact/hooks";
+import { Book } from "./types";
 
 export function App() {
-  const [count, setCount] = useState(0)
+  const { library } = libros;
+
+  const [librosSeleccionados, setLibrosSeleccionados] = useState<Book[]>([]);
+
+  const setearLibros = (libros: Book[]) => {
+    setLibrosSeleccionados(libros);
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} class="logo" alt="Vite logo" />
-        </a>
-        <a href="https://preactjs.com" target="_blank">
-          <img src={preactLogo} class="logo preact" alt="Preact logo" />
-        </a>
-      </div>
-      <h1>Vite + Preact</h1>
-      <div class="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/app.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p class="read-the-docs">
-        Click on the Vite and Preact logos to learn more
-      </p>
+      <article className="estanteria">
+        <header>
+          <h2>Libros disponibles</h2>
+        </header>
+        <section>
+          {library.map((b) => {
+            const { book } = b;
+            return (
+              <BookComponent
+                book={book}
+                setSelected={setearLibros}
+                seleccionados={librosSeleccionados}
+                zona="estanteria"
+              />
+            );
+          })}
+        </section>
+      </article>
+      <article className="estanteria-lectura">
+        <header>
+          <h2>Lista de lectura</h2>
+        </header>
+        <section>
+          {librosSeleccionados.map((b) => {
+            return (
+              <BookComponent
+                book={b}
+                setSelected={setearLibros}
+                seleccionados={librosSeleccionados}
+                zona="lectura"
+              />
+            );
+          })}
+        </section>
+      </article>
     </>
-  )
+  );
 }

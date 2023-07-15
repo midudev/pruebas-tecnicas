@@ -13,7 +13,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-
+/* 
 a {
   font-weight: 500;
   color: #646cff;
@@ -66,4 +66,35 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+} */
+
+.bookCover {
+  width: 120px;
+  /* height: 225px; */
+}
+
+.estanteria {
+  position: absolute;
+  left: 10px;
+}
+
+.estanteria section{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 40vw;
+  justify-content: center;
+}
+
+.estanteria-lectura {
+  position: absolute;
+  right: 10px;
+}
+
+.estanteria-lectura section{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 40vw;
+  justify-content: center;
 }
