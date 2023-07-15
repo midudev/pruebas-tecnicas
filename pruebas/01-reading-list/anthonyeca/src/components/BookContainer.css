@@ -14,3 +14,10 @@
   flex-wrap: wrap;
   gap: 14px;
 }
+
+.bc-catogory {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 15px;
+}

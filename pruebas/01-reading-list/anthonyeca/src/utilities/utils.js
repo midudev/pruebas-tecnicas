@@ -1,16 +1,18 @@
 export const removeElement = (
   ISBN,
   fromList,
-  library,
-  setLibrary,
+  filtered,
+  setFiltered,
   lecture,
   setLecture
 ) => {
-  if (fromList === 'library') {
-    const removedElement = library.find((element) => element.book.ISBN === ISBN)
+  if (fromList === 'filtered') {
+    const removedElement = filtered.find(
+      (element) => element.book.ISBN === ISBN
+    )
 
     if (removedElement) {
-      setLibrary((prevLibrary) =>
+      setFiltered((prevLibrary) =>
         prevLibrary.filter((element) => element.book.ISBN !== ISBN)
       )
       setLecture((prevLecture) => [...prevLecture, removedElement])
@@ -22,7 +24,7 @@ export const removeElement = (
       setLecture((prevLecture) =>
         prevLecture.filter((element) => element.book.ISBN !== ISBN)
       )
-      setLibrary((prevLibrary) => [...prevLibrary, removedElement])
+      setFiltered((prevLibrary) => [...prevLibrary, removedElement])
     }
   }
 }

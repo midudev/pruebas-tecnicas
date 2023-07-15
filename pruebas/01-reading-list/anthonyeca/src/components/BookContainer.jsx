@@ -1,6 +1,6 @@
+/* eslint-disable react/prop-types */
 import './BookContainer.css'
 
-// eslint-disable-next-line react/prop-types
 export const BookContainer = ({ children, title }) => {
   return (
     <section className="bc-section">
