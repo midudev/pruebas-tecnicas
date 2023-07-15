@@ -1,18 +1,25 @@
 <script lang="ts">
   import Books from './Books.svelte';
-
-  export let readingBooks: IBook[];
+  import { readingImportanceMessages } from '$lib/mocks/reading';
+  import ReadingMessages from './ReadingMessages.svelte';
+  import { readingList } from '$lib/reading.store';
 </script>
 
 <section>
   <h3>Lista de lectura</h3>
-  <aside>
-    <Books books={readingBooks} showBooksInfo={false} booksWidth="200px" />
+  <aside class:no-books={$readingList.value.length <= 0}>
+    {#if $readingList.value.length <= 0}
+      <ReadingMessages messages={readingImportanceMessages} />
+    {:else}
+      <Books books={$readingList.value} showBooksInfo={false} booksWidth="200px" />
+    {/if}
   </aside>
 </section>
 
 <style>
   section {
+    color: var(--quaternary);
+    text-align: center;
     width: 35%;
     position: fixed;
     right: 5%;
@@ -31,9 +38,13 @@
     overflow-x: hidden;
   }
 
+  .no-books {
+    display: grid;
+    gap: 10px;
+    align-content: center;
+  }
+
   h3 {
-    text-align: center;
-    color: var(--quaternary);
     font-family: 'Roboto Slab Variable', sans-serif;
     font-style: italic;
     font-weight: bolder;

@@ -34,6 +34,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@fontsource-variable/roboto-slab": "^5.0.5"
+		"@fontsource-variable/roboto-slab": "^5.0.5",
+		"zustand": "^4.3.9"
 	}
 }

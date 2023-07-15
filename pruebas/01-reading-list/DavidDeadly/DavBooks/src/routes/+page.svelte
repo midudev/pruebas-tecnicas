@@ -32,7 +32,7 @@
   <section>
     <Books books={data.books} />
   </section>
-  <ReadingList readingBooks={data.books} />
+  <ReadingList />
 </main>
 
 <style>

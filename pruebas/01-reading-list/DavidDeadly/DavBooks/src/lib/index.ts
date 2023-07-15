@@ -1,2 +1,2 @@
-export { getAllBooks } from "./services/books";
-export { mapBookResponse } from "$lib/services/books";
+export { getAllBooks, mapBookResponse } from "./services/books";
+export { getRandomIndex, getRandomMessage } from "./helpers";
