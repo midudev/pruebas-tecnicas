@@ -1,6 +1,9 @@
 <center>
 
-<a href="https://orlandomm.me"><img src="https://raw.githubusercontent.com/Orloxx23/pruebas-tecnicas/main/pruebas/01-reading-list/orloxx23/src/preview.png" /></a>
+<a href="https://inkfinity.vercel.app"><img src="https://raw.githubusercontent.com/Orloxx23/pruebas-tecnicas/main/pruebas/01-reading-list/orloxx23/src/preview.png" /></a>
+
+<a style="background-color: #b08968; color: white; padding: 8px 16px; border-radius: 20px; font-size: 18px; font-weight: bold; text-decoration: none;"
+   target="_blank" href="https://inkfinity.vercel.app">PROBAR 🤓☝</a>
 
 </center>
 
