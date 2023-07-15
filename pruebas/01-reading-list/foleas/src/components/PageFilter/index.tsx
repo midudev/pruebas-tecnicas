@@ -1,17 +1,22 @@
 import { useStore } from "../../store/store";
 
 const PageFilter = () => {
-  const { page, changePage } = useStore();
+  const { page, changePage, perPage, books } = useStore();
+
   return (
     <div>
-      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+      <label
+        htmlFor="paginator"
+        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >
         Filtrar por páginas
       </label>
       <input
-        id="default-range"
+        id="paginator"
+        name="paginator"
         type="range"
         min={1}
-        max={4}
+        max={Math.ceil(books.length / perPage)}
         value={page}
         onChange={({ target }) => changePage(parseInt(target.value))}
         className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
