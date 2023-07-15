@@ -1,6 +1,6 @@
 # PRUEBAS-TECNICAS-01 MIDUDEV 
 
-Esta web fue realizada a partir del curso [**"pruebas-tecnicas"**](https://github.com/midudev/pruebas-tecnicas) de [**Midudev**](https://github.com/midudev).
+Esta web fue realizada a partir del curso [**pruebastecnicas.com**](https://pruebastecnicas.com/) de [**Midudev**](https://github.com/midudev). <br>
 Esta prueba consiste en crear una aplicación que pueda realizar las siguientes tareas:
 
  * _Listar los libros_
