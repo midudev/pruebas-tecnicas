@@ -1,0 +1,29 @@
+.genreRows {
+  @apply flex overflow-auto scroll-smooth w-full;
+}
+
+.hasArrows {
+  margin-left: 40px;
+  width: calc(100% - 80px) !important;
+}
+
+.genreRows::-webkit-scrollbar {
+  display: none;
+}
+
+.genreRows {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.arrowButton {
+  @apply absolute w-10 h-full top-[50%] -translate-y-[50%] bg-dark-alt-bg cursor-default;
+}
+
+.arrowButton:enabled {
+  @apply hover:bg-primary-dark;
+}
+
+.arrowButton:disabled {
+  @apply text-dark-alt-text;
+}
