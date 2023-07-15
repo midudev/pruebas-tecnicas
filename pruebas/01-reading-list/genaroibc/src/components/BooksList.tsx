@@ -14,15 +14,14 @@ export const BooksList = component$(({ books, onBookSelect }: Props) => {
           key={ISBN}
           class="aspect-[1/1.6] flex flex-col justify-center items-center group brightness-95 grayscale-[0.3] hover:grayscale-0 hover:brightness-110 hover:shadow-lg transition-all duration-300 ease-in-out hover:scale-105"
         >
-          <img
+          <button
             onClick$={() => onBookSelect(ISBN)}
-            src={cover}
-            width={300}
-            height={500}
             class="w-full h-full rounded-md"
-          />
+          >
+            <img src={cover} width={300} height={500} />
 
-          <h6 class="whitespace-nowrap truncate max-w-full py-4">{title}</h6>
+            <h6 class="whitespace-nowrap truncate max-w-full py-4">{title}</h6>
+          </button>
         </article>
       ))}
     </section>

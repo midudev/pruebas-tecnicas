@@ -11,7 +11,7 @@ export default component$(() => {
 
   const readingList: Book[] = useStore([])
 
-  const updateReadingList = $((newBookISBN: BookISBN) => {
+  const handleAddBookToReadingList = $((newBookISBN: BookISBN) => {
     const index = allBooks.findIndex(book => book.ISBN === newBookISBN)
 
     const bookExists = index !== -1
@@ -25,12 +25,24 @@ export default component$(() => {
     readingList.push(allBooks[index])
   })
 
+  const handleRemoveBookFromReadingList = $((BookISBN: BookISBN) => {
+    const index = readingList.findIndex(book => book.ISBN === BookISBN)
+
+    const bookExists = index !== -1
+    if (!bookExists) return
+
+    readingList.splice(index, 1)
+  })
+
   return (
     <section class="relative">
-      <BooksList books={allBooks} onBookSelect={updateReadingList} />
+      <BooksList books={allBooks} onBookSelect={handleAddBookToReadingList} />
 
       <div class="sticky bottom-0 mt-8">
-        <ReadingList books={readingList} />
+        <ReadingList
+          books={readingList}
+          onBookSelect={handleRemoveBookFromReadingList}
+        />
       </div>
     </section>
   )

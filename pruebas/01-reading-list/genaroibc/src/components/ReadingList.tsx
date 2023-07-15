@@ -1,11 +1,12 @@
-import { component$ } from "@builder.io/qwik"
-import type { Book } from "~/types"
+import { type PropFunction, component$ } from "@builder.io/qwik"
+import type { Book, BookISBN } from "~/types"
 
 type Props = {
   books: Book[]
+  onBookSelect: PropFunction<(BookISBN: BookISBN) => void>
 }
 
-export const ReadingList = component$(({ books }: Props) => {
+export const ReadingList = component$(({ books, onBookSelect }: Props) => {
   return (
     <aside class="bg-slate-950 p-4">
       <ul class="flex items-center gap-2 group/list w-fit">
@@ -17,13 +18,15 @@ export const ReadingList = component$(({ books }: Props) => {
               transform: `translateX(-${1.8 * index}rem)`
             }}
           >
-            <img
-              src={book.cover}
-              alt={book.title}
-              width={100}
-              height={300}
-              class="h-full shadow-2xl group-hover/list:grayscale-[1] group-hover/list:brightness-75 hover:!grayscale-0 hover:!brightness-110 group-hover:-translate-x-5 transition-all duration-300"
-            />
+            <button onClick$={() => onBookSelect(book.ISBN)} class="w-28">
+              <img
+                src={book.cover}
+                alt={book.title}
+                width={300}
+                height={500}
+                class="h-full shadow-2xl group-hover/list:grayscale-[1] group-hover/list:brightness-75 hover:!grayscale-0 hover:!brightness-110 group-hover:-translate-x-5 transition-all duration-300"
+              />
+            </button>
           </li>
         ))}
       </ul>
