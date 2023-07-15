@@ -54,9 +54,7 @@ import HelloWorld from "./components/HelloWorld.vue";
           </div>
           <div v-for="(item, index) in filtro.library" :key="index">
             <div
-              @click="
-                moverItem(item.book.title, this.listBooks, this.readingList)
-              "
+              @click="moverItem(item.book.title, listBooks, readingList)"
               class="bg-white flex gap-4 rounded-lg overflow-hidden py-6 px-2 h-72"
             >
               <div
@@ -92,9 +90,7 @@ import HelloWorld from "./components/HelloWorld.vue";
           </h4>
           <div v-for="(item, index) in readingList.library" :key="index">
             <div
-              @click="
-                moverItem(item.book.title, this.readingList, this.listBooks)
-              "
+              @click="moverItem(item.book.title, readingList, listBooks)"
               class="bg-white flex gap-4 rounded-lg overflow-hidden p-6 h-72 my-2 justify-center"
             >
               <img :src="item.book.cover" alt="cover" class="" />
@@ -365,7 +361,7 @@ export default {
       },
     };
   },
-  /* created() {
+  created() {
     if (
       localStorage.getItem("init") !== null ||
       localStorage.getItem("init") !== ""
@@ -384,10 +380,10 @@ export default {
         this.readingList = JSON.parse(localStorage.getItem("reading"));
       }
     }
-  }, */
-  /* mounted() {
+  },
+  mounted() {
     window.addEventListener("storage", this.actualizar);
-  }, */
+  },
   computed: {
     filtro() {
       if (this.gender != "null") {
@@ -419,8 +415,8 @@ export default {
       }
 
       console.log("mover books", this.listBooks);
-      /* localStorage.setItem("init", JSON.stringify(this.listBooks));
-      localStorage.setItem("reading", JSON.stringify(this.readingList)); */
+      localStorage.setItem("init", JSON.stringify(this.listBooks));
+      localStorage.setItem("reading", JSON.stringify(this.readingList));
     },
     actualizar(event) {
       if (event.key == "init") {
