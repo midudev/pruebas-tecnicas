@@ -1,8 +1,10 @@
 'use client'
+import { useStore } from "@/store/zustand";
 import { Select, Option } from "@material-tailwind/react";
  
 export default function Example() {
-    const handleChange = (e: any) => console.log(e) 
+    const { filterGenre } = useStore()
+    const handleChange = (e: any) => filterGenre(e) 
   return (
     <div className="w-72">
       <Select
@@ -13,11 +15,11 @@ export default function Example() {
           unmount: { y: 25 },
         }}
       >
-        <Option value="all">Todos</Option>
-        <Option value="fantasy">Fantasía</Option>
-        <Option value="fiction">Ciencia ficción</Option>
-        <Option value="zombies">Zombies</Option>
-        <Option value="terror">Terror</Option>
+        <Option value="todos">Todos</Option>
+        <Option value="Fantasía">Fantasía</Option>
+        <Option value="Ciencia ficción">Ciencia ficción</Option>
+        <Option value="Zombies">Zombies</Option>
+        <Option value="Terror">Terror</Option>
       </Select>
     </div>
   );
