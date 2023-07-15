@@ -23,7 +23,7 @@
 # Criterios cumplidos
 
 - [x] Visualización de Libros Disponibles
-- [ ] Creación de Lista de Lectura
+- [x] Creación de Lista de Lectura
 - [ ] Filtrado de Libros por Género
 - [ ] Sincronización de Estado
 - [ ] Persistencia de Datos
