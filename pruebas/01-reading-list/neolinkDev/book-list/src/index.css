@@ -1,4 +1,47 @@
+/*
+=============== 
+CUSTOM PROPERTIES
+===============
+*/
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --bgColor: #222327;
+  --header-h1-color: #5f9ddd;
 }
 
+/*
+=============== 
+GLOBALS
+===============
+*/
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* 1 rem = 10px */
+}
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  background-color: var(--bgColor);
+}
+
+/*
+=============== 
+HEADER
+===============
+*/
+.header {
+  padding: 2rem 0 2rem 2rem;
+}
+
+.header__h1 {
+  color: var(--header-h1-color);
+  text-align: center;
+  font-size: 3rem;
+  text-transform: uppercase;
+}

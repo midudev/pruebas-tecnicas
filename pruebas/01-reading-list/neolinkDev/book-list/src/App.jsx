@@ -1,12 +1,9 @@
-
+import { Header } from './components/Header';
 
 export const App = () => {
- 
   return (
     <>
-      Lista de libros
+      <Header />
     </>
-  )
-}
-
-
+  );
+};
