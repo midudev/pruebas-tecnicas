@@ -14,8 +14,12 @@ function App() {
   };
 
   useEffect(() => {
+    setLoading(true);
     getBooks("./books.json")
-      .then(() => console.log("In then block"))
+      .then(() => {
+        setLoading(false);
+        //console.log("In then block");
+      })
       .catch((err) => console.log("ERROR", err));
   }, []);
 
