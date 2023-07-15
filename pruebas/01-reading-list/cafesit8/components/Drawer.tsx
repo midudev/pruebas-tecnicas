@@ -15,7 +15,7 @@ export default function DrawerComponent() {
         <Button className={`self-baseline ${animate ? 'animate-shake animate-twice animate-duration-[350ms]' : ''}`} onClick={drawerRight}>Open Drawer Right</Button>
       </Badge>
       <Drawer
-        size={400}
+        size={500}
         placement="right"
         open={openRight}
         onClose={drawerRight}

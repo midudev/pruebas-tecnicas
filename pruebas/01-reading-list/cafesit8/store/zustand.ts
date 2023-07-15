@@ -40,7 +40,10 @@ export const useStore = create<Const & Methos>((set, get) => ({
         set({ dataFiltered: newList })
     },
     addReadingList: (book) => {
-        set(state => ({ readingList: [...state.readingList, book] }))
+        const list = get().readingList
+        if(!list.find(item => item.title === book.title)){
+            set(state => ({ readingList: [...state.readingList, book] }))
+        }
     },
     getAnimated: () => {
         setTimeout(() => {

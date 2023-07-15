@@ -3,7 +3,7 @@ import { useStore } from '@/store/zustand'
 import { Book } from '@/types/books'
 import { Button, Dialog, DialogBody, DialogFooter, DialogHeader } from '@material-tailwind/react'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface BookProps {
     book: Book
@@ -14,10 +14,31 @@ export default function Book({ book }: BookProps) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
 
+  useEffect(() => {
+    const storage = localStorage.getItem('readingList')
+    if(storage !== null){
+      const books = JSON.parse(storage)
+      books.forEach((book: Book) => {
+        addReadingList(book)
+      })
+    }
+  }, [])
+
   function handleAddBook() {
     handleOpen()
     addReadingList(book)
     getAnimated()
+    addLocalStorage(book)
+  }
+
+  function addLocalStorage(book: Book){
+    const storage = localStorage.getItem('readingList')
+    if(storage !== null){
+      const books = JSON.parse(storage)
+      localStorage.setItem('readingList', JSON.stringify([...books, book]))
+      return
+    }
+    localStorage.setItem('readingList', JSON.stringify([book]))
   }
 
   return (
