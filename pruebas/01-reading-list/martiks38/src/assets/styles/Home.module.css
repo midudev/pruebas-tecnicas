@@ -49,8 +49,22 @@
 
 .booksGenresSection__listItem {
   margin-bottom: 0.4em;
+  font-weight: 600;
   font-size: 1rem;
   line-height: 1.5rem;
+  opacity: 0.75;
+}
+
+@media (hover: hover) {
+  .booksGenresSection__listItem:hover {
+    opacity: 1;
+  }
+}
+
+@media (hover: none) {
+  .booksGenresSection__listItem:active {
+    opacity: 1;
+  }
 }
 
 @media (min-width: 90.0625rem) {
