@@ -6,7 +6,7 @@
   export let booksList: Readable<Book[]>
 </script>
 
-<ul class="flex flex-wrap gap-5 w-full p-5">
+<ul class="flex flex-wrap gap-5 p-5">
   {#each $booksList as book}
     <BookItem {book} />
   {/each}

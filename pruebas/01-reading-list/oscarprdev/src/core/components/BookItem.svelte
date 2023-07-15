@@ -3,12 +3,20 @@
   import { stateUseCase } from '../store/store'
   import type { Book } from '../types'
   import { onMount } from 'svelte'
+  import { modalState } from '../store/modal-store'
 
   export let book: Book
   let showOverlay: Writable<boolean> = writable(false)
 
   const handleOverlay = () => {
     showOverlay.update((value) => !value)
+  }
+
+  const showInfo = () => {
+    modalState.update(() => ({
+      isOpen: true,
+      book
+    }))
   }
 </script>
 
@@ -32,7 +40,7 @@
     >
       <button
         class="px-4 py-2 bg-overlayBtn text-black cursor-pointer hover:bg-overlayBtnHover"
-        >Info</button
+        on:click={showInfo}>Info</button
       >
       <button
         class="px-4 py-2 bg-overlayBtn text-black cursor-pointer hover:bg-overlayBtnHover"

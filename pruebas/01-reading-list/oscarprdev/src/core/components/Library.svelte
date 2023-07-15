@@ -17,7 +17,7 @@
   const booksList = usePagination(booksFiltered, paginationState)
 </script>
 
-<section class="bg-light p-5 h-screen max-h-800">
+<section class="bg-light p-5 h-full">
   <FilterBooks {filters} />
   <BooksList {booksList} />
   <Pagination {paginationState} {booksFiltered} />
