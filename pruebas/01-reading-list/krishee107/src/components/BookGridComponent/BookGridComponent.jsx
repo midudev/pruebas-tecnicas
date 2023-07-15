@@ -1,50 +1,56 @@
 import React, { useEffect, useState } from 'react';
+import { BookItemComponent } from '../BookItemComponent/BookItemComponent';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import { BookItemComponent } from '../BookItemComponent/BookItemComponent';
 import './BookGridComponent.css';
+import { FilterComponent } from '../FilterComponent.jsx/FilterComponent';
 
 export const BookGridComponent = ({ bookList }) => {
     const [filteredBooks, setFilteredBooks] = useState(bookList);
-    //Contadores por género
+    //Contadores de género
     const [fantasia, setFantasia] = useState(0);
     const [cienciaFiccion, setCienciaFiccion] = useState(0);
     const [zombies, setZombies] = useState(0);
     const [terror, setTerror] = useState(0);
-    //Filtros
     const [filter, setFilter] = useState('Todos');
     const [pageRange, setPageRange] = useState({ min: 0, max: 0 });
 
+    // Obtenemos el número máximo de páginas de todos los libros disponibles
     useEffect(() => {
         const maxPageCount = getMaxPageCount();
-        setPageRange([0, maxPageCount]);
+        setPageRange({ min: 0, max: maxPageCount });
     }, []);
 
+    // Actualizamos los contadores de género cada vez que cambia el filtro
     useEffect(() => {
-        const fantasia = filteredBooks.filter((book) => book.book.genre === 'Fantasía').length;
-        setFantasia(fantasia);
-        const cienciaFiccion = filteredBooks.filter((book) => book.book.genre === 'Ciencia ficción').length;
-        setCienciaFiccion(cienciaFiccion);
-        const zombies = filteredBooks.filter((book) => book.book.genre === 'Zombies').length;
-        setZombies(zombies);
-        const terror = filteredBooks.filter((book) => book.book.genre === 'Terror').length;
-        setTerror(terror);
+        const fantasiaCount = filteredBooks.filter((book) => book.book.genre === 'Fantasía').length;
+        setFantasia(fantasiaCount);
+        const cienciaFiccionCount = filteredBooks.filter((book) => book.book.genre === 'Ciencia ficción').length;
+        setCienciaFiccion(cienciaFiccionCount);
+        const zombiesCount = filteredBooks.filter((book) => book.book.genre === 'Zombies').length;
+        setZombies(zombiesCount);
+        const terrorCount = filteredBooks.filter((book) => book.book.genre === 'Terror').length;
+        setTerror(terrorCount);
     }, [filteredBooks]);
+
+    // Filtramos los libros por rango de páginas y género
     useEffect(() => {
         const filteredBooks = filterBooksByPageRangeAndGenre();
         setFilteredBooks(filteredBooks);
     }, [pageRange, filter]);
 
+    // Obtenemos el número máximo de páginas de todos los libros disponibles
     function getMaxPageCount() {
         const maxPageCount = Math.max(...bookList.map((book) => book.book.pages));
         return maxPageCount;
     }
 
+    // Filtramos los libros por rango de páginas y género
     function filterBooksByPageRangeAndGenre() {
         const filteredBooks = bookList.filter((book) => {
             const pageCount = book.book.pages;
-            const minPage = pageRange[0];
-            const maxPage = pageRange[1];
+            const minPage = pageRange.min;
+            const maxPage = pageRange.max;
             const withinPageRange = pageCount >= minPage && pageCount <= maxPage;
 
             const genre = book.book.genre;
@@ -56,41 +62,20 @@ export const BookGridComponent = ({ bookList }) => {
         return filteredBooks;
     }
 
-    const handleFilterChange = (e) => {
-        setFilter(e.target.value);
-    };
-
     return (
         <div className="gridContainer">
-            <div className="filter">
-                <h1 className="title">Explorar todos los libros</h1>
-
-                <div className="filterButtonContainer">
-                    <div className="sidebarContainer">
-                        <span className="sidebarTitle">Páginas</span>
-                        <div className="sidebar">
-                            <div className="sidebarMin">{pageRange[0]}</div>
-                            <Slider
-                                min={0}
-                                max={getMaxPageCount()}
-                                value={pageRange}
-                                onChange={(values) => setPageRange(values)}
-                                range
-                            />
-                            <div className="sidebarMax">{pageRange[1]}</div>
-                        </div>
-
-                    </div>
-
-                    <select name="filter" id="filterSelect" className="filterSelect" onChange={handleFilterChange}>
-                        <option value="Todos">Todos ({filteredBooks.length})</option>
-                        <option value="Fantasía">Fantasía ({fantasia})</option>
-                        <option value="Ciencia ficción">Ciencia Ficción ({cienciaFiccion})</option>
-                        <option value="Zombies">Zombies ({zombies})</option>
-                        <option value="Terror">Terror ({terror})</option>
-                    </select>
-                </div>
-            </div>
+            <FilterComponent
+                pageRange={pageRange}
+                setPageRange={setPageRange}
+                filter={filter}
+                setFilter={setFilter}
+                filteredBooksCount={filteredBooks.length}
+                fantasiaCount={fantasia}
+                cienciaFiccionCount={cienciaFiccion}
+                zombiesCount={zombies}
+                terrorCount={terror}
+                maxPageCount={getMaxPageCount()}
+            />
 
             <div className="gridContainerInfo">
                 <div className="disponibles">
