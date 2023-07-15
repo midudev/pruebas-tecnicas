@@ -81,8 +81,8 @@ function CardsBook() {
 
       <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 ">
         {library.map((book, index) => (
-          <div key={index} className="border">
-            <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80">
+          <div key={index} className="relative border">
+            <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80 ">
               <img
                 src={book.book.cover}
                 alt="books"
@@ -101,7 +101,7 @@ function CardsBook() {
                 
               </div>
             </div>
-             <div className="flex justify-center items-center p-4 mt-2 ">
+             <div className="flex justify-center items-center p-4 mt-2 relative">
                 <button className="p-3 bg-cyan-400 hover:bg-cyan-300 rounded-md flex justify-center items-center cursor-pointer"><BiBookAdd className="mr-4 text-2xl" /> Add Book</button>
               </div>
           </div>
