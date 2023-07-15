@@ -60,15 +60,18 @@
     }
 
     50% {
-        transform: translateX(-50%);
+        transform: translateX(-70%);
         opacity: 0.6;
+    }
+
+    80% {
+        transform: translateX(-100%);
+        opacity: 0.3;
     }
 
 
     100% {
-        transform: translateX(-100%);
+        transform: translateX(-1000%);
         opacity: 0;
     }
 }
-
-/* Resto de los estilos... */
