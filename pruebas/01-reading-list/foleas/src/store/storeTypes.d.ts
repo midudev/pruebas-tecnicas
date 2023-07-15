@@ -5,8 +5,12 @@ export type Store = {
   perPage: number;
   page: number;
   changePage: (value: number) => void;
-  genre: string;
-  changeGenre: (value: string) => void;
+  genres: Array<string>;
+  setGenres: (genres: Array<string>) => void;
+  currentGenre: string;
+  changeCurrentGenre: (value: string) => void;
   books: Array<Book>;
   setBooks: (books: Array<Book>) => void;
+  filteredBooks: Array<Book>;
+  setFilteredBooks: (filteredBooks: Array<Book>) => void;
 };

@@ -6,26 +6,47 @@ import PageFilter from "./components/PageFilter";
 import GenderFilter from "./components/GenderFilter";
 
 function App() {
-  const { page, perPage, books, setBooks } = useStore();
+  const {
+    page,
+    perPage,
+    books,
+    setBooks,
+    setGenres,
+    currentGenre,
+    filteredBooks,
+    setFilteredBooks,
+  } = useStore();
 
   const [loading, setLoading] = useState<boolean>(false);
-  // const [books, setBooks] = useState<Array<Book>>([]);
 
-  const getBooks = async (endpoint: string): Promise<void> => {
+  const getData = async (endpoint: string): Promise<void> => {
     const response = await fetch(endpoint);
     const data: Library = (await response.json()) as Library;
     setBooks(data.library);
+    setGenres(
+      data.library
+        ?.map(({ book: { genre } }) => genre)
+        .filter((v, i, arr) => arr.indexOf(v) === i)
+    );
   };
 
   useEffect(() => {
     setLoading(true);
-    getBooks("./books.json")
+    getData("./books.json")
       .then(() => {
         setLoading(false);
         //console.log("In then block");
       })
       .catch((err) => console.log("ERROR", err));
   }, []);
+
+  useEffect(() => {
+    setFilteredBooks(
+      books?.filter(({ book: { genre } }) =>
+        currentGenre !== "" ? genre === currentGenre : true
+      )
+    );
+  }, [currentGenre, books, setFilteredBooks]);
 
   return (
     <main className="flex">
@@ -42,7 +63,7 @@ function App() {
             </div>
 
             <div className="grid grid-cols-4 gap-10">
-              {books
+              {filteredBooks
                 ?.slice(perPage * (page - 1), perPage * page)
                 .map(({ book: { title, cover } }, index) => {
                   return (

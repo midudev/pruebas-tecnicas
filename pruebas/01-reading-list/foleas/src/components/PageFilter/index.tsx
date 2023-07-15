@@ -1,7 +1,12 @@
+import { useEffect } from "react";
 import { useStore } from "../../store/store";
 
 const PageFilter = () => {
-  const { page, changePage, perPage, books } = useStore();
+  const { page, changePage, perPage, filteredBooks } = useStore();
+
+  useEffect(() => {
+    changePage(1);
+  }, [filteredBooks, changePage]);
 
   return (
     <div>
@@ -16,7 +21,7 @@ const PageFilter = () => {
         name="paginator"
         type="range"
         min={1}
-        max={Math.ceil(books.length / perPage)}
+        max={Math.ceil(filteredBooks.length / perPage)}
         value={page}
         onChange={({ target }) => changePage(parseInt(target.value))}
         className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
