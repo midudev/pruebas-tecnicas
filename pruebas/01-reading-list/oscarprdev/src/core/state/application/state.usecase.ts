@@ -20,15 +20,7 @@ export class StateUsecase {
     updateState(state: Partial<GlobalState>) {
         this.globalState = { ...this.globalState, ...state };
 
-        // Update the reactive svelte store
+        // Svelte entry point
         appState.set(this.globalState);
-    }
-
-    removeElement(elementId: string) {
-        const indexBook = this.state.books.findIndex((book) => book.ISBN === elementId);
-
-        const stateUpdated = this.state.books.filter((book, i) => i !== indexBook);
-
-        this.updateState({ ...this.state, books: stateUpdated });
     }
 }

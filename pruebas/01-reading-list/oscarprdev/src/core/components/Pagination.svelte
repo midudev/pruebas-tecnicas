@@ -24,9 +24,15 @@
 
 <section>
   {#if $paginationState.init > 0}
-    <button on:click={showPrev}>Prev</button>
+    <button
+      class="border border-black px-5 py-2 cursor-pointer hover:bg-pagBtn transition-colors ease-in"
+      on:click={showPrev}>Prev</button
+    >
   {/if}
   {#if $booksFiltered && $paginationState.offset < $booksFiltered.length}
-    <button on:click={showNext}>Next</button>
+    <button
+      class="border border-black px-5 py-2 cursor-pointer hover:bg-pagBtn transition-colors ease-in"
+      on:click={showNext}>Next</button
+    >
   {/if}
 </section>

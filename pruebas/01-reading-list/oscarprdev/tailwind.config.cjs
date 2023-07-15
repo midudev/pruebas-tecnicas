@@ -16,7 +16,11 @@ module.exports = {
         backgroundColor: {
             light: '#F5EFE7',
             dark: '#161617cc',
-            bookItem: '#F5F5F5'
+            bookItem: '#F5F5F5',
+            bootkItemHover: "#4F709C",
+            pagBtn: "#D8C4B6",
+            overlayBtn: "#F5F5F5",
+            overlayBtnHover: "#E8E2E2"
         },
         textColor: {
             light: '#000000',
@@ -25,6 +29,7 @@ module.exports = {
         extend: {
             maxHeight: {
                 '400': '400px',
+                '800': '800px',
             },
         },
     },
