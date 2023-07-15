@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Library } from '../books.model';
+import { Component, OnInit } from '@angular/core';
+import { Book } from '../books.model';
+import { BookService } from 'src/app/books/books.service';
 
 @Component({
   selector: 'books-list',
@@ -8,15 +9,20 @@ import { Library } from '../books.model';
 })
 export class BooksListComponent implements OnInit {
 
-  @Input() set books(data: Array<Library>) {
-    this.libraryBooks = structuredClone(data);
-  }
+  bookList: Array<Book> = [];
 
-  libraryBooks: Array<Library> = [];
-
-  constructor() {}
+  constructor(
+    private bookService: BookService
+  ) {}
 
   ngOnInit(): void {
+    this.bookService.bookList.subscribe(books => {
+      this.bookList = books;
+    })
+  }
+
+  moveToRead(book: Book, index: number) {
+    this.bookService.moveFromListToReadingList(book, index);
   }
 
 }

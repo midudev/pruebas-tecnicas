@@ -1,1 +1,4 @@
-<p>books-list-read works!</p>
+<div *ngFor="let book of books; let i = index">
+  <p>{{book.title}}</p>
+  <button mat-button (click)="moveToList(book, i)">X</button>
+</div>

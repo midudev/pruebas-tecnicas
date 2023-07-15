@@ -1,5 +1,5 @@
-<main *ngIf="libraryBooks.length > 0" class="h-screen grid grid-cols-4 gap-6 p-4 place-items-center">
-  <div *ngFor="let book of libraryBooks" class="w-full h-44 flex justify-center items-center">
-    <img src="{{book.book.cover}}" class="w-28 h-auto" alt="{{book.book.title}} - {{book.book.year}}" />
+<main *ngIf="bookList.length > 0" class="h-screen grid grid-cols-4 gap-6 p-4 place-items-center">
+  <div *ngFor="let book of bookList; let i = index" class="w-full h-44 flex justify-center items-center">
+    <img src="{{book.cover}}" class="w-28 h-auto" alt="{{book.title}} - {{book.year}}" (click)="moveToRead(book, i)" />
   </div>
 </main>

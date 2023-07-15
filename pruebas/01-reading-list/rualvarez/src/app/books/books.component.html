@@ -1,18 +1,4 @@
-<div *ngIf="loading">
-</div>
-
-<ng-container *ngIf="!loading">
-  <ng-container *ngIf="books.length === undefined || books.length === 0; then notFound; else showData"></ng-container>
-  <ng-template #notFound>
-    <div>
-      <p>Libros no encontrados</p>
-    </div>
-  </ng-template>
-
-  <ng-template #showData>
-    <div class="w-screen h-screen flex flex-row flex-wrap">
-      <books-list class="w-1/2" [books]="books"></books-list>
-      <books-list-read class="w-1/2">aa</books-list-read>
-    </div>
-  </ng-template>
-</ng-container>
+<main class="w-screen h-screen flex flex-row flex-wrap">
+  <books-list class="w-1/2"></books-list>
+  <books-list-read class="w-1/2">aa</books-list-read>
+</main>
