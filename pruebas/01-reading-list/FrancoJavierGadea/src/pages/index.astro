@@ -1,0 +1,22 @@
+---
+import RootLayout from '../layouts/RootLayout.astro';
+import ReadingList from '../components/ReadingList.jsx';
+
+import {getNumberOfBooks, getAllGenres} from '../data/books.js';
+
+const n = getNumberOfBooks();
+
+console.log(getAllGenres())
+---
+
+<RootLayout title="Libros">
+	
+	<h1>{n}</h1>
+
+	<ReadingList client:load />
+
+</RootLayout>
+
+<style>
+	
+</style>
