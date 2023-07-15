@@ -1,12 +1,19 @@
 <script lang="ts">
-  import { readingList } from '$lib/reading.store';
-
-  export let book: IBook;
+  export let book: FreeBook;
   export let showInfo: boolean;
+  export let bookAction: IBooks.BookAction;
+
+  let isFree = true;
+
+  $: {
+    // When book free is not defined
+    // means we're being render by the ReadingList
+    isFree = book.free === undefined || book.free === true;
+  }
 </script>
 
 <li class="book">
-  <button on:click={() => $readingList.add(book)}>
+  <button class:add-btn={isFree} class:no-free={!isFree} on:click={() => bookAction(book.ISBN)}>
     <img src={book.cover} alt="{book.title} cover" />
     {#if showInfo}
       <div class="book-info">
@@ -29,9 +36,9 @@
   }
 
   .book-info {
+    color: var(--primary);
     position: relative;
     text-align: center;
-    color: green;
     position: absolute;
     inset: 0;
     opacity: 0;
@@ -53,7 +60,6 @@
   .synopsis,
   .year,
   .genre {
-    color: var(--primary);
     font-weight: bolder;
   }
 
@@ -88,21 +94,38 @@
 
   img {
     width: 100%;
-    height: auto;
+    height: 100%;
     border-radius: 15px;
-    transition: filter, transform 250ms ease;
+    transition: 250ms ease;
+    transition-property: filter, transform;
   }
 
-  button:hover {
+  .add-btn,
+  .no-free {
+    border: none;
+    border-radius: 15px;
+    background-color: transparent;
+  }
+
+  .add-btn:hover {
     cursor: pointer;
   }
 
-  button:hover img {
+  .add-btn:hover img {
     filter: blur(1px) contrast(30%);
     transform: scale(1.01);
   }
 
-  button:hover .book-info {
+  .no-free img {
+    filter: blur(1px) contrast(30%);
+  }
+
+  .no-free:hover {
+    cursor: default;
+  }
+
+  .add-btn:hover .book-info,
+  .no-free:hover .book-info {
     opacity: 1;
   }
 </style>

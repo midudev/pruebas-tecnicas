@@ -1,14 +1,15 @@
 <script lang="ts">
   import Book from './Book.svelte';
 
-  export let books: IBook[];
+  export let books: FreeBook[];
   export let booksWidth = '250px';
   export let showBooksInfo = true;
+  export let booksAction: IBooks.BookAction;
 </script>
 
 <ul class="books" style="--booksWidth:{booksWidth}">
   {#each books as book}
-    <Book {book} showInfo={showBooksInfo} --booksWidth={booksWidth} />
+    <Book {book} showInfo={showBooksInfo} --booksWidth={booksWidth} bookAction={booksAction} />
   {/each}
 </ul>
 

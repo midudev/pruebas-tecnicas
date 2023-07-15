@@ -1,9 +1,20 @@
 <script lang="ts">
+  import { booksStore } from '$lib/books.store';
+  import { onMount } from 'svelte';
   import Books from '../components/Books.svelte';
   import ReadingList from '../components/ReadingList.svelte';
   import DavBooksIcon from '../components/icons/DavBooksIcon.svelte';
 
-  export let data: { books: IBook[] };
+  onMount(() => booksStore.getState().fillFreeBooks());
+
+  let numFreeBooks: number;
+  const plural = new Intl.PluralRules('es');
+  let isOne: boolean;
+
+  booksStore.subscribe(({ freeBooks }) => {
+    numFreeBooks = freeBooks.filter(book => book.free).length;
+    isOne = plural.select(numFreeBooks) === 'one';
+  });
 </script>
 
 <nav>
@@ -12,7 +23,8 @@
   </div>
 
   <h1>
-    N° Libros: {data.books.length}
+    {numFreeBooks}
+    {isOne ? 'Libro' : 'Libros'} Disponibles
   </h1>
   <div class="filters">
     <label for="pages">
@@ -30,7 +42,7 @@
 </nav>
 <main>
   <section>
-    <Books books={data.books} />
+    <Books books={$booksStore.freeBooks} booksAction={$booksStore.add} />
   </section>
   <ReadingList />
 </main>

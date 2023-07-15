@@ -5,9 +5,9 @@
 
   export let messages: string[] = [];
 
-  const timing = 10_000;
+  const timing = 5_000;
   const yMove = -20;
-  let readdingMessage = messages.at(0);
+  let readdingMessage = getRandomMessage({ messages });
 
   let interval: NodeJS.Timer;
   onMount(() => {
