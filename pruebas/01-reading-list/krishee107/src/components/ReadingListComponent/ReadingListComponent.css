@@ -56,7 +56,8 @@
 .stackedBook {
     width: 80%;
     position: absolute;
-    border: 1px solid #d0c2b4;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .stackedBook:hover {
