@@ -1,12 +1,7 @@
-import { useEffect } from "react";
 import { useStore } from "../../store/store";
 
 const PageFilter = () => {
   const { page, changePage, perPage, filteredBooks } = useStore();
-
-  useEffect(() => {
-    changePage(1);
-  }, [filteredBooks, changePage]);
 
   return (
     <div>

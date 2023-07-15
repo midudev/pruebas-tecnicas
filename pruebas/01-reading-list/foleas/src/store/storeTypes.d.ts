@@ -11,8 +11,8 @@ export type Store = {
   changeCurrentGenre: (value: string) => void;
   books: Array<Book>;
   setBooks: (books: Array<Book>) => void;
-  filteredBooks: Array<Book>;
-  setFilteredBooks: (filteredBooks: Array<Book>) => void;
+  filteredBooks: Array<string>;
+  setFilteredBooks: (filteredBooks: Array<string>) => void;
   selectedBooks: Array<string>;
   setSelectedBooks: (selectedBooks: Array<string>) => void;
 };

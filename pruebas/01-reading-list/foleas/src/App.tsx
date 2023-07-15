@@ -49,8 +49,9 @@ function App() {
           currentGenre !== "" ? genre === currentGenre : true
         )
         .filter(({ book: { ISBN } }) => !selectedBooks.includes(ISBN))
+        .map(({ book: { ISBN } }) => ISBN)
     );
-  }, [currentGenre, books, selectedBooks, setFilteredBooks]);
+  }, [currentGenre, books, selectedBooks]);
 
   return (
     <main className="flex">
@@ -73,26 +74,21 @@ function App() {
             </div>
 
             <div className="grid grid-cols-4 gap-10">
-              {filteredBooks.length ? (
-                filteredBooks
-                  .slice(perPage * (page - 1), perPage * page)
-                  .map(({ book: { title, cover, ISBN } }) => {
-                    return (
-                      <BookCard
-                        key={ISBN}
-                        title={title}
-                        imageUrl={cover}
-                        onClickHandler={() =>
-                          setSelectedBooks([...selectedBooks, ISBN])
-                        }
-                      />
-                    );
-                  })
-              ) : (
-                <h3 className="text-1xl font-bold mb-5">
-                  No hay libros disponibles
-                </h3>
-              )}
+              {books
+                ?.filter(({ book: { ISBN } }) => filteredBooks.includes(ISBN))
+                .slice(perPage * (page - 1), perPage * page)
+                .map(({ book: { title, cover, ISBN } }) => {
+                  return (
+                    <BookCard
+                      key={ISBN}
+                      title={title}
+                      imageUrl={cover}
+                      onClickHandler={() =>
+                        setSelectedBooks([...selectedBooks, ISBN])
+                      }
+                    />
+                  );
+                })}
             </div>
           </div>
           <div className="lecture-books-wrapper w-1/5">
