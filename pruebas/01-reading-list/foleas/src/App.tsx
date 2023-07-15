@@ -96,7 +96,7 @@ function App() {
             </div>
           </div>
           <div className="lecture-books-wrapper w-1/5">
-            {selectedBooks && (
+            {selectedBooks.length > 0 && (
               <>
                 <h2 className="text-3xl font-bold mb-5">Lista de Lectura</h2>
                 <div className="grid grid-cols-2 gap-10">
@@ -110,9 +110,12 @@ function App() {
                           key={ISBN}
                           title={title}
                           imageUrl={cover}
-                          onClickHandler={() =>
-                            setSelectedBooks([...selectedBooks, ISBN])
-                          }
+                          withRemoveBnt={true}
+                          onClickHandler={() => {
+                            setSelectedBooks(
+                              selectedBooks.filter((v) => v !== ISBN)
+                            );
+                          }}
                         />
                       );
                     })}
