@@ -17,9 +17,12 @@ export default function Example() {
     }
 
   return (
-    <div className="w-52">
-      <label htmlFor="slider">cantidad de páginas: {pages}</label>
-      <Slider id="slider" className="bg-none" onChange={handleChange} min={43} max={1200} />
-    </div>
+      <article>
+        <label>Filtrar por páginas</label>
+          <div className="w-52">
+            <label htmlFor="slider">cantidad de páginas: {pages}</label>
+            <Slider id="slider" className="bg-none" onChange={handleChange} min={43} max={1200} />
+          </div>            
+      </article>
   );
 }
