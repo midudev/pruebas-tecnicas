@@ -3,6 +3,7 @@ import { useStore } from "./store/store";
 import { Library } from "./types";
 import BookCard from "./components/BookCard";
 import PageFilter from "./components/PageFilter";
+import GenderFilter from "./components/GenderFilter";
 
 function App() {
   const { page, perPage, books, setBooks } = useStore();
@@ -35,7 +36,10 @@ function App() {
           <div className="available-books-wrapper w-4/5">
             <h1 className="text-3xl font-bold mb-5">{`${books.length} libros disponibles`}</h1>
 
-            <PageFilter />
+            <div className="filters-wrapper mb-5 flex">
+              <PageFilter />
+              <GenderFilter />
+            </div>
 
             <div className="grid grid-cols-4 gap-10">
               {books
