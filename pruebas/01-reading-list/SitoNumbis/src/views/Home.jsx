@@ -1,11 +1,10 @@
 // components
 import Book from "../components/Book/Book";
 import ToTop from "../components/ToTop/ToTop";
-import Sidebar from "../components/Sidebar/Sidebar";
+import FilterBar from "../components/FilterBar/FilterBar";
 
 // contexts
 import { useLibrary } from "../contexts/LibraryProvider";
-import { useLanguage } from "../contexts/LanguageProvider";
 
 // styles
 import styles from "./styles.module.css";
@@ -13,11 +12,9 @@ import styles from "./styles.module.css";
 function Home() {
   const { libraryState, setLibraryState } = useLibrary();
 
-  const { languageState } = useLanguage();
-
   return (
     <main className={styles.main}>
-      {/* <Sidebar /> */}
+      <FilterBar />
       <section>
         <div className={styles.bookGrid}>
           {libraryState.books.map((book) => (

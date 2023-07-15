@@ -12,26 +12,28 @@ const libraryReducer = (libraryState, action) => {
   switch (type) {
     case "add-book": {
       const { id } = action;
-      const { readingList, books } = libraryState;
+      const { readingList, books, genres } = libraryState;
       readingList[id] = books[id];
       delete books[id];
-      return { readingList, books };
+      return { readingList, books, genres };
     }
     case "remove-book": {
       const { id } = action;
-      const { readingList, books } = libraryState;
+      const { readingList, books, genres } = libraryState;
       books[id] = readingList[id];
       delete readingList[id];
-      return { readingList, books };
+      return { readingList, books, genres };
     }
     case "init-books": {
       const { books } = action;
-      return { books };
+      const genres = Array.from(new Set(books.map((book) => book.genre)));
+      const readingList = [];
+      return { books, genres, readingList };
     }
     case "init-reading-list": {
       const { readingList } = libraryState;
-      const { books } = libraryState;
-      return { books, readingList };
+      const { books, genres } = libraryState;
+      return { books, readingList, genres };
     }
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
@@ -41,6 +43,7 @@ const libraryReducer = (libraryState, action) => {
 const LibraryProvider = ({ children }) => {
   const [libraryState, setLibraryState] = useReducer(libraryReducer, {
     books: [],
+    genres: [],
     readingList: [],
   });
 
