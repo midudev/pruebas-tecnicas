@@ -1,17 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useStore } from "./store/store";
-import { Library } from "./types";
 import BookCard from "./components/BookCard";
 import PageFilter from "./components/PageFilter";
 import GenderFilter from "./components/GenderFilter";
+import { UseGetData } from "./hooks/useGetData";
 
 function App() {
   const {
     page,
     perPage,
     books,
-    setBooks,
-    setGenres,
     currentGenre,
     filteredBooks,
     setFilteredBooks,
@@ -19,28 +17,7 @@ function App() {
     setSelectedBooks,
   } = useStore();
 
-  const [loading, setLoading] = useState<boolean>(false);
-
-  const getData = async (endpoint: string): Promise<void> => {
-    const response = await fetch(endpoint);
-    const data: Library = (await response.json()) as Library;
-    setBooks(data.library);
-    setGenres(
-      data.library
-        ?.map(({ book: { genre } }) => genre)
-        .filter((v, i, arr) => arr.indexOf(v) === i)
-    );
-  };
-
-  useEffect(() => {
-    setLoading(true);
-    getData("./books.json")
-      .then(() => {
-        setLoading(false);
-        //console.log("In then block");
-      })
-      .catch((err) => console.log("ERROR", err));
-  }, []);
+  const { loading } = UseGetData("./books.json");
 
   useEffect(() => {
     setFilteredBooks(
