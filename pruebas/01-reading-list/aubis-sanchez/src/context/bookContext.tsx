@@ -48,7 +48,7 @@ const BookProvider = ({ children }: PropsWithChildren) => {
 
   const removeFromLectureList = (bookToRemoveISBN: string) => {
     setUserLectureList((prevState) =>
-      prevState.filter((book) => book.ISBN === bookToRemoveISBN)
+      prevState.filter((book) => book.ISBN !== bookToRemoveISBN)
     );
   };
 

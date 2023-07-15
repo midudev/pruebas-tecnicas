@@ -1,5 +1,7 @@
 import { Box, Button, Slide } from "@mui/material";
 import { Views } from "../models";
+import { BookContext, BookContextType } from "../context/bookContext";
+import { useContext } from "react";
 
 interface Props {
   sectionOnView: Views;
@@ -7,6 +9,8 @@ interface Props {
 }
 
 export const Switch = ({ sectionOnView, setSectionOnView }: Props) => {
+  const { userLectureList, books } = useContext(BookContext) as BookContextType;
+
   return (
     <Box component="div" display="flex" flexDirection="row" width="100%">
       <Button
@@ -24,7 +28,7 @@ export const Switch = ({ sectionOnView, setSectionOnView }: Props) => {
               : "rgba(255,255,255,0.08)",
         }}
       >
-        Available books
+        Available books {`(${books.length})`}
       </Button>
       <Button
         onClick={() => setSectionOnView(Views.list)}
@@ -38,7 +42,7 @@ export const Switch = ({ sectionOnView, setSectionOnView }: Props) => {
           bgcolor: sectionOnView === Views.list ? "rgba(38,91,167,1)" : "",
         }}
       >
-        Lecture list
+        Lecture list {`(${userLectureList.length})`}
       </Button>
     </Box>
   );

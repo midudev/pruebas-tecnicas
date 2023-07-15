@@ -1,4 +1,4 @@
-import { getBooksGenres } from "../utils/books.utils";
+import { getAmountOfBooksByGenre, getBooksGenres } from "../utils/books.utils";
 import Box from "@mui/material/Box";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
@@ -6,7 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Chip from "@mui/material/Chip";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { BookContext, BookContextType } from "../context/bookContext";
 
 const genres = getBooksGenres();
@@ -59,7 +59,6 @@ export const BooksGenresFilter = () => {
                 display: "flex",
                 flexWrap: "wrap",
                 gap: 0.5,
-                bgColor: "red",
               }}
               color="GrayText"
             >
@@ -76,7 +75,7 @@ export const BooksGenresFilter = () => {
         >
           {genres.map((genre) => (
             <MenuItem key={genre} value={genre}>
-              {genre}
+              {`${genre} (${getAmountOfBooksByGenre(genre)})`}
             </MenuItem>
           ))}
         </Select>

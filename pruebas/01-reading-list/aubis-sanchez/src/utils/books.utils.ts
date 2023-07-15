@@ -22,3 +22,7 @@ export const getDefaultBooks = () => {
     return book.book;
   }, [] as Book[]);
 };
+
+export const getAmountOfBooksByGenre = (genre: string): number => {
+  return bookData.library.filter((book) => book.book.genre === genre).length;
+};
