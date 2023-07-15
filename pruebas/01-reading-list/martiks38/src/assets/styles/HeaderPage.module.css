@@ -1,0 +1,16 @@
+.headerPage {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 0.625rem var(--padding-content);
+  max-width: var(--max-width-content);
+  background-color: #fff1;
+}
+
+.headerPage__logo {
+  --size-logo: 2.25rem;
+
+  display: block;
+  width: var(--size-logo);
+  height: var(--size-logo);
+}

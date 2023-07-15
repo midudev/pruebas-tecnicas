@@ -1,6 +1,8 @@
 :root {
   --max-width-content: 90rem;
   --padding-content: 1.875rem;
+
+  --bg-page: #141414;
 }
 
 *,
@@ -9,7 +11,7 @@
   box-sizing: border-box;
 }
 
-*{
+* {
   margin: 0;
 }
 
@@ -21,7 +23,7 @@ body {
 }
 
 body {
-  margin: 0;
+  background-color: var(--bg-page);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
