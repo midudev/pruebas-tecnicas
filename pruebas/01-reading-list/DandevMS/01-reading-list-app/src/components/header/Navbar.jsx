@@ -1,14 +1,16 @@
 import Logo from '../../assets/images/logo-icon.png'
 import { useState } from 'react';
 import { BiBookContent } from "react-icons/bi";
+import Sidebar from '../Sidebar/Sidebar';
+
 
 function Navbar() {
 
-  const [toggleNav, setToggleNav] = useState(false);
+  const [toggleSidebar, setToggleSidebar] = useState(false);
 
-    const toggleNavbar = () => {
-        setToggleNav(!toggleNav);
-    }
+  const  HandleToggleSidebar = () => {
+    setToggleSidebar(!toggleSidebar);
+  }
 
   const [darkMode, setDarkMode] = useState(false);
 
@@ -44,10 +46,16 @@ function Navbar() {
         </label>
        
         <div>
-            <button className=" p-3  bg-white border text-xl rounded-md flex justify-center items-center  "><BiBookContent className='mr-3' onClick={toggleNavbar} /> Lista de lectura</button>
+            <button className=" p-3  bg-white border text-xl rounded-md flex justify-center items-center  " onClick={HandleToggleSidebar}>
+              <BiBookContent className='mr-3' />
+              Lista de lectura
+            </button>
         </div>
-    
       </div>
+    {
+      toggleSidebar && (<Sidebar toggleSidebar={toggleSidebar} HandleToggleSidebar={HandleToggleSidebar} />) 
+    }
+
     </nav>
   )
 }
