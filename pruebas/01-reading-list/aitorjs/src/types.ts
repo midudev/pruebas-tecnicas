@@ -3,25 +3,25 @@
 } */
 
 export interface BooksState {
-  books: Book[],
-  getBooks: () => void
+  dbbooks: Book[]
+  WantReadBooks: Book[]
+  getBooks: () => Book[]
 }
 
-interface Book {
+export interface Book {
   book: {
-    title: string,
-    pages: number,
-    genre: string,
-    cover: string,
-    synopsis: string,
-    year: number,
-    ISBN: string,
+    title: string
+    pages: number
+    genre: string
+    cover: string
+    synopsis: string
+    year: number
+    ISBN: string
     author: Author
   }
 }
 
 interface Author {
-  name: string,
+  name: string
   otherBooks: string[]
 }
-
