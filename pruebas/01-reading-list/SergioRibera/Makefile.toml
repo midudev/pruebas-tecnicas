@@ -10,26 +10,13 @@ alias = "check"
 
 # Application Tasks
 [tasks.dev]
-dependencies = ["dev-tailwind"]
 command = "trunk"
-args = ["serve", "--open"]
+args = ["serve", "--open", "--features", "inspect"]
 
 [tasks.build]
-dependencies = ["fmt", "clippy", "test", "prod-tailwind"]
+dependencies = ["fmt", "clippy", "test"]
 command = "trunk"
 args = ["build", "--release"]
-
-#
-# Compile tailwind
-#
-[tasks.dev-tailwind]
-command = "tailwindcss"
-args = ["-c", "./tailwind.config.js", "-o", "./tailwind.css"]
-
-[tasks.prod-tailwind]
-env = { NODE_ENV = "production" }
-command = "tailwindcss"
-args = ["-c", "./tailwind.config.js", "-o", "./tailwind.css", "--minify"]
 
 #
 # Format Tasks
