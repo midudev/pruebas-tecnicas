@@ -5,10 +5,12 @@ import ListOfLecture from './components/listOfLecture/listOfLecture'
 import { library } from './mocks/books'
 import { useFilters } from './hooks/useFilters'
 import { useState } from 'react'
+import { ListOfLectureProvider } from './contexts/listOfLecture'
 
 function App () {
   const [products] = useState(library)
   const { filterBooks, sortBooks } = useFilters()
+
   const mappedBooks = products.map((book) => {
     return {
       title: book.book.title,
@@ -24,12 +26,12 @@ function App () {
   const sortedProducts = sortBooks(filteredProducts)
 
   return (
-    <>
+    <ListOfLectureProvider>
       <Header />
       <ListOfLecture />
       <Books books={sortedProducts} />
       <footer className='footer'>el footer</footer>
-    </>
+    </ListOfLectureProvider>
   )
 }
 

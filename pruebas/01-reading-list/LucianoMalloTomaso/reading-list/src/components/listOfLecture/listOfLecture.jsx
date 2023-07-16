@@ -2,8 +2,10 @@ import { useId, useState } from 'react'
 import { CloseBookIcon, OpenBookIcon, RemoveAllBooks } from '../Icons/Icons.jsx'
 import './listOfLecture.css'
 import ListItem from './listItem/listItem.jsx'
+import { useListOfLecture } from '../../hooks/useListOfLecture.jsx'
 
 export default function ListOfLecture () {
+  const { list, clearLectureList, removeFromLectureList } = useListOfLecture()
   const bookListCheckboxId = useId()
   const [isOpen, setIcon] = useState(false)
 
@@ -20,16 +22,18 @@ export default function ListOfLecture () {
       </label>
       <input id={bookListCheckboxId} type='checkbox' hidden onChange={() => handleChangeIcon()} />
 
-      <aside className='list-of-lecture'>
-        <button>
+      <aside className='list'>
+        <button onClick={clearLectureList}>
           <RemoveAllBooks />
         </button>
         <ul>
-          <ListItem
-            pages={694}
-            title='Juego de Tronos'
-            cover='https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1273763400i/8189620.jpg'
-          />
+          {list.map(book => (
+            <ListItem
+              key={book.title}
+              removeFromList={() => removeFromLectureList(book)}
+              {...book}
+            />
+          ))}
         </ul>
 
       </aside>

@@ -1,5 +1,5 @@
 import './listItem.css'
-export default function ListItem ({ cover, title, pages }) {
+export default function ListItem ({ cover, title, pages, removeFromList }) {
   return (
     <li>
       <img
@@ -11,7 +11,7 @@ export default function ListItem ({ cover, title, pages }) {
         <p> {pages} Pages</p>
       </div>
       <footer>
-        <button>
+        <button onClick={removeFromList}>
           Remove
         </button>
       </footer>

@@ -1,18 +1,20 @@
-export const listOfLectureInitialState = []
+// initial state for the list with localStorage if it exists or empty array if not
+export const listOfLectureInitialState = JSON.parse(window.localStorage.getItem('list')) || []
 
 export const LIST_ACTIONS_TYPES = {
-  ADD_TO_LECTURE_LIST: 'ADD_TO_READING_LIST',
-  REMOVE_FROM_LECTURE_LIST: 'REMOVE_FROM_READING_LIST',
-  CLEAR_LECTURE_LIST: 'CLEAR_READING_LIST'
+  ADD_TO_LECTURE_LIST: 'ADD_TO_LECTURE_LIST',
+  REMOVE_FROM_LECTURE_LIST: 'REMOVE_FROM_LECTURE_LIST',
+  CLEAR_LECTURE_LIST: 'CLEAR_LECTURE_LIST',
+  SET_INITIAL_STATE: 'SET_INITIAL_STATE'
 }
 
 // update localStorage when the list changes
 
 export const updateLocalStorage = state => {
-  window.localStorage.setItem('list-of-lecture', JSON.stringify(state))
+  window.localStorage.setItem('list', JSON.stringify(state))
 }
 
-export const readingListReducer = (state, action) => {
+export const listOfLectureReducer = (state, action) => {
   const { type: actionType, payload: actionPayload } = action
   switch (actionType) {
     case LIST_ACTIONS_TYPES.ADD_TO_LECTURE_LIST:{
@@ -25,19 +27,23 @@ export const readingListReducer = (state, action) => {
         return state
       }
       // If book is not in list, return the state with the new book
-      const newState = [...state, ...actionPayload]
+      const newState = [...state, { ...actionPayload }]
       updateLocalStorage(newState)
       return newState
     }
     case LIST_ACTIONS_TYPES.REMOVE_FROM_LECTURE_LIST:{
-      const id = actionPayload.id
+      const id = actionPayload.title
       const newState = state.filter(item => item.title !== id)
       updateLocalStorage(newState)
       return newState
     }
     case LIST_ACTIONS_TYPES.CLEAR_LECTURE_LIST:{
-      updateLocalStorage(listOfLectureInitialState)
-      return listOfLectureInitialState
+      updateLocalStorage([])
+      console.log(listOfLectureInitialState)
+      return []
+    }
+    case LIST_ACTIONS_TYPES.SET_INITIAL_STATE:{
+      return actionPayload
     }
 
     default:

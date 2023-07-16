@@ -1,18 +1,20 @@
 import './books.css'
 import { OpenBookIcon, CloseBookIcon } from '../icons/Icons'
+import { useListOfLecture } from '../../hooks/useListOfLecture'
 
 export default function Books ({ books }) {
   const booksToShow = 10
+  const { list, addToLectureList, removeFromLectureList } = useListOfLecture()
 
-  const checkBookInList = product => {
-    return false
-    // return books.some(item => item.id === product.id)
+  const checkBookInList = book => {
+    // return false
+    return list.some(item => item.title === book.title)
   }
   return (
     <main className='books'>
       <ul>
         {books.slice(0, booksToShow).map(book => {
-          const isBookInList = checkBookInList()
+          const isBookInList = checkBookInList(book)
           return (
             <li key={book.title}>
               <div>{book.title}</div>
@@ -24,6 +26,11 @@ export default function Books ({ books }) {
               <div>
                 <button
                   className='addToBookButton'
+                  onClick={() => {
+                    isBookInList
+                      ? removeFromLectureList(book)
+                      : addToLectureList(book)
+                  }}
                 >
                   {isBookInList
                     ? <CloseBookIcon />
