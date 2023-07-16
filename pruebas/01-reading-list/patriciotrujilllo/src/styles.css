@@ -1,0 +1,47 @@
+*::after,
+*::before,
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 70px;
+}
+.book-container{
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(
+            250px,
+            1fr
+        )
+        );
+    gap:1rem;
+}
+.book{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+img:hover{
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20);
+}
+img{
+    max-width: 100%;
+    max-height: 100%;
+}
+img:hover{
+    transform: scale(1.2);
+}
+.book img{
+    width: 100%;
+    height: 90%;
+    text-align: center;
+    object-fit: contain;
+}
