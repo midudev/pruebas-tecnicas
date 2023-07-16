@@ -2,27 +2,23 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { useBooksStore } from "./store/booksStore";
 import Book from "./components/Book";
+import booksJson from "./books";
 
 function App() {
-  const { getBooks, dbbooks } = useBooksStore();
-  const [books, setBooks] = useState(null);
+  const { getBooks, setBooks, dbbooks } = useBooksStore();
+  // const [books, setBooks] = useState(null);
 
   useEffect(() => {
-    const _dbbooks = getBooks();
-    console.log("ANTES _dbbooks", _dbbooks, dbbooks);
-    /*  setTimeout(() => {
-      console.log("_dbbooks", _dbbooks, dbbooks);
-    }, 100); */
-    setBooks(_dbbooks);
+    getBooks();
+    // console.log("ANTES _dbbooks", _dbbooks, dbbooks);
   }, [getBooks]);
 
   const filterGenreBooks = (genre: string) => {
-    console.log("E", genre);
-    const newBooks = dbbooks.filter((d) => {
+    console.log("E", genre, booksJson);
+    const newBooks = booksJson.library.filter((d) => {
       return d.book.genre === genre;
     });
 
-    console.log("newBooks", newBooks);
     setBooks(newBooks);
   };
 
@@ -30,7 +26,7 @@ function App() {
     <>
       <h1 className="text-6xl font-bold">Librería de libros</h1>
 
-      <h2>{books?.length ?? 0} libros disponibles</h2>
+      <h2>{dbbooks.length} libros disponibles</h2>
 
       <div className="flex gap-3">
         <div className="flex flex-col">
@@ -50,15 +46,13 @@ function App() {
         </div>
       </div>
 
-      {books !== null && (
-        <>
-          <div className="flex flex-wrap gap-3">
-            {books.map(({ book }) => (
-              <Book key={book.ISBN} data={book} />
-            ))}
-          </div>
-        </>
-      )}
+      <>
+        <div className="flex flex-wrap gap-3">
+          {dbbooks.map(({ book }) => (
+            <Book key={book.ISBN} data={book} />
+          ))}
+        </div>
+      </>
     </>
   );
 }

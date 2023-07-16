@@ -8,9 +8,13 @@ export const useBooksStore = create<BooksState>((set) => ({
   getBooks: () => {
     console.log('json', booksJson.library)
     const dbbooks = booksJson.library
-
+    dbbooks.map(b => { b.book.wantRead = false })
     set((state) => ({ ...state, dbbooks }))
 
-    return dbbooks
+    // return dbbooks
+    // return await new Promise((resolve) => resolve(dbbooks))
+  },
+  setBooks: (dbbooks) => {
+    set((state) => ({ ...state, dbbooks }))
   }
 }))
