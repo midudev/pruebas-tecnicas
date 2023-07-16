@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { SectionSelected } from '../types/navigation';
 import { Button, Col, Divider, Row } from "antd";
 import Logo from "./Logo";
 import { Content } from "antd/es/layout/layout";
 import BookList from "./booklist/BookList";
 import About from "./about/About";
+import { GlobalContext } from "../contexts/GlobalContext";
 
 export default function Navigation(): JSX.Element {
 
-  const [ sectionSelect, setSectionSelect ] = useState<SectionSelected>('booklist')
-  const [ showReadList, setShowReadList ] = useState<boolean>(false)
+  const [ sectionSelect, setSectionSelect ] = useState<SectionSelected>('booklist');
+  const { setShowReadList } = useContext(GlobalContext)
 
   return ( <>
     <nav id="nav_container">

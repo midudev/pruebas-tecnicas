@@ -1,6 +1,7 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext, Dispatch, SetStateAction } from 'react';
 import { GlobalContext } from '../../contexts/GlobalContext'
 import Book from './Book'
+import { Col, Row } from 'antd'
 
 export default function BookList(): JSX.Element {
 
@@ -8,14 +9,18 @@ export default function BookList(): JSX.Element {
 
   return (
     <section>
-      {
-        bookList && readList &&
-        bookList.map((book, i) => 
-          readList.some(interest => interest.title === book.title && interest.author === book.author.name)
-            ? <Book bookData={book} selectable={false} key={i}></Book>
-            : <Book bookData={book} selectable={true} key={i}></Book>
-          )
-      }
+      <Row justify={"space-around"} align={"middle"} gutter={[12, 12]}>
+        { bookList &&
+          bookList.map((book, i) => 
+            <Col span={10} key={i}>
+              <Book
+                bookData={book}
+                selectable={ readList?.some(interest => interest.ISBN === book.ISBN) ? false : true }
+                key={i}
+              ></Book>
+            </Col>
+          )}
+      </Row>
     </section>
-  )
+  );
 }

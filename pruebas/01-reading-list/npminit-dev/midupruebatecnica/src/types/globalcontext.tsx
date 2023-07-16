@@ -7,5 +7,7 @@ export interface GeneralType {
   setBookList: Dispatch<SetStateAction<Book[]|null>>
   readList: InterestBook[] | null,
   setReadList: Dispatch<SetStateAction<InterestBook[]|null>>,
-  resetBookList: Function
+  resetBookList: Function,
+  showReadList: boolean,
+  setShowReadList: Dispatch<SetStateAction<boolean>>
 }

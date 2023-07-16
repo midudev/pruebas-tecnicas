@@ -1,6 +1,4 @@
 export interface InterestBook {
-  title: string,
-  cover: string,
-  author: string,
-  read: boolean
+  ISBN: string,
+  read: boolean,
 }
