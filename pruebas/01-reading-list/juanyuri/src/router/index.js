@@ -3,7 +3,7 @@ import BookCatalogue from '@/components/BookCatalogue.vue'
 
 const routes = [
   { path: '/', name: 'home', component: BookCatalogue },
-  { path: '/about', name: 'movedex', component: () => import('@/views/MoveDex.vue') }
+  { path: '/about', name: 'about', component: () => import('@/views/MoveDex.vue') }
 ]
 
 

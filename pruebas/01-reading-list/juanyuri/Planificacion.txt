@@ -12,3 +12,5 @@ Planificación de la Aplicación: Lista de Libros
 15/07/2023
     He aprendido sobre composables
     He filtrado el catálogo de Libros por género
+    He especificado los componentes del Sistema
+    He entendido las diferencias entre defineStore() y pinia.createStore() en Pinia

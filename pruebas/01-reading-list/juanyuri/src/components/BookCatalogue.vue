@@ -5,51 +5,67 @@
     <option :value="genre" v-for="genre in genres" :key="genre">{{ genre }}</option>
   </select>
 
-  <button @click="filterCatalogue">Filtrar</button>
   <button @click="resetFilters">Reset Filters</button>
 
-  <ul v-for="book in books" :key="book.title">
-    <li>{{ book.title }}, {{ book.genre }}</li>
-  </ul>
+  <div class="catalogue">
+    <BookCard v-for="book in filteredCatalogue" :key="book.title" :book="book" @click="store.addToReadList(book)" />
+  </div>
+
+  <br>
+
+  <h1>Reading List</h1>
+
+  <div class="catalogue"> <!-- change to reading list styling -->
+    <BookCard v-for="book in store.readlist" :key="book.title" :book="book" @click="store.addToCatalogue(book)" />
+  </div>
 </template>
 
-<script setup>
 
-import { ref } from 'vue'
+
+<script setup>
+import { ref, reactive, computed } from 'vue'
+import { useStore } from '@/stores/BookStore.js'
 import { useBooks } from '@/composables/books.js'
+import BookCard from '@/components/BookCard.vue'
+
+/* Use the store */
+const store = useStore()
 
 /* Call to composable to get data */
 const { books } = useBooks()
-const booksOriginal = [...books.value]
 
+const catalogue = ref(books)
+/* const filteredCatalogue = ref(catalogue.value) */ // create a new ref for the filtered array
 const genres = [...new Set(books.value.map(book => book.genre))]
-let selectedGenre = ref(genres[0])
+let selectedGenre = ref('')
 
 const onSelectedGenre = (event) => {
-  selectedGenre.value = event.target.value;
+  selectedGenre.value = event.target.value
 }
 
+const filteredCatalogue = computed(() => {
+  if (selectedGenre.value !== '')
+    return store.catalogue.filter(book => book.genre === selectedGenre.value)
 
-/**
- * Filters the catalogue based on the selected genre and the assigns it to the book reactive reference
- */
-const filterCatalogue = () => {
-  let tempCatalogue = booksOriginal
+  return store.catalogue
+})
 
-  if (selectedGenre.value != '')
-    tempCatalogue = tempCatalogue.filter((book) => book.genre == selectedGenre.value)
 
-  books.value = tempCatalogue
-}
 
-/**
- * Reset all filters. 
- */
 const resetFilters = () => {
-  books.value = booksOriginal
+  selectedGenre.value = ''
 }
 
 </script>
 
+
+
+
 <style scoped>
+.catalogue {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: blueviolet;
+}
 </style>
