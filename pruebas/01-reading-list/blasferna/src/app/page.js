@@ -1,5 +1,7 @@
 import DATA from "@/books.json";
+import Navigation from "@/components/navigation";
 import Image from "next/image";
+import Link from "next/link";
 
 const groupByGenre = () => {
   return DATA.library.reduce((groups, item) => {
@@ -27,6 +29,7 @@ export default function Home() {
                   key={book.ISBN}
                   className="relative w-40 h-60 rounded overflow-hidden cursor-pointer"
                 >
+                  <Link href={`/books/${book.ISBN}`}>
                   <Image
                     src={book.cover}
                     className="object-cover"
@@ -34,6 +37,7 @@ export default function Home() {
                     fill={true}
                     alt={book.title}
                   ></Image>
+                  </Link>
                 </div>
               ))}
             </div>
