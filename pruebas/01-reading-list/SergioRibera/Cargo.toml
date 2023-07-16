@@ -5,7 +5,7 @@ edition = "2021"
 
 [features]
 default = []
-inspect = ["wasm-logger"]
+inspect = ["wasm-logger", "log"]
 
 [dependencies]
 serde = "1"
@@ -13,4 +13,7 @@ serde_json = "1"
 yew-hooks = "0.2.0"
 yew-router = "0.17.0"
 yew = { version = "0.20.0", features = ["csr"] }
+log = { version = "0.4.19", optional = true }
 wasm-logger = { version = "0.2.0", optional = true }
+reqwest = { version = "0.11.18", default-features = false, features = ["json"] }
+yew_icons = { version = "0.7.2", features = ["BootstrapSearch"] }
