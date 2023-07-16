@@ -6,9 +6,15 @@
       <img
         [src]="book.cover"
         [alt]="'Book of ' + book.title"
-        class="aspect[310/460] w-full h-full object-contain rounded"
+        class="w-full min-h-[320px] object-contain rounded"
       />
     </figure>
     <h2>{{ book.title }}</h2>
   </div>
 </div>
+
+<!-- <img
+  [src]="book.cover"
+  [alt]="'Book of ' + book.title"
+  class="w-full h-[400px] object-contain rounded"
+/> -->
