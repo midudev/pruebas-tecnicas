@@ -3,8 +3,8 @@
 } */
 
 export interface BooksState {
-  dbbooks: Book[]
-  getBooks: () => void
+  books: Book[]
+  getBooks: () => Book[]
   setBooks: (book: Book[]) => void
 }
 
@@ -18,7 +18,7 @@ export interface Book {
     year: number
     ISBN: string
     author: Author
-    wantRead: boolean
+    // wantRead: boolean
   }
 }
 

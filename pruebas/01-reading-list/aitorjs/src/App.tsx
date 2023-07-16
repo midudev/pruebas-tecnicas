@@ -2,21 +2,28 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { useBooksStore } from "./store/booksStore";
 import Book from "./components/Book";
-import booksJson from "./books";
 
 function App() {
-  const { getBooks, setBooks, dbbooks } = useBooksStore();
-  // const [books, setBooks] = useState(null);
+  const { getBooks, setBooks, books } = useBooksStore();
 
+  const [BOOKS, setBOOKS] = useState(null);
   useEffect(() => {
-    getBooks();
-    // console.log("ANTES _dbbooks", _dbbooks, dbbooks);
-  }, []);
+    setBOOKS(getBooks());
+  }, [getBooks]);
 
   const filterGenreBooks = (genre: string) => {
-    console.log("E", genre, booksJson);
-    const newBooks = booksJson.library.filter((d) => {
+    console.log("E", genre, BOOKS);
+    const newBooks = BOOKS?.filter((d) => {
       return d.book.genre === genre;
+    });
+
+    setBooks(newBooks);
+  };
+
+  const filterPageBooks = (pages: number) => {
+    console.log("E", books, pages);
+    const newBooks = BOOKS?.filter((d) => {
+      return d.book.pages <= pages;
     });
 
     setBooks(newBooks);
@@ -26,12 +33,19 @@ function App() {
     <>
       <h1 className="text-6xl font-bold">Librería de libros</h1>
 
-      <h2>{dbbooks.length} libros disponibles</h2>
+      <h2>{books.length} libros disponibles</h2>
 
       <div className="flex gap-3">
         <div className="flex flex-col">
           <label htmlFor="pageFilter">Filtrar por páginas</label>
-          <input type="range" id="pageFilter" name="pageFilter" />
+          <input
+            type="range"
+            min="100"
+            max="1000"
+            id="pageFilter"
+            name="pageFilter"
+            onChange={(e) => filterPageBooks(Number(e.target.value))}
+          />
         </div>
 
         <div className="flex flex-col">
@@ -48,7 +62,7 @@ function App() {
 
       <>
         <div className="flex flex-wrap gap-3">
-          {dbbooks.map(({ book }) => (
+          {books.map(({ book }) => (
             <Book key={book.ISBN} data={book} />
           ))}
         </div>

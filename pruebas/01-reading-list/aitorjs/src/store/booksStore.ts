@@ -3,18 +3,18 @@ import booksJson from '../books.json'
 import { BooksState } from '../types'
 
 export const useBooksStore = create<BooksState>((set) => ({
-  dbbooks: [],
+  books: [],
   WantReadBooks: [],
   getBooks: () => {
     console.log('json', booksJson.library)
-    const dbbooks = booksJson.library
-    dbbooks.map(b => { b.book.wantRead = false })
-    set((state) => ({ ...state, dbbooks }))
+    const books = booksJson.library
+    // dbbooks.map(b => { b.book.wantRead = false })
+    set((state) => ({ ...state, books }))
 
-    // return dbbooks
+    return books
     // return await new Promise((resolve) => resolve(dbbooks))
   },
-  setBooks: (dbbooks) => {
-    set((state) => ({ ...state, dbbooks }))
+  setBooks: (books) => {
+    set((state) => ({ ...state, books }))
   }
 }))
