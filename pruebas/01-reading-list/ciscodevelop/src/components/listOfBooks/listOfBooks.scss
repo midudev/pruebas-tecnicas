@@ -1,0 +1,35 @@
+.container-cards-listofbooks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  .cards {
+     //filter:drop-shadow(5px 5px 35px rgb(0, 119, 255));
+     border-radius: 10px;
+     background: #000;
+     padding:3rem 10px;
+    .card-header {
+      .cover-book {
+        img {
+          width: 300;
+          height: 400px;
+          cursor: pointer;
+        }
+      }
+    }
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+      .otherbooks {
+       font-size: larger;
+       font-weight: bold;
+        width: 70%;
+        border-top: 1px solid red;
+        h5{
+            font: .7em system-ui;
+        }
+      }
+    }
+  }
+}
