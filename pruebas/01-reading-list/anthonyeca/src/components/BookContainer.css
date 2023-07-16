@@ -1,5 +1,6 @@
 .bc-section {
-  background-color: grey;
+  background-color: #20252c;
+  color: #ffffff;
   width: 740px;
   height: 700px;
   border-radius: 16px;
@@ -8,4 +9,5 @@
 
 .bc-title {
   margin-bottom: 16px;
+  color: #ffffff;
 }

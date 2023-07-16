@@ -5,6 +5,7 @@ import { BookContainer } from './components/BookContainer'
 import data from '../../books.json'
 import { removeElement } from './utilities/utils'
 import { Category } from './components/Category'
+import { Footer } from './components/Footer'
 
 function App() {
   const [library, setLibrary] = useState(data.library)
@@ -76,6 +77,7 @@ function App() {
           ))}
         </div>
       </BookContainer>
+      <Footer />
     </>
   )
 }

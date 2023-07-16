@@ -1,0 +1,16 @@
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+a {
+  text-decoration: inherit;
+}

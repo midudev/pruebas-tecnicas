@@ -7,18 +7,19 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  background-color: #2b2a33;
 }
 
 .button-28:hover {
   color: #fff;
-  background-color: #1a1a1a;
+  background-color: #3c4654;
 }
 
 .button-28.active,
 .button-28.focus {
   box-shadow: none;
   outline: none;
-  background-color: #ffa500;
+  background-color: #3399ff;
 }
 
 .button-container {
