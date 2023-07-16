@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react"
 
-
 const useBooks = ()=>{
 
     const [books, setBooks]= useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState();
+
 
     useEffect(()=>{
-    
+        setLoading(true)
         fetchBook()
     },[])
 
@@ -18,8 +20,9 @@ const useBooks = ()=>{
         }
        catch(error){
         throw new Error('Error: ' + response.status)
+        setError(error)
        } finally{
-        
+        setLoading(false)
        }
     }
 
@@ -29,9 +32,10 @@ const mappedBooks = books?.map( book => ({
     pages: book.book.pages,
     genre: book.book.genre,
     cover: book.book.cover,
-}))    
- 
-return [mappedBooks]
+}))
+
+
+return [mappedBooks, loading]
 
 }
 

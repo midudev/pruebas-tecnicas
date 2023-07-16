@@ -6,20 +6,17 @@ import { useEffect } from 'react'
 
 const Header = () => {
 
-const booksAvailable = useContext(BooksAvailable)
+const [store, dispatch] = useContext(BooksAvailable);  
+const {listBooks, listRead} = store;
 
-const [availables,setAvailables]= useState(booksAvailable)
 
-useEffect(()=>{
-    setAvailables(booksAvailable)
-},[booksAvailable])
 
   return (
     <div className={styles.header}>
       Header
         <h1>Book Lover</h1>
-        <p className={styles.availables}>{`Tienes ${availables.length} libros disponibles`}</p>
-        <p>{`Tienes 0 libros en tu lista de tectura`}</p>
+        <p className={styles.availables}>{`Tienes ${listBooks.length} libros disponibles`}</p>
+        <p>{`Tienes ${listRead.length} libros en tu lista de tectura`}</p>
     </div>
   )
 }
