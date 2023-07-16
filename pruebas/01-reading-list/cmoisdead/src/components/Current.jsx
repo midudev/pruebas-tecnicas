@@ -17,7 +17,7 @@ export const Current = () => {
         {books?.length} on reading list
       </h1>
       <div className="flex flex-wrap content-start justify-center gap-4">
-        {books.map((book, i) => (
+        {books?.map((book, i) => (
           <Book book={book} key={i} added />
         ))}
       </div>

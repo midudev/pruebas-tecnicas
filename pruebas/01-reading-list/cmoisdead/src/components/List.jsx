@@ -14,7 +14,7 @@ export const List = () => {
         {library?.length - current?.length} on library
       </h1>
       <div className="flex flex-wrap content-start gap-4">
-        {library.map(({ book }, i) => (
+        {library?.map(({ book }, i) => (
           <Book book={book} key={i} />
         ))}
       </div>
