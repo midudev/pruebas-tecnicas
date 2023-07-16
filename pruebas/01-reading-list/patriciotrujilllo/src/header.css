@@ -1,0 +1,16 @@
+.header{
+    display: flex;
+    justify-content: flex-start;
+}
+header > h1{
+    text-align: center;
+    font-size: xxx-large;
+}
+header > fieldset{
+    display: flex;
+    gap: 2rem;
+}
+.header > div{
+    display: flex;
+    gap: 0.6rem;
+}
