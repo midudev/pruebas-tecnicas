@@ -31,20 +31,31 @@ export const Category = ({
   }, [activeGenre, originalLibrary, lecture, setFiltered])
 
   return (
-    <div className="category-container">
-      <button onClick={() => setActiveGenre('')} className="button-28">
+    <div className="button-container">
+      <button
+        onClick={() => setActiveGenre('')}
+        className={`button-28 ${activeGenre === '' ? 'active' : ''}`}
+      >
         All
       </button>
       <button
         onClick={() => setActiveGenre('Ciencia ficción')}
-        className="button-28"
+        className={`button-28 ${
+          activeGenre === 'Ciencia ficción' ? 'active' : ''
+        }`}
       >
         Ciencia ficción
       </button>
-      <button onClick={() => setActiveGenre('Fantasía')} className="button-28">
+      <button
+        onClick={() => setActiveGenre('Fantasía')}
+        className={`button-28 ${activeGenre === 'Fantasía' ? 'active' : ''}`}
+      >
         Fantasía
       </button>
-      <button onClick={() => setActiveGenre('Terror')} className="button-28">
+      <button
+        onClick={() => setActiveGenre('Terror')}
+        className={`button-28 ${activeGenre === 'Terror' ? 'active' : ''}`}
+      >
         Terror
       </button>
     </div>

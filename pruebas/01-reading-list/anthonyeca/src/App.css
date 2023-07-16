@@ -6,3 +6,13 @@
   display: flex;
   gap: 20px;
 }
+
+::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+}
+
+.container-books {
+  display: flex;
+  flex-wrap: wrap;
+}

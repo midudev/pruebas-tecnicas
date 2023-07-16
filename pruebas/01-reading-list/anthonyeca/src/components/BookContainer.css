@@ -1,23 +1,11 @@
 .bc-section {
   background-color: grey;
   width: 740px;
-  min-height: 400px;
+  height: 700px;
   border-radius: 16px;
+  overflow-y: scroll;
 }
 
 .bc-title {
   margin-bottom: 16px;
-}
-
-.bc-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-
-.bc-catogory {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-bottom: 15px;
 }

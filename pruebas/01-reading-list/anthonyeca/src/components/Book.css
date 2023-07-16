@@ -1,18 +1,25 @@
 .book {
-  margin-left: 15px;
-  width: 150px;
+  margin: 15px;
+  width: 140px;
+  height: 210px;
   padding: 20px 16px;
   border-radius: 12px;
-  height: 270px;
-  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .book--cover {
-  width: 150px;
+  width: 120px;
+  height: 160px;
+  margin: 0 auto;
   border-radius: 12px;
-  display: block;
 }
 
 .book--title {
-  font-size: 18px;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
