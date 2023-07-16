@@ -19,7 +19,7 @@ export const Footer = () => {
           GitHub
         </a>
         <a
-          href="https://anthonyeca.github.io"
+          href="https://anthonyeca-dev.netlify.app/"
           target="_blank"
           rel="noopener nofollow"
           aria-label="Portafolio"
