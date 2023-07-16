@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import "./App.css";
 import { useBooksStore } from "./store/booksStore";
+import Book from "./components/Book";
 
 function App() {
   const { getBooks, books } = useBooksStore();
@@ -11,18 +12,32 @@ function App() {
 
   return (
     <>
-      <h1 className="text-6xl font-bold underline bg-red-900">Hello world!</h1>
-      {books.map((b) => (
-        <p key={b.book.ISBN}>
-          <span>{b.book.pages} </span>
-          <span>{b.book.genre} </span>
-          <span>{b.book.cover} </span>
-          <span>{b.book.synopsis} </span>
-          <span>{b.book.year} </span>
-          <span>{b.book.ISBN} </span>
-          <span>{b.book.author.name} </span>
-        </p>
-      ))}
+      <h1 className="text-6xl font-bold">Librería de libros</h1>
+      <h2>8 libros disponibles</h2>
+
+      <div className="flex gap-3">
+        <div className="flex flex-col">
+          <label htmlFor="pageFilter">Filtrar por páginas</label>
+          <input type="range" id="pageFilter" name="pageFilter" />
+        </div>
+
+        <div className="flex flex-col">
+          <label htmlFor="genreFilter">Filtrar por género</label>
+
+          <select name="genreFilter" id="genreFilter">
+            <option value="fantasia">Fantasía</option>
+            <option value="ciencia-ficcion">Ciencia ficción</option>
+            <option value="zoombies">Zoombies</option>
+            <option value="terror">Terror</option>
+          </select>
+        </div>
+      </div>
+
+      <div className="flex flex-wrap gap-3">
+        {books.map(({ book }) => (
+          <Book key={book.ISBN} data={book} />
+        ))}
+      </div>
     </>
   );
 }
