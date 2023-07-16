@@ -1,31 +1,23 @@
-export interface Book {
-	title: string
-	pages: number
-	genre: string
-	cover: string
-	synopsis: string
-	year: number
-	isbn: string
-	author: {
-		name: string
-		otherBooks: string[]
-	}
-}
+import { Book } from '../types'
 
 interface BookGridProps {
 	books: Book[]
 	handleSelect: (book: Book) => void
 }
 
-function BookGrid({ books, handleSelect, ...delegated }: BookGridProps) {
+function BookGrid({ books, handleSelect }: BookGridProps) {
 	return (
-		<section {...delegated}>
+		<section className='flex-1 p-4 rounded-md'>
+			<h1 className='py-2 text-2xl font-bold text-center'>Reading List</h1>
 			<ul className='grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] content-start gap-2 min-h-screen'>
-				{books.map(item => (
-					<li key={item.isbn}>
-						<button onClick={() => handleSelect(item.book)}>
+				{books.map(book => (
+					<li key={book.title}>
+						<button
+							onClick={() => handleSelect(book)}
+							className='relative block p-0 border-none cursor-pointer transparent'
+						>
 							<img
-								src={item.book.cover}
+								src={book.cover}
 								className='block object-cover rounded-lg will-change-transform aspect-[7.25/11]'
 							/>
 						</button>

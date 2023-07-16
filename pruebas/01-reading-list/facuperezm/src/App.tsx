@@ -1,12 +1,43 @@
-import { useState } from 'react'
-import DATA from '../../books.json'
+import { useEffect, useState } from 'react'
 import BookGrid from './components/BookGrid'
+import useBooks from './hooks/books'
+import { Book } from '../src/types'
+import ReadingList from './components/ReadingList'
 
 function App() {
-	const [books, setBooks] = useState(DATA.library)
+	const { booksArray } = useBooks()
 
-	function toggleBook(toggledBook) {
-		const nextBooks = books.filter(book => book.isbn !== toggledBook.isbn)
+	const [books, setBooks] = useState<Book[]>(() => {
+		const storedBooks = localStorage.getItem('books')
+		if (storedBooks) {
+			return JSON.parse(storedBooks) as Book[]
+		}
+
+		return booksArray
+	})
+
+	useEffect(() => {
+		localStorage.setItem('books', JSON.stringify(books))
+	}, [books])
+
+	// This is the code that makes the app work across multiple tabs
+	useEffect(() => {
+		const handleStorageChange = (event: StorageEvent) => {
+			if (event.key === 'books') {
+				const storedBooks = JSON.parse(event.newValue || '[]') as Book[]
+				setBooks(storedBooks)
+			}
+		}
+
+		window.addEventListener('storage', handleStorageChange)
+
+		return () => {
+			window.removeEventListener('storage', handleStorageChange)
+		}
+	})
+
+	function toggleBook(toggledBook: Book) {
+		const nextBooks = books.filter(book => book.ISBN !== toggledBook.ISBN)
 
 		nextBooks.push({
 			...toggledBook,
@@ -15,34 +46,14 @@ function App() {
 
 		setBooks(nextBooks)
 	}
-
 	const selectedBooks = books.filter(book => book.selected)
 	const unselectedBooks = books.filter(book => !book.selected)
 
 	return (
-		<main>
-			<h1 className='text-center py-2 font-bold text-2xl'>Reading List</h1>
+		<main className='flex min-h-screen'>
 			<BookGrid books={unselectedBooks} handleSelect={toggleBook} />
-			{unselectedBooks.length > 0 && (
-				<section>
-					<h2 className='text-center py-2 font-bold text-2xl'>
-						Selected Books
-					</h2>
-					{unselectedBooks.map(book => (
-						<div key={book.ISBN} className='flex flex-col items-center'>
-							<img
-								src={book.cover}
-								className='block object-cover rounded-lg will-change-transform aspect-[7.25/11]'
-							/>
-							<button
-								className='text-center py-2 font-bold text-2xl'
-								onClick={() => toggleBook(book)}
-							>
-								{book.title}
-							</button>
-						</div>
-					))}
-				</section>
+			{selectedBooks.length > 0 && (
+				<ReadingList books={selectedBooks} handleRemove={toggleBook} />
 			)}
 		</main>
 	)
