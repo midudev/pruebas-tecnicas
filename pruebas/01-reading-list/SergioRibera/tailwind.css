@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.book-image-shadow {
+    /* box-shadow: -9px 9px 17px 0px #8f8d8d; */
+    filter: drop-shadow(-10px 8px 9px #8f8d8d);
+}
