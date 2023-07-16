@@ -4,7 +4,7 @@ use yew_icons::IconId;
 
 #[derive(Properties, PartialEq)]
 pub struct Props {
-    pub onsearch: Callback<InputEvent>,
+    pub onsearch: Callback<String>,
 }
 
 #[function_component(NavBar)]
