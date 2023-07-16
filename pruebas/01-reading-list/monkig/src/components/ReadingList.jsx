@@ -8,10 +8,18 @@ export default function ReadingList () {
 
   return (
     <>
-     <section id='readingListSection' className='bg-blue-500 mt-1 absolute top-12 right-0 rounded-lg flex flex-col items-center z-10'>
-        <h2>User reading list </h2>
+     <section id='readingListSection' className='bg-[#220934] px-5 mt-1 absolute top-12 right-0 rounded-lg flex flex-col items-center z-10'>
+        <h2 className='p-1'>Reading List </h2>
+        <hr className='w-full'/>
         <ul className='flex flex-col p-2'>
-            {readingList.userReadingList && readingList.userReadingList.map(book => <li className='text-center cursor-pointer animate-fade animate-ease-in animate-normal' key={book.ISBN} onClick={() => deleteToReadingList(book)}>{book.title}</li>)}
+            {readingList.userReadingList.length > 0
+              ? readingList.userReadingList.map(book => (
+             <li className='text-center cursor-pointer animate-fade animate-ease-in animate-normal'
+              key={book.ISBN}
+              onClick={() => deleteToReadingList(book)}>
+              {book.title}
+             </li>))
+              : <li>No cuentas con libros</li>}
         </ul>
       </section>
     </>
