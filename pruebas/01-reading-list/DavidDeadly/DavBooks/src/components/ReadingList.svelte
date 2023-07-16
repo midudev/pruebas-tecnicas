@@ -1,25 +1,19 @@
 <script lang="ts">
-  import Books from './Books.svelte';
-  import { readingImportanceMessages } from '$lib/mocks/reading';
-  import ReadingMessages from './ReadingMessages.svelte';
-  import { booksStore } from '$lib/books.store';
   import { fade } from 'svelte/transition';
   import { quadInOut } from 'svelte/easing';
+
+  import { booksStore } from '$lib';
+  import { readingImportanceMessages } from '$lib/mocks/reading';
+  import Books from './Books.svelte';
+  import ReadingMessages from './ReadingMessages.svelte';
 
   const plural = new Intl.PluralRules('es');
   let readingBooks: IBook[];
   let isOne: boolean;
 
-  booksStore.subscribe(({ readingList, freeBooks }) => {
+  booksStore.subscribe(({ readingList, books }) => {
     readingBooks = readingList
-      .map(id => {
-        const readingBook = freeBooks.find(book => book.ISBN === id);
-        if (!readingBook) return null;
-
-        const { free, ...book } = readingBook;
-
-        return book;
-      })
+      .map(id => books.find(book => book.ISBN === id))
       .filter(Boolean) as IBook[];
 
     isOne = plural.select(readingBooks.length) === 'one';

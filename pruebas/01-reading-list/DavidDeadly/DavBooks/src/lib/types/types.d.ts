@@ -29,13 +29,29 @@ interface Author {
 declare namespace IBooks {
   type BookAction = (id: string) => void;
   type StoreAction = () => void;
+  type FilterAction = (filters: Filters) => void;
 
+  type Filters = {
+    genre?: string;
+    pages?: number;
+  }
+  
   interface Store {
-    readingList: string[],
-    freeBooks: FreeBook[]
-    add: BookAction
-    remove: BookAction
-    fillFreeBooks: StoreAction
-    reset: StoreAction
+    readingList: string[];
+    freeBooks: FreeBook[];
+    books: IBook[];
+    filters: Filters | null;
+    add: BookAction;
+    remove: BookAction;
+    fillFreeBooks: StoreAction;
+    filterBooks: FilterAction;
+    reset: StoreAction;
+  }
+
+  interface NextStore extends Store {
+    maxPages: number;
+    minPages: number;
+    booksGenres: string[];
+    numFreeBooks: number;
   }
 }

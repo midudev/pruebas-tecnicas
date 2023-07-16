@@ -1,7 +1,7 @@
 <script lang="ts">
   import Book from './Book.svelte';
 
-  export let books: FreeBook[];
+  export let books: IBook[];
   export let booksWidth = '250px';
   export let showBooksInfo = true;
   export let booksAction: IBooks.BookAction;
