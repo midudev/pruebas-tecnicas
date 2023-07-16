@@ -3,7 +3,7 @@
 	flex-wrap: wrap;
 	width: 100%;
 	min-height: 100vh;
-	background-color: #90aabe;
+	background-color: #1e2429;
 	color: white;
 	align-content: space-around;
 	justify-content: center;
@@ -14,7 +14,7 @@
 	flex-wrap: wrap;
 	width: 100%;
 	min-height: 100vh;
-	background-color: #90aabe;
+	background-color: #1e2429;
 }
 
 .leftSection {
