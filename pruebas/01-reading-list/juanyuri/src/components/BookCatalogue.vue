@@ -34,6 +34,7 @@ const store = useStore()
 /* Call to composable to get data */
 const { books } = useBooks()
 
+/* Data to be used in selector/filters */
 const genres = [...new Set(books.value.map(book => book.genre))]
 let selectedGenre = ref('')
 
@@ -53,8 +54,9 @@ const filteredCatalogue = computed(() => {
 const resetFilters = () => {
   selectedGenre.value = ''
 }
-const catalogueGenreCount = computed( () => store.catalogue.filter(e => e.genre === selectedGenre.value).length
-)
+
+/* Counters of differents Lists */
+const catalogueGenreCount = computed( () => store.catalogue.filter(e => e.genre === selectedGenre.value).length )
 const catalogueCount = computed( ()=> store.catalogue.length)
 const readingListCount = computed( ()=> store.readlist.length)
 </script>
