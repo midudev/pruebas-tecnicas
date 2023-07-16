@@ -1,59 +1,31 @@
-<script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+<script lang="ts">
+	import libraryData from '../lib/data/books.json';
+	import type { Library } from '../types';
+
+	let { library }: Library = libraryData;
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>ReadStack</title>
 	<meta name="description" content="Svelte demo app" />
+	<link rel="icon" href="/favicon.ico" />
 </svelte:head>
 
 <section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
+	<h1>LOS ÚLTIMOS LIBROS</h1>
 
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
+	{#each library as { book }}
+		<h2>{book.title}</h2>
+	{/each}
 </section>
 
 <style>
 	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
+		height: 100vh;
+		display: grid;
+		place-items: center;
 	}
-
 	h1 {
 		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
 	}
 </style>
