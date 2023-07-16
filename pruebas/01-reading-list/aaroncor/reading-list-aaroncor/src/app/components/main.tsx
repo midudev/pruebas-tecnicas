@@ -23,6 +23,13 @@ export default function Main() {
 		console.log('books: ', books);
 	}, [books]);
 
+	// Carga inicial del storage
+	useEffect(() => {
+		const booksFromLS = getDataToLS();
+		setRbooks(booksFromLS);
+		setLoading(false);
+	}, []);
+
 	// Setea el número de libros en lista de lectura y activa la propiedad inList en el state que tiene la info de todos los libros.
 	useEffect(() => {
 		const copyBooks = { ...books };
@@ -55,11 +62,20 @@ export default function Main() {
 		filtrarLibros(selectedGenre);
 	}, [selectedGenre]);
 
+	// Añade la escucha del evento onStorageUpdate, para actualizar el state si hay un cambio
 	useEffect(() => {
-		const booksFromLS = getDataToLS();
-		setRbooks(booksFromLS);
-		setLoading(false);
+		window.addEventListener('storage', onStorageUpdate);
+		return () => {
+			window.removeEventListener('storage', onStorageUpdate);
+		};
 	}, []);
+
+	const onStorageUpdate = (e: StorageEvent) => {
+		if (e.key === 'listado') {
+			const booksFromLS = getDataToLS();
+			setRbooks(booksFromLS);
+		}
+	};
 
 	const moreInfo = (isbn: string) => {
 		const result = books.library.find((e) => {
