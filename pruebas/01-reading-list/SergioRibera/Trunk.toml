@@ -7,5 +7,4 @@ watch = [
     "src",
     "tailwind.css",
     "index.html",
-    "main.scss",
 ]
