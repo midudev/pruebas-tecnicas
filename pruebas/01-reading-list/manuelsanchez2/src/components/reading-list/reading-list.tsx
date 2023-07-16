@@ -2,7 +2,7 @@ import { component$ } from '@builder.io/qwik'
 import { useGlobalState } from '~/ctx/ctx'
 import { css } from '~/styled-system/css'
 import { type Book } from '~/types/types'
-import { BookItem } from '../book-item/book-item'
+import { BookSpine } from '../book-spine/book-spine'
 
 export const ReadingList = component$(() => {
   const { readingList } = useGlobalState()
@@ -10,20 +10,32 @@ export const ReadingList = component$(() => {
   return (
     <ul
       class={css({
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))',
-        gap: '2rem',
-        width: '30%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginInline: 'auto',
+        width: '100%',
+        lg: {
+          alignItems: 'flex-start',
+          marginInline: '0',
+        },
       })}
     >
       {readingList.value.length > 0 ? (
         readingList.value.map((book: Book) => (
           <li key={book.ISBN}>
-            <BookItem book={book} width={50} height={100} />
+            <BookSpine book={book} />
           </li>
         ))
       ) : (
-        <p>No hay libros en tu lista de lectura.</p>
+        <p
+          class={css({
+            width: '100%',
+          })}
+        >
+          No hay libros en tu lista de lectura.
+        </p>
       )}
     </ul>
   )

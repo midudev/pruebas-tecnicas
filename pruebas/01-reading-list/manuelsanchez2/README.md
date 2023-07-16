@@ -31,9 +31,9 @@ Podríamos dividir los objetivos en dos tipos: must y nice-to-have.
 
 ### Must
 
-- [ ] Creación de la vista general de libros disponibles
-- [ ] Creación de la vista general de lista de lectura
-- [ ] Añadir la posibilidad de filtrar los libros disponibles por género
+- [x] Creación de la vista general de libros disponibles
+- [x] Creación de la vista general de lista de lectura
+- [x] Añadir la posibilidad de filtrar los libros disponibles por género
 - [x] Sincronización de estado (tanto de libros disponibles como de lista de lectura)
 - [x] Persistencia de datos (local storage)
 - [ ] Sincronización entre pestañas
@@ -43,7 +43,7 @@ Podríamos dividir los objetivos en dos tipos: must y nice-to-have.
 ### Nice-to-have
 
 - [ ] Añadir la posibilidad de filtrar los libros disponibles por número de páginas
-- [ ] Añadir un sistema de búsqueda de libros (apuntar useDebounce)
+- [x] Añadir un sistema de búsqueda de libros (apuntar useDebounce)
 - [ ] Añadir una reorganización por prioridad en la lista de lectura
 - [ ] Posibilidad de descargar la lista de lectura en el almacenamiento local del navegador
 - [ ] Responsiveness (aunque la mayoría de usuarios vengan de escritorio)

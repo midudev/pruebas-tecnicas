@@ -45,6 +45,7 @@
     "vitest": "^0.32.2"
   },
   "dependencies": {
-    "debug": "^4.3.4"
+    "debug": "^4.3.4",
+    "motion": "^10.16.2"
   }
 }
