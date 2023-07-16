@@ -1,4 +1,4 @@
-import { useState, useReducer, useEffect } from 'react';
+import { useReducer, useEffect } from 'react';
 import { InitialBookState, TBook } from './types';
 import { bookReducer } from './booksReducer';
 
@@ -22,7 +22,10 @@ function useBooks() {
       dispatch({ type: 'GET_BOOKS', payload: data.library });
       dispatch({ type: 'ACTION_SUCCESS' });
     } catch (e: Error | any) {
-      dispatch({ type: 'ACTION_ERROR', payload: e.message || "There was an error"});
+      dispatch({
+        type: 'ACTION_ERROR',
+        payload: e.message || 'There was an error',
+      });
     }
   };
 
@@ -40,17 +43,60 @@ function useBooks() {
     dispatch({ type: 'ADD_BOOK_TO_AVAILABLE_BOOKS', payload: book });
     dispatch({ type: 'REMOVE_BOOK_FROM_LECTURE_LIST', payload: book });
     dispatch({ type: 'FILTER_BOOKS', payload: state.genre });
-  }
+  };
+
+  // const searchBooks = (word: string) => {
+  //   dispatch({ type: 'SET_GENRE', payload: '' });
+  //   dispatch({ type: 'SEARCH_BOOKS', payload: word });
+  // }
 
   useEffect(() => {
-    dispatch({ type: 'FILTER_BOOKS', payload: state.genre });
-  }, [state.genre]);
+      const totalBooks = state.availableBooks.length + state.lectureList.length;
+      if(totalBooks > 0) {
+      saveToLocalStorage({ availableBooks: state.availableBooks, lectureList: state.lectureList });
+    }
+  }, [ state.availableBooks, state.lectureList ]);
 
   useEffect(() => {
-    getBooks();
+    const savedData = getFromLocalStorage();    
+    if (savedData) {
+      dispatch({ type: 'FILTER_BOOKS', payload: state.genre });
+      dispatch({ type: "SET_AVAILABLE_BOOKS", payload: savedData.availableBooks });
+      dispatch({ type: "SET_LECTURE_LIST", payload: savedData.lectureList });
+    } else {
+      getBooks();
+    }
   }, []);
 
-  return { state, filterBooksByGenre, addBookToLectureList, addBookToAvailableBooks };
+  const saveToLocalStorage = (data: any) => {
+    try {
+      const serializedData = JSON.stringify(data);
+      localStorage.setItem("books", serializedData);
+    } catch (error) {
+      console.error('Error saving data to localStorage:', error);
+    }
+  };
+
+  const getFromLocalStorage = () => {
+    try {
+      const serializedData = localStorage.getItem("books");
+      return serializedData ? JSON.parse(serializedData) : null;
+    } catch (error) {
+      console.error('Error retrieving data from localStorage:', error);
+      return null;
+    }
+  };
+
+    useEffect(() => {
+      dispatch({ type: 'FILTER_BOOKS', payload: state.genre });
+    }, [state.genre])
+
+  return {
+    state,
+    filterBooksByGenre,
+    addBookToLectureList,
+    addBookToAvailableBooks,
+  };
 }
 
 export default useBooks;

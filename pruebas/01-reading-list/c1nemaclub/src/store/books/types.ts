@@ -26,7 +26,7 @@ export type Author = {
 };
 
 type ActionWithBookList = {
-  type: 'GET_BOOKS';
+  type: 'GET_BOOKS' | "SET_AVAILABLE_BOOKS" | "SET_LECTURE_LIST";
   payload: TBook[];
 };
 
@@ -36,7 +36,7 @@ type ActionWithBook = {
 };
 
 type ActionWithFilter = {
-  type: 'FILTER_BOOKS';
+  type: 'FILTER_BOOKS' | "SEARCH_BOOKS";
   payload: string;
 };
 
