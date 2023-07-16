@@ -13,3 +13,11 @@ body {
   background: #3c4654;
   background: radial-gradient(at right bottom, #20252c, #3c4654);
 }
+
+/* Media query para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+  body {
+    background: radial-gradient(at right bottom, #20252c, #3c4654);
+    background-attachment: fixed;
+  }
+}

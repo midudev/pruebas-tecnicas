@@ -11,3 +11,11 @@
   margin-bottom: 16px;
   color: #ffffff;
 }
+
+/* Media query para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+  .bc-section {
+    width: 100%; /* Otra opción: width: auto; */
+    height: auto;
+  }
+}

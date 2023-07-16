@@ -14,3 +14,10 @@
 a {
   text-decoration: inherit;
 }
+
+/* Media query para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+  .footer {
+    display: none;
+  }
+}

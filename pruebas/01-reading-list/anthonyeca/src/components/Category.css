@@ -28,3 +28,28 @@
   gap: 20px;
   margin-bottom: 20px;
 }
+
+/* Media query para dispositivos móviles */
+@media only screen and (max-width: 1024px) {
+  /* Media query para iPads o tablets */
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .button-28 {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .button-28 {
+    width: 100%; /* Otra opción: width: auto; */
+  }
+}
