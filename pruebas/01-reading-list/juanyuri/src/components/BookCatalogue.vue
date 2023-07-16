@@ -1,6 +1,6 @@
 <template>
-  <h1>Book Catalogue</h1>
-
+  <h1>Book Catalogue ({{ catalogueCount }})</h1>
+  <p>Genre count: {{ catalogueGenreCount }}</p>
   <select name="genre-selector" id="genreSelector" @change="onSelectedGenre">
     <option :value="genre" v-for="genre in genres" :key="genre">{{ genre }}</option>
   </select>
@@ -13,7 +13,7 @@
 
   <br>
 
-  <h1>Reading List</h1>
+  <h1>Reading List ({{ readingListCount }})</h1>
 
   <div class="catalogue"> <!-- change to reading list styling -->
     <BookCard v-for="book in store.readlist" :key="book.title" :book="book" @click="store.addToCatalogue(book)" />
@@ -34,8 +34,6 @@ const store = useStore()
 /* Call to composable to get data */
 const { books } = useBooks()
 
-const catalogue = ref(books)
-/* const filteredCatalogue = ref(catalogue.value) */ // create a new ref for the filtered array
 const genres = [...new Set(books.value.map(book => book.genre))]
 let selectedGenre = ref('')
 
@@ -55,9 +53,11 @@ const filteredCatalogue = computed(() => {
 const resetFilters = () => {
   selectedGenre.value = ''
 }
-
+const catalogueGenreCount = computed( () => store.catalogue.filter(e => e.genre === selectedGenre.value).length
+)
+const catalogueCount = computed( ()=> store.catalogue.length)
+const readingListCount = computed( ()=> store.readlist.length)
 </script>
-
 
 
 
