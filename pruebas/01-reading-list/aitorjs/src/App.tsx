@@ -4,16 +4,16 @@ import { useBooksStore } from "./store/booksStore";
 import Book from "./components/Book";
 
 function App() {
-  const { getBooks, setBooks, books } = useBooksStore();
+  const { getBooks, setBooks, books, filterBooks } = useBooksStore() as any;
 
-  const [BOOKS, setBOOKS] = useState(null);
+  // const [BOOKS, setBOOKS] = useState(null);
   useEffect(() => {
-    setBOOKS(getBooks());
-  }, [getBooks]);
+    getBooks();
+  }, []);
 
   const filterGenreBooks = (genre: string) => {
-    console.log("E", genre, BOOKS);
-    const newBooks = BOOKS?.filter((d) => {
+    console.log("E", genre);
+    const newBooks = books.filter((d) => {
       return d.book.genre === genre;
     });
 
@@ -22,7 +22,7 @@ function App() {
 
   const filterPageBooks = (pages: number) => {
     console.log("E", books, pages);
-    const newBooks = BOOKS?.filter((d) => {
+    const newBooks = books.filter((d) => {
       return d.book.pages <= pages;
     });
 
@@ -33,7 +33,7 @@ function App() {
     <>
       <h1 className="text-6xl font-bold">Librería de libros</h1>
 
-      <h2>{books.length} libros disponibles</h2>
+      <h2>{filterBooks.length} libros disponibles</h2>
 
       <div className="flex gap-3">
         <div className="flex flex-col">
@@ -62,7 +62,7 @@ function App() {
 
       <>
         <div className="flex flex-wrap gap-3">
-          {books.map(({ book }) => (
+          {filterBooks.map(({ book }) => (
             <Book key={book.ISBN} data={book} />
           ))}
         </div>

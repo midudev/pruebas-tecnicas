@@ -4,7 +4,7 @@
 
 export interface BooksState {
   books: Book[]
-  getBooks: () => Book[]
+  getBooks: () => void
   setBooks: (book: Book[]) => void
 }
 
