@@ -26,21 +26,30 @@ function ListOfBooks() {
                 src={item.book.cover}
                 alt={item.book.title}
                 onClick={() => handlerAddWish(item.book)}
-                
               />
             </div>
           </div>
           <div className="card-body">
             <h3>Title: {item.book.title}</h3>
-            <h4>Author: {item.book.author.name}</h4>
-            
+            <details>
+              <summary>More info</summary>
+              <h4>Author: {item.book.author.name}</h4>
+              <h4>Genre: {item.book.genre}</h4>
+              <span>Yeard: {item.book.year}</span>
+              <span>Pages: {item.book.pages}</span>
+              <details>
+                <summary>Desciption</summary>
+                {item.book.synopsis}
+              </details>
+            </details>
             <div className="otherbooks">
-              Other Books:
-              {item.book.author.otherBooks.map((item) => (
-                <h5>{item}</h5>
-              ))}
+              <details>
+                <summary> Other Books</summary>
+                {item.book.author.otherBooks.map((item) => (
+                  <h5>{item}</h5>
+                ))}
+              </details>
             </div>
-              
           </div>
         </div>
       ))}

@@ -1,6 +1,6 @@
 import "./app.scss";
 import ListOfBooks from "./components/listOfBooks/ListOfBooks";
-import WishListBooks from "./components/listOfBooks/wishListBooks/WishListBooks";
+import WishListBooks from "./components/wishListBooks/WishListBooks";
 
 function App() {  
   return (

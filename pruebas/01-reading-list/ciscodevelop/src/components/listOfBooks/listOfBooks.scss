@@ -3,16 +3,19 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
   .cards {
-     //filter:drop-shadow(5px 5px 35px rgb(0, 119, 255));
-     border-radius: 10px;
-     background: #000;
-     padding:3rem 10px;
+    border-radius: 10px;
+    background: #000;
+    padding: 3rem 10px;
     .card-header {
       .cover-book {
         img {
           width: 300;
           height: 400px;
+          border-radius: 10px;
           cursor: pointer;
+          &:hover{
+            transform: scale(1.05);
+          }
         }
       }
     }
@@ -20,14 +23,37 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      
+      h3 {
+        margin-top: 10px;
+      }
+      details {
+        cursor: pointer;
+        margin: 20px;
+        span {
+          margin-right: 10px;
+        }
+      }
+      details[open] summary ~ * {
+        animation: intro 0.8s ease-in-out;
+      }
+
+      @keyframes intro {
+        0% {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
       .otherbooks {
-       font-size: larger;
-       font-weight: bold;
+        font-size: larger;
+        font-weight: bold;
         width: 70%;
         border-top: 1px solid red;
-        h5{
-            font: .7em system-ui;
+        h5 {
+          font: 0.7em system-ui;
         }
       }
     }

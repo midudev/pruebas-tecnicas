@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import { RootState } from "../../../app/store";
-import { removeBookWish } from "../../../features/books/booksSlice";
-import { useAppDispatch } from "../../../app/hooks";
+import { RootState } from "../../app/store";
+import { removeBookWish } from "../../features/books/booksSlice";
+import { useAppDispatch } from "../../app/hooks";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards } from "swiper/modules";
 import "./wishListBooks.scss";
@@ -11,7 +11,8 @@ import "swiper/css/effect-cards";
 function WishListBooks() {
   const wishListBooks = useSelector((state: RootState) => state.books.wishList);
   const dispatch = useAppDispatch();
-  return ( 
+  return (
+    <div className="wishlistbooks">
       <Swiper
         effect={"cards"}
         grabCursor={true}
@@ -30,7 +31,8 @@ function WishListBooks() {
             />
           </SwiperSlide>
         ))}
-      </Swiper>   
+      </Swiper>
+    </div>
   );
 }
 
