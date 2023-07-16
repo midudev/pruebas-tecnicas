@@ -1,11 +1,11 @@
+import AvailableBooks from './components/AvailableBooks'
 import Header from './components/Header/Header'
-import Layout from './components/Layout'
 
 function App () {
   return (
     <>
       <Header />
-      <Layout/>
+      <AvailableBooks/>
     </>
   )
 }

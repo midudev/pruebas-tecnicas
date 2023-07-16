@@ -1,10 +1,9 @@
-import AvailableBooksSection from './AvailableBooksSection'
-import ReadingList from './ReadingList'
+import AvailableBooks from './AvailableBooks'
+
 export default function Layout () {
   return (
-    <section className='mx-10'>
-        <AvailableBooksSection />
-        <ReadingList/>
+    <section className='mx-10 bg-green-600 min-h-screen'>
+        <AvailableBooks />
     </section>
   )
 }
