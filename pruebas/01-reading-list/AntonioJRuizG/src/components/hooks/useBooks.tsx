@@ -1,8 +1,7 @@
-import bookslist from '../../../../books.json';
+import { BookProps } from '../model/book';
+import { BooksRepo } from '../services/books.repo';
 
-export default function useBooks() {
-	const booksList = bookslist.library;
-	const mappedBooks = booksList.map((book) => book.book);
-
-	return { books: mappedBooks };
+export default function useBooks(repo: BooksRepo) {
+	const books: BookProps[] = repo.getBooks();
+	return { books };
 }

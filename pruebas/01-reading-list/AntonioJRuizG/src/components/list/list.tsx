@@ -1,15 +1,18 @@
+import { useMemo } from 'react';
 import useBooks from '../hooks/useBooks';
+import { BooksRepo } from '../services/books.repo';
 import styles from './list.module.scss';
 
 export default function List() {
-	const { books } = useBooks();
+	const repo = useMemo(() => new BooksRepo(), []);
+	const { books } = useBooks(repo);
 
 	return (
 		<>
 			<h2>Avaible Books</h2>
 			<ul className={styles.listContainer}>
 				{books.map((book) => (
-					<li key={book.ISBN} className={styles.bookCover}>
+					<li key={book.isbn} className={styles.bookCover}>
 						<img
 							width={240}
 							height={380}
