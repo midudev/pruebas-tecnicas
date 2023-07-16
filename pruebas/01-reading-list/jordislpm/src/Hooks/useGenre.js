@@ -1,6 +1,12 @@
 import { useContext } from "react";
 import { BooksAvailable } from "../context/context";
 
-const books = useContext(BooksAvailable);
 
-console.log(BooksAvailable);
+const useGenre = ()=>{
+const [store, dispatch] = useContext(BooksAvailable)
+const {listBooks, listRead} = store;
+
+
+
+}
+export default useGenre
