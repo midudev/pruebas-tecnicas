@@ -1,5 +1,5 @@
-<main *ngIf="books.length > 0" class="h-full">
-  <div class="p-4">
-    <book *ngFor="let book of books; let i = index" [book]="book" (click)="moveToList(book, i)"></book>
+<div class="h-full flex flex-row items-center gap-3 overflow-hidden overflow-x-auto">
+  <div *ngFor="let book of books; let i = index" (click)="moveToList(book, i)">
+    <img src="{{book.cover}}" alt="{{book.title}} - {{book.year}}" class="max-w-[100px] hover:scale-110" />
   </div>
-</main>
+</div>

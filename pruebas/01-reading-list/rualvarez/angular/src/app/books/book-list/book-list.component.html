@@ -1,5 +1,5 @@
-<main class="h-full">
-  <div class="h-full grid grid-cols-5 gap-6 place-items-center">
-    <book *ngFor="let book of bookList; let i = index" [book]="book" (click)="moveToRead(book, i)"></book>
+<section aria-label="Lista de libros disponibles" class="h-full">
+  <div class="h-full grid grid-cols-5 place-items-center gap-5 bg-blue-300">
+    <book *ngFor="let book of bookList; let i = index" [book]="book" (click)="moveToRead(book, i)" class="w-full h-full"></book>
   </div>
-</main>
+</section>
