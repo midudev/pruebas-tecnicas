@@ -1,2 +1,3 @@
 dist/
 target/
+assets/*.json
