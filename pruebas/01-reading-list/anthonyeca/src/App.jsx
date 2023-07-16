@@ -12,19 +12,6 @@ function App() {
   const [filtered, setFiltered] = useState([])
   const [activeGenre, setActiveGenre] = useState('')
 
-  const handleRemoveElement = (ISBN, fromList) => {
-    removeElement(
-      ISBN,
-      fromList,
-      filtered,
-      setFiltered,
-      lecture,
-      setLecture,
-      activeGenre
-    )
-    setActiveGenre('') // Actualizar el estado de activeGenre
-  }
-
   return (
     <>
       <Category
@@ -32,8 +19,15 @@ function App() {
         setActiveGenre={setActiveGenre}
         library={library}
         setFiltered={setFiltered}
+        lecture={lecture}
       />
-      <BookContainer title={`${filtered.length} Available books`}>
+      <BookContainer
+        categoryAvailable={filtered.length}
+        totalAvailable={library.length - lecture.length}
+        category={activeGenre}
+        typeContainer={'library'}
+        titleContainer={'Libreria'}
+      >
         {filtered.map((el) => (
           <Book
             key={el.book.ISBN}
@@ -41,21 +35,39 @@ function App() {
             image={el.book.cover}
             genre={el.book.genre}
             activeGenre={activeGenre}
-            onClick={
-              () => handleRemoveElement(el.book.ISBN, 'filtered') // Utilizar la función handleRemoveElement
+            onClick={() =>
+              removeElement(
+                el.book.ISBN,
+                'filtered',
+                filtered,
+                setFiltered,
+                lecture,
+                setLecture
+              )
             }
           />
         ))}
       </BookContainer>
-      <BookContainer title={`${lecture.length} List of lecture: `}>
+      <BookContainer
+        totalAvailable={lecture.length}
+        typeContainer="lecture"
+        titleContainer="Lectura"
+      >
         {lecture.map((el) => (
           <Book
             key={el.book.ISBN}
             title={el.book.title}
             image={el.book.cover}
             genre={el.book.genre}
-            onClick={
-              () => handleRemoveElement(el.book.ISBN, 'lecture') // Utilizar la función handleRemoveElement
+            onClick={() =>
+              removeElement(
+                el.book.ISBN,
+                'lecture',
+                filtered,
+                setFiltered,
+                lecture,
+                setLecture
+              )
             }
           />
         ))}

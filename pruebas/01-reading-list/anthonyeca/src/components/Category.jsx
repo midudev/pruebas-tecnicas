@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import './Category.css'
 
 /* eslint-disable react/prop-types */
@@ -7,15 +7,28 @@ export const Category = ({
   setActiveGenre,
   library,
   setFiltered,
+  lecture,
 }) => {
-  useEffect(() => {
+  const [originalLibrary, setOriginalLibrary] = useState([])
+
+  useLayoutEffect(() => {
+    setOriginalLibrary(library)
+  }, [library])
+
+  useLayoutEffect(() => {
     if (activeGenre === '') {
-      setFiltered(library)
+      const elementosDiferentes = originalLibrary.filter(
+        (el) => !lecture.includes(el) && el.book.genre.includes(activeGenre)
+      )
+      setFiltered(elementosDiferentes)
       return
     }
-    const filtered = library.filter((el) => el.book.genre.includes(activeGenre))
+
+    const filtered = originalLibrary.filter(
+      (el) => el.book.genre.includes(activeGenre) && !lecture.includes(el)
+    )
     setFiltered(filtered)
-  }, [activeGenre])
+  }, [activeGenre, originalLibrary, lecture, setFiltered])
 
   return (
     <div className="category-container">
