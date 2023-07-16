@@ -22,3 +22,8 @@ export interface Root {
     otherBooks: string[]
   }
   
+  export interface bookState {
+    booksList: Root;
+    wishList: Book[];
+     
+  }

@@ -1,4 +1,32 @@
 .wishlistbooks {
+  z-index: -1;
+  position: relative;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.204);
+  padding: 20px 0;
+  border-radius: 10px;
+  margin-bottom: 50px;
+  position: relative;
+   span {
+    background: #ff0000a7;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+   // right: -8px;
+    left: -7px;
+    top: -15px;
+    border-radius: 10px;
+    padding: 13px;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    &:hover{
+      transform: scale(1.2);
+      background: #ff0000;
+    }
+}
   .mySwiper {
     width: 250px;
     height: 350px;

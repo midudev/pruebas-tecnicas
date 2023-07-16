@@ -1,25 +1,28 @@
 import { useSelector } from "react-redux";
-import { Book } from "../../models/booksModel";
 import { addBookWish } from "../../features/books/booksSlice";
 import { ToastContainer, toast } from "react-toastify";
-import { RootState } from "../../app/store";
+import { RootState, store } from "../../app/store";
 import { useAppDispatch } from "../../app/hooks";
+import { Book } from "../../models/BooksModel";
 import "react-toastify/dist/ReactToastify.css";
 import "./listOfBooks.scss";
 
 function ListOfBooks() {
   const storeBooks = useSelector((state: RootState) => state.books.booksList);
+  const storeWishList = useSelector((state: RootState) => state.books.wishList);
   const dispatch = useAppDispatch();
 
   const handlerAddWish = (book: Book) => {
     dispatch(addBookWish(book));
-    toast("Added to wishlist!");
+    const showTost =
+      storeWishList.length != store.getState().books.wishList.length;
+    showTost ? toast.success("Added to Favorites!"):toast.warn("Already in your favorites books!");
   };
 
   return (
     <div className="container-cards-listofbooks">
       {storeBooks.library.map((item) => (
-        <div className="cards" key={item.book.ISBN}>
+        <div className="cards-books" key={item.book.ISBN}>
           <div className="card-header">
             <div className="cover-book">
               <img
@@ -46,14 +49,27 @@ function ListOfBooks() {
               <details>
                 <summary> Other Books</summary>
                 {item.book.author.otherBooks.map((item) => (
-                  <h5>{item}</h5>
+                  <h5 key={item}>{item}</h5>
                 ))}
               </details>
             </div>
           </div>
         </div>
       ))}
-      <ToastContainer />
+      <ToastContainer
+        style={{ zIndex: 999, top: 100 }}
+        position="top-right"
+        autoClose={2000}
+        limit={1}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 }

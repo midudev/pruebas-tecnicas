@@ -1,45 +1,44 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../../app/store";
 import dummyBooks from "../../../../books.json";
-import { Book, Root } from "../../models/booksModel";
-// Define a type for the slice state
-interface bookState {
-  booksList: Root;
-  wishList: Book[];
-}
+import { Book, bookState } from "../../models/BooksModel";
 
-// Define the initial state using that type
 const initialState: bookState = {
   booksList: dummyBooks,
-  wishList: [],
+  wishList: [],  
 };
 
 export const bookSlice = createSlice({
-  name: "book",
-  // `createSlice` will infer the state type from the `initialState` argument
+  name: "book",  
   initialState,
   reducers: {
     addBookWish: (state, action: PayloadAction<Book>) => {
       const bookFind = state.wishList.find(
         (book) => book.ISBN === action.payload.ISBN
       );
-      !bookFind
-        ? state.wishList.push(action.payload)
-        : alert("ya esta en la lista");
+      !bookFind && state.wishList.push(action.payload)        
     },
-    removeBookWish: (state, action: PayloadAction<Book>) => {
-      if (window.confirm("estas seguro de querer eliminarlo?")) {
+    removeBookWishList: (state, action: PayloadAction<Book>) => {
+      if (window.confirm("¿Está seguro de que desea eliminar el libro?")) {
         state.wishList = state.wishList.filter(
           (book) => book.ISBN !== action.payload.ISBN
         );
       }
     },
+    removeAllBooksWishList: () => {
+      if (window.confirm("¿Seguro que quieres borrar todo?")) {
+        return initialState;
+      
+      }
+    },
   },
 });
 
-export const { addBookWish, removeBookWish } = bookSlice.actions;
+export const { addBookWish, removeBookWishList,removeAllBooksWishList } = bookSlice.actions;
 
-// Other code such as selectors can use the imported `RootState` type
-export const selectCount = (state: RootState) => state.books.booksList;
+ 
+export const selectBooksList = (state: RootState) => state.books.booksList;
+export const selectBooksWishList = (state: RootState) => state.books.wishList;
+ 
 
 export default bookSlice.reducer;

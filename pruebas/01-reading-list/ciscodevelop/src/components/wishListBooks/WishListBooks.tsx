@@ -1,18 +1,36 @@
 import { useSelector } from "react-redux";
-import { RootState } from "../../app/store";
-import { removeBookWish } from "../../features/books/booksSlice";
+import { RootState, store } from "../../app/store";
+import {
+  removeAllBooksWishList,
+  removeBookWishList,
+} from "../../features/books/booksSlice";
 import { useAppDispatch } from "../../app/hooks";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards } from "swiper/modules";
 import "./wishListBooks.scss";
 import "swiper/css";
 import "swiper/css/effect-cards";
-//import "./styles.css";
-function WishListBooks() {
+import { WishListModal } from "../../models/WishListModal";
+import { Book } from "../../models/BooksModel";
+
+function WishListBooks({ modalState, setModalState }: WishListModal) {
   const wishListBooks = useSelector((state: RootState) => state.books.wishList);
   const dispatch = useAppDispatch();
+  const remobeAllBooksWishList = () => {
+    dispatch(removeAllBooksWishList());
+    setModalState(false);
+  };
+  const remobeBookWishList = (item:Book) => {
+    dispatch(removeBookWishList(item))
+    !store.getState().books.wishList.length &&
+    setModalState(false);
+  };
   return (
     <div className="wishlistbooks">
+      {wishListBooks.length > 0 && <button onClick={remobeAllBooksWishList}>
+        Clear All
+      </button>}
+      <span onClick={() => setModalState(!modalState)}>X</span>
       <Swiper
         effect={"cards"}
         grabCursor={true}
@@ -27,7 +45,7 @@ function WishListBooks() {
               alt={item.title}
               width={150}
               height={200}
-              onClick={() => dispatch(removeBookWish(item))}
+              onClick={()=>remobeBookWishList(item)}
             />
           </SwiperSlide>
         ))}
