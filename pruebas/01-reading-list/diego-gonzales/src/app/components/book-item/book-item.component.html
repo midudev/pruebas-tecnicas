@@ -1,0 +1,14 @@
+<div
+  class="card card-compact w-full bg-neutral text-neutral-content transition-all hover:contrast-75 cursor-pointer rounded"
+>
+  <div class="card-body items-center text-center">
+    <figure>
+      <img
+        [src]="book.cover"
+        [alt]="'Book of ' + book.title"
+        class="aspect[310/460] w-full h-full object-contain rounded"
+      />
+    </figure>
+    <h2>{{ book.title }}</h2>
+  </div>
+</div>

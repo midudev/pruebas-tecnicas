@@ -23,5 +23,6 @@ module.exports = {
   rules: {
     '@typescript-eslint/no-confusing-void-expression': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/prefer-readonly': 'off',
   },
 };
