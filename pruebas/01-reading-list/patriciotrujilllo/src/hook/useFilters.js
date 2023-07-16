@@ -11,6 +11,7 @@ export const useFilters = () =>{
         
     }
     return{
+        filters,
         setFilters,
         filterBooks
     }
