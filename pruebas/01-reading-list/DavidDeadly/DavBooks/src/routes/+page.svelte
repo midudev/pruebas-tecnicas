@@ -13,10 +13,10 @@
   let pagesSelectedRange: number = 0;
   let filteredGenre: string | undefined;
 
-  booksStore.subscribe(({ numFreeBooks, minPages, filters }) => {
+  booksStore.subscribe(({ numFreeBooks, maxPages, filters }) => {
     isOne = plural.select(numFreeBooks) === 'one';
     filteredGenre = filters?.genre ? filters.genre : NO_GENRES_FILTER;
-    pagesSelectedRange = filters?.pages ? filters.pages : minPages;
+    pagesSelectedRange = filters?.pages ? filters.pages : maxPages;
   });
 
   const filterBooks = () => {

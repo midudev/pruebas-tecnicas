@@ -33,8 +33,8 @@ const store = create(persist<IBooks.Store>((set, get) => ({
         free: !readingList.includes(book.ISBN)
       }));
 
-    const minPages = Math.min(...books.map(book => book.pages));
-    const isPagesFilterDisabled = !pages || minPages === pages;
+    const maxPages = Math.max(...books.map(book => book.pages));
+    const isPagesFilterDisabled = !pages || maxPages === pages;
     if(isPagesFilterDisabled && !genre) {
       set({ filters: null });
       return fillFreeBooks();
