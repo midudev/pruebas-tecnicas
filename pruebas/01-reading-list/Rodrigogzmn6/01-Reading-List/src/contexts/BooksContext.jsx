@@ -7,6 +7,7 @@ const BooksContextProvider = ({ children }) => {
   const [books, setBooks] = useState(Books.library);
   const [readingList, setReadingList] = useState([]);
   const [genders, setGenders] = useState(["All"]);
+  const [filter, setFilter] = useState("All");
 
   useEffect(() => {
     books.forEach((book) => {
@@ -34,6 +35,10 @@ const BooksContextProvider = ({ children }) => {
     }
   };
 
+  const filterLibraryBooks = (filter) => {
+    setFilter(filter);
+  };
+
   return (
     <BooksContext.Provider
       value={{
@@ -42,6 +47,8 @@ const BooksContextProvider = ({ children }) => {
         readingList,
         moveToReadingList,
         moveToLibrary,
+        filter,
+        filterLibraryBooks,
       }}
     >
       {children}
