@@ -15,9 +15,22 @@ a {
   text-decoration: inherit;
 }
 
-/* Media query para dispositivos móviles */
 @media only screen and (max-width: 600px) {
   .footer {
-    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 3px;
+    background-color: #20252c;
+    color: #ffffff;
+  }
+
+  .footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: auto;
   }
 }
