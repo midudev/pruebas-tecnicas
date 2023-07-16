@@ -4,16 +4,16 @@ import { BooksContext } from './BooksContext'
 export const UserContext = createContext()
 
 export default function UserProvider ({ children }) {
-  const { setAvailableBooks, setUserReadingList } = useContext(BooksContext)
+  const { books, readingList } = useContext(BooksContext)
 
   const addToReadingList = (book) => {
-    setUserReadingList(prevUserListBooks => addData(prevUserListBooks, book, 'userReadingList'))
-    setAvailableBooks(prevAvailableBooks => updateData(prevAvailableBooks, book, 'availableBooks'))
+    readingList.setUserReadingList(prevUserListBooks => addData(prevUserListBooks, book, 'userReadingList'))
+    books.setBooks(prevAvailableBooks => updateData(prevAvailableBooks, book, 'availableBooks'))
   }
 
   const deleteToReadingList = (book) => {
-    setUserReadingList(prevUserListBooks => updateData(prevUserListBooks, book, 'userReadingList'))
-    setAvailableBooks(prevAvailableBooks => addData(prevAvailableBooks, book, 'availableBooks'))
+    readingList.setUserReadingList(prevUserListBooks => updateData(prevUserListBooks, book, 'userReadingList'))
+    books.setBooks(prevAvailableBooks => addData(prevAvailableBooks, book, 'availableBooks'))
   }
 
   return (

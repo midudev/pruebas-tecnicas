@@ -5,7 +5,7 @@ import useLocalStorage from '../hooks/useLocalStorage'
 export const BooksContext = createContext()
 
 export default function BooksProvider ({ children }) {
-  const { availableBooks, setAvailableBooks } = useBooks()
+  const { books, booksFilter } = useBooks()
   const [userReadingList, setUserReadingList] = useLocalStorage('userReadingList')
 
   useEffect(() => {
@@ -14,7 +14,7 @@ export default function BooksProvider ({ children }) {
         setUserReadingList(JSON.parse(e.newValue))
       }
       if (e.key === 'availableBooks') {
-        setAvailableBooks(JSON.parse(e.newValue))
+        books.setBooks(JSON.parse(e.newValue))
       }
     }
     window.addEventListener('storage', handleStorageEvent)
@@ -22,18 +22,18 @@ export default function BooksProvider ({ children }) {
     return () => window.removeEventListener('storage', handleStorageEvent)
   }, [])
 
-  const filterAvailableBooks = () => {
-
-  }
-
   return (
     <BooksContext.Provider value={{
-      availableBooks,
-      setAvailableBooks,
-      userReadingList,
-      setUserReadingList,
-      availableBooksCounter: availableBooks.length,
-      readingListCounter: userReadingList.length
+      booksFilter,
+      books,
+      readingList: {
+        userReadingList,
+        setUserReadingList
+      },
+      counter: {
+        availableBooksCounter: books.availableBooks.length,
+        readingListCounter: userReadingList.length
+      }
     }}>
         {children}
     </BooksContext.Provider>
