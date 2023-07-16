@@ -1,14 +1,13 @@
-import bookslist from '../../../../books.json';
+import useBooks from '../hooks/useBooks';
 
 export default function List() {
-	const booksList = bookslist.library;
-	const mappedBooks = booksList.map((book) => book.book);
+	const { books } = useBooks();
 
 	return (
 		<>
 			<h2>Avaible Books</h2>
 			<ul>
-				{mappedBooks.map((book) => (
+				{books.map((book) => (
 					<li key={book.ISBN}>
 						<img
 							src={book.cover}
