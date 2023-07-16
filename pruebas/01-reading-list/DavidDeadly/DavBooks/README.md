@@ -24,7 +24,8 @@
 
 - [x] Visualización de Libros Disponibles
 - [x] Creación de Lista de Lectura
-- [ ] Filtrado de Libros por Género
+- [x] Filtrado de Libros por Género
+- [x] Filtrado de Libros por Número de páginas
 - [x] Sincronización de Estado
 - [X] Persistencia de Datos
 - [ ] Sincronización entre pestañas
