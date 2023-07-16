@@ -14,7 +14,7 @@ export const Current = () => {
   return (
     <div className="bg-neutral-900/75 w-2/5 rounded">
       <h1 className="text-2xl font-bold capitalize">
-        {books.length} on reading list
+        {books.length || 0} on reading list
       </h1>
       <div className="flex flex-wrap content-start justify-center gap-4">
         {books.map((book, i) => (
