@@ -19,7 +19,7 @@ export const BookContainer = ({
         </p>
       )}
       {category == '' && typeContainer === 'library' && (
-        <p>Todos los libros disponibles</p>
+        <p>Todas las categorías</p>
       )}
       <div className="bc-container">{children}</div>
     </section>
