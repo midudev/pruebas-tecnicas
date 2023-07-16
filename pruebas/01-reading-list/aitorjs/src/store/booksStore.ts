@@ -5,7 +5,7 @@ import { BooksState } from '../types'
 export const useBooksStore = create<BooksState>((set, get) => ({
   books: [],
   WantReadBooks: [],
-  filterBooks: {},
+  filterBooks: [],
   getBooks: () => {
     console.log('json', booksJson.library)
     const books = booksJson.library
