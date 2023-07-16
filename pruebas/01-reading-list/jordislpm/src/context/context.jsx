@@ -1,6 +1,4 @@
 import { createContext, useReducer, useEffect } from "react";
-// import useBooks from "../Hooks/useBooks";
-import datos from "../../json/libros.json"
 
 
 export const BooksAvailable = createContext(null)
@@ -8,26 +6,14 @@ export const BooksAvailable = createContext(null)
 
 function ContextBook ({ children }){
 
-    // const [data] = useBooks()
 
     const initialState = {
         listBooks: [],
-        listRead:[]
+        listRead:[],
+        genres:[]
     }
-    //  const books = reducer(initialState, {type:"init", books:data });
-
 
     const [store, dispatch] = useReducer(reducer, initialState);
-
-    // useEffect(()=>{
-    //     console.log("¿")
-    // console.log(data)
-    // console.log("?")
-    // const books = reducer(initialState, {type:"init", books:data })
-    // dispatch({type:"init", books:data })
-    // },[])
-
-
     return(
         <BooksAvailable.Provider value={[store, dispatch]}>
             {children}
@@ -39,9 +25,17 @@ function reducer(state, action){
     switch (action.type) {
         case "init":{
             const initBooks = action.books;
+            let allGenres = [];
+            let genres = action.books.forEach((book)=>{ 
+                 if(!allGenres.includes(book.genre)){
+                    allGenres.push(book.genre)
+                     }
+            });
             return {
                 ...state,
-                listBooks: initBooks
+                listBooks: initBooks,
+                genres:allGenres
+                
             }
         };
         case "moveToRead":{
