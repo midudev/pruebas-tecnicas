@@ -18,6 +18,10 @@
 - npm install
 - npm run dev
 
+## Linter (ts-standard)
+
+- Para que resuelva VSC los problemas que encuentra, tiene que ser 'Javascript JSX'.
+
 ## TODO
 
 - BookService https://github.com/midudev/pruebas-tecnicas/commit/448ebd1f4cb6c2f273f6bc6c255b94bec7ef2233

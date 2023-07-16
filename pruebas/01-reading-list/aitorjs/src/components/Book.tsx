@@ -2,7 +2,7 @@ const Book = ({ data }) => {
   return (
     <>
       <p key={data.ISBN}>
-        <img src={data.cover} width={200} height={200} alt="alt image" />
+        <img src={data.cover} width={200} height={200} alt='alt image' />
         {/* <span>{b.book.pages} </span>
             <span>{b.book.genre} </span>
             <span>{b.book.cover} </span>
@@ -12,7 +12,7 @@ const Book = ({ data }) => {
             <span>{b.book.author.name} </span> */}
       </p>
     </>
-  );
-};
+  )
+}
 
-export default Book;
+export default Book
