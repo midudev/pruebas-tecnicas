@@ -19,7 +19,7 @@ function App() {
         totalAvailable={library.length - lecture.length}
         category={activeGenre}
         typeContainer={'library'}
-        titleContainer={'Libreria'}
+        titleContainer={'Librería'}
       >
         <Category
           activeGenre={activeGenre}
