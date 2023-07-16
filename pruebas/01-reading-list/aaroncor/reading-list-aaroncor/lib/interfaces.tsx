@@ -15,6 +15,7 @@ export interface Book {
 	year: number;
 	ISBN: string;
 	author: Author;
+	inList?: boolean;
 }
 
 export interface Author {
