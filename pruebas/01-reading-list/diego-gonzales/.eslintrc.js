@@ -20,5 +20,8 @@ module.exports = {
     sourceType: 'module',
     project: './tsconfig.json',
   },
-  rules: {},
+  rules: {
+    '@typescript-eslint/no-confusing-void-expression': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+  },
 };
