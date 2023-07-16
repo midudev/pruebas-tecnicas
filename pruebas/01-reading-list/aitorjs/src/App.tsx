@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     getBooks();
     // console.log("ANTES _dbbooks", _dbbooks, dbbooks);
-  }, [getBooks]);
+  }, []);
 
   const filterGenreBooks = (genre: string) => {
     console.log("E", genre, booksJson);
