@@ -1,5 +1,5 @@
 <div class="row justify-content-start">
   <div *ngFor="let book of books; let i = index" class="col-auto">
-    <a (click)="addReadingList(book, i)"><img [src]="book.cover" alt="portada-libro" class="cover-book"></a>
+    <img (click)="addReadingList(book, i)" [src]="book.cover" alt="portada-libro" class="cover-book">
   </div>
 </div>

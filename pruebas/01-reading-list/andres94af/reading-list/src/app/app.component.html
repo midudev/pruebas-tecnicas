@@ -5,12 +5,16 @@
 <main class="container">
   <div class="row">
     <!-- Sección libros -->
-    <section class="col-8">
+    <section class="col-md-8">
       <app-index [books]="books" [readingList]="readingList"></app-index>
     </section>
     <!-- Sección lista de lectura -->
-    <section class="col-4">
+    <section class="col-md-4">
       <app-lista-lectura [readingList]="readingList" [books]="books"></app-lista-lectura>
     </section>  
   </div>
 </main>
+
+<footer class="text-center fixed-bottom">
+  <p>Andres Mariano Fernández &copy; 2023</p>
+</footer>

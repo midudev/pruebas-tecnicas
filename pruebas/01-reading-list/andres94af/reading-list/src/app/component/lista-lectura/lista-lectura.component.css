@@ -1,10 +1,38 @@
 p{
   margin: 0;
+  color: black;
 }
 
 .cover-book_sm{
   max-width: 3rem;
   aspect-ratio: 9/14;
   margin-right: 0rem;
-  margin-bottom: 1rem;
+}
+
+.row_style{
+  border-radius: 5px;
+  background-color: #f1f1f1;
+  box-shadow: 0px 10px 10px -6px black;
+  margin: 0.6rem;
+  padding: 0.5rem;
+}
+
+.row_style:hover{
+  transform: scale(1.05);
+  transition-duration: 0.5s;
+}
+
+.readingList{
+  max-height: 80vh;
+  overflow-y: scroll;
+}
+
+.readingList::-webkit-scrollbar {
+  width: 12px;
+}
+
+.readingList::-webkit-scrollbar-thumb {
+  background-color: rgb(83, 83, 181);
+  border-radius: 20px;
+  border: 3px solid rgb(219, 219, 219);
 }

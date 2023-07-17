@@ -1,10 +1,14 @@
 .cover-book{
+  border-radius: 5px;
   max-width: 9rem;
   aspect-ratio: 9/14;
   margin-right: 0rem;
   margin-bottom: 1rem;
+  cursor: pointer;
 }
 
-.cover-book_add{
-  opacity: 0.5;
+.cover-book:hover{
+  transition: 1s 0.2s;
+  transform: scale(1.5);
+  box-shadow: 0px 10px 10px -6px black;
 }

@@ -1,20 +1,22 @@
-<div class="div" *ngIf="readingList.length; else sinLibros">
-  <div class="row" *ngFor="let book of readingList; let i = index">
-    <div class="col-auto">
-      <img src="{{book.cover}}" alt="portada libro" class="cover-book_sm">
-    </div>
-    <div class="col-8">
-      <p class="text-truncate">Titulo: {{book.title}}</p>
-      <p>Autor: {{book.author.name}}</p>
-      <p>Páginas: {{book.pages}}</p>
-    </div>
-    <div class="col-auto">
-      <button class="btn btn-danger btn-sm" (click)="removeBook(book, i)">X</button>
+<div class="div readingList">
+  <div class="div" *ngIf="readingList.length; else sinLibros">
+    <div class="row justify-content-between row_style" *ngFor="let book of readingList; let i = index">
+      <div class="col-auto p-0">
+        <img src="{{book.cover}}" alt="portada libro" class="cover-book_sm">
+      </div>
+      <div class="col-8">
+        <p class="text-truncate">Titulo: {{book.title}}</p>
+        <p>Autor: {{book.author.name}}</p>
+        <p>Páginas: {{book.pages}}</p>
+      </div>
+      <div class="col-auto p-0">
+        <button class="btn btn-danger btn-sm" (click)="removeBook(book, i)">X</button>
+      </div>
     </div>
   </div>
+  <ng-template #sinLibros>  
+    <div class="div">
+      <h3>Sin libros en su lista de lectura...</h3>
+    </div>
+  </ng-template>
 </div>
-<ng-template #sinLibros>  
-  <div class="div">
-    <h3>Sin libros en su lista de lectura...</h3>
-  </div>
-</ng-template>

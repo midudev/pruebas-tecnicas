@@ -9,7 +9,7 @@ import { BookService } from './service/book.service';
 })
 export class AppComponent {
 
-  title = 'Reading List';
+  title = '---> Reading List Challenge <---';
   books:Book[] = [];
   readingList:Book[] = [];
 
@@ -17,7 +17,6 @@ export class AppComponent {
       this.bookService.getBooks().subscribe({
         next: data => {
           this.books = data.library.map((item: { book: Book }) => item.book);
-          console.log(this.books.length);
         },
         error: err => console.log(err)
       });

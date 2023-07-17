@@ -15,7 +15,7 @@ export class IndexComponent {
 
   addReadingList(book:Book, index:number){
     this.books.splice(index, 1);
-    this.readingList.push(book);
+    this.readingList.unshift(book);
   }
 
 }
