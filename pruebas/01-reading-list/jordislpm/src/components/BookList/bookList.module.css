@@ -9,7 +9,7 @@
     padding: 1rem;
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 5rem;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
  
 }

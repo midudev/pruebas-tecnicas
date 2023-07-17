@@ -13,6 +13,9 @@ const modifiers = {
     addRead : "moveToRead", 
 }
 
+useEffect(()=>{
+    console.log(store)
+},[store])
 
 return (
 

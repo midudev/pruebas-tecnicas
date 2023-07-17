@@ -3,7 +3,7 @@ display: flex;
 border: 2px solid blue;
 border-radius: 4%;
 overflow: hidden;
-max-width: 150px;
+max-width: 200px;
 height: max-content;  
 }
 
