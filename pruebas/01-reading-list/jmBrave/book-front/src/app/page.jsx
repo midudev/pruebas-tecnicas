@@ -7,7 +7,7 @@ export default function Home() {
             <div className="flex flex-col p-2">
                 {library.map((book) => {
                     return (
-                        <div className="pb-4" key={book.title}>
+                        <div className="pb-4" key={book.ISBN}>
                             <Card>{book}</Card>
                         </div>
                     )
@@ -16,7 +16,7 @@ export default function Home() {
             <div className="flex flex-col p-2">
                 {library.map((book) => {
                     return (
-                        <div className="pb-4" key={book.title}>
+                        <div className="pb-4" key={book.ISBN}>
                             <Card>{book}</Card>
                         </div>
                     )
