@@ -1,0 +1,56 @@
+#root {
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.filters-header{
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.header-info > h3 {
+  margin-bottom: 0;
+}
+
+.header-info > p {
+  margin: 0;
+}
+
+.filters-header div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.library-grid{
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1rem));
+  margin: 0;
+  padding: 0;
+  gap: 1rem;
+  object-fit: cover;
+  align-items: center;
+  justify-content: center;
+}
+
+.library-grid li img {
+  width: 100%;
+}
+
+
+.page-body-grid{
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Esto crea dos columnas de igual tamaño */
+  width: 100%;
+  gap: 1rem;
+}
+
+.reading-list-aside{
+  border: 1px solid white;
+  border-radius: 1rem;
+  min-width: 30vw;
+  min-height: 90vh;
+}
