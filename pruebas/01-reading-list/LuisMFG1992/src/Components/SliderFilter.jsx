@@ -5,7 +5,7 @@ const SliderFilter = () => {
         htmlFor="default-range"
         className="block text-sm font-medium text-white-900 dark:text-white text-center"
       >
-        Filter by pages
+        Numero de paginas
       </label>
       <input
         id="default-range"

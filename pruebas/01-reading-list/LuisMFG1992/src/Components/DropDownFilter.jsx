@@ -1,8 +1,12 @@
 import { useState } from 'react'
-
-const genre = ['Fantasía', 'Ciencia ficción', 'Zombies', 'Terror']
+import { useSelector } from 'react-redux'
 
 const DropDownFilter = () => {
+  const { booksList } = useSelector((state) => state.books)
+
+  const setGenre = new Set(booksList.map((element) => element.book.genre))
+  const filterGenre = [...setGenre]
+
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleDropDown = () => {
@@ -15,7 +19,7 @@ const DropDownFilter = () => {
         type="button"
         onClick={toggleDropDown}
       >
-        Dropdown button
+        Categoria
         <svg
           className="w-2.5 h-2.5 ml-2.5"
           aria-hidden="true"
@@ -39,7 +43,7 @@ const DropDownFilter = () => {
             className="py-2 text-sm text-gray-700 dark:text-gray-200"
             aria-labelledby="dropdownDefaultButton"
           >
-            {genre.map((element) => {
+            {filterGenre.map((element) => {
               return (
                 <li key={element}>
                   <a

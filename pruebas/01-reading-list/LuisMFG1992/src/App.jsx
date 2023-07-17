@@ -5,12 +5,12 @@ import DropDownFilter from './Components/DropDownFilter'
 import SliderFilter from './Components/SliderFilter'
 import { useDispatch } from 'react-redux'
 import { fetchBooks } from './redux/booksSlice'
-// import { getBooksData } from '../data/data'
 
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchBooks())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

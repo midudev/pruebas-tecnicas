@@ -7,22 +7,20 @@ export const fetchBooks = createAsyncThunk('books/fetch', async () => {
 })
 
 // To create a new book in the state
-export const saveBook = createAsyncThunk(
-  'book/save',
-  async (book, thunkAPI) => {
-    const response = await fetch('../../data/books.json', {
-      method: 'POST',
-      headers: {
-        'Context-Type': 'application/json',
-      },
-      body: {
-        book,
-      },
-    })
-    const data = await response.json()
-    return data
-  }
-)
+
+export const saveBook = createAsyncThunk('book/save', async (book) => {
+  const response = await fetch('../../data/books.json', {
+    method: 'POST',
+    headers: {
+      'Context-Type': 'application/json',
+    },
+    body: {
+      book,
+    },
+  })
+  const data = await response.json()
+  return data
+})
 
 export const booksSlice = createSlice({
   name: 'books',
