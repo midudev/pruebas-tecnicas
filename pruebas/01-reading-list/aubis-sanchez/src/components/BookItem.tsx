@@ -7,8 +7,7 @@ import {
   Button,
 } from "@mui/material";
 import { Book } from "../models";
-import { BookContext, BookContextType } from "../context/bookContext";
-import { useContext } from "react";
+import { useBook } from "../zustand/useBooks";
 
 interface Props {
   book: Book;
@@ -16,8 +15,14 @@ interface Props {
 }
 
 export const BookItem = ({ book, lectureBook }: Props) => {
-  const { addToLectureList, removeFromLectureList, findBookOnLecture } =
-    useContext(BookContext) as BookContextType;
+  const addToLectureList = useBook((state) => state.addToLectureList);
+  const removeFromLectureList = useBook((state) => state.removeFromLectureList);
+  const userLectureList = useBook((state) => state.userLectureList);
+  // const findBookOnLecture = useBook((state) => state.findBookOnLecture);
+
+  const disableBtn =
+    !lectureBook &&
+    userLectureList.find((storageBook) => storageBook.ISBN === book.ISBN);
 
   return (
     <Card sx={{ maxWidth: 250 }} component="article">
@@ -52,7 +57,7 @@ export const BookItem = ({ book, lectureBook }: Props) => {
       </CardContent>
       <CardActions>
         <Button
-          disabled={!lectureBook && findBookOnLecture(book.ISBN)}
+          disabled={!!disableBtn}
           onClick={() =>
             lectureBook
               ? removeFromLectureList(book.ISBN)

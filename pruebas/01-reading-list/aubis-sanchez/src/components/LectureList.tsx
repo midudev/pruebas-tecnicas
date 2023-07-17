@@ -1,12 +1,11 @@
 import { Grid } from "@mui/material";
 import { SectionContainer } from ".";
 import { BookItem } from "./BookItem";
-import { useContext } from "react";
-import { BookContext, BookContextType } from "../context/bookContext";
 import EmptyList from "./EmptyList";
+import { useBook } from "../zustand/useBooks";
 
 export const LectureList = () => {
-  const { userLectureList } = useContext(BookContext) as BookContextType;
+  const userLectureList = useBook((state) => state.userLectureList);
 
   if (userLectureList.length === 0)
     return <EmptyList label="Your lecture list is empty" />;

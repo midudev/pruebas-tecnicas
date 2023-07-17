@@ -6,8 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Chip from "@mui/material/Chip";
-import { useContext } from "react";
-import { BookContext, BookContextType } from "../context/bookContext";
+import { useBook } from "../zustand/useBooks";
 
 const genres = getBooksGenres();
 
@@ -23,9 +22,8 @@ const MenuProps = {
 };
 
 export const BooksGenresFilter = () => {
-  const { selectedGenres, setSelectedGenres } = useContext(
-    BookContext
-  ) as BookContextType;
+  const selectedGenres = useBook((state) => state.selectedGenres);
+  const setSelectedGenres = useBook((state) => state.setSelectedGenres);
 
   const handleChange = (event: SelectChangeEvent<typeof selectedGenres>) => {
     const {

@@ -1,7 +1,7 @@
-import { Box, Button, Slide } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { Views } from "../models";
-import { BookContext, BookContextType } from "../context/bookContext";
-import { useContext, useEffect, useState } from "react";
+import { useBook } from "../zustand/useBooks";
+import { useEffect, useState } from "react";
 
 interface Props {
   sectionOnView: Views;
@@ -9,7 +9,8 @@ interface Props {
 }
 
 export const Switch = ({ sectionOnView, setSectionOnView }: Props) => {
-  const { userLectureList, books } = useContext(BookContext) as BookContextType;
+  const books = useBook((state) => state.books);
+  const userLectureList = useBook((state) => state.userLectureList);
   const [availableBooksAmount, setAvailableBooksAmount] = useState(
     books.length
   );
