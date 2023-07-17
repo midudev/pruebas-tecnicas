@@ -1,8 +1,9 @@
 use rand::{seq::SliceRandom, thread_rng};
 use yew::prelude::*;
 use yew_icons::{Icon, IconId};
+use yew_router::prelude::Link;
 
-use crate::models::Book as BookModel;
+use crate::{models::Book as BookModel, route::Route};
 
 #[derive(Clone, Properties, PartialEq)]
 pub struct Props {
@@ -26,15 +27,17 @@ pub fn SuggestedBook(props: &Props) -> Html {
                     <p class={classes!("text-neutral-600","font-bold")}>
                         {"¿Buscas una nueva aventura literaria? Deja que nuestros expertos te sugieran un libro perfecto para ti"}
                     </p>
-                    <a
-                        href={format!("/book/{}", book.title.clone())}
-                        class={classes!("rounded-full","bg-slate-900","text-white","px-4","py-2","w-fit","flex","flex-row","gap-3")}
+                    <Link<Route>
+                        to={Route::Book { name: book.title.clone() }}
+                        classes={classes!("rounded-full","bg-slate-900","text-white","px-4","py-2","w-fit","flex","flex-row","gap-3")}
                     >
                         {"Comenzar a leer"}
                         <Icon icon_id={IconId::HeroiconsMiniSolidArrowUpRight} />
-                    </a>
+                    </Link<Route>>
                 </div>
-                <div class={classes!("flex","flex-row","book-image-shadow","transition-transform","hover:scale-105","cursor-pointer")}>
+                    <Link<Route>
+                        to={Route::Book { name: book.title.clone() }}
+                        classes={classes!("flex","flex-row","book-image-shadow","transition-transform","hover:scale-105","cursor-pointer")}>
                     <img
                         class={classes!("w-[177px]","h-[266px]")}
                         src={book.cover.clone()}
@@ -43,7 +46,7 @@ pub fn SuggestedBook(props: &Props) -> Html {
                     <p class={classes!("flex","w-[177px]","h-[266px]","text-blur","items-center","justify-start","px-6")}>
                             {book.synopsis.clone()}
                     </p>
-                </div>
+                    </Link<Route>>
                 <div
                     class={classes!("flex","flex-col","flex-wrap","gap-5","justify-start","max-w-[300px]")}
                 >
