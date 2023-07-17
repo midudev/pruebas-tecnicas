@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useStore } from "./store/store";
 import BookCard from "./components/BookCard";
 import PageFilter from "./components/PageFilter";
-import GenderFilter from "./components/GenderFilter";
+import GenreFilter from "./components/GenreFilter";
 import { UseGetData } from "./hooks/useGetData";
 
 function App() {
@@ -56,7 +56,7 @@ function App() {
 
             <div className="filters-wrapper mb-5 flex gap-10 align-center">
               <PageFilter />
-              <GenderFilter />
+              <GenreFilter />
             </div>
 
             <div className="grid grid-cols-4 gap-10">
