@@ -1,4 +1,4 @@
-import { Filters } from '../../Filters/filters'
+import { Filters } from '../../filters/filters.jsx'
 import { useListOfLecture } from '../../../hooks/useListOfLecture'
 
 export function Header ({ changeFilter }) {

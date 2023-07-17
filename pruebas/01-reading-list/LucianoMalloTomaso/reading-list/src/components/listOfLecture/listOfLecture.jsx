@@ -1,5 +1,5 @@
 import { useId, useState } from 'react'
-import { CloseBookIcon, OpenBookIcon, RemoveAllBooks } from '../Icons/Icons.jsx'
+import { CloseBookIcon, OpenBookIcon, RemoveAllBooks } from '../icons/icons.jsx'
 import './listOfLecture.css'
 import ListItem from './listItem/listItem.jsx'
 import { useListOfLecture } from '../../hooks/useListOfLecture.jsx'
