@@ -5,6 +5,7 @@ import { useListBook } from '../hook/useListBook'
 export const Header = ({bookNoFiltered}) =>{
     const idGenero = useId()
     const idRange = useId()
+    const idSeacher = useId()
     const {filters,setFilters} = useFilters()
     const { read } = useListBook()
 
@@ -14,9 +15,23 @@ export const Header = ({bookNoFiltered}) =>{
     const AmountInListToRead = (read.filter(item=> filters.genre=== 'all' || item.genre===filters.genre)).length
 
     const handleChange = (e) =>{
-        setFilters({
+
+        setFilters(prevState=>({
+            ...prevState,
             genre: e.target.value
-        })
+        }))
+    }
+    const handleChangePages = (e) =>{
+        setFilters(prevState=>({
+            ...prevState,
+            pages: e.target.value
+        }))
+    }
+    const handleChangeSeach = (e) =>{
+        setFilters(prevState=>({
+            ...prevState,
+            title: e.target.value
+        }))
     }
 
     return (
@@ -24,8 +39,13 @@ export const Header = ({bookNoFiltered}) =>{
             <h1>Recomendación de libros</h1>
             <fieldset className='header'>
             <div>
-                <label htmlFor={idRange}>Paginado</label>
-                <input id={idRange} type="range" min='0' max='10'/>
+                <label htmlFor={idSeacher}></label>
+                <input id={idSeacher} type="text" onChange={handleChangeSeach}/>
+            </div>
+
+            <div>
+                <label htmlFor={idRange}>Paginado: {filters.pages}</label>
+                <input id={idRange} type="range" min='0' max='2000' onChange={handleChangePages} value={filters.pages}/>
             </div>
             
             <div>
