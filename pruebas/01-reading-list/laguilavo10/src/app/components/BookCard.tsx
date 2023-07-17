@@ -17,7 +17,7 @@ export default function BookCard({ book, setReadList }: Props) {
   }
 
   return (
-    <li className='relative m-auto mt-2 h-80 w-56 overflow-hidden rounded-lg text-white outline outline-white [&:hover>article]:opacity-90 [&:hover>img]:scale-125'>
+    <li className='relative m-auto mt-2 h-80 w-auto min-w-56 overflow-hidden rounded-lg text-white outline outline-white [&:hover>article]:opacity-90 [&:hover>img]:scale-125'>
       <article className='absolute left-0 top-0 z-20 flex h-full w-full flex-col justify-evenly bg-black p-3 text-sm opacity-0 duration-300 ease-linear'>
         <h3 className='mt-2 text-lg font-extrabold'>{book.title}</h3>
         <p className='flex items-center gap-2'>
