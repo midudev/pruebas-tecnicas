@@ -10,18 +10,18 @@ import user from "../../../public/assets/user.png";
 
 export default function Header() {
     return (
-      <header className="fixed w-6 h-full flex flex-col items-center justify-between bg-bgwarn border-r-[0.2px] border-off shadow-r-sm">
-        <Image src={books} width='auto' height='auto' alt="books" className="p-2" />
-        <nav className="h-3/5 p-2">
-            <Image src={dashboard} width='auto' height='auto' alt="dashboard" className="pb-1" />
-            <Image src={bell} width='auto' height='auto' alt="dashboard" className="pb-1" />
-            <Image src={bookmark} width='auto' height='auto' alt="dashboard" className="pb-1" />
-            <Image src={friends} width='auto' height='auto' alt="dashboard" className="pb-1" />
-            <Image src={config} width='auto' height='auto' alt="dashboard" className="pb-1" />
+      <header className="fixed w-20 h-full flex flex-col items-center justify-between bg-bgwarn border-r-[0.2px] border-off shadow-r-sm">
+        <Image src={books} width='auto' height='auto' alt="books" className="p-4" />
+        <nav className="h-3/5 p-6 flex flex-col items-center">
+            <Image src={dashboard} width='auto' height='auto' alt="dashboard" className="pb-4" />
+            <Image src={bell} width='auto' height='auto' alt="dashboard" className="pb-4" />
+            <Image src={bookmark} width='auto' height='auto' alt="dashboard" className="pb-4" />
+            <Image src={friends} width='auto' height='auto' alt="dashboard" className="pb-4" />
+            <Image src={config} width='auto' height='auto' alt="dashboard" className="pb-4" />
         </nav>
-        <nav>
-            <Image src={user} width='182' height='181' alt="dashboard" className="p-1" />
-            <Image src={logout} width='auto' height='auto' alt="dashboard" className="px-2 pt-1 pb-2" />
+        <nav className="flex flex-col items-center justify-center">
+            <Image src={user} width='182' height='181' alt="dashboard" className="p-4" />
+            <Image src={logout} width='auto' height='auto' alt="dashboard" className="px-2 pt-3 pb-6" />
         </nav>
       </header>
     )
