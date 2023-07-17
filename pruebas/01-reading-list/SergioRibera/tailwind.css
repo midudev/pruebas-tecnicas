@@ -2,7 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+.text-blur {
+    color: transparent;
+    text-shadow: 0 0 7px rgba(0,0,0,0.5);
+    user-select: none;
+}
+
 .book-image-shadow {
-    /* box-shadow: -9px 9px 17px 0px #8f8d8d; */
-    filter: drop-shadow(-10px 8px 9px #8f8d8d);
+    box-shadow: -9px 9px 17px 0px #8f8d8d;
+    /* filter: drop-shadow(-10px 8px 9px #8f8d8d); */
 }

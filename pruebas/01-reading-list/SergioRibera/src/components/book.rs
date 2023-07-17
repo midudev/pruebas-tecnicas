@@ -72,8 +72,8 @@ pub fn Book(props: &Props) -> Html {
     }
 
     html! {
-        <div class={classes!("relative","flex", "flex-col", "justify-start", "gap-4", "max-w-[177px]", "px-4", "py-3")}>
-            <img class={classes!("w-[177px]", "h-[266px]", "book-image-shadow")} src={data.cover.clone()} alt={data.title.clone()} />
+        <div class={classes!("relative","flex", "flex-col", "justify-start", "gap-4", "max-w-[177px]", "px-4", "py-3","cursor-pointer")}>
+            <img class={classes!("w-[177px]", "h-[266px]", "book-image-shadow","transition-transform","hover:scale-105")} src={data.cover.clone()} alt={data.title.clone()} />
             <span class={classes!("text-neutral-600", "text-md", "font-bold")}>{data.title.clone()}</span>
             <div
                 {onclick}
