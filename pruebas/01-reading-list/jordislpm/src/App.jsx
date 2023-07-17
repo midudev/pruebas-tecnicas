@@ -3,8 +3,9 @@ import BookList from './components/BookList'
 import styles from "./styles/app.module.css"
 import Header from './components/Header'
 import useBooks from './Hooks/useBooks'
-import { BooksAvailable } from './context/context'
+import { BooksAvailable } from './context/contextBooks'
 import ReadList from './components/ReadList'
+import useFilter from './Hooks/useFilter'
 
 
 function App() {
@@ -13,6 +14,8 @@ function App() {
   const [call, setCall]= useState(true)
   const [store,dispatch] = useContext(BooksAvailable);
   const {listBooks, listRead} = store;
+  const [book, reads, setFilters]= useFilter(books);
+
 
   useEffect(()=>{
 

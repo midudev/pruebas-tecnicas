@@ -2,27 +2,33 @@ import React from 'react'
 import { useEffect, useState, useContext} from 'react'
 import styles from "./bookList.module.css"
 import { Book } from '../Book'
-import { BooksAvailable } from '../../context/context'
+import { BooksAvailable } from '../../context/contextBooks'
+import { FiltersContext } from '../../context/contextFilters'
+import useFilter from '../../Hooks/useFilter'
 
 const BookList = () => {
 
 const [store, dispatch] = useContext(BooksAvailable)
+const [filtersBooks, setFiltersBooks]= useState([])
 
 const {listBooks, listRead} = store;
 const modifiers = {
     addRead : "moveToRead", 
 }
 
+const [books, read, setFilters]=useFilter()
+
 useEffect(()=>{
-    console.log(store)
-},[store])
+    setFiltersBooks(books)
+},[books])
+
 
 return (
 
     <section className={styles.section}>
         <h1>BookList</h1>
         <ul className={styles.booklist}>
-        {listBooks && listBooks.map((element)=>{
+        {books && books.map((element)=>{
             return(
                 <Book
                 book={element} 

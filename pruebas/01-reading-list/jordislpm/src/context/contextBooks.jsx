@@ -1,17 +1,11 @@
-import { createContext, useReducer, useEffect, useRef } from "react";
+import { createContext, useContext, useReducer} from "react";
+import { FiltersContext } from "./contextFilters";
 
 
 export const BooksAvailable = createContext(null)
 
 
 function ContextBook ({ children }){
-
-    const bookListRef = useRef({
-        listBooks: [],
-        listRead:[],
-        genres:[]
-    })
-
 
     const initialState = {
         listBooks: [],

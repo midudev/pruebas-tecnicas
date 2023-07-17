@@ -1,42 +1,46 @@
 import React, { useContext, useState, useRef } from "react";
-import { BooksAvailable } from "../../context/context";
+import { BooksAvailable } from "../../context/contextBooks";
 import styles from "./form.module.css"
+import { FiltersContext } from "../../context/contextFilters";
+import useFilter from "../../Hooks/useFilter";
+
 
 const Form = () => {
 
     const [store, dispatch] = useContext(BooksAvailable);  
     const {listBooks, listRead, genres} = store;
     const [selectGenre, setSelectGenre]= useState()
-    const pages = useRef(0)
     const [paginas, setPaginas]= useState(0)
-
+    const [filters]=useContext(FiltersContext)
+    const [books, read, setFilters] =useFilter()
+    
     const onChangeSelect= (e)=>{
 let genre = e.target.value
-dispatch({type:"GenreFilter", genre:genre })
-    }
+// dispatch({type:"GenreFilter", genre:genre })
+setFilters({...filters,genre:genre})
+}
 
     const onChangePages = (e)=>{
-        pages.current = e.target.value;
         setPaginas(e.target.value)
-        // console.log(paginas)
-        dispatch({type: "PageFilter", page:paginas})
+        // dispatch({type: "PageFilter", page:paginas})
+        setFilters({minPages:paginas, ...filters})
     }
 
   return (
     <form>
         <div>
-            Filtar por paginas
+            <label htmlFor="pages">Filtar por paginas</label>
             <input 
-                value={paginas}
-                ref={pages}
+                type="range"
+                id="pages"
                 min="10" 
                 max="1000" 
                 step="10"
-                onChange={onChangePages} 
-                type="range" 
+                value={paginas}
+                onChange={onChangePages}  
                 placeholder="Filtrar por paginas">
             </input>
-            <p>Libros de mas de{paginas}</p>    
+            <span>Libros de mas de{paginas}</span>    
         </div>
        <div>
         filtar por genero

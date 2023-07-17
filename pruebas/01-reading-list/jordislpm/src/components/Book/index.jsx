@@ -1,6 +1,6 @@
 import React, {useContext}from 'react'
 import styles from "./book.module.css"
-import { BooksAvailable } from '../../context/context'
+import { BooksAvailable } from '../../context/contextBooks'
 
 
 

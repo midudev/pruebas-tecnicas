@@ -1,14 +1,14 @@
 import React from 'react'
 import styles from "./header.module.css"
 import { useContext, useState } from 'react'
-import { BooksAvailable } from '../../context/context'
+import { BooksAvailable } from '../../context/contextBooks'
 import Form from '../Form'
+import useFilter from '../../Hooks/useFilter'
 
 
 const Header = () => {
 
-const [store, dispatch] = useContext(BooksAvailable);  
-const {listBooks, listRead} = store;
+const [books, read, setFilters]=useFilter()
 
 
 
@@ -17,8 +17,8 @@ const {listBooks, listRead} = store;
       Header
 
         <h1>Book Lover</h1>
-        <p className={styles.availables}>{`Tienes ${listBooks.length} libros disponibles`}</p>
-        <p className={styles.read}>{`Tienes ${listRead.length} libros en tu lista de tectura`}</p>
+        <p className={styles.availables}>{`Tienes ${books.length} libros disponibles`}</p>
+        <p className={styles.read}>{`Tienes ${read.length} libros en tu lista de tectura`}</p>
         <Form/>
     </div>
   )
