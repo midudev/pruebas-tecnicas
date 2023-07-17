@@ -1,0 +1,209 @@
+#card-list {
+    padding: 20px;
+    border-radius: 30px 30px 0px 0px;
+    width: 300px;
+    min-height: 70vh;
+    background-color: #303331;
+    margin: 0 auto;
+    width: 50%;
+}
+
+@font-face {
+    font-family: "Creampuff";
+    src: local("Creampuff"), url(../../assets/CREAMPUF.TTF) format("truetype");
+}
+
+h2 {
+    font-size: 20px;
+    text-align: center;
+    height: auto;
+    margin: 0;
+}
+
+.book-img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.book {
+    width: 100px;
+    padding: 40px;
+}
+
+.books {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.book-container {
+    position: relative;
+    display: inline-block;
+}
+
+.float-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Oculta el botón por defecto */
+    transition: opacity 0.3s;
+}
+
+.book-container:hover .book-img {
+    filter: brightness(30%); /* Aplica el sombreado a la imagen cuando se hace hover en el contenedor */
+}
+
+.book-container:hover .float-button {
+    opacity: 1; /* Hace visible el botón cuando se hace hover en el contenedor */
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    max-width: 250px;
+    min-width: 100px;
+    border-radius: 5px;
+    background: #F2E7AB;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    margin: 0 auto;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+#card-read {
+    padding: 20px;
+    border-radius: 0px 0px 30px 30px;
+    width: 300px;
+    min-height: 70vh;
+    background-color: #F2E7AB;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    width: 50%;
+}
+
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #F6642E;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #F6642E;
+    cursor: pointer;
+}
+
+#tittle-pages {
+    font-size: 15px;
+    width: 220px;
+    text-align: start;
+    margin-left: 30px;
+}
+
+.text {
+    color: #F2E7AB;
+    text-align: center;
+    font-family: cursive;
+}
+
+#pages-filter {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.range-container {
+    width: 33%;
+    max-width: 300px;
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+
+#pages-filter div span {
+    margin: 0 10px 0 10px;
+}
+
+/*.genre {
+    float: left;
+    width: auto;
+}*/
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #303331;
+    color: #F2E7AB;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    min-width: 160px;
+    text-align: left;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #303331;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #F2E7AB;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #F6642E;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    color: #F6642E;
+    background-color: #F2E7AB;
+}
+.dark-text{
+    color: #303331;
+}

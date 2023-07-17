@@ -1,0 +1,64 @@
+<div id="card-list">
+    <h2 class="text">LIBROS DISPONIBLES</h2>
+    <div class="books-container">
+
+        <div id="pages-filter">
+            <h3 class="text" id="tittle-pages"><svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                    viewBox="0 0 384 512">
+                    <path fill="currentColor"
+                        d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM112 256H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
+                </svg> Número de Páginas: <span>{{pages}}</span></h3>
+
+            <div class="range-container">
+                <span class="text">{{min_pages}}</span>
+                <input #pagesSelector type="range" [min]="min_pages" [max]="max_pages" #ranger [(ngModel)]="pages"
+                    (input)="getCurrentsBooks()" class="slider">
+                <span class="text">{{max_pages}}</span>
+            </div>
+            <div class="genre">
+                <span class="text">Géneros: </span>
+                <div class="dropdown">
+                    <button class="dropbtn text">{{genre}}</button>
+                    <div class="dropdown-content">
+                        <a class="dropdown-item text" (click)="genre = item; getCurrentsBooks()"
+                            *ngFor="let item of genres">{{item}}</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="books">
+            <div class="book" *ngFor="let book of current_books">
+
+                <div class="book-container">
+                    <img class="book-img" [src]="book.cover" [alt]="book.title">
+                    <button class="float-button" (click)="addBook(book)">+</button>
+                </div>
+
+                <p class="text">{{book.title}}</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="card-read">
+    <h2 class="text dark-text">MI LISTA</h2>
+    <div class="books-container">
+
+        <div class="books">
+            <div class="book" *ngFor="let book of read_books">
+
+                <div class="book-container">
+                    <img class="book-img" [src]="book.cover" [alt]="book.title">
+                    <button class="float-button" (click)="removeBook(book)">-</button>
+                </div>
+
+                <p class="text dark-text">{{book.title}}</p>
+
+            </div>
+
+        </div>
+    </div>
+</div>

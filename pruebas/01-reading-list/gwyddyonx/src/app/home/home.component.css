@@ -1,0 +1,19 @@
+#main-container{
+    width: 100%;
+    margin-top: 200px;
+    position: absolute;
+    z-index: 0;
+}
+app-background{
+    position: fixed;
+    width: 100%;
+    z-index: -1;
+}
+
+app-home-header{
+    z-index: 1;
+}
+
+app-list-books{
+    
+}
