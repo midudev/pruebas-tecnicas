@@ -12,7 +12,7 @@
   .list img {
     border-radius: 4px;
     width: 100%;
-    aspect-ratio: 16/9;
+    aspect-ratio: 2/3;
     display: block;
     object-fit: cover;
     background: #fff;
@@ -35,7 +35,7 @@
     padding: 8px;
   }
   
-  .list-button {
+  .list-button-toggle {
     align-items: center;
     background: #09f;
     border-radius: 9999px;
@@ -52,13 +52,28 @@
     z-index: 9999;
   }
   
-  .list-button:hover {
+  .list-button-toggle:hover {
     scale: 1.1;
   }
   
-  .list-button ~ input:checked ~ .list {
-    height: 75%;
-    margin-top: 30px;
+  .list-button-toggle ~ input:checked ~ .list {
+    height: 100%;
+    margin-top: 0px;
     display: block;
     overflow-y: scroll;
+  }
+  .removeAllBooksButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 55px;
+    background-color: #f44336;
+    font-size: 12px;
+    padding: 2px;
+    gap: .5rem;
+  }
+  .removeAllBooksButton svg{
+      width: 15px;
+      height: 20px;
+
   }

@@ -1,13 +1,13 @@
 import './listItem.css'
 export default function ListItem ({ cover, title, pages, removeFromList }) {
   return (
-    <li>
+    <li data-testid='book-added'>
       <img
         src={cover}
         alt={title}
       />
       <div>
-        <strong>{title}</strong>
+        <strong data-testid='book-added-title'>{title}</strong>
         <p> {pages} Pages</p>
       </div>
       <footer>

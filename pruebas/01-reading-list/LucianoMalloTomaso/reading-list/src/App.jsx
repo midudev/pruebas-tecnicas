@@ -8,10 +8,10 @@ import { useState } from 'react'
 import { ListOfLectureProvider } from './contexts/listOfLecture'
 
 function App () {
-  const [products] = useState(library)
+  const [books] = useState(library)
   const { filterBooks, sortBooks } = useFilters()
 
-  const mappedBooks = products.map((book) => {
+  const mappedBooks = books.map((book) => {
     return {
       title: book.book.title,
       genre: book.book.genre,
@@ -22,15 +22,14 @@ function App () {
     }
   })
 
-  const filteredProducts = filterBooks(mappedBooks)
-  const sortedProducts = sortBooks(filteredProducts)
+  const filteredBooks = filterBooks(mappedBooks)
+  const sortedBooks = sortBooks(filteredBooks)
 
   return (
     <ListOfLectureProvider>
       <Header />
       <ListOfLecture />
-      <Books books={sortedProducts} />
-      <footer className='footer'>el footer</footer>
+      <Books books={sortedBooks} />
     </ListOfLectureProvider>
   )
 }

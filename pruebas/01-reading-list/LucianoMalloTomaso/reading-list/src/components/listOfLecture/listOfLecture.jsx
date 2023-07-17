@@ -15,7 +15,7 @@ export default function ListOfLecture () {
 
   return (
     <>
-      <label htmlFor={bookListCheckboxId} className='list-button'>
+      <label htmlFor={bookListCheckboxId} className='list-button-toggle'>
         {
             isOpen ? <CloseBookIcon /> : <OpenBookIcon />
         }
@@ -23,8 +23,8 @@ export default function ListOfLecture () {
       <input id={bookListCheckboxId} type='checkbox' hidden onChange={() => handleChangeIcon()} />
 
       <aside className='list'>
-        <button onClick={clearLectureList}>
-          <RemoveAllBooks />
+        <button onClick={clearLectureList} className='removeAllBooksButton'>
+          Remove all <RemoveAllBooks />
         </button>
         <ul>
           {list.map(book => (

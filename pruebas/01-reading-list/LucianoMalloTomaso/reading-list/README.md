@@ -1,5 +1,9 @@
 
 # To run
 
-    - npm install
-    - npm run dev
+    - yarn install
+    - yarn run dev
+
+# To test
+
+    - yarn test

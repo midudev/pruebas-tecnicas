@@ -50,7 +50,7 @@ export function Filters () {
   return (
     <section className='filters'>
       <div>
-        <label htmlFor={minQuantityOfPages}>Min.Books</label>
+        <label htmlFor={minQuantityOfPages}>Min.Pages</label>
         <input
           type='range'
           id={minQuantityOfPages}
@@ -59,7 +59,7 @@ export function Filters () {
           onChange={handlePagesQtyChange}
           value={filters.minPages}
         />
-        <span>$ {0}</span>
+        <span> {filters.minPages}</span>
       </div>
       <div>
         <label htmlFor={categoryFilteredId}>Category</label>
@@ -74,7 +74,7 @@ export function Filters () {
         </select>
       </div>
       <div>
-        <label htmlFor='orderByTitle'>Sort by title</label>
+        <label htmlFor='orderByTitle'>Sort By Title</label>
         <input type='checkbox' onChange={handleSortChange} />
 
       </div>
