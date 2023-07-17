@@ -6,7 +6,6 @@ const Form = () => {
 
     const [store, dispatch] = useContext(BooksAvailable);  
     const {listBooks, listRead, genres} = store;
-    console.log(store)
   return (
     <form>
         Form

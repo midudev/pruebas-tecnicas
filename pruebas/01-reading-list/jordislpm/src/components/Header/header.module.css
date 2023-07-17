@@ -2,7 +2,7 @@
     display: flex;
     width: 100%;
     height: auto;
-    background-color: aqua;
+    background-color: rgb(173, 244, 170);
     flex-direction: column;
     align-items: center;
     gap: 1.2rem;
@@ -11,4 +11,10 @@
 .availables{
     font-weight: bold;
     font-size: 2rem;
+}
+
+.read{
+    font-weight: bold;
+    font-size: 2rem;
+    color: blue;
 }

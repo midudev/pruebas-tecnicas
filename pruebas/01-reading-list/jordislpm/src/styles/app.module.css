@@ -1,5 +1,6 @@
 .main{
-    display: flex;
+    display: grid;
+    grid-template-columns: 70% auto;
     width: 100%;
     height: 100%;
     margin: 0px;

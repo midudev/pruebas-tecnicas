@@ -18,7 +18,7 @@ const {listBooks, listRead} = store;
 
         <h1>Book Lover</h1>
         <p className={styles.availables}>{`Tienes ${listBooks.length} libros disponibles`}</p>
-        <p>{`Tienes ${listRead.length} libros en tu lista de tectura`}</p>
+        <p className={styles.read}>{`Tienes ${listRead.length} libros en tu lista de tectura`}</p>
         <Form/>
     </div>
   )

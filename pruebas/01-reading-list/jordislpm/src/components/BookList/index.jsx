@@ -9,6 +9,9 @@ const BookList = () => {
 const [store, dispatch] = useContext(BooksAvailable)
 
 const {listBooks, listRead} = store;
+const modifiers = {
+    addRead : "moveToRead", 
+}
 
 
 return (
@@ -18,11 +21,13 @@ return (
         <ul className={styles.booklist}>
         {listBooks && listBooks.map((element)=>{
             return(
-                <Book 
+                <Book
+                book={element} 
                 key={element.id}
                 id={element.id}
                 title={element.title}
-                cover={element.cover}/>
+                cover={element.cover}
+                modifiers={modifiers}/>
             )
        })}
         </ul>

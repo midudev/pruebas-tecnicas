@@ -3,12 +3,16 @@ display: flex;
 border: 2px solid blue;
 border-radius: 4%;
 overflow: hidden;
-max-width: 200px;
-  
+max-width: 150px;
+height: max-content;  
 }
 
 .cover{
     display: flex;
     width: 50px;
     height: auto;
+}
+
+.book:hover{
+    cursor: pointer;
 }

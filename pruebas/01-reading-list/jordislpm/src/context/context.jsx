@@ -39,10 +39,35 @@ function reducer(state, action){
             }
         };
         case "moveToRead":{
-            console.log("move to read")
+            const newRead = action.book;
+            const newListBook=state.listBooks.filter((book)=>{
+                if(newRead.id !== book.id){
+                    return book
+                }
+            });
+            return {
+                ...state,
+            listBooks: newListBook,
+             listRead:[...state.listRead, newRead]
+                
+            }
+        };
+        case "moveToListBook":{
+            const newRead = action.book;
+            const newListRest=state.listRead.filter((book)=>{
+                if(newRead.id !== book.id){
+                    return book
+                }
+            });
+            return {
+                ...state,
+                listRead: newListRest,
+                listBooks:[...state.listBooks, newRead]
+                
+            }
         }
-
     }
     };
 
 export default ContextBook;
+

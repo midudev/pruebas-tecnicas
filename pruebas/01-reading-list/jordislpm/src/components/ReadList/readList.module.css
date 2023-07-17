@@ -1,0 +1,21 @@
+.readList{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    border: 2px solid green;
+    border-radius: 10px;
+    align-items: center;
+    padding: 2rem;
+}
+
+.list{
+    padding: 1rem;
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 5rem;
+}
+
+.h2{
+    min-width: max-content;
+}
