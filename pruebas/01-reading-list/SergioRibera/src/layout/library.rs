@@ -1,6 +1,6 @@
 use yew::prelude::*;
-use yew_hooks::{use_local_storage, UseLocalStorageHandle};
-// use yew_icons::{Icon, IconId};
+use yew_hooks::{use_bool_toggle, use_local_storage, UseLocalStorageHandle};
+use yew_icons::{Icon, IconId};
 
 use crate::{components::Book as BookComponent, models::Book};
 
@@ -15,6 +15,7 @@ pub struct Props {
 pub fn Library(props: &Props) -> Html {
     let Props { readinglist, books } = props.clone();
     let saved_books = use_local_storage::<Vec<Book>>("saved_books".to_string());
+    let not_expanded = use_bool_toggle(true);
 
     let reading_list = if let Some(v) = readinglist {
         drop(saved_books);
@@ -62,18 +63,49 @@ pub fn Library(props: &Props) -> Html {
         })
     };
 
+    let onexpand = {
+        let not_expanded = not_expanded.clone();
+        Callback::from(move |_: MouseEvent| not_expanded.toggle())
+    };
+
     html! {
-        <section class={classes!("flex", "flex-row","flex-wrap","gap-x-8", "gap-y-6", "px-6", "py-4")}>
-        {books
-            .iter()
-            .map(|b|
-                 html!(<BookComponent
-                       data={b.clone()}
-                       onsave={onaddbook.clone()}
-                       onremove={onremovebook.clone()}
-                />))
-            .collect::<Html>()
-        }
+        <section class={classes!("flex", "flex-row", "flex-wrap", "gap-x-8", "gap-y-6", "px-6", "py-4",)}>
+        <div class={classes!(
+            "flex",
+            "flex-row",
+            "flex-wrap",
+            "gap-x-8",
+            "gap-y-6",
+            "px-6",
+            "py-4",
+            "overflow-hidden",
+            "transition-all",
+            not_expanded.then_some("max-h-[390px]"),
+            )}>
+            {books
+                .iter()
+                .map(|b|
+                     html!(<BookComponent
+                           data={b.clone()}
+                           onsave={onaddbook.clone()}
+                           onremove={onremovebook.clone()}
+                    />))
+                .collect::<Html>()
+            }
+        </div>
+        <div class={classes!("flex","w-full","py-4","items-center","justify-center")}>
+            <span
+                class={classes!("text-sky-600","flex","flex-row","gap-3","cursor-pointer","items-center")}
+                onclick={onexpand}
+            >
+                <Icon icon_id={IconId::BootstrapChevronExpand} width="18px" height="18px" />
+                if !*not_expanded {
+                    {"Ocultar"}
+                } else {
+                    {"Ver Más"}
+                }
+            </span>
+        </div>
         </section>
     }
 }
