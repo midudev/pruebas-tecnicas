@@ -11,7 +11,7 @@ pub struct Props {
 pub fn navbar(props: &Props) -> Html {
     let Props { onsearch } = props;
     html! {
-        <nav class={classes!("w-full", "py-4", "flex", "flex-row", "items-center", "justify-between")}>
+        <nav class={classes!("w-full","px-6","py-4","flex","flex-row","items-center","justify-between")}>
             <InputText
                 onchange={onsearch}
                 placeholder={"Buscar por Nombre, author, genero, sinopsis"}

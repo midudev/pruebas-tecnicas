@@ -102,7 +102,7 @@ pub fn app() -> Html {
     html! {
         <>
             <NavBar {onsearch} />
-            <main>
+            <main class={classes!("px-6")}>
                 // If searching
                 if !filtered_data.is_empty() {
                     <LibraryComponent books={(*filtered_data).clone()} />
