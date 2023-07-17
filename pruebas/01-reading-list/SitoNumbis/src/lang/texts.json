@@ -29,6 +29,7 @@
       "readingList": "Viendo lista de lectura"
     },
     "ariaLabels": {
+      "toReadingList": "Ver lista de lectura",
       "add": "Agregar a la lista de lectura",
       "remove": "Remover de la lista de lectura",
       "logo": "Logo Sito Book ",

@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import loadable from "@loadable/component";
+import Tippy from "@tippyjs/react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark } from "@fortawesome/free-solid-svg-icons";
@@ -25,7 +26,7 @@ function Navbar() {
   const { libraryState, setLibraryState } = useLibrary();
 
   const totalReading = useMemo(() => {
-    return Object.values(libraryState.readingList);
+    return libraryState.readingList.size;
   }, [libraryState]);
 
   return (
@@ -40,18 +41,22 @@ function Navbar() {
           </h1>
         </Link>
         <div className="flex items-center gap-5">
-          <Badge number={totalReading.length}>
-            <button
-              onClick={() => setLibraryState({ type: "toggle-see" })}
-              className={`text-xl icon-button ${
-                libraryState.seeing === "reading-list" ? "bg-primary text-dark-text" : ""
-              }`}
-              aria-label={languageState.texts.ariaLabels.toReadingList}
-            >
-              <FontAwesomeIcon
-                icon={totalReading.length ? faBookmark : faBookmarkR}
-              />
-            </button>
+          <Badge number={totalReading}>
+            <Tippy content={languageState.texts.ariaLabels.toReadingList}>
+              <button
+                onClick={() => setLibraryState({ type: "toggle-see" })}
+                className={`text-xl icon-button ${
+                  libraryState.seeing === "reading-list"
+                    ? "bg-primary text-dark-text"
+                    : ""
+                }`}
+                aria-label={languageState.texts.ariaLabels.toReadingList}
+              >
+                <FontAwesomeIcon
+                  icon={totalReading ? faBookmark : faBookmarkR}
+                />
+              </button>
+            </Tippy>
           </Badge>
           <img
             className="w-10 h-10 rounded-full"

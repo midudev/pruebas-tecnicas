@@ -10,6 +10,7 @@ import { ModeProvider } from "./contexts/ModeProvider";
 
 // styles
 import "./index.css";
+import 'tippy.js/dist/tippy.css';
 // animations
 import "./assets/animations/agrow.css";
 import "./assets/animations/shake.css";

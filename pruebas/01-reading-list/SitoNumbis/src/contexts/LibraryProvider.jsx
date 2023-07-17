@@ -13,15 +13,14 @@ const libraryReducer = (libraryState, action) => {
     case "toggle-to-reading-list": {
       const { id } = action;
       const { readingList } = libraryState;
-      if (readingList[id]) delete readingList[id];
-      else readingList[id] = id;
+      if (readingList.has(id)) readingList.delete(id);
+      else readingList.set(id, id);
       return { ...libraryState, readingList };
     }
     case "init-books": {
       const { books } = action;
       const genres = Array.from(new Set(books.map((book) => book.genre)));
-      const readingList = {};
-      return { books, genres, readingList, seeing: "all" };
+      return { ...libraryState, books, genres, seeing: "all" };
     }
     case "init-reading-list": {
       const { readingList } = libraryState;
@@ -46,7 +45,7 @@ const LibraryProvider = ({ children }) => {
   const [libraryState, setLibraryState] = useReducer(libraryReducer, {
     books: [],
     genres: [],
-    readingList: {},
+    readingList: new Map(),
     seeing: "all",
   });
 

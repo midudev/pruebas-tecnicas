@@ -40,17 +40,20 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
 
   const [hide, setHide] = useState(false);
 
+  const isInReadingList = useMemo(() => {
+    return libraryState.readingList.has(ISBN);
+  }, [libraryState, ISBN]);
+
   useEffect(() => {
     let toHide = false;
     // if the user is seeing the reading list
     if (libraryState.seeing === "reading-list") {
-      if (libraryState.readingList[ISBN]) toHide = false;
+      if (libraryState.readingList.has(ISBN)) toHide = false;
       else toHide = true;
     } else toHide = false;
 
     // if the user is using a filter
     if (libraryState.filtering && !toHide) {
-      console.log(libraryState.filtering);
       if (genre === libraryState.filtering) toHide = false;
       else toHide = true;
     }
@@ -64,17 +67,15 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
         src={cover}
         alt={`${title}-${languageState.texts.book.cover}`}
       />
-      <Marker show={libraryState.readingList[ISBN] !== undefined} />
+      <Marker show={isInReadingList} />
       <div
         role="info"
         className={`group absolute top-0 pr-8 left-0 w-full h-full bg-dark-alt-bg-opacity opacity-0 transition hover:opacity-100 flex flex-col justify-between items-start p-3 ${
-          libraryState.readingList[ISBN] ? "opacity-100" : ""
+          isInReadingList ? "opacity-100" : ""
         }`}
       >
         <div
-          className={`${memoAnimation} ${
-            libraryState.readingList[ISBN] ? "opacity-100" : ""
-          }`}
+          className={`${memoAnimation} ${isInReadingList ? "opacity-100" : ""}`}
         >
           <p className="">{title}</p>
           <p className="text-dark-alt-text">
@@ -91,13 +92,13 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
         <button
           onClick={addToReadingList}
           aria-label={
-            !libraryState.readingList[ISBN]
+            !isInReadingList
               ? languageState.texts.ariaLabels.add
               : languageState.texts.ariaLabels.remove
           }
           className={`cta ${memoAnimation} ${styles.addButton}`}
         >
-          {!libraryState.readingList[ISBN]
+          {!isInReadingList
             ? languageState.texts.book.add
             : languageState.texts.book.remove}
         </button>
