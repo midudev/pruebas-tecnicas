@@ -1,9 +1,10 @@
 import { Suspense, useMemo } from "react";
 import loadable from "@loadable/component";
 
+import { css } from "@emotion/css";
+
 // components
-import Book from "../components/Book/Book";
-import ToTop from "../components/ToTop/ToTop";
+import Loading from "../components/Loading/Loading";
 import FilterBar from "../components/FilterBar/FilterBar";
 
 // contexts
@@ -13,9 +14,10 @@ import { useLibrary } from "../contexts/LibraryProvider";
 
 // styles
 import styles from "./styles.module.css";
-import { css } from "@emotion/css";
 
 // suspended
+const Book = loadable(() => import("../components/Book/Book"));
+const ToTop = loadable(() => import("../components/ToTop/ToTop"));
 const LightBox = loadable(() => import("../components/LightBox/LightBox"));
 
 function Home() {
@@ -29,7 +31,7 @@ function Home() {
 
   return (
     <main className={styles.main}>
-      <Suspense>
+      <Suspense fallback={<Loading className="w-full h-full top-0 left-0 fixed z-50" />}>
         <div
           className={`grid ${css({
             gridTemplateRows:
