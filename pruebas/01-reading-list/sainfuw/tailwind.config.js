@@ -7,7 +7,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Yatra One', 'Poppins', 'sans-serif'],
+        'pop': ['Poppins Regular', 'sans-serif'],
+        'pop-light': ['Poppins Light', 'sans-serif'],
+        'pop-bold': ['Poppins Bold', 'sans-serif'],
+        'pp': ['PPRader Bold', 'sans-serif']
       },
     },
   },

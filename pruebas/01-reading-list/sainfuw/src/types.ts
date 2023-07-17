@@ -25,12 +25,13 @@ export type IAuthor = {
 // AppContext
 export interface AppContextInitialStateType {
   books: IBook[];
-  favoriteBooks: IBook[];
+  readList: IBook[];
 }
 
 export interface AppContextType {
   books: IBook[];
-  favoriteBooks: IBook[];
-  addToFavorites: (book: IBook) => void;
-  removeFromFavorites: (book: IBook) => void;
+  readList: IBook[];
+  addToReadList: (book: IBook) => void;
+  removeFromReadList: (book: IBook) => void;
+  getBookDetail: (isbn: string) => IBook;
 }

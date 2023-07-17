@@ -3,17 +3,37 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Yatra One';
-  src: url("/YatraOne-Regular.woff2") format("opentype");
+  font-family: 'Poppins Regular';
+  src: url("/fonts/Poppins-Regular.woff2") format("opentype");
+}
+
+@font-face {
+  font-family: 'Poppins Light';
+  src: url("/fonts/Poppins-Light.woff2") format("opentype");
+}
+
+@font-face {
+  font-family: 'Poppins Bold';
+  src: url("/fonts/Poppins-Bold.woff2") format("opentype");
+}
+
+@font-face {
+  font-family: 'PPRader Bold';
+  src: url("/fonts/PPRader-Bold.woff2") format("opentype");
 }
 
 :root {
-  line-height: 1.5;
+  /* variables */
+  --color: #ffffffde;
+  --bg-color: #242424;
+
+  /* default */
+  line-height: 1.2;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--color);
+  background-color: var(--bg-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

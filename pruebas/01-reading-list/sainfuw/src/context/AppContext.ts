@@ -3,9 +3,9 @@ import { AppContextType, IBook } from '../types';
 
 export const ContextState = {
   books: [],
-  favoriteBooks: [],
-  addToFavorites: (book: IBook) => book,
-  removeFromFavorites: (book: IBook) => book
+  readList: [],
+  addToReadList: (book: IBook) => book,
+  removeFromReadList: (book: IBook) => book
 }
 
 export const AppContext = createContext<AppContextType>(ContextState);
