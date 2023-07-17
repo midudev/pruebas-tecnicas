@@ -1,0 +1,15 @@
+.listContainer {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 1rem;
+}
+
+.bookCover {
+	img {
+		width: 100px;
+		height: 100%;
+		min-height: 100%;
+		min-width: 100%;
+		object-fit: cover;
+	}
+}
