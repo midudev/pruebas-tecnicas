@@ -61,6 +61,11 @@
     font-size: 20px;
     color: yellow;
     line-height: 1.1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 
   .info .year {
