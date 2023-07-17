@@ -98,9 +98,17 @@ input[type="range"]:focus::-moz-range-thumb {
 }
 
 .button {
-  @apply transition hover:text-primary cursor-default;
+  @apply transition hover:text-primary;
+}
+
+button {
+  @apply cursor-default;
 }
 
 .cta {
-  @apply bg-primary hover:bg-primary-dark transition px-5 py-2 rounded-3xl cursor-default;
+  @apply bg-primary hover:bg-primary-dark transition px-5 py-2 rounded-3xl;
+}
+
+.secondary {
+  @apply border-primary hover:border-primary-dark-opacity hover:bg-primary-dark-opacity border-2 rounded-3xl transition px-5 py-2;
 }

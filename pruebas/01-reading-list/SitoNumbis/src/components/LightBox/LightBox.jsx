@@ -1,10 +1,16 @@
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClose, faInfo } from "@fortawesome/free-solid-svg-icons";
 
 // contexts
 import { useLanguage } from "../../contexts/LanguageProvider";
 import { useLightBox } from "./LightBoxProvider";
 import { useLibrary } from "../../contexts/LibraryProvider";
+
+// styles
+import styles from "./styles.module.css";
 
 function LightBox() {
   const { languageState } = useLanguage();
@@ -26,6 +32,14 @@ function LightBox() {
     };
   }, [onKeyDown]);
 
+  useEffect(() => {
+    if (lightBoxState.id) document.body.style.overflow = "hidden";
+    else {
+      document.body.style.overflow = "auto";
+      setSeeingCover(false);
+    }
+  }, [lightBoxState]);
+
   const selectedBook = useMemo(() => {
     const find = libraryState.books.find(
       (book) => book.ISBN === lightBoxState.id
@@ -35,42 +49,100 @@ function LightBox() {
 
   const otherBooks = useMemo(() => {
     if (selectedBook.author) {
-      const authorOtherBooks = libraryState.books.filter((book) =>
-        selectedBook.author.otherBooks.find(
-          (otherBook) => otherBook === book.title
-        )
-      );
-      console.log(authorOtherBooks);
+      const authorOtherBooks = libraryState.books.filter((book) => {
+        selectedBook.author.otherBooks.find((otherBook) => {
+          return otherBook === book.title;
+        });
+      });
+      return authorOtherBooks;
     }
   }, [selectedBook, libraryState]);
 
+  const addToReadingList = useCallback(
+    (e) => {
+      e.preventDefault();
+      setLibraryState({ type: "toggle-to-reading-list", id: lightBoxState.id });
+    },
+    [lightBoxState, setLibraryState]
+  );
+
+  const [seeingCover, setSeeingCover] = useState(false);
+
   return createPortal(
     <section
-      className={`grid transition duration-300 fixed z-20 top-0 left-0 bg-dark-alt-bg-opacity backdrop-blur-xl w-full h-screen ${
+      className={`${styles.main} ${
         lightBoxState.id
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-5 pointer-events-none"
       }`}
     >
-      <article className="flex items-center justify-center gap-10">
+      <button
+        onClick={() => setLightBoxState({ type: "remove" })}
+        className={styles.closeButton}
+      >
+        <FontAwesomeIcon icon={faClose} />
+      </button>
+      <article className={styles.book}>
         <img
           src={selectedBook.cover}
           alt={`${selectedBook.title}-${languageState.texts.book.cover}`}
-          className="h-[350px] w-[250px]"
+          className={styles.cover}
         />
-        <div role="info" className="flex flex-col items-start justify-start">
+        <div
+          role="info"
+          className={`${styles.info} ${seeingCover ? "!opacity-0" : ""}`}
+        >
           <h3 className="text-2xl">{selectedBook.title}</h3>
           <p>
             {selectedBook.genre}{" "}
-            <span className="text-dark-alt-text">({selectedBook.pages})</span>
+            <span className="text-dark-alt-text">
+              ({selectedBook.pages}) {languageState.texts.book.pages}
+            </span>
           </p>
           <p>
+            <span className="text-dark-alt-text">
+              {languageState.texts.book.by}
+            </span>{" "}
             {selectedBook.author?.name}{" "}
             <span className="text-dark-alt-text">({selectedBook.year})</span>
           </p>
-          <p className="text-dark-alt-text">{selectedBook.synopsis}</p>
-          <div className="flex gap-5">{otherBooks}</div>
+          <p className={styles.synopsis}>{selectedBook.synopsis}</p>
+          <div className="flex items-center gap-4 mt-5">
+            <button
+              onClick={addToReadingList}
+              aria-label={
+                !libraryState.readingList[lightBoxState.id]
+                  ? languageState.texts.ariaLabels.add
+                  : languageState.texts.ariaLabels.remove
+              }
+              className={`cta`}
+            >
+              {!libraryState.readingList[lightBoxState.id]
+                ? languageState.texts.book.add
+                : languageState.texts.book.remove}
+            </button>
+            <button
+              onClick={() => setSeeingCover((seeingCover) => !seeingCover)}
+              className={`${styles.seeCoverButton} secondary`}
+            >
+              {languageState.texts.book.seeCover}
+            </button>
+          </div>
+          {otherBooks?.length ? (
+            <>
+              <p>{languageState.texts.book.otherBooks}</p>
+              <div className="flex gap-5">{otherBooks}</div>
+            </>
+          ) : null}
         </div>
+        {seeingCover ? (
+          <button
+            onClick={() => setSeeingCover((seeingCover) => !seeingCover)}
+            className="appear button bg-primary-dark-opacity hover:bg-dark-text w-10 h-10 rounded-full absolute z-20 top-1 left-1"
+          >
+            <FontAwesomeIcon icon={faInfo} />
+          </button>
+        ) : null}
       </article>
     </section>,
     document.body

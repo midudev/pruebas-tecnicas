@@ -59,6 +59,9 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
             {genre} ({pages}) {languageState.texts.book.pages}
           </p>
           <p className="mt-2">
+            <span className="text-dark-alt-text">
+              {languageState.texts.book.by}
+            </span>{" "}
             {author.name} <span className="text-dark-alt-text">({year})</span>
           </p>
         </div>

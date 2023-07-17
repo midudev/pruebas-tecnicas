@@ -5,6 +5,7 @@ export default {
     colors: {
       primary: "#dc143c",
       "primary-dark": "#9a0e2a",
+      "primary-dark-opacity": "#9a0e2aee",
       secondary: "dodgerblue",
       "dark-bg": "#1b1b1b",
       "dark-bg-opacity": "#1b1b1b8a",

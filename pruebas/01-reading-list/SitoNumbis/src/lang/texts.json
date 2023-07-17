@@ -10,6 +10,7 @@
       "body": "'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. "
     },
     "book": {
+      "by": "por",
       "title": "Título",
       "pages": "páginas",
       "genre": "Género",
@@ -19,7 +20,9 @@
       "otherBooks": "Otros libros",
       "add": "Agregar",
       "remove": "Remover",
-      "reading": "En la lista"
+      "reading": "En la lista",
+      "seeCover": "Ver cover",
+      "seeInfo": "Ver información"
     },
     "ariaLabels": {
       "add": "Agregar a la lista de lectura",

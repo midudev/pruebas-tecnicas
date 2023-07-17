@@ -24,7 +24,7 @@ function SearchWrapper() {
       leftIcon={
         <FontAwesomeIcon
           icon={faSearch}
-          className="rounded-full  absolute top-[50%] left-2 -translate-y-[50%]"
+          className="rounded-full text-dark-alt-text absolute top-[50%] left-2 -translate-y-[50%]"
         />
       }
       inputProps={{
