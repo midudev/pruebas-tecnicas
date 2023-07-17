@@ -8,6 +8,13 @@ use crate::{
     services::get_data,
 };
 
+fn check_book_saved(books: &Vec<Book>, b: &Book) -> bool {
+    books
+        .iter()
+        .find(|r| r.title == b.title && b.year == r.year && b.author.name == r.author.name)
+        .is_some()
+}
+
 #[function_component(App)]
 pub fn app() -> Html {
     let load_data = use_async_with_options(
@@ -27,55 +34,68 @@ pub fn app() -> Html {
         })
     };
 
-    let _onaddbook = {
+    {
         let reading_list = reading_list.clone();
-        Callback::from(move |b: &Book| {
-            if let Some(r) = reading_list.as_ref().and_then(|r| {
-                let mut r = r.clone();
-                if !r.contains(b) {
-                    r.push(b.clone());
-                }
-                Some(r)
-            }) {
-                reading_list.set(r);
+        use_effect(move || {
+            if reading_list.is_none() {
+                reading_list.set(Vec::<Book>::new())
             }
-        })
-    };
+        });
+    }
 
-    use_effect_with_deps(
-        move |(search, data, filtered_data)| {
-            if !search.is_empty() {
-                let search = search.to_lowercase();
-                filtered_data.set(
-                    data.iter()
-                        .filter(|d| {
-                            d.title.to_lowercase().contains(&search)
-                                || d.genre.to_lowercase().contains(&search)
-                                || d.author.name.to_lowercase().contains(&search)
-                                || d.synopsis.to_lowercase().contains(&search)
-                                || d.year.to_string().contains(&search)
-                                || d.pages.to_string().contains(&search)
-                        })
-                        .cloned()
-                        .collect::<Vec<Book>>(),
-                );
-            } else {
-                filtered_data.set(Vec::<Book>::new());
-            }
-        },
-        (search, data.clone(), filtered_data.clone()),
-    );
+    {
+        let reading_list = reading_list.clone();
+        use_effect_with_deps(
+            move |(search, data, filtered_data)| {
+                if !search.is_empty() {
+                    let search = search.to_lowercase();
+                    filtered_data.set(
+                        data.iter()
+                            .filter(|d| {
+                                d.title.to_lowercase().contains(&search)
+                                    || d.genre.to_lowercase().contains(&search)
+                                    || d.author.name.to_lowercase().contains(&search)
+                                    || d.synopsis.to_lowercase().contains(&search)
+                                    || d.year.to_string().contains(&search)
+                                    || d.pages.to_string().contains(&search)
+                            })
+                            .map(|b| Book {
+                                saved: check_book_saved(
+                                    reading_list.as_ref().unwrap_or(&Vec::<Book>::new()),
+                                    b,
+                                ),
+                                ..b.clone()
+                            })
+                            .collect::<Vec<Book>>(),
+                    );
+                } else {
+                    filtered_data.set(Vec::<Book>::new());
+                }
+            },
+            (search, data.clone(), filtered_data.clone()),
+        );
+    }
 
     {
         let data = data.clone();
-        let load_data = load_data.clone();
         use_effect_with_deps(
-            move |d| {
+            move |(d, reading_list)| {
                 if let Some(d) = &d.data {
-                    data.set(d.library.iter().map(|l| l.book.clone()).collect());
+                    data.set(
+                        d.library
+                            .iter()
+                            .map(|l| Book {
+                                saved: check_book_saved(
+                                    reading_list.as_ref().unwrap_or(&Vec::<Book>::new()),
+                                    &l.book,
+                                ),
+                                ..l.book.clone()
+                            })
+                            .collect(),
+                    );
                 }
             },
-            load_data,
+            (load_data.clone(), reading_list.clone()),
         );
     }
 
@@ -93,7 +113,10 @@ pub fn app() -> Html {
                         <LayoutError errtype={ErrorType::EmptyReadingList} />
                     // Show saved books
                     } else {
-                        <LibraryComponent books={((*reading_list).clone()).unwrap_or_default()} />
+                        <LibraryComponent
+                            readinglist={reading_list.clone()}
+                            books={((*reading_list).clone()).unwrap_or_default().iter().map(|b| Book { saved: true, ..b.clone() }).collect::<Vec<Book>>()}
+                        />
                     }
                     <h1 class={classes!("text-gray-700","font-bold","text-3xl","mt-3","mb-2")}>{"Nuestros Libros"}</h1>
                     if load_data.loading {
@@ -101,7 +124,7 @@ pub fn app() -> Html {
                     } else if load_data.error.is_some() || data.is_empty() {
                         <LayoutError errtype={ErrorType::Empty} />
                     } else {
-                        <LibraryComponent books={(*data).clone()} />
+                        <LibraryComponent readinglist={reading_list} books={(*data).clone()} />
                     }
                 }
             </main>

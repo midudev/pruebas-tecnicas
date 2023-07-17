@@ -24,6 +24,8 @@ pub struct Book {
     #[serde(rename = "ISBN")]
     pub isbn: String,
     pub author: Author,
+    #[serde(skip)]
+    pub saved: bool
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
