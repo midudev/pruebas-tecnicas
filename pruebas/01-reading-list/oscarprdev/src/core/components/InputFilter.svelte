@@ -5,17 +5,17 @@
 
   export let filters: Writable<BooksFilters>
 
-  const onInputChange = (e) => {
-    const title = e.target.value.toLowerCase()
-    filters.update(prev => ({...prev, title}))
-  }
+    const onInputChange = (e: Event) => {
+    const title = (e.target as HTMLInputElement).value.toLowerCase();
+    filters.update(prev => ({ ...prev, title }));
+  };
 </script>
 
 <section class="relative">
   <SearchIcon size="25" class="absolute left-2 top-2 text-iconsDark" />
   <input
     type="text"
-    placeholder="Busca por titulo.."
+    placeholder="Busca por título.."
     class="pl-12 rounded-full bg-light"
     on:input={onInputChange}
   />

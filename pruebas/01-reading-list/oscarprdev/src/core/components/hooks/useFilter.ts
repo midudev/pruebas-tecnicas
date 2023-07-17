@@ -7,13 +7,14 @@ export const useFilter = (filters: Writable<BooksFilters>) => {
     return derived<[Writable<GlobalState>, Writable<BooksFilters>], Book[]>(
       [appState, filters],
       ([$appState, $filters]) => {
-        const { genre, title } = $filters;
+        const { genre, title, pages } = $filters;
 
         const booksFiltered = $appState.books.filter(book => {
             const genreMatch = !genre || book.genre === genre;
             const titleMatch = !title || book.title.toLowerCase().includes(title.toLowerCase());
-  
-          return genreMatch && titleMatch;
+            const pagesMatch = !pages || book.pages < pages
+
+          return genreMatch && titleMatch && pagesMatch;
         });
   
         return booksFiltered;

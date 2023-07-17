@@ -33,7 +33,7 @@
     class="text-light bg-dark font-medium rounded-full text-sm px-5 py-3 text-center inline-flex items-center"
     on:click={openDropdown}
   >
-    {$genreSelected || 'Filtra por genero'}<svg
+    {$genreSelected || 'Filtra por género'}<svg
       class="w-2.5 h-2.5 ml-2.5 + {$dropdownIsOpen
         ? 'transform rotate-180'
         : ''}"

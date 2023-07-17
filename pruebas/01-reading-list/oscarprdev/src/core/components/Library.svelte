@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { appState } from './../store/store.ts'
+  import { appState } from './../store/store'
   import BooksList from './Books-list.svelte'
   import { writable } from 'svelte/store'
   import type { BooksFilters, PaginationState } from './types'
@@ -10,6 +10,7 @@
   const filters = writable<BooksFilters>({
     genre: '',
     title: '',
+    pages: 0,
   })
 
   const booksFiltered = useFilter(filters)
