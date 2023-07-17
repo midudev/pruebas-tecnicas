@@ -1,32 +1,30 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import { useBooksStore } from './store/booksStore'
 import Book from './components/Book'
 
 function App () {
   const { getBooks, setBooks, books, filterBooks } = useBooksStore() as any
+  const [filters, setFilters] = useState([])
 
-  // const [BOOKS, setBOOKS] = useState(null);
   useEffect(() => {
     getBooks()
   }, [])
 
-  const filterGenreBooks = (genre: string) => {
-    console.log('E', genre)
-    const newBooks = books.filter((d) => {
-      return d.book.genre === genre
+  useEffect(() => {
+    let _books = books
+    Object.keys(filters).map(f => {
+      _books = _books.filter((b) => b.book[f] <= filters[f])
+      setBooks(_books)
     })
+  }, [filters])
 
-    setBooks(newBooks)
+  const filterGenreBooks = (genre: string) => {
+    setFilters({ ...filters, genre })
   }
 
   const filterPageBooks = (pages: number) => {
-    console.log('E', books, pages)
-    const newBooks = books.filter((d) => {
-      return d.book.pages <= pages
-    })
-
-    setBooks(newBooks)
+    setFilters({ ...filters, pages })
   }
 
   return (
