@@ -15,6 +15,7 @@ const Button = (book) => {
                 JSON.stringify([...currentBooks, book])
             )
         }
+        window.dispatchEvent(new Event('storage'))
     }
     return (
         <div className={styles.addList}>
