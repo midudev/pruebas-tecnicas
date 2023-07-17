@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
 import { useDebounce } from "use-lodash-debounce";
 
-// components
-import SimpleInput from "../../SimpleInput/SimpleInput";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
+// components
+import SimpleInput from "../../SimpleInput/SimpleInput";
+
+// styles
+import styles from "./styles.module.css";
 
 function SearchWrapper() {
   const [searchInput, setSearchInput] = useState("");
@@ -20,7 +24,7 @@ function SearchWrapper() {
 
   return (
     <SimpleInput
-      className="relative"
+      className={styles.main}
       leftIcon={
         <FontAwesomeIcon
           icon={faSearch}
