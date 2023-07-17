@@ -1,0 +1,4 @@
+**/dist
+**/target
+**/assets/*.json
+fly.toml
