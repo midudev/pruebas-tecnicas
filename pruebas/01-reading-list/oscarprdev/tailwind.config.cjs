@@ -14,13 +14,14 @@ module.exports = {
             },
         },
         backgroundColor: {
-            light: '#F5EFE7',
+            light: '#F5F5F5',
             dark: '#161617cc',
-            bookItem: '#F5F5F5',
+            bookItem: '#F5EFE7',
             bootkItemHover: "#4F709C",
             pagBtn: "#D8C4B6",
             overlayBtn: "#F5F5F5",
-            overlayBtnHover: "#E8E2E2"
+            overlayBtnHover: "#E8E2E2",
+            overlayModal: "#393E46"
         },
         textColor: {
             light: '#000000',
