@@ -1,4 +1,5 @@
-import styles from './Card.module.css'
+import styles from './card.module.css'
+import Button from '../button/Button'
 
 // TODO: Scoring:https://dev.to/michaelburrows/create-a-custom-react-star-rating-component-5o6
 
@@ -29,9 +30,7 @@ export default function Card({ children }) {
                         <p>{author.name}</p>
                     </div>
                 </div>
-                <div className={styles.addList}>
-                    <button>Añadir a la lista</button>
-                </div>
+                <Button book={children.book} />
             </div>
         </div>
     )

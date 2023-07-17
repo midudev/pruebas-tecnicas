@@ -1,0 +1,17 @@
+.addList button{
+    width: 100%;
+    color: rgb(218,170,99);
+    background-color: transparent;
+    border-radius: 50px;
+    border: 1px solid rgb(218,170,99);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+}
+
+.addList button:hover{
+    background-color: rgb(218,170,99);
+    color:white;
+}
