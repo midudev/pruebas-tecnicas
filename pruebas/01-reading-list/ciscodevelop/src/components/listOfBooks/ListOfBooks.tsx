@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
-import { addBookWish } from "../../features/books/booksSlice";
+import { addBookWish, removeBookWishList } from "../../features/books/booksSlice";
 import { ToastContainer, toast } from "react-toastify";
 import { RootState, store } from "../../app/store";
 import { useAppDispatch } from "../../app/hooks";
 import {  Book, Library } from "../../models/BooksModel";
+import StarFavorites from '../../assets/star-fav'
 import "react-toastify/dist/ReactToastify.css";
 import "./listOfBooks.scss";
 
@@ -15,8 +16,12 @@ function ListOfBooks() {
   const handlerAddWish = (book: Book) => {
     dispatch(addBookWish(book));
     const showTost =
-      storeWishList.length != store.getState().books.wishList.length;
+      storeWishList.length < store.getState().books.wishList.length;
     showTost ? toast.success("Added to Favorites!"):toast.warn("Already in your favorites books!");
+  };
+  const handlerRemoveWish = (book: Book) => {
+    dispatch(removeBookWishList(book))
+    toast.error("Removed from the your favorites books!");
   };
 
   return (
@@ -24,6 +29,10 @@ function ListOfBooks() {
       {storeBooks.library.map((item:Library) => (
         <div className="cards-books" key={item.book.ISBN}>
           <div className="card-header">
+            <button className="btn-addwishlist" onClick={!item.book.wish?()=>handlerAddWish(item.book):()=>handlerRemoveWish(item.book)}>
+
+           <StarFavorites color={item.book.wish? "#d2c308":"#fff"}/>
+            </button>
             <div className="cover-book">
               <img
                 src={item.book.cover}
@@ -59,8 +68,8 @@ function ListOfBooks() {
       <ToastContainer
         style={{ zIndex: 999, top: 100 }}
         position="top-right"
-        autoClose={2000}
-        limit={1}
+        autoClose={1000}
+        limit={5}
         hideProgressBar={false}
         newestOnTop
         closeOnClick

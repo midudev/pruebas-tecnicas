@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import "./app.scss";
 import ListOfBooks from "./components/listOfBooks/ListOfBooks";
-import WishListBooks from "./components/wishListBooks/WishListBooks";
 import Navbar from "./components/navbar/Navbar";
+const WishListBooks = lazy(
+  () => import("./components/wishListBooks/WishListBooks")
+);
 
 function App() {
   const [isScrollY, setIsScrollY] = useState(false);
   const [modalState, setModalState] = useState(false);
- 
+
   const controlShowNav = () => {
     window.scrollY > 50 ? setIsScrollY(true) : setIsScrollY(false);
   };
@@ -24,7 +26,14 @@ function App() {
         <Navbar modalState={modalState} setModalState={setModalState} />
       </header>
       <main className="main">
-        {modalState && <WishListBooks modalState={modalState} setModalState={setModalState} />}
+        <Suspense fallback={<h2>Loading...</h2>}>
+          {modalState && (
+            <WishListBooks
+              modalState={modalState}
+              setModalState={setModalState}
+            />
+          )}
+        </Suspense>
         <ListOfBooks />
       </main>
     </div>

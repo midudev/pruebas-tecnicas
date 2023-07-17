@@ -9,6 +9,20 @@
     background: #000;
     padding: 3rem 10px;
     .card-header {
+      .btn-addwishlist{
+        border: none;
+        background: transparent;
+        width: 30px;
+        height: 30px;
+
+        .star-favorites {
+          margin-bottom: 30px;
+          cursor: pointer;
+          &:hover{
+          transform: scale(1.2);
+        }
+      }
+    }
       .cover-book {
         img {
           width: 300px;

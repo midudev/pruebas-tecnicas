@@ -15,6 +15,7 @@ export interface Root {
     year: number
     ISBN: string
     author: Author
+    wish?:boolean
   }
   
   export interface Author {
