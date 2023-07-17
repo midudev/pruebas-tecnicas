@@ -1,26 +1,31 @@
 'use client'
-
-
 import { useEffect, useState } from "react";
 import { fetchBooks } from "./api/books";
-import Loader from "./components/loader";
 import BooksList from "./components/books-list";
 
 export default function Home() {
   const [books, setBooks] = useState([]);
   const [filteredBooks, setFilteredBooks] = useState([]);
-  const [selectedGenre, setSelectedGenre] = useState("all");
   const [watchList, setWatchList] = useState([]);
+  const [selectedGenre, setSelectedGenre] = useState("all");
 
-  const handleGenreChange = (event) => {
-    setSelectedGenre(event.target.value);
-  };
+  const saveWatchListToLocalStorage = (watchList) => {
+    localStorage.setItem("watchList", JSON.stringify(watchList));
+  }
+
+  const loadWatchListFromLocalStorage = () => {
+    const storedWatchList = localStorage.getItem("watchList");
+    return storedWatchList ? JSON.parse(storedWatchList) : [];
+  }
 
   const handleAddToWatchList = (book) => {
     if (!watchList.some((item) => item.book.ISBN === book.book.ISBN)) {
       setWatchList((prevWatchList) => [...prevWatchList, book]);
-      setFilteredBooks((prevFilteredBooks) =>
-        prevFilteredBooks.filter((b) => b.book.ISBN !== book.book.ISBN)
+
+      setBooks((prevBooks) =>
+        prevBooks.map((b) =>
+          b.book.ISBN === book.book.ISBN ? { ...b, onWatchlist: true } : b
+        )
       );
     }
   };
@@ -30,31 +35,43 @@ export default function Home() {
       setWatchList((prevWatchList) =>
         prevWatchList.filter((b) => b.book.ISBN !== book.book.ISBN)
       );
-      setBooks((prevBooks) => [...prevBooks, book]);
+
+      setBooks((prevBooks) =>
+        prevBooks.map((b) =>
+          b.book.ISBN === book.book.ISBN ? { ...b, onWatchlist: false } : b
+        )
+      );
     }
   };
 
-  useEffect(() => {
-    // Recuperar la watchlist del localStorage al cargar la página
-    const storedWatchList = localStorage.getItem("watchList");
-    if (storedWatchList) {
-      setWatchList(JSON.parse(storedWatchList));
-    }
+  const handleGenreChange = (event) => {
+    setSelectedGenre(event.target.value);
+  };
 
-    fetchBooks()
-      .then((res) => {
-        setBooks(res.library);
-        setFilteredBooks(res.library);
-      })
-      .catch((err) => console.log(err));
+
+  useEffect(() => {
+    setWatchList(loadWatchListFromLocalStorage());
   }, []);
 
   useEffect(() => {
-    // Guardar la watchlist en el localStorage cuando cambia
-    localStorage.setItem("watchList", JSON.stringify(watchList));
+
+    fetchBooks()
+      .then((res) => {
+        const initialBooks = res.library.map((book) => ({
+          ...book,
+          onWatchlist: watchList.some((item) => item.book.ISBN === book.book.ISBN),
+        }));
+        setBooks(initialBooks);
+        setFilteredBooks(initialBooks);
+      })
+      .catch((err) => console.log(err));
   }, [watchList]);
 
   useEffect(() => {
+
+    saveWatchListToLocalStorage(watchList);
+
+
     if (selectedGenre === "all") {
       setFilteredBooks(books);
     } else {
@@ -63,7 +80,7 @@ export default function Home() {
       );
       setFilteredBooks(filteredBooks);
     }
-  }, [selectedGenre, books]);
+  }, [selectedGenre, books, watchList]);
 
   return (
     <div className="flex font-mono ">
@@ -71,7 +88,7 @@ export default function Home() {
         <header className="bg-gray-300 text-center p-2 mb-3 ">
           {
             books && books.length > 1 ?
-              <h1 className=" flex-col  font-bold ">{`${filteredBooks.length} Libros disponibles`}</h1>
+              <h1 className=" flex-col  font-bold ">{`${books.length - watchList.length} Libros disponibles`}</h1>
               :
               <h1 className=" flex-col  font-bold ">No hay libros disponibles</h1>
           }
