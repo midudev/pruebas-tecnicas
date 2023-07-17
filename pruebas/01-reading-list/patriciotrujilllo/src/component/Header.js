@@ -1,4 +1,4 @@
-import {useId} from 'react'
+import { useId,} from 'react'
 import { useFilters } from '../hook/useFilters'
 import { useListBook } from '../hook/useListBook'
 
@@ -6,13 +6,12 @@ export const Header = ({bookNoFiltered}) =>{
     const idGenero = useId()
     const idRange = useId()
     const {filters,setFilters} = useFilters()
-    const {read} = useListBook()
+    const { read } = useListBook()
 
-    const notFiltered = bookNoFiltered.filter(item=> !read.includes(item.book))
+    const notFiltered = bookNoFiltered.filter(item=> !read.find(book => book.ISBN === item.book.ISBN))
 
-    const AmountGeneralList = (notFiltered.filter(item=> filters.genre=== 'all' || item.book.genre===filters.genre)).length
+    const amountGeneralList = (notFiltered.filter(item=> filters.genre=== 'all' || item.book.genre===filters.genre)).length
     const AmountInListToRead = (read.filter(item=> filters.genre=== 'all' || item.genre===filters.genre)).length
-    
 
     const handleChange = (e) =>{
         setFilters({
@@ -41,7 +40,7 @@ export const Header = ({bookNoFiltered}) =>{
             </div>
             </fieldset>
             <div>
-                <h4>{AmountGeneralList} libros disponibles</h4>
+                <h4>{amountGeneralList} libros disponibles</h4>
                 <h4>{AmountInListToRead} libros en lista lectura: </h4>
             </div>
         </header>
