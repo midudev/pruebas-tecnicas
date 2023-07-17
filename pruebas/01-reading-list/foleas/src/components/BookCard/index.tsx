@@ -18,7 +18,7 @@ const BookCard = ({
           <span className="font-bold">X</span>
         </div>
       )}
-      <figure>
+      <figure className="flex h-full">
         <img
           className="w-full h-full object-cover"
           src={imageUrl}

@@ -31,19 +31,21 @@ function App() {
   }, [currentGenre, books, selectedBooks]);
 
   return (
-    <main className="flex">
+    <main className="p-5 box-border flex flex-wrap w-screen h-screen overflow-hidden gap-5">
       {loading ? (
-        <div
-          className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-          role="status"
-        >
-          <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
-            Loading...
-          </span>
+        <div className="flex flex-wrap justify-center self-center w-screen">
+          <div
+            className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+            role="status"
+          >
+            <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+              Loading...
+            </span>
+          </div>
         </div>
       ) : (
         <>
-          <div className="available-books-wrapper w-4/5">
+          <div className="box-border p-10 pt-0 available-books-wrapper w-4/5 overflow-y-auto max-h-full">
             <h1 className="text-3xl font-bold mb-5">{`${
               books.length - selectedBooks.length
             } libros disponibles`}</h1>
@@ -52,7 +54,7 @@ function App() {
               <h3 className="text-1xl font-bold mb-5">{`${selectedBooks.length} en la lista de lectura`}</h3>
             )}
 
-            <div className="filters-wrapper mb-5 flex">
+            <div className="filters-wrapper mb-5 flex gap-10 align-center">
               <PageFilter />
               <GenderFilter />
             </div>
@@ -75,11 +77,16 @@ function App() {
                 })}
             </div>
           </div>
-          <div className="lecture-books-wrapper w-1/5">
+          <div
+            className={`lecture-books-wrapper flex-1 overflow-y-auto max-h-full ${
+              selectedBooks.length &&
+              "border-black border bg-gray-300 rounded-md"
+            }`}
+          >
             {selectedBooks.length > 0 && (
-              <>
+              <div className="box-border p-5 h-full lecture-books">
                 <h2 className="text-3xl font-bold mb-5">Lista de Lectura</h2>
-                <div className="grid grid-cols-2 gap-10">
+                <div className="grid grid-cols-2 gap-10 pb-4">
                   {books
                     ?.filter(({ book: { ISBN } }) =>
                       selectedBooks.includes(ISBN)
@@ -100,7 +107,7 @@ function App() {
                       );
                     })}
                 </div>
-              </>
+              </div>
             )}
           </div>
         </>
