@@ -14,6 +14,7 @@ specifiers:
   eslint-plugin-react-refresh: ^0.4.1
   react: ^18.2.0
   react-dom: ^18.2.0
+  shared-zustand: ^2.0.0
   sonner: ^0.6.2
   typescript: ^5.0.2
   vite: ^4.4.0
@@ -25,6 +26,7 @@ dependencies:
   '@mui/material': 5.14.0_aq5jutf6cr66txe4mu4a5j4iuy
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  shared-zustand: 2.0.0
   sonner: 0.6.2_biqbaboplfbrettd7655fr4n2y
   zustand: 4.3.9_react@18.2.0
 
@@ -1996,6 +1998,10 @@ packages:
     dependencies:
       lru-cache: 6.0.0
     dev: true
+
+  /shared-zustand/2.0.0:
+    resolution: {integrity: sha512-DKBWe2w62wZif79XcUXStBBQ47T4y3XEApueseZ1O3wEsMbamDK01ac0zQNVj4MOH9Z5jesM2oLuug/79LPM1A==}
+    dev: false
 
   /shebang-command/2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}

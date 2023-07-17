@@ -1,6 +1,7 @@
 import { Book } from "../models";
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, subscribeWithSelector } from "zustand/middleware";
+import { share, isSupported } from "shared-zustand";
 
 export interface BookState {
   userLectureList: Book[];
@@ -15,7 +16,7 @@ export interface BookState {
 
 export const useBook = create<BookState>()(
   persist(
-    (set) => ({
+    subscribeWithSelector((set) => ({
       books: [],
       userLectureList: [],
       selectedGenres: [],
@@ -35,10 +36,17 @@ export const useBook = create<BookState>()(
         })),
       setSelectedGenres: (genres: string[]) =>
         set(() => ({ selectedGenres: genres })),
-    }),
+    })),
     {
       name: "book-storage",
       getStorage: () => localStorage,
     }
   )
 );
+
+if ("BroadcastChannel" in globalThis /* || isSupported() */) {
+  // share the property "count" of the state with other tabs
+  share("books", useBook);
+  share("userLectureList", useBook);
+  share("selectedGenres", useBook);
+}
