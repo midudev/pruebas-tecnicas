@@ -16,12 +16,24 @@ yew-hooks = "0.2.0"
 yew-router = "0.17.0"
 yew = { version = "0.20.0", features = ["csr"] }
 yew_icons = { version = "0.7.2", features = [
-    "BootstrapSearch",
+    "BootstrapBookmark",
     "BootstrapBookmarkCheckFill",
     "BootstrapBookmarkDashFill",
-    "BootstrapBookmark",
     "BootstrapBookmarkPlusFill",
+    "BootstrapChevronExpand",
+    "BootstrapDribbble",
+    "BootstrapGithub",
+    "BootstrapGlobe2",
+    "BootstrapInstagram",
+    "BootstrapLinkedin",
+    "BootstrapSearch",
+    "BootstrapTwitch",
+    "BootstrapTwitter",
+    "FontAwesomeRegularCopyright",
     "HeroiconsMiniSolidArrowUpRight",
+    "SimpleIconsDocker",
+    "SimpleIconsRust",
+    "SimpleIconsTailwindcss",
 ] }
 # development mode log
 log = { version = "0.4.19", optional = true }
