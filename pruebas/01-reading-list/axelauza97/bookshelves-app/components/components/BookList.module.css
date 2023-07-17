@@ -1,0 +1,12 @@
+.bookList {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+  gap: 1rem;
+  text-align: center;
+}
+
+.image {
+  width: 7rem;
+  height: 8rem;
+}

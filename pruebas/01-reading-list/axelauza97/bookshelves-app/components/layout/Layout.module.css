@@ -1,0 +1,12 @@
+/*.main {
+  margin: 3rem auto;
+  width: 90%;
+  max-width: 40rem;
+}*/
+
+@media screen and (min-width: 700px) {
+  .body {
+    width: 100vw;
+    height: 100vh;
+  }
+}

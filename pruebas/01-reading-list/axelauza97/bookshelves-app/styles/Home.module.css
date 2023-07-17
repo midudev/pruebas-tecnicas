@@ -1,0 +1,19 @@
+.container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.filtros {
+  display: flex;
+  flex-direction: row;
+}
+
+.container > section {
+  width: 100%;
+}
+
+.filtro {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
