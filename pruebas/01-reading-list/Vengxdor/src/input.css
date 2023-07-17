@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+      body {
+			background: url(../public/img/bg.webp);
+		}
+
+      
+      .clone .group{
+         width: 75% ;
+			display: flex ;
+			flex-direction: column ;
+			margin: auto ;
+		}
+
+      .clone .removeBtn{
+         display: inline;
+      }
+      
+      .clone .hover-bg{
+         height: 76% ;
+         
+      }
+      .clone .infoBtn{
+         display: none;
+      }
+
+      .clone .info{
+         display: none;
+      }
+
+      .clone .addBtn{
+         display: none;
+      }
+
+      .clone h3{
+         color: #fff;
+      }
+
+      /* .clone .RemoveList{
+         display: inline;
+      } */
+      
+		/* ===== Scrollbar CSS ===== */
+		/* Firefox */
+		* {
+			scrollbar-width: auto;
+			scrollbar-color: #5350ea #ffffff;
+		}
+
+		/* Chrome, Edge, and Safari */
+		*::-webkit-scrollbar {
+         width: 10px;
+		}
+
+		*::-webkit-scrollbar-track {
+			background: #ffffff;
+		}
+      
+		*::-webkit-scrollbar-thumb {
+         background-color: #5350ea;
+			border-radius: 10px;
+		}
