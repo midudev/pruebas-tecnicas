@@ -2,6 +2,7 @@
   "es": {
     "logo": "Sito's Library",
     "error": {
+      "noBooks": "No hay libros",
       "title": "Ha ocurrido un error",
       "reload": "Recargar"
     },
@@ -23,6 +24,9 @@
       "reading": "En la lista",
       "seeCover": "Ver cover",
       "seeInfo": "Ver información"
+    },
+    "home": {
+      "readingList": "Viendo lista de lectura"
     },
     "ariaLabels": {
       "add": "Agregar a la lista de lectura",
