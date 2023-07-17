@@ -27,6 +27,7 @@ yew_icons = { version = "0.7.2", features = [
     "BootstrapInstagram",
     "BootstrapLinkedin",
     "BootstrapSearch",
+    "BootstrapStackOverflow",
     "BootstrapTwitch",
     "BootstrapTwitter",
     "FontAwesomeRegularCopyright",

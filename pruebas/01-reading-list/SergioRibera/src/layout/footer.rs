@@ -52,7 +52,7 @@ pub fn Footer() -> Html {
         SectionItem::new(IconId::BootstrapTwitch, "Twitch", "https://www.twitch.tv/sergioriberaid"),
         SectionItem::new(IconId::BootstrapInstagram, "Instagram", "https://www.instagram.com/sergio_riberacosta"),
         SectionItem::new(IconId::BootstrapTwitter, "Twitter", "https://twitter.com/sergioribera_rs"),
-        SectionItem::new(IconId::SimpleIconsDocker, "Docker", "https://hub.docker.com/u/sergioribera"),
+        SectionItem::new(IconId::BootstrapStackOverflow, "StackOverflow", "https://stackoverflow.com/users/12349493/sergio-ribera"),
     ];
     let techstack = vec![
         SectionItem::new(IconId::SimpleIconsRust, "Rust", "https://rust-lang.org"),
