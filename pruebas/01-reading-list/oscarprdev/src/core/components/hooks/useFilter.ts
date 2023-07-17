@@ -1,24 +1,27 @@
 import { derived, type Writable } from "svelte/store";
 import type { Book, GlobalState } from "../../types";
 import { appState } from "../../store/store";
+import type { BooksFilters } from "../types";
 
-export const useFilter = <T>(filters: Writable<T>) => {
-    return derived<
-    [Writable<GlobalState>, Writable<T>], Book[]>(
-        [appState, filters], ([$appState, $filters]) => {
-           let booksFiltered: Book[]
+export const useFilter = (filters: Writable<BooksFilters>) => {
+    return derived<[Writable<GlobalState>, Writable<BooksFilters>], Book[]>(
+      [appState, filters],
+      ([$appState, $filters]) => {
+        const { genre, title } = $filters;
 
-           Object.entries($filters).forEach(filter => {
-                const key = filter[0]
-                const value = filter[1]
-
-                booksFiltered = $appState.books.filter(book => 
-                    book[key].toLowerCase() === value.toLowerCase() 
-                    || book[key].toLowerCase().includes(value.toLowerCase() )
-            )
-           });
-
-           return booksFiltered.length > 0 ? booksFiltered : $appState.books
-        }
+        const booksFiltered = $appState.books.filter(book => {
+            const genreMatch = !genre || book.genre === genre;
+            const titleMatch = !title || book.title.toLowerCase().includes(title.toLowerCase());
+  
+          return genreMatch && titleMatch;
+        });
+  
+        return booksFiltered;
+      }
     );
-}
+  };
+
+  
+  
+  
+  
