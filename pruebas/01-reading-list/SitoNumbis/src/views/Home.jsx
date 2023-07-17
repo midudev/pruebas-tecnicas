@@ -1,3 +1,6 @@
+import { Suspense } from "react";
+import loadable from "@loadable/component";
+
 // components
 import Book from "../components/Book/Book";
 import ToTop from "../components/ToTop/ToTop";
@@ -9,25 +12,29 @@ import { useLibrary } from "../contexts/LibraryProvider";
 
 // styles
 import styles from "./styles.module.css";
-import LightBox from "../components/LightBox/LightBox";
+
+// suspended
+const LightBox = loadable(() => import("../components/LightBox/LightBox"));
 
 function Home() {
   const { libraryState } = useLibrary();
 
   return (
     <main className={styles.main}>
-      <FilterBar />
-      <LightBoxProvider>
-        <LightBox />
-        <section>
-          <div className={styles.bookGrid}>
-            {libraryState.books.map((book) => (
-              <Book key={book.ISBN} {...book} />
-            ))}
-          </div>
-        </section>
-      </LightBoxProvider>
-      <ToTop />
+      <Suspense>
+        <FilterBar />
+        <LightBoxProvider>
+          <LightBox />
+          <section>
+            <div className={styles.bookGrid}>
+              {libraryState.books.map((book) => (
+                <Book key={book.ISBN} {...book} />
+              ))}
+            </div>
+          </section>
+        </LightBoxProvider>
+        <ToTop />
+      </Suspense>
     </main>
   );
 }
