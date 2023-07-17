@@ -1,16 +1,14 @@
-import type { Book, ResponseBooks } from '@/models/response-books.model'
+import type { Book, Library } from '@/models/response-books.model'
 
 export type ResponseBooksAdapter = ReturnType<typeof responseBooksAdapter>
 
-export const responseBooksAdapter = (response: ResponseBooks) => {
-  const { library } = response
-
-  const categories = new Set<string>()
+export const responseBooksAdapter = (library: Library[]) => {
+  const genres = new Set<string>()
 
   const books = library.map<Book>(({ book }) => {
     const { title, pages, genre, cover, synopsis, year, ISBN, author } = book
 
-    categories.add(genre)
+    genres.add(genre)
 
     return {
       title,
@@ -28,7 +26,7 @@ export const responseBooksAdapter = (response: ResponseBooks) => {
   })
 
   return {
-    categories: Array.from(categories),
+    genres: Array.from(genres),
     books,
   }
 }
