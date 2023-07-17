@@ -5,7 +5,7 @@
   import { modalState } from './core/store/modal-store'
 </script>
 
-<main class="relative h-screen overflow-y-hidden">
+<main class="relative h-screen overflow-y-hidden flex ">
   <Header />
   <Library />
   <BookModal />

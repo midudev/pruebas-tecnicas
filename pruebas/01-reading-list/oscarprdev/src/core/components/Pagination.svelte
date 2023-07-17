@@ -3,6 +3,7 @@
   import type { PaginationState } from './types'
   import type { Book } from '../types'
   import type { Readable } from 'svelte/motion'
+  import { ArrowRightIcon, ArrowLeftIcon } from 'svelte-feather-icons'
 
   export let paginationState: Writable<PaginationState>
   export let booksFiltered: Readable<Book[]>
@@ -22,17 +23,25 @@
   }
 </script>
 
-<section>
+<section class="self-end flex gap-5">
   {#if $paginationState.init > 0}
-    <button
-      class="border border-black px-5 py-2 cursor-pointer hover:bg-pagBtn transition-colors ease-in"
-      on:click={showPrev}>Prev</button
-    >
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
+    <div class="cursor-pointer" on:click={showPrev}>
+      <ArrowLeftIcon
+        size="32"
+        class="transtion-text-pagination duration-300 hover:text-pagination"
+      />
+    </div>
   {/if}
   {#if $booksFiltered && $paginationState.offset < $booksFiltered.length}
-    <button
-      class="border border-black px-5 py-2 cursor-pointer hover:bg-pagBtn transition-colors ease-in"
-      on:click={showNext}>Next</button
-    >
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
+    <div class="cursor-pointer" on:click={showNext}>
+      <ArrowRightIcon
+        size="32"
+        class="transtion-text-pagination duration-300 hover:text-pagination"
+      />
+    </div>
   {/if}
 </section>

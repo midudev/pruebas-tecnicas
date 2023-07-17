@@ -1,5 +1,6 @@
 <script lang="ts">
   import { modalState } from '../store/modal-store'
+  import { XIcon } from 'svelte-feather-icons'
 
   const closeModal = () => {
     modalState.update((state) => ({ isOpen: false, book: null }))
@@ -8,19 +9,16 @@
 
 {#if $modalState.isOpen}
   <dialog
-    open
+    open={$modalState.isOpen}
     data-modal-target="modal"
     class="absolute top-0 left-0 bg-dark backdrop-blur-sm w-full h-full grid place-items-center z-1 open:animate-fade-in open:backdrop:animate-fade-in"
   >
-    <div
+    <article
       class="flex items-start justify-center gap-8 p-5 bg-light max-w-xl max-h-400 rounded-md relative"
     >
-      <button
-        class="absolute top-3 right-3 px-4 py-2 bg-blue-500 text-white rounded-md"
-        on:click={closeModal}
-      >
-        X
-      </button>
+      <div  class="absolute top-3 right-3 z-10 cursor-pointer" on:click={closeModal}>
+        <XIcon size="24"/>
+      </div>
       <section class="h-80">
         <img
           class="w-full h-full object-cover"
@@ -29,6 +27,7 @@
         />
       </section>
       <section class="w-1/2 h-80 flex flex-col gap-8">
+        <i data-feather="alert-circle"></i>
         <div class="flex flex-col gap-1">
           <h2 class="text-lg"><b>{$modalState.book.title}</b></h2>
           <h3 class="text-sm">
@@ -43,6 +42,6 @@
           >
         </div>
       </section>
-    </div>
+    </article>
   </dialog>
 {/if}

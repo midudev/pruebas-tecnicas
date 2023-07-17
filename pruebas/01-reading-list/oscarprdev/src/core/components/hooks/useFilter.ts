@@ -12,7 +12,10 @@ export const useFilter = <T>(filters: Writable<T>) => {
                 const key = filter[0]
                 const value = filter[1]
 
-                booksFiltered = $appState.books.filter(book => book[key] === value)
+                booksFiltered = $appState.books.filter(book => 
+                    book[key].toLowerCase() === value.toLowerCase() 
+                    || book[key].toLowerCase().includes(value.toLowerCase() )
+            )
            });
 
            return booksFiltered.length > 0 ? booksFiltered : $appState.books

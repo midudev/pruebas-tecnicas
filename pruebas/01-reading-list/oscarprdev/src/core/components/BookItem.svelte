@@ -23,16 +23,15 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <li
-  class="flex flex-col gap-2 w-60 p-2 relative max-h-400 bg-bookItem shadow-lg"
+  class="flex flex-col gap-4 w-60 relative h-400"
   on:mouseenter={handleOverlay}
   on:mouseleave={handleOverlay}
 >
-  <div class="h-5/6">
+  <div class="h-5/6 shadow-[4.0px_5.0px_8.0px_rgba(0,0,0,0.38)]">
     <img class="w-full h-full object-cover" src={book.cover} alt={book.title} />
   </div>
   <div class="flex flex-col gap-2 max-w-xs overflow-hidden">
-    <h2 class="text-lg truncate">{book.title}</h2>
-    <h3 class="text-s">{book.author.name}</h3>
+    <h2 class="text-lg truncate ml-2">{book.title}</h2>
   </div>
   {#if $showOverlay}
     <div
