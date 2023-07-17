@@ -16,6 +16,36 @@ export default {
         }
       }
     },
+        {
+      "book": {
+        "title": "Halo: The Flood",
+        "pages": 275,
+        "cover": "src/files/covers/Halo_The_Flood_2010.webp",
+        "genre": "Ciencia ficción",
+        "synopsis": "El Jefe Maestro Cortana viajan a las profundidades de Halo pero en el proceso se encuentran con un antiguo enemigo de la humanidad",
+        "year": 2003,
+        "ISBN": "267-4716409672",
+        "author": {
+          "name": "William C. Dietz",
+          "otherBooks": ["Mass Effect 4: El engaño"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Identity",
+        "pages": 334,
+        "cover": "src/files/covers/Identity.jpg",
+        "genre": "Suspenso",
+        "synopsis": "Un ataque pone patas arriba la vida de Morgan y debe abandonar la ciudad para regresar a la casa de su familia. Pero pronto descubre que a veces tu pasado no quiere dejarte ir.",
+        "year": 1986,
+        "ISBN": "976-9800872211",
+        "author": {
+          "name": "Eleanor Marie Robertson",
+          "otherBooks": ["Tesoros Ocultos", "El secreto de una dama", "Una vida juntos"]
+        }
+      }
+    },
     {
       "book": {
         "title": "Juego de Tronos",
@@ -51,6 +81,21 @@ export default {
             "Harry Potter y el prisionero de Azkaban",
             "Harry Potter y el cáliz de fuego"
           ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Halo: Espectros de Onyx",
+        "pages": 377,
+        "cover": "src/files/covers/Halo_Ghosts_of_Onyx.webp",
+        "genre": "Ciencia ficción",
+        "synopsis": "Algo sucede en las profundidades de Onyx: una antigua tecnología de los Forerunners despierta, y flotas del UNSC y del Covenant la reclaman para cambiar el rumbo de la guerra",
+        "year": 2005,
+        "ISBN": "393-0100563812",
+        "author": {
+          "name": "Eric Nylund",
+          "otherBooks": ["Agua seca", "Halo: La caida de Reach", "Halo: Primer ataque"]
         }
       }
     },
@@ -101,6 +146,21 @@ export default {
     },
     {
       "book": {
+        "title": "Matar a un ruiseñor",
+        "pages": 341,
+        "cover": "src/files/covers/Matar_A_Un_Ruiseñor.jpg",
+        "genre": "Drama",
+        "synopsis": "Un abogado local lo arriesga todo para defender a un hombre negro injustamente acusado de un terrible crimen.",
+        "year": 1960,
+        "ISBN": "679-0516427671",
+        "author": {
+          "name": "Harper Lee",
+          "otherBooks": ["Ven y pon un centinela", "El sueño jamas soñado"]
+        }
+      }
+    },
+    {
+      "book": {
         "title": "La Guía del Autoestopista Galáctico",
         "pages": 216,
         "genre": "Ciencia ficción",
@@ -114,6 +174,21 @@ export default {
             "El restaurante del fin del mundo",
             "La vida, el universo y todo lo demás"
           ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Hora del asesino",
+        "pages": 150,
+        "cover": "src/files/covers/Hour_Of_The_Assasin.webp",
+        "genre": "Accion",
+        "synopsis": "Para salvarse a sí mismo y a las personas que ama, Nick debe detener a los hombres que gobiernan Washington antes de que lo entierren junto con sus secretos.",
+        "year": 2012,
+        "ISBN": "209-4716403672",
+        "author": {
+          "name": "Matthew Quirk",
+          "otherBooks": ["Seis días", "Los 500", "El agente nocturno"]
         }
       }
     },
@@ -182,6 +257,21 @@ export default {
     },
     {
       "book": {
+        "title": "Bajo la misma estrella",
+        "pages": 239,
+        "cover": "src/files/covers/The_Fault_In_Our_Stars.jpg",
+        "genre": "Drama",
+        "synopsis": "Una historia que explora cuán exquisita y trágica puede ser la aventura de saberse vivo y querer a alguien.",
+        "year": 1981,
+        "ISBN": "612-9237493817",
+        "author": {
+          "name": "John Green",
+          "otherBooks": ["Buscando a Alaska", "Ciudades de papel", "El teorema de Katherine", "Tu mundo y el mio"]
+        }
+      }
+    },
+    {
+      "book": {
         "title": "Frankenstein",
         "pages": 280,
         "genre": "Terror",
@@ -203,12 +293,42 @@ export default {
         "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1485924654i/34094154.jpg",
         "synopsis": "La historia de un monstruo ancestral que amenaza con revivir y dominar el mundo.",
         "year": 1928,
-        "ISBN": "978-1542461690",
+        "ISBN": "979-1542461690",
         "author": {
           "name": "H.P. Lovecraft",
           "otherBooks": ["El horror de Dunwich", "En las montañas de la locura"]
         }
       }
-    }
+    },
+    {
+      "book": {
+        "title": "Bandera Negra",
+        "pages": 456,
+        "cover": "src/files/covers/Black_Flag.webp",
+        "genre": "Accion",
+        "synopsis": "A medida que las amenazas se acercan por todos lados, Jake se enfrenta a una elección familiar: retroceder o pasar a la ofensiva.",
+        "year": 1989,
+        "ISBN": "398-9294473812",
+        "author": {
+          "name": "David Ricciardi",
+          "otherBooks": ["Objetivo de la sombra", "Huelga rebelde", "Luz de alerta"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Veridity: La sombra del engaño",
+        "pages": 476,
+        "cover": "/src/files/covers/veridity_lasombradelengaño.webp",
+        "genre": "Suspenso",
+        "synopsis": "Una autora al borde de la bancarrota recibira un encargo que le cambiara la vida.",
+        "year": 1999,
+        "ISBN": "022-3212359811",
+        "author": {
+          "name": "Colleen Hoover",
+          "otherBooks": ["Tal vez mañana", "Romper el circulo", "Sin merito"]
+        }
+      }
+    },
   ]
 } as Library

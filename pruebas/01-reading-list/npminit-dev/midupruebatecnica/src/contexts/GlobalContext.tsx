@@ -4,8 +4,6 @@ import data from '../files/books'
 import { InterestBook } from "../types/interestbook";
 import { GeneralType } from "../types/globalcontext";
 import * as ls from "local-storage";
-import { message } from 'antd'
-import { MessageInstance } from 'antd/es/message/interface';
 
 const defValues: GeneralType = {
   bookList: [],
@@ -22,7 +20,7 @@ export const GlobalContext = createContext<GeneralType>(defValues)
 
 export default function GlobalContextProvider({ children }: any): JSX.Element {
 
-  const [ bookList, setBookList ] = useState<Book[]|null>(getBooksArray(data));
+  const [ bookList, setBookList ] = useState<Book[]>(getBooksArray(data));
   const [ readList, setReadList ] = useState<InterestBook[]|null>([]);
   const [ showReadList, setShowReadList ] = useState<boolean>(false);
   const resetBookList = () => setBookList(getBooksArray(data));
@@ -31,6 +29,10 @@ export default function GlobalContextProvider({ children }: any): JSX.Element {
     if(!ls.get('readList')) setReadList([])
     else setReadList(ls.get('readList'))
   }, [])
+
+  useEffect(() => {
+    console.log(readList)
+  }, [readList])
 
   ls.on(
     "readList",

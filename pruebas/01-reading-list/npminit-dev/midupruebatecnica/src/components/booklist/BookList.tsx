@@ -2,6 +2,9 @@ import { useState, useEffect, useContext, Dispatch, SetStateAction } from 'react
 import { GlobalContext } from '../../contexts/GlobalContext'
 import Book from './Book'
 import { Col, Row } from 'antd'
+import BookAmount from './BookAmounts';
+import SearchBar from './SearchBar';
+import Filters from './Filters';
 
 export default function BookList(): JSX.Element {
 
@@ -9,6 +12,9 @@ export default function BookList(): JSX.Element {
 
   return (
     <section>
+      <BookAmount></BookAmount>
+      <SearchBar></SearchBar>
+      <Filters></Filters>
       <Row justify={"space-around"} align={"middle"} gutter={[12, 12]}>
         { bookList &&
           bookList.map((book, i) => 

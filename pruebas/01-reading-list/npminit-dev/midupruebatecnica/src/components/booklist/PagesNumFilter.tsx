@@ -1,4 +1,4 @@
-export default function PagenNumFilter(): JSX.Element {
+export default function PagesNumFilter(): JSX.Element {
   return (
     <>
     </>
