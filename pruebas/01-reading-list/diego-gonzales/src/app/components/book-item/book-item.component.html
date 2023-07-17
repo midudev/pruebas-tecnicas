@@ -1,8 +1,20 @@
 <div
-  class="card card-compact w-full bg-neutral text-neutral-content transition-all hover:contrast-75 cursor-pointer rounded"
+  class="card card-compact w-full bg-neutral text-neutral-content rounded transition-all hover:contrast-75 container"
+  [ngClass]="{ isFavorite: isFavorite }"
 >
   <div class="card-body items-center text-center">
-    <figure>
+    <figure class="relative">
+      <label>
+        <button
+          class="btn btn-accent btn-md btn-circle"
+          (click)="toggleFavorite()"
+        >
+          <span class="font-bold text-lg">
+            {{ !isFavorite() ? '♡' : '♥' }}
+          </span>
+        </button>
+      </label>
+
       <img
         [src]="book.cover"
         [alt]="'Book of ' + book.title"
@@ -12,9 +24,3 @@
     <h2>{{ book.title }}</h2>
   </div>
 </div>
-
-<!-- <img
-  [src]="book.cover"
-  [alt]="'Book of ' + book.title"
-  class="w-full h-[400px] object-contain rounded"
-/> -->
