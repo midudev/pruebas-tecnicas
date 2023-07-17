@@ -115,6 +115,7 @@ pub fn app() -> Html {
                     } else {
                         <LibraryComponent
                             title="Tu Lista de Lectura"
+                            sortable=true
                             readinglist={reading_list.clone()}
                             books={((*reading_list).clone()).unwrap_or_default().iter().map(|b| Book { saved: true, ..b.clone() }).collect::<Vec<Book>>()}
                         />
@@ -124,7 +125,12 @@ pub fn app() -> Html {
                     } else if load_data.error.is_some() || data.is_empty() {
                         <LayoutError errtype={ErrorType::Empty} title="Nuestros Libros"/>
                     } else {
-                        <LibraryComponent readinglist={reading_list} books={(*data).clone()} title="Nuestros Libros" />
+                        <LibraryComponent
+                            sortable=true
+                            readinglist={reading_list}
+                            books={(*data).clone()}
+                            title="Nuestros Libros"
+                        />
                     }
                 }
             </main>

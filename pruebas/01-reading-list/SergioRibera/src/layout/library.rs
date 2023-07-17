@@ -2,7 +2,10 @@ use yew::prelude::*;
 use yew_hooks::{use_bool_toggle, use_local_storage, UseLocalStorageHandle};
 use yew_icons::{Icon, IconId};
 
-use crate::{components::Book as BookComponent, models::Book};
+use crate::{
+    components::{Book as BookComponent, SingleChoice},
+    models::Book,
+};
 
 #[derive(Clone, Properties, PartialEq)]
 pub struct Props {
@@ -12,13 +15,35 @@ pub struct Props {
     pub books: Vec<Book>,
     #[prop_or(true)]
     pub expandable: bool,
+    #[prop_or(false)]
+    pub sortable: bool,
+}
+
+#[derive(Clone, Default, PartialEq)]
+enum SortContent {
+    #[default]
+    AZ,
+    ZA,
+    ByPages,
 }
 
 #[function_component]
 pub fn Library(props: &Props) -> Html {
-    let Props { expandable, readinglist, books, title } = props.clone();
+    let Props {
+        expandable,
+        readinglist,
+        books,
+        title,
+        sortable,
+    } = props.clone();
     let saved_books = use_local_storage::<Vec<Book>>("saved_books".to_string());
     let not_expanded = use_bool_toggle(expandable);
+    let books = use_state(|| {
+        let mut books = books.clone();
+        books.sort_by(|a, b| a.title.cmp(&b.title));
+        books
+    });
+    let sort = use_state(SortContent::default);
 
     let reading_list = if let Some(v) = readinglist {
         drop(saved_books);
@@ -71,16 +96,65 @@ pub fn Library(props: &Props) -> Html {
         Callback::from(move |_: MouseEvent| not_expanded.toggle())
     };
 
+    {
+        let sort = sort.clone();
+        let books = books.clone();
+        use_effect_with_deps(
+            move |sort| {
+                let mut mut_books = books.to_vec();
+                match **sort {
+                    SortContent::AZ => mut_books.sort_by(|a, b| a.title.cmp(&b.title)),
+                    SortContent::ZA => {
+                        mut_books.sort_by(|a, b| a.title.cmp(&b.title));
+                        mut_books.reverse();
+                    },
+                    SortContent::ByPages => mut_books.sort_by(|a, b| a.pages.cmp(&b.pages)),
+                };
+                books.set(mut_books);
+            },
+            sort,
+        );
+    }
+
+    let onchangesort = {
+        let sort = sort.clone();
+        Callback::from(move |v| sort.set(v))
+    };
+
     html! {
         <section
-            class={classes!("flex", "flex-row", "flex-wrap", "gap-x-8", "gap-y-6", "py-4")}>
-            if !title.is_empty() {
-                <h1
-                    class={classes!("w-full","text-gray-700","font-bold","text-3xl","mt-6","mb-2")}
-                >
-                    {title.clone()}
-                </h1>
-            }
+            class={classes!("flex","flex-row","flex-wrap","gap-x-8","gap-y-6","py-4","mt-6","mb-2")}>
+            <header class={classes!("w-full","flex","flex-row","items-center","py-6")}>
+                if !title.is_empty() {
+                    <h1
+                        class={classes!("w-full","text-gray-700","font-bold","text-3xl")}
+                    >
+                        {title.clone()}
+                    </h1>
+                }
+                if sortable {
+                    <SingleChoice<SortContent>
+                        options={vec![SortContent::AZ,SortContent::ZA,SortContent::ByPages]}
+                        onchange={onchangesort}
+                    >
+                        <div
+                            class={classes!("flex","cursor-pointer","hover:bg-slate-200","p-4","rounded",(*sort == SortContent::AZ).then_some("bg-slate-300").or(Some("bg-slate-200")))}
+                        >
+                            <Icon icon_id={IconId::FontAwesomeSolidArrowDownAZ} width="12px" height="12px"/>
+                        </div>
+                        <div
+                            class={classes!("flex","cursor-pointer","hover:bg-slate-200","p-4","rounded",(*sort == SortContent::ZA).then_some("bg-slate-300").or(Some("bg-slate-200")))}
+                        >
+                            <Icon icon_id={IconId::FontAwesomeSolidArrowUpAZ} width="12px" height="12px"/>
+                        </div>
+                        <div
+                            class={classes!("flex","cursor-pointer","hover:bg-slate-200","p-4","rounded",(*sort == SortContent::ByPages).then_some("bg-slate-300").or(Some("bg-slate-200")))}
+                        >
+                            <Icon icon_id={IconId::Bootstrap123} width="12px" height="12px"/>
+                        </div>
+                    </SingleChoice<SortContent>>
+                }
+            </header>
             <div
                 class={classes!("flex","flex-row","flex-wrap","gap-x-8","gap-y-6","px-6","py-4","overflow-hidden","transition-all",not_expanded.then_some("max-h-[390px]"),)}
             >
