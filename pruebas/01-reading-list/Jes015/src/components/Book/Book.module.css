@@ -1,0 +1,6 @@
+.book__image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2/3;
+    background-color: var(--bg-1);
+}

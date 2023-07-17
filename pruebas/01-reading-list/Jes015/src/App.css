@@ -1,0 +1,122 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-1: #141414;
+  --b2-2: #e8e8e8;
+  --sub-card-backgorund: #d3d7e0;
+  --button-backgorund: #404a9c;
+  --c-text-1: #2b3c58;
+  --c-text-2: #e5e5e5;
+  --card-border-color: #bfc7d7;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-image: url('/readlist-bg.webp');
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+  background-position: top;
+  background-color: var(--bg-1);
+  color: var(--c-text-2);
+  font-family: "Roboto";
+  color-scheme: dark;
+}
+
+h2,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--c-text-2);
+}
+
+input,
+select {
+  border-radius: 0.4em;
+  line-height: 1.5;
+  border: none;
+  outline: none;
+  color: rgb(14, 14, 16);
+  background: #dee1e2;
+  height: 2.5em;
+  width: 100%;
+}
+
+input {
+  padding: 0.5em 1em;
+}
+
+.scroll {
+  --sb-track-color: transparent;
+  --sb-thumb-color: var(--c-text-2);
+  --sb-size: 0.21em;
+
+  scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+}
+
+.scroll::-webkit-scrollbar {
+  width: var(--sb-size);
+  height: var(--sb-size)
+}
+
+.scroll::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 10px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 10px;
+
+}
+
+@media (width >=2450px) {
+  body {
+    font-size: 30px;
+  }
+}
+
+@media (width < 2450px) {
+  body {
+    font-size: 28px;
+  }
+}
+
+@media (width < 2315px) {
+  body {
+    font-size: 27px;
+  }
+}
+
+@media (width < 1685px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@media (width < 1125px) {
+  body {
+    font-size: 11px;
+  }
+}
+
+@media (width < 714px) {
+  body {
+    background-position: bottom;
+    background-size: auto 100vh;
+    font-size: 8px;
+  }
+
+  input,
+  select {
+    height: 1.5em;
+    width: 100%;
+  }
+}

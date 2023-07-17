@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    align-items: center;
+    padding: 2em;
+    gap: 1em;
+}
+
+.header__title {
+    text-transform: uppercase;
+    font-size: 2em;
+}
+
+.header__info {
+        text-transform: uppercase;
+        font-size: 2em;
+}
+

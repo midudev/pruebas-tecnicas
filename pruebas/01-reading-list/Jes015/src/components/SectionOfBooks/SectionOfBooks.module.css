@@ -1,0 +1,47 @@
+.sectionOfBooks {
+    padding: 2em;
+}
+
+.sectionOfBooks__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3em;
+}
+
+.sectionOfBooks__title {
+    text-transform: capitalize;
+}
+
+.sectionOfBooks--transparent {
+    background-color: transparent;
+}
+
+.sectionOfBooks--gradient {
+    background: linear-gradient(to bottom, rgba(241, 241, 241, 0) 0%, rgba(20, 20, 20, 1) 20%);
+}
+
+.sectionOfBooks__container--grid {
+    height: 15em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8.625em, 9.76em));
+    gap: 0.3em;
+    height: 32em;
+    margin-top: 1.5em;
+    overflow-y: scroll;
+}
+
+.sectionOfBooks__container--carrousel {
+    height: 17em;
+    margin-top: 1.5em;
+    white-space: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+}
+
+.sectionOfBooks__container--carrousel>* {
+    display: inline-block;
+    width: 10.5em;
+    margin-right: 0.5em;
+    scroll-snap-align: start;
+}

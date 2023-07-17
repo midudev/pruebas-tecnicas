@@ -1,0 +1,9 @@
+.filters__container {
+    display: flex;
+    gap: 1em;
+}
+
+.filter__container {
+    display: inline-flex;
+    flex-direction: column;
+}

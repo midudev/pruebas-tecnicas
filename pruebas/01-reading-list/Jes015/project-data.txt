@@ -1,0 +1,17 @@
+What i must do
+
+    5. **Test**
+    6. **Despliegue**
+
+CSS Methodology:
+    - BEM - Selected ✔
+
+Animations:
+
+    - Book logo
+        - Jon Kantner - https://codepen.io/jkantner/pen/mdMydQO 
+        - Ryan Mack - https://codepen.io/ryanmclaughlin/pen/XJopVe - Selected ✔
+    
+    - Book component
+        - Saranya Mohan - https://codepen.io/saranya-mohan/pen/WNGjWWd - Selected ✔
+        - Thea - https://codepen.io/HighFlyer/pen/LaXrgV
