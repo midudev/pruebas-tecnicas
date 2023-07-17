@@ -22,7 +22,7 @@ const Badge = loadable(() => import("../Badge/Badge"));
 function Navbar() {
   const { languageState } = useLanguage();
 
-  const { libraryState } = useLibrary();
+  const { libraryState, setLibraryState } = useLibrary();
 
   const totalReading = useMemo(() => {
     return Object.values(libraryState.readingList);
@@ -42,7 +42,10 @@ function Navbar() {
         <div className="flex items-center gap-5">
           <Badge number={totalReading.length}>
             <button
-              className="text-xl icon-button"
+              onClick={() => setLibraryState({ type: "toggle-see" })}
+              className={`text-xl icon-button ${
+                libraryState.seeing === "reading-list" ? "bg-primary text-dark-text" : ""
+              }`}
               aria-label={languageState.texts.ariaLabels.toReadingList}
             >
               <FontAwesomeIcon

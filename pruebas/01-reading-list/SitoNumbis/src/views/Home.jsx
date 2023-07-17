@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useMemo } from "react";
 import loadable from "@loadable/component";
 
 // components
@@ -19,7 +19,10 @@ const LightBox = loadable(() => import("../components/LightBox/LightBox"));
 function Home() {
   const { libraryState } = useLibrary();
 
-  console.log(libraryState);
+  const bookToPrints = useMemo(() => {
+    console.log("librarySTate");
+    return libraryState.books;
+  }, [libraryState.books]);
 
   return (
     <main className={styles.main}>
@@ -29,15 +32,9 @@ function Home() {
           <LightBox />
           <section>
             <div className={styles.bookGrid}>
-              {libraryState.books
-                .filter((book) => {
-                  if (libraryState.filtering)
-                    return book.genre === libraryState.filtering;
-                  return true;
-                })
-                .map((book) => (
-                  <Book key={book.ISBN} {...book} />
-                ))}
+              {bookToPrints.map((book) => (
+                <Book key={book.ISBN} {...book} />
+              ))}
             </div>
           </section>
         </LightBoxProvider>

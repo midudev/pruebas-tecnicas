@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
 import loadable from "@loadable/component";
 
 import PropTypes from "prop-types";
@@ -38,14 +38,32 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
     setLightBoxState({ type: "set", id: ISBN });
   };
 
-  return (
-    <article onClick={activateLightBox} className={styles.main}>
+  const [hide, setHide] = useState(false);
+
+  useEffect(() => {
+    let toHide = false;
+    // if the user is seeing the reading list
+    if (libraryState.seeing === "reading-list") {
+      if (libraryState.readingList[ISBN]) toHide = false;
+      else toHide = true;
+    } else toHide = false;
+
+    // if the user is using a filter
+    if (libraryState.filtering && !toHide) {
+      console.log(libraryState.filtering);
+      if (genre === libraryState.filtering) toHide = false;
+      else toHide = true;
+    }
+    setHide(toHide);
+  }, [libraryState]);
+
+  return !hide ? (
+    <article onClick={activateLightBox} className={`${styles.main} appear`}>
       <img
         className="w-full h-full object-cover object-center shadow-[black] shadow-md transition"
         src={cover}
         alt={`${title}-${languageState.texts.book.cover}`}
       />
-
       <Marker show={libraryState.readingList[ISBN] !== undefined} />
       <div
         role="info"
@@ -85,7 +103,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
         </button>
       </div>
     </article>
-  );
+  ) : null;
 }
 
 Book.propTypes = {
@@ -101,4 +119,20 @@ Book.propTypes = {
   }),
 };
 
-export default Book;
+const BookMemo = memo((props) => <Book {...props} />, arePropsEqual);
+BookMemo.displayName = "Book";
+
+function arePropsEqual(oldProps, newProps) {
+  /* console.log(oldProps.title, newProps === oldProps); */
+  return (
+    oldProps.title === newProps.title &&
+    oldProps.pages === newProps.pages &&
+    oldProps.genre === newProps.genre &&
+    oldProps.cover === newProps.cover &&
+    oldProps.year === newProps.year &&
+    oldProps.ISBN === newProps.ISBN &&
+    oldProps.author === newProps.author
+  );
+}
+
+export default BookMemo;
