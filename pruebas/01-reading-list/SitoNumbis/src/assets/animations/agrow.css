@@ -1,9 +1,9 @@
 .aGrow {
-  animation: aGrow 2.5s ease 1;
+  animation: aGrow 0.5s ease 1;
 }
 
 .shrink {
-  animation: shrink 2.5s ease 1;
+  animation: shrink 0.5s ease 1;
 }
 
 @keyframes aGrow {
