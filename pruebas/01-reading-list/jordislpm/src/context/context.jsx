@@ -1,10 +1,16 @@
-import { createContext, useReducer, useEffect } from "react";
+import { createContext, useReducer, useEffect, useRef } from "react";
 
 
 export const BooksAvailable = createContext(null)
 
 
 function ContextBook ({ children }){
+
+    const bookListRef = useRef({
+        listBooks: [],
+        listRead:[],
+        genres:[]
+    })
 
 
     const initialState = {
@@ -27,6 +33,9 @@ function reducer(state, action){
             const initBooks = action.books;
             let allGenres = [];
             let genres = action.books.forEach((book)=>{ 
+                if(allGenres.length == 0){
+                    allGenres.push("Todas")
+                }
                  if(!allGenres.includes(book.genre)){
                     allGenres.push(book.genre)
                      }
@@ -48,8 +57,7 @@ function reducer(state, action){
             return {
                 ...state,
             listBooks: newListBook,
-             listRead:[...state.listRead, newRead]
-                
+             listRead:[...state.listRead, newRead]  
             }
         };
         case "moveToListBook":{
@@ -64,6 +72,33 @@ function reducer(state, action){
                 listRead: newListRest,
                 listBooks:[...state.listBooks, newRead]
                 
+            }
+        };
+        case "PageFilter":{
+            const pages = action.page;
+            const listBookPages=state.listBooks.filter((book)=>{
+                        return book.pages > pages});
+            const listReadPages=state.listRead.filter((book)=>{
+                return book.pages > pages});
+
+            return {
+                ...state,
+                listRead: listReadPages,
+                listBooks:listBookPages
+            }
+        };
+        case "GenreFilter":{
+            const genre = action.genre;
+            console.log(action.genre)
+            const listBookGenre=state.listBooks.filter((book)=>{
+                        return book.genre == genre});
+            const listReadGenre=state.listRead.filter((book)=>{
+                return book.genre == genre});
+
+            return {
+                ...state,
+                listRead: listReadGenre,
+                listBooks:listBookGenre
             }
         }
     }
