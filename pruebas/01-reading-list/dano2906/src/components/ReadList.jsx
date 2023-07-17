@@ -9,13 +9,13 @@ export default function ReadList() {
   const {read_list} = useReadListStore()
 
   return (
-    <div className="absolute right-6 top-6 flex flex-col items-end justify-end">
+    <div className="absolute right-4 top-4 sm:right-6 sm:top-6 flex flex-col items-end justify-end">
       <h5 className="w-7 h-7 absolute -top-3 -right-3 z-10 bg-blue-800 rounded-full text-center font-semibold text-white">{read_list.length}</h5>
       <button onClick={()=>setShow(!show)} disabled={read_list.length <= 0} className={`${read_list.length <= 0 ? "opacity-50" : "opacity-100 transition hover:scale-105"} relative bg-slate-700 text-blue-600 font-semibold text-center p-3 rounded inline-flex justify-center items-center`}>
         {read_list.length <= 0 ? <DontSee /> : <See/>}
         Lista de lectura
       </button>
-      <div className={`${show? "grid" : "hidden"} botttom-0 left-0 w-[360px] max-h-96 overflow-y-scroll mt-3 rounded-md shadow-md bg-slate-800 grid-cols-2 gap-2 place-items-center`}>
+      <div className={`${show? "grid" : "hidden"} botttom-0 left-0 w-[180px] max-h-48 sm:w-[360px] sm:max-h-96 overflow-y-scroll mt-3 rounded-md shadow-md bg-slate-800 grid-cols-1 sm:grid-cols-2 gap-2 place-items-center`}>
           {read_list.map((book,index)=>(
             <ReadListBook key={index} book={book}/>
           ))}
