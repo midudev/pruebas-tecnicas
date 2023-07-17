@@ -63,7 +63,7 @@ pub fn Library(props: &Props) -> Html {
     };
 
     html! {
-        <div class={classes!("flex", "flex-row","flex-wrap","gap-x-8", "gap-y-6", "px-6", "py-4")}>
+        <section class={classes!("flex", "flex-row","flex-wrap","gap-x-8", "gap-y-6", "px-6", "py-4")}>
         {books
             .iter()
             .map(|b|
@@ -74,6 +74,6 @@ pub fn Library(props: &Props) -> Html {
                 />))
             .collect::<Html>()
         }
-        </div>
+        </section>
     }
 }

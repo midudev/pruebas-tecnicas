@@ -29,9 +29,9 @@ pub fn LayoutError(props: &Props) -> Html {
     };
 
     html! {
-        <div class={classes!("w-full","min-h-[7rem]","flex","flex-col","items-center", "justify-center")}>
+        <section class={classes!("w-full","min-h-[7rem]","flex","flex-col","items-center", "justify-center")}>
             <img class={classes!("max-w-[90%]","md:max-w-full")} src={image} alt={text} />
             <span class={classes!("text-gray-700","font-light","text-center","text-xl")}>{text}</span>
-        </div>
+        </section>
     }
 }
