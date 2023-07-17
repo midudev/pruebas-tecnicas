@@ -6,7 +6,7 @@
   @apply w-full relative;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 768px) {
   .addButton {
     @apply !opacity-100 !translate-y-0
   }
