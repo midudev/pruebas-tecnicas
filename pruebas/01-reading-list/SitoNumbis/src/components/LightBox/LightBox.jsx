@@ -78,7 +78,7 @@ function LightBox() {
     >
       <button
         onClick={() => setLightBoxState({ type: "remove" })}
-        className={styles.closeButton}
+        className={`${styles.closeButton} icon-button`}
       >
         <FontAwesomeIcon icon={faClose} />
       </button>

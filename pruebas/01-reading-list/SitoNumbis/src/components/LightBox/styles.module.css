@@ -7,7 +7,7 @@
 }
 
 .closeButton {
-  @apply text-primary z-20 fixed top-1 right-1 w-8 h-8 text-xl rounded-full hover:bg-primary hover:text-dark-text;
+  @apply z-20 top-1 right-1 text-primary text-xl fixed;
 }
 
 .book {

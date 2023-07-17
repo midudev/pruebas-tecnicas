@@ -41,17 +41,14 @@ function Navbar() {
         </Link>
         <div className="flex items-center gap-5">
           <Badge number={totalReading.length}>
-            <Link
-              to="/reading-list"
-              className="text-xl"
+            <button
+              className="text-xl icon-button"
               aria-label={languageState.texts.ariaLabels.toReadingList}
             >
               <FontAwesomeIcon
-                icon={
-                  totalReading.length ? faBookmark : faBookmarkR
-                }
+                icon={totalReading.length ? faBookmark : faBookmarkR}
               />
-            </Link>
+            </button>
           </Badge>
           <img
             className="w-10 h-10 rounded-full"

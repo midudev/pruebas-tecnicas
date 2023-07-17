@@ -105,6 +105,10 @@ button {
   @apply cursor-default;
 }
 
+.icon-button {
+  @apply w-8 h-8 rounded-full hover:bg-primary hover:text-dark-text;
+}
+
 .cta {
   @apply bg-primary hover:bg-primary-dark transition px-5 py-2 rounded-3xl;
 }
