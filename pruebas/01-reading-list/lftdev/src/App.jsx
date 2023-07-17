@@ -1,4 +1,10 @@
+import { useEffect, useState } from 'react'
+import BooksLibrary from './database/books.json'
+import './style.css'
 export default function App () {
+  const [bookList, setBookList] = useState([])
+  // Load book library to state.
+  useEffect(() => BooksLibrary.library.forEach(book => setBookList(prevList => [...prevList, book.book])), [])
   return (
     <>
       <h3>Sin libros en la lista de lectura</h3>
@@ -12,15 +18,13 @@ export default function App () {
           <label htmlFor='genre-filter'>
             <div>Filtrar por género</div>
             <select id='genre-filter'>
-              <option value=''>Todos los géneros</option>
+              <option value='all'>Todos los géneros</option>
             </select>
           </label>
         </form>
-        <div role='grid'>
-          <span role='gridcell'>
-            <img src='' alt='Book cover' />
-          </span>
-        </div>
+        <ul>
+          {bookList.map((book, index) => <li key={index}>{book.title}</li>)}
+        </ul>
       </main>
     </>
   )

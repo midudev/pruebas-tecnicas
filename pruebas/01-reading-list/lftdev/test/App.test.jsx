@@ -37,20 +37,18 @@ describe('App', () => {
     const form = screen.getByRole('search')
     getByLabelText(form, 'Filtrar por género')
   })
-  it('should render a grid as a main child;', () => {
+  it('should render an ul as a main child;', () => {
     render(<App />)
     const main = screen.getByRole('main')
-    getByRole(main, 'grid')
+    getByRole(main, 'list')
   })
-  it('should render gridcells as grid children;', () => {
+  it('should render li elements as ul children;', () => {
     render(<App />)
-    const grid = screen.getByRole('grid')
-    getAllByRole(grid, 'gridcell')
+    const ul = screen.getByRole('list')
+    getAllByRole(ul, 'listitem')
   })
-  it('should render images as gridcells child;', () => {
-    render(<App />)
-    screen.getAllByRole('gridcell').forEach(cell => {
-      getByRole(cell, 'img')
-    })
+  it('should display a book title on each li;', () => {
+    render(<App />);
+    ['El Señor de los Anillos', 'Juego de Tronos', 'Harry Potter y la piedra filosofal'].forEach(book => screen.getByText(book))
   })
 })
