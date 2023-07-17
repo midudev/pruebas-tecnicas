@@ -40,7 +40,7 @@ function Navbar() {
           </h1>
         </Link>
         <div className="flex items-center gap-5">
-          <Badge number={20}>
+          <Badge number={totalReading.length}>
             <Link
               to="/reading-list"
               className="text-xl"
@@ -48,7 +48,7 @@ function Navbar() {
             >
               <FontAwesomeIcon
                 icon={
-                  libraryState.readingList.length ? faBookmark : faBookmarkR
+                  totalReading.length ? faBookmark : faBookmarkR
                 }
               />
             </Link>

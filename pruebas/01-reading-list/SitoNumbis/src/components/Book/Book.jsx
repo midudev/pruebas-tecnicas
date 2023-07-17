@@ -77,7 +77,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
               ? languageState.texts.ariaLabels.add
               : languageState.texts.ariaLabels.remove
           }
-          className={`cta ${memoAnimation}`}
+          className={`cta ${memoAnimation} ${styles.addButton}`}
         >
           {!libraryState.readingList[ISBN]
             ? languageState.texts.book.add

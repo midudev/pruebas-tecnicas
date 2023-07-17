@@ -6,7 +6,7 @@ function Badge({ number, children }) {
       {number > 0 ? (
         <div
           role="badge"
-          className="aGrow pointer-events-none py-0 px-1 text-xs -top-[5px] -right-[10px] text-dark-text absolute bg-primary grid place-items-center rounded-full"
+          className="aGrow absolute pointer-events-none -top-1 -right-2 rounded-full inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-dark-text bg-primary-dark"
         >
           {number}
         </div>
