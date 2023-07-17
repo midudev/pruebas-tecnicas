@@ -1,33 +1,17 @@
 "use client";
 
-import { PlusIcon, CheckIcon } from "@heroicons/react/24/solid";
-import { useState, useEffect } from "react";
-
-const READING_LIST_STORAGE_KEY = "readingList";
-
-const getReadingList = () => {
-  return JSON.parse(localStorage.getItem(READING_LIST_STORAGE_KEY)) || [];
-};
-
-const isInReadingList = (isbn) => {
-  const list = getReadingList();
-  return list.includes(isbn);
-};
-
-const addToReadingList = (isbn) => {
-  const list = getReadingList(isbn);
-  list.push(isbn);
-  localStorage.setItem(READING_LIST_STORAGE_KEY, JSON.stringify(list));
-};
-
-const removeFromReadingList = (isbn) => {
-  const list = getReadingList(isbn);
-  const newList = list.filter((element) => element !== isbn);
-  localStorage.setItem(READING_LIST_STORAGE_KEY, JSON.stringify(newList));
-};
+import { CheckIcon, PlusIcon } from "@heroicons/react/24/solid";
+import { useEffect, useState } from "react";
+import {
+  addToReadingList,
+  isInReadingList,
+  removeFromReadingList,
+} from "@/lib/books";
+import LoadingMini from "@/components/loading-mini";
 
 export default function PlusButton({ isbn }) {
-  const [inReadingList, setInReadinglist] = useState(false);
+  const [inReadingList, setInReadinglist] = useState(null);
+
   const onClickHander = (adding) => {
     if (adding) {
       addToReadingList(isbn);
@@ -39,7 +23,11 @@ export default function PlusButton({ isbn }) {
   useEffect(() => {
     setInReadinglist(isInReadingList(isbn));
   }, []);
-  
+
+  if (inReadingList === null) {
+    return <LoadingMini></LoadingMini>;
+  }
+
   return (
     <a
       href="#"

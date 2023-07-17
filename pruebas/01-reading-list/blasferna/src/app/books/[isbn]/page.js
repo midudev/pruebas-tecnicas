@@ -5,13 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import PlusButton from "@/components/plus-button";
 
-const getByISBN = (isbn) => {
-  return DATA.library.find((obj) => obj.book.ISBN === isbn).book;
-};
-
-const getByTitle = (title) => {
-  return DATA.library.find((obj) => obj.book.title === title).book;
-};
 
 const getAuthorOtherBooks = (book) => {
   const otherBooks = [];
@@ -25,7 +18,16 @@ const getAuthorOtherBooks = (book) => {
   return otherBooks;
 };
 
-export default function BookDetail({ params }) {
+const getByISBN = (isbn) => {
+  return DATA.library.find((obj) => obj.book.ISBN === isbn).book;
+};
+
+const getByTitle = (title) => {
+  return DATA.library.find((obj) => obj.book.title === title).book;
+};
+
+
+export default function BookDetailPage({ params }) {
   const { isbn } = params;
   const book = getByISBN(isbn);
   const otherBooks = getAuthorOtherBooks(book);
