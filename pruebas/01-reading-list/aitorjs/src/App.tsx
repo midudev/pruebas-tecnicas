@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css'
 import { useBooksStore } from './store/booksStore'
 import Book from './components/Book'
@@ -14,13 +14,19 @@ function App () {
   useEffect(() => {
     let _books = books
     Object.keys(filters).map(f => {
-      _books = _books.filter((b) => b.book[f] <= filters[f])
+      _books = _books.filter((d) => {
+        if (f === 'pages') {
+          return d.book[f] <= filters[f]
+        } else { // genre
+          return d.book[f] === filters[f]
+        }
+      })
       setBooks(_books)
     })
   }, [filters])
 
   const filterGenreBooks = (genre: string) => {
-    setFilters({ ...filters, genre })
+    genre !== '' ? setFilters({ ...filters, genre }) : setBooks(books)
   }
 
   const filterPageBooks = (pages: number) => {
@@ -39,22 +45,25 @@ function App () {
           <input
             type='range'
             min='100'
-            max='1000'
+            max='1500'
             id='pageFilter'
             name='pageFilter'
             onChange={(e) => filterPageBooks(Number(e.target.value))}
           />
+          {filters.pages > 0 && <span>PAGES {filters.pages}</span>}
         </div>
 
         <div className='flex flex-col'>
           <label htmlFor='genreFilter'>Filtrar por género</label>
 
           <select onChange={(e) => filterGenreBooks(e.target.value)}>
+            <option value=''>Todas las categorías</option>
             <option value='Fantasía'>Fantasía</option>
             <option value='Ciencia ficción'>Ciencia ficción</option>
             <option value='Zombies'>Zombies</option>
             <option value='Terror'>Terror</option>
           </select>
+          {filters.genre && <span>GENRE {filters.genre}</span>}
         </div>
       </div>
 
