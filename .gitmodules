@@ -1,0 +1,3 @@
+[submodule "pruebas/01-reading-list/alex322r"]
+	path = pruebas/01-reading-list/alex322r
+	url = https://github.com/alex322r/01-reading-list.git
