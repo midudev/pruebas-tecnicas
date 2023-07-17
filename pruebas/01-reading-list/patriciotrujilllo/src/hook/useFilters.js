@@ -6,9 +6,10 @@ export const useFilters = () =>{
 
     const filterBooks = (books) =>{
         return(
-            books.filter(book => filters.genre=== 'all' || book.book.genre===filters.genre)
+            books.filter(book => filters.genre=== 'all' || book.book.genre===filters.genre).filter(book => filters.pages>=book.book.pages)
+                .filter(book => filters.title==='' || book.book.title.toLowerCase().includes(filters.title.toLowerCase()))
         )
-        
+        //bookNoFiltered.filter(item=> read.includes(book => book.title === item.book.title))
     }
     return{
         filters,
