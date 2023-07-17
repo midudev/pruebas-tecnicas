@@ -105,27 +105,26 @@ pub fn app() -> Html {
             <main class={classes!("px-6")}>
                 // If searching
                 if !filtered_data.is_empty() {
-                    <LibraryComponent books={(*filtered_data).clone()} />
+                    <LibraryComponent title="" expandable=false books={(*filtered_data).clone()} />
                 } else {
                     <SuggestedBook books={(*data).clone()} />
-                    <h1 class={classes!("text-gray-700","font-bold","text-3xl","mt-6","mb-2")}>{"Tu Lista de Lectura"}</h1>
                     // if not have saved books
                     if reading_list.is_none() || reading_list.as_ref().is_some_and(|r| r.is_empty()) {
-                        <LayoutError errtype={ErrorType::EmptyReadingList} />
+                        <LayoutError title="Tu Lista de Lectura" errtype={ErrorType::EmptyReadingList} />
                     // Show saved books
                     } else {
                         <LibraryComponent
+                            title="Tu Lista de Lectura"
                             readinglist={reading_list.clone()}
                             books={((*reading_list).clone()).unwrap_or_default().iter().map(|b| Book { saved: true, ..b.clone() }).collect::<Vec<Book>>()}
                         />
                     }
-                    <h1 class={classes!("text-gray-700","font-bold","text-3xl","mt-6","mb-2")}>{"Nuestros Libros"}</h1>
                     if load_data.loading {
-                        <LayoutError errtype={ErrorType::LoadingBooks} />
+                        <LayoutError errtype={ErrorType::LoadingBooks} title="Nuestros Libros"/>
                     } else if load_data.error.is_some() || data.is_empty() {
-                        <LayoutError errtype={ErrorType::Empty} />
+                        <LayoutError errtype={ErrorType::Empty} title="Nuestros Libros"/>
                     } else {
-                        <LibraryComponent readinglist={reading_list} books={(*data).clone()} />
+                        <LibraryComponent readinglist={reading_list} books={(*data).clone()} title="Nuestros Libros" />
                     }
                 }
             </main>

@@ -8,14 +8,17 @@ use crate::{components::Book as BookComponent, models::Book};
 pub struct Props {
     #[prop_or_default]
     pub readinglist: Option<UseLocalStorageHandle<Vec<Book>>>,
+    pub title: String,
     pub books: Vec<Book>,
+    #[prop_or(true)]
+    pub expandable: bool,
 }
 
 #[function_component]
 pub fn Library(props: &Props) -> Html {
-    let Props { readinglist, books } = props.clone();
+    let Props { expandable, readinglist, books, title } = props.clone();
     let saved_books = use_local_storage::<Vec<Book>>("saved_books".to_string());
-    let not_expanded = use_bool_toggle(true);
+    let not_expanded = use_bool_toggle(expandable);
 
     let reading_list = if let Some(v) = readinglist {
         drop(saved_books);
@@ -69,43 +72,44 @@ pub fn Library(props: &Props) -> Html {
     };
 
     html! {
-        <section class={classes!("flex", "flex-row", "flex-wrap", "gap-x-8", "gap-y-6", "px-6", "py-4",)}>
-        <div class={classes!(
-            "flex",
-            "flex-row",
-            "flex-wrap",
-            "gap-x-8",
-            "gap-y-6",
-            "px-6",
-            "py-4",
-            "overflow-hidden",
-            "transition-all",
-            not_expanded.then_some("max-h-[390px]"),
-            )}>
-            {books
-                .iter()
-                .map(|b|
-                     html!(<BookComponent
-                           data={b.clone()}
-                           onsave={onaddbook.clone()}
-                           onremove={onremovebook.clone()}
-                    />))
-                .collect::<Html>()
+        <section
+            class={classes!("flex", "flex-row", "flex-wrap", "gap-x-8", "gap-y-6", "py-4")}>
+            if !title.is_empty() {
+                <h1
+                    class={classes!("w-full","text-gray-700","font-bold","text-3xl","mt-6","mb-2")}
+                >
+                    {title.clone()}
+                </h1>
             }
-        </div>
-        <div class={classes!("flex","w-full","py-4","items-center","justify-center")}>
-            <span
-                class={classes!("text-sky-600","flex","flex-row","gap-3","cursor-pointer","items-center")}
-                onclick={onexpand}
+            <div
+                class={classes!("flex","flex-row","flex-wrap","gap-x-8","gap-y-6","px-6","py-4","overflow-hidden","transition-all",not_expanded.then_some("max-h-[390px]"),)}
             >
-                <Icon icon_id={IconId::BootstrapChevronExpand} width="18px" height="18px" />
-                if !*not_expanded {
-                    {"Ocultar"}
-                } else {
-                    {"Ver Más"}
+                {books
+                    .iter()
+                    .map(|b|
+                         html!(<BookComponent
+                               data={b.clone()}
+                               onsave={onaddbook.clone()}
+                               onremove={onremovebook.clone()}
+                        />))
+                    .collect::<Html>()
                 }
-            </span>
-        </div>
+            </div>
+            if expandable {
+                <div class={classes!("flex","w-full","py-4","items-center","justify-center")}>
+                    <span
+                        class={classes!("text-sky-600","flex","flex-row","gap-3","cursor-pointer","items-center")}
+                        onclick={onexpand}
+                    >
+                        <Icon icon_id={IconId::BootstrapChevronExpand} width="18px" height="18px" />
+                        if !*not_expanded {
+                            {"Ocultar"}
+                        } else {
+                            {"Ver Más"}
+                        }
+                    </span>
+                </div>
+            }
         </section>
     }
 }
