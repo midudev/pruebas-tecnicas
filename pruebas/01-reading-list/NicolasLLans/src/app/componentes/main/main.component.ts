@@ -1,0 +1,93 @@
+import { Component, OnInit } from '@angular/core';
+import { GeneralService } from 'src/app/general.service';
+
+@Component({
+  selector: 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.css']
+})
+
+export class MainComponent implements OnInit {
+
+  maxPages: number = 1500;
+  selectedGenre: string | null = null;
+  books: any = [];
+  genres: string[] = [];
+  bookSelect: boolean = false;
+  nuevaLista: string[] = [];
+  misBooks: any[] = [];
+
+
+  constructor(public generalService: GeneralService) { }
+
+  ngOnInit(): void {
+    this.getLibrary();
+    this.refreshLocalstorage();
+  }
+
+  getLibrary(): void {
+    this.generalService.getbooks().subscribe(
+      (res: any) => {
+        if (res && res.library) {
+          this.books = res;
+          this.genres = this.getGenres();
+          console.log(res);
+        } else {
+          console.error('Respuesta inválida del servicio', res);
+        }
+      },
+      (error: any) => {
+        console.error('Error al cargar los datos de los libros', error);
+      }
+    );
+  }
+
+  getGenres(): string[] {
+    const genresSet = new Set<string>();
+    this.books.library.forEach((item: any) => {
+      genresSet.add(item.book.genre);
+    });
+    return Array.from(genresSet);
+  }
+
+  get filteredBooks() {
+    if (this.books.library) {
+      if (this.selectedGenre === null || this.selectedGenre === '') {
+        return this.books.library.filter((item: { book: { pages: number } }) => item.book.pages < this.maxPages);
+      } else {
+        return this.books.library.filter((item: { book: { pages: number; genre: string } }) => item.book.pages < this.maxPages && item.book.genre === this.selectedGenre);
+      }
+    }
+  }
+
+  refreshLocalstorage() {
+    const localStorageBooks = window.localStorage.getItem('books');
+    if (localStorageBooks) {
+      this.misBooks = JSON.parse(localStorageBooks);
+      this.generalService.contador = true;
+    }
+  }
+
+  selectBook(item: any) {
+    this.generalService.nuevaLista.push(item);
+    const miLista = JSON.stringify(this.generalService.nuevaLista);
+    window.localStorage.setItem('books', miLista);
+    this.generalService.contador = true;
+    this.generalService.miLista = true;
+    this.refreshLocalstorage();
+    this.generalService.nuevaLista.push(item);
+    this.generalService.updateLocalStorageBooks(this.generalService.nuevaLista);
+  }
+
+  quitarBook(title: string) {
+    const localStorageBooks = window.localStorage.getItem('books');
+    if (localStorageBooks) {
+      const books = JSON.parse(localStorageBooks);
+      const updatedBooks = books.filter((item: any) => item.book.title !== title);
+      window.localStorage.setItem('books', JSON.stringify(updatedBooks));
+      this.refreshLocalstorage();
+      this.generalService.updateLocalStorageBooks(updatedBooks);
+    }
+  }
+  
+}

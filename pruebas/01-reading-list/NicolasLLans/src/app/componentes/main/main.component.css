@@ -1,0 +1,53 @@
+.grilla {
+      margin: 0 10%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      padding: 15px;
+      justify-content: flex-start;
+}
+
+.barra-filtros {
+      margin-top: 10px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      background-color: var(--negros);
+      flex-wrap: wrap;
+      justify-content: space-around;
+}
+
+.barra-filtros .content-filtros{
+      width: 77%;
+      display: flex;
+      flex-wrap: wrap-reverse;
+      gap: 10px;
+}
+
+.barra-filtros .content-filtros span{
+      font-family: var(--tipo-principal);
+      font-weight: 600;
+      color: var(--blanco);
+}
+
+.contenedor-milista{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 280px;
+      padding: 20px;
+      min-height: 650px;
+      max-height: 650px;
+      overflow-y: scroll;
+      background-color: var(--color-detalle);
+}
+
+@media (max-width:470px) {
+      .barra-filtros{
+            height: 95px;
+      }
+
+      .barra-filtros .content-filtros{
+            justify-content: center;
+      }
+}

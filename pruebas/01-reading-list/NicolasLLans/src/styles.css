@@ -1,0 +1,124 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+      --color-principal: #3cc47c;
+      --color-secundario: #1e392a;
+      --color-detalle: #e9c893;
+      --color-grises: #828081;
+      --negros: #333;
+      --blanco: #fef;
+      --tipo-principal:"Ubuntu", sans-serif;
+}
+
+* {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+}
+
+body {
+      margin: 0;
+      padding: 10px 0 0 0;
+      height: 100vh;
+}
+
+li {
+      display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+      margin: 8px 0;
+      font-family: var(--tipo-principal);
+}
+
+button{
+      border:none;
+      background-color: transparent;
+}
+button:hover{
+      border: 1px solid var(--blanco);
+      border-radius: 50%;
+}
+
+.icono {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+}
+
+.cta {
+      position: relative;
+      margin: auto;
+      padding: 12px 18px;
+      transition: all 0.2s ease;
+      border: none;
+      background: none;
+      cursor: pointer;
+}
+
+.cta:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      border-radius: 50px;
+      background: var(--color-detalle);
+      width: 45px;
+      height: 45px;
+      transition: all 0.3s ease;
+}
+
+.cta span {
+      position: relative;
+      font-family: var(--tipo-principal);
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--negros);
+}
+
+.contador{
+      background-color: var(--color-principal);
+      border-radius: 50%;
+      width: 20px;
+      color: var(--blanco);
+      font-weight: 700;
+      font-family: var(--tipo-principal);
+      height: 20px;
+      display: inline-block;
+      text-align: center;
+      z-index: 1000;
+      position: absolute;
+      top: 4px;
+}
+
+.cta svg {
+      position: relative;
+      top: 0;
+      margin-left: 10px;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke: var(--negros);
+      stroke-width: 2;
+      transform: translateX(-5px);
+      transition: all 0.3s ease;
+}
+
+.cta:hover:before {
+      width: 100%;
+      background: var(--color-detalle);
+}
+
+.cta:hover svg {
+      transform: translateX(0);
+}
+
+.cta:active {
+      transform: scale(0.95);
+}
