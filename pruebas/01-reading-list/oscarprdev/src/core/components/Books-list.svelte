@@ -11,7 +11,7 @@
   export let booksFiltered: Readable<Book[]>
 </script>
 
-<section class="flex flex-col p-5 max-w-1100">
+<section class="flex flex-col p-5 min-w-fit">
   <ul class="flex flex-wrap gap-7">
     {#each $booksList as book}
       <BookItem {book} />

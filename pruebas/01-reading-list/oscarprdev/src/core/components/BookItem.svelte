@@ -1,8 +1,7 @@
 <script lang="ts">
   import { writable, type Writable } from 'svelte/store'
-  import { stateUseCase } from '../store/store'
   import type { Book } from '../types'
-  import { onMount } from 'svelte'
+  import { InfoIcon, BookOpenIcon } from 'svelte-feather-icons'
   import { modalState } from '../store/modal-store'
 
   export let book: Book
@@ -37,14 +36,20 @@
     <div
       class="absolute top-0 left-0 w-full h-full flex items-center justify-center gap-3 bg-black backdrop-blur-sm"
     >
-      <button
-        class="px-4 py-2 bg-overlayBtn text-black cursor-pointer hover:bg-overlayBtnHover"
-        on:click={showInfo}>Info</button
-      >
-      <button
-        class="px-4 py-2 bg-overlayBtn text-black cursor-pointer hover:bg-overlayBtnHover"
-        >Add</button
-      >
+      <div class="flex items-center bg-dark bg-opacity-80 rounded-3xl">
+        <button class="px-4 py-2 text-black cursor-pointer" on:click={showInfo}
+          ><InfoIcon
+            size="30"
+            class="text-light duration-300 hover:text-pagination"
+          /></button
+        >
+        <button class="px-4 py-2 text-black cursor-pointer"
+          ><BookOpenIcon
+            size="30"
+            class="text-light duration-300 hover:text-pagination"
+          /></button
+        >
+      </div>
     </div>
   {/if}
 </li>

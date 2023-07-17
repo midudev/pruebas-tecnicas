@@ -59,7 +59,7 @@
       >
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-        <li on:click={() => onGenreSelectChanges('Todos')}>
+        <li on:click={() => onGenreSelectChanges(null)}>
           <p
             class="cursor-pointer block px-4 py-2 text-light hover:bg-nav hover:text-light"
           >

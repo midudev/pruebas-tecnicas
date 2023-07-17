@@ -25,7 +25,7 @@
 >
   <!-- svelte-ignore a11y-click-events-have-key-events -->
   <!-- svelte-ignore a11y-no-static-element-interactions -->
-  <div
+  <button
     class="cursor-pointer grid place-items-center w-14 h-14 rounded-full transition-bg-nav duration-500 {$homeSelected
       ? 'bg-nav'
       : ''}"
@@ -36,10 +36,10 @@
       }))}
   >
     <HomeIcon size="32" class={$homeSelected ? 'text-light' : 'text-icons'} />
-  </div>
+  </button>
   <!-- svelte-ignore a11y-click-events-have-key-events -->
   <!-- svelte-ignore a11y-no-static-element-interactions -->
-  <div
+  <button
     class="cursor-pointer grid place-items-center w-14 h-14 rounded-full transition-bg-nav duration-500 {$readingListSelected
       ? 'bg-nav'
       : ''}"
@@ -53,10 +53,10 @@
       size="32"
       class={$readingListSelected ? 'text-light' : 'text-icons'}
     />
-  </div>
+  </button>
   <!-- svelte-ignore a11y-click-events-have-key-events -->
   <!-- svelte-ignore a11y-no-static-element-interactions -->
-  <div
+  <button
     class="cursor-pointer grid place-items-center w-14 h-14 rounded-full transition-bg-nav duration-500 {$topBooksListSelected
       ? 'bg-nav'
       : ''}"
@@ -70,5 +70,5 @@
       size="32"
       class={$topBooksListSelected ? 'text-light' : 'text-icons'}
     />
-  </div>
+  </button>
 </nav>

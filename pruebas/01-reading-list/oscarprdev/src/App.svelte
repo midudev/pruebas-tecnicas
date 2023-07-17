@@ -2,11 +2,12 @@
   import BookModal from './core/components/BookModal.svelte'
   import Header from './core/components/Header.svelte'
   import Library from './core/components/Library.svelte'
-  import { modalState } from './core/store/modal-store'
+  import ReadingList from './core/components/ReadingList.svelte'
 </script>
 
-<main class="relative h-screen overflow-y-hidden flex ">
+<main class="relative h-screen overflow-y-hidden flex bg-light">
   <Header />
   <Library />
+  <ReadingList />
   <BookModal />
 </main>

@@ -27,21 +27,21 @@
   {#if $paginationState.init > 0}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div class="cursor-pointer" on:click={showPrev}>
+    <button class="cursor-pointer" on:click={showPrev}>
       <ArrowLeftIcon
         size="32"
         class="transtion-text-pagination duration-300 hover:text-pagination"
       />
-    </div>
+    </button>
   {/if}
   {#if $booksFiltered && $paginationState.offset < $booksFiltered.length}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div class="cursor-pointer" on:click={showNext}>
+    <button class="cursor-pointer" on:click={showNext}>
       <ArrowRightIcon
         size="32"
         class="transtion-text-pagination duration-300 hover:text-pagination"
       />
-    </div>
+    </button>
   {/if}
 </section>
