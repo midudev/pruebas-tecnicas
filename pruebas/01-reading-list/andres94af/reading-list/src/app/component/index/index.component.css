@@ -1,0 +1,10 @@
+.cover-book{
+  max-width: 9rem;
+  aspect-ratio: 9/14;
+  margin-right: 0rem;
+  margin-bottom: 1rem;
+}
+
+.cover-book_add{
+  opacity: 0.5;
+}

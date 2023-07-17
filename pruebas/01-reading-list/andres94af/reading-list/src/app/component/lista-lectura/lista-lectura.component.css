@@ -1,0 +1,10 @@
+p{
+  margin: 0;
+}
+
+.cover-book_sm{
+  max-width: 3rem;
+  aspect-ratio: 9/14;
+  margin-right: 0rem;
+  margin-bottom: 1rem;
+}

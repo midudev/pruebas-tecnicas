@@ -1,1 +1,16 @@
-<router-outlet></router-outlet>
+<header class="container my-4 text-center">
+  <h2>{{title}}</h2>
+</header>
+
+<main class="container">
+  <div class="row">
+    <!-- Sección libros -->
+    <section class="col-8">
+      <app-index [books]="books" [readingList]="readingList"></app-index>
+    </section>
+    <!-- Sección lista de lectura -->
+    <section class="col-4">
+      <app-lista-lectura [readingList]="readingList" [books]="books"></app-lista-lectura>
+    </section>  
+  </div>
+</main>

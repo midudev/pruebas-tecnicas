@@ -1,22 +1,21 @@
-import { Component } from '@angular/core';
-import { BookService } from 'src/app/service/book.service';
+import { Component, Input } from '@angular/core';
+import { Book } from 'src/app/model/book.model';
 
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
-  styles: [],
+  styleUrls: ['./index.component.css'],
 })
 export class IndexComponent {
-  books: any;
 
-  constructor(private service: BookService) {
-    this.getBooks();
+  @Input() readingList:Book[] = [];
+  @Input() books: Book[] = [];
+
+  constructor() {}
+
+  addReadingList(book:Book, index:number){
+    this.books.splice(index, 1);
+    this.readingList.push(book);
   }
 
-  getBooks() {
-    this.service.getBooks().subscribe({
-      next: (data: any) => (this.books = data),
-      error: (err) => console.log(err),
-    });
-  }
 }
