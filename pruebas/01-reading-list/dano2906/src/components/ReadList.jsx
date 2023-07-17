@@ -9,7 +9,7 @@ export default function ReadList() {
   const {read_list} = useReadListStore()
 
   return (
-    <div className="absolute right-4 top-4 sm:right-6 sm:top-6 flex flex-col items-end justify-end">
+    <div className="absolute right-5 top-5 sm:right-6 sm:top-6 flex flex-col items-end justify-end">
       <h5 className="w-7 h-7 absolute -top-3 -right-3 z-10 bg-blue-800 rounded-full text-center font-semibold text-white">{read_list.length}</h5>
       <button onClick={()=>setShow(!show)} disabled={read_list.length <= 0} className={`${read_list.length <= 0 ? "opacity-50" : "opacity-100 transition hover:scale-105"} relative bg-slate-700 text-blue-600 font-semibold text-center p-3 rounded inline-flex justify-center items-center`}>
         {read_list.length <= 0 ? <DontSee /> : <See/>}

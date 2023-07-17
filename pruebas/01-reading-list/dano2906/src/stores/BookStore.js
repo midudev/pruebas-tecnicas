@@ -15,7 +15,12 @@ export const useReadListStore = create(persist(
       set((state)=>({
         read_list: state.read_list.filter(book => book.ISBN !== isbn)
       }))
-    )
+    ),
+    loadStorage:(list) => {
+      set(()=>({
+        read_list: list
+      }))
+    }
   }),{
     name:'read_list'
   }
