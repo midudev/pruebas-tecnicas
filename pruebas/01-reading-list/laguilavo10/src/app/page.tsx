@@ -11,7 +11,7 @@ export default function Home() {
   const [readList, setReadList] = useState<Book[]>([])
   return (
     <>
-      <header className='fixed top-0 flex h-16  w-screen items-center bg-[#596886] bg-brandImage bg-contain bg-no-repeat px-10 sm:bg-center'>
+      <header className='fixed top-0 flex h-16  w-screen items-center bg-[#596886] bg-brandImage bg-contain bg-no-repeat px-10 sm:bg-center z-30'>
         <button
           onClick={() => setIsShowingReadList((prev) => !prev)}
           className={`flex gap-3 justify-self-end rounded-lg border-2 border-slate-800 bg-white p-2 text-black  ${
@@ -25,7 +25,7 @@ export default function Home() {
       <main
         className={` ${
           isShowingReadList ? 'w-4/6' : 'w-full'
-        } mb-10 mt-24 flex gap-5 overflow-x-hidden px-10 transition-all delay-100 duration-300 ease-out `}
+        } mb-10 mt-24 flex gap-5 overflow-x-hidden px-10 transition-all delay-100 duration-300 ease-out z-10`}
       >
         <ul className='grid w-full grid-cols-auto-fit gap-5'>
           {library.map(({ book }) => (
