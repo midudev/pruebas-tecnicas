@@ -3,9 +3,9 @@ import Button from '../button/Button'
 
 // TODO: Scoring:https://dev.to/michaelburrows/create-a-custom-react-star-rating-component-5o6
 
-export default function Card({ children }) {
-    if (!children) return null
-    const { title, cover, synopsis, author } = children.book
+export default function Card({ book, isSelected }) {
+    if (!book) return null
+    const { title, cover, synopsis, author } = book
     return (
         <div className={styles.card}>
             <div>
@@ -30,7 +30,7 @@ export default function Card({ children }) {
                         <p>{author.name}</p>
                     </div>
                 </div>
-                <Button book={children.book} />
+                {isSelected() ? null : <Button book={book} />}
             </div>
         </div>
     )

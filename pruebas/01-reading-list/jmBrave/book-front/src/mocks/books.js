@@ -1,4 +1,4 @@
-const books = {
+const initialBooksList = {
     library: [
         {
             book: {
@@ -228,4 +228,4 @@ const books = {
     ],
 }
 
-export default books
+export default initialBooksList
