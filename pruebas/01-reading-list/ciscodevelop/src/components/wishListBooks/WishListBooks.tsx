@@ -37,7 +37,7 @@ function WishListBooks({ modalState, setModalState }: WishListModal) {
         modules={[EffectCards]}
         className="mySwiper"
       >
-        {wishListBooks.map((item) => (
+        {wishListBooks.map((item:Book) => (
           <SwiperSlide key={item.ISBN}>
             <h2 className="title">{item.title}</h2>
             <img

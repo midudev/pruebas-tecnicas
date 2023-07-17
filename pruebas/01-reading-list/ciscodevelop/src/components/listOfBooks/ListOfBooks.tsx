@@ -3,7 +3,7 @@ import { addBookWish } from "../../features/books/booksSlice";
 import { ToastContainer, toast } from "react-toastify";
 import { RootState, store } from "../../app/store";
 import { useAppDispatch } from "../../app/hooks";
-import { Book } from "../../models/BooksModel";
+import { Author, Book, Library } from "../../models/BooksModel";
 import "react-toastify/dist/ReactToastify.css";
 import "./listOfBooks.scss";
 
@@ -21,7 +21,7 @@ function ListOfBooks() {
 
   return (
     <div className="container-cards-listofbooks">
-      {storeBooks.library.map((item) => (
+      {storeBooks.library.map((item:Library) => (
         <div className="cards-books" key={item.book.ISBN}>
           <div className="card-header">
             <div className="cover-book">
@@ -48,7 +48,7 @@ function ListOfBooks() {
             <div className="otherbooks">
               <details>
                 <summary> Other Books</summary>
-                {item.book.author.otherBooks.map((item) => (
+                {item.book.author.otherBooks.map((item:string) => (
                   <h5 key={item}>{item}</h5>
                 ))}
               </details>

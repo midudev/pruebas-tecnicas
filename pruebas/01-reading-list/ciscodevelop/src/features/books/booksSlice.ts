@@ -14,14 +14,14 @@ export const bookSlice = createSlice({
   reducers: {
     addBookWish: (state, action: PayloadAction<Book>) => {
       const bookFind = state.wishList.find(
-        (book) => book.ISBN === action.payload.ISBN
+        (book:Book) => book.ISBN === action.payload.ISBN
       );
       !bookFind && state.wishList.push(action.payload)        
     },
     removeBookWishList: (state, action: PayloadAction<Book>) => {
       if (window.confirm("¿Está seguro de que desea eliminar el libro?")) {
         state.wishList = state.wishList.filter(
-          (book) => book.ISBN !== action.payload.ISBN
+          (book:Book) => book.ISBN !== action.payload.ISBN
         );
       }
     },
