@@ -1,12 +1,17 @@
-import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
 import './App.css'
 import DispplayBooks from './Components/DispplayBooks'
 import DropDownFilter from './Components/DropDownFilter'
 import SliderFilter from './Components/SliderFilter'
+import { useDispatch } from 'react-redux'
+import { fetchBooks } from './redux/booksSlice'
+// import { getBooksData } from '../data/data'
 
 function App() {
-  const { booksList } = useSelector((state) => state.books)
-  // console.log(booksList.map((element) => element.book.genre))
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchBooks())
+  }, [])
 
   return (
     <div className="w-full  bg-gray-001 flex justify-center items-center min-h-screen">
