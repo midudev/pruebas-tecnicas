@@ -1,7 +1,8 @@
 .card {
     display: flex;
     gap: 10px;
-    max-width: 400px;
+    min-width: 150px;
+    max-width: 600px;
     margin: 0;
     background-color: white;
     padding: 15px;
@@ -9,18 +10,16 @@
 }
 
 .cover {
-    background: linear-gradient(to right, rgb(60, 13, 20) 3px, rgba(255, 255, 255, 0.5) 5px, rgba(255, 255, 255, 0.25) 7px, rgba(255, 255, 255, 0.25) 10px, transparent 12px, transparent 16px, rgba(255, 255, 255, 0.25) 17px, transparent 22px);
     box-shadow: 0 25px 50px -12px rgb(0 0 0 / 1);
-    margin: auto;
     border-radius: 5px;
-    width: 389px;
-    min-width: 150px;
     max-width: 150px;
 }
 
 .container {
     display: flex;
     flex-direction: column;
+    min-width: 75px;
+    max-width: 300px;
 }
 
 .score {
@@ -30,13 +29,15 @@
 .content {
     width: 100%;
     color: rgb(44, 24, 16);
-    min-width: 150px;
-    max-width: 250px;
-    flex: 1;
+    flex:1;
 }
 
 .content p {
-    padding-bottom: 20px
+    padding-bottom:15px;
+}
+
+.synopsis {
+    font-size: 12px;
 }
 
 .addList button{
@@ -50,4 +51,9 @@
     align-items: center;
     justify-content: center;
     margin-top: auto;
+}
+
+.addList button:hover{
+    background-color: rgb(218,170,99);
+    color:white;
 }
