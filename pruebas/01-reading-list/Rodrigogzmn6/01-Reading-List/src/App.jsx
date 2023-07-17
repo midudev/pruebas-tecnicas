@@ -8,6 +8,14 @@ function App() {
       <BooksContextProvider>
         <HomeContainer />
       </BooksContextProvider>
+      <button
+        onClick={() => {
+          localStorage.removeItem("library");
+          localStorage.removeItem("readingList");
+        }}
+      >
+        eliminar
+      </button>
     </div>
   );
 }
