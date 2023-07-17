@@ -1,3 +1,14 @@
+Este proyecto fue realizado en base al challenge propuesto por Midudev en: [Pruebas Técnicas de Programación: Lista de lectura](https://pruebastecnicas.com/)
+
+Deploy: dejaré el deploy por aqui
+
+Pruebas técnicas [Midudev](https://github.com/midudev/pruebas-tecnicas)
+
+Inspirado en el diseño de [Nickelfox Design](https://www.figma.com/community/file/1086557835654830399/Reader's-Community)
+
+---------------------------------------------------------------------------------------
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
