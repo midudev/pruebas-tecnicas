@@ -17,7 +17,12 @@ const BooksContextProvider = ({ children }) => {
     });
 
     checkLocalStorage();
-  }, []);
+    window.addEventListener("storage", () => {});
+
+    return () => {
+      window.removeEventListener("storage", () => {});
+    };
+  }, [books, readingList]);
 
   const checkLocalStorage = () => {
     if (
