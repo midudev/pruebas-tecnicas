@@ -5,6 +5,7 @@ import { BookIcon } from './assets/icons'
 import BookCard from './components/BookCard'
 import ReadingList from './components/ReadingList'
 import type { Book } from './types'
+
 export default function Home() {
   const { library } = books
   const [isShowingReadList, setIsShowingReadList] = useState<boolean>(true)
@@ -29,7 +30,7 @@ export default function Home() {
       >
         <ul className='grid w-full grid-cols-auto-fit gap-5'>
           {library.map(({ book }) => (
-            <BookCard key={book.title} book={book} setReadList={setReadList} />
+            <BookCard key={book.ISBN} book={book} setReadList={setReadList} />
           ))}
         </ul>
         <ReadingList
