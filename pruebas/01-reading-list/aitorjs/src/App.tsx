@@ -16,7 +16,7 @@ function App () {
     Object.keys(filters).map(f => {
       _books = _books.filter((d) => {
         if (f === 'pages') {
-          return d.book[f] <= filters[f]
+          return filters[f] > 0 ? d.book[f] <= filters[f] : true
         } else { // genre
           return d.book[f] === filters[f]
         }
@@ -26,7 +26,7 @@ function App () {
   }, [filters])
 
   const filterGenreBooks = (genre: string) => {
-    genre !== '' ? setFilters({ ...filters, genre }) : setBooks(books)
+    genre === '' ? setFilters({ pages: filters.pages }) : setFilters({ ...filters, genre })
   }
 
   const filterPageBooks = (pages: number) => {
@@ -44,8 +44,9 @@ function App () {
           <label htmlFor='pageFilter'>Filtrar por páginas</label>
           <input
             type='range'
-            min='100'
-            max='1500'
+            min='0'
+            max='1400'
+            step='200'
             id='pageFilter'
             name='pageFilter'
             onChange={(e) => filterPageBooks(Number(e.target.value))}
@@ -67,13 +68,13 @@ function App () {
         </div>
       </div>
 
-      <>
-        <div className='flex flex-wrap gap-3'>
-          {filterBooks.map(({ book }) => (
-            <Book key={book.ISBN} data={book} />
-          ))}
-        </div>
-      </>
+      <p>Filters {JSON.stringify(filters)}</p>
+      <div className='flex flex-wrap gap-3'>
+        {filterBooks.map(({ book }) => (
+          <Book key={book.ISBN} data={book} />
+        ))}
+      </div>
+
     </>
   )
 }
