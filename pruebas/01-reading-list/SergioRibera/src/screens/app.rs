@@ -3,7 +3,7 @@ use yew_hooks::{use_async_with_options, use_local_storage, UseAsyncOptions};
 
 use crate::{
     components::NavBar,
-    layout::{ErrorType, LayoutError, Library as LibraryComponent},
+    layout::{ErrorType, LayoutError, Library as LibraryComponent, SuggestedBook},
     models::Book,
     services::get_data,
 };
@@ -107,7 +107,8 @@ pub fn app() -> Html {
                 if !filtered_data.is_empty() {
                     <LibraryComponent books={(*filtered_data).clone()} />
                 } else {
-                    <h1 class={classes!("text-gray-700","font-bold","text-3xl","mt-3","mb-2")}>{"Tus Lista de Lectura"}</h1>
+                    <SuggestedBook books={(*data).clone()} />
+                    <h1 class={classes!("text-gray-700","font-bold","text-3xl","mt-6","mb-2")}>{"Tu Lista de Lectura"}</h1>
                     // if not have saved books
                     if reading_list.is_none() || reading_list.as_ref().is_some_and(|r| r.is_empty()) {
                         <LayoutError errtype={ErrorType::EmptyReadingList} />
@@ -118,7 +119,7 @@ pub fn app() -> Html {
                             books={((*reading_list).clone()).unwrap_or_default().iter().map(|b| Book { saved: true, ..b.clone() }).collect::<Vec<Book>>()}
                         />
                     }
-                    <h1 class={classes!("text-gray-700","font-bold","text-3xl","mt-3","mb-2")}>{"Nuestros Libros"}</h1>
+                    <h1 class={classes!("text-gray-700","font-bold","text-3xl","mt-6","mb-2")}>{"Nuestros Libros"}</h1>
                     if load_data.loading {
                         <LayoutError errtype={ErrorType::LoadingBooks} />
                     } else if load_data.error.is_some() || data.is_empty() {
