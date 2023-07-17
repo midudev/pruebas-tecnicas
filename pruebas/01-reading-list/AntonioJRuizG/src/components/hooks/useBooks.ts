@@ -5,6 +5,7 @@ import {
 	BookId,
 	deleteBookByISBN,
 	loadNewBooks,
+	updateBook,
 } from '../../store/books/slice';
 import { useEffect } from 'react';
 
@@ -21,9 +22,13 @@ export default function useBooks(repo: BooksRepo) {
 		dispatch(loadNewBooks(books));
 	};
 
+	const selectBook = (book: BookProps) => {
+		dispatch(updateBook(book));
+	};
+
 	const deleteBook = (id: BookId) => {
 		dispatch(deleteBookByISBN(id));
 	};
 
-	return { books, deleteBook, loadBooks };
+	return { books, deleteBook, loadBooks, selectBook };
 }

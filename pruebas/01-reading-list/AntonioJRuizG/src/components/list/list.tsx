@@ -2,14 +2,17 @@ import { useMemo } from 'react';
 import useBooks from '../hooks/useBooks';
 import { BooksRepo } from '../services/books.repo';
 import styles from './list.module.scss';
-import { BookId } from '../../store/books/slice';
+import { BookProps } from '../model/book';
 
 export default function List() {
 	const repo = useMemo(() => new BooksRepo(), []);
-	const { books, deleteBook } = useBooks(repo);
+	const { books, selectBook } = useBooks(repo);
+	console.log(books);
 
-	const handleRemoveBook = (id: BookId) => {
-		deleteBook(id);
+	const handleSelectBook = (book: BookProps) => {
+		const updatedBook = { ...book, isSelected: true };
+		console.log(updatedBook);
+		selectBook(updatedBook);
 	};
 
 	return (
@@ -17,13 +20,25 @@ export default function List() {
 			<h2>Avaible Books</h2>
 			<ul className={styles.listContainer}>
 				{books.map((book) => (
-					<li key={book.isbn} className={styles.bookCover}>
-						<button onClick={() => handleRemoveBook(book.isbn)}>X</button>
+					<li key={book.book.isbn} className={styles.bookCover}>
+						{!book.isSelected ? (
+							<button
+								className={styles.selectButton}
+								onClick={() => handleSelectBook(book)}
+							>
+								+
+							</button>
+						) : null}
 						<img
 							width={240}
 							height={380}
-							src={book.cover}
-							alt={'Cover of the book ' + book.title + ' by ' + book.author}
+							src={book.book.cover}
+							alt={
+								'Cover of the book ' +
+								book.book.title +
+								' by ' +
+								book.book.author
+							}
 						></img>
 					</li>
 				))}
