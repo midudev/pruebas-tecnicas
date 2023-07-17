@@ -9,6 +9,13 @@ module.exports = {
     extend: {
       fontFamily:{
         pop:['Poppins']
+      },
+      colors: {
+        primary: '#E75C62',
+        secondary:'#0d276b',
+        bgwarn: '#fffcfa',
+        bgcold: '#F0F4FF',
+        off: '#C4C4C4'
       }
     },
   },
