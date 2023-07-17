@@ -19,7 +19,7 @@ import styles from "./styles.module.css";
 function FilterBar() {
   const { languageState } = useLanguage();
 
-  const { libraryState } = useLibrary();
+  const { libraryState, setLibraryState } = useLibrary();
 
   const [active, setActive] = useState();
 
@@ -30,6 +30,10 @@ function FilterBar() {
     },
     [active]
   );
+
+  useEffect(() => {
+    setLibraryState({ type: "toggle-filter", filtering: active });
+  }, [active]);
 
   const filterContainer = useRef(null);
   const [arrows, setArrows] = useState(false);

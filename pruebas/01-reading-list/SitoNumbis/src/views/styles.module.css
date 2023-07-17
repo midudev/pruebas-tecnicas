@@ -43,5 +43,6 @@
 @media (max-width: 450px) {
   .bookGrid {
     grid-template-columns: 1fr;
+    grid-auto-rows: 450px;
   }
 }

@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import loadable from "@loadable/component";
 
 import PropTypes from "prop-types";
 
@@ -7,8 +8,11 @@ import { useLanguage } from "../../contexts/LanguageProvider";
 import { useLightBox } from "../LightBox/LightBoxProvider";
 import { useLibrary } from "../../contexts/LibraryProvider";
 
+// styles
+import styles from "./styles.module.css";
+
 // components
-import Marker from "./Marker/Marker";
+const Marker = loadable(() => import("./Marker/Marker"));
 
 function Book({ title, pages, genre, cover, year, ISBN, author }) {
   const { setLightBoxState } = useLightBox();
@@ -35,17 +39,17 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
   };
 
   return (
-    <article onClick={activateLightBox} className="w-full relative">
+    <article onClick={activateLightBox} className={styles.main}>
       <img
         className="w-full h-full object-cover object-center shadow-[black] shadow-md transition"
         src={cover}
         alt={`${title}-${languageState.texts.book.cover}`}
       />
 
-      <Marker show={libraryState.readingList[ISBN]} />
+      <Marker show={libraryState.readingList[ISBN] !== undefined} />
       <div
         role="info"
-        className={`group absolute top-0 left-0 w-full h-full bg-dark-alt-bg-opacity opacity-0 transition hover:opacity-100 flex flex-col justify-between items-start p-3 ${
+        className={`group absolute top-0 pr-8 left-0 w-full h-full bg-dark-alt-bg-opacity opacity-0 transition hover:opacity-100 flex flex-col justify-between items-start p-3 ${
           libraryState.readingList[ISBN] ? "opacity-100" : ""
         }`}
       >

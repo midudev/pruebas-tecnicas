@@ -19,6 +19,8 @@ const LightBox = loadable(() => import("../components/LightBox/LightBox"));
 function Home() {
   const { libraryState } = useLibrary();
 
+  console.log(libraryState);
+
   return (
     <main className={styles.main}>
       <Suspense>
@@ -27,9 +29,15 @@ function Home() {
           <LightBox />
           <section>
             <div className={styles.bookGrid}>
-              {libraryState.books.map((book) => (
-                <Book key={book.ISBN} {...book} />
-              ))}
+              {libraryState.books
+                .filter((book) => {
+                  if (libraryState.filtering)
+                    return book.genre === libraryState.filtering;
+                  return true;
+                })
+                .map((book) => (
+                  <Book key={book.ISBN} {...book} />
+                ))}
             </div>
           </section>
         </LightBoxProvider>

@@ -1,5 +1,5 @@
 .main {
-  @apply grid place-items-center transition duration-300 fixed z-20 top-0 left-0 bg-dark-alt-bg-opacity backdrop-blur-xl w-full h-screen;
+  @apply grid place-items-center transition duration-300 fixed z-50 top-0 left-0 bg-dark-alt-bg-opacity backdrop-blur-xl w-full h-screen;
 }
 
 .seeCoverButton {
@@ -19,18 +19,14 @@
 }
 
 .synopsis {
-  @apply text-dark-alt-text mt-2 w-[80%];
+  @apply text-dark-alt-text mt-2;
 }
 
 .info {
-  @apply flex flex-col items-start justify-start h-[350px] transition duration-500;
+  @apply flex flex-col items-start justify-start h-[350px] transition duration-500 w-[30%];
 }
 
 @media (max-width: 900px) {
-  .synopsis {
-    @apply w-full;
-  }
-
   .info {
     @apply w-[40%];
   }

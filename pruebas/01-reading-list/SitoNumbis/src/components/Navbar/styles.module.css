@@ -1,6 +1,6 @@
 .main {
   backdrop-filter: blur(24px);
-  @apply fixed top-0 left-0 h-20 w-full bg-dark-alt-bg-opacity shadow-[black] shadow-sm flex items-center justify-center;
+  @apply fixed top-0 left-0 h-20 z-30 w-full bg-dark-alt-bg-opacity shadow-[black] shadow-sm flex items-center justify-center;
 }
 
 .navContainer {

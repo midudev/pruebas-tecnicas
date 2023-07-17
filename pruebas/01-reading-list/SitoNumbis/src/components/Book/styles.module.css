@@ -1,3 +1,10 @@
 .infoRow {
   @apply flex gap-2;
 }
+
+.main {
+  @apply w-full relative;
+}
+
+@media (max-width: 450px) {
+}

@@ -27,6 +27,10 @@ const libraryReducer = (libraryState, action) => {
       const { readingList } = libraryState;
       return { ...libraryState, readingList };
     }
+    case "toggle-filter": {
+      const { filtering } = action;
+      return { ...libraryState, filtering };
+    }
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
