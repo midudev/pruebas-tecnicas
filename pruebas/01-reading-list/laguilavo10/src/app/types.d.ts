@@ -11,3 +11,9 @@ export interface Book {
     otherBooks: string[]
   }
 }
+
+export interface Books {
+  book: Book
+}
+
+export type Library = Books[]

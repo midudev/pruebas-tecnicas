@@ -19,9 +19,9 @@ export default function ReadingList({ isShowingReadList, readList }: Props) {
         List To Read
       </h2>
       <button>uwu</button>
-      <ul className='grid grid-cols-auto-fit gap-5 p-2'>
+      <ul className='grid grid-cols-auto-fit gap-5 px-2 py-5'>
         {readList?.map((book) => (
-          <BookCard book={book} key={book.ISBN} />
+          <BookCard book={book} key={book.ISBN} action='RemoveFromReadingList' />
         ))}
       </ul>
     </section>

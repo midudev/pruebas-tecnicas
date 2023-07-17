@@ -1,18 +1,18 @@
 'use client'
-import books from '../../../books.json'
+// import { library } from '../../../books.json'
 import { useState } from 'react'
 import { BookIcon } from './assets/icons'
 import BookCard from './components/BookCard'
 import ReadingList from './components/ReadingList'
-import type { Book } from './types'
+import { useBooks } from './context/books'
 
 export default function Home() {
-  const { library } = books
   const [isShowingReadList, setIsShowingReadList] = useState<boolean>(true)
-  const [readList, setReadList] = useState<Book[]>([])
+  const { state } = useBooks()
+
   return (
     <>
-      <header className='fixed top-0 flex h-16  w-screen items-center bg-[#596886] bg-brandImage bg-contain bg-no-repeat px-10 sm:bg-center z-30'>
+      <header className='fixed top-0 z-30 flex  h-16 w-screen items-center bg-[#596886] bg-brandImage bg-contain bg-no-repeat px-10 sm:bg-center'>
         <button
           onClick={() => setIsShowingReadList((prev) => !prev)}
           className={`flex gap-3 justify-self-end rounded-lg border-2 border-slate-800 bg-white p-2 text-black  ${
@@ -26,16 +26,16 @@ export default function Home() {
       <main
         className={` ${
           isShowingReadList ? 'w-4/6' : 'w-full'
-        } mb-10 mt-24 flex gap-5 overflow-x-hidden px-10 transition-all delay-100 duration-300 ease-out z-10`}
+        } z-10 mb-10 mt-24 flex gap-5 overflow-x-hidden px-10 transition-all delay-100 duration-300 ease-out`}
       >
-        <ul className='grid w-full grid-cols-auto-fit gap-5'>
-          {library.map(({ book }) => (
-            <BookCard key={book.ISBN} book={book} setReadList={setReadList} />
+        <ul className='grid w-full grid-cols-auto-fit gap-5 py-2'>
+          {state.bookList.map((book) => (
+            <BookCard key={book.ISBN} book={book} action='AddToReadingList' />
           ))}
         </ul>
         <ReadingList
           isShowingReadList={isShowingReadList}
-          readList={readList}
+          readList={state.readingList}
         />
       </main>
     </>

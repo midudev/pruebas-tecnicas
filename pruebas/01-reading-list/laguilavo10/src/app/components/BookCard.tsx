@@ -1,23 +1,26 @@
 import Image from 'next/image'
 import type { Book } from '../types'
-import { PlusCircleIcon } from '@heroicons/react/24/outline'
+import { PlusCircleIcon, XCircleIcon } from '@heroicons/react/24/outline'
 import { BookOpenIcon } from '@heroicons/react/24/solid'
+import { ActionType, useBooks } from '../context/books'
 interface Props {
   book: Book
-  setReadList?: React.Dispatch<React.SetStateAction<Book[]>>
+  action: ActionType
 }
 
-export default function BookCard({ book, setReadList }: Props) {
+export default function BookCard({ book, action }: Props) {
+  const { dispatch } = useBooks()
+
   const addToReadingList = () => {
-    if (setReadList === undefined) return
-    setReadList((prev) => {
-      const alreadyIn = prev.includes(book)
-      return !alreadyIn ? [...prev, book] : [...prev]
-    })
+    dispatch({ type: 'AddToReadingList', payload: book })
+  }
+
+  const removeFromReadingList = () => {
+    dispatch({ type: 'RemoveFromReadingList', payload: book })
   }
 
   return (
-    <li className='relative m-auto mt-2 h-80 w-auto min-w-56 overflow-hidden rounded-lg text-white outline outline-white [&:hover>article]:opacity-90 [&:hover>img]:scale-125'>
+    <li className='min-w-56 relative m-auto h-80 w-auto overflow-hidden rounded-lg text-white outline outline-white [&:hover>article]:opacity-90 [&:hover>img]:scale-125'>
       <article className='absolute left-0 top-0 z-20 flex h-full w-full flex-col justify-evenly bg-black p-3 text-sm opacity-0 duration-300 ease-linear'>
         <h3 className='mt-2 text-lg font-extrabold'>{book.title}</h3>
         <p className='flex items-center gap-2'>
@@ -38,9 +41,17 @@ export default function BookCard({ book, setReadList }: Props) {
 
         <button
           className='absolute right-3 top-3 flex h-8 cursor-pointer flex-col items-center justify-around text-sm'
-          onClick={addToReadingList}
+          onClick={
+            action === 'AddToReadingList'
+              ? addToReadingList
+              : removeFromReadingList
+          }
         >
-          <PlusCircleIcon className='h-full' title='Add To Reading List' />
+          {action === 'AddToReadingList' ? (
+            <PlusCircleIcon className='h-full' title='Add To Reading List' />
+          ) : (
+            <XCircleIcon className='h-full' title='Remove From Reading List' />
+          )}
         </button>
       </article>
 
