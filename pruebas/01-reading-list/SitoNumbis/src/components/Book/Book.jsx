@@ -61,7 +61,11 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
   }, [libraryState]);
 
   return !hide ? (
-    <article onClick={activateLightBox} className={`${styles.main} appear`}>
+    <article
+      id={ISBN}
+      onClick={activateLightBox}
+      className={`${styles.main} appear`}
+    >
       <img
         className="w-full h-full object-cover object-center shadow-[black] shadow-md transition"
         src={cover}
