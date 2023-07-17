@@ -3,7 +3,7 @@ import { addBookWish } from "../../features/books/booksSlice";
 import { ToastContainer, toast } from "react-toastify";
 import { RootState, store } from "../../app/store";
 import { useAppDispatch } from "../../app/hooks";
-import { Author, Book, Library } from "../../models/BooksModel";
+import {  Book, Library } from "../../models/BooksModel";
 import "react-toastify/dist/ReactToastify.css";
 import "./listOfBooks.scss";
 
