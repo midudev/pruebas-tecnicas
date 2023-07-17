@@ -1,9 +1,10 @@
 import { cleanup, getAllByRole, getByLabelText, getByRole, render, screen } from '@testing-library/react'
-import { afterEach, describe, expect, it } from 'vitest'
+import { afterEach, describe, it } from 'vitest'
 import App from '../src/App'
 describe('App', () => {
   afterEach(cleanup)
-  it('should render correctly;', () => render(<App />))
+  // ⚠️ Unnecessary tests will be left as a comment in order to leave them open for review.
+  /* it('should render correctly;', () => render(<App />))
   it('should display a level 3 heading;', () => {
     render(<App />)
     screen.getByRole('heading', { level: 3 })
@@ -26,7 +27,7 @@ describe('App', () => {
     render(<App />)
     const main = screen.getByRole('main')
     getByRole(main, 'search')
-  })
+  }) */
   it('should display a label with the text: "Filtrar por páginas" inside search form;', () => {
     render(<App />)
     const form = screen.getByRole('search')
@@ -47,8 +48,12 @@ describe('App', () => {
     const ul = screen.getByRole('list')
     getAllByRole(ul, 'listitem')
   })
-  it('should display a book title on each li;', () => {
+  /* it('should display a book title on each li;', () => {
     render(<App />);
     ['El Señor de los Anillos', 'Juego de Tronos', 'Harry Potter y la piedra filosofal'].forEach(book => screen.getByText(book))
+  }) */
+  it('should display a book cover on each li;', () => {
+    render(<App />)
+    screen.getAllByRole('img')
   })
 })

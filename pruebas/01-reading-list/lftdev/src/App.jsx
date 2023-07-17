@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import BooksLibrary from './database/books.json'
+import BooksJSON from './database/books.json'
 import './style.css'
 export default function App () {
   const [bookList, setBookList] = useState([])
-  // Load book library to state.
-  useEffect(() => BooksLibrary.library.forEach(book => setBookList(prevList => [...prevList, book.book])), [])
+  // Load book library to state bookList.
+  useEffect(() => BooksJSON.library.forEach(bookObject => setBookList(prevList => [...prevList, bookObject.book])), [])
   return (
     <>
       <h3>Sin libros en la lista de lectura</h3>
@@ -23,7 +23,10 @@ export default function App () {
           </label>
         </form>
         <ul>
-          {bookList.map((book, index) => <li key={index}>{book.title}</li>)}
+          {bookList.map((book, index) =>
+            <li key={index}>
+              <img src={book.cover} alt={`${book.title} book cover`} />
+            </li>)}
         </ul>
       </main>
     </>
