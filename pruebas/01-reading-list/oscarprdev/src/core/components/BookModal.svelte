@@ -14,11 +14,14 @@
     class="absolute top-0 left-0 bg-dark backdrop-blur-sm w-full h-full grid place-items-center z-1 open:animate-fade-in open:backdrop:animate-fade-in"
   >
     <article
-      class="flex items-start justify-center gap-8 p-5 bg-light max-w-xl max-h-400 rounded-md relative"
+      class="flex items-start justify-center gap-8 p-5 bg-light max-w-xl max-h-800 rounded-sm relative"
     >
-      <div  class="absolute top-3 right-3 z-10 cursor-pointer" on:click={closeModal}>
-        <XIcon size="24"/>
-      </div>
+      <button
+        class="absolute top-3 right-3 z-10 cursor-pointer"
+        on:click={closeModal}
+      >
+        <XIcon size="24" />
+      </button>
       <section class="h-80">
         <img
           class="w-full h-full object-cover"
@@ -27,12 +30,13 @@
         />
       </section>
       <section class="w-1/2 h-80 flex flex-col gap-8">
-        <i data-feather="alert-circle"></i>
+        <i data-feather="alert-circle" />
         <div class="flex flex-col gap-1">
           <h2 class="text-lg"><b>{$modalState.book.title}</b></h2>
           <h3 class="text-sm">
             <i>{$modalState.book.author.name} - {$modalState.book.year}</i>
           </h3>
+          <h4>{$modalState.book.genre}</h4>
           <p>{$modalState.book.synopsis}</p>
         </div>
         <div class="flex flex-col gap-1">

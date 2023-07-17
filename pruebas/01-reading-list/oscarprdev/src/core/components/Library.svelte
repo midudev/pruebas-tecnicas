@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { appState } from './../store/store.ts'
   import BooksList from './Books-list.svelte'
   import { writable } from 'svelte/store'
   import type { BooksFilters, PaginationState } from './types'
@@ -19,6 +20,10 @@
 
 <section class="bg-light h-full p-10">
   <h1 class="text-4xl"><i>Biblioteca</i></h1>
+  <div class="pt-5">
+    <h2>Disponibles: {$appState.books.length}</h2>
+    <h3>En lista de lectura: {$appState.readingBooks.length}</h3>
+  </div>
   <FilterBooks {filters} />
   <BooksList {booksList} {paginationState} {booksFiltered} />
 </section>

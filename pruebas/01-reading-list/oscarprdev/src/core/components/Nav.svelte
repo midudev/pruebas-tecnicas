@@ -1,5 +1,5 @@
 <script>
-  import { HomeIcon, BookOpenIcon, ListIcon } from 'svelte-feather-icons'
+  import { HomeIcon, BookOpenIcon, AwardIcon } from 'svelte-feather-icons'
   import { asideState } from '../store/aside-store'
   import { derived } from 'svelte/store'
 
@@ -66,7 +66,7 @@
         topBooksListIsOpen: true,
       }))}
   >
-    <ListIcon
+    <AwardIcon
       size="32"
       class={$topBooksListSelected ? 'text-light' : 'text-icons'}
     />

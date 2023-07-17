@@ -13,7 +13,7 @@ export class DefaultStateInfra implements StateInfra {
     constructor(private readonly defaultBook: DefaultBooks) {}
 
     setDefaultLibraryState(): GlobalState {
-        const books = this.defaultBook.library.map((libraryItem) => libraryItem.book);
+        const books = this.defaultBook.library.map((libraryItem) => ({...libraryItem.book, currentPage: 0, stars: 0}));
 
         const globalState: GlobalState = {
             books,

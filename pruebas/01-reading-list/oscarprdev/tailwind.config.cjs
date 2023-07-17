@@ -59,7 +59,7 @@ module.exports = {
         },
       },
       animation: {
-        'fade-in': 'fade-in 0.3s ease-in-out',
+        'fade-in': 'fade-in 0.1s ease-in-out',
       },
       transitionProperty: {
         'bg-color': 'background-color',
