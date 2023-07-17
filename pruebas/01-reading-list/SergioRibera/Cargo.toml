@@ -21,6 +21,7 @@ yew_icons = { version = "0.7.2", features = [
     "BootstrapBookmarkDashFill",
     "BootstrapBookmark",
     "BootstrapBookmarkPlusFill",
+    "HeroiconsMiniSolidArrowUpRight",
 ] }
 # development mode log
 log = { version = "0.4.19", optional = true }
@@ -30,3 +31,6 @@ reqwest = { version = "0.11.18", default-features = false, features = ["json"] }
 # wasm-js bridge
 wasm-bindgen = "0.2"
 web-sys = { version = "0.3", features = ["Event", "EventTarget", "InputEvent"] }
+# Random generation
+rand = "0.8.5"
+getrandom = { version = "0.2.10", features = ["js"] }
