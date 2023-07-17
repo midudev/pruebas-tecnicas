@@ -1,5 +1,3 @@
-// import booksReducer from '../src/redux/booksSlice'
-
 export const getBooksData = async () => {
   const response = await fetch('../data/books.json')
   const data = await response.json()
