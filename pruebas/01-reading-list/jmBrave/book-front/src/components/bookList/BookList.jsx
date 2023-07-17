@@ -1,42 +1,45 @@
-'use client'
-import { useEffect, useState } from 'react'
+import { Droppable, Draggable } from 'react-beautiful-dnd'
 import Card from '../card/Card'
-import initialBooksList from '../../mocks/books.js'
-const BookList = ({ title }) => {
-    const { library } = initialBooksList
-    const isBooksSelected = () => title !== 'Libros' //TODO Review
-    const [books, setBooks] = useState(
-        isBooksSelected() ? loadBooksSelected() : library
-    )
 
-    useEffect(() => {
-        if (isBooksSelected()) {
-            const onStorageChange = (e) => {
-                setBooks(loadBooksSelected())
-            }
-            window.addEventListener('storage', onStorageChange)
-            return () => window.removeEventListener('storage', onStorageChange)
-        }
-    }, [])
+const BookList = ({ title, books, droppableId }) => {
+    const isBooksSelected = () => droppableId !== 'list1' //TODO Review
 
-    function loadBooksSelected() {
-        const localStorage = window.localStorage
-        const readBooks = localStorage.getItem('bookList')
-        const bookList = readBooks ? JSON.parse(readBooks) : []
-        return bookList
-    }
     return (
-        <div className="flex items-center flex-col p-2">
-            <h2 className="pb-4">{title}</h2>
-            {books.map(({ book }) => {
-                const { ISBN } = book
-                return (
-                    <div className="pb-4" key={ISBN}>
-                        <Card book={book} isSelected={isBooksSelected} />
-                    </div>
-                )
-            })}
-        </div>
+        <Droppable droppableId={droppableId}>
+            {(provided) => (
+                <ul {...provided.droppableProps} ref={provided.innerRef}>
+                    <h2 className="flex items-center justify-center pb-5">
+                        {title}
+                    </h2>
+                    {books.map((item, index) => {
+                        if (!item) return null
+                        const { book } = item
+                        return (
+                            <Draggable
+                                key={book.ISBN}
+                                draggableId={book.ISBN}
+                                index={index}
+                            >
+                                {(provided) => (
+                                    <li
+                                        ref={provided.innerRef}
+                                        {...provided.draggableProps}
+                                        {...provided.dragHandleProps}
+                                    >
+                                        <div className="pb-4" key={book.ISBN}>
+                                            <Card
+                                                book={book}
+                                                isSelected={isBooksSelected}
+                                            />
+                                        </div>
+                                    </li>
+                                )}
+                            </Draggable>
+                        )
+                    })}
+                </ul>
+            )}
+        </Droppable>
     )
 }
 
