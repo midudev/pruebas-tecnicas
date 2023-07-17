@@ -39,7 +39,7 @@
     type="range"
     min={minValue}
     max={$maxValue}
-    value={$maxValue / 2}
+    value={$maxValue}
     on:input={onRangeChange}
     step="5"
     class="w-full h-2 rounded-lg appearance-none cursor-pointer bg-overlayModal bg-opacity-60"

@@ -7,15 +7,15 @@
   import { useFilter } from './hooks/useFilter'
   import FilterBooks from './FilterBooks.svelte'
 
-  const filters = writable<BooksFilters>({
+  const INITIAL_FILTERS_STATE = {
     genre: '',
     title: '',
-    pages: 0,
-  })
+    pages: 1200,
+  }
+  const filters = writable<BooksFilters>(INITIAL_FILTERS_STATE)
+  const paginationState = writable<PaginationState>({ init: 0, offset: 4 })
 
   const booksFiltered = useFilter(filters)
-
-  const paginationState = writable<PaginationState>({ init: 0, offset: 4 })
   const booksList = usePagination(booksFiltered, paginationState)
 </script>
 

@@ -12,6 +12,6 @@ export interface Book {
   year: number
   ISBN: string
   author: Author
-  currentPage: number
-  stars: number
+  currentPage?: number
+  stars?: number
 }
