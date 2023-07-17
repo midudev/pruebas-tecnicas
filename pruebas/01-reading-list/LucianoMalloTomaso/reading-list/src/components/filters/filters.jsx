@@ -1,5 +1,5 @@
 import { useId } from 'react'
-import './Filters.css'
+import './filters.css'
 import { useFilters } from '../../hooks/useFilters'
 import { library } from '../../mocks/books.json'
 
