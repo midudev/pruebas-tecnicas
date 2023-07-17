@@ -1,5 +1,5 @@
 import './books.css'
-import { OpenBookIcon, CloseBookIcon } from '../icons/icons'
+import { OpenBookIcon, CloseBookIcon } from '../icons/icons.jsx'
 import { useListOfLecture } from '../../hooks/useListOfLecture'
 
 export default function Books ({ books }) {
