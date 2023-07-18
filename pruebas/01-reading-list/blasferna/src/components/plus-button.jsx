@@ -12,7 +12,7 @@ import LoadingMini from "@/components/loading-mini";
 import { useAppContext } from "@/context/app-context";
 
 export default function PlusButton({ isbn }) {
-  const { inReadingList, setInReadingList, inReadingListCount } = useAppContext();
+  const { inReadingList, setInReadingList } = useAppContext();
   const [checked, setChecked] = useState(null)
 
   const onClickHander = (adding) => {

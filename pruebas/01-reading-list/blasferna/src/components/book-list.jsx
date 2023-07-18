@@ -1,28 +1,16 @@
 "use client";
-
+import { useAppContext } from "@/context/app-context";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { getAvailableList, getReadingList } from "@/lib/books";
 
 export function AvailableList({ data }) {
-  const [books, setBooks] = useState([]);
-
-  useEffect(() => {
-    setBooks(getAvailableList(data));
-  }, []);
-
-  return <BookList books={books}></BookList>;
+  const { availableList } = useAppContext();
+  return <BookList books={availableList}></BookList>;
 }
 
 export function ReadingList({ data }) {
-  const [books, setBooks] = useState([]);
-
-  useEffect(() => {
-    setBooks(getReadingList(data));
-  }, []);
-
-  return <BookList books={books}></BookList>;
+  const { readingList } = useAppContext();
+  return <BookList books={readingList}></BookList>;
 }
 
 export function BookList({ books }) {
