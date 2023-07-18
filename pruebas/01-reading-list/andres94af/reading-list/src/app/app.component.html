@@ -21,6 +21,10 @@
         [disabled]="genre==''">Filtrar</button>
       <button class="btn btn-dark ms-1" (click)="clearFilter()" *ngIf="isFiltered">Limpiar</button>
     </div>
+
+    <div class="nav_item">
+      <label>Libros disponibles en lista de lectura: {{readingList.length}}</label>
+    </div>
   </nav>
 </header>
 

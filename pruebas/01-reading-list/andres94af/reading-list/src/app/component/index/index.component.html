@@ -1,7 +1,13 @@
 <div class="booksList">
-  <div class="row justify-content-start mx-1">
+  <div class="row justify-content-start mx-1" *ngIf="books.length; else sinLibros">
     <div *ngFor="let book of books; let i = index" class="col-auto p-0">
       <img (click)="addReadingList(book, i)" [src]="book.cover" alt="portada-libro" class="cover-book">
     </div>
   </div>
+
+  <ng-template #sinLibros>  
+    <div>
+      <h3 class="m-3">No hay mas libros disponibles...</h3>
+    </div>
+  </ng-template>
 </div>
