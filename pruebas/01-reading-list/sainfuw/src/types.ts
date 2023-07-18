@@ -22,7 +22,7 @@ export type IAuthor = {
   otherBooks: string[];
 }
 
-// AppContext
+// Context
 export interface AppContextInitialStateType {
   books: IBook[];
   filteredBooks: IBook[];

@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AppContext } from "../context/AppContext";
+import { ReadListContext } from "../context/ReadListContext";
 import { IBook } from "../types";
 
 export default function Book({ book }: { book: IBook }) {
-  const { addToReadList } = useContext(AppContext)
+  const { addToReadList } = useContext(ReadListContext)
 
   return (
     <motion.li className="relative group"

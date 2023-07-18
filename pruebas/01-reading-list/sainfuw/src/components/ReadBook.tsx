@@ -1,12 +1,12 @@
 import { Reorder } from "framer-motion";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AppContext } from "../context/AppContext";
+import { ReadListContext } from "../context/ReadListContext";
 import { IBook } from "../types";
 import { CloseIcon } from "./icons/CloseIcon";
 
 export default function ReadBook({ book }: { book: IBook }) {
-  const { removeFromReadList } = useContext(AppContext)
+  const { removeFromReadList } = useContext(ReadListContext)
 
   return (
     <Reorder.Item

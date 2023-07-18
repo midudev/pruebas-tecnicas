@@ -2,10 +2,10 @@ import { useContext } from "react";
 import Books from "../components/Books";
 import Header from "../components/Header";
 import ReadList from "../components/ReadList";
-import { AppContext } from "../context/AppContext";
+import { ReadListContext } from "../context/ReadListContext";
 
 export default function BookStore() {
-  const { readList } = useContext(AppContext)
+  const { readList } = useContext(ReadListContext)
 
   return (
     <main className="flex flex-col h-screen max-w-6xl gap-8 mx-auto">

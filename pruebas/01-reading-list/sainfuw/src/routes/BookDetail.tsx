@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { AppContext } from "../context/AppContext";
+import { ReadListContext } from "../context/ReadListContext";
 import { IBook } from "../types";
 
 export default function BookDetail() {
   const location = useLocation()
   const book = location.state as IBook;
-  const { addToReadList, readList, removeFromReadList } = useContext(AppContext)
+  const { addToReadList, readList, removeFromReadList } = useContext(ReadListContext)
 
   if (!book) return <div>Book not found!</div>
 

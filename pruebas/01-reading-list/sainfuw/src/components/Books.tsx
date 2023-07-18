@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { AppContext } from "../context/AppContext";
+import { FilteredBooksContext } from "../context/FilteredBooksContext";
 import Book from "./Book";
 
 export default function Books() {
-  const { filteredBooks } = useContext(AppContext);
+  const { filteredBooks } = useContext(FilteredBooksContext);
 
   return (
     <section className="flex flex-col flex-1 gap-8">
