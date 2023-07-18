@@ -58,7 +58,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
     readList: state.readList,
     addToReadList,
     removeFromReadList,
-    getBookDetail,
     setReadList,
     filterByGenre,
     setFilterByGenre,

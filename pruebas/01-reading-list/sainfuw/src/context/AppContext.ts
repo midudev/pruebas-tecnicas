@@ -6,7 +6,6 @@ export const ContextState = {
   readList: [],
   addToReadList: (book: IBook) => book,
   removeFromReadList: (book: IBook) => book,
-  getBookDetail: (isbn: string) => isbn,
   setReadList: (books: IBook[]) => books,
   filterByGenre: '',
   setFilterByGenre: (genre: string) => genre,

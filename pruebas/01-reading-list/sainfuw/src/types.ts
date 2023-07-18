@@ -33,7 +33,6 @@ export interface AppContextType {
   readList: IBook[];
   addToReadList: (book: IBook) => void;
   removeFromReadList: (book: IBook) => void;
-  getBookDetail: (isbn: string) => IBook;
   setReadList: (books: IBook[]) => void;
   filterByGenre: string,
   setFilterByGenre: (genre: string) => void,
