@@ -9,6 +9,8 @@ import {
 } from '../../store/books/slice';
 import { useEffect } from 'react';
 
+const NO_BOOKS: number = 0;
+
 export default function useBooks(repo: BooksRepo) {
 	const books = useAppSelector((state) => state.books);
 	const dispatch = useAppDispatch();
@@ -30,8 +32,12 @@ export default function useBooks(repo: BooksRepo) {
 		dispatch(deleteBookByISBN(id));
 	};
 
-	const avaibleBooks =
-		books.filter((book) => book.isSelected === false)!.length.toString() || '0';
+	const booksCount = {
+		avaibleBooks:
+			books.filter((book) => book.isSelected === false)!.length || NO_BOOKS,
+		selectedBooks:
+			books.filter((book) => book.isSelected === true)!.length || NO_BOOKS,
+	};
 
-	return { books, deleteBook, loadBooks, selectBook, avaibleBooks };
+	return { books, deleteBook, loadBooks, selectBook, booksCount };
 }

@@ -4,11 +4,18 @@ import { BooksRepo } from '../services/books.repo';
 
 export default function Header() {
 	const repo = useMemo(() => new BooksRepo(), []);
-	const { avaibleBooks, books } = useBooks(repo);
+	const { booksCount } = useBooks(repo);
 	return (
 		<>
 			<h1>Reading list</h1>
-			<p>Avaible Books {avaibleBooks}</p>
+			{booksCount.avaibleBooks > 0 ? (
+				<p>{booksCount.avaibleBooks} avaible books</p>
+			) : (
+				<p>There are no avaible books</p>
+			)}
+			{booksCount.selectedBooks > 0 ? (
+				<p>{booksCount.selectedBooks} books in your list</p>
+			) : null}
 		</>
 	);
 }
