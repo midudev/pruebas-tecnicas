@@ -3,17 +3,12 @@ use yew_hooks::{use_async_with_options, use_local_storage, UseAsyncOptions};
 
 use crate::{
     components::NavBar,
-    layout::{ErrorType, LayoutError, Library as LibraryComponent, SuggestedBook},
+    layout::{
+        check_book_saved, ErrorType, LayoutError, Library as LibraryComponent, SuggestedBook,
+    },
     models::Book,
     services::get_data,
 };
-
-fn check_book_saved(books: &Vec<Book>, b: &Book) -> bool {
-    books
-        .iter()
-        .find(|r| r.title == b.title && b.year == r.year && b.author.name == r.author.name)
-        .is_some()
-}
 
 #[function_component(App)]
 pub fn app() -> Html {
@@ -117,7 +112,7 @@ pub fn app() -> Html {
                             title="Tu Lista de Lectura"
                             sortable=true
                             readinglist={reading_list.clone()}
-                            books={((*reading_list).clone()).unwrap_or_default().iter().map(|b| Book { saved: true, ..b.clone() }).collect::<Vec<Book>>()}
+                            books={(reading_list.as_ref()).unwrap().iter().map(|b| Book { saved: true, ..b.clone() }).collect::<Vec<Book>>()}
                         />
                     }
                     if load_data.loading {
@@ -127,7 +122,7 @@ pub fn app() -> Html {
                     } else {
                         <LibraryComponent
                             sortable=true
-                            readinglist={reading_list}
+                            readinglist={reading_list.clone()}
                             books={(*data).clone()}
                             title="Nuestros Libros"
                         />

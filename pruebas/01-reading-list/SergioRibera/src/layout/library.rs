@@ -28,22 +28,41 @@ enum SortContent {
     PagesReverse,
 }
 
+pub fn check_book_saved(books: &Vec<Book>, b: &Book) -> bool {
+    books
+        .iter()
+        .find(|r| r.title == b.title && b.year == r.year && b.author.name == r.author.name)
+        .is_some()
+}
+
+fn sort_books(sort: SortContent, books: Vec<Book>) -> Vec<Book> {
+    let mut mut_books = books.to_vec();
+    match sort {
+        SortContent::AZ => mut_books.sort_by(|a, b| a.title.cmp(&b.title)),
+        SortContent::ZA => {
+            mut_books.sort_by(|a, b| a.title.cmp(&b.title));
+            mut_books.reverse();
+        }
+        SortContent::Pages => mut_books.sort_by(|a, b| a.pages.cmp(&b.pages)),
+        SortContent::PagesReverse => {
+            mut_books.sort_by(|a, b| a.pages.cmp(&b.pages));
+            mut_books.reverse();
+        }
+    };
+    mut_books
+}
+
 #[function_component]
 pub fn Library(props: &Props) -> Html {
     let Props {
         expandable,
         readinglist,
-        books,
+        books: prop_books,
         title,
         sortable,
     } = props.clone();
     let saved_books = use_local_storage::<Vec<Book>>("saved_books".to_string());
     let not_expanded = use_bool_toggle(expandable);
-    let books = use_state(|| {
-        let mut books = books.clone();
-        books.sort_by(|a, b| a.title.cmp(&b.title));
-        books
-    });
     let sort = use_state(SortContent::default);
 
     let reading_list = if let Some(v) = readinglist {
@@ -52,6 +71,23 @@ pub fn Library(props: &Props) -> Html {
     } else {
         saved_books
     };
+
+    let books = use_memo(
+        |(books, reading_list, sort)| {
+            let books = books
+                .iter()
+                .map(|l| Book {
+                    saved: check_book_saved(
+                        reading_list.as_ref().unwrap_or(&Vec::<Book>::new()),
+                        &l,
+                    ),
+                    ..l.clone()
+                })
+                .collect::<Vec<Book>>();
+            sort_books((**sort).clone(), books)
+        },
+        (prop_books, reading_list.clone(), sort.clone()),
+    );
 
     let onaddbook = {
         let reading_list = reading_list.clone();
@@ -96,30 +132,6 @@ pub fn Library(props: &Props) -> Html {
         let not_expanded = not_expanded.clone();
         Callback::from(move |_: MouseEvent| not_expanded.toggle())
     };
-
-    {
-        let sort = sort.clone();
-        let books = books.clone();
-        use_effect_with_deps(
-            move |sort| {
-                let mut mut_books = books.to_vec();
-                match **sort {
-                    SortContent::AZ => mut_books.sort_by(|a, b| a.title.cmp(&b.title)),
-                    SortContent::ZA => {
-                        mut_books.sort_by(|a, b| a.title.cmp(&b.title));
-                        mut_books.reverse();
-                    },
-                    SortContent::Pages => mut_books.sort_by(|a, b| a.pages.cmp(&b.pages)),
-                    SortContent::PagesReverse => {
-                        mut_books.sort_by(|a, b| a.pages.cmp(&b.pages));
-                        mut_books.reverse();
-                    },
-                };
-                books.set(mut_books);
-            },
-            sort,
-        );
-    }
 
     let onchangesort = {
         let sort = sort.clone();
