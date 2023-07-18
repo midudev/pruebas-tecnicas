@@ -7,7 +7,5 @@ describe("Genre Filter", () => {
     render(<PageFilter />);
 
     screen.getByLabelText("Filtrar por Género");
-
-    console.log("1112", screen.getByLabelText("Filtrar por Género"));
   });
 });
