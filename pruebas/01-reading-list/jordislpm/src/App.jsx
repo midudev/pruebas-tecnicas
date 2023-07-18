@@ -16,7 +16,24 @@ function App() {
   const {listBooks, listRead} = store;
   const [book, reads, setFilters]= useFilter(books);
 
+  const localMemory = localStorage.getItem("books");
+  const [persist, setpersist]= useState(JSON.parse(localMemory));
 
+
+  useEffect(()=>{
+   window.addEventListener('storage',event =>{
+      if(event.key === "books"){
+
+        if(JSON.parse(event.newValue).listBooks.length !== listBooks.length){
+          
+          
+         }
+      }
+      
+     
+    })
+   
+  },[localMemory])
 
 
   useEffect(()=>{

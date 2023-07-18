@@ -17,13 +17,6 @@ function ContextBook ({ children }){
             genres:[]
         };
 
-
-    // const initialState = {
-    //     listBooks: [],
-    //     listRead:[],
-    //     genres:[]
-    // }
-
     const [store, dispatch] = useReducer(reducer, initialState);
     return(
         <BooksAvailable.Provider value={[store, dispatch]}>
