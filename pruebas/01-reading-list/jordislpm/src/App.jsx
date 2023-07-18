@@ -17,6 +17,8 @@ function App() {
   const [book, reads, setFilters]= useFilter(books);
 
 
+
+
   useEffect(()=>{
     if(localStorage.getItem("books") == undefined){
       if(books.length > 0 && call){
@@ -25,10 +27,11 @@ function App() {
       } else if(!call){
         return
       }
-      console.log("se reinicio la lista desde app")
   }
 
 },[books])
+
+
 
 
 

@@ -45,16 +45,12 @@ function reducer(state, action){
                     allGenres.push(book.genre)
                      }
             });
-            if(localStorage.getItem("books") == undefined){
                 localStorage.setItem("books", JSON.stringify({
                     ...state,
                     listBooks: initBooks,
                     genres:allGenres
                     
                 }))
-                console.log("se reinicio la lista")
-            }
-          
             return {
                 ...state,
                 listBooks: initBooks,
