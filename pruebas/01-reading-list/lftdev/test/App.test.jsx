@@ -1,5 +1,5 @@
 import { cleanup, fireEvent, getAllByRole, getByLabelText, getByRole, render, screen } from '@testing-library/react'
-import { afterEach, describe, it } from 'vitest'
+import { afterEach, describe, expect, it } from 'vitest'
 import App from '../src/App'
 describe('App', () => {
   afterEach(cleanup)
@@ -48,10 +48,6 @@ describe('App', () => {
     const ul = screen.getByRole('list')
     getAllByRole(ul, 'listitem')
   })
-  /* it('should display a book title on each li;', () => {
-    render(<App />);
-    ['El Señor de los Anillos', 'Juego de Tronos', 'Harry Potter y la piedra filosofal'].forEach(book => screen.getByText(book))
-  }) */
   it('should display a book cover on each li;', () => {
     render(<App />)
     screen.getAllByRole('img')
@@ -61,5 +57,11 @@ describe('App', () => {
     const img = screen.getAllByRole('img')[0]
     fireEvent.click(img)
     await screen.findByRole('region')
+  })
+  it('should display a heading of level 2 as aside child with the text: "Lista de lectura";', async () => {
+    render(<App />)
+    fireEvent.click(screen.getAllByRole('img')[0])
+    const aside = await screen.findByRole('region')
+    expect(getByRole(aside, 'heading', { level: 2 }).innerHTML).toBe('Lista de lectura')
   })
 })

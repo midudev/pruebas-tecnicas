@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 import BooksJSON from './database/books.json'
 import './style.css'
-import BookItem from './components/BookItem'
+import BooksList from './components/BooksList'
 export default function App () {
-  const [bookList, setBookList] = useState([])
+  const [booksList, setBooksList] = useState([])
   const [readList, setReadList] = useState([])
-  // Load book library to state bookList.
-  useEffect(() => BooksJSON.library.forEach(bookObject => setBookList(prevList => [...prevList, bookObject.book])), [])
+  // Load book library to state booksList.
+  useEffect(() => BooksJSON.library.forEach(bookObject => setBooksList(prevList => [...prevList, bookObject.book])), [])
   function addToReadList (book) {
-    setReadList(prevList => [...prevList, book])
+    if (!readList.includes(book)) setReadList(prevList => [...prevList, book])
   }
 
   return (
@@ -28,15 +28,12 @@ export default function App () {
             </select>
           </label>
         </form>
-        <ul>
-          {bookList.map((book, index) =>
-            <li key={index}>
-              <BookItem book={book} clickListener={addToReadList} />
-            </li>)}
-        </ul>
+        <BooksList library={booksList} onItemClick={addToReadList} />
       </main>
       {readList.length > 0 &&
         <aside role='region'>
+          <h2>Lista de lectura</h2>
+          <BooksList library={readList} />
         </aside>}
     </>
   )
