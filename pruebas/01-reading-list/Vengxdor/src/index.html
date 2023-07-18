@@ -32,6 +32,8 @@
                <option value="Fantasía">Fantasy</option>
                <option value="Ciencia ficción">Science Fiction</option>
                <option value="Terror">Horror</option>
+               <option value="Zombies">Zombies</option>
+               
             </select>
          </div>
 
@@ -91,19 +93,31 @@
       <!-- filter -->
 
       <main>
-         <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 pb-60" id="library">
-            <!-- <li class="bg-white shadow rounded-lg  w-full  h-full  ">
-               <div class="p-4 flex flex-col justify-between h-full">
-                 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1273763400i/8189620.jpg" alt="Libro 1" class="w-full h-auto object-cover mb-4">
-                 <h3 class="text-xl font-semibold mb-2">Título del libro 1</h3>
-                 <p class="text-gray-600">Author: <span class="text-primary">Nombre del autor</span></p>
-                 <p class="text-gray-600">Genre: <span class="text-primary">Género del libro</span></p>
+         <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-flow-col-5 gap-5 pb-60" id="library">
+            <!-- <li class="bg-white shadow rounded-lg ">
+               <div class="p-4 flex flex-col justify-between h-full w-full div">
+     
+                 <picture class="h-full w-full group relative">
+                   <img class="h-full w-full object-fill " src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg">
+                   <div class="text-white bg-black bg-opacity-60  invisible 
+                      group-hover:visible flex justify-center items-center flex-col absolute w-full h-full z-10 top-0">
+                     <h2 class="mb-2 text-2xl font-semibold">Synopsis</h2>
+                     <p class="text-center w-4/5 text-zinc-200">Una aventura épica en un mundo de fantasía llamado la Tierra Media.</p>
+                   </div>
+                 </picture>
+                   <article class="max-h-24">
+                     <h3 class="text-xl font-semibold mt-3 truncate">El Señor de los Anillos</h3>
+                     <p class="text-gray-600 text-sm ">Author: <span class="text-primary">J.R.R. Tolkien</span></p>
+                     <p class="text-gray-600 text-sm ">Genre: <span class="text-primary">Fantasía</span></p>
+                   </article>
                  <div class="flex justify-end gap-2 mt-2">
-                   <button class="w-20 h-8 bg-primary rounded-md text-white">Read</button>
-                   <button class="w-20 h-8 bg-primary rounded-md text-white">Add to list</button>
+                   <a href="/src/404.html" class="w-20 h-8 flex justify-center items-center bg-primary rounded-md text-white">Read</a>
+                   <button class="w-20 h-8 bg-primary rounded-md text-white addBtn" disabled="">Added!</button>
                  </div>
+                
+     
                </div>
-             </li>   -->
+             </li> -->
 
 
          </ul>

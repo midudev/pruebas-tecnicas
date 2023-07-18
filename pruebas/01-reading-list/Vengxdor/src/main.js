@@ -23,13 +23,14 @@ async function getData() {
             li.innerHTML = `
           <div class="p-4 flex flex-col justify-between h-full w-full div">
 
-            <picture class="h-full w-full group">
-              <img class="h-full w-full object-fill" src="${each.book.cover}">
-              <div class="bg-black bg-opacity-0 invisible group-hover:opacity-75 group-hover:visible flex justify-center items-center absolute w-full h-full z-10">
-                <h2>Synopsis</h2>
-                <p>${each.book.synopsis}</p>
-              </div>
-            </picture>
+                <picture class="h-full w-full group relative">
+                  <img class="h-full w-full object-fill " src="${each.book.cover}">
+                  <div class="text-white bg-black bg-opacity-60  invisible 
+                    group-hover:visible flex justify-center items-center flex-col absolute w-full h-full z-10 top-0">
+                    <h2 class="mb-2 text-3xl font-semibold">Synopsis</h2>
+                    <p class="text-center w-4/5 text-zinc-200">${each.book.synopsis}</p>
+                  </div>
+              </picture>
               <article class="max-h-24">
                 <h3 class="text-xl font-semibold mt-3 truncate">${each.book.title}</h3>
                 <p class="text-gray-600 text-sm ">Author: <span class="text-primary">${each.book.author.name}</span></p>
@@ -48,6 +49,7 @@ async function getData() {
 
             typeOfbooks.addEventListener('change', () => {
                 const genre = typeOfbooks.value
+                avaiableBooks.innerHTML = totalBooks.length
                 
                 if ( each.book.genre !== genre) {
                     li.classList.add('hidden')
