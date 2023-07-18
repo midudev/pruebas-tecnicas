@@ -1,0 +1,29 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  mat-toolbar {
+    background-color: transparent;
+  }
+
+  .router-link-active {
+    opacity: 0.5;
+  }
+
+  @media screen and (max-width: 390px) {
+    .header-buttons {
+      display: none;
+    }
+    .menu-button {
+      display: block;
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+    .menu-button {
+      display: none;
+    }
+    .header-buttons {
+      display: block;
+    }
+  }

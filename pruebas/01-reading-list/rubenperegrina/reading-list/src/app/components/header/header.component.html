@@ -1,0 +1,27 @@
+<mat-toolbar>
+    <span>Books app</span>
+    <span class="example-spacer"></span>
+    <div class="header-buttons">
+      <button mat-fab extended color="primary" [routerLink]="['/available-books']" routerLinkActive="router-link-active" >
+        <mat-icon>library_books</mat-icon>
+        Libros disponibles
+      </button>
+      <button mat-fab extended color="primary" [routerLink]="['/reading-list']" routerLinkActive="router-link-active">
+        <mat-icon>favorite</mat-icon>
+        Lista de lectura
+      </button>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="menu-button" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [routerLink]="['/available-books']" routerLinkActive="router-link-active">
+      <mat-icon>library_books</mat-icon>
+      <span>Libros disponibles</span>
+    </button>
+    <button mat-menu-item [routerLink]="['/reading-list']" routerLinkActive="router-link-active">
+      <mat-icon>favorite</mat-icon>
+      <span>Lista de lectura</span>
+    </button>
+  </mat-menu>
