@@ -87,9 +87,6 @@ a {
   display: block;
   background-color: transparent;
 }
-.cerrar-sesion {
-  color: var(--blanco);
-}
 
 @media (min-width: 768px) {
   .contenedor-app {
@@ -114,29 +111,7 @@ aside  {
   padding: 10px;
 }
 
-.formulario-nuevo-proyecto {
-  margin-top: 6rem;
-}
-.formulario-nuevo-proyecto .input-text {
-  border-bottom: 1px solid var(--gris2);
-  border-radius: 0;
-  background-color: var(--gris1);
-}
-.formulario-nuevo-proyecto .input-text::placeholder{
-  color: var(--gris2);
-}
-.proyectos {
-  margin-top: 10rem;
-}
-.listado-proyectos li {
-  margin-bottom: 2rem;
-}
-.listado-proyectos li a {
-  font-size: 1.4rem;
-  color: var(--gris2);
-  line-height: 1.5;
-  font-weight: 300;
-}
+
 .app-header {
   display: flex;
   justify-content: space-between;
@@ -144,12 +119,12 @@ aside  {
   background-color: var(--gris2);
   padding: 4rem;
 }
-.nombre-usuario {
+.texto-header {
   color: var(--blanco);
   font-size: 2.2rem;
   margin: 0;
 }
-.nombre-usuario span {
+.texto-header span {
   font-weight: 900;
 }
 .nav-principal a {
@@ -188,27 +163,8 @@ aside  {
   margin-right: 10px;
 }
 
-/** TAREAS LISTADO **/
-.contenedor-tareas {
+.contenedor-libros {
   padding: 4rem;
-}
-
-
-
-.listado-tareas {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.tarea {
-  display: flex;
-  justify-content: space-between;
-  background-color: var(--blanco);
-  padding: .5rem 2rem;
-  align-items: center;
-  margin-bottom: 1rem;
-  border-radius: .5rem;
-
 }
 .sombra {
   -webkit-box-shadow: 0px 4px 10px -3px rgba(117,117,117,1);
@@ -220,86 +176,11 @@ aside  {
   -moz-box-shadow: 0px 6px 11px -8px rgba(0,0,0,0.9);
   box-shadow: 0px 6px 11px -8px rgba(0,0,0,0.9);
 }
-.tarea .acciones .btn:first-of-type {
-  margin-right: 1rem;
-}
-.tarea p {
-  font-size: 1.6rem;
-  flex: 1;
-  padding-right: 2rem;
-}
-.tarea .btn {
-  padding: .8rem;
-  font-size:1.4rem;
-  border-radius: 0;
-  margin: 0;
-}
-
-.estado {
-  margin-right: 1rem;
-}
-.estado button, 
-.mensaje {
-  font-weight: 900;
-  font-family: var(--textFont);
-  font-size: 1rem;
-  padding: .5rem;
-  border-radius: .5rem;
-  cursor: pointer;
-  border: none;
-}
-.mensaje {
-  text-align: center;
-  font-size: 1.6rem;
-  border-radius: 0;
-}
-.mensaje:hover {
-  cursor: default;
-}
-.completo,
-.correcto {
-  background-color: rgba(154, 252, 154, .3);
-  color: var(--gris3);
-}
-.incompleto{
-  background-color: rgba(255, 178, 178, .4);
-  color: var(--gris3);
-}
 .error {
   max-width: 600px;
   margin: 2rem auto 0 auto;
   background-color: rgb(170, 0, 0);
   color: var(--blanco);
-}
-
-
-
-.tarea-enter,
-.proyecto-enter {
-  opacity: 0;
-}
-.tarea-enter-active,
-.proyecto-enter-active {
-  opacity: 1;
-  transition: opacity 200ms;
-}
-.tarea-exit,
-.proyecto-exit {
-  opacity: 1;
-}
-.tarea-exit-active,
-.proyecto-exit-active {
-  opacity: 0;
-  transition: opacity 200ms;
-}
-
-.form-usuario {
-    background-color: var(--gris2);
-    height: 100vh;
-    min-height: 800px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .contenedor-form {
@@ -308,32 +189,6 @@ aside  {
     width: 95%;
     background-color: var(--blanco);
     border-radius: 1rem;
-}
-
-.campo-form {
-    display: flex;
-    margin-bottom: 2rem;
-    align-items: center;
-}
-.campo-form:last-of-type {
-  margin: 0;
-}
-.campo-form label {
-  flex: 0 0 100px;
-  font-family: var(--textFont);
-}
-.campo-form input[type="password"],
-.campo-form input[type="email"], 
-.campo-form input[type="text"] {
-  border: 1px solid #e1e1e1;
-  padding: 1rem;
-  flex: 1;
-}
-
-.enlace-cuenta {
-  margin-top: 2rem;
-  display: block;
-  opacity: .7;
 }
 
 .alerta {

@@ -1,8 +1,6 @@
-import React, { Fragment, useState } from 'react';
-import clienteAxios from './config/axios';
+import React from 'react';
 import Header from './components/layouts/Header';
 import Libreria from './components/Libreria';
-import Aside from './components/layouts/aside';
 import LibrosState from './context/librosState';
 
 function App() {
@@ -11,7 +9,7 @@ function App() {
     <LibrosState>
       <Header/>
       <div className='mt-5'>
-        <div className=''>
+        <div>
           <Libreria/>
         </div>
       </div>

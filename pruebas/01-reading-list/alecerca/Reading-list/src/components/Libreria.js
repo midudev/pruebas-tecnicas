@@ -10,7 +10,7 @@ const Libreria = () => {
             <div className='seccion-principal'>
                 <main>
                     <FormLibro/>
-                    <div className='contenedor-tareas'>
+                    <div className='contenedor-libros'>
                         <Muestra/>
                     </div>
                 </main>

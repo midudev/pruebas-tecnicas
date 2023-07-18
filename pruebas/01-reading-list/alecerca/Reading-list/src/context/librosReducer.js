@@ -1,5 +1,6 @@
 import { ELIMINAR_LISTA, ERROR_LIBRO, FILTRAR_AMBOS, FILTRAR_POR_CATEGORIA, FILTRAR_POR_PAGINA, OBTENER_LIBRO, OCULTAR_ERROR, SELECCIONAR_LIBRO } from "../types";
 
+// eslint-disable-next-line
 export default (state, action) => {
     switch (action.type) {
 
@@ -42,11 +43,13 @@ export default (state, action) => {
         case FILTRAR_POR_PAGINA:
             return{
                 ...state,
+                        // eslint-disable-next-line
                 mostrar: state.libros.filter(libro => libro.book.pages == action.payload)
             }
         case FILTRAR_AMBOS:
             return{
                 ...state,
+                        // eslint-disable-next-line
                 mostrar: state.libros.filter(libro => libro.book.genre === action.payload.cat && libro.book.pages == action.payload.pagina)
             }
         
