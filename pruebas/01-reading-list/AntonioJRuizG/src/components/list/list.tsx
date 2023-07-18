@@ -7,11 +7,9 @@ import { BookProps } from '../model/book';
 export default function List() {
 	const repo = useMemo(() => new BooksRepo(), []);
 	const { books, selectBook } = useBooks(repo);
-	console.log(books);
 
 	const handleSelectBook = (book: BookProps) => {
 		const updatedBook = { ...book, isSelected: true };
-		console.log(updatedBook);
 		selectBook(updatedBook);
 	};
 
