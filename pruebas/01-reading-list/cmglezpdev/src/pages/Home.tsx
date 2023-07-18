@@ -1,47 +1,38 @@
-import { useEffect, useState } from 'react';
-import { Book } from '../types';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 import { BookItem } from '../components';
-import BOOKS_JSON from '../../../books.json';
 import '../styles/Home.css';
+import { AppContext } from '../context/AppContext';
 
 
 export const Home = () => {
-  const [books, setBooks] = useState<Book[]>([]);
-  const [lectureBooks, setLectureBooks] = useState<Book[]>([]);
-
-  useEffect(() => {
-    const readBooks: Book[] = JSON.parse(localStorage.getItem('reading-book') || '[]');
-    const listBooks: Book[] = BOOKS_JSON.library.map(library => library.book);
-    setLectureBooks(readBooks);
-    setBooks( listBooks.filter(book => !readBooks.includes(book)) );
-  }, []);
-
-  const saveBook = (isbnBook: string) => {
-    const book = books.find(book => book.ISBN === isbnBook);
-    if(book) {
-      const readingBooks = [book, ...lectureBooks];
-      localStorage.setItem('reading-book', JSON.stringify(readingBooks));
-      setLectureBooks(readingBooks);
-      setBooks(books.filter(book => book.ISBN !== isbnBook));
-    }
-  }
+  const { availableBooks, readingBooks } = useContext(AppContext);
 
   return (
     <>
-      <h1 className='app-title'>BookStore</h1>
-      <header>
+      <header className='app-header'>
+        <nav className='app-nav'>
+          <div className='app-title'>
+            <h1>BookStore</h1>
+          </div>
+          <ul className='nav-options'>
+              <li><Link to="/">Aviable Books</Link></li>
+              <li><Link to="/reading">Reading Books</Link></li>
+          </ul>
+        </nav>
+
         <div className="app-general-info">
-          <span>{books.length} aviable books</span>
-          <span>{lectureBooks.length} books to read</span>
+          <p><span>{availableBooks.length}</span> available books</p>
+          <p><span>{readingBooks.length}</span> books to read</p>
         </div>
       </header>
       
       <main>
         <section className='library'>
           {
-            books.map(book => (
-              <BookItem key={book.ISBN} book={book} saveBook={saveBook} />
+            availableBooks.map(book => (
+              <BookItem key={book.ISBN} book={book} addForReadingButton />
             ))
           }
         </section>

@@ -1,9 +1,61 @@
-.app-title {
+.app-header {
+  padding: 10px;
+  background-color: #3b97ec;
+}
+
+.app-nav {
+  display: flex;
+  gap: 50px;
+}
+
+.app-title h1 {
   font-size: 60px;
   text-align: center;
   font-weight: bold;
   text-transform: uppercase;
+  position: relative;
+  color: #000;
+  margin-bottom: 10px;
 }
+
+.app-title h1::after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 10px;
+  width: 343px;
+  bottom: -3px;
+  background-color: #064a92;
+}
+
+.nav-options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-options li {
+  list-style: none;
+}
+
+.nav-options li a {
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: #a2cff8;
+}
+
+
+.app-general-info {
+  display: flex;
+  gap: 20px;
+  font-size: 20px;
+  position: relative;
+}
+
+.app-general-info p span {
+  font-weight: bold;
+}
+
 
 .library {
   width: 100%;

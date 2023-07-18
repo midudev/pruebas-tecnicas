@@ -1,22 +1,16 @@
-import { useEffect, useState } from "react"
-import { Book } from "../types";
-import { BookItem } from "../components/BookItem";
+import { useContext } from 'react';
+import { BookItem } from '../components';
+import { AppContext } from '../context/AppContext';
 
 export const ReadingList = () => {
-
-  const [books, setBooks] = useState<Book[]>([]);
-
-  useEffect(() => {
-    const lsbooks = JSON.parse(localStorage.getItem('reading-book') || '[]');
-    setBooks(lsbooks);
-  }, []);
+  const { readingBooks } = useContext(AppContext);
 
   return (
     <main>
       <section className='library'>
         {
-          books.map(book => (
-            <BookItem key={book.ISBN} book={book} />
+          readingBooks.map(book => (
+            <BookItem key={book.ISBN} book={book} removeFromReadingButton />
           ))
         }
       </section>
