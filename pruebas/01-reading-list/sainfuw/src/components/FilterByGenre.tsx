@@ -1,8 +1,16 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AppContext } from "../context/AppContext";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 export function FilterByGenre() {
-  const { books, filterByGenre, setFilterByGenre } = useContext(AppContext)
+  const { books, setFilteredBooks } = useContext(AppContext)
+  const [filterByGenre, setFilterByGenre] = useLocalStorage('filter-by-genre', '')
+
+  useEffect(() => {
+    filterByGenre
+      ? setFilteredBooks(books.filter(book => book.genre === filterByGenre))
+      : setFilteredBooks(books)
+  }, [books, setFilteredBooks, filterByGenre])
 
   const uniqueGenres = [...new Set(books.map(book => book.genre))]
 

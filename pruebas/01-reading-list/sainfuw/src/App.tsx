@@ -10,7 +10,7 @@ export default function App() {
   return (
     <main className="flex flex-col h-screen max-w-6xl gap-8 mx-auto">
       <Header />
-      <article className="flex flex-col flex-1 px-8 transition-all duration-500 md:flex-row">
+      <article className="flex flex-col flex-1 px-8 md:flex-row">
         <Books />
         {readList.length > 0 && <ReadList />}
       </article>
