@@ -1,4 +1,5 @@
 import { Book } from '../types'
+import { motion } from 'framer-motion'
 
 interface BookGridProps {
 	books: Book[]
@@ -15,7 +16,10 @@ function BookGrid({ books, handleSelect }: BookGridProps) {
 							onClick={() => handleSelect(book)}
 							className='relative block p-0 border-none cursor-pointer transparent'
 						>
-							<img
+							<motion.img
+								layoutId={`book-${book.ISBN}`}
+								draggable={false}
+								alt={book.title}
 								src={book.cover}
 								className='block object-cover rounded-lg will-change-transform aspect-[7.25/11]'
 							/>

@@ -1,5 +1,6 @@
 import { X } from 'lucide-react'
 import { Book } from '../types'
+import { motion } from 'framer-motion'
 
 interface ReadingListProps {
 	books: Book[]
@@ -17,18 +18,31 @@ function ReadingList({ books, handleRemove }: ReadingListProps) {
 					return (
 						<li
 							key={book.ISBN}
-							className='relative flex flex-col items-center h-20'
+							className='relative flex flex-col items-center h-16'
 						>
-							<img
+							<motion.img
+								layoutId={`book-${book.ISBN}`}
 								src={book.cover}
+								draggable={false}
 								className='block object-cover rounded-lg will-change-transform aspect-[7.25/11]'
+								transition={{
+									type: 'spring',
+									stiffness: 400,
+									damping: 60
+								}}
 							/>
-							<button
-								className='absolute text-2xl font-bold text-center border-none rounded-md cursor-pointer bg-secondary-background align-center backdrop-blur-lg top-1 right-1 font-secondary-foreground animate-show-list'
+							<motion.button
+								layout='position'
+								transition={{
+									type: 'spring',
+									stiffness: 400,
+									damping: 60
+								}}
+								className='absolute p-2 text-2xl font-bold text-center border-none rounded-md cursor-pointer bg-secondary-background align-center backdrop-blur-lg top-1 right-1 animate-show-list'
 								onClick={() => handleRemove(book)}
 							>
-								<X />
-							</button>
+								<X className='text-white ' />
+							</motion.button>
 						</li>
 					)
 				})}

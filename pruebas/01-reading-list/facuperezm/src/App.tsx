@@ -11,7 +11,7 @@ import { Slider } from './components/ui/slider'
 
 function App() {
 	const { booksArray } = useBooks()
-	const [pages, setPages] = useState([50])
+	const [pages, setPages] = useState([40])
 	const [value, setValue] = useState('')
 	const [search, setSearch] = useState('')
 
