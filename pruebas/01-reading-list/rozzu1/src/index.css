@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  font-family: monospace;
+  font-size: 16px;
+}
+
+body {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* Internet Explorer and Microsoft Edge */
+}
+
+/* Hide the scrollbar - Webkit */
+body::-webkit-scrollbar {
+  display: none;
+}
