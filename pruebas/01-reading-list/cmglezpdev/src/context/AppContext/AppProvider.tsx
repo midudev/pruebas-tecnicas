@@ -21,19 +21,20 @@ export const AppProvider:FC<IAppProvider> = ({ children }) => {
     const [appState, dispatch] = useReducer(appReducer, INITIAL_STATE);
 
     useEffect(() => {
-        dispatch({ type: 'load books for reading' })
-        dispatch({ type: 'load available books' });
+        localStorage.setItem('reading-books', JSON.stringify(appState.readingBooks));
+    }, [appState]);
+
+    useEffect(() => {
+        dispatch({ type: 'load available books/reading books' });
     }, []);
 
 
     const addForReading = (book: Book) => {
-        dispatch({ type: 'add for reading', payload: book });
-        localStorage.setItem('reading-books', JSON.stringify(appState.readingBooks));
+        dispatch({ type: 'add for reading', payload: book });   
     }
 
     const removeFromReading = (book: Book) => {
         dispatch({ type: 'remove from reading', payload: book });
-        localStorage.setItem('reading-books', JSON.stringify(appState.readingBooks));
     }
 
     return (
