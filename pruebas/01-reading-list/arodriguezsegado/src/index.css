@@ -5,9 +5,37 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #edede9;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.library__books-available {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.library__books-available__book {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  max-width: 170px;
+  background-color: white;
+}
+
+.library__books-available__book img {
+    width: 170px;
+    height: 256px;
+    max-height: 768px;
+    object-fit: contain;
+}
+
+.library__books-available__book__metadata {
+  padding: 1rem;
+}
+
