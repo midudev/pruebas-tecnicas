@@ -1,6 +1,6 @@
 /* eslint-disable react/function-component-definition */
 /* eslint-disable react/jsx-no-constructed-context-values */
-import { createContext, useReducer, useContext } from "react";
+import { createContext, useReducer, useContext, useState } from "react";
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
@@ -61,13 +61,15 @@ const libraryReducer = (libraryState, action) => {
         seeing: libraryState.seeing === "all" ? "reading-list" : "all",
       };
     }
+    case "set-showing": {
+      const { showing } = action;
+      return { ...libraryState, showing };
+    }
     case "toggle-filter": {
       const { filtering } = action;
       return {
         ...libraryState,
         filtering: filtering || "",
-        showing: libraryState.books.filter((book) => book.genre === filtering)
-          .length,
       };
     }
     default:

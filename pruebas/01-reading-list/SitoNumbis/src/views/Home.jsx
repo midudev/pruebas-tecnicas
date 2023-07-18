@@ -19,7 +19,7 @@ const ToTop = loadable(() => import("../components/ToTop/ToTop"));
 const LightBox = loadable(() => import("../components/LightBox/LightBox"));
 
 function Home() {
-  const { libraryState } = useLibrary();
+  const { libraryState, setLibraryState } = useLibrary();
 
   const { languageState } = useLanguage();
 
@@ -33,6 +33,17 @@ function Home() {
       : libraryState.readingList.size;
   }, [libraryState.seeing, libraryState.books]);
 
+  // get the current showing items
+  useEffect(() => {
+    // milliseconds for the dom
+    setTimeout(() => {
+      setLibraryState({
+        type: "set-showing",
+        showing: document.querySelectorAll(".book").length,
+      });
+    }, 100);
+  }, [libraryState.filtering, libraryState.seeing]);
+
   return (
     <main className={styles.main}>
       <Suspense
@@ -40,6 +51,7 @@ function Home() {
       >
         <FilterBar />
         <div className="flex items-center flex-wrap w-full">
+          {/* current list total */}
           <p>
             {languageState.texts.seeing.title}{" "}
             {languageState.texts.seeing[libraryState.seeing]}

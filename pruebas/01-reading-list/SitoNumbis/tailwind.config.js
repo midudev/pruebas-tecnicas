@@ -4,6 +4,7 @@ export default {
   theme: {
     colors: {
       primary: "#dc143c",
+      "primary-light": "#de284c",
       "primary-dark": "#9a0e2a",
       "primary-dark-opacity": "#9a0e2aee",
       secondary: "dodgerblue",

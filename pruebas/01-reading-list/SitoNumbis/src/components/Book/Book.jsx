@@ -60,22 +60,11 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
     setHide(toHide);
   }, [libraryState]);
 
-  const classBook = useMemo(() => {
-    // if the book is in the reading list and the user is seeing the reading list
-    // or the book isn't in the reading list and the user is seeing all available books it will be countable
-    if (
-      (libraryState.seeing === "all" && !libraryState.readingList.has(ISBN)) ||
-      (libraryState.seeing !== "all" && libraryState.readingList.has(ISBN))
-    )
-      return "book";
-    return "";
-  }, [libraryState, ISBN]);
-
   return !hide ? (
     <article
       id={ISBN}
       onClick={activateLightBox}
-      className={`${classBook} ${styles.main} appear`}
+      className={`book ${styles.main} appear`}
     >
       <img
         className="w-full h-full object-cover object-center shadow-[black] shadow-md transition"
@@ -97,9 +86,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
             {genre} ({pages}) {languageState.texts.book.pages}
           </p>
           <p className="mt-2">
-            <span className="alter-text">
-              {languageState.texts.book.by}
-            </span>{" "}
+            <span className="alter-text">{languageState.texts.book.by}</span>{" "}
             {author.name} <span className="alter-text">({year})</span>
           </p>
         </div>

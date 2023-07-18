@@ -17,18 +17,18 @@ const Error = (props) => {
   }, [languageState]);
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center gap-10">
-      <h1 className="font-bold text-error text-2xl">
+    <div className="w-full h-screen flex flex-col items-center justify-center gap-10">
+      <h1 className="font-bold text-error text-2xl text-primary-light">
         <FontAwesomeIcon icon={faCircleExclamation} className="mr-1" />
         {error.title}
       </h1>
-      <p className="text-error perror">{text}</p>
+      <p className="text-dark-alt-text">{text}</p>
       {onRetry ? (
         <button
           name={error.reload}
           aria-label={languageState.texts.ariaLabels.reload}
-          onClick={onRetry}
-          className="submit"
+          onClick={onRetry ? onRetry : () => window.location.reload()}
+          className="cta"
         >
           {error.reload}
         </button>
