@@ -1,82 +1,116 @@
-
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description">
-		<meta name="viewport" content="width=device-width" />
-		<!-- <link rel="icon" type="image/svg+xml" href="/public/img/favicon.svg" /> -->
-		<meta name="generator" content="Tecnical practice" />
-		<title>Tecnical practice</title>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-      <link href="/dist/output.css" rel="stylesheet">
-	</head>
-	<body class="bg-back  h-screen overflow-hidden ">
- 
 
-	<h1 class="font-semibold text-6xl font-amulya flex justify-center gap-3 p-10">
-		<span class="text-primary">Synde</span> Library
-	</h1>
+<head>
+   <meta charset="UTF-8" />
+   <meta name="description" content="Astro description">
+   <meta name="viewport" content="width=device-width" />
+   <!-- <link rel="icon" type="image/svg+xml" href="/public/img/favicon.svg" /> -->
+   <meta name="generator" content="Tecnical practice" />
+   <title>Tecnical practice</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <link href="/dist/output.css" rel="stylesheet">
+</head>
 
-	<header class="m-auto w-3/4 pr-5">
-		<div class="flex justify-between items-center mb-5 ">
+<body class="bg-back  h-screen overflow-hidden ">
+
+
+   <h1 class="font-semibold text-6xl font-amulya flex justify-center gap-3 p-10">
+      <span class="text-primary">Synde</span> Library
+   </h1>
+
+   <header class="m-auto w-3/4 pr-5">
+      <div class="flex justify-between items-center mb-5 ">
          <div>
             <h2 class="text-xl font-semibold">
                <span class="text-primary text-2xl" id="avaiableBooks">13</span> Books Available
             </h2>
-            <select
-            class="focus:outline-none border-2 rounded-md border-primary "
-            name="books"
-            id="typeOfbooks"
-            >
-            <option value="all">ALL</option>
-            <option value="Fiction">Fiction</option>
-            <option value="Sciencefiction">Science Fiction</option>
-            <option value="Horror">Horror</option>
-         </select>
-      </div>
-         
+            <select class="focus:outline-none border-2 rounded-md border-primary " name="books" id="typeOfbooks">
+               <option value="ALL">ALL</option>
+               <option value="Fantasía">Fantasy</option>
+               <option value="Ciencia ficción">Science Fiction</option>
+               <option value="Terror">Horror</option>
+            </select>
+         </div>
+
          <div class="relative">
-            <label id="bookIcon"  for="bookIcon">
-               <span id="booksInread" class="text-primary absolute bottom-4 right-5 font-bold text-xl cursor-pointer">0</span>
-      
-               <i  class="fa-solid fa-book fa-xl cursor-pointer hover:scale-110"></i>
+            <label class="toggleList group">
+               <span id="booksInread"
+                  class="text-primary absolute bottom-4 right-5 font-bold text-xl cursor-pointer">0</span>
+
+               <i class="fa-solid fa-book fa-xl cursor-pointer group-hover:scale-110"></i>
             </label>
          </div>
-         
-         <article id="readbooks" class="absolute bg-books  w-48 h-[100%] top-0 -right-56 transition-all duration-200 overflow-y-auto overflow-x-hidden">
+
+         <section id="readbooks"
+            class="absolute bg-books  w-screen h-[100vh] inset-x-0 -bottom-5 -top-[100rem] text-white ">
+
+            <article class=" p-10  font-semibold font-amulya flex  justify-between mb-6">
+               <div></div>
+               <div class="flex  flex-col items-center">
+                  <h2 class=" text-6xl    ">
+                     <span class="text-primary">Read</span> List
+                  </h2>
+                  <p>Enjoy your <span class="text-primary">Read</span></p>
+
+               </div>
+               <div class="cursor-pointer toggleList">
+                  <i class="fa-solid fa-x fa-2xl"></i>
+               </div>
+            </article>
+
+
+            <div class="overflow-auto">
+               <ul class="flex gap-5 mx-10  w-screen overflow-hidden"  id="readList">
+                  
+                  <!-- <li class="bg-white shadow rounded-lg    ">
+                     <div class="p-4 flex flex-col justify-between h-full">
+                       <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1273763400i/8189620.jpg" alt="Libro 1" class="w-full h-auto object-cover mb-4">
+                       <h3 class="text-xl font-semibold mb-2">Título del libro 1</h3>
+                       <p class="text-gray-600">Author: <span class="text-primary">Nombre del autor</span></p>
+                       <p class="text-gray-600">Genre: <span class="text-primary">Género del libro</span></p>
+                       <div class="flex justify-end gap-2 mt-2">
+                         <button class="w-20 h-8 bg-primary rounded-md text-white">Read</button>
+                         <button class="w-20 h-8 bg-primary rounded-md text-white">Add to list</button>
+                       </div>
+                     </div>
+                   </li>  -->
       
-            <h2 class="text-xl text-center mt-5 text-white font-semibold mb-6"><span class="text-primary">Read</span> List</h2>
-         
-            <ul class="overflow-y-auto overflow-x-hidden ReadList">
-            </ul>
-         </article>
-       
+               </ul>
+
+            </div>
+         </section>
+
       </div>
-	</header>
+   </header>
 
 
-	<section class="w-3/4 h-full m-auto overflow-auto">
-		<!-- filter -->
+   <section class="w-3/4 h-full m-auto overflow-auto">
+      <!-- filter -->
 
-		<main>
-			<ul
-				class="grid grid-cols-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 w-full overflow-auto pb-60"
-				id="library"
-			>
-         <li class="w-96 sm:w-36 md:w-44 lg:w-52 xl:w-64 bg-orange-400 h-52 sm:h-64 md:h-72 lg:h-80 xl:h-96" >
-            a
-         </li>
-         
-       
-			</ul>
-		</main>
-	</section>
-	
+      <main>
+         <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 pb-60" id="library">
+            <!-- <li class="bg-white shadow rounded-lg  w-full  h-full  ">
+               <div class="p-4 flex flex-col justify-between h-full">
+                 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1273763400i/8189620.jpg" alt="Libro 1" class="w-full h-auto object-cover mb-4">
+                 <h3 class="text-xl font-semibold mb-2">Título del libro 1</h3>
+                 <p class="text-gray-600">Author: <span class="text-primary">Nombre del autor</span></p>
+                 <p class="text-gray-600">Genre: <span class="text-primary">Género del libro</span></p>
+                 <div class="flex justify-end gap-2 mt-2">
+                   <button class="w-20 h-8 bg-primary rounded-md text-white">Read</button>
+                   <button class="w-20 h-8 bg-primary rounded-md text-white">Add to list</button>
+                 </div>
+               </div>
+             </li>   -->
+
+
+         </ul>
+      </main>
+   </section>
+
    <script src="main.js"></script>
-	</body>
+</body>
+
 </html>
-
-
-
-

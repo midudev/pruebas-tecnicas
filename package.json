@@ -20,5 +20,9 @@
   "homepage": "https://github.com/midudev/pruebas-tecnicas#readme",
   "dependencies": {
     "astro": "^2.8.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.45.0",
+    "standard": "^17.1.0"
   }
 }

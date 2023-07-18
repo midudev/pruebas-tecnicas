@@ -1,106 +1,106 @@
 async function getData() {
-  try {
+    try {
     //get data from json
-    const res = await fetch("/books.json")
-    const data = await res.json()
-    const library = data.library
-    const ul = document.getElementById("library")
+        const res = await fetch('/books.json')
+        const data = await res.json()
+        const library = data.library
+        const ul = document.getElementById('library')
+        const avaiableBooks = document.getElementById('avaiableBooks')
+        
+        let totalBooks = []
 
-    //put the data in the list
-    library.map((each) => {
-      const li = document.createElement("li")
-      ul.appendChild(li)
-      // li.className = "w-[13.9rem] h-80  lg:w-[15.9rem] mb-16  lg:h-96"
+        
+        //put the data in the list
+        library.map((each) => {
+            const li = document.createElement('li')
+            ul.appendChild(li)
+            li.className = 'bg-white shadow rounded-lg '
 
-  //     li.innerHTML = `
-  //  <div  class="relative group block w-[13.9rem] h-80   lg:w-[15.9rem] mb-16  lg:h-96">
-  //         <img
-  //         class=" w-full h-full  object-cover "
-  //         src="${each.book.cover}"
-  //         alt="${each.book.title}"
-  //         />
-  //         <div class="hover-bg bg-gray-950 absolute top-0 h-full w-full bg-opacity-0 invisible z-30 group-hover:bg-opacity-40 group-hover:visible text-white flex justify-center items-center flex-col gap-4 text-center">
+            totalBooks.push(each)
+            avaiableBooks.innerHTML = totalBooks.length
 
-  //         <a href="/src/404.html" class=" w-28 h-6 rounded-md bg-primary  ">Read</a>
-  //         <button  class="w-28 h-6 rounded-md bg-primary addBtn">Add to List</button>
-  //         <button  class="w-28 h-6 rounded-md bg-primary  infoBtn">Information</button>
-  //         <button  class="w-28 h-6 rounded-md bg-primary hidden  removeBtn">Remove</button>
-  //         <article class="bg-black absolute  h-full w-full invisible info flex flex-col items-start overflow-hidden">
 
-  //            <div class="w-full flex justify-end p-4">
-  //               <i class="fa-solid fa-x cursor-pointer closeIcon "></i>
-  //            </div>
-  //               <h3 class="m-auto text-3xl font-semibold mb-7">${each.book.title}</h3>
+            li.innerHTML = `
+          <div class="p-4 flex flex-col justify-between h-full w-full div">
+
+            <picture class="h-full w-full group">
+              <img class="h-full w-full object-fill" src="${each.book.cover}">
+              <div class="bg-black bg-opacity-0 invisible group-hover:opacity-75 group-hover:visible flex justify-center items-center absolute w-full h-full z-10">
+                <h2>Synopsis</h2>
+                <p>${each.book.synopsis}</p>
+              </div>
+            </picture>
+              <article class="max-h-24">
+                <h3 class="text-xl font-semibold mt-3 truncate">${each.book.title}</h3>
+                <p class="text-gray-600 text-sm ">Author: <span class="text-primary">${each.book.author.name}</span></p>
+                <p class="text-gray-600 text-sm ">Genre: <span class="text-primary">${each.book.genre}</span></p>
+              </article>
+            <div class="flex justify-end gap-2 mt-2">
+              <a href="/src/404.html" class="w-20 h-8 flex justify-center items-center bg-primary rounded-md text-white">Read</a>
+              <button class="w-20 h-8 bg-primary rounded-md text-white addBtn">Add to list</button>
+            </div>
+           
+
+          </div>
+        `
+
+            const typeOfbooks = document.getElementById('typeOfbooks')
+
+            typeOfbooks.addEventListener('change', () => {
+                const genre = typeOfbooks.value
                 
-  //               <h4 class="ml-2 font-semibold text-lg mb-3">Synopsis</h4>
-  //               <p class="text-gray-200 text-start ml-5">${each.book.synopsis}</p>
+                if ( each.book.genre !== genre) {
+                    li.classList.add('hidden')
+                }
+
+                if(each.book.genre === genre){
+                    li.classList.remove('hidden')
+                }
+                  
+                if(genre === 'ALL'){
+                    li.classList.remove('hidden')
+                }
+
+            })
+        })
+
+        //filter the books by genre
+
+        
+
+        //add to read list
+        const readList = document.getElementById('readList')
+        const addBtn = document.querySelectorAll('.addBtn')
+        const booksInread = document.querySelector('#booksInread')
+        const booksToRead = []
+
+        addBtn.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                btn.textContent = 'Added!'
+                btn.disabled = true
+                const parent = btn.parentNode.parentNode.parentNode
+                booksInread.textContent = booksToRead.length + 1
+                const clone = parent.cloneNode(true)
+                clone.classList.add('clone')
                 
-  //            <div class="flex  flex-1 justify-end items-start flex-col  mb-1 ml-2">
-  //               <h4>Genre: <span class="text-primary font-semibold text-start">${each.book.genre}</span></h4>
-  //               <h4>Year: <span class="text-primary font-semibold text-start">${each.book.year}</span></h4>
-  //               <h4>author: <span class="text-primary font-semibold">${each.book.author.name}</</span></h4>
-  //            </div>
-  //         </article>
-  //      </div>
-  //      <h3 class="text-center font-semibold  mt-4 text-xl mb-5 group-hover:text-primary">${each.book.title}</h3>
-  //      </div>
-  //   `
-    })
 
-    const infoBtn = document.querySelectorAll(".infoBtn")
-    const info = document.querySelectorAll(".info")
-    const closeIcon = document.querySelectorAll(".closeIcon")
-
-    //toggle the information
-    infoBtn.forEach((btn, index) => {
-      btn.addEventListener("click", () => {
-        info[index].style.visibility = "visible"
-      })
-    })
-
-    closeIcon.forEach((btn, index) => {
-      btn.addEventListener("click", () => {
-        info[index].style.visibility = "hidden"
-      })
-    })
-
-    //add to read list
-    const ReadList = document.querySelector(".ReadList")
-    const addBtn = document.querySelectorAll(".addBtn")
-    const booksInread = document.querySelector("#booksInread")
-    const booksToRead = []
-
-    booksInread.textContent = booksToRead.length
-
-    addBtn.forEach((btn) => {
-      btn.addEventListener("click", () => {
-
-         btn.style.display = 'none'
-        const parent = btn.parentNode.parentNode.parentNode
-
-        console.log(parent);
-
-        const clone = parent.cloneNode(true)
-        clone.className = "clone"
-
-        booksToRead.push(clone)
-        ReadList.append(clone)
-      })
-    })
-
-  } catch (error) {
-    console.error(`valiste, ya tienes otro error🤦${error}`)
-  }
+                booksToRead.push(clone)
+                readList.append(clone)
+            })
+        })
+    } catch (error) {
+        console.error(`valiste, ya tienes otro error🤦${error}`)
+    }
 }
 
 getData()
 
-
 // toggle list
-const bookIcon = document.getElementById("bookIcon")
-const ReadList = document.getElementById("readbooks")
+const toggleList = document.querySelectorAll('.toggleList')
+const ReadList = document.getElementById('readbooks')
 
-bookIcon.addEventListener("click", () => {
-  ReadList.classList.toggle("right-0")
-  ReadList.classList.toggle("-right-56")
+toggleList.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        ReadList.classList.toggle('top-0')
+    })
 })

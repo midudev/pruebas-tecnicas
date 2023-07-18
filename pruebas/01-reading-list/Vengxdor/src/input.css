@@ -6,42 +6,34 @@
 			background: url(../public/img/bg.webp);
 		}
 
-      
-      .clone .group{
-         width: 75% ;
-			display: flex ;
-			flex-direction: column ;
-			margin: auto ;
-		}
+      @layer components {
+         .btn-primary {
+           @apply ;
+         }
+       }
 
-      .clone .removeBtn{
-         display: inline;
-      }
-      
-      .clone .hover-bg{
-         height: 76% ;
-         
-      }
-      .clone .infoBtn{
-         display: none;
-      }
+       #readbooks{
+         transition: top .6s linear;
+       }
 
-      .clone .info{
-         display: none;
+       
+      .clone{
+         width: 25%;
+         display: flex;
+         justify-content: center;
+         color: #000;
       }
 
       .clone .addBtn{
          display: none;
       }
 
-      .clone h3{
-         color: #fff;
+      .clone .div{
+         height: 100%;
+         width: 75%;
       }
 
-      /* .clone .RemoveList{
-         display: inline;
-      } */
-      
+
 		/* ===== Scrollbar CSS ===== */
 		/* Firefox */
 		* {
