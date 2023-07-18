@@ -1,3 +1,9 @@
+.app-title {
+  font-size: 60px;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+}
 
 .library {
   width: 100%;
@@ -12,7 +18,6 @@
 .library-book {
   width: 100%;
   height: 100%;
-  cursor: pointer;
 
   display: grid;
   grid-template: 1fr/1fr;
@@ -60,6 +65,28 @@
   margin-top: 10px;
   font-size: 15px;
 }
+
+
+
+.book-info__buttons {
+  margin-top: 20px;
+}
+
+
+.book-info__buttons-save_to_read {
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  border: 0;
+  border-radius: 2px;
+  outline: none;
+  background-color: rgb(177, 174, 174);
+  color: #000;
+}
+
+
+
 
 @media (max-width: 1700px) {
   .library {
