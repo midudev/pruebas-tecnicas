@@ -1,0 +1,20 @@
+.title {
+  margin: 5px 0;
+}
+
+.book {
+  display: flex;
+  flex-direction: column;
+}
+
+.book .cover {
+  margin: 0;
+  height: 345px;
+  overflow: hidden;
+}
+
+.cover img {
+  object-fit: cover;
+  min-height: 345px;
+  width: 100%;
+}
