@@ -1,5 +1,3 @@
-'use client'
-
 import { useBooksContext } from '@/context/books.context'
 import { BookInfo } from '@/types'
 import Image from 'next/image'

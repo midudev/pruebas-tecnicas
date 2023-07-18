@@ -27,7 +27,6 @@ interface Props {
 }
 
 export function BooksContextProvider({ children, books: initialBooks }: Props) {
-  const books = useRef<Book[]>(initialBooks)
   const channel = useRef<BroadcastChannel>()
 
   const [filteredBooks, setFilteredBooks] = useState<Book[]>([])
@@ -36,8 +35,8 @@ export function BooksContextProvider({ children, books: initialBooks }: Props) {
   const [lectureBooks, setLectureBooks] = useState<Book[]>([])
 
   const genres = useMemo(() => {
-    return Array.from(new Set(books.current.map((book) => book.book.genre)))
-  }, [books])
+    return Array.from(new Set(initialBooks.map((book) => book.book.genre)))
+  }, [initialBooks])
 
   const booksByCategory = useMemo(() => {
     if (activeGenre === '') return filteredBooks
@@ -71,7 +70,7 @@ export function BooksContextProvider({ children, books: initialBooks }: Props) {
     const mainBooksItem = localStorage.getItem('books')
 
     setLectureBooks(lectureBooksItem != null ? JSON.parse(lectureBooksItem) : [])
-    setFilteredBooks(mainBooksItem != null ? JSON.parse(mainBooksItem) : books.current)
+    setFilteredBooks(mainBooksItem != null ? JSON.parse(mainBooksItem) : initialBooks)
 
     channel.current = new BroadcastChannel('books-channel')
 
@@ -83,7 +82,7 @@ export function BooksContextProvider({ children, books: initialBooks }: Props) {
     return () => {
       channel.current?.close()
     }
-  }, [setLectureBooks, setFilteredBooks])
+  }, [setLectureBooks, setFilteredBooks, initialBooks])
 
   return (
     <BooksContext.Provider
@@ -101,4 +100,11 @@ export function BooksContextProvider({ children, books: initialBooks }: Props) {
   )
 }
 
-export const useBooksContext = () => useContext(BooksContext)
+export const useBooksContext = () => {
+  const context = useContext(BooksContext)
+  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+  if (!context) {
+    throw new Error('useBooksContext must be used within a BooksContextProvider')
+  }
+  return context
+}
