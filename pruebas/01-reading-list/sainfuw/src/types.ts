@@ -25,6 +25,7 @@ export type IAuthor = {
 // AppContext
 export interface AppContextInitialStateType {
   books: IBook[];
+  filteredBooks: IBook[];
   readList: IBook[];
 }
 

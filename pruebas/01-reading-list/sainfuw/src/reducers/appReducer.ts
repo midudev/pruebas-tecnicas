@@ -5,6 +5,7 @@ type ActionTypes =
   | { type: 'SET_READ_LIST', payload: IBook[] }
   | { type: 'ADD_TO_READ_LIST', payload: IBook }
   | { type: 'REMOVE_FROM_READ_LIST', payload: IBook }
+  | { type: 'SET_FILTERED_BOOKS', payload: IBook[] }
 
 export function appReducer(
   state: AppContextInitialStateType,
@@ -37,6 +38,13 @@ export function appReducer(
       ...state,
       books: [...state.books, action.payload],
       readList: state.readList.filter(book => book.title !== action.payload.title)
+    }
+  }
+
+  if (action.type === 'SET_FILTERED_BOOKS') {
+    return {
+      ...state,
+      filteredBooks: action.payload
     }
   }
 

@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useEffect, useReducer, useState } from "react";
+import { ReactNode, useCallback, useEffect, useReducer } from "react";
 import { library } from "../api/books.json";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { appReducer } from "../reducers/appReducer";
@@ -7,6 +7,7 @@ import { AppContext } from "./AppContext";
 
 const initialState: AppContextInitialStateType = {
   books: [],
+  filteredBooks: [],
   readList: [],
 }
 
@@ -15,7 +16,6 @@ const API_DATA = library.map(item => item.book)
 export function AppProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(appReducer, initialState);
   const [readList, setStoredValue] = useLocalStorage('read-list', initialState.readList)
-  const [filteredBooks, setFilteredBooks] = useState<IBook[]>([])
 
   useEffect(() => {
     const books = API_DATA
@@ -42,13 +42,17 @@ export function AppProvider({ children }: { children: ReactNode }) {
     dispatch({ type: 'REMOVE_FROM_READ_LIST', payload: book });
   }, [readList, setStoredValue]);
 
+  const setFilteredBooks = useCallback((books: IBook[]) => {
+    dispatch({ type: 'SET_FILTERED_BOOKS', payload: books })
+  }, [])
+
   const values = {
     books: state.books,
     readList: state.readList,
     addToReadList,
     removeFromReadList,
     setReadList,
-    filteredBooks,
+    filteredBooks: state.filteredBooks,
     setFilteredBooks,
   }
 
