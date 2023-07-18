@@ -1,5 +1,19 @@
-<header class="container my-4 text-center">
+<header class="container my-3 text-center">
   <h2>{{title}}</h2>
+
+  <nav class="nav_container">
+    <div class="nav_item">
+      <h4>Libros disponibles: {{books.length}}</h4>
+    </div>
+    <div class="nav_item-form">
+      <select class="form-control" [(ngModel)]="genre" name="genre">
+        <option value="" selected disabled>-Seleccione el genero-</option>
+        <option *ngFor="let gen of genres" >{{gen}}</option>
+      </select>
+      <button class="btn btn-dark ms-1" (click)="filterByGenre()" *ngIf="!isFiltered">Filtrar</button>
+      <button class="btn btn-dark ms-1" (click)="clearFilter()" *ngIf="isFiltered">Limpiar</button>
+    </div>
+  </nav>
 </header>
 
 <main class="container">

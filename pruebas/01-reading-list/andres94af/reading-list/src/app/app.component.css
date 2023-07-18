@@ -1,5 +1,13 @@
-.nav{
-  padding: 0.5rem;
+.nav_container{
+  padding: 0.5rem 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+}
+
+.nav_item{
+  margin-right: 1rem;
+}
+
+.nav_item-form{
+  display: flex;
 }
