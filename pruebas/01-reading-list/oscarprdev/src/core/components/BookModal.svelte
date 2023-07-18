@@ -43,8 +43,10 @@
           <p><i>{$modalState.book.synopsis}.</i></p>
         </div>
         <button
-          class="absolute bottom-3 px-5 py-2 rounded-3xl bg-overlayModal cursor-pointer self-center hover:bg-nav duration-300"
-          ><BookOpenIcon size="25" class="text-light" /></button
+          class="absolute flex gap-4 bottom-3 px-6 py-3 rounded-3xl text-light bg-overlayModal cursor-pointer self-center hover:bg-nav duration-300"
+        >
+          Añadir a lista de lectura
+          <BookOpenIcon size="25" class="text-light" /></button
         >
       </section>
     </article>

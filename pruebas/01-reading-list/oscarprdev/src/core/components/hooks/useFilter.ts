@@ -12,7 +12,7 @@ export const useFilter = (filters: Writable<BooksFilters>) => {
         const booksFiltered = $appState.books.filter(book => {
             const genreMatch = !genre || book.genre === genre;
             const titleMatch = !title || book.title.toLowerCase().includes(title.toLowerCase());
-            const pagesMatch = !pages || book.pages < pages 
+            const pagesMatch = pages !== 0 || book.pages < pages 
 
           return genreMatch && titleMatch && pagesMatch;
         });
