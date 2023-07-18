@@ -44,8 +44,8 @@ function App() {
   }
 
   return (
-    <div className='flex justify-center min-h-screen'>
-      <div className='w-7/12 mr-32'>
+    <div className='flex flex-col md:flex-row justify-center min-h-screen'>
+      <div className='w-full md:w-7/12 lg:mr-32 md:mr-10'>
         <h1 className='text-4xl text-center font-bold m-5'>Books App</h1>
         <div className='text-xl mb-4'>
           Libros disponibles:{' '}
@@ -76,7 +76,7 @@ function App() {
           onAddToReadingList={handleAddToReadingList}
         />
       </div>
-      <div className='w-3/12 ml-4'>
+      <div className='w-full md:w-3/12 lg:ml-4 md:ml-0'>
         <ReadingList
           books={readingList}
           onRemove={handleRemoveFromReadingList}

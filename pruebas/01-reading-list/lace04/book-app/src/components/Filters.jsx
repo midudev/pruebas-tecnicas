@@ -11,7 +11,7 @@ function Filters({
   return (
     <div className='flex w-full justify-between gap-x-2'>
       <div className='flex gap-x-8'>
-        <label htmlFor='genre-select'>Filtrar po género:</label>
+        <label htmlFor='genre-select'>Filtrar por género:</label>
         <select
           id='genre-select'
           value={selectedGenre}
@@ -35,6 +35,7 @@ function Filters({
           min={0}
           max={maxPages}
           value={minPages}
+          step={100}
           onChange={(e) => onSetMinPages(e.target.value)}
         />
         <span>{minPages}</span>
