@@ -28,11 +28,21 @@ interface Props {
 
 export function BooksContextProvider({ children, books: initialBooks }: Props) {
   const books = useRef<Book[]>(initialBooks)
+  const channel = useRef<BroadcastChannel>()
 
   const [filteredBooks, setFilteredBooks] = useState<Book[]>([])
   const [activeGenre, setActiveGenre] = useState('')
 
   const [lectureBooks, setLectureBooks] = useState<Book[]>([])
+
+  const genres = useMemo(() => {
+    return Array.from(new Set(books.current.map((book) => book.book.genre)))
+  }, [books])
+
+  const booksByCategory = useMemo(() => {
+    if (activeGenre === '') return filteredBooks
+    return filteredBooks.filter((book) => book.book.genre === activeGenre)
+  }, [filteredBooks, activeGenre])
 
   const setLectureBook = (book: BookInfo) => {
     const lectureBooksFiltered = lectureBooks.filter((item) => item.book.ISBN !== book.ISBN)
@@ -52,22 +62,30 @@ export function BooksContextProvider({ children, books: initialBooks }: Props) {
 
     localStorage.setItem('books', JSON.stringify(mainBooks))
     localStorage.setItem('lectureBooks', JSON.stringify(books))
+
+    channel.current?.postMessage({ mainBooks, books })
   }
 
-  const genres = useMemo(() => {
-    return Array.from(new Set(books.current.map((book) => book.book.genre)))
-  }, [books])
-
-  const booksByCategory = useMemo(() => {
-    if (activeGenre === '') return filteredBooks
-    return filteredBooks.filter((book) => book.book.genre === activeGenre)
-  }, [filteredBooks, activeGenre])
-
   useEffect(() => {
-    const lectureBooks = localStorage.getItem('lectureBooks')
-    const mainBooks = localStorage.getItem('books')
-    setLectureBooks(lectureBooks != null ? JSON.parse(lectureBooks) : [])
-    setFilteredBooks(mainBooks != null ? JSON.parse(mainBooks) : books.current)
+    const lectureBooksItem = localStorage.getItem('lectureBooks')
+    const mainBooksItem = localStorage.getItem('books')
+
+    const lectureBooks = lectureBooksItem != null ? JSON.parse(lectureBooksItem) : []
+    const mainBooks = mainBooksItem != null ? JSON.parse(mainBooksItem) : books.current
+    console.log({ lectureBooks, mainBooks })
+    setLectureBooks(lectureBooks)
+    setFilteredBooks(mainBooks)
+
+    channel.current = new BroadcastChannel('books-channel')
+
+    channel.current.onmessage = (event) => {
+      setLectureBooks(event.data.books)
+      setFilteredBooks(event.data.mainBooks)
+    }
+
+    return () => {
+      channel.current?.close()
+    }
   }, [setLectureBooks, setFilteredBooks])
 
   return (

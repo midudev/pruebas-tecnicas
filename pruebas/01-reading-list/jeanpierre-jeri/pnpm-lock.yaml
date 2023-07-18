@@ -41,9 +41,6 @@ dependencies:
   tailwindcss:
     specifier: 3.3.3
     version: 3.3.3
-  tailwindcss-animated:
-    specifier: 1.0.1
-    version: 1.0.1(tailwindcss@3.3.3)
   typescript:
     specifier: 5.1.6
     version: 5.1.6
@@ -2627,14 +2624,6 @@ packages:
     dependencies:
       '@pkgr/utils': 2.4.2
       tslib: 2.6.0
-
-  /tailwindcss-animated@1.0.1(tailwindcss@3.3.3):
-    resolution: {integrity: sha512-u5wusj89ZwP8I+s8WZlaAd7aZTWBN/XEG6QgMKpkIKmAf3xP1A6WYf7oYIKmGaB10UAQaSqWopi/i1ozzZEs8Q==}
-    peerDependencies:
-      tailwindcss: '>=3.1.0'
-    dependencies:
-      tailwindcss: 3.3.3
-    dev: false
 
   /tailwindcss@3.3.3:
     resolution: {integrity: sha512-A0KgSkef7eE4Mf+nKJ83i75TMyq8HqY3qmFIJSWy8bNt0v1lG7jUcpGpoTFxAwYcWOphcTBLPPJg+bDfhDf52w==}

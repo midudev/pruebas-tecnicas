@@ -19,7 +19,13 @@ export function Aside() {
       <div ref={parent} className="w-4/5 mx-auto text-left">
         {lectureBooks.map(({ book }, index) => {
           return (
-            <div key={book.ISBN} style={{ marginTop: `${index === 0 ? 0 : -400}px` }}>
+            <div
+              key={book.ISBN}
+              style={{ marginTop: `${index === 0 ? 0 : -250}px`, zIndex: '100' }}
+              className="relative border border-black rounded-2xl"
+              onMouseOver={(e) => (e.currentTarget.style.zIndex = '101')}
+              onMouseLeave={(e) => (e.currentTarget.style.zIndex = `${index}`)}
+            >
               <Book book={book} />
             </div>
           )
