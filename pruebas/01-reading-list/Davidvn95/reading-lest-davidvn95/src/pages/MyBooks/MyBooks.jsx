@@ -1,27 +1,27 @@
-import "./Home.css";
 import { useSelector } from "react-redux";
-import Lateral from "../../components/LateralBar/LateralBar";
 import Card from "../../components/Card/Card";
+import "./MyBooks.css";
 
-export default function Home() {
-    const books = useSelector((state) => state.books?.show);
-
+const MyBooks = () => {
+    const reading = useSelector((state) => state.books.reading);
     return (
-        <section className="home">
-            <Lateral />
-            <div className="content">
-                {books.map((book, index) => {
+        <section className="my-books">
+            <h2>My Books</h2>
+            <div className="my-books-container">
+                {reading.map((book, index) => {
                     return (
                         <Card
                             cover={book.book.cover}
                             title={book.book.title}
                             isbn={book.book.ISBN}
-                            readings={book?.readings}
                             key={index}
+                            isReading={book?.readings}
                         />
                     );
                 })}
             </div>
         </section>
     );
-}
+};
+
+export default MyBooks;

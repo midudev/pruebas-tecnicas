@@ -1,0 +1,18 @@
+.my-books{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    /* padding: 3rem 0; */
+    justify-content: flex-start;
+    /* gap: 3rem; */
+    color: rgb(110, 84, 18);
+}
+
+.my-books-container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    gap: 3rem;
+}
