@@ -1,104 +1,49 @@
 import { create } from "zustand";
-import { persist } from 'zustand/middleware'
-
 import { svelteBooksStore } from "./svelteBooksStore";
-import { getAllBooks, mapBookResponse } from "../services/books";
+import { getAllBooksMapped } from "../services/books";
+import { subscribeToStorage } from "./middlewares/subscribeToStorage";
+import { devtools, persist } from "zustand/middleware";
 
-const store = create(persist<IBooks.Store>((set, get) => ({
+export const LIBRARY = 'Library'
+
+const store = create(devtools(persist(subscribeToStorage((set, get) => ({
   readingList: [],
-  freeBooks: [],
   books: [],
-  filters: null,
+  getBooks() {
+    const books = getAllBooksMapped();
 
-  fillFreeBooks(){
-    const { readingList, filters, filterBooks } = get();
-    const response = getAllBooks();
-    const books = mapBookResponse({ response })
-    const freeBooks = books.map(book => ({
-      ...book,
-      free: !readingList.includes(book.ISBN)
-    }));
-    
-    if(!filters) return set({ freeBooks, books });
-
-    return filterBooks(filters);
-  },
-  filterBooks(filters){
-    const { pages, genre } = filters;
-    const { readingList, fillFreeBooks } = get();
-    const response = getAllBooks();
-    const books: FreeBook[] = mapBookResponse({ response })
-      .map(book => ({
-        ...book,
-        free: !readingList.includes(book.ISBN)
-      }));
-
-    const maxPages = Math.max(...books.map(book => book.pages));
-    const isPagesFilterDisabled = !pages || maxPages === pages;
-    if(isPagesFilterDisabled && !genre) {
-      set({ filters: null });
-      return fillFreeBooks();
-    };
-
-
-    if(isPagesFilterDisabled && !genre) {
-      return fillFreeBooks();
-    }
-
-    const filteredBooks = books.filter(book => {
-      if(!isPagesFilterDisabled && genre) {
-        const isBookInRange = book.pages <= pages;
-        return book.genre === genre && isBookInRange;
-      }
-
-      if(isPagesFilterDisabled) {
-        return book.genre === genre;
-      }
-
-      const isBookInRange = book.pages <= pages;
-      return isBookInRange;
-    });
-
-    set({ freeBooks: filteredBooks, filters });
+    set({ books });
   },
   add(id) {
-    const { readingList: value, freeBooks: books } = get();
+    const { readingList: value, books } = get();
     const bookIndex = books.findIndex(book => book.ISBN === id);
     const book = books.at(bookIndex);
 
-    if(!book || !book.free) return;
+    const alreadyInReadingList = value.includes(id);
+    if(!book || alreadyInReadingList) return;
 
-    const readingList = [...value];
-    readingList.unshift(id);
+    const readingList = [book.ISBN, ...value];
 
-    const freeBooks = [...books];
-    const toReadBook = freeBooks.at(bookIndex);
-    toReadBook && (toReadBook.free  = false);
-
-    set({ readingList, freeBooks });
+    set({ readingList });
   },
 
   remove(id) {
-    const { readingList: value, freeBooks: books } = get();
+    const { readingList: value, books } = get();
     const bookIndex = books.findIndex(book => book.ISBN === id);
     const book = books.at(bookIndex);
 
-    if(!book || book.free) return;
-
-    const freeBooks = [...books];
-    const toReadBook = freeBooks.at(bookIndex);
-    toReadBook && (toReadBook.free = true);
+    const isNotInReading = !value.includes(id);
+    if(!book || isNotInReading) return;
 
     const readingList = value
     .filter(bookId => bookId !== id);
-      
   
     set({ readingList })
   },
   reset: () => set({ readingList: [] })
-}), {
-  name: "Library"
-}));
+})), { 
+  name: LIBRARY 
+})));
 
 
 export const booksStore = svelteBooksStore(store);

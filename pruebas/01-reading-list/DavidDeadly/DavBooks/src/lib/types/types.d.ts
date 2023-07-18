@@ -17,10 +17,6 @@ interface IBook {
   author:   Author;
 }
 
-interface FreeBook extends IBook {
-  free?: boolean;
-}
-
 interface Author {
   name:       string;
   otherBooks: string[];
@@ -29,29 +25,26 @@ interface Author {
 declare namespace IBooks {
   type BookAction = (id: string) => void;
   type StoreAction = () => void;
-  type FilterAction = (filters: Filters) => void;
+  type FilterAction = (filters?: Filters) => void;
 
   type Filters = {
     genre?: string;
     pages?: number;
-  }
+  };
   
   interface Store {
     readingList: string[];
-    freeBooks: FreeBook[];
     books: IBook[];
-    filters: Filters | null;
+    getBooks: StoreAction;
     add: BookAction;
     remove: BookAction;
-    fillFreeBooks: StoreAction;
-    filterBooks: FilterAction;
     reset: StoreAction;
   }
 
   interface NextStore extends Store {
-    maxPages: number;
-    minPages: number;
-    booksGenres: string[];
-    numFreeBooks: number;
+    max: number;
+    min: number;
+    genres: string[];
+    getNumAvaileblesBooks: (filteredBooks: IBook[]) => number;
   }
 }

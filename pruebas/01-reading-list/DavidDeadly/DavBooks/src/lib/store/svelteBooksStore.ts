@@ -1,47 +1,41 @@
 import { readable } from 'svelte/store';
 import type { StoreApi } from 'zustand';
 
-const getUpdatedState = ({ freeBooks, books }: {
-  books: IBook[], freeBooks: FreeBook[]
-}) => {
-  const numFreeBooks = freeBooks
-  .filter(book => book.free).length;
+type SveltStore = Pick<IBooks.NextStore, 'min' | 'max' | 'genres' | 'getNumAvaileblesBooks'>
 
-  const booksGenres = [...new Set(books.map(book => book.genre))];
-  const booksPages = books.map(book => book.pages);
-  const minPages = Math.min(...booksPages);
-  const maxPages = Math.max(...booksPages);
+const getSveltetore = ({ books, readingList }: IBooks.Store) => {
+  const booksGenres = [...new Set(books.map(b => b.genre))];
+  const bookPages = books.map(b => b.pages);
 
-  return {
-    minPages,
-    maxPages,
-    booksGenres,
-    numFreeBooks
+  const min = Math.min(...bookPages);
+  const max = Math.max(...bookPages);
+  const genres = booksGenres;
+
+  const getNumAvaileblesBooks = (filteredBooks: IBook[]) => {
+    return filteredBooks.filter(b => !readingList.includes(b.ISBN)).length
+  };
+
+  const store: SveltStore = {
+    min,
+    max,
+    genres,
+    getNumAvaileblesBooks
   }
+
+  return store;
 }
 
 export function svelteBooksStore(zustandStore: StoreApi<IBooks.Store>) {
-  const booksStore = zustandStore.getState();
-  const state = getUpdatedState({
-    books: booksStore.books,
-    freeBooks: booksStore.freeBooks
-  });
+  const booksStore = zustandStore.getState();  
+  const initialStore = getSveltetore(booksStore);
   
   const svelteStore = readable<IBooks.NextStore>({
     ...booksStore,
-    ...state
+    ...initialStore
   }, set => {
     zustandStore.subscribe(booksStore => {
-      const { freeBooks, books } = booksStore;
-      const state = getUpdatedState({
-        books,
-        freeBooks
-      });
-
-      set({
-        ...booksStore,
-        ...state
-      })
+      const store = getSveltetore(booksStore)
+      set({...booksStore, ...store})
     });
   });
 

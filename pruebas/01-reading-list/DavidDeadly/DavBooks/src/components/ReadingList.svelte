@@ -13,10 +13,10 @@
 
   booksStore.subscribe(({ readingList, books }) => {
     readingBooks = readingList
-      .map(id => books.find(book => book.ISBN === id))
+      .map(id => books.find(b => b.ISBN === id))
       .filter(Boolean) as IBook[];
 
-    isOne = plural.select(readingBooks.length) === 'one';
+    isOne = plural.select(readingList.length) === 'one';
   });
 </script>
 

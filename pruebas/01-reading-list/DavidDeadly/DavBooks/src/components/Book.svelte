@@ -1,19 +1,23 @@
 <script lang="ts">
-  export let book: FreeBook;
+  import { booksStore } from '$lib';
+
+  export let book: IBook;
   export let showInfo: boolean;
   export let bookAction: IBooks.BookAction;
 
-  let isFree = true;
+  let isAvaileble = !$booksStore.readingList.includes(book.ISBN);
 
   $: {
-    // When book free is not defined
-    // means we're being render by the ReadingList
-    isFree = book.free === undefined || book.free === true;
+    isAvaileble = !$booksStore.readingList.includes(book.ISBN);
   }
 </script>
 
 <li class="book">
-  <button class:add-btn={isFree} class:no-free={!isFree} on:click={() => bookAction(book.ISBN)}>
+  <button
+    class:add-btn={isAvaileble}
+    class:no-availeble={!isAvaileble}
+    on:click={() => bookAction(book.ISBN)}
+  >
     <img src={book.cover} alt="{book.title} cover" />
     {#if showInfo}
       <div class="book-info">
@@ -101,13 +105,13 @@
   }
 
   .add-btn,
-  .no-free {
+  .no-availeble {
     border: none;
     border-radius: 15px;
     background-color: transparent;
   }
 
-  .add-btn:hover {
+  button:hover {
     cursor: pointer;
   }
 
@@ -116,16 +120,12 @@
     transform: scale(1.01);
   }
 
-  .no-free img {
+  .no-availeble img {
     filter: blur(1px) contrast(30%);
   }
 
-  .no-free:hover {
-    cursor: default;
-  }
-
   .add-btn:hover .book-info,
-  .no-free:hover .book-info {
+  .no-availeble:hover .book-info {
     opacity: 1;
   }
 </style>

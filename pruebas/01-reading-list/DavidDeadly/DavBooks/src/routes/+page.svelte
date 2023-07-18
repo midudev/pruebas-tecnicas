@@ -4,29 +4,35 @@
   import Books from '../components/Books.svelte';
   import ReadingList from '../components/ReadingList.svelte';
   import DavBooksIcon from '../components/icons/DavBooksIcon.svelte';
-
-  onMount(() => booksStore.getState().fillFreeBooks());
+  import { getFilteredBooks } from '$lib/services/books';
 
   const plural = new Intl.PluralRules('es');
   const NO_GENRES_FILTER = 'Todos';
-  let isOne: boolean;
-  let pagesSelectedRange: number = 0;
-  let filteredGenre: string | undefined;
 
-  booksStore.subscribe(({ numFreeBooks, maxPages, filters }) => {
-    isOne = plural.select(numFreeBooks) === 'one';
-    filteredGenre = filters?.genre ? filters.genre : NO_GENRES_FILTER;
-    pagesSelectedRange = filters?.pages ? filters.pages : maxPages;
+  onMount(() => {
+    booksStore.getState().getBooks();
+    books = filterBooks();
   });
 
-  const filterBooks = () => {
-    const genre = filteredGenre !== NO_GENRES_FILTER ? filteredGenre : undefined;
+  let books: IBook[] = [];
+  let numAvaileblesBooks: number = 0;
+  let pagesSelectedRange: number = 0;
+  let filteredGenre: string | undefined;
+  let isOne: boolean = false;
 
-    $booksStore.filterBooks({
+  const filterBooks = () => {
+    const genre =
+      filteredGenre !== NO_GENRES_FILTER ? filteredGenre : undefined;
+    return getFilteredBooks({
       genre,
       pages: pagesSelectedRange,
     });
   };
+
+  $: {
+    numAvaileblesBooks = $booksStore.getNumAvaileblesBooks(books);
+    isOne = plural.select(numAvaileblesBooks) === 'one';
+  }
 </script>
 
 <nav>
@@ -35,7 +41,7 @@
   </div>
 
   <h1>
-    {$booksStore.numFreeBooks}
+    {numAvaileblesBooks}
     {isOne ? 'Libro' : 'Libros'} Disponibles
   </h1>
   <div style:opacity={$booksStore.books.length ? '1' : '0'} class="filters">
@@ -44,13 +50,13 @@
       <input
         id="pages"
         type="range"
-        min={$booksStore.minPages}
-        max={$booksStore.maxPages}
+        min={$booksStore.min}
+        max={$booksStore.max}
         on:change={filterBooks}
         bind:value={pagesSelectedRange}
       />
       <div class="ranges">
-        <span>{$booksStore.minPages}</span>
+        <span>{$booksStore.min}</span>
         <span>{pagesSelectedRange}</span>
       </div>
     </label>
@@ -59,7 +65,7 @@
 
       <select id="genre" bind:value={filteredGenre} on:change={filterBooks}>
         <option value={NO_GENRES_FILTER}>{NO_GENRES_FILTER}</option>
-        {#each $booksStore.booksGenres as genre}
+        {#each $booksStore.genres as genre}
           <option value={genre}>
             {genre}
           </option>
@@ -70,7 +76,7 @@
 </nav>
 <main>
   <section>
-    <Books books={$booksStore.freeBooks} booksAction={$booksStore.add} />
+    <Books {books} booksAction={$booksStore.add} />
   </section>
   <ReadingList />
 </main>
