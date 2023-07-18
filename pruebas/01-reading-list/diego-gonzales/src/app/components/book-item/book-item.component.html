@@ -1,11 +1,14 @@
-<figure class="rounded transition-all hover:contrast-75 contenedor relative">
+<figure
+  class="rounded transition-all hover:contrast-75 contenedor relative"
+  [routerLink]="['/detail', book.ISBN]"
+>
   <label class="top-2 right-2">
     <button
       [title]="
         !book.isFavorite ? 'Add to reading list' : 'Remove from reading list'
       "
       class="btn btn-accent btn-xs btn-circle"
-      (click)="updateReadingList()"
+      (click)="updateReadingList($event)"
     >
       <span class="font-bold">
         {{ !book.isFavorite ? '♡' : '♥' }}

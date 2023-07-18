@@ -25,5 +25,6 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/prefer-readonly': 'off',
     '@typescript-eslint/lines-between-class-members': 'off',
+    '@typescript-eslint/no-floating-promises': 'off',
   },
 };

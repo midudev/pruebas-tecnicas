@@ -15,6 +15,10 @@ export class BooksService {
   );
   totalBooksInReadingList = computed(() => this._readingList().length);
 
+  // constructor() {
+  //   this.getBooks();
+  // }
+
   get bookList() {
     return this._bookList.asReadonly();
   }
@@ -28,6 +32,13 @@ export class BooksService {
       .get<BooksData>('assets/data.json')
       .pipe(map((resp) => resp.library.map((item) => item.book)))
       .subscribe((resp) => this._bookList.set(resp));
+  }
+
+  getBook(ISBN: string) {
+    return this._httpClient.get<BooksData>('assets/data.json').pipe(
+      map((resp) => resp.library.map((item) => item.book)),
+      map((resp) => resp.find((book) => book.ISBN === ISBN) ?? null)
+    );
   }
 
   updateReadingList(book: Book) {

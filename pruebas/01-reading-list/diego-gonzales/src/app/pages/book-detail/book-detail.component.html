@@ -1,1 +1,12 @@
-<p>book-detail works!</p>
+<div class="hero bg-base-200">
+  <div class="hero-content flex-col lg:flex-row-reverse p-4">
+    <img [src]="book()?.cover" class="w-full max-w-xs rounded-lg shadow-2xl" />
+    <div>
+      <h1 class="text-xl md:text-4xl">{{ book()?.title }}</h1>
+      <p class="py-6">
+        {{ book()?.synopsis }}
+      </p>
+      <button class="btn btn-primary">Get Started</button>
+    </div>
+  </div>
+</div>
