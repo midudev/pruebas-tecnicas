@@ -13,3 +13,9 @@
 	src: url('../public/TiltNeon.woff2');
 	font-weight: 400;
 }
+
+@font-face {
+	font-family: 'Handlee';
+	src: url('../public/Handlee.ttf');
+	font-weight: 400;
+}

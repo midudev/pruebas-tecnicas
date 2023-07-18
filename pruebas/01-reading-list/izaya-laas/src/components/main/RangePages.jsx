@@ -6,7 +6,7 @@ const RangePages = () => {
 				<input
 					type="text"
 					placeholder="min"
-					className="border-b border-black w-16 bg-gray-50 text-center rounded-lg"
+					className="border-b border-black w-16 bg-[#00000003] text-center rounded-t-md rounded-bl-[20px_5px] rounded-br-[20px_2px]  focus:outline-none"
 					name=""
 					id=""
 				/>
@@ -14,8 +14,8 @@ const RangePages = () => {
 				<input
 					type="text"
 					placeholder="max"
-					className="border-b border-black w-16 bg-gray-50 text-center 
-                  rounded-lg"
+					className="border-b border-black w-16 bg-[#00000003] text-center 
+                  rounded-t-md rounded-bl-[20px_2px] rounded-br-[20px_5px] focus:outline-none"
 					name=""
 					id=""
 				/>

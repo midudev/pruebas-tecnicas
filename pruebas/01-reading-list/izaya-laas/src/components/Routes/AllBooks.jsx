@@ -17,14 +17,14 @@ const AllBooks = () => {
 
 				return (
 					<figure
-						className="w-40  lg:w-48 border border-black p-2 rounded-md"
+						className="w-40 lg:w-48 border border-[#41403E] p-4 rounded-tl-[255px_15px] rounded-tr-[15px_255px] rounded-br-[255px_15px] rounded-bl-[15px_255px]"
 						id={ISBN}
 						onClick={() => {
 							addBookToReadingList(ISBN);
 						}}
 					>
 						<img
-							className="w-full object-cover aspect-[305/400] rounded-t-md"
+							className="w-full object-cover aspect-[305/400] rounded-t-md grayscale-[60%]"
 							src={cover}
 							alt={`cover of ${title}`}
 						/>

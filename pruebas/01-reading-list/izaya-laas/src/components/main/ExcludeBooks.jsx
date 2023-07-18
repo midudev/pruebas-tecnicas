@@ -1,7 +1,7 @@
 const ExcludeBooks = () => {
 	return (
 		<>
-			<input type="checkbox" name="" id="" />
+			<input type="checkbox" className="accent-black" name="" id="" />
 			<label htmlFor="">Exclude my books</label>
 		</>
 	);
