@@ -24,7 +24,8 @@ enum SortContent {
     #[default]
     AZ,
     ZA,
-    ByPages,
+    Pages,
+    PagesReverse,
 }
 
 #[function_component]
@@ -108,7 +109,11 @@ pub fn Library(props: &Props) -> Html {
                         mut_books.sort_by(|a, b| a.title.cmp(&b.title));
                         mut_books.reverse();
                     },
-                    SortContent::ByPages => mut_books.sort_by(|a, b| a.pages.cmp(&b.pages)),
+                    SortContent::Pages => mut_books.sort_by(|a, b| a.pages.cmp(&b.pages)),
+                    SortContent::PagesReverse => {
+                        mut_books.sort_by(|a, b| a.pages.cmp(&b.pages));
+                        mut_books.reverse();
+                    },
                 };
                 books.set(mut_books);
             },
@@ -134,23 +139,32 @@ pub fn Library(props: &Props) -> Html {
                 }
                 if sortable {
                     <SingleChoice<SortContent>
-                        options={vec![SortContent::AZ,SortContent::ZA,SortContent::ByPages]}
+                        options={vec![SortContent::AZ,SortContent::ZA,SortContent::Pages,SortContent::PagesReverse]}
                         onchange={onchangesort}
                     >
                         <div
+                            title="A-Z"
                             class={classes!("flex","cursor-pointer","hover:bg-slate-200","p-4","rounded",(*sort == SortContent::AZ).then_some("bg-slate-300").or(Some("bg-slate-200")))}
                         >
                             <Icon icon_id={IconId::FontAwesomeSolidArrowDownAZ} width="12px" height="12px"/>
                         </div>
                         <div
-                            class={classes!("flex","cursor-pointer","hover:bg-slate-200","p-4","rounded",(*sort == SortContent::ZA).then_some("bg-slate-300").or(Some("bg-slate-200")))}
+                            title="Z-A"
+                            class={classes!("flex","cursor-pointer","hover:bg-slate-100","p-4","rounded",(*sort == SortContent::ZA).then_some("bg-slate-300").or(Some("bg-slate-200")))}
                         >
                             <Icon icon_id={IconId::FontAwesomeSolidArrowUpAZ} width="12px" height="12px"/>
                         </div>
                         <div
-                            class={classes!("flex","cursor-pointer","hover:bg-slate-200","p-4","rounded",(*sort == SortContent::ByPages).then_some("bg-slate-300").or(Some("bg-slate-200")))}
+                            title="Paginas de Menor a Mayor"
+                            class={classes!("flex","cursor-pointer","hover:bg-slate-100","p-4","rounded",(*sort == SortContent::Pages).then_some("bg-slate-300").or(Some("bg-slate-200")))}
                         >
-                            <Icon icon_id={IconId::Bootstrap123} width="12px" height="12px"/>
+                            <Icon icon_id={IconId::BootstrapSortNumericDown} width="14px" height="14px"/>
+                        </div>
+                        <div
+                            title="Paginas de Mayor a Menor"
+                            class={classes!("flex","cursor-pointer","hover:bg-slate-100","p-4","rounded",(*sort == SortContent::PagesReverse).then_some("bg-slate-300").or(Some("bg-slate-200")))}
+                        >
+                            <Icon icon_id={IconId::BootstrapSortNumericDownAlt} width="14px" height="14px"/>
                         </div>
                     </SingleChoice<SortContent>>
                 }
