@@ -46,8 +46,8 @@ function App() {
   return (
     <div className='flex flex-col md:flex-row justify-center min-h-screen'>
       <div className='w-full md:w-7/12 lg:mr-32 md:mr-10'>
-        <h1 className='text-4xl text-center font-bold m-5'>Books App</h1>
-        <div className='text-xl mb-4'>
+        <h1 className='text-3xl text-center font-bold m-5 md:text-4xl'>Books App</h1>
+        <div className='text-lg md:text-xl m-4 md:mb-4 '>
           Libros disponibles:{' '}
           {
             books.filter(
