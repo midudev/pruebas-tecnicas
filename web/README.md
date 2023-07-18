@@ -1,2 +1,0 @@
-# Web de Pruebas Técnicas
-
