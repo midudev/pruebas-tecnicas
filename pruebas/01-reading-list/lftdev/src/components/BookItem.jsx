@@ -1,4 +1,7 @@
 export default function BookItem (props) {
-  const { book } = props
-  return <img src={book.cover} alt={`${book.title} book cover`} />
+  const { book, clickListener } = props
+  function handleClick () {
+    clickListener(book)
+  }
+  return <img src={book.cover} alt={`${book.title} book cover`} onClick={handleClick} />
 }

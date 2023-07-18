@@ -1,4 +1,4 @@
-import { cleanup, getAllByRole, getByLabelText, getByRole, render, screen } from '@testing-library/react'
+import { cleanup, fireEvent, getAllByRole, getByLabelText, getByRole, render, screen } from '@testing-library/react'
 import { afterEach, describe, it } from 'vitest'
 import App from '../src/App'
 describe('App', () => {
@@ -55,5 +55,11 @@ describe('App', () => {
   it('should display a book cover on each li;', () => {
     render(<App />)
     screen.getAllByRole('img')
+  })
+  it('should render a region aside when an img is clicked and reading list is empty;', async () => {
+    render(<App />)
+    const img = screen.getAllByRole('img')[0]
+    fireEvent.click(img)
+    await screen.findByRole('region')
   })
 })

@@ -4,8 +4,13 @@ import './style.css'
 import BookItem from './components/BookItem'
 export default function App () {
   const [bookList, setBookList] = useState([])
+  const [readList, setReadList] = useState([])
   // Load book library to state bookList.
   useEffect(() => BooksJSON.library.forEach(bookObject => setBookList(prevList => [...prevList, bookObject.book])), [])
+  function addToReadList (book) {
+    setReadList(prevList => [...prevList, book])
+  }
+
   return (
     <>
       <h3>Sin libros en la lista de lectura</h3>
@@ -26,10 +31,13 @@ export default function App () {
         <ul>
           {bookList.map((book, index) =>
             <li key={index}>
-              <BookItem book={book} />
+              <BookItem book={book} clickListener={addToReadList} />
             </li>)}
         </ul>
       </main>
+      {readList.length > 0 &&
+        <aside role='region'>
+        </aside>}
     </>
   )
 }
