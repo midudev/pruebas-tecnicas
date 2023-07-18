@@ -7,6 +7,9 @@ export default {
 				mystery: ['Mystery Quest', 'cursive'],
 				tilt: ['Tilt Neon', 'cursive'],
 			},
+			backgroundImage: {
+				'grated-pattern': "url('public/grated-pattern.gif')",
+			},
 		},
 	},
 	plugins: [],
