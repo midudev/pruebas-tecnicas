@@ -7,12 +7,20 @@
   margin-bottom: 50px;
   position: relative;
   background: #000000eb;
-   span {
+  .btn-clear-all {
+    margin-top:20px;
+    width: 200px;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 7px 10px;
+    cursor: pointer;
+  }
+  span {
     background: #ff0000a7;
     position: absolute;
     width: 20px;
     height: 20px;
-   // right: -8px;
+    // right: -8px;
     left: -7px;
     top: -15px;
     border-radius: 10px;
@@ -23,17 +31,46 @@
     align-items: center;
     cursor: pointer;
     border: none;
-    &:hover{
+    &:hover {
       transform: scale(1.2);
       background: #ff0000;
     }
-}
+  }
   .mySwiper {
     width: 250px;
     height: 350px;
     margin: 50px auto;
 
     .swiper-slide {
+      .dialog-remove-book {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 250px;
+        border-radius: 10px;
+        padding: 10px;
+        .container-dialog {
+          header {
+            color: #ffffffeb;
+            margin-bottom: 10px;
+            h6 {
+              color: #b7b5b5eb;
+            }
+          }
+          .body-dialog {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+            button {
+              padding: 7px 10px;
+              cursor: pointer;
+            }
+          }
+        }
+      }
       .title {
         line-height: 1em;
         padding: 0px;
@@ -79,6 +116,9 @@
       &:nth-child(10n) {
         background-color: rgb(54, 94, 77);
       }
+    }
+    h6 {
+      padding: 10px;
     }
   }
 }

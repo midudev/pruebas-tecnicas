@@ -5,12 +5,13 @@ import { WishListModal } from "../../models/WishListModal";
 import { store } from "../../app/store";
 
 
-function Navbar({ modalState, setModalState }: WishListModal) {
+function Navbar({setModalStateFav }: WishListModal) {
   const countFavorit = useSelector(selectBooksWishList);
   const handlerShowFavorit = () => {
     store.getState().books.wishList.length != 0 &&
-    setModalState(true);
-    !modalState && window.scrollTo(0, 0);
+    setModalStateFav(true);
+     window.scrollTo(0, 0);
+     
   };
   return (
     <nav className="navbar">

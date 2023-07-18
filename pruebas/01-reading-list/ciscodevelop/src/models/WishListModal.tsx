@@ -1,4 +1,4 @@
 export interface WishListModal {
-    modalState: boolean;
-    setModalState: React.Dispatch<React.SetStateAction<boolean>>;
+    modalStateFav?: boolean;
+    setModalStateFav: React.Dispatch<React.SetStateAction<boolean>>;
   }

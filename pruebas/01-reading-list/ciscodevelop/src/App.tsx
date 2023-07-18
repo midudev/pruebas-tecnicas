@@ -2,18 +2,20 @@ import { Suspense, lazy, useEffect, useState } from "react";
 import "./app.scss";
 import ListOfBooks from "./components/listOfBooks/ListOfBooks";
 import Navbar from "./components/navbar/Navbar";
+import Spinner from "./components/spinner/Spinner";
 const WishListBooks = lazy(
   () => import("./components/wishListBooks/WishListBooks")
 );
 
 function App() {
   const [isScrollY, setIsScrollY] = useState(false);
-  const [modalState, setModalState] = useState(false);
+  const [modalStateFav, setModalStateFav] = useState(false);
 
   const controlShowNav = () => {
     window.scrollY > 50 ? setIsScrollY(true) : setIsScrollY(false);
   };
   useEffect(() => {
+    //todo: find better metod for do this
     window.addEventListener("scroll", controlShowNav);
     return () => {
       window.removeEventListener("scroll", controlShowNav);
@@ -23,14 +25,14 @@ function App() {
   return (
     <div className="app">
       <header className={isScrollY ? "show-bg-nav" : ""}>
-        <Navbar modalState={modalState} setModalState={setModalState} />
+        <Navbar setModalStateFav={setModalStateFav} />
       </header>
       <main className="main">
-        <Suspense fallback={<h2>Loading...</h2>}>
-          {modalState && (
+        <Suspense fallback={<Spinner/>}>
+          {modalStateFav && (
             <WishListBooks
-              modalState={modalState}
-              setModalState={setModalState}
+              modalStateFav={modalStateFav}
+              setModalStateFav={setModalStateFav}
             />
           )}
         </Suspense>

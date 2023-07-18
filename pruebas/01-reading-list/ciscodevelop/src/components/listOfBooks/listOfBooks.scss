@@ -1,7 +1,7 @@
 .container-cards-listofbooks {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 20px;
+  gap: 55px;
   position: relative;
   z-index: -1;
   .cards-books {
