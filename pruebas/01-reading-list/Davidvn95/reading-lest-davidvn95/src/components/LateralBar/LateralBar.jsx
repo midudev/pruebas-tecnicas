@@ -1,13 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./LateralBar.css";
 import { filerByGenre, filterByRange } from "../../redux/booksSlice";
-import { useState } from "react";
 
 export default function Lateral() {
     const genres = useSelector((status) => status.books?.genres);
     const counters = useSelector((status) => status.books?.counters);
-
-    const [valueRange, setValueRange] = useState(0);
+    const genreFilter = useSelector((status) => status.books?.genreFilter);
 
     const dispatch = useDispatch();
 
@@ -15,11 +13,6 @@ export default function Lateral() {
         const { value, name } = event.target;
         if (name === "range") dispatch(filterByRange(value));
         else dispatch(filerByGenre(value));
-    };
-
-    const handleRange = (event) => {
-        const { value } = event.target;
-        setValueRange(value);
     };
 
     return (
@@ -33,17 +26,17 @@ export default function Lateral() {
                         name="range"
                         type="range"
                         id="pages"
-                        onChange={handleChange}
                         max={1500}
-                        onInput={handleRange}
-                        defaultValue={valueRange}
+                        onChange={handleChange}
+                        defaultValue={counters.numPages}
+                        value={counters.numPages}
                     />
-                    <span>{valueRange}</span>
+                    <span>{counters.numPages}</span>
                 </div>
             </div>
             <div className="select">
                 <label htmlFor="genre">Genero</label>
-                <select id="genre" defaultValue="All genres" onChange={handleChange}>
+                <select id="genre" defaultValue="All genres" onChange={handleChange} value={genreFilter} >
                     <option value="All genres">Todos</option>
                     {genres?.map((genre, index) => (
                         <option key={index} value={genre}>
