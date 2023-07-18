@@ -73,10 +73,20 @@ export class MainComponent implements OnInit {
   }
 
   selectBook(item: any) {
+    // Obtener la lista existente del localStorage
+    const storedList = window.localStorage.getItem('books');
+    const existingList = storedList ? JSON.parse(storedList) : [];
+  
+    // Agregar el nuevo elemento a la lista existente
+    existingList.push(item);
+  
+    // Actualizar el localStorage con la lista actualizada
+    this.generalService.updateLocalStorageBooks(existingList);
+  
+    // Resto del código...
     this.generalService.nuevaLista.push(item);
     this.generalService.contador = true;
     this.generalService.miLista = true;
-    this.generalService.updateLocalStorageBooks(this.generalService.nuevaLista);
     this.refreshLocalstorage();
   }
 
