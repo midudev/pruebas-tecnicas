@@ -5,9 +5,12 @@ import DropDownFilter from './Components/DropDownFilter'
 import SliderFilter from './Components/SliderFilter'
 import { useDispatch } from 'react-redux'
 import { fetchBooks } from './redux/booksSlice'
+import FiltersDisplay from './Components/FiltersDisplay'
+import { useSelector } from 'react-redux'
 
 function App() {
   const dispatch = useDispatch()
+  const { booksList } = useSelector((state) => state.books)
   useEffect(() => {
     dispatch(fetchBooks())
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -20,9 +23,10 @@ function App() {
         <p>Available books</p>
         <div className="w-50 flex gap-3 p-4 items-center flex-col  sm:w-full sm:flex-row sm:justify-evenly">
           <SliderFilter />
-          <DropDownFilter />
+          <DropDownFilter booksList={booksList} />
         </div>
-        <DispplayBooks />
+        <FiltersDisplay />
+        <DispplayBooks booksList={booksList} />
       </div>
     </div>
   )

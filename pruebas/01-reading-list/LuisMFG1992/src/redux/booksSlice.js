@@ -26,6 +26,9 @@ export const booksSlice = createSlice({
   name: 'books',
   initialState: {
     booksList: [],
+    genresFilter: [],
+    pagesFilter: null,
+    selectedFilters: [],
   },
   reducers: {},
   extraReducers: (builder) => {

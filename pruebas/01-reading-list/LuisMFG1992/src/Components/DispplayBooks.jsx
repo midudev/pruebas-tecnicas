@@ -1,7 +1,4 @@
-import { useSelector } from 'react-redux'
-
-const DispplayBooks = () => {
-  const { booksList } = useSelector((state) => state.books)
+const DispplayBooks = ({ booksList }) => {
   return (
     <div className="flex flex-wrap  gap-4 p-4 justify-center items-center">
       {booksList.map((element) => (
