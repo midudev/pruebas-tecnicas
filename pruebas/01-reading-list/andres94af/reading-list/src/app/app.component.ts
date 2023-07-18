@@ -21,18 +21,30 @@ export class AppComponent {
   isFiltered:boolean = false;
 
   constructor(private bookService:BookService){
-    this.getBooks();
+    if (!this.bookService.existLocalstorage()) {
+      this.getBooks();
+    }else {
+      this.getBooksFromLocalstorage();
+    }
   }
 
   getBooks(){
-    this.bookService.getBooks().subscribe({
+    this.bookService.getDataBooks().subscribe({
       next: data => {
         this.books = data.library.map((item: { book: Book }) => item.book);
         this.getGenreList(this.books);
         this.maxPage = this.getMaxNumberPages(this.books);
+        this.bookService.saveToLocalstorage(this.books, this.readingList);
       },
       error: err => console.log(err)
     });
+  }
+
+  getBooksFromLocalstorage(){
+    this.books = this.bookService.getBooksFromLocalstorage();
+    this.readingList = this.bookService.getReadingListFromLocalstorage();
+    this.getGenreList(this.books);
+    this.maxPage = this.getMaxNumberPages(this.books);
   }
 
   reciveReadingListBook(book:Book){
@@ -57,7 +69,7 @@ export class AppComponent {
   }
 
   clearFilter(){
-    this.bookService.getBooks().subscribe({
+    this.bookService.getDataBooks().subscribe({
       next: data => {
         this.books = data.library.map((item: { book: Book }) => item.book);
         this.isFiltered = false;
