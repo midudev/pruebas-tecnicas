@@ -1,10 +1,11 @@
-import List from '../list/list';
+import DashboardPage from '../../pages/dashboard/dashboard';
+import Header from '../header/header';
 
 export default function App() {
 	return (
 		<>
-			<h1>Reading list</h1>
-			<List></List>
+			<Header></Header>
+			<DashboardPage></DashboardPage>
 		</>
 	);
 }

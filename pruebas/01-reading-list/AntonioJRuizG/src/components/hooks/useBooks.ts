@@ -5,8 +5,11 @@ import {
 	BookId,
 	deleteBookByISBN,
 	loadNewBooks,
+	updateBook,
 } from '../../store/books/slice';
 import { useEffect } from 'react';
+
+const NO_BOOKS: number = 0;
 
 export default function useBooks(repo: BooksRepo) {
 	const books = useAppSelector((state) => state.books);
@@ -21,9 +24,20 @@ export default function useBooks(repo: BooksRepo) {
 		dispatch(loadNewBooks(books));
 	};
 
+	const selectBook = (book: BookProps) => {
+		dispatch(updateBook(book));
+	};
+
 	const deleteBook = (id: BookId) => {
 		dispatch(deleteBookByISBN(id));
 	};
 
-	return { books, deleteBook, loadBooks };
+	const booksCount = {
+		avaibleBooks:
+			books.filter((book) => book.isSelected === false)!.length || NO_BOOKS,
+		selectedBooks:
+			books.filter((book) => book.isSelected === true)!.length || NO_BOOKS,
+	};
+
+	return { books, deleteBook, loadBooks, selectBook, booksCount };
 }
