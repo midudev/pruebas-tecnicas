@@ -7,7 +7,7 @@ export default function Books() {
 
   return (
     <section className="flex flex-col flex-1 gap-8">
-      <ul className="grid grid-cols-[repeat(auto-fill,165px)] gap-8 justify-center">
+      <ul className="grid grid-cols-[repeat(auto-fill,160px)] gap-8 justify-center">
         {filteredBooks.map((book) => <Book key={book.title} book={book} />)}
       </ul>
     </section>

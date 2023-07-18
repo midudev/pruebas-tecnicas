@@ -24,12 +24,15 @@
 
 :root {
   /* variables */
-  --color: #ffffffde;
-  --bg-color: #242424;
+  --color: #dedede;
+  --bg-color: #000000;
 
   /* default */
   line-height: 1.2;
   font-weight: 400;
+
+  height: 100%;
+  width: 100%;
 
   color-scheme: light dark;
   color: var(--color);
