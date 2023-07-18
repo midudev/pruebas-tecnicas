@@ -14,7 +14,6 @@ function App() {
   const dispatch = useDispatch()
   const { booksList } = useSelector((state) => state.books)
   const { selectedFilters } = useSelector((state) => state.books)
-  console.log(selectedFilters)
 
   const setGenre = new Set(booksList.map((element) => element.book.genre))
   const filterGenre = [...setGenre]
@@ -25,7 +24,7 @@ function App() {
   }, [])
 
   return (
-    <div className="w-full  bg-gray-001 flex justify-center items-center min-h-screen">
+    <div className="w-full  bg-[#202124] flex justify-center items-center min-h-screen">
       <div className="w-full px-5 pt-10 sm:px-0 sm:w-[90%] max-w-[2000px] min-h-screen flex items-center flex-col">
         <h1 className="text-3xl">Book Tracker</h1>
         <p>Available books</p>

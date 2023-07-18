@@ -26,7 +26,7 @@ export const booksSlice = createSlice({
   name: 'books',
   initialState: {
     booksList: [],
-    selectedFilters: [],
+    selectedFilters: ['Fantasia', 'Accion', 'Terror'],
   },
   reducers: {
     handleDropDownFilter: (state, action) => {

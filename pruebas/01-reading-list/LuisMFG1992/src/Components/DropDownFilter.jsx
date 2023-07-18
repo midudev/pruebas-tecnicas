@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 const DropDownFilter = ({ filterGenre }) => {
   const dispatch = useDispatch()
 
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
   // const [selectedOption, setSelectedOption] = useState('')
 
   const toggleMenu = () => {
