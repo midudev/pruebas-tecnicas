@@ -8,8 +8,7 @@
 }
 
 .barra-filtros {
-      height: 50px;
-      padding: 20px 0;
+      height: 60px;
       display: flex;
       align-items: center;
       flex-wrap: wrap;
@@ -28,6 +27,12 @@ label {
       font-family: var(--tipo-principal);
       font-weight: 600;
       color: var(--negros);
+}
+
+.seccion-filtro{
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
 }
 
 .caja-milista {
@@ -55,7 +60,7 @@ label {
 }
 
 .contenedor-milista h2 {
-      width: 88%;
+      width: 87%;
       margin-top: 10px;
 }
 
@@ -68,7 +73,6 @@ label {
 @media (max-width:870px) {
       .contenedor-milista h2 {
             font-size: 18px;
-            width: 60%;
       }
 
       .barra-filtros {
@@ -79,7 +83,7 @@ label {
 @media (max-width:600px) {
 
       .barra-filtros .content-filtros {
-            justify-content: center;
+            justify-content: flex-start;
       }
 
       .btn-hamburguesa[_ngcontent-ddy-c49] {

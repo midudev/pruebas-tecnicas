@@ -14,7 +14,6 @@ export class MainComponent implements OnInit {
   books: any = [];
   genres: string[] = [];
   bookSelect: boolean = false;
-  nuevaLista: string[] = [];
   misBooks: any[] = [];
   activo:boolean = this.generalService.activo;
 
@@ -75,13 +74,10 @@ export class MainComponent implements OnInit {
 
   selectBook(item: any) {
     this.generalService.nuevaLista.push(item);
-    const miLista = JSON.stringify(this.generalService.nuevaLista);
-    window.localStorage.setItem('books', miLista);
     this.generalService.contador = true;
     this.generalService.miLista = true;
-    this.refreshLocalstorage();
-    this.generalService.nuevaLista.push(item);
     this.generalService.updateLocalStorageBooks(this.generalService.nuevaLista);
+    this.refreshLocalstorage();
   }
 
   quitarBook(title: string) {

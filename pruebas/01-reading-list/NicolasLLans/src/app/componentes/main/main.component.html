@@ -1,13 +1,17 @@
 <nav class="barra-filtros">
       <section class="content-filtros">
-            <label>Filtrar por Páginas</label>
-            <input type="range" name="page" id="page" [(ngModel)]="maxPages" min="50" max="1500" step="250">
-            <span>{{ maxPages }}</span>
-            <label>Filtrar por Género</label>
-            <select [(ngModel)]="selectedGenre">
-                  <option value="">Todos los géneros</option>
-                  <option *ngFor="let genre of genres" [value]="genre">{{ genre }}</option>
-            </select>
+            <div class="seccion-filtro">
+                  <label>Filtrar por Páginas</label>
+                  <input type="range" name="page" id="page" [(ngModel)]="maxPages" min="50" max="1500" step="250">
+                  <span>{{ maxPages }}</span>
+            </div>
+            <div class="seccion-filtro">
+                  <label>Filtrar por Género</label>
+                  <select [(ngModel)]="selectedGenre">
+                        <option value="">Todos los géneros</option>
+                        <option *ngFor="let genre of genres" [value]="genre">{{ genre }}</option>
+                  </select>
+            </div>
       </section>
 </nav>
 <ul class="grilla">

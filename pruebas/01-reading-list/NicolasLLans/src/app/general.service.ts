@@ -9,16 +9,16 @@ import { Observable, Subject } from 'rxjs';
 export class GeneralService {
 
   activo: boolean = false;
-  nuevaLista: string[] = [];
+  nuevaLista: any[] = [];
   contador: boolean = false;
   miLista: boolean = false;
 
 
   constructor(private http: HttpClient) {
-    const localStorageBooks = window.localStorage.getItem('books');
-    if (localStorageBooks) {
-      this.nuevaLista = JSON.parse(localStorageBooks);
-    }
+    // const localStorageBooks = window.localStorage.getItem('books');
+    // if (localStorageBooks) {
+    //   this.nuevaLista = JSON.parse(localStorageBooks);
+    // }
   }
 
   onActive() {

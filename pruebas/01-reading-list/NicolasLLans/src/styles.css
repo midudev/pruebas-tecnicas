@@ -49,6 +49,7 @@ button {
 button:hover {
       border: 1px solid var(--blanco);
       border-radius: 50%;
+      background-color: var(--color-detalle);
 }
 
 .icono {
