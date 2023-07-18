@@ -1,12 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
       --color-principal: #3cc47c;
-      --color-secundario: #1e392a;
-      --color-detalle: #e9c893;
+      --color-secundario: #f0eee2;
+      --color-detalle: #db4a4a;
       --color-grises: #828081;
-      --negros: #333;
-      --blanco: #fef;
-      --tipo-principal:"Ubuntu", sans-serif;
+      --negros: #272935;
+      --blanco: #fdfcf7;
+      --tipo-principal: "Ubuntu", sans-serif;
 }
 
 * {
@@ -16,9 +16,8 @@
 }
 
 body {
-      margin: 0;
-      padding: 10px 0 0 0;
       height: 100vh;
+      background-color: var(--blanco);
 }
 
 li {
@@ -33,13 +32,21 @@ h5,
 h6 {
       margin: 8px 0;
       font-family: var(--tipo-principal);
+      color: var(--negros);
 }
 
-button{
-      border:none;
+p {
+      font-family: var(--tipo-principal);
+      font-weight: 400;
+      color: var(--color-grises);
+}
+
+button {
+      border: none;
       background-color: transparent;
 }
-button:hover{
+
+button:hover {
       border: 1px solid var(--blanco);
       border-radius: 50%;
 }
@@ -82,7 +89,7 @@ button:hover{
       color: var(--negros);
 }
 
-.contador{
+.contador {
       background-color: var(--color-principal);
       border-radius: 50%;
       width: 20px;
@@ -97,6 +104,7 @@ button:hover{
       top: 4px;
 }
 
+/* estilos de los cta*/
 .cta svg {
       position: relative;
       top: 0;
@@ -122,3 +130,35 @@ button:hover{
 .cta:active {
       transform: scale(0.95);
 }
+
+/* estilos de los scrollbar*/
+::-webkit-scrollbar {
+      display: none;
+}
+
+::-webkit-scrollbar {
+      display: block;
+      opacity: 0.5;
+}
+
+::-webkit-scrollbar {
+      width: 5px;
+      /* Ancho de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-track {
+      background-color: var(--blanco);
+      /* Color de fondo de la pista de desplazamiento */
+}
+
+::-webkit-scrollbar-thumb {
+      background-color: var(--color-principal);
+      border-radius: 10px;
+      /* Color del pulgar de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-thumb:hover {
+      background-color: var(--color-secundario);
+      /* Color del pulgar de la barra de desplazamiento en estado de hover */
+}
+

@@ -9,13 +9,14 @@ import { GeneralService } from 'src/app/general.service';
 
 export class MainComponent implements OnInit {
 
-  maxPages: number = 1500;
+  maxPages: number = 1300;
   selectedGenre: string | null = null;
   books: any = [];
   genres: string[] = [];
   bookSelect: boolean = false;
   nuevaLista: string[] = [];
   misBooks: any[] = [];
+  activo:boolean = this.generalService.activo;
 
 
   constructor(public generalService: GeneralService) { }
@@ -23,6 +24,10 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     this.getLibrary();
     this.refreshLocalstorage();
+  }
+
+  verMiLista(){
+    this.generalService.miLista=!this.generalService.miLista;
   }
 
   getLibrary(): void {

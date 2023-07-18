@@ -1,6 +1,6 @@
 .nav-desktop {
-      width: 25%;
       display: flex;
+      padding: 10px;
 }
 
 .btn-hamburguesa {
@@ -27,12 +27,12 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            position: absolute;
+            position: fixed;
             top: 0;
-            right: 0;
+            left: 0;
             width: 40%;
             height: 100%;
-            background-color: var(--color-principal);
+            background-color: var(--color-secundario);
             padding: 10px 10px 0;
             min-width: 200px;
       }

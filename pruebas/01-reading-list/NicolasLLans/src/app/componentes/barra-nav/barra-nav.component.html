@@ -2,7 +2,6 @@
       <img class="icono" src="https://i.imgur.com/7xygCwI.png" alt="">
 </div>
 <nav class="nav-desktop">
-      <li class="cta"><span>Libros</span></li>
       <li class="cta" (click)="verMiLista()">
             <span>Mi lista</span><i class="contador">{{ misBooks.length }}</i>
       </li>      
@@ -16,10 +15,7 @@
       <button class="btn-hamburguesa" (click)="onActive()">
             <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m249-207-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
       </button>
-      <li class="cta">
-            <span>Libros</span>
-      </li>
-      <li class="cta" (click)="verMiLista()">
+      <li class="cta" (click)="verMiLista()" (click)="onActive()">
             <span>Mi lista</span><i class="contador">{{ misBooks.length }}</i>
       </li>      
 </nav>

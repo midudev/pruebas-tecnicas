@@ -1,7 +1,9 @@
 <nav class="barra-filtros">
       <section class="content-filtros">
+            <label>Filtrar por Páginas</label>
             <input type="range" name="page" id="page" [(ngModel)]="maxPages" min="50" max="1500" step="250">
-            <span>{{ maxPages }} Pág.</span>
+            <span>{{ maxPages }}</span>
+            <label>Filtrar por Género</label>
             <select [(ngModel)]="selectedGenre">
                   <option value="">Todos los géneros</option>
                   <option *ngFor="let genre of genres" [value]="genre">{{ genre }}</option>
@@ -9,14 +11,21 @@
       </section>
 </nav>
 <ul class="grilla">
+      <div class="caja-milista" *ngIf="generalService.miLista">
+            <div class="contenedor-milista">
+                  <button class="btn-hamburguesa" (click)="verMiLista()">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                              <path
+                                    d="m249-207-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />
+                        </svg>
+                  </button>
+                  <h2>Mi lista de lectura</h2>
+                  <li *ngFor="let item of misBooks">
+                        <img [src]="item.book.cover" width="140px" height="200px" (click)="quitarBook(item.book.title)">
+                  </li>
+            </div>
+      </div>
       <li *ngFor="let item of filteredBooks">
             <img [src]="item.book.cover" width="140px" height="200px" (click)="selectBook(item)">
       </li>
 </ul>
-
-<div class="contenedor-milista" *ngIf="generalService.miLista">
-      <h2>Mi lista de lectura</h2>
-      <li *ngFor="let item of misBooks">
-            <img [src]="item.book.cover" width="140px" height="200px" (click)="quitarBook(item.book.title)">
-      </li>
-</div>

@@ -3,51 +3,100 @@
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      padding: 15px;
+      padding: 10px;
       justify-content: flex-start;
 }
 
 .barra-filtros {
-      margin-top: 10px;
-      height: 40px;
+      height: 50px;
+      padding: 20px 0;
       display: flex;
       align-items: center;
-      background-color: var(--negros);
       flex-wrap: wrap;
       justify-content: space-around;
 }
 
-.barra-filtros .content-filtros{
+.barra-filtros .content-filtros {
       width: 77%;
       display: flex;
-      flex-wrap: wrap-reverse;
+      flex-wrap: wrap;
       gap: 10px;
 }
 
-.barra-filtros .content-filtros span{
+.barra-filtros .content-filtros span,
+label {
       font-family: var(--tipo-principal);
       font-weight: 600;
-      color: var(--blanco);
+      color: var(--negros);
 }
 
-.contenedor-milista{
+.caja-milista {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 280px;
-      padding: 20px;
-      min-height: 650px;
-      max-height: 650px;
-      overflow-y: scroll;
-      background-color: var(--color-detalle);
+      top: 20%;
+      right: 15%;
+      left: 15%;
+      border: 1px solid var(--color-grises);
+      border-radius: 10px;
+      padding: 15px;
+      background-color: var(--color-secundario);
+      box-shadow: var(--negros) 10px 10px 20px;      
 }
 
-@media (max-width:470px) {
-      .barra-filtros{
-            height: 95px;
+.contenedor-milista {
+      display: flex;
+      width: 100%;
+      gap: 12px;
+      padding: 0 8px;
+      min-height: 319px;
+      height: 400px;
+      overflow-y: scroll;
+      background-color: var(--color-secundario);
+      flex-wrap: wrap;
+}
+
+.contenedor-milista h2 {
+      width: 88%;
+      margin-top: 10px;
+}
+
+.btn-hamburguesa {
+      width: 56px;
+      height: 56px;
+}
+
+
+@media (max-width:870px) {
+      .contenedor-milista h2 {
+            font-size: 18px;
+            width: 60%;
       }
 
-      .barra-filtros .content-filtros{
+      .barra-filtros {
+            height: 200px;
+      }
+}
+
+@media (max-width:600px) {
+
+      .barra-filtros .content-filtros {
             justify-content: center;
+      }
+
+      .btn-hamburguesa[_ngcontent-ddy-c49] {
+            width: 15%;
+            height: 56px;
+      }
+
+      .grilla {
+            padding: 0 10px;
+            justify-content: center;
+      }
+}
+
+@media (max-width:399px) {
+      img {
+            width: 100px;
+            aspect-ratio: auto 100 / 140;
+            height: 140px;
       }
 }
