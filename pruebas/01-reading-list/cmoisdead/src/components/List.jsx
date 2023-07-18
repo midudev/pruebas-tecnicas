@@ -9,9 +9,9 @@ export const List = () => {
   }), shallow);
 
   return (
-    <div className="w-3/5">
-      <h1 className="text-2xl font-bold capitalize">
-        {library?.length - current?.length} on library
+    <div className="w-11/12">
+      <h1 className="text-2xl font-bold capitalize text-center my-3">
+        {library?.length - current?.length || 0} on library
       </h1>
       <div className="flex flex-wrap content-start gap-4">
         {library?.map(({ book }, i) => (
