@@ -22,16 +22,16 @@ const BookList = ({ title, books, droppableId }) => {
                             >
                                 {(provided) => (
                                     <li
+                                        className="pb-4"
+                                        key={book.ISBN}
                                         ref={provided.innerRef}
                                         {...provided.draggableProps}
                                         {...provided.dragHandleProps}
                                     >
-                                        <div className="pb-4" key={book.ISBN}>
-                                            <Card
-                                                book={book}
-                                                isSelected={isBooksSelected}
-                                            />
-                                        </div>
+                                        <Card
+                                            book={book}
+                                            isSelected={isBooksSelected}
+                                        />
                                     </li>
                                 )}
                             </Draggable>
