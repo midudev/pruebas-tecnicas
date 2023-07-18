@@ -30,5 +30,8 @@ export default function useBooks(repo: BooksRepo) {
 		dispatch(deleteBookByISBN(id));
 	};
 
-	return { books, deleteBook, loadBooks, selectBook };
+	const avaibleBooks =
+		books.filter((book) => book.isSelected === false)!.length.toString() || '0';
+
+	return { books, deleteBook, loadBooks, selectBook, avaibleBooks };
 }
