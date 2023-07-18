@@ -3,7 +3,7 @@ import HeaderSocialLink from "./HeaderSocialLink.astro";
 import DarkModeToggle from "./DarkModeToggle.astro";
 ---
 
-<header class="">
+<header class="pt-2 md:pt-0 gap-y-2">
   <a
     class="unset absolute z-10 left-[50%] -top-[100rem] translate-x-[-50%] bg-white text-black px-8 py-2 focus:top-[initial]"
     href="#main"
@@ -12,7 +12,7 @@ import DarkModeToggle from "./DarkModeToggle.astro";
   </a>
 
   <div
-    class="justify-self-center py-2 gap-x-2 flex items-center content-center text-text-bold"
+    class="justify-self-center py-2 gap-x-2 md:gap-x-6 flex items-center content-center text-text-bold"
   >
   <HeaderSocialLink
     class="dark:hover:text-purple-400"
