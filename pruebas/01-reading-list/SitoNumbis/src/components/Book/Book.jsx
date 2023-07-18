@@ -61,11 +61,6 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
   }, [libraryState]);
 
   const classBook = useMemo(() => {
-    console.log(
-      "hola?",
-      libraryState.seeing === "all",
-      libraryState.readingList.has(ISBN)
-    );
     // if the book is in the reading list and the user is seeing the reading list
     // or the book isn't in the reading list and the user is seeing all available books it will be countable
     if (
