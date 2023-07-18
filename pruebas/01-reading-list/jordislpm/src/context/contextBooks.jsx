@@ -90,6 +90,22 @@ function reducer(state, action){
                 
             }
         };
+        case "syncTabs":{
+            const newRead = action.book;
+            const newListBooks=newRead.listBooks;
+            const newListRead=newRead.listRead;
+            localStorage.setItem("books", JSON.stringify({
+                ...state,
+                listRead: newListRead,
+                listBooks:newListBooks 
+            }))           
+            return {
+                ...state,
+                listRead: newListRead,
+                listBooks:newListBooks
+                
+            }
+        };
     }
     };
 

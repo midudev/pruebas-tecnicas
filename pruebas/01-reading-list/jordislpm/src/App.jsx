@@ -22,10 +22,11 @@ function App() {
 
   useEffect(()=>{
    window.addEventListener('storage',event =>{
+    const newStateLocal = JSON.parse(event.newValue)
       if(event.key === "books"){
 
         if(JSON.parse(event.newValue).listBooks.length !== listBooks.length){
-          
+          dispatch({type:"syncTabs", book:newStateLocal})
           
          }
       }
