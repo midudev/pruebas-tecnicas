@@ -1,1 +1,7 @@
-<p>reading-list works!</p>
+<h2>My reading list</h2>
+
+<ul class="grid gap-2 grid-cols-1">
+  <li *ngFor="let book of readingList()">
+    <app-book-item [book]="book" />
+  </li>
+</ul>

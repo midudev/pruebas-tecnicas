@@ -1,6 +1,5 @@
 <div
   class="card card-compact w-full bg-neutral text-neutral-content rounded transition-all hover:contrast-75 container"
-  [ngClass]="{ isFavorite: isFavorite }"
 >
   <div class="card-body items-center text-center">
     <figure class="relative">
@@ -10,7 +9,7 @@
           (click)="toggleFavorite()"
         >
           <span class="font-bold text-lg">
-            {{ !isFavorite() ? '♡' : '♥' }}
+            {{ !book.isFavorite ? '♡' : '♥' }}
           </span>
         </button>
       </label>

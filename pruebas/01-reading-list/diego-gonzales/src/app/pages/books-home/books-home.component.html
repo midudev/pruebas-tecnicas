@@ -1,21 +1,23 @@
+<section class="mb-4">
+  <h2>6 books available</h2>
+  <h3>2 books on the reading list</h3>
+</section>
+
+<section class="mb-4">
+  <app-book-filters />
+</section>
+
 <div
-  class="p-4 grid gap-2 md:gap-4 grid-cols-1 w-full max-w-screen-2xl mx-auto"
-  [ngClass]="{ 'md: grid-cols-[2fr_1fr]': readingList.length > 0 }"
+  class="grid grid-cols-1 gap-8 w-full max-w-screen-2xl mx-auto"
+  [ngClass]="{
+    'md:grid-cols-[2fr_1fr]': readingList().length > 0
+  }"
 >
   <div>
-    <section class="mb-4">
-      <h2>6 books available</h2>
-      <h3>2 books on the reading list</h3>
-    </section>
-
-    <section class="mb-4">
-      <app-book-filters />
-    </section>
-
     <app-book-list />
   </div>
 
-  <aside>
+  <aside *ngIf="readingList().length > 0">
     <app-reading-list />
   </aside>
 </div>

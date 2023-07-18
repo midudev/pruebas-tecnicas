@@ -25,4 +25,16 @@ export class BooksService {
       .pipe(map((resp) => resp.library.map((item) => item.book)))
       .subscribe((resp) => this._bookList.set(resp));
   }
+
+  updateReadingList(book: Book, isFavorite: boolean) {
+    this._bookList.mutate((value) => {
+      const bookIndex = value.findIndex((b) => b.ISBN === book.ISBN);
+      value[bookIndex].isFavorite = isFavorite;
+    });
+
+    this._readingList.mutate((value) => {
+      const bookIndex = value.findIndex((b) => b.ISBN === book.ISBN);
+      bookIndex === -1 ? value.unshift(book) : value.splice(bookIndex, 1);
+    });
+  }
 }
