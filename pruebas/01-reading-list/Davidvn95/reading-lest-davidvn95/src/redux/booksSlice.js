@@ -8,7 +8,7 @@ const initialState = {
     copyShow: [],
     all: show || [],
     reading: isReading || [],
-    genreFilter: '',
+    genreFilter: "",
     genres: [],
     counters: {
         total: 0,
@@ -117,7 +117,15 @@ export const booksSlice = createSlice({
         // filtra por rango de paginas
         filterByRange: (state, action) => {
             state.counters.numPages = action.payload;
-            state.show = state.copyShow.filter((book) => book.book.pages >= action.payload);
+            if (state.genreFilter === "All genres" || state.genreFilter === "") {
+                state.show = state.copyShow.filter(
+                    (book) => book.book.pages >= action.payload
+                );
+            } else {
+                state.show = state.copyShow.filter(
+                    (book) => book.book.pages >= action.payload && book.book?.genre === state.genreFilter
+                );
+            }
             state.counters.byGenre = state.show.length;
         },
 
