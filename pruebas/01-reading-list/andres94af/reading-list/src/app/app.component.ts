@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Book } from './model/book.model';
 import { BookService } from './service/book.service';
 
@@ -95,6 +95,12 @@ export class AppComponent {
     this.books = this.books.filter(book => book.pages >= this.pageFiltered);
     this.pageFiltered = 0;
     this.isFiltered = true;
+  }
+
+  @HostListener('window:storage', ['$event'])
+  onStorageChange(event:StorageEvent){
+    console.log(event)
+    window.location.reload();
   }
 
 }
