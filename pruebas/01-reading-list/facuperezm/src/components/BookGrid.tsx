@@ -7,8 +7,8 @@ interface BookGridProps {
 
 function BookGrid({ books, handleSelect }: BookGridProps) {
 	return (
-		<section className='flex-1 p-4 rounded-md'>
-			<ul className='grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] content-start gap-2 min-h-screen'>
+		<article className='flex-1 rounded-md'>
+			<ul className='grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] content-start gap-2 min-h-screen'>
 				{books.map(book => (
 					<li key={book.title}>
 						<button
@@ -23,7 +23,7 @@ function BookGrid({ books, handleSelect }: BookGridProps) {
 					</li>
 				))}
 			</ul>
-		</section>
+		</article>
 	)
 }
 

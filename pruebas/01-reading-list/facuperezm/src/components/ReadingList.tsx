@@ -1,3 +1,4 @@
+import { X } from 'lucide-react'
 import { Book } from '../types'
 
 interface ReadingListProps {
@@ -7,8 +8,8 @@ interface ReadingListProps {
 
 function ReadingList({ books, handleRemove }: ReadingListProps) {
 	return (
-		<section className='p-4 text-white rounded-md w-52 bg-zinc-600 animate-showlist'>
-			<h2 className='py-2 text-2xl font-bold text-center delay-1000 animate-showlist'>
+		<section className='p-4 ml-2 rounded-md text-secondary-foreground w-72 bg-secondary animate-show-list'>
+			<h2 className='pb-2 text-3xl font-semibold tracking-tight transition-colors border-b scroll-m-20 first:mt-0'>
 				Selected Books
 			</h2>
 			<ol>
@@ -23,10 +24,10 @@ function ReadingList({ books, handleRemove }: ReadingListProps) {
 								className='block object-cover rounded-lg will-change-transform aspect-[7.25/11]'
 							/>
 							<button
-								className='absolute flex items-center justify-center w-2 p-4 py-1 text-2xl font-bold text-center border-none rounded-md cursor-pointer bg-zinc-700 align-center top-1 right-1 font-white animate-showlist'
+								className='absolute text-2xl font-bold text-center border-none rounded-md cursor-pointer bg-secondary-background align-center backdrop-blur-lg top-1 right-1 font-secondary-foreground animate-show-list'
 								onClick={() => handleRemove(book)}
 							>
-								X
+								<X />
 							</button>
 						</li>
 					)
