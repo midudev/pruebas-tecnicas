@@ -29,6 +29,7 @@ export default function Lateral() {
                 <label htmlFor="pages">N° Páginas</label>
                 <div>
                     <input
+                        className="range-input"
                         name="range"
                         type="range"
                         id="pages"

@@ -13,7 +13,7 @@ const NavBar = () => {
     };
     return (
         <header className="navbar">
-            <h1 className="title">
+            <h1>
                 <span className="title-light">good</span>reads
             </h1>
             <div className="search">

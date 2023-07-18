@@ -19,6 +19,7 @@ const MyBooks = () => {
                         />
                     );
                 })}
+                {!reading.length && <span>No tienes libros en tu lista, agrega uno ahora</span>}
             </div>
         </section>
     );

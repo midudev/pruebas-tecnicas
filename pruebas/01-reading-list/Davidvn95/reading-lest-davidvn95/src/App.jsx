@@ -19,8 +19,8 @@ function App() {
         <main>
             <NavBar />
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/mybooks" element={<MyBooks />} />
+                <Route exact path="/" element={<Home />} />
+                <Route exact path="/mybooks" element={<MyBooks />} />
             </Routes>
         </main>
     );

@@ -39,12 +39,6 @@
     background-color: rgba(110, 84, 18, 0.349);
 }
 
-.count {
-    color: rgb(110, 84, 18);
-    font-weight: bolder;
-    font-size: x-large;
-}
-
 .search{
     display: flex;
     flex-direction: row;

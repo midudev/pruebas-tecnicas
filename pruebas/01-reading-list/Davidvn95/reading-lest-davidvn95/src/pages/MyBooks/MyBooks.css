@@ -3,9 +3,7 @@
     flex-direction: column;
     width: 100%;
     min-height: 100vh;
-    /* padding: 3rem 0; */
     justify-content: flex-start;
-    /* gap: 3rem; */
     color: rgb(110, 84, 18);
 }
 
@@ -15,4 +13,5 @@
     width: 100%;
     justify-content: center;
     gap: 3rem;
+    font-size: xx-large;
 }

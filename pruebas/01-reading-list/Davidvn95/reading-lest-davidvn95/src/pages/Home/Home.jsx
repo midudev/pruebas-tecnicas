@@ -21,6 +21,7 @@ export default function Home() {
                         />
                     );
                 })}
+                {!books.length && <span>No se encontraron libros</span>}
             </div>
         </section>
     );

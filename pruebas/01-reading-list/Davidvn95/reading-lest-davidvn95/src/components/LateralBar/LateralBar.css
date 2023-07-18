@@ -45,10 +45,39 @@
     display: flex;
     flex-direction: row;
     gap: 1rem;
+    align-items: center;
 }
 
-.range > div > input{
-    width: 100%;
+.range-input{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: .7rem;
+  border-radius: 5px;
+  background: rgb(110, 84, 18);
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.range-input:hover{
+    opacity: 1;
+}
+
+.range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: rgb(110, 84, 18);
+  cursor: pointer;
+  box-shadow:0px 0px 11px 8px rgba(0,0,0,0.26);
+  background: url(https://cdn-icons-png.flaticon.com/128/7344/7344900.png) rgb(110, 84, 18);
+  background-size: 45%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .range > div > span{
