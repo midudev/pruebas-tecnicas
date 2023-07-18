@@ -3,6 +3,7 @@
   import type { Book } from '../types'
   import { InfoIcon, BookOpenIcon } from 'svelte-feather-icons'
   import { modalState } from '../store/modal-store'
+  import { readingListUsecase } from '../../features/reading-list'
 
   export let book: Book
   let showOverlay: Writable<boolean> = writable(false)
@@ -16,6 +17,10 @@
       isOpen: true,
       book
     }))
+  }
+
+  const addBookToReadingList = () => {
+    readingListUsecase.addBook(book)
   }
 </script>
 
@@ -43,7 +48,9 @@
             class="text-light duration-300 hover:text-pagination"
           /></button
         >
-        <button class="px-4 py-2 text-black cursor-pointer"
+        <button
+          class="px-4 py-2 text-black cursor-pointer"
+          on:click={addBookToReadingList}
           ><BookOpenIcon
             size="30"
             class="text-light duration-300 hover:text-pagination"

@@ -9,7 +9,7 @@ export interface StateInfra {
 }
 
 export class DefaultStateInfra implements StateInfra {
-    private readonly localStorageState = 'state';
+    private readonly localStorageStateName = 'state';
     constructor(private readonly defaultBook: DefaultBooks) {}
 
     setDefaultLibraryState(): GlobalState {
@@ -21,7 +21,7 @@ export class DefaultStateInfra implements StateInfra {
             theme: Theme.dark,
         };
 
-        localStorage.setItem(this.localStorageState, JSON.stringify(globalState));
+        localStorage.setItem(this.localStorageStateName, JSON.stringify(globalState));
 
         return globalState;
     }

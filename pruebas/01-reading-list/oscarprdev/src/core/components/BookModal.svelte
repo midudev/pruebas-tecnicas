@@ -2,9 +2,16 @@
   import { modalState } from '../store/modal-store'
   import { XIcon } from 'svelte-feather-icons'
   import { BookOpenIcon } from 'svelte-feather-icons'
+  import { readingListUsecase } from '../../features/reading-list'
 
   const closeModal = () => {
-    modalState.update((state) => ({ isOpen: false, book: null }))
+    modalState.update(() => ({ isOpen: false, book: null }))
+  }
+
+  const addBookToReadingList = () => {
+    readingListUsecase.addBook($modalState.book)
+
+    closeModal()
   }
 </script>
 
@@ -44,6 +51,7 @@
         </div>
         <button
           class="absolute flex gap-4 bottom-3 px-6 py-3 rounded-3xl text-light bg-overlayModal cursor-pointer self-center hover:bg-nav duration-300"
+          on:click={addBookToReadingList}
         >
           Añadir a lista de lectura
           <BookOpenIcon size="25" class="text-light" /></button
