@@ -1,19 +1,19 @@
-<div class="max-w-7xl mx-auto my-7">
-  <section class="mb-4">
-    <h2>{{ totalBooksAvailable() | i18nPlural: bookMapping }} available</h2>
-    <h3>
-      {{ totalBooksInReadingList() | i18nPlural: bookMapping }} on the reading
-      list
-    </h3>
-  </section>
+<section class="mb-4 text-center md:text-left">
+  <h2 class="text-base-300">
+    {{ totalBooksAvailable() | i18nPlural: bookMapping }} available
+  </h2>
+  <h3 class="text-base-300">
+    {{ totalBooksInReadingList() | i18nPlural: bookMapping }} on the reading
+    list
+  </h3>
+</section>
 
-  <section class="mb-4">
-    <app-book-filters />
-  </section>
-</div>
+<section class="mb-4">
+  <app-book-filters />
+</section>
 
 <div
-  class="grid grid-cols-1 gap-8 w-full max-w-7xl mx-auto"
+  class="grid grid-cols-1 gap-8 mt-8"
   [ngClass]="{
     'md:grid-cols-[2fr_1fr]': totalBooksInReadingList() > 0
   }"
