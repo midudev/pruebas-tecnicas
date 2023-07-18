@@ -1,25 +1,19 @@
-import { Theme, type Book, type GlobalState } from '../../types';
-
-interface DefaultBooks {
-    library: { book: Book }[];
-}
+import { type GlobalState } from '../../types';
 
 export interface StateInfra {
-    setDefaultLibraryState(): GlobalState;
+    setDefaultLibraryState(globalState: GlobalState): GlobalState
 }
 
 export class DefaultStateInfra implements StateInfra {
     private readonly localStorageStateName = 'state';
-    constructor(private readonly defaultBook: DefaultBooks) {}
+    constructor() {}
 
-    setDefaultLibraryState(): GlobalState {
-        const books = this.defaultBook.library.map((libraryItem) => ({...libraryItem.book, currentPage: 0, stars: 0}));
+    setDefaultLibraryState(globalState: GlobalState): GlobalState {
+        const currentLocalStorage = JSON.parse(localStorage.getItem('state'))
 
-        const globalState: GlobalState = {
-            books,
-            readingBooks: [],
-            theme: Theme.dark,
-        };
+        if (currentLocalStorage) {
+            return currentLocalStorage
+        }
 
         localStorage.setItem(this.localStorageStateName, JSON.stringify(globalState));
 

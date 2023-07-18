@@ -1,5 +1,6 @@
-import type { GlobalState } from '../../types';
+import type { GlobalState } from '../../types'
+import type { DefaultBooks } from './state.types'
 
 export interface StatePorts {
-    setDefaultState(): GlobalState;
+  setDefaultState(books: DefaultBooks): GlobalState
 }

@@ -7,7 +7,7 @@ export const usePagination = (booksFiltered: Readable<Book[]>, paginationState: 
     return derived<
     [Readable<Book[]>, Writable<PaginationState>], Book[]>(
         [booksFiltered, paginationState], ([$booksFiltered, $paginationState]) => {
-            return $booksFiltered.slice($paginationState.init, $paginationState.offset);
+            return $booksFiltered.length > 4 ? $booksFiltered.slice($paginationState.init, $paginationState.offset) : $booksFiltered;
         }
     );
 }

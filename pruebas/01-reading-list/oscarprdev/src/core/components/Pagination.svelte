@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { derived, readable, type Writable } from 'svelte/store'
+  import { derived, type Writable } from 'svelte/store'
   import type { PaginationState } from './types'
   import type { Book } from '../types'
   import type { Readable } from 'svelte/motion'
@@ -21,7 +21,7 @@
       offset: prevState.offset - 4,
     }))
   }
-
+  
   let leftIconIsDisabled = derived(paginationState, ($paginationState) => $paginationState.init <= 0)
   let rightIconIsDisabled = derived([paginationState, booksFiltered],([$paginationState, $booksFiltered]) => $booksFiltered &&
       $paginationState.offset >= $booksFiltered.length)

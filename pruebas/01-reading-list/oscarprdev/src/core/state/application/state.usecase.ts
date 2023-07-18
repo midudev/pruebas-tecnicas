@@ -1,26 +1,27 @@
-import { appState } from '../../store/store';
-import type { GlobalState } from '../../types';
-import type { StatePorts } from './state.ports';
+import { appState } from '../../store/store'
+import type { GlobalState } from '../../types'
+import type { StatePorts } from './state.ports'
+import type { DefaultBooks } from './state.types'
 
 export class StateUsecase {
-    private globalState: GlobalState;
+  private globalState: GlobalState
 
-    constructor(private readonly ports: StatePorts) {}
+  constructor(private readonly ports: StatePorts) {}
 
-    setDefaultState() {
-        const defaultState = this.ports.setDefaultState();
+  setDefaultState(books: DefaultBooks) {
+    const defaultState = this.ports.setDefaultState(books)
 
-        this.updateState(defaultState);
-    }
+    this.updateState(defaultState)
+  }
 
-    get state(): GlobalState {
-        return this.globalState;
-    }
+  get state(): GlobalState {
+    return this.globalState
+  }
 
-    updateState(state: Partial<GlobalState>) {
-        this.globalState = { ...this.globalState, ...state };
+  updateState(state: Partial<GlobalState>) {
+    this.globalState = { ...this.globalState, ...state }
 
-        // Svelte entry point
-        appState.set(this.globalState);
-    }
+    // Svelte entry point
+    appState.set(this.globalState)
+  }
 }
