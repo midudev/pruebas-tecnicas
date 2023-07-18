@@ -1,5 +1,7 @@
-<div class="row justify-content-start">
-  <div *ngFor="let book of books; let i = index" class="col-auto">
-    <img (click)="addReadingList(book, i)" [src]="book.cover" alt="portada-libro" class="cover-book">
+<div class="booksList">
+  <div class="row justify-content-start mx-1">
+    <div *ngFor="let book of books; let i = index" class="col-auto p-0">
+      <img (click)="addReadingList(book, i)" [src]="book.cover" alt="portada-libro" class="cover-book">
+    </div>
   </div>
 </div>

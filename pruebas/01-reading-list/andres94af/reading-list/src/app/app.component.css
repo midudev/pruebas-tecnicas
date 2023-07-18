@@ -1,13 +1,14 @@
 .nav_container{
-  padding: 0.5rem 0;
+  margin: 1rem;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
 }
 
 .nav_item{
-  margin-right: 1rem;
+  margin-right: 2rem;
 }
 
 .nav_item-form{
   display: flex;
+  margin-right: 2rem;
 }

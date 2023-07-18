@@ -1,14 +1,29 @@
 .cover-book {
+  aspect-ratio: 9/15;
   border-radius: 5px;
-  max-width: 9rem;
-  aspect-ratio: 9/14;
-  margin-right: 0rem;
-  margin-bottom: 1rem;
   cursor: pointer;
+  max-width: 8.8rem;
+  margin: 0.8rem;
+  transition: all 0.3s ease;
 }
 
 .cover-book:hover {
-  transition: 1s 0.2s;
-  transform: scale(1.5);
+  transform: scale(1.1);
   box-shadow: 0px 10px 10px -6px black;
+  z-index: 999;
+}
+
+.booksList{
+  max-height: 75vh;
+  overflow-y: scroll;
+}
+
+.booksList::-webkit-scrollbar {
+  width: 12px;
+}
+
+.booksList::-webkit-scrollbar-thumb {
+  background-color: rgb(83, 83, 181);
+  border-radius: 20px;
+  border: 3px solid rgb(219, 219, 219);
 }

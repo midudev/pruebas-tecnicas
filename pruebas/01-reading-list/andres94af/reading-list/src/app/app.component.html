@@ -3,14 +3,22 @@
 
   <nav class="nav_container">
     <div class="nav_item">
-      <h4>Libros disponibles: {{books.length}}</h4>
+      <label>Libros disponibles: {{books.length}}</label>
     </div>
+
+    <div class="nav_item-form">
+      <label class="me-1">Páginas:{{pageFiltered}}</label>
+      <input class="form-range" type="range" min="0" max="{{maxPage}}" step="50" name="pageFiltered" [(ngModel)]="pageFiltered"
+        (input)="filterByPages()">
+    </div>
+
     <div class="nav_item-form">
       <select class="form-control" [(ngModel)]="genre" name="genre">
-        <option value="" selected disabled>-Seleccione el genero-</option>
-        <option *ngFor="let gen of genres" >{{gen}}</option>
+        <option value="" selected>- Filtrar por género -</option>
+        <option *ngFor="let gen of genres">{{gen}}</option>
       </select>
-      <button class="btn btn-dark ms-1" (click)="filterByGenre()" *ngIf="!isFiltered">Filtrar</button>
+      <button class="btn btn-dark ms-1" (click)="filterByGenre()" *ngIf="!isFiltered"
+        [disabled]="genre==''">Filtrar</button>
       <button class="btn btn-dark ms-1" (click)="clearFilter()" *ngIf="isFiltered">Limpiar</button>
     </div>
   </nav>
@@ -25,7 +33,7 @@
     <!-- Sección lista de lectura -->
     <section class="col-md-4">
       <app-lista-lectura [readingList]="readingList" [books]="books"></app-lista-lectura>
-    </section>  
+    </section>
   </div>
 </main>
 

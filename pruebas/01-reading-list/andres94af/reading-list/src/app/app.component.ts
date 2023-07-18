@@ -14,7 +14,9 @@ export class AppComponent {
   books:Book[] = [];
   readingList:Book[] = [];
   genres:string[] = [];
+  maxPage:number = 0;
 
+  pageFiltered:number = 0;
   genre: string = '';
   isFiltered:boolean = false;
 
@@ -27,6 +29,7 @@ export class AppComponent {
       next: data => {
         this.books = data.library.map((item: { book: Book }) => item.book);
         this.getGenreList(this.books);
+        this.maxPage = this.getMaxNumberPages(this.books);
       },
       error: err => console.log(err)
     });
@@ -64,6 +67,22 @@ export class AppComponent {
       },
       error: err => console.log(err)
     });
+  }
+
+  getMaxNumberPages(books:Book[]){
+    var maxPages = 0;
+    books.forEach(book => {
+      if (book.pages > maxPages) {
+        maxPages = book.pages;
+      }
+    })
+    return maxPages;
+  }
+
+  filterByPages(){
+    this.books = this.books.filter(book => book.pages >= this.pageFiltered);
+    this.pageFiltered = 0;
+    this.isFiltered = true;
   }
 
 }

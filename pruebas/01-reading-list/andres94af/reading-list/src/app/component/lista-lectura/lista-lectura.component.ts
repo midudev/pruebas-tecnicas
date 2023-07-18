@@ -15,7 +15,7 @@ export class ListaLecturaComponent {
 
   removeBook(book:Book, index:number){
     this.readingList.splice(index, 1);
-    this.books.push(book);
+    this.books.unshift(book);
   }
 
 }
