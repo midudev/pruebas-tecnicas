@@ -1,31 +1,27 @@
 import { motion } from "framer-motion";
-import { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import { IBook } from "../types";
 
 export default function BookDetail() {
-  const { isbn } = useParams()
-  const { getBookDetail } = useContext(AppContext)
-  const [book, setBook] = useState<IBook>()
+  const location = useLocation()
+  const book = location.state as IBook;
   const { addToReadList, readList, removeFromReadList } = useContext(AppContext)
 
-  useEffect(() => {
-    if (!isbn) return
-    setBook(getBookDetail(isbn))
-  }, [getBookDetail, isbn])
-
-  if (!book) return <div>Book Not Found!</div>
+  if (!book) return <div>Book not found!</div>
 
   return (
     <main className="flex h-screen max-w-4xl gap-8 mx-auto">
       <article className="flex items-center gap-x-8">
-        <section className="flex flex-col items-center gap-y-4">
+        <motion.section
+          className="flex flex-col items-center gap-y-4"
+          layoutId={book.title}
+          transition={{ duration: 0.3 }}
+        >
           <motion.img
             src={book.cover}
             className="rounded-lg max-w-[300px] min-w-[300px]"
-            layoutId={book.title}
-            transition={{ duration: 0.3 }}
           />
           <Link to="/" className="w-full py-2 text-center bg-gray-300 rounded-full text-gray-950">Back to Home</Link>
           {
@@ -47,7 +43,7 @@ export default function BookDetail() {
                 </button>
               )
           }
-        </section>
+        </motion.section>
 
         <section className="flex flex-col gap-2">
           <h1 className="text-7xl font-pp">{book.title}</h1>

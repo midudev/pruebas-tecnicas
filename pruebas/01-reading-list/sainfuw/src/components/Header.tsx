@@ -1,18 +1,25 @@
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
+import { FilterByGenre } from "./FilterByGenre";
 
 export default function Header() {
-  const { books, readList } = useContext(AppContext)
+  const { books, readList, filteredBooks } = useContext(AppContext)
   const title = Array.from('BookStore')
 
   return (
-    <header className='flex items-center justify-between px-20 mt-10'>
-      <section className="flex items-center gap-10">
-        <h3 className="text-xl font-pp">Total books: {books.length}</h3>
-        {readList.length > 0 && (
-          <h3 className="text-xl font-pp">Total read books: {readList.length}</h3>
-        )}
+    <header className='flex justify-between px-20 mt-10'>
+      <section className="flex mt-6">
+        <div className="flex flex-col min-w-[240px]">
+          <h3 className="text-xl font-pp">Total books: {books.length}</h3>
+          {filteredBooks.length !== books.length && (
+            <h3 className="text-xl font-pp">Total filtered books: {filteredBooks.length}</h3>
+          )}
+          {readList.length > 0 && (
+            <h3 className="text-xl font-pp">Total read books: {readList.length}</h3>
+          )}
+        </div>
+        <FilterByGenre />
       </section>
       <motion.div
         variants={container}

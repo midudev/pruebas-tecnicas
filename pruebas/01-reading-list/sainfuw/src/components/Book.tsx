@@ -9,7 +9,6 @@ export default function Book({ book }: { book: IBook }) {
 
   return (
     <motion.li className="relative group"
-      transition={{ duration: 0.3 }}
       whileHover={{ scale: 1.2 }}
     >
       <motion.img
@@ -18,7 +17,11 @@ export default function Book({ book }: { book: IBook }) {
         layoutId={book.title}
         transition={{ duration: 0.3 }}
       />
-      <Link to={`/book/${book.ISBN}`} className="absolute left-0 right-0 py-2 m-2 bg-gray-200 rounded-full opacity-0 text-[14px] bottom-16 group-hover:opacity-100 font-pop text-xs text-gray-950 text-center">
+      <Link
+        to={`/book/${book.ISBN}`}
+        state={book}
+        className="absolute left-0 right-0 py-2 m-2 bg-gray-200 rounded-full opacity-0 text-[14px] bottom-16 group-hover:opacity-100 font-pop text-xs text-gray-950 text-center"
+      >
         View Details
       </Link>
       <button

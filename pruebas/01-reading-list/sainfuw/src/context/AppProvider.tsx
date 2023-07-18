@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useReducer } from "react";
+import { ReactNode, useEffect, useReducer, useState } from "react";
 import { library } from "../api/books.json";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { appReducer } from "../reducers/appReducer";
@@ -15,6 +15,14 @@ const API_DATA = library.map(item => item.book)
 export function AppProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(appReducer, initialState);
   const [readList, setStoredValue] = useLocalStorage('read-list', initialState.readList)
+  const [filterByGenre, setFilterByGenre] = useLocalStorage('filter-by-genre', '')
+  const [filteredBooks, setFilteredBooks] = useState<IBook[]>([])
+
+  useEffect(() => {
+    filterByGenre
+      ? setFilteredBooks(state.books.filter(book => book.genre === filterByGenre))
+      : setFilteredBooks(state.books)
+  }, [filterByGenre, state.books])
 
   useEffect(() => {
     const books = API_DATA
@@ -25,6 +33,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     dispatch({ type: 'SET_READ_LIST', payload: readList });
   }, [readList])
+
+  function setReadList(payload: IBook[]) {
+    setStoredValue(payload);
+    dispatch({ type: 'SET_READ_LIST', payload });
+  }
 
   function addToReadList(book: IBook) {
     setStoredValue([...readList, book]);
@@ -40,14 +53,21 @@ export function AppProvider({ children }: { children: ReactNode }) {
     return API_DATA.find(book => book.ISBN === isbn) as IBook;
   }
 
+  const values = {
+    books: state.books,
+    readList: state.readList,
+    addToReadList,
+    removeFromReadList,
+    getBookDetail,
+    setReadList,
+    filterByGenre,
+    setFilterByGenre,
+    filteredBooks,
+    setFilteredBooks,
+  }
+
   return (
-    <AppContext.Provider value={{
-      books: state.books,
-      readList: state.readList,
-      addToReadList,
-      removeFromReadList,
-      getBookDetail
-    }}>
+    <AppContext.Provider value={values}>
       {children}
     </AppContext.Provider>
   )

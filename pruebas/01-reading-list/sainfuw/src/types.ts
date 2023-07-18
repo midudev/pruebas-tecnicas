@@ -34,4 +34,9 @@ export interface AppContextType {
   addToReadList: (book: IBook) => void;
   removeFromReadList: (book: IBook) => void;
   getBookDetail: (isbn: string) => IBook;
+  setReadList: (books: IBook[]) => void;
+  filterByGenre: string,
+  setFilterByGenre: (genre: string) => void,
+  filteredBooks: IBook[];
+  setFilteredBooks: (books: IBook[]) => void;
 }
