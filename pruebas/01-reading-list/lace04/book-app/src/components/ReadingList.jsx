@@ -8,7 +8,7 @@ function ReadingList({ books, onRemove }) {
       <h1 className='text-4xl text-center font-bold m-5'>Lista Lectura</h1>
       <div className='text-xl mb-4'>Libros disponibles: {books.length}</div>
 
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 '>
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3'>
         {books.map((book) => (
           <div
             key={book.ISBN}
@@ -19,7 +19,7 @@ function ReadingList({ books, onRemove }) {
               alt={book.title}
               className='w-32 h-28 object-contain mt-4'
             />
-            <h3 className='md:text-xs text-center m-4 h-12'>{book.title}</h3>
+            <h3 className='md:text-xs text-center m-4 h-12 '>{book.title}</h3>
 
             <div className='absolute top-2 right-2'>
               <button onClick={() => onRemove(book)}>
