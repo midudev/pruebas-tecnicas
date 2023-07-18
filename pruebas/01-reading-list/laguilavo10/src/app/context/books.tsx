@@ -2,6 +2,7 @@
 import { PropsWithChildren, createContext, useContext, useReducer } from 'react'
 import { library } from '../../../../books.json'
 import type { Book, Books } from '../types'
+import { Action, reducer } from '../utils/reducer'
 
 export interface BooksContext {
   bookList: Book[]
@@ -15,46 +16,25 @@ interface Reducer {
 
 export type ActionType = 'AddToReadingList' | 'RemoveFromReadingList'
 
-interface Action {
-  type: ActionType
-  payload: Book
+const DEFAULT_VALUE_STATE = () => {
+  const books = localStorage.getItem('books')
+  if (typeof books === 'string') {
+    return JSON.parse(books)
+  }
+  const initialState = {
+    bookList: (() => library.map((b: Books) => b.book))(),
+    readingList: []
+  }
+  localStorage.setItem('books', JSON.stringify(initialState))
+  return initialState
 }
 
 export const DEFAULT_VALUE: Reducer = {
-  state: {
-    bookList: (() => {
-      return library.map((b: Books) => b.book)
-    })(),
-    readingList: []
-  },
+  state: DEFAULT_VALUE_STATE(),
   dispatch: () => {}
 }
 
 const BookLandContext = createContext<Reducer>(DEFAULT_VALUE)
-
-const reducer = (state: BooksContext, action: Action) => {
-  console.log(action, state)
-  const { payload, type } = action
-  const { bookList, readingList } = state
-
-  switch (type) {
-    case 'AddToReadingList': {
-      const alreadyIn = readingList.includes(action.payload)
-      if (alreadyIn) return state
-      return {
-        bookList: [...bookList],
-        readingList: [...readingList, payload]
-      }
-    }
-    case 'RemoveFromReadingList': {
-      const withoutBook = readingList.filter((b) => b.ISBN !== payload.ISBN)
-      return {
-        bookList: [...bookList],
-        readingList: withoutBook
-      }
-    }
-  }
-}
 
 export function CategoryProvider({ children }: PropsWithChildren) {
   const [state, dispatch] = useReducer(reducer, DEFAULT_VALUE.state)
