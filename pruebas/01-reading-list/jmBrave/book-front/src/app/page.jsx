@@ -1,12 +1,15 @@
 'use client'
-const _ = require('lodash')
 import { useEffect, useState } from 'react'
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import { DragDropContext } from 'react-beautiful-dnd'
+
 import BookList from '../components/bookList/BookList'
 import initialBooksList from '../mocks/books.js'
+import { LIST_NAME } from '../constant/constants'
+import { moveAndReorder, reorder, isSameList } from '../utils/drag-and-drop'
 
 export default function Home() {
     const { library } = initialBooksList
+    const { AVAILABLE_BOOKS, BOOKS_SELECTED } = LIST_NAME
     const [bookAvailables, setBookAvailables] = useState(filterBooksAvailable())
     const [booksSeleted, setBooksSeleted] = useState(loadBooksSelected())
 
@@ -34,7 +37,7 @@ export default function Home() {
         return filterBooksAvailable
     }
 
-    function setBook(book) {
+    function addBook(book) {
         const localStorage = window.localStorage
         const booksCurrentlist = localStorage.getItem('bookList')
 
@@ -48,6 +51,13 @@ export default function Home() {
                 JSON.stringify([...currentBooks, book])
             )
         }
+        window.dispatchEvent(new Event('storage'))
+    }
+
+    function setBooks(books) {
+        console.log(books)
+        const localStorage = window.localStorage
+        localStorage.setItem('bookList', JSON.stringify(books))
         window.dispatchEvent(new Event('storage'))
     }
 
@@ -69,51 +79,59 @@ export default function Home() {
         if (!destination) return
 
         const sourceList =
-            source.droppableId === 'list1' ? bookAvailables : booksSeleted
+            source.droppableId === AVAILABLE_BOOKS
+                ? bookAvailables
+                : booksSeleted
         const destList =
-            destination.droppableId === 'list2' ? booksSeleted : bookAvailables
+            destination.droppableId === BOOKS_SELECTED
+                ? booksSeleted
+                : bookAvailables
 
-        if (source.droppableId === destination.droppableId) {
-            const reorderedList = reorder(
+        if (!isSameList(source.droppableId, destination.droppableId)) {
+            const [book] = sourceList.splice(source.index, 1)
+
+            if (destination.droppableId === AVAILABLE_BOOKS) {
+                deleteBook(book)
+                setBookAvailables(
+                    moveAndReorder(book, destList, destination.index)
+                )
+                setBooksSeleted(loadBooksSelected())
+            }
+
+            if (destination.droppableId === BOOKS_SELECTED) {
+                addBook(book)
+                setBookAvailables(filterBooksAvailable())
+                setBooksSeleted(
+                    moveAndReorder(book, destList, destination.index)
+                )
+            }
+        } else {
+            const reorderListBook = reorder(
                 sourceList,
                 source.index,
                 destination.index
             )
-
-            if (source.droppableId === 'list1') {
-                setBookAvailables(reorderedList)
+            if (source.droppableId === AVAILABLE_BOOKS) {
+                setBookAvailables(reorderListBook)
             } else {
-                setBooksSeleted(reorderedList)
+                setBooksSeleted(reorderListBook)
+                setBooks(reorderListBook)
             }
-        } else {
-            const [removed] = sourceList.splice(source.index, 1)
-
-            if (destination.droppableId === 'list2') setBook(removed)
-            if (destination.droppableId === 'list1') deleteBook(removed)
-
-            setBookAvailables(filterBooksAvailable())
-            setBooksSeleted(loadBooksSelected())
         }
     }
 
-    function reorder(list, startIndex, endIndex) {
-        const newList = Array.from(list)
-        const [removed] = newList.splice(startIndex, 1)
-        newList.splice(endIndex, 0, removed)
-        return newList
-    }
     return (
         <DragDropContext onDragEnd={handleOnDragEnd}>
             <main className="flex min-h-screen justify-evenly flex-wrap pt-20">
                 <BookList
                     title={'Libros'}
                     books={bookAvailables}
-                    droppableId="list1"
+                    droppableId={AVAILABLE_BOOKS}
                 />
                 <BookList
                     title={'Lista de Lectura'}
                     books={booksSeleted}
-                    droppableId="list2"
+                    droppableId={BOOKS_SELECTED}
                 />
             </main>
         </DragDropContext>
