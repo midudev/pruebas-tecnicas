@@ -62,4 +62,18 @@ describe('App', () => {
     fireEvent.click(img)
     await screen.findByRole('region')
   })
+  it('should display a heading of level 2 as region aside child;', async () => {
+    render(<App />)
+    fireEvent.click(screen.getAllByRole('img')[0])
+    const aside = await screen.findByRole('region')
+    getByRole(aside, 'heading', { level: 2 })
+  })
+  it('should render BooksList component as aside child;', async () => {
+    render(<App />)
+    fireEvent.click(screen.getAllByRole('img')[0])
+    const aside = await screen.findByRole('region')
+    getByRole(aside, 'list')
+    getByRole(aside, 'listitem')
+    getByRole(aside, 'img')
+  })
 })

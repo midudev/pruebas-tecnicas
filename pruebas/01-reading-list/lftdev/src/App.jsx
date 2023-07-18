@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import BooksJSON from './database/books.json'
 import './style.css'
-import BookItem from './components/BookItem'
 import BooksList from './components/BooksList'
 export default function App () {
   const [booksList, setBooksList] = useState([])
@@ -33,6 +32,8 @@ export default function App () {
       </main>
       {readList.length > 0 &&
         <aside role='region'>
+          <h2>Lista de lectura</h2>
+          <BooksList initialList={readList} />
         </aside>}
     </>
   )
