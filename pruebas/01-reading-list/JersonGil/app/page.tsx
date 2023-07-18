@@ -1,7 +1,11 @@
 import Navbar from "@/components/ui/navbar"
-import BookCard from "@/components/BookCard"
+import dynamic from 'next/dynamic'
 
 export default function Home() {
+  const BookCard = dynamic(() => import('@/components/BookCard'), {
+    ssr: false,
+  })
+
   return (
     <>
       <header>

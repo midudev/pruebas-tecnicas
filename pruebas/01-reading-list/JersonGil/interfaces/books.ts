@@ -9,7 +9,7 @@ export interface Library {
 export interface Book {
   title: string
   pages: number
-  genre: string
+  genre: genre
   cover: string
   synopsis: string
   year: number
@@ -21,3 +21,5 @@ export interface Author {
   name: string
   otherBooks: string[]
 }
+
+export type genre = "Fantasía" | "Terror" | "Romance" | "Suspenso" | "Infantil" | "Comedia" | "Aventura" | "Ciencia ficción" | "Drama" | "Poesía" | "Zombies"

@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import { library } from "@/data/books.json"
+import library from "@/data/books.json"
 import { Library } from "@/interfaces/books"
 
 interface BearState {
