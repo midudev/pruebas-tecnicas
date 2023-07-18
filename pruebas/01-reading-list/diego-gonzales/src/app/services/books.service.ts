@@ -26,12 +26,16 @@ export class BooksService {
       .subscribe((resp) => this._bookList.set(resp));
   }
 
-  updateReadingList(book: Book, isFavorite: boolean) {
+  updateReadingList(book: Book) {
+    // Update the field 'isFavorite' in the bookList
     this._bookList.mutate((value) => {
       const bookIndex = value.findIndex((b) => b.ISBN === book.ISBN);
-      value[bookIndex].isFavorite = isFavorite;
+      const favoriteValue = book.isFavorite ?? false;
+
+      value[bookIndex].isFavorite = !favoriteValue;
     });
 
+    // Update the readingList
     this._readingList.mutate((value) => {
       const bookIndex = value.findIndex((b) => b.ISBN === book.ISBN);
       bookIndex === -1 ? value.unshift(book) : value.splice(bookIndex, 1);

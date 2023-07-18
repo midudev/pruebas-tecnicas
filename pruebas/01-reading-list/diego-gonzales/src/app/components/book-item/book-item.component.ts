@@ -1,4 +1,4 @@
-import { Component, Input, inject, signal } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import type { Book } from '~/interfaces/books.interface';
 import { BooksService } from '~/services/books.service';
@@ -13,10 +13,8 @@ import { BooksService } from '~/services/books.service';
 export class BookItemComponent {
   @Input({ required: true }) book!: Book;
   private _booksService = inject(BooksService);
-  isFavorite = signal(false);
 
-  toggleFavorite() {
-    this.isFavorite.update((value) => !value);
-    this._booksService.updateReadingList(this.book, this.isFavorite());
+  updateReadingList() {
+    this._booksService.updateReadingList(this.book);
   }
 }

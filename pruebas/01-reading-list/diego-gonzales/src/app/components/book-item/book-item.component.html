@@ -1,25 +1,21 @@
-<div
-  class="card card-compact w-full bg-neutral text-neutral-content rounded transition-all hover:contrast-75 container"
->
-  <div class="card-body items-center text-center">
-    <figure class="relative">
-      <label>
-        <button
-          class="btn btn-accent btn-md btn-circle"
-          (click)="toggleFavorite()"
-        >
-          <span class="font-bold text-lg">
-            {{ !book.isFavorite ? '♡' : '♥' }}
-          </span>
-        </button>
-      </label>
+<figure class="rounded transition-all hover:contrast-75 contenedor relative">
+  <label class="top-2 right-2">
+    <button
+      [title]="
+        !book.isFavorite ? 'Add to reading list' : 'Remove from reading list'
+      "
+      class="btn btn-accent btn-xs btn-circle"
+      (click)="updateReadingList()"
+    >
+      <span class="font-bold">
+        {{ !book.isFavorite ? '♡' : '♥' }}
+      </span>
+    </button>
+  </label>
 
-      <img
-        [src]="book.cover"
-        [alt]="'Book of ' + book.title"
-        class="w-full min-h-[320px] object-contain rounded"
-      />
-    </figure>
-    <h2>{{ book.title }}</h2>
-  </div>
-</div>
+  <img
+    [src]="book.cover"
+    [alt]="'Book of ' + book.title"
+    class="aspect-[320px/450px] w-full h-auto object-contain rounded-md"
+  />
+</figure>
