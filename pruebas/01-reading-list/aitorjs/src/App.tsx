@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import "./App.css";
 import { useBooksStore } from "./store/booksStore";
 import Book from "./components/Book";
+import ReadList from "./components/ReadList";
 
 function App() {
   const { getBooks, filterBooks, filters, filter } = useBooksStore() as any;
@@ -19,7 +20,7 @@ function App() {
   };
 
   return (
-    <>
+    <div className="container mx-auto">
       <h1 className="text-6xl font-bold">Librería de libros</h1>
 
       <h2>{filterBooks.length} libros disponibles</h2>
@@ -54,12 +55,19 @@ function App() {
       </div>
 
       <p>Filters {JSON.stringify(filters)}</p>
-      <div className="flex flex-wrap gap-3">
-        {filterBooks.map(({ book }) => (
-          <Book key={book.ISBN} data={book} />
-        ))}
+      
+      <div className="flex">
+        <div className="flex flex-wrap gap-2 w-4/5">
+          {filterBooks.map(({ book }) => (
+            <Book key={book.ISBN} data={book} />
+          ))}
+        </div>
+
+        <div className="flex flex-col">
+          <ReadList />
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 

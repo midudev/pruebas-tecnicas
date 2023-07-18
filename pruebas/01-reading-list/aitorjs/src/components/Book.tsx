@@ -1,18 +1,36 @@
+import { useBooksStore } from "../store/booksStore";
+
 const Book = ({ data }) => {
+  const { setWantReadBooks, filterBooks } = useBooksStore() as any;
+
+  const handleClick = (isbn: string) => {
+    const index = filterBooks.findIndex((f) => {
+      return f.book.ISBN === isbn;
+    });
+
+    const [wantRead] = filterBooks.splice(index, 1);
+
+    setWantReadBooks(wantRead);
+
+    // setBooks(filterBooks);
+  };
+
   return (
     <>
       <p key={data.ISBN}>
-        <img src={data.cover} width={200} height={200} alt='alt image' />
-        {/* <span>{b.book.pages} </span>
-            <span>{b.book.genre} </span>
-            <span>{b.book.cover} </span>
-            <span>{b.book.synopsis} </span>
-            <span>{b.book.year} </span>
-            <span>{b.book.ISBN} </span>
-            <span>{b.book.author.name} </span> */}
+        <img
+          src={data.cover}
+          width={200}
+          height={200}
+          alt="alt image"
+          onClick={() => {
+            handleClick(data.ISBN);
+          }}
+          className="cursor-pointer"
+        />
       </p>
     </>
-  )
-}
+  );
+};
 
-export default Book
+export default Book;
