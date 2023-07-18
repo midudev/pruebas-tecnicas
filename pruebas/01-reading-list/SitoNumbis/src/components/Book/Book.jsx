@@ -93,14 +93,14 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
           className={`${memoAnimation} ${isInReadingList ? "opacity-100" : ""}`}
         >
           <p className="">{title}</p>
-          <p className="text-dark-alt-text">
+          <p className="alter-text">
             {genre} ({pages}) {languageState.texts.book.pages}
           </p>
           <p className="mt-2">
-            <span className="text-dark-alt-text">
+            <span className="alter-text">
               {languageState.texts.book.by}
             </span>{" "}
-            {author.name} <span className="text-dark-alt-text">({year})</span>
+            {author.name} <span className="alter-text">({year})</span>
           </p>
         </div>
 

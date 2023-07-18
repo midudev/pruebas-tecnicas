@@ -95,16 +95,16 @@ function LightBox() {
           <h3 className="text-2xl">{selectedBook.title}</h3>
           <p>
             {selectedBook.genre}{" "}
-            <span className="text-dark-alt-text">
+            <span className="alter-text">
               ({selectedBook.pages}) {languageState.texts.book.pages}
             </span>
           </p>
           <p>
-            <span className="text-dark-alt-text">
+            <span className="alter-text">
               {languageState.texts.book.by}
             </span>{" "}
             {selectedBook.author?.name}{" "}
-            <span className="text-dark-alt-text">({selectedBook.year})</span>
+            <span className="alter-text">({selectedBook.year})</span>
           </p>
           <p className={styles.synopsis}>{selectedBook.synopsis}</p>
           <div className="flex items-center gap-4 mt-5">

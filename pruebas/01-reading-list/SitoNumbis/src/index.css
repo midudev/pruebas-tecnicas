@@ -22,6 +22,10 @@ span {
   @apply text-dark-text;
 }
 
+.alter-text {
+  @apply text-dark-text;
+}
+
 button {
   @apply cursor-default;
 }

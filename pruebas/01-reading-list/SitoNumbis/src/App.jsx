@@ -40,6 +40,11 @@ function App() {
       books: books.library.map((book) => book.book),
       datetime,
     });
+    if (localStorage.getItem(config.readingList) !== null)
+      setLibraryState({
+        type: "init-reading-list",
+        stringReadingList: localStorage.getItem(config.readingList),
+      });
   }, []);
 
   useEffect(() => {

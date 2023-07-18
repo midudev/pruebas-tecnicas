@@ -46,14 +46,14 @@ function Home() {
           <p>
             {languageState.texts.seeing.title}{" "}
             {languageState.texts.seeing[libraryState.seeing]}
-            <span className="text-dark-alt-text text-sm mx-2">
+            <span className="alter-text text-sm mx-2">
               (
               {libraryState.filtering && libraryState.filtering.length
                 ? libraryState.filtering
                 : languageState.texts.seeing.noFilter}
               )
             </span>
-            <span className="text-dark-alt-text text-sm">({totalLength})</span>
+            <span className="alter-text text-sm">({totalLength})</span>
           </p>
         </div>
         <LightBoxProvider>
