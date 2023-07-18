@@ -17,19 +17,39 @@ export default function List() {
 
 	return (
 		<>
-			<h2>Avaible Books</h2>
 			<ul className={styles.listContainer}>
-				{books.map((book) => (
+				{books.map((book: BookProps) => (
 					<li key={book.book.isbn} className={styles.bookCover}>
-						{!book.isSelected ? (
-							<button
-								className={styles.selectButton}
-								onClick={() => handleSelectBook(book)}
+						<button
+							className={
+								(book.isSelected && styles.selectButtonOff) +
+								' ' +
+								styles.selectButtonOn
+							}
+							onClick={() => handleSelectBook(book)}
+						>
+							<svg
+								xmlns='http://www.w3.org/2000/svg'
+								fill='black'
+								viewBox='0 0 24 24'
+								strokeWidth={1.5}
+								stroke='white'
+								className='w-6 h-6'
 							>
-								+
-							</button>
-						) : null}
+								<path
+									strokeLinecap='round'
+									strokeLinejoin='round'
+									d='M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z'
+								/>
+							</svg>
+						</button>
+
 						<img
+							className={
+								(book.isSelected && styles.bookCoverOn) +
+								' ' +
+								styles.bookCoverOff
+							}
 							width={240}
 							height={380}
 							src={book.book.cover}
