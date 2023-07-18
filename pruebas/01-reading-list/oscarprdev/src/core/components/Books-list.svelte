@@ -11,15 +11,15 @@
   export let booksFiltered: Readable<Book[]>
 </script>
 
-<section class="flex flex-col p-5 min-w-fit">
-  <ul class="flex flex-wrap gap-7">
+<section class="flex flex-col p-5">
+  <ul class="flex flex-wrap gap-7 w-1090 min-h-400">
     {#if $booksList.length > 0}
       {#each $booksList as book}
         <BookItem {book} />
       {/each}
     {:else}
       <li
-        class="grid place-items-center bg-aside p-5 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]"
+        class="grid place-items-center h-16 bg-aside p-5 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]"
       >
         <p>No se han encontrado libros disponibles</p>
       </li>

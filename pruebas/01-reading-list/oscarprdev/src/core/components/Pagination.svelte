@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Writable } from 'svelte/store'
+  import { derived, readable, type Writable } from 'svelte/store'
   import type { PaginationState } from './types'
   import type { Book } from '../types'
   import type { Readable } from 'svelte/motion'
@@ -21,27 +21,41 @@
       offset: prevState.offset - 4,
     }))
   }
+
+  let leftIconIsDisabled = derived(paginationState, ($paginationState) => $paginationState.init <= 0)
+  let rightIconIsDisabled = derived([paginationState, booksFiltered],([$paginationState, $booksFiltered]) => $booksFiltered &&
+      $paginationState.offset >= $booksFiltered.length)
 </script>
 
-<section class="self-end flex gap-5">
-  {#if $paginationState.init > 0}
+{#if $booksFiltered.length > 4}
+  <section class="self-end flex gap-5 py-2 px-5 bg-dark rounded-full mr-12">
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <button class="cursor-pointer" on:click={showPrev}>
+    <button
+      class={!$leftIconIsDisabled && 'cursor-pointer'}
+      on:click={showPrev}
+      disabled={$leftIconIsDisabled}
+    >
       <ArrowLeftIcon
         size="32"
-        class="transtion-text-pagination duration-300 hover:text-pagination"
+        class={$leftIconIsDisabled
+          ? 'text-icons'
+          : 'text-light transtion-text-pagination duration-300 hover:text-pagination'}
       />
     </button>
-  {/if}
-  {#if $booksFiltered && $paginationState.offset < $booksFiltered.length}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <button class="cursor-pointer" on:click={showNext}>
+    <button
+      class={!$rightIconIsDisabled && 'cursor-pointer'}
+      on:click={showNext}
+      disabled={$rightIconIsDisabled}
+    >
       <ArrowRightIcon
         size="32"
-        class="transtion-text-pagination duration-300 hover:text-pagination"
+        class={$rightIconIsDisabled
+          ? 'text-icons'
+          : 'text-light transtion-text-pagination duration-300 hover:text-pagination'}
       />
     </button>
-  {/if}
-</section>
+  </section>
+{/if}

@@ -30,6 +30,7 @@ module.exports = {
     },
     borderColor: {
       nav: '#C8C5BC',
+      dark: '#000000',
     },
     textColor: {
       light: '#FFFFFF',
@@ -40,17 +41,26 @@ module.exports = {
     },
     extend: {
       height: {
+        '400': '400px',
         '300': '300px',
       },
       width: {
         '500': '500px',
+        '1090': '1090px',
       },
       maxHeight: {
         '400': '400px',
         '800': '800px',
+        '000': '900px',
       },
       maxWidth: {
         '1100': '1100px',
+      },
+      minHeight: {
+        '400': '400px',
+      },
+      minWidth: {
+        '150': '150px',
       },
       keyframes: {
         'fade-in': {

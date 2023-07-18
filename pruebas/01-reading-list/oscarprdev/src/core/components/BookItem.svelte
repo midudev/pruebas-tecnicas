@@ -4,6 +4,7 @@
   import { InfoIcon, BookOpenIcon } from 'svelte-feather-icons'
   import { modalState } from '../store/modal-store'
   import { readingListUsecase } from '../../features/reading-list'
+  import { asideState } from '../store/aside-store'
 
   export let book: Book
   let showOverlay: Writable<boolean> = writable(false)
@@ -21,6 +22,11 @@
 
   const addBookToReadingList = () => {
     readingListUsecase.addBook(book)
+
+    asideState.update(() => ({
+      readingListIsOpen: true,
+      topBooksListIsOpen: false
+    }))
   }
 </script>
 
