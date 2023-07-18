@@ -73,6 +73,12 @@ export const booksSlice = createSlice({
         },
         // Busca libros por titulo y autor
         findBooks: (state, action) => {
+            if (action.payload === '') {
+                state.show = state.copyShow.filter(
+                    (book) => book.book.pages >= state.counters.numPages
+                );
+                return;
+            }
             const byTitle = state.all.filter((book) =>
                 book.book?.title.toLowerCase().includes(action.payload?.toLowerCase())
             );
@@ -81,7 +87,6 @@ export const booksSlice = createSlice({
             );
             const finded = new Set([...byTitle, ...byAuthors]);
             state.show = [...finded];
-            state.copyShow = [...finded];
         },
         // filtra por genero
         filerByGenre: (state, action) => {
