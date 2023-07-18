@@ -9,7 +9,7 @@ interface ReadingListProps {
 
 function ReadingList({ books, handleRemove }: ReadingListProps) {
 	return (
-		<section className='p-4 ml-2 rounded-md text-secondary-foreground w-72 bg-secondary animate-show-list'>
+		<section className='w-48 p-4 ml-2 rounded-md md:w-72 text-secondary-foreground bg-secondary animate-show-list'>
 			<h2 className='pb-2 text-3xl font-semibold tracking-tight transition-colors border-b scroll-m-20 first:mt-0'>
 				Selected Books
 			</h2>
