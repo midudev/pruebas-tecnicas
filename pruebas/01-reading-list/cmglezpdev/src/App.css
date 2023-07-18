@@ -1,42 +1,92 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+
+.library {
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  justify-items: center;
+  align-items: start;
+  gap: 20px;
+}
+
+.library-book {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+
+  display: grid;
+  grid-template: 1fr/1fr;
+  grid-template-areas: "img";
+}
+
+.book-img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  grid-area: img;
+}
+
+.book-info {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  filter: opacity(.77);
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
+
+  grid-area: img;
+  clip-path: circle(0 at top right);
+  transition: clip-path .4s;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.library-book:hover .book-img {
+  filter: blur(2px);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.library-book:hover .book-info {
+  clip-path: circle(150% at top right);
+}
+
+.book-info__title {
+  font-weight: bold;
+  filter: none;
+  font-size: 30px;
+}
+.book-info__author {
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+@media (max-width: 1700px) {
+  .library {
+    grid-template-columns: repeat(5, 1fr);
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 1024px) {
+  .library {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (max-width: 800px) {
+  .library {
+      grid-template-columns: repeat(3, 1fr);
   }
 }
 
-.card {
-  padding: 2em;
+@media (max-width: 600px) {
+  .library {
+      grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-.read-the-docs {
-  color: #888;
+@media (max-width: 400px) {
+  .library {
+      grid-template-columns: repeat(1, 1fr);
+  }
 }
