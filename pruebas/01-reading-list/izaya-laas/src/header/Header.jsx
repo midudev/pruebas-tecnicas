@@ -1,4 +1,4 @@
-import Link from './Link';
+import { myReadingListLength } from '../states/store';
 
 export const Header = () => {
 	return (
@@ -6,7 +6,10 @@ export const Header = () => {
 			<h1 className="text-2xl font-thin ">
 				Good<span className="font-normal">reads</span>
 			</h1>
-			<div className="flex justify-evenly w-full"></div>
+
+			<div className="flex justify-evenly w-full">
+				<p>My books {myReadingListLength}</p>
+			</div>
 		</header>
 	);
 };
