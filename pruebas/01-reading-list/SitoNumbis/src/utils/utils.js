@@ -1,3 +1,5 @@
+import config from "../config";
+
 export const utilsToggleTheme = () => {
   // On page load or when changing themes, best to add inline in `head` to avoid FOUC
   if (
@@ -13,4 +15,10 @@ export const utilsToggleTheme = () => {
     document.documentElement.classList.remove("light");
     localStorage.setItem("theme", "dark");
   }
+};
+
+export const saveReadingListToLocal = (readingList) => {
+  const obj = Object.fromEntries(readingList);
+  const stringify = JSON.stringify(Object.keys(obj));
+  localStorage.setItem(config.readingList, stringify);
 };

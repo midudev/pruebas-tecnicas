@@ -5,8 +5,8 @@ import { createContext, useReducer, useContext } from "react";
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
-// config
-import config from "../config";
+// utils
+import { saveReadingListToLocal } from "../utils/utils";
 
 const LibraryContext = createContext();
 
@@ -18,15 +18,15 @@ const libraryReducer = (libraryState, action) => {
       const { readingList } = libraryState;
       if (readingList.has(id)) readingList.delete(id);
       else readingList.set(id, id);
-      // saving to local storage
-      const obj = Object.fromEntries(libraryState.readingList);
-      const stringify = JSON.stringify(Object.keys(obj));
-      localStorage.setItem(config.readingList, stringify);
+      //* saving to local storage
+      saveReadingListToLocal(libraryState.readingList);
       return { ...libraryState, readingList };
     }
     case "init-books": {
       const { books, datetime } = action;
+      // init context books as Set to avoid repeated books
       const booksSet = Array.from(new Set(books));
+      // same with genres
       const genres = Array.from(new Set(books.map((book) => book.genre)));
       return {
         ...libraryState,
@@ -39,12 +39,11 @@ const libraryReducer = (libraryState, action) => {
     case "init-reading-list": {
       const { stringReadingList } = action;
       const obj = JSON.parse(stringReadingList);
-      const newMap = new Map()
+      const newMap = new Map();
       // validating that it's an array
-      if (typeof obj === "object" && obj.length) {
-          
-      }
-      return { ...libraryState, readingList: parsedReadingList };
+      if (typeof obj === "object" && obj.length)
+        obj.forEach((item) => newMap.set(item, item));
+      return { ...libraryState, readingList: newMap };
     }
     case "toggle-see": {
       return {
@@ -66,6 +65,7 @@ const LibraryProvider = ({ children }) => {
     books: [],
     genres: [],
     readingList: new Map(),
+    filtering: "",
     seeing: "all",
     datetime: 0,
   });

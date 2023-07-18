@@ -1,7 +1,5 @@
-import { Suspense, useMemo } from "react";
+import { Suspense, useState, useEffect, useMemo } from "react";
 import loadable from "@loadable/component";
-
-import { css } from "@emotion/css";
 
 // components
 import Loading from "../components/Loading/Loading";
@@ -29,21 +27,35 @@ function Home() {
     return libraryState.books;
   }, [libraryState.books]);
 
+  const [totalLength, setTotalLength] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      const visibleBooks = document.querySelectorAll(".book");
+      setTotalLength(visibleBooks.length);
+    }, 300);
+  }, [libraryState]);
+
   return (
     <main className={styles.main}>
-      <Suspense fallback={<Loading className="w-full h-full top-0 left-0 fixed z-50" />}>
-        <div
-          className={`grid ${css({
-            gridTemplateRows:
-              libraryState.seeing === "reading-list" ? "1fr" : "0fr",
-            transition: "grid-template-rows 500ms ease",
-          })}`}
-        >
-          <div className="overflow-hidden">
-            <h3 className="text-xl">{languageState.texts.home.readingList}</h3>
-          </div>
-        </div>
+      <Suspense
+        fallback={<Loading className="w-full h-full top-0 left-0 fixed z-50" />}
+      >
         <FilterBar />
+        <div className="flex items-center justify-between w-full">
+          <p>
+            {languageState.texts.seeing.title}{" "}
+            {languageState.texts.seeing[libraryState.seeing]}
+            <span className="text-dark-alt-text text-sm mx-2">
+              (
+              {libraryState.filtering && libraryState.filtering.length
+                ? libraryState.filtering
+                : languageState.texts.seeing.noFilter}
+              )
+            </span>
+            <span className="text-dark-alt-text text-sm">({totalLength})</span>
+          </p>
+        </div>
         <LightBoxProvider>
           <LightBox />
           <section>

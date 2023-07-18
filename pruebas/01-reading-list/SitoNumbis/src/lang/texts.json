@@ -1,6 +1,12 @@
 {
   "es": {
     "logo": "Sito's Library",
+    "seeing": {
+      "noFilter": "Todos",
+      "title": "Viendo",
+      "reading-list": "lista de lectura",
+      "all": "disponibles"
+    },
     "error": {
       "noBooks": "No hay libros",
       "title": "Ha ocurrido un error",
@@ -25,9 +31,7 @@
       "seeCover": "Ver cover",
       "seeInfo": "Ver información"
     },
-    "home": {
-      "readingList": "Viendo lista de lectura"
-    },
+
     "ariaLabels": {
       "toReadingList": "Ver lista de lectura",
       "add": "Agregar a la lista de lectura",
