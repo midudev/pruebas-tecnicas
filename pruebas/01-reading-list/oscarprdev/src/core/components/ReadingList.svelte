@@ -1,16 +1,16 @@
 <script>
   import { asideState } from '../store/aside-store'
   import { appState } from '../store/store'
-
-  console.log($appState.readingBooks)
+  import ReadingListItem from './ReadingListItem.svelte'
 </script>
 
 {#if $asideState.readingListIsOpen}
-  <aside class="fixed inset-y-0 right-0 z-10 w-2/6 bg-aside">
-    <div class="h-full flex flex-col overflow-y-auto bg-white shadow-xl">
-      {#each $appState.readingBooks as book}
-        <p>{book.title}</p>
-      {/each}
-    </div>
+  <aside
+    class="fixed inset-y-0 right-0 z-3 w-2/6 h-full overflow-y-scroll p-5 flex flex-col bg-aside shadow-xl animate-slide-in"
+  >
+    <h2 class="text-2xl mb-5"><i>Lista de lectura</i></h2>
+    {#each $appState.readingBooks.reverse() as book}
+      <ReadingListItem {book} />
+    {/each}
   </aside>
 {/if}

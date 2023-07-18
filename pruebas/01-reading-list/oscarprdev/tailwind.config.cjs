@@ -39,6 +39,10 @@ module.exports = {
       iconsDark: '#161617cc',
       pagination: '#E36064',
     },
+    fill: {
+      removeIcon: '#161617cc',
+      dark: '#000000'
+    },
     extend: {
       height: {
         '400': '400px',
@@ -68,9 +72,14 @@ module.exports = {
           '0%': { opacity: '0%' },
           '100%': { opacity: '100%' },
         },
+        'slide-in': {
+          '0%': { transform: 'translateX(300px)' },
+          '100%': { transform: 'translateX(0)' },
+        },
       },
       animation: {
         'fade-in': 'fade-in 0.1s ease-in-out',
+        'slide-in': 'slide-in 0.5s ease-in-out',
       },
       transitionProperty: {
         'bg-color': 'background-color',

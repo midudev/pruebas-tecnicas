@@ -14,9 +14,12 @@
   }
 
   const showInfo = () => {
-    modalState.update(() => ({
-      isOpen: true,
-      book
+    modalState.update((prev) => ({
+      ...prev,
+      infoModal: {
+        isOpen: true,
+        book
+        }
     }))
   }
 

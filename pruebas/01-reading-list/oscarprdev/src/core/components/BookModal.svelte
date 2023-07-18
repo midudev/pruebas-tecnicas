@@ -6,11 +6,14 @@
   import { asideState } from '../store/aside-store'
 
   const closeModal = () => {
-    modalState.update(() => ({ isOpen: false, book: null }))
+    modalState.update((prev) => ({
+      ...prev,
+      infoModal: { isOpen: false, book: null },
+    }))
   }
 
   const addBookToReadingList = () => {
-    readingListUsecase.addBook($modalState.book)
+    readingListUsecase.addBook($modalState.infoModal.book)
 
     asideState.update(() => ({
       readingListIsOpen: true,
@@ -21,9 +24,9 @@
   }
 </script>
 
-{#if $modalState.isOpen}
+{#if $modalState.infoModal.isOpen}
   <dialog
-    open={$modalState.isOpen}
+    open={$modalState.infoModal.isOpen}
     data-modal-target="modal"
     class="absolute top-0 left-0 bg-dark backdrop-blur-sm w-full h-full grid place-items-center z-1 open:animate-fade-in open:backdrop:animate-fade-in"
   >
@@ -39,26 +42,30 @@
       <section class="h-80 w-2/5 shadow-[4.0px_5.0px_8.0px_rgba(0,0,0,0.38)]">
         <img
           class="w-full h-full object-cover"
-          src={$modalState.book.cover}
-          alt={$modalState.book.title}
+          src={$modalState.infoModal.book.cover}
+          alt={$modalState.infoModal.book.title}
         />
       </section>
       <section class="relative w-1/2 h-80 flex flex-col gap-5 px-5">
         <div class="flex flex-col gap-3">
-          <h2 class="text-lg"><b>{$modalState.book.title}</b></h2>
+          <h2 class="text-lg"><b>{$modalState.infoModal.book.title}</b></h2>
           <h3 class="text-sm">
-            <i>{$modalState.book.author.name} - {$modalState.book.year}</i>
+            <i
+              >{$modalState.infoModal.book.author.name} - {$modalState.infoModal
+                .book.year}</i
+            >
           </h3>
           <span
             class="py-1.5 px-5 w-fit rounded-full bg-overlayModal text-sm text-light"
-            >{$modalState.book.genre}</span
+            >{$modalState.infoModal.book.genre}</span
           >
           <p>
-            <span class=" text-3xl"><i>{$modalState.book.synopsis[0]}</i></span
+            <span class=" text-3xl"
+              ><i>{$modalState.infoModal.book.synopsis[0]}</i></span
             ><i
-              >{$modalState.book.synopsis.slice(
+              >{$modalState.infoModal.book.synopsis.slice(
                 1,
-                $modalState.book.synopsis.length
+                $modalState.infoModal.book.synopsis.length
               )}.</i
             >
           </p>
