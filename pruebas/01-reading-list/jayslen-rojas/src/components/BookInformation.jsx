@@ -7,8 +7,8 @@ export function BookInformation ({ book }) {
   const { toggle, changeToggle } = useActive()
   return (
     <>
-      <li className="rounded-b-md ">
-        <img src={book.cover} alt="libro" className="rounded-md h-80" />
+      <li className="rounded-b-md">
+        <img src={book.cover} alt="libro" className="rounded-md" />
         <ul className=" rounded-b-md p-1">
           <li className="font-bold">{book.title}</li>
           <Pages pages={book.pages} />

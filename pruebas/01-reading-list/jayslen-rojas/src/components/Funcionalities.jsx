@@ -3,38 +3,45 @@ import {
   IconBookmarkPlus,
   IconDots
 } from '@tabler/icons-react'
-import { useContext, useState } from 'react'
-import { BookListContext } from '../context/BookListContex'
+import { useContext, useEffect, useState } from 'react'
+import { UseBookContext } from '../hooks/useBooksListContext'
+import { BooksContext } from '../context/BooksContext'
 
 export function Functionalities ({ showBook, book }) {
-  const [bookAdded, setBookAdded] = useState(false)
-  const { addBook, removeBook } = useContext(BookListContext)
+  const [bookAdded, setBookAdded] = useState(book.isSaved)
+  const { books, updateBooks } = useContext(BooksContext)
+  const { addBook, removeBook } = UseBookContext()
+
+  useEffect(() => {
+    setBookAdded(book.isSaved)
+  }, [books])
 
   const addToBookList = () => {
-    setBookAdded(!bookAdded)
-    addBook({ value: book })
+    updateBooks({ isSaved: true, book })
+    addBook({ book })
   }
   const removeFromBookList = () => {
-    setBookAdded(!bookAdded)
+    updateBooks({ isSaved: false, book })
     removeBook({ book })
   }
 
   return (
       <ul className="flex justify-between">
         <li className="flex">
-          {!bookAdded
-            ? <IconBookmarkPlus
+          {bookAdded
+            ? <IconBookmarkOff
+          className="animate-jump animate-once animate-ease-linear cursor-pointer"
+          width={32}
+          height={32}
+          fill='orange'
+          onClick={removeFromBookList}
+        />
+            : <IconBookmarkPlus
             className='animate-jump animate-once animate-ease-linear cursor-pointer'
             width={32}
             height={32}
             onClick={addToBookList}
-          />
-            : <IconBookmarkOff
-          className="animate-jump animate-once animate-ease-linear cursor-pointer"
-          width={32}
-          height={32}
-          onClick={removeFromBookList}
-        /> }
+          /> }
         </li>
 
         <li>

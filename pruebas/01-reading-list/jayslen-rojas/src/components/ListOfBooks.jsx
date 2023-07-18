@@ -1,12 +1,12 @@
-import booksMocks from '../mocks/books.json'
+import { useContext } from 'react'
 import { BookInformation } from './BookInformation'
-
-const booksList = booksMocks.library
+import { BooksContext } from '../context/BooksContext'
 
 export function BookList () {
+  const { books } = useContext(BooksContext)
   return (
     <ul className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4">
-      {booksList.map((data, index) => {
+      {books.map((data, index) => {
         return (
             <BookInformation book={data.book} key={index}/>
         )
