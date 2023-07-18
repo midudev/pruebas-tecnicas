@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body * {
+    @apply transition-colors duration-200;
+}
+
 .text-blur {
     color: transparent;
     text-shadow: 0 0 7px rgba(0,0,0,0.5);
