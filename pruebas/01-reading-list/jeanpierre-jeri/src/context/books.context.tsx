@@ -70,11 +70,8 @@ export function BooksContextProvider({ children, books: initialBooks }: Props) {
     const lectureBooksItem = localStorage.getItem('lectureBooks')
     const mainBooksItem = localStorage.getItem('books')
 
-    const lectureBooks = lectureBooksItem != null ? JSON.parse(lectureBooksItem) : []
-    const mainBooks = mainBooksItem != null ? JSON.parse(mainBooksItem) : books.current
-    console.log({ lectureBooks, mainBooks })
-    setLectureBooks(lectureBooks)
-    setFilteredBooks(mainBooks)
+    setLectureBooks(lectureBooksItem != null ? JSON.parse(lectureBooksItem) : [])
+    setFilteredBooks(mainBooksItem != null ? JSON.parse(mainBooksItem) : books.current)
 
     channel.current = new BroadcastChannel('books-channel')
 
