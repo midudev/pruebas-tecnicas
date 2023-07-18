@@ -1,4 +1,4 @@
-import { Suspense, useState, useEffect, useMemo } from "react";
+import { Suspense, useEffect, useMemo } from "react";
 import loadable from "@loadable/component";
 
 // components
@@ -31,7 +31,11 @@ function Home() {
     return libraryState.seeing === "all"
       ? libraryState.available
       : libraryState.readingList.size;
-  }, [libraryState.seeing, libraryState.books]);
+  }, [
+    libraryState.seeing,
+    libraryState.available,
+    libraryState.readingList.size,
+  ]);
 
   // get the current showing items
   useEffect(() => {
@@ -42,7 +46,7 @@ function Home() {
         showing: document.querySelectorAll(".book").length,
       });
     }, 100);
-  }, [libraryState.filtering, libraryState.seeing]);
+  }, [libraryState.filtering, libraryState.seeing, setLibraryState]);
 
   return (
     <main className={styles.main}>

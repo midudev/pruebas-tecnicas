@@ -100,9 +100,7 @@ function LightBox() {
             </span>
           </p>
           <p>
-            <span className="alter-text">
-              {languageState.texts.book.by}
-            </span>{" "}
+            <span className="alter-text">{languageState.texts.book.by}</span>{" "}
             {selectedBook.author?.name}{" "}
             <span className="alter-text">({selectedBook.year})</span>
           </p>

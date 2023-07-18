@@ -1,7 +1,7 @@
 // @ts-check
 
 // eslint-disable-next-line no-unused-vars
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 
 import PropTypes from "prop-types";
 
