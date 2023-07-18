@@ -15,15 +15,21 @@ const libraryReducer = (libraryState, action) => {
   switch (type) {
     case "toggle-to-reading-list": {
       const { id } = action;
+      let { available } = libraryState;
       const { readingList } = libraryState;
-      if (readingList.has(id)) readingList.delete(id);
-      else readingList.set(id, id);
+      if (readingList.has(id)) {
+        readingList.delete(id);
+        --available;
+      } else {
+        readingList.set(id, id);
+        ++available;
+      }
       //* saving to local storage
       saveReadingListToLocal(libraryState.readingList);
-      return { ...libraryState, readingList };
+      return { ...libraryState, readingList, available };
     }
     case "init-books": {
-      const { books, datetime } = action;
+      const { books } = action;
       // init context books as Set to avoid repeated books
       const booksSet = Array.from(new Set(books));
       // same with genres
@@ -33,7 +39,7 @@ const libraryReducer = (libraryState, action) => {
         books: booksSet,
         genres,
         seeing: "all",
-        datetime,
+        available: booksSet.length,
       };
     }
     case "init-reading-list": {
@@ -43,7 +49,11 @@ const libraryReducer = (libraryState, action) => {
       // validating that it's an array
       if (typeof obj === "object" && obj.length)
         obj.forEach((item) => newMap.set(item, item));
-      return { ...libraryState, readingList: newMap };
+      return {
+        ...libraryState,
+        readingList: newMap,
+        available: libraryState.books.length - newMap.size,
+      };
     }
     case "toggle-see": {
       return {
@@ -53,7 +63,12 @@ const libraryReducer = (libraryState, action) => {
     }
     case "toggle-filter": {
       const { filtering } = action;
-      return { ...libraryState, filtering };
+      return {
+        ...libraryState,
+        filtering: filtering || "",
+        showing: libraryState.books.filter((book) => book.genre === filtering)
+          .length,
+      };
     }
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
@@ -65,9 +80,10 @@ const LibraryProvider = ({ children }) => {
     books: [],
     genres: [],
     readingList: new Map(),
-    filtering: "",
-    seeing: "all",
-    datetime: 0,
+    filtering: "", // current genre filter
+    available: 0, // global state to quick access to available books
+    showing: 0, // global state to quick access to the showing books
+    seeing: "all", // books to show (all/reading-list)
   });
 
   const value = { libraryState, setLibraryState };

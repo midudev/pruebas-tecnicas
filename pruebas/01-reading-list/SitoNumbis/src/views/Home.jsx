@@ -27,14 +27,11 @@ function Home() {
     return libraryState.books;
   }, [libraryState.books]);
 
-  const [totalLength, setTotalLength] = useState(0);
-
-  useEffect(() => {
-    setTimeout(() => {
-      const visibleBooks = document.querySelectorAll(".book");
-      setTotalLength(visibleBooks.length);
-    }, 300);
-  }, [libraryState]);
+  const totalLength = useMemo(() => {
+    return libraryState.seeing === "all"
+      ? libraryState.available
+      : libraryState.readingList.size;
+  }, [libraryState.seeing, libraryState.books]);
 
   return (
     <main className={styles.main}>
@@ -42,19 +39,21 @@ function Home() {
         fallback={<Loading className="w-full h-full top-0 left-0 fixed z-50" />}
       >
         <FilterBar />
-        <div className="flex items-center justify-between w-full">
+        <div className="flex items-center flex-wrap w-full">
           <p>
             {languageState.texts.seeing.title}{" "}
             {languageState.texts.seeing[libraryState.seeing]}
-            <span className="alter-text text-sm mx-2">
-              (
-              {libraryState.filtering && libraryState.filtering.length
-                ? libraryState.filtering
-                : languageState.texts.seeing.noFilter}
-              )
-            </span>
-            <span className="alter-text text-sm">({totalLength})</span>
+            <span className="alter-text text-sm mx-2">({totalLength})</span>
           </p>
+          {/* If the user is using the genre filter */}
+          {libraryState.filtering.length ? (
+            <p>
+              {">"} {libraryState.filtering}{" "}
+              <span className="alter-text text-sm mx-1">
+                ({libraryState.showing})
+              </span>
+            </p>
+          ) : null}
         </div>
         <LightBoxProvider>
           <LightBox />

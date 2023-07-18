@@ -23,7 +23,7 @@ span {
 }
 
 .alter-text {
-  @apply text-dark-text;
+  @apply text-dark-alt-text;
 }
 
 button {
