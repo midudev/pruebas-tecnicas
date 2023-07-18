@@ -29,7 +29,7 @@ label {
       color: var(--negros);
 }
 
-.seccion-filtro{
+.seccion-filtro {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
@@ -44,7 +44,7 @@ label {
       border-radius: 10px;
       padding: 15px;
       background-color: var(--color-secundario);
-      box-shadow: var(--negros) 10px 10px 20px;      
+      box-shadow: var(--negros) 10px 10px 20px;
 }
 
 .contenedor-milista {
@@ -59,7 +59,13 @@ label {
       flex-wrap: wrap;
 }
 
-.contenedor-milista h2 {
+.caja-milista header {
+      display: flex;
+      gap: 10px;
+      padding-bottom: 10px;
+}
+
+.caja-milista header h2 {
       width: 87%;
       margin-top: 10px;
 }

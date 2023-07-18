@@ -16,7 +16,7 @@
 </nav>
 <ul class="grilla">
       <div class="caja-milista" *ngIf="generalService.miLista">
-            <div class="contenedor-milista">
+            <header>
                   <button class="btn-hamburguesa" (click)="verMiLista()">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
                               <path
@@ -24,6 +24,8 @@
                         </svg>
                   </button>
                   <h2>Mi lista de lectura</h2>
+            </header>
+            <div class="contenedor-milista">
                   <li *ngFor="let item of misBooks">
                         <img [src]="item.book.cover" width="140px" height="200px" (click)="quitarBook(item.book.title)">
                   </li>
