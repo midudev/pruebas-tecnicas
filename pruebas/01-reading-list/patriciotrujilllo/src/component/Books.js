@@ -18,7 +18,7 @@ export const Books = ({books}) =>{
 
                         isInList(book) ? removeToListRead(book): addtoToListRead(book)
 
-                )}/>
+                )} className={isInList(book)? 'img-opacity':''}/>
                 </figure>
 
             </div>
@@ -28,7 +28,6 @@ export const Books = ({books}) =>{
             
         }
         </div>
-
     </div>
 
     )
