@@ -1,12 +1,71 @@
-<div class="hero bg-base-200">
-  <div class="hero-content flex-col lg:flex-row-reverse p-4">
+<div class="hero bg-base-200" *ngIf="book()">
+  <div class="hero-content flex-col lg:flex-row-reverse p-6">
     <img [src]="book()?.cover" class="w-full max-w-xs rounded-lg shadow-2xl" />
+
     <div>
-      <h1 class="text-xl md:text-4xl">{{ book()?.title }}</h1>
+      <h2 class="text-xl md:text-4xl text-center md:text-left">
+        {{ book()?.title }}
+      </h2>
       <p class="py-6">
         {{ book()?.synopsis }}
       </p>
-      <button class="btn btn-primary">Get Started</button>
+
+      <div
+        class="flex flex-wrap gap-6 justify-center md:justify-start items-center md:flex-row md:gap-10 my-6"
+      >
+        <div class="indicator">
+          <span class="indicator-item indicator-center badge badge-accent">
+            Author
+          </span>
+          <div class="p-4 border">
+            <h2 class="text-lg">{{ book()?.author?.name }}</h2>
+          </div>
+        </div>
+
+        <div class="indicator">
+          <span class="indicator-item indicator-center badge badge-accent">
+            Year
+          </span>
+          <div class="p-4 border">
+            <h2 class="text-lg">{{ book()?.year }}</h2>
+          </div>
+        </div>
+
+        <div class="indicator">
+          <span class="indicator-item indicator-center badge badge-accent">
+            Genre
+          </span>
+          <div class="p-4 border">
+            <h2 class="text-lg">{{ book()?.genre }}</h2>
+          </div>
+        </div>
+
+        <div class="indicator">
+          <span class="indicator-item indicator-center badge badge-accent">
+            Pages
+          </span>
+          <div class="p-4 border">
+            <h2 class="text-lg">{{ book()?.pages }}</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="pb-6" *ngIf="book()?.author?.otherBooks?.length">
+        <p class="text-sm text-center md:text-left">
+          Other books by the author:
+        </p>
+        <ul class="steps steps-vertical">
+          <li
+            data-content="📚"
+            class="step step-accent text-sm md:!min-h-[50px]"
+            *ngFor="let otherBook of book()?.author?.otherBooks"
+          >
+            {{ otherBook }}
+          </li>
+        </ul>
+      </div>
+
+      <a class="btn btn-neutral btn-sm" routerLink="/">Back to home</a>
     </div>
   </div>
 </div>

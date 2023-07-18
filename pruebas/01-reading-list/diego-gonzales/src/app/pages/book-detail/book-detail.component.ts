@@ -2,12 +2,12 @@ import { Component, Input, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BooksService } from '~/services/books.service';
 import type { Book } from '~/interfaces/books.interface';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-book-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './book-detail.component.html',
 })
 export default class BookDetailComponent {
