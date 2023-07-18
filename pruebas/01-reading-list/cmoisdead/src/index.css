@@ -1,9 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@500&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 a {
-  @apply text-sky-700 hover:text-sky-500 transition-colors;
+  @apply text-rose-700 hover:text-rose-500 transition-colors;
 }
 
 h1,
@@ -12,5 +13,14 @@ h3,
 h4,
 h5,
 h6 {
-  @apply text-sky-700;
+  @apply text-rose-700;
+  font-family: "Libre Caslon Text", serif;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.classic {
+  font-family: "Libre Caslon Text", serif;
 }

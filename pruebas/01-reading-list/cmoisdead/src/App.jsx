@@ -4,6 +4,7 @@ import { Current } from "./components/Current";
 import { useEffect } from "react";
 import useBookStore from "./store/store";
 import { Navbar } from "./components/Navbar";
+import { Header } from "./components/Header";
 
 function App() {
   useEffect(() => {
@@ -15,8 +16,9 @@ function App() {
       <header>
         <Navbar />
       </header>
-      <div className="container mx-auto py-5">
-        <div className="flex gap-2">
+      <div className="container mx-auto py-3">
+        <Header />
+        <div className="flex gap-2 mt-6">
           <List />
           <Current />
         </div>

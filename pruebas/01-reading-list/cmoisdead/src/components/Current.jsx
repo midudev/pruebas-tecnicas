@@ -12,9 +12,9 @@ export const Current = () => {
   }, []);
 
   return (
-    <div className="bg-neutral-900/75 w-5/12 rounded-lg p-3">
-      <h1 className="text-xl font-bold capitalize text-center my-2">
-        {books?.length || 0} on reading list
+    <div className="bg-neutral-900/75 md:w-5/12 rounded-lg p-3 hidden md:block">
+      <h1 className="text-xl font-bold text-center my-2">
+        {books?.length || 0} Books on Reading List
       </h1>
       <div className="flex flex-wrap content-start justify-center gap-4">
         {books?.map((book, i) => (

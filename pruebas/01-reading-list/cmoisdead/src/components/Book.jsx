@@ -23,11 +23,11 @@ export const Book = ({ book, added }) => {
 
   return (
     <div className="relative w-48 h-72">
-      <div className="w-full h-full bg-neutral-800 border border-neutral-700 hover:border-neutral-500 hover:cursor-pointer transition-all">
+      <div className="w-full h-full border-2 border-dashed border-neutral-700 rounded-lg hover:border-neutral-500 hover:cursor-pointer transition-all">
         <img
           src={cover}
           alt={`${title} image`}
-          className="object-cover w-full h-full"
+          className="object-cover w-full h-full rounded-lg"
         />
       </div>
       {added ? (
@@ -39,7 +39,7 @@ export const Book = ({ book, added }) => {
         </button>
       ) : (
         <button
-          className="bg-sky-700 text-neutral-900 hover:text-white transition-colors p-1 rounded-full absolute -top-2 -right-2"
+          className="bg-rose-700 text-neutral-900 hover:text-white transition-colors p-1 rounded-full absolute -top-2 -right-2"
           onClick={handleAdd}
         >
           <AiFillHeart />
