@@ -1,7 +1,10 @@
 <div class="max-w-7xl mx-auto my-7">
   <section class="mb-4">
-    <h2>6 books available</h2>
-    <h3>2 books on the reading list</h3>
+    <h2>{{ totalBooksAvailable() | i18nPlural: bookMapping }} available</h2>
+    <h3>
+      {{ totalBooksInReadingList() | i18nPlural: bookMapping }} on the reading
+      list
+    </h3>
   </section>
 
   <section class="mb-4">
@@ -12,7 +15,7 @@
 <div
   class="grid grid-cols-1 gap-8 w-full max-w-7xl mx-auto"
   [ngClass]="{
-    'md:grid-cols-[2fr_1fr]': readingList().length > 0
+    'md:grid-cols-[2fr_1fr]': totalBooksInReadingList() > 0
   }"
 >
   <div>
@@ -20,7 +23,7 @@
     <app-book-list />
   </div>
 
-  <aside *ngIf="readingList().length > 0">
+  <aside *ngIf="totalBooksInReadingList() > 0">
     <h2 class="text-xl text-center mb-4 font-bold">My reading list</h2>
     <app-reading-list />
   </aside>

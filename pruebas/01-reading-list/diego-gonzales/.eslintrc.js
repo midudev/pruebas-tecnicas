@@ -24,5 +24,6 @@ module.exports = {
     '@typescript-eslint/no-confusing-void-expression': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/prefer-readonly': 'off',
+    '@typescript-eslint/lines-between-class-members': 'off',
   },
 };

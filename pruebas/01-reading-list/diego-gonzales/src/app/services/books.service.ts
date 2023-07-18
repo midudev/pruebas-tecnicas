@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject, signal } from '@angular/core';
+import { Injectable, computed, inject, signal } from '@angular/core';
 import { map } from 'rxjs';
 import type { Book, BooksData } from '~/interfaces/books.interface';
 
@@ -10,6 +10,10 @@ export class BooksService {
   private _httpClient = inject(HttpClient);
   private _bookList = signal<Book[]>([]);
   private _readingList = signal<Book[]>([]);
+  totalBooksAvailable = computed(
+    () => this._bookList().length - this._readingList().length
+  );
+  totalBooksInReadingList = computed(() => this._readingList().length);
 
   get bookList() {
     return this._bookList.asReadonly();

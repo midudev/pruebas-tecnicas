@@ -18,5 +18,12 @@ import { BooksService } from '~/services/books.service';
 })
 export default class BooksHomeComponent {
   private _booksService = inject(BooksService);
-  readingList = this._booksService.readingList;
+  totalBooksAvailable = this._booksService.totalBooksAvailable;
+  totalBooksInReadingList = this._booksService.totalBooksInReadingList;
+
+  bookMapping = {
+    '=0': 'No books',
+    '=1': '1 book',
+    other: '# books',
+  };
 }
