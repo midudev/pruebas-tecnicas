@@ -1,27 +1,27 @@
 import { create } from 'zustand'
-import { persist } from "zustand/middleware";
+import { persist } from 'zustand/middleware'
 
 export const useReadListStore = create(persist(
-  (set,get) => ({
-    read_list: [],
+  (set, get) => ({
+    readList: [],
     add: (book) => {
-      if(!get().read_list.some(instance => instance.ISBN === book.ISBN)){
-        set((state)=>({
-          read_list: [...state.read_list,book]
+      if (!get().readList.some(instance => instance.ISBN === book.ISBN)) {
+        set((state) => ({
+          readList: [...state.readList, book]
         }))
       }
     },
     remove: (isbn) => (
-      set((state)=>({
-        read_list: state.read_list.filter(book => book.ISBN !== isbn)
+      set((state) => ({
+        readList: state.readList.filter(book => book.ISBN !== isbn)
       }))
     ),
-    loadStorage:(list) => {
-      set(()=>({
-        read_list: list
+    loadStorage: (list) => {
+      set(() => ({
+        readList: list
       }))
     }
-  }),{
-    name:'read_list'
+  }), {
+    name: 'readList'
   }
-)) 
+))
