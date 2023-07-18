@@ -5,6 +5,7 @@ module.exports = {
         "./src/**/*.html",
         "./src/**/*.css",
     ],
+    darkMode: 'class',
     theme: {},
     variants: {},
     plugins: [],
