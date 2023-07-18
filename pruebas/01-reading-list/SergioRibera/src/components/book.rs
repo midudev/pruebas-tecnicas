@@ -91,19 +91,19 @@ pub fn Book(props: &Props) -> Html {
             >
             <Link<Route> to={Route::Book { name: data.title.clone() }}>
                 <img
-                    class={classes!("w-[177px]", "h-[266px]","mb-5","book-image-shadow","transition-transform","hover:scale-105")}
+                    class={classes!("w-[177px]", "h-[266px]","mb-5","book-image-shadow","transition-transform","hover:scale-105","dark:shadow-none","dark:brightness-50")}
                     src={data.cover.clone()}
                     alt={data.title.clone()}
                 />
             </Link<Route>>
             <Link<Route> to={Route::Book { name: data.title.clone() }}>
                 <span
-                    class={classes!("text-neutral-600", "text-md", "font-bold")}
+                    class={classes!("text-neutral-600", "text-md", "font-bold","dark:text-zinc-100")}
                 >{data.title.clone()}</span>
             </Link<Route>>
             <Link<Route> to={Route::Author { name: data.author.name.clone() }}>
                 <span
-                    class={classes!("text-neutral-400", "text-sm", "font-bold")}
+                    class={classes!("text-neutral-400", "text-sm", "font-bold","dark:text-zinc-600")}
                 >
                     {data.author.name.clone()}
                 </span>
@@ -112,7 +112,7 @@ pub fn Book(props: &Props) -> Html {
                 <div
                     {onclick}
                     ref={bookmark_ref}
-                    class={classes!("top-0","right-0","absolute","px-3","py-2","bg-slate-200","rounded","cursor-pointer")}
+                    class={classes!("top-0","right-0","absolute","px-3","py-2","bg-slate-200","rounded","cursor-pointer","dark:text-zinc-400","dark:bg-slate-800")}
                 >
                     <Icon
                         icon_id={*bookmark_icon}

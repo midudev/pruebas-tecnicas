@@ -130,40 +130,49 @@ pub fn Library(props: &Props) -> Html {
         <section
             class={classes!("flex","flex-row","flex-wrap","py-4","mt-6","mb-2")}>
             if !title.is_empty() || sortable {
-                <header class={classes!("w-full","flex","flex-row","items-center","py-6")}>
+                <header class={classes!("w-full","flex","flex-row","items-center","justify-between","py-6")}>
                     if !title.is_empty() {
                         <h1
-                            class={classes!("w-full","text-gray-700","font-bold","text-3xl")}
+                            class={classes!("text-gray-700","font-bold","text-3xl","dark:text-zinc-100")}
                         >
                             {title.clone()}
                         </h1>
                     }
                     if sortable {
                         <SingleChoice<SortContent>
+                            class={classes!("hidden","sm:flex")}
                             options={vec![SortContent::AZ,SortContent::ZA,SortContent::Pages,SortContent::PagesReverse]}
                             onchange={onchangesort}
                         >
                             <div
                                 title="A-Z"
-                                class={classes!("flex","cursor-pointer","hover:bg-slate-200","p-4","rounded",(*sort == SortContent::AZ).then_some("bg-slate-300").or(Some("bg-slate-200")))}
+                                class={classes!("flex","cursor-pointer","hover:bg-slate-200","p-4","rounded","dark:hover:bg-slate-700","dark:text-zinc-400",
+                                (*sort == SortContent::AZ).then_some(vec!["bg-slate-300","dark:bg-slate-600"]).or(Some(vec!["bg-slate-200","dark:bg-slate-800"]))
+                                )}
                             >
                                 <Icon icon_id={IconId::FontAwesomeSolidArrowDownAZ} width="12px" height="12px"/>
                             </div>
                             <div
                                 title="Z-A"
-                                class={classes!("flex","cursor-pointer","hover:bg-slate-100","p-4","rounded",(*sort == SortContent::ZA).then_some("bg-slate-300").or(Some("bg-slate-200")))}
+                                class={classes!("flex","cursor-pointer","hover:bg-slate-100","p-4","rounded","dark:hover:bg-slate-700","dark:text-zinc-400",
+                                (*sort == SortContent::ZA).then_some(vec!["bg-slate-300","dark:bg-slate-600"]).or(Some(vec!["bg-slate-200","dark:bg-slate-800"]))
+                                )}
                             >
                                 <Icon icon_id={IconId::FontAwesomeSolidArrowUpAZ} width="12px" height="12px"/>
                             </div>
                             <div
                                 title="Paginas de Menor a Mayor"
-                                class={classes!("flex","cursor-pointer","hover:bg-slate-100","p-4","rounded",(*sort == SortContent::Pages).then_some("bg-slate-300").or(Some("bg-slate-200")))}
+                                class={classes!("flex","cursor-pointer","hover:bg-slate-100","p-4","rounded","dark:hover:bg-slate-700","dark:text-zinc-400",
+                                (*sort == SortContent::Pages).then_some(vec!["bg-slate-300","dark:bg-slate-600"]).or(Some(vec!["bg-slate-200","dark:bg-slate-800"]))
+                                )}
                             >
                                 <Icon icon_id={IconId::BootstrapSortNumericDown} width="14px" height="14px"/>
                             </div>
                             <div
                                 title="Paginas de Mayor a Menor"
-                                class={classes!("flex","cursor-pointer","hover:bg-slate-100","p-4","rounded",(*sort == SortContent::PagesReverse).then_some("bg-slate-300").or(Some("bg-slate-200")))}
+                                class={classes!("flex","cursor-pointer","hover:bg-slate-100","p-4","rounded","dark:hover:bg-slate-700","dark:text-zinc-400",
+                                (*sort == SortContent::PagesReverse).then_some(vec!["bg-slate-300","dark:bg-slate-600"]).or(Some(vec!["bg-slate-200","dark:bg-slate-800"]))
+                                )}
                             >
                                 <Icon icon_id={IconId::BootstrapSortNumericDownAlt} width="14px" height="14px"/>
                             </div>
@@ -172,7 +181,7 @@ pub fn Library(props: &Props) -> Html {
                 </header>
             }
             <div
-                class={classes!("flex","flex-row","flex-wrap","gap-x-8","gap-y-6","px-6","py-4","overflow-hidden","transition-all",not_expanded.then_some("max-h-[390px]"),)}
+                class={classes!("flex","flex-row","flex-wrap","justify-center","gap-x-8","gap-y-6","px-6","py-4","overflow-hidden","transition-all",not_expanded.then_some("max-h-[390px]"),)}
             >
                 {books
                     .iter()

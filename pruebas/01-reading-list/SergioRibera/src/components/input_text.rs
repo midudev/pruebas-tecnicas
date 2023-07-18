@@ -42,7 +42,11 @@ pub fn input_text(props: &Props) -> Html {
             if let Some(icon) = icon {
                 <Icon icon_id={icon} width={"18px".to_owned()} height={"18px".to_owned()}/>
             }
-            <input class={classes!("px-5", "py-3")} {placeholder} {oninput} />
+            <input
+                class={classes!("bg-neutral-100","block","dark:bg-gray-950","px-5","py-3","focus:border-none","focus:ring-0")}
+                {placeholder}
+                {oninput}
+            />
         </div>
     }
 }

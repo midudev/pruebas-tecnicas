@@ -30,16 +30,22 @@ pub fn LayoutError(props: &Props) -> Html {
     };
 
     html! {
-        <section class={classes!("w-full","min-h-[7rem]","flex","flex-col","items-center", "justify-center")}>
+        <section class={classes!("w-full","min-h-[7rem]","flex","flex-col","items-center","justify-center")}>
             if !title.is_empty() {
                 <h1
-                    class={classes!("w-full","text-gray-700","font-bold","text-3xl","mt-6","mb-2")}
+                    class={classes!("w-full","text-gray-700","font-bold","text-3xl","mt-6","mb-2","dark:text-zinc-100")}
                 >
                     {title.clone()}
                 </h1>
             }
-            <img class={classes!("max-w-[90%]","md:max-w-full")} src={image} alt={text} />
-            <span class={classes!("text-gray-700","font-light","text-center","text-xl")}>{text}</span>
+            <img
+                class={classes!("max-w-[90%]","md:max-w-full",
+                    (errtype != &ErrorType::LoadingBooks).then_some("dark:contrast-50")
+                )}
+                src={image}
+                alt={text}
+            />
+            <span class={classes!("text-gray-700","font-light","text-center","text-xl","dark:text-zinc-400")}>{text}</span>
         </section>
     }
 }

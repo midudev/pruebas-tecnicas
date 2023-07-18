@@ -25,12 +25,12 @@ fn FooterSection(props: &FooterSectionProps) -> Html {
     let FooterSectionProps { title, items } = props.clone();
     html! {
         <section class={classes!("flex","flex-col","gap-2")}>
-            <h4 class={classes!("font-bold","text-white","mb-3","text-xl")}>{title.clone()}</h4>
+            <h4 class={classes!("font-bold","text-neutral-600","mb-3","text-xl","dark:text-zinc-100")}>{title.clone()}</h4>
             {items.iter().map(|i| html! {
                 <a
                     href={i.url.clone()}
                     target={"_blank"}
-                    class={classes!("flex","flex-row","gap-2","text-white","items-center","fill-newtral-400")}
+                    class={classes!("flex","flex-row","gap-2","text-neutral-500","items-center","fill-neutral-500","dark:text-zinc-400","dark:fill-zinc-400")}
                 >
                     <Icon
                         icon_id={i.icon}
@@ -71,7 +71,7 @@ pub fn Footer() -> Html {
     ];
 
     html! {
-        <footer class={classes!("w-full","bg-slate-900","flex","flex-col","gap-4","py-6","items-center")}>
+        <footer class={classes!("w-full","bg-neutral-300","flex","flex-col","gap-4","py-6","items-center","dark:bg-slate-900")}>
             <div
                 class={classes!("w-full","flex","flex-col","md:flex-row","gap-4","md:gap-0","items-center","md:items-start","md:justify-evenly","px-2")}
             >
