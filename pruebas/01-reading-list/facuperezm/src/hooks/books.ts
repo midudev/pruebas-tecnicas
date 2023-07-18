@@ -1,4 +1,4 @@
-import books from '../../../books.json'
+import books from '../books.json'
 
 export default function useBooks() {
 	const booksArray = books.library.map(book => {
