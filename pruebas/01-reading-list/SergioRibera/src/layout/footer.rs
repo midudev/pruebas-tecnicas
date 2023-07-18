@@ -25,10 +25,10 @@ fn FooterSection(props: &FooterSectionProps) -> Html {
     let FooterSectionProps { title, items } = props.clone();
     html! {
         <section class={classes!("flex","flex-col","gap-2")}>
-            <h4 class={classes!("font-bold","text-neutral-600","mb-3","text-xl","dark:text-zinc-100")}>{title.clone()}</h4>
+            <h4 class={classes!("font-bold","text-neutral-600","mb-3","text-xl","dark:text-zinc-100")}>{title.to_string()}</h4>
             {items.iter().map(|i| html! {
                 <a
-                    href={i.url.clone()}
+                    href={i.url.to_string()}
                     target={"_blank"}
                     class={classes!("flex","flex-row","gap-2","text-neutral-500","items-center","fill-neutral-500","dark:text-zinc-400","dark:fill-zinc-400")}
                 >
@@ -36,7 +36,7 @@ fn FooterSection(props: &FooterSectionProps) -> Html {
                         icon_id={i.icon}
                         width={"15px".to_owned()}
                         height={"15px".to_owned()}/>
-                    {i.content.clone()}
+                    {i.content.to_string()}
                 </a>
             }).collect::<Vec<Html>>()}
         </section>
@@ -46,19 +46,55 @@ fn FooterSection(props: &FooterSectionProps) -> Html {
 #[function_component]
 pub fn Footer() -> Html {
     let socialmedia = vec![
-        SectionItem::new(IconId::BootstrapGlobe2, "Un poco sobre mi", "https://bento.me/sergioribera"),
-        SectionItem::new(IconId::BootstrapGithub, "Github", "https://github.com/SergioRibera"),
-        SectionItem::new(IconId::BootstrapLinkedin, "Linkedin", "https://www.linkedin.com/in/sergioribera"),
-        SectionItem::new(IconId::BootstrapTwitch, "Twitch", "https://www.twitch.tv/sergioriberaid"),
-        SectionItem::new(IconId::BootstrapInstagram, "Instagram", "https://www.instagram.com/sergio_riberacosta"),
-        SectionItem::new(IconId::BootstrapTwitter, "Twitter", "https://twitter.com/sergioribera_rs"),
-        SectionItem::new(IconId::BootstrapStackOverflow, "StackOverflow", "https://stackoverflow.com/users/12349493/sergio-ribera"),
+        SectionItem::new(
+            IconId::BootstrapGlobe2,
+            "Un poco sobre mi",
+            "https://bento.me/sergioribera",
+        ),
+        SectionItem::new(
+            IconId::BootstrapGithub,
+            "Github",
+            "https://github.com/SergioRibera",
+        ),
+        SectionItem::new(
+            IconId::BootstrapLinkedin,
+            "Linkedin",
+            "https://www.linkedin.com/in/sergioribera",
+        ),
+        SectionItem::new(
+            IconId::BootstrapTwitch,
+            "Twitch",
+            "https://www.twitch.tv/sergioriberaid",
+        ),
+        SectionItem::new(
+            IconId::BootstrapInstagram,
+            "Instagram",
+            "https://www.instagram.com/sergio_riberacosta",
+        ),
+        SectionItem::new(
+            IconId::BootstrapTwitter,
+            "Twitter",
+            "https://twitter.com/sergioribera_rs",
+        ),
+        SectionItem::new(
+            IconId::BootstrapStackOverflow,
+            "StackOverflow",
+            "https://stackoverflow.com/users/12349493/sergio-ribera",
+        ),
     ];
     let techstack = vec![
         SectionItem::new(IconId::SimpleIconsRust, "Rust", "https://rust-lang.org"),
         SectionItem::new(IconId::BootstrapGlobe2, "Yew", "https://yew.rs"),
-        SectionItem::new(IconId::BootstrapGithub, "CargoMake", "https://github.com/sagiegurari/cargo-make"),
-        SectionItem::new(IconId::SimpleIconsTailwindcss, "TailwindCss", "https://tailwindcss.com"),
+        SectionItem::new(
+            IconId::BootstrapGithub,
+            "CargoMake",
+            "https://github.com/sagiegurari/cargo-make",
+        ),
+        SectionItem::new(
+            IconId::SimpleIconsTailwindcss,
+            "TailwindCss",
+            "https://tailwindcss.com",
+        ),
         SectionItem::new(IconId::BootstrapGlobe2, "Trunk", "https://trunkrs.dev"),
         SectionItem::new(IconId::SimpleIconsDocker, "Docker", "https://docker.com"),
         SectionItem::new(IconId::BootstrapGlobe2, "Fly.io", "https://fly.io"),

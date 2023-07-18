@@ -2,7 +2,8 @@ use yew::prelude::*;
 
 #[derive(Clone, Properties, PartialEq)]
 pub struct SingleChoiceProps<T>
-where T: PartialEq + Default + Clone + 'static
+where
+    T: PartialEq + Default + Clone + 'static,
 {
     pub class: Option<Classes>,
     pub options: Vec<T>,
@@ -12,14 +13,19 @@ where T: PartialEq + Default + Clone + 'static
 
 #[function_component]
 pub fn SingleChoice<T>(props: &SingleChoiceProps<T>) -> Html
-where T: PartialEq + Default + Clone + 'static
+where
+    T: PartialEq + Default + Clone + 'static,
 {
-    let SingleChoiceProps { class, options, children, onchange: onchangecurrent } = props.clone();
+    let SingleChoiceProps {
+        class,
+        options,
+        children,
+        onchange: onchangecurrent,
+    } = props.clone();
     let current = use_state(T::default);
     let mut children_iter = children.iter();
 
     let onchange = {
-        let current = current.clone();
         |v: T| {
             Callback::from(move |_: MouseEvent| {
                 current.set(v.clone());

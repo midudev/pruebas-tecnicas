@@ -28,11 +28,10 @@ enum SortContent {
     PagesReverse,
 }
 
-pub fn check_book_saved(books: &Vec<Book>, b: &Book) -> bool {
+pub fn check_book_saved(books: &[Book], b: &Book) -> bool {
     books
         .iter()
-        .find(|r| r.title == b.title && b.year == r.year && b.author.name == r.author.name)
-        .is_some()
+        .any(|r| r.title == b.title && b.year == r.year && b.author.name == r.author.name)
 }
 
 fn sort_books(sort: SortContent, books: Vec<Book>) -> Vec<Book> {
@@ -79,7 +78,7 @@ pub fn Library(props: &Props) -> Html {
                 .map(|l| Book {
                     saved: check_book_saved(
                         reading_list.as_ref().unwrap_or(&Vec::<Book>::new()),
-                        &l,
+                        l,
                     ),
                     ..l.clone()
                 })
@@ -92,7 +91,7 @@ pub fn Library(props: &Props) -> Html {
     let onaddbook = {
         let reading_list = reading_list.clone();
         Callback::from(move |b: Book| {
-            if let Some(r) = reading_list.as_ref().and_then(|r| {
+            if let Some(r) = reading_list.as_ref().map(|r| {
                 let mut r = r.clone();
                 if !r.contains(&b) {
                     r.push(Book {
@@ -100,7 +99,7 @@ pub fn Library(props: &Props) -> Html {
                         ..b.clone()
                     });
                 }
-                Some(r)
+                r
             }) {
                 reading_list.set(r);
             }
@@ -108,9 +107,8 @@ pub fn Library(props: &Props) -> Html {
     };
 
     let onremovebook = {
-        let reading_list = reading_list.clone();
         Callback::from(move |b: Book| {
-            if let Some(r) = reading_list.as_ref().and_then(|r| {
+            if let Some(r) = reading_list.as_ref().map(|r| {
                 let mut r = r.clone();
                 if let Some(i) = r.iter().position(|x| {
                     b.title == *x.title
@@ -121,7 +119,7 @@ pub fn Library(props: &Props) -> Html {
                 }) {
                     r.remove(i);
                 }
-                Some(r)
+                r
             }) {
                 reading_list.set(r);
             }

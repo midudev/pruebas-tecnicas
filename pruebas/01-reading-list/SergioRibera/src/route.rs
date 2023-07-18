@@ -10,7 +10,7 @@ pub enum Route {
     #[at("/book/:name")]
     Book { name: String },
     #[at("/author/:name")]
-    Author{ name: String },
+    Author { name: String },
     #[not_found]
     #[at("/404")]
     NotFound,

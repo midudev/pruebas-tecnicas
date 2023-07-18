@@ -28,7 +28,7 @@ pub fn input_text(props: &Props) -> Html {
     } = props.clone();
 
     let placeholder = if let Some(place) = place_prop {
-        place.clone()
+        place
     } else {
         "Insert Text...".to_string()
     };

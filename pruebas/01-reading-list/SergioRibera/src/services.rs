@@ -3,9 +3,9 @@ mod data;
 pub use data::*;
 use serde::de::DeserializeOwned;
 
+use crate::errors::Error;
 #[cfg(feature = "inspect")]
 use log::error;
-use crate::errors::Error;
 
 pub async fn get<T>(url: String) -> Result<T, Error>
 where

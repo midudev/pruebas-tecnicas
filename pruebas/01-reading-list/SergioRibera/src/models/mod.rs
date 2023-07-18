@@ -1,3 +1,3 @@
 mod data;
 
-pub use data::{Data, Library, Book, Author};
+pub use data::{Author, Book, Data, Library};

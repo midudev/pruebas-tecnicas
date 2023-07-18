@@ -28,7 +28,6 @@ pub fn Book(props: &Props) -> Html {
 
     let onclick = {
         let icon = bookmark_icon.clone();
-        let bookmark_toggle = bookmark_toggle.clone();
         let book = data.clone();
         Callback::from(move |_| {
             if *bookmark_toggle {
@@ -63,7 +62,6 @@ pub fn Book(props: &Props) -> Html {
     {
         let bookmard_hovered = bookmard_hovered.clone();
         let show_bookmard = show_bookmard.clone();
-        let group_ref = group_ref.clone();
         use_event(bookmark_ref.clone(), "mouseenter", move |_: MouseEvent| {
             bookmard_hovered.set(true);
         });
@@ -73,9 +71,7 @@ pub fn Book(props: &Props) -> Html {
     }
 
     {
-        let bookmard_hovered = bookmard_hovered.clone();
         let show_bookmard = show_bookmard.clone();
-        let group_ref = group_ref.clone();
         use_event(bookmark_ref.clone(), "mouseleave", move |_: MouseEvent| {
             bookmard_hovered.set(false);
         });
