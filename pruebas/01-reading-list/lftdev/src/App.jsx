@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react'
 import BooksJSON from './database/books.json'
 import './style.css'
 import BookItem from './components/BookItem'
+import BooksList from './components/BooksList'
 export default function App () {
-  const [bookList, setBookList] = useState([])
+  const [booksList, setBooksList] = useState([])
   const [readList, setReadList] = useState([])
   // Load book library to state bookList.
-  useEffect(() => BooksJSON.library.forEach(bookObject => setBookList(prevList => [...prevList, bookObject.book])), [])
+  useEffect(() => BooksJSON.library.forEach(bookObject => setBooksList(prevList => [...prevList, bookObject.book])), [])
   function addToReadList (book) {
     setReadList(prevList => [...prevList, book])
   }
@@ -28,12 +29,7 @@ export default function App () {
             </select>
           </label>
         </form>
-        <ul>
-          {bookList.map((book, index) =>
-            <li key={index}>
-              <BookItem book={book} clickListener={addToReadList} />
-            </li>)}
-        </ul>
+        <BooksList initialList={booksList} onItemClick={addToReadList} />
       </main>
       {readList.length > 0 &&
         <aside role='region'>
