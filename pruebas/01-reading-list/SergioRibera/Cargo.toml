@@ -16,7 +16,8 @@ yew-hooks = "0.2.0"
 yew-router = "0.17.0"
 yew = { version = "0.20.0", features = ["csr"] }
 yew_icons = { version = "0.7.2", features = [
-    "Bootstrap123",
+    "BootstrapArrowDown",
+    "BootstrapArrowUp",
     "BootstrapBookmark",
     "BootstrapBookmarkCheckFill",
     "BootstrapBookmarkDashFill",
@@ -28,6 +29,8 @@ yew_icons = { version = "0.7.2", features = [
     "BootstrapInstagram",
     "BootstrapLinkedin",
     "BootstrapSearch",
+    "BootstrapSortNumericDown",
+    "BootstrapSortNumericDownAlt",
     "BootstrapStackOverflow",
     "BootstrapTwitch",
     "BootstrapTwitter",
