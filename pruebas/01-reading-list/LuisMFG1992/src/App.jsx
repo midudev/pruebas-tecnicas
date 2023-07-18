@@ -1,16 +1,24 @@
-import { useEffect } from 'react'
 import './App.css'
-import DispplayBooks from './Components/DispplayBooks'
+
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { fetchBooks } from './redux/booksSlice'
+
+import DisplayBooks from './Components/DisplayBooks'
 import DropDownFilter from './Components/DropDownFilter'
 import SliderFilter from './Components/SliderFilter'
-import { useDispatch } from 'react-redux'
-import { fetchBooks } from './redux/booksSlice'
-import FiltersDisplay from './Components/FiltersDisplay'
-import { useSelector } from 'react-redux'
+import DisplayFilters from './Components/DisplayFilters'
 
 function App() {
   const dispatch = useDispatch()
   const { booksList } = useSelector((state) => state.books)
+  const { selectedFilters } = useSelector((state) => state.books)
+  console.log(selectedFilters)
+
+  const setGenre = new Set(booksList.map((element) => element.book.genre))
+  const filterGenre = [...setGenre]
+
   useEffect(() => {
     dispatch(fetchBooks())
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -23,10 +31,10 @@ function App() {
         <p>Available books</p>
         <div className="w-50 flex gap-3 p-4 items-center flex-col  sm:w-full sm:flex-row sm:justify-evenly">
           <SliderFilter />
-          <DropDownFilter booksList={booksList} />
+          <DropDownFilter filterGenre={filterGenre} />
         </div>
-        <FiltersDisplay />
-        <DispplayBooks booksList={booksList} />
+        <DisplayFilters selectedFilters={selectedFilters} />
+        <DisplayBooks booksList={booksList} />
       </div>
     </div>
   )

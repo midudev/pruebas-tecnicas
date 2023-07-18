@@ -1,4 +1,4 @@
-const DispplayBooks = ({ booksList }) => {
+const DisplayBooks = ({ booksList }) => {
   return (
     <div className="flex flex-wrap  gap-4 p-4 justify-center items-center">
       {booksList.map((element) => (
@@ -12,4 +12,4 @@ const DispplayBooks = ({ booksList }) => {
   )
 }
 
-export default DispplayBooks
+export default DisplayBooks
