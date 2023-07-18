@@ -10,10 +10,12 @@
 
 :root {
   --main-color: rgb(255, 255, 255);
-  --second-color: rgb(93, 71, 55);
-  --backgrounds: rgb(249, 243, 238);
-  /* --accent: rgb(79, 54, 36); */
-  --accent: #fb8500;
+  --second-color: #5D4737;
+  --backgrounds: #F9F3EE;
+  --gray: #484646;
+  --light-gray: #969090;
+  /* --accent: #4F3624; */
+  --accent: p;
   --main-font: "Montserrat-Regular", sans-serif;
   --main-font-bold: "Montserrat-Bold", sans-serif;
 }
