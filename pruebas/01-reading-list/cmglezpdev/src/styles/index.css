@@ -1,12 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
-@font-face {
-  font-family: 'Roboto';
-  src: url('../asserts/fonts/Roboto/Roboto-Bold.ttf');
-  src: url('../asserts/fonts/Roboto/Roboto-Medium.ttf');
-  src: url('../asserts/fonts/Roboto/Roboto-Regular.ttf');
-}
-
-* {
+  * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
