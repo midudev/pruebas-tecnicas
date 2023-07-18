@@ -18,11 +18,9 @@
     </label>
     <select class="select select-bordered">
       <option disabled selected>Pick one</option>
-      <option>Star Wars</option>
-      <option>Harry Potter</option>
-      <option>Lord of the Rings</option>
-      <option>Planet of the Apes</option>
-      <option>Star Trek</option>
+      <option [value]="genre" *ngFor="let genre of genres()">
+        {{ genre }}
+      </option>
     </select>
   </div>
 </form>
