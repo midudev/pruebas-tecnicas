@@ -11,9 +11,11 @@
 
 <script lang="ts">
     import { derived, type Writable } from 'svelte/store';
-    import type { BooksFilters } from './types';
+    import type { BooksFilters, PaginationState } from './types';
     import { appState } from '../store/store';
     import type { Book } from '../types'
+
+    export let paginationState: Writable<PaginationState>
   
     export let minValue = 0;
     export let maxValue = derived(appState, ($appState) => {
@@ -27,6 +29,11 @@
         filters.update(prev => ({
             ...prev, 
             pages: Number((e.target as HTMLInputElement).value)
+        }))
+
+        paginationState.update(() => ({
+          init: 0,
+          offset: 4,
         }))
     }
 </script>

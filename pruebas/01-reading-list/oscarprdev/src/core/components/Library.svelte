@@ -25,6 +25,6 @@
     <h2>Disponibles: {$appState.books.length}</h2>
     <h3>En lista de lectura: {$appState.readingBooks.length}</h3>
   </div>
-  <FilterBooks {filters} />
+  <FilterBooks {filters} {paginationState} />
   <BooksList {booksList} {paginationState} {booksFiltered} />
 </section>

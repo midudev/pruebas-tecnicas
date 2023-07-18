@@ -1,11 +1,13 @@
 <script lang="ts">
   import { writable, type Writable } from 'svelte/store';
-  import type { BooksFilters } from './types';
+  import type { BooksFilters, PaginationState } from './types';
   import { appState } from '../store/store';
   import { onMount } from 'svelte';
   import type { Book } from '../types';
 
   export let filters: Writable<BooksFilters>;
+  export let paginationState: Writable<PaginationState>
+
   let genres: string[];
 
   let dropdownIsOpen = writable(false);
@@ -16,8 +18,13 @@
       ...prevState,
       genre,
     }));
+
     dropdownIsOpen.update(prev => !prev)
     genreSelected.update(() => genre)
+    paginationState.update(() => ({
+      init: 0,
+      offset: 4,
+    }))
   };
 
   const openDropdown = () => dropdownIsOpen.update(prev => !prev);

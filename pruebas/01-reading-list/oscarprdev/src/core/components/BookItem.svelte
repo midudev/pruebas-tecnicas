@@ -33,7 +33,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <li
-  class="flex flex-col gap-4 w-60 relative h-400"
+  class="flex flex-col gap-4 w-60 relative h-400 md:w-40 md:h-300"
   on:mouseenter={handleOverlay}
   on:mouseleave={handleOverlay}
 >
