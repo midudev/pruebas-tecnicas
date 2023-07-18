@@ -5,7 +5,7 @@ import homeStyles from '@/assets/styles/Home.module.css'
 import headerStyles from '@/assets/styles/HeaderPage.module.css'
 
 import logo from './icon.svg'
-import { SuggestBook } from './components/SuggestBook'
+import { SuggestBook } from '@/components/SuggestBook'
 
 export default function Home() {
   const [books, genres] = useLibrary()
