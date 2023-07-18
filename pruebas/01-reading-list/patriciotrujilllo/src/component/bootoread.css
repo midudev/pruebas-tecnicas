@@ -11,6 +11,7 @@
     text-align: center;
     border-radius: 1rem;
     overflow: auto;
+    z-index: 9999;
 }
 .container-list{
     display: flex;
