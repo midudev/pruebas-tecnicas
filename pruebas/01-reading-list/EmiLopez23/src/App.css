@@ -1,0 +1,15 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem;
+  min-height: 100vh;
+}
+
+.list-of-books{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 90%;
+}
