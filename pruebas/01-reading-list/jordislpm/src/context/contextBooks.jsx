@@ -68,33 +68,6 @@ function reducer(state, action){
                 
             }
         };
-        case "PageFilter":{
-            const pages = action.page;
-            const listBookPages=state.listBooks.filter((book)=>{
-                        return book.pages > pages});
-            const listReadPages=state.listRead.filter((book)=>{
-                return book.pages > pages});
-
-            return {
-                ...state,
-                listRead: listReadPages,
-                listBooks:listBookPages
-            }
-        };
-        case "GenreFilter":{
-            const genre = action.genre;
-            console.log(action.genre)
-            const listBookGenre=state.listBooks.filter((book)=>{
-                        return book.genre == genre});
-            const listReadGenre=state.listRead.filter((book)=>{
-                return book.genre == genre});
-
-            return {
-                ...state,
-                listRead: listReadGenre,
-                listBooks:listBookGenre
-            }
-        }
     }
     };
 

@@ -34,8 +34,6 @@ useEffect(()=>{
 
     setBooks(filterBooks)
     setRead(filterRead)
-      
-console.log(filters)
 },[store,filters])
 
 

@@ -16,18 +16,17 @@ const Form = () => {
     
     const onChangeSelect= (e)=>{
 let genre = e.target.value
-// dispatch({type:"GenreFilter", genre:genre })
-setFilters({...filters,genre:genre})
+setFilters({...filters, genre:genre})
 }
 
     const onChangePages = (e)=>{
-        setPaginas(e.target.value)
-        // dispatch({type: "PageFilter", page:paginas})
-        setFilters({minPages:paginas, ...filters})
+        let pages = e.target.value;
+        setPaginas(pages)
+        setFilters({...filters, minPages:pages})
     }
 
   return (
-    <form>
+    < div className={styles.options}>
         <div>
             <label htmlFor="pages">Filtar por paginas</label>
             <input 
@@ -40,7 +39,7 @@ setFilters({...filters,genre:genre})
                 onChange={onChangePages}  
                 placeholder="Filtrar por paginas">
             </input>
-            <span>Libros de mas de{paginas}</span>    
+            <span>Libros de mas de {paginas} paginas</span>    
         </div>
        <div>
         filtar por genero
@@ -51,7 +50,7 @@ setFilters({...filters,genre:genre})
         </select>
        </div>
        
-    </form>
+    </div>
   )
 }
 
