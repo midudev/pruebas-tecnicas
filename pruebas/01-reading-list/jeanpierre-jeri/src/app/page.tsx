@@ -9,7 +9,7 @@ export default async function Home() {
   const books = await getBooks()
 
   return (
-    <main>
+    <main className="min-h-screen">
       <Header />
       <BooksContextProvider books={books}>
         <div className="px-6 py-12 bg-zinc-800">

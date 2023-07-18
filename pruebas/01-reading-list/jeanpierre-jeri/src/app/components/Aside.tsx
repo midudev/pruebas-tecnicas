@@ -1,10 +1,12 @@
 'use client'
 
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { Book } from './Book'
 import { useBooksContext } from '@/context/books.context'
 
 export function Aside() {
   const { lectureBooks } = useBooksContext()
+  const [parent] = useAutoAnimate()
 
   return (
     <aside className="flex flex-col col-span-4 gap-4 text-center">
@@ -14,13 +16,11 @@ export function Aside() {
         <span className="text-[#FCD34D] font-bold ">{lectureBooks.length}</span> libros de lectura
       </h3>
 
-      <div className="w-4/5 mx-auto text-left">
+      <div ref={parent} className="w-4/5 mx-auto text-left">
         {lectureBooks.map(({ book }, index) => {
           return (
-            <div key={book.ISBN} className="relative">
-              <div className="absolute left-0" style={{ top: `${index * 200}px` }}>
-                <Book book={book} />
-              </div>
+            <div key={book.ISBN} style={{ marginTop: `${index === 0 ? 0 : -400}px` }}>
+              <Book book={book} />
             </div>
           )
         })}

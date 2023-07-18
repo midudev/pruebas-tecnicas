@@ -14,7 +14,7 @@ export function Book({ book }: { book: BookInfo }) {
   return (
     <article
       onClick={handleSetLectureBook}
-      className="flex flex-col p-6 bg-white shadow-xl cursor-pointer rounded-2xl animate-fade-up animate-duration-500"
+      className="flex flex-col p-6 bg-white shadow-lg shadow-black cursor-pointer rounded-2xl relative"
     >
       <header>
         <Image
