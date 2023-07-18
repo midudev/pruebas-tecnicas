@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import BooksJSON from './database/books.json'
 import './style.css'
+import BookItem from './components/BookItem'
 export default function App () {
   const [bookList, setBookList] = useState([])
   // Load book library to state bookList.
@@ -25,7 +26,7 @@ export default function App () {
         <ul>
           {bookList.map((book, index) =>
             <li key={index}>
-              <img src={book.cover} alt={`${book.title} book cover`} />
+              <BookItem book={book} />
             </li>)}
         </ul>
       </main>
