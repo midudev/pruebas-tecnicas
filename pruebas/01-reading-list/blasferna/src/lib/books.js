@@ -13,7 +13,7 @@ const groupByGenre = (data) => {
 
 const getInReadingList = () => {
   if (typeof window !== "undefined") {
-    return JSON.parse(localStorage.getItem(READING_LIST_STORAGE_KEY)) || [];
+    return JSON.parse(localStorage.getItem(READING_LIST_STORAGE_KEY) || "[]") || [];
   }
   return [];
 };
@@ -60,6 +60,7 @@ const removeFromReadingList = (isbn) => {
 };
 
 export {
+  READING_LIST_STORAGE_KEY,
   addToReadingList,
   getAvailableList,
   getAvailableListCount,
@@ -68,6 +69,5 @@ export {
   getReadingListCount,
   groupByGenre,
   isInReadingList,
-  removeFromReadingList
+  removeFromReadingList,
 };
-

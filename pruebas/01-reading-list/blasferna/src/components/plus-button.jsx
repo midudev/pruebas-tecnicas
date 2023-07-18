@@ -5,12 +5,15 @@ import { useEffect, useState } from "react";
 import {
   addToReadingList,
   isInReadingList,
+  getInReadingList,
   removeFromReadingList,
 } from "@/lib/books";
 import LoadingMini from "@/components/loading-mini";
+import { useAppContext } from "@/context/app-context";
 
 export default function PlusButton({ isbn }) {
-  const [inReadingList, setInReadinglist] = useState(null);
+  const { inReadingList, setInReadingList, inReadingListCount } = useAppContext();
+  const [checked, setChecked] = useState(null)
 
   const onClickHander = (adding) => {
     if (adding) {
@@ -18,23 +21,28 @@ export default function PlusButton({ isbn }) {
     } else {
       removeFromReadingList(isbn);
     }
-    setInReadinglist(adding);
+    setChecked(adding);
+    setInReadingList(getInReadingList());
   };
   useEffect(() => {
-    setInReadinglist(isInReadingList(isbn));
+    setChecked(isInReadingList(isbn));
   }, []);
 
-  if (inReadingList === null) {
+  useEffect(() => {
+    setChecked(isInReadingList(isbn));
+  }, [inReadingList]);
+
+  if (checked === null) {
     return <LoadingMini></LoadingMini>;
   }
 
   return (
     <a
       href="#"
-      onClick={() => onClickHander(!inReadingList)}
+      onClick={() => onClickHander(!checked)}
       className="px-3 py-2 text-sm font-medium text-center inline-flex items-center text-white bg-red-700 rounded hover:bg-red-800 focus:outline-none"
     >
-      {inReadingList ? (
+      {checked ? (
         <>
           <CheckIcon className="h-5 w-5"></CheckIcon>
           Quitar de la lista
