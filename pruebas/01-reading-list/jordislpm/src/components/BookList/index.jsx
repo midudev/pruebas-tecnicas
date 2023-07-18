@@ -18,10 +18,6 @@ const modifiers = {
 
 const [books, read, setFilters]=useFilter()
 
-useEffect(()=>{
-    setFiltersBooks(books)
-},[books])
-
 
 return (
 

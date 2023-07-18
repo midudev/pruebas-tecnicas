@@ -7,11 +7,22 @@ export const BooksAvailable = createContext(null)
 
 function ContextBook ({ children }){
 
-    const initialState = {
-        listBooks: [],
-        listRead:[],
-        genres:[]
-    }
+    const localMemory = localStorage.getItem("books");
+
+    const initialState = localMemory 
+    ? JSON.parse(localMemory)
+    : {
+            listBooks: [],
+            listRead:[],
+            genres:[]
+        };
+
+
+    // const initialState = {
+    //     listBooks: [],
+    //     listRead:[],
+    //     genres:[]
+    // }
 
     const [store, dispatch] = useReducer(reducer, initialState);
     return(
@@ -34,6 +45,16 @@ function reducer(state, action){
                     allGenres.push(book.genre)
                      }
             });
+            if(localStorage.getItem("books") == undefined){
+                localStorage.setItem("books", JSON.stringify({
+                    ...state,
+                    listBooks: initBooks,
+                    genres:allGenres
+                    
+                }))
+                console.log("se reinicio la lista")
+            }
+          
             return {
                 ...state,
                 listBooks: initBooks,
@@ -48,6 +69,12 @@ function reducer(state, action){
                     return book
                 }
             });
+
+            localStorage.setItem("books", JSON.stringify({
+                ...state,
+            listBooks: newListBook,
+             listRead:[...state.listRead, newRead]  
+            }))
             return {
                 ...state,
             listBooks: newListBook,
@@ -61,6 +88,12 @@ function reducer(state, action){
                     return book
                 }
             });
+            localStorage.setItem("books", JSON.stringify({
+                ...state,
+                listRead: newListRest,
+                listBooks:[...state.listBooks, newRead]
+                
+            }))
             return {
                 ...state,
                 listRead: newListRest,

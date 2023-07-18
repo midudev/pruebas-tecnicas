@@ -18,14 +18,19 @@ function App() {
 
 
   useEffect(()=>{
+    if(localStorage.getItem("books") == undefined){
+      if(books.length > 0 && call){
+        dispatch({type:"init", books:books })
+        setCall(false)
+      } else if(!call){
+        return
+      }
+      console.log("se reinicio la lista desde app")
+  }
 
-if(books.length > 0 && call){
-  dispatch({type:"init", books:books })
-  setCall(false)
-} else if(!call){
-  return
-}
 },[books])
+
+
 
 
   return (
