@@ -10,6 +10,12 @@ import { saveReadingListToLocal } from "../utils/utils";
 
 const LibraryContext = createContext();
 
+/**
+ *
+ * @param {object} libraryState
+ * @param {object} action
+ * @returns
+ */
 const libraryReducer = (libraryState, action) => {
   const { type } = action;
   switch (type) {
@@ -17,11 +23,14 @@ const libraryReducer = (libraryState, action) => {
       const { id } = action;
       let { available } = libraryState;
       const { readingList } = libraryState;
+      // if exists delete it
       if (readingList.has(id)) {
         readingList.delete(id);
+        // restore one book to the available counter
         ++available;
       } else {
         readingList.set(id, id);
+        // remove one book from the available counter
         --available;
       }
       //* saving to local storage
@@ -81,7 +90,7 @@ const LibraryProvider = ({ children }) => {
   const [libraryState, setLibraryState] = useReducer(libraryReducer, {
     books: [],
     genres: [],
-    readingList: new Map(),
+    readingList: new Map(), // Map because it can be iterable and has size attribute 🙂
     filtering: "", // current genre filter
     available: 0, // global state to quick access to available books
     showing: 0, // global state to quick access to the showing books

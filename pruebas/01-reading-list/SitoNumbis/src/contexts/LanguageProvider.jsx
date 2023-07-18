@@ -10,6 +10,12 @@ import PropTypes from "prop-types";
 
 const LanguageContext = createContext();
 
+/**
+ *
+ * @param {object} languageState
+ * @param {object} action
+ * @returns
+ */
 const languageReducer = (languageState, action) => {
   switch (action.type) {
     case "set":
