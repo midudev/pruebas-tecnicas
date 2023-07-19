@@ -3,11 +3,7 @@
   import Filters from './Filters.svelte';
   import DavBooksIcon from './icons/DavBooksIcon.svelte';
 
-  export let numAvaileblesBooks: number = 0;
-
-  const plural = new Intl.PluralRules('es');
-  let isOne: boolean = false;
-  $: isOne = plural.select(numAvaileblesBooks) === 'one';
+  export let numAvaileblesBooks: number;
 </script>
 
 <nav>

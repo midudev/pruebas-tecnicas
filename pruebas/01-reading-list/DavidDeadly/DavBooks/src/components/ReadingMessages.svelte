@@ -7,11 +7,11 @@
 
   const timing = 5_000;
   const yMove = -20;
-  let readdingMessage = getRandomMessage({ messages });
 
   let interval: NodeJS.Timer;
+  let readdingMessage = getRandomMessage({ messages });
+
   onMount(() => {
-    clearInterval(interval);
     const getNewMsg = () => {
       const newMsg = getRandomMessage({
         messages,
@@ -20,7 +20,10 @@
 
       readdingMessage = newMsg;
     };
+
     interval = setInterval(getNewMsg, timing);
+
+    return () => clearInterval(interval);
   });
 </script>
 
