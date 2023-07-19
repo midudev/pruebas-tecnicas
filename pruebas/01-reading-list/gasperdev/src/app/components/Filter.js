@@ -8,8 +8,13 @@ export default function Filter() {
   const [isOpen, setOpen] = useState(false);
 
   // Extraemos las funciones y variables necesarias del constext personalizado useBooksData
-  const { selectedGenre, setSearchBooks, setSelectedGenre, uniqueGenre } =
-    useBooksData();
+  const {
+    allBooks,
+    selectedGenre,
+    setSearchBooks,
+    setSelectedGenre,
+    uniqueGenre,
+  } = useBooksData();
 
   // Definimos la función onClickSetGenre que se ejecutará al hacer clic en un género
   const onClickSetGenre = (list) => {
@@ -36,8 +41,13 @@ export default function Filter() {
         onClick={() => setOpen(!isOpen)}
         className="inline-flex justify-between w-full px-3 py-2 text-sm font-normal text-center text-gray-900 rounded-lg bg-slate-200 md:w-56 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800 dark:text-white dark:focus:ring-gray-700"
       >
-        <BookIcon />
-        <div className="flex items-center">
+        <div className="flex flex-col items-center ">
+          <span className="absolute px-1 -mt-4 -ml-2 font-bold text-white bg-purple-400 rounded-full">
+            {allBooks.length}
+          </span>
+          <BookIcon />
+        </div>
+        <div className="flex items-center gap-4">
           {selectedGenre ? selectedGenre : "Todos"}
         </div>
         <XSAMPAIcon />

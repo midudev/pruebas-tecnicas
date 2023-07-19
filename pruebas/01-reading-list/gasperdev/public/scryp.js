@@ -14,7 +14,7 @@ if (document.startViewTransition) {
           const text = await response.text();
           // Quedarnos sólo con el contenido del HTML dentro de la etiqueta body utilizando una expresión regular
           const [, data] = text.match(/<body>([\s\S]*)<\/body>/i);
-          console.log(data);
+
           // Utilizar la API de View Transition
           document.startViewTransition(() => {
             // Scroll hasta arriba

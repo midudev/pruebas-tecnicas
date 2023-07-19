@@ -4,6 +4,8 @@ import { createContext, useContext, useEffect, useState } from "react";
 import bookData from "../../../books.json";
 // Importación de la función hook para filtrar los libros.
 import { filters } from "../hook/useFilteredBooks";
+import { useUniqueGenre } from "../hook/useUniqueGenre";
+import { useBooksMaxPages } from "../hook/useBooksMaxPages";
 
 // Creación del contexto BooksContext. Este será el medio por el cual pasaremos
 // estado y funciones relacionadas al resto de nuestra aplicación.
@@ -25,14 +27,14 @@ export default function BooksContextProvider({ children }) {
   const [selectedGenre, setSelectedGenre] = useState("Todos");
   const [isLoading, setIsLoading] = useState(true);
 
-  // UseEffect que establecerá el estado inicial de allBooks y establecerá
-  // isLoading como false una vez la data se haya cargado. Se ejecuta
-  // en el primer renderizado.
   useEffect(() => {
+    //  bookData es la lista de objetos de libros
     setAllBooks(bookData.library);
     setIsLoading(false);
-  }, []);
+    // Usamos hook personalizado para encontrar el libro con más páginas
+  }, [allBooks]);
 
+  const maxPagesCount = useBooksMaxPages(allBooks);
   // Se filtran los libros según varios criterios establecidos.
   const filteredBooks = filters(
     allBooks,
@@ -42,10 +44,7 @@ export default function BooksContextProvider({ children }) {
   );
 
   // Creación de un array de géneros únicos a partir de allBooks.
-  const uniqueGenre = [...new Set(allBooks.map((res) => res.book.genre))];
-  if (!uniqueGenre.includes("Todos")) {
-    uniqueGenre.unshift("Todos");
-  }
+  const uniqueGenre = useUniqueGenre(allBooks);
 
   // Los children (componentes envueltos) tendrán acceso a los valores
   // proporcionados aquí.
@@ -61,6 +60,7 @@ export default function BooksContextProvider({ children }) {
         uniqueGenre,
         setPagesAllBooks,
         pagesAllBooks,
+        maxPagesCount,
       }}
     >
       {children}

@@ -1,8 +1,4 @@
-import Filter from "./Filter";
-import RangeSlider from "./RangeSlider";
-import SearchBooks from "./SearchBooks";
-
-export default function Nav() {
+export default function Nav({ children }) {
   return (
     <nav className="max-w-4xl md:mx-auto ">
       <section className="flex items-center flex-1 col-span-3 mb-4">
@@ -16,20 +12,11 @@ export default function Nav() {
             </span>
           </h1>
           <p className="max-w-3xl mx-auto mt-6 text-lg text-center text-gray-700 dark:text-white md:text-2xl">
-            Sumérgete en las páginas de sabiduría y aventura.
+            Sumérgete en las páginas de sabiduría y aventura
           </p>
         </div>
       </section>
-      <section className="flex flex-col w-full md:flex-row md:gap-2 ">
-        <Filter />
-        <span className="hidden mx-2 mt-2 text-gray-400 md:inline">/</span>
-        <div className="grid gap-4 mt-3 md:mt-0">
-          <SearchBooks />
-        </div>
-        <div className="grid items-center flex-1 col-span-3 gap-4 mt-3 md:mt-0">
-          <RangeSlider />
-        </div>
-      </section>
+      {children}
     </nav>
   );
 }
