@@ -10,7 +10,9 @@ export default function Book ({ books }) {
     <main>
         <ul>
             {books.map(item => (
-                <li key={item.book.ISBN}>
+                <li className={chekBookInList(item)
+                  ? 'opacity-50'
+                  : 'opacity-100'} key={item.book.ISBN}>
                     <img
                         src= {item.book.cover}
                         alt= {item.book.title}

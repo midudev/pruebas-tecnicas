@@ -1,9 +1,6 @@
 .readingList {
-    position: fixed;
-    right: 0;
-    top: 0;
     background-color: aliceblue;
-    height: 100vh;
-    overflow-y: scroll;
     padding: 30px;
+    width: 25%;
+    margin-top: 225px;
 }

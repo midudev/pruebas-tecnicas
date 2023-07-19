@@ -5,6 +5,7 @@ li {
 li img {
     max-width: 250px;
     max-height: 350px;
+    display: inline;
 }
 ul {
     display: flex;
