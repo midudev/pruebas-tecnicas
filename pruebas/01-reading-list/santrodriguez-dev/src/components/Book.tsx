@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { memo, useRef } from 'react'
 import { useReadingListStore } from '../store'
 import { type Author } from '../types'
 
@@ -7,29 +7,28 @@ interface BookProps {
   cover: string
   author: Author
   ISBN: string
+  synopsis: string
   isReadListMode?: boolean
   isSelected?: boolean
 }
 
-export const Book: React.FC<BookProps> = ({ cover, ISBN, isReadListMode, title, isSelected }) => {
+// eslint-disable-next-line react/display-name
+export const Book: React.FC<BookProps> = memo(({ cover, ISBN, isReadListMode, title, synopsis }) => {
   const imageRef = useRef<HTMLImageElement>(null)
   const addBook = useReadingListStore((state) => state.addBook)
   const removeBook = useReadingListStore((state) => state.removeBook)
 
-  // console.log('render Book')
+  console.log('render Book', { title })
   const handleAddBook = () => {
-    if (isReadListMode === true) {
-      removeBook(ISBN)
+    const handleBook = isReadListMode ? removeBook : addBook
+
+    if (!document.startViewTransition) {
+      handleBook(ISBN)
       return
     }
-    addBook(ISBN)
-
-    // document.startViewTransition(() => {
-    //   // imageRef.current.style.transform = 'scale(2)'
-    //   imageRef.current.hidden = true
-
-    //   addBook(ISBN)
-    // })
+    document.startViewTransition(() => {
+      handleBook(ISBN)
+    })
   }
   return (
     <article
@@ -38,13 +37,14 @@ export const Book: React.FC<BookProps> = ({ cover, ISBN, isReadListMode, title, 
       {/* {title} */}
       <img
         className='w-full object-contain cursor-pointer my-image'
-        src={cover} alt={title}
+        src={cover} alt={`${title} - ${synopsis}`}
         ref={imageRef}
-        style={{ viewTransitionName: `image-${ISBN}` }}
-      // style={{ viewTransitionName: 'book-image' }}
+        style={{ viewTransitionName: `book-${ISBN}` }}
       />
-      <span>{isSelected === true ? 'selected' : ''}</span>
-      {/* <span>{author.name}</span> */}
+
+      {!isReadListMode && <h5 className="text-xl font-bold dark:text-white line-clamp-2">{title}</h5>}
+
     </article>
+
   )
-}
+})

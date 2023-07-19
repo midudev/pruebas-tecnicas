@@ -1,42 +1,28 @@
 import { useRef } from 'react'
 import { useFilters } from '../hooks/useFilters'
-import { NUM_ITEMS } from '../constants'
 
 export const Filters = () => {
   const genreFilterRef = useRef<HTMLSelectElement>(null)
-  const { currentPage, handleChangeFilter, handleSetCurrentPage, genres } = useFilters()
+  const { handleChangeFilter, genres } = useFilters()
 
   console.log('Filters rendered')
 
   return (
-    <section className='flex gap-5 bg-teal-900'>
-      <div>
-        Filtrar por pagina {currentPage}
-        <div>
-          <span>desde: {NUM_ITEMS * (currentPage - 1)}</span>
-          <span>hasta: {(currentPage * NUM_ITEMS) - 1}</span>
-        </div>
-        <div>
-          <button onClick={() => { handleSetCurrentPage(false) }}>{'<'}</button>
-          <span>{currentPage}</span>
-          <button onClick={() => { handleSetCurrentPage(true) }}>{'>'}</button>
-        </div>
-      </div>
-      <div>
-        <label htmlFor="genre-select">Escoge un género</label>
-        <select
-          name="genreFilter"
-          id="genre-select"
-          ref={genreFilterRef}
-          onChange={() => {
-            if (!genreFilterRef.current) return
-            const { value } = genreFilterRef.current
-            handleChangeFilter(value)
-          }}>
-          <option value="">-- Todos --</option>
-          {genres.map(genre => <option key={genre} value={genre}>{genre}</option>)}
-        </select>
-      </div>
+    <section className="w-52 pt-6">
+      <label htmlFor="genre-select" className="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Filtrar por género</label>
+      <select
+        id="genre-select"
+        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        ref={genreFilterRef}
+        defaultValue=""
+        onChange={() => {
+          if (!genreFilterRef.current) return
+          const { value } = genreFilterRef.current
+          handleChangeFilter(value)
+        }}>
+        <option value="">Escoge un género</option>
+        {genres.map(genre => <option key={genre} value={genre}>{genre}</option>)}
+      </select>
     </section>
   )
 }

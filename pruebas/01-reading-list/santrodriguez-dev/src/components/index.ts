@@ -1,3 +1,4 @@
+export { Pagination } from './Pagination'
 export { ReadingList } from './ReadingList'
 export { Book } from './Book'
 export { Books } from './Books'
