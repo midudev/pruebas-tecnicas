@@ -1,8 +1,8 @@
 import React from 'react'
-import SectionTitle, { IWithClassName, IWithTitle } from '../SectionTitle'
+import SectionTitle from '../SectionTitle'
 import SectionBody from '../SectionBody'
 
-interface ILayout extends IWithTitle, IWithClassName {
+interface ILayout extends IWithTiltleAndClassName {
  children: React.ReactNode
 }
 

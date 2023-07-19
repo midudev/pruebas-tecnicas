@@ -1,9 +1,7 @@
 import BookList from '../BookList/indext'
 import Layout from './Layout'
 
-interface IBookSection {
-    title: string
-    className?: string
+interface IBookSection extends IWithTiltleAndClassName {
 }
 
 export default function BookSection (props: IBookSection) {
