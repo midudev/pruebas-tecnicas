@@ -1,14 +1,16 @@
+import BookList from '../BookList/indext'
 import Layout from './Layout'
 
-interface IPageSection {
+interface IBookSection {
     title: string
+    className?: string
 }
 
-export default function BookSection (props: IPageSection) {
-  const { title } = props
+export default function BookSection (props: IBookSection) {
+  const { title, className = '' } = props
   return (
-    <Layout className='transition-[width] duration-150 ease-out rounded-md border-solid border-2 border-gray-50 hover:w-11/12'>
-      <section>{title}</section>
+    <Layout title={title} className={`transition-[width] duration-150 ease-out rounded-md border-solid border-2 border-gray-50 hover:w-11/12 ${className}`}>
+      <BookList />
     </Layout>
   )
 }
