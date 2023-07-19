@@ -17,10 +17,16 @@ describe('BooksList', () => {
     render(<BooksList list={list} />)
     screen.getAllByRole('listitem')
   })
-  it('should render an img as li child;', () => {
+  it('should render an article as li child;', () => {
     render(<BooksList list={list} />)
     screen.getAllByRole('listitem').forEach(li => {
-      getByRole(li, 'img')
+      getByRole(li, 'article')
+    })
+  })
+  it('should render an img as article child;', () => {
+    render(<BooksList list={list} />)
+    screen.getAllByRole('article').forEach(article => {
+      getByRole(article, 'img')
     })
   })
   it('should set the correct src for each img;', () => {

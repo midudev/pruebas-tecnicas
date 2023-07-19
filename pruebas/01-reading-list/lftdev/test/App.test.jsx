@@ -56,7 +56,7 @@ describe('App', () => {
     render(<App />)
     screen.getAllByRole('img')
   })
-  it('should render a region aside when an img is clicked and reading list is empty;', async () => {
+  it('should render a region aside when an img is clicked;', async () => {
     render(<App />)
     const img = screen.getAllByRole('img')[0]
     fireEvent.click(img)
@@ -72,8 +72,13 @@ describe('App', () => {
     render(<App />)
     fireEvent.click(screen.getAllByRole('img')[0])
     const aside = await screen.findByRole('region')
+    // Detect ul
     getByRole(aside, 'list')
+    // Detect li
     getByRole(aside, 'listitem')
+    // Detect article
+    getByRole(aside, 'article')
+    // Detect img
     getByRole(aside, 'img')
   })
   // FIXME: rewrite below test to correctly detect listitem be removed.
@@ -81,7 +86,8 @@ describe('App', () => {
     render(<App />)
     fireEvent.click(screen.getAllByRole('img')[0])
     const aside = await screen.findByRole('region')
-    fireEvent.click(getByRole(aside, 'button'))
-    await waitForElementToBeRemoved(getByRole(aside, 'listitem'))
+    console.log(aside.innerHTML)
+    fireEvent.click(getAllByRole(aside, 'button')[0])
+    await waitForElementToBeRemoved(getAllByRole(aside, 'listitem')[0])
   }) */
 })

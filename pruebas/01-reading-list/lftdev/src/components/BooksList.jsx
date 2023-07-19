@@ -9,8 +9,10 @@ export default function BooksList (props) {
     <ul className={className}>
       {list.map((book, index) =>
         <li key={index} className='w-28'>
-          {removableItems && <button onClick={() => removeRequest(index)}>x</button>}
-          <BookItem book={book} onClick={onItemClick} />
+          <article>
+            {removableItems && <button onClick={() => removeRequest(index)}>x</button>}
+            <BookItem book={book} onClick={onItemClick} />
+          </article>
         </li>
       )}
     </ul>

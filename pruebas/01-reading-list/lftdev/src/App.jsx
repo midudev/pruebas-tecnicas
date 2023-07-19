@@ -27,7 +27,7 @@ export default function App () {
     <>
       <h3 className='text-2xl text-blue-500'>{readListAvailable ? 'Con' : 'Sin'} libros en la lista de lectura</h3>
       <main className='grid [grid-template-columns:2fr_1fr] border border-white rounded-md pt-10 px-12'>
-        <aside className='flex flex-col gap-5'>
+        <aside className='flex flex-col gap-5' role='presentation'>
           <div className='flex flex-col gap-4'>
             <h1 className='text-4xl'>{booksList.length} libros disponibles</h1>
             {readListAvailable && <p className='text-lg'>{readList.length} en la lista de lectura</p>}
