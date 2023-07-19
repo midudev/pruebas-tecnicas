@@ -1,2 +1,24 @@
 :root {
+  --color-red-300: #fdabab;
+  --color-red-500: #ff0000;
+
+  --color-background: #232946;
+  --color-headling: #fffffe;
+  --color-paragraph: #b8c1ec;
+  --color-button: #eebbc3;
+  --color-button-text: #232946;
+
+  --color-stroke: #121629;
+  --color-highlight: #eebbc3;
+  --color-main: #b8c1ec;
+  --color-secondary: #fffffe;
+  --color-tertiary: #eebbc3;
+
+  --radius-sm: 5px;
+  --radius-md: 7px;
+  --radius-lg: 10px;
+}
+
+body {
+  background-color: var(--color-background);
 }

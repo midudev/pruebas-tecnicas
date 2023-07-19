@@ -1,5 +1,12 @@
+import { Books } from "./features/Books";
+import BooksContextProvider from "./utils/context/BooksContextProvider";
+
 function App() {
-	return <h2>Proyecto 01</h2>;
+	return (
+		<BooksContextProvider>
+			<Books />
+		</BooksContextProvider>
+	);
 }
 
 export default App;
