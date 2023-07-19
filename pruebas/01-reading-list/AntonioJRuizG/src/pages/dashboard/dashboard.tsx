@@ -4,9 +4,9 @@ import styles from './dashboard.module.scss';
 
 export default function DashboardPage() {
 	return (
-		<div className={styles.dashboardContainer}>
+		<section className={styles.dashboardContainer}>
 			<List></List>
 			<ReadingList></ReadingList>
-		</div>
+		</section>
 	);
 }

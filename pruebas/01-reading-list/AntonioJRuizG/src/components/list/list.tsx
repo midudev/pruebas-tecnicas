@@ -6,7 +6,7 @@ import { BookProps } from '../model/book';
 
 export default function List() {
 	const repo = useMemo(() => new BooksRepo(), []);
-	const { books, selectBook } = useBooks(repo);
+	const { filteredBooks, selectBook } = useBooks(repo);
 
 	const handleSelectBook = (book: BookProps) => {
 		const updatedBook = { ...book, isSelected: true };
@@ -14,10 +14,10 @@ export default function List() {
 	};
 
 	return (
-		<>
+		<section>
 			<ul className={styles.listContainer}>
-				{books.length > 0 ? (
-					books.map((book: BookProps) => (
+				{filteredBooks.length > 0 ? (
+					filteredBooks.map((book: BookProps) => (
 						<li key={book.book.isbn} className={styles.bookCover}>
 							<button
 								className={
@@ -65,6 +65,6 @@ export default function List() {
 					<p>Oh no! No books found!</p>
 				)}
 			</ul>
-		</>
+		</section>
 	);
 }
