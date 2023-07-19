@@ -7,4 +7,8 @@ export class ReadingListRepository {
   addBook(book: Book) {
     return this.infra.addBook(book)
   }
+
+  removeBook(book: Book) {
+    return this.infra.removeBook(book)
+  }
 }

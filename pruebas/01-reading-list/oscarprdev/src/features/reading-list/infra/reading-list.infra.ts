@@ -11,18 +11,52 @@ export class DefaultReadingListInfra {
     const localStorageState = this.provideLocalStorage()
 
     // Add book to reading list
-    localStorageState.readingBooks = [...localStorageState.readingBooks, book]
+    localStorageState.readingBooks = this.addBookToLocalstorage(
+      localStorageState.readingBooks,
+      book
+    )
 
     // Remove book from library list
-    localStorageState.books = [
-      ...localStorageState.books.filter(
-        (localBook) => localBook.ISBN !== book.ISBN
-      ),
-    ]
+    localStorageState.books = this.removeBookFromLocalstorage(
+      localStorageState.books,
+      book
+    )
 
     this.updateLocalStorage(localStorageState)
 
     return this.provideLocalStorage()
+  }
+
+  removeBook(book: Book): GlobalState {
+    const localStorageState = this.provideLocalStorage()
+
+    // Remove book ffrom reading list
+    localStorageState.readingBooks = this.removeBookFromLocalstorage(
+      localStorageState.readingBooks,
+      book
+    )
+
+    // Add book to library list
+    localStorageState.books = this.addBookToLocalstorage(
+      localStorageState.books,
+      book
+    )
+
+    this.updateLocalStorage(localStorageState)
+
+    return this.provideLocalStorage()
+  }
+
+  private removeBookFromLocalstorage(storage: Book[], book: Book) {
+    return [...storage.filter((localBook) => localBook.ISBN !== book.ISBN)]
+  }
+
+  private addBookToLocalstorage(storage: Book[], book: Book) {
+    const currentStorage = [...storage]
+
+    currentStorage.unshift(book)
+
+    return currentStorage
   }
 
   private provideLocalStorage(): GlobalState {

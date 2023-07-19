@@ -16,4 +16,10 @@ export class ReadingListUsecase extends StateUsecase {
 
     this.updateState(stateUpdated)
   }
+
+  removeBook(book: Book) {
+    const stateUpdated = this.readingListPorts.removeBook(book)
+
+    this.updateState(stateUpdated)
+  }
 }

@@ -1,15 +1,28 @@
 <script lang="ts">
+  import { appState } from './../store/store'
+  import { readingListUsecase } from '../../features/reading-list'
   import { modalState } from '../store/modal-store'
   import { XIcon } from 'svelte-feather-icons'
-  import { BookOpenIcon } from 'svelte-feather-icons'
-  import { readingListUsecase } from '../../features/reading-list'
-  import { asideState } from '../store/aside-store'
+  import { asideState } from '../store/aside-store.js'
 
   const closeModal = () => {
     modalState.update((prev) => ({
       ...prev,
       removeModal: { isOpen: false, book: null },
     }))
+  }
+
+  const removeBookFromReadingList = () => {
+    readingListUsecase.removeBook($modalState.removeModal.book)
+
+    if ($appState.readingBooks.length === 0) {
+      asideState.update(() => ({
+        readingListIsOpen: false,
+        topBooksListIsOpen: false,
+      }))
+    }
+
+    closeModal()
   }
 </script>
 
@@ -40,6 +53,7 @@
         </h3>
         <button
           class="self-center px-7 py-3 w-fit rounded-3xl text-light bg-overlayModal cursor-pointer hover:bg-nav duration-100"
+          on:click={removeBookFromReadingList}
           >Borrar de la lista de lectura</button
         >
       </section>
