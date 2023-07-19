@@ -60,7 +60,7 @@ export default component$(() => {
       <Filters onFilterChange={onFilterChange} />
       <BooksList books={allBooks} onBookSelect={handleAddBookToReadingList} />
 
-      <div class="sticky bottom-0 mt-8">
+      <div class="sticky bottom-0 mt-8 z-30">
         <ReadingList
           books={readingList}
           onBookSelect={handleRemoveBookFromReadingList}
