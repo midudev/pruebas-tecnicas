@@ -64,7 +64,7 @@ pub fn Book(props: &BookProps) -> Html {
                     class={classes!("flex","flex-col","items-center","justify-center","p-8","gap-6")}
                 >
                     <img
-                        class={classes!("max-w-[314px]","max-h-[475px]","shadow")}
+                        class={classes!("max-w-[314px]","max-h-[475px]","shadow","dark:brightness-50","dark:shadow-none")}
                         src={book.cover.clone()}
                         alt={book.title.clone()}
                         title={book.title.clone()}
