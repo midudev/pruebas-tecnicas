@@ -6,14 +6,14 @@ import useReadList from "./useReadList";
 
 export default function useBooks(initialFilters: BooksFilter) {
   const { genres } = useContext(BooksContext);
-  const booksInMyList = useReadList();
+  const readList = useReadList();
   const filters = useStore<BooksFilter>({
     genre: "none",
     minPages: 0,
     ...initialFilters,
   });
   const filteredBooks = useComputed$(() =>
-    filterBooks(filters, booksInMyList.value)
+    filterBooks(filters, readList.value)
   );
 
   return {

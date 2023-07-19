@@ -1,10 +1,11 @@
 import { $, component$ } from "@builder.io/qwik";
-import { HStack, VStack, styled } from "~/styled-system/jsx";
+import { Stack, VStack, styled } from "~/styled-system/jsx";
 import { bookCoverCss, bookTitleCss } from "~/styles/book";
 import type { Book } from "~/types/books";
 import { BookFavIndicator } from "./book-fav-indicator";
 import { Image } from "@unpic/qwik";
 import useBook from "~/hooks/useBook";
+import { css, cx } from "~/styled-system/css";
 
 interface BookDeatilProps {
   book: Book;
@@ -17,14 +18,38 @@ export const BookDeatil = component$(({ book }: BookDeatilProps) => {
   const onFavIndicatorInput = $((el: HTMLSelectElement) => {
     setReadPriority(Number(el.value) as 1 | 2 | 3);
   });
+
+  const imageCss = cx(
+    bookCoverCss,
+    css({
+      sm: {
+        w: "auto",
+        h: "33vh",
+        flex: "0 0 auto",
+      },
+      md: {
+        w: "auto",
+        h: "65vh",
+        flex: "0 0 auto",
+      },
+    })
+  );
   return (
-    <HStack gap="5" alignItems="start" w="full">
+    <Stack
+      gap="5"
+      alignItems="start"
+      w="full"
+      flexDir="column"
+      sm={{
+        flexDir: "row",
+      }}
+    >
       <Image
-        aspectRatio="9/16"
+        aspectRatio="9/14"
         src={book.cover}
         width={225}
         alt="Portada del libro"
-        class={bookCoverCss}
+        class={imageCss}
         style={{
           viewTransitionName: `cover-${book.ISBN}`,
         }}
@@ -76,6 +101,6 @@ export const BookDeatil = component$(({ book }: BookDeatilProps) => {
           </ul>
         </VStack>
       </VStack>
-    </HStack>
+    </Stack>
   );
 });

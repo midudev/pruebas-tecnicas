@@ -1,9 +1,9 @@
 import { useContext } from "@builder.io/qwik";
-import { BooksInMyListContext } from "~/components/books/books-in-my-list-provider";
+import { ReadListContext } from "~/components/books/read-list-provider";
 
 const useReadList = () => {
-  const { booksInMyList } = useContext(BooksInMyListContext);
-  return booksInMyList;
+  const { readList } = useContext(ReadListContext);
+  return readList;
 };
 
 export default useReadList;

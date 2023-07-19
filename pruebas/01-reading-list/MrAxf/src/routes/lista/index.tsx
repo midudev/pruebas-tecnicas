@@ -7,7 +7,7 @@ export default component$(() => {
     <BooksProvider>
       <BookList
         initialFilters={{
-          isInMyList: true,
+          isInReadList: true,
           priorityOrder: true,
         }}
         showPriorityOrder={true}

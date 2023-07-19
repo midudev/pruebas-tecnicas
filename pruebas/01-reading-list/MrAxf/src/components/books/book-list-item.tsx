@@ -46,7 +46,7 @@ export const BookListItem = component$(({ book }: BookListItemProps) => {
     setReadPriority(Number(el.value) as 1 | 2 | 3);
   });
   return (
-    <Link href={`/libro/${book.ISBN}`} prefetch>
+    <Link href={`/libro/${book.ISBN}`} title={book.title}>
       <HStack
         gap="5"
         bg="neutral"
@@ -56,9 +56,12 @@ export const BookListItem = component$(({ book }: BookListItemProps) => {
         position="relative"
         alignItems="start"
         class={itemCss}
+        style={{
+          viewTransitionName: `container-${book.ISBN}`,
+        }}
       >
         <Image
-          aspectRatio="9/16"
+          aspectRatio="9/14"
           src={book.cover}
           width={225}
           alt="Portada del libro"

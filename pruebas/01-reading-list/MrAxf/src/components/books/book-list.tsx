@@ -17,9 +17,10 @@ const listGridCss = css({
   display: "grid",
   gridTemplateColumns: "repeat(auto-fill, minmax(var(--ideal-width), 1fr))",
   gridAutoRows: "max-content",
-  gap: "10",
+  gap: "5",
   sm: {
     "--ideal-width": "35rem",
+    gap: "10",
   },
 });
 

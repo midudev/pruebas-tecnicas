@@ -13,6 +13,7 @@ export const bookCoverCss = css({
   borderRadius: "lg",
   w: "33%",
   h: "full",
+  aspectRatio: "9/14",
   flexShrink: "1",
   transitionProperty: "all",
   transitionDuration: "fast",

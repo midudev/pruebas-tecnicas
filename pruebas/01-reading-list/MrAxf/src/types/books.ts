@@ -13,11 +13,11 @@ export interface Book {
 }
 
 export interface BooksFilter {
-  isInMyList?: boolean;
+  isInReadList?: boolean;
   genre?: string;
   minPages?: number;
   searchText?: string;
   priorityOrder?: boolean;
 }
 
-export type BooksInMyList = Record<string, 1 | 2 | 3>;
+export type ReadList = Record<string, 1 | 2 | 3>;

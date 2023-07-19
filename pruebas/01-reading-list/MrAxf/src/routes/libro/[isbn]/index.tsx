@@ -4,7 +4,10 @@ import {
   type StaticGenerateHandler,
 } from "@builder.io/qwik-city";
 import { BookDeatil } from "~/components/books/book-deatil";
+import Button from "~/components/forms/button";
+import { ChevronLeftIcon } from "~/components/icons/chevron-left";
 import { getBooks } from "~/services/booksService";
+import { css } from "~/styled-system/css";
 import { Container } from "~/styled-system/jsx";
 import type { Book } from "~/types/books";
 
@@ -17,7 +20,30 @@ export default component$(() => {
   const book = useBookDetail();
 
   return (
-    <Container mx="auto" bg="neutral" borderRadius="xl" p="4">
+    <Container
+      mx="auto"
+      bg="neutral"
+      borderRadius="xl"
+      p="4"
+      style={{
+        viewTransitionName: `container-${book.value.ISBN}`,
+      }}
+    >
+      <Button
+        onClick$={() => {
+          history.back();
+        }}
+        mb="4"
+        title="Volver"
+      >
+        <ChevronLeftIcon
+          class={css({
+            w: "1rem",
+            h: "1rem",
+          })}
+        />{" "}
+        Volver
+      </Button>
       <BookDeatil book={book.value} />
     </Container>
   );
