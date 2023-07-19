@@ -1,7 +1,9 @@
+import Button from '../Button.index'
+
 interface IBookComponent extends IReadingListBook {}
 
 export default function Book (props: IBookComponent) {
-  const { title, synopsis, cover } = props
+  const { title, ISBN, synopsis, cover } = props
 
   return (
     <article>
@@ -13,6 +15,7 @@ export default function Book (props: IBookComponent) {
       <p className='text-xs '>
         {synopsis}
       </p>
+      <Button ISBN={ISBN} />
     </article>
   )
 }
