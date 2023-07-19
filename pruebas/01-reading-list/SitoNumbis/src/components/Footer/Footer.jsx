@@ -18,6 +18,7 @@ function Footer() {
           <span className="alter-text">{new Date().getFullYear()}</span>
         </p>
         <a
+          name="source-code"
           target="_blank"
           rel="noreferrer"
           href="https://github.com/SitoNumbis/pruebas-tecnicas/tree/main/pruebas/01-reading-list/SitoNumbis"

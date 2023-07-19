@@ -37,7 +37,7 @@ function Navbar() {
   return (
     <header className={styles.main}>
       <div className={styles.navContainer}>
-        <Link to="/" className="flex items-center">
+        <Link name="logo" to="/" className="flex items-center">
           <img className="w-8 h-8" src={logo} alt="Sito's library logo" />
           <h1
             className="px-3 py-2 uppercase font-extrabold"
