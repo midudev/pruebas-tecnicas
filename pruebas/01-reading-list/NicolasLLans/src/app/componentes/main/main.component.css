@@ -74,10 +74,12 @@ label {
       display: flex;
       gap: 10px;
       padding-bottom: 10px;
+      flex-direction: row-reverse;
 }
 
 .caja-milista header h2 {
-      width: 87%;
+      width: 100%;
+      padding: 0 8px;
       margin-top: 10px;
 }
 
@@ -87,7 +89,7 @@ label {
 }
 
 .image-container {
-      height: 200px;
+      height: fit-content;
 }
 
 .image-container img {
@@ -96,15 +98,16 @@ label {
 
 .overlay {
       position: relative;
-      bottom: -50%;
-      left: 30%;
+      top: 5px;
+      left: 82px;
+      height: 1px;
 }
 
 .close-button {
       border-radius: 50%;
       padding: 15px;
       background-color: var(--color-detalle);
-      opacity: 0;
+      opacity: 0.3;
       cursor: pointer;
 }
 
@@ -124,11 +127,6 @@ label {
 
       .barra-filtros {
             height: 200px;
-      }
-      .overlay {
-            position: relative;
-            bottom: -66%;
-            left: 33%;
       }
 }
 
@@ -168,11 +166,5 @@ label {
 
       .image-container {
             height: 140px;
-      }
-
-      .overlay {
-            position: relative;
-            bottom: -70%;
-            left: 24%;
       }
 }
