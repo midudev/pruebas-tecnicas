@@ -1,5 +1,5 @@
 import { Book } from "./Book"
 
 export interface BookRepository {
-  get(): Promise<Book[]>
+  get(filterGenre: string): Promise<Book[]>
 }

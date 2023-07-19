@@ -4,7 +4,7 @@ import { BookRepository } from "../BookRepository"
 export class GetBooks {
   constructor(private readonly bookRepository: BookRepository) {}
 
-  execute(): Promise<Book[]> {
-    return this.bookRepository.get()
+  execute(filteredGenre: string): Promise<Book[]> {
+    return this.bookRepository.get(filteredGenre)
   }
 }
