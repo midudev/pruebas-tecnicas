@@ -93,6 +93,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
           </p>
         </div>
         <PrimaryButton
+          name="add-to-reading-list"
           onClick={addToReadingList}
           tabIndex={-1}
           ariaLabel={

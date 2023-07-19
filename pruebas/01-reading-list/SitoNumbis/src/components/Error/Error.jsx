@@ -28,7 +28,7 @@ const Error = (props) => {
       <p className="text-dark-alt-text">{text}</p>
       {onRetry ? (
         <PrimaryButton
-          name={error.reload}
+          name="reload-page"
           ariaLabel={languageState.texts.ariaLabels.reload}
           onClick={onRetry ? onRetry : () => window.location.reload()}
         >

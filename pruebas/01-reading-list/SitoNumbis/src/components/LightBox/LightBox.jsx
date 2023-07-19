@@ -117,6 +117,7 @@ function LightBox() {
           <p className={styles.synopsis}>{selectedBook.synopsis}</p>
           <div className="flex items-center gap-4 mt-5">
             <PrimaryButton
+              name="add-to-reading-list"
               onClick={addToReadingList}
               ariaLabel={
                 !isInReadingList
