@@ -8,6 +8,25 @@
   box-sizing: border-box;
 }
 
+input[type="range"]::-webkit-slider-thumb {
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+  pointer-events: auto;
+  -webkit-appearance: none;
+  background: #f59e0b;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 17px;
+  width: 17px;
+  border: none;
+  border-radius: 50%;
+  pointer-events: auto;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: #f59e0b;
+}
 
 .flexCenter {
   @apply flex justify-center items-center;
