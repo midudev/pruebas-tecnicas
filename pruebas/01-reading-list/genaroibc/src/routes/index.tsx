@@ -7,7 +7,12 @@ import INITIAL_BOOKS from "~/db/books.json"
 import { ReadingList } from "~/components/ReadingList"
 
 export default component$(() => {
-  const allBooks: Book[] = INITIAL_BOOKS.library.map(({ book }) => book)
+  const allBooks: Book[] = useStore(
+    INITIAL_BOOKS.library.map(({ book }) => ({
+      ...book,
+      isInReadingList: false
+    }))
+  )
 
   const readingList: Book[] = useStore([])
 
@@ -22,7 +27,11 @@ export default component$(() => {
     )
     if (isAlreadyInReadingList) return
 
-    readingList.push(allBooks[index])
+    const newBook = allBooks[index]
+
+    newBook.isInReadingList = true
+
+    readingList.push(newBook)
   })
 
   const handleRemoveBookFromReadingList = $((BookISBN: BookISBN) => {
@@ -30,6 +39,10 @@ export default component$(() => {
 
     const bookExists = index !== -1
     if (!bookExists) return
+
+    const removedBook = allBooks.find(book => book.ISBN === BookISBN)
+
+    if (removedBook) removedBook.isInReadingList = false
 
     readingList.splice(index, 1)
   })

@@ -13,4 +13,5 @@ export type Book = {
   year: number
   ISBN: BookISBN
   author: BookAuthor
+  isInReadingList: boolean
 }
