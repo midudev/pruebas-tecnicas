@@ -1,15 +1,15 @@
 import PropTypes from "prop-types";
 
-function Badge({ number, show, children }) {
+// styles
+import styles from "./styles.module.css";
+
+function Badge({ show, number, children }) {
   return (
     <div className="relative">
       {number && show > 0 ? (
-        <div
-          role="badge"
-          className="aGrow absolute pointer-events-none top-0 right-0 rounded-full inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-dark-text bg-primary-dark"
-        >
+        <span role="badge" className={`aGrow ${styles.main}`}>
           {number}
-        </div>
+        </span>
       ) : null}
       {children}
     </div>
@@ -22,8 +22,8 @@ Badge.defaultProps = {
 };
 
 Badge.propTypes = {
-  number: PropTypes.number,
   show: PropTypes.bool,
+  number: PropTypes.number,
   children: PropTypes.node.isRequired,
 };
 

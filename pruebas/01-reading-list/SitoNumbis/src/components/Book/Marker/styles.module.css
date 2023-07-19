@@ -1,0 +1,4 @@
+.main {
+  transition: grid-template-rows 200ms ease;
+  @apply absolute z-10 top-0 right-2 pointer-events-none h-full w-6 grid;
+}

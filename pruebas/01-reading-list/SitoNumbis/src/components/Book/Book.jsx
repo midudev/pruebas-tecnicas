@@ -74,7 +74,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
       <div
         role="info"
         className={`group ${styles.bookInfoContainer} ${
-          isInReadingList ? "opacity-100" : ""
+          isInReadingList ? "!opacity-100" : ""
         }`}
       >
         <div className={`${memoAnimation} ${styles.bookInfo}`}>

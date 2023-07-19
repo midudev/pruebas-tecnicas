@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 // components
 import Navbar from "./components/Navbar/Navbar";
 import Handler from "./components/Error/Handler";
+import Footer from "./components/Footer/Footer";
 
 // views
 import Home from "./views/Home";
@@ -65,6 +66,7 @@ function App() {
               <>
                 <Navbar />
                 <Outlet />
+                <Footer />
               </>
             }
           >
