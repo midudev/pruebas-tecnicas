@@ -9,7 +9,7 @@
 </script>
 
 <section class="flex flex-col p-5">
-  <ul class="flex flex-wrap gap-7 w-800 h-300 xl:w-1090 xl:h-400">
+  <ul class="flex flex-wrap gap-7 xl:w-800 xl:h-300">
     {#if $booksList.length > 0}
       {#each $booksList as book, index (book.ISBN)}
         <BookItem {book} {index} />

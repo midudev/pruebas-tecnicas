@@ -22,6 +22,15 @@
       readingListItemRemoved: false,
     }))
 
+    setTimeout(() => {
+      actionsStore.update(() => {
+        return {
+          readingListItemAdded: false,
+          readingListItemRemoved: false,
+        }
+      })
+    }, 500)
+
     closeModal()
   }
 </script>

@@ -8,6 +8,7 @@
   import { actionsStore } from '../store/actions-store'
   import { onMount } from 'svelte'
   import { appState } from '../store/app-state-store'
+  import Progress from './Progress.svelte'
 
   export let book: Book
   export let index: number
@@ -35,15 +36,12 @@
   let showAnimation: any
 
   onMount(() => {
-    showAnimation = $actionsStore.readingListItemAdded
-    console.log(showAnimation)
+    showAnimation = index === 0 && $actionsStore.readingListItemAdded && $appState.readingBooks.length > 1
   })
 </script>
 
 <li
-  class="relative flex w-full gap-3 h-64 my-2 p-2 {index === 0 &&
-  showAnimation &&
-  $appState.readingBooks.length > 1
+  class="relative flex w-full gap-3 h-64 my-2 p-2 {showAnimation
     ? 'animate-item-in'
     : 'animate-fade-in'}"
 >
@@ -71,12 +69,13 @@
       </div>
     {/if}
   </div>
-  <section class="flex flex-col gap-2">
+  <section class="flex flex-col gap-2 w-4/6">
     <h3 class="text-lg">{book.title}</h3>
     <h4 class="text-sm"><i>{book.author.name}</i></h4>
     <span
       class="py-1.5 px-4 text-sm w-fit rounded-full bg-overlayModal text-light"
       >{book.genre}</span
     >
+    <Progress {book} />
   </section>
 </li>

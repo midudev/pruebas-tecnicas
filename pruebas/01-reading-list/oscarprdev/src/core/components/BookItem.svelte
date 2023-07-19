@@ -60,15 +60,14 @@
   let showAnimation: any
 
   onMount(() => {
-    showAnimation = $actionsStore.readingListItemRemoved
+    showAnimation = index === 0 && $actionsStore.readingListItemRemoved
   })
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <li
-  class="flex flex-col gap-4 w-40 relative h-300 xl:w-60 xl:h-400 {index ===
-    0 && showAnimation
+  class="flex flex-col gap-4 relative xl:w-40 xl:h-300 {showAnimation
     ? 'animate-item-out'
     : 'animate-fade-in'}"
   on:mouseenter={handleOverlay}

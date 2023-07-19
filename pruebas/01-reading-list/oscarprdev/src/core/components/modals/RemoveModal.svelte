@@ -32,12 +32,10 @@
     }))
 
     setTimeout(() => {
-      actionsStore.update(() => {
-        return {
-          readingListItemAdded: false,
-          readingListItemRemoved: false,
-        }
-      })
+      actionsStore.update(() => ({
+        readingListItemAdded: false,
+        readingListItemRemoved: false,
+      }))
     }, 500)
   }
 </script>
