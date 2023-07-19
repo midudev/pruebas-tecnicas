@@ -27,7 +27,7 @@ export function Functionalities ({ showBook, book }) {
 
   return (
       <ul className="flex justify-between">
-        <li className="flex">
+        <li className="flex items-center">
           {bookAdded
             ? <IconBookmarkOff
           className="animate-jump animate-once animate-ease-linear cursor-pointer"
@@ -42,6 +42,8 @@ export function Functionalities ({ showBook, book }) {
             height={32}
             onClick={addToBookList}
           /> }
+          {bookAdded && <p className='px-2 py-1 rounded-full bg-orange-600 text-white'>En la lista</p>}
+
         </li>
 
         <li>

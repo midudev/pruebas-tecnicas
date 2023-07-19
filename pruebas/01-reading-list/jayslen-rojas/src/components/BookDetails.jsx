@@ -4,7 +4,7 @@ function LiDetails ({ title, info }) {
   return (
     <li>
       <h4 className="text-lg font-semibold">{title}</h4>
-      <p className='max-w-[250px]'>{info}</p>
+      <p className='max-w-[240px]'>{info}</p>
     </li>
   )
 }
@@ -15,7 +15,7 @@ export function BookDetails ({ book, closePopUp }) {
       <section className="w-[700px] h-80 bg-[#f5ebe0] rounded-md p-5 flex gap-4 relative">
         <IconX className='absolute -top-12 -right-1 bg-white rounded-full p-2 h-10 w-10 text-red-500 hover:text-white hover:bg-red-500 transition-colors cursor-pointer' onClick={closePopUp}/>
         <img src={book.cover} alt="" className="h-full rounded-md" />
-        <ul className='flex flex-col flex-wrap'>
+        <ul className='flex flex-col flex-wrap gap-x-1'>
             <LiDetails title={'Nombre del libro'} info={book.title}/>
             <LiDetails title={'Sypnosis'} info={book.synopsis}/>
             <LiDetails title={'Genero'} info={book.genre}/>
