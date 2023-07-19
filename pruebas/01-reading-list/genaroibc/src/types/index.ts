@@ -15,3 +15,5 @@ export type Book = {
   author: BookAuthor
   isInReadingList: boolean
 }
+
+export type Filter = keyof Book
