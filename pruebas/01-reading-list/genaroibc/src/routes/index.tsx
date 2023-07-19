@@ -3,7 +3,7 @@ import type { Book, BookISBN } from "~/types"
 import { $, component$, useStore } from "@builder.io/qwik"
 import type { DocumentHead } from "@builder.io/qwik-city"
 import { BooksList } from "~/components/BooksList"
-import INITIAL_BOOKS from "../../../books.json"
+import INITIAL_BOOKS from "~/db/books.json"
 import { ReadingList } from "~/components/ReadingList"
 
 export default component$(() => {
