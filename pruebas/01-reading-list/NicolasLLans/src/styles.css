@@ -48,7 +48,7 @@ a:hover{
 p {
       font-family: var(--tipo-principal);
       font-weight: 400;
-      color: var(--color-grises);
+      color: var(--negros);
 }
 
 button {
