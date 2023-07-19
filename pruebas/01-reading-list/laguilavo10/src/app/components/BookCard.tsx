@@ -25,7 +25,7 @@ export default function BookCard({ book, action }: Props) {
         <h3 className='mt-2 text-lg font-extrabold'>{book.title}</h3>
         <p className='flex items-center gap-2'>
           <BookOpenIcon className='z-50 h-5 fill-[#596886]'>hola</BookOpenIcon>
-          {book.pages} pages
+          {book.pages} paginas
         </p>
         <p>{book.synopsis}</p>
         <p>

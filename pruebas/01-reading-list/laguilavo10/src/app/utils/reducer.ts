@@ -11,17 +11,26 @@ export const reducer = (state: BooksContext, action: Action) => {
   const { bookList, readingList }: BooksContext = JSON.parse(
     localStorage.getItem('books') as string
   )
+  const updateList = (array: Book[]) => {
+    return array.filter((b) => b.ISBN !== payload.ISBN)
+  }
+
   switch (type) {
     case 'AddToReadingList': {
-      const alreadyIn = readingList.includes(action.payload)
+      const alreadyIn = readingList.some((book) => book.ISBN === payload.ISBN)
       if (alreadyIn) return state
-      const newState = { ...state, readingList: [...readingList, payload] }
+      const newState = {
+        bookList: updateList(bookList),
+        readingList: [...readingList, payload]
+      }
       localStorage.setItem('books', JSON.stringify(newState))
       return newState
     }
     case 'RemoveFromReadingList': {
-      const withoutBook = readingList.filter((b) => b.ISBN !== payload.ISBN)
-      const newState = { bookList: [...bookList], readingList: withoutBook }
+      const newState = {
+        bookList: [...bookList, payload],
+        readingList: updateList(readingList)
+      }
       localStorage.setItem('books', JSON.stringify(newState))
       return newState
     }
