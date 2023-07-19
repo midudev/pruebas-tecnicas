@@ -9,6 +9,7 @@
   import { onMount } from 'svelte'
   import { appState } from '../store/app-state-store'
   import StarsCounter from './StarsCounter.svelte'
+  import SwitchBook from './SwitchBook.svelte'
 
   export let book: Book
   export let index: number
@@ -84,13 +85,14 @@ onMount(() => {
       </div>
     {/if}
   </div>
-  <section class="flex flex-col gap-2 w-4/6">
+  <section class="flex flex-col gap-3 w-4/6">
     <h3 class="text-lg">{book.title}</h3>
-    <h4 class="text-sm"><i>{book.author.name}</i></h4>
+    <h4 class="text-sm mt-[-10px]"><i>{book.author.name}</i></h4>
     <span
       class="py-1.5 px-4 text-sm w-fit rounded-full bg-overlayModal text-light"
       >{book.genre}</span
     >
     <StarsCounter {book} />
+    <SwitchBook />
   </section>
 </li>

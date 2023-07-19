@@ -27,6 +27,9 @@ module.exports = {
       overlayBtnHover: '#E8E2E2',
       overlayModal: '#393E46',
       nav: '#E36064',
+      doing: '#FF9F00',
+      done: '#4CAF50',
+      switch: '#C8C5BC',
     },
     borderColor: {
       nav: '#C8C5BC',
@@ -39,6 +42,8 @@ module.exports = {
       icons: '#908E8F',
       iconsDark: '#161617cc',
       pagination: '#E36064',
+      done: '#4CAF50',
+      doing: '#FF9F00',
     },
     fill: {
       removeIcon: '#161617cc',
