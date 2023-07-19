@@ -1,26 +1,30 @@
 .wishlistbooks {
+  display: flex;
+
   z-index: -1;
   position: relative;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.204);
-  padding: 20px 0;
+  padding: 30px 0;
   border-radius: 10px;
   margin-bottom: 50px;
   position: relative;
-  background: #000000eb;
-  .btn-clear-all {
-    margin-top:20px;
-    width: 200px;
-    font-size: 18px;
+  background: #000000;
+  .btn-remove-all {   
+  
+    font-size: 16px;
+    letter-spacing: .02rem;
     font-weight: 600;
     padding: 7px 10px;
+    color: #e21010;
     cursor: pointer;
+    border: none;
+    background: transparent;
   }
-  span {
+  .btn-close {
     background: #ff0000a7;
     position: absolute;
     width: 20px;
     height: 20px;
-    // right: -8px;
     left: -7px;
     top: -15px;
     border-radius: 10px;

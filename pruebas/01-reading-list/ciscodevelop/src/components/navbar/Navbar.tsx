@@ -1,38 +1,41 @@
 import { useSelector } from "react-redux";
 import "./navbar.scss";
 import { selectBooksWishList } from "../../features/books/booksSlice";
-import { WishListModal } from "../../models/WishListModal";
+import { PropsUI } from "../../models/WishListModal";
 import { store } from "../../app/store";
 
-
-function Navbar({setModalStateFav }: WishListModal) {
+function Navbar({ setModalStateFav, searchWord }: PropsUI) {
   const countFavorit = useSelector(selectBooksWishList);
   const handlerShowFavorit = () => {
-    store.getState().books.wishList.length != 0 &&
-    setModalStateFav(true);
-     window.scrollTo(0, 0);
-     
+    store.getState().books.wishList.length &&
+      (setModalStateFav(true), window.scrollTo(0, 70));
   };
   return (
     <nav className="navbar">
       <div className="left glow-on-hover">
-        
         <a href="/">
-
-        <img src="library-svgrepo-com.svg" alt="" />
-        <span>Library Cisco</span>
+          <img src="library-svgrepo-com.svg" alt="" />
+          <span>Library Cisco</span>
         </a>
       </div>
       <div className="center">
-        <ul>
-           
+        <div className="filter">
+          <input
+          className="input-search glow-on-hover"
+            type="text"
+            placeholder="Search Book"
+            value={searchWord?.wordSearch}
+            onChange={(e) => searchWord?.setWordSearch(e.target.value)}
+          />
+        </div>
+        {/* <ul>           
           <li className="glow-on-hover">Favorites</li>
           <li className="glow-on-hover">About</li>
-        </ul>
+        </ul> */}
       </div>
       <div className="rigth">
         <button className="glow-on-hover" onClick={handlerShowFavorit}>
-         Your <mark>{countFavorit.length}</mark> Favorites  Books
+          Your <mark>{countFavorit.length}</mark> Favorites Books
         </button>
       </div>
     </nav>

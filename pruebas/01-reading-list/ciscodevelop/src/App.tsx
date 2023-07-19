@@ -10,7 +10,7 @@ const WishListBooks = lazy(
 function App() {
   const [isScrollY, setIsScrollY] = useState(false);
   const [modalStateFav, setModalStateFav] = useState(false);
-
+  const [wordSearch, setWordSearch] = useState<string>("")
   const controlShowNav = () => {
     window.scrollY > 50 ? setIsScrollY(true) : setIsScrollY(false);
   };
@@ -25,10 +25,10 @@ function App() {
   return (
     <div className="app">
       <header className={isScrollY ? "show-bg-nav" : ""}>
-        <Navbar setModalStateFav={setModalStateFav} />
+        <Navbar searchWord={{wordSearch,setWordSearch}} setModalStateFav={setModalStateFav} />
       </header>
       <main className="main">
-        <Suspense fallback={<Spinner/>}>
+        <Suspense fallback={<Spinner text="Loading..!"/>}>
           {modalStateFav && (
             <WishListBooks
               modalStateFav={modalStateFav}
@@ -36,8 +36,9 @@ function App() {
             />
           )}
         </Suspense>
-        <ListOfBooks />
+        <ListOfBooks  keyword={wordSearch}/>
       </main>
+      <button className="go-up" onClick={() => window.scrollTo(0, 0)}>{"<"}</button>
     </div>
   );
 }

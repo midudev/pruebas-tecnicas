@@ -22,6 +22,7 @@ header {
   top: 0;  
   transition: all 0.3s ease-in-out;
   color: #000000;
+  background: #00000012;
 }
 .show-bg-nav {
   background: #000000;
@@ -33,5 +34,26 @@ main {
   margin: 80px 0;
   z-index: 1;
   position: relative; 
-  transition: all 1s ease-in-out;        
+  transition: all 1s ease-in-out;       
+  min-height: 400px; 
+}
+.go-up   {
+  width: 50px;
+  height: 51px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+	position: absolute;
+	right: 40px;
+	padding: 10px;
+	margin: -40px auto;
+	cursor: pointer;
+	font-size: 18px;
+	border: none;
+	border-radius: 10px;
+  box-shadow: 3px 0px 20px #000;
+	transform: rotate(90deg);
+  &:hover{
+    font-size: 22px;
+  }
 }

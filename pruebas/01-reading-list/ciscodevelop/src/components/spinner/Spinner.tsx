@@ -5,7 +5,7 @@ const override: CSSProperties = {
   margin: "0 auto",
   borderColor: "red",
 };
-function Spinner() {
+function Spinner({text}: {text: string}) {
   return (
     <div className="spinner">
       <PacmanLoader
@@ -16,7 +16,7 @@ function Spinner() {
         aria-label="Loading Spinner"
         data-testid="loader"
       />
-      <span>Loading...</span>
+      <span>{text}</span>
     </div>
   );
 }

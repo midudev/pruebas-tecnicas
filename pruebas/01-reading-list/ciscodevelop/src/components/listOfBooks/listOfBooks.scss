@@ -7,9 +7,15 @@
   .cards-books {
     border-radius: 10px;
     background: #000;
-    padding: 3rem 10px;
+    padding: 1rem 0px;
     .card-header {
-      .btn-addwishlist{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+
+      .btn-addwishlist {
         border: none;
         background: transparent;
         width: 30px;
@@ -18,17 +24,21 @@
         .star-favorites {
           margin-bottom: 30px;
           cursor: pointer;
-          &:hover{
-          transform: scale(1.2);
+          &:hover {
+            transform: scale(1.2);
+          }
         }
       }
-    }
       .cover-book {
+        width: 298px;
+        height: 396px;
+        overflow: hidden;
+        border-radius: 10px;
         img {
           width: 300px;
           height: 400px;
-          border-radius: 10px;
           cursor: pointer;
+          transition: all .6s ease;
           &:hover {
             transform: scale(1.05);
             -webkit-transform: scale(1.05);

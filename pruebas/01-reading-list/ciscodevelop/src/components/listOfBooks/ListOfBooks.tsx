@@ -1,15 +1,24 @@
 import { useSelector } from "react-redux";
-import { addBookWish, removeBookWishList } from "../../features/books/booksSlice";
+import {
+  addBookWish,
+  removeBookWishList,
+} from "../../features/books/booksSlice";
 import { ToastContainer, toast } from "react-toastify";
 import { RootState, store } from "../../app/store";
 import { useAppDispatch } from "../../app/hooks";
-import {  Book, Library } from "../../models/BooksModel";
-import StarFavorites from '../../assets/star-fav'
+import { Book } from "../../models/BooksModel";
+import StarFavorites from "../../assets/star-fav";
 import "react-toastify/dist/ReactToastify.css";
 import "./listOfBooks.scss";
+import { searchBooks } from "../../utils/filter/useFilter";
+import { render } from "react-dom";
+import Spinner from "../spinner/Spinner";
 
-function ListOfBooks() {
-  const storeBooks = useSelector((state: RootState) => state.books.booksList);
+function ListOfBooks({ keyword }: { keyword: string }) {
+  const storeBooks = searchBooks(
+    useSelector((state: RootState) => state.books.booksList).library,
+    keyword
+  );
   const storeWishList = useSelector((state: RootState) => state.books.wishList);
   const dispatch = useAppDispatch();
 
@@ -17,56 +26,83 @@ function ListOfBooks() {
     dispatch(addBookWish(book));
     const showTost =
       storeWishList.length < store.getState().books.wishList.length;
-    showTost ? toast.success("Added to Favorites!"):toast.warn("Already in your favorites books!");
+    showTost
+      ? toast.success("Added to Favorites!")
+      : toast.warn("Already in your favorites books!");
   };
   const handlerRemoveWish = (book: Book) => {
-    dispatch(removeBookWishList(book))
+    dispatch(removeBookWishList(book));
     toast.error("Removed from the your favorites books!");
   };
 
   return (
     <div className="container-cards-listofbooks">
-      {storeBooks.library.map((item:Library) => (
-        <div className="cards-books" key={item.book.ISBN}>
-          <div className="card-header">
-            <button className="btn-addwishlist" onClick={!item.book.wish?()=>handlerAddWish(item.book):()=>handlerRemoveWish(item.book)}>
-
-           <StarFavorites color={item.book.wish? "#d2c308":"#fff"}/>
-            </button>
-            <div className="cover-book">
-              <img
-                src={item.book.cover}
-                alt={item.book.title}
-                onClick={() => handlerAddWish(item.book)}
-              />
+      {storeBooks.length ? (
+        storeBooks.map(({ book }: { book: Book }) => {
+          const {
+            ISBN,
+            title,
+            author,
+            genre,
+            year,
+            pages,
+            synopsis,
+            cover,
+            wish,
+          } = book;
+          return (
+            <div className="cards-books" key={ISBN}>
+              <div className="card-header">
+                <button
+                  className="btn-addwishlist"
+                  onClick={
+                    !wish
+                      ? () => handlerAddWish(book)
+                      : () => handlerRemoveWish(book)
+                  }
+                >
+                  <StarFavorites color={wish ? "#d2c308" : "#fff"} />
+                </button>
+                <div className="cover-book">
+                  <img
+                    src={cover}
+                    alt={title}
+                    onClick={() => handlerAddWish(book)}
+                  />
+                </div>
+              </div>
+              <div className="card-body">
+                <h3>Title: {title}</h3>
+                <details>
+                  <summary>More info</summary>
+                  <h4>Author: {author.name}</h4>
+                  <h4>Genre: {genre}</h4>
+                  <span>Yeard: {year}</span>
+                  <span>Pages: {pages}</span>
+                  <details>
+                    <summary>Desciption</summary>
+                    {synopsis}
+                  </details>
+                </details>
+                <div className="otherbooks">
+                  <details>
+                    <summary> Other Books</summary>
+                    {author.otherBooks.map((otherBook: string) => (
+                      <h5 key={otherBook}>{otherBook}</h5>
+                    ))}
+                  </details>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="card-body">
-            <h3>Title: {item.book.title}</h3>
-            <details>
-              <summary>More info</summary>
-              <h4>Author: {item.book.author.name}</h4>
-              <h4>Genre: {item.book.genre}</h4>
-              <span>Yeard: {item.book.year}</span>
-              <span>Pages: {item.book.pages}</span>
-              <details>
-                <summary>Desciption</summary>
-                {item.book.synopsis}
-              </details>
-            </details>
-            <div className="otherbooks">
-              <details>
-                <summary> Other Books</summary>
-                {item.book.author.otherBooks.map((item:string) => (
-                  <h5 key={item}>{item}</h5>
-                ))}
-              </details>
-            </div>
-          </div>
+          );
+        })
+      ) : (
+        <div className="books-notfound">
+          <Spinner text="No books found..!"></Spinner>
         </div>
-      ))}
+      )}
       <ToastContainer
-        style={{ zIndex: 999, top: 100 }}
+        style={{ zIndex: 999, top: 170 }}
         position="top-right"
         autoClose={1000}
         limit={5}
