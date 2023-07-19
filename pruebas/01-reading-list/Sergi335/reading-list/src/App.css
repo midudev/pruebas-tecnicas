@@ -4,7 +4,19 @@
   padding: 2rem;
   text-align: center;
 }
-
+header {
+  position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    background-color: aquamarine;
+    padding: 20px;
+}
 main {
   width: 100%;
+  margin-top: 225px;
 }

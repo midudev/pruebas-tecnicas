@@ -6,6 +6,8 @@ import { library } from '../data/books.json'
 import Book from '../src/components/book.jsx'
 import Filter from '../src/components/Filter'
 import './App.css'
+import ReadingList from './components/ReadingList'
+import { ReadingListProvider } from './context/ReadListContext'
 
 function App () {
   const [filters, setFilters] = useState({
@@ -23,13 +25,14 @@ function App () {
     })
   }
   return (
-    <>
+    <ReadingListProvider>
       <header>
         <h1>Colección de libros</h1>
         <Filter changeFilters={setFilters} />
       </header>
       <Book books = {filterBooks(library)} />
-    </>
+      <ReadingList />
+    </ReadingListProvider>
 
   )
 }

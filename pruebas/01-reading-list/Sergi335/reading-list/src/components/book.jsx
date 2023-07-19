@@ -1,5 +1,11 @@
-import styles from './book.css'
+import { useList } from '../hooks/useList'
+import './book.css'
 export default function Book ({ books }) {
+  const { addToList, removeFromList, list } = useList()
+  console.log(list)
+  const chekBookInList = book => {
+    return list.some(item => item.book.ISBN === book.book.ISBN)
+  }
   return (
     <main>
         <ul>
@@ -15,6 +21,18 @@ export default function Book ({ books }) {
                         <p>{item.book.year}</p>
                         <p>{item.book.genre}</p>
                     </div>
+                    <button onClick={() => {
+                      console.log(chekBookInList(item))
+                      chekBookInList(item)
+                        ? removeFromList(item)
+                        : addToList(item)
+                    }}>
+                        {
+                            chekBookInList(item)
+                              ? 'Quitar de la lista'
+                              : 'Añadir a mi lista'
+                        }
+                    </button>
                 </li>
             ))
             }
