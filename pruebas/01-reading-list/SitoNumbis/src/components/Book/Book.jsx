@@ -74,11 +74,11 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
       <Marker show={isInReadingList} />
       <div
         role="info"
-        className={`group absolute top-0 pr-8 left-0 w-full h-full hover:bg-dark-alt-bg-opacity opacity-0 transition hover:opacity-100 flex flex-col justify-between items-start p-3 ${
+        className={`group ${styles.bookInfoContainer} ${
           isInReadingList ? "opacity-100" : ""
         }`}
       >
-        <div className={`${memoAnimation}`}>
+        <div className={`${memoAnimation} ${styles.bookInfo}`}>
           <p className="">{title}</p>
           <p className="alter-text">
             {genre} ({pages}) {languageState.texts.book.pages}

@@ -9,3 +9,18 @@
 .addButton {
   @apply !opacity-100 !translate-y-0;
 }
+
+.bookInfoContainer {
+  @apply absolute top-0 pr-8 left-0 w-full h-full opacity-0 transition flex flex-col justify-between items-start p-3 hover:bg-dark-alt-bg-opacity  hover:opacity-100;
+}
+
+@media (max-width: 768px) {
+  .bookInfoContainer {
+    opacity: 1;
+    background: none !important;
+  }
+
+  .bookInfo {
+    @apply !opacity-0;
+  }
+}
