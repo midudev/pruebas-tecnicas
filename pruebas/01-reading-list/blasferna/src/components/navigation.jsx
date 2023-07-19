@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useAppContext } from "@/context/app-context";
+import { useAppContext } from "@/context/store";
 
 export default function Navigation() {
   const { inReadingListCount, availableListCount } = useAppContext();

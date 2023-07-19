@@ -9,7 +9,7 @@ import {
   removeFromReadingList,
 } from "@/lib/books";
 import LoadingMini from "@/components/loading-mini";
-import { useAppContext } from "@/context/app-context";
+import { useAppContext } from "@/context/store";
 
 export default function PlusButton({ isbn }) {
   const { inReadingList, setInReadingList } = useAppContext();

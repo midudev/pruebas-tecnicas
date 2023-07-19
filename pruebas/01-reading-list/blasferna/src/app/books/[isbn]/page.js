@@ -1,31 +1,9 @@
-import DATA from "@/books.json";
 import Navigation from "@/components/navigation";
+import PlusButton from "@/components/plus-button";
+import { getAuthorOtherBooks, getByISBN } from "@/lib/books";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import Link from "next/link";
-import PlusButton from "@/components/plus-button";
-
-
-const getAuthorOtherBooks = (book) => {
-  const otherBooks = [];
-  const array = book.author.otherBooks;
-  for (let index = 0; index < array.length; index++) {
-    const element = array[index];
-    try {
-      otherBooks.push(getByTitle(element));
-    } catch (error) {}
-  }
-  return otherBooks;
-};
-
-const getByISBN = (isbn) => {
-  return DATA.library.find((obj) => obj.book.ISBN === isbn).book;
-};
-
-const getByTitle = (title) => {
-  return DATA.library.find((obj) => obj.book.title === title).book;
-};
-
 
 export default function BookDetailPage({ params }) {
   const { isbn } = params;
@@ -55,31 +33,31 @@ export default function BookDetailPage({ params }) {
             <div>Autor: {book.author.name}</div>
             <div>ISBN: {book.ISBN}</div>
             <div>{book.pages} páginas</div>
-            {otherBooks.length > 0 &&
-            <>
-            <span className="font-medium text-lg">
-            Más libros de {book.author.name}
-          </span>
-          <div className="flex flex-wrap gap-2">
-            {otherBooks.map((book) =>(
-              <div
-              key={book.ISBN}
-              className="relative w-20 h-32 rounded overflow-hidden cursor-pointer"
-            >
-              <Link href={`/books/${book.ISBN}`}>
-              <Image
-                src={book.cover}
-                className="object-cover"
-                sizes="100vw"
-                fill={true}
-                alt={book.title}
-              ></Image>
-              </Link>
-            </div>
-            ))}
-          </div>     
-          </>      
-            }
+            {otherBooks.length > 0 && (
+              <>
+                <span className="font-medium text-lg">
+                  Más libros de {book.author.name}
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {otherBooks.map((book) => (
+                    <div
+                      key={book.ISBN}
+                      className="relative w-20 h-32 rounded overflow-hidden cursor-pointer"
+                    >
+                      <Link href={`/books/${book.ISBN}`}>
+                        <Image
+                          src={book.cover}
+                          className="object-cover"
+                          sizes="100vw"
+                          fill={true}
+                          alt={book.title}
+                        ></Image>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

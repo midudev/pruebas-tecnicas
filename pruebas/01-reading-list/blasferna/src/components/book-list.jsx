@@ -1,14 +1,14 @@
 "use client";
-import { useAppContext } from "@/context/app-context";
+import { useAppContext } from "@/context/store";
 import Image from "next/image";
 import Link from "next/link";
 
-export function AvailableList({ data }) {
+export function AvailableList() {
   const { availableList } = useAppContext();
   return <BookList books={availableList}></BookList>;
 }
 
-export function ReadingList({ data }) {
+export function ReadingList() {
   const { readingList } = useAppContext();
   return <BookList books={readingList}></BookList>;
 }

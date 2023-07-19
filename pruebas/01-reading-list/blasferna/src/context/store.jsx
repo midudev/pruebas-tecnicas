@@ -3,14 +3,14 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import {
   getInReadingList,
-  READING_LIST_STORAGE_KEY,
   getReadingList,
   getAvailableList,
+  getAvailableListCount,
 } from "@/lib/books";
 
 export const AppContext = createContext();
 
-export const AppProvider = ({ children, database }) => {
+export const AppProvider = ({ children }) => {
   const [inReadingList, setInReadingList] = useState(getInReadingList());
   const [inReadingListCount, setInReadingListCount] = useState(0);
   const [availableListCount, setavailableListCount] = useState(0);
@@ -18,18 +18,14 @@ export const AppProvider = ({ children, database }) => {
   const [readingList, setReadingList] = useState([]);
 
   useEffect(() => {
-    localStorage.setItem(
-      READING_LIST_STORAGE_KEY,
-      JSON.stringify(inReadingList)
-    );
     setInReadingListCount(inReadingList.length);
-    setReadingList(getReadingList(database));
-    setAvailableList(getAvailableList(database));
+    setReadingList(getReadingList());
+    setAvailableList(getAvailableList());
     setavailableListCount(availableList.length);
   }, [inReadingList]);
 
   useEffect(() => {
-    setavailableListCount(database.library.length-inReadingList.length);
+    setavailableListCount(getAvailableListCount());
   }, [availableList, inReadingList]);
 
   useEffect(() => {

@@ -1,7 +1,6 @@
 import './globals.css'
-import DATA from "@/books.json";
 import { Inter } from 'next/font/google'
-import { AppProvider } from "@/context/app-context";
+import { AppProvider } from "@/context/store";
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -14,7 +13,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="bg-gray-900">
         <main>
-          <AppProvider database={DATA}>
+          <AppProvider>
           {children}
           </AppProvider>
         </main>
