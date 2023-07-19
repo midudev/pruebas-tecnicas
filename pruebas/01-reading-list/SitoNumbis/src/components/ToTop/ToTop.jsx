@@ -12,7 +12,7 @@ import { scrollTo } from "some-javascript-utils/browser";
 import { useLanguage } from "../../contexts/LanguageProvider";
 
 // styles
-import "./style.css";
+import styles from "./styles.module.css";
 
 const ToTop = ({ className }) => {
   const [visible, setVisible] = useState(false);
@@ -46,7 +46,7 @@ const ToTop = ({ className }) => {
         zIndex: visible ? 10 : -1,
         transform: visible ? "scale(1)" : "scale(0)",
       }}
-      className={`to-top fixed bottom-5 right-5 rounded-full w-9 h-9 pt-1 dark:text-primary hover:bg-primary transition hover:text-dark-text ${className}`}
+      className={`${styles.main} ${className}`}
     >
       <FontAwesomeIcon className="external" icon={faArrowUp} />
     </button>

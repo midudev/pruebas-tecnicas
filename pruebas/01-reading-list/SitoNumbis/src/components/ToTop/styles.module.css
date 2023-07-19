@@ -1,0 +1,9 @@
+.main {
+  @apply fixed bottom-5 right-5 rounded-full w-9 h-9 text-primary-light hover:bg-primary transition hover:text-dark-text;
+}
+
+@media (max-width: 768px) {
+  .main {
+    @apply bg-primary text-dark-text;
+  }
+}

@@ -42,7 +42,7 @@ function Navbar() {
         </Link>
         <div className="flex items-center gap-5">
           <Badge number={totalReading}>
-            <Tippy content={languageState.texts.ariaLabels.toReadingList}>
+            <Tippy className="hide-on-mobile" content={languageState.texts.ariaLabels.toReadingList}>
               <button
                 onClick={() => setLibraryState({ type: "toggle-see" })}
                 className={`text-xl icon-button ${

@@ -68,6 +68,10 @@ function LightBox() {
 
   const [seeingCover, setSeeingCover] = useState(false);
 
+  const isInReadingList = useMemo(() => {
+    return libraryState.readingList.has(lightBoxState.id);
+  }, [libraryState, lightBoxState]);
+
   return createPortal(
     <section
       className={`${styles.main} ${
@@ -109,13 +113,13 @@ function LightBox() {
             <button
               onClick={addToReadingList}
               aria-label={
-                !libraryState.readingList[lightBoxState.id]
+                !isInReadingList
                   ? languageState.texts.ariaLabels.add
                   : languageState.texts.ariaLabels.remove
               }
               className={`cta`}
             >
-              {!libraryState.readingList[lightBoxState.id]
+              {!isInReadingList
                 ? languageState.texts.book.add
                 : languageState.texts.book.remove}
             </button>
