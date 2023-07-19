@@ -3,7 +3,7 @@ import booksJson from '../books.json'
 import { Book, BooksState } from '../types'
 import { persist } from 'zustand/middleware'
 
-export const useBooksStore = create<BooksState>(
+export const useBooksStore = create<any>(persist(
   (set, get) => ({
     books: [],
     filteredBooks: [],
@@ -56,7 +56,7 @@ export const useBooksStore = create<BooksState>(
 
         const excludeIsbn = wantReadBooks.map(w => w.book.ISBN)
         const excludeWantReadBooks = books.filter((b) => {
-          console.log('isbn', b.book.ISBN)
+          // console.log('isbn', b.book.ISBN)
           if (excludeIsbn.includes(b.book.ISBN)) {
             return false
           }
@@ -93,6 +93,10 @@ export const useBooksStore = create<BooksState>(
         get().setBooks(base)
       })
     }
+  }),
+  {
+    name: 'booksLibrary',
+    getStorage: () => localStorage
   }))
 
 /*  filterGenre: (genre: string) => {
