@@ -30,7 +30,7 @@ function App() {
             })}
           </BookGrid>
           <LectureDeck loading={state.loading} bookCount={state.lectureList?.length}>
-            {state.lectureList?.reverse().map((book: TBook) => {
+            {state.lectureList?.map((book: TBook) => {
               return <Book book={book} key={book.book.title} handleClick={addBookToAvailableBooks} />;
             })}
           </LectureDeck>

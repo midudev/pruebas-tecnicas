@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './LectureDeck.module.css';
+import './LectureDeck.css';
 
 type LectureDeckProps = {
   children: React.ReactNode;
@@ -9,9 +9,11 @@ type LectureDeckProps = {
 
 function LectureDeck({ children }: LectureDeckProps) {
   return (
-    <div className={style['book-deck']}>
+    <div className={'book-deck'}>
       <h2>Lista de Lectura</h2>
-      <div className={style['book-column']}>{children}</div>
+      <div className={'book-scene'}>
+        <div className='book-stack'>{children}</div>
+      </div>
     </div>
   );
 }

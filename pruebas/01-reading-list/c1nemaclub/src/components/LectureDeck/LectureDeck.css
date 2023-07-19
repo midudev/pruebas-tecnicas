@@ -1,0 +1,35 @@
+.book-deck {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  gap: 20px;
+  width: 30%;
+}
+
+.book-scene {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  perspective: 1000px;
+  /* order: -1; */
+}
+.book-stack {
+  transform-style: preserve-3d;
+}
+
+.book-stack .book {
+  margin-bottom: -270px;
+  transition: 0.4s ease-in-out;
+}
+
+/* .book-stack .book {
+  transform: rotateZ(-5deg);
+} */
+.book-stack .book:last-child {
+  transform: rotateZ(10deg);
+}
+
+.book-stack .book:hover {
+  transform: translateZ(200px);
+}
