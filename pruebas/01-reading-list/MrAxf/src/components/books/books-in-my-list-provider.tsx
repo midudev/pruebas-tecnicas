@@ -12,10 +12,11 @@ interface BooksInMyListContextType {
   booksInMyList: Signal<BooksInMyList>;
 }
 
-export const BooksInMyListContext = createContextId<BooksInMyListContextType>("books-list-context");
+export const BooksInMyListContext =
+  createContextId<BooksInMyListContextType>("books-list-context");
 
 export const BooksInMyListProvider = component$(() => {
-  const booksInMyList = useLocalStorage<BooksInMyList>('books-in-my-list', {});
+  const booksInMyList = useLocalStorage<BooksInMyList>("books-in-my-list", {});
 
   useContextProvider(BooksInMyListContext, {
     booksInMyList,

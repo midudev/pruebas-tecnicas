@@ -1,15 +1,15 @@
 import type { Book } from "~/types/books";
-import useBooksInMyList from "./useBooksInMyList";
+import useReadList from "./useReadList";
 import { $, useComputed$ } from "@builder.io/qwik";
 
 export default function useBook(book: Book) {
   const _book = book;
 
-  const booksInMyList = useBooksInMyList();
+  const booksInMyList = useReadList();
 
   const readPriority = useComputed$(() => booksInMyList.value[_book.ISBN]);
 
-  const isBookInMyList = useComputed$(() => {
+  const isreadList = useComputed$(() => {
     return Boolean(booksInMyList.value[_book.ISBN]);
   });
 
@@ -24,17 +24,17 @@ export default function useBook(book: Book) {
   });
 
   const toogleFromMyList = $(() => {
-    if (!isBookInMyList.value) addBookToMyList();
+    if (!isreadList.value) addBookToMyList();
     else deleteBookFromMyList();
   });
 
   const setReadPriority = $((value: 1 | 2 | 3) => {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (isBookInMyList.value)
+    if (isreadList.value)
       booksInMyList.value = { ...booksInMyList.value, [_book.ISBN]: value };
   });
   return {
-    isBookInMyList,
+    isreadList,
     toogleFromMyList,
     readPriority,
     setReadPriority,

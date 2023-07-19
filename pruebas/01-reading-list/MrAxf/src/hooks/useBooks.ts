@@ -2,12 +2,11 @@ import { useComputed$, useContext, useStore } from "@builder.io/qwik";
 import { BooksContext } from "~/components/books/books-provider";
 import { filterBooks } from "~/services/booksService";
 import type { BooksFilter } from "~/types/books";
-import useBooksInMyList from "./useBooksInMyList";
-
+import useReadList from "./useReadList";
 
 export default function useBooks(initialFilters: BooksFilter) {
   const { genres } = useContext(BooksContext);
-  const booksInMyList = useBooksInMyList();
+  const booksInMyList = useReadList();
   const filters = useStore<BooksFilter>({
     genre: "none",
     minPages: 0,

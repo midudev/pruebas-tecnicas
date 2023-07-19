@@ -7,11 +7,11 @@ import { Image } from "@unpic/qwik";
 import useBook from "~/hooks/useBook";
 
 interface BookDeatilProps {
-    book: Book
+  book: Book;
 }
 
 export const BookDeatil = component$(({ book }: BookDeatilProps) => {
-  const { isBookInMyList, readPriority, setReadPriority, toogleFromMyList } =
+  const { isreadList, readPriority, setReadPriority, toogleFromMyList } =
     useBook(book);
 
   const onFavIndicatorInput = $((el: HTMLSelectElement) => {
@@ -26,24 +26,24 @@ export const BookDeatil = component$(({ book }: BookDeatilProps) => {
         alt="Portada del libro"
         class={bookCoverCss}
         style={{
-          viewTransitionName: "cover",
+          viewTransitionName: `cover-${book.ISBN}`,
         }}
       />
       <VStack alignItems="start" gap="4" flexGrow="1">
         <BookFavIndicator
-          isBookInMyList={isBookInMyList}
+          isreadList={isreadList}
           readPriority={readPriority}
           onInput={onFavIndicatorInput}
           onFavButtonClick={toogleFromMyList}
           style={{
-            viewTransitionName: "book-fav-indicator",
+            viewTransitionName: `book-fav-indicator-${book.ISBN}`,
           }}
         />
         <VStack alignItems="start" gap="0">
           <h3
             class={bookTitleCss}
             style={{
-              viewTransitionName: "title",
+              viewTransitionName: `title-${book.ISBN}`,
             }}
           >
             {book.title}

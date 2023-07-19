@@ -6,7 +6,7 @@ const useLocalStorage = <T>(key: string, initialValue: T) => {
   useVisibleTask$(({ cleanup }) => {
     const storedValue = localStorage.getItem(key);
     if (storedValue) data.value = JSON.parse(storedValue);
-    
+
     function sync(ev: StorageEvent) {
       if (ev.key === key) {
         const storedValue = localStorage.getItem(key);

@@ -1,5 +1,5 @@
 import { defineConfig } from "@pandacss/dev";
-import globalCss from "~/styles/globalCss"
+import globalCss from "~/styles/globalCss";
 import theme from "~/styles/theme";
 
 export default defineConfig({
@@ -21,5 +21,5 @@ export default defineConfig({
 
   // The output directory for your css system
   outdir: "src/styled-system",
-  globalCss
-})
+  globalCss,
+});

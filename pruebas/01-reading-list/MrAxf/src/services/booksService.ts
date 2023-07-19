@@ -51,7 +51,7 @@ export function filterBooks(filter: BooksFilter, myBookList: BooksInMyList) {
 
   const filteredBooks = searchedBooks.filter(
     (item) =>
-      (!filter.isInMyList || filterBookInMyList(item, myBookList)) &&
+      (!filter.isInMyList || filterreadList(item, myBookList)) &&
       (!filter.genre ||
         filter.genre === "none" ||
         filterGenre(item, filter.genre)) &&
@@ -71,7 +71,7 @@ export function filterBooks(filter: BooksFilter, myBookList: BooksInMyList) {
   return orderedBooks;
 }
 
-function filterBookInMyList(book: Book, myList: BooksInMyList) {
+function filterreadList(book: Book, myList: BooksInMyList) {
   return Boolean(myList[book.ISBN]);
 }
 

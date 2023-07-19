@@ -1,4 +1,4 @@
-import { $, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import { $, component$ } from "@builder.io/qwik";
 import { Image } from "@unpic/qwik";
 import { HStack, VStack, styled } from "~/styled-system/jsx";
 import cutString from "~/utils/cutString";
@@ -39,21 +39,14 @@ const itemCss = css({
 export const BookListItem = component$(({ book }: BookListItemProps) => {
   const nav = useNavigate();
 
-  const { isBookInMyList, toogleFromMyList, readPriority, setReadPriority } =
+  const { isreadList, toogleFromMyList, readPriority, setReadPriority } =
     useBook(book);
-
-  const active = useSignal(false);
 
   const cutStringWithDots = $(cutString);
 
-  useVisibleTask$(({ track }) => {
-    track(() => active.value);
-    if (active.value) nav(`/libro/${book.ISBN}`);
-  });
-
   const onFavIndicatorInput = $((el: HTMLSelectElement) => {
     setReadPriority(Number(el.value) as 1 | 2 | 3);
-  })
+  });
   return (
     <HStack
       gap="5"
@@ -64,7 +57,7 @@ export const BookListItem = component$(({ book }: BookListItemProps) => {
       alignItems="start"
       class={itemCss}
       onClick$={() => {
-        active.value = true;
+        nav(`/libro/${book.ISBN}`);
       }}
     >
       <Image
@@ -74,23 +67,23 @@ export const BookListItem = component$(({ book }: BookListItemProps) => {
         alt="Portada del libro"
         class={imageCss}
         style={{
-          viewTransitionName: active.value ? "cover" : undefined,
+          viewTransitionName: `cover-${book.ISBN}`,
         }}
       />
       <VStack flexGrow="1" gap="5" alignItems="start">
         <BookFavIndicator
-          isBookInMyList={isBookInMyList}
+          isreadList={isreadList}
           readPriority={readPriority}
           onInput={onFavIndicatorInput}
           onFavButtonClick={toogleFromMyList}
           style={{
-            viewTransitionName: active.value ? "book-fav-indicator" : undefined,
+            viewTransitionName: `book-fav-indicator-${book.ISBN}`,
           }}
         />
         <h3
           class={bookTitleCss}
           style={{
-            viewTransitionName: active.value ? "title" : undefined,
+            viewTransitionName: `title-${book.ISBN}`,
           }}
         >
           {book.title}

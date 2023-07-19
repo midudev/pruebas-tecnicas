@@ -15,7 +15,7 @@ const SelectInput = styled("select", {
       outlineWidth: "4px",
       outlineStyle: "solid",
       outlineColor: "primary",
-    }
+    },
   },
 });
 

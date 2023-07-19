@@ -18,7 +18,7 @@ export const BooksContext = createContextId<BookContextType>("books-context");
 
 export const BooksProvider = component$(() => {
   const books = useSignal(getBooks());
-  const genres = getGenres()
+  const genres = getGenres();
 
   useContextProvider(BooksContext, {
     books,
