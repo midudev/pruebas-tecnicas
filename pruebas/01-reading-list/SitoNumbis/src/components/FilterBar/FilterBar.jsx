@@ -100,19 +100,20 @@ function FilterBar() {
         </button>
       ) : null}
 
-      <div
+      <ul
         ref={filterContainer}
         className={`${styles.genreRows} ${arrows ? styles.hasArrows : ""}`}
       >
         {libraryState.genres.map((genre) => (
-          <Genre
-            key={genre}
-            genre={genre}
-            active={libraryState.filtering === genre}
-            onClick={changeFilter}
-          />
+          <li key={genre}>
+            <Genre
+              genre={genre}
+              active={libraryState.filtering === genre}
+              onClick={changeFilter}
+            />
+          </li>
         ))}
-      </div>
+      </ul>
       {arrows ? (
         <button
           onClick={swipeLeft}

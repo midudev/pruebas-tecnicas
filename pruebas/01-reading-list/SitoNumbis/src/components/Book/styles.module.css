@@ -1,9 +1,5 @@
-.infoRow {
-  @apply flex gap-2;
-}
-
 .main {
-  @apply w-full relative;
+  @apply w-full relative h-full;
 }
 
 .addButton {

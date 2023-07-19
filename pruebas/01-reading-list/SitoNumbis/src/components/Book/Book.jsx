@@ -78,9 +78,12 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
         }`}
       >
         <div className={`${memoAnimation} ${styles.bookInfo}`}>
-          <p className="">{title}</p>
-          <p className="alter-text">
-            {genre} ({pages}) {languageState.texts.book.pages}
+          <h4>{title}</h4>
+          <p>
+            {genre}{" "}
+            <span className="alter-text">
+              ({pages}) {languageState.texts.book.pages}
+            </span>
           </p>
           <p className="mt-2">
             <span className="alter-text">{languageState.texts.book.by}</span>{" "}

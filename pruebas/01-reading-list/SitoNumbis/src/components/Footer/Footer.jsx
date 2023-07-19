@@ -13,9 +13,10 @@ function Footer() {
   return (
     <footer className={styles.main}>
       <div className={styles.footerElements}>
-        <h3>
-          {languageState.texts.copyright} {new Date().getFullYear()} &#169;
-        </h3>
+        <p>
+          {languageState.texts.copyright}{" "}
+          <span className="alter-text">{new Date().getFullYear()}</span>
+        </p>
         <a
           target="_blank"
           rel="noreferrer"

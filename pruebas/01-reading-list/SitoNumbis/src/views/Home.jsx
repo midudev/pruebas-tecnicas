@@ -35,11 +35,13 @@ function Home() {
         <LightBoxProvider>
           <LightBox />
           <section>
-            <div className={styles.bookGrid}>
+            <ul className={styles.bookGrid}>
               {bookToPrints.map((book) => (
-                <Book key={book.ISBN} {...book} />
+                <li key={book.ISBN}>
+                  <Book {...book} />
+                </li>
               ))}
-            </div>
+            </ul>
           </section>
         </LightBoxProvider>
         <ToTop />

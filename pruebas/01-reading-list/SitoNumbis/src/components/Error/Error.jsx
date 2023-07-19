@@ -18,10 +18,10 @@ const Error = (props) => {
 
   return (
     <div className="w-full h-screen flex flex-col items-center justify-center gap-10">
-      <h1 className="font-bold text-error text-2xl text-primary-light">
+      <h2 className="font-bold text-error text-2xl text-primary-light">
         <FontAwesomeIcon icon={faCircleExclamation} className="mr-1" />
         {error.title}
-      </h1>
+      </h2>
       <p className="text-dark-alt-text">{text}</p>
       {onRetry ? (
         <button
