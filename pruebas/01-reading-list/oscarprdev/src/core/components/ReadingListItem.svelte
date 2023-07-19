@@ -1,9 +1,15 @@
 <script lang="ts">
   import { modalState } from '../store/modal-store'
   import type { Book } from '../types'
-  import { DeleteIcon, XCircleIcon } from 'svelte-feather-icons'
+  import { XCircleIcon } from 'svelte-feather-icons'
+  import { writable, type Writable } from 'svelte/store'
 
   export let book: Book
+  let showOverlay: Writable<boolean> = writable(false)
+
+  const handleOverlay = () => {
+    showOverlay.update((value) => !value)
+  }
 
   const openRemoveModal = () => {
     modalState.update((prev) => ({
@@ -17,8 +23,29 @@
 </script>
 
 <article class=" relative flex w-full gap-3 h-64 my-2 p-2">
-  <div class="w-2/6 h-full shadow-[-4.0px_5.0px_8.0px_rgba(0,0,0,0.38)]">
+  <!-- svelte-ignore a11y-no-static-element-interactions -->
+  <div
+    class="w-2/6 h-full shadow-[-4.0px_5.0px_8.0px_rgba(0,0,0,0.38)]"
+    on:mouseenter={handleOverlay}
+    on:mouseleave={handleOverlay}
+  >
     <img class="w-full h-full" src={book.cover} alt={book.title} />
+    {#if $showOverlay}
+      <div
+        class="absolute top-0 left-0 w-2/6 h-full flex items-center justify-center gap-3 bg-black backdrop-blur-sm"
+      >
+        <div class="flex items-center bg-dark bg-opacity-80 rounded-3xl">
+          <button
+            class="px-2 py-2 text-black cursor-pointer"
+            on:click={openRemoveModal}
+            ><XCircleIcon
+              size="30"
+              class="text-light duration-300 hover:text-pagination"
+            /></button
+          >
+        </div>
+      </div>
+    {/if}
   </div>
   <section class="flex flex-col gap-2">
     <h3 class="text-lg">{book.title}</h3>
@@ -28,10 +55,4 @@
       >{book.genre}</span
     >
   </section>
-  <button class="absolute top-0 left-0" on:click={openRemoveModal}>
-    <XCircleIcon
-      size="30"
-      class="fill-dark text-icons duration-300 hover:text-pagination"
-    />
-  </button>
 </article>

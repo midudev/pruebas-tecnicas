@@ -12,7 +12,7 @@
 </script>
 
 <section class="flex flex-col p-5">
-  <ul class="flex flex-wrap gap-7 w-1090 h-400 md:w-800 md:h-300">
+  <ul class="flex flex-wrap gap-7 w-800 h-300 xl:w-1090 xl:h-400">
     {#if $booksList.length > 0}
       {#each $booksList as book}
         <BookItem {book} />
