@@ -18,9 +18,9 @@ pub fn LayoutError(props: &Props) -> Html {
     let Props { title, errtype } = props;
 
     let image = match errtype {
-        ErrorType::Empty => "assets/lk52d2uh.webp",
-        ErrorType::EmptyReadingList => "assets/lk52d6k1.webp",
-        ErrorType::LoadingBooks => "assets/lk52dan2.webp",
+        ErrorType::Empty => "/assets/lk52d2uh.webp",
+        ErrorType::EmptyReadingList => "/assets/lk52d6k1.webp",
+        ErrorType::LoadingBooks => "/assets/lk52dan2.webp",
     };
 
     let text = match errtype {
