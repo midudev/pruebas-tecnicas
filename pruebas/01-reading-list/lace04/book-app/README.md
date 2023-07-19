@@ -1,4 +1,8 @@
-# Books App
+# Books App - Prueba Tecnica #1 
+
+![Screenshot #1](./public/sc-1.png)
+![Screenshot #2](./public/sc-2.png)
+
 
 Books App es una aplicación para gestionar una lista de lectura personal. Los usuarios pueden buscar libros por género o número mínimo de páginas y agregarlos a su lista de lectura.
 
