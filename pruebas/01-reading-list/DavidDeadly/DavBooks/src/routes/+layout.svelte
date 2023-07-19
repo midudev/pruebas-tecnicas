@@ -22,7 +22,6 @@
 
   :global(body) {
     height: 100dvh;
-    /* margin-inline: 15%; */
     max-width: 1200px;
     margin: auto;
     background-color: var(--primary);
