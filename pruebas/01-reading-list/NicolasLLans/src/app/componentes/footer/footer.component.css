@@ -1,0 +1,27 @@
+.footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      padding: 8px;
+      background: var(--color-secundario);
+}
+
+.footer a i{
+      fill: var(--color-detalle);
+}
+
+.footer a i:hover{
+      fill: var(--color-principal);
+      opacity: 1;
+}
+
+@media (max-width:280px) {
+      .footer img{
+            display: none;
+      }
+}

@@ -7,12 +7,14 @@ import { BarraNavComponent } from './componentes/barra-nav/barra-nav.component';
 import { MainComponent } from './componentes/main/main.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { FooterComponent } from './componentes/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BarraNavComponent,
-    MainComponent
+    MainComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
