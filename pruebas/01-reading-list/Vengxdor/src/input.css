@@ -28,9 +28,18 @@
          display: none;
       }
 
+      .clone .removeBtn{
+         display: inline;
+      }
+
       .clone .div{
          height: 100%;
          width: 75%;
+      }
+
+      .notification div{
+         transition: .5s all linear;
+        
       }
 
 

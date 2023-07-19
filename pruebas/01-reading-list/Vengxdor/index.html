@@ -5,9 +5,8 @@
    <meta charset="UTF-8" />
    <meta name="description" content="Astro description">
    <meta name="viewport" content="width=device-width" />
-   <!-- <link rel="icon" type="image/svg+xml" href="/public/img/favicon.svg" /> -->
-   <meta name="generator" content="Tecnical practice" />
-   <title>Tecnical practice</title>
+   <meta name="generator" content="Synde Library. The library that have all that you like" />
+   <title>Synde Library</title>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
       crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -22,10 +21,10 @@
    </h1>
 
    <header class="m-auto w-3/4 pr-5">
-      <div class="flex justify-between items-center mb-5 ">
-         <div>
+      <section class="flex justify-between items-center mb-5 ">
+         <article>
             <h2 class="text-xl font-semibold">
-               <span class="text-primary text-2xl" id="avaiableBooks">13</span> Books Available
+               <span class="text-primary text-2xl" id="avaiableBooks">0</span> Books Available
             </h2>
             <select class="focus:outline-none border-2 rounded-md border-primary " name="books" id="typeOfbooks">
                <option value="ALL">ALL</option>
@@ -35,7 +34,14 @@
                <option value="Zombies">Zombies</option>
                
             </select>
-         </div>
+         </article>
+
+         <article class="absolute top-12    text-white   gap-3 rounded-xl  notification">
+            <!-- <div class="relative -top-96 w-fit p-4 bg-[#333] text-white flex items-center gap-3 rounded-xl ">
+               <i class="fa-solid fa-check p-1 rounded-full bg-emerald-400"></i>
+               <h2 class="max-w-xs whitespace-nowrap bookAdded">El senor de los Anillos added</h2>
+           </div> -->
+           </article>
 
          <div class="relative">
             <label class="toggleList group">
@@ -47,7 +53,7 @@
          </div>
 
          <section id="readbooks"
-            class="absolute bg-books  w-screen h-[100vh] inset-x-0 -bottom-5 -top-[100rem] text-white ">
+            class="absolute bg-books  w-screen h-[120vh] inset-x-0  -top-[100rem] text-white z-50">
 
             <article class=" p-10  font-semibold font-amulya flex  justify-between mb-6">
                <div></div>
@@ -62,6 +68,8 @@
                   <i class="fa-solid fa-x fa-2xl"></i>
                </div>
             </article>
+
+           
 
 
             <div class="overflow-auto">
@@ -85,14 +93,13 @@
             </div>
          </section>
 
-      </div>
+      </section>
    </header>
 
 
-   <section class="w-3/4 h-full m-auto overflow-auto">
-      <!-- filter -->
+   <main class="w-3/4 h-full m-auto overflow-auto">
+   <section class="">
 
-      <main>
          <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-flow-col-5 gap-5 pb-60" id="library">
             <!-- <li class="bg-white shadow rounded-lg ">
                <div class="p-4 flex flex-col justify-between h-full w-full div">
@@ -121,10 +128,10 @@
 
 
          </ul>
-      </main>
-   </section>
+      </section>
+   </main>
 
-   <script src="main.js"></script>
+   <script src="/src/main.js"></script>
 </body>
 
 </html>
