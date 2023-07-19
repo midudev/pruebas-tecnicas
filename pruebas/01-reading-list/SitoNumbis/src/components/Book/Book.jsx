@@ -80,7 +80,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
         }`}
       >
         <div className={`${memoAnimation} ${styles.bookInfo}`}>
-          <h4>{title}</h4>
+          <h3>{title}</h3>
           <p>
             {genre}{" "}
             <span className="alter-text">

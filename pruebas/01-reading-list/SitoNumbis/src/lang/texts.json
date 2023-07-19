@@ -33,17 +33,19 @@
     },
 
     "ariaLabels": {
-      "filterBy":"Filtrar por",
+      "filterBy": "Filtrar por",
       "toReadingList": "Ver lista de lectura",
       "toMainStock": "Ver libros disponibles",
       "add": "Agregar a la lista de lectura",
       "remove": "Remover de la lista de lectura",
-      "logo": "Logo Sito Book ",
+      "logo": "Logo de Sito's Library (ir al inicio)",
       "toTop": "Ir al tope",
       "reload": "Recargar",
+      "seeSourceCode": "Ver el código fuente",
       "genreLeft": "Swipe genres to the right",
       "genreRight": "Swipe genres to the left",
-      "clickToAlter": "Click para ver sinopsis"
+      "clickToAlter": "Click para ver sinopsis",
+      "closeDialog": "Cerrar contenido flotante"
     }
   }
 }

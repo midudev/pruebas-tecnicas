@@ -18,6 +18,7 @@ function Footer() {
           <span className="alter-text">{new Date().getFullYear()}</span>
         </p>
         <a
+          aria-label={languageState.texts.ariaLabels.seeSourceCode}
           name="source-code"
           target="_blank"
           rel="noreferrer"
