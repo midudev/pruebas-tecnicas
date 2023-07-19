@@ -15,7 +15,8 @@
   --gray: #484646;
   --light-gray: #969090;
   /* --accent: #4F3624; */
-  --accent: p;
+  --accent: #fb8500;
+  --accent-hover: #EA9432;
   --main-font: "Montserrat-Regular", sans-serif;
   --main-font-bold: "Montserrat-Bold", sans-serif;
 }
@@ -36,6 +37,7 @@ body {
   background-color: var(--main-color);
   font-size: 1.6rem;
   line-height: 2;
+  font-family: var(--main-font);
 }
 
 .contenedor {
@@ -83,8 +85,77 @@ p {
   font-size: 1.6rem;
 }
 
-button {
-  background-color: var(--accent) !important;
-  color: white !important;
-  font-size: 1.6rem!important;
+/* Navbar */
+
+.Navbar {
+
+  background-color: var(--backgrounds);
+
+}
+
+@media (min-width: 350px) {
+    
+  .navbar__container {
+
+    margin-left: 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
+
+  }
+
+}
+
+.navbar__logo {
+
+  font-size: 1.6rem;
+  background-color: var(--main-color);
+  padding: 1.6rem;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+}
+
+.btn__submit {
+
+  background-color: var(--accent);
+  color: white;
+  font-size: 1.2rem;
+
+}
+
+.btn__submit:hover {
+
+  background-color: var(--accent-hover);
+  color: white;
+
+}
+
+.navbar__label {
+
+  font-size: 2rem;
+  color: var(--second-color);
+
+}
+
+.navbar__form {
+
+  margin-bottom: 2rem!important;
+
+}
+
+@media (min-width: 350px) {
+    
+  .navbar__form {
+
+    margin-bottom: 1rem!important;
+
+  }
+
+}
+
+.navbar__input {
+
+  font-size: 1.2rem;
+
 }

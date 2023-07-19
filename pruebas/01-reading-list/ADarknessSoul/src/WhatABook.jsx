@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { getBooks } from './store/slices/WhatABook';
 import { useEffect } from 'react';
+import { Navbar } from './components/Navbar';
 
 
 export const WhatABook = () => {
@@ -16,7 +17,7 @@ export const WhatABook = () => {
   return (
     <>
     
-        
+        <Navbar/>
     
     </>
   )
