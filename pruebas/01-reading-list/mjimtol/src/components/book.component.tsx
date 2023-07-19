@@ -8,6 +8,8 @@ interface BookProps {
   setSelected: (libros: Book[]) => void;
   seleccionados: Book[];
   zona: string;
+  addToList: (libro: Book) => void;
+  removeFromList: (libro: Book) => void;
 }
 
 export const BookComponent = (props: BookProps) => {
@@ -24,17 +26,12 @@ export const BookComponent = (props: BookProps) => {
   const handleClick = () => {
     const libros = [...props.seleccionados];
     const index = libros.findIndex((libro: Book) => libro.ISBN === book.ISBN);
+    console.log(index);
     if (props.zona === "estanteria") {
-      if (index < 0) {
-        libros.push(book);
-      }
+      if (index < 0) props.addToList(book);
     } else {
-      if (index >= 0) {
-        libros.splice(index, 1);
-      }
+      if (index >= 0) props.removeFromList(book);
     }
-    localStorage.setItem("lectura", JSON.stringify(libros));
-    props.setSelected(libros);
   };
 
   return (
