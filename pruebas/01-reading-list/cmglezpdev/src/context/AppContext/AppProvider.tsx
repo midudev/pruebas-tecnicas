@@ -22,12 +22,11 @@ export const AppProvider:FC<IAppProvider> = ({ children }) => {
 
     useEffect(() => {
         localStorage.setItem('reading-books', JSON.stringify(appState.readingBooks));
-    }, [appState]);
+    }, [appState.readingBooks]);
 
     useEffect(() => {
         dispatch({ type: 'load available books/reading books' });
     }, []);
-
 
     const addForReading = (book: Book) => {
         dispatch({ type: 'add for reading', payload: book });   

@@ -14,7 +14,7 @@ export const appReducer = (state: IAppState, action: IAppReducerAction): IAppSta
                 ...state,
                 readingBooks: JSON.parse(localStorage.getItem('reading-books') || '[]'),
                 availableBooks: BOOKS_JSON.library.map(library => library.book)
-                    .filter(book => !state.readingBooks.find(b => b.ISBN === book.ISBN))
+                    .filter(book => !state.readingBooks.some(b => b.ISBN === book.ISBN))
             }
 
         case 'add for reading':
