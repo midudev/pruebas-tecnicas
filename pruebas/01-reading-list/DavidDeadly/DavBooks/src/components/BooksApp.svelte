@@ -8,7 +8,7 @@
   let readingBooks: IBook[] = [];
 
   $: readingBooks = $booksStore.readingList
-    .map(id => books.find(b => b.ISBN === id))
+    .map(id => $booksStore.books.find(b => b.ISBN === id))
     .filter(Boolean) as IBook[];
 </script>
 
