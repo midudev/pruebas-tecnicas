@@ -1,3 +1,5 @@
+import type { BOOK_GENRES } from "~/constants"
+
 export type BookISBN = string
 export type BookAuthor = {
   name: string
@@ -17,3 +19,5 @@ export type Book = {
 }
 
 export type Filter = keyof Book
+
+export type Genre = (typeof BOOK_GENRES)[number]
