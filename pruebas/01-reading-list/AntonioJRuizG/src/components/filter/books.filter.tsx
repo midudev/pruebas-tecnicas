@@ -5,10 +5,12 @@ import useBooks from '../hooks/useBooks';
 import { BooksRepo } from '../services/books.repo';
 
 export default function BooksFilter() {
-	const [filter, setFilter] = useState('');
+	const initialFilter: string = 'all';
+
+	const [filter, setFilter] = useState(initialFilter);
 
 	const repo = useMemo(() => new BooksRepo(), []);
-	const { filterListByGenre } = useBooks(repo);
+	const { changeFilter } = useBooks(repo);
 
 	const genreList = {
 		genre: [
@@ -25,7 +27,7 @@ export default function BooksFilter() {
 	};
 
 	useEffect(() => {
-		filterListByGenre(filter);
+		changeFilter(filter);
 	}, [filter]);
 
 	return (
@@ -37,7 +39,6 @@ export default function BooksFilter() {
 				id='genre'
 				onChange={handleChange}
 				defaultValue={filter}
-				placeholder=''
 				required
 			>
 				<option value='all'>All</option>

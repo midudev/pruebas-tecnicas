@@ -7,13 +7,17 @@ import {
 	loadNewBooks,
 	updateBook,
 } from '../../store/books/slice';
+
 import { useEffect } from 'react';
+import { FilterProps, updateFilter } from '../../store/filter/slice';
 
 const NO_BOOKS: number = 0;
 
 export default function useBooks(repo: BooksRepo) {
 	const books = useAppSelector((state) => state.books);
 	const dispatch = useAppDispatch();
+
+	const filters = useAppSelector((state) => state.filters);
 
 	useEffect(() => {
 		loadBooks();
@@ -32,6 +36,13 @@ export default function useBooks(repo: BooksRepo) {
 		dispatch(deleteBookByISBN(id));
 	};
 
+	const changeFilter = (filter: string) => {
+		const booksToFilter: FilterProps = {
+			genre: filter,
+		};
+		dispatch(updateFilter(booksToFilter));
+	};
+
 	const booksCount = {
 		avaibleBooks:
 			books.filter((book) => book.isSelected === false)!.length || NO_BOOKS,
@@ -39,5 +50,22 @@ export default function useBooks(repo: BooksRepo) {
 			books.filter((book) => book.isSelected === true)!.length || NO_BOOKS,
 	};
 
-	return { books, deleteBook, loadBooks, selectBook, booksCount };
+	const filterBooks = (books: BookProps[]) => {
+		return books?.filter((book) => book.book.genre === filters.genre);
+	};
+
+	const getBooksToList = () => {
+		const booksToList = filters.genre === 'all' ? books : filterBooks(books);
+		return booksToList;
+	};
+
+	return {
+		books,
+		filteredBooks: getBooksToList(),
+		deleteBook,
+		loadBooks,
+		selectBook,
+		booksCount,
+		changeFilter,
+	};
 }
