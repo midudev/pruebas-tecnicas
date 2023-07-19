@@ -11,7 +11,6 @@ import StarFavorites from "../../assets/star-fav";
 import "react-toastify/dist/ReactToastify.css";
 import "./listOfBooks.scss";
 import { searchBooks } from "../../utils/filter/useFilter";
-import { render } from "react-dom";
 import Spinner from "../spinner/Spinner";
 
 function ListOfBooks({ keyword }: { keyword: string }) {
