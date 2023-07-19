@@ -10,7 +10,12 @@ export function Select () {
   const handleChange = async (e) => {
     const categoryValue = e.target.value
 
-    if (categoryValue === 'Todas') return updateBooks(filteredBooks)
+    if (categoryValue === 'Todas') {
+      updateGenderFilter(categoryValue)
+      updateBooks(filteredBooks)
+      return
+    }
+
     const filterBooks = filteredBooks.filter(({ book }) => book.genre === categoryValue)
 
     updateGenderFilter(categoryValue)

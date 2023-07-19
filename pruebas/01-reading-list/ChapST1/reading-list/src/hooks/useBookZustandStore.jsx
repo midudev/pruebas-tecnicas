@@ -1,25 +1,25 @@
 import { useBookStore } from '../store/useBookStore'
 
 export function useBookZustandStore () {
-  const booksState = useBookStore((state) => state.books)
-  const readingListState = useBookStore((state) => state.readingList)
-  const pageFilterState = useBookStore((state) => state.pageFilter)
-  const genderFilterState = useBookStore((state) => state.genderFilter)
+  const books = useBookStore((state) => state.books)
+  const readingList = useBookStore((state) => state.readingList)
+  const pageFilter = useBookStore((state) => state.pageFilter)
+  const genderFilter = useBookStore((state) => state.genderFilter)
   // update all states
-  const updateBooksState = useBookStore((state) => state.updateBooks)
-  const updateReadingListState = useBookStore((state) => state.updateReadingList)
-  const updatePageFilterState = useBookStore((state) => state.updatePageFilter)
-  const updateGenderFilterState = useBookStore((state) => state.updateGenderFilter)
+  const updateBooks = useBookStore((state) => state.updateBooks)
+  const updateReadingList = useBookStore((state) => state.updateReadingList)
+  const updatePageFilter = useBookStore((state) => state.updatePageFilter)
+  const updateGenderFilter = useBookStore((state) => state.updateGenderFilter)
 
   return {
-    books: booksState,
-    readingList: readingListState,
-    pageFilter: pageFilterState,
-    genderFiter: genderFilterState,
+    books,
+    readingList,
+    pageFilter,
+    genderFilter,
 
-    updateBooks: updateBooksState,
-    updateReadingList: updateReadingListState,
-    updatePageFilter: updatePageFilterState,
-    updateGenderFilter: updateGenderFilterState
+    updateBooks,
+    updateReadingList,
+    updatePageFilter,
+    updateGenderFilter
   }
 }

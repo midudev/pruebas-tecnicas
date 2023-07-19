@@ -3,7 +3,7 @@ import { create } from 'zustand'
 export const useBookStore = create((set, get) => ({
   books: [],
   readingList: [],
-  pageFilter: 1,
+  pageFilter: 0,
   genderFilter: 'Todas',
 
   updateBooks: (books) => set({ books }),

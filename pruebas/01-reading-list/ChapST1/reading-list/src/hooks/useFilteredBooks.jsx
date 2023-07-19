@@ -21,7 +21,7 @@ export function useFilteredBooks () {
     const currentBookId = book.ISBN
     const bookIsCopy = readingList.find(({ book }) => book.ISBN === currentBookId)
 
-    if (bookIsCopy) return // eslint-disable-line
+    if (bookIsCopy) return
 
     return { book }
   })
