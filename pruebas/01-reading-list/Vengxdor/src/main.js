@@ -1,25 +1,25 @@
 async function getData() {
-  try {
+    try {
     //get data from json
-    const res = await fetch('/books.json')
-    const data = await res.json()
-    const library = data.library
-    const ul = document.getElementById('library')
-    const avaiableBooks = document.getElementById('avaiableBooks')
+        const res = await fetch('/books.json')
+        const data = await res.json()
+        const library = data.library
+        const ul = document.getElementById('library')
+        const avaiableBooks = document.getElementById('avaiableBooks')
     
 
-    let booktitle
-    let totalBooks = []
+        let booktitle
+        let totalBooks = []
 
-    library.map((each) => {
-      //put the data in the list
-      const li = document.createElement('li')
-      ul.appendChild(li)
-      li.className = 'bg-white shadow rounded-lg '
+        library.map((each) => {
+            //put the data in the list
+            const li = document.createElement('li')
+            ul.appendChild(li)
+            li.className = 'bg-white shadow rounded-lg '
 
-      booktitle = each.book.title
+            booktitle = each.book.title
 
-      li.innerHTML = `
+            li.innerHTML = `
                 <div class="p-4 flex flex-col justify-between h-full w-full div">
 
                         <picture class="h-full w-full group relative">
@@ -44,99 +44,89 @@ async function getData() {
                 </div>
                 `
 
-      //numbers of books avaiable
-      totalBooks.push(li)
-
-      //filter the books by genre
-      const filter = () => {
-        const typeOfbooks = document.getElementById('typeOfbooks')
-        typeOfbooks.addEventListener('change', () => {
-          const genre = typeOfbooks.value
-
-          if (each.book.genre !== genre) {
-            li.classList.add('hidden')
-          }
-
-          if (each.book.genre === genre) {
-            li.classList.remove('hidden')
-          }
-
-          if (genre === 'ALL') {
-            li.classList.remove('hidden')
-            totalBooks.length = 13
-          }
-
-          if (li.classList.contains('hidden')) {
-            totalBooks.pop(li)
-          }
-
-          if (!li.classList.contains('hidden')) {
+            //numbers of books avaiable
             totalBooks.push(li)
-          }
 
-          avaiableBooks.innerHTML = totalBooks.length
+            //filter the books by genre
+            const filter = () => {
+                const typeOfbooks = document.getElementById('typeOfbooks')
+                typeOfbooks.addEventListener('change', () => {
+                    const genre = typeOfbooks.value
+            
+                    // Use the filter method to update the totalBooks array based on the selected genre
+                    totalBooks = library.filter((each) => genre === 'ALL' || each.book.genre === genre)
+            
+                    // Loop through all list elements (li) and set their visibility based on the filter
+                    library.forEach((each, index) => {
+                        const li = totalBooks.includes(each) ? ul.children[index] : null
+                        if (li) {
+                            li.classList.remove('hidden')
+                        } else {
+                            ul.children[index].classList.add('hidden')
+                        }
+                    })
+            
+                    // Update the count of available books
+                    avaiableBooks.innerHTML = totalBooks.length
+                })
+            }
+            
+            filter()
         })
-      }
 
+        avaiableBooks.innerHTML = totalBooks.length
 
-      console.log(ul.length)
+        // notification
+        /* ================Problem ====================== */
+        const addedNotification = () => {
+            const notification = document.querySelector('.notification')
+            const div = document.createElement('div')
 
-      filter()
-    })
-
-    avaiableBooks.innerHTML = totalBooks.length
-
-    // notification
-    /* ================Problem ====================== */
-    const addedNotification = () => {
-      const notification = document.querySelector('.notification')
-      const div = document.createElement('div')
-
-      div.className =
+            div.className =
         'absolute -top-12 w-fit p-4 bg-[#333] text-white  flex items-center gap-3 rounded-xl'
-      div.innerHTML = `
+            div.innerHTML = `
                         <i class="fa-solid fa-check p-1 rounded-full bg-emerald-400 "></i>
                         <h2 class="max-w-xs whitespace-nowrap">${booktitle} added </h2>
                     `
 
-      notification.append(div)
+            notification.append(div)
 
-      div.classList.replace('-top-12', '-top-0')
-      div.className += ' opacity-100 visible'
+            div.classList.replace('-top-12', '-top-0')
+            div.className += ' opacity-100 visible'
 
-      setTimeout(() => {
-        div.classList.replace('-top-0', '-top-12')
-        div.className += ' opacity-0 invisible'
-      }, 1000)
+            setTimeout(() => {
+                div.classList.replace('-top-0', '-top-12')
+                div.className += ' opacity-0 invisible'
+            }, 1000)
+        }
+
+        //add to read list
+        const AddReadList = () => {
+            const readList = document.getElementById('readList')
+            const addBtn = document.querySelectorAll('.addBtn')
+            const booksInread = document.querySelector('#booksInread')
+            const booksToRead = []
+
+            addBtn.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    btn.textContent = 'Added!'
+                    btn.disabled = true
+                    const parent = btn.parentNode.parentNode.parentNode
+                    booksInread.textContent = booksToRead.length + 1
+                    const clone = parent.cloneNode(true)
+                    clone.classList.add('clone')
+
+                    booksToRead.push(clone)
+                    readList.append(clone)
+
+                    addedNotification()
+                })
+            })
+        }
+        AddReadList()
+    } catch (error) {
+        console.error(`valiste, ya tienes otro error🤦${error}`)
     }
-
-    //add to read list
-    const AddReadList = () => {
-      const readList = document.getElementById('readList')
-      const addBtn = document.querySelectorAll('.addBtn')
-      const booksInread = document.querySelector('#booksInread')
-      const booksToRead = []
-
-      addBtn.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          btn.textContent = 'Added!'
-          btn.disabled = true
-          const parent = btn.parentNode.parentNode.parentNode
-          booksInread.textContent = booksToRead.length + 1
-          const clone = parent.cloneNode(true)
-          clone.classList.add('clone')
-
-          booksToRead.push(clone)
-          readList.append(clone)
-
-          addedNotification()
-        })
-      })
-    }
-    AddReadList()
-  } catch (error) {
-    console.error(`valiste, ya tienes otro error🤦${error}`)
-  }
 }
 
 getData()
@@ -146,7 +136,7 @@ const toggleList = document.querySelectorAll('.toggleList')
 const ReadList = document.getElementById('readbooks')
 
 toggleList.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    ReadList.classList.toggle('top-0')
-  })
+    btn.addEventListener('click', () => {
+        ReadList.classList.toggle('top-0')
+    })
 })
