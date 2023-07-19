@@ -39,4 +39,8 @@ declare global {
     interface ILibrary {
         books: IReadingListBook[]
     }
+
+    interface IWithClickable {
+        onClick: (param: string)=>void
+    }
 }
