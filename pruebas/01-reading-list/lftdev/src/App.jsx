@@ -7,8 +7,13 @@ export default function App () {
   const [readList, setReadList] = useState([])
   // Load book library to state bookList.
   useEffect(() => BooksJSON.library.forEach(bookObject => setBooksList(prevList => [...prevList, bookObject.book])), [])
+
   function addToReadList (book) {
     setReadList(prevList => [...prevList, book])
+  }
+
+  function removeFromReadList (index) {
+    setReadList(prevList => prevList.splice(index, 1))
   }
 
   return (
@@ -28,12 +33,12 @@ export default function App () {
             </select>
           </label>
         </form>
-        <BooksList initialList={booksList} onItemClick={addToReadList} />
+        <BooksList list={booksList} onItemClick={addToReadList} />
       </main>
       {readList.length > 0 &&
         <aside role='region'>
           <h2>Lista de lectura</h2>
-          <BooksList initialList={readList} />
+          <BooksList list={readList} removableItems onRemoveRequest={removeFromReadList} />
         </aside>}
     </>
   )

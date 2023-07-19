@@ -76,4 +76,12 @@ describe('App', () => {
     getByRole(aside, 'listitem')
     getByRole(aside, 'img')
   })
+  // FIXME: rewrite below test to correctly detect listitem be removed.
+  /* it('should remove item from Reading List when BooksList remove button is clicked;', async () => {
+    render(<App />)
+    fireEvent.click(screen.getAllByRole('img')[0])
+    const aside = await screen.findByRole('region')
+    fireEvent.click(getByRole(aside, 'button'))
+    await waitForElementToBeRemoved(getByRole(aside, 'listitem'))
+  }) */
 })
