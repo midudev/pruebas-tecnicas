@@ -1,7 +1,11 @@
 use yew::prelude::*;
 use yew_router::prelude::*;
 
-use crate::{layout::Footer, screens::*};
+use crate::{
+    context::{DataProvider, ReadingListProvider},
+    layout::Footer,
+    screens::*,
+};
 
 #[derive(Clone, Routable, PartialEq, Eq)]
 pub enum Route {
@@ -18,10 +22,12 @@ pub enum Route {
 
 fn switch(_route: Route) -> Html {
     html!(
-        <>
-            <App />
-            <Footer />
-        </>
+        <ReadingListProvider>
+            <DataProvider>
+                <App />
+                <Footer />
+            </DataProvider>
+        </ReadingListProvider>
     )
 }
 
