@@ -1,20 +1,59 @@
 .container-cards-listofbooks {
+  // display: grid;
+  // grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  // gap: 55px;
+  // position: relative;
+  // z-index: -1;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, 300px);
   gap: 55px;
   position: relative;
   z-index: -1;
+  justify-content: center;
   .cards-books {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 10px;
-    background: #000;
+    //background: #000;
     padding: 1rem 0px;
+    position: relative;
     .card-header {
+      .cover-book {
+        width: 298px;
+        height: 396px;
+        overflow: hidden;
+        border-radius: 10px;
+        img {
+          width: 300px;
+          height: 400px;
+          cursor: pointer;
+          transition: all 0.6s ease;
+          &:hover {
+            transform: scale(1.05);
+            -webkit-transform: scale(1.05);
+          }
+        }
+      }
+    }
+
+    .card-body {
       display: flex;
-      justify-content: center;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
-
+      position: absolute;
+      background: rgba(19, 3, 47, 0.9215686275);
+      width: 300px;
+      height: 400px;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      //cursor: pointer;
+      //border: 1px solid red;
+      border-radius: 10px;
+      inset: 0;
+      //top: 20px;
+      margin: auto auto;
       .btn-addwishlist {
         border: none;
         background: transparent;
@@ -29,27 +68,7 @@
           }
         }
       }
-      .cover-book {
-        width: 298px;
-        height: 396px;
-        overflow: hidden;
-        border-radius: 10px;
-        img {
-          width: 300px;
-          height: 400px;
-          cursor: pointer;
-          transition: all .6s ease;
-          &:hover {
-            transform: scale(1.05);
-            -webkit-transform: scale(1.05);
-          }
-        }
-      }
-    }
-    .card-body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+
       h3 {
         margin-top: 10px;
       }
@@ -84,5 +103,16 @@
         }
       }
     }
+    &:hover .card-body {
+      opacity: 1;
+    }
+    &:hover .cover-book img {
+      transform: scale(1.05);
+      -webkit-transform: scale(1.05);
+    }
   }
+}
+.is-favorites {
+  border: 1.7px solid rgb(255, 0, 0);
+  border-radius: 10px;
 }

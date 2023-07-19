@@ -21,7 +21,8 @@ function ListOfBooks({ keyword }: { keyword: string }) {
   const storeWishList = useSelector((state: RootState) => state.books.wishList);
   const dispatch = useAppDispatch();
 
-  const handlerAddWish = (book: Book) => {
+  const handlerAddWish = (book: Book,e: React.MouseEvent<HTMLElement>) => {
+    e.stopPropagation()
     dispatch(addBookWish(book));
     const showTost =
       storeWishList.length < store.getState().books.wishList.length;
@@ -51,32 +52,32 @@ function ListOfBooks({ keyword }: { keyword: string }) {
           } = book;
           return (
             <div className="cards-books" key={ISBN}>
-              <div className="card-header">
+              <div className={`card-header ${wish ? "is-favorites" : ""}`}>
+                <div className="cover-book">
+                  <img
+                    src={cover}
+                    alt={title}
+                    
+                  />
+                </div>
+              </div>
+              <div className="card-body" >
                 <button
                   className="btn-addwishlist"
                   onClick={
                     !wish
-                      ? () => handlerAddWish(book)
+                      ? (e) => handlerAddWish(book,e)
                       : () => handlerRemoveWish(book)
                   }
                 >
                   <StarFavorites color={wish ? "#d2c308" : "#fff"} />
                 </button>
-                <div className="cover-book">
-                  <img
-                    src={cover}
-                    alt={title}
-                    onClick={() => handlerAddWish(book)}
-                  />
-                </div>
-              </div>
-              <div className="card-body">
                 <h3>Title: {title}</h3>
                 <details>
                   <summary>More info</summary>
                   <h4>Author: {author.name}</h4>
                   <h4>Genre: {genre}</h4>
-                  <span>Yeard: {year}</span>
+                  <span>Year: {year}</span>
                   <span>Pages: {pages}</span>
                   <details>
                     <summary>Desciption</summary>

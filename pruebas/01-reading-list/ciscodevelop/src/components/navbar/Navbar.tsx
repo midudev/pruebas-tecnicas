@@ -21,7 +21,7 @@ function Navbar({ setModalStateFav, searchWord }: PropsUI) {
       <div className="center">
         <div className="filter">
           <input
-          className="input-search glow-on-hover"
+          className="input-search"
             type="text"
             placeholder="Search Book"
             value={searchWord?.wordSearch}

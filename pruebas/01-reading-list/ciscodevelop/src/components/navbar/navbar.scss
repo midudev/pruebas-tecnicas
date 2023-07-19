@@ -26,7 +26,8 @@
       .input-search {
         width: 220px;
         height: 40px;
-        border: .11rem solid rgb(255, 0, 0);
+        border: .11rem solid  #6726d6;
+
         border-radius: 10px;
         padding: 10px;
         outline: none;
@@ -55,6 +56,8 @@
       outline: none;
       background: #000;
       color: #fff;
+
+  border:1px solid #6726d6 ;
       mark {
         background: #ff0000;
         padding: 2px 5px;
