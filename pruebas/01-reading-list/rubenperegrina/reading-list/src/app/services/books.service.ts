@@ -2,13 +2,12 @@
 import { Injectable, inject } from '@angular/core';
 import { Book, DataFromAPI, Library } from '../models/data-from-api.interface';
 import { HttpClient } from '@angular/common/http';
-import { tap, BehaviorSubject } from 'rxjs';
+import { tap, BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BooksService {
-  // availableBooks: Library[] = [];
   private readingListBooks: Library[] = [];
   private _readingListBooks: BehaviorSubject<Library[]>;
   private availableBooks: Library[] = [];
@@ -22,39 +21,35 @@ export class BooksService {
     this.loadFromLocalStorage();
   }
 
-  get reading() {
-    return this._readingListBooks.asObservable();
+  getReading(): any {
+    return of(this._readingListBooks);
   }
 
-  get available() {
-    return this._availableBooks.asObservable();
+  getAvailable(): any {
+    return of(this._availableBooks);
   }
 
   private saveToLocalStorage() {
     localStorage.setItem(
       'available-books',
-      JSON.stringify(this.availableBooks)
+      JSON.stringify(this._availableBooks.value)
     );
     localStorage.setItem(
       'reading-list-books',
-      JSON.stringify(this.readingListBooks)
+      JSON.stringify(this._readingListBooks.value)
     );
   }
 
   private loadFromLocalStorage() {
-    this.getAvailableBooks();
-    // if (
-    //   !localStorage.getItem('available-books') ||
-    //   !localStorage.getItem('reading-list-books')
-    // ) {
-    //   this.getAvailableBooks();
-    //   return;
-    // }
+    if (!localStorage.getItem('available-books')) {
+      this.getAvailableBooks();
+      return;
+    }
 
-    // this.availableBooks = JSON.parse(localStorage.getItem('available-books')!);
-    // this._readingListBooks = JSON.parse(
-    //   localStorage.getItem('reading-list-books')!
-    // );
+    this._availableBooks = JSON.parse(localStorage.getItem('available-books')!);
+    this._readingListBooks = JSON.parse(
+      localStorage.getItem('reading-list-books')!
+    );
   }
 
   getAvailableBooks(): void {
@@ -63,7 +58,7 @@ export class BooksService {
       .pipe(
         tap(data => (this.availableBooks = data.library)),
         tap(() => this._availableBooks.next(this.availableBooks)),
-        // tap(() => this.saveToLocalStorage())
+        tap(() => this.saveToLocalStorage())
       )
       .subscribe();
   }
@@ -75,7 +70,7 @@ export class BooksService {
       b => b.book.ISBN !== book.ISBN
     );
     this._availableBooks.next(this.availableBooks);
-    // this.saveToLocalStorage();
+    this.saveToLocalStorage();
   }
 
   addToAvailableList(book: Book) {
@@ -85,6 +80,6 @@ export class BooksService {
       b => b.book.ISBN !== book.ISBN
     );
     this._readingListBooks.next(this.readingListBooks);
-    // this.saveToLocalStorage();
+    this.saveToLocalStorage();
   }
 }

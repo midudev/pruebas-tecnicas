@@ -17,8 +17,10 @@ export class AvailableBooksComponent implements OnInit {
   booksService = inject(BooksService);
 
   ngOnInit(): void {
-    this.booksService.available.subscribe(library => {
-      this.availableBooks = library;
+    this.booksService.getAvailable().subscribe({
+      next: (library: Library[]) => {
+        this.availableBooks = library;
+      },
     });
   }
 }

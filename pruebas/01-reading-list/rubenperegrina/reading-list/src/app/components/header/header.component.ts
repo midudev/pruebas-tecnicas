@@ -28,11 +28,15 @@ export class HeaderComponent implements OnInit {
   booksService = inject(BooksService);
 
   ngOnInit(): void {
-    this.booksService.reading.subscribe(library => {
-      this.readingListBooks = library;
+    this.booksService.getAvailable().subscribe({
+      next: (library: Library[]) => {
+        this.availableBooks = library;
+      },
     });
-    this.booksService.available.subscribe(library => {
-      this.availableBooks = library;
+    this.booksService.getReading().subscribe({
+      next: (library: Library[]) => {
+        this.readingListBooks = library;
+      },
     });
   }
 }
