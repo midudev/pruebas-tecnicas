@@ -1,0 +1,7 @@
+// .vscode/settings.json
+{
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true    // ESLint auto format on save
+    },
+    "eslint.validate": ["javascript"]
+}
