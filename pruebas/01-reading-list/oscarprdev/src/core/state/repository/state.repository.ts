@@ -9,7 +9,6 @@ export class StateRepository implements StatePorts {
   setDefaultState(defaultBooks: DefaultBooks): GlobalState {
     const books = defaultBooks.library.map((libraryItem) => ({
       ...libraryItem.book,
-      currentPage: 0,
       stars: 0,
     }))
 
@@ -20,4 +19,9 @@ export class StateRepository implements StatePorts {
 
     return this.stateInfra.setDefaultLibraryState(globalState)
   }
+
+  provideAppState(): GlobalState {
+    return this.stateInfra.provideLocalStorage()
+  }
+
 }

@@ -24,4 +24,8 @@ export class StateUsecase {
     // Svelte entry point
     appState.set(this.globalState)
   }
+
+  provideAppState() {
+    return this.ports.provideAppState()
+  }
 }

@@ -4,10 +4,6 @@ import type { Book, GlobalState } from '../../../core/types'
 export class ReadingListRepository {
   constructor(private readonly infra: StateInfra) {}
 
-  provideAppState(): GlobalState {
-    return this.infra.provideLocalStorage()
-  }
-
   addBook(books: Book[], readingList: Book[]) {
     return this.infra.updateBookLists(books, readingList)
   }

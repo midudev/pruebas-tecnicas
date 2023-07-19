@@ -37,7 +37,7 @@ export class DefaultStateInfra implements StateInfra {
     provideLocalStorage(): GlobalState {
         const stringLocalStorageState = localStorage.getItem(this.storageName)
         return JSON.parse(stringLocalStorageState)
-      }
+    }
     
     private updateLocalStorage(stateUpdated: GlobalState) {
         localStorage.setItem(this.storageName, JSON.stringify(stateUpdated))

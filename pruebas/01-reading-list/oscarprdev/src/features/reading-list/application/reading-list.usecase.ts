@@ -11,10 +11,6 @@ export class ReadingListUsecase extends StateUsecase {
     super(statePorts)
   }
 
-  provideAppState() {
-    return this.readingListPorts.provideAppState()
-  }
-
   addBook(book: Book) {
     this.updateState(this.provideAppState())
 
@@ -33,7 +29,7 @@ export class ReadingListUsecase extends StateUsecase {
       this.state.readingBooks,
       book
     )
-    const bookUpdated = { ...book, currentPage: 0, stars: 0 }
+    const bookUpdated = { ...book, stars: 0 }
 
     const booksList = this.addBookToBooksList(this.state.books, bookUpdated)
 

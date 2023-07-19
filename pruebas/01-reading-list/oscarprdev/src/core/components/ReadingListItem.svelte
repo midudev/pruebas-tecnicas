@@ -1,14 +1,14 @@
 <script lang="ts">
   import { modalStore } from '../store/modal-store'
   import type { Book } from '../types'
-  import { XCircleIcon } from 'svelte-feather-icons'
+  import { XCircleIcon, StarIcon } from 'svelte-feather-icons'
   import { writable, type Writable } from 'svelte/store'
   import Modal from './modals/Modal.svelte'
   import RemoveModal from './modals/RemoveModal.svelte'
   import { actionsStore } from '../store/actions-store'
   import { onMount } from 'svelte'
   import { appState } from '../store/app-state-store'
-  import Progress from './Progress.svelte'
+  import StarsCounter from './StarsCounter.svelte'
 
   export let book: Book
   export let index: number
@@ -34,6 +34,21 @@
 
   
   let showAnimation: any
+
+  let hoveredIndex = null;
+
+function handleStarHover(index) {
+  hoveredIndex = index;
+}
+
+function handleStarLeave() {
+  hoveredIndex = null;
+}
+
+onMount(() => {
+  // Reset the hoveredIndex when the component mounts
+  hoveredIndex = null;
+});
 
   onMount(() => {
     showAnimation = index === 0 && $actionsStore.readingListItemAdded && $appState.readingBooks.length > 1
@@ -76,6 +91,6 @@
       class="py-1.5 px-4 text-sm w-fit rounded-full bg-overlayModal text-light"
       >{book.genre}</span
     >
-    <Progress {book} />
+    <StarsCounter {book} />
   </section>
 </li>

@@ -31,6 +31,7 @@ module.exports = {
     borderColor: {
       nav: '#C8C5BC',
       dark: '#000000',
+      gray: '#908E8F',
     },
     textColor: {
       light: '#FFFFFF',
@@ -42,6 +43,7 @@ module.exports = {
     fill: {
       removeIcon: '#161617cc',
       dark: '#000000',
+      star: '#FFD700',
     },
     extend: {
       height: {
