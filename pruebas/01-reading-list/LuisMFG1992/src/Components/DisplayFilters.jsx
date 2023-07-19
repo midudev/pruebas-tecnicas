@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { removeDropDownFilter } from '../redux/booksSlice'
+import { AiFillCloseCircle } from 'react-icons/ai'
 
 const DisplayFilters = ({ selectedFilters }) => {
   const dispatch = useDispatch()
@@ -23,11 +24,12 @@ const DisplayFilters = ({ selectedFilters }) => {
           <div className=" inline-flex gap-4 items-center justify-center flex-wrap">
             {selectedFilters.map((filter) => (
               <button
-                className="bg-purple-600 rounded-lg px-2"
+                className="inline-flex items-center gap-1 justify-center bg-purple-600 rounded-lg px-2"
                 key={filter}
                 onClick={() => dispatch(removeDropDownFilter(filter))}
               >
                 {filter}
+                <AiFillCloseCircle />
               </button>
             ))}
           </div>
