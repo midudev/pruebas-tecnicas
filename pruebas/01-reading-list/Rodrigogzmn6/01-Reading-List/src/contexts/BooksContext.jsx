@@ -16,13 +16,25 @@ const BooksContextProvider = ({ children }) => {
       }
     });
 
-    checkLocalStorage();
-    window.addEventListener("storage", () => {});
+    window.addEventListener("storage", () => {
+      setLists();
+    });
 
     return () => {
       window.removeEventListener("storage", () => {});
     };
+
+    // checkLocalStorage();
   }, [books, readingList]);
+
+  useEffect(() => {
+    checkLocalStorage();
+  }, []);
+
+  const setLists = () => {
+    setBooks(JSON.parse(localStorage.getItem("library")));
+    setReadingList(JSON.parse(localStorage.getItem("readingList")));
+  };
 
   const checkLocalStorage = () => {
     if (
@@ -33,8 +45,7 @@ const BooksContextProvider = ({ children }) => {
       localStorage.setItem("readingList", JSON.stringify([]));
     }
 
-    setBooks(JSON.parse(localStorage.getItem("library")));
-    setReadingList(JSON.parse(localStorage.getItem("readingList")));
+    setLists();
   };
 
   const moveToReadingList = (id) => {
@@ -48,9 +59,8 @@ const BooksContextProvider = ({ children }) => {
       const newReadingList = [...readingList, bookToMove];
 
       localStorage.setItem("library", JSON.stringify(newLibrary));
-      setBooks(JSON.parse(localStorage.getItem("library")));
       localStorage.setItem("readingList", JSON.stringify(newReadingList));
-      setReadingList(JSON.parse(localStorage.getItem("readingList")));
+      setLists();
     }
   };
 
@@ -67,9 +77,8 @@ const BooksContextProvider = ({ children }) => {
       const newLibrary = [...library, bookToMove];
 
       localStorage.setItem("library", JSON.stringify(newLibrary));
-      setBooks(JSON.parse(localStorage.getItem("library")));
       localStorage.setItem("readingList", JSON.stringify(newReadingList));
-      setReadingList(JSON.parse(localStorage.getItem("readingList")));
+      setLists();
     }
   };
 

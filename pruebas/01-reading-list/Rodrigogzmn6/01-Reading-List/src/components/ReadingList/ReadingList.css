@@ -1,0 +1,3 @@
+.reading-list-books div:not(:first-child) {
+  margin-top: -350px;
+}

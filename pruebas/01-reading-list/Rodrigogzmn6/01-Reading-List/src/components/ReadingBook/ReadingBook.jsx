@@ -1,10 +1,11 @@
 import Cross from "../../assets/icon-cross.svg";
+import "./ReadingBook.css";
 export const ReadingBook = ({ book, index, onClick }) => {
   return (
-    <div>
-      <img src={book.cover} />
+    <div className="reading-book relative inline-block">
+      <img className="reading-book-cover rounded-xl" src={book.cover} />
       <img
-        className="cursor-pointer"
+        className="reading-book-button cursor-pointer"
         src={Cross}
         onClick={() => {
           onClick(book.ISBN);

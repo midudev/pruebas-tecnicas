@@ -4,18 +4,10 @@ import { BooksContextProvider } from "./contexts/BooksContext";
 
 function App() {
   return (
-    <div>
+    <div className="bg-main-bg text-primary-text min-h-screen">
       <BooksContextProvider>
         <HomeContainer />
       </BooksContextProvider>
-      <button
-        onClick={() => {
-          localStorage.removeItem("library");
-          localStorage.removeItem("readingList");
-        }}
-      >
-        eliminar
-      </button>
     </div>
   );
 }

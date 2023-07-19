@@ -8,7 +8,10 @@ export const BooksLibrary = ({ handleOnBookClick, handleFilter }) => {
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
         <h4>Filtrar por género</h4>
-        <select onChange={(e) => handleFilter(e.target.value)}>
+        <select
+          className="max-w-min bg-main-bg"
+          onChange={(e) => handleFilter(e.target.value)}
+        >
           {genders.map((gender) => (
             <option key={gender} value={gender}>
               {gender}
