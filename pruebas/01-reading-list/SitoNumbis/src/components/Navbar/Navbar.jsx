@@ -9,13 +9,15 @@ import { faBookOpen, faBookmark } from "@fortawesome/free-solid-svg-icons";
 import { useLanguage } from "../../contexts/LanguageProvider";
 import { useLibrary } from "../../contexts/LibraryProvider";
 
-// styles
-import styles from "./styles.module.css";
+// components
+import IconButton from "../IconButton/IconButton";
 
 // images
 import logo from "../../assets/images/logo.svg";
 import noPhoto from "../../assets/images/no-photo.webp";
-import IconButton from "../IconButton/IconButton";
+
+// styles
+import styles from "./styles.module.css";
 
 // suspense
 const Badge = loadable(() => import("../Badge/Badge"));

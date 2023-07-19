@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 import "./style.css";
 
 const Loading = (props) => {
-  const { type, className, strokeColor } = props;
+  const { className, strokeColor } = props;
 
   return (
     <div
-      className={`flex w-full h-full items-center justify-center type-${type}} ${className}`}
+      className={`flex w-full h-full items-center justify-center ${className}`}
     >
       <div className="loader-container">
         <div className="loader">
@@ -34,7 +34,6 @@ Loading.defaultProps = {
 };
 
 Loading.propTypes = {
-  type: PropTypes.string,
   className: PropTypes.string,
   strokeColor: PropTypes.string,
 };

@@ -6,8 +6,8 @@ import { faClose, faInfo } from "@fortawesome/free-solid-svg-icons";
 
 // contexts
 import { useLanguage } from "../../contexts/LanguageProvider";
-import { useLightBox } from "./LightBoxProvider";
 import { useLibrary } from "../../contexts/LibraryProvider";
+import { useLightBox } from "./LightBoxProvider";
 
 // components
 import IconButton from "../IconButton/IconButton";

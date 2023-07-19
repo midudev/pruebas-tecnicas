@@ -41,7 +41,7 @@ function App() {
       books: books.library.map((book) => book.book),
       datetime,
     });
-    // fetch from localStorage
+    // fetch from localStorage for the first time
     if (localStorage.getItem(config.readingList) !== null)
       setLibraryState({
         type: "init-reading-list",
