@@ -1,6 +1,13 @@
-import { useBearStore, useBookStore } from '../store/bookStore'
+'use client'
+import { useBookStore } from '../store/bookStore'
+import Books from '../../books.json'
+import React from 'react'
 
 export const useInitializeBookList = () => {
-  const { bookList } = useBookStore()
-  const bear = useBearStore()
+  const { initializeBooklist } = useBookStore()
+  const books:ILibrary['books'] = React.useMemo(() => (((Books as any).library as any).map(({ book }:any) => ({ ...book }))), [])
+
+  React.useEffect(() => {
+    initializeBooklist(books)
+  }, [books, initializeBooklist])
 }
