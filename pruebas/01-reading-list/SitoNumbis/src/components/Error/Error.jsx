@@ -8,6 +8,9 @@ import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 // contexts
 import { useLanguage } from "../../contexts/LanguageProvider";
 
+// components
+import PrimaryButton from "../PrimaryButton/PrimaryButton";
+
 const Error = (props) => {
   const { onRetry, text } = props;
   const { languageState } = useLanguage();
@@ -24,14 +27,13 @@ const Error = (props) => {
       </h2>
       <p className="text-dark-alt-text">{text}</p>
       {onRetry ? (
-        <button
+        <PrimaryButton
           name={error.reload}
-          aria-label={languageState.texts.ariaLabels.reload}
+          ariaLabel={languageState.texts.ariaLabels.reload}
           onClick={onRetry ? onRetry : () => window.location.reload()}
-          className="cta"
         >
           {error.reload}
-        </button>
+        </PrimaryButton>
       ) : null}
     </div>
   );

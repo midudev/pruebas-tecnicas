@@ -10,6 +10,7 @@ import { useLibrary } from "../../contexts/LibraryProvider";
 
 // styles
 import styles from "./styles.module.css";
+import PrimaryButton from "../PrimaryButton/PrimaryButton";
 
 // components
 const Marker = loadable(() => import("./Marker/Marker"));
@@ -91,23 +92,22 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
             {author.name} <span className="alter-text">({year})</span>
           </p>
         </div>
-
-        <button
+        <PrimaryButton
           onClick={addToReadingList}
           tabIndex={-1}
-          aria-label={
+          ariaLabel={
             !isInReadingList
               ? languageState.texts.ariaLabels.add
               : languageState.texts.ariaLabels.remove
           }
-          className={`cta ${memoAnimation} ${
+          className={`${memoAnimation} ${
             isInReadingList ? styles.addButton : ""
           }`}
         >
           {!isInReadingList
             ? languageState.texts.book.add
             : languageState.texts.book.remove}
-        </button>
+        </PrimaryButton>
       </div>
     </article>
   ) : null;

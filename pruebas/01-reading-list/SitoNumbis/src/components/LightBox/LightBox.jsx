@@ -11,6 +11,7 @@ import { useLibrary } from "../../contexts/LibraryProvider";
 
 // components
 import IconButton from "../IconButton/IconButton";
+import PrimaryButton from "../PrimaryButton/PrimaryButton";
 
 // styles
 import styles from "./styles.module.css";
@@ -75,6 +76,10 @@ function LightBox() {
     return libraryState.readingList.has(lightBoxState.id);
   }, [libraryState, lightBoxState]);
 
+  const closeLightBox = useCallback(() => {
+    setLightBoxState({ type: "remove" });
+  }, [setLightBoxState]);
+
   return createPortal(
     <section
       className={`${styles.main} ${
@@ -86,7 +91,7 @@ function LightBox() {
       <IconButton
         icon={faClose}
         ariaLabel={languageState.texts.ariaLabels.closeDialog}
-        onClick={() => setLightBoxState({ type: "remove" })}
+        onClick={closeLightBox}
         className={`${styles.closeButton}`}
       />
       <article className={styles.book}>
@@ -110,19 +115,18 @@ function LightBox() {
           </p>
           <p className={styles.synopsis}>{selectedBook.synopsis}</p>
           <div className="flex items-center gap-4 mt-5">
-            <button
+            <PrimaryButton
               onClick={addToReadingList}
-              aria-label={
+              ariaLabel={
                 !isInReadingList
                   ? languageState.texts.ariaLabels.add
                   : languageState.texts.ariaLabels.remove
               }
-              className={`cta`}
             >
               {!isInReadingList
                 ? languageState.texts.book.add
                 : languageState.texts.book.remove}
-            </button>
+            </PrimaryButton>
             <button
               onClick={() => setSeeingCover((seeingCover) => !seeingCover)}
               className={`${styles.seeCoverButton} secondary`}

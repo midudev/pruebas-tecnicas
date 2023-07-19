@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { Link } from "react-router-dom";
 import loadable from "@loadable/component";
 import Tippy from "@tippyjs/react";
@@ -30,6 +30,10 @@ function Navbar() {
     return libraryState.readingList.size;
   }, [libraryState]);
 
+  const toggleSeeing = useCallback(() => {
+    setLibraryState({ type: "toggle-see" });
+  }, [setLibraryState]);
+
   return (
     <header className={styles.main}>
       <div className={styles.navContainer}>
@@ -54,7 +58,7 @@ function Navbar() {
             >
               <IconButton
                 ariaLabel={languageState.texts.ariaLabels.toReadingList}
-                onClick={() => setLibraryState({ type: "toggle-see" })}
+                onClick={toggleSeeing}
                 className={`text-xl`}
                 icon={
                   libraryState.seeing === "reading-list"

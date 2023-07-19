@@ -30,10 +30,6 @@ button {
   @apply cursor-default;
 }
 
-.cta {
-  @apply bg-primary hover:bg-primary-dark transition px-5 py-2 rounded-3xl;
-}
-
 .secondary {
   @apply border-primary hover:border-primary-dark-opacity hover:bg-primary-dark-opacity border-2 rounded-3xl transition px-5 py-2;
 }
