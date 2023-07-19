@@ -3,7 +3,7 @@ use yew_router::prelude::*;
 
 use crate::{
     context::{DataProvider, ReadingListProvider},
-    layout::Footer,
+    layout::{ErrorType, Footer, LayoutError},
     screens::*,
 };
 
@@ -20,22 +20,31 @@ pub enum Route {
     NotFound,
 }
 
-fn switch(_route: Route) -> Html {
-    html!(
-        <ReadingListProvider>
-            <DataProvider>
-                <App />
-                <Footer />
-            </DataProvider>
-        </ReadingListProvider>
-    )
+fn switch(route: Route) -> Html {
+    match route {
+        Route::Home => html! {<App />},
+        Route::Book { name } => html! {<Book {name}/>},
+        Route::Author { name } => html! {<Author {name}/>},
+        Route::NotFound => html! {
+            <main
+                class={classes!("flex","items-center","justify-center","w-full","min-h-screen","px-6")}
+                >
+                <LayoutError errtype={ErrorType::Empty} title=""/>
+            </main>
+        },
+    }
 }
 
 #[function_component]
 pub fn RouteApp() -> Html {
     html! {
         <BrowserRouter>
-            <Switch<Route> render={switch} />
+            <ReadingListProvider>
+                <DataProvider>
+                    <Switch<Route> render={switch} />
+                    <Footer />
+                </DataProvider>
+            </ReadingListProvider>
         </BrowserRouter>
     }
 }
