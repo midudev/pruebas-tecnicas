@@ -20,6 +20,8 @@ export default function ReadingList () {
   const { list, clearList, removeFromList } = useList()
   return (
         <section className="readingList">
+          <h2>Lista De Lectura</h2>
+          <span>Libros disponibles: {list.length}</span>
             {list.map(item => (
 
                 <ListItem

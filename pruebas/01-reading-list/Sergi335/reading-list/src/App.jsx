@@ -20,7 +20,17 @@ function App () {
       )
     })
   }
-
+  const calculateNumberOfBooks = (number, list, library) => {
+    if (list.length > 0 && filters.genre !== 'all') {
+      const generoEnLista = list.filter(item => {
+        return item.book.genre === filters.genre && item.book.pages >= filters.pages
+      })
+      console.log(number.length - generoEnLista.length)
+      return number.length - generoEnLista.length
+    } else {
+      return number.length - list.length
+    }
+  }
   return (
     <ReadingListProvider>
       <ReadingListContext.Consumer>
@@ -29,14 +39,16 @@ function App () {
 
           console.log(context)
           const number = filterBooks(library)
-          console.log(number.length)
+          console.log(number)
+          console.log(list)
+          const total = calculateNumberOfBooks(number, list, library)
 
           return (
             <>
               <header>
                 <h1>Colección de libros</h1>
                 <Filter changeFilters={setFilters} />
-                <span>Libros Disponibles: {number.length - list.length}</span>
+                <span>Libros Disponibles: {total}</span>
               </header>
               <Book books={filterBooks(library)} />
               <ReadingList />
