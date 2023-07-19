@@ -48,7 +48,7 @@ label {
 
 .caja-milista {
       position: fixed;
-      top: 20%;
+      top: 17%;
       right: 15%;
       left: 15%;
       border: 1px solid var(--color-grises);
@@ -66,7 +66,6 @@ label {
       min-height: 319px;
       height: 400px;
       overflow-y: scroll;
-      background-color: var(--color-secundario);
       flex-wrap: wrap;
 }
 
@@ -117,6 +116,32 @@ label {
       background-color: var(--color-detalle);
       opacity: 1;
       border: none;
+}
+
+.mibook {
+      justify-content: center; 
+      align-items: center;
+}
+
+.mibook .mibook-container {
+      width: 80%; 
+      justify-content: center; 
+      display: flex; 
+      align-content: center;  
+      gap: 20px;
+}
+
+.mibook .mibook-container .book-info{
+      display: flex; 
+      flex-direction: column; 
+      justify-content: space-between;
+}
+
+@media (max-width:745px) {
+      .mibook .mibook-container {
+            flex-direction: column;
+            width: auto;
+      }
 }
 
 

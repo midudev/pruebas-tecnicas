@@ -37,9 +37,30 @@
                                     </svg>
                               </button>
                         </div>
-                        <img [src]="item.book.cover" width="140px" height="200px" (click)="quitarBook(item.book.title)">
+                        <img [src]="item.book.cover" width="140px" height="200px" (click)="BookInfo(item.book.title)">
                   </li>
             </div>
+      </div>
+      <div class="caja-milista" *ngIf="generalService.milibro">
+            <header>
+                  <button class="btn-hamburguesa" (click)="cerrarMiLibro()">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                              <path
+                                    d="m249-207-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />
+                        </svg>
+                  </button>
+            </header>
+            <div class="contenedor-milista mibook" *ngIf="bookSeleccionado">
+                  <li class="image-container mibook-container">
+                    <img [src]="bookSeleccionado.cover" width="200px" height="280px">
+                    <ul class="book-info">
+                      <li><h3>{{ bookSeleccionado.title }}</h3></li>
+                      <li>Sinopsis: <p>{{ bookSeleccionado.synopsis }}</p></li>
+                      <li>{{ bookSeleccionado.author.name }} <p>Otros libros: {{ bookSeleccionado.author.otherBooks }}</p></li>
+                      <li><span>{{ bookSeleccionado.year }}</span> - <span>{{ bookSeleccionado.genre }}</span> - <span>{{ bookSeleccionado.pages }}</span></li>
+                    </ul>
+                  </li>
+                </div>
       </div>
       <li *ngFor="let item of filteredBooks">
             <img class="tapa" [src]="item.book.cover" width="140px" height="200px" (click)="selectBook(item)">

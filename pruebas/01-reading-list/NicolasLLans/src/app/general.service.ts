@@ -12,6 +12,7 @@ export class GeneralService {
   nuevaLista: any[] = [];
   contador: boolean = false;
   miLista: boolean = false;
+  milibro:boolean = false;
 
 
   constructor(private http: HttpClient) {

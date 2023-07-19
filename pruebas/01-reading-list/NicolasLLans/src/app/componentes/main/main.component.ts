@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GeneralService } from 'src/app/general.service';
+import { Book } from 'src/app/modelos/books';
 
 @Component({
   selector: 'app-main',
@@ -15,7 +16,8 @@ export class MainComponent implements OnInit {
   genres: string[] = [];
   bookSelect: boolean = false;
   misBooks: any[] = [];
-  activo:boolean = this.generalService.activo;
+  activo: boolean = this.generalService.activo;
+  bookSeleccionado: Book | null = null;
 
 
   constructor(public generalService: GeneralService) { }
@@ -25,8 +27,8 @@ export class MainComponent implements OnInit {
     this.refreshLocalstorage();
   }
 
-  verMiLista(){
-    this.generalService.miLista=!this.generalService.miLista;
+  verMiLista() {
+    this.generalService.miLista = !this.generalService.miLista;
   }
 
   getLibrary(): void {
@@ -76,13 +78,13 @@ export class MainComponent implements OnInit {
     // Obtener la lista existente del localStorage
     const storedList = window.localStorage.getItem('books');
     const existingList = storedList ? JSON.parse(storedList) : [];
-  
+
     // Agregar el nuevo elemento a la lista existente
     existingList.push(item);
-  
+
     // Actualizar el localStorage con la lista actualizada
     this.generalService.updateLocalStorageBooks(existingList);
-  
+
     // Resto del código...
     this.generalService.nuevaLista.push(item);
     this.generalService.contador = true;
@@ -100,5 +102,42 @@ export class MainComponent implements OnInit {
       this.generalService.updateLocalStorageBooks(updatedBooks);
     }
   }
-  
+
+  // ... (resto de tu código)
+
+  findBookInLocalStorage(title: string): any | null {
+    const localStorageBooks = window.localStorage.getItem('books');
+    if (localStorageBooks) {
+      const books = JSON.parse(localStorageBooks);
+      const bookSeleccionado = books.find((item: any) => item.book.title === title);
+      return bookSeleccionado ? bookSeleccionado.book : null;
+    }
+    return null;
+  }
+
+  BookInfo(title: string) {
+    this.generalService.milibro = true;
+    if (title) {
+      const bookSeleccionadoFromLocalStorage = this.findBookInLocalStorage(title);
+      if (bookSeleccionadoFromLocalStorage) {
+        this.bookSeleccionado = bookSeleccionadoFromLocalStorage;
+        console.log(this.bookSeleccionado);
+      } else {
+        const bookSeleccionadoFromLibrary = this.books.library.find((item: any) => item.book.title === title);
+        if (bookSeleccionadoFromLibrary) {
+          this.bookSeleccionado = bookSeleccionadoFromLibrary.book;
+          console.log(this.bookSeleccionado);
+        } else {
+          console.log('Libro no encontrado');
+        }
+      }
+    }
+  }
+
+  // ... (resto de tu código)
+
+  cerrarMiLibro() {
+    this.generalService.milibro = false;
+  }
+
 }
