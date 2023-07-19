@@ -5,3 +5,9 @@ export const nameStorage = {
 }
 
 export const allGenre = 'Todos'
+
+export const enum BOOK_LIST_TYPES {
+  ADD_TO_READING_LIST = 'ADD_TO_READING_LIST',
+  REMOVE_FROM_READING_LIST = 'REMOVE_FROM_READING_LIST',
+  RESET_READING_LIST = 'RESET_READING_LIST'
+}

@@ -15,5 +15,3 @@ export type Book = {
   ISBN: string
   author: Author
 }
-
-type Library = { library: Book[] }
