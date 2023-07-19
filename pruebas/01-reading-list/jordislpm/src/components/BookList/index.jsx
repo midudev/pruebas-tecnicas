@@ -22,7 +22,7 @@ const [books, read, setFilters]=useFilter()
 return (
 
     <section className={styles.section}>
-        <h1>BookList</h1>
+        <h1 className={styles.title}>Lista de libros disponibles</h1>
         <ul className={styles.booklist}>
         {books && books.map((element)=>{
             return(
