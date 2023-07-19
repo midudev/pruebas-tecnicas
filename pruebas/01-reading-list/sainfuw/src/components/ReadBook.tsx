@@ -18,7 +18,7 @@ export default function ReadBook({ book }: { book: IBook }) {
       layoutId={book.title}
     >
       <div
-        className="relative w-[200px] h-[300px] rounded-lg border-2 border-gray-500"
+        className="relative w-[200px] h-[300px] rounded-lg border-2 border-background-light"
         style={{
           backgroundImage: `url(${book.cover})`,
           backgroundSize: 'cover'
@@ -26,14 +26,14 @@ export default function ReadBook({ book }: { book: IBook }) {
       >
         <button
           onClick={() => removeFromReadList(book)}
-          className="absolute right-1 top-1"
+          className="absolute p-2 rounded-full right-1 top-1"
         >
           <CloseIcon />
         </button>
         <Link
           to={`/book/${book.ISBN}`}
           state={book}
-          className="absolute left-0 right-0 hidden py-2 m-2 text-center bg-gray-200 rounded-full top-16 text-gray-950 group-hover:block"
+          className="absolute left-0 right-0 hidden py-2 m-2 text-center rounded-full bg-primary top-16 text-background group-hover:block"
         >
           View Details
         </Link>

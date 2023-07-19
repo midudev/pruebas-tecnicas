@@ -1,14 +1,17 @@
 import { RouterProvider } from "react-router-dom";
-import { FilteredBooksProvider } from "./context/FilteredBooksProvider";
+import { BooksProvider } from "./context/BooksProvider";
+import { FiltersProvider } from "./context/FiltersProvider";
 import { ReadListProvider } from "./context/ReadListProvider";
 import { router } from "./router";
 
 export default function App() {
   return (
-    <FilteredBooksProvider>
+    <BooksProvider>
       <ReadListProvider>
-        <RouterProvider router={router} />
+        <FiltersProvider>
+          <RouterProvider router={router} />
+        </FiltersProvider>
       </ReadListProvider>
-    </FilteredBooksProvider>
+    </BooksProvider>
   )
 }

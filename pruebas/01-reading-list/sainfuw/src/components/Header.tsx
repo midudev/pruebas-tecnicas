@@ -1,32 +1,37 @@
 import { motion } from "framer-motion";
 import { useContext } from "react";
-import { FilteredBooksContext } from "../context/FilteredBooksContext";
+import { BooksContext } from "../context/BooksContext";
 import { ReadListContext } from "../context/ReadListContext";
-import { FilterByGenre } from "./FilterByGenre";
+import { useFilters } from "../hooks/useFilters";
+import { Filters } from "./Filters";
 
 export default function Header() {
-  const { filteredBooks, books } = useContext(FilteredBooksContext)
+  const { books } = useContext(BooksContext)
   const { readList } = useContext(ReadListContext)
+  const { filterBooks } = useFilters()
+  const filteredBooks = filterBooks()
+
   const title = Array.from('BookStore')
 
   return (
-    <header className='flex justify-between px-[100px] mt-10'>
-      <section className="flex mt-6">
+    <header className='flex items-center justify-between px-8 mt-8'>
+      <section className="flex p-6 rounded-lg bg-background-light text-primary">
         <div className="flex flex-col min-w-[220px]">
-          <h3 className="text-xl font-pp">Total books: {books.length}</h3>
+          <h3 className="text-sm font-pop">Total books: {books.length}</h3>
           {filteredBooks.length !== books.length && (
-            <h3 className="text-xl font-pp">Total filtered books: {filteredBooks.length}</h3>
+            <h3 className="text-sm font-pop">Total filtered books: {filteredBooks.length}</h3>
           )}
           {readList.length > 0 && (
-            <h3 className="text-xl font-pp">Total read books: {readList.length}</h3>
+            <h3 className="text-sm font-pop">Total read in list: {readList.length}</h3>
           )}
         </div>
-        <FilterByGenre />
+        <Filters />
       </section>
       <motion.div
         variants={container}
         initial="hidden"
         animate="visible"
+        className="text-primary"
       >
         {title.map((letter, index) => (
           <motion.span

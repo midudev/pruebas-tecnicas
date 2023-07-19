@@ -23,24 +23,6 @@
 }
 
 :root {
-  /* variables */
   --color: #dedede;
   --bg-color: #000000;
-
-  /* default */
-  line-height: 1.2;
-  font-weight: 400;
-
-  height: 100%;
-  width: 100%;
-
-  color-scheme: light dark;
-  color: var(--color);
-  background-color: var(--bg-color);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
 }

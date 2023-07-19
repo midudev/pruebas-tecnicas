@@ -1,14 +1,12 @@
-import { ReactNode, useCallback, useContext, useEffect, useReducer } from "react";
+import { ReactNode, useCallback, useEffect, useReducer } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { readListReducer } from "../reducers/readListReducer";
 import { IBook } from "../types";
-import { FilteredBooksContext } from "./FilteredBooksContext";
 import { ReadListContext } from "./ReadListContext";
 
 const initialState: IBook[] = []
 
 export function ReadListProvider({ children }: { children: ReactNode }) {
-  const { filteredBooks, setFilteredBooks } = useContext(FilteredBooksContext)
   const [state, dispatch] = useReducer(readListReducer, initialState);
   const [readList, setStoredValue] = useLocalStorage('read-list', initialState)
 
@@ -23,15 +21,13 @@ export function ReadListProvider({ children }: { children: ReactNode }) {
 
   const addToReadList = useCallback((book: IBook) => {
     setStoredValue([...readList, book]);
-    setFilteredBooks(filteredBooks.filter((item) => item.title !== book.title))
     dispatch({ type: 'ADD_TO_READ_LIST', payload: book });
-  }, [readList, setStoredValue, filteredBooks, setFilteredBooks]);
+  }, [readList, setStoredValue]);
 
   const removeFromReadList = useCallback((book: IBook) => {
     setStoredValue(readList.filter((item) => item.title !== book.title));
-    setFilteredBooks([...filteredBooks, book])
     dispatch({ type: 'REMOVE_FROM_READ_LIST', payload: book });
-  }, [readList, setStoredValue, filteredBooks, setFilteredBooks]);
+  }, [readList, setStoredValue]);
 
   const values = {
     readList: state,
