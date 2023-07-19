@@ -11,7 +11,7 @@ import { BooksService } from '~/services/books.service';
 })
 export default class BookListComponent {
   private _booksService = inject(BooksService);
-  bookList = this._booksService.bookList;
+  bookList = this._booksService.filteredBooks;
 
   ngOnInit() {
     this._booksService.getBooks();
