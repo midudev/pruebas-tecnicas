@@ -1,15 +1,16 @@
-<div class="container">
-    <div class="container d-flex justify-content-center">
-        <input class="form-control w-50 m-3" type="text" placeholder="Search" (input)="onSearchText($event)">
-    </div>
+<div class="container mb-3">
     <div class="row w-100">
+        <!-- Filtro por keyword -->
+        <div class="col-12 col-lg mb-2">
+            <input class="form-control w-100 m-3" type="text" placeholder="Search" (input)="onSearchText($event)">
+        </div>
         <!-- Filtro de de paginas -->
-        <div class="col-6 col-lg">
+        <div class="col-12 col-lg mb-2">
             <label for="customRange2" class="form-label">Pages: {{ selectedPage }}</label>
-            <input type="range" class="form-range" min="0" max="1000" id="customRange2" (change)="onPagesChanges($event)">
+            <input type="range" class="range" min="0" max="1000" id="customRange2" (change)="onPagesChanges($event)">
         </div>
         <!-- Filtro de generos -->
-        <div class="col-6 col-lg">
+        <div class="col-12 col-lg mb-2">
             <select class="form-select" aria-label="Default select example" (change)="onGenreSelected($event)">
                 <option selected value="All">All genres</option>
                 <option value="Fantasía">Fantasía</option>

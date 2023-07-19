@@ -7,14 +7,14 @@
     <div class="row w-100">
         <div [ngClass]="isNotBooksToRead() ? 'col-lg-12 books-container' : 'col-lg-8 books-container'">
             <h2>Books list</h2>
-            <div class="row gap-2">
-                <app-book-card class="col" [book]="book" *ngFor="let book of booksList"></app-book-card>
+            <div class="container d-flex flex-wrap justify-content-center gap-3">
+                <app-book-card  [book]="book" *ngFor="let book of booksList"></app-book-card>
             </div>
         </div>
         <div class="col-lg-4 reading-container" *ngIf="!isNotBooksToRead()">
             <h2>Reading list</h2>
-            <div class="row gap-2">
-                <app-reading-book class="col gap-2" [book]="book" *ngFor="let book of readingList"></app-reading-book>
+            <div class="container d-flex flex-wrap justify-content-center gap-3">
+                <app-reading-book [book]="book" *ngFor="let book of readingList"></app-reading-book>
                 <!-- 
                     <div class="container-fluid d-flex flex-column align-items-center" *ngIf="isNotBooksToRead()">
                     <img src="../../../assets/undraw_void_-3-ggu (1).svg" alt="" width="300px" height="300px">

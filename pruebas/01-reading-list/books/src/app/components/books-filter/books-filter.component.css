@@ -1,0 +1,13 @@
+.range{
+    width: 100%;
+    height: 6px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    background-color: #2f2f2f;
+}
+
+input[type="range"] {
+    /* Cambia el color del riel */
+    background-color: #503a3a;
+}
