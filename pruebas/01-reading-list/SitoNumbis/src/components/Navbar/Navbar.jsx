@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import loadable from "@loadable/component";
 import Tippy from "@tippyjs/react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookOpen, faBookmark } from "@fortawesome/free-solid-svg-icons";
 
 // contexts
