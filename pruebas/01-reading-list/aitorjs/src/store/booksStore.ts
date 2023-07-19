@@ -51,7 +51,11 @@ export const useBooksStore = create<any>(persist(
       delete filters.old
 
       // no genre + want books
-      if (filters.genre === undefined && wantReadBooks.length > 0) {
+      // genre + want books + to/from > or < page
+      if (
+        (filters.genre === undefined && wantReadBooks.length > 0) ||
+        (filters.genre && wantReadBooks.length > 0 && prevPages > nextPages || prevPages < nextPages)) {
+        console.log('filter want books')
         const books = get().books
 
         const excludeIsbn = wantReadBooks.map(w => w.book.ISBN)
@@ -67,11 +71,10 @@ export const useBooksStore = create<any>(persist(
       }
 
       // no genre + no want books + to "Todos los generos"
-      // genre + want books + to/from > or < page
       // genre + no want books
       else if (
         (filters.genre === undefined && wantReadBooks.length === 0 && nextGenre === undefined) ||
-        (filters.genre && wantReadBooks.length > 0 && prevPages > nextPages || prevPages < nextPages) ||
+        // (filters.genre && wantReadBooks.length > 0 && prevPages > nextPages || prevPages < nextPages) ||
         (filters.genre && wantReadBooks.length === 0)) {
         base = get().books
         console.log('vuelta a todos los books sin want books', base)

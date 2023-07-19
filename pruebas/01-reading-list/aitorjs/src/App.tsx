@@ -5,14 +5,42 @@ import Book from "./components/Book";
 import ReadList from "./components/ReadList";
 
 function App() {
-  const { getBooks, filteredBooks, filters, filter, books } = useBooksStore();
+  const {
+    getBooks,
+    filteredBooks,
+    filters,
+    filter,
+    books,
+    wantReadBooks,
+    setBooks,
+  } = useBooksStore();
 
   useEffect(() => {
     const data = window.localStorage.getItem("booksLibrary");
     const isData = JSON.parse(data).state.books.length > 0;
 
+    console.log("isdata", JSON.parse(data).state);
+
     if (!isData) {
       getBooks();
+    } else {
+      /* if (filters.pages <= 0) {
+        const excludeIsbn = wantReadBooks.map((w) => w.book.ISBN);
+        console.log(
+          "excludeWantReadBooks",
+          excludeIsbn,
+          JSON.parse(data).state
+        );
+        const excludeWantReadBooks = books.filter((b) => {
+          // console.log('isbn', b.book.ISBN)
+          if (excludeIsbn.includes(b.book.ISBN)) {
+            return false;
+          }
+          return false;
+        });
+        console.log("excludeWantReadBooks", excludeWantReadBooks);
+        setBooks(excludeWantReadBooks);
+      } */
     }
   }, []);
 
