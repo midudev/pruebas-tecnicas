@@ -1,0 +1,23 @@
+.heading {
+  text-align: center;
+}
+
+.btn {
+  all: unset;
+  padding: 1rem;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: medium;
+  display: block;
+  margin: 0 auto;
+  background-color: rgb(131, 58, 180);
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color:rgba(253, 29, 29, 1);
+}
