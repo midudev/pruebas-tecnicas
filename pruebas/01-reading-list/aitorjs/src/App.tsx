@@ -8,9 +8,12 @@ function App() {
   const { getBooks, filteredBooks, filters, filter, books } = useBooksStore();
 
   useEffect(() => {
-    // si localstorage tiene data, usa esa
+    const data = window.localStorage.getItem("booksLibrary");
+    const isData = JSON.parse(data).state.books.length > 0;
 
-    getBooks();
+    if (!isData) {
+      getBooks();
+    }
   }, []);
 
   const filterGenreBooks = (genre: string) => {
