@@ -3,13 +3,15 @@
 
   export let books: IBook[];
   export let booksWidth = '250px';
-  export let showBooksInfo = true;
+  export let isReadingList = false;
   export let booksAction: IBooks.BookAction;
 </script>
 
 <ul class="books" style="--booksWidth:{booksWidth}">
   {#each books as book}
-    <Book {book} showInfo={showBooksInfo} --booksWidth={booksWidth} bookAction={booksAction} />
+    <li>
+      <Book {book} {isReadingList} bookAction={booksAction} />
+    </li>
   {/each}
 </ul>
 
@@ -18,5 +20,14 @@
     display: grid;
     gap: 15px;
     grid-template-columns: repeat(auto-fit, minmax(var(--booksWidth), 1fr));
+  }
+
+  li {
+    display: grid;
+    margin: auto;
+    list-style: none;
+    position: relative;
+    width: var(--booksWidth);
+    align-content: center;
   }
 </style>

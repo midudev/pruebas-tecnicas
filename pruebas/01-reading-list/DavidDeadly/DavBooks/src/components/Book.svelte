@@ -2,43 +2,38 @@
   import { booksStore } from '$lib';
 
   export let book: IBook;
-  export let showInfo: boolean;
+  export let isReadingList: boolean;
   export let bookAction: IBooks.BookAction;
 
   let isAvaileble = !$booksStore.readingList.includes(book.ISBN);
+  let aliveStyle: boolean;
+  let deadStyle: boolean;
 
   $: {
     isAvaileble = !$booksStore.readingList.includes(book.ISBN);
+
+    aliveStyle = isAvaileble || isReadingList;
+    deadStyle = !isReadingList && !isAvaileble;
   }
 </script>
 
-<li class="book">
-  <button
-    class:add-btn={isAvaileble}
-    class:no-availeble={!isAvaileble}
-    on:click={() => bookAction(book.ISBN)}
-  >
-    <img src={book.cover} alt="{book.title} cover" />
-    {#if showInfo}
-      <div class="book-info">
-        <span class="pages">{book.pages} pag.</span>
-        <p class="synopsis">{book.synopsis}</p>
-        <span class="year">{book.year}</span>
-        <span class="genre">{book.genre}</span>
-      </div>
-    {/if}
-  </button>
-</li>
+<button
+  class:action-btn={aliveStyle}
+  class:no-action={deadStyle}
+  on:click={() => bookAction(book.ISBN)}
+>
+  <img src={book.cover} alt="{book.title} cover" />
+  {#if !isReadingList}
+    <div class="book-info">
+      <span class="pages">{book.pages} pag.</span>
+      <p class="synopsis">{book.synopsis}</p>
+      <span class="year">{book.year}</span>
+      <span class="genre">{book.genre}</span>
+    </div>
+  {/if}
+</button>
 
 <style>
-  .book {
-    width: var(--booksWidth);
-    position: relative;
-    display: grid;
-    align-content: center;
-    margin: auto;
-  }
-
   .book-info {
     color: var(--primary);
     position: relative;
@@ -104,8 +99,8 @@
     transition-property: filter, transform;
   }
 
-  .add-btn,
-  .no-availeble {
+  .action-btn,
+  .no-action {
     border: none;
     border-radius: 15px;
     background-color: transparent;
@@ -115,17 +110,17 @@
     cursor: pointer;
   }
 
-  .add-btn:hover img {
+  .action-btn:hover img {
     filter: blur(1px) contrast(30%);
     transform: scale(1.01);
   }
 
-  .no-availeble img {
+  .no-action img {
     filter: blur(1px) contrast(30%);
   }
 
-  .add-btn:hover .book-info,
-  .no-availeble:hover .book-info {
+  .action-btn:hover .book-info,
+  .no-action:hover .book-info {
     opacity: 1;
   }
 </style>

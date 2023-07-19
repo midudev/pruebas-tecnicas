@@ -1,9 +1,7 @@
 <script lang="ts">
-  import { fade } from 'svelte/transition';
-  import { quadInOut } from 'svelte/easing';
-
   import { booksStore } from '$lib';
   import { readingImportanceMessages } from '$lib/mocks/reading';
+  import AnimatedBooksTitle from './AnimatedBooksTitle.svelte';
   import Books from './Books.svelte';
   import ReadingMessages from './ReadingMessages.svelte';
 
@@ -21,24 +19,24 @@
 </script>
 
 <section>
-  {#key readingBooks.length}
-    <h3 in:fade={{ easing: quadInOut }}>
-      {#if readingBooks.length}
-        <span>{readingBooks.length}</span>
-        {isOne ? 'Libro' : 'Libros'} para leer
-      {:else}
-        Lista de Lectura
-      {/if}
-    </h3>
-  {/key}
+  <AnimatedBooksTitle
+    noun={{
+      singular: 'Libro',
+      plural: 'Libros',
+    }}
+    headerType="h3"
+    numBooks={readingBooks.length}
+    booksTitle="para leer"
+    noBooksTitle="Lista de Lectura"
+  />
   <aside class:no-books={readingBooks.length <= 0}>
     {#if readingBooks.length <= 0}
       <ReadingMessages messages={readingImportanceMessages} />
     {:else}
       <Books
         books={readingBooks}
-        showBooksInfo={false}
-        booksWidth="200px"
+        isReadingList={true}
+        booksWidth="150px"
         booksAction={$booksStore.remove}
       />
     {/if}

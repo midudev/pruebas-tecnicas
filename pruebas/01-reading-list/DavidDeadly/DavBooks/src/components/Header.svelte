@@ -1,4 +1,5 @@
 <script lang="ts">
+  import AnimatedBooksTitle from './AnimatedBooksTitle.svelte';
   import Filters from './Filters.svelte';
   import DavBooksIcon from './icons/DavBooksIcon.svelte';
 
@@ -14,19 +15,20 @@
     <DavBooksIcon width="100px" />
   </div>
 
-  <h1>
-    {numAvaileblesBooks}
-    {isOne ? 'Libro' : 'Libros'} Disponibles
-  </h1>
+  <AnimatedBooksTitle
+    noun={{
+      singular: 'Libro',
+      plural: 'Libros',
+    }}
+    headerType="h1"
+    numBooks={numAvaileblesBooks}
+    booksTitle="Disponibles"
+    noBooksTitle="No hay libros disponibles"
+  />
   <Filters on:filteredBooks />
 </nav>
 
 <style>
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-
   nav {
     width: 60%;
     display: flex;
