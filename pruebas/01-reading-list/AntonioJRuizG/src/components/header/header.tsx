@@ -3,6 +3,7 @@ import useBooks from '../hooks/useBooks';
 import { BooksRepo } from '../services/books.repo';
 
 import styles from './header.module.scss';
+import BooksFilter from '../filter/books.filter';
 
 export default function Header() {
 	const repo = useMemo(() => new BooksRepo(), []);
@@ -22,6 +23,8 @@ export default function Header() {
 					<span>{booksCount.selectedBooks}</span> books in your list
 				</p>
 			) : null}
+
+			<BooksFilter></BooksFilter>
 		</header>
 	);
 }
