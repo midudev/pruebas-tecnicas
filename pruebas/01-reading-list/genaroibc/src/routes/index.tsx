@@ -80,13 +80,24 @@ export default component$(() => {
     sortBooks()
   })
 
+  const onBookSelect = $((bookISBN: BookISBN) => {
+    const bookIsInReadingList = readingList.some(book => book.ISBN === bookISBN)
+
+    if (bookIsInReadingList) {
+      removeBookFromReadingList(bookISBN)
+    } else {
+      addBookToReadingList(bookISBN)
+    }
+  })
+
   return (
     <section class="relative">
       <Filters
         onFilterChange={updateFilterAndSortBooks}
         onGenreChange={filterBooksByGenre}
       />
-      <BooksList books={booksStore.books} onBookSelect={addBookToReadingList} />
+
+      <BooksList books={booksStore.books} onBookSelect={onBookSelect} />
 
       <div class="sticky bottom-0 mt-8 z-30">
         <ReadingList
