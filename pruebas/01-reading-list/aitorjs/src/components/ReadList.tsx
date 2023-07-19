@@ -7,7 +7,11 @@ const ReadList = () => {
     const index = wantReadBooks.findIndex((f) => {
       return f.book.ISBN === isbn;
     });
+    console.log("index", index, wantReadBooks);
     const [wantNoRead] = wantReadBooks.splice(index, 1);
+
+    console.log("new books", [...filterBooks, wantNoRead]);
+    // setWantReadBooks(wantReadBooks);
 
     setBooks([...filterBooks, wantNoRead]);
   };

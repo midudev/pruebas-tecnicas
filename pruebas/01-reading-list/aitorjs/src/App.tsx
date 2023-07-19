@@ -5,13 +5,15 @@ import Book from "./components/Book";
 import ReadList from "./components/ReadList";
 
 function App() {
-  const { getBooks, filterBooks, filters, filter } = useBooksStore() as any;
+  const { getBooks, filterBooks, filters, filter, books } =
+    useBooksStore() as any;
 
   useEffect(() => {
     getBooks();
   }, []);
 
   const filterGenreBooks = (genre: string) => {
+    console.log("books", books);
     filter("genre", genre);
   };
 
@@ -23,7 +25,9 @@ function App() {
     <div className="container mx-auto">
       <h1 className="text-6xl font-bold">Librería de libros</h1>
 
-      <h2>{filterBooks.length} libros disponibles</h2>
+      <h2>
+        {filterBooks.length} libros disponibles {books.length}
+      </h2>
 
       <div className="flex gap-3">
         <div className="flex flex-col">
@@ -55,7 +59,9 @@ function App() {
       </div>
 
       <p>Filters {JSON.stringify(filters)}</p>
-      
+
+      {/* <p>Filter books {JSON.stringify(filterBooks)}</p> */}
+
       <div className="flex">
         <div className="flex flex-wrap gap-2 w-4/5">
           {filterBooks.map(({ book }) => (
@@ -64,7 +70,7 @@ function App() {
         </div>
 
         <div className="flex flex-col">
-          <ReadList />
+          {books.length} <ReadList />
         </div>
       </div>
     </div>

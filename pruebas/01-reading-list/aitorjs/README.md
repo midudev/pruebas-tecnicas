@@ -6,7 +6,7 @@
 - [x] Leer el json de books y pintarlo en pantalla (14/07/2023)
 - [x] Maquetar con tailwind como se ve el listado de book (16/07/2023)
 - [x] Filtros: número de páginas y tipo de libro (17/07/2023)
-- [x] Lista de lectura ((18/07/2023))
+- [x] Lista de lectura (18/07/2023)
 - [ ] Persistencia en localstorage
 - [ ] Sincronización de pestañas
 - [ ] Test
@@ -27,4 +27,5 @@
 
 - BookService https://github.com/midudev/pruebas-tecnicas/commit/448ebd1f4cb6c2f273f6bc6c255b94bec7ef2233
 - https://github.com/midudev/pruebas-tecnicas/commit/448ebd1f4cb6c2f273f6bc6c255b94bec7ef2233
-- Tests https://github.com/pipegoods/pruebas-tecnicas-midudev/blob/main/pruebas/01-reading-list/pipegoods/src/__test__/book.test.ts
+- Tests ojP
+- README https://github.com/rozzu1/pruebas-tecnicas/tree/main/pruebas/01-reading-list/rozzu1

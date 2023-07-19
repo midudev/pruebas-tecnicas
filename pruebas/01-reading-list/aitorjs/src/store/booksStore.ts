@@ -16,9 +16,12 @@ export const useBooksStore = create<BooksState>((set, get) => ({
     set((state) => ({ ...state, filterBooks }))
   },
   setWantReadBooks: (wantReadBook: Book) => {
-    set((state) => ({ ...state, wantReadBooks: [...state.wantReadBooks, wantReadBook] }))
+    set((state) => {
+      return { ...state, wantReadBooks: [...state.wantReadBooks, wantReadBook] }
+    })
   },
   filter: (name: string, value: string | number) => {
+    // set filters
     set((state) => {
       if (value !== '') {
         return { ...state, filters: { ...state.filters, [name]: value } }
@@ -27,11 +30,38 @@ export const useBooksStore = create<BooksState>((set, get) => ({
       return { ...state, filters: { pages: state.filters.pages } }
     })
 
+    // finding needed base book list when filter is needed
     const filters = get().filters
-    let _books = get().books
+    const wantReadBooks = get().wantReadBooks
 
+    let base = get().filterBooks
+
+    if (filters.genre === undefined && wantReadBooks.length > 0) {
+      const books = get().books
+
+      const excludeIsbn = wantReadBooks.map(w => w.book.ISBN)
+      const excludeWantReadBooks = books.filter((b) => {
+        console.log('isbn', b.book.ISBN)
+        if (excludeIsbn.includes(b.book.ISBN) === true) {
+          return false
+        }
+        return true
+      })
+      base = excludeWantReadBooks
+      // return get().setBooks(excludeWantReadBooks)
+    }
+
+    if (filters.genre === undefined && wantReadBooks.length === 0) {
+      base = get().books
+      console.log('es undefined', base)
+
+      // return get().setBooks(base)
+    }
+
+    // filter using filters properties
     Object.keys(filters).map((f) => {
-      _books = _books.filter((d) => {
+      const _books = base.filter((d) => {
+        // console.log('BOOKS', base)
         if (f === 'pages') {
           return filters[f] > 0 ? d.book[f] <= filters[f] : true
         } else {
