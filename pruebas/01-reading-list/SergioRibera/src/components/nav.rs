@@ -106,7 +106,7 @@ pub fn ThemeComponent() -> Html {
                 class={classes!("absolute","text-white",
                     theme.as_ref()
                         .is_some_and(|t| t == &ThemeMode::Light)
-                        .then_some(vec!["left-[50%]","top-[50%]","-translate-x-[50%]","-translate-y-[50%]"])
+                        .then_some(vec!["left-[50%]","top-[50%]","-translate-x-1/2","-translate-y-1/2"])
                         .or(Some(vec!["top-[-100%]"]))
                 )}
                 icon_id={IconId::HeroiconsOutlineMoon}
@@ -116,7 +116,7 @@ pub fn ThemeComponent() -> Html {
                 class={classes!("absolute","text-slate-800",
                     theme.as_ref()
                         .is_some_and(|t| t == &ThemeMode::Dark)
-                        .then_some(vec!["left-[50%]","top-[50%]","-translate-x-[50%]","-translate-y-[50%]"])
+                        .then_some(vec!["left-[50%]","top-[50%]","-translate-x-1/2","-translate-y-1/2"])
                         .or(Some(vec!["top-[-100%]"]))
                 )}
                 icon_id={IconId::HeroiconsOutlineSun}
