@@ -51,11 +51,7 @@ function Navbar() {
             >
               <button
                 onClick={() => setLibraryState({ type: "toggle-see" })}
-                className={`text-xl icon-button ${
-                  libraryState.seeing === "reading-list"
-                    ? "bg-primary text-dark-text"
-                    : ""
-                }`}
+                className={`text-xl icon-button`}
                 aria-label={languageState.texts.ariaLabels.toReadingList}
               >
                 <FontAwesomeIcon
