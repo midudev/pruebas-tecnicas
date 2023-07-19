@@ -41,7 +41,7 @@ function Navbar() {
             {languageState.texts.logo}
           </h1>
         </Link>
-        <div className="flex items-center gap-5">
+        <nav className="flex items-center gap-5">
           <Badge number={totalReading} show={libraryState.seeing === "all"}>
             <Tippy
               className="hide-on-mobile"
@@ -72,7 +72,7 @@ function Navbar() {
             src={noPhoto}
             alt="user-photo"
           />
-        </div>
+        </nav>
       </div>
     </header>
   );

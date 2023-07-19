@@ -8,10 +8,10 @@ import PropTypes from "prop-types";
 const LightBoxContext = createContext();
 
 /**
- * 
- * @param {object} lightBoxState 
- * @param {object} action 
- * @returns 
+ *
+ * @param {object} lightBoxState
+ * @param {object} action
+ * @returns
  */
 const lightBoxReducer = (lightBoxState, action) => {
   switch (action.type) {
