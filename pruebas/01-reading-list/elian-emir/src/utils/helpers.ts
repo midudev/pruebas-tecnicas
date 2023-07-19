@@ -1,5 +1,6 @@
 import { fetchBooksData } from './fetch'
 import { Mutate, StoreApi } from 'zustand'
+import { BooksState } from '../types'
 
 export function selectGenre() {
   const books = fetchBooksData()
@@ -13,8 +14,8 @@ export function selectGenre() {
 }
 
 type StoreWithPersist = Mutate<
-  StoreApi<unknown>,
-  [['zustand/persist', unknown]]
+  StoreApi<BooksState>,
+  [['zustand/persist', BooksState]]
 >
 
 export const withStorageDOMEvents = (store: StoreWithPersist) => {

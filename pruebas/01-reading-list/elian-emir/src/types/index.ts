@@ -1,3 +1,12 @@
+export interface BooksState {
+  books: IBook[]
+  readingList: IBook[]
+  countBookAvalaible: number
+  countBookToRead: number
+  addBooksToReadingList: (isbn: string) => void
+  removeBookOfList: (isbn: string) => void
+}
+
 export interface IAuthor {
   name: string;
   otherBooks: string[];

@@ -1,18 +1,11 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import { IBook } from '../types'
+import {type BooksState } from '../types'
 import { fetchBooksData } from '../utils/fetch'
 import { withStorageDOMEvents } from '../utils/helpers'
 
 
-interface BooksState {
-  books: IBook[]
-  readingList: IBook[]
-  countBookAvalaible: number
-  countBookToRead: number
-  addBooksToReadingList: (isbn: string) => void
-  removeBookOfList: (isbn: string) => void
-}
+
 const mappedBooks = fetchBooksData()
 export const booksStore = create<BooksState>()(
   persist(
