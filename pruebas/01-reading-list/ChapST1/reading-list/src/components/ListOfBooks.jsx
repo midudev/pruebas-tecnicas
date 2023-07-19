@@ -8,6 +8,9 @@ export function ListOfBooks () {
 
   return (
     <>
+      {
+      books.length === 0 && <h1>No hay libros</h1>
+    }
       <div className='grid grid-cols-5 gap-3 pb-10 '>
         {
         books?.map(({ book }) => {

@@ -1,14 +1,20 @@
 import { useBookZustandStore } from '../hooks/useBookZustandStore'
 
 export function ReadingListBooks ({ book }) {
-  const { updateBooks, updateReadingList, books, readingList } = useBookZustandStore()
-  const id = book.ISBN
+  const { updateBooks, updateReadingList, books, readingList, genderFiter } = useBookZustandStore()
+  const currentId = book.ISBN
 
   const handleClick = () => {
-    const findBook = readingList.find(({ book }) => book.ISBN === id)
-
+    const findBook = readingList.find(({ book }) => book.ISBN === currentId)
+    const newReadingList = readingList.filter(({ book }) => book.ISBN !== currentId)
     const newBooks = [...books, findBook]
-    const newReadingList = readingList.filter(({ book }) => book.ISBN !== id)
+
+    if (genderFiter !== 'Todas') {
+      const filterBooks = newBooks.filter(({ book }) => book.genre === genderFiter)
+      updateBooks(filterBooks)
+      updateReadingList(newReadingList)
+      return
+    }
 
     updateBooks(newBooks)
     updateReadingList(newReadingList)

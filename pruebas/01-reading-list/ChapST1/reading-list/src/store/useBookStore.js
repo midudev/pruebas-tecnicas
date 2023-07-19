@@ -4,7 +4,7 @@ export const useBookStore = create((set, get) => ({
   books: [],
   readingList: [],
   pageFilter: 1,
-  genderFilter: 'Terror',
+  genderFilter: 'Todas',
 
   updateBooks: (books) => set({ books }),
   updateReadingList: (readingList) => set({ readingList }),

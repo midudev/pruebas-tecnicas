@@ -1,28 +1,22 @@
-import { useRef } from 'react'
 import { useBookZustandStore } from '../hooks/useBookZustandStore'
 import { useBooksCategories } from '../hooks/useBooksCategories'
-import { getAllBooks } from '../services/api/getBooks'
+import { useFilteredBooks } from '../hooks/useFilteredBooks'
 
 export function Select () {
-  const { updateBooks } = useBookZustandStore()
   const { booksCategories } = useBooksCategories()
+  const { updateGenderFilter, updateBooks } = useBookZustandStore()
+  const { filteredBooks } = useFilteredBooks()
 
   const handleChange = async (e) => {
-    const allBooks = await getAllBooks()
-    const category = e.target.value
+    const categoryValue = e.target.value
 
-    if (category === 'Todas') {
-      updateBooks(allBooks)
-      return
-    }
+    if (categoryValue === 'Todas') return updateBooks(filteredBooks)
+    const filterBooks = filteredBooks.filter(({ book }) => book.genre === categoryValue)
 
-    const filterBooks = allBooks?.filter(({ book }) => book.genre === category)
+    updateGenderFilter(categoryValue)
     updateBooks(filterBooks)
   }
 
-  useRef(() => {
-    console.log('render')
-  }, [])
   return (
     <label htmlFor='' className=''>
       Fitrar libros por generos
