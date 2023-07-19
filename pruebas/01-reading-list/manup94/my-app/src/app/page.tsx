@@ -53,6 +53,7 @@ export default function Home() {
     setWatchList(loadWatchListFromLocalStorage());
   }, []);
 
+
   useEffect(() => {
 
     fetchBooks()
