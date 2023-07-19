@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+package-lock.json
 
 # testing
 /coverage
@@ -14,7 +15,6 @@
 
 # production
 /build
-
 # misc
 .DS_Store
 *.pem
@@ -26,6 +26,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
+
 
 # vercel
 .vercel
