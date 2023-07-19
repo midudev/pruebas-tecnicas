@@ -1,6 +1,6 @@
 import type { Book, Filter } from "~/types"
 
-export function getFilterFunction(filter: Filter) {
+export function getSortingFunction(filter: Filter) {
   const filterFunction = (a: Book, b: Book) => {
     const valueA = a[filter]
     const valueB = b[filter]

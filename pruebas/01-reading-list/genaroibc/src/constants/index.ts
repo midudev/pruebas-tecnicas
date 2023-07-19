@@ -1,4 +1,4 @@
-import type { Filter } from "~/types"
+import type { Filter, Genre } from "~/types"
 
 export const BOOK_FILTERS: Filter[] = ["genre", "pages", "title", "year"]
 
@@ -9,3 +9,11 @@ export const BOOK_GENRES = [
   "horror",
   "zombies"
 ] as const
+
+export const GENRES_DICT: Record<Genre, string> = {
+  all: "todo",
+  "sci-fi": "ciencia ficción",
+  fantasy: "fantasía",
+  horror: "terror",
+  zombies: "zombies"
+}

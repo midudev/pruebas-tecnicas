@@ -6,7 +6,8 @@ import { BooksList } from "~/components/BooksList"
 import INITIAL_BOOKS from "~/db/books.json"
 import { ReadingList } from "~/components/ReadingList"
 import { Filters } from "~/components/Filters"
-import { getFilterFunction } from "~/helpers/getFilterFunction"
+import { getSortingFunction } from "~/helpers/getSortingFunction"
+import { GENRES_DICT } from "~/constants"
 
 const ALL_BOOKS = INITIAL_BOOKS.library.map(({ book }) => ({
   ...book,
@@ -20,15 +21,17 @@ export default component$(() => {
   const readingList: Book[] = useStore([])
 
   const sortBooks = $(() => {
-    const filterFunction = getFilterFunction(currentFilter.value)
+    const sortingFunction = getSortingFunction(currentFilter.value)
 
-    booksStore.books.sort(filterFunction)
+    booksStore.books.sort(sortingFunction)
   })
 
-  const handleAddBookToReadingList = $((newBookISBN: BookISBN) => {
-    const index = booksStore.books.findIndex(book => book.ISBN === newBookISBN)
+  const addBookToReadingList = $((newBookISBN: BookISBN) => {
+    const newBookIndex = booksStore.books.findIndex(
+      book => book.ISBN === newBookISBN
+    )
 
-    const bookExists = index !== -1
+    const bookExists = newBookIndex !== -1
     if (!bookExists) return
 
     const isAlreadyInReadingList = readingList.some(
@@ -36,14 +39,14 @@ export default component$(() => {
     )
     if (isAlreadyInReadingList) return
 
-    const newBook = booksStore.books[index]
+    const newBook = booksStore.books[newBookIndex]
 
     newBook.isInReadingList = true
 
     readingList.push(newBook)
   })
 
-  const handleRemoveBookFromReadingList = $((BookISBN: BookISBN) => {
+  const removeBookFromReadingList = $((BookISBN: BookISBN) => {
     const index = readingList.findIndex(book => book.ISBN === BookISBN)
 
     const bookExists = index !== -1
@@ -53,23 +56,15 @@ export default component$(() => {
 
     if (removedBook) removedBook.isInReadingList = false
 
-    readingList.splice(index, 1)
+    readingList.splice(index, 1) // remove book from reading list
   })
 
-  const onFilterChange = $((filter: Filter) => {
+  const updateFilterAndSortBooks = $((filter: Filter) => {
     currentFilter.value = filter
     sortBooks()
   })
 
-  const onGenreChange = $((genre: Genre) => {
-    const genresDict: Record<Genre, string> = {
-      all: "todo",
-      "sci-fi": "ciencia ficción",
-      fantasy: "fantasía",
-      horror: "terror",
-      zombies: "zombies"
-    }
-
+  const filterBooksByGenre = $((genre: Genre) => {
     if (genre === "all") {
       booksStore.books = ALL_BOOKS
       sortBooks()
@@ -78,7 +73,7 @@ export default component$(() => {
     }
 
     const filteredByGenre = ALL_BOOKS.filter(
-      book => book.genre.toLowerCase() === genresDict[genre]
+      book => book.genre.toLowerCase() === GENRES_DICT[genre]
     )
 
     booksStore.books = filteredByGenre
@@ -87,16 +82,16 @@ export default component$(() => {
 
   return (
     <section class="relative">
-      <Filters onFilterChange={onFilterChange} onGenreChange={onGenreChange} />
-      <BooksList
-        books={booksStore.books}
-        onBookSelect={handleAddBookToReadingList}
+      <Filters
+        onFilterChange={updateFilterAndSortBooks}
+        onGenreChange={filterBooksByGenre}
       />
+      <BooksList books={booksStore.books} onBookSelect={addBookToReadingList} />
 
       <div class="sticky bottom-0 mt-8 z-30">
         <ReadingList
           books={readingList}
-          onBookSelect={handleRemoveBookFromReadingList}
+          onBookSelect={removeBookFromReadingList}
         />
       </div>
     </section>
