@@ -6,6 +6,7 @@ mod models;
 mod route;
 mod screens;
 mod services;
+mod utils;
 
 use route::RouteApp;
 
