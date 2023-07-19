@@ -11,7 +11,7 @@ const minisearch = new MiniSearch({
     return fieldName.split(".").reduce((doc, key) => doc && doc[key], document);
   },
   searchOptions: {
-    boost: { title: 8, synopsis: 1, "author.name": 1 },
+    boost: { title: 2, synopsis: 1, "author.name": 1 },
     fuzzy: 0.2,
     filter(result) {
       return result.score >= 5;
@@ -46,6 +46,7 @@ export function filterBooks(filter: BooksFilter, myBookList: BooksInMyList) {
   const searchedBooks = filter.searchText
     ? (minisearch
         .search(filter.searchText)
+        .filter(item => item.score > 1)
         .map((item) => books.find((book) => book.ISBN === item.id)) as Book[])
     : books;
 

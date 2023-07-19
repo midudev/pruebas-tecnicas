@@ -52,6 +52,7 @@ export const BookListItem = component$(({ book }: BookListItemProps) => {
         bg="neutral"
         borderRadius="xl"
         p="4"
+        h="full"
         position="relative"
         alignItems="start"
         class={itemCss}

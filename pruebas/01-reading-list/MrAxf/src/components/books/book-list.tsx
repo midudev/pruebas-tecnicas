@@ -16,6 +16,7 @@ const listGridCss = css({
   w: "full",
   display: "grid",
   gridTemplateColumns: "repeat(auto-fill, minmax(var(--ideal-width), 1fr))",
+  gridAutoRows: "max-content",
   gap: "10",
   sm: {
     "--ideal-width": "35rem",
