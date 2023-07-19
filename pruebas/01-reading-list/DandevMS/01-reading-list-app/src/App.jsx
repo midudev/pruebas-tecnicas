@@ -4,7 +4,8 @@ import Home from './pages/home/Home'
 function App() {
   return (
     <>
-     <Route path="/" component={Home} />
+        <Route path="/" component={Home} />
+
     </>
   )
 }

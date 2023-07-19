@@ -1,6 +1,8 @@
-/* eslint-disable react/prop-types */ // TODO: upgrade to latest eslint tooling
+import ListRender from "./ListRender";
+
 
 const Sidebar = ({toggleSidebar, HandleToggleSidebar}) => {
+
 
   return (
     <>
@@ -18,6 +20,7 @@ const Sidebar = ({toggleSidebar, HandleToggleSidebar}) => {
             <div className="prose prose-quoteless prose-h1:mb-2.5 prose-h1:mt-7 prose-h2:mb-3 prose-h2:mt-0 prose-h3:mb-[5px] prose-h3:mt-[10px] prose-p:mb-2 prose-p:mt-0 prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-gray-700 prose-li:m-0 prose-li:mb-0.5">
                 <main>
                     <h1>Listado de libros por leer</h1>
+                    <ListRender />
                 </main>
             </div> 
         </div>
