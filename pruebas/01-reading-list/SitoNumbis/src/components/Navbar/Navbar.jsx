@@ -4,8 +4,7 @@ import loadable from "@loadable/component";
 import Tippy from "@tippyjs/react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBookmark } from "@fortawesome/free-solid-svg-icons";
-import { faBookmark as faBookmarkR } from "@fortawesome/free-regular-svg-icons";
+import { faBookOpen, faBookmark } from "@fortawesome/free-solid-svg-icons";
 
 // contexts
 import { useLanguage } from "../../contexts/LanguageProvider";
@@ -41,8 +40,15 @@ function Navbar() {
           </h1>
         </Link>
         <div className="flex items-center gap-5">
-          <Badge number={totalReading}>
-            <Tippy className="hide-on-mobile" content={languageState.texts.ariaLabels.toReadingList}>
+          <Badge number={totalReading} show={libraryState.seeing === "all"}>
+            <Tippy
+              className="hide-on-mobile"
+              content={
+                libraryState.seeing === "reading-list"
+                  ? languageState.texts.ariaLabels.toMainStock
+                  : languageState.texts.ariaLabels.toReadingList
+              }
+            >
               <button
                 onClick={() => setLibraryState({ type: "toggle-see" })}
                 className={`text-xl icon-button ${
@@ -53,7 +59,11 @@ function Navbar() {
                 aria-label={languageState.texts.ariaLabels.toReadingList}
               >
                 <FontAwesomeIcon
-                  icon={totalReading ? faBookmark : faBookmarkR}
+                  icon={
+                    libraryState.seeing === "reading-list"
+                      ? faBookOpen
+                      : faBookmark
+                  }
                 />
               </button>
             </Tippy>

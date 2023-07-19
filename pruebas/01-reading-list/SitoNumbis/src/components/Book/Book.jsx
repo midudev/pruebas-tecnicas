@@ -74,13 +74,11 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
       <Marker show={isInReadingList} />
       <div
         role="info"
-        className={`group absolute top-0 pr-8 left-0 w-full h-full bg-dark-alt-bg-opacity opacity-0 transition hover:opacity-100 flex flex-col justify-between items-start p-3 ${
+        className={`group absolute top-0 pr-8 left-0 w-full h-full hover:bg-dark-alt-bg-opacity opacity-0 transition hover:opacity-100 flex flex-col justify-between items-start p-3 ${
           isInReadingList ? "opacity-100" : ""
         }`}
       >
-        <div
-          className={`${memoAnimation} ${isInReadingList ? "opacity-100" : ""}`}
-        >
+        <div className={`${memoAnimation}`}>
           <p className="">{title}</p>
           <p className="alter-text">
             {genre} ({pages}) {languageState.texts.book.pages}
@@ -98,7 +96,9 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
               ? languageState.texts.ariaLabels.add
               : languageState.texts.ariaLabels.remove
           }
-          className={`cta ${memoAnimation} ${styles.addButton}`}
+          className={`cta ${memoAnimation} ${
+            isInReadingList ? styles.addButton : ""
+          }`}
         >
           {!isInReadingList
             ? languageState.texts.book.add
