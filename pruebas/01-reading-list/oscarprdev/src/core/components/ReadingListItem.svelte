@@ -5,8 +5,13 @@
   import { writable, type Writable } from 'svelte/store'
   import Modal from './modals/Modal.svelte'
   import RemoveModal from './modals/RemoveModal.svelte'
+  import { actionsStore } from '../store/actions-store'
+  import { onMount } from 'svelte'
+  import { appState } from '../store/app-state-store'
 
   export let book: Book
+  export let index: number
+
   let showOverlay: Writable<boolean> = writable(false)
 
   const handleOverlay = () => {
@@ -25,9 +30,23 @@
         return modal
     });
   }
+
+  
+  let showAnimation: any
+
+  onMount(() => {
+    showAnimation = $actionsStore.readingListItemAdded
+    console.log(showAnimation)
+  })
 </script>
 
-<article class=" relative flex w-full gap-3 h-64 my-2 p-2">
+<li
+  class="relative flex w-full gap-3 h-64 my-2 p-2 {index === 0 &&
+  showAnimation &&
+  $appState.readingBooks.length > 1
+    ? 'animate-item-in'
+    : 'animate-fade-in'}"
+>
   <!-- svelte-ignore a11y-no-static-element-interactions -->
   <div
     class="w-2/6 h-full shadow-[-4.0px_5.0px_8.0px_rgba(0,0,0,0.38)]"
@@ -60,4 +79,4 @@
       >{book.genre}</span
     >
   </section>
-</article>
+</li>

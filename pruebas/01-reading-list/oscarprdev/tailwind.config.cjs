@@ -76,15 +76,24 @@ module.exports = {
           '0%': { transform: 'translateX(300px)' },
           '100%': { transform: 'translateX(0)' },
         },
+        'item-in': {
+          '0%': { transform: 'scale(0)' },
+          '100%': { transform: 'scale(1)' },
+        },
+        'item-out': {
+          '0%': { transform: 'scale(1)' },
+          '100%': { transform: 'scale(0)' },
+        },
       },
       animation: {
         'fade-in': 'fade-in 0.25s ease-in-out',
-        'slide-in': 'slide-in 0.5s ease-in-out',
+        'slide-in': 'slide-in 0.4s ease-in-out',
+        'item-in': 'item-in 0.5s ease-out',
+        'item-out': 'item-in 0.5s ease-out',
       },
       transitionProperty: {
         'bg-color': 'background-color',
       },
     },
   },
-  plugins: [require('@tailwindcss/forms')],
 }

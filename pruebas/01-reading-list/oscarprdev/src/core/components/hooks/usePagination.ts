@@ -1,6 +1,6 @@
 import { derived, type Writable } from "svelte/store";
-import type { Book } from "../types";
-import type { PaginationState } from "../components/types";
+import type { Book } from "../../types";
+import type { PaginationState } from "../types";
 import type { Readable } from "svelte/motion";
 
 export const usePagination = (booksFiltered: Readable<Book[]>, paginationState: Writable<PaginationState>): Readable<Book[]> => {

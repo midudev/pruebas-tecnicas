@@ -5,6 +5,7 @@
   import { asideState } from '../../store/aside-store.js'
   import type { Book } from '../../types'
   import { paginationState } from '../../store/pagination-store'
+  import { actionsStore } from '../../store/actions-store'
 
   export let book: Book
   export let closeModal: () => void
@@ -24,6 +25,20 @@
       init: 0,
       offset: 4,
     }))
+
+    actionsStore.update(() => ({
+      readingListItemAdded: false,
+      readingListItemRemoved: true,
+    }))
+
+    setTimeout(() => {
+      actionsStore.update(() => {
+        return {
+          readingListItemAdded: false,
+          readingListItemRemoved: false,
+        }
+      })
+    }, 500)
   }
 </script>
 
@@ -31,7 +46,7 @@
   class="flex items-start justify-center gap-8 p-8 bg-light max-w-xl max-h-900 rounded-sm relative"
 >
   <button
-    class="absolute top-3 right-3 z-10 cursor-pointer"
+    class="absolute top-3 right-3 z-10 cursor-pointer hover:text-pagination duration-100"
     on:click={closeModal}
   >
     <XIcon size="24" />

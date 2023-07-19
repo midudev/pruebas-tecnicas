@@ -6,19 +6,21 @@
 
 {#if $asideState.readingListIsOpen}
   <aside
-    class="fixed inset-y-0 right-0 z-3 w-2/6 h-full overflow-y-scroll p-5 flex flex-col bg-aside shadow-xl animate-slide-in"
+    class="fixed inset-y-0 right-0 z-3 w-2/6 h-full p-5 overflow-y-scroll bg-aside shadow-xl animate-slide-in"
   >
     <h2 class="text-2xl mb-5"><i>Lista de lectura</i></h2>
-    {#if $appState.readingBooks.length > 0}
-      {#each $appState.readingBooks as book}
-        <ReadingListItem {book} />
-      {/each}
-    {:else}
-      <li
-        class="grid place-items-center h-16 bg-aside p-5 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]"
-      >
-        <p>Lista de lectura vacia! 😢</p>
-      </li>
-    {/if}
+    <ul class="flex flex-col">
+      {#if $appState.readingBooks.length > 0}
+        {#each $appState.readingBooks as book, index (book.ISBN)}
+          <ReadingListItem {book} {index} />
+        {/each}
+      {:else}
+        <li
+          class="grid place-items-center h-16 bg-aside p-5 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]"
+        >
+          <p>Lista de lectura vacia! 😢</p>
+        </li>
+      {/if}
+    </ul>
   </aside>
 {/if}

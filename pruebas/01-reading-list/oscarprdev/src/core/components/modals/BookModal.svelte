@@ -4,6 +4,7 @@
   import { readingListUsecase } from '../../../features/reading-list'
   import { asideState } from '../../store/aside-store'
   import type { Book } from '../../types'
+  import { actionsStore } from '../../store/actions-store'
 
   export let book: Book
   export let closeModal: () => void
@@ -16,6 +17,11 @@
       topBooksListIsOpen: false,
     }))
 
+    actionsStore.update(() => ({
+      readingListItemAdded: true,
+      readingListItemRemoved: false,
+    }))
+
     closeModal()
   }
 </script>
@@ -24,7 +30,7 @@
   class="flex items-start justify-center gap-8 p-8 bg-light max-w-xl max-h-900 rounded-sm relative"
 >
   <button
-    class="absolute top-3 right-3 z-10 cursor-pointer"
+    class="absolute top-3 right-3 z-10 cursor-pointer hover:text-pagination duration-100"
     on:click={closeModal}
   >
     <XIcon size="24" />

@@ -7,8 +7,12 @@
   import { asideState } from '../store/aside-store'
   import BookModal from './modals/BookModal.svelte'
   import Modal from './modals/Modal.svelte'
+  import { actionsStore } from '../store/actions-store'
+  import { onMount } from 'svelte'
 
   export let book: Book
+  export let index: number
+
   let showOverlay: Writable<boolean> = writable(false)
 
   const handleOverlay = () => {
@@ -35,13 +39,38 @@
       readingListIsOpen: true,
       topBooksListIsOpen: false
     }))
+
+    actionsStore.update(() => {
+      return {
+      readingListItemAdded: true,
+      readingListItemRemoved: false,
+    }
+    })
+
+    setTimeout(() => {
+      actionsStore.update(() => {
+      return {
+      readingListItemAdded: false,
+      readingListItemRemoved: false,
+    }
+    })
+    }, 500);
   }
+
+  let showAnimation: any
+
+  onMount(() => {
+    showAnimation = $actionsStore.readingListItemRemoved
+  })
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <li
-  class="flex flex-col gap-4 w-40 relative h-300 xl:w-60 xl:h-400"
+  class="flex flex-col gap-4 w-40 relative h-300 xl:w-60 xl:h-400 {index ===
+    0 && showAnimation
+    ? 'animate-item-out'
+    : 'animate-fade-in'}"
   on:mouseenter={handleOverlay}
   on:mouseleave={handleOverlay}
 >
