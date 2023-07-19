@@ -1,9 +1,9 @@
 import { BsChevronDown } from 'react-icons/bs'
 import { useState } from 'react'
-import { handleDropDownFilter, handleSelectedGenres } from '../redux/booksSlice'
+import { addDropDownFilter } from '../redux/booksSlice'
 import { useDispatch } from 'react-redux'
 
-const DropDownFilter = ({ filterGenre }) => {
+const DropDownFilter = ({ genres }) => {
   const dispatch = useDispatch()
 
   const [isOpen, setIsOpen] = useState(false)
@@ -37,13 +37,12 @@ const DropDownFilter = ({ filterGenre }) => {
           className="absolute end-0 z-10 mt-2 min-w-[175px] rounded-md border border-gray-100 bg-white shadow-lg p-2"
           role="menu"
         >
-          {filterGenre.map((element) => (
+          {genres.map((element) => (
             <div
-              key={element}
               className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-200 hover:text-gray-700"
+              key={element}
               onClick={() => {
-                dispatch(handleDropDownFilter(element))
-                dispatch(handleSelectedGenres(element))
+                dispatch(addDropDownFilter(element))
               }}
             >
               {element}

@@ -3,7 +3,7 @@ import './App.css'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
-import { fetchBooks, handleSelectedGenres } from './redux/booksSlice'
+import { fetchBooks } from './redux/booksSlice'
 
 import DisplayBooks from './Components/DisplayBooks'
 import DropDownFilter from './Components/DropDownFilter'
@@ -28,7 +28,7 @@ function App() {
         <p>Available books</p>
         <div className="w-50 flex gap-3 p-4 items-center flex-col  sm:w-full sm:flex-row sm:justify-evenly">
           <SliderFilter />
-          <DropDownFilter filterGenre={genres} />
+          <DropDownFilter genres={genres} />
         </div>
         <DisplayFilters selectedFilters={selectedFilters} />
         <DisplayBooks booksList={booksList} />

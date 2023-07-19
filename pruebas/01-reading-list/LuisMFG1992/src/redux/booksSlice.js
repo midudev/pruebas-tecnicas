@@ -28,11 +28,15 @@ export const booksSlice = createSlice({
     selectedFilters: [],
   },
   reducers: {
-    handleDropDownFilter: (state, action) => {
+    addDropDownFilter: (state, action) => {
       state.selectedFilters.push(action.payload)
-    },
-    handleSelectedGenres: (state, action) => {
       state.genres = state.genres.filter((genero) => genero !== action.payload)
+    },
+    removeDropDownFilter: (state, action) => {
+      state.genres.push(action.payload)
+      state.selectedFilters = state.selectedFilters.filter(
+        (genero) => genero !== action.payload
+      )
     },
   },
   extraReducers: (builder) => {
@@ -51,7 +55,6 @@ export const booksSlice = createSlice({
   },
 })
 
-// Todo: Create the actions needed
-export const { handleDropDownFilter, handleSelectedGenres } = booksSlice.actions
+export const { addDropDownFilter, removeDropDownFilter } = booksSlice.actions
 
 export default booksSlice.reducer
