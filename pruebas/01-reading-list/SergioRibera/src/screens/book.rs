@@ -27,7 +27,7 @@ pub fn Book(props: &BookProps) -> Html {
     let reading_list = use_context::<UseLocalStorageHandle<Vec<BookModel>>>().unwrap();
     let related = use_list(Vec::<BookModel>::new());
     let content = use_memo(
-        |data| {
+        |(data, name)| {
             if data_loading || data_error.is_some() {
                 return None;
             }
@@ -42,7 +42,7 @@ pub fn Book(props: &BookProps) -> Html {
             }
             content
         },
-        data.clone().unwrap_or_default(),
+        (data.clone().unwrap_or_default(), name.clone()),
     );
 
     html! {
