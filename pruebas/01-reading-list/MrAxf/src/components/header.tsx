@@ -68,7 +68,11 @@ export const Header = component$(() => {
       <h1 class={headerTitleCss}>My Book List</h1>
       <ul class={headerLinksCss}>
         <li>
-          <Link class={{ [activeLinkCss]: url.pathname === "/" }} href="/">
+          <Link
+            class={{ [activeLinkCss]: url.pathname === "/" }}
+            href="/"
+            prefetch
+          >
             Libros
           </Link>
         </li>
@@ -76,6 +80,7 @@ export const Header = component$(() => {
           <Link
             class={{ [activeLinkCss]: url.pathname === "/lista/" }}
             href="/lista"
+            prefetch
           >
             Mi lista
           </Link>

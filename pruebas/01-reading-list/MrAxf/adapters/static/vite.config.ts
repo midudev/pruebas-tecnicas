@@ -12,7 +12,7 @@ export default extendConfig(baseConfig, () => {
     },
     plugins: [
       staticAdapter({
-        origin: "https://booklist.axford.dev",
+        origin: "https://book-list-nine-eosin.vercel.app",
       }),
     ],
   };

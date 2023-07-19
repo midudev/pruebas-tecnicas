@@ -58,7 +58,11 @@ export const BottomNavigation = component$(() => {
     <nav class={bottomNavigationCss}>
       <ul class={bottomNavigationLinksCss}>
         <li>
-          <Link class={{ [activeLinkCss]: url.pathname === "/" }} href="/">
+          <Link
+            class={{ [activeLinkCss]: url.pathname === "/" }}
+            href="/"
+            prefetch
+          >
             Libros
           </Link>
         </li>
@@ -66,6 +70,7 @@ export const BottomNavigation = component$(() => {
           <Link
             class={{ [activeLinkCss]: url.pathname === "/lista/" }}
             href="/lista"
+            prefetch
           >
             Mi lista
           </Link>

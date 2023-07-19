@@ -1,6 +1,6 @@
 # Lista de lectura
 
-**Url:**  https://book-list-nine-eosin.vercel.app/
+**Url:** https://book-list-nine-eosin.vercel.app/
 
 ## Librerías usadas
 
@@ -41,6 +41,7 @@ yarn build
 ```
 
 - Ejecutar proyecto en producción
+
 ```shell
 npm run start
 # o

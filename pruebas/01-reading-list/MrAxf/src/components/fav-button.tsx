@@ -13,6 +13,7 @@ export const FavButton = component$(
   ({ filled = false, onClick = $(() => {}), title }: FavButtonProps) => {
     return (
       <button
+        preventdefault:click
         onClick$={(ev) => {
           ev.stopPropagation();
           onClick();
