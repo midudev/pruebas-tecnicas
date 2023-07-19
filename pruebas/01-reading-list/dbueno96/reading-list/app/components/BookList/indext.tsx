@@ -9,11 +9,8 @@ export default function BookList (props: IBookList) {
     <ul className='grid grid-cols-3 overflow-hidden'>
       {
          books.map(book => (
-           <li
-             className='text-sm '
-             key={book.ISBN}
-           >
-             <Book title={book.title} />
+           <li key={book.ISBN}>
+             <Book {...book} />
            </li>))
 }
     </ul>
