@@ -10,6 +10,7 @@
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -27,7 +28,8 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "typeRoots": ["./types", "node_modules/@types"]
   },
   "include": [
     "next-env.d.ts",
@@ -38,5 +40,6 @@
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+
 }
