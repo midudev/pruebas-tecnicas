@@ -11,7 +11,7 @@ Para instalar y configurar Books App en un entorno local, sigue estos pasos:
 
 1. Clona el repositorio en tu máquina local.
 2. Ejecuta `npm install` para instalar las dependencias del proyecto.
-3. Ejecuta `npm start` para iniciar la aplicación en modo desarrollo.
+3. Ejecuta `npm run dev` para iniciar la aplicación en modo desarrollo.
 
 ## Uso
 
