@@ -1,4 +1,4 @@
-import { appState } from '../../store/store'
+import { appState } from '../../store/app-state-store'
 import type { GlobalState } from '../../types'
 import type { StatePorts } from './state.ports'
 import type { DefaultBooks } from './state.types'

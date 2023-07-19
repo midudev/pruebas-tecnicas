@@ -1,6 +1,6 @@
 import { derived, type Writable } from "svelte/store";
 import type { Book, GlobalState } from "../../types";
-import { appState } from "../../store/store";
+import { appState } from "../../store/app-state-store";
 import type { BooksFilters } from "../types";
 
 export const useFilter = (filters: Writable<BooksFilters>) => {

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { appState } from './../store/store'
+  import { appState } from '../store/app-state-store'
   import BooksList from './Books-list.svelte'
   import { writable } from 'svelte/store'
   import type { BooksFilters, PaginationState } from './types'

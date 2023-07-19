@@ -1,4 +1,4 @@
-import { stateRepository } from '../../core/store/store'
+import { stateRepository } from '../../core/store/app-state-store'
 import { ReadingListUsecase } from './application/reading-list.usecase'
 import { DefaultReadingListInfra } from './infra/reading-list.infra'
 import { ReadingListRepository } from './repository/reading-list'

@@ -1,6 +1,6 @@
 <script>
   import { asideState } from '../store/aside-store'
-  import { appState } from '../store/store'
+  import { appState } from '../store/app-state-store'
   import ReadingListItem from './ReadingListItem.svelte'
 </script>
 

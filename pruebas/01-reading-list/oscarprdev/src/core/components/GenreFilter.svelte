@@ -1,7 +1,7 @@
 <script lang="ts">
   import { writable, type Writable } from 'svelte/store';
   import type { BooksFilters, PaginationState } from './types';
-  import { appState } from '../store/store';
+  import { appState } from '../store/app-state-store';
   import { onMount } from 'svelte';
   import type { Book } from '../types';
 

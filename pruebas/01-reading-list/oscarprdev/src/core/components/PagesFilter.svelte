@@ -12,7 +12,7 @@
 <script lang="ts">
     import { derived, type Writable } from 'svelte/store';
     import type { BooksFilters, PaginationState } from './types';
-    import { appState } from '../store/store';
+    import { appState } from '../store/app-state-store';
     import type { Book } from '../types'
 
     export let paginationState: Writable<PaginationState>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { appState } from './../store/store'
+  import { appState } from '../store/app-state-store'
   import { readingListUsecase } from '../../features/reading-list'
   import { modalState } from '../store/modal-store'
   import { XIcon } from 'svelte-feather-icons'
