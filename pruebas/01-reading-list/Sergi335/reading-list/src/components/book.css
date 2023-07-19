@@ -1,0 +1,13 @@
+li {
+    list-style-type: none;
+    flex-grow: 1;
+}
+li img {
+    max-width: 250px;
+    max-height: 350px;
+}
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
