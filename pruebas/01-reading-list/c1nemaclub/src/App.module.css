@@ -1,0 +1,57 @@
+.App {
+  width: 100%;
+}
+
+h1,
+h2,
+p {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+header {
+  background: dodgerblue;
+  margin-bottom: 20px;
+  padding: 1em 4em;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+header h1 {
+  color: #fff;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+}
+
+main {
+  margin: auto;
+  width: 80%;
+  padding: 2em 0;
+}
+
+.genre-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  max-width: fit-content;
+  margin-bottom: 10px;
+}
+
+.genre-container span {
+  font-family: var(--font);
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+h2 {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 600;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+}

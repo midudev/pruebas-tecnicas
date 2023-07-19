@@ -1,5 +1,5 @@
-import React from 'react';
 import { TBook } from '../../store/books/types';
+import style from './Book.module.css';
 
 type BookProps = {
   book: TBook;
@@ -8,9 +8,10 @@ type BookProps = {
 
 function Book({ book, handleClick }: BookProps) {
   return (
-    <div className='book' onClick={() => handleClick(book)}>
-      {book.book.title}
-      {book.book.genre}
+    <div className={style['book']} onClick={() => handleClick(book)}>
+      <div className={`${style['image-container']} book`}>
+        <img src={book.book.cover} alt={book.book.title} />
+      </div>
     </div>
   );
 }

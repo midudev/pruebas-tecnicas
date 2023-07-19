@@ -21,11 +21,9 @@ function useBooks() {
       const data = await response.json();
       dispatch({ type: 'GET_BOOKS', payload: data.library });
       dispatch({ type: 'ACTION_SUCCESS' });
-    } catch (e: Error | any) {
-      dispatch({
-        type: 'ACTION_ERROR',
-        payload: e.message || 'There was an error',
-      });
+    } catch (e: unknown) {
+      if (e instanceof Error)
+        dispatch({ type: 'ACTION_ERROR', payload: e.message || 'There was an error'});
     }
   };
 
@@ -51,45 +49,64 @@ function useBooks() {
   // }
 
   useEffect(() => {
-      const totalBooks = state.availableBooks.length + state.lectureList.length;
-      if(totalBooks > 0) {
-      saveToLocalStorage({ availableBooks: state.availableBooks, lectureList: state.lectureList });
+    const totalBooks = state.availableBooks.length + state.lectureList.length;
+    if (totalBooks > 0) {
+      saveToLocalStorage({
+        availableBooks: state.availableBooks,
+        lectureList: state.lectureList,
+      });
     }
-  }, [ state.availableBooks, state.lectureList ]);
+  }, [state.availableBooks, state.lectureList]);
 
   useEffect(() => {
-    const savedData = getFromLocalStorage();    
+    const savedData = getFromLocalStorage();
     if (savedData) {
       dispatch({ type: 'FILTER_BOOKS', payload: state.genre });
-      dispatch({ type: "SET_AVAILABLE_BOOKS", payload: savedData.availableBooks });
-      dispatch({ type: "SET_LECTURE_LIST", payload: savedData.lectureList });
+      dispatch({ type: 'SET_AVAILABLE_BOOKS', payload: savedData.availableBooks });
+      dispatch({ type: 'SET_LECTURE_LIST', payload: savedData.lectureList });
     } else {
       getBooks();
+    }
+
+    window.addEventListener('storage', () => {
+      const savedData = getFromLocalStorage();
+      if (savedData) {
+        dispatch({ type: 'FILTER_BOOKS', payload: state.genre });
+        dispatch({ type: 'SET_AVAILABLE_BOOKS', payload: savedData.availableBooks });
+        dispatch({ type: 'SET_LECTURE_LIST', payload: savedData.lectureList });
+      }
+    })
+    return () => {
+      window.removeEventListener('storage', () => {});
     }
   }, []);
 
   const saveToLocalStorage = (data: any) => {
     try {
       const serializedData = JSON.stringify(data);
-      localStorage.setItem("books", serializedData);
-    } catch (error) {
+      localStorage.setItem('books', serializedData);
+    } catch (error: unknown) {
+      if (error instanceof Error)
+        dispatch({ type: 'ACTION_ERROR', payload: error.message });
       console.error('Error saving data to localStorage:', error);
     }
   };
 
   const getFromLocalStorage = () => {
     try {
-      const serializedData = localStorage.getItem("books");
+      const serializedData = localStorage.getItem('books');
       return serializedData ? JSON.parse(serializedData) : null;
-    } catch (error) {
+    } catch (error: unknown) {
+      if (error instanceof Error)
+        dispatch({ type: 'ACTION_ERROR', payload: error.message });
       console.error('Error retrieving data from localStorage:', error);
       return null;
     }
   };
 
-    useEffect(() => {
-      dispatch({ type: 'FILTER_BOOKS', payload: state.genre });
-    }, [state.genre])
+  useEffect(() => {
+    dispatch({ type: 'FILTER_BOOKS', payload: state.genre });
+  }, [state.genre]);
 
   return {
     state,

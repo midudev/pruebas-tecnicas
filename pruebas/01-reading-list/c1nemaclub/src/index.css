@@ -4,3 +4,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+:root {
+  font: 'Nunito Sans', sans-serif;
+}
+
+body {
+  background-color: rgb(236, 236, 236);
+}

@@ -1,0 +1,17 @@
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  margin-bottom: 20px;
+  width: 70%;
+  height: 100%;
+  /* height: fit-content; */
+}
+
+p {
+  font-family: var(--font);
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  width: 100%;
+  margin-bottom: 20px;
+}
