@@ -1,13 +1,19 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { BooksContext } from "../../context/BooksContextProvider"
 
 
 
 function ListRender() {
 
-  const { readingList, removeFromReadingList} = useContext(BooksContext);
+  const { readingList, removeFromReadingList, setReadingList} = useContext(BooksContext);
 
-  console.log(readingList)
+  // obtenet la data del localStorage
+  // useEffect(() => {
+  //   const data = localStorage.getItem("readingList");
+  //   if (data) {
+  //     setReadingList(JSON.parse(data));
+  //   }
+  // }, []);
 
   return (
     <div className="grid grid-cols-2 gap-3 mt-4">

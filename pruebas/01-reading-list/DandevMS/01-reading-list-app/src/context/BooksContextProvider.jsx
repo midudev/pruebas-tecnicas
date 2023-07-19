@@ -9,14 +9,6 @@ export const BooksProvider = ({ children }) => { //eslint-disable-line
   const [readingList, setReadingList] = useState([]);
 
 
-  // carga los datos almacenados en el localStorage al montar el componente
-  useEffect(() => {
-    const storedReadingList = localStorage.getItem("readingList");
-    if (storedReadingList) {
-      setReadingList(JSON.parse(storedReadingList));
-    }
-}, []);
-
   // obtener los generos de los libros
   useEffect(() => {
     const uniqueGenres = [...new Set(data.library.map((book) => book.book.genre))];
