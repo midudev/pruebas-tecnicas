@@ -3,12 +3,19 @@
   import '../app.postcss'
 </script>
 
+<svelte:head>
+  <title>Mis lecturas</title>
+</svelte:head>
+
 <header>
   <Title />
 </header>
 <main>
   <slot />
 </main>
+<footer class="text-center fixed-bottom">
+  <p>Yeray Alonso &copy; 2023</p>
+</footer>
 
 <style lang="postcss">
   :global(html) {
@@ -20,12 +27,12 @@
   header {
     padding: 1rem;
     margin: 0 auto;
-    max-width: 60rem;
+    max-width: 80rem;
   }
 
   main {
     padding: 1rem;
     margin: 0 auto;
-    max-width: 60rem;
+    max-width: 80rem;
   }
 </style>
