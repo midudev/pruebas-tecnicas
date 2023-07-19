@@ -9,6 +9,7 @@ function Genre({ genre, active, onClick }) {
 
   return (
     <button
+      name="filter-by-genre"
       aria-label={`${languageState.texts.ariaLabels.filterByGenre} ${genre}`}
       onClick={() => onClick(genre)}
       className={`px-5 py-3 transition min-w-[150px] cursor-default ${

@@ -90,6 +90,7 @@ function FilterBar() {
     <section className="relative bg-dark-alt-bg shadow-sm">
       {arrows ? (
         <button
+          name="swipe-to-right"
           onClick={swipeRight}
           aria-label={languageState.texts.ariaLabels.genreLeft}
           aria-disabled={barMovement === 0}
@@ -116,6 +117,7 @@ function FilterBar() {
       </ul>
       {arrows ? (
         <button
+          name="swipe-to-left"
           onClick={swipeLeft}
           aria-label={languageState.texts.ariaLabels.genreRight}
           aria-disabled={barMovement === barMaxPosition}

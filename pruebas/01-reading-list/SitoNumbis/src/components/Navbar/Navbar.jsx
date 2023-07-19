@@ -57,6 +57,7 @@ function Navbar() {
               }
             >
               <IconButton
+                name="toggle-seeing"
                 ariaLabel={languageState.texts.ariaLabels.toReadingList}
                 onClick={toggleSeeing}
                 className={`text-xl`}

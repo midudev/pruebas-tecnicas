@@ -6,9 +6,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // styles
 import styles from "./styles.module.css";
 
-function IconButton({ onClick, icon, className, ariaLabel }) {
+function IconButton({ onClick, name, icon, className, ariaLabel }) {
   return (
     <button
+      name={name}
       onClick={onClick}
       className={`${styles.main} ${className}`}
       aria-label={ariaLabel}
@@ -19,6 +20,7 @@ function IconButton({ onClick, icon, className, ariaLabel }) {
 }
 
 IconButton.propTypes = {
+  name: PropTypes.string,
   onClick: PropTypes.func,
   icon: PropTypes.node,
   className: PropTypes.string,
@@ -34,6 +36,7 @@ IconButtonMemo.displayName = "IconButton";
 
 function arePropsEqual(oldProps, newProps) {
   return (
+    oldProps.name === newProps.name &&
     oldProps.onClick === newProps.onClick &&
     oldProps.icon === newProps.icon &&
     oldProps.className === newProps.className &&

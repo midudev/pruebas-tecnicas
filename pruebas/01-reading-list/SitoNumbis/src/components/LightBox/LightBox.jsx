@@ -89,6 +89,7 @@ function LightBox() {
       }`}
     >
       <IconButton
+        name="close-dialog"
         icon={faClose}
         ariaLabel={languageState.texts.ariaLabels.closeDialog}
         onClick={closeLightBox}
@@ -128,6 +129,7 @@ function LightBox() {
                 : languageState.texts.book.remove}
             </PrimaryButton>
             <button
+              name="show-cover"
               onClick={() => setSeeingCover((seeingCover) => !seeingCover)}
               className={`${styles.seeCoverButton} secondary`}
             >
@@ -143,6 +145,7 @@ function LightBox() {
         </div>
         {seeingCover ? (
           <button
+            name="hide-cover"
             onClick={() => setSeeingCover((seeingCover) => !seeingCover)}
             className="appear button bg-primary-dark-opacity hover:bg-dark-text w-10 h-10 rounded-full absolute z-20 top-1 left-1"
           >

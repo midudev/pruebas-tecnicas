@@ -38,8 +38,8 @@ const ToTop = ({ className }) => {
 
   return (
     <button
+      name="to-top"
       type="button"
-      name={languageState.texts.ariaLabels.toTop}
       aria-label={languageState.texts.ariaLabels.toTop}
       onClick={handleToTop}
       style={{
