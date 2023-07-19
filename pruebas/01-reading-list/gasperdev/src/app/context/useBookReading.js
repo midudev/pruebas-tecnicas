@@ -11,11 +11,12 @@ export const useBookReading = () => {
 };
 
 // Función para obtener el valor inicial del estado desde localStorage
-function getStorageValue(key, defaultValue) {
-  const saved = localStorage.getItem(key);
+const getStorageValue = (key, defaultValue) => {
+  const saved =
+    typeof window !== "undefined" && window.localStorage.getItem(key);
   const initial = JSON.parse(saved);
   return initial || defaultValue;
-}
+};
 
 // Proveedor de contexto para los libros
 export default function BookReadingContextProvider({ children }) {
@@ -23,14 +24,14 @@ export default function BookReadingContextProvider({ children }) {
   const [isOpenCarsList, setOpenCarsList] = useState(false);
 
   // Estado para los IDs de los libros y su contador
-  const [booksId, setBooksId] = useState(() => {
-    return getStorageValue("booksId", []);
-  });
-  const [booksCount, setBooksCount] = useState(() => {
-    return getStorageValue("booksCount", 0);
-  });
+  const [booksId, setBooksId] = useState("");
+  const [booksCount, setBooksCount] = useState(0);
 
-  // Función para agregar un libro
+  useEffect(() => {
+    setBooksId(getStorageValue("booksId", []));
+    setBooksCount(getStorageValue("booksCount", 0));
+  }, []);
+
   const addBook = (id) => {
     setBooksId((prevBooks) => {
       const updatedBooks = [...prevBooks, id];

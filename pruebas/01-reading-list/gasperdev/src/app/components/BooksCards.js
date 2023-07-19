@@ -60,8 +60,8 @@ export default function BooksCards({ params }) {
       </section>
       <footer>
         <p className="font-bold text-center text-gray-500 text-md dark:text-slate-300">
-          "Si te ha gustado este titulo del autor y estás buscando más, te
-          recomendamos explorar estos libros"
+          Si te ha gustado este titulo del autor y estás buscando más, te
+          recomendamos explorar estos libros
         </p>
 
         <div className="w-full border-2 border-dashed mt-9 border-sky-900">
