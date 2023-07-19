@@ -1,6 +1,7 @@
 import type { Book, GlobalState } from '../../../core/types'
 
 export interface ReadingListPorts {
-  addBook(book: Book): GlobalState
-  removeBook(book: Book): GlobalState
+  addBook(books: Book[], readingList: Book[]): GlobalState
+  removeBook(books: Book[], readingList: Book[]): GlobalState
+  provideAppState(): GlobalState
 }

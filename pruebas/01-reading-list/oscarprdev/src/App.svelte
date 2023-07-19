@@ -10,6 +10,4 @@
   <Header />
   <Library />
   <ReadingList />
-  <BookModal />
-  <RemoveModal />
 </main>

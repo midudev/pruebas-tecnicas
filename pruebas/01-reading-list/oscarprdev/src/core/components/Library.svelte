@@ -6,6 +6,8 @@
   import { usePagination } from './hooks/usePagination'
   import { useFilter } from './hooks/useFilter'
   import FilterBooks from './FilterBooks.svelte'
+  import BookModal from './BookModal.svelte'
+  import RemoveModal from './RemoveModal.svelte'
 
   const INITIAL_FILTERS_STATE = {
     genre: '',
@@ -27,4 +29,6 @@
   </div>
   <FilterBooks {filters} {paginationState} />
   <BooksList {booksList} {paginationState} {booksFiltered} />
+  <BookModal />
+  <RemoveModal {paginationState} />
 </section>

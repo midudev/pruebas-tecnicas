@@ -4,6 +4,10 @@
   import { modalState } from '../store/modal-store'
   import { XIcon } from 'svelte-feather-icons'
   import { asideState } from '../store/aside-store.js'
+  import type { Writable } from 'svelte/store'
+  import type { PaginationState } from './types'
+
+  export let paginationState: Writable<PaginationState>
 
   const closeModal = () => {
     modalState.update((prev) => ({
@@ -21,6 +25,11 @@
         topBooksListIsOpen: false,
       }))
     }
+
+    paginationState.update(() => ({
+      init: 0,
+      offset: 4,
+    }))
 
     closeModal()
   }

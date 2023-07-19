@@ -1,14 +1,18 @@
-import type { Book } from '../../../core/types'
-import type { ReadingListInfra } from '../infra/reading-list.infra'
+import type { StateInfra } from '../../../core/state/infra/state.infra'
+import type { Book, GlobalState } from '../../../core/types'
 
 export class ReadingListRepository {
-  constructor(private readonly infra: ReadingListInfra) {}
+  constructor(private readonly infra: StateInfra) {}
 
-  addBook(book: Book) {
-    return this.infra.addBook(book)
+  provideAppState(): GlobalState {
+    return this.infra.provideLocalStorage()
   }
 
-  removeBook(book: Book) {
-    return this.infra.removeBook(book)
+  addBook(books: Book[], readingList: Book[]) {
+    return this.infra.updateBookLists(books, readingList)
+  }
+
+  removeBook(books: Book[], readingList: Book[]) {
+    return this.infra.updateBookLists(books, readingList)
   }
 }
