@@ -33,7 +33,10 @@ declare global {
         author: IAuthor,
     }
 
+    interface IReadingListBook extends IBook {
+        isInReadingList?: boolean
+    }
     interface ILibrary {
-        books: IBook[]
+        books: IReadingListBook[]
     }
 }
