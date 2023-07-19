@@ -14,6 +14,7 @@ import { useLibrary } from "../../contexts/LibraryProvider";
 import styles from "./styles.module.css";
 
 // images
+import logo from "../../assets/images/logo.svg";
 import noPhoto from "../../assets/images/no-photo.webp";
 
 // suspense
@@ -31,7 +32,8 @@ function Navbar() {
   return (
     <header className={styles.main}>
       <div className={styles.navContainer}>
-        <Link to="/">
+        <Link to="/" className="flex items-center">
+          <img className="w-8 h-8" src={logo} alt="Sito's library logo" />
           <h1
             className="px-3 py-2 uppercase font-extrabold"
             aria-label={languageState.texts.ariaLabels.logo}

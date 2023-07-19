@@ -11,7 +11,6 @@ function Badge({ number, show, children }) {
           {number}
         </div>
       ) : null}
-
       {children}
     </div>
   );
@@ -25,7 +24,7 @@ Badge.defaultProps = {
 Badge.propTypes = {
   number: PropTypes.number,
   show: PropTypes.bool,
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
 };
 
 export default Badge;

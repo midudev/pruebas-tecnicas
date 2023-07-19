@@ -53,7 +53,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
     )
       toHide = true;
 
-    // if the user is using a filter and the genre of the book is not the filtering book
+    // if the user is using a filter and the genre of the book is not the filtering genre
     if (libraryState.filtering && !toHide && genre !== libraryState.filtering)
       toHide = true;
     setHide(toHide);
