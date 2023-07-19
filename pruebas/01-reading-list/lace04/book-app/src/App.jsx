@@ -13,8 +13,12 @@ function App() {
     () => JSON.parse(localStorage.getItem('darkMode')) || false
   );
   const [books, setBooks] = useState(data.library);
-  const [selectedGenre, setSelectedGenre] = useState('');
-  const [minPages, setMinPages] = useState(0);
+  const [selectedGenre, setSelectedGenre] = useState(
+    () => JSON.parse(localStorage.getItem('selectedGenre')) || ''
+  );
+  const [minPages, setMinPages] = useState(
+    () => JSON.parse(localStorage.getItem('minPages')) || 0
+  );
   const [readingList, setReadingList] = useState(
     JSON.parse(localStorage.getItem('readingList')) || []
   );
@@ -32,12 +36,23 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem('readingList', JSON.stringify(readingList));
-  }, [readingList]);
+    localStorage.setItem('selectedGenre', JSON.stringify(selectedGenre));
+    localStorage.setItem('minPages', JSON.stringify(minPages));
+  }, [readingList, selectedGenre, minPages]);
 
   useEffect(() => {
     const handleStorageChange = (e) => {
       if (e.key === 'readingList') {
         setReadingList(JSON.parse(e.newValue));
+      }
+      if (e.key === 'darkMode') {
+        setDarkMode(JSON.parse(e.newValue));
+      }
+      if (e.key === 'selectedGenre') {
+        setSelectedGenre(JSON.parse(e.newValue));
+      }
+      if (e.key === 'minPages') {
+        setMinPages(JSON.parse(e.newValue));
       }
     };
 
