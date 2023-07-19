@@ -3,23 +3,31 @@ import type { Book, BookISBN, Filter, Genre } from "~/types"
 import { $, component$, useSignal, useStore } from "@builder.io/qwik"
 import type { DocumentHead } from "@builder.io/qwik-city"
 import { BooksList } from "~/components/BooksList"
-import INITIAL_BOOKS from "~/db/books.json"
+import BOOKS from "~/db/books.json"
 import { ReadingList } from "~/components/ReadingList"
 import { Filters } from "~/components/Filters"
 import { getSortingFunction } from "~/helpers/getSortingFunction"
 import { GENRES_DICT } from "~/constants"
+import { saveLocally } from "~/helpers/saveLocally"
 
-const ALL_BOOKS = INITIAL_BOOKS.library.map(({ book }) => ({
+const INITIAL_BOOKS = BOOKS.library.map(({ book }) => ({
   ...book,
   isInReadingList: false
 }))
 
 export default component$(() => {
-  const booksStore = useStore<{ books: Book[] }>({ books: ALL_BOOKS })
+  const booksStore = useStore<{ books: Book[] }>({ books: INITIAL_BOOKS })
   const currentFilter = useSignal<Filter>("title")
   const currentGenre = useSignal<Genre>("all")
 
   const readingList: Book[] = useStore([])
+
+  const saveStateLocally = $(() => {
+    saveLocally([
+      ["__reading_list__", readingList],
+      ["__books_list__", booksStore.books]
+    ])
+  })
 
   const addBookToReadingList = $((newBookISBN: BookISBN) => {
     const newBookIndex = booksStore.books.findIndex(
@@ -39,6 +47,8 @@ export default component$(() => {
     newBook.isInReadingList = true
 
     readingList.push(newBook)
+
+    saveStateLocally()
   })
 
   const removeBookFromReadingList = $((BookISBN: BookISBN) => {
@@ -52,6 +62,8 @@ export default component$(() => {
     if (removedBook) removedBook.isInReadingList = false
 
     readingList.splice(index, 1) // remove book from reading list
+
+    saveStateLocally()
   })
 
   const onBookSelect = $((bookISBN: BookISBN) => {
@@ -68,6 +80,8 @@ export default component$(() => {
     const sortingFunction = getSortingFunction(currentFilter.value)
 
     booksStore.books.sort(sortingFunction)
+
+    saveStateLocally()
   })
 
   const filteredByGenre =
