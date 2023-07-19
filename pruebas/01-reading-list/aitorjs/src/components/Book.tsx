@@ -1,21 +1,21 @@
 import { useBooksStore } from "../store/booksStore";
 
 const Book = ({ data }) => {
-  const { setWantReadBooks, filterBooks, books, setBooks } =
+  const { setWantReadBooks, filteredBooks, books, setBooks } =
     useBooksStore() as any;
 
   const handleClick = (isbn: string) => {
-    const index = filterBooks.findIndex((f) => {
+    const index = filteredBooks.findIndex((f) => {
       return f.book.ISBN === isbn;
     });
-    // const [wantRead] = filterBooks.splice(index, 1);
+    // const [wantRead] = filteredBooks.splice(index, 1);
 
-    const filtered = filterBooks.filter((f) => {
+    const filtered = filteredBooks.filter((f) => {
       return f.book.ISBN !== isbn;
     });
     console.log("filtered", filtered);
     console.log("books antes", books);
-    setWantReadBooks(filterBooks[index]);
+    setWantReadBooks(filteredBooks[index]);
     console.log("books despues", books);
 
     setBooks(filtered);

@@ -5,10 +5,11 @@ import Book from "./components/Book";
 import ReadList from "./components/ReadList";
 
 function App() {
-  const { getBooks, filterBooks, filters, filter, books } =
-    useBooksStore() as any;
+  const { getBooks, filteredBooks, filters, filter, books } = useBooksStore();
 
   useEffect(() => {
+    // si localstorage tiene data, usa esa
+
     getBooks();
   }, []);
 
@@ -26,7 +27,7 @@ function App() {
       <h1 className="text-6xl font-bold">Librería de libros</h1>
 
       <h2>
-        {filterBooks.length} libros disponibles {books.length}
+        {filteredBooks.length} libros disponibles {books.length}
       </h2>
 
       <div className="flex gap-3">
@@ -60,11 +61,11 @@ function App() {
 
       <p>Filters {JSON.stringify(filters)}</p>
 
-      {/* <p>Filter books {JSON.stringify(filterBooks)}</p> */}
+      {/* <p>Filter books {JSON.stringify(filteredBooks)}</p> */}
 
       <div className="flex">
         <div className="flex flex-wrap gap-2 w-4/5">
-          {filterBooks.map(({ book }) => (
+          {filteredBooks.map(({ book }) => (
             <Book key={book.ISBN} data={book} />
           ))}
         </div>

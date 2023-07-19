@@ -3,10 +3,12 @@
 } */
 
 export interface BooksState {
+  wantReadBooks: Book[]
+  filteredBooks: Book[]
   books: Book[]
+  filters: {}
   getBooks: () => void
   setBooks: (book: Book[]) => void
-  filters: {}
   filter: (name: string, value: string | number) => void
 }
 

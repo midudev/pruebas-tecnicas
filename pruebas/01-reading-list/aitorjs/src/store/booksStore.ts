@@ -4,16 +4,16 @@ import { Book, BooksState } from '../types'
 
 export const useBooksStore = create<BooksState>((set, get) => ({
   books: [],
-  filterBooks: [], // filteredBooks
+  filteredBooks: [], // filteredBooks
   wantReadBooks: [],
   filters: {},
   getBooks: () => {
     const books = booksJson.library
 
-    set((state) => ({ ...state, books, filterBooks: books }))
+    set((state) => ({ ...state, books, filteredBooks: books }))
   },
-  setBooks: (filterBooks) => {
-    set((state) => ({ ...state, filterBooks }))
+  setBooks: (filteredBooks) => {
+    set((state) => ({ ...state, filteredBooks }))
   },
   setWantReadBooks: (wantReadBook: Book) => {
     set((state) => {
@@ -34,7 +34,7 @@ export const useBooksStore = create<BooksState>((set, get) => ({
     const filters = get().filters
     const wantReadBooks = get().wantReadBooks
 
-    let base = get().filterBooks
+    let base = get().filteredBooks
 
     if (filters.genre === undefined && wantReadBooks.length > 0) {
       const books = get().books

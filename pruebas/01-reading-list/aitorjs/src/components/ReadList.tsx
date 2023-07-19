@@ -1,7 +1,7 @@
 import { useBooksStore } from "../store/booksStore";
 
 const ReadList = () => {
-  const { wantReadBooks, filterBooks, setBooks } = useBooksStore() as any;
+  const { wantReadBooks, filteredBooks, setBooks } = useBooksStore() as any;
 
   const handleClick = (isbn: string) => {
     const index = wantReadBooks.findIndex((f) => {
@@ -10,10 +10,10 @@ const ReadList = () => {
     console.log("index", index, wantReadBooks);
     const [wantNoRead] = wantReadBooks.splice(index, 1);
 
-    console.log("new books", [...filterBooks, wantNoRead]);
+    console.log("new books", [...filteredBooks, wantNoRead]);
     // setWantReadBooks(wantReadBooks);
 
-    setBooks([...filterBooks, wantNoRead]);
+    setBooks([...filteredBooks, wantNoRead]);
   };
 
   return (
