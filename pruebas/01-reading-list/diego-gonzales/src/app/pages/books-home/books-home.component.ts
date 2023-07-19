@@ -26,4 +26,12 @@ export default class BooksHomeComponent {
     '=1': '1 book',
     other: '# books',
   };
+
+  constructor() {
+    this._booksService.showSearchBox.set(true);
+  }
+
+  ngOnDestroy(): void {
+    this._booksService.showSearchBox.set(false);
+  }
 }

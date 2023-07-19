@@ -14,10 +14,7 @@ export class BooksService {
     () => this._bookList().length - this._readingList().length
   );
   totalBooksInReadingList = computed(() => this._readingList().length);
-
-  // constructor() {
-  //   this.getBooks();
-  // }
+  showSearchBox = signal<boolean>(false);
 
   get bookList() {
     return this._bookList.asReadonly();
@@ -42,7 +39,6 @@ export class BooksService {
   }
 
   updateReadingList(book: Book) {
-    // Update the field 'isFavorite' in the bookList
     this._bookList.mutate((value) => {
       const bookIndex = value.findIndex((b) => b.ISBN === book.ISBN);
       const favoriteValue = book.isFavorite ?? false;
@@ -50,7 +46,6 @@ export class BooksService {
       value[bookIndex].isFavorite = !favoriteValue;
     });
 
-    // Update the readingList
     this._readingList.mutate((value) => {
       const bookIndex = value.findIndex((b) => b.ISBN === book.ISBN);
       bookIndex === -1 ? value.unshift(book) : value.splice(bookIndex, 1);
