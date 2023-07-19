@@ -1,117 +1,46 @@
-import type { Book, BookISBN, Filter, Genre } from "~/types"
-
-import { $, component$, useSignal, useStore } from "@builder.io/qwik"
+import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik"
 import type { DocumentHead } from "@builder.io/qwik-city"
-import { BooksList } from "~/components/BooksList"
 import BOOKS from "~/db/books.json"
-import { ReadingList } from "~/components/ReadingList"
-import { Filters } from "~/components/Filters"
-import { getSortingFunction } from "~/helpers/getSortingFunction"
-import { GENRES_DICT } from "~/constants"
-import { saveLocally } from "~/helpers/saveLocally"
 
-const INITIAL_BOOKS = BOOKS.library.map(({ book }) => ({
+import { BooksLibrary } from "~/components/BooksLibrary"
+import type { Book } from "~/types"
+
+const INITIAL_BOOKS: Book[] = BOOKS.library.map(({ book }) => ({
   ...book,
   isInReadingList: false
 }))
 
+const INITIAL_READING_LIST: Book[] = []
+
 export default component$(() => {
-  const booksStore = useStore<{ books: Book[] }>({ books: INITIAL_BOOKS })
-  const currentFilter = useSignal<Filter>("title")
-  const currentGenre = useSignal<Genre>("all")
+  const readingList = useSignal<Book[]>(INITIAL_READING_LIST)
+  const books = useSignal<Book[]>(INITIAL_BOOKS)
+  const hasReadLocalStorage = useSignal(false)
 
-  const readingList: Book[] = useStore([])
+  useVisibleTask$(() => {
+    const savedBooks = localStorage.getItem("__books_list__")
+    const savedReadingList = localStorage.getItem("__reading_list__")
 
-  const saveStateLocally = $(() => {
-    saveLocally([
-      ["__reading_list__", readingList],
-      ["__books_list__", booksStore.books]
-    ])
-  })
-
-  const addBookToReadingList = $((newBookISBN: BookISBN) => {
-    const newBookIndex = booksStore.books.findIndex(
-      book => book.ISBN === newBookISBN
-    )
-
-    const bookExists = newBookIndex !== -1
-    if (!bookExists) return
-
-    const isAlreadyInReadingList = readingList.some(
-      book => book.ISBN === newBookISBN
-    )
-    if (isAlreadyInReadingList) return
-
-    const newBook = booksStore.books[newBookIndex]
-
-    newBook.isInReadingList = true
-
-    readingList.push(newBook)
-
-    saveStateLocally()
-  })
-
-  const removeBookFromReadingList = $((BookISBN: BookISBN) => {
-    const index = readingList.findIndex(book => book.ISBN === BookISBN)
-
-    const bookExists = index !== -1
-    if (!bookExists) return
-
-    const removedBook = booksStore.books.find(book => book.ISBN === BookISBN)
-
-    if (removedBook) removedBook.isInReadingList = false
-
-    readingList.splice(index, 1) // remove book from reading list
-
-    saveStateLocally()
-  })
-
-  const onBookSelect = $((bookISBN: BookISBN) => {
-    const bookIsInReadingList = readingList.some(book => book.ISBN === bookISBN)
-
-    if (bookIsInReadingList) {
-      removeBookFromReadingList(bookISBN)
-    } else {
-      addBookToReadingList(bookISBN)
+    if (savedBooks) {
+      books.value = JSON.parse(savedBooks)
     }
+
+    if (savedReadingList) {
+      readingList.value = JSON.parse(savedReadingList)
+    }
+
+    hasReadLocalStorage.value = true
   })
 
-  const sortBooks = $(() => {
-    const sortingFunction = getSortingFunction(currentFilter.value)
-
-    booksStore.books.sort(sortingFunction)
-
-    saveStateLocally()
-  })
-
-  const filteredByGenre =
-    currentGenre.value === "all"
-      ? booksStore.books
-      : booksStore.books.filter(
-          book => book.genre.toLowerCase() === GENRES_DICT[currentGenre.value]
-        )
-
-  return (
-    <section class="relative">
-      <Filters
-        onFilterChange={$((filter: Filter) => {
-          currentFilter.value = filter
-          sortBooks()
-        })}
-        onGenreChange={$((genre: Genre) => {
-          currentGenre.value = genre
-        })}
-      />
-
-      <BooksList books={filteredByGenre} onBookSelect={onBookSelect} />
-
-      <div class="sticky bottom-0 mt-8 z-30">
-        <ReadingList
-          books={readingList}
-          onBookSelect={removeBookFromReadingList}
-        />
-      </div>
-    </section>
+  return hasReadLocalStorage.value ? (
+    <BooksLibrary
+      initialBooks={books.value}
+      initialReadingList={readingList.value}
+    />
+  ) : (
+    <div class="text-5xl text-white w-full flex justify-center items-center h-screen">
+      loading...
+    </div>
   )
 })
 
