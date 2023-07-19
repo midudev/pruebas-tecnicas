@@ -1,24 +1,17 @@
 import styled from 'styled-components'
 import Listbox from './components/Listbox'
-import books from './mocks/books.json'
+import { BooksProvider } from './context/BooksContext'
 
 function App () {
-  const hasBooks = books.library.length > 0
   return (
-    <Container>
-      <Header>
-        <h1 className='head'>Reading BOOKS</h1>
-      </Header>
-      {
-        hasBooks
-          ? (
-            <Listbox />
-            )
-          : (
-            <p>Sin libros</p>
-            )
-      }
-    </Container>
+    <BooksProvider>
+      <Container>
+        <Header>
+          <h1 className='head'>Reading BOOKS</h1>
+        </Header>
+        <Listbox />
+      </Container>
+    </BooksProvider>
   )
 }
 

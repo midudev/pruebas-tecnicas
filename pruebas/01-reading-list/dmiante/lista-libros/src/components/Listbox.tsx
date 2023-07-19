@@ -1,13 +1,16 @@
+import { useContext } from 'react'
 import { styled } from 'styled-components'
-import books from '../mocks/books.json'
-// import { IBook, IAuthor } from '../types/Library.types'
+import { BookContext } from '../context/BooksContext'
 
 export default function Listbox () {
+  const { books } = useContext(BookContext)
+  // console.log(books)
+
   return (
     <ListBooks>
       <ul>
         {
-          books.library.map(({ book }) => (
+          books.map(({ book }) => (
             <li key={book.ISBN}>
               <img
                 src={book.cover}
@@ -30,8 +33,12 @@ const ListBooks = styled.section`
     gap: 16px;
   }
 
+  li {
+  }
+
   img {
     width: 100%;
     height: 100%;
+    border-radius: 4%;
   }
 `

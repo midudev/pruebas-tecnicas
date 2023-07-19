@@ -1,8 +1,8 @@
 export interface Library {
-  library: LibraryElement[]
+  library: Collection[]
 }
 
-export interface LibraryElement {
+export interface Collection {
   book: Book
 }
 
