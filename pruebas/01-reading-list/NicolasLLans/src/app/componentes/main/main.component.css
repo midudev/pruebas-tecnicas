@@ -86,6 +86,36 @@ label {
       height: 56px;
 }
 
+.image-container {
+      height: 200px;
+}
+
+.image-container img {
+      cursor: pointer;
+}
+
+.overlay {
+      position: relative;
+      bottom: -50%;
+      left: 30%;
+}
+
+.close-button {
+      border-radius: 50%;
+      padding: 15px;
+      background-color: var(--color-detalle);
+      opacity: 0;
+      cursor: pointer;
+}
+
+.close-button:hover {
+      border-radius: 50%;
+      padding: 15px;
+      background-color: var(--color-detalle);
+      opacity: 1;
+      border: none;
+}
+
 
 @media (max-width:870px) {
       .contenedor-milista h2 {
@@ -94,6 +124,11 @@ label {
 
       .barra-filtros {
             height: 200px;
+      }
+      .overlay {
+            position: relative;
+            bottom: -66%;
+            left: 33%;
       }
 }
 
@@ -131,4 +166,13 @@ label {
             font-size: 18px;
       }
 
+      .image-container {
+            height: 140px;
+      }
+
+      .overlay {
+            position: relative;
+            bottom: -70%;
+            left: 24%;
+      }
 }
