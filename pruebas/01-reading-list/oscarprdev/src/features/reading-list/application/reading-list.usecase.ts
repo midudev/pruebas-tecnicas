@@ -33,7 +33,9 @@ export class ReadingListUsecase extends StateUsecase {
       this.state.readingBooks,
       book
     )
-    const booksList = this.addBookToBooksList(this.state.books, book)
+    const bookUpdated = { ...book, currentPage: 0, stars: 0 }
+
+    const booksList = this.addBookToBooksList(this.state.books, bookUpdated)
 
     const stateUpdated = this.readingListPorts.removeBook(
       booksList,

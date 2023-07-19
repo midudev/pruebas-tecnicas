@@ -40,7 +40,8 @@
     <h3>
       ¿Estas seguro que quieres borrar <b><i>{book.title}</i></b>
       de la lista de lectura?
-      <span class=" text-pagination"><b>¡Perderas todo el progreso!</b></span>
+      <span class=" text-pagination"><b>¡Perderas todo tu progreso! 😱</b></span
+      >
     </h3>
     <button
       class="self-center px-7 py-3 w-fit rounded-3xl text-light bg-overlayModal cursor-pointer hover:bg-nav duration-100"

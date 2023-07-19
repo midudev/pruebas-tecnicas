@@ -18,7 +18,7 @@
       <li
         class="grid place-items-center h-16 bg-aside p-5 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]"
       >
-        <p>No se han encontrado libros disponibles</p>
+        <p>No se han encontrado libros disponibles! 😰</p>
       </li>
     {/if}
   </ul>

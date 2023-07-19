@@ -41,7 +41,7 @@ module.exports = {
     },
     fill: {
       removeIcon: '#161617cc',
-      dark: '#000000'
+      dark: '#000000',
     },
     extend: {
       height: {
@@ -50,7 +50,7 @@ module.exports = {
       },
       width: {
         '500': '500px',
-        "800": "800px",
+        '800': '800px',
         '1090': '1090px',
       },
       maxHeight: {
@@ -78,7 +78,7 @@ module.exports = {
         },
       },
       animation: {
-        'fade-in': 'fade-in 0.1s ease-in-out',
+        'fade-in': 'fade-in 0.25s ease-in-out',
         'slide-in': 'slide-in 0.5s ease-in-out',
       },
       transitionProperty: {
