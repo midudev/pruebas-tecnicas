@@ -1,3 +1,4 @@
+import { ALL_CATEGORIES } from '../constants'
 import { useBookZustandStore } from '../hooks/useBookZustandStore'
 import { useBooksCategories } from '../hooks/useBooksCategories'
 import { useFilteredBooks } from '../hooks/useFilteredBooks'
@@ -10,7 +11,7 @@ export function Select () {
   const handleChange = async (e) => {
     const categoryValue = e.target.value
 
-    if (categoryValue === 'Todas') {
+    if (categoryValue === ALL_CATEGORIES) {
       updateGenderFilter(categoryValue)
       updateBooks(filteredBooks)
       return

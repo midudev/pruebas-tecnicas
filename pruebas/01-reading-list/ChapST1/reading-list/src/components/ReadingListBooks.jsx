@@ -1,7 +1,8 @@
+import { ALL_CATEGORIES } from '../constants'
 import { useBookZustandStore } from '../hooks/useBookZustandStore'
 
 export function ReadingListBooks ({ book }) {
-  const { updateBooks, updateReadingList, books, readingList, genderFiter } = useBookZustandStore()
+  const { updateBooks, updateReadingList, books, readingList, genderFilter } = useBookZustandStore()
   const currentId = book.ISBN
 
   const handleClick = () => {
@@ -9,8 +10,8 @@ export function ReadingListBooks ({ book }) {
     const newReadingList = readingList.filter(({ book }) => book.ISBN !== currentId)
     const newBooks = [...books, findBook]
 
-    if (genderFiter !== 'Todas') {
-      const filterBooks = newBooks.filter(({ book }) => book.genre === genderFiter)
+    if (genderFilter !== ALL_CATEGORIES) {
+      const filterBooks = newBooks.filter(({ book }) => book.genre === genderFilter)
       updateBooks(filterBooks)
       updateReadingList(newReadingList)
       return

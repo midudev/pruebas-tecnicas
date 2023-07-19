@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useBookZustandStore } from '../hooks/useBookZustandStore'
 import { useFilteredBooks } from '../hooks/useFilteredBooks'
 import { usePagesNumber } from '../hooks/usePagesNumber'
+import { ALL_CATEGORIES } from '../constants'
 
 export function Range () {
   const { filteredBooks } = useFilteredBooks()
@@ -17,7 +18,7 @@ export function Range () {
   }
 
   useEffect(() => {
-    if (genderFilter === 'Todas') {
+    if (genderFilter === ALL_CATEGORIES) {
       const newBooks = filteredBooks.filter(({ book }) => book.pages >= pageFilter)
       updateBooks(newBooks)
       return
@@ -27,7 +28,7 @@ export function Range () {
     const newBooks = filterBooks.filter(({ book }) => book.pages >= pageFilter)
 
     updateBooks(newBooks)
-  }, [pageFilter, updateBooks, genderFilter])
+  }, [pageFilter, updateBooks, genderFilter]) // eslint-disable-line
 
   return (
     <label htmlFor='range' className=''>

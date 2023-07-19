@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { getThePagesNumber } from '../services/getThePagesNumber'
+import { getThePagesNumber } from '../services/api/getThePagesNumber'
 
 export function usePagesNumber () {
   const [pagesNumber, setPagesNumber] = useState([])

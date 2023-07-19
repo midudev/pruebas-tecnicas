@@ -1,10 +1,11 @@
 import { create } from 'zustand'
+import { ALL_CATEGORIES } from '../constants'
 
 export const useBookStore = create((set, get) => ({
   books: [],
   readingList: [],
   pageFilter: 0,
-  genderFilter: 'Todas',
+  genderFilter: ALL_CATEGORIES,
 
   updateBooks: (books) => set({ books }),
   updateReadingList: (readingList) => set({ readingList }),

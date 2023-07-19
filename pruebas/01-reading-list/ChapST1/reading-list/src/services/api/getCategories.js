@@ -1,11 +1,12 @@
-import { API_URL } from './constants'
+import { ALL_CATEGORIES } from '../../constants'
+import { API_URL } from './config'
 import { getBooks } from './getBooks'
 
 export async function getBooksCategories () {
   const books = await getBooks(API_URL)
 
   const booksCategories = books.map(({ book }) => book.genre)
-  const filterCategories = new Set(['Todas', ...booksCategories])
+  const filterCategories = new Set([ALL_CATEGORIES, ...booksCategories])
 
   return Array.from(filterCategories)
 }

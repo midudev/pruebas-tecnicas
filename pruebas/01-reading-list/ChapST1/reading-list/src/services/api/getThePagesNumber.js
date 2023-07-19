@@ -1,4 +1,4 @@
-import { getBooks } from './api/getBooks'
+import { getBooks } from './getBooks'
 
 export async function getThePagesNumber () {
   const books = await getBooks()
