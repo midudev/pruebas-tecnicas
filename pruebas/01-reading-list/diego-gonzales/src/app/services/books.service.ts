@@ -12,29 +12,19 @@ export class BooksService {
   private _httpClient = inject(HttpClient);
   private _bookList = signal<Book[]>([]);
   private _readingList = signal<Book[]>([]);
-  totalBooksAvailable = computed(
-    () => this._bookList().length - this._readingList().length
-  );
-  totalBooksInReadingList = computed(() => this._readingList().length);
+
   showSearchBox = signal<boolean>(false);
   filters = signal<Filters>({
+    search: '',
     genre: GENRES.ALL,
     pages: 1500,
   });
 
-  filteredBooks = computed(() => {
-    const { genre, pages } = this.filters();
-
-    return this._bookList().filter((book) =>
-      genre !== GENRES.ALL
-        ? book.genre === genre && book.pages <= pages
-        : book.pages <= pages
-    );
-  });
-
-  get bookList() {
-    return this._bookList.asReadonly();
-  }
+  totalBooksAvailable = computed(
+    () => this._bookList().length - this._readingList().length
+  );
+  totalBooksInReadingList = computed(() => this._readingList().length);
+  filteredBooks = computed(() => this.filterBooks());
 
   get readingList() {
     return this._readingList.asReadonly();
@@ -66,5 +56,18 @@ export class BooksService {
       const bookIndex = value.findIndex((b) => b.ISBN === book.ISBN);
       bookIndex === -1 ? value.unshift(book) : value.splice(bookIndex, 1);
     });
+  }
+
+  filterBooks() {
+    const { search, genre, pages } = this.filters();
+
+    return this._bookList().filter((book) =>
+      genre !== GENRES.ALL
+        ? book.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()) &&
+          book.genre === genre &&
+          book.pages <= pages
+        : book.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()) &&
+          book.pages <= pages
+    );
   }
 }

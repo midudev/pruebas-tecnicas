@@ -13,4 +13,12 @@ import { BooksService } from './services/books.service';
 export class AppComponent {
   private _booksService = inject(BooksService);
   showSearchBox = this._booksService.showSearchBox;
+
+  onInputChange(event: Event) {
+    const value = (event.target as HTMLInputElement).value.trim();
+
+    this._booksService.filters.mutate((filters) => {
+      filters.search = value;
+    });
+  }
 }
