@@ -21,19 +21,18 @@ function FilterBar() {
 
   const { libraryState, setLibraryState } = useLibrary();
 
-  const [active, setActive] = useState();
-
   const changeFilter = useCallback(
     (value) => {
-      if (value === active) setActive("");
-      else setActive(value);
+      if (value === libraryState.filtering)
+        setLibraryState({ type: "toggle-filter", filtering: "" });
+      else setLibraryState({ type: "toggle-filter", filtering: value });
     },
-    [active]
+    [libraryState, setLibraryState]
   );
 
   useEffect(() => {
-    setLibraryState({ type: "toggle-filter", filtering: active });
-  }, [active]);
+    setLibraryState({ type: "toggle-filter", filtering: "" });
+  }, [libraryState.seeing]);
 
   const filterContainer = useRef(null);
   const [arrows, setArrows] = useState(false);
@@ -109,7 +108,7 @@ function FilterBar() {
           <Genre
             key={genre}
             genre={genre}
-            active={active === genre}
+            active={libraryState.filtering === genre}
             onClick={changeFilter}
           />
         ))}
