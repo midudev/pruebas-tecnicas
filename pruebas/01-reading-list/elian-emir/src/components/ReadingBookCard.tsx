@@ -1,4 +1,5 @@
 import useBooksStore from '../hooks/useBooksStore'
+import '../css/BookCard.css'
 import { IBook } from '../types'
 
 interface Props {

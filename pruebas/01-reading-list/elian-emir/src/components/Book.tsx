@@ -24,7 +24,7 @@ const Book = ({ book }: Props) => {
       <h3 className='heading'>{book.title}</h3>
       <img src={book.cover} alt={`Tapa de libro ${book.title}`} width={300} loading='lazy' />
       {
-        isInReadingList ? <p>Ya se encuentra en su lista</p> :
+        isInReadingList ? <p className='text-warning'>Ya se encuentra en su lista</p> :
         (<button className='btn' onClick={()=> addBooksToReadingList(book.ISBN)}>Agregar a lista de lectura</button>)
       }
     </div>

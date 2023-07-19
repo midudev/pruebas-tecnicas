@@ -1,7 +1,8 @@
 import { booksStore } from '../store/booksStore'
+import { fetchBooksData } from './fetch'
 
 export function selectGenre() {
-  const books = booksStore((state) => state.books)
+  const books = fetchBooksData()
   const genreAvalaibles = books.map((b) => b.genre)
   const genre: string[] = []
   for (const gen of genreAvalaibles) {

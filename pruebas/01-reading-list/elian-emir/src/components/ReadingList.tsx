@@ -8,14 +8,12 @@ const ReadingList = () => {
   return (
     <aside className='h-screen reading-list-container'>
       <h2 className='heading'>Lista de lectura</h2>
-      <span>{countBookToRead}</span>
-      {
-        readingList?.map(book => {
-          return (
-            <ReadingBookCard book={book} />
-          )
-        })
-      }
+      <p>
+        Libros disponibles: <span>{countBookToRead}</span>
+      </p>
+      {readingList?.map((book) => {
+        return <ReadingBookCard book={book} key={book.ISBN} />
+      })}
     </aside>
   )
 }

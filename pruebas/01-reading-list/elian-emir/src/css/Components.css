@@ -1,23 +1,26 @@
 .heading {
   text-align: center;
+  font-size: 1.7rem;
 }
 
 .btn {
   all: unset;
   padding: 1rem;
   text-align: center;
-  color: white;
+  color: var(--colorPrimary);
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 400;
   font-size: medium;
   display: block;
   margin: 0 auto;
-  background-color: rgb(131, 58, 180);
+  border: solid 1px var(--colorPrimary);
   border-radius: 0.5rem;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  background-color: var(--colorBg);
 }
 
 .btn:hover {
   cursor: pointer;
-  background-color:rgba(253, 29, 29, 1);
+  border-color: var(--colorAccent);
+  color: var(--colorAccent)
 }

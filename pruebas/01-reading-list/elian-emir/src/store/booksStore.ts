@@ -8,21 +8,28 @@ interface BooksState {
   readingList: IBook[]
   countBookAvalaible: number
   countBookToRead: number
+  filterByGenre: string
   addBooksToReadingList: (isbn: string) => void
   removeBookOfList: (isbn: string) => void
+  setFilterByGenre: (genre: string) => void
 }
-const booksmaped = fetchBooksData()
+const mappedBooks = fetchBooksData()
 export const booksStore = create<BooksState>()(
   persist(
     (set, get) => {
       return {
-        books: booksmaped,
+        books: mappedBooks,
         readingList: [],
-        countBookAvalaible: booksmaped.length,
+        countBookAvalaible: mappedBooks.length,
         countBookToRead: 0,
+        filterByGenre: '',
+        setFilterByGenre: (genre) => {
+          set((state) => ({
+            filterByGenre: genre
+          }))
+        },
         addBooksToReadingList: (isbn) => {
           const { books } = get()
-
           const bookToAdd = books.find((b) => b.ISBN === isbn)
           if (bookToAdd) {
             set((state) => ({
