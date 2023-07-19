@@ -1,3 +1,5 @@
+export const KEY_STORAGE = 'data';
+
 export const BOOK_MAPPING = {
   '=0': 'No books',
   '=1': '1 book',
