@@ -67,22 +67,16 @@ export const useBooksStore = create<BooksState>(
       }
 
       // no genre + no want books + to "Todos los generos"
-      else if (filters.genre === undefined && wantReadBooks.length === 0 && nextGenre === undefined) {
+      // genre + want books + to/from > or < page
+      // genre + no want books
+      else if (
+        (filters.genre === undefined && wantReadBooks.length === 0 && nextGenre === undefined) ||
+        (filters.genre && wantReadBooks.length > 0 && prevPages > nextPages || prevPages < nextPages) ||
+        (filters.genre && wantReadBooks.length === 0)) {
         base = get().books
         console.log('vuelta a todos los books sin want books', base)
       }
 
-      // genre + want books + to/from > or < page
-      else if (filters.genre && wantReadBooks.length > 0 && prevPages > nextPages || prevPages < nextPages) {
-        base = get().books
-        console.log('PRIMERA OPCION', base, filters)
-      }
-
-      // genre + no want books
-      else if (filters.genre && wantReadBooks.length === 0) {
-        base = get().books
-        console.log('SEGUNDA OPCION', base, filters)
-      }
       console.log('filters', filters)
 
       // filter using filters properties
