@@ -7,8 +7,8 @@
 - [x] Maquetar con tailwind como se ve el listado de book (16/07/2023)
 - [x] Filtros: número de páginas y tipo de libro (17/07/2023)
 - [x] Lista de lectura (18/07/2023)
-- [ ] Persistencia en localstorage
-- [ ] Sincronización de pestañas
+- [x] Persistencia en localstorage (19/07/2023)
+- [ ] Sincronización de pestañas https://www.threads.net/@midu.dev/post/CumWgyPN89G
 - [ ] Test
 - [ ] Despliegue en Vercel
 - [ ] Mejorar estilos

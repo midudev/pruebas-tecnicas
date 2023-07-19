@@ -26,7 +26,10 @@ export const useBooksStore = create<any>(persist(
       // set filters
       set((state) => {
         if (value !== '') { //  && name !== 'old'
-          return { ...state, filters: { ...state.filters, [name]: value, old: { dato: state.filters } } }
+          return {
+            ...state,
+            filters: { ...state.filters, [name]: value, old: { dato: state.filters } }
+          }
         }
 
         return {
@@ -67,7 +70,6 @@ export const useBooksStore = create<any>(persist(
           return true
         })
         base = excludeWantReadBooks
-        // return get().setBooks(excludeWantReadBooks)
       }
 
       // no genre + no want books + to "Todos los generos"
@@ -101,31 +103,3 @@ export const useBooksStore = create<any>(persist(
     name: 'booksLibrary',
     getStorage: () => localStorage
   }))
-
-/*  filterGenre: (genre: string) => {
-  set((state) => {
-    console.log('a', state)
-    return ({ ...state, _filters: { ...state._filters, genre } })
-  })
-
-  const filtered = get().books.filter((d) => {
-    return d.book.genre === genre
-  })
-
-  console.log('filtered', filtered)
-  get().setBooks(filtered)
-},
-
-filterPages: (pages: number) => {
-  set((state) => {
-    // console.log('a', state)
-    return ({ ...state, _filters: { ...state._filters, pages } })
-  })
-  console.log('BOOKS', get().books, pages)
-  const filtered = get().books.filter((d) => {
-    return d.book.pages <= pages
-  })
-
-  console.log('filtered2', filtered)
-  get().setBooks(filtered)
-} */

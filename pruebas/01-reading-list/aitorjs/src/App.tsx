@@ -5,15 +5,26 @@ import Book from "./components/Book";
 import ReadList from "./components/ReadList";
 
 function App() {
-  const {
-    getBooks,
-    filteredBooks,
-    filters,
-    filter,
-    books,
-    wantReadBooks,
-    setBooks,
-  } = useBooksStore();
+  const { getBooks, filteredBooks, filters, filter, books } = useBooksStore();
+
+  useEffect(() => {
+    window.addEventListener("storage", (event) => {
+      if (event.type === "storage") {
+        window.location.reload(true);
+        // const library = JSON.parse(localStorage.getItem("booksLibrary"));
+        // const newValue = JSON.parse(event.newValue);
+        // console.log("EVENT", library.state, books.length, filters);
+        /*   localStorage.setItem(
+          "booksLibrary",
+          JSON.stringify({
+            ...library,
+            filteredBooks: JSON.stringify(event.newValue),
+          })
+        );
+ */
+      }
+    });
+  }, []);
 
   useEffect(() => {
     const data = window.localStorage.getItem("booksLibrary");
@@ -23,8 +34,8 @@ function App() {
 
     if (!isData) {
       getBooks();
-    } else {
-      /* if (filters.pages <= 0) {
+    } /* else { */
+    /* if (filters.pages <= 0) {
         const excludeIsbn = wantReadBooks.map((w) => w.book.ISBN);
         console.log(
           "excludeWantReadBooks",
@@ -41,7 +52,7 @@ function App() {
         console.log("excludeWantReadBooks", excludeWantReadBooks);
         setBooks(excludeWantReadBooks);
       } */
-    }
+    // }
   }, []);
 
   const filterGenreBooks = (genre: string) => {
