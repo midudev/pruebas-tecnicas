@@ -2,6 +2,9 @@ import { FC, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 
+import { Menu } from '../components';
+import '../styles/AppLayout.css';
+
 interface Props {
     children: React.ReactNode;
 }
@@ -28,8 +31,11 @@ export const AppLayout:FC<Props> = ({ children }) => {
             </div>
             </header>
         
-            <main>
-                { children }
+            <main className='main_container'>
+                <Menu books={location.pathname === '/' ? availableBooks : readingBooks} />
+                <section className='main__content'>
+                    { children }
+                </section>
             </main>
       </>
     )
