@@ -27,7 +27,8 @@ const [books, read, setFilters]=useFilter()
                 title={element.title}
                 cover={element.cover}
                 book={element}
-                modifiers={modifiers}/>
+                modifiers={modifiers}
+                add={false}/>
             )
         })}
         </div>

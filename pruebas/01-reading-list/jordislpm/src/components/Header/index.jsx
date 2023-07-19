@@ -14,9 +14,7 @@ const [books, read, setFilters]=useFilter()
 
   return (
     <div className={styles.header}>
-      Header
-
-        <h1>Book Lover</h1>
+           <h1>Book Lover</h1>
         <p className={styles.availables}>{`Tienes ${books.length} libros disponibles`}</p>
         <p className={styles.read}>{`Tienes ${read.length} libros en tu lista de lectura`}</p>
         <Form/>

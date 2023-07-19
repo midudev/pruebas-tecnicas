@@ -1,11 +1,15 @@
 .book{
 display: flex;
-border: 2px solid blue;
-border-radius: 4%;
+flex-direction: column;
+border: 2px solid var(--primary-blue);
+justify-content: center;
+align-items: center;
+gap: 0.5rem;
+border-radius: 8px;
 overflow: hidden;
 max-width: 200px;
-height: max-content;
-max-height: 250px; 
+height: max-content; 
+padding: 0.4rem 0.1rem 0.4rem 0.1rem;
 }
 
 .cover{
@@ -14,6 +18,43 @@ max-height: 250px;
     height: auto;
 }
 
-.book:hover{
+.tittle{
+    text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--secundary-blue);
+    min-height: 3rem;  
+}
+
+.img{
+    display: flex;
+    min-width: 90%;
+    max-height: 200px;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 1.5rem;
+    border: none;
+    border-radius: 20%;
+    transition: transform .2s;
+    }
+
+.button:hover{
     cursor: pointer;
+    transform: scale(1.1);
+}
+
+.add{
+    background-color: var(--primary-blue);
+}
+.remove{
+    background-color: red;
+}
+
+.icon{
+    max-width: 100%;
 }

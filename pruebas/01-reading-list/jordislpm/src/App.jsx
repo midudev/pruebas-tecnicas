@@ -14,13 +14,12 @@ function App() {
   const [call, setCall]= useState(true)
   const [store,dispatch] = useContext(BooksAvailable);
   const {listBooks, listRead} = store;
-  const [book, reads, setFilters]= useFilter(books);
 
   const localMemory = localStorage.getItem("books");
-  const [persist, setpersist]= useState(JSON.parse(localMemory));
-
 
   useEffect(()=>{
+
+
    window.addEventListener('storage',event =>{
     const newStateLocal = JSON.parse(event.newValue)
       if(event.key === "books"){
@@ -29,9 +28,7 @@ function App() {
           dispatch({type:"syncTabs", book:newStateLocal})
           
          }
-      }
-      
-     
+      } 
     })
    
   },[localMemory])

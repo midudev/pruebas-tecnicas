@@ -32,7 +32,8 @@ return (
                 id={element.id}
                 title={element.title}
                 cover={element.cover}
-                modifiers={modifiers}/>
+                modifiers={modifiers}
+                add={true}/>
             )
        })}
         </ul>
