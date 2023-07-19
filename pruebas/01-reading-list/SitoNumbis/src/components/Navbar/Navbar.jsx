@@ -70,7 +70,7 @@ function Navbar() {
             className="w-10 h-10 rounded-full"
             loading="lazy"
             src={noPhoto}
-            alt="user-photo"
+            alt="user"
           />
         </nav>
       </div>

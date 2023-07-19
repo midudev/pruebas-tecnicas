@@ -92,7 +92,7 @@ function FilterBar() {
         <button
           onClick={swipeRight}
           aria-label={languageState.texts.ariaLabels.genreLeft}
-          aria-disabled={`${barMovement === 0}`}
+          aria-disabled={barMovement === 0}
           disabled={barMovement === 0}
           className={`left-0 ${styles.arrowButton}`}
         >
@@ -118,7 +118,7 @@ function FilterBar() {
         <button
           onClick={swipeLeft}
           aria-label={languageState.texts.ariaLabels.genreRight}
-          aria-disabled={`${barMovement === barMaxPosition}`}
+          aria-disabled={barMovement === barMaxPosition}
           disabled={barMovement === barMaxPosition}
           className={`right-0 ${styles.arrowButton}`}
         >

@@ -7,7 +7,7 @@ function Badge({ show, number, children }) {
   return (
     <div className="relative">
       {number && show > 0 ? (
-        <p role="badge" className={`aGrow ${styles.main}`}>
+        <p className={`aGrow ${styles.main}`}>
           {number}
         </p>
       ) : null}

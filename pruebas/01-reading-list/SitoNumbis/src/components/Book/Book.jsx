@@ -34,8 +34,12 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
 
   const activateLightBox = (e) => {
     // ignoring add to reading list action
-    if (e.target.nodeName === "BUTTON") return;
+    if (e && e.target.nodeName === "BUTTON") return;
     setLightBoxState({ type: "set", id: ISBN });
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 13) activateLightBox();
   };
 
   const [hide, setHide] = useState(false);
@@ -60,11 +64,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
   }, [libraryState]);
 
   return !hide ? (
-    <article
-      id={ISBN}
-      onClick={activateLightBox}
-      className={`book ${styles.main} appear`}
-    >
+    <article id={ISBN} className={`book ${styles.main} appear`}>
       <img
         className="w-full h-full object-cover object-center shadow-[black] shadow-md transition"
         src={cover}
@@ -72,7 +72,10 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
       />
       <Marker show={isInReadingList} />
       <div
-        role="info"
+        role="button"
+        tabIndex={0}
+        onKeyDown={handleKeyDown}
+        onClick={activateLightBox}
         className={`group ${styles.bookInfoContainer} ${
           isInReadingList ? "!opacity-100" : ""
         }`}
