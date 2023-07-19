@@ -33,7 +33,7 @@ function Navbar() {
       <div className={styles.navContainer}>
         <Link to="/">
           <h1
-            className="bg-primary px-3 py-2 uppercase font-extrabold"
+            className="px-3 py-2 uppercase font-extrabold"
             aria-label={languageState.texts.ariaLabels.logo}
           >
             {languageState.texts.logo}
