@@ -22,7 +22,9 @@ const Toggle = () => {
   const { open, toggle } = useContext(FlyOutContext);
   return (
     <button
-      className={`rounded-full ${open ? "rounded-br-none" : ""} bg-slate-100`}
+      className={`rounded-full ${
+        open ? "rounded-br-none " : ""
+      } bg-slate-100 duration-200`}
       onClick={() => toggle(!open)}
     >
       <MenuIcon />

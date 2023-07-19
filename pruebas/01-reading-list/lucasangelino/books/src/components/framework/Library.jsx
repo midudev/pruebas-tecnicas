@@ -1,21 +1,11 @@
-import Book from "./Book";
+import { ReadingList } from "./ReadingList";
+import { AvailableBooks } from "./AvailableBooks";
 
-export const Library = ({ library, addToReadingList }) => {
+export const Library = () => {
   return (
-    <section>
-      <h3 className="text-left text-3xl text-slate-800">Books</h3>
-      <p className="text-left">{library.length} libro(s)</p>
-      <ul className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {library.map(({ book }) => {
-          return (
-            <li key={book.title}>
-              <Book book={book} addToReadingList={addToReadingList} />
-            </li>
-          );
-        })}
-      </ul>
-    </section>
+    <div className="grid grid-cols-4">
+      <AvailableBooks />
+      {/* <ReadingList /> */}
+    </div>
   );
 };
-
-export default Library;
