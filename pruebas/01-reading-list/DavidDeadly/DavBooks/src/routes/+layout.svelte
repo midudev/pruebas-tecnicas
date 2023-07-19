@@ -22,7 +22,9 @@
 
   :global(body) {
     height: 100dvh;
-    margin-inline: 15%;
+    /* margin-inline: 15%; */
+    max-width: 1200px;
+    margin: auto;
     background-color: var(--primary);
     font-family: 'Roboto Slab Variable', sans-serif;
   }

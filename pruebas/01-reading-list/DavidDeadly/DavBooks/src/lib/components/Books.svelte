@@ -2,7 +2,7 @@
   import Book from './Book.svelte';
 
   export let books: IBook[];
-  export let booksWidth = '250px';
+  export let booksWidth = '200px';
   export let isReadingList = false;
   export let booksAction: IBooks.BookAction;
 </script>

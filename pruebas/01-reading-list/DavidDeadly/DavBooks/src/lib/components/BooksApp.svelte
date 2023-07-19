@@ -1,20 +1,21 @@
 <script lang="ts">
   import { booksStore } from '$lib';
+  import { page } from '$app/stores';
 
   import Books from './Books.svelte';
   import ReadingList from './ReadingList.svelte';
 
-  export let books: IBook[];
+  export let filteredBooks: IBook[];
   let readingBooks: IBook[] = [];
 
   $: readingBooks = $booksStore.readingList
-    .map(id => $booksStore.books.find(b => b.ISBN === id))
+    .map(id => $page.data.books.find(b => b.ISBN === id))
     .filter(Boolean) as IBook[];
 </script>
 
 <main>
   <section>
-    <Books {books} booksAction={$booksStore.add} />
+    <Books books={filteredBooks} booksAction={$booksStore.add} />
   </section>
 
   <aside>

@@ -1,21 +1,21 @@
 import { create } from "zustand";
 import { svelteBooksStore } from "./svelteBooksStore";
-import { getAllBooksMapped } from "../services/books";
 import { subscribeToStorage } from "./middlewares/subscribeToStorage";
 import { devtools, persist } from "zustand/middleware";
+import { page  } from "$app/stores";
+import { get as getAppStore } from "svelte/store";
+import type { PageData } from "../../routes/$types";
 
 export const LIBRARY = 'Library'
 
 const store = create(devtools(persist(subscribeToStorage((set, get) => ({
   readingList: [],
-  books: [],
-  getBooks() {
-    const books = getAllBooksMapped();
-
-    set({ books });
-  },
   add(id) {
-    const { readingList: value, books } = get();
+    const { readingList: value } = get();
+    const { data } = getAppStore(page);
+    const { books } = data as PageData;
+
+
     const bookIndex = books.findIndex(book => book.ISBN === id);
     const book = books.at(bookIndex);
 
@@ -28,7 +28,10 @@ const store = create(devtools(persist(subscribeToStorage((set, get) => ({
   },
 
   remove(id) {
-    const { readingList: value, books } = get();
+    const { readingList: value } = get();
+    const { data } = getAppStore(page);
+    const { books } = data as PageData;
+
     const bookIndex = books.findIndex(book => book.ISBN === id);
     const book = books.at(bookIndex);
 

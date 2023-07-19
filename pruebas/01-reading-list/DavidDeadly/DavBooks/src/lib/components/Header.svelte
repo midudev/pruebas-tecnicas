@@ -6,7 +6,7 @@
   export let numAvaileblesBooks: number;
 </script>
 
-<nav>
+<header>
   <div class="icon">
     <DavBooksIcon width="100px" />
   </div>
@@ -22,10 +22,10 @@
     noBooksTitle="No hay libros disponibles"
   />
   <Filters on:filteredBooks />
-</nav>
+</header>
 
 <style>
-  nav {
+  header {
     width: 60%;
     display: flex;
     margin-block: 25px;

@@ -1,20 +1,22 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-
   import { booksStore } from '$lib';
-  import Header from '../components/Header.svelte';
-  import BooksApp from '../components/BooksApp.svelte';
+  import Header from '$lib/components/Header.svelte';
+  import BooksApp from '$lib/components/BooksApp.svelte';
 
-  onMount(() => booksStore.getState().getBooks());
-
-  let books: IBook[] = $booksStore.books;
+  export let data;
+  let books: IBook[] = data.books;
 
   let numAvaileblesBooks: number = 0;
   $: numAvaileblesBooks = $booksStore.getNumAvaileblesBooks(books);
 </script>
 
+<svelte:head>
+  <title>DavBooks</title>
+  <meta name="description" content="DavBooks Library" />
+</svelte:head>
+
 <Header
   {numAvaileblesBooks}
   on:filteredBooks={({ detail: filteredBooks }) => (books = filteredBooks)}
 />
-<BooksApp {books} />
+<BooksApp filteredBooks={books} />

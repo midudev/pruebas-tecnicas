@@ -15,7 +15,7 @@
   $: sendBooksFiltered({ maxPages, genre });
 </script>
 
-<div style:opacity={$booksStore.books.length ? '1' : '0'} class="filters">
+<div class="filters">
   <label for={rangeInputId}>
     <RangeInput id={rangeInputId} bind:value={maxPages} />
   </label>

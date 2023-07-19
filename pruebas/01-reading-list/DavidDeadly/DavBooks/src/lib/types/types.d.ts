@@ -34,8 +34,6 @@ declare namespace IBooks {
   
   interface Store {
     readingList: string[];
-    books: IBook[];
-    getBooks: StoreAction;
     add: BookAction;
     remove: BookAction;
     reset: StoreAction;
