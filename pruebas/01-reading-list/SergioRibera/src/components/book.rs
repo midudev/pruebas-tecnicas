@@ -3,7 +3,7 @@ use yew_hooks::{use_bool_toggle, use_event};
 use yew_icons::{Icon, IconId};
 use yew_router::prelude::Link;
 
-use crate::{models::Book as BookModel, route::Route};
+use crate::{models::Book as BookModel, route::Route, utils::to_slug};
 
 #[derive(Clone, Properties, PartialEq)]
 pub struct Props {
@@ -85,19 +85,19 @@ pub fn Book(props: &Props) -> Html {
             ref={group_ref}
             class={classes!("relative","flex", "flex-col", "justify-start", "max-w-[177px]", "px-4", "py-3","cursor-pointer")}
             >
-            <Link<Route> to={Route::Book { name: data.title.clone() }}>
+            <Link<Route> to={Route::Book { name: to_slug(data.title.clone()) }}>
                 <img
                     class={classes!("w-[177px]", "h-[266px]","mb-5","book-image-shadow","transition-transform","hover:scale-105","dark:shadow-none","dark:brightness-50")}
                     src={data.cover.clone()}
                     alt={data.title.clone()}
                 />
             </Link<Route>>
-            <Link<Route> to={Route::Book { name: data.title.clone() }}>
+            <Link<Route> to={Route::Book { name: to_slug(data.title.clone()) }}>
                 <span
                     class={classes!("text-neutral-600", "text-md", "font-bold","dark:text-zinc-100")}
                 >{data.title.clone()}</span>
             </Link<Route>>
-            <Link<Route> to={Route::Author { name: data.author.name.clone() }}>
+            <Link<Route> to={Route::Author { name: to_slug(data.author.name.clone()) }}>
                 <span
                     class={classes!("text-neutral-400", "text-sm", "font-bold","dark:text-zinc-600")}
                 >

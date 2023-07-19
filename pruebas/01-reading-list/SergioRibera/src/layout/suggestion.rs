@@ -3,7 +3,7 @@ use yew::prelude::*;
 use yew_icons::{Icon, IconId};
 use yew_router::prelude::Link;
 
-use crate::{models::Book as BookModel, route::Route};
+use crate::{models::Book as BookModel, route::Route, utils::to_slug};
 
 #[derive(Clone, Properties, PartialEq)]
 pub struct Props {
@@ -28,7 +28,7 @@ pub fn SuggestedBook(props: &Props) -> Html {
                         {"¿Buscas una nueva aventura literaria? Deja que nuestros expertos te sugieran un libro perfecto para ti"}
                     </p>
                     <Link<Route>
-                        to={Route::Book { name: book.title.clone() }}
+                        to={Route::Book { name: to_slug(book.title.clone()) }}
                         classes={classes!("rounded-full","bg-slate-900","text-white","px-4","py-2","w-fit","flex","flex-row","gap-3","dark:bg-slate-700")}
                     >
                         {"Comenzar a leer"}
@@ -36,7 +36,7 @@ pub fn SuggestedBook(props: &Props) -> Html {
                     </Link<Route>>
                 </div>
                     <Link<Route>
-                        to={Route::Book { name: book.title.clone() }}
+                        to={Route::Book { name: to_slug(book.title.clone()) }}
                         classes={classes!("flex","flex-row","book-image-shadow","transition-transform","hover:scale-105","cursor-pointer","dark:shadow-none")}>
                     <img
                         class={classes!("w-[177px]","h-[266px]","dark:brightness-50")}
