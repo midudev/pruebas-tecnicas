@@ -5,10 +5,12 @@
       <button mat-fab extended color="primary" [routerLink]="['/available-books']" routerLinkActive="router-link-active" >
         <mat-icon>library_books</mat-icon>
         Libros disponibles
+        <span>{{ availableBooks.length }}</span>
       </button>
       <button mat-fab extended color="primary" [routerLink]="['/reading-list']" routerLinkActive="router-link-active">
         <mat-icon>favorite</mat-icon>
         Lista de lectura
+        <span>{{ readingListBooks.length }}</span>
       </button>
     </div>
     <button mat-icon-button [matMenuTriggerFor]="menu" class="menu-button" aria-label="Example icon-button with menu icon">
@@ -18,10 +20,10 @@
   <mat-menu #menu="matMenu">
     <button mat-menu-item [routerLink]="['/available-books']" routerLinkActive="router-link-active">
       <mat-icon>library_books</mat-icon>
-      <span>Libros disponibles</span>
+      <span>Libros disponibles {{ availableBooks.length }}</span>
     </button>
     <button mat-menu-item [routerLink]="['/reading-list']" routerLinkActive="router-link-active">
       <mat-icon>favorite</mat-icon>
-      <span>Lista de lectura</span>
+      <span>Lista de lectura {{ readingListBooks.length }}</span>
     </button>
   </mat-menu>

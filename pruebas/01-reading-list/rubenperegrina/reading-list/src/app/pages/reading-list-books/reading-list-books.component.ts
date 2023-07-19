@@ -16,6 +16,8 @@ export class ReadingListBooksComponent implements OnInit {
   booksService = inject(BooksService);
 
   ngOnInit(): void {
-    this.readingListBooks = this.booksService.readingListBooks;
+    this.booksService.reading.subscribe(library => {
+      this.readingListBooks = library;
+    });
   }
 }

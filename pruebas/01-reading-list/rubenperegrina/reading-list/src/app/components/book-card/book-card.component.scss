@@ -40,7 +40,7 @@ body{
         right: 0;
         bottom: 0;
         left: 0;
-        background: inherit;
+        // background: inherit;
         -webkit-filter: grayscale(1);
       -moz-filter: grayscale(100%);
       -ms-filter: grayscale(100%);
@@ -55,8 +55,8 @@ body{
     
         .card-img-overlay {
           transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
-          background: rgb(255,186,33);
-         background: linear-gradient(0deg, rgba(255,186,33,0.5) 0%, rgba(255,186,33,1) 100%);
+        //   background: rgb(255,186,33);
+        //  background: linear-gradient(0deg, rgba(255,186,33,0.5) 0%, rgba(255,186,33,1) 100%);
          }
       }
     }
@@ -89,8 +89,8 @@ body{
     }
      .card-img-overlay {
       transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
-     background: rgb(255,186,33);
-    background: linear-gradient(0deg, rgba(255,186,33,0.3785889355742297) 0%, rgba(255,186,33,1) 100%);
+    //  background: rgb(255,186,33);
+    // background: linear-gradient(0deg, rgba(255,186,33,0.3785889355742297) 0%, rgba(255,186,33,1) 100%);
     }
     }
     @media (max-width: 767px){
