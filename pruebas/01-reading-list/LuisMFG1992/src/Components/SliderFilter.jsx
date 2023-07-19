@@ -11,7 +11,7 @@ const SliderFilter = () => {
         id="default-range"
         type="range"
         defaultValue="50"
-        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 custom-slider"
       />
     </div>
   )

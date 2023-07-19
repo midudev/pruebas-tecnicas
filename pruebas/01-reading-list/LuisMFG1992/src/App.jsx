@@ -24,14 +24,14 @@ function App() {
   return (
     <div className="w-full  bg-[#202124] flex justify-center items-center min-h-screen">
       <div className="w-full px-5 pt-10 sm:px-0 sm:w-[90%] max-w-[2000px] min-h-screen flex items-center flex-col">
-        <h1 className="text-3xl">Book Tracke</h1>
+        <h1 className="text-3xl text-center">Book Tracker</h1>
         <p>Available books</p>
-        <div className="w-50 flex gap-3 p-4 items-center flex-col  sm:w-full sm:flex-row sm:justify-evenly">
+        <div className="w-full flex gap-8 p-4 items-center justify-evenly flex-wrap sm:flex-row sm:justify-evenly">
           <SliderFilter />
           <DropDownFilter genres={genres} />
         </div>
         <DisplayFilters selectedFilters={selectedFilters} />
-        <DisplayBooks booksList={booksList} />
+        <DisplayBooks booksList={booksList} selectedFilters={selectedFilters} />
       </div>
     </div>
   )

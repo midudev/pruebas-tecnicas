@@ -20,19 +20,21 @@ const DropDownFilter = ({ genres }) => {
   return (
     <button className="relative" onBlur={handleBlur}>
       <div
-        className={`inline-flex items-center overflow-hidden rounded-md  ${
+        className={`inline-flex items-center overflow-hidden rounded-md  min-w-[180px] text-center  ${
           genres.length !== 0
             ? 'bg-purple-700 active:bg-purple-800'
-            : 'bg-gray-700'
+            : 'bg-gray-500'
         }`}
         onClick={toggleMenu}
       >
         <div className="inline-flex items-center ">
-          <p className="px-4 py-2 text-sm text-white ">Filtrar por genero</p>
+          <p className="px-4 py-2 text-sm text-white">Filtrar por genero</p>
 
-          <div className="h-full p-2 text-white">
-            {genres.length !== 0 && <BsChevronDown />}
-          </div>
+          {genres.length !== 0 && (
+            <div className="h-full p-2 text-white">
+              <BsChevronDown />
+            </div>
+          )}
         </div>
       </div>
 

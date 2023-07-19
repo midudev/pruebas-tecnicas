@@ -18,9 +18,9 @@ const DisplayFilters = ({ selectedFilters }) => {
       </div> */}
 
       {selectedFilters.length !== 0 ? (
-        <div className="flex flex-col gap-1 p-5 h-[4.5rem] bg-gray-001 items-center justify-center rounded-lg px-2 border border-purple-600">
-          <p>Generos seleccionados:</p>
-          <div className=" inline-flex gap-5  items-center justify-center ">
+        <div className="flex flex-col gap-2 sm:gap-1 p-3 min-h-[4rem] bg-gray-001 items-center justify-center rounded-lg px-2 border border-purple-600">
+          <p className="text-center">Generos seleccionados:</p>
+          <div className=" inline-flex gap-4 items-center justify-center flex-wrap">
             {selectedFilters.map((filter) => (
               <button
                 className="bg-purple-600 rounded-lg px-2"
