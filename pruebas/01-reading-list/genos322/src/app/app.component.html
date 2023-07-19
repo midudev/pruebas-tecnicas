@@ -1,5 +1,13 @@
-<div class="pt-8">
-    <h1 class="text-5xl text-center font-light">
-        Lista de libros
-    </h1>
+<div class="pt-8 mx-8">
+    <div>
+        <h1 class="text-5xl text-center font-bold">Lista de libros</h1>    
+    </div>
+    <div class="flex gap-96 mt-6">
+        <app-filter-number-pages></app-filter-number-pages>
+        <app-filter-gender></app-filter-gender>
+    </div>
+    <section class="flex">
+        <app-books class="mt-14 basis-4/5"></app-books>
+        <app-list-reading></app-list-reading>
+    </section>
 </div>

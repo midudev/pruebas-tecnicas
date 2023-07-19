@@ -9,3 +9,8 @@
     font-style: normal;
   };
   
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+h1{
+  font-family: 'indie flower','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
