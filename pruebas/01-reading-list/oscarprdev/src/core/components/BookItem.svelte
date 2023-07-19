@@ -2,9 +2,11 @@
   import { writable, type Writable } from 'svelte/store'
   import type { Book } from '../types'
   import { InfoIcon, BookOpenIcon } from 'svelte-feather-icons'
-  import { modalState } from '../store/modal-store'
+  import { modalStore } from '../store/modal-store'
   import { readingListUsecase } from '../../features/reading-list'
   import { asideState } from '../store/aside-store'
+  import BookModal from './modals/BookModal.svelte'
+  import Modal from './modals/Modal.svelte'
 
   export let book: Book
   let showOverlay: Writable<boolean> = writable(false)
@@ -14,13 +16,16 @@
   }
 
   const showInfo = () => {
-    modalState.update((prev) => ({
-      ...prev,
-      infoModal: {
-        isOpen: true,
-        book
-        }
-    }))
+    modalStore.update((modal: Modal) => {
+      modal.openModal({
+          component: BookModal,
+          content: {
+            book
+          }
+        });
+
+        return modal
+    });
   }
 
   const addBookToReadingList = () => {

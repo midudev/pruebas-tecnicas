@@ -1,13 +1,19 @@
 <script lang="ts">
-  import BookModal from './core/components/BookModal.svelte'
   import Header from './core/components/Header.svelte'
   import Library from './core/components/Library.svelte'
+  import Modal from './core/components/modals/Modal.svelte'
   import ReadingList from './core/components/ReadingList.svelte'
-  import RemoveModal from './core/components/RemoveModal.svelte'
+  import { modalStore } from './core/store/modal-store'
+  import { onMount } from 'svelte'
+
+  let modal: any
+
+  onMount(() => modalStore.set(modal))
 </script>
 
 <main class="relative h-screen overflow-y-hidden flex bg-light">
   <Header />
   <Library />
   <ReadingList />
+  <Modal bind:this={modal} />
 </main>

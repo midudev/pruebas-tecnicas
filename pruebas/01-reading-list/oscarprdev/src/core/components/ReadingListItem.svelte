@@ -1,8 +1,10 @@
 <script lang="ts">
-  import { modalState } from '../store/modal-store'
+  import { modalStore } from '../store/modal-store'
   import type { Book } from '../types'
   import { XCircleIcon } from 'svelte-feather-icons'
   import { writable, type Writable } from 'svelte/store'
+  import Modal from './modals/Modal.svelte'
+  import RemoveModal from './modals/RemoveModal.svelte'
 
   export let book: Book
   let showOverlay: Writable<boolean> = writable(false)
@@ -12,13 +14,16 @@
   }
 
   const openRemoveModal = () => {
-    modalState.update((prev) => ({
-      ...prev,
-      removeModal: {
-        isOpen: true,
-        book,
-      },
-    }))
+    modalStore.update((modal: Modal) => {
+      modal.openModal({
+          component: RemoveModal,
+          content: {
+            book
+          }
+        });
+
+        return modal
+    });
   }
 </script>
 

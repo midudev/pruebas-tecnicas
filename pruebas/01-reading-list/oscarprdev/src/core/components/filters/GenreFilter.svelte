@@ -1,37 +1,36 @@
 <script lang="ts">
-  import { writable, type Writable } from 'svelte/store';
-  import type { BooksFilters, PaginationState } from './types';
-  import { appState } from '../store/app-state-store';
-  import { onMount } from 'svelte';
-  import type { Book } from '../types';
+  import { writable } from 'svelte/store'
+  import type { BooksFilters } from '../types'
+  import { appState } from '../../store/app-state-store'
+  import { onMount } from 'svelte'
+  import type { Book } from '../../types'
+  import { paginationState } from '../../store/pagination-store'
+  import { filters } from '../../store/filters-store'
 
-  export let filters: Writable<BooksFilters>;
-  export let paginationState: Writable<PaginationState>
+  let genres: string[]
 
-  let genres: string[];
-
-  let dropdownIsOpen = writable(false);
+  let dropdownIsOpen = writable(false)
   let genreSelected = writable(null)
 
   const onGenreSelectChanges = (genre: string) => {
     filters.update((prevState: BooksFilters) => ({
       ...prevState,
       genre,
-    }));
+    }))
 
-    dropdownIsOpen.update(prev => !prev)
+    dropdownIsOpen.update((prev) => !prev)
     genreSelected.update(() => genre)
     paginationState.update(() => ({
       init: 0,
       offset: 4,
     }))
-  };
+  }
 
-  const openDropdown = () => dropdownIsOpen.update(prev => !prev);
+  const openDropdown = () => dropdownIsOpen.update((prev) => !prev)
 
   onMount(() => {
-    genres = [...new Set($appState.books.map((book: Book) => book.genre))];
-  });
+    genres = [...new Set($appState.books.map((book: Book) => book.genre))]
+  })
 </script>
 
 <section class="p-5 relative">

@@ -3,11 +3,8 @@
   import BookItem from './BookItem.svelte'
   import type { Readable } from 'svelte/motion'
   import Pagination from './Pagination.svelte'
-  import type { PaginationState } from './types'
-  import type { Writable } from 'svelte/store'
 
   export let booksList: Readable<Book[]>
-  export let paginationState: Writable<PaginationState>
   export let booksFiltered: Readable<Book[]>
 </script>
 
@@ -25,5 +22,5 @@
       </li>
     {/if}
   </ul>
-  <Pagination {paginationState} {booksFiltered} />
+  <Pagination {booksFiltered} />
 </section>

@@ -3,13 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  @font-face {
-    font-family: 'GideonRoman';
-    src: url('/pruebas/01-reading-list/oscarprdev/static/fonts/GideonRoman-Regular.ttf');
-    font-weight: normal;
-    font-display: swap;
-  }
-
   html,
   body,
   body {
