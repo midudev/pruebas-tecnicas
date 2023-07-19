@@ -38,7 +38,7 @@ pub fn input_text(props: &Props) -> Html {
     });
 
     html! {
-        <div class={classes!("flex","flex-row","gap-2","items-center")}>
+        <div class={classes!("flex","flex-row","gap-2","items-center","dark:text-zinc-400","dark:fill-zinc-400")}>
             if let Some(icon) = icon {
                 <Icon icon_id={icon} width={"18px".to_owned()} height={"18px".to_owned()}/>
             }
