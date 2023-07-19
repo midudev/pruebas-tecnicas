@@ -32,4 +32,8 @@ declare global {
         ISBN: string,
         author: IAuthor,
     }
+
+    interface ILibrary {
+        books: IBook[]
+    }
 }
