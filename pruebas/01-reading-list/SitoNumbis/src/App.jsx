@@ -1,3 +1,4 @@
+import { Fragment, useCallback, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 
 // components
@@ -13,7 +14,6 @@ import books from "./books.json";
 
 // contexts
 import { useLibrary } from "./contexts/LibraryProvider";
-import { useCallback, useEffect } from "react";
 
 // config
 import config from "./config";
@@ -63,11 +63,11 @@ function App() {
           <Route
             path="/"
             element={
-              <>
+              <Fragment>
                 <Navbar />
                 <Outlet />
                 <Footer />
-              </>
+              </Fragment>
             }
           >
             <Route index element={<Home />} />

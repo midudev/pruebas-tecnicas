@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,6 +8,9 @@ import { faClose, faInfo } from "@fortawesome/free-solid-svg-icons";
 import { useLanguage } from "../../contexts/LanguageProvider";
 import { useLightBox } from "./LightBoxProvider";
 import { useLibrary } from "../../contexts/LibraryProvider";
+
+// components
+import IconButton from "../IconButton/IconButton";
 
 // styles
 import styles from "./styles.module.css";
@@ -80,22 +83,19 @@ function LightBox() {
           : "opacity-0 translate-y-5 pointer-events-none"
       }`}
     >
-      <button
+      <IconButton
+        icon={faClose}
+        ariaLabel={languageState.texts.ariaLabels.closeDialog}
         onClick={() => setLightBoxState({ type: "remove" })}
-        className={`${styles.closeButton} icon-button`}
-      >
-        <FontAwesomeIcon icon={faClose} />
-      </button>
+        className={`${styles.closeButton}`}
+      />
       <article className={styles.book}>
         <img
           src={selectedBook.cover}
           alt={`${selectedBook.title}-${languageState.texts.book.cover}`}
           className={styles.cover}
         />
-        <div
-          role="info"
-          className={`${styles.info} ${seeingCover ? "!opacity-0" : ""}`}
-        >
+        <div className={`${styles.info} ${seeingCover ? "!opacity-0" : ""}`}>
           <h3 className="text-2xl">{selectedBook.title}</h3>
           <p>
             {selectedBook.genre}{" "}
@@ -131,10 +131,10 @@ function LightBox() {
             </button>
           </div>
           {otherBooks?.length ? (
-            <>
+            <Fragment>
               <p>{languageState.texts.book.otherBooks}</p>
               <div className="flex gap-5">{otherBooks}</div>
-            </>
+            </Fragment>
           ) : null}
         </div>
         {seeingCover ? (

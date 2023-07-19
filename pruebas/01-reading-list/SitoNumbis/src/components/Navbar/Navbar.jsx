@@ -16,6 +16,7 @@ import styles from "./styles.module.css";
 // images
 import logo from "../../assets/images/logo.svg";
 import noPhoto from "../../assets/images/no-photo.webp";
+import IconButton from "../IconButton/IconButton";
 
 // suspense
 const Badge = loadable(() => import("../Badge/Badge"));
@@ -51,19 +52,16 @@ function Navbar() {
                   : languageState.texts.ariaLabels.toReadingList
               }
             >
-              <button
+              <IconButton
+                ariaLabel={languageState.texts.ariaLabels.toReadingList}
                 onClick={() => setLibraryState({ type: "toggle-see" })}
-                className={`text-xl icon-button`}
-                aria-label={languageState.texts.ariaLabels.toReadingList}
-              >
-                <FontAwesomeIcon
-                  icon={
-                    libraryState.seeing === "reading-list"
-                      ? faBookOpen
-                      : faBookmark
-                  }
-                />
-              </button>
+                className={`text-xl`}
+                icon={
+                  libraryState.seeing === "reading-list"
+                    ? faBookOpen
+                    : faBookmark
+                }
+              />
             </Tippy>
           </Badge>
           <img

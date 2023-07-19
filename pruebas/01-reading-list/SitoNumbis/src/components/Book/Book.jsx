@@ -21,14 +21,12 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
 
   const { languageState } = useLanguage();
 
-  const addToReadingList = (e) => {
-    e.preventDefault();
+  const addToReadingList = () =>
     setLibraryState({ type: "toggle-to-reading-list", id: ISBN });
-  };
 
   const memoAnimation = useMemo(
     () =>
-      "transition duration-500 group-hover:opacity-100 group-hover:translate-y-0 opacity-0 translate-y-5",
+      "transition duration-500 group-hover:opacity-100 group-hover:translate-y-0 group-focus:opacity-100 group-focus:translate-y-0 opacity-0 translate-y-5",
     []
   );
 
@@ -39,7 +37,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
   };
 
   const handleKeyDown = (e) => {
-    if (e.keyCode === 13) activateLightBox();
+    if (e.keyCode === 13) addToReadingList();
   };
 
   const [hide, setHide] = useState(false);
@@ -96,6 +94,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
 
         <button
           onClick={addToReadingList}
+          tabIndex={-1}
           aria-label={
             !isInReadingList
               ? languageState.texts.ariaLabels.add
