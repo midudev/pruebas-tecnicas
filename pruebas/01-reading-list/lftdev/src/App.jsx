@@ -10,11 +10,13 @@ export default function App () {
   useEffect(() => BooksJSON.library.forEach((bookObject) => setBooksList((prevList) => [...prevList, bookObject.book])), [])
 
   function addToReadList (book) {
+    setBooksList(prevList => prevList.filter(item => item !== book))
     setReadList((prevList) => [...prevList, book])
     if (!readListAvailable) setReadListAvailable(true)
   }
   function removeFromReadList (index) {
     setReadList((prevList) => {
+      setBooksList(prev => [...prev, prevList[index]])
       const newList = prevList.toSpliced(index, 1)
       if (newList.length === 0) setReadListAvailable(false)
       return newList
