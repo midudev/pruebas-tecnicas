@@ -1,0 +1,33 @@
+<div class="container info-container" *ngIf="bookInfoElement">
+    <div class="row">
+        <div class="col-lg-4">
+            <img class="detail-img" [src]="bookInfoElement.book.cover" alt="">
+        </div>
+        <div class="col-lg-8">
+            <div class="container d-felx flex-column align-items-start w-100">
+                <div class=" info w-100">
+                    <h3><strong>Title:</strong> {{bookInfoElement.book.title}}</h3>
+                    <h4><strong>Author:</strong> {{bookInfoElement.book.author.name}}</h4>
+                    <p><strong>Other Books:</strong></p>
+                    <div class="container-fluid m-3">
+                        <p class="p-1 " *ngFor="let otherBook of bookInfoElement.book.author?.otherBooks">{{otherBook}}</p>
+                    </div>
+                    <p> <strong>Pages:</strong> {{ bookInfoElement.book.pages }}</p>
+                    <p><strong>Year:</strong> {{ bookInfoElement.book.year }}</p>
+                    <p><strong>ISBN:</strong> {{ bookInfoElement.book.ISBN }}</p>
+                    <p><strong>Synopsis:</strong> {{ bookInfoElement.book.synopsis }}</p>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button class="btn btn-back fs-4" (click)="onGoBack()"><i class="bi bi-arrow-left-circle"></i> Back</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-back fs-4" (click)="addToReadingList()" *ngIf="!isOnReadingList()"><i class="bi bi-bookmark-heart fs-5"></i> Add </button>
+                        <button class="btn btn-back fs-4" (click)="removeFromTheReadinglist()" *ngIf="isOnReadingList()"><i class="bi bi-bookmark-x-fill fs-5"></i> Remove </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

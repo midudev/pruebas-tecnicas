@@ -1,0 +1,30 @@
+.info-container{
+    background-color: #2c2c2c;
+    padding: 2rem;
+    z-index: 9;
+    width: fit-content;
+}
+
+.info > h3, h4, p{
+    color: #f2f2f2;
+}
+
+.info > p{
+    font-size: 20px;
+}
+
+.container > img{
+    z-index: -1;
+}
+
+h3{
+    color: #f2f2f2;
+}
+
+.container-fluid > p{
+    font-size: 20px;
+}
+
+.detail-img{
+    width: 100%;
+}

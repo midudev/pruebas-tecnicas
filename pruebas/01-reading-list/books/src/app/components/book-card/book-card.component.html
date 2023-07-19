@@ -1,0 +1,5 @@
+<div class="card-container" [ngClass]="{ 'is-on-reading-list' : isOnReadingList() }" >
+    <img [src]="book?.book?.cover" alt="" (click)="onGoToDetails()">
+    <button class="btn btn-primary" (click)="onAddToReadingList()" *ngIf="!isOnReadingList()"><i class="bi bi-bookmark-heart fs-5"></i></button>
+    <button class="btn btn-primary" (click)="onRemoveFromTheReadingList()" *ngIf="isOnReadingList() && false"> Remove </button>
+</div>
