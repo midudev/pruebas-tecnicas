@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { BookListContext } from '../context/BookListContex'
 import { BooksContext } from '../context/BooksContext'
 
@@ -31,5 +31,30 @@ export function UseBookContext () {
     localStorage.setItem('books-storage', JSON.stringify(mappedItems))
   }
 
-  return { bookList, addBook, removeBook, clearList }
+  // sincronizacion del carrito entre pestana
+
+  useEffect(() => {
+    localStorage.setItem('list-books', JSON.stringify(bookList))
+  }, [bookList])
+
+  useEffect(() => {
+    const bookListInStorage = JSON.parse(localStorage.getItem('list-books'))
+    if (bookListInStorage) {
+      updateBookList({ value: bookListInStorage })
+    }
+
+    const handleStorageChange = (event) => {
+      if (event.key === 'list-books') {
+        updateBookList({ value: JSON.parse(event.newValue) })
+      }
+    }
+
+    window.addEventListener('storage', handleStorageChange)
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange)
+    }
+  }, [])
+
+  return { bookList, addBook, removeBook, clearList, updateBookList }
 }

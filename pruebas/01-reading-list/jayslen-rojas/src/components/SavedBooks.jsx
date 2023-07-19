@@ -5,6 +5,7 @@ import { UseBookContext } from '../hooks/useBooksListContext'
 export function SavedBooks () {
   const showAsideListId = useId()
   const { bookList, removeBook, clearList } = UseBookContext()
+
   return (
     <aside>
       <label htmlFor={showAsideListId}>
