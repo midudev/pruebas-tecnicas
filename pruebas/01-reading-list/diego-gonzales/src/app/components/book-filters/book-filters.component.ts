@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GENRES, type Genre } from '~/consts';
+import { BOOK_MAPPING, GENRES, type Genre } from '~/consts';
 import { BooksService } from '~/services/books.service';
 
 @Component({
@@ -12,6 +12,7 @@ import { BooksService } from '~/services/books.service';
 export class BookFiltersComponent {
   private _bookService = inject(BooksService);
   filters = this._bookService.filters;
+  filteredBooks = this._bookService.filteredBooks;
   genres = signal<Genre[]>([
     GENRES.ALL,
     GENRES.FANTASY,
@@ -19,6 +20,7 @@ export class BookFiltersComponent {
     GENRES.ZOMBIES,
     GENRES.TERROR,
   ]);
+  bookMapping = BOOK_MAPPING;
 
   onInputRangeChange(event: Event) {
     const target = event.target as HTMLInputElement;

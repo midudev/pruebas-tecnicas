@@ -4,6 +4,7 @@ import BookListComponent from '~/components/book-list/book-list.component';
 import { BookFiltersComponent } from '~/components/book-filters/book-filters.component';
 import { ReadingListComponent } from '~/components/reading-list/reading-list.component';
 import { BooksService } from '~/services/books.service';
+import { BOOK_MAPPING } from '~/consts';
 
 @Component({
   selector: 'app-books-home',
@@ -20,12 +21,7 @@ export default class BooksHomeComponent {
   private _booksService = inject(BooksService);
   totalBooksAvailable = this._booksService.totalBooksAvailable;
   totalBooksInReadingList = this._booksService.totalBooksInReadingList;
-
-  bookMapping = {
-    '=0': 'No books',
-    '=1': '1 book',
-    other: '# books',
-  };
+  bookMapping = BOOK_MAPPING;
 
   constructor() {
     this._booksService.showSearchBox.set(true);

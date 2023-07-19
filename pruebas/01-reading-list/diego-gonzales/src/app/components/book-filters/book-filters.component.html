@@ -1,24 +1,25 @@
 <form class="flex flex-col sm:flex-row gap-4">
   <div class="form-control w-full max-w-xs">
     <label class="label">
-      <span class="label-text">Filter by pages</span>
+      <span class="label-text">
+        Filter by pages (max. {{ filters().pages }} pages)
+      </span>
     </label>
-    <div class="flex gap-2 justify-center items-center">
-      <input
-        type="range"
-        min="0"
-        max="1500"
-        [value]="filters().pages"
-        class="range range-accent range-sm w-full max-w-xs"
-        (change)="onInputRangeChange($event)"
-      />
-      <span class="text-xs">{{ filters().pages }}</span>
-    </div>
+    <input
+      type="range"
+      min="0"
+      max="1500"
+      [value]="filters().pages"
+      class="range range-accent range-sm w-full max-w-xs"
+      (change)="onInputRangeChange($event)"
+    />
   </div>
 
   <div class="form-control w-full max-w-xs">
     <label class="label">
-      <span class="label-text">Filter by genre</span>
+      <span class="label-text">
+        Filter by genre ({{ filteredBooks().length | i18nPlural: bookMapping }})
+      </span>
     </label>
     <select class="select select-bordered" (change)="onSelectChange($event)">
       <option
