@@ -52,10 +52,14 @@ pub fn SuggestedBook(props: &Props) -> Html {
                 >
                     <div class={classes!("flex","flex-col")}>
                         <h1 class={classes!("text-neutral-600","font-bold","text-3xl","dark:text-zinc-100")}>
-                            {book.title.clone()}
+                            <Link<Route> to={Route::Book { name: to_slug(book.title.clone()) }}>
+                                {book.title.clone()}
+                            </Link<Route>>
                         </h1>
                         <p class={classes!("text-neutral-600","font-bold","float-right","dark:text-zinc-400")}>
-                            {book.author.name.clone()}
+                            <Link<Route> to={Route::Author { name: to_slug(book.author.name.clone()) }}>
+                                {book.author.name.clone()}
+                            </Link<Route>>
                         </p>
                     </div>
                     <div class={classes!("flex","flex-row","gap-3")}>
