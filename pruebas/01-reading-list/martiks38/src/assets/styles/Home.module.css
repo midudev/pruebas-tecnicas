@@ -13,7 +13,7 @@
 
 .homeMain__suggestSection,
 .homeMain__bookGenresSection,
-.homeMain__booksSection {
+.homeMain__bookDashboard {
   border-style: solid;
   border-color: transparent;
 }
@@ -52,14 +52,14 @@
 
 .homeMain__suggestSection__title {
   margin-bottom: 0.15em;
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+  font-size: 1.75rem;
+  line-height: 2.25rem;
 }
 
 .homeMain__suggestSection__subtitle {
   margin-bottom: 0.65em;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .homeMain__bookGenresSection {
@@ -69,15 +69,26 @@
   border-right-color: var(--border-section-color);
 }
 
-.homeMain__booksSection {
+.homeMain__bookDashboard {
+  display: grid;
+  grid-template-columns: 60% 40%;
   grid-area: books;
   border-width: 0 1px 0 0;
 }
 
-.booksGenresSection__title {
-  margin-bottom: 0.4em;
+.homeMain__bookListSection {
+  padding: 1rem var(--padding-content);
+}
+
+.homeMain__bookListSection__title {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+.booksGenresSection__title {
+  margin-bottom: 0.4em;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .booksGenresSection__list {
@@ -86,23 +97,33 @@
 }
 
 .booksGenresSection__listItem {
-  margin-bottom: 0.4em;
+  margin-bottom: 0.6em;
   font-weight: 600;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  opacity: 0.75;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.booksGenresSection__listItem__button {
+  padding: 0.3em 0.6em 0.3em 0;
+  background-color: transparent;
+  border-width: 0;
+  color: rgb(255 255 255 / 0.75);
 }
 
 @media (hover: hover) {
-  .booksGenresSection__listItem:hover {
-    opacity: 1;
+  .booksGenresSection__listItem__button:hover {
+    color: #fff;
   }
 }
 
 @media (hover: none) {
-  .booksGenresSection__listItem:active {
-    opacity: 1;
+  .booksGenresSection__listItem__button:active {
+    color: #fff;
   }
+}
+
+.booksGenresSection__listItem__button.genreActive {
+  color: rgb(56 189 248);
 }
 
 @media (min-width: 90.0625rem) {
@@ -115,7 +136,7 @@
     border-left-color: var(--border-section-color);
   }
 
-  .homeMain__booksSection {
+  .homeMain__bookDashboard {
     border-right-color: var(--border-section-color);
   }
 }
