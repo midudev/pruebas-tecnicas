@@ -1,3 +1,4 @@
+import { NO_GENRES_FILTER } from "$lib/constants";
 import booksResponse from "$lib/mocks/books.json";
 
 export function getAllBooks(): BooksResponse {
@@ -15,25 +16,27 @@ export function getAllBooksMapped() {
 }
 
 export function getFilteredBooks(filters: IBooks.Filters ): IBook[] {
-  const { pages, genre } = filters;
-  const books = getAllBooksMapped();
-  
-  const maxPages = Math.max(...books.map(book => book.pages));
+  const { maxPages: filterMaxPages, genre } = filters;
 
-  const isPagesFilterDisabled = !pages || maxPages === pages;
-  if(isPagesFilterDisabled && !genre) return books;
+  const books = getAllBooksMapped();
+  const maxPages = Math.max(...books.map(book => book.pages));
+  
+  const shouldIgnoreGenre = genre === NO_GENRES_FILTER;
+  const shouldIgnorePages = maxPages === filterMaxPages;
+
+  if(shouldIgnorePages && shouldIgnoreGenre) return books;
 
   const filteredBooks = books.filter(book => {
-    if(!isPagesFilterDisabled && genre) {
-      const isBookInRange = book.pages <= pages;
+    const isBookInRange = book.pages <= filterMaxPages;
+
+    if(!shouldIgnorePages && !shouldIgnoreGenre) {
       return book.genre === genre && isBookInRange;
     }
 
-    if(isPagesFilterDisabled) {
+    if(shouldIgnorePages) {
       return book.genre === genre;
     }
 
-    const isBookInRange = book.pages <= pages;
     return isBookInRange;
   });
 

@@ -28,8 +28,8 @@ declare namespace IBooks {
   type FilterAction = (filters?: Filters) => void;
 
   type Filters = {
-    genre?: string;
-    pages?: number;
+    genre: string;
+    maxPages: number;
   };
   
   interface Store {
