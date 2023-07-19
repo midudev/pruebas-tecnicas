@@ -1,4 +1,4 @@
-header{
+header {
       position: fixed;
       top: 0;
       left: 0;
@@ -10,16 +10,21 @@ header{
       z-index: 1000;
 }
 
-header:hover{
+header:hover {
       opacity: 1;
 }
 
-.caja-titulo{
-      padding: 9% 11%;
+.caja-titulo {
+      padding: 8% 11%;
       background-color: var(--color-secundario);
 }
 
-main button{
+.caja-titulo h1 {
+      font-size: 38px;
+}
+
+
+main button {
       background: var(--color-secundario);
       width: 56px;
       height: 56px;
@@ -37,4 +42,32 @@ app-barra-nav {
       justify-content: flex-start;
       align-items: center;
       flex-direction: column;
+}
+
+footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      padding: 8px;
+      background: var(--color-secundario);
+}
+
+footer a i{
+      fill: var(--color-detalle);
+}
+
+footer a i:hover{
+      fill: var(--color-principal);
+      opacity: 1;
+}
+
+@media (max-width:280px) {
+      footer img{
+            display: none;
+      }
 }

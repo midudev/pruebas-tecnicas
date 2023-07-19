@@ -32,6 +32,6 @@
             </div>
       </div>
       <li *ngFor="let item of filteredBooks">
-            <img [src]="item.book.cover" width="140px" height="200px" (click)="selectBook(item)">
+            <img class="tapa" [src]="item.book.cover" width="140px" height="200px" (click)="selectBook(item)">
       </li>
 </ul>

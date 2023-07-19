@@ -5,7 +5,7 @@
       --color-detalle: #db4a4a;
       --color-grises: #828081;
       --negros: #272935;
-      --blanco: #fdfcf7;
+      --blanco: #fffdf3;
       --tipo-principal: "Ubuntu", sans-serif;
 }
 
@@ -33,6 +33,16 @@ h6 {
       margin: 8px 0;
       font-family: var(--tipo-principal);
       color: var(--negros);
+}
+
+a{
+      font-family: var(--tipo-principal);
+      text-decoration: none;
+      color: var(--color-detalle);
+}
+
+a:hover{
+      color: var(--color-principal);
 }
 
 p {

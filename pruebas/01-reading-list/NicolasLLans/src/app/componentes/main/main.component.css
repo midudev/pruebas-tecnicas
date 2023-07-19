@@ -2,9 +2,20 @@
       margin: 0 10%;
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 25px;
       padding: 10px;
+      padding-bottom: 60px;
       justify-content: flex-start;
+}
+
+.grilla li .tapa:hover {
+      -moz-transform: scale(2.1) rotate(-5deg) translateX(-5px) translateY(-5px) skewX(1deg);
+      -webkit-transform: scale(1.1) rotate(-5deg) translateX(-5px) translateY(-5px) skewX(1deg);
+      -o-transform: scale(1.1) rotate(-5deg) translateX(-5px) translateY(-5px) skewX(1deg);
+      -ms-transform: scale(1.1) rotate(-5deg) translateX(-5px) translateY(-5px) skewX(1deg);
+      transform: scale(1.1) rotate(-5deg) translateX(-5px) translateY(-5px) skewX(1deg);
+      box-shadow: var(--negros) 7px 9px 16px, #3f4047 3px 3px 1px;
+      border: 1px solid var(--color-grises);
 }
 
 .barra-filtros {
@@ -98,7 +109,7 @@ label {
       }
 
       .grilla {
-            padding: 0 10px;
+            padding: 0 10px 120px 10px;
             justify-content: center;
       }
 }
@@ -109,4 +120,15 @@ label {
             aspect-ratio: auto 100 / 140;
             height: 140px;
       }
+
+      .caja-milista {
+            right: 5%;
+            left: 10%;
+      }
+
+      .caja-milista header h2 {
+            width: 70%;
+            font-size: 18px;
+      }
+
 }
