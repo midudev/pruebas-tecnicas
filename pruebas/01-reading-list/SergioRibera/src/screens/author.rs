@@ -1,5 +1,5 @@
 use yew::prelude::*;
-use yew_hooks::{UseLocalStorageHandle, use_list};
+use yew_hooks::{use_list, UseLocalStorageHandle};
 
 use crate::{
     context::DataContext,
@@ -29,17 +29,18 @@ pub fn Author(props: &AuthorProps) -> Html {
             if data_loading || data_error.is_some() {
                 return None;
             }
-            let content = data.clone()
+            let content = data
+                .clone()
                 .into_iter()
-                .find(|b| to_slug(b.author.name.clone()) == name.to_string());
+                .find(|b| *name == to_slug(b.author.name.clone()));
             if content.is_some() {
                 let mut data = data.clone();
-                data.retain(|b| to_slug(b.author.name.clone()) == name.to_string());
+                data.retain(|b| *name == to_slug(b.author.name.clone()));
                 books.set(data);
             }
-            content.map(|c| c.author.clone())
+            content.map(|c| c.author)
         },
-        data.clone().unwrap_or_default(),
+        data.unwrap_or_default(),
     );
 
     html! {
@@ -49,7 +50,7 @@ pub fn Author(props: &AuthorProps) -> Html {
             >
                     <LayoutError errtype={ErrorType::LoadingBooks} title=""/>
             </main>
-        } else if data_error.is_some() || content.clone().is_none() {
+        } else if data_error.is_some() || content.is_none() {
             <main
                 class={classes!("flex","items-center","justify-center","w-full","min-h-screen","px-6")}
             >

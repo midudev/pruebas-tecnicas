@@ -34,7 +34,7 @@ pub fn Book(props: &BookProps) -> Html {
             let content = data
                 .clone()
                 .into_iter()
-                .find(|b| to_slug(b.title.clone()) == name.to_string());
+                .find(|b| *name == to_slug(b.title.clone()));
             if let Some(c) = content.clone() {
                 let mut data = data.clone();
                 data.retain(|b| b.genre == c.genre && b.title != c.title);
@@ -42,7 +42,7 @@ pub fn Book(props: &BookProps) -> Html {
             }
             content
         },
-        (data.clone().unwrap_or_default(), name.clone()),
+        (data.unwrap_or_default(), name),
     );
 
     html! {
@@ -52,7 +52,7 @@ pub fn Book(props: &BookProps) -> Html {
             >
                     <LayoutError errtype={ErrorType::LoadingBooks} title=""/>
             </main>
-        } else if data_error.is_some() || content.clone().is_none() {
+        } else if data_error.is_some() || content.is_none() {
             <main
                 class={classes!("flex","items-center","justify-center","w-full","min-h-screen","px-6")}
             >
