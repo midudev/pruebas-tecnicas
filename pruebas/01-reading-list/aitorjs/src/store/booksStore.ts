@@ -3,7 +3,7 @@ import booksJson from '../books.json'
 import { Book, BooksState } from '../types'
 import { persist } from 'zustand/middleware'
 
-export const useBooksStore = create<any>(persist(
+export const useBooksStore = create<BooksState>(
   (set, get) => ({
     books: [],
     filteredBooks: [],
@@ -25,11 +25,17 @@ export const useBooksStore = create<any>(persist(
     filter: (name: string, value: string | number) => {
       // set filters
       set((state) => {
-        if (value !== '') {
-          return { ...state, filters: { ...state.filters, [name]: value } }
+        if (value !== '') { //  && name !== 'old'
+          return { ...state, filters: { ...state.filters, [name]: value, old: { dato: state.filters } } }
         }
 
-        return { ...state, filters: { pages: state.filters.pages } }
+        return {
+          ...state,
+          filters: {
+            pages: state.filters.pages,
+            old: { dato: state.filters[name] }
+          }
+        }
       })
 
       // finding needed base book list when filter is needed
@@ -38,13 +44,20 @@ export const useBooksStore = create<any>(persist(
 
       let base = get().filteredBooks
 
+      // const prevGenre = filters.old.dato.genre
+      const nextGenre = filters.genre
+      const prevPages = filters.old.dato.pages
+      const nextPages = filters.pages
+      delete filters.old
+
+      // no genre + want books
       if (filters.genre === undefined && wantReadBooks.length > 0) {
         const books = get().books
 
         const excludeIsbn = wantReadBooks.map(w => w.book.ISBN)
         const excludeWantReadBooks = books.filter((b) => {
           console.log('isbn', b.book.ISBN)
-          if (excludeIsbn.includes(b.book.ISBN) === true) {
+          if (excludeIsbn.includes(b.book.ISBN)) {
             return false
           }
           return true
@@ -53,17 +66,28 @@ export const useBooksStore = create<any>(persist(
         // return get().setBooks(excludeWantReadBooks)
       }
 
-      if (filters.genre === undefined && wantReadBooks.length === 0) {
+      // no genre + no want books + to "Todos los generos"
+      else if (filters.genre === undefined && wantReadBooks.length === 0 && nextGenre === undefined) {
         base = get().books
-        console.log('es undefined', base)
-
-        // return get().setBooks(base)
+        console.log('vuelta a todos los books sin want books', base)
       }
+
+      // genre + want books + to/from > or < page
+      else if (filters.genre && wantReadBooks.length > 0 && prevPages > nextPages || prevPages < nextPages) {
+        base = get().books
+        console.log('PRIMERA OPCION', base, filters)
+      }
+
+      // genre + no want books
+      else if (filters.genre && wantReadBooks.length === 0) {
+        base = get().books
+        console.log('SEGUNDA OPCION', base, filters)
+      }
+      console.log('filters', filters)
 
       // filter using filters properties
       Object.keys(filters).map((f) => {
-        const _books = base.filter((d) => {
-          // console.log('BOOKS', base)
+        base = base.filter((d) => {
           if (f === 'pages') {
             return filters[f] > 0 ? d.book[f] <= filters[f] : true
           } else {
@@ -71,13 +95,10 @@ export const useBooksStore = create<any>(persist(
             return d.book[f] === filters[f]
           }
         })
-        get().setBooks(_books)
+
+        get().setBooks(base)
       })
     }
-  }),
-  {
-    name: 'booksLibrary',
-    getStorage: () => localStorage
   }))
 
 /*  filterGenre: (genre: string) => {

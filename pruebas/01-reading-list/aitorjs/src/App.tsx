@@ -8,12 +8,12 @@ function App() {
   const { getBooks, filteredBooks, filters, filter, books } = useBooksStore();
 
   useEffect(() => {
-    const data = window.localStorage.getItem("booksLibrary");
+    /*   const data = window.localStorage.getItem("booksLibrary");
     const isData = JSON.parse(data).state.books.length > 0;
 
-    if (!isData) {
-      getBooks();
-    }
+    if (!isData) { */
+    getBooks();
+    // }
   }, []);
 
   const filterGenreBooks = (genre: string) => {
@@ -51,7 +51,10 @@ function App() {
         <div className="flex flex-col">
           <label htmlFor="genreFilter">Filtrar por género</label>
 
-          <select onChange={(e) => filterGenreBooks(e.target.value)}>
+          <select
+            value={filters.genre}
+            onChange={(e) => filterGenreBooks(e.target.value)}
+          >
             <option value="">Todas las categorías</option>
             <option value="Fantasía">Fantasía</option>
             <option value="Ciencia ficción">Ciencia ficción</option>
