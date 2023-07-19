@@ -138,7 +138,7 @@ pub fn Library(props: &Props) -> Html {
 
     html! {
         <section
-            class={classes!("flex","flex-row","flex-wrap","py-4","mt-6","mb-2")}>
+            class={classes!("flex","flex-row","flex-wrap","w-full","py-4","mt-6","mb-2")}>
             if !title.is_empty() || sortable {
                 <header class={classes!("w-full","flex","flex-row","items-center","justify-between","py-6")}>
                     if !title.is_empty() {
