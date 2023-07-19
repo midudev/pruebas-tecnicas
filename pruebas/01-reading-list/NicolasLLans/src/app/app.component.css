@@ -39,7 +39,7 @@ app-barra-nav {
       height: 100%;
       gap: 15px;
       display: flex;
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
       flex-direction: column;
 }
