@@ -15,9 +15,9 @@ export default function List() {
 
 	return (
 		<section>
-			<ul className={styles.listContainer}>
-				{filteredBooks.length > 0 ? (
-					filteredBooks.map((book: BookProps) => (
+			{filteredBooks.length > 0 ? (
+				<ul className={styles.listContainer}>
+					{filteredBooks.map((book: BookProps) => (
 						<li key={book.book.isbn} className={styles.bookCover}>
 							<button
 								className={
@@ -60,11 +60,14 @@ export default function List() {
 								}
 							></img>
 						</li>
-					))
-				) : (
-					<p>Oh no! No books found!</p>
-				)}
-			</ul>
+					))}
+				</ul>
+			) : (
+				<p>
+					Well, it seems like the library has been hit by a case of book
+					invisibility charms
+				</p>
+			)}
 		</section>
 	);
 }
