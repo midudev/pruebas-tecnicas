@@ -9,12 +9,12 @@ import { BooksContext } from '../context/BooksContext'
 
 export function Functionalities ({ showBook, book }) {
   const [bookAdded, setBookAdded] = useState(book.isSaved)
-  const { books, updateBooks } = useContext(BooksContext)
+  const { updateBooks, storage, books } = useContext(BooksContext)
   const { addBook, removeBook } = UseBookContext()
 
   useEffect(() => {
     setBookAdded(book.isSaved)
-  }, [books])
+  }, [storage, books])
 
   const addToBookList = () => {
     updateBooks({ isSaved: true, book })

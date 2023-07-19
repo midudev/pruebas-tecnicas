@@ -6,15 +6,15 @@ import { BooksProvider } from './context/BooksContext'
 
 function App () {
   return (
-    <BookListProvider>
     <BooksProvider>
+      <BookListProvider>
     <SavedBooks/>
-      <main className="font-spaceGrotesk max-w-5xl m-auto px-4">
+      <main className="max-w-5xl m-auto px-4">
         <Header/>
         <BookList />
       </main>
-    </BooksProvider>
     </BookListProvider>
+    </BooksProvider>
   )
 }
 

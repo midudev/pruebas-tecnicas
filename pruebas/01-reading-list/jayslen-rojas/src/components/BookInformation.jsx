@@ -8,7 +8,7 @@ export function BookInformation ({ book }) {
   return (
     <>
       <li className="rounded-b-md">
-        <img src={book.cover} alt="libro" className="rounded-md w-full h-80 object-cover" />
+        <img src={book.cover} alt="libro" className="rounded-md w-full h-[350px] object-cover" />
         <ul className=" rounded-b-md p-1">
           <li className="font-bold">{book.title}</li>
           <Pages pages={book.pages} />
