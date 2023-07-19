@@ -1,10 +1,12 @@
-import type { Book, BookISBN } from "~/types"
+import type { Book, BookISBN, Filter } from "~/types"
 
 import { $, component$, useStore } from "@builder.io/qwik"
 import type { DocumentHead } from "@builder.io/qwik-city"
 import { BooksList } from "~/components/BooksList"
 import INITIAL_BOOKS from "~/db/books.json"
 import { ReadingList } from "~/components/ReadingList"
+import { Filters } from "~/components/Filters"
+import { getFilterFunction } from "~/helpers/getFilterFunction"
 
 export default component$(() => {
   const allBooks: Book[] = useStore(
@@ -47,8 +49,15 @@ export default component$(() => {
     readingList.splice(index, 1)
   })
 
+  const onFilterChange = $((filter: Filter) => {
+    const filterFunction = getFilterFunction(filter)
+
+    allBooks.sort(filterFunction)
+  })
+
   return (
     <section class="relative">
+      <Filters onFilterChange={onFilterChange} />
       <BooksList books={allBooks} onBookSelect={handleAddBookToReadingList} />
 
       <div class="sticky bottom-0 mt-8">
