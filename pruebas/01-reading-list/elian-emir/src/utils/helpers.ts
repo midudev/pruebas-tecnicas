@@ -1,5 +1,5 @@
-import { booksStore } from '../store/booksStore'
 import { fetchBooksData } from './fetch'
+import { Mutate, StoreApi } from 'zustand'
 
 export function selectGenre() {
   const books = fetchBooksData()
@@ -10,4 +10,23 @@ export function selectGenre() {
     if (isGenre === undefined) genre.push(gen)
   }
   return genre
+}
+
+type StoreWithPersist = Mutate<
+  StoreApi<unknown>,
+  [['zustand/persist', unknown]]
+>
+
+export const withStorageDOMEvents = (store: StoreWithPersist) => {
+  const storageEventCallback = (e: StorageEvent) => {
+    if (e.key === store.persist.getOptions().name && e.newValue) {
+      store.persist.rehydrate()
+    }
+  }
+
+  window.addEventListener('storage', storageEventCallback)
+
+  return () => {
+    window.removeEventListener('storage', storageEventCallback)
+  }
 }

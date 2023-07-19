@@ -2,6 +2,8 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { IBook } from '../types'
 import { fetchBooksData } from '../utils/fetch'
+import { withStorageDOMEvents } from '../utils/helpers'
+
 
 interface BooksState {
   books: IBook[]
@@ -44,7 +46,9 @@ export const booksStore = create<BooksState>()(
       }
     },
     {
-      name: 'books-storage'
+      name: 'books-storage',
+      
     }
   )
 )
+withStorageDOMEvents(booksStore)

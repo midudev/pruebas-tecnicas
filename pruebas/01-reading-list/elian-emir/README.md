@@ -13,5 +13,6 @@ Elian Hadad
 
 `
 npm install
+
 npm run dev
 `
