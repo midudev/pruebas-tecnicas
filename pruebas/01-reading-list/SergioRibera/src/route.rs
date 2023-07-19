@@ -2,6 +2,7 @@ use yew::prelude::*;
 use yew_router::prelude::*;
 
 use crate::{
+    components::NavBar,
     context::{DataProvider, ReadingListProvider},
     layout::{ErrorType, Footer, LayoutError},
     screens::*,
@@ -26,11 +27,14 @@ fn switch(route: Route) -> Html {
         Route::Book { name } => html! {<Book {name}/>},
         Route::Author { name } => html! {<Author {name}/>},
         Route::NotFound => html! {
-            <main
-                class={classes!("flex","items-center","justify-center","w-full","min-h-screen","px-6")}
-                >
-                <LayoutError errtype={ErrorType::Empty} title=""/>
-            </main>
+            <>
+                <NavBar />
+                <main
+                    class={classes!("flex","items-center","justify-center","w-full","min-h-screen","px-6")}
+                    >
+                    <LayoutError errtype={ErrorType::Empty} title=""/>
+                </main>
+            </>
         },
     }
 }

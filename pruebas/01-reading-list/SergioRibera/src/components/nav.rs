@@ -6,19 +6,22 @@ use yew_icons::{Icon, IconId};
 
 #[derive(Properties, PartialEq)]
 pub struct Props {
-    pub onsearch: Callback<String>,
+    pub onsearch: Option<Callback<String>>,
 }
 
 #[function_component(NavBar)]
 pub fn navbar(props: &Props) -> Html {
     let Props { onsearch } = props;
     html! {
-        <nav class={classes!("w-full","px-6","py-4","flex","flex-row","items-center","justify-between")}>
-            <InputText
-                onchange={onsearch}
-                placeholder={"Buscar por Nombre, author, genero, sinopsis"}
-                icon={IconId::BootstrapSearch}
-            />
+        <nav class={classes!("w-full","px-6","py-4","flex","flex-row","items-center",
+            (onsearch.is_some()).then_some("justify-between").or(Some("justify-end")))}>
+            if let Some(onsearch) = onsearch {
+                <InputText
+                    onchange={onsearch}
+                    placeholder={"Buscar por Nombre, author, genero, sinopsis"}
+                    icon={IconId::BootstrapSearch}
+                />
+            }
             <ThemeComponent />
         </nav>
     }

@@ -2,6 +2,7 @@ use yew::prelude::*;
 use yew_hooks::{use_list, UseLocalStorageHandle};
 
 use crate::{
+    components::NavBar,
     context::DataContext,
     layout::{ErrorType, LayoutError, Library},
     models::Book as BookModel,
@@ -44,6 +45,8 @@ pub fn Author(props: &AuthorProps) -> Html {
     );
 
     html! {
+        <>
+        <NavBar />
         if data_loading {
             <main
                 class={classes!("flex","items-center","justify-center","w-full","min-h-screen","px-6")}
@@ -94,5 +97,6 @@ pub fn Author(props: &AuthorProps) -> Html {
                 </main>
             })}
         }
+        </>
     }
 }

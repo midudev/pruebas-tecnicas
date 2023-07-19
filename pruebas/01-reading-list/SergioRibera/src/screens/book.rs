@@ -3,6 +3,7 @@ use yew_hooks::{use_list, UseLocalStorageHandle};
 use yew_router::prelude::Link;
 
 use crate::{
+    components::NavBar,
     context::DataContext,
     layout::{ErrorType, LayoutError, Library},
     models::Book as BookModel,
@@ -46,6 +47,8 @@ pub fn Book(props: &BookProps) -> Html {
     );
 
     html! {
+        <>
+        <NavBar />
         if data_loading {
             <main
                 class={classes!("flex","items-center","justify-center","w-full","min-h-screen","px-6")}
@@ -137,5 +140,6 @@ pub fn Book(props: &BookProps) -> Html {
                 </main>
             })}
         }
+        </>
     }
 }
