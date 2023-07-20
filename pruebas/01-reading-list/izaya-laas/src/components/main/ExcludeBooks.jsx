@@ -11,7 +11,7 @@ const ExcludeBooks = ({ inputValue, handleChange }) => {
 				type="checkbox"
 				className="accent-black"
 				name="exclude-books"
-				value={inputValue}
+				checked={inputValue}
 				onChange={handleChange}
 			/>
 			<label htmlFor="">Exclude my books</label>
