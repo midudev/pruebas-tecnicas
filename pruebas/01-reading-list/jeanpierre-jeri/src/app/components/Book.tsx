@@ -11,6 +11,7 @@ export function Book({ book }: { book: BookInfo }) {
 
   return (
     <article
+      data-testid="book"
       onClick={handleSetLectureBook}
       className="
       flex flex-col 

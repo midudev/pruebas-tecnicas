@@ -1,4 +1,4 @@
-const title = 'All Books'
+const title = 'Books'
 
 export function Header() {
   return (
@@ -7,7 +7,9 @@ export function Header() {
       <span>{title}</span>
       <span>{title}</span>
       <span>{title}</span>
+      <span>{title}</span>
       <h1 className="flex-shrink-0 text-zinc-800">{title}</h1>
+      <span>{title}</span>
       <span>{title}</span>
       <span>{title}</span>
       <span>{title}</span>

@@ -9,6 +9,7 @@ export function Books() {
   const [parent] = useAutoAnimate()
   return (
     <section
+      data-testid="book-list"
       ref={parent}
       className="grid auto-rows-max col-span-8 gap-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 h-fit"
     >
