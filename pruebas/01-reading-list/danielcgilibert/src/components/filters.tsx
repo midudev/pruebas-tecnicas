@@ -5,16 +5,14 @@ import { FilterIcon, Search } from './icons'
 import { useFilter } from '../hooks/useFilter'
 
 //LIB
-import { getBooks } from '../lib/map'
 import { cn } from '../lib/cn'
+import { useStore } from '../store/bookStore'
 
 type Props = {
   genres: string[]
 }
 
 export default function Filters({ genres }: Props) {
-  const books = getBooks()
-  const maxPages = Math.max(...books.map((book) => book.pages)) // calculate max pages of all books
   const {
     handleSelectCategory,
     selectCategory,
@@ -23,6 +21,8 @@ export default function Filters({ genres }: Props) {
     setSearch,
     search
   } = useFilter()
+  const { books } = useStore()
+  const maxPages = Math.max(...books.map((book) => book.pages)) // calculate max pages of all books
 
   return (
     <div className='flex flex-col gap-6 '>
@@ -61,7 +61,8 @@ export default function Filters({ genres }: Props) {
         <div className='relative w-full'>
           <label
             htmlFor='simple-search'
-            className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 '>
+            className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 '
+          >
             <Search />
           </label>
           <input
@@ -88,7 +89,8 @@ export default function Filters({ genres }: Props) {
                 selectCategory.includes(genre) &&
                   'bg-orange-400 font-medium text-white'
               )}
-              key={genre}>
+              key={genre}
+            >
               {genre}
             </button>
           ))}

@@ -5,20 +5,20 @@ export default {
     container: {
       center: true,
       screens: {
-        '2xl': '1400px',
-      },
+        '2xl': '1400px'
+      }
     },
     extend: {
       colors: {
         accent: {
-          DEFAULT: 'hsl(var(--accent))',
-        },
+          DEFAULT: 'hsl(var(--accent))'
+        }
       },
       gridTemplateColumns: {
         // Complex site-specific column configuration
-        listBooks: 'repeat(auto-fill, minmax(170px, max-content))',
-      },
-    },
+        listBooks: 'repeat(auto-fill, minmax(170px, max-content))'
+      }
+    }
   },
-  plugins: [],
+  plugins: [require('tailwindcss-animated')]
 }

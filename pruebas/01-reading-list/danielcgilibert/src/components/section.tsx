@@ -12,7 +12,7 @@ type Props = {
 
 export default function SectionLibrary({ title, books, totalBooks }: Props) {
   return (
-    <section className='flex flex-col gap-4 '>
+    <section className=' flex flex-col gap-4'>
       <header className='flex justify-between'>
         <h1 className='font-display w-full  border-b-2 border-neutral-100 py-2    text-3xl tracking-wide  text-orange-400 first-letter:uppercase '>
           {title}
