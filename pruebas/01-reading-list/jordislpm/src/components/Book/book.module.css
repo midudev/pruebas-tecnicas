@@ -28,7 +28,7 @@ padding: 0.4rem 0.1rem 0.4rem 0.1rem;
 
 .img{
     display: flex;
-    min-width: 90%;
+    max-width: 90%;
     max-height: 200px;
 }
 
@@ -36,7 +36,7 @@ padding: 0.4rem 0.1rem 0.4rem 0.1rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 3rem;
+    width: 2rem;
     height: 1.5rem;
     border: none;
     border-radius: 20%;
@@ -70,7 +70,7 @@ padding: 0.4rem 0.1rem 0.4rem 0.1rem;
     background: var(--primary-blue);
     position: absolute;
     top: -95%;
-    left: -130%;
+    left: -220%;
     padding: 5px;
     border-radius: 5px;
   }
@@ -86,7 +86,7 @@ padding: 0.4rem 0.1rem 0.4rem 0.1rem;
     background: var(--primary-red);
     position: absolute;
     top: -95%;
-    left: -90%;
+    left: -170%;
     padding: 5px;
     border-radius: 5px;
   }

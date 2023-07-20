@@ -19,6 +19,9 @@ useEffect(()=>{
             book.pages >= filters.minPages &&(
                 filters.genre === "Todas" ||
                 book.genre === filters.genre
+            )&& (
+                filters.search === "" ||
+                (book.title.toLowerCase()).includes(filters.search.toLowerCase())
             )
         )
     })
