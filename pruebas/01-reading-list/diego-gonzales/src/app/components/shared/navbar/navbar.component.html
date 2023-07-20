@@ -1,0 +1,13 @@
+<nav class="flex flex-col md:flex-row justify-between items-center">
+  <a class="text-3xl text-center font-bold" routerLink="/">
+    Reading List App
+  </a>
+
+  <input
+    type="text"
+    placeholder="Search book"
+    class="input input-bordered hidden md:block"
+    *ngIf="showSearchBox()"
+    (input)="onInputChange($event)"
+  />
+</nav>
