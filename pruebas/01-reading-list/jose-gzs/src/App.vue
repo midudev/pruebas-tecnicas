@@ -7,7 +7,7 @@ import ReadingList from './components/ReadingList.vue'
 <template>
   <div class="max-w-5xl mx-auto py-8">
     <header>
-      <PageTitle msg="Librería" />
+      <PageTitle msg="Book List" />
     </header>
     <main class="mt-8">
       <ReadingList />
