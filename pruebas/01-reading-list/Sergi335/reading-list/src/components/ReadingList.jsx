@@ -2,9 +2,9 @@ import { useList } from '../hooks/useList'
 import './ReadingList.css'
 function ListItem ({ cover, title, genre, author, year, removeFromList }) {
   return (
-    <ul>
+    <ul className=' w-[100%] h-auto'>
         <li>
-            <img src={cover} alt={title} />
+            <img className="aspect-[317/475]" src={cover} alt={title} />
             <div>
                 <strong>{title}</strong>
                 <p>{author.name}</p>

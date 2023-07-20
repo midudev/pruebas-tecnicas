@@ -1,26 +1,9 @@
-#root {
-  margin: 0 auto;
+#page {
   padding: 2rem;
   text-align: center;
   display: flex;
-  min-width: 100vw;
-  min-height: 100vh;
-}
-
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  left: 0;
-  background-color: aquamarine;
-  padding: 20px;
-}
-
-main {
-  width: 75%;
-  margin-top: 225px;
+  margin: 0 auto;
+  width: 78vw;
+  /* min-width: 100vw;
+  min-height: 100vh; */
 }
