@@ -20,3 +20,18 @@
     font-size: 2rem;
     color: var(--primary-beige);
 }
+
+.boxTitle{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.icon{
+    display: flex;
+    max-width: 4rem;
+}
+
+h1{
+    color: var(--secundary-blue);
+}
