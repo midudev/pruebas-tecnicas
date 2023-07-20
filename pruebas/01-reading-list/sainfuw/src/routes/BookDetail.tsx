@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
+import Button from "../components/Button";
+import HomeIcon from "../components/icons/HomeIcon";
 import { ReadListContext } from "../context/ReadListContext";
 import { IBook } from "../types";
 
@@ -24,25 +26,21 @@ export default function BookDetail() {
               src={book.cover}
               className="rounded-lg max-w-[300px] min-w-[300px]"
             />
-            <Link to="/" className="w-full py-2 text-center rounded-full bg-primary text-background">Back to Home</Link>
+            <Link to="/" className="relative w-full py-2 text-center transition-colors duration-300 rounded-full bg-primary text-background font-pop hover:bg-background-light hover:text-primary hover:underline hover:underline-offset-4">
+              <HomeIcon />
+              <span className="pl-8">Back to Home</span>
+            </Link>
             {
               readList.some(b => b.ISBN === book.ISBN)
-                ? (
-                  <button
-                    onClick={() => removeFromReadList(book)}
-                    className="w-full py-2 text-center bg-red-800 rounded-full text-primary"
-                  >
-                    Remove From Read
-                  </button>
-                )
-                : (
-                  <button
-                    onClick={() => addToReadList(book)}
-                    className="w-full py-2 text-center rounded-full text-primary bg-secondary"
-                  >
-                    Add to Read
-                  </button>
-                )
+                ? <Button
+                  onClick={() => removeFromReadList(book)}
+                  text="Remove from Read List"
+                  remove={true}
+                  className="w-full transition-colors duration-300 bg-red-800 hover:bg-red-950" />
+                : <Button
+                  onClick={() => addToReadList(book)}
+                  text="Add to Read List"
+                  className="w-full transition-colors duration-300 bg-secondary hover:bg-blue-950" />
             }
           </motion.section>
 

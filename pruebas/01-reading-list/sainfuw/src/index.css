@@ -23,6 +23,20 @@
 }
 
 :root {
-  --color: #dedede;
-  --bg-color: #000000;
+  --bg: #0F0F0F;
+  --bg-light: #272727;
+  --primary: #FDFDFD;
+  --secondary: #004599;
+  --secondary-light: #67DCF8;
+  background-color: var(--bg);
+}
+
+.read-book-container:hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }

@@ -17,10 +17,10 @@ export function Filters() {
 
   return (
     <section className="flex flex-col items-center justify-center gap-4">
-      <div className="flex flex-col gap-2">
-        <label htmlFor={pageId} className="text-xs font-pop">
-          Maximo de Paginas:
-          <span>{filters.pages}</span>
+      <div className="flex flex-col gap-2 w-[160px]">
+        <label htmlFor={pageId} className="flex justify-between text-xs font-pop">
+          <span>Maximo de Paginas:</span>
+          <span> {filters.pages}</span>
         </label>
         <input
           type="range"

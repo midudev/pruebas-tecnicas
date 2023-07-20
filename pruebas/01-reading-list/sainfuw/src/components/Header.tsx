@@ -14,19 +14,7 @@ export default function Header() {
   const title = Array.from('BookStore')
 
   return (
-    <header className='flex items-center justify-between px-8 mt-8'>
-      <section className="flex p-6 rounded-lg bg-background-light text-primary">
-        <div className="flex flex-col min-w-[220px]">
-          <h3 className="text-sm font-pop">Total books: {books.length}</h3>
-          {filteredBooks.length !== books.length && (
-            <h3 className="text-sm font-pop">Total filtered books: {filteredBooks.length}</h3>
-          )}
-          {readList.length > 0 && (
-            <h3 className="text-sm font-pop">Total read in list: {readList.length}</h3>
-          )}
-        </div>
-        <Filters />
-      </section>
+    <header className='flex flex-col items-center justify-between mt-8 px-11 md:flex-row-reverse'>
       <motion.div
         variants={container}
         initial="hidden"
@@ -36,7 +24,7 @@ export default function Header() {
         {title.map((letter, index) => (
           <motion.span
             key={index}
-            className="text-9xl font-pp"
+            className="text-8xl lg:text-9xl font-pp"
             variants={child}
             whileHover={{ color: `#67dcf8`, textDecoration: 'underline', scale: 2 }}
           >
@@ -44,6 +32,18 @@ export default function Header() {
           </motion.span>
         ))}
       </motion.div>
+      <section className="flex p-6 rounded-lg bg-background-light text-primary">
+        <div className="flex flex-col min-w-[220px] justify-around">
+          <h3 className="font-pop">Total books: {books.length}</h3>
+          {filteredBooks.length !== books.length && (
+            <h3 className="font-pop">Total filtered books: {filteredBooks.length}</h3>
+          )}
+          {readList.length > 0 && (
+            <h3 className="font-pop">Total read in list: {readList.length}</h3>
+          )}
+        </div>
+        <Filters />
+      </section>
     </header>
   );
 }
