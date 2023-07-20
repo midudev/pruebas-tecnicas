@@ -15,15 +15,15 @@ export function ReadingList() {
 
 export function BookList({ books }) {
   return (
-    <div className="px-5 pb-5">
+    <div className="pb-5">
       {Object.keys(books).map((row) => (
         <div key={row}>
           <div className="font-medium mt-5 mb-2 text-white"> {row} </div>
-          <div className="flex gap-2 flex-wrap overflow-hidden">
+          <div className="flex gap-3 flex-wrap">
             {books[row].map((book) => (
               <div
                 key={book.ISBN}
-                className="relative w-40 h-60 rounded overflow-hidden cursor-pointer"
+                className="relative w-40 h-60 rounded overflow-hidden cursor-pointer hover:scale-105 ease-in duration-200"
               >
                 <Link href={`/books/${book.ISBN}`}>
                   <Image

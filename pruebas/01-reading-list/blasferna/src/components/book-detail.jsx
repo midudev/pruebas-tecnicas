@@ -8,24 +8,37 @@ export default function BookDetail({ isbn }) {
   const otherBooks = getAuthorOtherBooks(book);
   return (
     <>
-      <Image
-        src={book.cover}
-        className="object-cover rounded shadow"
-        width={234}
-        height={363}
-        alt={book.title}
-      ></Image>
+      <div className="flex justify-center lg:flex-none lg:justify-start">
+        <div>
+          <Image
+            src={book.cover}
+            className="object-cover rounded shadow"
+            width={234}
+            height={363}
+            alt={book.title}
+          ></Image>
+        </div>
+      </div>
       <div>
-        <h1 className="font-medium text-3xl">{book.title}</h1>
-        <p>{book.synopsis}</p>
+        <h1 className="font-medium text-3xl mb-1">{book.title}</h1>
+        <p className="text-gray-300 mb-2">{book.synopsis}</p>
         <PlusButton isbn={book.ISBN}></PlusButton>
-        <div>Género: {book.genre}</div>
-        <div>Año: {book.year}</div>
-        <div>Autor: {book.author.name}</div>
-        <div>ISBN: {book.ISBN}</div>
-        <div>{book.pages} páginas</div>
+
+        <div className="text-sm mt-2">
+          <span className="text-gray-300">Género:</span> {book.genre}
+        </div>
+        <div className="text-sm">
+          <span className="text-gray-300">Año:</span> {book.year}
+        </div>
+        <div className="text-sm">
+          <span className="text-gray-300">Autor:</span> {book.author.name}
+        </div>
+        <div className="text-sm">
+          <span className="text-gray-300">ISBN:</span> {book.ISBN}
+        </div>
+        <div className="text-sm">{book.pages} páginas</div>
         {otherBooks.length > 0 && (
-          <>
+          <div className="mt-2">
             <span className="font-medium text-lg">
               Más libros de {book.author.name}
             </span>
@@ -47,7 +60,7 @@ export default function BookDetail({ isbn }) {
                 </div>
               ))}
             </div>
-          </>
+          </div>
         )}
       </div>
     </>

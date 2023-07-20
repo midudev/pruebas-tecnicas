@@ -13,7 +13,7 @@ import { useAppContext } from "@/context/store";
 
 export default function PlusButton({ isbn }) {
   const { inReadingList, setInReadingList } = useAppContext();
-  const [checked, setChecked] = useState(null)
+  const [checked, setChecked] = useState(null);
 
   const onClickHander = (adding) => {
     if (adding) {
@@ -37,22 +37,21 @@ export default function PlusButton({ isbn }) {
   }
 
   return (
-    <a
-      href="#"
+    <button
       onClick={() => onClickHander(!checked)}
       className="px-3 py-2 text-sm font-medium text-center inline-flex items-center text-white bg-red-700 rounded hover:bg-red-800 focus:outline-none"
     >
       {checked ? (
         <>
-          <CheckIcon className="h-5 w-5"></CheckIcon>
+          <CheckIcon className="h-5 w-5 mr-2"></CheckIcon>
           Quitar de la lista
         </>
       ) : (
         <>
-          <PlusIcon className="h-5 w-5"></PlusIcon>
+          <PlusIcon className="h-5 w-5  mr-2"></PlusIcon>
           Añadir a la lista
         </>
       )}
-    </a>
+    </button>
   );
 }
