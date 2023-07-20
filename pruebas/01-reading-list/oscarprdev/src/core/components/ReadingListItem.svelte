@@ -14,6 +14,7 @@
   export let book: Book
   export let index: number
 
+  let showAnimation: any
   let showOverlay: Writable<boolean> = writable(false)
 
   const handleOverlay = () => {
@@ -32,24 +33,6 @@
         return modal
     });
   }
-
-  
-  let showAnimation: any
-
-  let hoveredIndex = null;
-
-function handleStarHover(index) {
-  hoveredIndex = index;
-}
-
-function handleStarLeave() {
-  hoveredIndex = null;
-}
-
-onMount(() => {
-  // Reset the hoveredIndex when the component mounts
-  hoveredIndex = null;
-});
 
   onMount(() => {
     showAnimation = index === 0 && $actionsStore.readingListItemAdded && $appState.readingBooks.length > 1

@@ -12,6 +12,7 @@
 
   const removeBookFromReadingList = () => {
     readingListUsecase.removeBook(book)
+
     closeModal()
 
     if ($appState.readingBooks.length === 0) {

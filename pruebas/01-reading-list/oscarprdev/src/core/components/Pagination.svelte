@@ -8,6 +8,16 @@
 
   export let booksFiltered: Readable<Book[]>
 
+  let leftIconIsDisabled = derived(
+    paginationState,
+    ($paginationState) => $paginationState.init <= 0
+  )
+  let rightIconIsDisabled = derived(
+    [paginationState, booksFiltered],
+    ([$paginationState, $booksFiltered]) =>
+      $booksFiltered && $paginationState.offset >= $booksFiltered.length
+  )
+
   const showNext = () => {
     paginationState.update((prevState: PaginationState) => ({
       init: prevState.init + 4,
@@ -21,16 +31,6 @@
       offset: prevState.offset - 4,
     }))
   }
-
-  let leftIconIsDisabled = derived(
-    paginationState,
-    ($paginationState) => $paginationState.init <= 0
-  )
-  let rightIconIsDisabled = derived(
-    [paginationState, booksFiltered],
-    ([$paginationState, $booksFiltered]) =>
-      $booksFiltered && $paginationState.offset >= $booksFiltered.length
-  )
 </script>
 
 {#if $booksFiltered.length > 4}

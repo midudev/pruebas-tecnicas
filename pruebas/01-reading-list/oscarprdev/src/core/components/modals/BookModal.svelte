@@ -7,6 +7,7 @@
   import { actionsStore } from '../../store/actions-store'
 
   export let book: Book
+
   export let closeModal: () => void
 
   const addBookToReadingList = () => {
@@ -65,6 +66,7 @@
     </div>
     <button
       class="absolute flex items-center gap-4 bottom-0 px-6 py-3 rounded-3xl text-light bg-overlayModal cursor-pointer self-center hover:bg-nav duration-100 text-xs"
+      on:click={addBookToReadingList}
     >
       Añadir a lista de lectura
       <BookOpenIcon size="25" class="text-light" /></button

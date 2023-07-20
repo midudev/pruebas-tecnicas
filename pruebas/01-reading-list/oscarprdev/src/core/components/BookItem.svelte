@@ -13,6 +13,7 @@
   export let book: Book
   export let index: number
 
+  let showAnimation: any
   let showOverlay: Writable<boolean> = writable(false)
 
   const handleOverlay = () => {
@@ -57,8 +58,6 @@
     }, 500);
   }
 
-  let showAnimation: any
-
   onMount(() => {
     showAnimation = index === 0 && $actionsStore.readingListItemRemoved
   })
@@ -67,7 +66,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <li
-  class="flex flex-col gap-4 relative w-[150px] xl:w-[130px] xl:h-[250px] xxl:w-[160px] xxl:h-[300px] showAnimation
+  class="flex flex-col gap-4 relative w-[150px] xl:w-[130px] xl:h-[250px] xxl:w-[160px] xxl:h-[300px] {showAnimation
     ? 'animate-item-out'
     : 'animate-fade-in'}"
   on:mouseenter={handleOverlay}
