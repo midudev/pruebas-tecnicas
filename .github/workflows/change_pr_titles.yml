@@ -1,0 +1,44 @@
+name: Change Existing PR Titles
+
+on:
+  workflow_dispatch:  # To manually trigger the workflow
+  # You can add more events if you want to automatically trigger it on certain occasions
+
+jobs:
+  change_pr_titles:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set PR Titles for Existing PRs
+        run: |
+          # Define your GitHub username and personal access token
+          USERNAME=${{ secrets.USERNAME  }}
+          ACCESS_TOKEN=${{ secrets.TOKEN }}
+
+          # Get a list of open pull requests
+          PR_LIST=$(curl -H "Authorization: token $ACCESS_TOKEN" "https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls?state=open")
+
+          # Loop through the pull requests
+          for pr in $(echo "$PR_LIST" | jq -r '.[] | @base64'); do
+            _jq() {
+              echo ${pr} | base64 --decode | jq -r ${1}
+            }
+
+            pr_number=$(_jq '.number')
+            pr_author=$(_jq '.user.login')
+            pr_body=$(curl -H "Authorization: token $ACCESS_TOKEN" "https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${pr_number}" | jq -r '.body')
+
+            # Check if the PR contains the label "prueba técnica" in its body
+            if echo "$pr_body" | grep -iq "prueba técnica"; then
+              new_title="Solución a Prueba #${pr_number} por @${pr_author}"
+              echo "Changing PR #${pr_number} title to: ${new_title}"
+
+              # Update the title using the GitHub API
+              curl -X PATCH -H "Authorization: token $ACCESS_TOKEN" -H "Content-Type: application/json" -d "{\"title\":\"${new_title}\"}" "https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${pr_number}"
+            fi
+          done
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
