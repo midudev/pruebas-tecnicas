@@ -8,7 +8,7 @@ import { useBooks } from './store/bookStore';
 
 function App() {
   const allbooks = useBooks((state) => state.books);
-  console.log(allbooks);
+
   return (
     <main className="flex flex-col w-full justify-center items-center">
       <Header />

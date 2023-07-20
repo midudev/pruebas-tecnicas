@@ -12,7 +12,7 @@ function Book(props) {
           alt={bookData.title}
           className="overflow-hidden aspect-[317/475] shadow-xl shadow-slate-300 rounded-r-md z-30 relative"
         />
-        <div className="absolute top-0 left-0 pages bg-white w-full h-full flex border-slate-900 border-4 z-0"></div>
+        {/* <div className="absolute top-0 left-0 pages bg-white w-full h-full flex border-slate-900 border-4 z-0"></div> */}
       </div>
       {bookData.isInReadingList == true ? (
         <button

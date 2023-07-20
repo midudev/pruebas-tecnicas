@@ -1,11 +1,8 @@
 import Book from './Book';
-import { useBooks } from '../store/bookStore';
 import Filters from './Filters';
 import { AnimatePresence, Reorder } from 'framer-motion';
 
 function Booklist({ books }) {
-  const { filter } = useBooks((store) => store);
-
   return (
     <div className="w-7/12 flex flex-col p-2">
       <Filters />

@@ -29,13 +29,6 @@ function Readinglist() {
           </AnimatePresence>
         </Reorder.Group>
       </section>
-      {/* <ul className="grid grid-cols-2 xl:grid-cols-3">
-        {readinglist.map((book) => (
-          <li key={book.ISBN}>
-            <Book {...book} isInReadingList />
-          </li>
-        ))}
-      </ul> */}
     </aside>
   );
 }
