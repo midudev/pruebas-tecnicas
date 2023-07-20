@@ -4,6 +4,7 @@ import styles from "./form.module.css"
 import { FiltersContext } from "../../context/contextFilters";
 import useFilter from "../../Hooks/useFilter";
 import useSearchBook from "../../Hooks/useSearchBook";
+import find from "../../../public/icons/find.svg"
 
 
 const Form = () => {
@@ -49,7 +50,9 @@ setFilters({...filters, genre:genre})
     < div className={styles.options}>
         <form onSubmit={handleSubmit} className={styles.form}>
             <input onChange={handleChange} value={newSearch} name="search" className={styles.searchInput} type="text" placeholder="Busca libros disponibles"/>
-            <button type="submit" className={styles.searchButton}>Buscar</button>
+            <button type="submit" className={styles.searchButton}>
+                <img src={find}></img>
+            </button>
         </form>
         <div className={styles.filters}>
             <div className={styles.genreFilter}>

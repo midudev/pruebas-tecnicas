@@ -22,7 +22,7 @@ body {
   font-family: var(--font);
   text-rendering: optimizeSpeed;
   min-height: 100vh;
-  background-color: #f2f2f2;
+  background-color: var(--primary-beige);
 }
 
 img,
