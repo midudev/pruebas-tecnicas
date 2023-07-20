@@ -14,3 +14,11 @@
     opacity: 0.5;
 }
 
+@media(max-width: 600px){
+    .card-container{
+        height: auto;
+        width: auto;
+        margin-bottom: 1rem;
+    }
+}
+

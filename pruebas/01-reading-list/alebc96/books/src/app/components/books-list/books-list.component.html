@@ -7,7 +7,7 @@
     <div class="row w-100">
         <div [ngClass]="isNotBooksToRead() ? 'col-lg-12 books-container' : 'col-lg-8 books-container'">
             <h2>Books list</h2>
-            <div class="container d-flex flex-wrap justify-content-center gap-3">
+            <div class="container d-flex flex-wrap justify-content-center gap-4">
                 <app-book-card  [book]="book" *ngFor="let book of booksList"></app-book-card>
             </div>
         </div>
