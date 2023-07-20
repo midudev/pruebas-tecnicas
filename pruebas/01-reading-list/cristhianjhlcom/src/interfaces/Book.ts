@@ -10,3 +10,7 @@ export interface Book {
 	ISBN: string;
 	author: Author;
 }
+
+export interface BookElement {
+	book: Book;
+}
