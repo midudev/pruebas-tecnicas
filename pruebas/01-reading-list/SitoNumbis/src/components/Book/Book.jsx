@@ -63,7 +63,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
   }, [libraryState]);
 
   return !hide ? (
-    <article id={ISBN} className={`book ${styles.main} appear`}>
+    <li id={ISBN} className={`book ${styles.main} appear`}>
       <img
         className="w-full h-full object-cover object-center shadow-[black] shadow-md transition"
         src={cover}
@@ -110,7 +110,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
             : languageState.texts.book.remove}
         </PrimaryButton>
       </div>
-    </article>
+    </li>
   ) : null;
 }
 

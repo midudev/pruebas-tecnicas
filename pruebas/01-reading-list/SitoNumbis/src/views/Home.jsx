@@ -37,9 +37,7 @@ function Home() {
           <section>
             <ul className={styles.bookGrid}>
               {bookToPrints.map((book) => (
-                <li key={book.ISBN}>
-                  <Book {...book} />
-                </li>
+                <Book key={book.ISBN} {...book} />
               ))}
             </ul>
           </section>
