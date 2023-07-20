@@ -4,6 +4,7 @@ import db from './db/books.json'
 import type { Book } from '@/typings/books'
 
 export type BookDataList = Omit<Book, 'author' | 'synopsis' | 'year'>[]
+type ListOfBookLists = { listBooksAvailable: BookDataList; readingList: BookDataList }
 
 const { library } = db
 
@@ -26,9 +27,14 @@ const listBooksAvailable = booksData.filter(({ title }) =>
   readingList.every((bookRead) => bookRead.title !== title)
 )
 
-const initialListBooks: { listBooksAvailable: BookDataList; readingList: BookDataList } = {
+const initialListBooks: ListOfBookLists = {
   listBooksAvailable: booksData,
   readingList: []
 }
 
-export { books, genres, initialListBooks, listBooksAvailable, readingList }
+const currentListBooks: ListOfBookLists = {
+  listBooksAvailable,
+  readingList
+}
+
+export { books, currentListBooks, genres, initialListBooks, listBooksAvailable, readingList }

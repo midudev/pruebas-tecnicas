@@ -5,7 +5,7 @@ import { createContext, useReducer } from 'react'
 import { bookListReducer } from '@/store/bookList'
 
 import { BOOK_LIST_TYPES } from '@/assets/constants'
-import { initialListBooks } from '@/assets/values'
+import { currentListBooks } from '@/assets/values'
 
 import type { Book } from '@/typings/books'
 
@@ -16,7 +16,7 @@ type BookListProps = {
 type Payload = Pick<Book, 'ISBN'>
 
 type BookListContext = {
-  state: typeof initialListBooks
+  state: typeof currentListBooks
   addToReadingList: (payload: Payload) => void
   removeFromReadingList: (payload: Payload) => void
   resetReadingList: () => void
@@ -25,7 +25,7 @@ type BookListContext = {
 export const BookListContext = createContext<BookListContext | null>(null)
 
 export function BookListProvider({ children }: BookListProps) {
-  const [state, dispatch] = useReducer(bookListReducer, initialListBooks)
+  const [state, dispatch] = useReducer(bookListReducer, currentListBooks)
 
   const addToReadingList = (payload: Payload) => {
     dispatch({ type: BOOK_LIST_TYPES.ADD_TO_READING_LIST, payload })
