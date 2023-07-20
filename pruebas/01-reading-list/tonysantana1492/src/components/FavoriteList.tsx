@@ -20,14 +20,16 @@ export const FavoriteList: React.FC<Props> = ({ books }) => {
     const itemToDelete = favorites[fromIndex]
     const updatedFavorites = favorites
       .toSpliced(fromIndex, 1)
-      .toSpliced(fromIndex < toIndex ? toIndex - 1 : toIndex, 0, itemToDelete)
+      .toSpliced(toIndex, 0, itemToDelete)
 
     updateFavorites({ updatedFavorites })
   }
 
   const handleDropItemPosition = ({ fromIndex }: { fromIndex: number }) => {
     if (dragOverIndex === null) return
-    reorderFavorites({ fromIndex, toIndex: dragOverIndex })
+
+    const toIndex = fromIndex < dragOverIndex ? dragOverIndex - 1 : dragOverIndex
+    reorderFavorites({ fromIndex, toIndex })
   }
 
   const addToFavorites = ({ bookId }: { bookId: string }) => {
