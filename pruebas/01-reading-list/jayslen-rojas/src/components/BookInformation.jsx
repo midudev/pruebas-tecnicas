@@ -8,11 +8,11 @@ export function BookInformation ({ book }) {
   return (
     <>
       <li className="rounded-b-md">
-        <img src={book.cover} alt="libro" className="rounded-md w-full h-[350px] object-cover" />
+        <img src={book.cover} alt={`${book.title} portada`} className="rounded-md w-full h-[350px] object-cover" />
         <ul className=" rounded-b-md p-1">
           <li className="font-bold">{book.title}</li>
           <Pages pages={book.pages} />
-          <Author author={book.author.name} />
+          <Author author={book.author} />
           <Genre genre={book.genre} />
         </ul>
         <Functionalities showBook={changeToggle} book={book}/>

@@ -3,7 +3,7 @@ export const availableBook = ({ allBooks, booksInList }) => {
   if (allBooks.length === 13) {
     amountOfBooks = allBooks.length - booksInList.length
   } else {
-    const listBooksFilter = booksInList.filter(item => item.genre === allBooks[0].book.genre)
+    const listBooksFilter = booksInList.filter(item => item.genre === allBooks[0].genre)
     amountOfBooks = allBooks.length - listBooksFilter.length
   }
   return amountOfBooks

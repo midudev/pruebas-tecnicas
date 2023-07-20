@@ -8,5 +8,6 @@ Sitio:
 - [x] Filtrado de libros por paginas.
 - [x] Sincronizacion de estado.
 - [x] Persistencia de datos. 
-- [] Sincronizacion de pestanas. 
-- [] Test. 
+- [x] Sincronizacion de pestanas del carrito. 
+- [x] Test. 
+- [] Sincronizacion de pestanas para ver si el libro esta en el carrito. 

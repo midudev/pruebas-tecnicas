@@ -22,7 +22,7 @@ export function BookList () {
     <ul className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4">
       {books.map((data, index) => {
         return (
-            <BookInformation book={data.book} key={index}/>
+            <BookInformation book={data} key={index}/>
         )
       })}
     </ul>

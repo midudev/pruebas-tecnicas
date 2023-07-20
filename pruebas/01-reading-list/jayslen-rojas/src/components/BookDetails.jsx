@@ -23,11 +23,11 @@ export function BookDetails ({ book, closePopUp }) {
             <LiDetails title={'Genero'} info={book.genre}/>
             <LiDetails title={'Paginas'} info={book.pages}/>
             <LiDetails title={'Lanzamiento'} info={book.year}/>
-            <LiDetails title={'Autor'} info={book.author.name}/>
+            <LiDetails title={'Autor'} info={book.author}/>
             <li>
                 <h4 className="text-lg font-semibold">Mas Obras del autor</h4>
                 <div>
-                    {book.author.otherBooks.map((data, index) => {
+                    {book.otherBooks.map((data, index) => {
                       return (
                             <p className='max-w-[200px]' key={index}>{data}</p>
                       )

@@ -8,7 +8,7 @@ export function useFilters () {
 
   useEffect(() => {
     const booksFilterd = storage.filter((item) => {
-      return (filters.genre.toLowerCase() === 'Todos'.toLocaleLowerCase() && item.book.pages > filters.pages) || (filters.genre.normalize('NFD').replace(/[\u0300-\u036f]/g, '') === item.book.genre.normalize('NFD').replace(/[\u0300-\u036f]/g, '') && item.book.pages > filters.pages)
+      return (filters.genre.toLowerCase() === 'Todos'.toLocaleLowerCase() && item.pages > filters.pages) || (filters.genre.normalize('NFD').replace(/[\u0300-\u036f]/g, '') === item.genre.normalize('NFD').replace(/[\u0300-\u036f]/g, '') && item.pages > filters.pages)
     })
     updateBooksState({ value: booksFilterd })
   }, [filters])

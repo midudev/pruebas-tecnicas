@@ -9,7 +9,7 @@ import { BooksContext } from '../context/BooksContext'
 
 export function Functionalities ({ showBook, book }) {
   const [bookAdded, setBookAdded] = useState(book.isSaved)
-  const { updateBooks, storage, books, updateStorageState } = useContext(BooksContext)
+  const { updateBooks, storage, books, updateStorageState, updateBooksState } = useContext(BooksContext)
   const { addBook, removeBook } = UseBookContext()
 
   useEffect(() => {
@@ -25,19 +25,22 @@ export function Functionalities ({ showBook, book }) {
     removeBook({ book })
   }
 
-  // useEffect(() => {
-  //   localStorage.setItem('share-books', JSON.stringify(storage))
-  // }, [storage])
+  useEffect(() => {
+    localStorage.setItem('share-books', JSON.stringify(storage))
+  }, [storage])
 
   // useEffect(() => {
   //   const booksInStorage = JSON.parse(localStorage.getItem('share-books'))
   //   if (booksInStorage) {
+  //     console.log(booksInStorage)
   //     updateStorageState({ value: booksInStorage })
+  //     updateBooksState({ value: booksInStorage })
   //   }
 
   //   const handleStorageChange = (event) => {
   //     if (event.key === 'share-books') {
   //       updateStorageState({ value: event.newValue })
+  //       updateBooksState({ value: booksInStorage })
   //     }
   //   }
   //   window.addEventListener('storage', handleStorageChange)

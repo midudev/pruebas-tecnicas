@@ -23,7 +23,7 @@ export function UseBookContext () {
     const mappedItems = []
     const newBookList = [...storage]
     for (let i = 0; i < newBookList.length; i++) {
-      newBookList[i].book.isSaved = false
+      newBookList[i].isSaved = false
       mappedItems.push(newBookList[i])
     }
     updateStorageState({ value: mappedItems })
