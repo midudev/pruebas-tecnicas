@@ -43,11 +43,6 @@ function useBooks() {
     dispatch({ type: 'FILTER_BOOKS', payload: state.genre });
   };
 
-  // const searchBooks = (word: string) => {
-  //   dispatch({ type: 'SET_GENRE', payload: '' });
-  //   dispatch({ type: 'SEARCH_BOOKS', payload: word });
-  // }
-
   useEffect(() => {
     const totalBooks = state.availableBooks.length + state.lectureList.length;
     if (totalBooks > 0) {
