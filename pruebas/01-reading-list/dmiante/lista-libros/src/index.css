@@ -10,8 +10,13 @@ html{
 body{
   overflow-x: hidden;
   font-family: 'Montserrat', sans-serif;
+  background-color: #1d2122;
 }
 a{
   text-decoration: none;
   color: white;
+}
+
+ul {
+  list-style: none;
 }

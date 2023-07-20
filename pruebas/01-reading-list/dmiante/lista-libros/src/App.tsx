@@ -1,6 +1,7 @@
 import styled from 'styled-components'
-import Listbox from './components/Listbox'
+import Listbook from './components/Listbook'
 import { BooksProvider } from './context/BooksContext'
+import ReadingList from './components/ReadingList'
 
 function App () {
   return (
@@ -9,7 +10,8 @@ function App () {
         <Header>
           <h1 className='head'>Reading BOOKS</h1>
         </Header>
-        <Listbox />
+        <ReadingList />
+        <Listbook />
       </Container>
     </BooksProvider>
   )
@@ -17,7 +19,7 @@ function App () {
 
 const Header = styled.header`
   h1 {
-    color: black;
+    color: white;
     display: flex;
     align-items: center;
     height: 200px;
@@ -25,8 +27,7 @@ const Header = styled.header`
 `
 const Container = styled.main`
   padding: 0 10.3vw;
-  background-color: white;
-  height: 100vh;
+  height: 100%;
 `
 
 export default App
