@@ -13,4 +13,5 @@ export interface Book {
   ISBN: string
   author: Author
   stars?: number
+  isDone?: boolean
 }

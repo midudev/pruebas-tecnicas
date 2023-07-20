@@ -6,7 +6,7 @@ import type { DefaultBooks } from './state.types'
 export class StateUsecase {
   private globalState: GlobalState
 
-  constructor(private readonly ports: StatePorts) {}
+  constructor(protected readonly ports: StatePorts) {}
 
   setDefaultState(books: DefaultBooks) {
     const defaultState = this.ports.setDefaultState(books)

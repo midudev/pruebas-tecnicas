@@ -10,6 +10,7 @@ export class StateRepository implements StatePorts {
     const books = defaultBooks.library.map((libraryItem) => ({
       ...libraryItem.book,
       stars: 0,
+      completed: false,
     }))
 
     const globalState: GlobalState = {
@@ -23,5 +24,4 @@ export class StateRepository implements StatePorts {
   provideAppState(): GlobalState {
     return this.stateInfra.provideLocalStorage()
   }
-
 }

@@ -29,6 +29,7 @@ module.exports = {
       nav: '#E36064',
       doing: '#FF9F00',
       done: '#4CAF50',
+      doneLight: '#7ee57e',
       switch: '#C8C5BC',
     },
     borderColor: {

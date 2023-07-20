@@ -93,6 +93,6 @@ onMount(() => {
       >{book.genre}</span
     >
     <StarsCounter {book} />
-    <SwitchBook />
+    <SwitchBook {book} />
   </section>
 </li>

@@ -29,7 +29,7 @@ export class ReadingListUsecase extends StateUsecase {
       this.state.readingBooks,
       book
     )
-    const bookUpdated = { ...book, stars: 0 }
+    const bookUpdated = { ...book, stars: 0, isDone: false }
 
     const booksList = this.addBookToBooksList(this.state.books, bookUpdated)
 

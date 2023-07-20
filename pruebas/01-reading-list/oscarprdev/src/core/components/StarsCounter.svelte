@@ -1,8 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import { StarIcon } from 'svelte-feather-icons'
-  import { booksStarsUsecase } from '../../features/book-stars'
   import type { Book } from '../types'
+  import { readingListItemUsecase } from '../../features/reading-list-item'
 
   export let book: Book
   let hoveredIndex = null
@@ -17,7 +17,7 @@
   }
 
   const setStar = (index: number) => {
-    booksStarsUsecase.setStars(index, book)
+    readingListItemUsecase.setStars(index, book)
   }
 
   onMount(() => {
