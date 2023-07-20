@@ -9,7 +9,7 @@ interface IBookStore {
 
 const updateReadingListByISBN = (state: IBookStore, isbn:IReadingListBook['ISBN'], value: IReadingListBook['isInReadingList']) =>
   state.bookList.map(book => book.ISBN === isbn
-    ? { ...book, isInReadingList: true }
+    ? { ...book, isInReadingList: value }
     : book
   )
 
