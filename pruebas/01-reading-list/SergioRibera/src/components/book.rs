@@ -81,7 +81,7 @@ pub fn Book(props: &Props) -> Html {
     }
 
     html! {
-        <div
+        <li
             ref={group_ref}
             class={classes!("relative","flex", "flex-col", "justify-start", "max-w-[177px]", "px-4", "py-3","cursor-pointer")}
             >
@@ -117,6 +117,6 @@ pub fn Book(props: &Props) -> Html {
                     />
                 </div>
             }
-        </div>
+        </li>
     }
 }

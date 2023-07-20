@@ -190,7 +190,7 @@ pub fn Library(props: &Props) -> Html {
                     }
                 </header>
             }
-            <div
+            <ul
                 class={classes!("flex","flex-row","flex-wrap","justify-center","gap-x-8","gap-y-6","px-6","py-4","overflow-hidden","transition-all",not_expanded.then_some("max-h-[390px]"),)}
             >
                 {books
@@ -203,7 +203,7 @@ pub fn Library(props: &Props) -> Html {
                         />))
                     .collect::<Html>()
                 }
-            </div>
+            </ul>
             if expandable {
                 <div class={classes!("flex","w-full","py-4","items-center","justify-center")}>
                     <span
