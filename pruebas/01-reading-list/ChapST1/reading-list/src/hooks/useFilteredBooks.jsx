@@ -15,18 +15,18 @@ export function useFilteredBooks () {
 
   const copyBooks = booksBackup.current ?? [...books]
 
-  const newMapBooks = copyBooks.map(({ book }) => {
-    if (readingList.length === 0) return { book }
+  const mapBooks = copyBooks.map((book) => {
+    if (readingList.length === 0) return book
 
-    const currentBookId = book.ISBN
-    const bookIsCopy = readingList.find(({ book }) => book.ISBN === currentBookId)
+    const { id } = book
+    const bookIsCopy = readingList.find((book) => book.id === id)
 
     if (bookIsCopy) return
 
-    return { book }
+    return book
   })
 
-  const filteredBooks = newMapBooks.filter((item) => item !== undefined)
+  const filteredBooks = mapBooks.filter((item) => item !== undefined)
 
   return {
     filteredBooks

@@ -17,19 +17,20 @@ export function Select () {
       return
     }
 
-    const filterBooks = filteredBooks.filter(({ book }) => book.genre === categoryValue)
+    const newBooks = filteredBooks.filter(({ bookGenre }) => bookGenre === categoryValue)
 
-    updateGenderFilter(categoryValue)
-    updateBooks(filterBooks)
+    updateBooks(newBooks)
+    updateGenderFilter(categoryValue) // el error es este update
   }
 
   return (
-    <label htmlFor='' className=''>
-      Fitrar libros por generos
-      <select name='' id='' className=' px-5 py-1 block mt-3 mx-auto bg-[#0a0a0a] border border-[#404040] ' onChange={handleChange}>
+    <label htmlFor='select-input' className='text-[#ededea] text-center'>
+      Fitrar libros por categoria
+
+      <select name='select-input' id='select-input' className=' px-5 py-1 block mt-3 mx-auto bg-[#0a0a0a] border border-[#404040] text-[#ededea] outline-none ' onChange={handleChange}>
         {
             booksCategories?.map((category, index) => {
-              return <option key={index} value={category}>{category}</option>
+              return <option key={index} value={category} className='text-[#7b7b7a]'>{category}</option>
             })
         }
       </select>

@@ -1,13 +1,26 @@
+// import { useBookZustandStore } from './useBookZustandStore'
+import { useEffect, useState } from 'react'
+import { getBooks } from '../services/api/getBooks'
 import { useBookZustandStore } from './useBookZustandStore'
-import jsonBooks from '../../public/books.json'
-import { useEffect } from 'react'
 
-export async function useBooks () {
+export function useBooks () {
   const { updateBooks } = useBookZustandStore()
-  const { library } = jsonBooks
+
+  // const [allBooks, setAllBooks] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
-    updateBooks(library)
+    setLoading(true)
+
+    getBooks()
+      .then((res) => { updateBooks(res) })
+      .catch((err) => setError(err))
+      .finally(() => setLoading(false))
+  }, [])
+
+  return {
+    loading,
+    error
   }
-  , [])
 }

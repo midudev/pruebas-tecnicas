@@ -19,35 +19,36 @@ export function Range () {
 
   useEffect(() => {
     if (genderFilter === ALL_CATEGORIES) {
-      const newBooks = filteredBooks.filter(({ book }) => book.pages >= pageFilter)
+      const newBooks = filteredBooks.filter(({ bookPages }) => bookPages >= pageFilter)
       updateBooks(newBooks)
       return
     }
 
-    const filterBooks = filteredBooks.filter(({ book }) => book.genre === genderFilter)
-    const newBooks = filterBooks.filter(({ book }) => book.pages >= pageFilter)
+    const filterBooks = filteredBooks.filter(({ bookPages, bookGenre }) => {
+      return bookPages >= pageFilter && bookGenre === genderFilter
+    })
 
-    updateBooks(newBooks)
-  }, [pageFilter, updateBooks, genderFilter]) // eslint-disable-line
+    updateBooks(filterBooks)
+  }, [pageFilter, updateBooks]) // eslint-disable-line
 
   return (
-    <label htmlFor='range' className=''>
+    <label htmlFor='range-input' className='text-[#ededea] text-center'>
       Filtrar por numeros de paginas
 
       <div className='flex items-center justify-center  mt-4 gap-4 relative'>
-        <span className='absolute left-[50%] bottom-[-30px] translate-x-[-50%]'>Pag: {pageFilter}</span>
-        <span>Min {minValue}</span>
+        <span className='text-[#7b7b7a]'>Min {minValue}</span>
+        <span className=' text-[#b4b4b4] absolute left-[50%] bottom-[-30px] translate-x-[-50%]'>Pag: {pageFilter}</span>
         <input
           type='range'
-          name=''
-          id='range'
+          name='input-range'
+          id='range-input'
           className='block mx-auto accent-[#404040] bg-blue-300'
           step={1}
           min={minValue}
           max={maxValue}
           onChange={handleChange}
         />
-        <span>Max {maxValue}</span>
+        <span className='text-[#7b7b7a]'>Max {maxValue}</span>
       </div>
     </label>
   )

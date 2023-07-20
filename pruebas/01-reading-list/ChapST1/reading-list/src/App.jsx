@@ -14,7 +14,7 @@ function App () {
       <main className='w-full px-10 pt-[150px]'>
         <div className={`grid ${readingListLength > 0 ? 'grid-cols-5' : 'grid-cols-1'} gap-8`}>
           <div className=' col-span-3'>
-            <h2 className='text-center text-3xl my-7'>Libros</h2>
+            <h2 className='text-center text-3xl my-7 text-[#ededea]'>Libros</h2>
             <ListOfBooks />
           </div>
 
