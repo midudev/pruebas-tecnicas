@@ -12,6 +12,8 @@ LibraryState => App => Other Components
 
 Where the LibraryState context manipulates everything that has to do with books, the user's reading list, what filter is being used, number of books available etc.
 
+Also the app uses a context for the filters, FiltersState, to work with the filters (title, pages and genres)
+
 ### LibraryState structure
 
 ```
@@ -75,4 +77,34 @@ Updates showing books in reading list or stock
 
 ```
     setLibraryState({type:"set-showing",, showing: newShowingValue})
+```
+
+### FiltersState structure
+
+```
+
+// default value
+
+{
+    pages: 0, // current pages filter
+    genre: "", // current genre filter
+    title: "", // current title filter
+}
+
+```
+
+#### reset
+
+To clean all filters (set filters to default value)
+
+```
+    setFiltersState({type:"reset"})
+```
+
+#### set-filter
+
+To update one the filters (title, genre, pages)
+
+```
+    setFiltersState({type:"set-filter",filter: filterName, value: newValue})
 ```
