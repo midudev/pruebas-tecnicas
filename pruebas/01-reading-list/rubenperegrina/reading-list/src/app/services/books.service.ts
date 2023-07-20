@@ -2,31 +2,33 @@
 import { Injectable, inject } from '@angular/core';
 import { Book, DataFromAPI, Library } from '../models/data-from-api.interface';
 import { HttpClient } from '@angular/common/http';
-import { tap, BehaviorSubject, Observable, of } from 'rxjs';
+import { tap, BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BooksService {
   private readingListBooks: Library[] = [];
-  private _readingListBooks: BehaviorSubject<Library[]>;
+  private _readingListBooks: BehaviorSubject<Library[]> = new BehaviorSubject<
+    Library[]
+  >([]);
   private availableBooks: Library[] = [];
-  private _availableBooks: BehaviorSubject<Library[]>;
+  private _availableBooks: BehaviorSubject<Library[]> = new BehaviorSubject<
+    Library[]
+  >([]);
 
   http = inject(HttpClient);
 
   constructor() {
-    this._readingListBooks = new BehaviorSubject<Library[]>([]);
-    this._availableBooks = new BehaviorSubject<Library[]>([]);
     this.loadFromLocalStorage();
   }
 
-  getReading(): any {
-    return of(this._readingListBooks);
+  getReading(): Observable<Library[]> {
+    return this._readingListBooks.asObservable();
   }
 
-  getAvailable(): any {
-    return of(this._availableBooks);
+  getAvailable(): Observable<Library[]> {
+    return this._availableBooks.asObservable();
   }
 
   private saveToLocalStorage() {
@@ -41,27 +43,45 @@ export class BooksService {
   }
 
   private loadFromLocalStorage() {
-    if (!localStorage.getItem('available-books')) {
-      this.getAvailableBooks();
-      return;
+    const _availableBooks = localStorage.getItem('available-books');
+    if (_availableBooks) {
+      this.availableBooks = JSON.parse(_availableBooks);
+    } else {
+      this.http
+        .get<DataFromAPI>('../../assets/data/books.json')
+        .pipe(
+          tap(data => (this.availableBooks = data.library)),
+          tap(() =>
+            localStorage.setItem(
+              'available-books',
+              JSON.stringify(this.availableBooks)
+            )
+          ),
+          tap(() => this._availableBooks.next(this.availableBooks))
+        )
+        .subscribe();
     }
 
-    this._availableBooks = JSON.parse(localStorage.getItem('available-books')!);
-    this._readingListBooks = JSON.parse(
-      localStorage.getItem('reading-list-books')!
-    );
+    this._availableBooks.next(this.availableBooks);
+
+    const _readingListBooks = localStorage.getItem('reading-list-books');
+    if (_readingListBooks) {
+      this.readingListBooks = JSON.parse(_readingListBooks);
+    }
+
+    this._readingListBooks.next(this.readingListBooks);
   }
 
-  getAvailableBooks(): void {
-    this.http
-      .get<DataFromAPI>('../../assets/data/books.json')
-      .pipe(
-        tap(data => (this.availableBooks = data.library)),
-        tap(() => this._availableBooks.next(this.availableBooks)),
-        tap(() => this.saveToLocalStorage())
-      )
-      .subscribe();
-  }
+  // getAvailableBooks(): void {
+  //   this.http
+  //     .get<DataFromAPI>('../../assets/data/books.json')
+  //     .pipe(
+  //       tap(data => (this.availableBooks = data.library)),
+  //       tap(() => this._availableBooks.next(this.availableBooks)),
+  //       tap(() => this.saveToLocalStorage())
+  //     )
+  //     .subscribe();
+  // }
 
   addToReadingList(book: Book) {
     this.readingListBooks.push({ book });
