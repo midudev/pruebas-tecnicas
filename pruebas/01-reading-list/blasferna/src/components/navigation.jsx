@@ -11,14 +11,14 @@ export default function Navigation() {
     <header className="sticky top-0 h-16 z-20 bg-gray-900 text-white shadow-md">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
-          <nav>
-            <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+          <nav className="w-full">
+            <div className="flex flex-1 items-center justify-between sm:items-stretch sm:justify-start">
               <div className="flex flex-shrink-0 items-center">
                 <Link href="/" className="font-medium text-2xl text-indigo-300">
                   BookBuddy
                 </Link>
               </div>
-              <div className="ml-6">
+              <div className="ml-6 mr-2">
                 <div className="flex space-x-4">
                   <Link
                     href="/"
