@@ -67,22 +67,22 @@
             </div>
         </section>
 
-        <div class="flex items-start gap-4 justify-center w-full mt-4">
+        <section class="flex items-start gap-4 justify-center w-full mt-4">
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 mx-auto gap-4">
                 <template v-for="book in filteredBooks" :key="book.book.ISBN">
                     <ReadingListBookItem :book="book.book" @click="addBookToReadingList(book.book.ISBN)"/>
                 </template>
             </div>
-        </div>
+        </section>
         
         <hr class="my-8">
-        <div v-if="readingListBooks.length" class="inline-flex flex-col items-center justify-center w-full mt-4">
+        <section v-if="readingListBooks.length" class="inline-flex flex-col items-center justify-center w-full mt-4">
             <h2 v-if="readingListBooks.length" class="text-2xl font-semibold mb-4">Lista de lectura</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 mx-auto gap-4 border border-slate-300 rounded-lg shadow-md p-4">
                 <template v-for="(book,index) in readingListBooks" :key="book.book.ISBN">
                     <ReadingListBookItem :book="book.book" @click="deleteBookFromReadingList(index)"/>
                 </template>
             </div>
-        </div>
+        </section>
     </div>
 </template>
