@@ -1,0 +1,57 @@
+@font-face {
+  font-family: "Amazon Ember Light";
+  src: url('./assets/fonts/Ember/AmazonEmber_Lt.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "Amazon Ember Bold";
+  src: url('./assets/fonts/Ember/AmazonEmber_Bd.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "Amazon Ember Heavy";
+  src: url('./assets/fonts/Ember/AmazonEmber_He.ttf') format('truetype');
+}
+
+:root {  
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Amazon Ember Bold", sans-serif;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: none;
+}
+a:hover {
+  color: #535bf2;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+body {
+
+  font-family: "Amazon Ember Light", sans-serif;
+  font-size: 1.6rem;
+  background: #E3E5EC;
+  background-repeat: no-repeat;
+  color: black;
+}
+
+
+
+
