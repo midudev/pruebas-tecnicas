@@ -1,0 +1,82 @@
+.bookCard {
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.bookCard .cardHeader {
+  height: 300px;
+  position: relative;
+  border-radius: 1.1rem;
+  overflow: hidden;
+  filter: drop-shadow(1px 2px 3px rgba(53, 56, 56, 0.7960784314));
+}
+.bookCard .cardHeader img {
+  width: 100%;
+  height: 302px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.bookCard .cardHeader .synopsis {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: -100%;
+  position: absolute;
+  background-color: rgba(53, 56, 56, 0.7960784314);
+  -webkit-backdrop-filter: blur(0.5rem);
+          backdrop-filter: blur(0.5rem);
+  transition: right 1s;
+  color: white;
+  border-radius: 1.1rem 0 0 1.1rem;
+}
+.bookCard .cardHeader .synopsis .genre {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 1.1rem 0 0 0;
+  font-size: 1.8rem;
+  width: 100%;
+  background: #c8841a;
+  padding: 1rem;
+}
+.bookCard .cardHeader .synopsis .cardBody {
+  padding: 2rem 1rem;
+}
+.bookCard .cardHeader .synopsis .cardBody h2,
+.bookCard .cardHeader .synopsis .cardBody h3 {
+  font-size: 1.8rem;
+}
+.bookCard .cardHeader .synopsis .cardBody p {
+  font-size: 1.6rem;
+}
+.bookCard .cardFooter {
+  width: 100%;
+  padding: 1rem;
+  height: 10rem;
+  gap: 1rem;
+}
+.bookCard .cardFooter .footerH3 {
+  font-size: 1.6rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.bookCard .cardFooter .footerSmall {
+  font-family: "Amazon Ember Bold", sans-serif;
+  display: block;
+}
+.bookCard .cardFooter .footerSmall .smallSpan {
+  font-family: "Amazon Ember Light", sans-serif;
+}
+.bookCard .cardFooter .footerHandleLibrary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: 0.2s;
+  font-family: "Amazon Ember Bold", sans-serif;
+}
+.bookCard .cardFooter .footerHandleLibrary:hover {
+  color: #c8841a;
+}/*# sourceMappingURL=bookCard.module.css.map */
