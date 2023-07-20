@@ -1,4 +1,7 @@
-import { useMemo, useEffect } from "react";
+import { useMemo, useEffect, useCallback } from "react";
+
+// components
+import Slider from "../components/Slider/Slider";
 
 // contexts
 import { useLanguage } from "../contexts/LanguageProvider";
@@ -28,26 +31,51 @@ function HomeHeader() {
         showing: document.querySelectorAll(".book").length,
       });
     }, 100);
-  }, [libraryState.filtering, libraryState.seeing, setLibraryState]);
+  }, [libraryState.filters.genre, libraryState.seeing, setLibraryState]);
+
+  const handlePages = useCallback(
+    (e) => {
+      const { value } = e.target;
+      setLibraryState({
+        type: "set-filter",
+        filter: "pages",
+        value: Number(value),
+      });
+    },
+    [setLibraryState]
+  );
 
   return (
-    <div className="flex items-center flex-wrap w-full">
-      {/* current list total */}
-      <p>
-        {languageState.texts.seeing.title}{" "}
-        {languageState.texts.seeing[libraryState.seeing]}
-        <span className="alter-text text-sm mx-2">({totalLength})</span>
-      </p>
-      {/* If the user is using the genre filter */}
-      {libraryState.filtering.length ? (
+    <section>
+      <div className="flex items-center flex-wrap w-full">
+        {/* current list total */}
         <p>
-          {">"} {libraryState.filtering}{" "}
-          <span className="alter-text text-sm mx-1">
-            ({libraryState.showing})
-          </span>
+          {languageState.texts.homeHeader.title}{" "}
+          {languageState.texts.homeHeader[libraryState.seeing]}
+          <span className="alter-text text-sm mx-2">({totalLength})</span>
         </p>
-      ) : null}
-    </div>
+        {/* If the user is using the genre filter */}
+        {libraryState.filters.genre.length ? (
+          <p>
+            {">"} {libraryState.filters.genre}{" "}
+            <span className="alter-text text-sm mx-1">
+              ({libraryState.showing})
+            </span>
+          </p>
+        ) : null}
+      </div>
+      <div>
+        <p className="alter-text">
+          {languageState.texts.homeHeader.pageFilter}
+        </p>
+        <Slider
+          max={999}
+          min={0}
+          value={libraryState.filters.pages}
+          handleRange={handlePages}
+        />
+      </div>
+    </section>
   );
 }
 

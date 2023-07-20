@@ -22,7 +22,7 @@ function IconButton({ onClick, name, icon, className, ariaLabel }) {
 IconButton.propTypes = {
   name: PropTypes.string,
   onClick: PropTypes.func,
-  icon: PropTypes.node,
+  icon: PropTypes.object,
   className: PropTypes.string,
   ariaLabel: PropTypes.string,
 };

@@ -57,10 +57,15 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
       toHide = true;
 
     // if the user is using a filter and the genre of the book is not the filtering genre
-    if (libraryState.filtering && !toHide && genre !== libraryState.filtering)
+    if (
+      libraryState.filters.genre.length &&
+      genre !== libraryState.filters.genre
+    )
       toHide = true;
+    /* console.log(pages, libraryState.filters.pages); */
+    if (pages < libraryState.filters.pages) toHide = true;
     setHide(toHide);
-  }, [libraryState]);
+  }, [libraryState, ISBN, genre, pages]);
 
   return !hide ? (
     <li id={ISBN} className={`book ${styles.main} appear`}>

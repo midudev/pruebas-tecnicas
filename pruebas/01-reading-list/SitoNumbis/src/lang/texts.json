@@ -2,11 +2,12 @@
   "es": {
     "logo": "Sito's Library",
     "copyright": "Licencia MIT",
-    "seeing": {
+    "homeHeader": {
       "noFilter": "Todos",
       "title": "Viendo",
       "reading-list": "lista de lectura",
-      "all": "disponibles"
+      "all": "disponibles",
+      "pageFilter": "Filtrar por páginas"
     },
     "error": {
       "noBooks": "No hay libros",

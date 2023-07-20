@@ -1,0 +1,41 @@
+/* range 2 */
+
+.range {
+  display: flex;
+  @apply w-full items-center gap-2;
+}
+
+.range input {
+  @apply mt-1
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  border-radius: 15px;
+  height: 6px;
+  @apply bg-dark-alt-bg;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  transition: 0.2s ease-in-out;
+  border: 3px solid;
+  @apply bg-dark-text border-dark-bg;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  transition: 0.2s ease-in-out;
+  border: 3px solid;
+  @apply bg-dark-text border-dark-bg;
+}
