@@ -1,5 +1,4 @@
 .bookList {
-  margin-top: 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
   gap: 1rem;
@@ -9,4 +8,35 @@
 .image {
   width: 7rem;
   height: 8rem;
+}
+
+.darken {
+  filter: brightness(35%);
+  position: relative;
+}
+
+.darken:after {
+  position: absolute;
+  height: 1rem;
+  width: 1rem;
+  top: -0.5rem;
+  bottom: 0rem;
+  left: 7rem;
+  right: 0rem;
+  content: "\274c";
+  color: #fff;
+}
+
+@media screen and (min-width: 700px) {
+  .bookList {
+    margin: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  }
+  .image {
+    width: 10rem;
+    height: 11rem;
+  }
+  .darken:after {
+    left: 10rem;
+  }
 }

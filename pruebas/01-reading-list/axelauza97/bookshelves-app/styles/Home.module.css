@@ -1,11 +1,7 @@
-.container {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-}
-
 .filtros {
   display: flex;
   flex-direction: row;
+  margin: 1rem;
 }
 
 .container > section {
@@ -16,4 +12,36 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  text-align: end;
+}
+
+.filtro select,
+.filtro option {
+  color: black;
+  margin-top: 1rem;
+}
+
+.wishSection {
+  margin-top: 2rem;
+  border: gray 1px solid;
+  padding: 1rem;
+}
+
+@media screen and (min-width: 700px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+  }
+  .wishSection {
+    text-align: center;
+    margin-top: 0rem;
+    max-height: 50vw;
+    overflow-y: scroll;
+  }
+  /*.wishSection {
+    width: 30% !important;
+  }
+  .availableSection {
+    width: 70% !important;
+  }*/
 }

@@ -4,9 +4,12 @@
   max-width: 40rem;
 }*/
 
+.body {
+  margin: 1rem;
+}
+
 @media screen and (min-width: 700px) {
   .body {
-    width: 100vw;
-    height: 100vh;
+    margin: 2rem;
   }
 }

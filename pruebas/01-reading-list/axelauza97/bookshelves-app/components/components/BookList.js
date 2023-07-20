@@ -6,17 +6,17 @@ function BookList(props) {
     props.moveList(book);
   };
   return (
-    <div className={classes.bookList}>
+    <div className={`${classes.bookList} ${props.className}`}>
       {/*Disponibles*/}
       {props.type !== "wish" &&
         props.books != null &&
         props.books != undefined &&
         props.books.map(
           (bookE, i) =>
-            !bookE.book.wish && (
+            bookE.book.visible && (
               <div
                 key={i}
-                className={classes.bookCard}
+                className={`${bookE.book.wish ? classes.darken : ""}`}
                 onClick={() => clickHandler(bookE.book)}
               >
                 <Image
@@ -24,7 +24,7 @@ function BookList(props) {
                   width={500}
                   height={600}
                   src={bookE.book.cover}
-                  alt=""
+                  alt={bookE.book.title}
                 />
               </div>
             )
@@ -34,6 +34,7 @@ function BookList(props) {
         props.books != undefined &&
         props.books.map(
           (bookE, i) =>
+            bookE.book.visible &&
             bookE.book.wish && (
               <div
                 key={i}
@@ -45,7 +46,7 @@ function BookList(props) {
                   width={500}
                   height={600}
                   src={bookE.book.cover}
-                  alt=""
+                  alt={bookE.book.title}
                 />
               </div>
             )

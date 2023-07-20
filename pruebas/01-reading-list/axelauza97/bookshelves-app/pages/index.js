@@ -5,12 +5,34 @@ import books from "public/books.json";
 import { useEffect, useState } from "react";
 
 export default function Home(props) {
+  const [genre, setGenre] = useState(null);
+  const [bookFiltered, setbookFiltered] = useState(null);
+  const [selectedValue, setSelectedValue] = useState("");
+
   useEffect(() => {
-    let modifiedBooks = props.booksD.map((book) => {
-      book.book.wish = false;
-      return book;
-    });
+    let modifiedBooks;
+    let booksStore = localStorage.getItem("books");
+    if (booksStore) {
+      modifiedBooks = JSON.parse(booksStore);
+      modifiedBooks = modifiedBooks.map((book) => {
+        book.book.visible = true;
+        return book;
+      });
+    } else {
+      modifiedBooks = props.booksD.map((book) => {
+        book.book.wish = false;
+        book.book.visible = true;
+        return book;
+      });
+    }
+    const uniqueGenre = new Set();
+    uniqueGenre.add("Todos");
+
     props.setBooks(modifiedBooks);
+    modifiedBooks.map((book) => {
+      uniqueGenre.add(book.book.genre);
+    });
+    setGenre(uniqueGenre);
   }, []);
 
   const moveList = (book) => {
@@ -22,16 +44,39 @@ export default function Home(props) {
       if (bookIndex === -1) {
         return prevBooks; // Return previous state
       }
-
       const updatedBooks = [...prevBooks];
       const wish = updatedBooks[bookIndex].book.wish;
       updatedBooks[bookIndex].book = {
         ...updatedBooks[bookIndex].book,
         wish: !wish,
       };
+      if (typeof window !== "undefined") {
+        localStorage.setItem("books", JSON.stringify(updatedBooks));
+      }
 
       return updatedBooks;
     });
+  };
+  const handleValueChange = (event) => {
+    let genreSelected = event.target.value;
+    setSelectedValue(genreSelected);
+    let modifiedBooks;
+    if (genreSelected === "Todos") {
+      modifiedBooks = props.books.map((book) => {
+        book.book.visible = true;
+        return book;
+      });
+    } else {
+      modifiedBooks = props.books.map((book) => {
+        if (book.book.genre !== genreSelected) {
+          book.book.visible = false;
+        } else {
+          book.book.visible = true;
+        }
+        return book;
+      });
+    }
+    props.setBooks(modifiedBooks);
   };
 
   return (
@@ -43,33 +88,65 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={classes.container}>
-        <section>
+        <section className={classes.availableSection}>
           <div>
-            {`${
-              props.books !== null &&
-              props.books.filter((book) => !book.book.wish).length
-            } `}
-            libros disponibles
+            <h4>
+              {`${
+                props.books !== null &&
+                props.books.filter(
+                  (book) => book.book.visible && !book.book.wish
+                ).length
+              } `}
+              libros disponibles
+            </h4>
+          </div>
+          <div>
+            <h4>
+              {props.books !== null &&
+                props.books.filter(
+                  (book) => book.book.visible && book.book.wish
+                ).length > 0 &&
+                `${
+                  props.books.filter(
+                    (book) => book.book.visible && book.book.wish
+                  ).length
+                } 
+              en la lista de lectura`}
+            </h4>
           </div>
           <section className={classes.filtros}>
+            <div className={classes.filtro}></div>
             <div className={classes.filtro}>
-              <div>Filtrar por paginas</div>
-              <div>slider</div>
-            </div>
-            <div className={classes.filtro}>
-              <div>Filtrar por genero</div>
-              <div>combobox</div>
+              <div>
+                <h4>Filtrar por genero</h4>
+              </div>
+              <div>
+                <select value={selectedValue} onChange={handleValueChange}>
+                  {genre !== null &&
+                    Array.from(genre).map((option, index) => (
+                      <option key={index} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                </select>
+              </div>
             </div>
           </section>
           <BookList
             books={props.books}
             moveList={moveList}
             type={"available"}
+            className={classes.available}
           />
         </section>
-        <section>
-          <h1>Lista de deseo</h1>
-          <BookList books={props.books} moveList={moveList} type={"wish"} />
+        <section className={classes.wishSection}>
+          <h3>Lista de deseo</h3>
+          <BookList
+            books={props.books}
+            moveList={moveList}
+            type={"wish"}
+            className={classes.wish}
+          />
         </section>
       </div>
     </>
