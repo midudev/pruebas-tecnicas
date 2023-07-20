@@ -1,6 +1,7 @@
 import { memo, useRef } from 'react'
 import { useReadingListStore } from '../store'
 import { type Author } from '../types'
+import { IconRemove } from './Icons/IconRemove'
 
 interface BookProps {
   title: string
@@ -18,25 +19,31 @@ export const Book: React.FC<BookProps> = memo(({ cover, ISBN, isReadListMode, ti
   const addBook = useReadingListStore((state) => state.addBook)
   const removeBook = useReadingListStore((state) => state.removeBook)
 
-  console.log('render Book', { title })
   const handleAddBook = () => {
     const handleBook = isReadListMode ? removeBook : addBook
 
+    // @ts-expect-error startViewTransition is not supported by all browsers
     if (!document.startViewTransition) {
       handleBook(ISBN)
       return
     }
+    // @ts-expect-error startViewTransition is not supported by all browsers
     document.startViewTransition(() => {
       handleBook(ISBN)
     })
   }
   return (
-    <article
-      className='grid items-center'
-      onClick={handleAddBook}>
-      {/* {title} */}
+    <article className='grid items-center relative' >
+
+      {isReadListMode &&
+        <div className="flex justify-end">
+          <IconRemove handleClickIcon={handleAddBook} />
+        </div>
+      }
+
       <img
-        className='w-full object-contain cursor-pointer my-image'
+        onClick={() => { !isReadListMode && handleAddBook() }}
+        className={`w-full object-contain my-image ${!isReadListMode ? 'cursor-pointer' : ''}`}
         src={cover} alt={`${title} - ${synopsis}`}
         ref={imageRef}
         style={{ viewTransitionName: `book-${ISBN}` }}

@@ -11,12 +11,10 @@ function App () {
     window.addEventListener('storage', () => { syncState() })
   }, [])
 
-  console.log('App rendered')
-
   return (
     <FiltersProvider>
       <Header />
-      <main className="grid grid-cols-4">
+      <main className="grid grid-cols-4 gap-5">
         <Books />
         <ReadingList />
       </main>
