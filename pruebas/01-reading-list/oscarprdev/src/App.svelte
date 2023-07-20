@@ -3,6 +3,7 @@
   import Library from './core/components/Library.svelte'
   import Modal from './core/components/modals/Modal.svelte'
   import ReadingList from './core/components/ReadingList.svelte'
+  import TopBooksList from './core/components/TopBooksList.svelte'
   import { modalStore } from './core/store/modal-store'
   import { onMount } from 'svelte'
 
@@ -15,5 +16,6 @@
   <Header />
   <Library />
   <ReadingList />
+  <TopBooksList />
   <Modal bind:this={modal} />
 </main>

@@ -63,11 +63,11 @@ onMount(() => {
 >
   <!-- svelte-ignore a11y-no-static-element-interactions -->
   <div
-    class="w-2/6 h-full shadow-[-4.0px_5.0px_8.0px_rgba(0,0,0,0.38)]"
+    class="w-2/6 h-full 2xl:w-[200px] shadow-[-4.0px_5.0px_8.0px_rgba(0,0,0,0.38)]"
     on:mouseenter={handleOverlay}
     on:mouseleave={handleOverlay}
   >
-    <img class="w-full h-full" src={book.cover} alt={book.title} />
+    <img class="w-full h-full object-cover" src={book.cover} alt={book.title} />
     {#if $showOverlay}
       <div
         class="absolute top-0 left-0 w-2/6 h-full flex items-center justify-center gap-3 bg-black backdrop-blur-sm"
