@@ -1,21 +1,27 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import library from "@/data/books.json"
-import { Library } from "@/interfaces/books"
+import { Library, Book } from "@/interfaces/books"
 
 interface BearState {
   library: Library[],
-  getBooks: () => void
+  bookSelected: Book | null,
+  getBooks: () => void,
+  getBook: (arg: Book) => void,
 }
 
 const libraryStore = create<BearState>()(
   persist(
     (set) => ({
       library: [],
+      bookSelected: null,
       getBooks: () => {
         if (Array.isArray(library) && library.length > 0) {
           return set({ library });
         }
+      },
+      getBook: (book) => {
+        set({ bookSelected: book  })
       }
     }),
     {
