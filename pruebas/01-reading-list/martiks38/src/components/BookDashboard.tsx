@@ -35,7 +35,7 @@ export function BookDashboard() {
   )
 
   const currentReadingList = readingList.filter(({ genre, pages }) =>
-    filterBook({ currentGenre, genre, maxNumberPages: range.maxNumberPages, pages })
+    filterBook({ currentGenre, genre, maxNumberPages: range.currentNumberPages, pages })
   )
 
   return (
