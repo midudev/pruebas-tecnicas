@@ -10,7 +10,7 @@ function Filters({
 }) {
   return (
     <div className='flex w-full justify-between gap-x-2'>
-      <div className='flex gap-x-2 md:gap-x-8 m-4 md:m-0'>
+      <div className='flex gap-x-2 md:gap-x-2 m-4 md:m-0'>
         <label htmlFor='genre-select' className='md:ml-4 text-gray-900 dark:text-gray-300'>
           Filtrar por género:
         </label>
@@ -42,7 +42,7 @@ function Filters({
           step={100}
           onChange={(e) => onSetMinPages(e.target.value)}
         />
-        <span className='md:mr-4 text-gray-900 dark:text-gray-300'>{minPages}</span>
+        <span className='md:mr-4 text-gray-900 dark:text-gray-300 md:hidden lg:block'>{minPages}</span>
       </div>
     </div>
   );

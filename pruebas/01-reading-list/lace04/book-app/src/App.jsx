@@ -1,30 +1,36 @@
 import React from 'react';
 import data from '../../../books.json';
 import { useState, useEffect } from 'react';
+import AvailableBooksCount from './components/AvailableBooksCount';
 import ReadingList from './components/ReadingList';
 import BookList from './components/BookList';
 import Filters from './components/Filters';
-
-import { FiSun, FiMoon } from 'react-icons/fi';
+import Header from './components/Header';
 
 function App() {
+  //Estados
   //darkmode
   const [darkMode, setDarkMode] = useState(
     () => JSON.parse(localStorage.getItem('darkMode')) || false
   );
+  //Lista de libros
   const [books, setBooks] = useState(data.library);
+  //Filtro por genero
   const [selectedGenre, setSelectedGenre] = useState(
     () => JSON.parse(localStorage.getItem('selectedGenre')) || ''
   );
+  //Filtro por paginas
   const [minPages, setMinPages] = useState(
     () => JSON.parse(localStorage.getItem('minPages')) || 0
   );
+  //Lista de lectura
   const [readingList, setReadingList] = useState(
     JSON.parse(localStorage.getItem('readingList')) || []
   );
+  // Lista de géneros disponibles (extraída de la lista de libros)
   const genres = [...new Set(data.library.map((book) => book.book.genre))];
 
-  //darkmode
+  // useEffect para guardar en el almacenamiento local si el modo oscuro está activado o no
   useEffect(() => {
     localStorage.setItem('darkMode', JSON.stringify(darkMode));
     if (darkMode) {
@@ -34,12 +40,14 @@ function App() {
     }
   }, [darkMode]);
 
+  //useEffect para guardar en el almacenamiento local la lista de libros, el género seleccionado y el número mínimo de páginas
   useEffect(() => {
     localStorage.setItem('readingList', JSON.stringify(readingList));
     localStorage.setItem('selectedGenre', JSON.stringify(selectedGenre));
     localStorage.setItem('minPages', JSON.stringify(minPages));
   }, [readingList, selectedGenre, minPages]);
 
+  //useEffect para escuchar los cambios en el almacenamiento local (pestañas, recargas, etc.)
   useEffect(() => {
     const handleStorageChange = (e) => {
       if (e.key === 'readingList') {
@@ -63,10 +71,12 @@ function App() {
     };
   }, []);
 
+  //Funciones
+  //Funcion para añadir libros a la lista de lectura
   function handleAddToReadingList(book) {
     setReadingList((readingList) => [...readingList, book]);
   }
-
+  //Funcion para eliminar libros de la lista de lectura
   function handleRemoveFromReadingList(book) {
     setReadingList((readingList) =>
       readingList.filter((b) => b.ISBN !== book.ISBN)
@@ -75,38 +85,16 @@ function App() {
 
   return (
     <main className='flex flex-col md:flex-row justify-center min-h-screen pb-16'>
-      <header className='w-full md:w-7/12 lg:mr-32 md:mr-10'>
-        <div className='flex text-center justify-center'>
-          <h1 className='text-3xl text-center font-bold m-5 md:text-4xl text-gray-900 dark:text-gray-300 w-2/3'>
-            <a
-              href='https://github.com/midudev/pruebas-tecnicas/tree/main/pruebas/01-reading-list'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='text-gray-900 dark:text-gray-300 hover:cursor-pointer'
-            >
-              Books App{' '}
-              <b className='text-xs font-normal items-end'>Prueba Tecnica #1</b>
-            </a>
-          </h1>
-
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className='bg-zinc-300 dark:bg-zinc-900 text-gray-900 dark:text-gray-300 rounded-full p-2 my-5 w-10 flex justify-center items-center'
-          >
-            {darkMode ? <FiSun /> : <FiMoon />}
-          </button>
-        </div>
-        <div className='text-lg md:text-xl m-4 md:mb-4 text-gray-900 dark:text-gray-300'>
-          Libros disponibles:{' '}
-          {
-            books.filter(
-              (book) =>
-                (!selectedGenre || book.book.genre === selectedGenre) &&
-                book.book.pages >= minPages &&
-                !readingList.some((b) => b.ISBN === book.book.ISBN)
-            ).length
-          }
-        </div>
+      <div className='w-full md:w-7/12 lg:mr-32 md:mr-10'>
+        {/* Componente para mostrar el encabezado con el título y el botón de cambio de modo oscuro */}
+        <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+        <AvailableBooksCount
+          books={books}
+          selectedGenre={selectedGenre}
+          minPages={minPages}
+          readingList={readingList}
+        />
+        {/* Componente para mostrar los filtros (género y número mínimo de páginas) */}
         <Filters
           genres={genres}
           selectedGenre={selectedGenre}
@@ -115,6 +103,7 @@ function App() {
           maxPages={Math.max(...data.library.map((book) => book.book.pages))}
           onSetMinPages={setMinPages}
         />
+        {/* Componente para mostrar la lista de libros disponibles */}
         <BookList
           books={books.filter(
             (book) =>
@@ -124,7 +113,8 @@ function App() {
           )}
           onAddToReadingList={handleAddToReadingList}
         />
-      </header>
+      </div>
+      {/* Componente para mostrar la lista de lectura del usuario */}
       <section className='w-full md:w-3/12 lg:ml-4 md:ml-0'>
         <ReadingList
           books={readingList}
