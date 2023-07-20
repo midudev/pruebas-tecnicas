@@ -1,7 +1,8 @@
 .bookList {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 240px));
+  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 13.75rem));
   grid-auto-rows: minmax(0, 1fr);
+  justify-content: center;
   gap: 2rem 1rem;
   padding-left: 0;
   list-style: none;
