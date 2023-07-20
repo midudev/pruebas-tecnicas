@@ -2,7 +2,6 @@
 import { useBookStore } from '../store/bookStore'
 import Books from '../../books.json'
 import React from 'react'
-import BookList from '../components/BookList/indext'
 
 export const useInitializeBookList = () => {
   const { initializeBooklist, bookList } = useBookStore()
