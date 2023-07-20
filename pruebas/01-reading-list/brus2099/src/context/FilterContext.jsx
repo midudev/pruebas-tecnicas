@@ -7,20 +7,26 @@ export const FilterContext = createContext();
 export const FilterProvider = ({ children }) => {
 
   const [books, setBooks] = useState([]);
-  const  [genres, setGenres] = useState();
+  const [selectedGenre, setSelectedGenre] = useState('');
+
   useEffect(() => {
     setBooks(library);
-    let genres = [];
-    books.forEach( ({ book }) => {
+  }, []);
+
+  const genres = [];
+  genres.push('Todos');
+  books.forEach(({ book }) => {
+    if (!genres.includes(book.genre)) {
       genres.push(book.genre);
-    });
+    }
   });
 
-  console.log(genres)
-
+  useEffect(() => {
+    console.log(selectedGenre);
+  }, [selectedGenre]);
 
   return (
-    <FilterContext.Provider value={{ books }}>
+    <FilterContext.Provider value={{ books, genres, selectedGenre, setSelectedGenre }}>
       {children}
     </FilterContext.Provider>
   );
