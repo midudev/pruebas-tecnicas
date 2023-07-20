@@ -53,8 +53,7 @@ h1,h2,h3,h4,h5,h6{
 .book{
   border-radius: 10px;
   cursor: pointer;
-  width: 200px;
-  height: 320px;
+  height: auto;
 }
 
 .reading-list{
@@ -65,10 +64,33 @@ h1,h2,h3,h4,h5,h6{
   height: 100%;
   padding: 10px;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reading-list-header{
+  display: flex;
+  justify-content: space-between;
 }
 
 .reading-list-book{
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 500px;
+  background-color: #17223d;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.reading-book-description{
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .remove-btn{
@@ -80,4 +102,5 @@ h1,h2,h3,h4,h5,h6{
   border-radius: 5px;
   margin: 5px;
   cursor: pointer;
+  background-color: transparent;
 }
