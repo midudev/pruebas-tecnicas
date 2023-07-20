@@ -1,13 +1,32 @@
-import { useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
+
+import { css } from "@emotion/css";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFilter,
+  faSearch,
+  faFilterCircleXmark,
+} from "@fortawesome/free-solid-svg-icons";
+
+// components
+import Slider from "../components/Slider/Slider";
+import IconButton from "../components/IconButton/IconButton";
+import SimpleInput from "../components/SimpleInput/SimpleInput";
 
 // contexts
 import { useLanguage } from "../contexts/LanguageProvider";
 import { useLibrary } from "../contexts/LibraryProvider";
 
+// styles
+import styles from "./styles.module.css";
+
 function HomeHeader() {
   const { libraryState, setLibraryState } = useLibrary();
 
   const { languageState } = useLanguage();
+
+  const [showingFilters, setShowingFilters] = useState(false);
 
   const totalLength = useMemo(() => {
     return libraryState.seeing === "all"
@@ -28,26 +47,87 @@ function HomeHeader() {
         showing: document.querySelectorAll(".book").length,
       });
     }, 100);
-  }, [libraryState.filtering, libraryState.seeing, setLibraryState]);
+  }, [libraryState.filters.genre, libraryState.seeing, setLibraryState]);
+
+  const handlePages = useCallback(
+    (e) => {
+      const { value } = e.target;
+      setLibraryState({
+        type: "set-filter",
+        filter: "pages",
+        value: Number(value),
+      });
+    },
+    [setLibraryState]
+  );
+
+  const handleSearch = useCallback(
+    (e) => {
+      const { value } = e.target;
+      setLibraryState({ type: "set-filter", value });
+    },
+    [setLibraryState]
+  );
 
   return (
-    <div className="flex items-center flex-wrap w-full">
-      {/* current list total */}
-      <p>
-        {languageState.texts.seeing.title}{" "}
-        {languageState.texts.seeing[libraryState.seeing]}
-        <span className="alter-text text-sm mx-2">({totalLength})</span>
-      </p>
-      {/* If the user is using the genre filter */}
-      {libraryState.filtering.length ? (
+    <section>
+      <div className="flex items-center flex-wrap w-full">
+        {/* current list total */}
         <p>
-          {">"} {libraryState.filtering}{" "}
-          <span className="alter-text text-sm mx-1">
-            ({libraryState.showing})
-          </span>
+          {languageState.texts.homeHeader.title}{" "}
+          {languageState.texts.homeHeader[libraryState.seeing]}
+          <span className="alter-text text-sm mx-2">({totalLength})</span>
         </p>
-      ) : null}
-    </div>
+        {/* If the user is using the genre filter */}
+        {libraryState.filters.genre.length ? (
+          <p>
+            {">"} {libraryState.filters.genre}{" "}
+            <span className="alter-text text-sm mx-1">
+              ({libraryState.showing})
+            </span>
+          </p>
+        ) : null}
+        <IconButton
+          onClick={() => setShowingFilters((showingFilters) => !showingFilters)}
+          icon={!showingFilters ? faFilter : faFilterCircleXmark}
+        />
+      </div>
+      <div
+        className={`${styles.gridFilter} ${css({
+          gridTemplateRows: showingFilters ? "1fr" : "0fr",
+        })}`}
+      >
+        <div className="flex overflow-hidden gap-4 flex-wrap">
+          <div>
+            <p className="alter-text">
+              {languageState.texts.homeHeader.pageFilter}
+            </p>
+            <Slider
+              max={3999}
+              min={1}
+              value={libraryState.filters.pages}
+              handleRange={handlePages}
+            />
+          </div>
+          <SimpleInput
+            className="my-auto min-w-[250px] relative"
+            leftIcon={
+              <FontAwesomeIcon
+                icon={faSearch}
+                className="absolute text-dark-alt-text -translate-y-[50%] top-[50%] left-1"
+              />
+            }
+            label={languageState.texts.homeHeader.titleFilter}
+            inputProps={{
+              type: "search",
+              value: libraryState.filters.title,
+              onChange: handleSearch,
+              className: "rounded-3xl bg-dark-alt-bg pl-7 py-1 w-full text-sm",
+            }}
+          />
+        </div>
+      </div>
+    </section>
   );
 }
 

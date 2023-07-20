@@ -7,6 +7,8 @@ export default {
       "primary-light": "#de284c",
       "primary-dark": "#9a0e2a",
       "primary-dark-opacity": "#9a0e2aee",
+      "primary-opacity": "#9a0e2aAA",
+      "primary-light-opacity": "#9a0e2aBB",
       secondary: "dodgerblue",
       "dark-bg": "#1b1b1b",
       "dark-bg-opacity": "#1b1b1b8a",

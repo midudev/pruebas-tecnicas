@@ -74,11 +74,23 @@ const libraryReducer = (libraryState, action) => {
       const { showing } = action;
       return { ...libraryState, showing };
     }
-    case "toggle-filter": {
-      const { filtering } = action;
+    case "reset-filters": {
       return {
         ...libraryState,
-        filtering: filtering || "",
+        filters: {
+          genre: "",
+          title: "",
+          pages: 0,
+        },
+      };
+    }
+    case "set-filter": {
+      const { filter, value } = action;
+      const { filters } = libraryState;
+      filters[filter] = value;
+      return {
+        ...libraryState,
+        filters,
       };
     }
     default:
@@ -91,7 +103,11 @@ const LibraryProvider = ({ children }) => {
     books: [],
     genres: [],
     readingList: new Map(), // Map because it can be iterable and has size attribute 🙂
-    filtering: "", // current genre filter
+    filters: {
+      pages: 0, // current pages filter
+      genre: "", // current genre filter
+      title: "", // current title filter
+    },
     available: 0, // global state to quick access to available books
     showing: 0, // global state to quick access to the showing books
     seeing: "all", // books to show (all/reading-list)

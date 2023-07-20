@@ -2,11 +2,13 @@
   "es": {
     "logo": "Sito's Library",
     "copyright": "Licencia MIT",
-    "seeing": {
+    "homeHeader": {
       "noFilter": "Todos",
       "title": "Viendo",
       "reading-list": "lista de lectura",
-      "all": "disponibles"
+      "all": "disponibles",
+      "pageFilter": "Páginas",
+      "titleFilter": "Título"
     },
     "error": {
       "noBooks": "No hay libros",
@@ -41,8 +43,9 @@
       "toTop": "Ir al tope",
       "reload": "Recargar",
       "seeSourceCode": "Ver el código fuente",
-      "genreLeft": "Swipe genres to the right",
-      "genreRight": "Swipe genres to the left",
+      "genreLeft": "Deslizar géneros a la derecha",
+      "genreRight": "Deslizar géneros a la izquierda",
+      "seeDetails": "Ver detalles del libro",
       "clickToAlter": "Click para ver sinopsis",
       "closeDialog": "Cerrar contenido flotante"
     }

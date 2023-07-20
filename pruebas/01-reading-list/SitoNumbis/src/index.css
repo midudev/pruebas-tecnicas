@@ -6,6 +6,16 @@ body {
   @apply bg-dark-bg;
 }
 
+[role="button"] {
+  cursor: initial;
+}
+
+input,
+input:focus,
+input:hover {
+  outline: none;
+}
+
 h1,
 h2,
 h3,
@@ -16,12 +26,12 @@ a,
 p,
 input,
 textarea,
-label,
 button,
 span {
   @apply text-dark-text;
 }
 
+label,
 .alter-text {
   @apply text-dark-alt-text;
 }

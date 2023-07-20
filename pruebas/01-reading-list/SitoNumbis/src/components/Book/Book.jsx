@@ -13,6 +13,7 @@ import styles from "./styles.module.css";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
 
 // components
+const Tippy = loadable(() => import("@tippyjs/react"));
 const Marker = loadable(() => import("./Marker/Marker"));
 
 function Book({ title, pages, genre, cover, year, ISBN, author }) {
@@ -41,6 +42,10 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
     if (e.keyCode === 13) addToReadingList();
   };
 
+  const handleLightKeyDown = (e) => {
+    if (e.keyCode === 13) activateLightBox();
+  };
+
   const [hide, setHide] = useState(false);
 
   const isInReadingList = useMemo(() => {
@@ -56,11 +61,18 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
     )
       toHide = true;
 
-    // if the user is using a filter and the genre of the book is not the filtering genre
-    if (libraryState.filtering && !toHide && genre !== libraryState.filtering)
+    //* if the user is using a filter
+    //  the genre of the book is not the filtering genre
+    if (
+      libraryState.filters.genre.length &&
+      genre !== libraryState.filters.genre
+    )
       toHide = true;
+    //  the book has fewer pages than the filter per pages
+    if (pages < libraryState.filters.pages) toHide = true;
+    //  the book title has similarity to the filter by title
     setHide(toHide);
-  }, [libraryState]);
+  }, [libraryState, ISBN, genre, pages]);
 
   return !hide ? (
     <li id={ISBN} className={`book ${styles.main} appear`}>
@@ -73,25 +85,42 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
       <div
         role="button"
         tabIndex={0}
+        aria-label={
+          !isInReadingList
+            ? languageState.texts.ariaLabels.add
+            : languageState.texts.ariaLabels.remove
+        }
         onKeyDown={handleKeyDown}
-        onClick={activateLightBox}
+        onDoubleClick={addToReadingList}
         className={`group ${styles.bookInfoContainer} ${
           isInReadingList ? "!opacity-100" : ""
         }`}
       >
-        <div className={`${memoAnimation} ${styles.bookInfo}`}>
-          <h3>{title}</h3>
-          <p>
-            {genre}{" "}
-            <span className="alter-text">
-              ({pages}) {languageState.texts.book.pages}
-            </span>
-          </p>
-          <p className="mt-2">
-            <span className="alter-text">{languageState.texts.book.by}</span>{" "}
-            {author.name} <span className="alter-text">({year})</span>
-          </p>
-        </div>
+        <Tippy
+          content={languageState.texts.ariaLabels.seeDetails}
+          className="hide-on-mobile"
+        >
+          <div
+            role="button"
+            tabIndex={-1}
+            onClick={activateLightBox}
+            onKeyDown={handleLightKeyDown}
+            aria-label={languageState.texts.ariaLabels.seeDetails}
+            className={`${memoAnimation} ${styles.bookInfo} !cursor-pointer hover:underline decoration-dark-alt-text`}
+          >
+            <h3>{title}</h3>
+            <p>
+              {genre}{" "}
+              <span className="alter-text">
+                ({pages}) {languageState.texts.book.pages}
+              </span>
+            </p>
+            <p className="mt-2">
+              <span className="alter-text">{languageState.texts.book.by}</span>{" "}
+              {author.name} <span className="alter-text">({year})</span>
+            </p>
+          </div>
+        </Tippy>
         <PrimaryButton
           name="add-to-reading-list"
           onClick={addToReadingList}
