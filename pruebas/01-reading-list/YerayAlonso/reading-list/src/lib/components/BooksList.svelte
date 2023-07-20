@@ -3,13 +3,14 @@
 
   export let books
   export let action
+  export let isSelected
 </script>
 
 <ul class="grid grid-cols-2 md:grid-cols-4 gap-3">
   {#each books as { book }}
     <li class="hover:scale-105 inline-block transition-all hover:contrast-125 hover:shadow-2xl">
       <button class="group relative" on:click={() => action(book)}>
-        <Book {book} isSelected={false} />
+        <Book {book} {isSelected} />
       </button>
     </li>
   {/each}
