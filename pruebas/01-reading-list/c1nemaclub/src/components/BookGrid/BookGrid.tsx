@@ -12,7 +12,7 @@ function BookGrid({ children, loading, bookCount }: BookGridProps) {
   return (
     <>
       {bookCount === 0 ? (
-        <p>No hay libros disponibles</p>
+        <h2 className={style.title}>No hay libros disponibles</h2>
       ) : (
         <div className={style['book-grid']}>{children}</div>
       )}

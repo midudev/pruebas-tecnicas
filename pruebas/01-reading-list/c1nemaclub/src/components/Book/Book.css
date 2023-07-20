@@ -2,6 +2,7 @@
   width: 200px;
   cursor: pointer;
   margin-bottom: 10px;
+  position: relative;
 }
 
 .image-container {
@@ -10,6 +11,9 @@
   max-width: 200px;
   border-radius: 5px;
   overflow: hidden;
+}
+.image-container .icon {
+  display: none;
 }
 
 .image-container img {

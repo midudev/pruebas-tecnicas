@@ -21,7 +21,7 @@ function App() {
         <BookCount count={state.filteredBooks?.length} />
         <div className={style['genre-container']}>
           <GenreSelector onChange={(e)=> filterBooksByGenre(e.target.value)} />
-          <span>Genero:  {state.genre || "Todas"}</span>
+          <span className={style.genre}>Genero:  {state.genre || "Todas"}</span>
         </div>
         <div className={style.content}>
           <BookGrid loading={state.loading} bookCount={state.filteredBooks?.length}>

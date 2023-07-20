@@ -7,11 +7,10 @@
   /* height: fit-content; */
 }
 
-p {
-  font-family: var(--font);
-  font-family: 'Nunito Sans', sans-serif;
+.title {
   font-size: 1.2rem;
   font-weight: 600;
   width: 100%;
   margin-bottom: 20px;
+  color: var(--light-color);
 }

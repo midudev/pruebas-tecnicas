@@ -1,5 +1,5 @@
 .book-count {
-  font-family: 'Nunito Sans', sans-serif;
-  font-weight: 800;
+  font-weight: 600;
   margin-bottom: 15px;
+  color: var(--light-color);
 }
