@@ -21,7 +21,7 @@
   <h2>Filtros</h2>
   <div class="filters-inputs">
     <div style="display: flex;aligm-items:center;gap:20px">
-      <input type="text" class="search-input" bind:value={searchText} on:keyup={changeSearchText} />
+      <input type="text" class="search-input" placeholder="Buscar..." bind:value={searchText} on:keyup={changeSearchText} />
       <div style="display: flex;flex-direction:column; ">
         <label for="genres">Género</label>
         <select id="" bind:value={genre} on:change={changeGenre}>

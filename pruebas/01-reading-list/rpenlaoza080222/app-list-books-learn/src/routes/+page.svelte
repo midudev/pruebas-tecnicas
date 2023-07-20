@@ -38,7 +38,6 @@
     }
     if (genre) {
       array = array.filter(({ book }: { book: BookType }) => {
-        console.log("Generos", book.genre,genre)
         return book.genre.toLowerCase().includes(genre.toLowerCase());
       });
     }
