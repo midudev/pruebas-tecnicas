@@ -6,8 +6,10 @@ export function useFilters() {
 
   if (!context) throw new Error('useFilters must be used within a FilterContext')
 
-  const { currentGenre, numberPages, modifiers } = context
-  const { changeCurrentGenre, changeNumberPages } = modifiers
+  const {
+    filters: { range, currentGenre },
+    modifiers: { changeCurrentGenre, changeNumberPages }
+  } = context
 
-  return { currentGenre, numberPages, changeCurrentGenre, changeNumberPages }
+  return { currentGenre, range, changeCurrentGenre, changeNumberPages }
 }

@@ -3,7 +3,7 @@ import db from './db/books.json'
 
 import type { Book } from '@/typings/books'
 
-type BookDataList = Omit<Book, 'author' | 'synopsis' | 'year'>[]
+export type BookDataList = Omit<Book, 'author' | 'synopsis' | 'year'>[]
 
 const { library } = db
 
