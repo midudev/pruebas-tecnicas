@@ -1,0 +1,17 @@
+.cart{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    user-select: none;
+}
+.wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
