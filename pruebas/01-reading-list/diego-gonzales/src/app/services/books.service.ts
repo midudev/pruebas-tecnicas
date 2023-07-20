@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, computed, inject, signal } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { map } from 'rxjs';
-import { GENRES, STORAGE_KEY } from '~/consts';
+import { STORAGE_KEY } from '~/consts';
 import type { Book, BooksData } from '~/interfaces/books.interface';
-import type { Filters } from '~/interfaces/filters.interface';
 import { StorageService } from './storage.service';
 
 @Injectable({
@@ -15,18 +14,9 @@ export class BooksService {
   private _bookList = signal<Book[]>([]);
   private _readingList = signal<Book[]>([]);
 
-  showSearchBox = signal<boolean>(false);
-  filters = signal<Filters>({
-    search: '',
-    genre: GENRES.ALL,
-    pages: 1500,
-  });
-
-  totalBooksAvailable = computed(
-    () => this._bookList().length - this._readingList().length
-  );
-  totalBooksInReadingList = computed(() => this._readingList().length);
-  filteredBooks = computed(() => this.filterBooks());
+  get bookList() {
+    return this._bookList.asReadonly();
+  }
 
   get readingList() {
     return this._readingList.asReadonly();
@@ -75,22 +65,13 @@ export class BooksService {
       bookIndex === -1 ? value.unshift(book) : value.splice(bookIndex, 1);
     });
 
+    this.saveDataInStorage();
+  }
+
+  saveDataInStorage() {
     this._storageService.saveInStorage(STORAGE_KEY, {
       bookList: this._bookList(),
       readingList: this._readingList(),
     });
-  }
-
-  filterBooks() {
-    const { search, genre, pages } = this.filters();
-
-    return this._bookList().filter((book) =>
-      genre !== GENRES.ALL
-        ? book.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()) &&
-          book.genre === genre &&
-          book.pages <= pages
-        : book.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()) &&
-          book.pages <= pages
-    );
   }
 }

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BookItemComponent } from '../book-item/book-item.component';
-import { BooksService } from '~/services/books.service';
+import { StoreService } from '~/services/store.service';
 
 @Component({
   selector: 'app-book-list',
@@ -10,6 +10,6 @@ import { BooksService } from '~/services/books.service';
   templateUrl: './book-list.component.html',
 })
 export default class BookListComponent {
-  private _booksService = inject(BooksService);
-  bookList = this._booksService.filteredBooks;
+  private _storeService = inject(StoreService);
+  bookList = this._storeService.filteredBooks;
 }

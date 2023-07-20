@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BOOK_MAPPING, GENRES, type Genre } from '~/consts';
-import { BooksService } from '~/services/books.service';
+import { StoreService } from '~/services/store.service';
 
 @Component({
   selector: 'app-book-filters',
@@ -10,9 +10,9 @@ import { BooksService } from '~/services/books.service';
   templateUrl: './book-filters.component.html',
 })
 export class BookFiltersComponent {
-  private _bookService = inject(BooksService);
-  filters = this._bookService.filters;
-  filteredBooks = this._bookService.filteredBooks;
+  private _storeService = inject(StoreService);
+  filters = this._storeService.filters;
+  filteredBooks = this._storeService.filteredBooks;
   genres = signal<Genre[]>([
     GENRES.ALL,
     GENRES.FANTASY,
@@ -26,17 +26,13 @@ export class BookFiltersComponent {
     const target = event.target as HTMLInputElement;
     const value = Number(target.value);
 
-    this._bookService.filters.mutate((state) => {
-      state.pages = value;
-    });
+    this._storeService.updatePagesFilter(value);
   }
 
   onSelectChange(event: Event) {
     const target = event.target as HTMLSelectElement;
     const value = target.value as Genre;
 
-    this._bookService.filters.mutate((state) => {
-      state.genre = value;
-    });
+    this._storeService.updateGenreFilter(value);
   }
 }

@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BooksService } from '~/services/books.service';
+import { StoreService } from '~/services/store.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,14 +9,12 @@ import { BooksService } from '~/services/books.service';
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent {
-  private _booksService = inject(BooksService);
-  showSearchBox = this._booksService.showSearchBox;
+  private _storeService = inject(StoreService);
+  showSearchBox = this._storeService.showSearchBox;
 
   onInputChange(event: Event) {
     const value = (event.target as HTMLInputElement).value.trim();
 
-    this._booksService.filters.mutate((filters) => {
-      filters.search = value;
-    });
+    this._storeService.updateSearchFilter(value);
   }
 }
