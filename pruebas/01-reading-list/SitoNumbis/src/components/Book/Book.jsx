@@ -41,6 +41,10 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
     if (e.keyCode === 13) addToReadingList();
   };
 
+  const handleLightKeyDown = (e) => {
+    if (e.keyCode === 13) activateLightBox();
+  };
+
   const [hide, setHide] = useState(false);
 
   const isInReadingList = useMemo(() => {
@@ -56,14 +60,16 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
     )
       toHide = true;
 
-    // if the user is using a filter and the genre of the book is not the filtering genre
+    //* if the user is using a filter
+    //  the genre of the book is not the filtering genre
     if (
       libraryState.filters.genre.length &&
       genre !== libraryState.filters.genre
     )
       toHide = true;
-    /* console.log(pages, libraryState.filters.pages); */
+    //  the book has fewer pages than the filter per pages
     if (pages < libraryState.filters.pages) toHide = true;
+    //  the book title has similarity to the filter by title
     setHide(toHide);
   }, [libraryState, ISBN, genre, pages]);
 
@@ -79,12 +85,18 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
         role="button"
         tabIndex={0}
         onKeyDown={handleKeyDown}
-        onClick={activateLightBox}
+        onDoubleClick={addToReadingList}
         className={`group ${styles.bookInfoContainer} ${
           isInReadingList ? "!opacity-100" : ""
         }`}
       >
-        <div className={`${memoAnimation} ${styles.bookInfo}`}>
+        <div
+          role="button"
+          tabIndex={-1}
+          onKeyDown={handleLightKeyDown}
+          onClick={activateLightBox}
+          className={`${memoAnimation} ${styles.bookInfo} !cursor-pointer hover:underline decoration-dark-alt-text`}
+        >
           <h3>{title}</h3>
           <p>
             {genre}{" "}

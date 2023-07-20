@@ -7,7 +7,8 @@
       "title": "Viendo",
       "reading-list": "lista de lectura",
       "all": "disponibles",
-      "pageFilter": "Filtrar por páginas"
+      "pageFilter": "Páginas",
+      "titleFilter": "Título"
     },
     "error": {
       "noBooks": "No hay libros",

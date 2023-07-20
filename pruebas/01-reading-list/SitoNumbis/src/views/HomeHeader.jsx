@@ -1,16 +1,32 @@
-import { useMemo, useEffect, useCallback } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
+
+import { css } from "@emotion/css";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFilter,
+  faSearch,
+  faFilterCircleXmark,
+} from "@fortawesome/free-solid-svg-icons";
 
 // components
 import Slider from "../components/Slider/Slider";
+import IconButton from "../components/IconButton/IconButton";
+import SimpleInput from "../components/SimpleInput/SimpleInput";
 
 // contexts
 import { useLanguage } from "../contexts/LanguageProvider";
 import { useLibrary } from "../contexts/LibraryProvider";
 
+// styles
+import styles from "./styles.module.css";
+
 function HomeHeader() {
   const { libraryState, setLibraryState } = useLibrary();
 
   const { languageState } = useLanguage();
+
+  const [showingFilters, setShowingFilters] = useState(false);
 
   const totalLength = useMemo(() => {
     return libraryState.seeing === "all"
@@ -45,6 +61,14 @@ function HomeHeader() {
     [setLibraryState]
   );
 
+  const handleSearch = useCallback(
+    (e) => {
+      const { value } = e.target;
+      setLibraryState({ type: "set-filter", value });
+    },
+    [setLibraryState]
+  );
+
   return (
     <section>
       <div className="flex items-center flex-wrap w-full">
@@ -63,17 +87,45 @@ function HomeHeader() {
             </span>
           </p>
         ) : null}
-      </div>
-      <div>
-        <p className="alter-text">
-          {languageState.texts.homeHeader.pageFilter}
-        </p>
-        <Slider
-          max={9999}
-          min={1}
-          value={libraryState.filters.pages}
-          handleRange={handlePages}
+        <IconButton
+          onClick={() => setShowingFilters((showingFilters) => !showingFilters)}
+          icon={!showingFilters ? faFilter : faFilterCircleXmark}
         />
+      </div>
+      <div
+        className={`${styles.gridFilter} ${css({
+          gridTemplateRows: showingFilters ? "1fr" : "0fr",
+        })}`}
+      >
+        <div className="flex overflow-hidden gap-4 flex-wrap">
+          <div>
+            <p className="alter-text">
+              {languageState.texts.homeHeader.pageFilter}
+            </p>
+            <Slider
+              max={3999}
+              min={1}
+              value={libraryState.filters.pages}
+              handleRange={handlePages}
+            />
+          </div>
+          <SimpleInput
+            className="my-auto min-w-[250px] relative"
+            leftIcon={
+              <FontAwesomeIcon
+                icon={faSearch}
+                className="absolute text-dark-alt-text -translate-y-[50%] top-[50%] left-1"
+              />
+            }
+            label={languageState.texts.homeHeader.titleFilter}
+            inputProps={{
+              type: "search",
+              value: libraryState.filters.title,
+              onChange: handleSearch,
+              className: "rounded-3xl bg-dark-alt-bg pl-7 py-1 w-full text-sm",
+            }}
+          />
+        </div>
       </div>
     </section>
   );

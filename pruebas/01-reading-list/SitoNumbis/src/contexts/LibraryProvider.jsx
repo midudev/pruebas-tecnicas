@@ -79,13 +79,13 @@ const libraryReducer = (libraryState, action) => {
         ...libraryState,
         filters: {
           genre: "",
+          title: "",
           pages: 0,
         },
       };
     }
     case "set-filter": {
       const { filter, value } = action;
-      console.log(filter, value);
       const { filters } = libraryState;
       filters[filter] = value;
       return {
@@ -106,6 +106,7 @@ const LibraryProvider = ({ children }) => {
     filters: {
       pages: 0, // current pages filter
       genre: "", // current genre filter
+      title: "", // current title filter
     },
     available: 0, // global state to quick access to available books
     showing: 0, // global state to quick access to the showing books
