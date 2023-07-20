@@ -2,6 +2,10 @@
 
 <img src="public/project.png" alt="Screenshot" />
 
+[**🔗 link de la prueba**](https://danielcg-prueba-01-reading-list.vercel.app/)
+<br/>
+[**👍 Mi github**](https://github.com/danielcgilibert)
+
 </div>
 
 ## ⚙️ Stack
