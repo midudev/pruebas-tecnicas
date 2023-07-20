@@ -17,13 +17,16 @@ function useBooks() {
   const getBooks = async () => {
     try {
       dispatch({ type: 'ACTION_START' });
-      const response = await fetch('/books.json');
+      const response = await fetch('/src/books.json');
       const data = await response.json();
       dispatch({ type: 'GET_BOOKS', payload: data.library });
       dispatch({ type: 'ACTION_SUCCESS' });
     } catch (e: unknown) {
       if (e instanceof Error)
-        dispatch({ type: 'ACTION_ERROR', payload: e.message || 'There was an error'});
+        dispatch({
+          type: 'ACTION_ERROR',
+          payload: e.message || 'There was an error',
+        });
     }
   };
 
@@ -57,7 +60,10 @@ function useBooks() {
     const savedData = getFromLocalStorage();
     if (savedData) {
       dispatch({ type: 'FILTER_BOOKS', payload: state.genre });
-      dispatch({ type: 'SET_AVAILABLE_BOOKS', payload: savedData.availableBooks });
+      dispatch({
+        type: 'SET_AVAILABLE_BOOKS',
+        payload: savedData.availableBooks,
+      });
       dispatch({ type: 'SET_LECTURE_LIST', payload: savedData.lectureList });
     } else {
       getBooks();
@@ -67,13 +73,16 @@ function useBooks() {
       const savedData = getFromLocalStorage();
       if (savedData) {
         dispatch({ type: 'FILTER_BOOKS', payload: state.genre });
-        dispatch({ type: 'SET_AVAILABLE_BOOKS', payload: savedData.availableBooks });
+        dispatch({
+          type: 'SET_AVAILABLE_BOOKS',
+          payload: savedData.availableBooks,
+        });
         dispatch({ type: 'SET_LECTURE_LIST', payload: savedData.lectureList });
       }
-    })
+    });
     return () => {
       window.removeEventListener('storage', () => {});
-    }
+    };
   }, []);
 
   const saveToLocalStorage = (data: any) => {
