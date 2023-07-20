@@ -1,9 +1,9 @@
 import { FilterProvider } from '@/context/filter'
+import { BookListProvider } from '@/context/bookList'
 
 import './globals.css'
 
 import type { Metadata } from 'next'
-import { BookListProvider } from '@/context/bookList'
 
 export const metadata: Metadata = {
   title: 'Readling list',

@@ -1,11 +1,12 @@
 import Image from 'next/image'
 
-import homeStyles from '@/assets/styles/Home.module.css'
-import headerStyles from '@/assets/styles/HeaderPage.module.css'
-
-import logo from './icon.svg'
 import { SuggestBook } from '@/components/SuggestBook'
 import { BookDashboard } from '@/components/BookDashboard'
+
+import homeStyles from '@/assets/styles/Book/Home.module.css'
+import headerStyles from '@/assets/styles/Book/HeaderPage.module.css'
+
+import logo from './icon.svg'
 
 export default function Home() {
   return (
