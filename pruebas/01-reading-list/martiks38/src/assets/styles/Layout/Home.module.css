@@ -52,8 +52,8 @@
 
 .homeMain__suggestSection__title {
   margin-bottom: 0.15em;
-  font-size: 1.75rem;
-  line-height: 2.25rem;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 
 .homeMain__suggestSection__subtitle {
@@ -81,8 +81,9 @@
 }
 
 .homeMain__bookListSection__title {
-  font-size: 1.5rem;
-  line-height: 2rem;
+  margin-bottom: 0.8em;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 
 .booksGenresSection__title {
