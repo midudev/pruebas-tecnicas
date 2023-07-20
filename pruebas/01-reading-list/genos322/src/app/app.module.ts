@@ -7,8 +7,6 @@ import { BooksComponent } from './books/books.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSliderModule} from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
-import { FilterNumberPagesComponent } from './filter-number-pages/filter-number-pages.component';
-import { FilterGenderComponent } from './filter-gender/filter-gender.component';
 import { ListReadingComponent } from './list-reading/list-reading.component';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -16,8 +14,6 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     BooksComponent,
-    FilterNumberPagesComponent,
-    FilterGenderComponent,
     ListReadingComponent
   ],
   imports: [
@@ -25,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSliderModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

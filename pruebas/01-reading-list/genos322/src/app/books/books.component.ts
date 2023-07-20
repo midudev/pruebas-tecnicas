@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { DataBooksService } from '../services/data-books.service';
+
 
 @Component({
   selector: 'app-books',
@@ -8,11 +9,16 @@ import { DataBooksService } from '../services/data-books.service';
 })
 export class BooksComponent {
   jsonData: any;
+  sliderValue = 0; 
+
   constructor(private dataBooksService: DataBooksService) { }
   ngOnInit() {
     this.dataBooksService.getData().subscribe((data) => {
       this.jsonData = data.library;
-      console.log(data.library);
     })
   }
+
+  onSliderValueChange() {
+  }
 }
+

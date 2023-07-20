@@ -10,4 +10,6 @@
 @tailwind utilities;
   
 html, body { height: 100%; }
-body { margin: 0;}
+body { margin: 0;
+  background: rgb(0,0,0);
+}

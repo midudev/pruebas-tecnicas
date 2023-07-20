@@ -1,5 +1,18 @@
-<div class="flex flex-wrap gap-10">
-    <div *ngFor="let data of jsonData;">
-        <img [src]="data.book.cover" alt="" class="max-h-96 w-auto rounded-lg">
+<section class="flex flex-wrap gap-x-96">
+    <div>
+        <p class="text-3xl !font-indieFlower text-green-50">Filtrar por páginas</p>
+        <mat-slider class="!w-[250px]" min="0" max="1500" step="5" showTickMarks discrete>
+            <input matSliderThumb [(ngModel)]="sliderValue" #slider (input)="onSliderValueChange()">
+        </mat-slider>
     </div>
+    <div>
+        <p class="text-3xl !font-indieFlower text-cyan-50">Filtrar por género</p>
+    </div>
+</section>
+<div class="flex flex-wrap gap-10 mt-6">
+    <ng-container *ngFor="let data of jsonData;" >
+        <div *ngIf="data.book.pages >= sliderValue">
+            <img [src]="data.book.cover" alt="" class="max-h-96 w-auto rounded-lg shadow-lg shadow-green-300">
+        </div>          
+    </ng-container>
 </div>
