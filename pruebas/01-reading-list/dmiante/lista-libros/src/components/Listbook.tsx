@@ -1,9 +1,8 @@
-import { useContext } from 'react'
 import { styled } from 'styled-components'
-import { BookContext } from '../context/BooksContext'
+import { useBooksContext } from '../context/BooksContext'
 
 export default function Listbook () {
-  const { books, addReadingList } = useContext(BookContext)
+  const { books, addReadingList } = useBooksContext()
   // console.log(books)
 
   return (
@@ -35,7 +34,11 @@ const ListBooks = styled.section`
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 1.25rem;
     width: 100%;
+    border-radius: .4rem;
     transition: all ease-in-out 0.25s;
+    background-color: #151716;
+    padding: 1rem;
+    filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.50));
   }
 
   li {

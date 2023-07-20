@@ -2,15 +2,17 @@ import styled from 'styled-components'
 import Listbook from './components/Listbook'
 import { BooksProvider } from './context/BooksContext'
 import ReadingList from './components/ReadingList'
+import FilterBook from './components/FilterBook'
 
 function App () {
   return (
     <BooksProvider>
       <Container>
         <Header>
-          <h1 className='head'>Reading BOOKS</h1>
+          <h1 className='headline'>Libroverso</h1>
         </Header>
         <ReadingList />
+        <FilterBook />
         <Listbook />
       </Container>
     </BooksProvider>
@@ -18,11 +20,13 @@ function App () {
 }
 
 const Header = styled.header`
-  h1 {
     color: white;
     display: flex;
     align-items: center;
     height: 200px;
+
+  .headline {
+    font-size: xx-large;
   }
 `
 const Container = styled.main`

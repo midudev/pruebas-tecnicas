@@ -1,4 +1,4 @@
-import { useState, createContext, useEffect } from 'react'
+import { useState, createContext, useEffect, useContext } from 'react'
 import type { Book } from '../types/types.d.ts'
 import { getAllBook } from '../services/data'
 
@@ -7,30 +7,45 @@ interface BookTypeContext {
   readingList: Book[]
   addReadingList: (book: Book) => void
   removeReadingList: (book: Book) => void
+  genre: string
+  setGenre: (genre: string) => void
+  filteredUniqueGenre: string[]
 }
 
-export const BookContext = createContext<BookTypeContext>({
+const BookContext = createContext<BookTypeContext>({
   books: [],
   readingList: [],
   addReadingList: () => {},
-  removeReadingList: () => {}
+  removeReadingList: () => {},
+  genre: '',
+  setGenre: () => {},
+  filteredUniqueGenre: []
 })
 
 export function BooksProvider ({ children }: React.PropsWithChildren) {
   const [books, setBooks] = useState<Book[]>([])
   const [readingList, setReadingList] = useState<Book[]>([])
+  const [genre, setGenre] = useState<string>('Todos')
+
+  const genreMapped = books.map(el => el.genre)
+  const filteredUniqueGenre = [...new Set(genreMapped)]
 
   const addReadingList = (book: Book) => {
-    const bookFind = books.filter(bookReadingList => bookReadingList.ISBN !== book.ISBN)
-    setBooks(bookFind)
+    const addBook = books.filter(bookReadingList => bookReadingList.ISBN !== book.ISBN)
+    setBooks(addBook)
     setReadingList([...readingList, book])
   }
 
   const removeReadingList = (book: Book) => {
-    const bookDel = readingList.filter(bookReadingList => bookReadingList.ISBN !== book.ISBN)
-    setReadingList([...bookDel])
-    setBooks([...books, book])
+    const delBook = readingList.filter(bookReadingList => bookReadingList.ISBN !== book.ISBN)
+    setBooks([book, ...books])
+    setReadingList([...delBook])
   }
+
+  const filteredBookByGenre =
+    genre !== 'Todos'
+      ? books.filter(filterBooks => filterBooks.genre === genre)
+      : books
 
   useEffect(() => {
     const { library } = getAllBook()
@@ -40,13 +55,18 @@ export function BooksProvider ({ children }: React.PropsWithChildren) {
   return (
     <BookContext.Provider
       value={{
-        books,
+        books: filteredBookByGenre,
         readingList,
         addReadingList,
-        removeReadingList
+        removeReadingList,
+        genre,
+        setGenre,
+        filteredUniqueGenre
       }}
     >
       {children}
     </BookContext.Provider>
   )
 }
+
+export const useBooksContext = () => useContext(BookContext)

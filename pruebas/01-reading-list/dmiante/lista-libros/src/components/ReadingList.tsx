@@ -1,11 +1,12 @@
-import { useContext } from 'react'
 import { styled } from 'styled-components'
-import { BookContext } from '../context/BooksContext'
+import { useBooksContext } from '../context/BooksContext'
 
 export default function ReadingList () {
-  const { readingList, removeReadingList } = useContext(BookContext)
+  const { readingList, removeReadingList } = useBooksContext()
   return (
     <List>
+      <h2>Books to read</h2>
+      <span>{readingList.length} libro{readingList.length <= 1 ? '' : 's'} por leer</span>
       <ul>
         {
           readingList.map(books => (
@@ -17,7 +18,6 @@ export default function ReadingList () {
                 src={books.cover}
                 alt={books.title}
               />
-              {/* <div className='deleteIcon'>x</div> */}
             </li>
           ))
         }
@@ -27,6 +27,12 @@ export default function ReadingList () {
 }
 
 const List = styled.section`
+  color: white;
+
+  h2 {
+    color: white;
+    margin: 1rem 0;
+  }
 
   ul {
     display: flex;
