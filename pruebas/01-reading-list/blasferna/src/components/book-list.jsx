@@ -1,8 +1,8 @@
 "use client";
 
 import { useAppContext } from "@/context/store";
-import { getInReadingList, removeFromReadingList } from "@/lib/books";
-import { TrashIcon } from "@heroicons/react/24/outline";
+import { addToReadingList, getInReadingList, removeFromReadingList } from "@/lib/books";
+import { PlusIcon, TrashIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -18,8 +18,12 @@ export function ReadingList() {
 
 export function BookList({ books, removable = false }) {
   const { inReadingList, setInReadingList } = useAppContext();
-  const onClickHander = (isbn) => {
+  const onRemoveClickHander = (isbn) => {
     removeFromReadingList(isbn);
+    setInReadingList(getInReadingList());
+  };
+  const onAddClickHander = (isbn) => {
+    addToReadingList(isbn);
     setInReadingList(getInReadingList());
   };
   return (
@@ -33,16 +37,24 @@ export function BookList({ books, removable = false }) {
                 key={book.ISBN}
                 className="relative w-40 h-60 rounded overflow-hidden cursor-pointer hover:scale-105 ease-in duration-200"
               >
-                {removable && (
+                {removable ? (
                   <button
                     onClick={() => {
-                      onClickHander(book.ISBN);
+                      onRemoveClickHander(book.ISBN);
                     }}
-                    className="absolute right-2 top-2 text-white bg-red-600/50 hover:bg-red-700 rounded-full p-1 z-10 hover:scale-125 ease-in duration-75"
-                    aria-label="Close"
+                    className="absolute right-2 top-2 bg-red-600/75 hover:bg-red-700 rounded-full p-1 z-10 hover:scale-125 ease-in duration-75"
                   >
                     <TrashIcon className="w-4 h-4 text-white/75"></TrashIcon>
                   </button>
+                ): (
+                  <button
+                    onClick={() => {
+                      onAddClickHander(book.ISBN);
+                    }}
+                    className="absolute right-2 top-2 text-xs p-1 bg-blue-500/75 hover:bg-blue-600 rounded-full z-10 hover:scale-110 ease-in duration-75"
+                  >
+                    <PlusIcon className="w-4 h-4 text-white"></PlusIcon>
+                  </button>                  
                 )}
                 <Link href={`/books/${book.ISBN}`}>
                   <Image

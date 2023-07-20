@@ -1,4 +1,4 @@
-import PlusButton from "@/components/plus-button";
+import AddButton from "@/components/add-button";
 import { getAuthorOtherBooks, getByISBN } from "@/lib/books";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,7 +22,7 @@ export default function BookDetail({ isbn }) {
       <div>
         <h1 className="font-medium text-3xl mb-1">{book.title}</h1>
         <p className="text-gray-300 mb-2">{book.synopsis}</p>
-        <PlusButton isbn={book.ISBN}></PlusButton>
+        <AddButton isbn={book.ISBN}></AddButton>
 
         <div className="text-sm mt-2">
           <span className="text-gray-300">Género:</span> {book.genre}

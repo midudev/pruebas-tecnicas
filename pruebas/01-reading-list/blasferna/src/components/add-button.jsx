@@ -11,7 +11,7 @@ import {
 import LoadingMini from "@/components/loading-mini";
 import { useAppContext } from "@/context/store";
 
-export default function PlusButton({ isbn }) {
+export default function AddToListButton({ isbn }) {
   const { inReadingList, setInReadingList } = useAppContext();
   const [checked, setChecked] = useState(null);
 
@@ -39,7 +39,7 @@ export default function PlusButton({ isbn }) {
   return (
     <button
       onClick={() => onClickHander(!checked)}
-      className="px-3 py-2 text-sm font-medium text-center inline-flex items-center text-white bg-red-700 rounded hover:bg-red-800 focus:outline-none"
+      className="px-3 py-2 text-sm font-medium text-center inline-flex items-center text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none"
     >
       {checked ? (
         <>
