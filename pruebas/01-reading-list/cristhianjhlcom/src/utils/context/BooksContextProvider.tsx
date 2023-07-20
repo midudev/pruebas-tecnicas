@@ -1,30 +1,29 @@
-import { createContext, useState } from "react";
+import { createContext, useReducer, useRef } from "react";
 import { library } from "../../data/library.json";
-import { Library } from "../../interfaces/Library";
+import { InitialBookState } from "../../types";
+import { booksReducer, getInitialBookState } from "../reducer/BookReducer";
 
-interface State {
-	data: Library;
-	loading: boolean;
-	error: null | string;
-}
+export type BooksContext = {
+	state: InitialBookState;
+};
 
-export interface BooksContext {
-	state: State;
-}
-
-export const BooksContext = createContext<BooksContextType | null>(null);
+export const BooksContext = createContext<BooksContext | null>(null);
 
 export default function BooksContextProvider({ children }) {
-	const [state] = useState<State>({
-		data: library as Library,
-		loading: false,
-		error: null,
-	});
+	const modalRef = useRef();
+	const [state, dispatch] = useReducer(
+		booksReducer,
+		library,
+		getInitialBookState
+	);
 
 	return (
 		<BooksContext.Provider
 			value={{
-				libraryState: state,
+				books: state.books,
+				bookPreview: state.bookPreview,
+				dispatch,
+				modalRef,
 			}}
 		>
 			{children}
