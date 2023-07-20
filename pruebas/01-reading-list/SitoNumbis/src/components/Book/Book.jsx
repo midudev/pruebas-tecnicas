@@ -42,10 +42,6 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
     if (e.keyCode === 13) addToReadingList();
   };
 
-  const handleLightKeyDown = (e) => {
-    if (e.keyCode === 13) activateLightBox();
-  };
-
   const [hide, setHide] = useState(false);
 
   const isInReadingList = useMemo(() => {
@@ -82,32 +78,25 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
         alt={`${title}-${languageState.texts.book.cover}`}
       />
       <Marker show={isInReadingList} />
-      <div
-        role="button"
-        tabIndex={0}
-        aria-label={
-          !isInReadingList
-            ? languageState.texts.ariaLabels.add
-            : languageState.texts.ariaLabels.remove
-        }
-        onKeyDown={handleKeyDown}
-        onDoubleClick={addToReadingList}
-        className={`group ${styles.bookInfoContainer} ${
-          isInReadingList ? "!opacity-100" : ""
-        }`}
+      <Tippy
+        content={languageState.texts.ariaLabels.seeDetails}
+        className="hide-on-mobile"
       >
-        <Tippy
-          content={languageState.texts.ariaLabels.seeDetails}
-          className="hide-on-mobile"
+        <div
+          role="button"
+          tabIndex={0}
+          aria-label={
+            !isInReadingList
+              ? languageState.texts.ariaLabels.add
+              : languageState.texts.ariaLabels.remove
+          }
+          onKeyDown={handleKeyDown}
+          onClick={activateLightBox}
+          className={`group ${styles.bookInfoContainer} ${
+            isInReadingList ? "!opacity-100" : ""
+          }`}
         >
-          <div
-            role="button"
-            tabIndex={-1}
-            onClick={activateLightBox}
-            onKeyDown={handleLightKeyDown}
-            aria-label={languageState.texts.ariaLabels.seeDetails}
-            className={`${memoAnimation} ${styles.bookInfo} !cursor-pointer hover:underline decoration-dark-alt-text`}
-          >
+          <div className={`${memoAnimation} ${styles.bookInfo}`}>
             <h3>{title}</h3>
             <p>
               {genre}{" "}
@@ -120,25 +109,26 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
               {author.name} <span className="alter-text">({year})</span>
             </p>
           </div>
-        </Tippy>
-        <PrimaryButton
-          name="add-to-reading-list"
-          onClick={addToReadingList}
-          tabIndex={-1}
-          ariaLabel={
-            !isInReadingList
-              ? languageState.texts.ariaLabels.add
-              : languageState.texts.ariaLabels.remove
-          }
-          className={`${memoAnimation} ${
-            isInReadingList ? styles.addButton : ""
-          }`}
-        >
-          {!isInReadingList
-            ? languageState.texts.book.add
-            : languageState.texts.book.remove}
-        </PrimaryButton>
-      </div>
+
+          <PrimaryButton
+            name="add-to-reading-list"
+            onClick={addToReadingList}
+            tabIndex={-1}
+            ariaLabel={
+              !isInReadingList
+                ? languageState.texts.ariaLabels.add
+                : languageState.texts.ariaLabels.remove
+            }
+            className={`${memoAnimation} ${
+              isInReadingList ? styles.addButton : ""
+            }`}
+          >
+            {!isInReadingList
+              ? languageState.texts.book.add
+              : languageState.texts.book.remove}
+          </PrimaryButton>
+        </div>
+      </Tippy>
     </li>
   ) : null;
 }

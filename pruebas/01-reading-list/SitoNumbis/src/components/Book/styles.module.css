@@ -16,6 +16,10 @@
     background: none !important;
   }
 
+  .bookInfoContainer button {
+    @apply !opacity-100 !translate-y-0;
+  }
+
   .bookInfo {
     @apply !opacity-0;
   }
