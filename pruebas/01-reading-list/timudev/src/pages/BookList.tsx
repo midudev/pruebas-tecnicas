@@ -1,28 +1,23 @@
-import { BookCard } from '../components/BookCard';
-import { BookImage } from '../components/BookImage';
-import { BookTitle } from '../components/BookTitle';
-import { BookButtons } from '../components/BookButtons';
+import { BookCard, BookImage, BookTitle, BookButtons } from '../components';
 import { useReadingList } from '../hooks/useReadingList';
 
 import data from '../data/books.json';
-import { Library } from '../interfaces/interfaces';
 
 import '../styles/custom-styles.css';
 
 
-export const BookStore = () => {
+export const BookList = () => {
 
-    //const { shoppingCart, onProductCountChange } = useShoppingCart();
     const { readingList, onBookReadingChange} = useReadingList();
-
-    const library: Library[] = data.library;
-
-    console.log(readingList);
+    
+    const books = data.library.map( item => item.book );
     
     return (
         <div>
-            <h1>Book Store</h1>
+            
+            <h1>Book List</h1>
             <hr />
+            
             <div style={{
                 display: 'flex',
                 flexDirection: 'row',
@@ -30,15 +25,15 @@ export const BookStore = () => {
             }}> 
 
                 {
-                    library.map( book => (
+                    books.map( book => (
                         <BookCard
-                            key={ book.book.ISBN }
-                            book={ book.book }
+                            key={ book.ISBN }
+                            book={ book }
                             className="bg-dark text-white"
                             onChange={ onBookReadingChange }
-                            value={ readingList[book.book.ISBN]?.readingList }
+                            value={ readingList[book.ISBN]?.readingList }
                         >
-                            <BookImage />
+                            <BookImage style={ readingList[book.ISBN]?.readingList ? { opacity: 0.25} : {}}/>
                             <BookTitle className="text-bold" />
                             <BookButtons className="custom-buttons" />
                         </BookCard>
@@ -47,7 +42,7 @@ export const BookStore = () => {
 
             </div>
 
-            <div className='book-store'>
+            <div className='book-reading-list'>
                 {
                     Object.entries(readingList).map( ([key, book]) => (
                         <BookCard 

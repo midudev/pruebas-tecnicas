@@ -18,7 +18,9 @@ export const BookButtons = ({ className, style }:Props) => {
             className={ `${styles.buttonsContainer} ${ className ? className : '' }`}
             style={ style }
         >
-            <button className={ styles.buttonAdd} onClick={ () => addToReadingList(readingList) } >{ readingList ? '-' : '+'}</button>
+            <button 
+                className={ styles.buttonAdd} onClick={ () => addToReadingList(readingList) } 
+            >{ readingList ? '-' : '+'}</button>
         </div>
     )
 }      

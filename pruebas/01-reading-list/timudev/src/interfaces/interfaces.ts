@@ -6,10 +6,6 @@ import { Props as BookTitleProps} from '../components/BookTitle';
 
 // Book interface
 
-export interface Library {
-    book: Book;
-}
-
 export interface Book {
     title:    string;
     pages:    number;

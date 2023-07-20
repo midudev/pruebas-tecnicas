@@ -18,7 +18,6 @@ export const useBook = ({ onChange, book, value = false}: useBookArgs) => {
         setReadingList( newValue );
         console.log(newValue);
         
-        
         onChange && onChange({ readingList: newValue, book});
     }
 

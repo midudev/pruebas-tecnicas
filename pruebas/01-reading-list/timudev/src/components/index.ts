@@ -1,18 +1,18 @@
-import { ProductCard as ProductCardHOC } from "./ProductCard";
-import { ProductCardHOCProps } from "../interfaces/interfaces";
+import { BookCard as BookCardHOC } from "./BookCard";
+import { BookCardHOCProps } from "../interfaces/interfaces";
 
-import { ProductImage } from "./ProductImage";
-import { ProductTitle } from "./ProductTitle";
-import { ProductButtons } from "./ProductButtons";
+import { BookImage } from "./BookImage";
+import { BookTitle } from "./BookTitle";
+import { BookButtons } from "./BookButtons";
 
-export { ProductImage } from "./ProductImage";
-export { ProductTitle } from "./ProductTitle";
-export { ProductButtons } from "./ProductButtons";
+export { BookImage } from "./BookImage";
+export { BookTitle } from "./BookTitle";
+export { BookButtons } from "./BookButtons";
 
-export const ProductCard: ProductCardHOCProps = Object.assign(ProductCardHOC, {  
-    Image: ProductImage,
-    Title: ProductTitle, 
-    Buttons: ProductButtons,
+export const BookCard: BookCardHOCProps = Object.assign(BookCardHOC, {  
+    Image: BookImage,
+    Title: BookTitle, 
+    Buttons: BookButtons,
 });
 
-export default ProductCard;
+export default BookCard;

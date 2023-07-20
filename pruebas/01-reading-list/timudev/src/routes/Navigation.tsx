@@ -2,7 +2,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Routes, Route, NavLink, Navigate } from 'react-router-dom';
 
 import logo from '../assets/react.svg';
-import { BookStore } from '../pages/BookStore';
+import { BookList } from '../pages/BookList';
 
 
 export const Navigation = () => {
@@ -25,7 +25,7 @@ export const Navigation = () => {
             </nav>
 
             <Routes>
-                <Route path="/"  element={ <BookStore /> } />
+                <Route path="/"  element={ <BookList /> } />
                 <Route path="about" element={ <h1>About Page</h1> } />
                 <Route path="users" element={ <h1>Users Page</h1> } />
                 
