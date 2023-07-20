@@ -1,6 +1,6 @@
 import './App.css'
 
-function App() {
+function App () {
   return (
     <>
       <h1>Midureads</h1>
