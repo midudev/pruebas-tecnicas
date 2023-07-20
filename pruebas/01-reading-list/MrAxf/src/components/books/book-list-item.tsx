@@ -18,7 +18,7 @@ const imageCss = cx(
   css({
     sm: {
       w: "225px",
-      h: "full",
+      h: "auto",
     },
   })
 );

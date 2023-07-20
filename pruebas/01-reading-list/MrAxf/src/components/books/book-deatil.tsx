@@ -88,6 +88,9 @@ export const BookDeatil = component$(({ book }: BookDeatilProps) => {
           <b>Año de publicación:</b> {book.year}
         </p>
         <p>
+          <b>Nº de páginas:</b> {book.pages}
+        </p>
+        <p>
           <b>ISBN:</b> {book.ISBN}
         </p>
         <VStack alignItems="start" gap="0">
