@@ -1,3 +1,17 @@
 .reading-list-books div:not(:first-child) {
-  margin-top: -350px;
+  margin-top: -200px;
+}
+
+@media screen and (min-width: 640px) {
+  .reading-list-books div:not(:first-child) {
+    margin-top: 0px;
+    margin-left: 50px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .reading-list-books div:not(:first-child) {
+    margin-top: -200px;
+    margin-left: 0px;
+  }
 }

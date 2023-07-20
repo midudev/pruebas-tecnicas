@@ -7,7 +7,7 @@ export const Book = ({ book, onClick, filter }) => {
           onClick(book.ISBN);
         }}
       >
-        <img src={book.cover} className="rounded-2xl" />
+        <img src={book.cover} className="rounded-lg xl:rounded-2xl" />
       </div>
     );
   }

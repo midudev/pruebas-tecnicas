@@ -16,8 +16,8 @@ export const HomeContainer = () => {
   useEffect(() => {}, [books, readingList, filter]);
 
   return (
-    <div className="gap-8 grid grid-cols-[8fr_4fr] min-h-screen px-16 py-8 font-lugarismo">
-      <div className="flex flex-col gap-8">
+    <div className="font-lugarismo min-h-screen flex flex-col gap-8 px-8 py-4 lg:grid lg:grid-cols-[8fr_4fr] lg:px-16 lg:py-8 xl:grid-cols-[10fr_2fr]">
+      <div className="flex flex-col gap-4">
         <Header />
         <BooksLibrary
           handleOnBookClick={moveToReadingList}
