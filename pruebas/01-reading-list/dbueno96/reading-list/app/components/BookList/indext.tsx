@@ -1,16 +1,16 @@
 import Book from '../Book'
 
-interface IBookList extends ILibrary {}
+interface IBookList extends ILibrary, IWithClickable {}
 
 export default function BookList (props: IBookList) {
-  const { books } = props
+  const { books, onClick } = props
 
   return (
-    <ul className='grid grid-cols-3 overflow-hidden'>
+    <ul className='grid grid grid-auto-fit-[20rem] gap-9 overflow-hidden'>
       {
          books.map(book => (
            <li key={book.ISBN}>
-             <Book {...book} />
+             <Book {...book} onClick={onClick} />
            </li>))
 }
     </ul>

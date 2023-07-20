@@ -7,11 +7,11 @@ interface IButton extends IWithClassName {
 }
 
 export default function Button (props: IButton) {
-  const { children, onClick } = props
+  const { children, className = '', onClick } = props
 
   return (
     <button
-      // className='bg-white text-gray-800 text-sm  w-full rounded-full'
+      className={className}
       onClick={onClick}
     >
       {children}

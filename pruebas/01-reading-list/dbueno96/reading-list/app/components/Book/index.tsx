@@ -1,21 +1,17 @@
-import Button from '../Button.index'
+import Button from '../Button'
 
-interface IBookComponent extends IReadingListBook {}
+interface IBookComponent extends IWithClassName, IReadingListBook, IWithClickable {}
 
 export default function Book (props: IBookComponent) {
-  const { title, ISBN, synopsis, cover } = props
+  const { title, ISBN, cover, onClick } = props
 
   return (
     <article>
-      <p className='text-sm' />
-      {title}
       <picture>
-        <img src={cover} alt={title} />
+        <Button onClick={() => onClick(ISBN)}>
+          <img className='max-h-[30rem]' src={cover} alt={title} />
+        </Button>
       </picture>
-      <p className='text-xs '>
-        {synopsis}
-      </p>
-      <Button ISBN={ISBN} />
     </article>
   )
 }
