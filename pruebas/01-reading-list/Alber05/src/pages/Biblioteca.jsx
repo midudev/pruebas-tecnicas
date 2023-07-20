@@ -3,7 +3,7 @@ import { BookCard } from "../components/books/BookCard";
 import { DataContext } from "../context/DataContext";
 import { useContext } from "react";
 import { Main } from "../components/main/Main";
-import { EmptyBooks } from "../components/emptyBooks/EmptyBooks";
+import { EmptyLibrary } from "../components/emptyLibrary/EmptyLibrary";
 
 export const Biblioteca = () => {
   // Obtener los datos y funciones del contexto
@@ -32,7 +32,7 @@ export const Biblioteca = () => {
   return (
     <>
       {booksToDisplay.length === 0 ? (
-        <EmptyBooks />
+        <EmptyLibrary />
       ) : (
         <Main>
           <BookCard added={true} booksToDisplay={booksToDisplay} />

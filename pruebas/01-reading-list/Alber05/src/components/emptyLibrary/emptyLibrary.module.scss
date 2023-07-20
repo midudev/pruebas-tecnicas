@@ -6,16 +6,18 @@
   justify-content: space-around;
   align-items: center;
   min-height: calc(100vh - 250px);
-}
-@media (min-width: 768px) {
-  .noBooksMain {
+
+  @media (min-width: 768px) {
     margin: 170px auto 0 auto;
     min-height: calc(100vh - 170px);
   }
+
+  .noBooksTitle {
+    font-family: "Amazon Ember Heavy", sans-serif;
+    color: #353838;
+  }
+
+  .noBooksImage {
+    image-rendering: optimizeQuality;
+  }
 }
-.noBooksMain .noBooksTitle {
-  font-family: "Amazon Ember Heavy", sans-serif;
-}
-.noBooksMain .noBooksImage {
-  image-rendering: optimizeQuality;
-}/*# sourceMappingURL=noBooks.module.css.map */

@@ -19,36 +19,6 @@
     flex-direction: row;
   }
 }
-@media (min-width: 768px) {
-  .navContainer .navBar .navLinksContainer {
-    width: 50%;
-    display: flex;
-    justify-content: flex-end;
-  }
-}
-.navContainer .navBar .navLinksContainer .link {
-  color: #e3e5ec;
-  background-color: #353838;
-  padding: 1rem;
-  width: 15rem;
-  text-align: center;
-  filter: drop-shadow(1px 1px 2px rgba(53, 56, 56, 0.7960784314));
-}
-.navContainer .navBar .navLinksContainer .link:hover {
-  background-color: rgba(53, 56, 56, 0.7);
-}
-.navContainer .navBar .navLinksContainer .link:nth-child(1) {
-  border-radius: 1.2rem 0 0 1.2rem;
-}
-.navContainer .navBar .navLinksContainer .link:nth-child(2) {
-  border-radius: 0 1.2rem 1.2rem 0;
-}
-.navContainer .navBar .navLinksContainer .link.active {
-  color: #f49400;
-  background-color: rgba(53, 56, 56, 0.8);
-  transform: scale(0.95);
-  font-family: "Amazon Ember Bold", sans-serif;
-}
 .navContainer .navBar .filtersContainer {
   display: flex;
   gap: 2rem;
@@ -60,13 +30,3 @@
     gap: 2rem;
   }
 }
-.navContainer .navBar .filtersContainer .selectCategoryFilter {
-  border-radius: 1.2rem;
-  padding: 0.5rem;
-  border: none;
-  outline: none;
-  font-family: "Amazon Ember Bold", sans-serif;
-}
-.navContainer .navBar .filtersContainer .selectCategoryFilter option {
-  padding: 1rem;
-}/*# sourceMappingURL=menu.module.css.map */

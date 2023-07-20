@@ -16,8 +16,8 @@ export const PageSlider = () => {
   };
 
   return (
-    <Box sx={{ width: 150 }} className={style.pageSlider}>
-      <h4>Filrar por páginas:</h4>
+    <Box sx={{ width: 150 }} className={style.pageSliderContainer}>
+      <h4 className={style.pageSliderH4}>Filrar por páginas:</h4>
 
       <Slider
         value={selectedPageRange}
@@ -29,6 +29,7 @@ export const PageSlider = () => {
         marks
         min={0}
         max={1000}
+        className={style.silderRange}
       />
     </Box>
   );

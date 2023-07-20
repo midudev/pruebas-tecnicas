@@ -11,6 +11,9 @@
   overflow: hidden;
   filter: drop-shadow(1px 2px 3px rgba(53, 56, 56, 0.7960784314));
 }
+.bookCard .cardHeader:hover .synopsis {
+  right: 0;
+}
 .bookCard .cardHeader img {
   width: 100%;
   height: 302px;
@@ -73,10 +76,11 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  background-color: transparent;
   cursor: pointer;
   transition: 0.2s;
   font-family: "Amazon Ember Bold", sans-serif;
 }
 .bookCard .cardFooter .footerHandleLibrary:hover {
   color: #c8841a;
-}/*# sourceMappingURL=bookCard.module.css.map */
+}

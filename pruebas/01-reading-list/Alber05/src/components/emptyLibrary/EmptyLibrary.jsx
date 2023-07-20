@@ -1,8 +1,8 @@
 import React from "react";
 import noBooks from "../../assets/emptyBooks.webp";
-import style from "./noBooks.module.css";
+import style from "./emptyLibrary.module.css";
 
-export const EmptyBooks = () => {
+export const EmptyLibrary = () => {
   return (
     <main className={style.noBooksMain}>
       <h1 className={style.noBooksTitle}>Vaya! No hay ningún libro por aquí</h1>
