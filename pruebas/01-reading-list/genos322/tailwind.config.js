@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        indieFlower: ["indie flower", "cursive"],
+      },
+    },
   },
   plugins: [],
 }

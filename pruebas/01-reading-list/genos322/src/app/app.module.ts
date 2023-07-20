@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { FilterNumberPagesComponent } from './filter-number-pages/filter-number-pages.component';
 import { FilterGenderComponent } from './filter-gender/filter-gender.component';
 import { ListReadingComponent } from './list-reading/list-reading.component';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,7 @@ import { ListReadingComponent } from './list-reading/list-reading.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSliderModule,
-    FormsModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
