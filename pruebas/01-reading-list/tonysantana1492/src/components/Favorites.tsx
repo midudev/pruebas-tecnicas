@@ -16,7 +16,7 @@ export const Favorites = () => {
   }
 
   return (
-		<div onClick={handleClick} className="bg-gray-200 p-4 rounded-tl-3xl items-center overflow-hidden overflow-y-scroll h-full lg:h-full w-96">
+		<div onClick={handleClick} className="bg-gray-200 p-4 rounded-tl-3xl items-center overflow-hidden overflow-y-auto h-full lg:h-full w-96">
 			<div className="flex justify-between items-center w-full mb-4">
 				<div className="flex gap-5">
 					<h2 className="font-bold text-lg">My reading list</h2>

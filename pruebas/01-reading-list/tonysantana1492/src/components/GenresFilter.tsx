@@ -28,7 +28,7 @@ export const ButtonGenres: React.FC<Props> = ({ genre }) => {
 
 export const GenresFilter = () => {
   return (
-		<div className="flex justify-start items-center gap-4 overflow-hidden overflow-x-scroll pt-2">
+		<div className="flex justify-start items-center gap-4 overflow-hidden overflow-x-auto pt-2">
 			<ButtonGenres genre="" />
 			{Object.entries(GENRES_ALLOWED).map(([key, genre]) => <ButtonGenres key={key} genre={genre} />)}
 		</div>
