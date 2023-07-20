@@ -17,7 +17,7 @@
         }
     })
     const availableBooks = computed(() => {
-        return filteredBooks.value?.filter( el => !readingList.value.includes(el.book.ISBN))
+        return books.library?.filter( el => !readingList.value.includes(el.book.ISBN))
     })
 
     const readingListBooks = computed(() => {
@@ -25,7 +25,7 @@
     })
 
     const filteredBooks = computed(() => {
-        return books.library.filter( el => {
+        return availableBooks.value.filter( el => {
             return (genreFilter.value==="" || el.book.genre === genreFilter.value)
              && (!parseInt(pagesFilter.value) || el.book.pages<=pagesFilter.value)
         }) || []
@@ -69,7 +69,7 @@
 
         <div class="flex items-start gap-4 justify-center w-full mt-4">
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 mx-auto gap-4">
-                <template v-for="book in availableBooks" :key="book.book.ISBN">
+                <template v-for="book in filteredBooks" :key="book.book.ISBN">
                     <ReadingListBookItem :book="book.book" @click="addBookToReadingList(book.book.ISBN)"/>
                 </template>
             </div>
