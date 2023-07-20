@@ -28,12 +28,6 @@ pnpm build
 
 - vite
 
-
-
-
-
-
-
 [x] Visualización de Libros Disponibles: La aplicación debe mostrar una lista de libros disponibles que el usuario pueda revisar.
 
 ```
@@ -96,6 +90,6 @@ Desafíos adicionales
 ¿Quieres ir más allá? Estos son algunos desafíos adicionales que puedes intentar:
 
 [] Implementar una funcionalidad de búsqueda en la lista de libros disponibles.
-[] Añade un nuevo filtro para filtrar los libros por número de páginas.
+[x] Añade un nuevo filtro para filtrar los libros por número de páginas.
 [] Permitir la reorganización de los libros en la lista de lectura por prioridad.
 [] Haz que tu diseño sea responsive.
