@@ -50,14 +50,14 @@ function App () {
 
           return (
             <>
-              <header className='fixed top-0 w-full flex justify-between bg-white
-               items-center left-0 p-5'>
+              <header className='fixed top-0 z-10 w-full flex justify-between bg-white
+               items-center left-0 py-[20px] px-[150px]'>
                 <p className='font-bold text-xl'>Books<span className='font-normal'>Inc</span></p>
                 <h2>Colección de libros</h2>
               </header>
-              <main className='mt-20 my-0 mx-auto w-[100%]'>
-                <section className='filters mb-20 flex items-center'>
-                  <p className='w-[250px]'>Libros Disponibles: <span className=' inline-block w-[30px]'>{total}</span></p>
+              <main className='my-0 mt-32 mx-auto w-[100%]'>
+                <section className='filters bg-white z-10 mb-20 flex items-center fixed left-0 w-screen top-[68px] py-[20px] px-[150px] border-slate-100 border justify-between'>
+                  <p className='w-[250px] border-slate-100 border py-[5px] shadow-sm rounded'>Libros Disponibles: <span className=' inline-block w-[30px]'>{total}</span></p>
                   <Filter changeFilters={setFilters} />
                 </section>
                 <section className='lists flex'>

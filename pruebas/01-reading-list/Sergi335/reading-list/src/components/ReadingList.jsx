@@ -1,8 +1,6 @@
 import { useList } from '../hooks/useList'
-import './ReadingList.css'
 function ListItem ({ cover, title, genre, author, year, removeFromList }) {
   return (
-    <ul className=' w-[100%] h-auto'>
         <li>
             <img className="aspect-[317/475]" src={cover} alt={title} />
             <div>
@@ -13,15 +11,15 @@ function ListItem ({ cover, title, genre, author, year, removeFromList }) {
             </div>
             <button onClick={removeFromList}>Quitar</button>
         </li>
-    </ul>
   )
 }
 export default function ReadingList () {
   const { list, clearList, removeFromList } = useList()
   return (
-        <section className="readingList">
+        <section className="readingList bg-gradient-to-r from-cyan-500 to-blue-500 w-[34vw] p-8">
           <h2>Lista De Lectura</h2>
           <span>Libros disponibles: {list.length}</span>
+          <ul className=' w-[100%] h-auto'>
             {list.map(item => (
 
                 <ListItem
@@ -30,6 +28,7 @@ export default function ReadingList () {
                     {...item.book}
                 />
             ))}
+          </ul>
         </section>
   )
 }
