@@ -41,8 +41,8 @@ export const FavoriteItem: React.FC<Props> = ({
 
   return (
 		<li
-			className={`relative bg-white shadow-sm rounded-2xl p-2 flex justify-between items-center h-36 ${
-				isDragOver ? 'mt-4' : ''
+			className={`relative bg-white shadow-sm rounded-2xl p-2 flex justify-between items-center h-36 transition-all ${
+				isDragOver ? 'mt-4' : 'mt-0'
 			}`}
 			draggable={true}
 			onDragStart={handleDrag}
