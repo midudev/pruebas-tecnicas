@@ -69,8 +69,8 @@ function HomeHeader() {
           {languageState.texts.homeHeader.pageFilter}
         </p>
         <Slider
-          max={999}
-          min={0}
+          max={9999}
+          min={1}
           value={libraryState.filters.pages}
           handleRange={handlePages}
         />

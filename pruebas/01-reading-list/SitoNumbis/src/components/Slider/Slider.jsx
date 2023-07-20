@@ -14,7 +14,7 @@ function Slider({ handleRange, value, max, min, className }) {
         min={min}
         onChange={handleRange}
       />
-      <p className="alter-text">{value}</p>
+      <p className="alter-text">+{value}</p>
     </div>
   );
 }
