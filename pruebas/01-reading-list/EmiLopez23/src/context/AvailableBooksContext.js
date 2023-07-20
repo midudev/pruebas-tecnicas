@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import BooksData from "../books.json"
 
 export const AvailableBooksContext = createContext()
@@ -11,6 +11,18 @@ const AVAILABLE_BOOKS = 'availableBooks'
 
 export function AvailableBooksProvider({children}){
     const [availableBooks,setAvailableBooks] = useState(JSON.parse(localStorage.getItem(AVAILABLE_BOOKS)) || BooksData.library)
+
+    useEffect(()=>{
+        function handleStorageChange(event){
+            if(event.key===AVAILABLE_BOOKS){
+                setAvailableBooks(JSON.parse(event.newValue))
+            } 
+        }
+    
+        window.addEventListener('storage',handleStorageChange)
+
+        return ()=> window.removeEventListener('storage',handleStorageChange)
+    },[])
 
     function filterByGenre(wantedGenre){
         (wantedGenre==="")
