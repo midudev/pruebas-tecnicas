@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import jsonBooks from '../../../books.json';
+import Library from '../components/Library';
+
+const books = jsonBooks
+---
+
+<Layout title="Lista de libros">
+    <div>
+        <Library books={books} />
+    </div>
+</Layout>
