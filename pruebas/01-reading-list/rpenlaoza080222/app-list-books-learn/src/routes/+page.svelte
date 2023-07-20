@@ -1,31 +1,41 @@
 <script lang="ts">
   import booksLibrary from "$lib/books.json";
-  import Book from "../components/Book.svelte";
+  import Book from "../lib/components/Book.svelte";
   import type { Book as BookType } from "$lib/types/Book";
-  import Filters from "../components/Filters.svelte";
-  import ListWishBooks from "../components/ListWishBooks.svelte";
+  import Filters from "../lib/components/Filters.svelte";
+  import ListWishBooks from "../lib/components/ListWishBooks.svelte";
   import { onMount, setContext } from "svelte";
+  import {
+    setBookwishList,
+    getBookWishList,
+    keyBooks,
+  } from "$lib/contexts/booksContext";
+  import NavBar from "$lib/components/NavBar.svelte";
+  import { Button, Modal } from "flowbite-svelte";
   let { library: books } = booksLibrary;
 
-  let wishListBooks: BookType[] = [];
+  setBookwishList();
 
-  async function initiliaze() {
-    if (localStorage.getItem("list-wish-books")) {
-      const arrayBooks = JSON.parse(
-        localStorage.getItem("list-wish-books") || ""
-      );
-      wishListBooks = arrayBooks;
+  const wishListBooks = getBookWishList();
+
+  onMount(() => {
+    if (localStorage.getItem(keyBooks)) {
+      const booksStored = JSON.parse(localStorage.getItem(keyBooks) || "");
+      $wishListBooks = booksStored;
     }
-  }
-  onMount(initiliaze);
+  });
 
   let searchText = "";
 
   let search = false;
+  let open = true;
 
   let filterListBooks: BookType[] = books;
 
   let genre = "";
+
+  let popupModal = false;
+  let message= "";
 
   function filterBooks(searchText: string, genre: string) {
     let array = books;
@@ -45,17 +55,25 @@
   }
 
   function addBookToWishList(book: BookType) {
-    const bookExistInWishList = wishListBooks.find(
+    const bookExistInWishList = $wishListBooks.find(
       (wb) => wb.ISBN === book.ISBN
     );
     if (bookExistInWishList) return;
-    wishListBooks = [...wishListBooks, book];
+    $wishListBooks = [...$wishListBooks, book];
     saveListBooks();
+    message = "Ha sido agregado un libro";
+    popupModal = true;
   }
 
   function removeBookFromWishList(book: BookType) {
-    wishListBooks = wishListBooks.filter((b) => b.ISBN !== book.ISBN);
+    $wishListBooks = $wishListBooks.filter((b) => b.ISBN !== book.ISBN);
     saveListBooks();
+    message = "Ha sido eliminado un libro";
+    popupModal = true;
+  }
+
+  function toggleSideBar() {
+    open = !open;
   }
 
   const genres = books.map(({ book }) => {
@@ -67,35 +85,42 @@
   });
 
   function saveListBooks() {
-    setContext("list-wish-books", wishListBooks);
-    localStorage.setItem("list-wish-books", JSON.stringify(wishListBooks));
+    localStorage.setItem(keyBooks, JSON.stringify($wishListBooks));
   }
 </script>
 
 <div class="main">
-  <div class="container">
-    <h1>Lista de libros</h1>
-    <Filters
-      bookLength={filterListBooks.length}
-      {genre}
-      genres={genresSet}
-      {searchText}
-      {filterBooks}
-    />
-    <div class="container-list-books">
-      <div
-        class="container-books"
-        class:list-displayed={wishListBooks.length > 0}
-      >
+  <div class="flex flex-col h-[100vh]">
+    <NavBar />
+
+    <div class="w-[80%] mx-auto mt-[80px]">
+      <Filters
+        bookLength={filterListBooks.length}
+        {genre}
+        genres={genresSet}
+        {searchText}
+        {filterBooks}
+        {open}
+        {toggleSideBar}
+      />
+    </div>
+
+    <div class="container-list-books bg-gray-800 flex-1">
+      <div class="container-books h-fit">
         {#each filterListBooks as { book }, i}
           <Book {book} {addBookToWishList} />
         {/each}
       </div>
-      {#if wishListBooks.length > 0}
-        <ListWishBooks {wishListBooks} {removeBookFromWishList} />
-      {/if}
+      <ListWishBooks {removeBookFromWishList} {open} {toggleSideBar} />
     </div>
   </div>
+  <Modal bind:open={popupModal} size="xs" autoclose>
+    <div class="text-center">
+      <svg aria-hidden="true" class="mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+      <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">{message}</h3>
+      <Button color="red" class="mr-2">Entendito</Button>
+    </div>
+  </Modal>
 </div>
 
 <style>
@@ -109,13 +134,14 @@
   }
 
   .container-books {
-    width: 100%;
-    flex: 1;
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
     row-gap: 20px;
-    transition: all ease 10s;
+    transition: width ease 10s;
   }
 
   .container-books.list-displayed {
@@ -123,7 +149,7 @@
   }
 
   .container {
-    width: 80%;
+    width: 100%;
     margin: auto;
     display: flex;
     flex-direction: column;
