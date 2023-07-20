@@ -1,0 +1,42 @@
+.actionButton {
+  --size-button: 2.4rem;
+  --border-button: solid 1px #fff6;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem;
+  width: var(--size-button);
+  height: var(--size-button);
+  background-color: #141414;
+  border-width: 0;
+  border-bottom-left-radius: var(--rounded-4);
+  border-left: var(--border-button);
+  border-bottom: var(--border-button);
+}
+
+.addButton__line,
+.removeButton__line {
+  --height-line: 4px;
+
+  width: 80%;
+  height: var(--height-line);
+  background-color: #fff;
+  border-radius: calc(var(--height-line) / 2);
+  opacity: 0.8;
+}
+
+.addButton__line::before {
+  content: '';
+
+  display: block;
+  width: 100%;
+  height: inherit;
+  background-color: inherit;
+  border-radius: inherit;
+  transform-origin: center;
+  transform: rotate(90deg);
+}
