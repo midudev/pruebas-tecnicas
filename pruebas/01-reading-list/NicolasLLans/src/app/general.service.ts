@@ -14,12 +14,13 @@ export class GeneralService {
   miLista: boolean = false;
   milibro:boolean = false;
 
+  private booksSubject = new Subject<any[]>();
+  books$ = this.booksSubject.asObservable();
+
+  private localStorageUpdateSubject = new Subject<any[]>();
+  localStorageUpdate$ = this.localStorageUpdateSubject.asObservable();
 
   constructor(private http: HttpClient) {
-    // const localStorageBooks = window.localStorage.getItem('books');
-    // if (localStorageBooks) {
-    //   this.nuevaLista = JSON.parse(localStorageBooks);
-    // }
   }
 
   onActive() {
@@ -39,12 +40,12 @@ export class GeneralService {
     }
   }
 
-  private booksSubject = new Subject<any[]>();
-  books$ = this.booksSubject.asObservable();
-
-  updateLocalStorageBooks(books: any[]): void {
+ updateLocalStorageBooks(books: any[]): void {
     window.localStorage.setItem('books', JSON.stringify(books));
     this.booksSubject.next(books);
+
+    // Emitir el evento de actualización del localStorage
+    this.localStorageUpdateSubject.next(books);
   }
 
 }
