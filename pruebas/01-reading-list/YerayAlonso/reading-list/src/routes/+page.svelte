@@ -2,7 +2,6 @@
   import BooksList from '$lib/components/BooksList.svelte'
   import GenreSelector from '$lib/components/GenreSelector.svelte'
   import { selectedBooks, books } from '$lib/utils/stores'
-  import { onDestroy, onMount } from 'svelte'
 
   /** @type {import('./$types').PageData} */
   export let data
