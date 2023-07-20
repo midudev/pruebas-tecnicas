@@ -13,6 +13,7 @@ import styles from "./styles.module.css";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
 
 // components
+const Tippy = loadable(() => import("@tippyjs/react"));
 const Marker = loadable(() => import("./Marker/Marker"));
 
 function Book({ title, pages, genre, cover, year, ISBN, author }) {
@@ -84,31 +85,42 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
       <div
         role="button"
         tabIndex={0}
+        aria-label={
+          !isInReadingList
+            ? languageState.texts.ariaLabels.add
+            : languageState.texts.ariaLabels.remove
+        }
         onKeyDown={handleKeyDown}
         onDoubleClick={addToReadingList}
         className={`group ${styles.bookInfoContainer} ${
           isInReadingList ? "!opacity-100" : ""
         }`}
       >
-        <div
-          role="button"
-          tabIndex={-1}
-          onKeyDown={handleLightKeyDown}
-          onClick={activateLightBox}
-          className={`${memoAnimation} ${styles.bookInfo} !cursor-pointer hover:underline decoration-dark-alt-text`}
+        <Tippy
+          content={languageState.texts.ariaLabels.seeDetails}
+          className="hide-on-mobile"
         >
-          <h3>{title}</h3>
-          <p>
-            {genre}{" "}
-            <span className="alter-text">
-              ({pages}) {languageState.texts.book.pages}
-            </span>
-          </p>
-          <p className="mt-2">
-            <span className="alter-text">{languageState.texts.book.by}</span>{" "}
-            {author.name} <span className="alter-text">({year})</span>
-          </p>
-        </div>
+          <div
+            role="button"
+            tabIndex={-1}
+            onClick={activateLightBox}
+            onKeyDown={handleLightKeyDown}
+            aria-label={languageState.texts.ariaLabels.seeDetails}
+            className={`${memoAnimation} ${styles.bookInfo} !cursor-pointer hover:underline decoration-dark-alt-text`}
+          >
+            <h3>{title}</h3>
+            <p>
+              {genre}{" "}
+              <span className="alter-text">
+                ({pages}) {languageState.texts.book.pages}
+              </span>
+            </p>
+            <p className="mt-2">
+              <span className="alter-text">{languageState.texts.book.by}</span>{" "}
+              {author.name} <span className="alter-text">({year})</span>
+            </p>
+          </div>
+        </Tippy>
         <PrimaryButton
           name="add-to-reading-list"
           onClick={addToReadingList}
