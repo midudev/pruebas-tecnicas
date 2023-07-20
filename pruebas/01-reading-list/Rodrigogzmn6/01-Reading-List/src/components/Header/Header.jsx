@@ -9,7 +9,9 @@ export const Header = () => {
         <h1 className="text-3xl font-bold">
           {books.length} libros disponibles
         </h1>
-        <h3 className="text-xl">{readingList.length} en la lista de lectura</h3>
+        <h3 className="text-xl">
+          {readingList.length} libros en la lista de lectura
+        </h3>
       </header>
     </div>
   );

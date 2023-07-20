@@ -5,7 +5,7 @@ import { BooksContext } from "../../contexts/BooksContext";
 export const BooksLibrary = ({ handleOnBookClick, handleFilter }) => {
   const { genders, books, filter } = useContext(BooksContext);
   return (
-    <div className="flex flex-col gap-4">
+    <div className="books-library flex flex-col gap-4">
       <div className="flex flex-col gap-2">
         <h4>Filtrar por género</h4>
         <select
