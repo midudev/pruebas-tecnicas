@@ -8,25 +8,6 @@ function App() {
   const { getBooks, filteredBooks, filters, filter, books } = useBooksStore();
 
   useEffect(() => {
-    window.addEventListener("storage", (event) => {
-      if (event.type === "storage") {
-        window.location.reload(true);
-        // const library = JSON.parse(localStorage.getItem("booksLibrary"));
-        // const newValue = JSON.parse(event.newValue);
-        // console.log("EVENT", library.state, books.length, filters);
-        /*   localStorage.setItem(
-          "booksLibrary",
-          JSON.stringify({
-            ...library,
-            filteredBooks: JSON.stringify(event.newValue),
-          })
-        );
- */
-      }
-    });
-  }, []);
-
-  useEffect(() => {
     const data = window.localStorage.getItem("booksLibrary");
     const isData = JSON.parse(data).state.books.length > 0;
 
@@ -34,25 +15,7 @@ function App() {
 
     if (!isData) {
       getBooks();
-    } /* else { */
-    /* if (filters.pages <= 0) {
-        const excludeIsbn = wantReadBooks.map((w) => w.book.ISBN);
-        console.log(
-          "excludeWantReadBooks",
-          excludeIsbn,
-          JSON.parse(data).state
-        );
-        const excludeWantReadBooks = books.filter((b) => {
-          // console.log('isbn', b.book.ISBN)
-          if (excludeIsbn.includes(b.book.ISBN)) {
-            return false;
-          }
-          return false;
-        });
-        console.log("excludeWantReadBooks", excludeWantReadBooks);
-        setBooks(excludeWantReadBooks);
-      } */
-    // }
+    }
   }, []);
 
   const filterGenreBooks = (genre: string) => {

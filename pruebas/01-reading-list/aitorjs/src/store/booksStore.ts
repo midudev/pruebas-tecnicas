@@ -1,7 +1,24 @@
-import { create } from 'zustand'
+import { Mutate, StoreApi, create } from 'zustand'
 import booksJson from '../books.json'
 import { Book, BooksState } from '../types'
 import { persist } from 'zustand/middleware'
+
+type StoreWithPersist = Mutate<StoreApi<BooksState>, [['zustand/persist', unknown]]>
+
+export const withStorageDOMEvents = (store: StoreWithPersist) => {
+  const storageEventCallback = (e: StorageEvent) => {
+    if (e.key === store.persist.getOptions().name && (Boolean(e.newValue))) {
+      // store.persist.rehydrate()
+      window.location.reload(true)
+    }
+  }
+
+  window.addEventListener('storage', storageEventCallback)
+
+  return () => {
+    window.removeEventListener('storage', storageEventCallback)
+  }
+}
 
 export const useBooksStore = create<any>(persist(
   (set, get) => ({
@@ -11,7 +28,6 @@ export const useBooksStore = create<any>(persist(
     filters: {},
     getBooks: () => {
       const books = booksJson.library
-
       set((state) => ({ ...state, books, filteredBooks: books }))
     },
     setBooks: (filteredBooks) => {
@@ -103,3 +119,5 @@ export const useBooksStore = create<any>(persist(
     name: 'booksLibrary',
     getStorage: () => localStorage
   }))
+
+withStorageDOMEvents(useBooksStore)
