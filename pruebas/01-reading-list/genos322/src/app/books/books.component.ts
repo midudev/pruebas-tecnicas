@@ -9,7 +9,8 @@ import { DataBooksService } from '../services/data-books.service';
 })
 export class BooksComponent {
   jsonData: any;
-  sliderValue = 0; 
+  sliderValue = 0;
+  selected = "ninguno";
 
   constructor(private dataBooksService: DataBooksService) { }
   ngOnInit() {
