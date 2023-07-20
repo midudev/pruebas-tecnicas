@@ -1,4 +1,4 @@
-export const KEY_STORAGE = 'data';
+export const STORAGE_KEY = 'data';
 
 export const BOOK_MAPPING = {
   '=0': 'No books',

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { map } from 'rxjs';
-import { GENRES, KEY_STORAGE } from '~/consts';
+import { GENRES, STORAGE_KEY } from '~/consts';
 import type { Book, BooksData } from '~/interfaces/books.interface';
 import type { Filters } from '~/interfaces/filters.interface';
 import { StorageService } from './storage.service';
@@ -37,7 +37,7 @@ export class BooksService {
   }
 
   validateStorage() {
-    const data = this._storageService.getFromStorage(KEY_STORAGE);
+    const data = this._storageService.getFromStorage(STORAGE_KEY);
 
     if (data == null) {
       this.getBooks();
@@ -75,7 +75,7 @@ export class BooksService {
       bookIndex === -1 ? value.unshift(book) : value.splice(bookIndex, 1);
     });
 
-    this._storageService.saveInStorage(KEY_STORAGE, {
+    this._storageService.saveInStorage(STORAGE_KEY, {
       bookList: this._bookList(),
       readingList: this._readingList(),
     });

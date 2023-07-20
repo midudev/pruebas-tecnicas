@@ -9,7 +9,8 @@ export class StorageService {
   }
 
   getFromStorage(key: string) {
-    const value = localStorage.getItem(key) ?? 'null';
-    return JSON.parse(value);
+    const item = localStorage.getItem(key);
+    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+    return item ? JSON.parse(item) : null;
   }
 }

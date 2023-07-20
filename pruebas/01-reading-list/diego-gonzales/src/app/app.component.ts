@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { BooksService } from './services/books.service';
+import { STORAGE_KEY } from './consts';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,13 @@ import { BooksService } from './services/books.service';
 export class AppComponent {
   private _booksService = inject(BooksService);
   showSearchBox = this._booksService.showSearchBox;
+
+  @HostListener('window:storage', ['$event'])
+  onStorageChange(event: StorageEvent) {
+    if (event.key !== STORAGE_KEY) return;
+
+    this._booksService.validateStorage();
+  }
 
   onInputChange(event: Event) {
     const value = (event.target as HTMLInputElement).value.trim();
