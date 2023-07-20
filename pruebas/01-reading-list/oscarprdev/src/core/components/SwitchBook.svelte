@@ -39,7 +39,7 @@
       {/if}
     </span>
   </span>
-  <span class="ml-3 font-medium {isDone ? 'text-done' : ''}"
+  <span class="ml-3 {isDone ? 'text-done font-bold ' : 'font-medium '}"
     >{isDone ? 'Completado!' : 'Leyendo.. '}</span
   >
 </label>

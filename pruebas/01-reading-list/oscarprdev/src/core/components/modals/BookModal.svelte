@@ -64,8 +64,7 @@
       </p>
     </div>
     <button
-      class="absolute flex gap-4 bottom-0 px-6 py-3 rounded-3xl text-light bg-overlayModal cursor-pointer self-center hover:bg-nav duration-100"
-      on:click={addBookToReadingList}
+      class="absolute flex items-center gap-4 bottom-0 px-6 py-3 rounded-3xl text-light bg-overlayModal cursor-pointer self-center hover:bg-nav duration-100 text-xs"
     >
       Añadir a lista de lectura
       <BookOpenIcon size="25" class="text-light" /></button

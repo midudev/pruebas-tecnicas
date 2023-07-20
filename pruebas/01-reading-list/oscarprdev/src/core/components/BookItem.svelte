@@ -67,13 +67,13 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <li
-  class="flex flex-col gap-4 relative xl:w-40 xl:h-300 2xl:w-60 2xl:h-400 {showAnimation
+  class="flex flex-col gap-4 relative w-[150px] xl:w-[130px] xl:h-[250px] xxl:w-[160px] xxl:h-[300px] showAnimation
     ? 'animate-item-out'
     : 'animate-fade-in'}"
   on:mouseenter={handleOverlay}
   on:mouseleave={handleOverlay}
 >
-  <div class="h-5/6 shadow-[4.0px_5.0px_8.0px_rgba(0,0,0,0.38)]">
+  <div class="h-[200px] xl:h-5/6 shadow-[4.0px_5.0px_8.0px_rgba(0,0,0,0.38)]">
     <img class="w-full h-full object-cover" src={book.cover} alt={book.title} />
   </div>
   <div class="flex flex-col gap-2 max-w-xs overflow-hidden">

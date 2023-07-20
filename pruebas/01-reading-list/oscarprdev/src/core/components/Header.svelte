@@ -3,9 +3,9 @@
 </script>
 
 <header
-  class="relative w-36 min-w-150 flex flex-col items-center justify-center text-primary gap-5 h-screen bg-light"
+  class="relative flex items-center justify-between h-[100px] p-2 border-b-2 border-b-nav text-primary gap-5 bg-light xl:h-screen xl:w-[100px] xl:p-1 xl:border-none"
 >
-  <span class="absolute top-5 left-5 text-4xl font-gideon font-bold"
+  <span class="text-2xl font-bold ml-2 xl:absolute xl:top-3 xl:left-3 xl:ml-0"
     ><i>Books</i></span
   >
   <Nav />

@@ -12,7 +12,9 @@
   onMount(() => modalStore.set(modal))
 </script>
 
-<main class="relative h-screen overflow-y-hidden flex bg-light">
+<main
+  class="relative flex flex-col h-full w-full bg-light font-subjectivity xl:flex-row"
+>
   <Header />
   <Library />
   <ReadingList />

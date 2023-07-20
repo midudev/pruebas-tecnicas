@@ -4,8 +4,12 @@
   import PagesFilter from '../filters/PagesFilter.svelte'
 </script>
 
-<section class="flex gap-4 items-center">
+<section
+  class="flex flex-col items-center gap-4 mt-2 xl:items-center xl:flex-row xl:mt-0"
+>
   <InputFilter />
-  <GenreFilter />
-  <PagesFilter />
+  <div class="flex gap-4 items-center justify-center">
+    <GenreFilter />
+    <PagesFilter />
+  </div>
 </section>

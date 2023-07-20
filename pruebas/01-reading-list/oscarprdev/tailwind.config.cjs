@@ -3,8 +3,14 @@ module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   darkMode: ['class', '[data-theme="dark"]'],
   theme: {
+    screens: {
+      xl: '700px',
+      xxl: '1300px',
+    },
     fontFamily: {
-      gideon: ['GideonRoman-Regular'],
+      soria: ['soria', 'sans-serif'],
+      lora: ['lora', 'sans-serif'],
+      subjectivity: ['subjectivity', 'sans-serif'],
     },
     colors: {
       primary: {

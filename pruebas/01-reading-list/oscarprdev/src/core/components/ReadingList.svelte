@@ -6,7 +6,7 @@
 
 {#if $asideState.readingListIsOpen}
   <aside
-    class="fixed inset-y-0 right-0 z-3 w-2/6 h-full p-5 overflow-y-scroll bg-aside shadow-xl animate-slide-in"
+    class="fixed inset-y-0 right-0 z-3 h-full mt-[100px] p-5 overflow-y-scroll bg-aside shadow-xl animate-slide-in xl:w-2/6 xl:mt-0"
   >
     <h2 class="text-2xl mb-5"><i>Lista de lectura</i></h2>
     <ul class="flex flex-col">

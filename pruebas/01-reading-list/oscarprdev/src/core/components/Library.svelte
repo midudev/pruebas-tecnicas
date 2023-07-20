@@ -11,9 +11,11 @@
   const booksList = usePagination(booksFiltered, paginationState)
 </script>
 
-<section class="bg-light h-full p-10">
-  <h1 class="text-4xl"><i>Biblioteca</i></h1>
-  <div class="pt-5">
+<section class="bg-light h-full p-3 xl:p-10 xl:h-screen">
+  <h1 class="text-4xl xl:mt-0"><i>Biblioteca</i></h1>
+  <div
+    class="flex gap-2 items-center pt-2 justify-center xl:pt-5 xl:flex-col xl:items-start"
+  >
     <h2>📚 Disponibles: {$appState.books.length}</h2>
     <h3>📖 En lista de lectura: {$appState.readingBooks.length}</h3>
   </div>

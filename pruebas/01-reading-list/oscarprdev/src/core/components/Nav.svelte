@@ -21,7 +21,7 @@
 </script>
 
 <nav
-  class="flex flex-col justify-center items-center gap-20 w-full h-5/6 border-solid border-r-2 border-r-nav"
+  class="flex justify-center items-center gap-3 w-full xl:border-solid xl:border-r-nav xl:flex-col xl:h-5/6 xl:gap-10 xl:border-r-2"
 >
   <!-- svelte-ignore a11y-click-events-have-key-events -->
   <!-- svelte-ignore a11y-no-static-element-interactions -->

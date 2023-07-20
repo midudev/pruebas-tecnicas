@@ -57,20 +57,20 @@ onMount(() => {
 </script>
 
 <li
-  class="relative flex w-full gap-5 h-64 my-2 p-2 {showAnimation
+  class=" flex gap-5 my-2 p-2 transform-color duration-300 hover:bg-overlayBtnHover cursor-grab xl:h-64 xl:w-full {showAnimation
     ? 'animate-item-in'
     : 'animate-fade-in'}"
 >
   <!-- svelte-ignore a11y-no-static-element-interactions -->
   <div
-    class="w-2/6 h-full 2xl:w-[200px] shadow-[-4.0px_5.0px_8.0px_rgba(0,0,0,0.38)]"
+    class="relative h-full w-[150px] xl:w-[180px] shadow-[-4.0px_5.0px_8.0px_rgba(0,0,0,0.38)]"
     on:mouseenter={handleOverlay}
     on:mouseleave={handleOverlay}
   >
     <img class="w-full h-full object-cover" src={book.cover} alt={book.title} />
     {#if $showOverlay}
       <div
-        class="absolute top-0 left-0 w-2/6 h-full flex items-center justify-center gap-3 bg-black backdrop-blur-sm"
+        class="absolute top-0 left-0 w-full h-full flex items-center justify-center gap-3 bg-black backdrop-blur-sm"
       >
         <div class="flex items-center bg-dark bg-opacity-80 rounded-3xl">
           <button

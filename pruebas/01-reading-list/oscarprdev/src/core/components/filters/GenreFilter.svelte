@@ -33,7 +33,7 @@
   })
 </script>
 
-<section class="p-5 relative">
+<section class="relative xl:p-5">
   <button
     data-dropdown-toggle="dropdown"
     class="text-light bg-dark font-medium rounded-full text-sm px-5 py-3 text-center inline-flex items-center"
