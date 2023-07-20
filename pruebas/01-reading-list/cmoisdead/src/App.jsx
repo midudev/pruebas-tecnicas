@@ -18,7 +18,7 @@ function App() {
       </header>
       <div className="container mx-auto py-3">
         <Header />
-        <div className="flex gap-2 mt-6">
+        <div className="mt-6 flex gap-2">
           <List />
           <Current />
         </div>

@@ -10,8 +10,8 @@ export const ModalBook = ({ openModal, setOpenModal, book }) => {
       onClose={() => setOpenModal(undefined)}
       dismissible
     >
-      <header className="bg-neutral-900 border border-transparent border-b-neutral-800 p-5">
-        <h1 className="text-rose-600 text-3xl">{title}</h1>
+      <header className="border border-transparent border-b-neutral-800 bg-neutral-900 p-5">
+        <h1 className="text-3xl text-rose-600">{title}</h1>
       </header>
       <Modal.Body className="bg-neutral-900">
         <div className="flex gap-4">
@@ -22,23 +22,23 @@ export const ModalBook = ({ openModal, setOpenModal, book }) => {
               className="rounded-lg"
             />
           </div>
-          <div className="space-y-6 w-2/3">
-            <h3 className="text-rose-700 text-3xl">Synopsis:</h3>
+          <div className="w-2/3 space-y-6">
+            <h3 className="text-3xl text-rose-700">Synopsis:</h3>
             <p className="text-base leading-relaxed text-white">
               {description}
             </p>
             <div>
-              <h3 className="text-rose-700 text-3xl">
+              <h3 className="text-3xl text-rose-700">
                 Author:{" "}
-                <span className="text-white text-base">{author.name}</span>
+                <span className="text-base text-white">{author.name}</span>
               </h3>
-              <h3 className="text-rose-700 text-3xl">
+              <h3 className="text-3xl text-rose-700">
                 Other Books:{" "}
-                <span className="text-neutral-500 text-xs italic">
+                <span className="text-xs italic text-neutral-500">
                   click to view in wikipedia.
                 </span>
               </h3>
-              <ul className="text-neutral-500 leading-relaxed">
+              <ul className="leading-relaxed text-neutral-500">
                 {author.otherBooks.map((item, i) => (
                   <li key={i}>
                     <a
@@ -54,9 +54,9 @@ export const ModalBook = ({ openModal, setOpenModal, book }) => {
           </div>
         </div>
       </Modal.Body>
-      <footer className="bg-neutral-900 border-t-neutral-800 border border-transparent p-5">
+      <footer className="border border-transparent border-t-neutral-800 bg-neutral-900 p-5">
         <button
-          className="bg-rose-700 text-white py-2 px-3 rounded-lg hover:bg-rose-600"
+          className="rounded-lg bg-rose-700 px-3 py-2 text-white hover:bg-rose-600"
           onClick={() => setOpenModal(undefined)}
         >
           close

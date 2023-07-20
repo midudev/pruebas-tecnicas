@@ -25,15 +25,15 @@ export const Book = ({ book, added }) => {
   };
 
   return (
-    <div className="relative w-48 h-72">
+    <div className="relative h-72 w-48">
       <div
-        className="w-full h-full border-2 border-dashed border-neutral-700 rounded-lg hover:border-neutral-500 hover:cursor-pointer transition-all"
+        className="h-full w-full rounded-lg border-dashed border-neutral-700 transition-all hover:cursor-pointer hover:border-neutral-500"
         onClick={() => setOpenModal("dimissible")}
       >
         <img
           src={cover}
           alt={`${title} image`}
-          className="object-cover w-full h-full rounded-lg"
+          className="h-full w-full rounded-lg object-cover"
         />
       </div>
       <BookButtons

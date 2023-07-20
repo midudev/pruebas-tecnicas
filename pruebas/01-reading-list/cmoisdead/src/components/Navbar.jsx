@@ -2,14 +2,16 @@ import { AiFillNotification, AiOutlineSearch } from "react-icons/ai";
 
 export const Navbar = () => {
   return (
-    <nav className="flex justify-between w-full container mx-auto py-2 bg-neutral-900/75 rounded-b-lg px-3">
-      <a className="font-bold text-rose-700 classic grow-0" href="/">Library & Books</a>
-      <ul className="flex gap-4 grow-0">
+    <nav className="container mx-auto flex w-full justify-between rounded-b-lg bg-neutral-900/75 px-3 py-2">
+      <a className="classic grow-0 font-bold text-rose-700" href="/">
+        Library & Books
+      </a>
+      <ul className="flex grow-0 gap-4">
         <a href="#">Home</a>
         <a href="#">Authors</a>
         <a href="#">About</a>
       </ul>
-      <div className="md:flex content-center items-center gap-4 grow-0 hidden">
+      <div className="hidden grow-0 content-center items-center gap-4 md:flex">
         <AiFillNotification />
         <AiOutlineSearch />
       </div>
