@@ -3,6 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: "Montserrat", sans-serif;
+  overflow-y: scroll !important;
+}
+
 a {
   @apply text-rose-700 hover:text-rose-500 transition-colors;
 }
@@ -15,10 +20,6 @@ h5,
 h6 {
   @apply text-rose-700;
   font-family: "Libre Caslon Text", serif;
-}
-
-body {
-  font-family: "Montserrat", sans-serif;
 }
 
 .classic {

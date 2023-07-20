@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "flowbite": "^1.7.0",
+    "flowbite-react": "^0.4.11",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
