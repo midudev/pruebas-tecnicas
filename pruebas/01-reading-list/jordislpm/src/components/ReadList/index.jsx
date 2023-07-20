@@ -1,18 +1,16 @@
-import React, {useContext}from 'react'
-import { BooksAvailable } from '../../context/contextBooks'
+import React from 'react'
 import { Book } from '../Book'
 import styles from "./readList.module.css"
 import useFilter from '../../Hooks/useFilter'
 
 const ReadList = () => {
 
-const [store, dispatch] = useContext(BooksAvailable)
 
 
 const modifiers = {
     addRead : "moveToListBook", 
 }
-const [books, read, setFilters]=useFilter()
+const {read}=useFilter()
 
 
   return (

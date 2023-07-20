@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from "react"
-import useBooks from "./useBooks"
 import { BooksAvailable } from "../context/contextBooks";
 import { FiltersContext } from "../context/contextFilters";
 
@@ -41,7 +40,7 @@ useEffect(()=>{
 
 
 
-return [books, read, setFilters]
+return {books, read, setFilters}
 }
 
 

@@ -8,7 +8,7 @@ import useFilter from '../../Hooks/useFilter'
 
 const Header = () => {
 
-const [books, read, setFilters]=useFilter()
+const {books, read}=useFilter()
 
 
 

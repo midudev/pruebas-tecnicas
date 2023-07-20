@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import { BooksAvailable } from "../../context/contextBooks";
 import styles from "./form.module.css"
 import { FiltersContext } from "../../context/contextFilters";
@@ -9,17 +9,17 @@ import useSearchBook from "../../Hooks/useSearchBook";
 const Form = () => {
 
     const [store, dispatch] = useContext(BooksAvailable);  
-    const {listBooks, listRead, genres} = store;
+    const {genres} = store;
     const [paginas, setPaginas]= useState(0)
     const [filters]=useContext(FiltersContext)
-    const [books, read, setFilters] =useFilter()
-    const [search, setSearch] = useState("")
-    const [pepe]= useSearchBook(search)
+    const {setFilters} =useFilter()
+    const [newSearch, setNewSearch]= useState("")
+    const [search, setSearch , error]= useSearchBook()
+
     
 
     const handleChange = (e)=>{
-setSearch(e.target.value)
-console.log(search)
+        setNewSearch(e.target.value)
     }
     
     const onChangeSelect= (e)=>{
@@ -35,15 +35,20 @@ setFilters({...filters, genre:genre})
 
     const handleSubmit = (e) =>{
     e.preventDefault()
-console.log(search)
-setFilters({...filters, search:search})
-
+    setSearch(newSearch)
     }
+
+
+    useEffect(()=>{
+        if(newSearch == ""){
+            setSearch("")
+        }
+    },[newSearch])
 
   return (
     < div className={styles.options}>
         <form onSubmit={handleSubmit} className={styles.form}>
-            <input onChange={handleChange} name="search" className={styles.searchInput} type="text" placeholder="Busca libros disponibles"/>
+            <input onChange={handleChange} value={newSearch} name="search" className={styles.searchInput} type="text" placeholder="Busca libros disponibles"/>
             <button type="submit" className={styles.searchButton}>Buscar</button>
         </form>
         <div className={styles.filters}>

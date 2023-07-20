@@ -16,7 +16,7 @@ const modifiers = {
     addRead : "moveToRead", 
 }
 
-const [books, read, setFilters]=useFilter()
+const {books}=useFilter()
 
 
 return (

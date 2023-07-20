@@ -1,33 +1,42 @@
 import { useState, useEffect, useContext, useRef } from "react"
+import useFilter from "./useFilter";
+import { FiltersContext } from "../context/contextFilters";
 
 
-const useSearchBook = (newSearch)=>{
+const useSearchBook = ()=>{
+    const [filters]=useContext(FiltersContext)
+    const {setFilters} =useFilter()
     const [search, setSearch] = useState("");
     const [error, setError] = useState(null)
     const firstSearch = useRef(true)
+  
 
     useEffect(()=>{
-
+     
         if(firstSearch.current){
-            firstSearch.current = newSearch === ""
+            firstSearch.current = search === ""
             return
         }
-        if(newSearch === ""){
+        if(search === ""){
             setError("No se puede buscar una pelicula vacia")
-            alert(error)
+            setFilters({...filters, search:search})
             return
         }
 
-        if(newSearch.match(/^\d+$/)){
-            setError("No se puede buscar un libro con un numero")
+       if(search.length < 3){
+            setError("la Busqueda debe tener al menos 3 letras")
+        } 
+        if(search != ""){
+            setFilters({...filters, search:search})
+   
         }
 
-        if(newSearch.length < 3){
-            setError("la Busqueda debe tener al menos 3 letras")
-        }
+        
+        
+
     },[search])
 
-    console.log(newSearch)
+
 
     return[search, setSearch , error]
 
