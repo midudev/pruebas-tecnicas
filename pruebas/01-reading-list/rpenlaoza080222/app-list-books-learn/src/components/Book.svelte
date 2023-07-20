@@ -22,6 +22,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    max-width: 200px;
   }
 
   .add-to-read {
