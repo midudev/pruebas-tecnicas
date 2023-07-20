@@ -17,7 +17,7 @@ function useBooks() {
   const getBooks = async () => {
     try {
       dispatch({ type: 'ACTION_START' });
-      const response = await fetch('/src/books.json');
+      const response = await fetch('https://raw.githubusercontent.com/C1nemaclub/pruebas-tecnicas/main/pruebas/01-reading-list/books.json');
       const data = await response.json();
       dispatch({ type: 'GET_BOOKS', payload: data.library });
       dispatch({ type: 'ACTION_SUCCESS' });
