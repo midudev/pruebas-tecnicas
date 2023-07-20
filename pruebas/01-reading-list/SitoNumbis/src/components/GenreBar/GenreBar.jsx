@@ -9,6 +9,7 @@ import {
 // contexts
 import { useLanguage } from "../../contexts/LanguageProvider";
 import { useLibrary } from "../../contexts/LibraryProvider";
+import { useFilters } from "../../contexts/FiltersProvider";
 
 // components
 import Genre from "./Genre/Genre";
@@ -17,22 +18,22 @@ import Genre from "./Genre/Genre";
 import styles from "./styles.module.css";
 
 function GenreBar() {
+  const { libraryState } = useLibrary();
   const { languageState } = useLanguage();
-
-  const { libraryState, setLibraryState } = useLibrary();
+  const { filtersState, setFiltersState } = useFilters();
 
   const changeFilter = useCallback(
     (value) => {
-      if (value !== libraryState.filters.genre)
-        setLibraryState({ type: "set-filter", filter: "genre", value });
-      else setLibraryState({ type: "set-filter", filter: "genre", value: "" });
+      if (value !== filtersState.genre)
+        setFiltersState({ type: "set-filter", filter: "genre", value });
+      else setFiltersState({ type: "set-filter", filter: "genre", value: "" });
     },
-    [libraryState.filters.genre, setLibraryState]
+    [filtersState.genre, setFiltersState]
   );
 
   useEffect(() => {
-    setLibraryState({ type: "reset-filters" });
-  }, [libraryState.seeing]);
+    setFiltersState({ type: "reset" });
+  }, [libraryState.seeing, setFiltersState]);
 
   const filterContainer = useRef(null);
   const [arrows, setArrows] = useState(false);
@@ -109,7 +110,7 @@ function GenreBar() {
           <li key={genre}>
             <Genre
               genre={genre}
-              active={libraryState.filters.genre === genre}
+              active={filtersState.genre === genre}
               onClick={changeFilter}
             />
           </li>

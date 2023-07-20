@@ -74,25 +74,6 @@ const libraryReducer = (libraryState, action) => {
       const { showing } = action;
       return { ...libraryState, showing };
     }
-    case "reset-filters": {
-      return {
-        ...libraryState,
-        filters: {
-          genre: "",
-          title: "",
-          pages: 0,
-        },
-      };
-    }
-    case "set-filter": {
-      const { filter, value } = action;
-      const { filters } = libraryState;
-      filters[filter] = value;
-      return {
-        ...libraryState,
-        filters,
-      };
-    }
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
@@ -103,11 +84,6 @@ const LibraryProvider = ({ children }) => {
     books: [],
     genres: [],
     readingList: new Map(), // Map because it can be iterable and has size attribute 🙂
-    filters: {
-      pages: 0, // current pages filter
-      genre: "", // current genre filter
-      title: "", // current title filter
-    },
     available: 0, // global state to quick access to available books
     showing: 0, // global state to quick access to the showing books
     seeing: "all", // books to show (all/reading-list)

@@ -16,13 +16,12 @@ Where the LibraryState context manipulates everything that has to do with books,
 
 ```
 
-// default value 
+// default value
 
 {
     books: [],
     genres: [],
     readingList: new Map(), // Map because it can be iterable and has size attribute 🙂
-    filtering: "", // current genre filter
     available: 0, // global state to quick access to available books
     showing: 0, // global state to quick access to the showing books
     seeing: "all", // books to show (all/reading-list)
@@ -36,7 +35,6 @@ Where the LibraryState context manipulates everything that has to do with books,
 
 To move or remove a book from the reading list
 
-
 ```
     setLibraryState({type:"toggle-to-reading-list", id: bookISBN})
 ```
@@ -46,7 +44,6 @@ _Note: Will increment or decrement the 'available' counter, add or remove from t
 #### init-books
 
 To initialize the books from Data (API, JSON, anything)
-
 
 ```
     setLibraryState({type:"init-books", books: bookList})
@@ -58,7 +55,6 @@ _Note: Will initialize the books set and the genres set, also will set as defaul
 
 To initialize the reading list from localStorage
 
-
 ```
     setLibraryState({type:"init-reading-list", stringReadingList: readingListFromLocalStorage})
 ```
@@ -69,7 +65,6 @@ _Note: Will initialize the reading list from localStorage, will validate if the 
 
 Toggle 'seeing' value to see reading list or available books
 
-
 ```
     setLibraryState({type:"toggle-see"})
 ```
@@ -78,18 +73,6 @@ Toggle 'seeing' value to see reading list or available books
 
 Updates showing books in reading list or stock
 
-
 ```
     setLibraryState({type:"set-showing",, showing: newShowingValue})
 ```
-
-#### toggle-filter
-
-Toggle the genre filter
-
-
-```
-    setLibraryState({type:"toggle-filter", filtering: genreToFilter})
-```
-
-_Note: If 'filtering' value is equal to the new genre to filter, it will show all available books_

@@ -1,12 +1,14 @@
 import { memo, useEffect, useMemo, useState } from "react";
+import { stringSimilarity } from "string-similarity-js";
 import loadable from "@loadable/component";
 
 import PropTypes from "prop-types";
 
 // contexts
 import { useLanguage } from "../../contexts/LanguageProvider";
-import { useLightBox } from "../LightBox/LightBoxProvider";
 import { useLibrary } from "../../contexts/LibraryProvider";
+import { useFilters } from "../../contexts/FiltersProvider";
+import { useLightBox } from "../LightBox/LightBoxProvider";
 
 // styles
 import styles from "./styles.module.css";
@@ -17,8 +19,8 @@ const Tippy = loadable(() => import("@tippyjs/react"));
 const Marker = loadable(() => import("./Marker/Marker"));
 
 function Book({ title, pages, genre, cover, year, ISBN, author }) {
+  const { filtersState } = useFilters();
   const { setLightBoxState } = useLightBox();
-
   const { setLibraryState, libraryState } = useLibrary();
 
   const { languageState } = useLanguage();
@@ -59,16 +61,18 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
 
     //* if the user is using a filter
     //  the genre of the book is not the filtering genre
-    if (
-      libraryState.filters.genre.length &&
-      genre !== libraryState.filters.genre
-    )
+    if (filtersState.genre.length && genre !== filtersState.genre)
       toHide = true;
     //  the book has fewer pages than the filter per pages
-    if (pages < libraryState.filters.pages) toHide = true;
+    if (pages < filtersState.pages) toHide = true;
     //  the book title has similarity to the filter by title
+    if (
+      filtersState.title.length &&
+      stringSimilarity(title, filtersState.title) < 0.2
+    )
+      toHide = true;
     setHide(toHide);
-  }, [libraryState, ISBN, genre, pages]);
+  }, [filtersState, libraryState, ISBN, genre, pages, title]);
 
   return !hide ? (
     <li id={ISBN} className={`book ${styles.main} appear`}>
