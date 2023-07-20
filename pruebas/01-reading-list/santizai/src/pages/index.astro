@@ -1,13 +1,19 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import jsonBooks from '../../../books.json';
-import Library from '../components/Library';
+import Layout from "../layouts/Layout.astro";
+import jsonBooks from "../../../books.json";
+import Library from "../components/Library";
 
-const books = jsonBooks
+const readList = localStorage.getItem("books");
+
+const books = jsonBooks;
 ---
 
 <Layout title="Lista de libros">
     <div>
-        <Library books={books} />
+        <Library
+            library={books}
+            readList={readList}
+            client:load
+        />
     </div>
 </Layout>
