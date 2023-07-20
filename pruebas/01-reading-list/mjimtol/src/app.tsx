@@ -1,8 +1,6 @@
 import { useEffect, useState } from "preact/hooks";
-import libros from "../../books.json";
 import "./app.css";
 import { BookComponent } from "./components/book.component";
-import { Book, Libros } from "./types";
 import { useBooks } from "./hooks/useBooks";
 
 export function App() {
@@ -27,13 +25,23 @@ export function App() {
 
     addEventListener("storage", () => {
       const stgLectura = localStorage.getItem("lectura");
+
+      // const libs = [...librosLista];
+      // if (stgLectura) {
+      //   JSON.parse(stgLectura).forEach((book: BookSelectable) => {
+      //     const i = libs.findIndex((b) => b.ISBN === book.ISBN);
+      //     if (i >= 0) libs[i].selected = true;
+      //   });
+      // }
+      // if (stgLectura) setearLista(libs);
+
       if (stgLectura) setearLista(JSON.parse(stgLectura));
     });
   }, []);
 
   return (
     <>
-      <article className="estanteria">
+      <section className="estanteria">
         <header>
           <h2>
             Libros disponibles (
@@ -74,8 +82,8 @@ export function App() {
               );
             })}
         </section>
-      </article>
-      <article className="estanteria-lectura">
+      </section>
+      <section className="estanteria-lectura">
         <header>
           <h2>Lista de lectura ({librosLista.length})</h2>
         </header>
@@ -93,7 +101,7 @@ export function App() {
             );
           })}
         </section>
-      </article>
+      </section>
     </>
   );
 }

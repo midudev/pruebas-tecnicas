@@ -17,6 +17,10 @@ export interface Book {
     author:   Author;
 }
 
+export interface BookSelectable extends Book {
+    selected: boolean;
+}
+
 export interface Author {
     name:       string;
     otherBooks: string[];

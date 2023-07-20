@@ -1,32 +1,27 @@
-// import { useState } from "preact/hooks";
-
-import { useEffect, useState } from "preact/hooks";
-import { Book, Library } from "../types.d";
+import { BookSelectable } from "../types.d";
 
 interface BookProps {
-  book: Book;
-  setSelected: (libros: Book[]) => void;
-  seleccionados: Book[];
+  book: BookSelectable;
+  setSelected: (libros: BookSelectable[]) => void;
+  seleccionados: BookSelectable[];
   zona: string;
-  addToList: (libro: Book) => void;
-  removeFromList: (libro: Book) => void;
+  addToList: (libro: BookSelectable) => void;
+  removeFromList: (libro: BookSelectable) => void;
 }
 
 export const BookComponent = (props: BookProps) => {
-  const { book }: Library = props;
-  const [selected, setSelected] = useState(false);
+  const { book } = props;
 
-  useEffect(() => {
-    if (props.zona === "estanteria") {
-      if (props.seleccionados.includes(book)) setSelected(true);
-      else setSelected(false);
-    }
-  }, [props.seleccionados]);
+  const isSelected = () => {
+    if (props.zona === "estanteria" && book.selected) return "selected";
+    return "";
+  };
 
   const handleClick = () => {
     const libros = [...props.seleccionados];
-    const index = libros.findIndex((libro: Book) => libro.ISBN === book.ISBN);
-    console.log(index);
+    const index = libros.findIndex(
+      (libro: BookSelectable) => libro.ISBN === book.ISBN
+    );
     if (props.zona === "estanteria") {
       if (index < 0) props.addToList(book);
     } else {
@@ -36,11 +31,10 @@ export const BookComponent = (props: BookProps) => {
 
   return (
     <>
-      <img
-        src={book.cover}
-        className={`bookCover ${selected ? "selected" : ""}`}
-        onClick={handleClick}
-      />
+      <article className={`bookCard ${isSelected()}`} onClick={handleClick}>
+        <header>{book.title}</header>
+        <img src={book.cover} className={`bookCover`} />
+      </article>
     </>
   );
 };
