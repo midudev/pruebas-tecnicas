@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ReadingListProvider } from './context/ReadingListContext';
+import { AvailableBooksProvider } from './context/AvailableBooksContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <ReadingListProvider>
-        <App />
-    </ReadingListProvider>
+    <AvailableBooksProvider>
+        <ReadingListProvider>
+            <App />
+        </ReadingListProvider>
+    </AvailableBooksProvider>
     
 );
 

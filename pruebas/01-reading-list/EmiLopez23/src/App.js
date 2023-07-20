@@ -1,20 +1,24 @@
 import './App.css';
-import booksData from "./books.json"
-import { useState} from 'react'
 import ListOfBooks from './components/ListOfBooks';
 import BooksToRead from './components/BooksToRead';
+import { useReadingListContext } from './context/ReadingListContext';
+import Filters from './components/Filters';
+import { useAvailableBooksContext } from './context/AvailableBooksContext';
 
 function App() {
-  const [filteredBooks,setFilteredBooks] = useState(booksData.library)
+  const {availableBooks} = useAvailableBooksContext()
+  const {booksToRead} = useReadingListContext()
 
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Reading List</h1>
-        <h4>{filteredBooks.length} libros disponibles</h4>
-      </header>
-      <ListOfBooks books={filteredBooks}/>
-      <BooksToRead/>
+      <div className="body">
+        <h1>Reading List</h1> 
+        <h4>{availableBooks.length} libros disponibles</h4>
+        <Filters />
+        <ListOfBooks books={availableBooks}/>
+      </div>
+      {booksToRead.length!==0 && <BooksToRead/>}
     </div>
   );
 }
