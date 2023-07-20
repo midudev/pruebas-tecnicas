@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import { FilterContext } from '../../context/FilterContext';
 
 const Filter = () => {
@@ -8,6 +8,10 @@ const Filter = () => {
   const updateGenre = (e) => {
     setSelectedGenre(e.target.value);
   };
+
+  useEffect(() => {
+    setSelectedGenre('Todos');
+  }, []);
 
   return (
     <div style={{ border: '5px solid #9055ff' }}>

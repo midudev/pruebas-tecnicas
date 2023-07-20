@@ -7,11 +7,22 @@ export const FilterContext = createContext();
 export const FilterProvider = ({ children }) => {
 
   const [books, setBooks] = useState([]);
+  const [booklist, setBooklist] = useState([]);
+  const [displayedBooks, setDisplayedBooks] = useState([]);
+  const [lectureList, setLectureList] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState('');
 
   useEffect(() => {
     setBooks(library);
   }, []);
+
+  useEffect(() => {
+    setBooklist(books);
+  }, [books]);
+
+  useEffect(() => {
+    setDisplayedBooks(booklist);
+  }, [booklist]);
 
   const genres = [];
   genres.push('Todos');
@@ -26,7 +37,15 @@ export const FilterProvider = ({ children }) => {
   }, [selectedGenre]);
 
   return (
-    <FilterContext.Provider value={{ books, genres, selectedGenre, setSelectedGenre }}>
+    <FilterContext.Provider value={{
+      booklist,
+      genres,
+      selectedGenre,
+      displayedBooks,
+      lectureList,
+      setDisplayedBooks,
+      setSelectedGenre,
+    }}>
       {children}
     </FilterContext.Provider>
   );

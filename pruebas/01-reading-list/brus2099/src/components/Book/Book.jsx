@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Book = ({ title, author, isbn, cover }) => {
+
   return (
     <div style={{ border: '5px solid #b5b5b5' }}>
       <h3>Book</h3>
