@@ -16,7 +16,7 @@ const [books, read, setFilters]=useFilter()
 
 
   return (
-    <div className={styles.readList}>
+    <aside className={styles.readList}>
         <h2 className={styles.h2}>Lista de lectura</h2>
         <div  className={styles.list}>
         {read && read.map((element)=>{
@@ -33,7 +33,7 @@ const [books, read, setFilters]=useFilter()
         })}
         </div>
         
-    </div>
+    </aside>
   )
 }
 
