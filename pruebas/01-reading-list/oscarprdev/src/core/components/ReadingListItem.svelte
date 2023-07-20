@@ -68,8 +68,8 @@
       </div>
     {/if}
   </div>
-  <section class="flex flex-col gap-4 w-4/6">
-    <h3 class="text-lg">{book.title}</h3>
+  <section class="flex flex-col gap-4 w-4/6 xl:max-w-[200px]">
+    <h3 class="text-lg truncate max-w-[120px] xl:max-w-none">{book.title}</h3>
     <h4 class="text-sm mt-[-10px]"><i>{book.author.name}</i></h4>
     <span
       class="py-1.5 px-4 text-sm w-fit rounded-full bg-overlayModal text-light"
