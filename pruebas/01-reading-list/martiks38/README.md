@@ -20,6 +20,8 @@
 
 - [ ] **Test**: La aplicación debe tener AL MENOS un test. Haz el test que consideres más importante para tu aplicación.
 
+- [ ] **Semántica** Revisar semántica
+
 ## Consejos sobre el código
 
 1. **Estructura del código**: El código debe estar bien organizado y fácil de leer.

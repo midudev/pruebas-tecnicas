@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { useLibrary } from '@/hooks/useLibrary'
 
-import suggestBookStyles from '@/assets/styles/Home.module.css'
+import suggestBookStyles from '@/assets/styles/Layout/Home.module.css'
 import { nameStorage } from '@/assets/constants'
 
 import type { Book } from '@/typings/books'

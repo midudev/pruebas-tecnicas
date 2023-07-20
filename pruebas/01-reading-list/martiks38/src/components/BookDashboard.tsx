@@ -6,7 +6,7 @@ import { useFilters } from '@/hooks/useFilters'
 import { BookList } from './BookList'
 import { FilterSection } from './Filter/FilterSection'
 
-import homeStyles from '@/assets/styles/Home.module.css'
+import homeStyles from '@/assets/styles/Layout/Home.module.css'
 import { allGenre } from '@/assets/constants'
 
 function filterBook({

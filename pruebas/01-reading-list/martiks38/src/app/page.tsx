@@ -3,8 +3,8 @@ import Image from 'next/image'
 import { SuggestBook } from '@/components/SuggestBook'
 import { BookDashboard } from '@/components/BookDashboard'
 
-import homeStyles from '@/assets/styles/Book/Home.module.css'
-import headerStyles from '@/assets/styles/Book/HeaderPage.module.css'
+import homeStyles from '@/assets/styles/Layout/Home.module.css'
+import headerStyles from '@/assets/styles/Layout/HeaderPage.module.css'
 
 import logo from './icon.svg'
 

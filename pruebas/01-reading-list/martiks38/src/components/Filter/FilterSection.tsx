@@ -4,7 +4,7 @@ import { useFilters } from '@/hooks/useFilters'
 import { genres } from '@/assets/values'
 import { allGenre } from '@/assets/constants'
 
-import homeStyles from '@/assets/styles/Home.module.css'
+import homeStyles from '@/assets/styles/Layout/Home.module.css'
 
 export function FilterSection() {
   const numberPagesID = useId()
