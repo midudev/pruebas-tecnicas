@@ -67,7 +67,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <li
-  class="flex flex-col gap-4 relative xl:w-40 xl:h-300 {showAnimation
+  class="flex flex-col gap-4 relative xl:w-40 xl:h-300 2xl:w-60 2xl:h-400 {showAnimation
     ? 'animate-item-out'
     : 'animate-fade-in'}"
   on:mouseenter={handleOverlay}

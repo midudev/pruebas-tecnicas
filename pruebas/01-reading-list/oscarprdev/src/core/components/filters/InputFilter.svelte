@@ -13,7 +13,7 @@
   <input
     type="text"
     placeholder="Busca por título.."
-    class="pl-12 rounded-full bg-light"
+    class="pl-12 rounded-full bg-light p-2 border-gray border-2"
     on:input={onInputChange}
   />
 </section>

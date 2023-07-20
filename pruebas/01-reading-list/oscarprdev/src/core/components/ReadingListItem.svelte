@@ -57,7 +57,7 @@ onMount(() => {
 </script>
 
 <li
-  class="relative flex w-full gap-3 h-64 my-2 p-2 {showAnimation
+  class="relative flex w-full gap-5 h-64 my-2 p-2 {showAnimation
     ? 'animate-item-in'
     : 'animate-fade-in'}"
 >
@@ -85,7 +85,7 @@ onMount(() => {
       </div>
     {/if}
   </div>
-  <section class="flex flex-col gap-3 w-4/6">
+  <section class="flex flex-col gap-4 w-4/6">
     <h3 class="text-lg">{book.title}</h3>
     <h4 class="text-sm mt-[-10px]"><i>{book.author.name}</i></h4>
     <span

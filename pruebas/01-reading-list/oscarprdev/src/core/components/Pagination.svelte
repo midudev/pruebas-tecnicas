@@ -35,7 +35,7 @@
 
 {#if $booksFiltered.length > 4}
   <section
-    class="self-end flex gap-5 py-2 px-5 bg-dark rounded-full mr-12 mt-4"
+    class="self-end flex gap-5 py-2 px-5 bg-dark rounded-full mr-12 mt-4 2xl:mt-28"
   >
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->

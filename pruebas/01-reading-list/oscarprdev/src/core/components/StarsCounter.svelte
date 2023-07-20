@@ -37,7 +37,7 @@
       on:click={() => setStar(star.id)}
     >
       <StarIcon
-        size="20"
+        size="24"
         class={star.id <= hoveredIndex ? 'fill-star text-dark' : 'text-dark'}
       />
     </button>
