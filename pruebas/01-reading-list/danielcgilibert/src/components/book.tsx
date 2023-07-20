@@ -14,6 +14,7 @@ import { Link } from 'wouter'
 
 export default function Book({ bookData }: { bookData: IBook }) {
   const [showOptions, setShowOptions] = useState(false)
+
   const { addToReadingList, readingList } = useStore()
   const isReading = readingList.find(
     (book: IBook) => book.ISBN === bookData.ISBN

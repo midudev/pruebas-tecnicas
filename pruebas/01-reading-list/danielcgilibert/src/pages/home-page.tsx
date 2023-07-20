@@ -10,14 +10,10 @@ import { useEffect } from 'react'
 export default function HomePage() {
   const { filterBooks, totalBooks, onRehydrateStorage } = useStore()
 
-  async function startFetching() {
-    await onRehydrateStorage()
-  }
-
   useEffect(() => {
     window.addEventListener('storage', (event) => {
       if (event.key === 'books-storage') {
-        void startFetching()
+        onRehydrateStorage()
       }
     })
   }, [])

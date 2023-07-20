@@ -42,19 +42,20 @@ export const useStore = create<State>()(
               const copyArray = state.readingList.filter(
                 (item) => item.ISBN !== book.ISBN
               )
+
               // return new state
               return {
                 readingList: [...copyArray],
-                totalReadingList: state.readingList.length - 1,
+                totalReadingList: state.readingList.length - 1
               }
             }
 
             // if book is not in reading list, add it
             return {
               readingList: [...state.readingList, book],
-              totalReadingList: state.readingList.length + 1,
+              totalReadingList: state.readingList.length + 1
             }
-          }),
+          })
       }
     },
 
@@ -64,9 +65,9 @@ export const useStore = create<State>()(
         ({
           // Change this to change what is persisted
           readingList: state.readingList,
-          totalReadingList: state.totalReadingList,
+          totalReadingList: state.totalReadingList
         }),
-      name: 'books-storage', // should be unique across your application
+      name: 'books-storage' // should be unique across your application
     }
   )
 )
