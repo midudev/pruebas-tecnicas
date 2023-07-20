@@ -1,32 +1,36 @@
 <script lang="ts">
 	import libraryData from '../lib/data/books.json';
-	import type { Library } from '../types';
+	import type { Library, LibraryElement, Book } from '../types';
 	import { AppBar } from '@skeletonlabs/skeleton';
-	import { RangeSlider } from '@skeletonlabs/skeleton';
+	import { onMount, afterUpdate } from 'svelte';
+	import Dropdown from '../components/Dropdown.svelte';
+	import { PAGE_RANGE, getUniqueGenres } from '$lib/data/const';
+	import { filterByPages, filterByCategory } from '$lib/helpers/filters';
 
 	let { library }: Library = libraryData;
 
-	const getUniqueGenres = () => {
-		let buffer: Set<string> = new Set(['Todas']);
-		for (const { book } of library) {
-			buffer.add(book.genre);
-		}
-		return Array.from(buffer);
+	let filteredBooks: LibraryElement[] = [];
+
+	let filters = {
+		selectedGenre: 'All',
+		selectedPagesRanges: '0'
 	};
 
-	let categories = getUniqueGenres();
-
-	let getPages = () => {
-		let buffer: Set<number> = new Set([]);
-
-		for (const { book } of library) {
-			buffer.add(book.pages);
-		}
-		return Array.from(buffer);
+	const updateFilteredBooks = () => {
+		filteredBooks = library.filter(
+			({ book }) =>
+				filterByCategory(book, filters.selectedGenre) &&
+				filterByPages(book, filters.selectedPagesRanges)
+		);
 	};
 
-	let maxPages = Math.max(...getPages());
-	let minPages = Math.min(...getPages());
+	onMount(() => {
+		updateFilteredBooks();
+	});
+
+	afterUpdate(() => {
+		updateFilteredBooks();
+	});
 </script>
 
 <svelte:head>
@@ -45,21 +49,28 @@
 		</h1>
 	</AppBar>
 
-	<select class="select w-[30%]">
-		{#each categories as category}
-			<option>{category}</option>
-		{/each}
-	</select>
+	<Dropdown
+		label="Selecciona una categoría"
+		identifier="filtro-categoría"
+		options={getUniqueGenres('All', library)}
+		bind:value={filters.selectedGenre}
+	/>
 
-	<RangeSlider name="range-slider" class="w-[30%]" bind:value={minPages} max={maxPages} step={1}>
-		<div class="flex justify-between items-center">
-			<div class="font-bold font-regular-mona">Label</div>
-			<div class="text-xs">{minPages} / {maxPages}</div>
-		</div>
-	</RangeSlider>
+	<Dropdown
+		label="Selecciona un rango de páginas"
+		identifier="filtro-paginas"
+		options={PAGE_RANGE}
+		bind:value={filters.selectedPagesRanges}
+	/>
+
+	<h1 class="font-bold text-4xl">Libros Disponibles ({filteredBooks.length})</h1>
+
+	{#if filteredBooks.length === 0}
+		<p class="font-bold text-3xl">No hay libros para mostrar</p>
+	{/if}
 
 	<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-20">
-		{#each library as { book }}
+		{#each filteredBooks as { book }}
 			<img class="h-[350px] w-full rounded-lg" src={book.cover} alt="Cover for {book.title}" />
 		{/each}
 	</section>
