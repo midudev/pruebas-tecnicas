@@ -11,7 +11,7 @@ function App () {
       <BookListProvider>
 
         <SavedBooks />
-        <main className="max-w-5xl m-auto px-4">
+        <main className="max-w-5xl m-auto px-4 grid">
           <FiltersProvider>
 
             <Header />
