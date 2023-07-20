@@ -1,4 +1,5 @@
-const RangePages = () => {
+const RangePages = ({ inputValue, handleChange }) => {
+	console.log('Render rangePages');
 	return (
 		<>
 			<span className="block mb-0.5">Range pages</span>
@@ -7,8 +8,9 @@ const RangePages = () => {
 					type="text"
 					placeholder="min"
 					className="border-b border-black w-16 bg-[#00000003] text-center rounded-t-md rounded-bl-[20px_5px] rounded-br-[20px_2px]  focus:outline-none"
-					name=""
-					id=""
+					name="min-pages"
+					value={inputValue[0]}
+					onChange={(e) => handleChange(e, 'min')}
 				/>
 				<span>-</span>
 				<input
@@ -16,8 +18,9 @@ const RangePages = () => {
 					placeholder="max"
 					className="border-b border-black w-16 bg-[#00000003] text-center 
                   rounded-t-md rounded-bl-[20px_2px] rounded-br-[20px_5px] focus:outline-none"
-					name=""
-					id=""
+					name="max-pages"
+					value={inputValue[1]}
+					onChange={(e) => handleChange(e, 'max')}
 				/>
 			</div>
 		</>
