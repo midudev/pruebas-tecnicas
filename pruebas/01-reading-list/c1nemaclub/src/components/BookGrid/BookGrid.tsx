@@ -2,7 +2,7 @@ import style from './BookGrid.module.css';
 
 type BookGridProps = {
   children: React.ReactNode;
-  loading: boolean;
+  loading?: boolean;
   bookCount: number;
 };
 
