@@ -39,7 +39,7 @@ export default function Navigation() {
                     }
                   >
                     Mi lista
-                    <div class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-orange-500  rounded-full -top-2 -right-2">
+                    <div className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-orange-500  rounded-full -top-2 -right-2">
                       {inReadingListCount}
                     </div>
                   </Link>
