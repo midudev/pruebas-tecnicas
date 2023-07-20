@@ -18,8 +18,9 @@ export const FavoriteList: React.FC<Props> = ({ books }) => {
     setDragOverIndex(null)
 
     const itemToDelete = favorites[fromIndex]
-
-    const updatedFavorites = favorites.toSpliced(fromIndex, 1).toSpliced(toIndex, 0, itemToDelete)
+    const updatedFavorites = favorites
+      .toSpliced(fromIndex, 1)
+      .toSpliced(fromIndex < toIndex ? toIndex - 1 : toIndex, 0, itemToDelete)
 
     updateFavorites({ updatedFavorites })
   }
