@@ -26,7 +26,7 @@
                   <h2>Mi lista de lectura</h2>
             </header>
             <div class="contenedor-milista">
-                  <li *ngFor="let item of misBooks" class="image-container" >
+                  <li *ngFor="let item of misBooks" class="image-container">
                         <div class="overlay">
                               <button class="close-button" (click)="quitarBook(item.book.title)">
                                     <svg _ngcontent-oaw-c49="" xmlns="http://www.w3.org/2000/svg" height="24"
@@ -41,7 +41,7 @@
                   </li>
             </div>
       </div>
-      <div class="caja-milista" *ngIf="generalService.milibro">
+      <div class="caja-milista caja-book" *ngIf="generalService.milibro">
             <header>
                   <button class="btn-hamburguesa" (click)="cerrarMiLibro()">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
@@ -52,15 +52,33 @@
             </header>
             <div class="contenedor-milista mibook" *ngIf="bookSeleccionado">
                   <li class="image-container mibook-container">
-                    <img [src]="bookSeleccionado.cover" width="200px" height="280px">
-                    <ul class="book-info">
-                      <li><h3>{{ bookSeleccionado.title }}</h3></li>
-                      <li>Sinopsis: <p>{{ bookSeleccionado.synopsis }}</p></li>
-                      <li>{{ bookSeleccionado.author.name }} <p>Otros libros: {{ bookSeleccionado.author.otherBooks }}</p></li>
-                      <li><span>{{ bookSeleccionado.year }}</span> - <span>{{ bookSeleccionado.genre }}</span> - <span>{{ bookSeleccionado.pages }}</span></li>
-                    </ul>
+                        <img [src]="bookSeleccionado.cover" width="200px" height="280px"
+                        style="
+                        transform: scale(0.9) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg);
+                        box-shadow: var(--negros) 7px 9px 16px, #3f4047 3px 3px 1px;
+                        border: 1px solid var(--color-grises);"
+                        >
+                        <ul class="book-info">
+                              <li>
+                                    <h3>{{ bookSeleccionado.title }}</h3>
+                              </li>
+                              <li>
+                                    <h4>Sinopsis:</h4>
+                                    <p>{{ bookSeleccionado.synopsis }}</p>
+                              </li>
+                              <li>
+                                    <h4>{{ bookSeleccionado.author.name }}</h4>
+                                    <h4>Otros libros:</h4> 
+                                    <p>{{ bookSeleccionado.author.otherBooks }}</p>
+                              </li>
+                              <li class="tag">
+                                    <span>Año:{{ bookSeleccionado.year }}</span> 
+                                    <span>{{ bookSeleccionado.genre }}</span> 
+                                    <span>{{ bookSeleccionado.pages }} pág.</span>
+                              </li>
+                        </ul>
                   </li>
-                </div>
+            </div>
       </div>
       <li *ngFor="let item of filteredBooks">
             <img class="tapa" [src]="item.book.cover" width="140px" height="200px" (click)="selectBook(item)">

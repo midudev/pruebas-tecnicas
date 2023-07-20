@@ -49,6 +49,7 @@ p {
       font-family: var(--tipo-principal);
       font-weight: 400;
       color: var(--negros);
+      max-width: 30pc;
 }
 
 button {
