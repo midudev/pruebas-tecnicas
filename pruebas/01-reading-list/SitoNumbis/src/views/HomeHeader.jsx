@@ -17,14 +17,15 @@ import SimpleInput from "../components/SimpleInput/SimpleInput";
 // contexts
 import { useLanguage } from "../contexts/LanguageProvider";
 import { useLibrary } from "../contexts/LibraryProvider";
+import { useFilters } from "../contexts/FiltersProvider";
 
 // styles
 import styles from "./styles.module.css";
 
 function HomeHeader() {
-  const { libraryState, setLibraryState } = useLibrary();
-
   const { languageState } = useLanguage();
+  const { filtersState, setFiltersState } = useFilters();
+  const { libraryState, setLibraryState } = useLibrary();
 
   const [showingFilters, setShowingFilters] = useState(false);
 
@@ -47,26 +48,26 @@ function HomeHeader() {
         showing: document.querySelectorAll(".book").length,
       });
     }, 100);
-  }, [libraryState.filters.genre, libraryState.seeing, setLibraryState]);
+  }, [filtersState.genre, libraryState.seeing, setLibraryState]);
 
   const handlePages = useCallback(
     (e) => {
       const { value } = e.target;
-      setLibraryState({
+      setFiltersState({
         type: "set-filter",
         filter: "pages",
         value: Number(value),
       });
     },
-    [setLibraryState]
+    [setFiltersState]
   );
 
   const handleSearch = useCallback(
     (e) => {
       const { value } = e.target;
-      setLibraryState({ type: "set-filter", value });
+      setFiltersState({ type: "set-filter", filter: "title", value });
     },
-    [setLibraryState]
+    [setFiltersState]
   );
 
   return (
@@ -79,9 +80,9 @@ function HomeHeader() {
           <span className="alter-text text-sm mx-2">({totalLength})</span>
         </p>
         {/* If the user is using the genre filter */}
-        {libraryState.filters.genre.length ? (
+        {filtersState.genre.length ? (
           <p>
-            {">"} {libraryState.filters.genre}{" "}
+            {">"} {filtersState.genre}{" "}
             <span className="alter-text text-sm mx-1">
               ({libraryState.showing})
             </span>
@@ -105,7 +106,7 @@ function HomeHeader() {
             <Slider
               max={3999}
               min={1}
-              value={libraryState.filters.pages}
+              value={filtersState.pages}
               handleRange={handlePages}
             />
           </div>
@@ -120,7 +121,7 @@ function HomeHeader() {
             label={languageState.texts.homeHeader.titleFilter}
             inputProps={{
               type: "search",
-              value: libraryState.filters.title,
+              value: filtersState.title,
               onChange: handleSearch,
               className: "rounded-3xl bg-dark-alt-bg pl-7 py-1 w-full text-sm",
             }}

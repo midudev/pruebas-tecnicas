@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { forwardRef } from "react";
 import PropTypes from "prop-types";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,9 +6,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // styles
 import styles from "./styles.module.css";
 
-function IconButton({ onClick, name, icon, className, ariaLabel }) {
+const IconButton = forwardRef(function IconButton(
+  { onClick, name, icon, className, ariaLabel },
+  ref
+) {
   return (
     <button
+      ref={ref}
       name={name}
       onClick={onClick}
       className={`${styles.main} ${className}`}
@@ -17,7 +21,7 @@ function IconButton({ onClick, name, icon, className, ariaLabel }) {
       <FontAwesomeIcon icon={icon} />
     </button>
   );
-}
+});
 
 IconButton.propTypes = {
   name: PropTypes.string,
@@ -27,21 +31,4 @@ IconButton.propTypes = {
   ariaLabel: PropTypes.string,
 };
 
-const IconButtonMemo = memo(
-  (props) => <IconButton {...props} />,
-  arePropsEqual
-);
-
-IconButtonMemo.displayName = "IconButton";
-
-function arePropsEqual(oldProps, newProps) {
-  return (
-    oldProps.name === newProps.name &&
-    oldProps.onClick === newProps.onClick &&
-    oldProps.icon === newProps.icon &&
-    oldProps.className === newProps.className &&
-    oldProps.ariaLabel === newProps.ariaLabel
-  );
-}
-
-export default IconButtonMemo;
+export default IconButton;

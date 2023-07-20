@@ -1,7 +1,6 @@
 import { useCallback, useMemo } from "react";
 import { Link } from "react-router-dom";
 import loadable from "@loadable/component";
-import Tippy from "@tippyjs/react";
 
 import { faBookOpen, faBookmark } from "@fortawesome/free-solid-svg-icons";
 
@@ -20,6 +19,7 @@ import noPhoto from "../../assets/images/no-photo.webp";
 import styles from "./styles.module.css";
 
 // suspense
+const Tippy = loadable(() => import("@tippyjs/react"));
 const Badge = loadable(() => import("../Badge/Badge"));
 
 function Navbar() {
@@ -66,7 +66,7 @@ function Navbar() {
                 name="toggle-seeing"
                 ariaLabel={languageState.texts.ariaLabels.toReadingList}
                 onClick={toggleSeeing}
-                className={`text-xl`}
+                className={`text-xl pr-1`}
                 icon={
                   libraryState.seeing === "reading-list"
                     ? faBookOpen

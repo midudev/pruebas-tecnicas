@@ -6,6 +6,7 @@ import App from "./App.jsx";
 // contexts
 import { LanguageProvider } from "./contexts/LanguageProvider";
 import { LibraryProvider } from "./contexts/LibraryProvider";
+import { FiltersProvider } from "./contexts/FiltersProvider";
 
 // styles
 import "./index.css";
@@ -22,7 +23,9 @@ import "tippy.js/dist/tippy.css"; // optional
 ReactDOM.createRoot(document.getElementById("root")).render(
   <LanguageProvider>
     <LibraryProvider>
-      <App />
+      <FiltersProvider>
+        <App />
+      </FiltersProvider>
     </LibraryProvider>
   </LanguageProvider>
 );
