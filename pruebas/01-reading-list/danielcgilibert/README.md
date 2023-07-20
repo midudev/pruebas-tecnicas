@@ -26,13 +26,7 @@
 - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
 
-1. Clone or [fork](https://github.com/danielcgilibert/OpenLink/fork) the repository:
-
-```bash
-git@github.com:danielcgilibert/OpenLink.git
-```
-
-2. Install dependencies:
+1. Install dependencies:
 
 ```bash
 npm install
@@ -42,7 +36,7 @@ yarn install
 pnpm install
 ```
 
-3. Run the development server:
+2. Run the development server:
 
 ```bash
 npm run dev
