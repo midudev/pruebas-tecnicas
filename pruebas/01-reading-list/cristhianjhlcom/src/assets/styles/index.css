@@ -19,6 +19,10 @@
   --radius-lg: 10px;
 }
 
+html {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
 body {
   background-color: var(--color-background);
 }
