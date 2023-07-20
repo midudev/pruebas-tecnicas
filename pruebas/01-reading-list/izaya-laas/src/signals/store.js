@@ -1,25 +1,25 @@
 import { signal, computed, effect } from '@preact/signals';
 import { books } from '../database/books';
 
-const storageBooksData = localStorage.getItem('readingList');
+//Busco el array de ISBNs en el storage
+const storageBooksData = JSON.parse(localStorage.getItem('readingList'));
 
+//Global signals
 const currentPath = signal(location.pathname);
-
 const allBooks = signal(books);
-
 const myReadingListISBN = signal(storageBooksData || []);
 
-//O^n2
+//Computed signals
 const myReadingListBooks = computed(() => {
 	return allBooks.value.filter((book) =>
 		myReadingListISBN.value.includes(book.ISBN)
 	);
 });
-
 const myReadingListLength = computed(() => myReadingListISBN.value.length);
 
+//Actualizamos el localStorage cada vez que se agrege un ISBN
 effect(() => {
-	console.log(JSON.stringify(myReadingListISBN));
+	localStorage.setItem('readingList', JSON.stringify(myReadingListISBN));
 });
 
 export {

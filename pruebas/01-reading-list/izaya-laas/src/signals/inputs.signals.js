@@ -51,9 +51,6 @@ export const handleExcludeBooks = (e) => {
 };
 
 effect(() => {
-	console.log(filterOptions.value);
-});
-effect(() => {
 	//especificamos que el efecto actue cuando currentPath cambie
 	currentPath.value;
 

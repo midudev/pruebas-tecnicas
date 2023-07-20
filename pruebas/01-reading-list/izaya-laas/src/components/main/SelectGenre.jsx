@@ -1,3 +1,5 @@
+import { genres } from '../../database/books';
+
 const SelectGenre = ({ inputValue, handleChange }) => {
 	console.log('render genre');
 	return (
@@ -11,24 +13,11 @@ const SelectGenre = ({ inputValue, handleChange }) => {
 				value={inputValue}
 				onChange={handleChange}
 			>
-				<option className="text-sm italic" value="any">
-					any
-				</option>
-				<option className="text-sm italic" value="terror">
-					Terror
-				</option>
-				<option className="text-sm italic" value="romance">
-					Romance
-				</option>
-				<option className="text-sm italic" value="fiction">
-					Fiction
-				</option>
-				<option className="text-sm italic" value="cats">
-					Cats
-				</option>
-				<option className="text-sm italic" value="chickes">
-					Chickes
-				</option>
+				{genres.map(({ name, value }) => (
+					<option className="text-sm italic" value={value}>
+						{name}
+					</option>
+				))}
 			</select>
 		</>
 	);
