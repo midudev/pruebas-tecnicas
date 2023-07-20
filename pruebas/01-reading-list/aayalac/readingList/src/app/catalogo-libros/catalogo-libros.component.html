@@ -1,0 +1,19 @@
+<div *ngIf="libros" class="contenedor-grid">
+  <div *ngFor="let libro of libros" class="div1">
+      <h2>{{ libro.book.title }}</h2>
+      <p>Pages: {{ libro.book.pages }}</p>
+      <p>Genre: {{ libro.book.genre }}</p>
+      <img [src]="libro.book.cover" alt="{{ libro.book.title }} Cover" width="200" height="300">
+      <p>{{ libro.book.synopsis }}</p>
+      <p>Year: {{ libro.book.year }}</p>
+      <p>ISBN: {{ libro.book.ISBN }}</p>
+      <p>Author: {{ libro.book.author.name }}</p>
+      <p>Other Books by {{ libro.book.author.name }}:</p>
+      <ul>
+        <li *ngFor="let otherBook of libro.book.author.otherBooks">
+          {{ otherBook }}
+        </li>
+      </ul>
+      <hr>
+  </div>
+</div>
