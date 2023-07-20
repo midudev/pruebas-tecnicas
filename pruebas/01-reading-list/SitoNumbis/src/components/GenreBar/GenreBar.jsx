@@ -16,7 +16,7 @@ import Genre from "./Genre/Genre";
 // styles
 import styles from "./styles.module.css";
 
-function FilterBar() {
+function GenreBar() {
   const { languageState } = useLanguage();
 
   const { libraryState, setLibraryState } = useLibrary();
@@ -131,4 +131,4 @@ function FilterBar() {
   );
 }
 
-export default FilterBar;
+export default GenreBar;

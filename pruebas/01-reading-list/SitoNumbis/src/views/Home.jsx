@@ -4,7 +4,7 @@ import loadable from "@loadable/component";
 // components
 import HomeHeader from "./HomeHeader";
 import Loading from "../components/Loading/Loading";
-import FilterBar from "../components/FilterBar/FilterBar";
+import GenreBar from "../components/GenreBar/GenreBar";
 
 // contexts
 import { LightBoxProvider } from "../components/LightBox/LightBoxProvider";
@@ -30,7 +30,7 @@ function Home() {
       <Suspense
         fallback={<Loading className="w-full h-full top-0 left-0 fixed z-50" />}
       >
-        <FilterBar />
+        <GenreBar />
         <HomeHeader />
         <LightBoxProvider>
           <LightBox />
