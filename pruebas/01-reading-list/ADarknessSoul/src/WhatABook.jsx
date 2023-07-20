@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { getBooks } from './store/slices/WhatABook';
 import { useEffect } from 'react';
 import { Navbar } from './components/Navbar';
+import { Filters } from './components/Filters';
 
 
 export const WhatABook = () => {
@@ -18,6 +19,14 @@ export const WhatABook = () => {
     <>
     
         <Navbar/>
+
+        <Filters/>
+
+        <main>
+
+
+
+        </main>
     
     </>
   )

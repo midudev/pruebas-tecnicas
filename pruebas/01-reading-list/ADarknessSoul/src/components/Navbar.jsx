@@ -21,7 +21,7 @@ export const Navbar = () => {
                 <div className="d-flex">
                     
                     <input className="form-control mr-sm-2 navbar__input" type="search" placeholder="¿Qué buscas hoy?" id="SearchBook"/>
-                    <button className="btn mx-2 my-sm-0 btn__submit" type="submit">Search</button>
+                    <button className="btn mx-2 my-sm-0 btn__submit" type="submit">Buscar</button>
 
                 </div> {/* navbar__label */}
 

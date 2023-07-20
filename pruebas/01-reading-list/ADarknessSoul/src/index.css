@@ -40,11 +40,6 @@ body {
   font-family: var(--main-font);
 }
 
-.contenedor {
-  width: min(90%, 120rem);
-  margin: 0 auto;
-}
-
 h1,
 h2,
 h3,
@@ -112,8 +107,17 @@ p {
   padding: 1.6rem;
   border-radius: 0.5rem;
   margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 
+}
+
+@media (min-width: 418px) {
+    .navbar__logo {
+
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+
+    }
 }
 
 .btn__submit {
@@ -144,7 +148,7 @@ p {
 
 }
 
-@media (min-width: 350px) {
+@media (min-width: 418px) {
     
   .navbar__form {
 
@@ -157,5 +161,42 @@ p {
 .navbar__input {
 
   font-size: 1.2rem;
+
+}
+
+/* Filters */
+
+.btn__filter {
+
+  background-color: var(--accent);
+  color: var(--main-color);
+
+}
+
+.btn__filter:hover {
+
+  background-color: var(--accent-hover);
+  color: var(--main-color);
+
+}
+
+.filter__select {
+
+  font-size: 1.2rem;
+
+}
+
+.form__Input {
+
+  background-color: var(--accent)!important;
+  color: var(--main-color);
+  font-size: 1.2rem;
+
+}
+
+.form__Input:hover {
+
+  background-color: var(--accent-hover)!important;
+  color: var(--main-color)!important;
 
 }
