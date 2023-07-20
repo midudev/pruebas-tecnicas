@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import BooksJSON from './database/books.json'
 import BooksList from './components/BooksList'
 import useBooksList from './hooks/useBooksList'
@@ -7,14 +6,11 @@ import './style.css'
 export default function App () {
   const {
     availableBooks,
-    addToAvaiables,
     readList,
     addToReadList,
     removeFromReadList,
     readListHasBooks
-  } = useBooksList([])
-  // Load JSON books library to state bookList.
-  useEffect(() => BooksJSON.library.forEach((bookObject) => addToAvaiables(bookObject.book)), [])
+  } = useBooksList(BooksJSON.library.map(bookObj => bookObj.book))
 
   return (
     <>
