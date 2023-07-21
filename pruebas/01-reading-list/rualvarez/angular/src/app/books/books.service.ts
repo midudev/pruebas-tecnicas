@@ -21,6 +21,9 @@ export class BookService {
   private genreAllOption: string = "Todos";
   private genreFilter: string = this.genreAllOption;
 
+  private localStorageLibrary: string = 'library_books';
+  private localStorageReadingList: string = 'reading_books';
+
   constructor() {
     this._bookList = new BehaviorSubject<Array<Book>>([]);
     this._bookListFiltered = new BehaviorSubject<Array<Book>>([]);
@@ -28,31 +31,57 @@ export class BookService {
     this._genresList = new BehaviorSubject<Array<string>>([]);
 
     this.initBookList();
+    this.initReadingList();
     this.genresFromBookList(this.bookListDataFiltered);
   }
 
   //Initial data
-  initBookList() {
-    const { library } = data;
-    const books: Array<Book> = library.map(e => e.book);
-    books.sort((a, b) => a.title.localeCompare(b.title));
+  private initBookList() {
+    const books: Array<Book> = this.getLibraryBooksFromLocalStorageOrFile();
     this.bookListData = structuredClone(books);
     this.bookListDataFiltered = structuredClone(books);
     this._bookList.next(this.bookListData);
     this._bookListFiltered.next(this.bookListDataFiltered);
   }
 
+  private getLibraryBooksFromLocalStorageOrFile() {
+    const booksLocalStorage = this.getDataFromLocalStorage(this.localStorageLibrary);
+    let books: Array<Book> = [];
+    if (booksLocalStorage !== null) books = JSON.parse(booksLocalStorage);
+    else {
+      const { library } = data;
+      books = library.map(e => e.book);
+      books.sort((a, b) => a.title.localeCompare(b.title));
+    }
+    return books;
+  }
+
+  private initReadingList() {
+    const booksLocalStorage = this.getDataFromLocalStorage(this.localStorageReadingList);
+    if (booksLocalStorage !== null) {
+      this.readingListData = JSON.parse(booksLocalStorage);
+      this._readingBookList.next(JSON.parse(booksLocalStorage));
+    }
+  }
+
+  private getDataFromLocalStorage(key: string) {
+    return localStorage.getItem(key);
+  }
 
   moveFromListToReadingList(book: Book) {
     const bookIndex: number = this.getBookIndex(this.bookListData, book);
     this.deleteFromBookList(bookIndex);
     this.addToReadingList(book);
+    localStorage.setItem(this.localStorageLibrary, JSON.stringify(this.bookListDataFiltered));
+    localStorage.setItem(this.localStorageReadingList, JSON.stringify(this.readingListData));
   }
 
   moveFromReadingListToList(book: Book) {
     const bookIndex: number = this.getBookIndex(this.readingListData, book);
     this.deleteFromReadingList(bookIndex);
     this.addToBookList(book);
+    localStorage.setItem(this.localStorageLibrary, JSON.stringify(this.bookListDataFiltered));
+    localStorage.setItem(this.localStorageReadingList, JSON.stringify(this.readingListData));
   }
 
 
