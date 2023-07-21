@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { GeneralService } from 'src/app/general.service';
-import { Book } from 'src/app/modelos/books';
 
 @Component({
   selector: 'app-main',
@@ -14,10 +13,7 @@ export class MainComponent implements OnInit {
   selectedGenre: string | null = null;
   books: any = [];
   genres: string[] = [];
-  bookSelect: boolean = false;
   misBooks: any[] = [];
-  activo: boolean = this.generalService.activo;
-  bookSeleccionado: Book | null = null;
 
   constructor(public generalService: GeneralService) {
 
@@ -32,6 +28,7 @@ export class MainComponent implements OnInit {
         }
       }
     });
+    
   }
 
   ngOnInit(): void {
@@ -40,10 +37,6 @@ export class MainComponent implements OnInit {
 
   ngOnDestroy(): void {
 
-  }
-
-  verMiLista() {
-    this.generalService.miLista = !this.generalService.miLista;
   }
 
   getLibrary(): void {
@@ -99,55 +92,5 @@ export class MainComponent implements OnInit {
     this.generalService.contador = true;
     this.generalService.miLista = true;
   }
-
-  quitarBook(title: string) {
-    const localStorageBooks = window.localStorage.getItem('books');
-    if (localStorageBooks) {
-      const books = JSON.parse(localStorageBooks);
-      const updatedBooks = books.filter((item: any) => item.book.title !== title);
-      window.localStorage.setItem('books', JSON.stringify(updatedBooks));
-
-      // Actualizar la lista local this.misBooks con la lista actualizada
-      this.misBooks = updatedBooks;
-
-      this.generalService.updateLocalStorageBooks(updatedBooks);
-    }
-  }
-
-
-  findBookInLocalStorage(title: string): any | null {
-    const localStorageBooks = window.localStorage.getItem('books');
-    if (localStorageBooks) {
-      const books = JSON.parse(localStorageBooks);
-      const bookSeleccionado = books.find((item: any) => item.book.title === title);
-      return bookSeleccionado ? bookSeleccionado.book : null;
-    }
-    return null;
-  }
-
-  BookInfo(title: string) {
-    this.generalService.milibro = true;
-    if (title) {
-      const bookSeleccionadoFromLocalStorage = this.findBookInLocalStorage(title);
-      if (bookSeleccionadoFromLocalStorage) {
-        this.bookSeleccionado = bookSeleccionadoFromLocalStorage;
-        console.log(this.bookSeleccionado);
-      } else {
-        const bookSeleccionadoFromLibrary = this.books.library.find((item: any) => item.book.title === title);
-        if (bookSeleccionadoFromLibrary) {
-          this.bookSeleccionado = bookSeleccionadoFromLibrary.book;
-          console.log(this.bookSeleccionado);
-        } else {
-          console.log('Libro no encontrado');
-        }
-      }
-    }
-  }
-
-
-  cerrarMiLibro() {
-    this.generalService.milibro = false;
-  }
-
 
 }

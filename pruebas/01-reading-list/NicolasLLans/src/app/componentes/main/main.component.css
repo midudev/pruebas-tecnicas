@@ -118,54 +118,6 @@ label {
       border: none;
 }
 
-.caja-book {
-      box-shadow: var(--negros) -35px 0px 70px;
-}
-
-.mibook {
-      justify-content: center;
-      align-items: flex-start;
-}
-
-.mibook .mibook-container {
-      width: 80%;
-      justify-content: center;
-      display: flex;
-      align-content: center;
-      gap: 20px;
-}
-
-.mibook .mibook-container .book-info {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: fit-content;
-      gap: 26px;
-      padding-bottom: 18px;
-}
-
-.book-info .tag {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-}
-
-.mibook .mibook-container .book-info li span {
-      background-color: var(--color-detalle);
-      padding: 5px 15px;
-      border-radius: 7px;
-      color: var(--blanco);
-      box-shadow: var(--negros) 5px 5px 0px;
-}
-
-@media (max-width:745px) {
-      .mibook .mibook-container {
-            flex-direction: column;
-            width: auto;
-      }
-}
-
-
 @media (max-width:870px) {
       .contenedor-milista h2 {
             font-size: 18px;
@@ -182,7 +134,7 @@ label {
             justify-content: flex-start;
       }
 
-      .btn-hamburguesa[_ngcontent-ddy-c49] {
+      .btn-hamburguesa {
             width: 15%;
             height: 56px;
       }

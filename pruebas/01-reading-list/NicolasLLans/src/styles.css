@@ -20,6 +20,14 @@ body {
       background-color: var(--blanco);
 }
 
+app-root{
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      height: 100dvh;
+      justify-content: space-between;
+}
+
 li {
       display: block;
 }
