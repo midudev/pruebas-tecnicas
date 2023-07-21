@@ -1,23 +1,33 @@
 <script lang="ts">
   import type { Book } from "$lib/types/Book";
-  import { Rating } from "flowbite-svelte";
+  import { Rating, Star } from "flowbite-svelte";
   export let book: Book;
   export let addBookToWishList: Function;
 </script>
 
 <div
-  class="max-w-sm max-h-fitbg-gray-700 rounded border border-gray-600 shadow dark:bg-gray-800 dark:border-gray-700"
+  class="max-w-sm h-fit rounded-2xl border border-gray-600 shadow dark:bg-gray-800 dark:border-gray-700"
 >
   <div class="book">
-    <img class="cover rounded-t " src={book.cover} alt={book.title} />
+    <img class="cover rounded-t rounded-t-2xl " src={book.cover} alt={book.title} />
     <div class="info md:min-h-[88px]">
-      <span class="title text-white text-lg font-bold">{book.title}</span>
-      <span class="year text-gray-200 text-sm font-semibold"> Año: {book.year}</span>
+      <div class="flex items-start justify-between">
+        <span class="title text-white text-lg font-bold">{book.title}</span>
+        <div class="flex gap-[4px] items-center">
+          <Star />
+          <span class="text-white">5</span>
+        </div>
+        
+      </div>
+      <div class="flex gap-[5px]">
+        <span class="text-gray-300 font-semibold text-sm">Año </span>
+        <span class="text-white font-bold">{"   "+book.year}</span>
+      </div>
     </div>
   </div>
-  <div class="flex flex-col px-2 pb-4 gap-[10px]">
-    <Rating id="example-1" total={5} size={30} rating={4} />
-    <div class="w-full flex flex-col items-center h-[44px]" >
+  <div class="flex flex-col px-2 pb-[10px] gap-[10px]">
+   
+    <div class="w-full flex flex-col items-end h-[44px]" >
       <button
         type="button"
         class="h-full w-1/2 relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 text-lg font-semibold"
@@ -71,21 +81,20 @@
   .info {
     height: 40%;
     width: 100%;
- 
-    padding: 10px 12px;
+    padding: 24px 12px;
     transition: display 1s ease-in 0s;
     display: flex;
     flex-direction: column;
   }
 
   .info .title {
-    line-height: 1.1;
+    line-height: 1.6;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
-    min-height: 35px;
+    min-height: 57px;
   }
 
   .info .year {

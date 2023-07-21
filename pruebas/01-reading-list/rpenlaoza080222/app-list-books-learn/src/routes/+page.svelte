@@ -18,10 +18,18 @@
 
   const wishListBooks = getBookWishList();
 
+  function storageListener(event: any) {
+    console.log("Event Storage", event);
+  }
+
   onMount(() => {
     if (localStorage.getItem(keyBooks)) {
       const booksStored = JSON.parse(localStorage.getItem(keyBooks) || "");
       $wishListBooks = booksStored;
+    }
+    window.addEventListener("storage", storageListener);
+    return () => {
+      window.removeEventListener("storage", storageListener);
     }
   });
 
@@ -35,7 +43,7 @@
   let genre = "";
 
   let popupModal = false;
-  let message= "";
+  let message = "";
 
   function filterBooks(searchText: string, genre: string) {
     let array = books;
@@ -87,7 +95,11 @@
   function saveListBooks() {
     localStorage.setItem(keyBooks, JSON.stringify($wishListBooks));
   }
+
+  
 </script>
+
+<svelte:window on:storage={storageListener} />
 
 <div class="main">
   <div class="flex flex-col h-[100vh]">
@@ -95,7 +107,6 @@
 
     <div class="w-[80%] mx-auto mt-[80px]">
       <Filters
-        bookLength={filterListBooks.length}
         {genre}
         genres={genresSet}
         {searchText}
@@ -105,7 +116,12 @@
       />
     </div>
 
-    <div class="container-list-books bg-gray-800 flex-1">
+    <div class="container-list-books pb-[40px] flex-col bg-gray-800 flex-1">
+      <div class="w-[80%] mx-auto">
+        <h3 class="text-white font-bold text-lg mt-[30px]">
+          Resultado de la búsqueda {filterListBooks.length} libros
+        </h3>
+      </div>
       <div class="container-books h-fit">
         {#each filterListBooks as { book }, i}
           <Book {book} {addBookToWishList} />
@@ -116,9 +132,24 @@
   </div>
   <Modal bind:open={popupModal} size="xs" autoclose>
     <div class="text-center">
-      <svg aria-hidden="true" class="mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-      <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">{message}</h3>
-      <Button color="red" class="mr-2">Entendito</Button>
+      <svg
+        aria-hidden="true"
+        class="mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        ><path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        /></svg
+      >
+      <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+        {message}
+      </h3>
+      <Button color="red" class="mr-2">Entendido</Button>
     </div>
   </Modal>
 </div>

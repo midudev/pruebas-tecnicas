@@ -4,3 +4,6 @@
 </script>
 
 <slot />
+<footer class="flex ">
+  Copyright Roibert Peñaloza Valencia
+</footer>

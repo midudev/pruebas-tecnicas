@@ -3,7 +3,7 @@
   style="--tw-bg-opacity: 0.8;"
 >
   <div
-    class="w-[80%] mx-auto max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4"
+    class="w-[80%] mx-auto flex flex-wrap items-center justify-between mx-auto py-4"
   >
     <h1>
       <a href="https://flowbite.com/" class="flex items-center">
