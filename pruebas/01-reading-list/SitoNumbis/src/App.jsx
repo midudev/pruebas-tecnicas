@@ -9,7 +9,7 @@ import Handler from "./components/Error/Handler";
 import Main from "./layouts/Main";
 
 // db
-import books from "./books.json";
+import books from "./MOCK_DATA.json";
 
 // contexts
 import { useLibrary } from "./contexts/LibraryProvider";
@@ -37,7 +37,7 @@ function App() {
     const datetime = new Date().getTime();
     setLibraryState({
       type: "init-books",
-      books: books.library.map((book) => book.book),
+      books: books.library.map((book) => book),
       datetime,
     });
     // fetch from localStorage for the first time

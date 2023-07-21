@@ -1,5 +1,5 @@
 .main {
-  @apply px-5 py-3 transition min-w-[150px] cursor-default;
+  @apply px-5 py-3 transition w-fit cursor-default whitespace-nowrap;
 }
 
 .active {

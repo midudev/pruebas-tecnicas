@@ -1,9 +1,15 @@
 import { memo, useCallback, useState } from "react";
 import useOnclickOutside from "react-cool-onclickoutside";
 
+import { faClose } from "@fortawesome/free-solid-svg-icons";
+
 import { css } from "@emotion/css";
 
 import PropTypes from "prop-types";
+
+// components
+import IconButton from "../IconButton/IconButton";
+import LazyImage from "../LazyImage/LazyImage";
 
 // contexts
 import { useLanguage } from "../../contexts/LanguageProvider";
@@ -11,8 +17,6 @@ import { useLibrary } from "../../contexts/LibraryProvider";
 
 // styles
 import styles from "./styles.module.css";
-import IconButton from "../IconButton/IconButton";
-import { faClose } from "@fortawesome/free-solid-svg-icons";
 
 function Book({ title, pages, genre, cover, year, ISBN, author, i }) {
   const { languageState } = useLanguage();
@@ -39,7 +43,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author, i }) {
         zIndex: i + 1,
       })}`}
     >
-      <img
+      <LazyImage
         className="w-full h-full object-cover object-center shadow-[black] shadow-md transition"
         src={cover}
         alt={`${title}-${languageState.texts.book.cover}`}
@@ -73,7 +77,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author, i }) {
           </p>
           <p className="mt-2">
             <span className="alter-text">{languageState.texts.book.by}</span>{" "}
-            {author.name} <span className="alter-text">({year})</span>
+            {author?.name} <span className="alter-text">({year})</span>
           </p>
         </div>
       </div>

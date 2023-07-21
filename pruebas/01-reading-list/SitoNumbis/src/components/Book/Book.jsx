@@ -13,6 +13,7 @@ import { useLightBox } from "../LightBox/LightBoxProvider";
 // styles
 import styles from "./styles.module.css";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
+import LazyImage from "../LazyImage/LazyImage";
 
 // components
 const Tippy = loadable(() => import("@tippyjs/react"));
@@ -67,7 +68,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
 
   return !hide ? (
     <li id={ISBN} className={`book ${styles.main} appear`}>
-      <img
+      <LazyImage
         className="w-full h-full object-cover object-center shadow-[black] shadow-md transition"
         src={cover}
         alt={`${title}-${languageState.texts.book.cover}`}
@@ -94,7 +95,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
             </p>
             <p className="mt-2">
               <span className="alter-text">{languageState.texts.book.by}</span>{" "}
-              {author.name} <span className="alter-text">({year})</span>
+              {author?.name} <span className="alter-text">({year})</span>
             </p>
           </div>
 

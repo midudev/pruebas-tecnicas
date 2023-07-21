@@ -37,9 +37,9 @@ function LightBox() {
   }, [onKeyDown]);
 
   useEffect(() => {
-    if (lightBoxState.id) document.body.style.overflow = "hidden";
+    if (lightBoxState.id) document.body.style.overflowY = "hidden";
     else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflowY = "auto";
       setSeeingCover(false);
     }
   }, [lightBoxState]);
