@@ -71,7 +71,7 @@
 >
   <!-- svelte-ignore a11y-no-static-element-interactions -->
   <div
-    class="relative h-full w-[150px] xl:w-[180px] shadow-[-4.0px_5.0px_8.0px_rgba(0,0,0,0.38)]"
+    class="relative h-full w-[150px] xl:w-[150px] shadow-[-4.0px_5.0px_8.0px_rgba(0,0,0,0.38)]"
     on:mouseenter={handleOverlay}
     on:mouseleave={handleOverlay}
   >

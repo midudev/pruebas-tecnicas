@@ -5,32 +5,45 @@
   import { asideState } from '../store/aside-store'
   import ReadingListItem from './ReadingListItem.svelte'
   import { derived } from 'svelte/store'
+  import SortItems from './SortItems.svelte'
+  import { actionsStore } from '../store/actions-store'
 
-  let sortedBooks = derived(orderList, ($orderList) => {
-    if ($orderList.end.book) {
-      readingListUsecase.sortBooks($orderList)
+  let sortedBooks = derived(
+    [appState, orderList],
+    ([$appState, $orderList]) => {
+      if ($orderList.end.book) {
+        readingListUsecase.dragBooks($orderList)
 
-      orderList.update(() => ({
-        start: {
-          index: 0,
-          book: null,
-        },
-        end: {
-          index: 0,
-          book: null,
-        },
-      }))
+        orderList.update(() => ({
+          start: {
+            index: 0,
+            book: null,
+          },
+          end: {
+            index: 0,
+            book: null,
+          },
+        }))
+
+        actionsStore.update(() => ({
+          readingListItemAdded: false,
+          readingListItemRemoved: false,
+        }))
+      }
+
+      return $appState.readingBooks
     }
-
-    return $appState.readingBooks
-  })
+  )
 </script>
 
 {#if $asideState.readingListIsOpen}
   <aside
-    class="fixed inset-y-0 right-0 z-3 h-full mt-[100px] p-5 overflow-y-scroll bg-aside shadow-xl animate-slide-in xl:w-2/6 xl:mt-0"
+    class="fixed flex flex-col inset-y-0 right-0 z-3 h-full mt-[100px] p-5 overflow-y-scroll bg-aside shadow-xl animate-slide-in xl:w-2/6 xl:mt-0"
   >
-    <h2 class="text-2xl mb-5"><i>Lista de lectura</i></h2>
+    <header class="flex justify-between items-center mb-3 px-5">
+      <h2 class="text-2xl"><i>Lista de lectura</i></h2>
+      <SortItems />
+    </header>
     <ul class="flex flex-col">
       {#if $sortedBooks.length > 0}
         {#each $sortedBooks as book, index (book.ISBN)}

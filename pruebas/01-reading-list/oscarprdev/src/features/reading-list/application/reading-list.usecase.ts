@@ -4,6 +4,13 @@ import type { Book } from '../../../core/types'
 import type { ReadingListPorts } from './reading-list.ports'
 import type { OrderList } from './reading-list.types'
 
+const MAX_VAL = 'Mayor valoracion'
+const MIN_VAL = 'Menor valoracion'
+const COMPLETED = 'Completado'
+const READING = 'Leyendo'
+
+export const sortItems = [MAX_VAL, MIN_VAL, COMPLETED, READING]
+
 export class ReadingListUsecase extends StateUsecase {
   constructor(
     statePorts: StatePorts,
@@ -45,20 +52,55 @@ export class ReadingListUsecase extends StateUsecase {
     this.updateState(stateUpdated)
   }
 
-  sortBooks(orderState: OrderList) {
+  dragBooks(orderState: OrderList) {
     this.updateState(this.provideAppState())
 
-    const radingList = [...this.state.readingBooks]
+    const readingList = [...this.state.readingBooks]
 
     const startIndex = orderState.start.index
     const endIndex = orderState.end.index
 
-    radingList[startIndex] = orderState.end.book
-    radingList[endIndex] = orderState.start.book
+    readingList[startIndex] = orderState.end.book
+    readingList[endIndex] = orderState.start.book
 
     const stateUpdated = this.readingListPorts.updateBooks(
       this.state.books,
-      radingList
+      readingList
+    )
+
+    this.updateState(stateUpdated)
+  }
+
+  sortBooks(item: string) {
+    this.updateState(this.provideAppState())
+
+    let readingList: Book[]
+
+    switch (item) {
+      case MAX_VAL:
+        readingList = this.state.readingBooks.sort((a, b) => b.stars - a.stars)
+        break
+      case MIN_VAL:
+        readingList = this.state.readingBooks.sort((a, b) => a.stars - b.stars)
+        break
+      case COMPLETED:
+        readingList = this.state.readingBooks.sort((a, b) =>
+          b.isDone ? 1 : -1
+        )
+        break
+      case READING:
+        readingList = this.state.readingBooks.sort((a, b) =>
+          b.isDone ? -1 : 1
+        )
+        break
+      default:
+        readingList = this.state.readingBooks
+        break
+    }
+
+    const stateUpdated = this.readingListPorts.updateBooks(
+      this.state.books,
+      readingList
     )
 
     this.updateState(stateUpdated)
