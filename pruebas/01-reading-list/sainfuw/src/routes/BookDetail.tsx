@@ -14,9 +14,9 @@ export default function BookDetail() {
   if (!book) return <div>Book not found!</div>
 
   return (
-    <main className="flex w-full h-screen bg-background">
+    <main className="flex w-full md:h-screen bg-background">
       <div className="flex items-center max-w-4xl gap-8 mx-auto">
-        <article className="flex items-center p-16 rounded-lg gap-x-20 bg-background-light">
+        <article className="flex flex-col items-center gap-20 p-8 rounded-lg bg-background-light md:flex-row md:gap-16 md:p-16">
           <motion.section
             className="flex flex-col items-center gap-y-4"
             layoutId={book.title}

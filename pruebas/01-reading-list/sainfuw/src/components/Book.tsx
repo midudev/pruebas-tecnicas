@@ -30,7 +30,7 @@ export default function Book({ book }: { book: IBook }) {
         <Button
           onClick={() => addToReadList(book)}
           text="Add to Read"
-          className="bg-secondary hover:bg-secondary-light hover:bg-blue-950"
+          className="bg-secondary hover:bg-blue-950"
         />
       </div>
     </motion.li>

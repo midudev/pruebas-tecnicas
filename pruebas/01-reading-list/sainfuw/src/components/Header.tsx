@@ -14,7 +14,7 @@ export default function Header() {
   const title = Array.from('BookStore')
 
   return (
-    <header className='flex flex-col items-center justify-between mt-8 px-11 md:flex-row-reverse'>
+    <header className='flex flex-col items-center justify-between px-8 mt-8 md:flex-row-reverse'>
       <motion.div
         variants={container}
         initial="hidden"
@@ -32,17 +32,26 @@ export default function Header() {
           </motion.span>
         ))}
       </motion.div>
-      <section className="flex p-6 rounded-lg bg-background-light text-primary">
-        <div className="flex flex-col min-w-[220px] justify-around">
-          <h3 className="font-pop">Total books: {books.length}</h3>
+      <section className="flex gap-8 p-6 rounded-lg bg-background-light text-primary">
+        <Filters />
+        <div className="flex flex-col min-w-[180px] justify-center gap-1">
+          <h3 className="flex justify-between font-pop">
+            Total books:
+            <span className="font-bold">{books.length}</span>
+          </h3>
           {filteredBooks.length !== books.length && (
-            <h3 className="font-pop">Total filtered books: {filteredBooks.length}</h3>
+            <h3 className="flex justify-between font-pop">
+              Total filtered books:
+              <span className="font-bold">{filteredBooks.length}</span>
+            </h3>
           )}
           {readList.length > 0 && (
-            <h3 className="font-pop">Total read in list: {readList.length}</h3>
+            <h3 className="flex justify-between font-pop">
+              Total read in list:
+              <span className="font-bold">{readList.length}</span>
+            </h3>
           )}
         </div>
-        <Filters />
       </section>
     </header>
   );

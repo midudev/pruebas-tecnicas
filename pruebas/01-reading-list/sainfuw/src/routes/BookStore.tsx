@@ -8,7 +8,7 @@ export default function BookStore() {
   const { readList } = useContext(ReadListContext)
 
   return (
-    <div className="flex flex-col h-screen max-w-6xl gap-8 py-1 mx-auto rounded-lg bg-background">
+    <div className="flex flex-col h-screen max-w-6xl gap-4 py-1 mx-auto rounded-lg bg-background">
       <Header />
       <main className="flex flex-col flex-1 gap-4 px-8 pb-8 md:flex-row">
         <Books />
