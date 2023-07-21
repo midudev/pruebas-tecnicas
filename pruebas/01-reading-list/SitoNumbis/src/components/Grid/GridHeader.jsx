@@ -63,13 +63,7 @@ function HomeHeader() {
     [setFiltersState]
   );
 
-  const totalLength = useMemo(() => {
-    let toReturn = libraryState.showing;
-    if (location.pathname === "/reading-list")
-      toReturn = libraryState.readingList.size;
-    else toReturn = libraryState.showing - libraryState.readingList.size;
-    return toReturn;
-  }, [libraryState.showing, location, filtersState]);
+  const totalLength = useMemo(() => {}, []);
 
   return (
     <section>
