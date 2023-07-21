@@ -27,7 +27,15 @@
   }
 
   const booksFromIDs = (ids) => $books.filter((b) => ids.includes(b.ISBN))
+
+  const onStorage = (e) => {
+    if (e.key === 'selectedBookISBNs') {
+      $selectedBookIDs = e.newValue.split(',')
+    }
+  }
 </script>
+
+<svelte:window on:storage={onStorage} />
 
 <div class="grid grid-cols-7 gap-10">
   <section>
