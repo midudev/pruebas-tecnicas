@@ -60,10 +60,11 @@ const libraryReducer = (libraryState, action) => {
       // validating that it's an array
       if (typeof obj === "object" && obj.length)
         obj.forEach((item) => newMap.set(item, item));
+
       return {
         ...libraryState,
         readingList: newMap,
-        available: libraryState.books.length - newMap.size,
+        available: libraryState.available - newMap.size,
       };
     }
 

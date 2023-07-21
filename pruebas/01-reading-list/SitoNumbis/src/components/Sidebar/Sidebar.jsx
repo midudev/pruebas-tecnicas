@@ -28,7 +28,6 @@ function Sidebar() {
       const book = libraryState.books[value];
       toReturn.push(book);
     });
-    console.log(toReturn);
     return toReturn;
   }, [libraryState]);
 
@@ -48,9 +47,9 @@ function Sidebar() {
   }, [onKeyDown]);
 
   useEffect(() => {
-    if (location.pathname === "/reading-list")
-      document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "auto";
+    if (location.pathname === "/reading-list" && window.innerWidth < 768)
+      document.body.style.overflowY = "hidden";
+    else document.body.style.overflowY = "auto";
   }, [location]);
 
   const closeSidebar = useCallback(() => {

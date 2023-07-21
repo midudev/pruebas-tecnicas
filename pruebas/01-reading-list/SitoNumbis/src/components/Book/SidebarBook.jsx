@@ -1,9 +1,15 @@
 import { memo, useCallback, useState } from "react";
 import useOnclickOutside from "react-cool-onclickoutside";
 
+import { faClose } from "@fortawesome/free-solid-svg-icons";
+
 import { css } from "@emotion/css";
 
 import PropTypes from "prop-types";
+
+// components
+import IconButton from "../IconButton/IconButton";
+import LazyImage from "../LazyImage/LazyImage";
 
 // contexts
 import { useLanguage } from "../../contexts/LanguageProvider";
@@ -11,8 +17,6 @@ import { useLibrary } from "../../contexts/LibraryProvider";
 
 // styles
 import styles from "./styles.module.css";
-import IconButton from "../IconButton/IconButton";
-import { faClose } from "@fortawesome/free-solid-svg-icons";
 
 function Book({ title, pages, genre, cover, year, ISBN, author, i }) {
   const { languageState } = useLanguage();
@@ -32,15 +36,15 @@ function Book({ title, pages, genre, cover, year, ISBN, author, i }) {
     <li
       ref={ref}
       id={ISBN}
-      className={`group ${styles.main} ${
+      className={`${styles.side} group ${styles.main} ${
         focused ? "!z-[999]" : ""
-      } hover:-translate-y-4  transition appear w-full ${css({
+      } hover:-translate-y-4 transition appear w-full ${css({
         gridArea: `${i + 1} / 1 / span 6 / span 1`,
         zIndex: i + 1,
       })}`}
     >
-      <img
-        className="w-full h-full object-cover object-center shadow-[black] shadow-md transition"
+      <LazyImage
+        className="w-full h-full object-cover object-center transition"
         src={cover}
         alt={`${title}-${languageState.texts.book.cover}`}
       />
@@ -57,9 +61,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author, i }) {
         onKeyDown={() => {}}
         onClick={() => setFocused((focused) => !focused)}
         onMouseLeave={() => setFocused(false)}
-        className={`${
-          styles.bookInfo
-        } absolute top-0 left-0 p-5 flex flex-col h-full justify-between transition group-hover:bg-dark-alt-bg-opacity ${
+        className={`absolute top-0 left-0 p-5 flex flex-col h-full justify-between transition group-hover:bg-dark-alt-bg-opacity ${
           focused ? "bg-dark-alt-bg-opacity opacity-100" : ""
         } opacity-0 group-hover:opacity-100 w-full h-full`}
       >
@@ -73,7 +75,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author, i }) {
           </p>
           <p className="mt-2">
             <span className="alter-text">{languageState.texts.book.by}</span>{" "}
-            {author.name} <span className="alter-text">({year})</span>
+            {author?.name} <span className="alter-text">({year})</span>
           </p>
         </div>
       </div>

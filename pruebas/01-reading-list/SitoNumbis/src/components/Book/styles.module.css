@@ -2,6 +2,10 @@
   @apply w-full relative h-full;
 }
 
+.side {
+  box-shadow: -2px -5px 25px 5px black;
+}
+
 .addButton {
   @apply !opacity-100 !translate-y-0;
 }
@@ -10,9 +14,21 @@
   @apply absolute top-0 pr-8 left-0 w-full h-full opacity-0 transition flex flex-col justify-between items-start p-3  focus:bg-dark-alt-bg-opacity focus:opacity-100;
 }
 
+.main .primary,
+.bookInfo {
+  @apply transition duration-500 opacity-0 translate-y-5;
+}
+
 @media (hover: hover) {
   .bookInfoContainer {
     @apply hover:bg-dark-alt-bg-opacity hover:opacity-100;
+  }
+
+  .main:focus .bookInfo,
+  .main:hover .bookInfo,
+  .main:focus button,
+  .main:hover button {
+    @apply opacity-100 translate-y-0;
   }
 }
 

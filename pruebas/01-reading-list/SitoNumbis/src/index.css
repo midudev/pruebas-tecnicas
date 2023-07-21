@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-dark-bg;
+  @apply bg-dark-bg overflow-x-hidden;
 }
 
 [role="button"] {

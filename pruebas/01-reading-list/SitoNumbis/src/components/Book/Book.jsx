@@ -1,4 +1,4 @@
-import { memo, useEffect, useMemo, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { stringSimilarity } from "string-similarity-js";
 import loadable from "@loadable/component";
 
@@ -13,6 +13,7 @@ import { useLightBox } from "../LightBox/LightBoxProvider";
 // styles
 import styles from "./styles.module.css";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
+import LazyImage from "../LazyImage/LazyImage";
 
 // components
 const Tippy = loadable(() => import("@tippyjs/react"));
@@ -26,12 +27,6 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
 
   const addToReadingList = () =>
     setLibraryState({ type: "toggle-to-reading-list", id: ISBN });
-
-  const memoAnimation = useMemo(
-    () =>
-      "transition duration-500 group-hover:opacity-100 group-hover:translate-y-0 group-focus:opacity-100 group-focus:translate-y-0 opacity-0 translate-y-5",
-    []
-  );
 
   const activateLightBox = (e) => {
     // ignoring add to reading list action
@@ -67,7 +62,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
 
   return !hide ? (
     <li id={ISBN} className={`book ${styles.main} appear`}>
-      <img
+      <LazyImage
         className="w-full h-full object-cover object-center shadow-[black] shadow-md transition"
         src={cover}
         alt={`${title}-${languageState.texts.book.cover}`}
@@ -84,7 +79,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
           onClick={activateLightBox}
           className={`group ${styles.bookInfoContainer}`}
         >
-          <div className={`${memoAnimation} ${styles.bookInfo}`}>
+          <div className={`${styles.bookInfo}`}>
             <h3>{title}</h3>
             <p>
               {genre}{" "}
@@ -94,7 +89,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
             </p>
             <p className="mt-2">
               <span className="alter-text">{languageState.texts.book.by}</span>{" "}
-              {author.name} <span className="alter-text">({year})</span>
+              {author?.name} <span className="alter-text">({year})</span>
             </p>
           </div>
 
@@ -102,8 +97,8 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
             name="add-to-reading-list"
             onClick={addToReadingList}
             tabIndex={-1}
+            className={styles.primary}
             ariaLabel={languageState.texts.ariaLabels.add}
-            className={`${memoAnimation}`}
           >
             {languageState.texts.book.add}
           </PrimaryButton>

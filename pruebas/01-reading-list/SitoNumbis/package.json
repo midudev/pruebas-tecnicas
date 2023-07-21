@@ -31,6 +31,7 @@
     "react-router-dom": "^6.8.2",
     "some-javascript-utils": "^0.9.3",
     "string-similarity-js": "^2.1.4",
+    "use-is-in-viewport": "^1.0.9",
     "use-lodash-debounce": "^1.3.0",
     "use-screen-width": "^1.0.3"
   },

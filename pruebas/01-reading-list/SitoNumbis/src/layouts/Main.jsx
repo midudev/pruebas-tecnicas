@@ -8,16 +8,16 @@ import { useLibrary } from "../contexts/LibraryProvider";
 // components
 import GenreBar from "../components/GenreBar/GenreBar";
 import GridHeader from "../components/Grid/GridHeader";
-import GridBook from "../components/Grid/GridBook";
 import Navbar from "../components/Navbar/Navbar";
-import Footer from "../components/Footer/Footer";
-import Sidebar from "../components/Sidebar/Sidebar";
 
 // styles
 import styles from "./styles.module.css";
 
 // suspense components
 const ToTop = loadable(() => import("../components/ToTop/ToTop"));
+const Footer = loadable(() => import("../components/Footer/Footer"));
+const GridBook = loadable(() => import("../components/Grid/GridBook"));
+const Sidebar = loadable(() => import("../components/Sidebar/Sidebar"));
 const LightBox = loadable(() => import("../components/LightBox/LightBox"));
 
 function Main() {
