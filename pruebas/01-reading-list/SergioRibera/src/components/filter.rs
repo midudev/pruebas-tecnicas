@@ -31,7 +31,7 @@ where
         >
             <div
                 title="Filtrar"
-                class={classes!("md:flex","hidden","cursor-pointer","hover:bg-slate-200","p-4","dark:hover:bg-slate-700","dark:text-zinc-400","group-hover/filter:bg-slate-700","dark:group-hover/filter:bg-slate-700","group-hover/filter:rounded-t")}
+                class={classes!("md:flex","hidden","cursor-pointer","p-4","dark:text-zinc-400","group-hover/filter:bg-slate-200","dark:group-hover/filter:bg-slate-700","group-hover/filter:rounded-t")}
             >
                 <Icon icon_id={IconId::FontAwesomeSolidFilter} width="12px" height="12px"/>
             </div>

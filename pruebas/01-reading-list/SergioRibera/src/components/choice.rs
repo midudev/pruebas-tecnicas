@@ -99,8 +99,8 @@ where
             {for options.iter().map(|o| {
                 html!{
                     <div
-                        class={classes!("rounded","cursor-pointer","px-4","py-2","hover:bg-slate-200","dark:hover:bg-slate-700","dark:text-zinc-400",
-                        (selecteds.current().contains(o)).then_some("bg-slate-300 dark:bg-slate-600").or(Some("bg-slate-200 dark:bg-slate-800"))
+                        class={classes!("rounded","cursor-pointer","px-4","py-2","hover:bg-slate-300","dark:hover:bg-slate-700","dark:text-zinc-400",
+                        (selecteds.current().contains(o)).then_some("bg-slate-300 dark:bg-slate-600").or(Some("bg-slate-100 dark:bg-slate-800"))
                         )}
                         onclick={(onchange.clone())(o.clone())}
                     >
