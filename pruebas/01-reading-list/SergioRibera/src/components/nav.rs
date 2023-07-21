@@ -1,4 +1,4 @@
-use crate::components::InputText;
+use crate::components::{FilterComponent, InputText};
 use serde::{Deserialize, Serialize};
 use yew::prelude::*;
 use yew_hooks::{use_effect_once, use_local_storage};
@@ -7,20 +7,48 @@ use yew_icons::{Icon, IconId};
 #[derive(Properties, PartialEq)]
 pub struct Props {
     pub onsearch: Option<Callback<String>>,
+    pub onfiltergenre: Option<Callback<Vec<String>>>,
+    pub onfilterpages: Option<Callback<Vec<String>>>,
+    #[prop_or_default]
+    pub genres: Vec<String>,
+    #[prop_or_default]
+    pub pages: Vec<String>,
 }
 
 #[function_component(NavBar)]
 pub fn navbar(props: &Props) -> Html {
-    let Props { onsearch } = props;
+    let Props {
+        onsearch,
+        onfiltergenre,
+        onfilterpages,
+        genres,
+        pages,
+    } = props;
     html! {
         <nav class={classes!("w-full","px-6","py-4","flex","flex-row","items-center",
             (onsearch.is_some()).then_some("justify-between").or(Some("justify-end")))}>
             if let Some(onsearch) = onsearch {
-                <InputText
-                    onchange={onsearch}
-                    placeholder={"Buscar por Nombre, author, genero, sinopsis"}
-                    icon={IconId::BootstrapSearch}
-                />
+                <div
+                    class={classes!("flex","flex-row","gap-4","items-center")}
+                >
+                    <InputText
+                        onchange={onsearch}
+                        placeholder={"Buscar por Nombre, author, genero, sinopsis y mas"}
+                        icon={IconId::BootstrapSearch}
+                    />
+                    if let Some(onfilter) = onfiltergenre {
+                        <FilterComponent<String>
+                            options={genres.clone()}
+                            onchange={onfilter.clone()}
+                            />
+                    }
+                    if let Some(onfilter) = onfilterpages {
+                        <FilterComponent<String>
+                            options={pages.clone()}
+                            onchange={onfilter}
+                            />
+                    }
+                </div>
             }
             <ThemeComponent />
         </nav>

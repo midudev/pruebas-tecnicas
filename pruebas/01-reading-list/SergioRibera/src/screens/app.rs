@@ -1,5 +1,7 @@
+use std::collections::HashSet;
+
 use yew::prelude::*;
-use yew_hooks::UseLocalStorageHandle;
+use yew_hooks::{use_set, UseLocalStorageHandle};
 
 use crate::{
     components::NavBar,
@@ -19,8 +21,12 @@ pub fn app() -> Html {
         data_context.2.clone(),
     );
     let reading_list = use_context::<UseLocalStorageHandle<Vec<Book>>>().unwrap();
-    let search = use_state(String::new);
-    let filtered_data = use_state(Vec::<Book>::new);
+    let search = use_state(String::new); // store search string from input search
+    let genres = use_set(HashSet::<String>::new()); // store genres of books
+    let pages = use_set(HashSet::<String>::new()); // store pages of books
+    let filter = use_state(Vec::<String>::new); // state for filter by any param
+    let filter_pages = use_state(Vec::<i64>::new); // state for filter by pages book.page >= filter
+    let filtered_data = use_state(Vec::<Book>::new); // store filtered books
 
     let onsearch = {
         let search = search.clone();
@@ -29,37 +35,73 @@ pub fn app() -> Html {
         })
     };
 
+    let onfiltergenre = {
+        let filter = filter.clone();
+        Callback::from(move |t: Vec<String>| {
+            filter.set(t.iter().map(|t| t.to_lowercase()).collect());
+        })
+    };
+
+    let onfilterpages = {
+        let filter_pages = filter_pages.clone();
+        Callback::from(move |t: Vec<String>| {
+            filter_pages.set(t.iter().flat_map(|t| t.parse::<i64>().ok()).collect());
+        })
+    };
+
+    {
+        let genres = genres.clone();
+        let pages = pages.clone();
+        use_effect_with_deps(
+            move |data| {
+                if data.is_empty() {
+                    return;
+                }
+                if genres.current().is_empty() {
+                    genres.set(data.iter().map(|b| b.genre.clone()).collect());
+                }
+                if pages.current().is_empty() {
+                    let p = data
+                        .iter()
+                        .map(|b| b.pages.to_string())
+                        .collect::<Vec<String>>();
+                    pages.set(p.iter().cloned().collect());
+                }
+            },
+            data.clone().unwrap_or_default(),
+        );
+    }
+
     {
         let reading_list = reading_list.clone();
         use_effect_with_deps(
-            move |(search, data, filtered_data)| {
-                if !search.is_empty() {
-                    let search = search.to_lowercase();
-                    filtered_data.set(
-                        data.iter()
-                            .filter(|d| {
-                                d.title.to_lowercase().contains(&search)
-                                    || d.genre.to_lowercase().contains(&search)
+            move |(search, filter, filter_pages, data, filtered_data)| {
+                let search = search.to_lowercase();
+                filtered_data.set(
+                    data.iter()
+                        .filter(|d| {
+                            (search.is_empty()
+                                || (d.title.to_lowercase().contains(&search)
                                     || d.author.name.to_lowercase().contains(&search)
-                                    || d.synopsis.to_lowercase().contains(&search)
-                                    || d.year.to_string().contains(&search)
-                                    || d.pages.to_string().contains(&search)
-                            })
-                            .map(|b| Book {
-                                saved: check_book_saved(
-                                    reading_list.as_ref().unwrap_or(&Vec::<Book>::new()),
-                                    b,
-                                ),
-                                ..b.clone()
-                            })
-                            .collect::<Vec<Book>>(),
-                    );
-                } else {
-                    filtered_data.set(Vec::<Book>::new());
-                }
+                                    || d.synopsis.to_lowercase().contains(&search)))
+                                && (filter.is_empty() || filter.contains(&d.genre.to_lowercase()))
+                                && (filter_pages.is_empty()
+                                    || filter_pages.iter().any(|p| d.pages >= *p))
+                        })
+                        .map(|b| Book {
+                            saved: check_book_saved(
+                                reading_list.as_ref().unwrap_or(&Vec::<Book>::new()),
+                                b,
+                            ),
+                            ..b.clone()
+                        })
+                        .collect::<Vec<Book>>(),
+                );
             },
             (
-                search,
+                search.clone(),
+                filter.clone(),
+                filter_pages.clone(),
                 data.clone().unwrap_or_default(),
                 filtered_data.clone(),
             ),
@@ -68,10 +110,16 @@ pub fn app() -> Html {
 
     html! {
         <>
-            <NavBar {onsearch} />
+            <NavBar
+                {onsearch}
+                {onfiltergenre}
+                {onfilterpages}
+                genres={genres.current().clone().into_iter().collect::<Vec<String>>()}
+                pages={pages.current().clone().into_iter().collect::<Vec<String>>()}
+            />
             <main class={classes!("px-6")}>
                 // If searching
-                if !filtered_data.is_empty() {
+                if !search.is_empty() || !filter.is_empty() || !filter_pages.is_empty() {
                     <LibraryComponent title="" filter=false expandable=false books={(*filtered_data).clone()} />
                 } else {
                     <SuggestedBook books={data.clone().unwrap_or_default()} />

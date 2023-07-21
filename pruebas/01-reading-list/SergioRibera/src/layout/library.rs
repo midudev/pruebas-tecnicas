@@ -1,7 +1,7 @@
 use std::collections::HashSet;
 
 use yew::prelude::*;
-use yew_hooks::{use_bool_toggle, use_local_storage, UseLocalStorageHandle, use_set};
+use yew_hooks::{use_bool_toggle, use_local_storage, use_set, UseLocalStorageHandle};
 use yew_icons::{Icon, IconId};
 
 use crate::{
@@ -169,7 +169,6 @@ pub fn Library(props: &Props) -> Html {
             filter.set(v.iter().map(|f| f.to_lowercase()).collect());
         })
     };
-
 
     html! {
         <section
