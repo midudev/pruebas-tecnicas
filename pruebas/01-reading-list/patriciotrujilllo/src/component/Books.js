@@ -7,7 +7,6 @@ export const Books = ({books}) =>{
     
     return (
 
-    <div className='container'>
         <div className='book-container' data-testid='book-container-id'>
         {
             books.map(({book})=>(
@@ -28,7 +27,6 @@ export const Books = ({books}) =>{
             
         }
         </div>
-    </div>
 
     )
 }
