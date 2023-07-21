@@ -1,7 +1,7 @@
 <script>
   import BooksList from '$lib/components/BooksList.svelte'
   import GenreSelector from '$lib/components/GenreSelector.svelte'
-  import { selectedBooks, books } from '$lib/utils/stores'
+  import { selectedBookIDs, books } from '$lib/utils/stores'
 
   /** @type {import('./$types').PageData} */
   export let data
@@ -10,21 +10,23 @@
   const { genres } = data
   let selectedGenres = genres
 
-  $: booksInGenre = $books.filter((b) => selectedGenres.includes(b.genre))
-  $: filteredBooks = booksInGenre.filter((b) => !$selectedBooks.some((sb) => sb === b))
+  $: bookIDsInGenre = $books.filter((b) => selectedGenres.includes(b.genre)).map((b) => b.ISBN)
+  $: filteredBookIDs = bookIDsInGenre.filter((id) => !$selectedBookIDs.some((sid) => sid === id))
 
   const addBook = (book) => {
-    $selectedBooks = [...$selectedBooks, book]
+    $selectedBookIDs = [...$selectedBookIDs, book.ISBN]
   }
 
   const removeBook = (book) => {
-    $selectedBooks = $selectedBooks.filter((b) => b !== book)
+    $selectedBookIDs = $selectedBookIDs.filter((b) => b !== book.ISBN)
   }
 
   const toggleSelectedGenre = (genre) => {
     selectedGenres.includes(genre) ? (selectedGenres = selectedGenres.filter((g) => g !== genre)) : selectedGenres.push(genre)
     selectedGenres = selectedGenres //force reactivity
   }
+
+  const booksFromIDs = (ids) => $books.filter((b) => ids.includes(b.ISBN))
 </script>
 
 <div class="grid grid-cols-7 gap-10">
@@ -34,12 +36,12 @@
   </section>
 
   <section class="col-span-4">
-    <h2 class="text-2xl pb-4">{filteredBooks.length} libros disponibles</h2>
-    <BooksList books={filteredBooks} action={addBook} isSelected={false} />
+    <h2 class="text-2xl pb-4">{filteredBookIDs.length} libros disponibles</h2>
+    <BooksList books={booksFromIDs(filteredBookIDs)} action={addBook} isSelected={false} />
   </section>
 
   <section class="col-span-2">
-    <h2 class="text-2xl pb-4">{$selectedBooks.length} libros seleccionados</h2>
-    <BooksList books={$selectedBooks} action={removeBook} isSelected={true} />
+    <h2 class="text-2xl pb-4">{$selectedBookIDs.length} libros seleccionados</h2>
+    <BooksList books={booksFromIDs($selectedBookIDs)} action={removeBook} isSelected={true} />
   </section>
 </div>
