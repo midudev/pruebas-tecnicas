@@ -1,11 +1,12 @@
 use yew::prelude::*;
 use yew_hooks::{use_list, UseLocalStorageHandle};
+use yew_icons::{Icon, IconId};
 use yew_router::prelude::Link;
 
 use crate::{
     components::NavBar,
     context::DataContext,
-    layout::{ErrorType, LayoutError, Library},
+    layout::{check_book_saved, ErrorType, LayoutError, Library},
     models::Book as BookModel,
     route::Route,
     utils::to_slug,
@@ -45,6 +46,42 @@ pub fn Book(props: &BookProps) -> Html {
         },
         (data.unwrap_or_default(), name),
     );
+
+    let togglesave = {
+        let reading_list = reading_list.clone();
+        |book: BookModel| {
+            Callback::from(move |_: MouseEvent| {
+                if check_book_saved(&reading_list.as_ref().unwrap().to_vec(), &book) {
+                    if let Some(r) = reading_list.as_ref().map(|r| {
+                        let mut r = r.clone();
+                        if let Some(i) = r.iter().position(|x| {
+                            book.title == *x.title
+                                && book.genre == *x.genre
+                                && book.author.name == *x.author.name
+                                && book.year == x.year
+                                && book.pages == x.pages
+                        }) {
+                            r.remove(i);
+                        }
+                        r
+                    }) {
+                        reading_list.set(r);
+                    }
+                } else if let Some(r) = reading_list.as_ref().map(|r| {
+                    let mut r = r.clone();
+                    if !r.contains(&book) {
+                        r.push(BookModel {
+                            saved: true,
+                            ..book.clone()
+                        });
+                    }
+                    r
+                }) {
+                    reading_list.set(r);
+                }
+            })
+        }
+    };
 
     html! {
         <>
@@ -91,7 +128,19 @@ pub fn Book(props: &BookProps) -> Html {
                     <section
                         class={classes!("flex","flex-col","flex-wrap","gap-6","justify-start","items-center","max-w-[500px]","lg:max-w-[1200px]","lg:flex-row-reverse")}
                     >
-                        <div class={classes!("flex","flex-col","gap-4")}>
+                    <button
+                        onclick={togglesave(book.clone())}
+                        class={classes!("rounded-full","md:hidden","bg-slate-900","text-white","px-4","py-2","w-fit","flex","flex-row","gap-3","dark:bg-slate-700")}
+                    >
+                        if check_book_saved(&reading_list.as_ref().unwrap().to_vec(), &book) {
+                            <Icon icon_id={IconId::BootstrapBookmarkDashFill} />
+                            {"Quitar"}
+                        } else {
+                            <Icon icon_id={IconId::BootstrapBookmarkPlusFill} />
+                            {"Guardar"}
+                        }
+                    </button>
+                        <div class={classes!("flex","flex-col","gap-3")}>
                             <div class={classes!("flex","flex-row","gap-3")}>
                                 <span class={classes!("text-neutral-600","font-bold","dark:text-zinc-400")}>
                                     {"Paginas:"}
