@@ -2,3 +2,15 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 300px;
+  }
+}

@@ -24,7 +24,13 @@ export default function BooksListItem({ book }: Props) {
 			<div className={styles.book}>
 				<button
 					type="button"
-					onClick={() => console.log("Agregando a favoritos", book.title)}
+					onClick={() => {
+						console.log(book);
+						dispatch({
+							type: BookTypes.ADD_TO_FAVORITE,
+							payload: book,
+						});
+					}}
 					className={styles.button}
 				>
 					<HeartIcon className={styles.icon} />
