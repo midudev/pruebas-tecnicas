@@ -1,8 +1,12 @@
-<h1>Catalogo de libros</h1>
-<p>A continuacion encontrarás los libros que tenemos disponibles para lectura</p>
-<hr>
-<ul class="grilla-libros">
-  <div *ngFor="let libro of libros" class="portada">      
-      <img [src]="libro.book.cover" alt="{{ libro.book.title }} Cover" width="200" height="300">
+<h2>Catálogo libros</h2>
+<ul class="grilla-libros"cdkDropList cdkDropListConnectedTo=".lista-lectura" cdkDragBoundary=".lista-lectura">
+  <div *ngFor="let libro of libros" class="portada" cdkDrag (dblclick)="moverALectura(libro)">
+    <img [src]="libro.book.cover" alt="{{ libro.book.title }} Cover" width="200" height="300">
+  </div>
+</ul>
+<h2>lista de lectura</h2>
+<ul class="lista-lectura" class="grilla-libros"cdkDropList (cdkDropListDropped)="onDrop($event)">
+  <div *ngFor="let libro of listaDeLectura" class="portada" cdkDrag (dblclick)="moverACatalogo(libro)">
+    <img [src]="libro.book.cover" alt="{{ libro.book.title }} Cover" width="200" height="300">
   </div>
 </ul>
