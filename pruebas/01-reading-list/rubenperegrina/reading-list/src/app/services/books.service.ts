@@ -17,6 +17,9 @@ export class BooksService {
     Library[]
   >([]);
 
+  reading_books_list = 'reading-list-books';
+  available_books = 'available-books';
+
   http = inject(HttpClient);
 
   constructor() {
@@ -33,38 +36,25 @@ export class BooksService {
 
   private saveToLocalStorage() {
     localStorage.setItem(
-      'available-books',
+      this.available_books,
       JSON.stringify(this._availableBooks.value)
     );
     localStorage.setItem(
-      'reading-list-books',
+      this.reading_books_list,
       JSON.stringify(this._readingListBooks.value)
     );
   }
 
   private loadFromLocalStorage() {
-    const _availableBooks = localStorage.getItem('available-books');
+    const _availableBooks = localStorage.getItem(this.available_books);
     if (_availableBooks) {
       this.availableBooks = JSON.parse(_availableBooks);
     } else {
-      this.http
-        .get<DataFromAPI>('../../assets/data/books.json')
-        .pipe(
-          tap(data => (this.availableBooks = data.library)),
-          tap(() =>
-            localStorage.setItem(
-              'available-books',
-              JSON.stringify(this.availableBooks)
-            )
-          ),
-          tap(() => this._availableBooks.next(this.availableBooks))
-        )
-        .subscribe();
+      this.getAvailableBooks();
     }
-
     this._availableBooks.next(this.availableBooks);
 
-    const _readingListBooks = localStorage.getItem('reading-list-books');
+    const _readingListBooks = localStorage.getItem(this.reading_books_list);
     if (_readingListBooks) {
       this.readingListBooks = JSON.parse(_readingListBooks);
     }
@@ -72,16 +62,21 @@ export class BooksService {
     this._readingListBooks.next(this.readingListBooks);
   }
 
-  // getAvailableBooks(): void {
-  //   this.http
-  //     .get<DataFromAPI>('../../assets/data/books.json')
-  //     .pipe(
-  //       tap(data => (this.availableBooks = data.library)),
-  //       tap(() => this._availableBooks.next(this.availableBooks)),
-  //       tap(() => this.saveToLocalStorage())
-  //     )
-  //     .subscribe();
-  // }
+  getAvailableBooks(): void {
+    this.http
+      .get<DataFromAPI>('../../assets/data/books.json')
+      .pipe(
+        tap(data => (this.availableBooks = data.library)),
+        tap(() =>
+          localStorage.setItem(
+            this.available_books,
+            JSON.stringify(this.availableBooks)
+          )
+        ),
+        tap(() => this._availableBooks.next(this.availableBooks))
+      )
+      .subscribe();
+  }
 
   addToReadingList(book: Book) {
     this.readingListBooks.push({ book });

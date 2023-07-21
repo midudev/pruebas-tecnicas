@@ -1,5 +1,4 @@
 body{
-    /* Created with https://www.css-gradient.com */
     background: #161616;
     }
     h1{
@@ -16,8 +15,8 @@ body{
       border: none;
       transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
      overflow:hidden;
-     border-radius:20px;
-     min-height:450px;
+     border-radius:10px;
+     min-height:350px;
        box-shadow: 0 0 12px 0 rgba(0,0,0,0.2);
     
      @media (max-width: 768px) {
@@ -25,7 +24,7 @@ body{
     }
     
     @media (max-width: 420px) {
-      min-height:300px;
+      min-height:350;
     }
     
      &.card-has-bg{
@@ -49,7 +48,10 @@ body{
     
       &:hover {
         transform: scale(0.98);
-         box-shadow: 0 0 5px -2px rgba(0,0,0,0.3);
+        //  box-shadow: 0 0 5px 4px rgba(0,0,0,0.3);
+        -webkit-box-shadow: inset -2px -77px 148px -8px rgba(0,0,0,0.75);
+        -moz-box-shadow: inset -2px -77px 148px -8px rgba(0,0,0,0.75);
+        box-shadow: inset -2px -77px 148px -8px rgba(0,0,0,0.75);
         background-size:130%;
          transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
     
