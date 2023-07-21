@@ -1,13 +1,11 @@
 <template>
   <div class="app">
-		<Sidebar />
-		<router-view />
-	</div>
+    <BookCatalogue />
+  </div>
 </template>
 
 <script setup>
-  import { RouterView } from 'vue-router'
-  import Sidebar from '@/components/SideBar.vue'
+import BookCatalogue from '@/components/BookCatalogue.vue'
 </script>
 
 <style scoped>

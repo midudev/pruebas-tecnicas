@@ -23,7 +23,7 @@
 
 
 <script setup>
-import { ref, reactive, computed } from 'vue'
+import { ref, computed } from 'vue'
 import { useStore } from '@/stores/BookStore.js'
 import { useBooks } from '@/composables/books.js'
 import BookCard from '@/components/BookCard.vue'
@@ -70,4 +70,5 @@ const readingListCount = computed( ()=> store.readlist.length)
   justify-content: center;
   background-color: blueviolet;
 }
+
 </style>

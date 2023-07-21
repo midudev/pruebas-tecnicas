@@ -18,3 +18,5 @@ Planificación de la Aplicación: Lista de Libros
 16/07/2023
     He aprendido a guardar información en el localStorage
     
+21/07/2023
+    He aprendido a eliminar dependencias inncesarias en un proyecto
