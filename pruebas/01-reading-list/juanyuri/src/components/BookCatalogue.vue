@@ -10,14 +10,6 @@
   <div class="catalogue">
     <BookCard v-for="book in filteredCatalogue" :key="book.title" :book="book" @click="store.addToReadList(book)" />
   </div>
-
-  <br>
-
-  <h1>Reading List ({{ readingListCount }})</h1>
-
-  <div class="catalogue"> <!-- change to reading list styling -->
-    <BookCard v-for="book in store.readlist" :key="book.title" :book="book" @click="store.addToCatalogue(book)" />
-  </div>
 </template>
 
 
@@ -56,9 +48,9 @@ const resetFilters = () => {
 }
 
 /* Counters of differents Lists */
-const catalogueGenreCount = computed( () => store.catalogue.filter(e => e.genre === selectedGenre.value).length )
-const catalogueCount = computed( ()=> store.catalogue.length)
-const readingListCount = computed( ()=> store.readlist.length)
+const catalogueGenreCount = computed(() => store.catalogue.filter(e => e.genre === selectedGenre.value).length)
+const catalogueCount = computed(() => store.catalogue.length)
+
 </script>
 
 
@@ -70,5 +62,4 @@ const readingListCount = computed( ()=> store.readlist.length)
   justify-content: center;
   background-color: blueviolet;
 }
-
 </style>

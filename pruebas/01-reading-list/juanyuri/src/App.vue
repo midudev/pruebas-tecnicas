@@ -1,11 +1,13 @@
 <template>
   <div class="app">
     <BookCatalogue />
+    <ReadList />
   </div>
 </template>
 
 <script setup>
 import BookCatalogue from '@/components/BookCatalogue.vue'
+import ReadList from '@/components/ReadList.vue'
 </script>
 
 <style scoped>
