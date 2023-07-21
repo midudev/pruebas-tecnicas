@@ -1,7 +1,6 @@
 import { genres } from '../../database/books';
 
 const SelectGenre = ({ inputValue, handleChange }) => {
-	console.log('render genre');
 	return (
 		<>
 			<label htmlFor="" className="block mb-0.5">

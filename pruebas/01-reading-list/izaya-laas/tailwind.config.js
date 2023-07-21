@@ -6,6 +6,7 @@ export default {
 			fontFamily: {
 				mystery: ['Mystery Quest', 'cursive'],
 				tilt: ['Tilt Neon', 'cursive'],
+				handlee: ['Handlee', 'cursive'],
 			},
 			backgroundImage: {
 				'grated-pattern': "url('public/grated-pattern.gif')",

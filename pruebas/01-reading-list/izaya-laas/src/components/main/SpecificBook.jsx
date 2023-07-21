@@ -1,5 +1,4 @@
 const SpecificBook = ({ inputValue, handleChange }) => {
-	console.log('Render Specific Book');
 	return (
 		<>
 			<label className="block mb-0.5">Specific Book</label>

@@ -1,12 +1,9 @@
-import { effect } from '@preact/signals';
 import { currentPath } from '../../signals/store';
 import { computed } from '@preact/signals';
 
 const isDisabled = computed(() => currentPath.value === '/my-books');
 
 const ExcludeBooks = ({ inputValue, handleChange }) => {
-	console.log('Render exclude Books');
-
 	return (
 		<>
 			<input

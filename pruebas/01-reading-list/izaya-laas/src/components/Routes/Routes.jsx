@@ -1,16 +1,11 @@
-import AllBooks from './AllBooks';
-import MyBooks from './MyBooks';
-import Recommends from './Recommends';
-import Sandbox from './Sandbox';
-
 import { Router, Route } from 'wouter';
+import { ROUTES } from './routes';
 const Pages = () => {
 	return (
 		<Router>
-			<Route path="/" component={AllBooks} />
-			<Route path="/sandbox" component={Sandbox} />
-			<Route path="/my-books" component={MyBooks} />
-			<Route path="/recommends" component={Recommends} />
+			{ROUTES.map(({ pathname, component }) => {
+				return <Route path={pathname} component={component} />;
+			})}
 		</Router>
 	);
 };

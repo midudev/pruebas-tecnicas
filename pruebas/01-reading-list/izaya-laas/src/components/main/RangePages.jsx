@@ -1,5 +1,4 @@
 const RangePages = ({ inputValue, handleChange }) => {
-	console.log('Render rangePages');
 	return (
 		<>
 			<span className="block mb-0.5">Range pages</span>
