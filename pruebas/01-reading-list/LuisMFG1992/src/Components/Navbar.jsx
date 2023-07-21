@@ -4,7 +4,7 @@ import SearchBar from './SearchBar'
 
 import { IoIosSearch } from 'react-icons/io'
 
-const Navbar = () => {
+const Navbar = ({ handelSidabar }) => {
   return (
     <div className="inline-flex justify-between items-center w-full p-5">
       <img src={logo} className="w-[130px] h-[40px]" />
@@ -17,7 +17,9 @@ const Navbar = () => {
             1
           </div>
         </div>
-        <img src={FavList} className="w-[35px] p-1" />
+        <button onClick={handelSidabar} className="">
+          <img src={FavList} className="w-[35px] p-1" />
+        </button>
       </div>
     </div>
   )

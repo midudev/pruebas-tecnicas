@@ -1,6 +1,6 @@
 const SearchBar = () => {
   return (
-    <form className="hidden sm:block">
+    <form className="hidden sm:block ">
       <label
         htmlFor="default-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"

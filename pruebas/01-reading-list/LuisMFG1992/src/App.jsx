@@ -1,6 +1,6 @@
 import './App.css'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { fetchBooks } from './redux/booksSlice'
@@ -10,9 +10,13 @@ import DropDownFilter from './Components/DropDownFilter'
 import SliderFilter from './Components/SliderFilter'
 import DisplayFilters from './Components/DisplayFilters'
 import Navbar from './Components/Navbar'
+import Sidebar from './Components/Sidebar'
 
 function App() {
   const dispatch = useDispatch()
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+
   const { booksList } = useSelector((state) => state.books)
   const { selectedFilters } = useSelector((state) => state.books)
   const { genres } = useSelector((state) => state.books)
@@ -22,9 +26,14 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const handelSidabar = () => {
+    setIsSidebarOpen(!isSidebarOpen)
+  }
+
   return (
     <div className="w-full  bg-[#202124] flex-col justify-center items-center min-h-screen">
-      <Navbar />
+      {isSidebarOpen && <Sidebar handelSidabar={handelSidabar} />}
+      <Navbar handelSidabar={handelSidabar} />
       <div className="w-full px-5 pt-10 sm:px-0 max-w-[2000px] min-h-screen flex items-center flex-col">
         <p>Libros disponibles: 10</p>
         <p>Lista de lectura: 3</p>
