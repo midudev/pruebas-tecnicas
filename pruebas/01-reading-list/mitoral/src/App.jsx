@@ -1,11 +1,12 @@
 import './App.css'
+import { Header } from './components/Header'
+import { Title } from './components/Title'
 
-function App () {
+export default function App () {
   return (
     <>
-      <h1>Midureads</h1>
+      <Header />
+      <Title />
     </>
   )
 }
-
-export default App

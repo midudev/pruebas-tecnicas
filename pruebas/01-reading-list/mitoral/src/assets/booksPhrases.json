@@ -1,0 +1,40 @@
+{
+    "phrases": [
+        {
+            "phrase": "Lo esencial es invisible a los ojos",
+            "book": "El Principito"
+        },
+        {
+            "phrase": "Ladran, Sancho, señal que cabalgamos",
+            "book": "Don Quijote de la Mancha"
+        },
+        {
+            "phrase": "Nunca es demasiado tarde para ser sabio",
+            "book": "Robinson Crusoe"
+        },
+        {
+            "phrase": "El miedo no te detine; te despierta",
+            "book": "Divergente"
+        },
+        {
+            "phrase": "Algunos caminos los tienes que recorrer solo",
+            "book": "Los juegos del hambre"
+        },
+        {
+            "phrase": "Nada que vale la pena es fácil",
+            "book": "Mensaje en una botella"
+        },
+        {
+            "phrase": "Hay una razón por la que todas las cosas son como son",
+            "book": "Drácula"
+        },
+        {
+            "phrase": "No todos los que vagan están perdidos",
+            "book": "El Hobbit"
+        },
+        {
+            "phrase": "Incluso un reloj parado es correcto dos veces al día",
+            "book": "Brida"
+        }
+    ]
+}
