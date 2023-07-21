@@ -9,15 +9,24 @@ import { BehaviorSubject } from 'rxjs';
 export class BookService {
 
   private bookListData: Array<Book> = [];
+  private bookListDataFiltered: Array<Book> = [];
   private readingListData: Array<Book> = [];
+  private genresListData: Array<string> = [];
 
-  private _bookList: BehaviorSubject<Array<Book>>;
+  private _bookListFiltered: BehaviorSubject<Array<Book>>;
   private _readingBookList: BehaviorSubject<Array<Book>>;
+  private _genresList: BehaviorSubject<Array<string>>;
+
+  private genreAllOption: string = "Todos";
+  private genreFilter: string = this.genreAllOption;
 
   constructor() {
-    this._bookList = new BehaviorSubject<Array<Book>>([]);
+    this._bookListFiltered = new BehaviorSubject<Array<Book>>([]);
     this._readingBookList = new BehaviorSubject<Array<Book>>([]);
+    this._genresList = new BehaviorSubject<Array<string>>([]);
+
     this.initBookList();
+    this.genresFromBookList(this.bookListDataFiltered);
   }
 
   //Initial data
@@ -25,34 +34,56 @@ export class BookService {
     const { library } = data;
     const books: Array<Book> = library.map(e => e.book);
     this.bookListData = structuredClone(books);
-    this._bookList.next(this.bookListData);
+    this.bookListDataFiltered = structuredClone(books);
+    this._bookListFiltered.next(this.bookListDataFiltered);
   }
 
 
   moveFromListToReadingList(book: Book, index: number) {
-    this.deleteFromBookList(index);
+    const bookIndex: number = this.getBookIndex(book);
+    this.deleteFromBookList(bookIndex);
     this.addToReadingList(book);
   }
 
   moveFromReadingListToList(book: Book, index: number) {
-    this.deleteFromReadingList(index);
+    const bookIndex: number = this.getBookIndex(book);
+    this.deleteFromReadingList(bookIndex);
     this.addToBookList(book);
   }
 
 
   /** BOOK LIST */
   get bookList() {
-    return this._bookList.asObservable();
+    return this._bookListFiltered.asObservable();
   }
 
-  addToBookList(book: Book) {
+  private getBookIndex(book: Book) {
+    return this.bookListData.findIndex(b => b.ISBN === book.ISBN);
+  }
+
+  private addToBookList(book: Book) {
     this.bookListData.push(book);
-    this._bookList.next(this.bookListData);
+    this.bookListDataFiltered = this.filterBookList(this.genreFilter);
+    this._bookListFiltered.next(this.bookListDataFiltered);
   }
 
-  deleteFromBookList(index: number) {
+  private deleteFromBookList(index: number) {
     this.bookListData.splice(index, 1);
-    this._bookList.next(this.bookListData);
+    this.bookListDataFiltered = this.filterBookList(this.genreFilter);
+    this._bookListFiltered.next(this.bookListDataFiltered);
+  }
+  
+  private filterBookList(genre: string) {
+    let filterBooks: Array<Book> = [];
+    if (genre === this.genreAllOption) filterBooks = structuredClone(this.bookListData);
+    else filterBooks = this.bookListData.filter(book => book.genre === genre);
+
+    return filterBooks;
+  }
+
+  filterBookListFromGenre(genre: string) {
+    const filterBooks: Array<Book> = this.filterBookList(genre);
+    this._bookListFiltered.next(filterBooks);
   }
 
 
@@ -61,14 +92,31 @@ export class BookService {
     return this._readingBookList.asObservable();
   }
 
-  addToReadingList(book: Book) {
+  private addToReadingList(book: Book) {
     this.readingListData.push(book);
     this._readingBookList.next(this.readingListData);
   }
 
-  deleteFromReadingList(index: number) {
+  private deleteFromReadingList(index: number) {
     this.readingListData.splice(index, 1);
     this._readingBookList.next(this.readingListData);
+  }
+
+
+  /** GENRES LIST */
+  private genresFromBookList(bookList: Array<Book>) {
+    const genres = bookList.map(book => book.genre);
+    this.genresListData = Array.from(new Set(genres)).sort();
+    this.genresListData.unshift(this.genreAllOption);
+    this._genresList.next(this.genresListData);
+  }
+
+  get genreList() {
+    return this._genresList.asObservable();
+  }
+
+  newGenre(genre: string) {
+    this.genreFilter = genre;
   }
 
 }
