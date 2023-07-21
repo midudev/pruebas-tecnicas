@@ -1,11 +1,11 @@
 'use client'
 
-import { createContext, useReducer } from 'react'
+import { createContext, useEffect, useReducer } from 'react'
 
 import { bookListReducer } from '@/store/bookList'
 
-import { BOOK_LIST_TYPES } from '@/assets/constants'
-import { currentListBooks } from '@/assets/values'
+import { BOOK_LIST_TYPES, nameStorage } from '@/assets/constants'
+import { BookDataList, currentListBooks } from '@/assets/values'
 
 import type { Book } from '@/typings/books'
 
@@ -38,6 +38,49 @@ export function BookListProvider({ children }: BookListProps) {
   const resetReadingList = () => {
     dispatch({ type: BOOK_LIST_TYPES.RESET_READING_LIST, payload: null })
   }
+
+  useEffect(() => {
+    const updateLists = (ev: StorageEvent) => {
+      const { key, oldValue, newValue } = ev
+      if (key !== nameStorage.listOfReading) return
+
+      if (oldValue === null && newValue) {
+        const newValueParse: BookDataList = JSON.parse(newValue)
+        const { ISBN } = newValueParse[0]
+
+        addToReadingList({ ISBN })
+      }
+
+      if (newValue === null && oldValue) {
+        resetReadingList()
+      }
+
+      if (oldValue && newValue) {
+        const newValueParse: BookDataList = JSON.parse(newValue)
+        const oldValueParse: BookDataList = JSON.parse(oldValue)
+
+        if (oldValueParse.length < newValueParse.length) {
+          const book = newValueParse.find(({ ISBN }) =>
+            oldValueParse.every((oldBook) => ISBN !== oldBook.ISBN)
+          )
+
+          if (book) addToReadingList({ ISBN: book.ISBN })
+        }
+
+        if (oldValueParse.length > newValueParse.length) {
+          const book = oldValueParse.find(({ ISBN }) =>
+            newValueParse.every((book) => ISBN !== book.ISBN)
+          )
+
+          if (book) removeFromReadingList({ ISBN: book.ISBN })
+        }
+      }
+    }
+
+    window.addEventListener('storage', updateLists)
+
+    return () => window.removeEventListener('storage', updateLists)
+  }, [])
 
   const values = {
     state,
