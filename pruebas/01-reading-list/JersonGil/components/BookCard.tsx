@@ -13,14 +13,14 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { getVariantGender } from "@/lib/utils"
-import { Library } from "@/interfaces/books"
+import { Book, Library } from "@/interfaces/books"
 
 interface Props {
   library: Library[]
+  getBook: (args: Book) => void;
 }
 
-const BookCard = ({ library }: Props) => {
-  const { getBook } = useBookStore()
+const BookCard = ({ library, getBook }: Props) => {
   const skeletonId = useId()
   const libaryCardId = useId()
 
@@ -29,7 +29,7 @@ const BookCard = ({ library }: Props) => {
       {
         library.length > 0 ? (
           library.map(({ book }) => (
-            <Card key={`${libaryCardId}-${book.ISBN}`} onClick={() => getBook(book)} className="w-80 hover:bg-slate-200 hover:cursor-pointer">
+            <Card key={`${libaryCardId}-${book.ISBN}`} onClick={() => getBook(book)} className="w-80 hover:bg-secondary-foreground hover:cursor-pointer bg-secondary">
               <CardHeader>
                 <CardTitle className="text-xl font-bold">{book.title}</CardTitle>
                 <CardDescription>{book.author.name}</CardDescription>
