@@ -1,6 +1,7 @@
 <script>
   import BooksList from '$lib/components/BooksList.svelte'
   import GenreSelector from '$lib/components/GenreSelector.svelte'
+  import PagesFilter from '$lib/components/PagesFilter.svelte'
   import { selectedBookIDs, books } from '$lib/utils/stores'
 
   /** @type {import('./$types').PageData} */
@@ -10,8 +11,19 @@
   const { genres } = data
   let selectedGenres = genres
 
-  $: bookIDsInGenre = $books.filter((b) => selectedGenres.includes(b.genre)).map((b) => b.ISBN)
-  $: filteredBookIDs = bookIDsInGenre.filter((id) => !$selectedBookIDs.some((sid) => sid === id))
+  let maxPagesBook = $books.map((b) => b.pages).reduce((a, b) => Math.max(a, b), 0)
+  let maxPagesSelected = maxPagesBook
+
+  let availableBookIDs
+
+  $: {
+    const booksInGenre = $books.filter((b) => selectedGenres.includes(b.genre))
+    const booksInPages = booksInGenre.filter((b) => b.pages <= maxPagesSelected)
+
+    const filteredBooks = booksInPages
+    const filteredBookIDs = filteredBooks.map((b) => b.ISBN)
+    availableBookIDs = filteredBookIDs.filter((id) => !$selectedBookIDs.some((sid) => sid === id))
+  }
 
   const addBook = (book) => {
     $selectedBookIDs = [...$selectedBookIDs, book.ISBN]
@@ -19,10 +31,6 @@
 
   const removeBook = (book) => {
     $selectedBookIDs = $selectedBookIDs.filter((b) => b !== book.ISBN)
-  }
-
-  const toggleSelectedGenre = (genre) => {
-    selectedGenres = selectedGenres.includes(genre) ? selectedGenres.filter((g) => g !== genre) : [...selectedGenres, genre]
   }
 
   const booksFromIDs = (ids) => $books.filter((b) => ids.includes(b.ISBN))
@@ -40,11 +48,12 @@
 <div class="grid grid-cols-7 gap-10">
   <section>
     <h2 class="text-2xl pb-4">Filtros</h2>
-    <GenreSelector {genres} {selectedGenres} action={toggleSelectedGenre} />
+    <GenreSelector {genres} bind:selectedGenres />
+    <PagesFilter {maxPagesBook} bind:maxPagesSelected />
   </section>
 
   <section class="col-span-4">
-    <BooksList books={booksFromIDs(filteredBookIDs)} action={addBook} isSelected={false} />
+    <BooksList books={booksFromIDs(availableBookIDs)} action={addBook} isSelected={false} />
   </section>
 
   <section class="col-span-2">
