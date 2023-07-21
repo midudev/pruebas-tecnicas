@@ -180,6 +180,11 @@ pub fn Library(props: &Props) -> Html {
                             class={classes!("text-gray-700","font-bold","text-3xl","dark:text-zinc-100")}
                         >
                             {title.clone()}
+                            <span
+                                class={classes!("text-sm","ml-3","text-neutral-400","dark:text-zinc-600")}
+                            >
+                                {"("}{books.len()}{")"}
+                            </span>
                         </h1>
                     }
                     <div class={classes!("flex","flex-row","flex-wrap","gap-4","items-center")}>
