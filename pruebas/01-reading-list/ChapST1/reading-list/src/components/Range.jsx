@@ -20,6 +20,7 @@ export function Range () {
   useEffect(() => {
     if (genderFilter === ALL_CATEGORIES) {
       const newBooks = filteredBooks.filter(({ bookPages }) => bookPages >= pageFilter)
+
       updateBooks(newBooks)
       return
     }
@@ -29,7 +30,7 @@ export function Range () {
     })
 
     updateBooks(filterBooks)
-  }, [pageFilter, updateBooks]) // eslint-disable-line
+  }, [pageFilter, updateBooks])
 
   return (
     <label htmlFor='range-input' className='text-[#ededea] text-center'>

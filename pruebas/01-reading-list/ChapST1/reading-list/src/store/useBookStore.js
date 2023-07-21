@@ -1,9 +1,12 @@
 import { create } from 'zustand'
-import { ALL_CATEGORIES } from '../constants'
+import { ALL_CATEGORIES, LOCAL_STORAGE_KEYS } from '../constants'
+import { getToLocalStorage } from '../utils/getToLocalStorage'
+
+const localStorageReadingList = getToLocalStorage(LOCAL_STORAGE_KEYS.readingListState)
 
 export const useBookStore = create((set, get) => ({
   books: [],
-  readingList: [],
+  readingList: localStorageReadingList ?? [],
   pageFilter: 0,
   genderFilter: ALL_CATEGORIES,
 

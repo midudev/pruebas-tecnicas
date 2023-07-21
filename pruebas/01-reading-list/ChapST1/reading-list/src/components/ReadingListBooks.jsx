@@ -7,10 +7,10 @@ export function ReadingListBooks ({ book }) {
   const { id, bookTitle, bookCover } = book
 
   const handleClick = () => {
-    const findBook = readingList.find((book) => book.id === id)
-    const newReadingList = readingList.filter((book) => book.id !== id)
+    const findBook = readingList?.find((book) => book.id === id)
+    const newReadingList = readingList?.filter((book) => book.id !== id)
 
-    const newBooks = [...books, findBook] // agrega el elemento eliminado a la lista de libros
+    const newBooks = [...books, findBook]
 
     if (genderFilter !== ALL_CATEGORIES) {
       const filterBooks = newBooks.filter((book) => book.bookGenre === genderFilter)
@@ -22,11 +22,6 @@ export function ReadingListBooks ({ book }) {
 
     updateBooks(newBooks)
     updateReadingList(newReadingList)
-
-    console.log({
-      newBooks,
-      newReadingList
-    })
   }
 
   return (
