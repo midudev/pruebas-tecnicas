@@ -163,12 +163,9 @@ pub fn Library(props: &Props) -> Html {
         Callback::from(move |v| sort.set(v))
     };
 
-    let onfilterchange = {
-        let filter = filter.clone();
-        Callback::from(move |v: Vec<String>| {
-            filter.set(v.iter().map(|f| f.to_lowercase()).collect());
-        })
-    };
+    let onfilterchange = Callback::from(move |v: Vec<String>| {
+        filter.set(v.iter().map(|f| f.to_lowercase()).collect());
+    });
 
     html! {
         <section

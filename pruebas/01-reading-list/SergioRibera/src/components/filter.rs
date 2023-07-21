@@ -1,8 +1,8 @@
-use std::fmt::{Display, Debug};
+use std::fmt::{Debug, Display};
 
+use crate::components::MultipleChoice;
 use yew::prelude::*;
 use yew_icons::{Icon, IconId};
-use crate::components::MultipleChoice;
 
 #[derive(Clone, Properties, PartialEq)]
 pub struct FilterComponentProps<T>

@@ -56,3 +56,6 @@ web-sys = { version = "0.3", features = ["Event", "EventTarget", "InputEvent"] }
 # Random generation
 rand = "0.8.5"
 getrandom = { version = "0.2.10", features = ["js"] }
+
+[dev-dependencies]
+tokio-test = "0.4.2"
