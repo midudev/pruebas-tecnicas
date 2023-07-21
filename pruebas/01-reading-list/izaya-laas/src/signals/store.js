@@ -16,6 +16,7 @@ const myReadingListBooks = computed(() => {
 	);
 });
 const myReadingListLength = computed(() => myReadingListISBN.value.length);
+const totalFreeBooks = computed(() => books.length - myReadingListLength.value);
 
 //Actualizamos el localStorage cada vez que se agrege un ISBN
 effect(() => {
@@ -24,8 +25,9 @@ effect(() => {
 
 export {
 	myReadingListISBN,
-	myReadingListLength,
-	allBooks,
 	myReadingListBooks,
+	myReadingListLength,
+	totalFreeBooks,
+	allBooks,
 	currentPath,
 };

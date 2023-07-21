@@ -2,6 +2,7 @@ import { Header } from './components/header/Header';
 import Aside from './components/main/Aside';
 import Navbar from './components/main/Navbar';
 import Pages from './components/Routes/Routes.jsx';
+import { myReadingListLength, totalFreeBooks } from './signals/store';
 
 export function App() {
 	return (
@@ -10,9 +11,16 @@ export function App() {
 			<main className="relative font-tilt text-black h-screen grid grid-cols-[200px_1fr] grid-rows-[1fr]">
 				<Aside />
 				<article className="w-full p-4 overflow-y-scroll">
-					<h2 className="text-3xl border-b border-white">Books</h2>
+					<div className="flex items-end max-w-5xl">
+						<h2 className="text-3xl border-b border-white">Books</h2>
+						<div className="flex justify-end gap-x-4 w-full ">
+							<p>My books {myReadingListLength}</p>
+							<p>Free books {totalFreeBooks.value}</p>
+							<p></p>
+						</div>
+					</div>
 					<Navbar />
-					<section className="flex flex-wrap gap-4 mt-6 pb-20">
+					<section className="flex flex-wrap gap-4 mt-6 pb-20 max-w-5xl">
 						<Pages />
 					</section>
 				</article>
