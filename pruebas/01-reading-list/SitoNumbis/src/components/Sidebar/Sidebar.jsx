@@ -47,7 +47,7 @@ function Sidebar() {
   }, [onKeyDown]);
 
   useEffect(() => {
-    if (location.pathname === "/reading-list")
+    if (location.pathname === "/reading-list" && window.innerWidth < 768)
       document.body.style.overflowY = "hidden";
     else document.body.style.overflowY = "auto";
   }, [location]);

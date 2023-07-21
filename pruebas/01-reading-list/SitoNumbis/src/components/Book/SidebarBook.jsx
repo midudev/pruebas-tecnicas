@@ -36,15 +36,15 @@ function Book({ title, pages, genre, cover, year, ISBN, author, i }) {
     <li
       ref={ref}
       id={ISBN}
-      className={`group ${styles.main} ${
+      className={`${styles.side} group ${styles.main} ${
         focused ? "!z-[999]" : ""
-      } hover:-translate-y-4  transition appear w-full ${css({
+      } hover:-translate-y-4 transition appear w-full ${css({
         gridArea: `${i + 1} / 1 / span 6 / span 1`,
         zIndex: i + 1,
       })}`}
     >
       <LazyImage
-        className="w-full h-full object-cover object-center shadow-[black] shadow-md transition"
+        className="w-full h-full object-cover object-center transition"
         src={cover}
         alt={`${title}-${languageState.texts.book.cover}`}
       />

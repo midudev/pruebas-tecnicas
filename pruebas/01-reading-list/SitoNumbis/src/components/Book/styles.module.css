@@ -2,6 +2,10 @@
   @apply w-full relative h-full;
 }
 
+.side {
+  box-shadow: -2px -5px 25px 5px black
+}
+
 .addButton {
   @apply !opacity-100 !translate-y-0;
 }
