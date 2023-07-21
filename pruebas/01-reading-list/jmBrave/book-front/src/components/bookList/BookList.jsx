@@ -22,9 +22,9 @@ const BookList = ({ title, books, droppableId }) => {
                             >
                                 {(provided) => (
                                     <li
-                                        className="pb-4"
                                         key={book.ISBN}
                                         ref={provided.innerRef}
+                                        className="p-4"
                                         {...provided.draggableProps}
                                         {...provided.dragHandleProps}
                                     >

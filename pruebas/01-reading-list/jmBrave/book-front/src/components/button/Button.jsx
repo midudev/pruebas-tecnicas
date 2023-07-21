@@ -1,4 +1,3 @@
-'use client'
 import styles from './Button.module.css'
 const Button = (book) => {
     const handleClick = (book) => {
