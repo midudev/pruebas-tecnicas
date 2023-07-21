@@ -25,3 +25,8 @@ export interface Author {
     name:       string;
     otherBooks: string[];
 }
+
+export enum TABS {
+    Libreria = 'Libreria',
+    Lectura = 'Lectura',
+}

@@ -1,8 +1,35 @@
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100vw;
+  padding: 1rem;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.headerTabs{
+  display: flex;
+  margin-bottom: 10px;
+  font-size: clamp(0.8rem, 1vw, 1.5rem) !important;
+}
+
+.headerTabs span{
+  width: 45vw;
+  border: 1px solid rgb(109, 109, 109);
+  color: rgb(230, 230, 230);
   text-align: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.headerTabs span:hover{
+  background-color: rgb(109, 109, 109);
+}
+
+.selectedTab{
+  border: 1px solid white !important;
+  color: white !important;
 }
 
 .selected {
@@ -16,9 +43,9 @@
   text-align: center;
   justify-content: center;
   align-items: center;
-  max-width: 150px;
-  min-width: 150px;
-  min-height: 225px;
+  max-width: 200px;
+  min-width: 200px;
+  min-height: 275px;
   border: 1px solid rgb(212, 212, 212);
   border-radius: 10px;
   padding: 5px;
@@ -34,9 +61,6 @@
 .bookCard header {
   font-weight: bold;
   width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   text-align: center;
 }
 
@@ -44,4 +68,9 @@
   overflow: visible; 
   white-space: normal;
   height: auto;
+}
+
+.bookCover {
+  width: 150px;
+  height: 210px;
 }
