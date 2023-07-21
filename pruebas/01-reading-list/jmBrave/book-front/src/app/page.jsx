@@ -31,6 +31,7 @@ export default function Home() {
     const [draggingBook, setDraggingBook] = useState({
         isDraggingBook: false,
         source: {},
+        isShown: true,
     })
 
     useEffect(() => {
@@ -49,7 +50,7 @@ export default function Home() {
         const { source, destination } = events
         if (!destination) return
 
-        setDraggingBook({ isDraggingBook: false, source: {} })
+        setDraggingBook({ isDraggingBook: false, source: {}, isShown: false })
 
         const sourceList =
             source.droppableId === AVAILABLE_BOOKS
@@ -95,6 +96,7 @@ export default function Home() {
 
     function handleOnDragStart(event) {
         setDraggingBook({
+            ...draggingBook,
             isDraggingBook: true,
             source: event.source.droppableId,
         })
@@ -102,11 +104,11 @@ export default function Home() {
 
     const Drop = () => {
         return (
-            <div class="fixed inset-x-0 top-0 flex justify-center items-center min-h-full">
-                <div class="round ">
+            <div className="fixed inset-x-0 top-0 flex justify-center items-center min-h-full">
+                <div className="round ">
                     <div id="cta">
-                        <span class="arrow primera next "></span>
-                        <span class="arrow segunda next "></span>
+                        <span className="arrow primera next "></span>
+                        <span className="arrow segunda next "></span>
                     </div>
                 </div>
             </div>
@@ -124,7 +126,9 @@ export default function Home() {
                     books={booksAvailable}
                     droppableId={AVAILABLE_BOOKS}
                 />
-                {draggingBook.isDraggingBook ? <Drop /> : null}
+                {draggingBook.isShown && draggingBook.isDraggingBook ? (
+                    <Drop />
+                ) : null}
                 <BookList
                     title={'Lista de Lectura'}
                     books={booksSelected}
