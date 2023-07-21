@@ -1,4 +1,4 @@
-import { FC, useEffect, useReducer } from 'react';
+import { FC, useEffect, useReducer, useRef } from 'react';
 import { AppContext } from './AppContext';
 import { appReducer } from './AppReducer';
 import { Book } from '../../types';
@@ -20,6 +20,7 @@ const INITIAL_STATE: IAppState = {
 
 export const AppProvider:FC<IAppProvider> = ({ children }) => {
     const [appState, dispatch] = useReducer(appReducer, INITIAL_STATE);
+    const firstRef = useRef(true);
 
     useEffect(() => {
         const allBooks: Book[] = BOOKS_JSON.library.map(library => library.book);
@@ -30,7 +31,9 @@ export const AppProvider:FC<IAppProvider> = ({ children }) => {
     }, []);
 
     useEffect(() => {
-        localStorage.setItem('reading-books', JSON.stringify(appState.readingBooks));
+        if(firstRef.current === false)
+            localStorage.setItem('reading-books', JSON.stringify(appState.readingBooks));
+        firstRef.current = false;
     }, [appState.readingBooks]);
 
     const addForReading = (book: Book) => {
