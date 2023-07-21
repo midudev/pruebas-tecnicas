@@ -20,10 +20,6 @@ export const FilterProvider = ({ children }) => {
     setBooklist(books);
   }, [books]);
 
-  useEffect(() => {
-    setDisplayedBooks(booklist);
-  }, [booklist]);
-
   const genres = [];
   genres.push('Todos');
   books.forEach(({ book }) => {
@@ -32,19 +28,17 @@ export const FilterProvider = ({ children }) => {
     }
   });
 
-  useEffect(() => {
-    console.log(selectedGenre);
-  }, [selectedGenre]);
-
   return (
     <FilterContext.Provider value={{
       booklist,
-      genres,
-      selectedGenre,
+      setBooklist,
       displayedBooks,
-      lectureList,
       setDisplayedBooks,
+      lectureList,
+      setLectureList,
+      selectedGenre,
       setSelectedGenre,
+      genres,
     }}>
       {children}
     </FilterContext.Provider>

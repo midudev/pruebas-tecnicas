@@ -15,6 +15,7 @@ const LectureList = () => {
           lectureList.map(({ book }) => {
             return <Book
             key={book.ISBN}
+            entireBook={book}
             title={book.title}
             isbn={book.ISBN}
             author={book.author.name}

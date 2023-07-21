@@ -6,30 +6,23 @@ const BookList = () => {
 
   const { booklist, selectedGenre, setDisplayedBooks } = useContext(FilterContext);
 
-  const displayedBooks = [];
-  const updateDisplayedBooks = () => {
-    booklist.forEach(({ book }) => {
-      if (selectedGenre === 'Todos' || selectedGenre === book.genre) {
-        displayedBooks.push(book);
-      }
-    });
-  };
+  const displayedBooks = booklist.filter(({ book }) => selectedGenre === 'Todos' || selectedGenre === book.genre);
 
   useEffect(() => {
-    updateDisplayedBooks();
     setDisplayedBooks(displayedBooks);
-    console.log(displayedBooks);
-  }, [selectedGenre]);
+  }, [selectedGenre, booklist]);
 
   return (
     <div style={{ border: '5px solid #ffff55' }}>
       <h2>Book List</h2>
       {
         booklist.length > 0 ? (
+
           booklist.map(({ book }) => {
             if (selectedGenre === 'Todos' || selectedGenre === book.genre) {
               return <Book
                 key={book.ISBN}
+                entireBook={book}
                 title={book.title}
                 isbn={book.ISBN}
                 author={book.author.name}

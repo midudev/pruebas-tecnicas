@@ -4,8 +4,6 @@ import { FilterContext } from '../../context/FilterContext';
 const Status = () => {
 
   const { booklist, displayedBooks } = useContext( FilterContext );
-  const books = booklist.length;
-
 
   return(
     <div style={{ border: '5px solid #55ff96' }}>
