@@ -1,0 +1,91 @@
+---
+import {getBooksBy} from '../../data/books.js';
+import BookCard from '../../components/BookCard.astro';
+import RootLayout from '../../layouts/RootLayout.astro';
+import BooksPagination from "../../components/BooksPagination.astro";
+import ReadingList from '../../components/react/ReadingList/ReadingList.jsx';
+
+import BooksFilters from '../../components/react/BooksFilters/BooksFilters.jsx';
+
+const {page} = Astro.params;
+
+const currentPage = Number(page);
+
+if(currentPage < 1) return Astro.redirect('/404');
+
+
+const BOOKS_PER_PAGE = 10;
+
+const queries = {
+    genre: Astro.url.searchParams.get('genre'),
+    pages: Astro.url.searchParams.get('pages')
+}
+
+const result = getBooksBy(queries);
+
+console.log(queries, result.length)
+
+const total = Math.ceil(result.length / BOOKS_PER_PAGE);
+
+
+if(currentPage > total) return Astro.redirect('/404');
+
+const start = (currentPage - 1) * BOOKS_PER_PAGE;
+
+const end = start + BOOKS_PER_PAGE;
+
+const books = result.slice(start, end);
+---
+
+<RootLayout title="Libros">
+
+
+    <div class="container-fluid">
+    
+        <div class="row p-0">
+
+            <section class="col-md-12 col-lg-8">
+
+                <BooksFilters client:load path="/Libros/1" pages={queries.pages} genre={queries.genre} />
+
+                <div class="Books-container">
+                    {
+                        books.map(({book}) => {
+                
+                            return <BookCard book={book} />
+                        })
+                    }
+                </div>
+                
+                <BooksPagination path="/Libros" queryParams={queries} current={currentPage} next={currentPage + 1} prev={currentPage - 1} total={total} />
+            </section>
+
+            <section class="Reading-list-container d-none d-lg-block col-4">
+
+                <ReadingList client:only />
+            </section>
+
+        </div>
+    
+    </div>
+
+</RootLayout>
+
+<style>
+
+    .Books-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 20px;
+
+        padding: 20px 10px;
+    }
+
+    .Reading-list-container {
+        position: sticky;
+        top: 72px;
+        height: fit-content;
+        padding-left: 0px;
+    }
+</style>

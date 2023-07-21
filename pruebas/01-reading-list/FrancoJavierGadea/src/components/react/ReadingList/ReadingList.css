@@ -1,0 +1,31 @@
+.Reading-list {
+}
+
+
+.Reading-list-content {
+    padding-right: 10px;
+    max-height: 80svh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    --sb-track-color: #232e33;
+    --sb-thumb-color: #6baf8d;
+    --sb-size: 7px;
+
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+}
+
+.Reading-list-content::-webkit-scrollbar {
+    width: var(--sb-size);
+}
+
+.Reading-list-content::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 0;
+}
+
+.Reading-list-content::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 0;
+}

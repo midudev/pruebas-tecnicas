@@ -1,0 +1,104 @@
+---
+import RootLayout from '../../../layouts/RootLayout.astro';
+import {getBooksByISBN} from '../../../data/books.js';
+
+const { ISBN, title } = Astro.params;
+
+const result = getBooksByISBN(ISBN);
+
+if(result.length === 0) return Astro.redirect('/404');
+
+const book = result[0].book;
+
+console.log(Astro.url.origin);
+
+const linkToGenre = new URL(`/Libros/1`, Astro.url.origin);
+
+linkToGenre.searchParams.set('genre', book.genre);
+---
+
+<RootLayout title={title}>
+
+    <div class="Book-container container">
+
+        <div class="row">
+
+            <section class="col-md-12 col-lg-5">
+
+                <img src={book.cover} alt="">
+
+            </section>
+            
+            <section class="col-md-12 col-lg-7">
+
+                <h1 class="title">{title}</h1>
+
+                <div class="details">
+
+                    <div class="">
+                        <span>Genero: </span>
+                        <strong>
+                            <a href={linkToGenre}>{book.genre}</a> 
+                        </strong>
+                    </div>
+
+                    {
+                        book.author && <div class="">   
+                            <span>Autor: </span>
+                            <strong>{book.author?.name}</strong>
+                        </div>
+                    }
+
+                    <div class="">
+                        <span>Cantidad de paginas: </span>
+                        <strong>{book.pages}</strong>
+                    </div>
+                </div>
+
+                <div class="description">
+                    <h4 class="my-4">Descripcion</h4>
+                    {
+                        book.synopsis.split('\n').map(text => {
+
+                            console.log(text);
+
+                            return <p>{text}</p>
+                        }) 
+                    }
+                </div>
+            </section>
+        </div>
+
+    </div>
+    
+</RootLayout>
+
+<style>
+	.Book-container {
+        padding: 30px ;
+    }
+
+    img {
+        max-width: 400px;
+        max-height: 500px;
+        border-radius: 10px;
+        display: block;
+        margin: auto;
+    }
+
+    .title {
+        font-size: clamp(20px, 10vw, 50px);
+    }
+
+    .details {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .description {
+        
+        margin-top: 50px;
+    }
+</style>

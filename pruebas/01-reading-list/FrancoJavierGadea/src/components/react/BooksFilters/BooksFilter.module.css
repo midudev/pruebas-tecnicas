@@ -1,0 +1,13 @@
+
+.Books-filters {
+
+    display: flex;
+    align-items: end;
+    gap: 15px;
+
+    padding: 15px 20px;
+}
+
+.custom-form-range {
+    margin: 6px 0;
+}

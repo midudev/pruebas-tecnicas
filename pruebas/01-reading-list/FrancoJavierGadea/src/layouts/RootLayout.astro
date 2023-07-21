@@ -1,24 +1,51 @@
 ---
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import CustomOffcanvas from "../components/react/CustomOffcanvas/CustomOffcanvas.jsx"
 
 const { title } = Astro.props;
+
+const isLibrosPage = Astro.url.pathname.startsWith('/Libros');
 ---
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="es" data-bs-theme="dark">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description">
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		
 		<title>{title}</title>
 	</head>
 	<body>
 
-		<slot />
+		<nav class="navbar p-3 position-sticky top-0 bg-body-tertiary" style="z-index: 3000;">
+			<div class="container-fluid gap-4">
+
+				<a class="navbar-brand order-1" href="/Libros/1">Libros</a>
+
+				<form class="ms-auto d-flex order-3 order-sm-2 flex-grow-1 flex-sm-grow-0" role="search"
+
+					style="flex-basis: 335px;"
+				>
+					<input class="form-control me-2" type="search" placeholder="Search">
+					<button class="btn btn-outline-success" type="submit">Buscar</button>
+				</form>
+
+				<div class="order-2 order-sm-3" class:list={{'d-block d-lg-none': isLibrosPage}} >
+					<CustomOffcanvas client:load />
+				</div>
+			</div>
+		</nav>
+
+		<main>
+
+			<slot />
+
+		</main>
 		
 	</body>
 </html>

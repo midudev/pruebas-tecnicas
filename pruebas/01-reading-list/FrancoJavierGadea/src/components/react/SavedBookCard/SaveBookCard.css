@@ -1,0 +1,14 @@
+
+.saved-book-card {
+
+    display: flex;
+    gap: 15px;
+    align-items: stretch;
+    max-height: 80px;
+}
+.saved-book-card img {
+
+    width: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+}

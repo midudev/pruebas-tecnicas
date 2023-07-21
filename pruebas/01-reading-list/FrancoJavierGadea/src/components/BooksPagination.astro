@@ -1,0 +1,50 @@
+---
+const {current, next, prev, total, path = '', queryParams = {}} = Astro.props;
+
+
+const LINKS = Array.from({length: total}).map((_, i) => {
+
+    const link = new URL(`${path}/${i + 1}`, Astro.url.origin);
+
+    Object.entries(queryParams).forEach(([key, value]) => {
+
+        if(value) link.searchParams.set(key, value);
+    })
+
+    return link;
+})
+---
+
+<nav class="p-4">
+    <ul class="pagination justify-content-center">
+
+        <li class="page-item">
+            <a class="page-link" href={LINKS[prev - 1]?.href} title="Anterior" 
+            
+                class:list={[{disabled: prev < 1}]}
+            >
+                <i class="bi bi-chevron-left" />
+            </a>
+        </li>
+
+        {
+            LINKS.map((url, i) => {
+
+                i++;
+
+                return <li class="page-item">
+                    <a class="page-link" href={url.href} class:list={[{active: current === i}]}>{i}</a>
+                </li>
+            })
+        }
+
+        <li class="page-item">
+            <a class="page-link" href={LINKS[next - 1]?.href} title="Siguiente" 
+            
+                class:list={[{disabled: next > total}]}
+            >
+                <i class="bi bi-chevron-right" />
+            </a>
+        </li>
+    </ul>
+</nav>

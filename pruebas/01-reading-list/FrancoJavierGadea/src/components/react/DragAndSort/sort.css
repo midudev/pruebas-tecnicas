@@ -1,0 +1,27 @@
+
+
+.sort-item {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 15px;
+}
+
+.sort-content {
+    flex-grow: 1;
+}
+
+.sort-btn {
+    appearance: none;
+    background-color: transparent;
+    border: 0;
+    font-size: 18px;
+    padding: 0 5px;
+    margin: 0;
+    color: white;
+
+    /* Importante */
+    touch-action: none;
+}
+.sort-btn:hover {
+    color: #b0b0b0;
+}
