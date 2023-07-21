@@ -72,7 +72,7 @@ pub fn app() -> Html {
             <main class={classes!("px-6")}>
                 // If searching
                 if !filtered_data.is_empty() {
-                    <LibraryComponent title="" expandable=false books={(*filtered_data).clone()} />
+                    <LibraryComponent title="" filter=false expandable=false books={(*filtered_data).clone()} />
                 } else {
                     <SuggestedBook books={data.clone().unwrap_or_default()} />
                     // if not have saved books

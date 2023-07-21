@@ -1,9 +1,11 @@
+use std::collections::HashSet;
+
 use yew::prelude::*;
-use yew_hooks::{use_bool_toggle, use_local_storage, UseLocalStorageHandle};
+use yew_hooks::{use_bool_toggle, use_local_storage, UseLocalStorageHandle, use_set};
 use yew_icons::{Icon, IconId};
 
 use crate::{
-    components::{Book as BookComponent, SingleChoice},
+    components::{Book as BookComponent, FilterComponent, SingleChoice},
     models::Book,
 };
 
@@ -15,6 +17,8 @@ pub struct Props {
     pub books: Vec<Book>,
     #[prop_or(true)]
     pub expandable: bool,
+    #[prop_or(true)]
+    pub filter: bool,
     #[prop_or(false)]
     pub sortable: bool,
 }
@@ -58,9 +62,12 @@ pub fn Library(props: &Props) -> Html {
         readinglist,
         books: prop_books,
         title,
+        filter: enable_filter,
         sortable,
     } = props.clone();
     let saved_books = use_local_storage::<Vec<Book>>("saved_books".to_string());
+    let genres = use_set(HashSet::<String>::new());
+    let filter = use_state(Vec::<String>::new);
     let not_expanded = use_bool_toggle(expandable);
     let sort = use_state(SortContent::default);
 
@@ -72,7 +79,10 @@ pub fn Library(props: &Props) -> Html {
     };
 
     let books = use_memo(
-        |(books, reading_list, sort)| {
+        |(books, reading_list, filter, sort)| {
+            if genres.current().is_empty() {
+                genres.set(books.iter().map(|b| b.genre.clone()).collect());
+            }
             let books = books
                 .iter()
                 .map(|l| Book {
@@ -82,10 +92,27 @@ pub fn Library(props: &Props) -> Html {
                     ),
                     ..l.clone()
                 })
+                .filter(|b| {
+                    let filter = filter.to_vec();
+                    if filter.is_empty() {
+                        return true;
+                    }
+                    filter.contains(&b.title.to_lowercase())
+                        || filter.contains(&b.genre.to_lowercase())
+                        || filter.contains(&b.author.name.to_lowercase())
+                        || filter.contains(&b.synopsis.to_lowercase())
+                        || filter.contains(&b.year.to_string())
+                        || filter.contains(&b.pages.to_string())
+                })
                 .collect::<Vec<Book>>();
             sort_books((**sort).clone(), books)
         },
-        (prop_books, reading_list.clone(), sort.clone()),
+        (
+            prop_books,
+            reading_list.clone(),
+            filter.clone(),
+            sort.clone(),
+        ),
     );
 
     let onaddbook = {
@@ -136,11 +163,19 @@ pub fn Library(props: &Props) -> Html {
         Callback::from(move |v| sort.set(v))
     };
 
+    let onfilterchange = {
+        let filter = filter.clone();
+        Callback::from(move |v: Vec<String>| {
+            filter.set(v.iter().map(|f| f.to_lowercase()).collect());
+        })
+    };
+
+
     html! {
         <section
             class={classes!("flex","flex-row","flex-wrap","w-full","py-4","mt-6","mb-2")}>
-            if !title.is_empty() || sortable {
-                <header class={classes!("w-full","flex","flex-row","items-center","justify-between","py-6")}>
+            if !title.is_empty() || sortable || enable_filter {
+                <header class={classes!("w-full","flex","flex-row","flex-wrap","gap-4","items-center","justify-between","py-6")}>
                     if !title.is_empty() {
                         <h1
                             class={classes!("text-gray-700","font-bold","text-3xl","dark:text-zinc-100")}
@@ -148,46 +183,53 @@ pub fn Library(props: &Props) -> Html {
                             {title.clone()}
                         </h1>
                     }
-                    if sortable {
-                        <SingleChoice<SortContent>
-                            class={classes!("hidden","sm:flex")}
-                            options={vec![SortContent::AZ,SortContent::ZA,SortContent::Pages,SortContent::PagesReverse]}
-                            onchange={onchangesort}
-                        >
-                            <div
-                                title="A-Z"
-                                class={classes!("flex","cursor-pointer","hover:bg-slate-200","p-4","rounded","dark:hover:bg-slate-700","dark:text-zinc-400",
-                                (*sort == SortContent::AZ).then_some(vec!["bg-slate-300","dark:bg-slate-600"]).or(Some(vec!["bg-slate-200","dark:bg-slate-800"]))
-                                )}
+                    <div class={classes!("flex","flex-row","flex-wrap","gap-4","items-center")}>
+                        if enable_filter {
+                            <FilterComponent<String>
+                                options={genres.current().clone().into_iter().collect::<Vec<String>>()}
+                                onchange={onfilterchange} />
+                        }
+                        if sortable {
+                            <SingleChoice<SortContent>
+                                class={classes!("hidden","md:flex")}
+                                options={vec![SortContent::AZ,SortContent::ZA,SortContent::Pages,SortContent::PagesReverse]}
+                                onchange={onchangesort}
                             >
-                                <Icon icon_id={IconId::FontAwesomeSolidArrowDownAZ} width="12px" height="12px"/>
-                            </div>
-                            <div
-                                title="Z-A"
-                                class={classes!("flex","cursor-pointer","hover:bg-slate-100","p-4","rounded","dark:hover:bg-slate-700","dark:text-zinc-400",
-                                (*sort == SortContent::ZA).then_some(vec!["bg-slate-300","dark:bg-slate-600"]).or(Some(vec!["bg-slate-200","dark:bg-slate-800"]))
-                                )}
-                            >
-                                <Icon icon_id={IconId::FontAwesomeSolidArrowUpAZ} width="12px" height="12px"/>
-                            </div>
-                            <div
-                                title="Paginas de Menor a Mayor"
-                                class={classes!("flex","cursor-pointer","hover:bg-slate-100","p-4","rounded","dark:hover:bg-slate-700","dark:text-zinc-400",
-                                (*sort == SortContent::Pages).then_some(vec!["bg-slate-300","dark:bg-slate-600"]).or(Some(vec!["bg-slate-200","dark:bg-slate-800"]))
-                                )}
-                            >
-                                <Icon icon_id={IconId::BootstrapSortNumericDown} width="14px" height="14px"/>
-                            </div>
-                            <div
-                                title="Paginas de Mayor a Menor"
-                                class={classes!("flex","cursor-pointer","hover:bg-slate-100","p-4","rounded","dark:hover:bg-slate-700","dark:text-zinc-400",
-                                (*sort == SortContent::PagesReverse).then_some(vec!["bg-slate-300","dark:bg-slate-600"]).or(Some(vec!["bg-slate-200","dark:bg-slate-800"]))
-                                )}
-                            >
-                                <Icon icon_id={IconId::BootstrapSortNumericDownAlt} width="14px" height="14px"/>
-                            </div>
-                        </SingleChoice<SortContent>>
-                    }
+                                <div
+                                    title="A-Z"
+                                    class={classes!("flex","cursor-pointer","hover:bg-slate-200","p-4","rounded","dark:hover:bg-slate-700","dark:text-zinc-400",
+                                    (*sort == SortContent::AZ).then_some(vec!["bg-slate-300","dark:bg-slate-600"]).or(Some(vec!["bg-slate-200","dark:bg-slate-800"]))
+                                    )}
+                                >
+                                    <Icon icon_id={IconId::FontAwesomeSolidArrowDownAZ} width="12px" height="12px"/>
+                                </div>
+                                <div
+                                    title="Z-A"
+                                    class={classes!("flex","cursor-pointer","hover:bg-slate-100","p-4","rounded","dark:hover:bg-slate-700","dark:text-zinc-400",
+                                    (*sort == SortContent::ZA).then_some(vec!["bg-slate-300","dark:bg-slate-600"]).or(Some(vec!["bg-slate-200","dark:bg-slate-800"]))
+                                    )}
+                                >
+                                    <Icon icon_id={IconId::FontAwesomeSolidArrowUpAZ} width="12px" height="12px"/>
+                                </div>
+                                <div
+                                    title="Paginas de Menor a Mayor"
+                                    class={classes!("flex","cursor-pointer","hover:bg-slate-100","p-4","rounded","dark:hover:bg-slate-700","dark:text-zinc-400",
+                                    (*sort == SortContent::Pages).then_some(vec!["bg-slate-300","dark:bg-slate-600"]).or(Some(vec!["bg-slate-200","dark:bg-slate-800"]))
+                                    )}
+                                >
+                                    <Icon icon_id={IconId::BootstrapSortNumericDown} width="14px" height="14px"/>
+                                </div>
+                                <div
+                                    title="Paginas de Mayor a Menor"
+                                    class={classes!("flex","cursor-pointer","hover:bg-slate-100","p-4","rounded","dark:hover:bg-slate-700","dark:text-zinc-400",
+                                    (*sort == SortContent::PagesReverse).then_some(vec!["bg-slate-300","dark:bg-slate-600"]).or(Some(vec!["bg-slate-200","dark:bg-slate-800"]))
+                                    )}
+                                >
+                                    <Icon icon_id={IconId::BootstrapSortNumericDownAlt} width="14px" height="14px"/>
+                                </div>
+                            </SingleChoice<SortContent>>
+                        }
+                    </div>
                 </header>
             }
             <ul

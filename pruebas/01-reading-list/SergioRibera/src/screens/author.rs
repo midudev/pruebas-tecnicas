@@ -90,6 +90,7 @@ pub fn Author(props: &AuthorProps) -> Html {
                         <Library
                             title="Sus Libros"
                             expandable=false
+                            filter=false
                             readinglist={reading_list.clone()}
                             books={books.current().clone()}
                         />

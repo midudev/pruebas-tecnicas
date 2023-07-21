@@ -133,6 +133,7 @@ pub fn Book(props: &BookProps) -> Html {
                         <Library
                             title="Libros Similares"
                             expandable=false
+                            filter=false
                             readinglist={reading_list.clone()}
                             books={related.current().clone()}
                         />
