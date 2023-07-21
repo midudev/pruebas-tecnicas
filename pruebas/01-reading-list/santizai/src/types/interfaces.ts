@@ -7,17 +7,17 @@ export interface Library {
 }
 
 export interface Book {
-    title:    string;
-    pages:    number;
-    genre:    string;
-    cover:    string;
+    title: string;
+    pages: number;
+    genre: string;
+    cover: string;
     synopsis: string;
-    year:     number;
-    ISBN:     string;
-    author:   Author;
+    year: number;
+    ISBN: string;
+    author: Author;
 }
 
 export interface Author {
-    name:       string;
+    name: string;
     otherBooks: string[];
 }
