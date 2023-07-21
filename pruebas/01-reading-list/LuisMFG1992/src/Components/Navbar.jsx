@@ -6,7 +6,7 @@ import { IoIosSearch } from 'react-icons/io'
 
 const Navbar = ({ handelSidabar, readingList }) => {
   return (
-    <div className="inline-flex justify-between items-center w-full pt-4 px-4 pb-2 sticky top-0 bg-gray-001">
+    <div className="inline-flex justify-between items-center w-full pt-4 px-4 pb-2 sticky top-0 bg-gray-001 z-10">
       <img src={logo} className="w-[130px] h-[40px]" />
 
       <div className="inline-flex justify-between items-center gap-4">
