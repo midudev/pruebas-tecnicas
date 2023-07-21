@@ -15,14 +15,14 @@ export const ModalBook = ({ openModal, setOpenModal, book }) => {
       </header>
       <Modal.Body className="bg-neutral-900">
         <div className="flex gap-4">
-          <div className="w-1/3">
+          <div className="hidden w-1/3 md:block">
             <img
               src={cover}
               alt={`${title} book cover`}
               className="rounded-lg"
             />
           </div>
-          <div className="w-2/3 space-y-6">
+          <div className="md:w-2/3 space-y-6">
             <h3 className="text-3xl text-rose-700">Synopsis:</h3>
             <p className="text-base leading-relaxed text-white">
               {description}

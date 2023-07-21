@@ -9,7 +9,7 @@ body {
 }
 
 a {
-  @apply text-rose-700 hover:text-rose-500 transition-colors;
+  @apply text-rose-700 transition-colors hover:text-rose-500;
 }
 
 h1,
@@ -24,4 +24,22 @@ h6 {
 
 .classic {
   font-family: "Libre Caslon Text", serif;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #0c0a09;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #be123c;
+  border-radius: 0.5rem; /* 8px */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #9f1239;
 }

@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Book } from "./Book";
 import { shallow } from "zustand/shallow";
 import useBookStore from "../store/store";
 
 export const Current = () => {
+  const [visible, setVisible] = useState(true);
   const books = useBookStore((state) => state.current, shallow);
 
   useEffect(() => {
@@ -12,7 +13,7 @@ export const Current = () => {
   }, []);
 
   return (
-    <div className="hidden rounded-lg bg-neutral-900/75 p-3 md:block md:w-5/12">
+    <div className="hidden overflow-y-auto h-full rounded-lg bg-neutral-900/75 p-3 md:block md:w-5/12">
       <h1 className="my-2 text-center text-xl font-bold">
         {books?.length || 0} Books on Reading List
       </h1>
