@@ -1,17 +1,26 @@
+import './style.css'
 import BooksJSON from './database/books.json'
 import BooksList from './components/BooksList'
 import useBooksList from './hooks/useBooksList'
-import './style.css'
+import { useEffect } from 'react'
 
 export default function App () {
   const {
     availableBooks,
+    setAvailableBooks,
     readList,
     addToReadList,
     removeFromReadList,
     readListHasBooks
-  } = useBooksList(BooksJSON.library.map(bookObj => bookObj.book))
-
+  } = useBooksList([])
+  useEffect(() => {
+    let list = JSON.parse(window.localStorage.getItem('availableBooks'))
+    if (list) setAvailableBooks(list)
+    else {
+      list = BooksJSON.library.map(bookObj => bookObj.book)
+      window.localStorage.setItem('availableBooks', JSON.stringify(list))
+    }
+  }, [])
   return (
     <>
       <h3 className='text-2xl font-bold text-blue-500'>{readListHasBooks ? 'Con' : 'Sin'} libros en la lista de lectura</h3>

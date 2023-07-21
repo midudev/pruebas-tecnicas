@@ -5,7 +5,7 @@ export default function useBooksList (initialList) {
   const [readList, setReadList] = useState([])
   const [readListHasBooks, setReadListHasBooks] = useState(false)
 
-  const addToAvaiables = (book) => setAvailableBooks(prevList => [...prevList, book])
+  const addToAvaiables = (books) => setAvailableBooks(prevList => [...prevList, ...Array.isArray(books) ? books : [books]])
   const removeFromAvailables = (book) => setAvailableBooks(prevList => prevList.filter(item => item !== book))
   function addToReadList (book) {
     removeFromAvailables(book)
@@ -21,6 +21,7 @@ export default function useBooksList (initialList) {
     })
   }
   return {
+    setAvailableBooks,
     availableBooks,
     addToAvaiables,
     removeFromAvailables,

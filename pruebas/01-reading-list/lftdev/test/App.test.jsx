@@ -1,5 +1,5 @@
 import { cleanup, fireEvent, getAllByRole, getByLabelText, getByRole, render, screen } from '@testing-library/react'
-import { afterEach, describe, it } from 'vitest'
+import { afterEach, describe, expect, it } from 'vitest'
 import App from '../src/App'
 describe('App', () => {
   afterEach(cleanup)
@@ -90,4 +90,8 @@ describe('App', () => {
     fireEvent.click(getAllByRole(aside, 'button')[0])
     await waitForElementToBeRemoved(getAllByRole(aside, 'listitem')[0])
   }) */
+  it('should save available books list to local storage;', () => {
+    render(<App />)
+    expect(window.localStorage.getItem('availableBooks')).not.toBe(null)
+  })
 })
