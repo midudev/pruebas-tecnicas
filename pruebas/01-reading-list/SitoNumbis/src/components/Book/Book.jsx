@@ -97,6 +97,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
             name="add-to-reading-list"
             onClick={addToReadingList}
             tabIndex={-1}
+            className={styles.primary}
             ariaLabel={languageState.texts.ariaLabels.add}
           >
             {languageState.texts.book.add}
