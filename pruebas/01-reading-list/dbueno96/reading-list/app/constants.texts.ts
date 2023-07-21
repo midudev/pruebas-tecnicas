@@ -1,3 +1,5 @@
 export const BOOK_SECTION_TITLE = 'Book list'
 export const READING_LIST_SECTION_TITLE = 'Read list'
 export const ADD_TO_READING_LIST = 'Add to reading list'
+export const NO_SW_SUPPORTED = 'Service worker is not supported!'
+export const SW_REGISTRY_FAILED = 'An error ocurred while trying to register service worker.'

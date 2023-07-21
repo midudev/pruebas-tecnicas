@@ -6,9 +6,11 @@ import React from 'react'
 import { useInitializeBookList } from './hooks/useInitializeBookList'
 import { useBookStore } from './store/bookStore'
 import { useMappedBooks } from './hooks/useMappedBooks'
+import { useRegisterServiceWorker } from './hooks/useRegisterServiceWorker'
 
 export default function MainPage () {
   useInitializeBookList()
+  useRegisterServiceWorker()
   const { bookList: books, moveBookToReadingList, removeBookFromReadingList } = useBookStore()
   const readingListBooks = useMappedBooks(books)
 
