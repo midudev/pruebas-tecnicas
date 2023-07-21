@@ -4,6 +4,25 @@ import { myReadingListISBN } from '../signals/store';
 const normalizeText = (text) =>
 	text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
+//range filter functions
+const rangeFilters = {
+	onlyMin: (books, { min }) => {
+		return books.filter((book) => Number(book.pages) >= Number(min));
+	},
+	onlyMax: (books, { max }) => {
+		return books.filter((book) => {
+			return Number(book.pages) <= Number(max);
+		});
+	},
+	both: (books, { min, max }) => {
+		return books.filter((book) => {
+			return (
+				Number(book.pages) >= Number(min) && Number(book.pages) <= Number(max)
+			);
+		});
+	},
+};
+
 export const filterBooks = (books) => {
 	const { excludeBooks, genre, pages, specificBook } = filterOptions.value;
 	const [min, max] = pages;
@@ -29,19 +48,11 @@ export const filterBooks = (books) => {
 
 	if (min || max) {
 		if (min && !max) {
-			booksFiltered = booksFiltered.filter((book) => {
-				return Number(book.pages) >= Number(min);
-			});
+			booksFiltered = rangeFilters.onlyMin(booksFiltered, { min });
 		} else if (!min && max) {
-			booksFiltered = booksFiltered.filter((book) => {
-				return Number(book.pages) <= Number(max);
-			});
+			booksFiltered = rangeFilters.onlyMax(booksFiltered, { max });
 		} else if (min && max) {
-			booksFiltered = booksFiltered.filter((book) => {
-				return (
-					Number(book.pages) >= Number(min) && Number(book.pages) <= Number(max)
-				);
-			});
+			booksFiltered = rangeFilters.onlyMax(booksFiltered, { min, max });
 		}
 	}
 
