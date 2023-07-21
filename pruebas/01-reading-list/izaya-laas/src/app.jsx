@@ -2,13 +2,17 @@ import { Header } from './components/header/Header';
 import Aside from './components/main/aside/Aside';
 import Navbar from './components/main/navbar/Navbar';
 import Pages from './components/main/routes/Routes.jsx';
-import { myReadingListLength, totalFreeBooks } from './signals/store';
+import { isDark, myReadingListLength, totalFreeBooks } from './signals/store';
 
 export function App() {
 	return (
 		<>
 			<Header />
-			<main className="relative font-tilt text-black h-screen grid grid-cols-[200px_1fr] grid-rows-[1fr]">
+			<main
+				className={`relative font-tilt text-black h-screen grid grid-cols-[200px_1fr] grid-rows-[1fr] bg-white ${
+					isDark.value ? 'invert' : ''
+				}`}
+			>
 				<Aside />
 				<article className="w-full p-4 overflow-y-scroll">
 					<div className="flex items-end max-w-5xl">
