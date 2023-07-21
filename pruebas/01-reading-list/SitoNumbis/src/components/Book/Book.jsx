@@ -53,11 +53,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
   useEffect(() => {
     let toHide = false;
     // if the user is seeing the reading list and the book is not in the reading list
-    if (
-      libraryState.seeing === "reading-list" &&
-      !libraryState.readingList.has(ISBN)
-    )
-      toHide = true;
+    if (libraryState.readingList.has(ISBN)) toHide = true;
 
     //* if the user is using a filter
     //  the genre of the book is not the filtering genre

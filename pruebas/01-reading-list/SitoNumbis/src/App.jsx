@@ -5,10 +5,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Loading from "./components/Loading/Loading";
 import Handler from "./components/Error/Handler";
 
-// views
-import Home from "./views/Home/Home";
-import ReadingList from "./views/ReadingList/ReadingList";
-
 // layouts
 import Main from "./layouts/Main";
 
@@ -66,10 +62,7 @@ function App() {
       >
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Main />}>
-              <Route index element={<Home />} />
-              <Route path="/reading-list" element={<ReadingList />} />
-            </Route>
+            <Route path="/*" element={<Main />} />
           </Routes>
         </BrowserRouter>
       </Suspense>
