@@ -63,7 +63,15 @@ function HomeHeader() {
     [setFiltersState]
   );
 
-  const totalLength = useMemo(() => {}, []);
+  const totalLength = useMemo(() => {
+    return libraryState.seeing === "all"
+      ? libraryState.available
+      : libraryState.readingList.size;
+  }, [
+    libraryState.seeing,
+    libraryState.available,
+    libraryState.readingList.size,
+  ]);
 
   return (
     <section>
@@ -71,12 +79,18 @@ function HomeHeader() {
         {/* current list total */}
         <p>
           {languageState.texts.homeHeader.title}{" "}
-          {/* If the user is using the genre filter */}
-          {filtersState.genre.length
-            ? ` (${filtersState.genre})`
-            : languageState.texts.homeHeader[libraryState.seeing]}
+          {languageState.texts.homeHeader[libraryState.seeing]}
           <span className="alter-text text-sm mx-2">({totalLength})</span>
         </p>
+        {/* If the user is using the genre filter */}
+        {filtersState.genre.length ? (
+          <p>
+            {">"} {filtersState.genre}{" "}
+            <span className="alter-text text-sm mx-1">
+              ({libraryState.showing})
+            </span>
+          </p>
+        ) : null}
 
         <IconButton
           className="mt-1"
