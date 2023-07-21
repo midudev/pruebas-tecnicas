@@ -39,13 +39,13 @@ export class BookService {
   }
 
 
-  moveFromListToReadingList(book: Book, index: number) {
+  moveFromListToReadingList(book: Book) {
     const bookIndex: number = this.getBookIndex(this.bookListData, book);
     this.deleteFromBookList(bookIndex);
     this.addToReadingList(book);
   }
 
-  moveFromReadingListToList(book: Book, index: number) {
+  moveFromReadingListToList(book: Book) {
     const bookIndex: number = this.getBookIndex(this.readingListData, book);
     this.deleteFromReadingList(bookIndex);
     this.addToBookList(book);

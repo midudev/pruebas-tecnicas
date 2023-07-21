@@ -21,8 +21,8 @@ export class ReadBookListComponent implements OnInit {
     })
   }
 
-  moveToList(book: Book, index: number) {
-    this.bookService.moveFromReadingListToList(book, index);
+  moveToList(book: Book) {
+    this.bookService.moveFromReadingListToList(book);
   }
 
 }
