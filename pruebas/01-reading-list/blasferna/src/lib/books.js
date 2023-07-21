@@ -1,4 +1,4 @@
-import DATA from "@/books.json";
+import DATA from "@/db/books.json";
 
 const READING_LIST_STORAGE_KEY = "readingList";
 
