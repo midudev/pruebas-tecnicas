@@ -2,45 +2,35 @@
 
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { useLibrary } from '@/hooks/useLibrary'
+import { useBookList } from '@/hooks/useBookList'
 
-import suggestBookStyles from '@/assets/styles/Layout/Home.module.css'
 import { nameStorage } from '@/assets/constants'
+import { books } from '@/assets/values'
+import suggestBookStyles from '@/assets/styles/Layout/Home.module.css'
 
 import type { Book } from '@/typings/books'
 
 export function SuggestBook() {
   const [suggestion, setSuggestion] = useState<Book | null>(null)
-  const [books, genres] = useLibrary()
+  const { addToReadingList } = useBookList()
 
   useEffect(() => {
-    const topGenreStr = window.localStorage.getItem(nameStorage.topGenre)
+    const topGenresStr = window.localStorage.getItem(nameStorage.topGenre)
 
-    if (!topGenreStr) {
+    if (!topGenresStr) {
       const random = Math.floor(Math.random() * books.length)
       setSuggestion(books[random])
     } else {
-      const listOfReadingStr = window.localStorage.getItem(nameStorage.listOfReading) ?? []
-      const topGenres: string[] = JSON.parse(topGenreStr)
-      const listOfReading: string[] =
-        typeof listOfReadingStr === 'string' ? JSON.parse(listOfReadingStr) : listOfReadingStr
+      const topGenres: string[] = JSON.parse(topGenresStr)
 
-      /**
-       * @TODO
-       * Añadir sugerencia de otro género de libro para leer
-       * El usuario añadio/leyó todos los libros de su preferencia
-       */
-      const suggestedBooks = books.filter(({ title, genre }) =>
-        topGenres.some(
-          (topGenre) => topGenre === genre && !listOfReading.some((reading) => reading === title)
-        )
+      const suggestedBooks = books.filter(({ genre }) =>
+        topGenres.some((topGenre) => topGenre === genre)
       )
 
       const random = Math.floor(Math.random() * suggestedBooks.length)
-
       setSuggestion(suggestedBooks[random])
     }
-  }, [books, genres])
+  }, [])
 
   return suggestion ? (
     <>
@@ -52,7 +42,10 @@ export function SuggestBook() {
         <p className={suggestBookStyles.homeMain__suggestSection__synopsis}>
           {suggestion.synopsis}
         </p>
-        <button className={suggestBookStyles.homeMain__suggestSection__info__button}>
+        <button
+          className={suggestBookStyles.homeMain__suggestSection__info__button}
+          onClick={() => addToReadingList({ ISBN: suggestion.ISBN })}
+        >
           Añadir a la lista
         </button>
       </div>
