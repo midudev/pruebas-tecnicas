@@ -5,7 +5,8 @@ module.exports = {
     },
     "extends": [
         "standard-with-typescript",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "prettier"
     ],
     "overrides": [
         {
@@ -33,6 +34,11 @@ module.exports = {
         "@typescript-eslint/explicit-function-return-type": "off",
         "react/react-in-jsx-scope": "off",
         "@typescript-eslint/triple-slash-reference": "off",
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
     },
     "ignorePatterns": ['.eslintrc.cjs', 'tailwind.config.js', 'postcss.config.js', 'vite.config.ts'],
 }
