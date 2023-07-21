@@ -3,6 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 export const fetchBooks = createAsyncThunk('books/fetch', async () => {
   const response = await fetch('../../data/books.json')
   const data = await response.json()
+  console.log(data.library)
   return data.library
 })
 
@@ -26,7 +27,9 @@ export const booksSlice = createSlice({
     booksList: [],
     genres: [],
     selectedFilters: [],
+    readingList: [],
   },
+
   reducers: {
     addDropDownFilter: (state, action) => {
       state.selectedFilters.push(action.payload)
@@ -38,7 +41,11 @@ export const booksSlice = createSlice({
         (genero) => genero !== action.payload
       )
     },
+    addBookToReadingList: (state, action) => {
+      state.readingList.push(action.payload)
+    },
   },
+
   extraReducers: (builder) => {
     builder.addCase(fetchBooks.fulfilled, (state, action) => {
       state.booksList = action.payload
@@ -55,6 +62,7 @@ export const booksSlice = createSlice({
   },
 })
 
-export const { addDropDownFilter, removeDropDownFilter } = booksSlice.actions
+export const { addDropDownFilter, removeDropDownFilter, addBookToReadingList } =
+  booksSlice.actions
 
 export default booksSlice.reducer

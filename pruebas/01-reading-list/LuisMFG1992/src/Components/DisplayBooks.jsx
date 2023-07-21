@@ -1,4 +1,8 @@
+import { useDispatch } from 'react-redux'
+import { addBookToReadingList } from '../redux/booksSlice'
+
 const DisplayBooks = ({ booksList, selectedFilters }) => {
+  const dispatch = useDispatch()
   function filterBooksByGenre(books, genres) {
     return books.filter((libro) =>
       genres.some((element) => element === libro.book.genre)
@@ -15,6 +19,7 @@ const DisplayBooks = ({ booksList, selectedFilters }) => {
             key={element.book.ISBN}
             src={element.book.cover}
             className="w-[200px] h-[300px] "
+            onClick={() => dispatch(addBookToReadingList(element))}
           />
         )
       )}

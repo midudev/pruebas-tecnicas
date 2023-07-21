@@ -20,6 +20,7 @@ function App() {
   const { booksList } = useSelector((state) => state.books)
   const { selectedFilters } = useSelector((state) => state.books)
   const { genres } = useSelector((state) => state.books)
+  const { readingList } = useSelector((state) => state.books)
 
   useEffect(() => {
     dispatch(fetchBooks())
@@ -32,7 +33,9 @@ function App() {
 
   return (
     <div className="w-full  bg-[#202124] flex-col justify-center items-center min-h-screen">
-      {isSidebarOpen && <Sidebar handelSidabar={handelSidabar} />}
+      {isSidebarOpen && (
+        <Sidebar handelSidabar={handelSidabar} readingList={readingList} />
+      )}
       <Navbar handelSidabar={handelSidabar} />
       <div className="w-full px-5 pt-10 sm:px-0 max-w-[2000px] min-h-screen flex items-center flex-col">
         <p>Libros disponibles: 10</p>
