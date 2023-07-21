@@ -14,16 +14,15 @@ function App() {
   
   return (
     <div className="App">
-      <div className="body">
-        <h1>Reading List</h1> 
-        <h4>{availableBooks.length} available books</h4>
-        <h4>{booksToRead.length} books in reading list</h4>
+      <main className="body">
+        <h1>Available books: {availableBooks.length}</h1>
+        <h3>Books in reading list: {booksToRead.length} </h3>
         <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',width:'100%'}}>
         <Filters />
         <button className='reading-list-btn' onClick={()=>setShowReadingList(!showReadingList)}>Reading List</button>
         </div>
         <ListOfBooks showReadingList={setShowReadingList}/>
-      </div>
+      </main>
       {showReadingList && <BooksToRead showReadingList={setShowReadingList}/>}
     </div>
   );
