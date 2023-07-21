@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import loadable from "@loadable/component";
 
-import { faBookOpen, faBookmark } from "@fortawesome/free-solid-svg-icons";
+import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 
 // contexts
 import { useLanguage } from "../../contexts/LanguageProvider";
@@ -47,14 +47,10 @@ function Navbar() {
           </h1>
         </Link>
         <nav className="flex items-center gap-5">
-          <Badge number={totalReading} show={libraryState.seeing === "all"}>
+          <Badge number={totalReading}>
             <Tippy
               className="hide-on-mobile"
-              content={
-                libraryState.seeing === "reading-list"
-                  ? languageState.texts.ariaLabels.toMainStock
-                  : languageState.texts.ariaLabels.toReadingList
-              }
+              content={languageState.texts.ariaLabels.toReadingList}
             >
               <Link
                 to={"/reading-list"}
@@ -62,13 +58,7 @@ function Navbar() {
                 className={`${styles.link}`}
                 aria-label={languageState.texts.ariaLabels.toReadingList}
               >
-                <FontAwesomeIcon
-                  icon={
-                    libraryState.seeing === "reading-list"
-                      ? faBookOpen
-                      : faBookmark
-                  }
-                />
+                <FontAwesomeIcon icon={faBookmark} />
               </Link>
             </Tippy>
           </Badge>

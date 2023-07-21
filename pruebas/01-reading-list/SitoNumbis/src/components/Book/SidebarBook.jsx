@@ -5,15 +5,14 @@ import { css } from "@emotion/css";
 
 import PropTypes from "prop-types";
 
-// components
-import PrimaryButton from "../PrimaryButton/PrimaryButton";
-
 // contexts
 import { useLanguage } from "../../contexts/LanguageProvider";
 import { useLibrary } from "../../contexts/LibraryProvider";
 
 // styles
 import styles from "./styles.module.css";
+import IconButton from "../IconButton/IconButton";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
 
 function Book({ title, pages, genre, cover, year, ISBN, author, i }) {
   const { languageState } = useLanguage();
@@ -35,7 +34,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author, i }) {
       id={ISBN}
       className={`group ${styles.main} ${
         focused ? "!z-[999]" : ""
-      } hover:-translate-y-4 transition appear w-full ${css({
+      } hover:-translate-y-4  transition appear w-full ${css({
         gridArea: `${i + 1} / 1 / span 6 / span 1`,
         zIndex: i + 1,
       })}`}
@@ -44,6 +43,13 @@ function Book({ title, pages, genre, cover, year, ISBN, author, i }) {
         className="w-full h-full object-cover object-center shadow-[black] shadow-md transition"
         src={cover}
         alt={`${title}-${languageState.texts.book.cover}`}
+      />
+      <IconButton
+        name="remove-from-reading-list"
+        onClick={removeFromReadingList}
+        ariLabel={languageState.texts.ariaLabels.remove}
+        className="bg-primary-light-opacity absolute top-1 right-1 z-10"
+        icon={faClose}
       />
       <div
         tabIndex={0}
@@ -70,16 +76,6 @@ function Book({ title, pages, genre, cover, year, ISBN, author, i }) {
             {author.name} <span className="alter-text">({year})</span>
           </p>
         </div>
-        {focused ? (
-          <PrimaryButton
-            name="remove-from-reading-list"
-            onClick={removeFromReadingList}
-            ariLabel={languageState.texts.ariaLabels.remove}
-            className="appear"
-          >
-            {languageState.texts.book.remove}
-          </PrimaryButton>
-        ) : null}
       </div>
     </li>
   );

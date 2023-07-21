@@ -31,10 +31,6 @@ function GenreBar() {
     [filtersState.genre, setFiltersState]
   );
 
-  useEffect(() => {
-    setFiltersState({ type: "reset" });
-  }, [libraryState.seeing, setFiltersState]);
-
   const filterContainer = useRef(null);
   const [arrows, setArrows] = useState(false);
   const [barMaxPosition, setBarMaxPosition] = useState(0);

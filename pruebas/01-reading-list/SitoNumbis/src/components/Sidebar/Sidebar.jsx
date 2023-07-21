@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 
 // components
+import Empty from "../Empty/Empty";
 import Book from "../Book/SidebarBook";
 import IconButton from "../IconButton/IconButton";
 
@@ -74,11 +75,15 @@ function Sidebar() {
           icon={faClose}
         />
       </div>
-      <ul className={styles.verticalGrid}>
-        {booksToPrint.map((book, i) => (
-          <Book key={book.ISBN} {...book} i={i} />
-        ))}
-      </ul>
+      {booksToPrint.length ? (
+        <ul className={styles.verticalGrid}>
+          {booksToPrint.map((book, i) => (
+            <Book key={book.ISBN} {...book} i={i} />
+          ))}
+        </ul>
+      ) : (
+        <Empty />
+      )}
     </aside>
   );
 }

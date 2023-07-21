@@ -2,6 +2,10 @@
   "es": {
     "logo": "Sito's Library",
     "copyright": "Licencia MIT",
+    "empty": {
+      "title": "No hay libros",
+      "body": "Si aún no has añadido libros a tu lista de lectura, deberías pasarte por la lista de libros disponibles y comenzar a buscar"
+    },
     "homeHeader": {
       "noFilter": "Todos",
       "title": "Libros disponibles",

@@ -66,12 +66,7 @@ const libraryReducer = (libraryState, action) => {
         available: libraryState.books.length - newMap.size,
       };
     }
-    case "toggle-see": {
-      return {
-        ...libraryState,
-        seeing: libraryState.seeing === "all" ? "reading-list" : "all",
-      };
-    }
+
     case "set-showing": {
       const { showing } = action;
       return { ...libraryState, showing };
