@@ -12,7 +12,6 @@
 }
 
 .homeMain__suggestSection,
-.homeMain__bookGenresSection,
 .homeMain__bookDashboard {
   border-style: solid;
   border-color: transparent;
@@ -62,13 +61,6 @@
   line-height: 1.5rem;
 }
 
-.homeMain__bookGenresSection {
-  grid-area: bookGenres;
-  padding: 1em var(--padding-section) 1em var(--padding-content);
-  border-width: 0 1px 0;
-  border-right-color: var(--border-section-color);
-}
-
 .homeMain__bookDashboard {
   display: grid;
   grid-template-columns: 60% 40%;
@@ -86,54 +78,9 @@
   line-height: 2.25rem;
 }
 
-.booksGenresSection__title {
-  margin-bottom: 0.4em;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-
-.booksGenresSection__list {
-  padding-left: 0;
-  list-style-type: none;
-}
-
-.booksGenresSection__listItem {
-  margin-bottom: 0.6em;
-  font-weight: 600;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
-
-.booksGenresSection__listItem__button {
-  padding: 0.3em 0.6em 0.3em 0;
-  background-color: transparent;
-  border-width: 0;
-  color: rgb(255 255 255 / 0.75);
-}
-
-@media (hover: hover) {
-  .booksGenresSection__listItem__button:hover {
-    color: #fff;
-  }
-}
-
-@media (hover: none) {
-  .booksGenresSection__listItem__button:active {
-    color: #fff;
-  }
-}
-
-.booksGenresSection__listItem__button.genreActive {
-  color: rgb(56 189 248);
-}
-
 @media (min-width: 90.0625rem) {
   .homeMain__suggestSection {
     border-right-color: var(--border-section-color);
-    border-left-color: var(--border-section-color);
-  }
-
-  .homeMain__bookGenresSection {
     border-left-color: var(--border-section-color);
   }
 

@@ -20,7 +20,7 @@ type FilterContext = {
   }
   modifiers: {
     changeNumberPages: (ev: React.ChangeEvent<HTMLInputElement>) => void
-    changeCurrentGenre: (ev: React.MouseEvent<HTMLButtonElement>) => void
+    changeCurrentGenre: (ev: React.ChangeEvent<HTMLInputElement>) => void
   }
 }
 
@@ -62,8 +62,8 @@ export function FilterProvider({ children }: FilterProviderProps) {
       })
   }
 
-  const changeCurrentGenre = (ev: React.MouseEvent<HTMLButtonElement>) => {
-    const { genre } = ev.currentTarget.dataset
+  const changeCurrentGenre = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    const genre = ev.currentTarget.value
 
     if (genre) {
       window.localStorage.setItem(nameStorage.currentGenre, genre)

@@ -1,0 +1,59 @@
+.filterSection {
+  grid-area: bookGenres;
+  padding: 1em var(--padding-section) 1em var(--padding-content);
+  border-style: solid;
+  border-color: transparent;
+  border-width: 0 1px 0;
+  border-right-color: var(--border-section-color);
+}
+
+.filterSection__field {
+  padding: 0;
+  border-width: 0;
+}
+
+.filterSection__fieldTitle {
+  margin-bottom: 0.4em;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.filterSection__containerOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.filterSection__checkGenre {
+  display: none;
+}
+
+.filterSection__labelGenre {
+  padding: 0.3em 0.6em 0.3em 0;
+  color: rgb(255 255 255 / 0.75);
+}
+
+.filterSection__checkGenre:checked + .filterSection__labelGenre {
+  color: rgb(56 189 248);
+}
+
+@media (hover: hover) {
+  .filterSection__labelGenre:hover {
+    color: #fff;
+  }
+}
+
+@media (hover: none) {
+  .filterSection__labelGenre {
+    color: #fff;
+  }
+}
+
+@media (min-width: 90.0625rem) {
+  .filterSection {
+    border-left-color: var(--border-section-color);
+  }
+}
