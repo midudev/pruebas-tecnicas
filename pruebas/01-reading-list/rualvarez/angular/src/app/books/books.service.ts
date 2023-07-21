@@ -35,6 +35,7 @@ export class BookService {
   initBookList() {
     const { library } = data;
     const books: Array<Book> = library.map(e => e.book);
+    books.sort((a, b) => a.title.localeCompare(b.title));
     this.bookListData = structuredClone(books);
     this.bookListDataFiltered = structuredClone(books);
     this._bookList.next(this.bookListData);
@@ -86,6 +87,8 @@ export class BookService {
     let filterBooks: Array<Book> = [];
     if (genre === this.genreAllOption) filterBooks = structuredClone(this.bookListData);
     else filterBooks = this.bookListData.filter(book => book.genre === genre);
+
+    filterBooks.sort((a, b) => a.title.localeCompare(b.title));
 
     return filterBooks;
   }
