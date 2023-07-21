@@ -1,4 +1,3 @@
-"use client"
 import { Input } from './input'
 
 const Navbar = () => {

@@ -5,23 +5,35 @@ import { Library, Book } from "@/interfaces/books"
 
 interface BearState {
   library: Library[],
-  bookSelected: Book | null,
+  readingList: Book[],
   getBooks: () => void,
-  getBook: (arg: Book) => void,
+  createReadingList: (arg: Book | null) => void,
 }
 
 const libraryStore = create<BearState>()(
   persist(
     (set) => ({
       library: [],
-      bookSelected: null,
+      readingList: [],
       getBooks: () => {
         if (Array.isArray(library) && library.length > 0) {
           return set({ library });
         }
       },
-      getBook: (book) => {
-        set({ bookSelected: book  })
+      createReadingList: (book) => {
+        if (book) {
+          set((state) => {
+            const exist = state.readingList.find(reading => reading.ISBN === book.ISBN)
+
+            if (!exist) {
+              return {
+                readingList: [...state.readingList, book]
+              }
+            }
+
+            return state
+          })
+        }
       }
     }),
     {

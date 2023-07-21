@@ -1,7 +1,6 @@
 "use client"
 import { useId } from "react"
 import Image from "next/image"
-import useBookStore from "@/store/booksStore"
 import SkeletonCard from "@/components/SkeletonCard"
 import { Badge } from "@/components/ui/badge"
 import {

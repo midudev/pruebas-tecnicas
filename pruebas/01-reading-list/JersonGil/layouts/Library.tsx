@@ -11,7 +11,7 @@ const BookCard = dynamic(() => import('@/components/BookCard'), {
 
 const Library = () => {
   const { library, getBooks } = useBookStore()
-  const [bookSelected, setBookSelected] = useState<Book>()
+  const [bookSelected, setBookSelected] = useState<Book | null>(null)
 
   useEffect(() => {
     getBooks()

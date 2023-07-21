@@ -2,12 +2,14 @@ import useBookStore from "@/store/booksStore"
 import Image from "next/image"
 import { Separator } from "@/components/ui/separator"
 import { Book } from "@/interfaces/books"
+import { Button } from "@/components/ui/button"
 
 interface Props {
-  bookSelected: Book | undefined;
+  bookSelected: Book | null;
 }
 
 const BookSelected = ({ bookSelected }: Props) => {
+  const { createReadingList } = useBookStore()
   return (
     <section className={`${!bookSelected && "hidden"} bg-primary p-6 rounded-e-3xl flex flex-col items-center gap-4 max-h-[1000px]`}>
       <h1 className="text-2xl mb-4 text-center font-bold text-text">Acerca del libro</h1>
@@ -29,6 +31,12 @@ const BookSelected = ({ bookSelected }: Props) => {
         <label className="text-lg">Sinopsis:</label>
         <p className="text-gray-300 text-left w-64">{bookSelected?.synopsis}</p>
       </div>
+      <Button
+        className="bg-secondary-foreground text-text-clear mt-4 hover:bg-secondary"
+        onClick={() => createReadingList(bookSelected)}
+      >
+        Agregar a lista de lectura
+      </Button>
     </section>
   )
 }
