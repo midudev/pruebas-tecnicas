@@ -1,4 +1,4 @@
-import { memo, useEffect, useMemo, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { stringSimilarity } from "string-similarity-js";
 import loadable from "@loadable/component";
 
@@ -27,12 +27,6 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
 
   const addToReadingList = () =>
     setLibraryState({ type: "toggle-to-reading-list", id: ISBN });
-
-  const memoAnimation = useMemo(
-    () =>
-      "transition duration-500 group-hover:opacity-100 group-hover:translate-y-0 group-focus:opacity-100 group-focus:translate-y-0 opacity-0 translate-y-5",
-    []
-  );
 
   const activateLightBox = (e) => {
     // ignoring add to reading list action
@@ -85,7 +79,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
           onClick={activateLightBox}
           className={`group ${styles.bookInfoContainer}`}
         >
-          <div className={`${memoAnimation} ${styles.bookInfo}`}>
+          <div className={`${styles.bookInfo}`}>
             <h3>{title}</h3>
             <p>
               {genre}{" "}
@@ -104,7 +98,6 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
             onClick={addToReadingList}
             tabIndex={-1}
             ariaLabel={languageState.texts.ariaLabels.add}
-            className={`${memoAnimation}`}
           >
             {languageState.texts.book.add}
           </PrimaryButton>
