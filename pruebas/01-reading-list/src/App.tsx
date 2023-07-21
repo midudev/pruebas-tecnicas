@@ -1,8 +1,14 @@
+import AsideMenu from "./components/AsideMenu";
+import Catalogue from "./components/Catalogue";
+
 const App = () => {
   return (
-    <div>
-      <h1 className="text-blue-500 bg-blue-200">Reading list</h1>
-    </div>
+    <main className="bg-stone-50">
+      <div className="flex">
+        <AsideMenu />
+        <Catalogue />
+      </div>
+    </main>
   );
 };
 
