@@ -20,3 +20,5 @@ Planificación de la Aplicación: Lista de Libros
     
 21/07/2023
     He aprendido a eliminar dependencias inncesarias en un proyecto
+    He aprendido cómo funciona la API de JavaScript relacionada con el Storage y el Event Listener 'storage'
+    He aprendido a desplegar una aplicación en Vercel con líneas de comandos
