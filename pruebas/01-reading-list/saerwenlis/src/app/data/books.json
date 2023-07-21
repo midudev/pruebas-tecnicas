@@ -231,5 +231,84 @@
           ]
       }
     }
-  }
+  },
+  {
+    "book": {
+        "title": "Orgullo y prejuicio",
+        "pages": 279,
+        "genre": "Romance",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1320399351i/1885.jpg",
+        "synopsis": "Elizabeth Bennet lucha contra sus prejuicios para descubrir el verdadero amor en la sociedad inglesa del siglo XIX",
+        "year": 1913,
+        "ISBN": "978-0679783268",
+        "author": {
+            "name": "Jane Austen",
+            "otherBooks": [
+                "Persuación"
+            ]
+        }
+      }
+    },
+    {
+        "book": {
+            "title": "Memorias de una Geisha",
+            "pages": 503,
+            "genre": "Romance",
+            "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1409595968i/929.jpg",
+            "synopsis": "La vida de Chiyo, una geisha llamada Sayuri, y su búsqueda de amor y libertad en el Japón de los años '30 y '40.",
+            "year": 1997,
+            "ISBN": "978-1400096893",
+            "author": {
+                "name": "Arthur Golden",
+                "otherBooks": []
+            }
+        }
+    },
+    {
+        "book": {
+            "title": "La teoría del todo",
+            "pages": 160,
+            "genre": "Ciencia",
+            "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1330008396i/6084144.jpg",
+            "synopsis": "La vida extraordinaria y lucha de Stephen Hawking contra la esclerosis lateral amiotrófica mientras revoluciona la física teórica.",
+            "year": 2002,
+            "ISBN": "978-9871117475",
+            "author": {
+                "name": "Stephen Hawking",
+                "otherBooks": []
+            }
+        }
+    },
+    {
+        "book": {
+            "title": "Come comida real",
+            "pages": 247,
+            "genre": "Salud",
+            "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1551819601i/44285257.jpg",
+            "synopsis": "En este libro, Carlos Ríos nos ofrece el conocimiento científico necesario para cuestionar, indagar y profundizar en nuestra alimentación y en todo lo que la rodea.",
+            "year": 2019,
+            "ISBN": "978-8449335747",
+            "author": {
+                "name": "Carlos Ríos",
+                "otherBooks": [
+                    "Pierde grasa con comida real"
+                ]
+            }
+        }
+    },
+    {
+        "book": {
+            "title": "El arte de no amargarse la vida",
+            "pages": 240,
+            "genre": "Psicología",
+            "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1323124615i/12928123.jpg",
+            "synopsis": "El arte de no amargarse la vida nos ofrece las últimas herramientas de la más potente psicología cognitiva.",
+            "year": 2011,
+            "ISBN": "978-8497545655",
+            "author": {
+                "name": "Rafael Santandreu",
+                "otherBooks": []
+            }
+        }
+    }
 ]}

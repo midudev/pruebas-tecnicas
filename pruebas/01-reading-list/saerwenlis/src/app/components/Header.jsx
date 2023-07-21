@@ -11,13 +11,13 @@ import user from "../../../public/assets/user.png";
 export default function Header() {
     return (
       <header className="fixed w-20 h-full flex flex-col items-center justify-between bg-bgwarn border-r-[0.2px] border-off shadow-r-sm">
-        <Image src={books} width='auto' height='auto' alt="books" className="p-4" />
+        <Image src={books} width='auto' height='auto' alt="books" className="p-3" />
         <nav className="h-3/5 p-6 flex flex-col items-center">
-            <Image src={dashboard} width='auto' height='auto' alt="dashboard" className="pb-4" />
-            <Image src={bell} width='auto' height='auto' alt="dashboard" className="pb-4" />
-            <Image src={bookmark} width='auto' height='auto' alt="dashboard" className="pb-4" />
-            <Image src={friends} width='auto' height='auto' alt="dashboard" className="pb-4" />
-            <Image src={config} width='auto' height='auto' alt="dashboard" className="pb-4" />
+            <Image src={dashboard} width='auto' height='auto' alt="dashboard" className="h-[72px] pb-8" />
+            <Image src={bell} width='auto' height='auto' alt="dashboard" className="h-[72px] pb-6" />
+            <Image src={bookmark} width='auto' height='auto' alt="dashboard" className="h-[72px] pb-6" />
+            <Image src={friends} width='auto' height='auto' alt="dashboard" className="h-[72px] pb-6" />
+            <Image src={config} width='auto' height='auto' alt="dashboard" className="h-[72px] pb-6" />
         </nav>
         <nav className="flex flex-col items-center justify-center">
             <Image src={user} width='182' height='181' alt="dashboard" className="p-4" />

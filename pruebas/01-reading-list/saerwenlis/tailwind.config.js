@@ -15,7 +15,8 @@ module.exports = {
         secondary:'#0d276b',
         bgwarn: '#fffcfa',
         bgcold: '#F0F4FF',
-        off: '#C4C4C4'
+        off: '#C4C4C4',
+        input: '#F6F6F6'
       }
     },
   },
