@@ -38,14 +38,18 @@ pub fn navbar(props: &Props) -> Html {
                     />
                     if let Some(onfilter) = onfiltergenre {
                         <FilterComponent<String>
+                            title="Filtrar Por Categoría:"
                             options={genres.clone()}
                             onchange={onfilter.clone()}
+                            class={classes!("hidden","md:block")}
                             />
                     }
                     if let Some(onfilter) = onfilterpages {
                         <FilterComponent<String>
+                            title="Filtrar Por Páginas:"
                             options={pages.clone()}
                             onchange={onfilter}
+                            class={classes!("hidden","md:block")}
                             />
                     }
                 </div>

@@ -190,6 +190,7 @@ pub fn Library(props: &Props) -> Html {
                     <div class={classes!("flex","flex-row","flex-wrap","gap-4","items-center")}>
                         if enable_filter {
                             <FilterComponent<String>
+                                title="Filtrar por Categorías:"
                                 options={genres.current().clone().into_iter().collect::<Vec<String>>()}
                                 onchange={onfilterchange} />
                         }
