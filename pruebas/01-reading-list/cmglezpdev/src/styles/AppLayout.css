@@ -76,6 +76,7 @@
     cursor: pointer;
     transition: opacity 300ms;
     z-index: 200;
+    display: none;
 }
 
 .svg-menu-close {
@@ -189,4 +190,16 @@
 #checkbox-menu:checked ~ .nav-options-responsive {
     opacity: 1;
     pointer-events: unset;
+}
+
+
+
+@media (max-width: 700px) {
+    .svg-menu-close, .svg-menu-open {
+        display: block;
+    }
+
+    .nav-options {
+        display: none;
+    }
 }
