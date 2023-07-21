@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { BookTypes } from "../../enums";
-import { BooksContext } from "../../utils/context/BooksContextProvider";
+import { BookContext } from "../../utils/context";
 import styles from "./Favorite.module.css";
 
 export default function Favorite() {
-	const { favorites, dispatch } = useContext(BooksContext);
+	const { favorites, dispatch } = useContext(BookContext);
 
 	if (!favorites.length) {
 		return (

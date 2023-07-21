@@ -1,11 +1,11 @@
-import { Books } from "./features/Books";
-import BooksContextProvider from "./utils/context/BooksContextProvider";
+import { Book } from "./features/Book";
+import { BookContextProvider } from "./utils/context";
 
 function App() {
 	return (
-		<BooksContextProvider>
-			<Books />
-		</BooksContextProvider>
+		<BookContextProvider>
+			<Book />
+		</BookContextProvider>
 	);
 }
 

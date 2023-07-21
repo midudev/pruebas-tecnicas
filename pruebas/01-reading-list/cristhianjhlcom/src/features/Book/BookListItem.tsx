@@ -1,16 +1,16 @@
 import { useContext } from "react";
 import { HeartIcon } from "../../components/Icons";
 import { BookTypes } from "../../enums";
-import { Book } from "../../interfaces/Book";
-import { BooksContext } from "../../utils/context/BooksContextProvider";
-import styles from "./BooksListItem.module.css";
+import { Book } from "../../interfaces";
+import { BookContext } from "../../utils/context";
+import styles from "./BookListItem.module.css";
 
 interface Props {
 	book: Book;
 }
 
 export default function BooksListItem({ book }: Props) {
-	const { dispatch, modalRef } = useContext(BooksContext);
+	const { dispatch, modalRef } = useContext(BookContext);
 
 	function handlePreviewClick(book) {
 		dispatch({
@@ -25,7 +25,6 @@ export default function BooksListItem({ book }: Props) {
 				<button
 					type="button"
 					onClick={() => {
-						console.log(book);
 						dispatch({
 							type: BookTypes.ADD_TO_FAVORITE,
 							payload: book,

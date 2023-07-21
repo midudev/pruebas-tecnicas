@@ -1,5 +1,5 @@
 import { BookTypes } from "../../enums";
-import { BookElement } from "../../interfaces/Book";
+import { BookElement } from "../../interfaces";
 import { type BookAction, type InitialBookState } from "../../types";
 
 export function getInitialBookState(
@@ -15,7 +15,7 @@ export function getInitialBookState(
 	};
 }
 
-export function booksReducer(
+export function bookReducer(
 	state: InitialBookState,
 	action: BookAction,
 ): InitialBookState {
@@ -35,9 +35,7 @@ export function booksReducer(
 				}),
 				favorites: state.favorites.concat(action.payload),
 			};
-		case BookTypes.REMOVE_FROM_FAVORITES: {
-			console.log("payload", action.payload);
-			console.log("state", state);
+		case BookTypes.REMOVE_FROM_FAVORITES:
 			return {
 				...state,
 				books: state.books.concat(action.payload),
@@ -45,7 +43,6 @@ export function booksReducer(
 					return book.ISBN !== action.payload.book.ISBN;
 				}),
 			};
-		}
 		default:
 			throw new Error("Error: Invalid type");
 	}

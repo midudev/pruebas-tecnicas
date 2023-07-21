@@ -1,11 +1,11 @@
 import { useContext, useEffect } from "react";
 import { Dialog } from "../../components";
 import { BookTypes } from "../../enums";
-import { BooksContext } from "../../utils/context/BooksContextProvider";
-import styles from "./BooksDialog.module.css";
+import { BookContext } from "../../utils/context";
+import styles from "./BookDialog.module.css";
 
 export default function BooksDialog() {
-	const { bookPreview, dispatch, modalRef } = useContext(BooksContext);
+	const { bookPreview, dispatch, modalRef } = useContext(BookContext);
 
 	useEffect(() => {
 		return () => {
@@ -15,6 +15,7 @@ export default function BooksDialog() {
 			});
 		};
 	}, []);
+
 	return (
 		<Dialog data={bookPreview}>
 			<h2 className={styles.title}>{bookPreview?.title}</h2>

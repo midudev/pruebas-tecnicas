@@ -1,8 +1,14 @@
-import { useEffect, useRef } from "react";
+import { ReactNode, useEffect, useRef } from "react";
+import { Book } from "../../interfaces";
 import styles from "./Dialog.module.css";
 
-export default function Dialog({ data = null, children }): JSX.Element {
-	const ref = useRef();
+type Props = {
+	data: Book | null;
+	children: ReactNode;
+};
+
+export default function Dialog({ data = null, children }: Props): JSX.Element {
+	const ref = useRef<HTMLDialogElement>();
 
 	useEffect(() => {
 		if (data !== null) ref.current.showModal();

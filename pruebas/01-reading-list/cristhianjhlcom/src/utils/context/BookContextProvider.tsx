@@ -1,24 +1,24 @@
 import { createContext, useReducer, useRef } from "react";
 import { library } from "../../data/library.json";
 import { InitialBookState } from "../../types";
-import { booksReducer, getInitialBookState } from "../reducer/BookReducer";
+import { bookReducer, getInitialBookState } from "../reducer/BookReducer";
 
-export type BooksContext = {
+export type BookContextType = {
 	state: InitialBookState;
 };
 
-export const BooksContext = createContext<BooksContext | null>(null);
+export const BookContext = createContext<BookContextType>();
 
-export default function BooksContextProvider({ children }) {
+export function BookContextProvider({ children }) {
 	const modalRef = useRef();
 	const [state, dispatch] = useReducer(
-		booksReducer,
+		bookReducer,
 		library,
 		getInitialBookState,
 	);
 
 	return (
-		<BooksContext.Provider
+		<BookContext.Provider
 			value={{
 				books: state.books,
 				bookPreview: state.bookPreview,
@@ -28,6 +28,6 @@ export default function BooksContextProvider({ children }) {
 			}}
 		>
 			{children}
-		</BooksContext.Provider>
+		</BookContext.Provider>
 	);
 }
