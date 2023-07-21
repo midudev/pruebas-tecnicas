@@ -3,7 +3,6 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 export const fetchBooks = createAsyncThunk('books/fetch', async () => {
   const response = await fetch('../../data/books.json')
   const data = await response.json()
-  console.log(data.library)
   return data.library
 })
 
@@ -42,8 +41,12 @@ export const booksSlice = createSlice({
       )
     },
     addBookToReadingList: (state, action) => {
-      state.readingList.push(action.payload)
+      const alreadyInTheList = state.readingList.some(
+        (element) => element.book.ISBN === action.payload.book.ISBN
+      )
+      if (!alreadyInTheList) state.readingList.push(action.payload)
     },
+    removeBookFromReadingList: (state, action) => {},
   },
 
   extraReducers: (builder) => {

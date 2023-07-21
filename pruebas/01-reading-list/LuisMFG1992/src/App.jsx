@@ -36,7 +36,7 @@ function App() {
       {isSidebarOpen && (
         <Sidebar handelSidabar={handelSidabar} readingList={readingList} />
       )}
-      <Navbar handelSidabar={handelSidabar} />
+      <Navbar handelSidabar={handelSidabar} readingList={readingList} />
       <div className="w-full px-5 pt-10 sm:px-0 max-w-[2000px] min-h-screen flex items-center flex-col">
         <p>Libros disponibles: 10</p>
         <p>Lista de lectura: 3</p>
@@ -45,7 +45,11 @@ function App() {
           <DropDownFilter genres={genres} />
         </div>
         <DisplayFilters selectedFilters={selectedFilters} />
-        <DisplayBooks booksList={booksList} selectedFilters={selectedFilters} />
+        <DisplayBooks
+          booksList={booksList}
+          selectedFilters={selectedFilters}
+          readingList={readingList}
+        />
       </div>
     </div>
   )
