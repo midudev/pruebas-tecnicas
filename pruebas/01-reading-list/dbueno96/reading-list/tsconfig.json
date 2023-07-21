@@ -36,7 +36,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "build/types/**/*.ts"
+    "build/types/**/*.ts",   
+    "public/sw/service-worker.js"
   ],
   "exclude": [
     "node_modules"

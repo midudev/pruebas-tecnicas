@@ -10,7 +10,7 @@ export const useRegisterServiceWorker = () => {
       console.warn(NO_SW_SUPPORTED)
       return
     }
-    sw.register('./sync/serviceWorker.ts').then(
+    sw.register('./sw/service-worker.js').then(
       function (registration) {
         registry = registration
         console.log({ registry })
