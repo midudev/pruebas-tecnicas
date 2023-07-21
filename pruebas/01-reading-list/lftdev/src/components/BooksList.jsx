@@ -1,10 +1,18 @@
 import BookItem from './BookItem'
 
 export default function BooksList (props) {
-  const { library, onItemClick } = props
+  const { list, onItemClick, removableItems, onRemoveRequest, className } = props
+  const removeRequest = index => onRemoveRequest(index)
   return (
-    <ul>
-      {library.map((book, index) => <li key={index}><BookItem book={book} clickListener={onItemClick} /></li>)}
+    <ul className={className}>
+      {list.map((book, index) =>
+        <li key={index} className='w-28'>
+          <article>
+            {removableItems && <button onClick={() => removeRequest(index)}>x</button>}
+            <BookItem book={book} onClick={onItemClick} />
+          </article>
+        </li>
+      )}
     </ul>
   )
 }

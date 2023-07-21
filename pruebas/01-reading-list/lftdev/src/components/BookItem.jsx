@@ -1,7 +1,7 @@
 export default function BookItem (props) {
-  const { book, clickListener } = props
+  const { book, onClick } = props
   function handleClick () {
-    clickListener(book)
+    onClick(book)
   }
-  return <img src={book.cover} alt={`${book.title} book cover`} onClick={handleClick} />
+  return <img className='hover:cursor-pointer' src={book.cover} alt={`${book.title} book cover`} onClick={handleClick} />
 }

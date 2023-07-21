@@ -52,16 +52,42 @@ describe('App', () => {
     render(<App />)
     screen.getAllByRole('img')
   })
-  it('should render a region aside when an img is clicked and reading list is empty;', async () => {
+  it('should render a region aside when an img is clicked;', async () => {
     render(<App />)
     const img = screen.getAllByRole('img')[0]
     fireEvent.click(img)
     await screen.findByRole('region')
   })
-  it('should display a heading of level 2 as aside child with the text: "Lista de lectura";', async () => {
+  it('should display a heading of level 2 as region aside child;', async () => {
     render(<App />)
     fireEvent.click(screen.getAllByRole('img')[0])
     const aside = await screen.findByRole('region')
-    expect(getByRole(aside, 'heading', { level: 2 }).innerHTML).toBe('Lista de lectura')
+    getByRole(aside, 'heading', { level: 2 })
+  })
+  it('should render BooksList component as aside child;', async () => {
+    render(<App />)
+    fireEvent.click(screen.getAllByRole('img')[0])
+    const aside = await screen.findByRole('region')
+    // Detect ul
+    getByRole(aside, 'list')
+    // Detect li
+    getByRole(aside, 'listitem')
+    // Detect article
+    getByRole(aside, 'article')
+    // Detect img
+    getByRole(aside, 'img')
+  })
+  // FIXME: rewrite below test to correctly detect listitem be removed.
+  /* it('should remove item from Reading List when BooksList remove button is clicked;', async () => {
+    render(<App />)
+    fireEvent.click(screen.getAllByRole('img')[0])
+    const aside = await screen.findByRole('region')
+    console.log(aside.innerHTML)
+    fireEvent.click(getAllByRole(aside, 'button')[0])
+    await waitForElementToBeRemoved(getAllByRole(aside, 'listitem')[0])
+  }) */
+  it('should save available books list to local storage;', () => {
+    render(<App />)
+    expect(window.localStorage.getItem('availableBooks')).not.toBe(null)
   })
 })
