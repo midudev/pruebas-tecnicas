@@ -14,7 +14,7 @@ export default function BooksContextProvider({ children }) {
 	const [state, dispatch] = useReducer(
 		booksReducer,
 		library,
-		getInitialBookState
+		getInitialBookState,
 	);
 
 	return (
@@ -22,6 +22,7 @@ export default function BooksContextProvider({ children }) {
 			value={{
 				books: state.books,
 				bookPreview: state.bookPreview,
+				favorites: state.favorites,
 				dispatch,
 				modalRef,
 			}}
