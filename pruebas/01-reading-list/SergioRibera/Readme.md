@@ -1,5 +1,7 @@
 Disenio inspirado desde [dribbble](https://dribbble.com/shots/20454786-E-Book-Dashboard)
 
+**Deploy url: ** [https://midu-001-readinglist.fly.dev](https://midu-001-readinglist.fly.dev)
+
 # Tecnologias utilizadas
 - [Rust](https://rust-lang.org/tools/install)
 - Framework para la interface: [Yew](https://yew.rs)
