@@ -1,17 +1,54 @@
-import { useLocation } from "react-router-dom";
+import { useEffect, useCallback, useMemo } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
-import { css } from "@emotion/css";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
+
+// components
+import Book from "../Book/SidebarBook";
+import IconButton from "../IconButton/IconButton";
 
 // contexts
+import { useLanguage } from "../../contexts/LanguageProvider";
 import { useLibrary } from "../../contexts/LibraryProvider";
 
 // styles
 import styles from "./styles.module.css";
 
 function Sidebar() {
+  const navigate = useNavigate();
   const location = useLocation();
 
-  const { libraryState, setLibraryState } = useLibrary();
+  const { languageState } = useLanguage();
+  const { libraryState } = useLibrary();
+
+  const booksToPrint = useMemo(() => {
+    const toReturn = [];
+    libraryState.readingList.forEach((value) => {
+      const book = libraryState.books[value];
+      toReturn.push(book);
+    });
+    console.log(toReturn);
+    return toReturn;
+  }, [libraryState]);
+
+  const onKeyDown = useCallback(
+    (e) => {
+      if (location.pathname === "/reading-list")
+        if (e.key === "Escape") navigate("/");
+    },
+    [location.pathname, navigate]
+  );
+
+  useEffect(() => {
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [onKeyDown]);
+
+  const closeSidebar = useCallback(() => {
+    navigate("/");
+  }, [navigate]);
 
   return (
     <aside
@@ -21,7 +58,21 @@ function Sidebar() {
           : "translate-x-[100%]"
       }`}
     >
-      {/* {booksToPrint} */}
+      <div className="flex items-center justify-between w-full">
+        <h3 className="text-2xl">{languageState.texts.sidebar.title}</h3>
+        <IconButton
+          onClick={closeSidebar}
+          name="close-sidebar"
+          ariaLabel={languageState.texts.ariaLabels.closeSidebar}
+          className="text-xl"
+          icon={faClose}
+        />
+      </div>
+      <ul className={styles.verticalGrid}>
+        {booksToPrint.map((book, i) => (
+          <Book key={book.ISBN} {...book} i={i} />
+        ))}
+      </ul>
     </aside>
   );
 }

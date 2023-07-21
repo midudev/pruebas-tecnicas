@@ -24,7 +24,7 @@ function Main() {
   const { libraryState } = useLibrary();
 
   const bookToPrints = useMemo(() => {
-    return libraryState.books;
+    return Object.values(libraryState.books);
   }, [libraryState.books]);
 
   return (

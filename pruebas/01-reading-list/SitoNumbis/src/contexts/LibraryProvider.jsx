@@ -41,11 +41,13 @@ const libraryReducer = (libraryState, action) => {
       const { books } = action;
       // init context books as Set to avoid repeated books
       const booksSet = Array.from(new Set(books));
+      const bookDic = {};
+      booksSet.forEach((book) => (bookDic[book.ISBN] = book));
       // same with genres
       const genres = Array.from(new Set(books.map((book) => book.genre)));
       return {
         ...libraryState,
-        books: booksSet,
+        books: bookDic,
         genres,
         seeing: "all",
         available: booksSet.length,

@@ -16,7 +16,6 @@ import PrimaryButton from "../PrimaryButton/PrimaryButton";
 
 // components
 const Tippy = loadable(() => import("@tippyjs/react"));
-const Marker = loadable(() => import("./Marker/Marker"));
 
 function Book({ title, pages, genre, cover, year, ISBN, author }) {
   const { filtersState } = useFilters();
@@ -46,10 +45,6 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
 
   const [hide, setHide] = useState(false);
 
-  const isInReadingList = useMemo(() => {
-    return libraryState.readingList.has(ISBN);
-  }, [libraryState, ISBN]);
-
   useEffect(() => {
     let toHide = false;
     // if the user is seeing the reading list and the book is not in the reading list
@@ -77,7 +72,6 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
         src={cover}
         alt={`${title}-${languageState.texts.book.cover}`}
       />
-      <Marker show={isInReadingList} />
       <Tippy
         content={languageState.texts.ariaLabels.seeDetails}
         className="hide-on-mobile"
@@ -85,16 +79,10 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
         <div
           role="button"
           tabIndex={0}
-          aria-label={
-            !isInReadingList
-              ? languageState.texts.ariaLabels.add
-              : languageState.texts.ariaLabels.remove
-          }
+          aria-label={languageState.texts.ariaLabels.add}
           onKeyDown={handleKeyDown}
           onClick={activateLightBox}
-          className={`group ${styles.bookInfoContainer} ${
-            isInReadingList ? "!opacity-100" : ""
-          }`}
+          className={`group ${styles.bookInfoContainer}`}
         >
           <div className={`${memoAnimation} ${styles.bookInfo}`}>
             <h3>{title}</h3>
@@ -114,18 +102,10 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
             name="add-to-reading-list"
             onClick={addToReadingList}
             tabIndex={-1}
-            ariaLabel={
-              !isInReadingList
-                ? languageState.texts.ariaLabels.add
-                : languageState.texts.ariaLabels.remove
-            }
-            className={`${memoAnimation} ${
-              isInReadingList ? styles.addButton : ""
-            }`}
+            ariaLabel={languageState.texts.ariaLabels.add}
+            className={`${memoAnimation}`}
           >
-            {!isInReadingList
-              ? languageState.texts.book.add
-              : languageState.texts.book.remove}
+            {languageState.texts.book.add}
           </PrimaryButton>
         </div>
       </Tippy>

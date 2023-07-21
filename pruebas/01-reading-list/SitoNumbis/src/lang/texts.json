@@ -13,8 +13,8 @@
       "title": "Ha ocurrido un error",
       "reload": "Recargar"
     },
-    "library": {
-      "title": "Sito Library"
+    "sidebar": {
+      "title": "Lista de lectura"
     },
     "book": {
       "by": "por",
@@ -45,7 +45,8 @@
       "genreRight": "Deslizar géneros a la izquierda",
       "seeDetails": "Ver detalles del libro",
       "clickToAlter": "Click para ver sinopsis",
-      "closeDialog": "Cerrar contenido flotante"
+      "closeDialog": "Cerrar contenido flotante",
+      "closeSidebar": "Cerrar barra lateral"
     }
   }
 }

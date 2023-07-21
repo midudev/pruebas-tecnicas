@@ -45,19 +45,16 @@ function LightBox() {
   }, [lightBoxState]);
 
   const selectedBook = useMemo(() => {
-    const find = libraryState.books.find(
-      (book) => book.ISBN === lightBoxState.id
-    );
-    return find || {};
-  }, [lightBoxState, libraryState]);
+    return libraryState.books[lightBoxState.id] || {};
+  }, [libraryState, lightBoxState]);
 
   const otherBooks = useMemo(() => {
     if (selectedBook.author) {
-      const authorOtherBooks = libraryState.books.filter((book) => {
+      const authorOtherBooks = []; /* libraryState.books.filter((book) => {
         selectedBook.author.otherBooks.find((otherBook) => {
           return otherBook === book.title;
         });
-      });
+      }); */
       return authorOtherBooks;
     }
   }, [selectedBook, libraryState]);

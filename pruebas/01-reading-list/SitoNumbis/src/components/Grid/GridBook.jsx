@@ -24,7 +24,7 @@ GridBook.propTypes = {
       genre: PropTypes.string,
       cover: PropTypes.string,
       synopsis: PropTypes.string,
-      year: PropTypes.string,
+      year: PropTypes.number,
       ISBN: PropTypes.string,
       author: PropTypes.shape({
         name: PropTypes.string,

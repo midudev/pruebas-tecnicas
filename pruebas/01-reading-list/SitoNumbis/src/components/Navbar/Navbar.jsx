@@ -60,7 +60,7 @@ function Navbar() {
                 to={"/reading-list"}
                 name="toggle-seeing"
                 className={`${styles.link}`}
-                ariaLabel={languageState.texts.ariaLabels.toReadingList}
+                aria-label={languageState.texts.ariaLabels.toReadingList}
               >
                 <FontAwesomeIcon
                   icon={
