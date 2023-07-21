@@ -66,7 +66,7 @@ function Navbar() {
                 name="toggle-seeing"
                 ariaLabel={languageState.texts.ariaLabels.toReadingList}
                 onClick={toggleSeeing}
-                className={`text-xl pr-1`}
+                className={`text-xl w-[33px]`}
                 icon={
                   libraryState.seeing === "reading-list"
                     ? faBookOpen

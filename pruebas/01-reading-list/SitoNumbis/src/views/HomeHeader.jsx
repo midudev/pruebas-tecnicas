@@ -48,7 +48,7 @@ function HomeHeader() {
         showing: document.querySelectorAll(".book").length,
       });
     }, 100);
-  }, [filtersState.genre, libraryState.seeing, setLibraryState]);
+  }, [filtersState, libraryState.seeing, setLibraryState]);
 
   const handlePages = useCallback(
     (e) => {
@@ -89,6 +89,7 @@ function HomeHeader() {
           </p>
         ) : null}
         <IconButton
+          className="mt-1"
           onClick={() => setShowingFilters((showingFilters) => !showingFilters)}
           icon={!showingFilters ? faFilter : faFilterCircleXmark}
         />
@@ -99,7 +100,7 @@ function HomeHeader() {
         })}`}
       >
         <div className="flex overflow-hidden gap-4 flex-wrap">
-          <div>
+          <div className={styles.pageFilter}>
             <p className="alter-text">
               {languageState.texts.homeHeader.pageFilter}
             </p>
@@ -111,7 +112,7 @@ function HomeHeader() {
             />
           </div>
           <SimpleInput
-            className="my-auto min-w-[250px] relative"
+            className={styles.searchInput}
             leftIcon={
               <FontAwesomeIcon
                 icon={faSearch}

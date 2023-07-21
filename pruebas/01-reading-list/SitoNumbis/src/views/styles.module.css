@@ -2,6 +2,10 @@
   @apply flex w-full h-full flex-col min-h-screen max-w-[1400px] m-auto gap-6 !mt-[100px] mb-20;
 }
 
+.searchInput {
+  @apply my-auto min-w-[250px] relative;
+}
+
 .gridFilter {
   transition: grid-template-rows 500ms ease;
   @apply grid;
@@ -42,6 +46,13 @@
 @media (max-width: 800px) {
   .bookGrid {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width:768px) {
+  .pageFilter,
+  .searchInput {
+    @apply w-full
   }
 }
 
