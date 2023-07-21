@@ -2,6 +2,7 @@ import { FC, useEffect, useReducer } from 'react';
 import { AppContext } from './AppContext';
 import { appReducer } from './AppReducer';
 import { Book } from '../../types';
+import BOOKS_JSON from '../../../../books.json';
 
 interface IAppProvider {
     children: React.ReactNode;
@@ -21,12 +22,16 @@ export const AppProvider:FC<IAppProvider> = ({ children }) => {
     const [appState, dispatch] = useReducer(appReducer, INITIAL_STATE);
 
     useEffect(() => {
-        localStorage.setItem('reading-books', JSON.stringify(appState.readingBooks));
-    }, [appState.readingBooks]);
+        const allBooks: Book[] = BOOKS_JSON.library.map(library => library.book);
+        const reading: Book[] = JSON.parse(localStorage.getItem("reading-books") || "[]");
+        const available: Book[] = allBooks.filter(book => !reading.some(rd => rd.ISBN === book.ISBN));
+
+        dispatch({ type: "set available/reading books", payload: { available, reading } });
+    }, []);
 
     useEffect(() => {
-        dispatch({ type: 'load available books/reading books' });
-    }, []);
+        localStorage.setItem('reading-books', JSON.stringify(appState.readingBooks));
+    }, [appState.readingBooks]);
 
     const addForReading = (book: Book) => {
         dispatch({ type: 'add for reading', payload: book });   

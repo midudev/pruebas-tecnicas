@@ -1,20 +1,19 @@
 import { IAppState } from './AppProvider';
-import BOOKS_JSON from '../../../../books.json';
 import { Book } from '../../types';
 
 type IAppReducerAction = 
-    | { type: 'load available books/reading books' }
+    | { type: 'set available/reading books', payload: { available: Book[], reading: Book[] } }
+    | { type: 'set reading books', payload: Book[] }
     | { type: 'add for reading', payload: Book }
     | { type: 'remove from reading', payload: Book }
 
 export const appReducer = (state: IAppState, action: IAppReducerAction): IAppState => {
     switch (action.type) {
-        case 'load available books/reading books':
+        case 'set available/reading books':
             return {
                 ...state,
-                readingBooks: JSON.parse(localStorage.getItem('reading-books') || '[]'),
-                availableBooks: BOOKS_JSON.library.map(library => library.book)
-                    .filter(book => !state.readingBooks.some(b => b.ISBN === book.ISBN))
+                readingBooks: action.payload.reading,
+                availableBooks: action.payload.available
             }
 
         case 'add for reading':
