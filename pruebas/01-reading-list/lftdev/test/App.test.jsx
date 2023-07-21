@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, getAllByRole, getByLabelText, getByRole, render, screen } from '@testing-library/react'
+import { cleanup, findAllByRole, fireEvent, getByLabelText, getByRole, render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
 import App from '../src/App'
 describe('App', () => {
@@ -40,17 +40,20 @@ describe('App', () => {
   })
   it('should render an ul as a main child;', () => {
     render(<App />)
-    const main = screen.getByRole('main')
-    getByRole(main, 'list')
+    const presentationAside = screen.getByRole('presentation')
+    getByRole(presentationAside, 'list')
   })
-  it('should render li elements as ul children;', () => {
+  it('should render li elements as ul children;', async () => {
     render(<App />)
-    const ul = screen.getByRole('list')
-    getAllByRole(ul, 'listitem')
+    const presentationAside = screen.getByRole('presentation')
+    const ul = getByRole(presentationAside, 'list')
+    await findAllByRole(ul, 'listitem')
   })
-  it('should display a book cover on each li;', () => {
+  it('should display a book cover on each li;', async () => {
     render(<App />)
-    screen.getAllByRole('img')
+    const presentationAside = screen.getByRole('presentation')
+    const liItems = await findAllByRole(presentationAside, 'listitem')
+    liItems.forEach(li => getByRole(li, 'img'))
   })
   it('should render a region aside when an img is clicked;', async () => {
     render(<App />)

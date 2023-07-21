@@ -1,5 +1,4 @@
 import './style.css'
-import BooksJSON from './database/books.json'
 import BooksList from './components/BooksList'
 import useBooksList from './hooks/useBooksList'
 import { useEffect } from 'react'
@@ -13,12 +12,17 @@ export default function App () {
     removeFromReadList,
     readListHasBooks
   } = useBooksList([])
+  // On App mount restore data from local storage if exists, or load from books.json
   useEffect(() => {
     let list = JSON.parse(window.localStorage.getItem('availableBooks'))
     if (list) setAvailableBooks(list)
     else {
-      list = BooksJSON.library.map(bookObj => bookObj.book)
-      window.localStorage.setItem('availableBooks', JSON.stringify(list))
+      import('./database/books.json')
+        .then(BooksJSON => {
+          list = BooksJSON.library.map(bookObj => bookObj.book)
+          window.localStorage.setItem('availableBooks', JSON.stringify(list))
+          setAvailableBooks(list)
+        })
     }
   }, [])
   return (
@@ -51,11 +55,6 @@ export default function App () {
           </aside>
         )}
       </main>
-      {readList.length > 0 &&
-        <aside role='region'>
-          <h2>Lista de lectura</h2>
-          <BooksList library={readList} />
-        </aside>}
     </>
   )
 }
