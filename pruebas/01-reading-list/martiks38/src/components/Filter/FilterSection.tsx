@@ -17,6 +17,7 @@ export function FilterSection() {
           type='range'
           name={`${filterID}-numberPages`}
           id={`${filterID}-numberPages`}
+          className={filterStyles.filterSection__pageNumberFilter}
           min={0}
           max={range.maxNumberPages}
           value={range.currentNumberPages}
@@ -24,7 +25,7 @@ export function FilterSection() {
           onChange={changeNumberPages}
           aria-describedby='numberPage'
         />
-        <label htmlFor={`${filterID}-numberPages`}>{range.currentNumberPages}</label>
+        <label htmlFor={`${filterID}-numberPages`}>Máximo {range.currentNumberPages}</label>
       </fieldset>
       <fieldset className={filterStyles.filterSection__field}>
         <legend className={filterStyles.filterSection__fieldTitle}>Género</legend>
