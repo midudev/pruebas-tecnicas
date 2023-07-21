@@ -59,7 +59,7 @@ function Navbar() {
               <Link
                 to={"/reading-list"}
                 name="toggle-seeing"
-                className={`text-xl w-[33px] h-8 flex items-center justify-center rounded-full hover:bg-primary hover:text-dark-text`}
+                className={`${styles.link}`}
                 ariaLabel={languageState.texts.ariaLabels.toReadingList}
               >
                 <FontAwesomeIcon

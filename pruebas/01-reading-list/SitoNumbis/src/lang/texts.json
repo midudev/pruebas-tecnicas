@@ -4,9 +4,7 @@
     "copyright": "Licencia MIT",
     "homeHeader": {
       "noFilter": "Todos",
-      "title": "Libros",
-      "reading-list": "en lista de lectura",
-      "all": "disponibles",
+      "title": "Libros disponibles",
       "pageFilter": "Cantidad de Páginas",
       "titleFilter": "Título"
     },

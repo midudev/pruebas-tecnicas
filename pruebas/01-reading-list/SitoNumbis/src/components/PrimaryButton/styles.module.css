@@ -1,3 +1,9 @@
 .main {
-  @apply bg-primary hover:bg-primary-dark transition px-5 py-2 rounded-3xl;
+  @apply bg-primary transition px-5 py-2 rounded-3xl;
+}
+
+@media (hover: hover) {
+  .main {
+    @apply hover:bg-primary-dark;
+  }
 }

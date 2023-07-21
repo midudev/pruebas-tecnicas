@@ -7,7 +7,13 @@
 }
 
 .bookInfoContainer {
-  @apply absolute top-0 pr-8 left-0 w-full h-full opacity-0 transition flex flex-col justify-between items-start p-3 hover:bg-dark-alt-bg-opacity focus:bg-dark-alt-bg-opacity hover:opacity-100 focus:opacity-100;
+  @apply absolute top-0 pr-8 left-0 w-full h-full opacity-0 transition flex flex-col justify-between items-start p-3  focus:bg-dark-alt-bg-opacity focus:opacity-100;
+}
+
+@media (hover: hover) {
+  .bookInfoContainer {
+    @apply hover:bg-dark-alt-bg-opacity hover:opacity-100;
+  }
 }
 
 @media (max-width: 768px) {

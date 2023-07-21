@@ -4,6 +4,9 @@ import PropTypes from "prop-types";
 // contexts
 import { useLanguage } from "../../../contexts/LanguageProvider";
 
+// styles
+import styles from "./styles.module.css";
+
 function Genre({ genre, active, onClick }) {
   const { languageState } = useLanguage();
 
@@ -12,9 +15,7 @@ function Genre({ genre, active, onClick }) {
       name="filter-by-genre"
       aria-label={`${languageState.texts.ariaLabels.filterByGenre} ${genre}`}
       onClick={() => onClick(genre)}
-      className={`px-5 py-3 transition min-w-[150px] cursor-default ${
-        active ? "bg-primary" : "bg-dark-alt-bg hover:bg-primary-dark"
-      } `}
+      className={`${styles.main} ${active ? styles.active : styles.available} `}
     >
       {genre}
     </button>

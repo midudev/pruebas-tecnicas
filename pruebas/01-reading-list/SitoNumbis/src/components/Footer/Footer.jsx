@@ -23,7 +23,7 @@ function Footer() {
           target="_blank"
           rel="noreferrer"
           href="https://github.com/SitoNumbis/pruebas-tecnicas/tree/main/pruebas/01-reading-list/SitoNumbis"
-          className="text-xl hover:text-primary-light"
+          className={styles.link}
         >
           <FontAwesomeIcon icon={faGithub} />
         </a>

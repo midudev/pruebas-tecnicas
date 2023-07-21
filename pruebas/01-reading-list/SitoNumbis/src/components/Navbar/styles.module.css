@@ -3,6 +3,16 @@
   @apply fixed top-0 left-0 h-20 z-30 w-full bg-dark-alt-bg-opacity shadow-[black] shadow-sm flex items-center justify-center;
 }
 
+.link {
+  @apply text-xl w-[33px] h-8 flex items-center justify-center rounded-full;
+}
+
+@media (hover: hover) {
+  .link {
+    @apply hover:bg-primary hover:text-dark-text;
+  }
+}
+
 .navContainer {
   @apply max-w-[1400px] w-full flex items-center justify-between;
 }

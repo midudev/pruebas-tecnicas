@@ -148,7 +148,7 @@ function LightBox() {
           <button
             name="hide-cover"
             onClick={() => setSeeingCover((seeingCover) => !seeingCover)}
-            className="appear button bg-primary-dark-opacity hover:bg-dark-text w-10 h-10 rounded-full absolute z-20 top-1 left-1"
+            className={`appear button ${styles.infoButton}`}
           >
             <FontAwesomeIcon icon={faInfo} />
           </button>

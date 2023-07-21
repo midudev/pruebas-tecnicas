@@ -2,6 +2,16 @@
   @apply grid place-items-center transition duration-300 fixed z-50 top-0 left-0 bg-dark-alt-bg-opacity backdrop-blur-xl w-full h-screen;
 }
 
+.infoButton {
+  @apply bg-primary-dark-opacity  w-10 h-10 rounded-full absolute z-20 top-1 left-1;
+}
+
+@media (hover: hover) {
+  .infoButton {
+    @apply hover:bg-dark-text;
+  }
+}
+
 .seeCoverButton {
   display: none;
 }

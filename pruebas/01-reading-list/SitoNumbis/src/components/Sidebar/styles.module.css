@@ -1,0 +1,6 @@
+.main {
+  backdrop-filter: blur(24px);
+  transition: transform 500ms ease; @apply w-[400px] fixed top-0 right-0 h-screen
+    z-30 bg-dark-alt-bg-opacity shadow-[black] shadow-sm flex flex-col
+    items-start justify-start;
+}

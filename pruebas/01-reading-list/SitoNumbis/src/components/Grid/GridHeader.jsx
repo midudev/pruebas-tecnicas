@@ -66,7 +66,6 @@ function HomeHeader() {
         {/* current list total */}
         <p>
           {languageState.texts.homeHeader.title}{" "}
-          {languageState.texts.homeHeader[libraryState.seeing]}
           <span className="alter-text text-sm mx-2">
             ({libraryState.available})
           </span>

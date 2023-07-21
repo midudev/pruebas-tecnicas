@@ -1,3 +1,9 @@
 .main {
-  @apply w-8 h-8 rounded-full hover:bg-primary hover:text-dark-text;
+  @apply w-8 h-8 rounded-full;
+}
+
+@media (hover: hover) {
+  .main {
+    @apply hover:bg-primary hover:text-dark-text;
+  }
 }

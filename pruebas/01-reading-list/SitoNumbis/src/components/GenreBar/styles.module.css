@@ -20,8 +20,10 @@
   @apply absolute w-10 h-full top-[50%] -translate-y-[50%] bg-dark-alt-bg cursor-default;
 }
 
-.arrowButton:enabled {
-  @apply hover:bg-primary-dark;
+@media (hover: hover) {
+  .arrowButton:enabled {
+    @apply hover:bg-primary-dark;
+  }
 }
 
 .arrowButton:disabled {
