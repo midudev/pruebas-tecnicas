@@ -10,6 +10,7 @@ export class FilterBooksListComponent implements OnInit {
 
   genres: Array<string> = [];
   selectedGenre: string = ""
+  numberOfAvailableBooks: number | undefined;
 
   constructor(
     private bookService: BookService
@@ -17,6 +18,7 @@ export class FilterBooksListComponent implements OnInit {
 
   ngOnInit(): void {
     this.bookService.genreList.subscribe(genres => this.genres = genres);
+    this.bookService.bookList.subscribe(books => this.numberOfAvailableBooks = books.length);
   }
 
   genreChanged(target: any) {

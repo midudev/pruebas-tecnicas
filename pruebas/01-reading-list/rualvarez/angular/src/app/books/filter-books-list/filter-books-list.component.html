@@ -1,3 +1,6 @@
-<select class="bg-black" (change)="genreChanged($event.target)">
+<div class="h-full flex flex-col gap-3 items-center">
+  <strong *ngIf="numberOfAvailableBooks">Libros disponibles: {{numberOfAvailableBooks}}</strong>
+  <select class="bg-black" (change)="genreChanged($event.target)">
     <option *ngFor="let genre of genres" [value]="genre">{{genre}}</option>
-</select>
+  </select>
+</div>

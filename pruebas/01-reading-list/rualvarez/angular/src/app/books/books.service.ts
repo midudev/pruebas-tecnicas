@@ -13,6 +13,7 @@ export class BookService {
   private readingListData: Array<Book> = [];
   private genresListData: Array<string> = [];
 
+  private _bookList: BehaviorSubject<Array<Book>>;
   private _bookListFiltered: BehaviorSubject<Array<Book>>;
   private _readingBookList: BehaviorSubject<Array<Book>>;
   private _genresList: BehaviorSubject<Array<string>>;
@@ -21,6 +22,7 @@ export class BookService {
   private genreFilter: string = this.genreAllOption;
 
   constructor() {
+    this._bookList = new BehaviorSubject<Array<Book>>([]);
     this._bookListFiltered = new BehaviorSubject<Array<Book>>([]);
     this._readingBookList = new BehaviorSubject<Array<Book>>([]);
     this._genresList = new BehaviorSubject<Array<string>>([]);
@@ -35,6 +37,7 @@ export class BookService {
     const books: Array<Book> = library.map(e => e.book);
     this.bookListData = structuredClone(books);
     this.bookListDataFiltered = structuredClone(books);
+    this._bookList.next(this.bookListData);
     this._bookListFiltered.next(this.bookListDataFiltered);
   }
 
@@ -54,6 +57,10 @@ export class BookService {
 
   /** BOOK LIST */
   get bookList() {
+    return this._bookList.asObservable();
+  }
+
+  get bookListFiltered() {
     return this._bookListFiltered.asObservable();
   }
 
@@ -64,12 +71,14 @@ export class BookService {
   private addToBookList(book: Book) {
     this.bookListData.push(book);
     this.bookListDataFiltered = this.filterBookList(this.genreFilter);
+    this._bookList.next(this.bookListData);
     this._bookListFiltered.next(this.bookListDataFiltered);
   }
 
   private deleteFromBookList(index: number) {
     this.bookListData.splice(index, 1);
     this.bookListDataFiltered = this.filterBookList(this.genreFilter);
+    this._bookList.next(this.bookListData);
     this._bookListFiltered.next(this.bookListDataFiltered);
   }
   
