@@ -28,7 +28,6 @@ function Sidebar() {
       const book = libraryState.books[value];
       toReturn.push(book);
     });
-    console.log(toReturn);
     return toReturn;
   }, [libraryState]);
 
