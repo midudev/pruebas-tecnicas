@@ -43,11 +43,16 @@ export function BookDashboard() {
       <FilterSection />
       <article className={homeStyles.homeMain__bookDashboard}>
         <section className={homeStyles.homeMain__bookListSection}>
-          <h2 className={homeStyles.homeMain__bookListSection__title}>Libros disponibles</h2>
+          <h2 className={homeStyles.homeMain__bookListSection__title}>
+            Libros disponibles{' '}
+            {currentListBooksAvailable.length !== 0 ? currentListBooksAvailable.length : ''}
+          </h2>
           <BookList books={currentListBooksAvailable} listType='available' />
         </section>
         <section className={homeStyles.homeMain__bookListSection}>
-          <h2 className={homeStyles.homeMain__bookListSection__title}>Lista de lectura</h2>
+          <h2 className={homeStyles.homeMain__bookListSection__title}>
+            Lista de lectura {currentReadingList.length !== 0 ? currentReadingList.length : ''}
+          </h2>
           <ul>
             <BookList books={currentReadingList} listType='reading' />
           </ul>
