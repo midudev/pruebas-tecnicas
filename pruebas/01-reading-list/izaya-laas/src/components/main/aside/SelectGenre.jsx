@@ -1,4 +1,4 @@
-import { genres } from '../../database/books';
+import { genres } from '../../../database/books';
 
 const SelectGenre = ({ inputValue, handleChange }) => {
 	return (
@@ -12,8 +12,8 @@ const SelectGenre = ({ inputValue, handleChange }) => {
 				value={inputValue}
 				onChange={handleChange}
 			>
-				{genres.map(({ name, value }) => (
-					<option className="text-sm italic" value={value}>
+				{genres.map(({ name, value }, index) => (
+					<option className="text-sm italic" key={index} value={value}>
 						{name}
 					</option>
 				))}

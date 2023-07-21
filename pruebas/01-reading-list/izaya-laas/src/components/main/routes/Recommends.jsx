@@ -1,4 +1,4 @@
-import { currentPath } from '../../signals/store';
+import { currentPath } from '../../../signals/store';
 
 const Recommends = () => {
 	currentPath.value = '/recommends';

@@ -8,10 +8,9 @@ import {
 	handleExcludeBooks,
 	handleRangePages,
 	handleSpecificBook,
-} from '../../signals/inputs.signals';
+} from '../../../signals/inputs.signals';
 
 const Aside = () => {
-	console.log('Aside render');
 	return (
 		<aside className="border-r-2 border-black pt-4 sticky top-8 w-[200px] rounded-tr-[5px_800px] rounded-br-[5px_800px] ">
 			<div className="pb-1 bg-grated-pattern w-min mx-auto rounded-b-md">

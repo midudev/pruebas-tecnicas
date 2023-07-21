@@ -1,7 +1,7 @@
 import { Header } from './components/header/Header';
-import Aside from './components/main/Aside';
-import Navbar from './components/main/Navbar';
-import Pages from './components/Routes/Routes.jsx';
+import Aside from './components/main/aside/Aside';
+import Navbar from './components/main/navbar/Navbar';
+import Pages from './components/main/routes/Routes.jsx';
 import { myReadingListLength, totalFreeBooks } from './signals/store';
 
 export function App() {

@@ -1,4 +1,4 @@
-import { currentPath } from '../../signals/store';
+import { currentPath } from '../../../signals/store';
 import { computed } from '@preact/signals';
 
 const isDisabled = computed(() => currentPath.value === '/my-books');

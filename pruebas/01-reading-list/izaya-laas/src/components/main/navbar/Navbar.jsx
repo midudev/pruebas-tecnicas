@@ -1,5 +1,5 @@
-import { ROUTES } from '../Routes/routes';
-import Link from '../header/Link';
+import { ROUTES } from './../routes/routes';
+import Link from './Link';
 
 const Navbar = () => {
 	return (
