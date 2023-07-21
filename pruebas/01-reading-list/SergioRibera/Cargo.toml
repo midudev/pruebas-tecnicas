@@ -37,6 +37,7 @@ yew_icons = { version = "0.7.2", features = [
     "FontAwesomeRegularCopyright",
     "FontAwesomeSolidArrowDownAZ",
     "FontAwesomeSolidArrowUpAZ",
+    "FontAwesomeSolidFilter",
     "HeroiconsMiniSolidArrowUpRight",
     "HeroiconsOutlineMoon",
     "HeroiconsOutlineSun",
