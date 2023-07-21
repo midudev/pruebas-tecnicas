@@ -8,6 +8,7 @@ This project is deployed in [https://pruebas-01-reading-list-tonysantana1492.ver
 
 - This project is a web application developed in React using Vite as the bundle and TailwindCSS for styling.
 - It use the localStore to store the list.
+- Responsive design.
 - The purpose of this application is to add/remove books to a personalized reading list.
 
 ## Getting Started
