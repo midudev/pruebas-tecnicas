@@ -46,7 +46,7 @@ export const booksSlice = createSlice({
       )
       if (!alreadyInTheList) state.readingList.push(action.payload)
     },
-    removeBookFromReadingList: (state, action) => {},
+    // removeBookFromReadingList: (state, action) => {},
   },
 
   extraReducers: (builder) => {

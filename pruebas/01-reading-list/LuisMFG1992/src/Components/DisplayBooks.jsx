@@ -20,7 +20,7 @@ const DisplayBooks = ({ booksList, selectedFilters, readingList }) => {
           <div key={element.book.ISBN} className="relative">
             <img
               src={element.book.cover}
-              className="w-[200px] h-[300px] "
+              className="w-[200px] h-[300px]"
               onClick={() => dispatch(addBookToReadingList(element))}
             ></img>
 
