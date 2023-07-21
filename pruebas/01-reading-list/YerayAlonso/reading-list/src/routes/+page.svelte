@@ -44,12 +44,10 @@
   </section>
 
   <section class="col-span-4">
-    <h2 class="text-2xl pb-4">{filteredBookIDs.length} libros disponibles</h2>
     <BooksList books={booksFromIDs(filteredBookIDs)} action={addBook} isSelected={false} />
   </section>
 
   <section class="col-span-2">
-    <h2 class="text-2xl pb-4">{$selectedBookIDs.length} libros seleccionados</h2>
     <BooksList books={booksFromIDs($selectedBookIDs)} action={removeBook} isSelected={true} />
   </section>
 </div>
