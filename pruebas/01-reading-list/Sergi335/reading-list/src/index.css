@@ -16,7 +16,19 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+/* Estilos para WebKit (Chrome, Safari, Opera) */
+.readingList::-webkit-scrollbar {
+  width: 6px;
+}
 
+.readingList::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.readingList::-webkit-scrollbar-thumb {
+  background: #e3e4e5;
+}
+  
 a {
   font-weight: 500;
   color: #646cff;
@@ -52,14 +64,14 @@ button {
   transition: border-color 0.25s;
 }
 
-button:hover {
+/* button:hover {
   border-color: #646cff;
-}
+} */
 
-button:focus,
+/* button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 
 @media (prefers-color-scheme: light) {
   :root {

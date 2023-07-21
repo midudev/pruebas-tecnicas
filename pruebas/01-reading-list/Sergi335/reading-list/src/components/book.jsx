@@ -1,9 +1,8 @@
 import { useList } from '../hooks/useList'
 import { useState } from 'react'
 
-export default function Book ({ item }) {
+export default function Book ({ item, className }) {
   const { addToList, removeFromList, list } = useList()
-
   const chekBookInList = book => {
     return list.some(item => item.book.ISBN === book.book.ISBN)
   }
@@ -12,6 +11,9 @@ export default function Book ({ item }) {
 
   const liClass = isMaximized
     ? ' maximized w-screen h-screen bg-white fixed left-0 top-[111px] pt-[80px] items-start flex justify-center'
+    : ' '
+  const divClass = isMaximized
+    ? ' flex flex-col justify-center items-start gap-5 ml-8'
     : ' '
 
   const handleClick = () => {
@@ -22,32 +24,41 @@ export default function Book ({ item }) {
       document.body.classList.remove('overflow-hidden')
     }
   }
+  const classList = (className, item) => {
+    if (className !== undefined) {
+      return className
+    } else if (chekBookInList(item)) {
+      return 'hidden'
+    } else {
+      return ''
+    }
+    // w-[17%] flex flex-col items-center justify-center
+  }
 
   return (
-    <li className={chekBookInList(item)
-      ? 'opacity-90' + liClass
-      : 'opacity-100' + liClass} key={item.book.ISBN}>
-          <img className="aspect-[317/475]"
+    <li className={classList(className, item) + liClass + ' rounded-[21px] overflow-hidden shadow-indigo-500/40 hover:shadow-lg transition-shadow' } key={item.book.ISBN}>
+          <img className="aspect-[317/475] w-[320px] inline"
               src= {item.book.cover}
               alt= {item.book.title}
           />
-          <div>
-              <strong>{item.book.title}</strong>
+          <div className={'pb-7' + divClass}>
+              <strong className='block mt-7'>{item.book.title}</strong>
               <p>{item.book.author.name}</p>
-              <p>{item.book.year}</p>
-              <p>{item.book.genre}</p>
+              <div className='flex justify-center gap-4 mb-7'>
+                <p>{item.book.year}</p>
+                <p>{item.book.genre}</p>
+              </div>
               <p className={isMaximized ? '' : 'hidden'}>{item.book.synopsis}</p>
               <p className={isMaximized ? '' : 'hidden'}>ISBN: {item.book.ISBN}</p>
               <p className={isMaximized ? '' : 'hidden'}>Páginas: {item.book.pages}</p>
-              <button className='mx-3' onClick={handleClick}>
+              <button className='mx-3 py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' onClick={handleClick}>
             {
                 isMaximized
                   ? 'Volver'
                   : 'Info'
             }
             </button>
-            <button onClick={() => {
-              console.log(chekBookInList(item))
+            <button className='bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded' onClick={() => {
               chekBookInList(item)
                 ? removeFromList(item)
                 : addToList(item)

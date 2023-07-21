@@ -29,7 +29,6 @@ export function ReadingListProvider ({ children }) {
   }, []) // No necesitamos dependencias aquí, ya que solo queremos agregar el event listener una vez
   const addToList = book => {
     const bookInListIndex = list.findIndex(item => item.book.ISBN === book.book.ISBN)
-    console.log(bookInListIndex)
     if (bookInListIndex >= 0) {
       return
     }
