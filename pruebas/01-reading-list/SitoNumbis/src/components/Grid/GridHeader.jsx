@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect, useCallback } from "react";
+import { useLocation } from "react-router-dom";
 
 import { css } from "@emotion/css";
 
@@ -10,34 +11,26 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 // components
-import Slider from "../components/Slider/Slider";
-import IconButton from "../components/IconButton/IconButton";
-import SimpleInput from "../components/SimpleInput/SimpleInput";
+import Slider from "../Slider/Slider";
+import IconButton from "../IconButton/IconButton";
+import SimpleInput from "../SimpleInput/SimpleInput";
 
 // contexts
-import { useLanguage } from "../contexts/LanguageProvider";
-import { useLibrary } from "../contexts/LibraryProvider";
-import { useFilters } from "../contexts/FiltersProvider";
+import { useLanguage } from "../../contexts/LanguageProvider";
+import { useLibrary } from "../../contexts/LibraryProvider";
+import { useFilters } from "../../contexts/FiltersProvider";
 
 // styles
 import styles from "./styles.module.css";
 
 function HomeHeader() {
+  const location = useLocation();
+
   const { languageState } = useLanguage();
   const { filtersState, setFiltersState } = useFilters();
   const { libraryState, setLibraryState } = useLibrary();
 
   const [showingFilters, setShowingFilters] = useState(false);
-
-  const totalLength = useMemo(() => {
-    return libraryState.seeing === "all"
-      ? libraryState.available
-      : libraryState.readingList.size;
-  }, [
-    libraryState.seeing,
-    libraryState.available,
-    libraryState.readingList.size,
-  ]);
 
   // get the current showing items
   useEffect(() => {
@@ -70,24 +63,27 @@ function HomeHeader() {
     [setFiltersState]
   );
 
+  const totalLength = useMemo(() => {
+    let toReturn = libraryState.showing;
+    if (location.pathname === "/reading-list")
+      toReturn = libraryState.readingList.size;
+    else toReturn = libraryState.showing - libraryState.readingList.size;
+    return toReturn;
+  }, [libraryState.showing, location, filtersState]);
+
   return (
     <section>
       <div className="flex items-center flex-wrap w-full">
         {/* current list total */}
         <p>
           {languageState.texts.homeHeader.title}{" "}
-          {languageState.texts.homeHeader[libraryState.seeing]}
+          {/* If the user is using the genre filter */}
+          {filtersState.genre.length
+            ? ` (${filtersState.genre})`
+            : languageState.texts.homeHeader[libraryState.seeing]}
           <span className="alter-text text-sm mx-2">({totalLength})</span>
         </p>
-        {/* If the user is using the genre filter */}
-        {filtersState.genre.length ? (
-          <p>
-            {">"} {filtersState.genre}{" "}
-            <span className="alter-text text-sm mx-1">
-              ({libraryState.showing})
-            </span>
-          </p>
-        ) : null}
+
         <IconButton
           className="mt-1"
           onClick={() => setShowingFilters((showingFilters) => !showingFilters)}

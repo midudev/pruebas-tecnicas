@@ -4,10 +4,10 @@
     "copyright": "Licencia MIT",
     "homeHeader": {
       "noFilter": "Todos",
-      "title": "Viendo",
-      "reading-list": "lista de lectura",
+      "title": "Libros",
+      "reading-list": "en lista de lectura",
       "all": "disponibles",
-      "pageFilter": "Páginas",
+      "pageFilter": "Cantidad de Páginas",
       "titleFilter": "Título"
     },
     "error": {

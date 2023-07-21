@@ -1,13 +1,16 @@
-import { Fragment, useCallback, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { Suspense, useCallback, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // components
-import Navbar from "./components/Navbar/Navbar";
+import Loading from "./components/Loading/Loading";
 import Handler from "./components/Error/Handler";
-import Footer from "./components/Footer/Footer";
 
 // views
-import Home from "./views/Home";
+import Home from "./views/Home/Home";
+import ReadingList from "./views/ReadingList/ReadingList";
+
+// layouts
+import Main from "./layouts/Main";
 
 // db
 import books from "./books.json";
@@ -58,22 +61,18 @@ function App() {
 
   return (
     <Handler>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Fragment>
-                <Navbar />
-                <Outlet />
-                <Footer />
-              </Fragment>
-            }
-          >
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <Suspense
+        fallback={<Loading className="w-full h-full fixed z-50 top-0 left-0" />}
+      >
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Main />}>
+              <Route index element={<Home />} />
+              <Route path="/reading-list" element={<ReadingList />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </Suspense>
     </Handler>
   );
 }

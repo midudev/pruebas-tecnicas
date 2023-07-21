@@ -1,5 +1,5 @@
-import { useCallback, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { useMemo } from "react";
+import { Link, useLocation } from "react-router-dom";
 import loadable from "@loadable/component";
 
 import { faBookOpen, faBookmark } from "@fortawesome/free-solid-svg-icons";
@@ -8,32 +8,28 @@ import { faBookOpen, faBookmark } from "@fortawesome/free-solid-svg-icons";
 import { useLanguage } from "../../contexts/LanguageProvider";
 import { useLibrary } from "../../contexts/LibraryProvider";
 
-// components
-import IconButton from "../IconButton/IconButton";
-
 // images
 import logo from "../../assets/images/logo.svg";
 import noPhoto from "../../assets/images/no-photo.webp";
 
 // styles
 import styles from "./styles.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // suspense
 const Tippy = loadable(() => import("@tippyjs/react"));
 const Badge = loadable(() => import("../Badge/Badge"));
 
 function Navbar() {
+  const location = useLocation();
+
   const { languageState } = useLanguage();
 
-  const { libraryState, setLibraryState } = useLibrary();
+  const { libraryState } = useLibrary();
 
   const totalReading = useMemo(() => {
     return libraryState.readingList.size;
   }, [libraryState]);
-
-  const toggleSeeing = useCallback(() => {
-    setLibraryState({ type: "toggle-see" });
-  }, [setLibraryState]);
 
   return (
     <header className={styles.main}>
@@ -62,17 +58,22 @@ function Navbar() {
                   : languageState.texts.ariaLabels.toReadingList
               }
             >
-              <IconButton
-                name="toggle-seeing"
-                ariaLabel={languageState.texts.ariaLabels.toReadingList}
-                onClick={toggleSeeing}
-                className={`text-xl w-[33px]`}
-                icon={
-                  libraryState.seeing === "reading-list"
-                    ? faBookOpen
-                    : faBookmark
+              <Link
+                to={
+                  location.pathname === "/reading-list" ? "/" : "/reading-list"
                 }
-              />
+                name="toggle-seeing"
+                className={`text-xl w-[33px] h-8 flex items-center justify-center rounded-full hover:bg-primary hover:text-dark-text`}
+                ariaLabel={languageState.texts.ariaLabels.toReadingList}
+              >
+                <FontAwesomeIcon
+                  icon={
+                    libraryState.seeing === "reading-list"
+                      ? faBookOpen
+                      : faBookmark
+                  }
+                />
+              </Link>
             </Tippy>
           </Badge>
           <img

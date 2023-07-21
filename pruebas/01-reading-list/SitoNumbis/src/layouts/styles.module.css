@@ -1,0 +1,16 @@
+.main {
+  @apply flex w-full h-full flex-col min-h-screen max-w-[1400px] !mt-[100px] m-auto gap-6 mb-20;
+}
+
+@media (max-width: 1400px) {
+  .main {
+    max-width: calc(80%);
+  }
+}
+
+@media (max-width: 800px) {
+  .main {
+    max-width: 100%;
+    @apply px-5;
+  }
+}
