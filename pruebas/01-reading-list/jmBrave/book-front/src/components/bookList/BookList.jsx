@@ -6,16 +6,17 @@ import { LIST_NAME } from '../../constant/constants'
 const BookList = ({ title, books, droppableId }) => {
     const { AVAILABLE_BOOKS } = LIST_NAME
     const isBookAvailable = () => droppableId === AVAILABLE_BOOKS //TODO Review
+    // <ul className={'sticky top-20'}> TODO Review
 
     return (
         <Droppable droppableId={droppableId}>
             {(provided) => (
-                <div className="flex-1 min-w-full md:min-w-0">
-                    <ul
-                        {...provided.droppableProps}
-                        ref={provided.innerRef}
-                        className={'sticky top-20'}
-                    >
+                <div
+                    {...provided.droppableProps}
+                    ref={provided.innerRef}
+                    className="flex-1 min-w-full md:min-w-0"
+                >
+                    <ul>
                         <h2 className="flex items-center justify-center pb-5">
                             {title}
                         </h2>

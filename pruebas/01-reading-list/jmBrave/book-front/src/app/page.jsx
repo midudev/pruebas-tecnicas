@@ -1,6 +1,6 @@
 'use client'
 import { DragDropContext } from 'react-beautiful-dnd'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import BookList from '../components/bookList/BookList'
 import initialBooksList from '../mocks/books.js'
 import { LIST_NAME } from '../constant/constants'
@@ -28,6 +28,11 @@ export default function Home() {
         handleAddAllBooks: handleAddAllBooksSelected,
     } = useBooks()
 
+    const [draggingBook, setDraggingBook] = useState({
+        isDraggingBook: false,
+        source: {},
+    })
+
     useEffect(() => {
         handleFilterBooksAvailable(library, getBooksCurrentlist())
         handleAddAllBooksSelected(getBooksCurrentlist())
@@ -40,9 +45,11 @@ export default function Home() {
         return () => window.removeEventListener('storage', onStorageChange)
     }, [])
 
-    function handleOnDragEnd(result) {
-        const { source, destination } = result
+    function handleOnDragEnd(events) {
+        const { source, destination } = events
         if (!destination) return
+
+        setDraggingBook({ isDraggingBook: false, source: {} })
 
         const sourceList =
             source.droppableId === AVAILABLE_BOOKS
@@ -86,14 +93,38 @@ export default function Home() {
         }
     }
 
+    function handleOnDragStart(event) {
+        setDraggingBook({
+            isDraggingBook: true,
+            source: event.source.droppableId,
+        })
+    }
+
+    const Drop = () => {
+        return (
+            <div class="fixed inset-x-0 top-0 flex justify-center items-center min-h-full">
+                <div class="round ">
+                    <div id="cta">
+                        <span class="arrow primera next "></span>
+                        <span class="arrow segunda next "></span>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
     return (
-        <DragDropContext onDragEnd={handleOnDragEnd}>
+        <DragDropContext
+            onDragEnd={handleOnDragEnd}
+            onDragStart={handleOnDragStart}
+        >
             <main className="flex justify-evenly flex-wrap pt-20">
                 <BookList
                     title={'Libros'}
                     books={booksAvailable}
                     droppableId={AVAILABLE_BOOKS}
                 />
+                {draggingBook.isDraggingBook ? <Drop /> : null}
                 <BookList
                     title={'Lista de Lectura'}
                     books={booksSelected}
