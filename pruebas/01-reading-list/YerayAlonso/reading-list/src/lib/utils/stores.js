@@ -3,7 +3,7 @@ import { browser } from '$app/environment'
 
 let selectedBookISBNs
 
-if (browser) {
+if (browser && localStorage.selectedBookISBNs) {
   selectedBookISBNs = localStorage.selectedBookISBNs.split(',')
 }
 
