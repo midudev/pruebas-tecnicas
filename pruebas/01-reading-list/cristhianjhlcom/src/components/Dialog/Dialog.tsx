@@ -6,12 +6,11 @@ export default function Dialog({ data = null, children }): JSX.Element {
 
 	useEffect(() => {
 		if (data !== null) ref.current.showModal();
-
 		return () => ref.current.close();
 	}, [data]);
 
 	return (
-		<dialog ref={ref} className={styles.dialog}>
+		<dialog open={false} ref={ref} className={styles.dialog}>
 			{children}
 		</dialog>
 	);
