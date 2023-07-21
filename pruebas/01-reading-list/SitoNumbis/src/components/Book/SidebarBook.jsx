@@ -61,9 +61,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author, i }) {
         onKeyDown={() => {}}
         onClick={() => setFocused((focused) => !focused)}
         onMouseLeave={() => setFocused(false)}
-        className={`${
-          styles.bookInfo
-        } absolute top-0 left-0 p-5 flex flex-col h-full justify-between transition group-hover:bg-dark-alt-bg-opacity ${
+        className={`absolute top-0 left-0 p-5 flex flex-col h-full justify-between transition group-hover:bg-dark-alt-bg-opacity ${
           focused ? "bg-dark-alt-bg-opacity opacity-100" : ""
         } opacity-0 group-hover:opacity-100 w-full h-full`}
       >

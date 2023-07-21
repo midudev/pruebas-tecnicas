@@ -63,6 +63,10 @@ function HomeHeader() {
     [setFiltersState]
   );
 
+  useEffect(() => {
+    if (!showingFilters) setFiltersState({ type: "reset" });
+  }, [showingFilters]);
+
   return (
     <section>
       <div className="flex items-center flex-wrap w-full">

@@ -28,11 +28,12 @@ function GridBook({ books }) {
   useEffect(() => {
     if (books.length) {
       setBooksToPrint(books.slice(0, 100));
-      setHasMore(true);
+      if (books.length > 100) setHasMore(true);
     }
   }, [books]);
 
   useEffect(() => {
+    if ((page + 1) * 100 > books.length) setHasMore(false);
     if (page > 0)
       setBooksToPrint([
         ...booksToPrint,
