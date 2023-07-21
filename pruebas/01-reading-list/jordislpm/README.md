@@ -89,7 +89,7 @@ Esta es mi primera experiencia con test asi que se aceptan mejoras en el test.
 Desafíos adicionales
 ¿Quieres ir más allá? Estos son algunos desafíos adicionales que puedes intentar:
 
-[] Implementar una funcionalidad de búsqueda en la lista de libros disponibles.
+[x] Implementar una funcionalidad de búsqueda en la lista de libros disponibles.
 [x] Añade un nuevo filtro para filtrar los libros por número de páginas.
 [] Permitir la reorganización de los libros en la lista de lectura por prioridad.
 [] Haz que tu diseño sea responsive.
