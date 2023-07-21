@@ -50,7 +50,7 @@ npm run test
 
 ## **Available books**
 
-1. On the main page you can search for books using the search title field and filter by pages.
+1. On the main page you can search for books using the search title field, genre options or filter by pages.
 2. Click on the button in the upper right corner or drag the desired book to the reading list.
 
 ## **Reading list**
