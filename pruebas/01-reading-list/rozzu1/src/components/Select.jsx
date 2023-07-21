@@ -1,19 +1,11 @@
-import { useCallback, useMemo } from "react";
+import { useCallback } from "react";
 import { bookStore } from "../state/bookStore";
+import { GenreOptions } from "./GenreOptions";
 
 export const Select = () => {
   const { books, selectedGenre, setSelectedGenre } = bookStore();
 
-  const uniqueGenres = useMemo(() => {
-    const genres = new Set();
-    return books.reduce((uniqueGenres, { book }) => {
-      if (!genres.has(book.genre)) {
-        genres.add(book.genre);
-        uniqueGenres.push(book.genre);
-      }
-      return uniqueGenres;
-    }, []);
-  }, [books]);
+  const uniqueGenres = new Set(books.map(({ book }) => book.genre));
 
   const handleGenreChange = useCallback(
     (event) => {
@@ -21,19 +13,6 @@ export const Select = () => {
     },
     [setSelectedGenre]
   );
-
-  const renderGenreOptions = () => {
-    return (
-      <>
-        <option value="">All Genres</option>
-        {uniqueGenres.map((genre) => (
-          <option key={genre} value={genre}>
-            {genre}
-          </option>
-        ))}
-      </>
-    );
-  };
 
   return (
     <div className="">
@@ -43,7 +22,7 @@ export const Select = () => {
         className="select w-full max-w-xs border border-neutral"
         onChange={handleGenreChange}
       >
-        {renderGenreOptions()}
+        <GenreOptions uniqueGenres={uniqueGenres} />
       </select>
     </div>
   );
