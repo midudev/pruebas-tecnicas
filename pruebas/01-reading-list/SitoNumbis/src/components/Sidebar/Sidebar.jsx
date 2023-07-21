@@ -46,6 +46,12 @@ function Sidebar() {
     };
   }, [onKeyDown]);
 
+  useEffect(() => {
+    if (location.pathname === "/reading-list")
+      document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "auto";
+  }, [location]);
+
   const closeSidebar = useCallback(() => {
     navigate("/");
   }, [navigate]);
