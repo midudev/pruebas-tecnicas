@@ -9,7 +9,7 @@ export function App() {
 		<>
 			<Header />
 			<main
-				className={`relative font-tilt text-black h-screen grid grid-cols-[200px_1fr] grid-rows-[1fr] bg-white ${
+				className={`relative font-tilt text-black h-screen flex flex-col-reverse sm:grid sm:grid-cols-[200px_1fr] sm:grid-rows-[1fr] bg-white ${
 					isDark.value ? 'invert' : ''
 				}`}
 			>

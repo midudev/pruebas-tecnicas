@@ -27,7 +27,7 @@ const RenderBooks = ({ books }) => {
 
 				return (
 					<figure
-						className={`w-44 lg:w-48 border border-black p-2 pb-2 rounded-tl-[255px_15px] rounded-tr-[15px_255px] rounded-br-[255px_15px] rounded-bl-[15px_255px] bg-opacity-20 ${
+						className={`w-36 sm:w-44 lg:w-48 border border-black p-2 pb-2 rounded-tl-[255px_15px] rounded-tr-[15px_255px] rounded-br-[255px_15px] rounded-bl-[15px_255px] bg-opacity-20 ${
 							myReadingListISBN.value.includes(ISBN) &&
 							currentPath.value !== '/my-books'
 								? 'bg-grated-pattern '

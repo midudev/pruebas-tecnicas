@@ -14,7 +14,7 @@ export const Header = () => {
 			<h1 className="text-2xl font-thin ">
 				Good<span className="font-normal">reads</span>
 			</h1>
-			<div className="w-full flex justify-end max-w-5xl pr-4">
+			<div className="w-full flex justify-end max-w-5xl sm:pr-4">
 				<img
 					onClick={handleIsDark}
 					src="/public/dark-mode.svg"
