@@ -1,30 +1,30 @@
-import adapter from '@sveltejs/adapter-static';
+import adapter from '@sveltejs/adapter-static'
 import preprocess from 'svelte-preprocess'
-import { vitePreprocess } from '@sveltejs/kit/vite';
-import autoprefixer from 'autoprefixer';
+import { vitePreprocess } from '@sveltejs/kit/vite'
+import autoprefixer from 'autoprefixer'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 
-	preprocess: [
+  preprocess: [
 
-		vitePreprocess(),
-		preprocess({
+    vitePreprocess(),
+    preprocess({
 
-			postcss: {
+      postcss: {
 
-				plugins: [
+        plugins: [
 
-					autoprefixer
-				]
-			}
-		})
-	],
+          autoprefixer
+        ]
+      }
+    })
+  ],
 
-	kit: {
+  kit: {
 
-		adapter: adapter()
-	}
-};
+    adapter: adapter()
+  }
+}
 
-export default config;
+export default config
