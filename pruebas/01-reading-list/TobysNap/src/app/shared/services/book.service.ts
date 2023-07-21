@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { Book } from '../interfaces/Book';
 import { Library } from '../interfaces/Library';
+import { Subject } from 'rxjs';
 
 export interface BooksState {
   books: Book[];
@@ -18,18 +19,17 @@ export class BookService {
   booksUrl = 'assets/books.json';
   http = inject(HttpClient);
 
-  // Estado
   private state = signal<BooksState>({
     books: [],
     loaded: false,
   });
 
-  // Selectores
   books = computed(() => this.state().books);
   loaded = computed(() => this.state().loaded);
 
-  // Fuentes
   private booksLoaded$ = this.loadBooks();
+  add$ = new Subject<Book>();
+  remove$ = new Subject();
 
   constructor() {
     this.booksLoaded$.pipe(takeUntilDestroyed()).subscribe((books) => {
@@ -37,6 +37,20 @@ export class BookService {
         ...state,
         books,
         loaded: true,
+      }));
+    });
+
+    this.add$.pipe(takeUntilDestroyed()).subscribe((book) => {
+      this.state.update((state) => ({
+        ...state,
+        books: [...state.books, book]
+      }))
+    })
+
+    this.remove$.pipe(takeUntilDestroyed()).subscribe((title) => {
+      this.state.update((state) => ({
+        ...state,
+        books: state.books.filter((book) => book.title !== title),
       }));
     });
   }
