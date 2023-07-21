@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import loadable from "@loadable/component";
 
 import { faBookOpen, faBookmark } from "@fortawesome/free-solid-svg-icons";
@@ -21,8 +21,6 @@ const Tippy = loadable(() => import("@tippyjs/react"));
 const Badge = loadable(() => import("../Badge/Badge"));
 
 function Navbar() {
-  const location = useLocation();
-
   const { languageState } = useLanguage();
 
   const { libraryState } = useLibrary();
@@ -59,9 +57,7 @@ function Navbar() {
               }
             >
               <Link
-                to={
-                  location.pathname === "/reading-list" ? "/" : "/reading-list"
-                }
+                to={"/reading-list"}
                 name="toggle-seeing"
                 className={`text-xl w-[33px] h-8 flex items-center justify-center rounded-full hover:bg-primary hover:text-dark-text`}
                 ariaLabel={languageState.texts.ariaLabels.toReadingList}

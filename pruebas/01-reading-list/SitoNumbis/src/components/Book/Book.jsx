@@ -63,8 +63,8 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
     if (pages < filtersState.pages) toHide = true;
     //  the book title has similarity to the filter by title
     if (
-      filtersState.title.length &&
-      stringSimilarity(title, filtersState.title) < 0.2
+      stringSimilarity(title, filtersState.title) < 0.2 &&
+      title.toLowerCase().indexOf(filtersState.title.toLowerCase()) === -1
     )
       toHide = true;
     setHide(toHide);

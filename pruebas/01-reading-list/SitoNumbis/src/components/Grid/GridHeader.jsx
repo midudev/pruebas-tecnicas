@@ -1,5 +1,4 @@
-import { useState, useMemo, useEffect, useCallback } from "react";
-import { useLocation } from "react-router-dom";
+import { useState, useEffect, useCallback } from "react";
 
 import { css } from "@emotion/css";
 
@@ -24,8 +23,6 @@ import { useFilters } from "../../contexts/FiltersProvider";
 import styles from "./styles.module.css";
 
 function HomeHeader() {
-  const location = useLocation();
-
   const { languageState } = useLanguage();
   const { filtersState, setFiltersState } = useFilters();
   const { libraryState, setLibraryState } = useLibrary();
@@ -41,7 +38,7 @@ function HomeHeader() {
         showing: document.querySelectorAll(".book").length,
       });
     }, 100);
-  }, [filtersState, libraryState.seeing, setLibraryState]);
+  }, [filtersState, setLibraryState]);
 
   const handlePages = useCallback(
     (e) => {
@@ -63,16 +60,6 @@ function HomeHeader() {
     [setFiltersState]
   );
 
-  const totalLength = useMemo(() => {
-    return libraryState.seeing === "all"
-      ? libraryState.available
-      : libraryState.readingList.size;
-  }, [
-    libraryState.seeing,
-    libraryState.available,
-    libraryState.readingList.size,
-  ]);
-
   return (
     <section>
       <div className="flex items-center flex-wrap w-full">
@@ -80,7 +67,9 @@ function HomeHeader() {
         <p>
           {languageState.texts.homeHeader.title}{" "}
           {languageState.texts.homeHeader[libraryState.seeing]}
-          <span className="alter-text text-sm mx-2">({totalLength})</span>
+          <span className="alter-text text-sm mx-2">
+            ({libraryState.available})
+          </span>
         </p>
         {/* If the user is using the genre filter */}
         {filtersState.genre.length ? (
