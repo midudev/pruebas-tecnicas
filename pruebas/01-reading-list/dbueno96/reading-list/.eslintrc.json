@@ -1,0 +1,10 @@
+{
+  "extends": ["./node_modules/standard/eslintrc.json", "next/core-web-vitals"],
+  "rules": {
+    "no-undef":"off", 
+    "no-unused-vars":"off",
+    "next/no-img-element": "off",
+    "@next/next/no-img-element": "off",
+    "no-useless-return": "off"
+  }
+}
