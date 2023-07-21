@@ -40,7 +40,6 @@ function App() {
       books: books.library.map((book) => book.book),
       datetime,
     });
-    localStorage.removeItem(config.readingList);  
     // fetch from localStorage for the first time
     if (localStorage.getItem(config.readingList) !== null)
       setLibraryState({
