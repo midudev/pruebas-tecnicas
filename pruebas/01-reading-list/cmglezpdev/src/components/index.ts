@@ -1,2 +1,2 @@
 export * from './BookItem';
-export * from './Menu';
+export * from './FilterGenresMenu';

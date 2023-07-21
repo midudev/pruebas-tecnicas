@@ -1,19 +1,29 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 import { AppContext } from '../context/AppContext';
-import { BookItem } from '../components';
+import { BookItem, FilterGenresMenu } from '../components';
 import { AppLayout } from '../layout';
 import '../styles/Home.css';
+import { useFilterBooks } from '../hook';
 
 
 export const Home = () => {
-  const { availableBooks } = useContext(AppContext);
+  const { availableBooks: books } = useContext(AppContext);
+  const { filterOptions, toggleSelectOption, setOptions, filterBooks } = useFilterBooks([]);
+
+  useEffect(() => {
+      const genres: string[] = 
+          [...new Set(books.map(book => book.genre))]
+          .sort((a, b) => a.localeCompare(b));
+        setOptions(genres);
+  }, [books]);
 
   return (
     <AppLayout>
-          <section className='library'>
+      <FilterGenresMenu books={books} filters={filterOptions} toggleSelect={toggleSelectOption}  />
+        <section className='library'>
           {
-            availableBooks.map(book => (
+             filterBooks(books).map(book => (
               <BookItem key={book.ISBN} book={book} addForReadingButton />
             ))
           }
