@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { DataContext } from "../../context/DataContext";
 import style from "./categoryFilter.module.css";
 
-export const CategoryFilter = () => {
+export const CategoryFilter = ({ filterIcon }) => {
   // Obtener el estado y funciones desde el contexto
   const { selectedCategory, allCategories, setSelectedCategory } =
     useContext(DataContext);
@@ -14,14 +14,14 @@ export const CategoryFilter = () => {
 
   return (
     <div className={style.categoryFilter}>
-      <h4 className={style.categoryFilterH4}>Filtrar por categoría:</h4>
+      <h4 className={style.categoryFilterH4}>{filterIcon} Categorías:</h4>
       <select
         value={selectedCategory}
         onChange={handleSelectChange}
         className={style.selectCategoryFilter}
       >
         <option value="all">All</option>
-        {/* Mapear las categorías para crear las opciones del selector */}
+
         {allCategories.map((category) => (
           <option value={category} key={category}>
             {category}

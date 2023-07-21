@@ -12,33 +12,33 @@ export const BookCard = ({ added, booksToDisplay }) => {
 
   return (
     <>
-      {booksToDisplay?.map((libro) => (
-        <article key={libro.book.ISBN} className={style.bookCard}>
+      {booksToDisplay?.map((el) => (
+        <article key={el.book.ISBN} className={style.bookCard}>
           <header className={style.cardHeader}>
-            <img src={libro.book.cover} alt="Book Cover" />
+            <img src={el.book.cover} alt={`Cover of ${el.book.title}`} />
             <div className={style.synopsis}>
-              <h2 className={style.genre}>{libro.book.genre} </h2>
+              <h2 className={style.genre}>{el.book.genre} </h2>
               <div className={style.cardBody}>
                 <h3>Sinopsis:</h3>
-                <p>{libro.book.synopsis}</p>
+                <p>{el.book.synopsis}</p>
               </div>
             </div>
           </header>
           <footer className={style.cardFooter}>
-            <h3 className={style.footerH3} title={libro.book.title}>
-              {libro.book.title}
+            <h3 className={style.footerH3} title={el.book.title}>
+              {el.book.title}
             </h3>
             <small className={style.footerSmall}>
               Autor:{" "}
-              <span className={style.smallSpan}>{libro.book.author.name}</span>
+              <span className={style.smallSpan}>{el.book.author.name}</span>
             </small>
             <small className={style.footerSmall}>
-              Año: <span className={style.smallSpan}>{libro.book.year}</span>
+              Año: <span className={style.smallSpan}>{el.book.year}</span>
             </small>
             {added ? (
               <small
                 className={style.footerHandleLibrary}
-                onClick={() => handleDeleteFromLibrary(libro.book.ISBN)}
+                onClick={() => handleDeleteFromLibrary(el.book.ISBN)}
               >
                 <BsFillBookmarkHeartFill />
                 Eliminar de la biblioteca
@@ -46,7 +46,7 @@ export const BookCard = ({ added, booksToDisplay }) => {
             ) : (
               <small
                 className={style.footerHandleLibrary}
-                onClick={() => handleAddToLibrary(libro.book.ISBN)}
+                onClick={() => handleAddToLibrary(el.book.ISBN)}
               >
                 <BsFillBookmarkPlusFill /> Añadir a la biblioteca
               </small>

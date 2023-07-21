@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useFilteredBooks } from "../hooks/useFilteredBooks";
 import { BookCard } from "../components/books/BookCard";
 import { DataContext } from "../context/DataContext";
 import { useContext } from "react";
@@ -6,28 +7,16 @@ import { Main } from "../components/main/Main";
 import { EmptyLibrary } from "../components/emptyLibrary/EmptyLibrary";
 
 export const AllBooks = () => {
-  // Obtener los datos y funciones del contexto
-  const {
-    allBooks,
+  // // Obtener los datos y funciones del contexto
+  const { allBooks, search, selectedCategory, selectedPageRange } =
+    useContext(DataContext);
+
+  const booksToDisplay = useFilteredBooks(
     search,
-    handleSearchedBooks,
+    allBooks,
     selectedCategory,
-    selectedPageRange,
-  } = useContext(DataContext);
-
-  // Estado para almacenar los libros a mostrar en la página
-  const [booksToDisplay, setBooksToDisplay] = useState(allBooks);
-
-  // Utilizar el efecto para actualizar la lista de libros a mostrar cuando cambian los valores de allBooks, search o selectedCategory
-  useEffect(() => {
-    handleSearchedBooks(
-      search,
-      allBooks,
-      setBooksToDisplay,
-      selectedCategory,
-      selectedPageRange
-    );
-  }, [allBooks, search, selectedCategory, selectedPageRange]);
+    selectedPageRange
+  );
 
   return (
     <>

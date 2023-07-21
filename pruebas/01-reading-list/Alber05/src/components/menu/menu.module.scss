@@ -27,6 +27,10 @@
         justify-content: flex-start;
         gap: 2rem;
       }
+
+      @media (min-width: 1024px) {
+        width: 75%;
+      }
     }
   }
 }

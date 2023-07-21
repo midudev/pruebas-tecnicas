@@ -5,6 +5,11 @@
     justify-content: flex-end;
   }
 }
+@media (min-width: 1024px) {
+  .navLinksContainer {
+    width: 25%;
+  }
+}
 .navLinksContainer .link {
   color: #e3e5ec;
   background-color: #353838;

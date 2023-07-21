@@ -2,13 +2,13 @@ import { useContext, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import { DataContext } from "../../context/DataContext";
-import style from "./menu.module.css";
+import style from "./pageSlider.module.css";
 
 function valuetext(value) {
   return `${value} Páginas`;
 }
 
-export const PageSlider = () => {
+export const PageSlider = ({ filterIcon }) => {
   const { selectedPageRange, setSelectedPageRange } = useContext(DataContext);
 
   const handleSliderChange = (e, newValue) => {
@@ -17,7 +17,7 @@ export const PageSlider = () => {
 
   return (
     <Box sx={{ width: 150 }} className={style.pageSliderContainer}>
-      <h4 className={style.pageSliderH4}>Filrar por páginas:</h4>
+      <h4 className={style.pageSliderH4}>{filterIcon} Páginas:</h4>
 
       <Slider
         value={selectedPageRange}

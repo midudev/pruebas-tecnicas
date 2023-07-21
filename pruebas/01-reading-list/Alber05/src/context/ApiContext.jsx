@@ -14,9 +14,6 @@ export const ApiContext = ({ children }) => {
   const [search, setSearch] = useState("");
 
   // Estado para almacenar el rango de páginas seleccionado [min, max]
-  const [pageRange, setPageRange] = useState([0, 1000]);
-
-  // Estado para almacenar el rango de páginas seleccionado [min, max]
   const [selectedPageRange, setSelectedPageRange] = useState([0, 0]);
 
   // Estado para almacenar la categoría seleccionada
@@ -54,62 +51,11 @@ export const ApiContext = ({ children }) => {
     );
   };
 
-  // Función para manejar la búsqueda y filtros
-  const handleSearchedBooks = (
-    search,
-    books,
-    setSearchedBooks,
-    selectedCategory,
-    selectedPageRange
-  ) => {
-    const searchedBooks = filterBooks(
-      search,
-      books,
-      selectedCategory,
-      selectedPageRange
-    );
-    setSearchedBooks(searchedBooks);
-  };
-
-  // Función para filtrar los libros en base a la búsqueda y filtros seleccionados
-  const filterBooks = (search, books, selectedCategory, selectedPageRange) => {
-    return books.filter((searchedBook) => {
-      const searchMatch =
-        !search ||
-        searchedBook.book.title.toLowerCase().includes(search.toLowerCase()) ||
-        searchedBook.book.author.name
-          .toLowerCase()
-          .includes(search.toLowerCase());
-
-      const categoryMatch =
-        selectedCategory === "all" ||
-        selectedCategory === searchedBook.book.genre;
-
-      const pageRangeMatch =
-        (selectedPageRange[0] === 0 && selectedPageRange[1] === 0) ||
-        (searchedBook.book.pages >= selectedPageRange[0] &&
-          searchedBook.book.pages <= selectedPageRange[1]);
-
-      return categoryMatch && searchMatch && pageRangeMatch;
-    });
-  };
-
-  // Efecto para sincronizar cambios en el localStorage con el estado del componente
+  // Efecto para guardar los libros en el localStorage cada vez que cambian
   useEffect(() => {
-    const handleStorageChange = (event) => {
-      if (event.key === "storageAllBooks") {
-        setAllBooks(JSON.parse(event.newValue));
-      } else if (event.key === "storageLibraryBooks") {
-        setLibraryBooks(JSON.parse(event.newValue));
-      }
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
-  }, []);
+    localStorage.setItem("storageLibraryBooks", JSON.stringify(libraryBooks));
+    localStorage.setItem("storageAllBooks", JSON.stringify(allBooks));
+  }, [allBooks, libraryBooks]);
 
   // Efecto para cargar los libros almacenados en el localStorage al montar el componente
   useEffect(() => {
@@ -125,19 +71,13 @@ export const ApiContext = ({ children }) => {
     }
   }, []);
 
-  // Efecto para guardar los libros en el localStorage cada vez que cambian
-  useEffect(() => {
-    localStorage.setItem("storageLibraryBooks", JSON.stringify(libraryBooks));
-    localStorage.setItem("storageAllBooks", JSON.stringify(allBooks));
-  }, [allBooks, libraryBooks]);
-
   // Efecto para sincronizar cambios en el localStorage con el estado del componente
   useEffect(() => {
-    const handleStorageChange = (event) => {
-      if (event.key === "storageAllBooks") {
-        setAllBooks(JSON.parse(event.newValue));
-      } else if (event.key === "storageLibraryBooks") {
-        setLibraryBooks(JSON.parse(event.newValue));
+    const handleStorageChange = (e) => {
+      if (e.key === "storageAllBooks") {
+        setAllBooks(JSON.parse(e.newValue));
+      } else if (e.key === "storageLibraryBooks") {
+        setLibraryBooks(JSON.parse(e.newValue));
       }
     };
 
@@ -155,10 +95,8 @@ export const ApiContext = ({ children }) => {
         libraryBooks,
         handleAddToLibrary,
         handleDeleteFromLibrary,
-        handleSearchedBooks,
         search,
         setSearch,
-        pageRange,
         selectedPageRange,
         setSelectedPageRange,
         allCategories,

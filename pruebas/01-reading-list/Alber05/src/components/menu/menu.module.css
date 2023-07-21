@@ -30,3 +30,8 @@
     gap: 2rem;
   }
 }
+@media (min-width: 1024px) {
+  .navContainer .navBar .filtersContainer {
+    width: 75%;
+  }
+}

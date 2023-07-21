@@ -16,7 +16,16 @@
 .noBooksMain .noBooksTitle {
   font-family: "Amazon Ember Heavy", sans-serif;
   color: #353838;
+  font-size: 1.6rem;
+}
+@media (min-width: 768px) {
+  .noBooksMain .noBooksTitle {
+    font-size: 2.4rem;
+  }
 }
 .noBooksMain .noBooksImage {
   image-rendering: optimizeQuality;
-}/*# sourceMappingURL=noBooks.module.css.map */
+}
+.noBooksMain .noBooksImage img {
+  width: 100%;
+}

@@ -20,7 +20,6 @@
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react-swc": "^3.0.0",
-    "eslint-plugin-react-refresh": "^0.4.3",
     "vite": "^4.1.0"
   }
 }

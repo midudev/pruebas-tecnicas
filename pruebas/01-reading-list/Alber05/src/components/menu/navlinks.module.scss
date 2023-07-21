@@ -4,6 +4,10 @@
     display: flex;
     justify-content: flex-end;
   }
+
+  @media (min-width: 1024px) {
+    width: 25%;
+  }
   .link {
     color: #e3e5ec;
     background-color: #353838;
