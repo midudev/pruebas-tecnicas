@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import loadable from "@loadable/component";
 
 import { css } from "@emotion/css";
 
@@ -10,8 +11,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 // components
-import Slider from "../Slider/Slider";
-import IconButton from "../IconButton/IconButton";
 import SimpleInput from "../SimpleInput/SimpleInput";
 
 // contexts
@@ -21,6 +20,10 @@ import { useFilters } from "../../contexts/FiltersProvider";
 
 // styles
 import styles from "./styles.module.css";
+
+// suspense
+const Slider = loadable(() => import("../Slider/Slider"));
+const IconButton = loadable(() => import("../IconButton/IconButton"));
 
 function HomeHeader() {
   const { languageState } = useLanguage();

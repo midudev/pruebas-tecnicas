@@ -1,14 +1,17 @@
 import { Fragment, useEffect, useState } from "react";
 import useIsInViewport from "use-is-in-viewport";
+import loadable from "@loadable/component";
 
 import PropTypes from "prop-types";
 
 // components
-import Book from "../Book/Book";
 import Loading from "../Loading/Loading";
 
 // styles
 import styles from "./styles.module.css";
+
+// suspense
+const Book = loadable(() => import("../Book/Book"));
 
 function GridBook({ books }) {
   const [page, setPage] = useState(0);

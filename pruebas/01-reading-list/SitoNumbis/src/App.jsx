@@ -1,12 +1,10 @@
 import { Suspense, useCallback, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import loadable from "@loadable/component";
 
 // components
 import Loading from "./components/Loading/Loading";
 import Handler from "./components/Error/Handler";
-
-// layouts
-import Main from "./layouts/Main";
 
 // db
 import books from "./MOCK_DATA.json";
@@ -16,6 +14,9 @@ import { useLibrary } from "./contexts/LibraryProvider";
 
 // config
 import config from "./config";
+
+// layouts
+const Main = loadable(() => import("./layouts/Main"));
 
 function App() {
   const { setLibraryState } = useLibrary();
