@@ -1,6 +1,9 @@
 import { filterOptions } from '../signals/inputs.signals';
 import { myReadingListISBN } from '../signals/store';
 
+const normalizeText = (text) =>
+	text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
 export const filterBooks = (books) => {
 	const { excludeBooks, genre, pages, specificBook } = filterOptions.value;
 	const [min, max] = pages;
@@ -19,7 +22,9 @@ export const filterBooks = (books) => {
 	}
 
 	if (genre !== 'any') {
-		booksFiltered = booksFiltered.filter((book) => book.genre === genre);
+		booksFiltered = booksFiltered.filter((book) => {
+			return normalizeText(book.genre).toLowerCase() === genre;
+		});
 	}
 
 	if (min || max) {
