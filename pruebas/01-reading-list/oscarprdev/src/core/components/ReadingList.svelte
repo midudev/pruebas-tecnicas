@@ -1,7 +1,29 @@
-<script>
+<script lang="ts">
+  import { appState } from './../store/app-state-store'
+  import { readingListUsecase } from './../../features/reading-list/index'
+  import { orderList } from './../store/order-list.store'
   import { asideState } from '../store/aside-store'
-  import { appState } from '../store/app-state-store'
   import ReadingListItem from './ReadingListItem.svelte'
+  import { derived } from 'svelte/store'
+
+  let sortedBooks = derived(orderList, ($orderList) => {
+    if ($orderList.end.book) {
+      readingListUsecase.sortBooks($orderList)
+
+      orderList.update(() => ({
+        start: {
+          index: 0,
+          book: null,
+        },
+        end: {
+          index: 0,
+          book: null,
+        },
+      }))
+    }
+
+    return $appState.readingBooks
+  })
 </script>
 
 {#if $asideState.readingListIsOpen}
@@ -10,8 +32,8 @@
   >
     <h2 class="text-2xl mb-5"><i>Lista de lectura</i></h2>
     <ul class="flex flex-col">
-      {#if $appState.readingBooks.length > 0}
-        {#each $appState.readingBooks as book, index (book.ISBN)}
+      {#if $sortedBooks.length > 0}
+        {#each $sortedBooks as book, index (book.ISBN)}
           <ReadingListItem {book} {index} />
         {/each}
       {:else}

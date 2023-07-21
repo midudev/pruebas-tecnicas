@@ -10,12 +10,33 @@
   import { appState } from '../store/app-state-store'
   import StarsCounter from './StarsCounter.svelte'
   import SwitchBook from './SwitchBook.svelte'
+  import { orderList } from '../store/order-list.store'
 
   export let book: Book
   export let index: number
 
   let showAnimation: any
   let showOverlay: Writable<boolean> = writable(false)
+
+    const handleDragStart = (book, index) => {
+      orderList.update((prev) => ({
+        ...prev,
+        start: {
+          index,
+          book
+        }
+      }))
+    }
+
+    const handleDrop = (book, index) => {
+      orderList.update((prev) => ({
+        ...prev,
+        end: {
+          index,
+          book
+        }
+      }))
+    }
 
   const handleOverlay = () => {
     showOverlay.update((value) => !value)
@@ -43,6 +64,10 @@
   class=" flex gap-5 my-2 p-2 transform-color duration-300 hover:bg-overlayBtnHover cursor-grab xl:h-64 xl:w-full {showAnimation
     ? 'animate-item-in'
     : 'animate-fade-in'}"
+  draggable="true"
+  on:dragstart={() => handleDragStart(book, index)}
+  on:dragover={(event) => event.preventDefault()}
+  on:drop={() => handleDrop(book, index)}
 >
   <!-- svelte-ignore a11y-no-static-element-interactions -->
   <div
