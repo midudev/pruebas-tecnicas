@@ -86,7 +86,7 @@ const BOOKLIST_ACTIONS: {
 
     return newState
   },
-  [BOOK_LIST_TYPES.RESET_READING_LIST]: (state: BookListState) => {
+  [BOOK_LIST_TYPES.RESET_READING_LIST]: () => {
     updateLocalStorage()
 
     return initialListBooks
