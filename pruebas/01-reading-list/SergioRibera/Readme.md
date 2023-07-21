@@ -1,6 +1,7 @@
 Disenio inspirado desde [dribbble](https://dribbble.com/shots/20454786-E-Book-Dashboard)
 
-**Deploy url: ** [https://midu-001-readinglist.fly.dev](https://midu-001-readinglist.fly.dev)
+**Deploy url:** [https://midu-001-readinglist.fly.dev](https://midu-001-readinglist.fly.dev)
+![image](https://github.com/SergioRibera/midu-pruebas-tecnicas/assets/56278796/4a85100c-9dde-432a-bddc-9b6cbd22acd3)
 
 # Tecnologias utilizadas
 - [Rust](https://rust-lang.org/tools/install)
