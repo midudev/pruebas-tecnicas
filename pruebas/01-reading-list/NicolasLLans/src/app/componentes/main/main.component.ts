@@ -1,5 +1,4 @@
-import { Component, NgZone, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { GeneralService } from 'src/app/general.service';
 import { Book } from 'src/app/modelos/books';
 
@@ -20,38 +19,27 @@ export class MainComponent implements OnInit {
   activo: boolean = this.generalService.activo;
   bookSeleccionado: Book | null = null;
 
-  private localStorageUpdateSubscription: Subscription;
+  constructor(public generalService: GeneralService) {
 
-  constructor(public generalService: GeneralService, private ngZone: NgZone) {
-    // Suscribirse al evento de actualización del localStorage
-    this.localStorageUpdateSubscription = this.generalService.localStorageUpdate$.subscribe((updatedBooks: any[]) => {
-      // Actualizar la lista de libros local
-      this.ngZone.run(() => {
-        this.misBooks = updatedBooks;
-      });
+    // Agregar el event listener para el evento 'storage'
+    window.addEventListener('storage', (event) => {
+      if (event.key === 'books') {
+        // Se produjo un cambio en el 'localStorage' desde otra pestaña
+        // Obtener los datos actualizados del 'localStorage' y actualizar 'misBooks'
+        const localStorageBooks = window.localStorage.getItem('books');
+        if (localStorageBooks) {
+          this.misBooks = JSON.parse(localStorageBooks);
+        }
+      }
     });
-
-        // Agregar el event listener para el evento 'storage'
-        window.addEventListener('storage', (event) => {
-          if (event.key === 'books') {
-            // Se produjo un cambio en el 'localStorage' desde otra pestaña
-            // Obtener los datos actualizados del 'localStorage' y actualizar 'misBooks'
-            const localStorageBooks = window.localStorage.getItem('books');
-            if (localStorageBooks) {
-              this.misBooks = JSON.parse(localStorageBooks);
-            }
-          }
-        });
   }
 
   ngOnInit(): void {
     this.getLibrary();
-    this.refreshLocalstorage();
   }
 
   ngOnDestroy(): void {
-    // Darse de baja de la suscripción al destruir el componente
-    this.localStorageUpdateSubscription.unsubscribe();
+
   }
 
   verMiLista() {
@@ -93,14 +81,6 @@ export class MainComponent implements OnInit {
     }
   }
 
-  refreshLocalstorage() {
-    const localStorageBooks = window.localStorage.getItem('books');
-    if (localStorageBooks) {
-      this.misBooks = JSON.parse(localStorageBooks);
-      this.generalService.contador = true;
-    }
-  }
-
   selectBook(item: any) {
     // Obtener la lista existente del localStorage
     const storedList = window.localStorage.getItem('books');
@@ -115,7 +95,6 @@ export class MainComponent implements OnInit {
     // Actualizar la lista local this.misBooks con la lista actualizada
     this.misBooks = existingList;
 
-    // Resto del código...
     this.generalService.nuevaLista.push(item);
     this.generalService.contador = true;
     this.generalService.miLista = true;
@@ -127,15 +106,14 @@ export class MainComponent implements OnInit {
       const books = JSON.parse(localStorageBooks);
       const updatedBooks = books.filter((item: any) => item.book.title !== title);
       window.localStorage.setItem('books', JSON.stringify(updatedBooks));
-  
+
       // Actualizar la lista local this.misBooks con la lista actualizada
       this.misBooks = updatedBooks;
-  
+
       this.generalService.updateLocalStorageBooks(updatedBooks);
     }
   }
 
-  // ... (resto de tu código)
 
   findBookInLocalStorage(title: string): any | null {
     const localStorageBooks = window.localStorage.getItem('books');
@@ -166,7 +144,6 @@ export class MainComponent implements OnInit {
     }
   }
 
-  // ... (resto de tu código)
 
   cerrarMiLibro() {
     this.generalService.milibro = false;
