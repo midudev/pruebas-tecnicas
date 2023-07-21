@@ -22,12 +22,12 @@
   }
 
   const toggleSelectedGenre = (genre) => {
-    selectedGenres.includes(genre) ? (selectedGenres = selectedGenres.filter((g) => g !== genre)) : selectedGenres.push(genre)
-    selectedGenres = selectedGenres //force reactivity
+    selectedGenres = selectedGenres.includes(genre) ? selectedGenres.filter((g) => g !== genre) : [...selectedGenres, genre]
   }
 
   const booksFromIDs = (ids) => $books.filter((b) => ids.includes(b.ISBN))
 
+  // Subscribe to the 'storage' event to sync tabs
   const onStorage = (e) => {
     if (e.key === 'selectedBookISBNs') {
       $selectedBookIDs = e.newValue.split(',')
