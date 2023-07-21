@@ -1,7 +1,23 @@
-.grilla-libros {     
+.grilla-libros {       
   display: grid;
-  gap:3px; 
+  gap:5px; 
   grid-auto-rows: 20rem;
   grid-template-columns: repeat(auto-fill, minmax(12rem,1fr));
   
+}
+.grilla-lectura {              
+  display: grid;
+  gap:2px; 
+  grid-auto-rows: 8rem;
+  grid-template-columns: repeat(auto-fill, minmax(5rem,1fr));
+}
+.contenedor-grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 20px;
+}
+
+.columna-catalogo,
+.columna-lista {
+  padding: 10px;
 }
