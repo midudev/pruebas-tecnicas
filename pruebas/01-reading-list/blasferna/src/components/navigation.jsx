@@ -1,33 +1,50 @@
 "use client";
 import Link from "next/link";
-import {MagnifyingGlassIcon} from "@heroicons/react/24/solid";
-import { useAppContext } from "@/context/store";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import { useAppContext, useFilterContext } from "@/context/store";
 import { usePathname } from "next/navigation";
-
+import { cn } from "@/lib/utils";
 
 const SearchInput = () => {
+  const pathname = usePathname();
+  const isHidden = pathname.startsWith("/books");
+  const {searchQuery, setSearchQuery} = useFilterContext();
+
+  const onChangeHander = (e) => {
+    setSearchQuery(e.target.value);
+  }
   return (
-    <div className="flex flex-1 ml-6 justify-end">
-      <div className="hidden md:block w-full max-w-lg lg:max-w-xs">
+    <div className={cn(isHidden && "hidden", "flex flex-1 ml-6 justify-end")}>
+      <div
+        className={cn(
+          !isHidden && "md:block",
+          "hidden w-full max-w-lg lg:max-w-xs"
+        )}
+      >
         <label htmlFor="search" className="sr-only">
-          Search
+          Buscar
         </label>
         <div className="relative">
           <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-            <MagnifyingGlassIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+            <MagnifyingGlassIcon
+              className="h-5 w-5 text-gray-400"
+              aria-hidden="true"
+            />
           </div>
           <input
             id="search"
             name="search"
+            value={searchQuery}
+            onChange={onChangeHander}
             className="block w-full rounded-md border-0 bg-gray-700 py-1.5 pl-10 pr-3 text-gray-300 placeholder:text-gray-400 focus:bg-white focus:text-gray-900 focus:ring-0 sm:text-sm sm:leading-6"
-            placeholder="Search"
+            placeholder="Buscar por título o autor"
             type="search"
           />
         </div>
       </div>
-  </div>    
-  )
-}
+    </div>
+  );
+};
 
 export default function Navigation() {
   const { inReadingListCount, availableListCount } = useAppContext();

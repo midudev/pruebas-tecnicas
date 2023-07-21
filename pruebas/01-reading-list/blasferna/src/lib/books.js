@@ -22,24 +22,47 @@ const getInReadingList = () => {
   return [];
 };
 
-const getReadingList = () => {
+const filter = (data, filters) => {
+  const { genreFilter = "", searchQuery = "" } = filters;
+  let filteredList = data;
+  if (genreFilter) {
+    filteredList = filteredList.filter(
+      (element) => element.book.genre === genreFilter || genreFilter === ""
+    );
+  }
+  if (searchQuery) {
+    filteredList = filteredList.filter(
+      (element) =>
+        element.book.title.toLowerCase().includes(searchQuery) ||
+        element.book.author.name.toLowerCase().includes(searchQuery) ||
+        searchQuery === ""
+    );
+  }
+  return filteredList;
+};
+
+const getReadingList = (filters) => {
   const readingList = getInReadingList();
-  const filteredList = DATA.library.filter((element) =>
+  const bookList = DATA.library.filter((element) =>
     readingList.includes(element.book.ISBN)
   );
-  return groupByGenre(filteredList);
+  return groupByGenre(filter(bookList, filters));
 };
 
 const getReadingListCount = () => {
   return getInReadingList().length;
 };
 
-const getAvailableList = () => {
+const getAvailableList = (filters) => {
   const readingList = getInReadingList();
-  const filteredList = DATA.library.filter(
+  const bookList = DATA.library.filter(
     (element) => !readingList.includes(element.book.ISBN)
   );
-  return groupByGenre(filteredList);
+  return groupByGenre(filter(bookList, filters));
+};
+
+const getGenres = () => {
+  return Object.keys(groupByGenre(DATA.library));
 };
 
 const getAvailableListCount = () => {
@@ -86,15 +109,16 @@ const getByTitle = (title) => {
 export {
   READING_LIST_STORAGE_KEY,
   addToReadingList,
+  getAuthorOtherBooks,
   getAvailableList,
   getAvailableListCount,
+  getByISBN,
+  getByTitle,
+  getGenres,
   getInReadingList,
   getReadingList,
   getReadingListCount,
   groupByGenre,
   isInReadingList,
   removeFromReadingList,
-  getAuthorOtherBooks,
-  getByISBN,
-  getByTitle,
 };
