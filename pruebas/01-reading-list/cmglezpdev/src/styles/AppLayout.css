@@ -1,13 +1,15 @@
 .app-header {
     padding: 5px 10px;
     background-color: #A78295;
+    min-width: 390px;
 }
 
 .app-nav {
     display: grid;
     align-items: center;
-    grid-template-columns: min-content 1fr;
+    grid-template-columns: min-content max-content;
     grid-template-areas: "logo buttons menu";
+    justify-content: space-between;
     gap: 50px;
 }
 
@@ -195,11 +197,23 @@
 
 
 @media (max-width: 700px) {
+    .app-nav {
+        grid-template-areas: "logo menu";
+    }
+
     .svg-menu-close, .svg-menu-open {
         display: block;
     }
 
     .nav-options {
+        display: none;
+    }
+
+    .main_container {
+        grid-template-columns: 1fr;
+    }
+
+    .main__menu {
         display: none;
     }
 }
