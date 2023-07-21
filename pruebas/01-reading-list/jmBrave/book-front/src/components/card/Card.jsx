@@ -3,7 +3,7 @@ import Button from '../button/Button'
 
 // TODO: Scoring:https://dev.to/michaelburrows/create-a-custom-react-star-rating-component-5o6
 
-export default function Card({ book, isSelected }) {
+export default function Card({ book, isAvailable }) {
     if (!book) return null
     const { title, cover, synopsis, author } = book
     return (
@@ -30,7 +30,7 @@ export default function Card({ book, isSelected }) {
                         <p>{author.name}</p>
                     </div>
                 </div>
-                {isSelected() ? null : <Button book={book} />}
+                {isAvailable() ? <Button book={book} /> : null}
             </div>
         </div>
     )
