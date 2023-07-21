@@ -40,13 +40,13 @@ export class BookService {
 
 
   moveFromListToReadingList(book: Book, index: number) {
-    const bookIndex: number = this.getBookIndex(book);
+    const bookIndex: number = this.getBookIndex(this.bookListData, book);
     this.deleteFromBookList(bookIndex);
     this.addToReadingList(book);
   }
 
   moveFromReadingListToList(book: Book, index: number) {
-    const bookIndex: number = this.getBookIndex(book);
+    const bookIndex: number = this.getBookIndex(this.readingListData, book);
     this.deleteFromReadingList(bookIndex);
     this.addToBookList(book);
   }
@@ -57,8 +57,8 @@ export class BookService {
     return this._bookListFiltered.asObservable();
   }
 
-  private getBookIndex(book: Book) {
-    return this.bookListData.findIndex(b => b.ISBN === book.ISBN);
+  private getBookIndex(list: Array<Book>, book: Book) {
+    return list.findIndex(b => b.ISBN === book.ISBN);
   }
 
   private addToBookList(book: Book) {
