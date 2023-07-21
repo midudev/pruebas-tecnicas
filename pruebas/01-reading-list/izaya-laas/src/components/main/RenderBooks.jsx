@@ -1,22 +1,27 @@
 import { filterBooks } from '../../filters/forBook';
 import { currentPath, myReadingListISBN } from '../../signals/store';
+import HasNotBeenFound from './HasNotBeenFound ';
 
-const RenderBooks = ({ books, handleAddBookToReadingList }) => {
-	const addBookToReadingList = (ISBN) => {
-		if (myReadingListISBN.value.includes(ISBN)) {
-			myReadingListISBN.value = myReadingListISBN.value.filter(
-				(book) => book !== ISBN
-			);
+const addBookToReadingList = (ISBN) => {
+	if (myReadingListISBN.value.includes(ISBN)) {
+		myReadingListISBN.value = myReadingListISBN.value.filter(
+			(book) => book !== ISBN
+		);
 
-			return;
-		}
+		return;
+	}
 
-		myReadingListISBN.value = [...myReadingListISBN.value, ISBN];
-	};
+	myReadingListISBN.value = [...myReadingListISBN.value, ISBN];
+};
+
+const RenderBooks = ({ books }) => {
+	const filterBooksData = filterBooks(books);
+
+	if (filterBooksData.length === 0) return <HasNotBeenFound />;
 
 	return (
 		<>
-			{filterBooks(books)?.map((book) => {
+			{filterBooksData.map((book) => {
 				const { title, cover, author, ISBN } = book;
 				const { name } = author;
 
@@ -28,6 +33,7 @@ const RenderBooks = ({ books, handleAddBookToReadingList }) => {
 								? 'bg-grated-pattern '
 								: 'bg-white'
 						}`}
+						key={ISBN}
 						id={ISBN}
 						onClick={() => {
 							addBookToReadingList(ISBN);
