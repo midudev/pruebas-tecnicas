@@ -56,6 +56,7 @@ function App() {
           <select
             value={filters.genre}
             onChange={(e) => filterGenreBooks(e.target.value)}
+            id="genreFilter"
           >
             <option value="">Todas las categorías</option>
             <option value="Fantasía">Fantasía</option>
@@ -72,14 +73,15 @@ function App() {
       {/* <p>Filter books {JSON.stringify(filteredBooks)}</p> */}
 
       <div className="flex">
-        <div className="flex flex-wrap gap-2 w-4/5">
+        <div className="flex flex-wrap gap-2 w-4/5" id="books">
           {filteredBooks.map(({ book }) => (
             <Book key={book.ISBN} data={book} />
           ))}
         </div>
 
         <div className="flex flex-col">
-          {books.length} <ReadList />
+          {books.length}
+          <ReadList />
         </div>
       </div>
     </div>

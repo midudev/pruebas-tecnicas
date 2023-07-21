@@ -8,8 +8,8 @@ type StoreWithPersist = Mutate<StoreApi<BooksState>, [['zustand/persist', unknow
 export const withStorageDOMEvents = (store: StoreWithPersist) => {
   const storageEventCallback = (e: StorageEvent) => {
     if (e.key === store.persist.getOptions().name && (Boolean(e.newValue))) {
-      // store.persist.rehydrate()
-      window.location.reload(true)
+      store.persist.rehydrate()
+      // window.location.reload(true)
     }
   }
 
