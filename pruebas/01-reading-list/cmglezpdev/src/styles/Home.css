@@ -28,9 +28,9 @@
 .book-info {
   width: 100%;
   height: 100%;
-  background-color: #000;
-  filter: opacity(.77);
-  color: #fff;
+  background-color: #331D2C;
+  filter: opacity(.90);
+  color: #EFE1D1;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -60,12 +60,9 @@
   font-size: 15px;
 }
 
-
-
 .book-info__buttons {
   margin-top: 20px;
 }
-
 
 .book-info__buttons-save_to_read {
   padding: 10px;
@@ -75,6 +72,11 @@
   border: 0;
   border-radius: 2px;
   outline: none;
-  background-color: rgb(177, 174, 174);
-  color: #000;
+  background-color: #EFE1D1;
+  color: #1b0a16;
+}
+
+.book-info__buttons-save_to_read:hover {
+  transition: background-color 200ms ease;
+  background-color: #e7c9a6;
 }

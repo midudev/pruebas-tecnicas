@@ -1,20 +1,28 @@
 .app-header {
-    padding: 10px;
-    background-color: #3b97ec;
+    padding: 5px 10px;
+    background-color: #A78295;
 }
 
 .app-nav {
-    display: flex;
+    display: grid;
+    align-items: center;
+    grid-template-columns: min-content 1fr;
+    grid-template-areas: "logo buttons menu";
     gap: 50px;
 }
 
+.app-title {
+    grid-area: logo;
+}
+
 .app-title h1 {
-    font-size: 60px;
+    font-size: 43px;
     text-align: center;
     font-weight: bold;
     text-transform: uppercase;
     position: relative;
-    color: #000;
+    color: #331D2C;
+    text-align: start;
     margin-bottom: 10px;
 }
 
@@ -22,33 +30,74 @@
     content: "";
     display: block;
     position: absolute;
-    height: 10px;
-    width: 343px;
+    height: 7px;
+    width: 250px;
     bottom: -3px;
-    background-color: #064a92;
+    background-color: #331D2C;
 }
   
 .nav-options {
     display: flex;
     align-items: center;
     gap: 10px;
+    grid-area: buttons;
 }
   
 .nav-options li {
     list-style: none;
 }
-  
+
 .nav-options li a {
     text-decoration: none;
-    padding: 10px 20px;
-    background-color: #a2cff8;
+    padding: 10px 15px;
+    border-radius: 7px;
+    color: #EFE1D1;
+    font-weight: 500;
 }
-  
+
+.nav-options li a:hover {
+    background-color: #8a5f75;
+    transition: all 200ms ease-in;
+}
+
+.svg-menu-open, .svg-menu-close {
+    grid-area: menu;
+}
+
+#checkbox-menu {
+    display: none;
+}
+
+.svg-menu-close, .svg-menu-open {
+    text-decoration: none;
+    color: #EFE1D1;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: opacity 300ms;
+    z-index: 200;
+}
+
+.svg-menu-close {
+    opacity: 0;
+}
+
+#checkbox-menu:checked ~ .svg-menu-close {
+    opacity: 1;
+}
+
+#checkbox-menu:checked ~ .svg-menu-open {
+    opacity: 0;
+}
+
 .app-general-info {
     display: flex;
+    padding: 7px;
     gap: 20px;
-    font-size: 20px;
+    font-size: 16px;
     position: relative;
+    color: #EFE1D1;
+    background-color: #3F2E3E;
 }
 
 .app-general-info p span {
@@ -58,7 +107,7 @@
 .main_container {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: minmax(200px, 1fr) 5fr;
 }
 
 .main__menu {
@@ -69,15 +118,19 @@
     padding: 0 0 0 10px;
 }
 
+
 .option_filter {
     cursor: pointer;
     width: 100%;
     padding: 15px 20px;
-    background-color: #a2cff8;
+    border-radius: 5px;
+    background-color: #EFE1D1;
+    color: #331D2C;
 }
 
 .option_filter:hover {
-    background-color: #7ab9f3;
+    transition: all 200ms ease;
+    background-color: #e7d3bc;
 }
 
 .filter__title {
@@ -85,4 +138,55 @@
     font-size: 20px;
     font-weight: bold;
     text-align: center;
+    color: #331D2C;
+}
+
+.option-selected {
+    background-color: #A78295;
+}
+
+.option-selected:hover {
+    transition: all 200ms ease;
+    background-color: #9b6c84;
+}
+
+
+.nav-options-responsive {
+    position: fixed;
+    width: 60%;
+    height: 100vh;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    list-style: none;
+    background-color: #331d2cf5;
+    padding: 100px 5vw;
+    
+    display: grid;
+    place-content: center;
+    gap: 30px;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms;
+}
+
+.nav-options-responsive li {
+    padding: 10px 20px;
+    border: 1px solid transparent;
+}
+
+.nav-options-responsive li a {
+    text-decoration: none;
+    color: #EFE1D1;
+}
+
+.nav-options-responsive li:hover {
+    border-radius: 5px;
+    border: 1px solid red;
+}
+
+#checkbox-menu:checked ~ .nav-options-responsive {
+    opacity: 1;
+    pointer-events: unset;
 }

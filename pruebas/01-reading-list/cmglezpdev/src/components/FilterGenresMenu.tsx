@@ -17,22 +17,21 @@ export const FilterGenresMenu:FC<Props> = ({ books, filters, toggleSelect}) => {
 
     return (
         <section className='main__menu'>
-        <div className='filter__title'>
-            <span>Filter by:</span>
-        </div>
+            <div className='filter__title'>
+                <span>Filter by:</span>
+            </div>
 
-        {
-           filters.map(({ option: genre, selected }) => (
-                <div 
-                    key={genre} 
-                    className='option_filter' 
-                    onClick={() => toggleSelect(genre)}
-                    style={{backgroundColor: selected ? '#5eacf5' : '#a2cff8'}}
-                >
-                        <span>{ `${genre} (${countGenre(genre)})` }</span>
-                </div>
-            ))
-        }
-    </section>
+            {
+            filters.map(({ option: genre, selected }) => (
+                    <div 
+                        key={genre} 
+                        className={`option_filter ${selected && 'option-selected'}`} 
+                        onClick={() => toggleSelect(genre)}
+                    >
+                            <span>{ `${genre} (${countGenre(genre)})` }</span>
+                    </div>
+                ))
+            }
+        </section>
     )
 }
