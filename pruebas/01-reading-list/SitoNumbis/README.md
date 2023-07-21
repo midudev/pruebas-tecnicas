@@ -1,4 +1,5 @@
-# Sito's Library 
+# Sito's Library
+
 @0.13.5
 
 [Public Demo](https://sitos-library.web.app/)
@@ -22,12 +23,11 @@ Also the app uses a context for the filters, FiltersState, to work with the filt
 // default value
 
 {
-    books: [],
+    books: {},
     genres: [],
     readingList: new Map(), // Map because it can be iterable and has size attribute 🙂
     available: 0, // global state to quick access to available books
     showing: 0, // global state to quick access to the showing books
-    seeing: "all", // books to show (all/reading-list)
 }
 
 ```
@@ -63,14 +63,6 @@ To initialize the reading list from localStorage
 ```
 
 _Note: Will initialize the reading list from localStorage, will validate if the giving value is an array and will create the Map, also will update the 'available' counter_
-
-#### toggle-see
-
-Toggle 'seeing' value to see reading list or available books
-
-```
-    setLibraryState({type:"toggle-see"})
-```
 
 #### set-showing
 
