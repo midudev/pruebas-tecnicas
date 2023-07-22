@@ -1,6 +1,9 @@
 import Image from 'next/image'
 import type { Book } from '../types'
-import { MinusCircleIcon, PlusCircleIcon, XCircleIcon } from '@heroicons/react/24/outline'
+import {
+  MinusCircleIcon,
+  PlusCircleIcon
+} from '@heroicons/react/24/outline'
 import { BookOpenIcon } from '@heroicons/react/24/solid'
 import { ActionType, useBooks } from '../context/books'
 interface Props {
@@ -15,8 +18,21 @@ export default function BookCard({
   orientation = 'vertical'
 }: Props) {
   const { dispatch } = useBooks()
+  const icon =
+    action === 'AddToReadingList' ? (
+      <PlusCircleIcon className='h-full' title='Add To Reading List' />
+    ) : (
+      <MinusCircleIcon className='h-10 w-10 stroke-white' />
+    )
+  const handleBookAction = () => {
+    if (action === 'AddToReadingList') {
+      addToReadingList(book)
+      return
+    }
+    removeFromReadingList(book)
+  }
 
-  const addToReadingList = () => {
+  const addToReadingList = (book: Book) => {
     dispatch({ type: 'AddToReadingList', payload: book })
   }
 
@@ -28,11 +44,11 @@ export default function BookCard({
     return (
       <div
         className=' relative h-auto w-full overflow-hidden rounded-md border border-slate-500 p-2 text-white'
-        onClick={() => removeFromReadingList(book)}
+        onClick={handleBookAction}
         key={book.ISBN}
       >
         <div className='pointer-cursor absolute left-0 top-0 flex h-full w-full flex-col items-center justify-center bg-black text-white opacity-0 hover:opacity-80'>
-          <MinusCircleIcon className='h-10 w-10 stroke-white' />
+          {icon}
           <p>Eliminar</p>
         </div>
         <Image
@@ -74,17 +90,9 @@ export default function BookCard({
 
         <button
           className='absolute right-3 top-3 flex h-8 cursor-pointer flex-col items-center justify-around text-sm'
-          onClick={
-            action === 'AddToReadingList'
-              ? addToReadingList
-              : removeFromReadingList
-          }
+          onClick={handleBookAction}
         >
-          {action === 'AddToReadingList' ? (
-            <PlusCircleIcon className='h-full' title='Add To Reading List' />
-          ) : (
-            <XCircleIcon className='h-full' title='Remove From Reading List' />
-          )}
+          {icon}
         </button>
       </article>
 
