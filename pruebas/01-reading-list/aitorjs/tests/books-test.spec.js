@@ -4,6 +4,24 @@ test.beforeEach(async ({ page }) => {
   await page.goto('http://localhost:5173/')
 })
 
+test('append book, filter, de-append book and filter again', async ({ page }) => {
+  await page.locator('#books p >> nth=0').click()
+  const readList1 = page.locator('#readList p')
+  await expect(readList1).toHaveCount(1)
+
+  await page.locator('#genreFilter').selectOption('Fantasía')
+  const list1 = page.locator('#books p')
+  await expect(list1).toHaveCount(2)
+
+  await page.locator('#readList p a >> nth=0').click()
+  const readList2 = page.locator('#readList p')
+  await expect(readList2).toHaveCount(0)
+
+  await page.locator('#genreFilter').selectOption('Fantasía')
+  const list2 = page.locator('#books p')
+  await expect(list2).toHaveCount(3)
+})
+
 test('show books in page at page start', async ({ page }) => {
   const list = page.locator('#books p')
   await expect(list).toHaveCount(13)
@@ -56,13 +74,4 @@ test('de-append book to reading list', async ({ page }) => {
   await page.locator('#readList p a >> nth=0').click()
   const readList = page.locator('#readList p')
   await expect(readList).toHaveCount(0)
-})
-
-test('append book and filter', async ({ page }) => {
-  await page.locator('#books p >> nth=0').click()
-  const readList = page.locator('#readList p')
-  await expect(readList).toHaveCount(1)
-  await page.locator('#genreFilter').selectOption('Zombies')
-  const list = page.locator('#books p')
-  await expect(list).toHaveCount(1)
 })

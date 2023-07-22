@@ -41,40 +41,27 @@ export const useBooksStore = create<any>(persist(
     filter: (name: string, value: string | number) => {
       // set filters
       set((state) => {
-        if (value !== '') { //  && name !== 'old'
+        if (value !== '') {
           return {
             ...state,
-            filters: { ...state.filters, [name]: value, old: { dato: state.filters } }
+            filters: { ...state.filters, [name]: value }
           }
         }
 
         return {
           ...state,
           filters: {
-            pages: state.filters.pages,
-            old: { dato: state.filters[name] }
+            pages: state.filters.pages
           }
         }
       })
 
-      // finding needed base book list when filter is needed
       const filters = get().filters
       const wantReadBooks = get().wantReadBooks
-
       let base = get().filteredBooks
 
-      // const prevGenre = filters.old.dato.genre
-      const nextGenre = filters.genre
-      const prevPages = filters.old.dato.pages
-      const nextPages = filters.pages
-      delete filters.old
-
-      // no genre + want books
-      // genre + want books + to/from > or < page
-      if (
-        (filters.genre === undefined && wantReadBooks.length > 0) ||
-        (filters.genre && wantReadBooks.length > 0 && prevPages > nextPages || prevPages < nextPages)) {
-        console.log('filter want books')
+      // exclude want books using it has base filter
+      if (wantReadBooks.length > 0) {
         const books = get().books
 
         const excludeIsbn = wantReadBooks.map(w => w.book.ISBN)
@@ -88,14 +75,9 @@ export const useBooksStore = create<any>(persist(
         base = excludeWantReadBooks
       }
 
-      // no genre + no want books + to "Todos los generos"
-      // genre + no want books
-      else if (
-        (filters.genre === undefined && wantReadBooks.length === 0 && nextGenre === undefined) ||
-        // (filters.genre && wantReadBooks.length > 0 && prevPages > nextPages || prevPages < nextPages) ||
-        (filters.genre && wantReadBooks.length === 0)) {
+      // no genre or has genre, filter base from all books
+      else if (filters.genre === undefined || filters.genre) {
         base = get().books
-        console.log('vuelta a todos los books sin want books', base)
       }
 
       console.log('filters', filters)
