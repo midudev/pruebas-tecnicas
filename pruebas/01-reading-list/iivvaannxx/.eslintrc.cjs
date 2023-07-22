@@ -1,6 +1,7 @@
 /** @brief Preferred TS-Standard rules. */
 const preferredRules = {
 
+  '@typescript-eslint/explicit-function-return-type': 'off',
   'padded-blocks': 'off',
   'padding-line-between-statements': [
 

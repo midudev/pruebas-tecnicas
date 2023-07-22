@@ -37,6 +37,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@nanostores/persistent": "^0.9.1",
+		"nanostores": "^0.9.3",
 		"tailwindcss": "^3.3.3",
 		"xtendui": "^1.4.0"
 	}
