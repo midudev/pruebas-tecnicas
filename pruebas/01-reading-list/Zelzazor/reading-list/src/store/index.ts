@@ -10,7 +10,7 @@ interface AppState {
   addToReadingList: (book: Book) => void
   removeFromReadingList: (book: Book) => void
   modifyGenre: (genre: string) => void
-
+  resetFiltersToDefault: () => void
 }
 
 const addToReadingList = (state: AppState, item: Book) => ({
@@ -25,6 +25,10 @@ const removeFromReadingList = (state: AppState, prevBook: Book) => ({
 
 const modifyGenre = (_state: AppState, genre: string) => ({
   filterGenre: genre
+})
+
+const resetFiltersToDefault = () => ({
+  filterGenre: 'all'
 })
 
 type StoreWithPersist = Mutate<StoreApi<AppState>, [['zustand/persist', AppState]]>
@@ -50,7 +54,8 @@ export const useStore = create<AppState>()(
     readingList: [],
     addToReadingList: (item: Book) => { set((state) => addToReadingList(state, item)) },
     removeFromReadingList: (book: Book) => { set((state) => removeFromReadingList(state, book)) },
-    modifyGenre: (genre: string) => { set((state) => modifyGenre(state, genre)) }
+    modifyGenre: (genre: string) => { set((state) => modifyGenre(state, genre)) },
+    resetFiltersToDefault: () => { set(resetFiltersToDefault) }
   }), {
     name: 'app-storage'
   })
