@@ -15,6 +15,10 @@ header:hover {
 }
 
 .caja-titulo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 35vh;
       padding: 8% 11%;
       background-color: var(--color-secundario);
 }

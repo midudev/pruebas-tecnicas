@@ -29,7 +29,7 @@
 }
 
 .caja-milista header h2 {
-      width: 100%;
+      width: 85%;
       padding: 0 8px;
       margin-top: 10px;
 }
@@ -108,6 +108,7 @@
       border-radius: 7px;
       color: var(--blanco);
       box-shadow: var(--negros) 5px 5px 0px;
+      font-family: var(--tipo-principal);
 }
 
 @media (max-width:745px) {

@@ -19,7 +19,7 @@
 }
 
 .barra-filtros {
-      height: 60px;
+      height: 7vh;
       display: flex;
       align-items: center;
       flex-wrap: wrap;
@@ -27,10 +27,11 @@
 }
 
 .barra-filtros .content-filtros {
-      width: 77%;
+      width: 78%;
       display: flex;
+      align-items: center;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 15px;
 }
 
 .barra-filtros .content-filtros span,
@@ -40,10 +41,20 @@ label {
       color: var(--negros);
 }
 
+.barra-filtros .content-filtros span {
+      background-color: var(--color-detalle);
+      height: min-content;
+      padding: 5px 15px;
+      border: 2px solid var(--negros);
+      border-radius: 7px;
+      color: var(--blanco);
+}
+
 .seccion-filtro {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
+      align-items: center;
 }
 
 .caja-milista {
@@ -118,6 +129,22 @@ label {
       border: none;
 }
 
+/* select */
+
+select {
+      height: 32px;
+      border: 2px solid var(--negros);
+      padding: 5px 7% 5px 5px;
+      border-radius: 6px;
+      background: var(--color-detalle);
+      color: var(--blanco);
+      font-size: 16px;
+      font-family: var(--tipo-principal);
+      font-weight: 700;
+      min-width: 90px;
+      max-width: 160px;
+}
+
 @media (max-width:870px) {
       .contenedor-milista h2 {
             font-size: 18px;
@@ -160,5 +187,9 @@ label {
       .caja-milista header h2 {
             width: 70%;
             font-size: 18px;
+      }
+
+      .barra-filtros {
+            padding: 0 30%;
       }
 }
