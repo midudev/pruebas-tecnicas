@@ -1,5 +1,11 @@
 'use client'
-import { PropsWithChildren, createContext, useContext, useReducer } from 'react'
+import {
+  PropsWithChildren,
+  createContext,
+  useContext,
+  useEffect,
+  useReducer
+} from 'react'
 import { library } from '../../../../books.json'
 import type { Book, Books } from '../types'
 import { Action, reducer } from '../utils/reducer'
@@ -14,7 +20,9 @@ interface Reducer {
   dispatch: React.Dispatch<Action>
 }
 
-export type ActionType = 'AddToReadingList' | 'RemoveFromReadingList'
+export type ActionType =
+  | 'AddToReadingList'
+  | 'RemoveFromReadingList'
 
 const DEFAULT_VALUE_STATE = () => {
   const books = localStorage.getItem('books')
@@ -38,6 +46,18 @@ const BookLandContext = createContext<Reducer>(DEFAULT_VALUE)
 
 export function CategoryProvider({ children }: PropsWithChildren) {
   const [state, dispatch] = useReducer(reducer, DEFAULT_VALUE.state)
+  useEffect(() => {
+    const refreshTabs = (evt: StorageEvent) => {
+      if (evt.key !== 'books') return
+      const newState = JSON.parse(evt.newValue as string)
+      dispatch({ type: 'UpdateTabs', payload: newState })
+    }
+    window.addEventListener('storage', refreshTabs)
+    return () => {
+      window.removeEventListener('storage', refreshTabs)
+    }
+  }, [state])
+
   return (
     <BookLandContext.Provider value={{ state, dispatch }}>
       {children}

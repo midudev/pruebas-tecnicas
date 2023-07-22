@@ -1,16 +1,21 @@
 import type { ActionType, BooksContext } from '../context/books'
 import type { Book } from '../types'
 
-export interface ActionCRUD {
+interface ActionCRUD {
   type: ActionType
   payload: Book
 }
-export interface ActionFilter {
+interface ActionFilter {
   type: 'FilterByGenre' | 'FilterByText'
   payload: string
 }
 
-export type Action = ActionCRUD | ActionFilter
+interface ActionStorage {
+  type: 'UpdateTabs'
+  payload: BooksContext
+}
+
+export type Action = ActionCRUD | ActionFilter | ActionStorage
 
 export const reducer = (state: BooksContext, action: Action): BooksContext => {
   const { payload, type } = action
@@ -18,8 +23,8 @@ export const reducer = (state: BooksContext, action: Action): BooksContext => {
     localStorage.getItem('books') as string
   )
   const updateList = (array: Book[]) => {
-    if (typeof payload === 'string') return []
-    return array.filter((b) => b.ISBN !== payload?.ISBN)
+    if (!Array.isArray(payload)) return []
+    return array.filter((b) => b.ISBN !== (payload as Book).ISBN)
   }
 
   switch (type) {
@@ -66,6 +71,9 @@ export const reducer = (state: BooksContext, action: Action): BooksContext => {
         bookList: filteredBookList,
         readingList: filteredReadingList
       }
+    }
+    case 'UpdateTabs': {
+      return payload
     }
   }
 }
