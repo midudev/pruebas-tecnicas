@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { selectedGenre } from "../services/selectGenre";
 import "./../dropdown.css";
 
 interface Props {
@@ -12,6 +13,11 @@ const DropdownMenu = (props: Props) => {
         setIsOpen(!isOpen);
     };
 
+    const selectOption = (e: React.MouseEvent<HTMLLIElement>) => {
+        setIsOpen(!isOpen);
+        selectedGenre.set(String(e.currentTarget.textContent));
+    };
+
     return (
         <div className="dropdown-container">
             <button
@@ -23,7 +29,15 @@ const DropdownMenu = (props: Props) => {
             <div className={`dropdown-menu ${isOpen ? "open" : ""}`}>
                 <ul>
                     {props.options.map((option: string, i: number) => {
-                        return <li key={i}>{option}</li>;
+                        return (
+                            <li
+                                className="option px-1"
+                                key={i}
+                                onClick={(e) => selectOption(e)}
+                            >
+                                {option}
+                            </li>
+                        );
                     })}
                 </ul>
             </div>

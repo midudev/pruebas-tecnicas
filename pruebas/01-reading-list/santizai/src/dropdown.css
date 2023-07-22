@@ -27,3 +27,8 @@
     opacity: 1;
     visibility: visible;
 }
+
+.option:hover {
+    cursor: pointer;
+    background-color: lightgray;
+}
