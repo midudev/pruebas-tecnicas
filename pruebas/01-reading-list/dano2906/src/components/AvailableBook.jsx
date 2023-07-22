@@ -6,11 +6,13 @@ export default function AvailableBook ({ book, inReadList }) {
   const remove = useReadListStore(state => state.remove)
 
   const handleFavorite = (book) => {
+    const event = new window.CustomEvent('DecressBook')
     if (inReadList) {
       remove(book.ISBN)
     } else {
       add(book)
     }
+    window.dispatchEvent(event)
   }
 
   return (

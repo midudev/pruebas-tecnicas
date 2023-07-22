@@ -9,7 +9,6 @@ export default function AvailableBooksSection ({ books }) {
       {books && books.map(({ book }) => (
         !readList.some((instance) => instance.ISBN === book.ISBN) && <AvailableBook book={book} inReadList={readList.some((instance) => instance.ISBN === book.ISBN)} key={book.ISBN} />
       ))}
-      {!books && <p>Cargando...</p>}
     </ul>
   )
 }
