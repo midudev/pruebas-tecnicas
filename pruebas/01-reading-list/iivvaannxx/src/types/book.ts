@@ -1,3 +1,8 @@
+export interface BookEntry {
+
+  book: Book
+}
+
 export interface Book {
 
   title: string
@@ -16,4 +21,7 @@ export interface Author {
   otherBooks: string[]
 }
 
-export type Library = Book[]
+export interface Library {
+
+  library: BookEntry[]
+}

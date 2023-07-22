@@ -16,8 +16,8 @@
 		"outDir": "./build",
 		"paths": {
 
-			"$lib": ["../src/lib"],
-			"$lib/*": ["../src/lib/*"],
+			"$lib": ["./src/lib"],
+			"$lib/*": ["./src/lib/*"],
 			"$app/*": ["./src/*"]
 		},
 	}
