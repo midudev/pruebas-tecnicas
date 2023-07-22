@@ -8,3 +8,12 @@ export const filterForId = (ids: string[], books: Library[]) => {
     });
     return result;
 };
+
+// Dado un array de libros toma los generos para devolver un array de todos los géneros que hay en el array
+export const obtainGenres = (books: Library[]) => {
+    const genres: string[] = [];
+    books.forEach((book: Library) => {
+        !genres.includes(book.book.genre) && genres.push(book.book.genre);
+    })
+    return genres;
+}

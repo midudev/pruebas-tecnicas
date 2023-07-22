@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Library, Books } from "../types/interfaces";
-import { filterForId } from "../services/filter";
+import { filterForId } from "../services/filters";
 import UnreadBooks from "./UnreadBooks";
 
 interface Props {
@@ -25,6 +25,7 @@ const Library = (props: Props) => {
         }
     }, [localStorage, readlist]);
 
+    // TODO: usar esto
     const moveToReadList = (id: string) => {
         let storage: string | null = localStorage.getItem("books");
 
