@@ -4,6 +4,8 @@ import { AppContext } from '../context/AppContext';
 import { AppLayout } from '../layout';
 import { useFilterBooks } from '../hook';
 
+import '../styles/Home.css';
+
 export const ReadingList = () => {
   const { readingBooks: books } = useContext(AppContext);
   const { filterOptions, toggleSelectOption, setOptions, filterBooks } = useFilterBooks([]);
