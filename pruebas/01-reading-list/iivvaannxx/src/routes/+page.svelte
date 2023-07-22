@@ -6,7 +6,6 @@
 </script>
 
 <h2>{library.length} libros disponibles</h2>
-<h3> 0 en la lista de la lectura </h3>
 
 {#each library as book}
 
