@@ -628,10 +628,6 @@ video {
   margin-top: 0.75rem;
 }
 
-.block {
-  display: block;
-}
-
 .flex {
   display: flex;
 }
@@ -862,6 +858,11 @@ video {
   line-height: 2.25rem;
 }
 
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
 .text-6xl {
   font-size: 3.75rem;
   line-height: 1;
@@ -953,6 +954,10 @@ body {
 
 .notification div{
   transition: .5s all linear;
+}
+
+.clone .synopsis{
+  display: none;
 }
 
 /* ===== Scrollbar CSS ===== */
