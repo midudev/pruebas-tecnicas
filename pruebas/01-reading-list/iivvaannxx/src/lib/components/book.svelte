@@ -17,7 +17,7 @@
 
 </script>
 
-<div class='xt-card p-6 text-base rounded-2xl text-gray-900 bg-red-400 max-w-xs flex justify-center items-center gap-4'>
+<div class='p-6 text-base rounded-2xl text-gray-900 bg-red-400 max-w-xs flex justify-center items-center gap-4'>
 
   <img class='w-60 aspect-cover' src={cover} alt={title} title={title} />
 

@@ -1,12 +1,10 @@
 import defaultConfig from 'tailwindcss/defaultConfig'
-import xtendConfig from 'xtendui/tailwind.preset'
-
 import gridAreasPlugin from '@savvywombat/tailwindcss-grid-areas'
 
 module.exports = {
 
-  presets: [defaultConfig, xtendConfig],
-  content: ['./node_modules/xtendui/src/*.mjs', './src/**/*.{svelte,html,js,ts}'],
+  presets: [defaultConfig],
+  content: ['./src/**/*.{svelte,html,js,ts}'],
 
   theme: {
 
