@@ -15,10 +15,6 @@ export default function BookCard({ book, action }: Props) {
     dispatch({ type: 'AddToReadingList', payload: book })
   }
 
-  const removeFromReadingList = () => {
-    dispatch({ type: 'RemoveFromReadingList', payload: book })
-  }
-
   return (
     <li className='min-w-56 relative m-auto h-80 w-auto overflow-hidden rounded-lg text-white outline outline-white [&:hover>article]:opacity-90 [&:hover>img]:scale-125'>
       <article className='absolute left-0 top-0 z-20 flex h-full w-full flex-col justify-evenly bg-black p-3 text-sm opacity-0 duration-300 ease-linear'>
