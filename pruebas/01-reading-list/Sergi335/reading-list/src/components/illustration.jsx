@@ -1,7 +1,7 @@
 export default function Illustration () {
   return (
      <div className="w-[35%] my-0 mx-auto">
-        <h1>No hay mas libros 🤦‍♂️</h1>
+        <h1>No hay más libros 🤦‍♂️</h1>
         <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"

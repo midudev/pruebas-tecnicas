@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { library } from '../data/books.json'
 import { ReadingListContext, ReadingListProvider } from './context/ReadListContext'
-import { BookIconOnly } from './components/icons'
+import { BookIconOnly } from './components/BookIconOnly'
 import ListOfBooks from './components/ListOfBooks.jsx'
 import Filter from './components/Filter'
 import ReadingList from './components/ReadingList'
 import BookIcon from './components/ToggleButton'
-import Illustration from './components/illustration'
+import Illustration from './components/Illustration'
 import './App.css'
 
 function App () {
@@ -15,24 +15,11 @@ function App () {
     genre: 'all',
     pages: 0
   })
-  // Efecto para que cuando se clique fuera del panel se esconda
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      const panel = document.querySelector('.readingList')
-      const boton = document.querySelector('.buttonToggle')
-      const notVisible = panel.classList.contains('translate-x-full')
-      if (!notVisible && !panel.contains(event.target) && !boton.contains(event.target)) {
-        panel.classList.add('translate-x-full')
-        document.body.classList.remove('overflow-y-hidden')
-        console.log(event.target)
-      }
-    }
-    document.addEventListener('click', handleClickOutside)
-
-    return () => {
-      document.removeEventListener('click', handleClickOutside)
-    }
-  }, [])
+  // Estado del panel
+  const [isOpen, setIsOpen] = useState(false)
+  const togglePanel = () => {
+    setIsOpen(prevIsOpen => !prevIsOpen)
+  }
   // Función para devolver los libros filtrados
   const filterBooks = library => {
     return library.filter(item => {
@@ -71,7 +58,7 @@ function App () {
                 <p className='font-bold text-xl'><BookIconOnly className="absolute left-[234px] top-[22px]"/>Books<span className='font-normal'>Inc</span></p>
                 <div className='flex gap-6'>
                   {/* Componente botón con icono */}
-                  <BookIcon booksInList={list.length}/>
+                    <BookIcon togglePanel={togglePanel} booksInList={list.length}/>
                   <h2>Colección de libros</h2>
                 </div>
               </header>
@@ -90,7 +77,7 @@ function App () {
 
                   }
                   {/* Componente lista de lectura */}
-                  <ReadingList />
+                  <ReadingList isOpen={isOpen} togglePanel={togglePanel} />
                 </section>
               </main>
               <footer className=' w-full bg-gray-50 flex justify-center items-end pb-4 min-h-[30vh]'>

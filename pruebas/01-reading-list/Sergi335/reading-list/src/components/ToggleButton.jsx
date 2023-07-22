@@ -1,14 +1,9 @@
-import { BookIconOnly } from './icons'
-export default function BookIcon (booksInList) {
-  const number = booksInList.booksInList
-  const handleClick = () => {
-    const panel = document.querySelector('.readingList')
-    panel.classList.toggle('translate-x-full')
-    // document.body.classList.toggle('overflow-y-hidden')
-  }
+import ReadIcon from './ReadIcon'
+export default function BookIcon ({ togglePanel, booksInList }) {
+  const number = booksInList
   return (
-      <button onClick={handleClick} className="buttonToggle p-0 bg-white outline-none">
+      <button onClick={togglePanel} className="buttonToggle p-0 bg-white outline-none">
           <span className="absolute top-[13px] bg-sky-600 text-white rounded-3xl py-0 px-2">{number}</span>
-          <BookIconOnly />
+          <ReadIcon />
       </button>)
 }

@@ -6,11 +6,10 @@ export default function Book ({ item, className }) {
   const chekBookInList = book => {
     return list.some(item => item.book.ISBN === book.book.ISBN)
   }
-
   const [isMaximized, setIsMaximized] = useState(false)
 
   const liClass = isMaximized
-    ? ' maximized w-screen h-screen bg-white fixed left-0 top-[111px] pt-[80px] items-start flex justify-center'
+    ? ' maximized w-screen h-screen max-h-none bg-white fixed left-0 top-[111px] pt-[80px] items-start flex justify-center'
     : ' '
   const divClass = isMaximized
     ? ' flex flex-col justify-center items-start gap-5 ml-8'
@@ -32,11 +31,10 @@ export default function Book ({ item, className }) {
     } else {
       return ''
     }
-    // w-[17%] flex flex-col items-center justify-center
   }
 
   return (
-    <li className={classList(className, item) + liClass + ' rounded-[21px] overflow-hidden shadow-indigo-500/40 hover:shadow-lg transition-shadow' } key={item.book.ISBN}>
+    <li className={classList(className, item) + liClass + ' rounded-[21px] overflow-hidden shadow-indigo-500/40 hover:shadow-lg transition-shadow max-h-[685px]' } key={item.book.ISBN}>
           <img className="aspect-[317/475] w-[320px] inline"
               src= {item.book.cover}
               alt= {item.book.title}
@@ -58,7 +56,7 @@ export default function Book ({ item, className }) {
                   : 'Info'
             }
             </button>
-            <button className='bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded' onClick={() => {
+            <button className='theButt bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded' onClick={() => {
               chekBookInList(item)
                 ? removeFromList(item)
                 : addToList(item)
