@@ -12,6 +12,11 @@ export class LocalStorageBookRepository implements BookRepository {
     } else {
       this.books = booksData.library.map((book) => book.book)
     }
+    window.addEventListener("storage", (event: StorageEvent) => {
+      if (event.key === this.booksKey) {
+        this.books = JSON.parse(event.newValue ?? "[]") as Book[]
+      }
+    })
   }
 
   get(filterGenre: string): Promise<Book[]> {

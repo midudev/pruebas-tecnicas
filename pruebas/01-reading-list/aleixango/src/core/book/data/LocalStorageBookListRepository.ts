@@ -7,6 +7,11 @@ export class LocalStorageBookListRepository implements BookListRepository {
 
   constructor() {
     this.bookList = JSON.parse(localStorage.getItem(this.bookListKey) ?? "[]") as Book[]
+    window.addEventListener("storage", (event: StorageEvent) => {
+      if (event.key === this.bookListKey) {
+        this.bookList = JSON.parse(event.newValue ?? "[]") as Book[]
+      }
+    })
   }
 
   get(): Promise<Book[]> {
