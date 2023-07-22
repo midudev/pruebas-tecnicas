@@ -15,7 +15,7 @@ export default function App () {
     removeFromReadList
   } = useBooksList([])
   const { saveList, getList } = useLocalStorage()
-  // useEffect
+  // useEffect hooks
   // On App mount restore data from local storage if, exists.
   useEffect(() => {
     function restoreAvailableBooks () {
@@ -36,13 +36,28 @@ export default function App () {
     restoreAvailableBooks()
     restoreReadList()
   }, [])
-  // Save changes made to availableBooks to local storage. Wait 5 mills, so not override data on App mount.
+  // Save changes made to lists to local storage. Wait 5 mills, so not override data on App mount.
   useEffect(() => {
     setTimeout(() => saveList('availableBooks', availableBooks), 5)
   }, [availableBooks])
   useEffect(() => {
     setTimeout(() => saveList('readList', readList), 5)
   }, [readList])
+  // Sync data between tabs
+  useEffect(() => {
+    const handleStorageChange = (event) => {
+      if (event.key === 'availableBooks') {
+        setAvailableBooks(JSON.parse(event.newValue))
+      } else if (event.key === 'readList') {
+        setReadList(JSON.parse(event.newValue))
+      }
+    }
+    window.addEventListener('storage', handleStorageChange)
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange)
+    }
+  }, [setAvailableBooks, setReadList])
   return (
     <>
       <h3 className='text-2xl font-bold text-blue-500'>{readList.length > 0 ? 'Con' : 'Sin'} libros en la lista de lectura</h3>
