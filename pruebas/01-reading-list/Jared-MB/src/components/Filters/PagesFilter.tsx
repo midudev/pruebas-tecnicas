@@ -1,5 +1,6 @@
 import { InfoIcon } from "..";
 import { useBooks } from "../../store";
+import FilterLayout from "./FilterLayout";
 
 export default function PagesFilter() {
 
@@ -21,11 +22,11 @@ export default function PagesFilter() {
 	}
 
 	return (
-		<div className='flex items-center gap-2'>
-			<InfoIcon message={(() => handleMessage())()} />
-			<label className='text-zinc-300'>Filtrar por páginas</label>
+		<FilterLayout>
+			<InfoIcon message={(() => handleMessage())()} bg='text-zinc-300' />
+			<label className='text-zinc-300 text-sm'>Páginas</label>
 			<input value={pages} onChange={handlePages} type='range' step='100' min='0' max='1500' className='bg-transparent w-32' />
-			<span className='text-purple-700'>{pages || 'All'}</span>
-		</div>
+			<span>{pages || 'All'}</span>
+		</FilterLayout >
 	)
 }
