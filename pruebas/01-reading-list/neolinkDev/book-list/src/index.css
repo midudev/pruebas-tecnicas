@@ -189,7 +189,8 @@ li > img {
 
 .reading-list {
   display: grid;
-  grid-template-columns: 200px 200px;
+  /* grid-template-columns: 200px 200px; */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   justify-content: center;
   row-gap: 10px;
 }
