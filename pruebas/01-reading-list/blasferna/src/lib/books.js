@@ -62,7 +62,7 @@ const getAvailableList = (filters) => {
 };
 
 const getGenres = () => {
-  return Object.keys(groupByGenre(DATA.library));
+  return Object.keys(groupByGenre(DATA.library)).sort();
 };
 
 const getAvailableListCount = () => {

@@ -15,7 +15,7 @@ const GenreSelect = forwardRef(({ ...props }, ref) => {
   const genres = getGenres();
   return (
     <Select ref={ref} {...props}>
-      <SelectTrigger className="w-[150px]">
+      <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Género" />
       </SelectTrigger>
       <SelectContent>

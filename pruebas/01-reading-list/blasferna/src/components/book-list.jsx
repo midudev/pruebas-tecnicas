@@ -41,7 +41,7 @@ export function BookList({ books, removable = false }) {
 
   return (
     <div className="pb-5">
-      {Object.keys(books).map((row) => (
+      {Object.keys(books).sort().map((row) => (
         <div key={row}>
           <div className="flex items-center font-medium mt-5 mb-2 text-white">
             {row}
