@@ -26,7 +26,6 @@
     "@commitlint/cli": "^17.6.6",
     "@commitlint/config-conventional": "^17.6.6",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
-    "daisyui": "^3.2.1",
     "eslint": "8.45.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-standard-with-typescript": "^36.1.0",

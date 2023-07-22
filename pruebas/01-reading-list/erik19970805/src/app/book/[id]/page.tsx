@@ -1,7 +1,6 @@
 import { Button } from '@components/Button';
 import { Header } from '@components/Header';
 import { libraryData } from '@data/library';
-import Image from 'next/image';
 
 interface Props {
   params: { id: string };
@@ -13,59 +12,63 @@ export default function BookDetail({ params: { id } }: Props) {
   return (
     <>
       <Header />
-      <main className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row">
-          <Image
+      <main className="grid items-center p-8">
+        <div className="flex flex-col gap-8 m-auto items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-6xl dark:border-gray-700 dark:bg-gray-800 p-4">
+          <img
             alt={book.title}
             src={book.cover}
-            className="max-w-sm rounded-lg shadow-2xl"
-            width={300}
-            height={300}
-            loading="lazy"
+            className="object-cover rounded-t-lg rounded-lg max-h-[500px]"
           />
           <div className="flex flex-col gap-4">
-            <h2 className="text-4xl">
-              <strong>Título:</strong> {book.title}
-            </h2>
-            <h3 className="text-3xl">
-              <strong>Autor:</strong> &nbsp;
-              {book.author.name}
-            </h3>
-            <h4 className="flex gap-3 items-center">
-              <strong className="text-xl">Otros libros del autor:&nbsp;</strong>
+            <p className="text-3xl">
+              <strong className="text-white">Título:</strong>&nbsp;
+              <span className="text-gray-400">{book.title}</span>
+            </p>
+            <p className="text-3xl">
+              <strong className="text-white">Autor:</strong> &nbsp;
+              <span className="text-gray-400">{book.author.name}</span>
+            </p>
+            <div className="flex gap-3 items-center flex-wrap">
+              <strong className="text-xl text-white whitespace-nowrap">Otros libros del autor:&nbsp;</strong>
               <div className="flex flex-wrap gap-2">
                 {book.author.otherBooks.length > 0 ? (
                   book.author.otherBooks.map((item) => (
-                    <div className="badge badge-accent" key={item}>
+                    <span
+                      className="bg-purple-100 text-purple-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300"
+                      key={item}
+                    >
                       {item}
-                    </div>
+                    </span>
                   ))
                 ) : (
-                  <span className="text-warning">No hay otros libros del autor</span>
+                  <span className="text-yellow-500">No hay otros libros del autor</span>
                 )}
               </div>
-            </h4>
-            <span>
-              <strong className="text-lg">Género:</strong>&nbsp;
-              {book.genre}
-            </span>
-            <p className="text-justify">
-              <strong className="text-lg">Sinopsis:</strong>&nbsp;
-              {book.synopsis}
+            </div>
+            <p className="text-lg">
+              <strong className="text-white">Género:</strong>&nbsp;
+              <span className="text-gray-400">{book.genre}</span>
             </p>
-            <span>
-              <strong className="text-lg">ISBN:</strong>&nbsp;
-              {book.ISBN}
-            </span>
-            <span>
-              <strong className="text-lg">Año de publicación:</strong>&nbsp;
-              {book.year}
-            </span>
-            <span>
-              <strong className="text-lg">Páginas:</strong>&nbsp;
-              {book.pages}
-            </span>
-            <Button className="btn btn-secondary max-w-[200px]" book={book} />
+            <p className="text-lg">
+              <strong className="text-white">Sinopsis:</strong>&nbsp;
+              <span className="text-gray-400">{book.synopsis}</span>
+            </p>
+            <p className="text-lg">
+              <strong className="text-white">ISBN:</strong>&nbsp;
+              <span className="text-gray-400">{book.ISBN}</span>
+            </p>
+            <p className="text-lg">
+              <strong className="text-white">Año de publicación:</strong>&nbsp;
+              <span className="text-gray-400">{book.year}</span>
+            </p>
+            <p className="text-lg">
+              <strong className="text-white">Páginas:</strong>&nbsp;
+              <span className="text-gray-400">{book.pages}</span>
+            </p>
+            <Button
+              className=" max-w-xs focus:outline-none text-white whitespace-nowrap bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+              book={book}
+            />
           </div>
         </div>
       </main>

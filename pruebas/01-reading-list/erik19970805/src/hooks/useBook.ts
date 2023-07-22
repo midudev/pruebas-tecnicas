@@ -1,16 +1,19 @@
 'use client';
 import { useBookStore } from '@store/bookStore';
 import { useEffect, useRef, useState } from 'react';
+import { useLocalStorage } from './useLocalStorage';
 
 const useBook = () => {
-  const { books, addBook, clearBooks, removeBook, addBooks, error, message, clearMessage } = useBookStore();
+  const { books, cartBooks, addBook, clearBooks, removeBook, addBooks, error, message, clearMessage } =
+    useBookStore();
+  useLocalStorage();
   const [loading, setLoading] = useState(true);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    const newBooks = JSON.parse(global.localStorage?.getItem('books') ?? '[]') ?? [];
-    if (newBooks) setLoading(false);
-    addBooks(newBooks);
+    const newCartBooks = JSON.parse(global.localStorage?.getItem('cartBooks') ?? '[]') ?? [];
+    if (newCartBooks) setLoading(false);
+    addBooks(newCartBooks);
   }, [addBooks]);
 
   useEffect(() => {
@@ -23,7 +26,7 @@ const useBook = () => {
     };
   }, [clearMessage, message]);
 
-  return { books, error, message, loading, addBook, clearBooks, removeBook, clearMessage };
+  return { books, cartBooks, error, message, loading, addBook, clearBooks, removeBook, clearMessage };
 };
 
 export default useBook;

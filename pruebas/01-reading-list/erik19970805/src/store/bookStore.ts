@@ -1,3 +1,4 @@
+import { libraryData } from '@data/library';
 import { type IBook } from '@interfaces/library';
 import { create } from 'zustand';
 
@@ -5,6 +6,7 @@ export interface BookStore {
   error: boolean;
   message: string;
   books: IBook[];
+  cartBooks: IBook[];
   addBook: (book: IBook) => void;
   addBooks: (books: IBook[]) => void;
   removeBook: (book: IBook) => void;
@@ -15,24 +17,30 @@ export interface BookStore {
 export const useBookStore = create<BookStore>((set) => ({
   message: '',
   error: false,
-  books: [],
+  books: libraryData.map(({ book }) => book),
+  cartBooks: [],
   addBook: (book: IBook) => {
     set((state) => {
-      const exist = state.books.some((b) => b.ISBN === book.ISBN);
-      const message = exist ? 'El libro ya existe' : 'Libro agregado';
-      const books = exist ? state.books : [...state.books, book];
-      global.localStorage?.setItem('books', JSON.stringify(books));
-      return { books, message, error: exist };
+      const cartBooks = [...state.cartBooks, book];
+      const books = state.books.filter((b) => b.ISBN !== book.ISBN);
+      global.localStorage?.setItem('cartBooks', JSON.stringify(cartBooks));
+      return { books, cartBooks, message: 'Libro agregado', error: false };
     });
   },
-  addBooks: (books) => {
-    set({ books });
+  addBooks: (cartBooks) => {
+    set(() => {
+      const books = libraryData
+        .map(({ book }) => book)
+        .filter((b) => !cartBooks.some((cb) => cb.ISBN === b.ISBN));
+      return { cartBooks, books };
+    });
   },
   removeBook: (book: IBook) => {
     set((state) => {
-      const books = state.books.filter((b) => b.ISBN !== book.ISBN);
-      global.localStorage?.setItem('books', JSON.stringify(books));
-      return { books, message: 'Libro eliminado', error: false };
+      const books = [...state.books, book];
+      const cartBooks = state.cartBooks.filter((b) => b.ISBN !== book.ISBN);
+      global.localStorage?.setItem('cartBooks', JSON.stringify(cartBooks));
+      return { books, cartBooks, message: 'Libro eliminado', error: false };
     });
   },
   clearBooks: () => {
