@@ -1,6 +1,9 @@
-<div class="h-full flex flex-col gap-3 items-center">
-  <strong *ngIf="numberOfAvailableBooks">Libros disponibles: {{numberOfAvailableBooks}}</strong>
-  <select class="bg-black" (change)="genreChanged($event.target)">
-    <option *ngFor="let genre of genres" [value]="genre">{{genre}}</option>
-  </select>
+<div class="h-full w-full flex flex-col gap-3 items-center">
+  <strong>Libros disponibles: {{numberOfAvailableBooks}}</strong>
+  <div class="h-full w-full flex flex-col items-center rounded-lg p-3 bg-slate-700">
+    <label>Género</label>
+    <select class="bg-sky-800 border-2 border-sky-300" (change)="genreChanged($event.target)">
+      <option *ngFor="let genre of genres" [value]="genre">{{genre}}</option>
+    </select>
+  </div>
 </div>

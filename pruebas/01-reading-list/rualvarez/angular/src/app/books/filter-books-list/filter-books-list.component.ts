@@ -10,7 +10,7 @@ export class FilterBooksListComponent implements OnInit {
 
   genres: Array<string> = [];
   selectedGenre: string = ""
-  numberOfAvailableBooks: number | undefined;
+  numberOfAvailableBooks: number = 0;
 
   constructor(
     private bookService: BookService
