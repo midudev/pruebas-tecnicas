@@ -11,7 +11,7 @@ export default function ReadList () {
   return (
     <div className='absolute right-5 top-5 sm:right-6 sm:top-6 flex flex-col items-end justify-end'>
       <h5 className='w-7 h-7 absolute -top-3 -right-3 z-10 bg-blue-800 rounded-full text-center font-semibold text-white'>{readList.length}</h5>
-      <button onClick={() => setShow(!show)} disabled={readList.length <= 0} className={`${readList.length <= 0 ? 'opacity-50' : 'opacity-100 transition hover:scale-105'} relative bg-slate-700 text-blue-600 font-semibold text-center p-3 rounded inline-flex justify-center items-center`}>
+      <button onClick={() => setShow(!show)} disabled={readList.length <= 0} className={`${readList.length <= 0 ? 'opacity-50' : 'opacity-100 transition hover:scale-105'} relative bg-slate-700 text-blue-600 font-semibold text-center p-3 rounded inline-flex justify-center items-center gap-x-2 border border-blue-600`}>
         {readList.length <= 0 ? <DontSee /> : <See />}
         Lista de lectura
       </button>
