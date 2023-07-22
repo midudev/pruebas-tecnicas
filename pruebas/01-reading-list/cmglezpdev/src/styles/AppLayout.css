@@ -117,8 +117,8 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
-    margin-top: 20px;
-    padding: 0 0 0 10px;
+    width: 250px;
+    padding: 20px;
 }
 
 

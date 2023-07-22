@@ -1,10 +1,10 @@
 import { useContext, useEffect } from 'react';
-
 import { AppContext } from '../context/AppContext';
 import { BookItem, FilterGenresMenu } from '../components';
 import { AppLayout } from '../layout';
-import '../styles/Home.css';
 import { useFilterBooks } from '../hook';
+
+import '../styles/Home.css';
 
 
 export const Home = () => {
@@ -24,7 +24,7 @@ export const Home = () => {
         <section className='library'>
           {
              filterBooks(books).map(book => (
-              <BookItem key={book.ISBN} book={book} addForReadingButton />
+              <BookItem key={book.ISBN} book={book} addBook />
             ))
           }
         </section>

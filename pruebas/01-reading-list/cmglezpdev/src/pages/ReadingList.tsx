@@ -21,7 +21,7 @@ export const ReadingList = () => {
       <section className='library'>
         {
           filterBooks(books).map(book => (
-            <BookItem key={book.ISBN} book={book} removeFromReadingButton />
+            <BookItem key={book.ISBN} book={book} removeBook />
           ))
         }
       </section>
