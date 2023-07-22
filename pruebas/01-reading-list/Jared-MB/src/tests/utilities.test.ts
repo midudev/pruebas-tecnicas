@@ -1,4 +1,4 @@
-import { mapBooks } from "."
+import { mapBooks } from "../utilities"
 import Books from '../constants/books.json'
 
 describe('Books', () => {
@@ -14,7 +14,7 @@ describe('Books', () => {
 		})
 	})
 
-	test('The items must important properties like title, pages, cover, ISBN, genre', () => {
+	test('The items must have important properties like title, pages, cover, ISBN, genre', () => {
 		const books = mapBooks(Books)
 		books.forEach(book => {
 			expect(book).toHaveProperty('title')
