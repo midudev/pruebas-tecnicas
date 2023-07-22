@@ -1,44 +1,33 @@
-import { useState } from 'react'
-import './App.css'
 import ListBooks from './components/BookList'
 import ReadingList from './components/ReadingList'
-import { useBookStore } from './store/bookStore'
+import { useBook } from './hooks/useBook'
+import './App.css'
 
 function App () {
-  // const [books, setBooks] = useState([])
-  const booksStore = useBookStore(state => state.books)
-  const readingList = useBookStore(state => state.readingList)
-  const genres = useBookStore(state => state.genres)
-
-  const [genre, setGenres] = useState('all')
-  const [books, setBooks] = useState(booksStore)
+  const { books, readingList, genres, genre, filterByGenre } = useBook()
 
   const handleFilter = (event) => {
     // console.log('handleFilter -> ' + event.target.value)
     const genre = event.target.value
-
-    if (genre !== 'all') {
-      const filteredBooks = booksStore.filter(book => book.genre === genre)
-      setBooks(filteredBooks)
-    } else {
-      setBooks(booksStore)
-    }
-
-    setGenres(genre)
+    filterByGenre(genre)
   }
 
   return (
     <>
-      <h3>Lista de libros</h3>
+      <h1>Lista de libros</h1>
+
+      <h2>{books.length} Libros disponibles</h2>
+      <h3>{readingList.length} en la lista de lectura</h3>
 
       <div className="genres">
-        <select value={genre} onChange={handleFilter}>
-          <option value="all">Todas</option>
+        <label htmlFor="genre">Filtrar por género</label>
+        <select id='genre' value={genre} onChange={handleFilter}>
+          <option value="All">Todas</option>
           {genres.map(genre => (<option key={genre} value={genre}>{genre}</option>))}
         </select>
       </div>
 
-      {<ListBooks books={books}/>}
+      <ListBooks books={books}/>
 
       <ReadingList books={readingList} />
     </>
