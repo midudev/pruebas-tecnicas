@@ -9,6 +9,8 @@ function Header() {
 
   const numOfAvailableBooks = books.length - readingListCount
 
+  const shouldRenderBadge = readingListCount > 0
+
   return (
     <header className='flex flex-col max-w-5xl gap-8 px-4 pt-5 mx-auto text-zinc-300'>
       <div className='flex items-center justify-end gap-5'>
@@ -23,7 +25,13 @@ function Header() {
         <button
           aria-label='Mostrar lista de lectura'
           onClick={toggleReadingList}
+          className='relative'
         >
+          {shouldRenderBadge && (
+            <div className='absolute flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-blue-500 rounded-full -top-1 -right-2'>
+              {readingListCount}
+            </div>
+          )}
           <EyeIcon />
         </button>
       </div>
@@ -32,7 +40,7 @@ function Header() {
           {numOfAvailableBooks} libros disponibles
         </h1>
         <h2 className='text-2xl font-semibold text-center underline 2xl:text-3xl'>
-          {readingListCount} libros en la lista de lectura
+          Libros en la lista de lectura: {readingListCount}
         </h2>
         <Filters />
       </div>
