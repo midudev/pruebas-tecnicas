@@ -1,7 +1,7 @@
 export default function GenreFilter (props) {
-  const { genres } = props
+  const { id, className, genres } = props
   return (
-    <select>
+    <select id={id} className={className}>
       <option>Todos</option>
       {genres &&
         genres.map((genre, index) => {

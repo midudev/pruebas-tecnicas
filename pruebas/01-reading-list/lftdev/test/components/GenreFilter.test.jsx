@@ -3,13 +3,7 @@ import GenreFilter from '../../src/components/GenreFilter'
 import { cleanup, render, screen } from '@testing-library/react'
 import BooksJSON from '../books.json'
 
-const genres = (() => {
-  const list = []
-  BooksJSON.library.map(bookObj => bookObj.book.genre).forEach(item => {
-    if (!list.includes(item)) list.push(item)
-  })
-  return list
-})()
+const genres = [...new Set(BooksJSON.library.map(bookObj => bookObj.book.genre))]
 describe('GenreFilter', () => {
   // ⚠️ Unnecessary tests will be left as a comment in order to leave them open for review.
   afterEach(cleanup)

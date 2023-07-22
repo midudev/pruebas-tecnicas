@@ -1,10 +1,13 @@
 import './style.css'
 import BooksList from './components/BooksList'
+import GenreFilter from './components/GenreFilter'
 import useBooksList from './hooks/useBooksList'
 import useLocalStorage from './hooks/useLocalStorage'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function App () {
+  // useState hooks
+  const [genresList, setGenresList] = useState([])
   // Custom hooks
   const {
     availableBooks,
@@ -52,6 +55,11 @@ export default function App () {
     window.addEventListener('storage', handleStorageChange)
     return () => window.removeEventListener('storage', handleStorageChange)
   }, [])
+  // Load books genres list.
+  useEffect(() => {
+    import('./database/books.json')
+      .then(BooksJSON => setGenresList([...new Set(BooksJSON.library.map(bookObj => bookObj.book.genre))]))
+  }, [])
   return (
     <>
       <h3 className='text-2xl font-bold text-blue-500'>{readList.length > 0 ? 'Con' : 'Sin'} libros en la lista de lectura</h3>
@@ -67,9 +75,7 @@ export default function App () {
               </label>
               <label className='text-md' htmlFor='genre-filter'>
                 <div>Filtrar por género</div>
-                <select className='bg-black' id='genre-filter'>
-                  <option value='all'>Todos</option>
-                </select>
+                <GenreFilter id='genre-filter' className='bg-black' genres={genresList} />
               </label>
             </form>
           </div>
