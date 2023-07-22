@@ -1,11 +1,12 @@
+import { vi } from 'vitest'
 import { fireEvent, render, screen } from "@testing-library/react"
-import { AvailableBooks, ReadingListBooks } from "../components"
-import { useBooks } from "../store"
+
 import { mapBooks } from "../utilities"
+import { useBooks } from "../store"
+
+import { AvailableListBooks, ReadingListBooks } from "../components"
 
 import Books from '../constants/books.json'
-
-import { vi } from 'vitest'
 
 const IntersectionObserverMock = vi.fn(() => ({
 	disconnect: vi.fn(),
@@ -29,7 +30,7 @@ describe('Images', () => {
 	test('When image is clicked, the book must be change to the reading list books', () => {
 		useBooks.setState({ availableBooks: exampleBooks })
 
-		render(<AvailableBooks />)
+		render(<AvailableListBooks />)
 
 		const list = screen.getByTestId('available-list-books')
 		expect(list.childNodes).toHaveLength(exampleBooks.length)
