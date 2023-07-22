@@ -10,15 +10,25 @@ export default function Home() {
 
   return (
     <>
-      <Header isShowingReadList={isShowingReadList} setIsShowingReadList={setIsShowingReadList} />
+      <Header
+        isShowingReadList={isShowingReadList}
+        setIsShowingReadList={setIsShowingReadList}
+      />
       <main className='mt-24 '>
         <Filters />
-        <div
+        {/* <div
           className={` ${
             isShowingReadList ? 'grid-cols-[70%_30%]' : 'grid-cols-[100%_0%]'
           } z-10 mb-10 grid overflow-x-hidden px-10 transition-all delay-100 duration-300 ease-out`}
+        > */}
+        <div
+          className={` ${
+            isShowingReadList
+              ? ' grid-cols-[70%_30%]'
+              : 'grid-cols-[100%_0%]'
+          } z-10 mb-10 grid overflow-x-hidden mx-10 transition-all delay-100 duration-300 ease-out `}
         >
-          <BookList />
+          <BookList isShowingReadList={isShowingReadList} />
           <ReadingList isShowingReadList={isShowingReadList} />
         </div>
       </main>

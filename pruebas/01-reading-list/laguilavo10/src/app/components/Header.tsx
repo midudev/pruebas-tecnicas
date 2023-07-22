@@ -9,7 +9,7 @@ export default function Header({
   setIsShowingReadList
 }: Props) {
   return (
-    <header className='fixed top-0 z-30 flex  h-16 w-screen items-center bg-[#596886] bg-brandImage bg-contain bg-no-repeat px-10 sm:bg-center'>
+    <header className='fixed top-0 z-30 flex  h-16 w-screen items-center bg-[#596886] sm:bg-brandImage bg-contain bg-no-repeat px-10 sm:bg-center'>
       <Link
         href='https://github.com/Laguilavo10/'
         target='_blank'

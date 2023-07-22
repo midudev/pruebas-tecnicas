@@ -1,15 +1,21 @@
 import { useBooks } from '../context/books'
 import BookCard from './BookCard'
 import CounterBooks from './CounterBooks'
-
-export default function BookList() {
+interface Props {
+  isShowingReadList: Boolean
+}
+export default function BookList({ isShowingReadList }: Props) {
   // const [isShowingReadList, setIsShowingReadList] = useState<boolean>(true)
   const { state } = useBooks()
   const { length } = state.bookList
   return (
-    <section>
+    <section
+      className={`${
+        isShowingReadList === true && 'hidden'
+      }  transition-transform delay-1000 duration-500 ease-in-out md:block md:translate-x-0`}
+    >
       <CounterBooks title='Libros Disponibles' length={length} />
-      <ul className='grid w-full grid-cols-auto-fit gap-5 py-2 '>
+      <ul className='grid w-full grid-cols-auto-fit gap-5 py-2'>
         {state.bookList.map((book) => (
           <BookCard key={book.ISBN} book={book} action='AddToReadingList' />
         ))}
