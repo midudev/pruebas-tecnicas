@@ -3,7 +3,6 @@ import BooksList from '../../src/components/BooksList'
 import { cleanup, getByRole, render, screen } from '@testing-library/react'
 import BooksJSON from '../books.json'
 
-// Example book
 const list = BooksJSON.library.map(bookObj => bookObj.book)
 describe('BooksList', () => {
   // ⚠️ Unnecessary tests will be left as a comment in order to leave them open for review.
