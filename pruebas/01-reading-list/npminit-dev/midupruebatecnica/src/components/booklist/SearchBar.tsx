@@ -36,7 +36,7 @@ export default function SearchBar(): JSX.Element {
         }}
         { ...register('toSearch', {
           required: true,
-          pattern: /^(\w|-|: |[-ñÑ]){1,50}$/im,
+          pattern: /^(\w|-|:| |[-ñÑ]){1,50}$/im,
           validate: (value) => value.trim().length !== 0,
         }) }
       />

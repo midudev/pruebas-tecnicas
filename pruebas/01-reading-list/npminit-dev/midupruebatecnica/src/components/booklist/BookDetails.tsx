@@ -15,12 +15,10 @@ type props = {
 
 export default function BookDetails(props: props): JSX.Element {
 
-  const dataSrc = { Year: props.year, Pages: props.pages, ISBN: props.ISBN }
-
   return (
     <List
       style={{minWidth: '200px'}}
-      dataSource={ Object.entries(dataSrc) }
+      dataSource={ Object.entries(props).slice(0, 3) }
       renderItem={(item, i) => {
         return (
           <div>

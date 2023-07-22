@@ -1,50 +1,55 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState } from "react";
 import { SectionSelected } from '../types/navigation';
-import { Button, Col, Divider, Row } from "antd";
-import Logo from "./Logo";
-import { Content } from "antd/es/layout/layout";
+import { Menu } from "antd";
 import BookList from "./booklist/BookList";
+import ReadList from "./readlist/ReadList";
 import About from "./about/About";
-import { GlobalContext } from "../contexts/GlobalContext";
+import { MenuItemType } from "antd/es/menu/hooks/useItems";
+
 
 export default function Navigation(): JSX.Element {
 
-  const [ sectionSelect, setSectionSelect ] = useState<SectionSelected>('booklist');
-  const { setShowReadList } = useContext(GlobalContext)
+  const [ itemSelected, setItemSelected ] = useState(1);
 
-  return ( <>
-    <nav id="nav_container">
-      <Row justify={'space-between'} align={"middle"}>
-        <Col span={14}>
-          <Logo></Logo>
-        </Col>
-        <Col span={10}>
-          <Row justify={'space-evenly'}>
-            <Col span={6}>
-              <Button type='link' 
-                onClick={() => setSectionSelect('booklist')}
-              >Book list</Button>
-            </Col>
-            <Col span={6}>
-              <Button type='link' 
-                onClick={() => setShowReadList(true)}
-              >Read list</Button>
-            </Col>
-            <Col span={6}>
-              <Button type='link' 
-                onClick={() => setSectionSelect('about')}
-              >About</Button>
-            </Col>
-          </Row> 
-        </Col>
-      </Row>  
-    </nav>
-    <Content id="content_container">
+  const onClick = (e: any) => {
+    console.log(e.key)
+    setItemSelected(e.key);
+  }
+  
+  const items: MenuItemType[] = [
+    {
+      key: '1',
+      label: 'Books',
+    },
+    {
+      key: '2',
+      label: 'Read list',
+    },
+    {
+      key: '3',
+      label: 'About',
+    }
+  ]
+
+  return ( 
+    <div>
+      <Menu 
+        items={items}
+        mode="horizontal"
+        defaultSelectedKeys={['1']}
+        onClick={onClick}
+      >
+      </Menu> 
+      <main>
       { 
-        sectionSelect === 'booklist' ?
-        <BookList></BookList>
-        : <About></About>
+        itemSelected == 1 
+        ? <BookList setItemSelected={setItemSelected}></BookList> : 
+        itemSelected == 2
+        ? <ReadList></ReadList> : 
+        itemSelected == 3
+        ? <About></About> : <></>
       }
-    </Content>
-  </> )
+      </main>
+    </div>
+  )
 }

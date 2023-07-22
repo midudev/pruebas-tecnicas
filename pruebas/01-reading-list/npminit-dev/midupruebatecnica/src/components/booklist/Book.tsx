@@ -1,65 +1,42 @@
-import { Card, Row, Col, Dropdown, Popover, Button, message } from 'antd';
+import { Card, Row, Col, Dropdown, Popover, Button, message, MessageArgsProps } from 'antd';
 import { Book as Booktype } from '../../types/books'
-import { useContext, useRef, useEffect, useState } from 'react';
+import { useContext, useRef, useEffect, useState, SetStateAction, Dispatch, Key } from 'react';
 import Typography from 'antd/es/typography';
 import { Image } from 'antd'
 import BookDetails from './BookDetails';
 import { GlobalContext } from '../../contexts/GlobalContext';
 import * as ls from 'local-storage';
-import { InterestBook } from '../../types/interestbook';
+import { SectionSelected } from '../../types/navigation';
+import { MessageInstance } from 'antd/es/message/interface';
 
 const { Text } = Typography
 
 type props = {
   bookData: Booktype,
-  selectable: boolean
+  selectable: boolean,
+  setItemSelected: Dispatch<SetStateAction<number>>,
 }
 
-export default function Book({ bookData, selectable = false }: props): JSX.Element {
+export default function Book({ bookData, selectable = false, setItemSelected }: props): JSX.Element {
 
-  const { setReadList, readList, showReadList, setShowReadList } = useContext(GlobalContext)
-  const [ messageApi, contextHolder ] = message.useMessage();
-  const [ infoContent, setInfoContent ] = useState<JSX.Element>()
+  const { dispatchRl, messageApi } = useContext(GlobalContext)
 
-  const toReadList = () => {
-    setReadList(readList => {  
-      let newReadList: InterestBook[] | null
-      try {
-        if(!readList?.some(elem => elem.ISBN === bookData.ISBN)) {
-          newReadList = [...readList as InterestBook[], { ISBN: bookData.ISBN, read: false }]
-          ls.set('readList', newReadList)
-          messageApi.open({
-            type: 'success', 
-            content: `"${bookData.title}" added succesfully`, 
-            duration: 4, 
-            onClick(e) {
-              setShowReadList(!showReadList)
-            },
-            style: {cursor: 'pointer'}
-          })
-        }
-        else throw new Error() 
-      } catch(err) {
-        console.log(err)
-        newReadList = readList
-        messageApi.open({ type: 'error', content: 'Something went wrong!'})
-      } 
-      return newReadList
-    })
-  }
 
-  useEffect(() => {
-    setInfoContent(
-      <BookDetails
-        author={bookData.author.name}
-        year={bookData.year}
-        pages={bookData.pages}
-        ISBN={bookData.ISBN}
-        otherBooks={bookData.author.otherBooks}
-      ></BookDetails>
-    )
-  }, [])
-
+  const addToReadList = (ISBN: string) => {
+    try {
+      dispatchRl({ type: 'add', payload: {ISBN, read: false} })
+      messageApi?.open({
+        type: 'success', 
+        content: `"${bookData.title}" added succesfully`, 
+        duration: 2, 
+        onClick: () => setItemSelected(2),
+        style: {cursor: 'pointer'}
+      })
+    } catch(error) {
+      messageApi?.open({ type: 'error', content: 'Something went wrong!'})
+      console.log(error)
+    }
+  }    
 
   return (
 
@@ -67,7 +44,6 @@ export default function Book({ bookData, selectable = false }: props): JSX.Eleme
       title={bookData.title}
       hoverable={true}
     >
-      {contextHolder}
       <div>
         <Image 
           src={bookData.cover}
@@ -92,7 +68,7 @@ export default function Book({ bookData, selectable = false }: props): JSX.Eleme
             menu={{items: [{ type: 'group', label: bookData.synopsis }]}}
             overlayStyle={{maxWidth: '50vw'}}
             trigger={['hover']}
-            autoAdjustOverflow={false}
+            autoAdjustOverflow={true}
           >
           <a onClick={e => e.preventDefault()}>Synopsis</a>
           </Dropdown>
@@ -103,14 +79,22 @@ export default function Book({ bookData, selectable = false }: props): JSX.Eleme
           <Popover 
             placement='bottomLeft' 
             trigger='click'
-            content={infoContent}  
+            content={(
+              <BookDetails
+                author={bookData.author.name}
+                year={bookData.year}
+                pages={bookData.pages}
+                ISBN={bookData.ISBN}
+                otherBooks={bookData.author.otherBooks}
+             ></BookDetails>
+            )}  
           >
             <Button>Info</Button>
           </Popover>
         </Col>
         <Col> 
           <Button 
-            onClick={toReadList}
+            onClick={() => addToReadList(bookData.ISBN)}
             type='primary' 
             disabled={selectable ? false : true}>
             Add

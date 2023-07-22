@@ -1,1 +1,1 @@
-export type SectionSelected = 'booklist' | 'about'
+export type SectionSelected = 'booklist' | 'readlist' |'about'
