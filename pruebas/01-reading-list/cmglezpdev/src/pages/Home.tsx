@@ -1,6 +1,6 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../context/AppContext';
-import { BookItem, FilterGenresMenu } from '../components';
+import { BookItem, BreadCrumbs, FilterGenresMenu } from '../components';
 import { AppLayout } from '../layout';
 import { useFilterBooks } from '../hook';
 
@@ -11,6 +11,8 @@ export const Home = () => {
   const { availableBooks: books } = useContext(AppContext);
   const { filterOptions, toggleSelectOption, setOptions, filterBooks } = useFilterBooks([]);
 
+  const [openFilter, setOpenFilter] = useState(false);
+
   useEffect(() => {
       const genres: string[] = 
           [...new Set(books.map(book => book.genre))]
@@ -20,14 +22,18 @@ export const Home = () => {
 
   return (
     <AppLayout>
-      <FilterGenresMenu books={books} filters={filterOptions} toggleSelect={toggleSelectOption}  />
-        <section className='library'>
-          {
-             filterBooks(books).map(book => (
-              <BookItem key={book.ISBN} book={book} addBook />
-            ))
-          }
-        </section>
+    <BreadCrumbs setOpenFilter={() => setOpenFilter(c => !c)} />
+
+      <div className='app-general-content'>
+          <FilterGenresMenu open={openFilter} books={books} filters={filterOptions} toggleSelect={toggleSelectOption} />
+          <section className='library'>
+            {
+              filterBooks(books).map(book => (
+                <BookItem key={book.ISBN} book={book} addBook />
+              ))
+            }
+          </section>
+      </div>
     </AppLayout>
   )
 }

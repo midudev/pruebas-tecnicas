@@ -1,6 +1,5 @@
-import { FC, useContext } from 'react';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { AppContext } from '../context/AppContext';
 
 import '../styles/AppLayout.css';
 
@@ -9,8 +8,6 @@ interface Props {
 }
 
 export const AppLayout:FC<Props> = ({ children }) => {
-    const { availableBooks, readingBooks } = useContext(AppContext);
-
     return (
         <>
             <header className='app-header'>
@@ -42,11 +39,6 @@ export const AppLayout:FC<Props> = ({ children }) => {
                     </ul>
                 </nav>
             </header>
-            <div className="app-general-info">
-                <p><span>{availableBooks.length}</span> available books</p>
-                <p><span>{readingBooks.length}</span> books to read</p>
-            </div>
-
             <main className='main_container'>
                 { children }
             </main>

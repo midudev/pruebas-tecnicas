@@ -1,5 +1,5 @@
-import { useContext, useEffect } from 'react';
-import { BookItem, FilterGenresMenu } from '../components';
+import { useContext, useEffect, useState } from 'react';
+import { BookItem, BreadCrumbs, FilterGenresMenu } from '../components';
 import { AppContext } from '../context/AppContext';
 import { AppLayout } from '../layout';
 import { useFilterBooks } from '../hook';
@@ -7,6 +7,7 @@ import { useFilterBooks } from '../hook';
 export const ReadingList = () => {
   const { readingBooks: books } = useContext(AppContext);
   const { filterOptions, toggleSelectOption, setOptions, filterBooks } = useFilterBooks([]);
+  const [openFilter, setOpenFilter] = useState(false);
 
   useEffect(() => {
       const genres: string[] = 
@@ -17,7 +18,8 @@ export const ReadingList = () => {
 
   return (
     <AppLayout>
-       <FilterGenresMenu books={books} filters={filterOptions} toggleSelect={toggleSelectOption}  />
+    <BreadCrumbs setOpenFilter={() => setOpenFilter(c => !c)} />
+      <FilterGenresMenu open={openFilter} books={books} filters={filterOptions} toggleSelect={toggleSelectOption}  />
       <section className='library'>
         {
           filterBooks(books).map(book => (

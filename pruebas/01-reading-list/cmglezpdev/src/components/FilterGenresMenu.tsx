@@ -6,17 +6,18 @@ interface Props {
     books: Book[];
     filters: Filter[];
     toggleSelect: (genre: string) => void;
+    open: boolean;
 
 }
 
-export const FilterGenresMenu:FC<Props> = ({ books, filters, toggleSelect}) => {
+export const FilterGenresMenu:FC<Props> = ({ open, books, filters, toggleSelect}) => {
     
     const countGenre = (genre: string): number => {
         return books.reduce((c, g) => c + Number(g.genre === genre), 0);
     }
 
     return (
-        <section className='main__menu'>
+        <section style={{ display: open ? 'flex': 'none' }} className='main__menu'>
             <div className='filter__title'>
                 <span>Filter by:</span>
             </div>
