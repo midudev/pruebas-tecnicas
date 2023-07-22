@@ -1,0 +1,16 @@
+{
+    "extends": [
+        "next/core-web-vitals",
+        "./node_modules/ts-standard/eslintrc.json"
+    ],
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
+    "rules": {
+        "react/react-in-jsx-scope": "off",
+        "react/prop-types": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-misused-promises": "off",
+        "@next/next/no-img-element":"off"
+    }
+}
