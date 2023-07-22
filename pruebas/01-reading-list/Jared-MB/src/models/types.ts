@@ -23,3 +23,5 @@ export interface TRoot {
 export interface Library {
 	book: TBook
 }
+
+export type ElementBookProps = Pick<TBook, 'ISBN' | 'cover' | 'title' | 'author'>
