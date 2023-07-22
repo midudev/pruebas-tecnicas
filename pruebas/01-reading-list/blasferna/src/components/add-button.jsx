@@ -8,7 +8,7 @@ import {
   getInReadingList,
   removeFromReadingList,
 } from "@/lib/books";
-import LoadingMini from "@/components/loading-mini";
+import Loading from "@/components/loading";
 import { useAppContext } from "@/context/store";
 
 export default function AddToListButton({ isbn }) {
@@ -33,7 +33,7 @@ export default function AddToListButton({ isbn }) {
   }, [inReadingList]);
 
   if (checked === null) {
-    return <LoadingMini></LoadingMini>;
+    return <Loading></Loading>;
   }
 
   return (

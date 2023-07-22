@@ -1,6 +1,6 @@
 "use client";
 
-export default function LoadingMini() {
+export default function Loading() {
   return (
     <>
       <svg
