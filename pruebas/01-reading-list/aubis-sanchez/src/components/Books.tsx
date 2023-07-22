@@ -1,12 +1,13 @@
 import { SectionContainer } from "./SectionContainer";
 import { BookItem } from "./BookItem";
-import { Grid } from "@mui/material";
+import { Grid, Stack } from "@mui/material";
 import { BooksGenresFilter } from "./BooksGenresFilter";
 
 import { Book } from "../models";
 import { useBook } from "../zustand/useBooks";
 import { useEffect } from "react";
 import { getBooksBySelectedGenres, getDefaultBooks } from "../utils";
+import { SortingSelector } from "./SortingSelector";
 
 export const Books = () => {
   const books = useBook((state) => state.books);
@@ -22,7 +23,10 @@ export const Books = () => {
 
   return (
     <SectionContainer>
-      <BooksGenresFilter />
+      <Stack direction="row" gap={2}>
+        <BooksGenresFilter />
+        <SortingSelector />
+      </Stack>
       <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         {books.map((book: Book) => (
           <Grid key={book.ISBN} item xs={3}>

@@ -64,7 +64,7 @@ export const BooksGenresFilter = () => {
               }}
               color="GrayText"
             >
-              {selected.map((value) => (
+              {selected.map((value: string) => (
                 <Chip
                   key={value}
                   label={value}

@@ -20,20 +20,11 @@ body {
   border-left: 2px solid rgba(255,255,255,0.2)
 }
 
-.css-hfutr2-MuiSvgIcon-root-MuiSelect-icon{
-  color: white !important
-}
-
-.css-bpeome-MuiSvgIcon-root-MuiSelect-icon{
-  color: white !important
-}
-
 .css-1lwyua3-MuiChip-root{
   background-color: rgba(255,255,255,0.2) !important
 }
 
 .css-1vzzde7-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
-  margin-top: -14px !important;
   color: white !important;
 }
 

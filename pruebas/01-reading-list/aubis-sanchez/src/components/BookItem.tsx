@@ -48,12 +48,8 @@ export const BookItem = ({ book, lectureBook }: Props) => {
           fontStyle="italic"
           color="GrayText"
         >
-          {book.author.name} {`(${book.year})`}
+          {book.author.name} {`(${book.year})`} {`pages: ${book.pages}`}
         </Typography>
-        {/* <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography> */}
       </CardContent>
       <CardActions>
         <Button

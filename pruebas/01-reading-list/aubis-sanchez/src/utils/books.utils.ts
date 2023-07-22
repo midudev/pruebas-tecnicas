@@ -1,5 +1,6 @@
 import bookData from "../../../books.json";
 import { Book } from "../models";
+import { SortBy } from "../models/sorting.model";
 
 export const getBooksGenres = (): string[] => {
   return bookData.library.reduce((acc, curr) => {
@@ -25,4 +26,15 @@ export const getDefaultBooks = () => {
 
 export const getAmountOfBooksByGenre = (genre: string): number => {
   return bookData.library.filter((book) => book.book.genre === genre).length;
+};
+
+export const orderBooksByPagesNumber = (
+  books: Book[],
+  order: SortBy
+): Book[] => {
+  return order === SortBy.desc
+    ? books.sort((a, z) => z.pages - a.pages)
+    : order === SortBy.asc
+    ? books.sort((a, z) => a.pages - z.pages)
+    : books;
 };
