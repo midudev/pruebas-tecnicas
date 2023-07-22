@@ -1,31 +1,46 @@
+import { useState } from 'react'
 import './App.css'
-import ListBooks from './components/ListBooks'
+import ListBooks from './components/BookList'
+import ReadingList from './components/ReadingList'
 import { useBookStore } from './store/bookStore'
 
 function App () {
   // const [books, setBooks] = useState([])
-  const books = useBookStore(state => state.books)
+  const booksStore = useBookStore(state => state.books)
   const readingList = useBookStore(state => state.readingList)
-  const removeBook = useBookStore(state => state.removeBook)
+  const genres = useBookStore(state => state.genres)
+
+  const [genre, setGenres] = useState('all')
+  const [books, setBooks] = useState(booksStore)
+
+  const handleFilter = (event) => {
+    // console.log('handleFilter -> ' + event.target.value)
+    const genre = event.target.value
+
+    if (genre !== 'all') {
+      const filteredBooks = booksStore.filter(book => book.genre === genre)
+      setBooks(filteredBooks)
+    } else {
+      setBooks(booksStore)
+    }
+
+    setGenres(genre)
+  }
 
   return (
     <>
       <h3>Lista de libros</h3>
 
+      <div className="genres">
+        <select value={genre} onChange={handleFilter}>
+          <option value="all">Todas</option>
+          {genres.map(genre => (<option key={genre} value={genre}>{genre}</option>))}
+        </select>
+      </div>
+
       {<ListBooks books={books}/>}
 
-      <h3>Lista de lectura</h3>
-      {readingList.length > 0 && (
-        <ul>
-          {readingList.map(book => {
-            return <li key={book.id}>
-              <h3>{book.title}</h3>
-              <button onClick={() => removeBook(book.id)}>Remove book</button>
-            </li>
-          })}
-        </ul>
-      )}
-
+      <ReadingList books={readingList} />
     </>
   )
 }
