@@ -68,6 +68,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
         alt={`${title}-${languageState.texts.book.cover}`}
       />
       <Tippy
+        delay={300}
         content={languageState.texts.ariaLabels.seeDetails}
         className="hide-on-mobile"
       >
