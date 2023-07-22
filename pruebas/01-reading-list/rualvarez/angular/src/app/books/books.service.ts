@@ -33,6 +33,8 @@ export class BookService {
     this.initBookList();
     this.initReadingList();
     this.genresFromBookList(this.bookListDataFiltered);
+
+    this.listenerForLocalStorage();
   }
 
   //Initial data
@@ -82,6 +84,29 @@ export class BookService {
     this.addToBookList(book);
     localStorage.setItem(this.localStorageLibrary, JSON.stringify(this.bookListDataFiltered));
     localStorage.setItem(this.localStorageReadingList, JSON.stringify(this.readingListData));
+  }
+
+  private listenerForLocalStorage() {
+    window.addEventListener('storage', event => {
+      if (event.key === this.localStorageLibrary) {
+        if (event.newValue !== null) {
+          const newValue: Array<Book> = JSON.parse(event.newValue)
+          this.bookListDataFiltered = newValue;
+        } else {
+          this.bookListDataFiltered = [];
+        }
+        this._bookListFiltered.next(this.bookListDataFiltered);
+      }
+      if (event.key === this.localStorageReadingList) {
+        if (event.newValue !== null) {
+          const newValue: Array<Book> = JSON.parse(event.newValue)
+          this.readingListData = newValue;
+        } else {
+          this.readingListData = [];
+        }
+        this._readingBookList.next(this.readingListData);
+      }
+    })
   }
 
 
