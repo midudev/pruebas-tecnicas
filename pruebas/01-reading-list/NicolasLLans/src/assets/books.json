@@ -2,6 +2,23 @@
     "library": [
         {
             "book": {
+                "title": "La scaloneta",
+                "pages": 72,
+                "genre": "Interes general",
+                "cover": "https://contentv2.tap-commerce.com/cover/large/9789878151632_1.jpg?id_com=1113",
+                "synopsis": "Un libro para conocer a fondo a Scaloni, al cuerpo técnico y a cada uno de los jugadores que formaron parte de este equipo inolvidable. Descubrí datos curiosos e inéditos de cada uno de ellos. ¡Y que la felicidad de Qatar 2022 no se termine nunca.",
+                "year": 2023,
+                "ISBN": "978-9878151632",
+                "author": {
+                    "name": "Catapulta",
+                    "otherBooks": [
+                        
+                    ]
+                }
+            }
+        },
+        {
+            "book": {
                 "title": "El Señor de los Anillos",
                 "pages": 1200,
                 "genre": "Fantasía",
@@ -228,23 +245,6 @@
                     "otherBooks": [
                         "El horror de Dunwich",
                         "En las montañas de la locura"
-                    ]
-                }
-            }
-        },
-        {
-            "book": {
-                "title": "La scaloneta",
-                "pages": 72,
-                "genre": "Interes general",
-                "cover": "https://contentv2.tap-commerce.com/cover/large/9789878151632_1.jpg?id_com=1113",
-                "synopsis": "Un libro para conocer a fondo a Scaloni, al cuerpo técnico y a cada uno de los jugadores que formaron parte de este equipo inolvidable. Descubrí datos curiosos e inéditos de cada uno de ellos. ¡Y que la felicidad de Qatar 2022 no se termine nunca.",
-                "year": 2023,
-                "ISBN": "978-9878151632",
-                "author": {
-                    "name": "Catapulta",
-                    "otherBooks": [
-                        
                     ]
                 }
             }

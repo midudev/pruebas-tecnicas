@@ -1,5 +1,5 @@
 .caja-milista {
-      max-width: 920px;
+      max-width: 806px;
       position: fixed;
       top: 17%;
       right: 5%;
@@ -8,6 +8,7 @@
       padding: 15px;
       background-color: var(--color-secundario);
       box-shadow: var(--negros) 10px 10px 20px;
+      z-index: 4000;
 }
 
 .contenedor-milista {
@@ -16,6 +17,7 @@
       gap: 12px;
       padding: 0 8px;
       min-height: 319px;
+      max-width: 695px;
       height: 400px;
       overflow-y: scroll;
       flex-wrap: wrap;
@@ -47,6 +49,10 @@
       cursor: pointer;
 }
 
+.image-container img:hover {
+      border: 2px solid var(--color-principal);
+}
+
 .overlay {
       position: relative;
       top: 5px;
@@ -72,6 +78,7 @@
 
 .caja-book {
       box-shadow: var(--negros) -35px 0px 70px;
+      z-index: 5000;
 }
 
 .mibook {
@@ -115,5 +122,23 @@
       .mibook .mibook-container {
             flex-direction: column;
             width: auto;
+      }
+}
+
+@media (max-width:399px) {
+      img {
+            width: 100px;
+            aspect-ratio: auto 100 / 140;
+            height: 140px;
+      }
+
+      .caja-milista {
+            right: 5%;
+            left: 10%;
+      }
+
+      .caja-milista header h2 {
+            width: 70%;
+            font-size: 18px;
       }
 }

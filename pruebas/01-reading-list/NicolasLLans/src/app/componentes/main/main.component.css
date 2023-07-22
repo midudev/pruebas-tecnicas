@@ -19,11 +19,12 @@
 }
 
 .barra-filtros {
-      height: 7vh;
+      height: 20vh;
       display: flex;
+      padding-left: 1%;
+      margin: 0 10%;
       align-items: center;
       flex-wrap: wrap;
-      justify-content: space-around;
 }
 
 .barra-filtros .content-filtros {
@@ -31,21 +32,22 @@
       display: flex;
       align-items: center;
       flex-wrap: wrap;
+      justify-content: space-between;
       gap: 15px;
 }
 
 .barra-filtros .content-filtros span,
 label {
       font-family: var(--tipo-principal);
-      font-weight: 600;
+      font-weight: 400;
       color: var(--negros);
+      font-size: 15px;
 }
 
 .barra-filtros .content-filtros span {
       background-color: var(--color-detalle);
       height: min-content;
       padding: 5px 15px;
-      border: 2px solid var(--negros);
       border-radius: 7px;
       color: var(--blanco);
 }
@@ -133,25 +135,22 @@ label {
 
 select {
       height: 32px;
-      border: 2px solid var(--negros);
+      width: 50%;
       padding: 5px 7% 5px 5px;
       border-radius: 6px;
       background: var(--color-detalle);
       color: var(--blanco);
-      font-size: 16px;
+      font-size: 14px;
       font-family: var(--tipo-principal);
-      font-weight: 700;
       min-width: 90px;
       max-width: 160px;
 }
 
 @media (max-width:870px) {
-      .contenedor-milista h2 {
-            font-size: 18px;
-      }
-
       .barra-filtros {
-            height: 200px;
+            height: 265px;
+            font-size: 13px;
+            padding-left: 40px;
       }
 }
 
@@ -173,23 +172,8 @@ select {
 }
 
 @media (max-width:399px) {
-      img {
-            width: 100px;
-            aspect-ratio: auto 100 / 140;
-            height: 140px;
-      }
-
-      .caja-milista {
-            right: 5%;
-            left: 10%;
-      }
-
-      .caja-milista header h2 {
-            width: 70%;
-            font-size: 18px;
-      }
 
       .barra-filtros {
-            padding: 0 30%;
+            padding: 0 20%;
       }
 }
