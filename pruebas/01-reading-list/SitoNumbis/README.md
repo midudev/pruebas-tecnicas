@@ -6,6 +6,11 @@
 
 [Source Code](https://github.com/SitoNumbis/pruebas-tecnicas/tree/main/pruebas/01-reading-list/SitoNumbis)
 
+_Note: Buttons won't have cursor pointerThe buttons will not have a cursor pointer since if there is a hover it is not necessary to put the cursor pointer, but the default one, since in history only the links have been the ones that have had the cursor pointer_
+
+[Ver video](https://www.youtube.com/watch?v=AnTNN_QlFvQ)
+[Ver artículo](https://adamsilver.io/blog/buttons-shouldnt-have-a-hand-cursor-part-2/)
+
 ## How does it work?
 
 The application works with a simple hierarchy:
