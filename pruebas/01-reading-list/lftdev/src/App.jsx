@@ -1,9 +1,11 @@
 import './style.css'
 import BooksList from './components/BooksList'
 import useBooksList from './hooks/useBooksList'
+import useLocalStorage from './hooks/useLocalStorage'
 import { useEffect } from 'react'
 
 export default function App () {
+  // Custom hooks
   const {
     availableBooks,
     setAvailableBooks,
@@ -12,15 +14,17 @@ export default function App () {
     removeFromReadList,
     readListHasBooks
   } = useBooksList([])
-  // On App mount restore data from local storage if exists, or load from books.json
+  const { saveList, getList } = useLocalStorage()
+  // useEffect
+  // On App mount restore data from local storage if, exists.
   useEffect(() => {
-    let list = JSON.parse(window.localStorage.getItem('availableBooks'))
+    let list = getList('availableBooks')
     if (list) setAvailableBooks(list)
     else {
       import('./database/books.json')
         .then(BooksJSON => {
           list = BooksJSON.library.map(bookObj => bookObj.book)
-          window.localStorage.setItem('availableBooks', JSON.stringify(list))
+          saveList('availableBooks', list)
           setAvailableBooks(list)
         })
     }
@@ -46,7 +50,13 @@ export default function App () {
               </label>
             </form>
           </div>
-          <BooksList className='grid grid-cols-4 place-items-start gap-4' list={availableBooks} onItemClick={addToReadList} />
+          <BooksList
+            className='grid grid-cols-4 place-items-start gap-4'
+            list={availableBooks}
+            onItemClick={book => {
+              addToReadList(book)
+            }}
+          />
         </aside>
         {readListHasBooks && (
           <aside className='sticky top-0 max-h-screen overflow-y-auto bg-[#040412] rounded-lg p-8' role='region'>
