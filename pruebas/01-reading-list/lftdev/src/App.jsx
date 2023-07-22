@@ -24,11 +24,14 @@ export default function App () {
       import('./database/books.json')
         .then(BooksJSON => {
           list = BooksJSON.library.map(bookObj => bookObj.book)
-          saveList('availableBooks', list)
           setAvailableBooks(list)
         })
     }
   }, [])
+  // Save changes made to availableBooks to local storage. Wait 5 mills, so not override data on App mount.
+  useEffect(() => {
+    setTimeout(() => saveList('availableBooks', availableBooks), 5)
+  }, [availableBooks])
   return (
     <>
       <h3 className='text-2xl font-bold text-blue-500'>{readListHasBooks ? 'Con' : 'Sin'} libros en la lista de lectura</h3>
