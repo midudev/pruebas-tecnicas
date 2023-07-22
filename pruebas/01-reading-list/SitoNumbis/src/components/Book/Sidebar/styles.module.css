@@ -1,0 +1,28 @@
+.main {
+  box-shadow: -2px -5px 25px 5px black;
+  @apply w-full relative h-full hover:-translate-y-4 transition;
+}
+
+.image {
+  @apply w-full h-full object-cover object-center transition;
+}
+
+.iconButton {
+  @apply bg-primary-light-opacity absolute top-1 right-1 z-10;
+}
+
+.bookDetails {
+  @apply absolute top-0 left-0 p-5 flex flex-col h-full justify-between transition opacity-0 w-full;
+}
+
+.bookDetails {
+  transition: opacity 500ms ease;
+  @apply opacity-0 translate-y-5;
+}
+
+@media (hover: hover) {
+  .main:focus .bookDetails,
+  .main:hover .bookDetails {
+    @apply opacity-100 translate-y-0;
+  }
+}

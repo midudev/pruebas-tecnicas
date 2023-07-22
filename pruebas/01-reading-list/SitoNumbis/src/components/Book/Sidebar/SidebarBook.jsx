@@ -8,12 +8,12 @@ import { css } from "@emotion/css";
 import PropTypes from "prop-types";
 
 // components
-import IconButton from "../IconButton/IconButton";
-import LazyImage from "../LazyImage/LazyImage";
+import IconButton from "../../IconButton/IconButton";
+import LazyImage from "../../LazyImage/LazyImage";
 
 // contexts
-import { useLanguage } from "../../contexts/LanguageProvider";
-import { useLibrary } from "../../contexts/LibraryProvider";
+import { useLanguage } from "../../../contexts/LanguageProvider";
+import { useLibrary } from "../../../contexts/LibraryProvider";
 
 // styles
 import styles from "./styles.module.css";
@@ -36,15 +36,15 @@ function Book({ title, pages, genre, cover, year, ISBN, author, i }) {
     <li
       ref={ref}
       id={ISBN}
-      className={`${styles.side} group ${styles.main} ${
+      className={`appear group ${styles.main} ${
         focused ? "!z-[999]" : ""
-      } hover:-translate-y-4 transition appear w-full ${css({
+      } ${css({
         gridArea: `${i + 1} / 1 / span 6 / span 1`,
         zIndex: i + 1,
       })}`}
     >
       <LazyImage
-        className="w-full h-full object-cover object-center transition"
+        className={styles.image}
         src={cover}
         alt={`${title}-${languageState.texts.book.cover}`}
       />
@@ -52,7 +52,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author, i }) {
         name="remove-from-reading-list"
         onClick={removeFromReadingList}
         ariLabel={languageState.texts.ariaLabels.remove}
-        className="bg-primary-light-opacity absolute top-1 right-1 z-10"
+        className={styles.iconButton}
         icon={faClose}
       />
       <div
@@ -61,9 +61,9 @@ function Book({ title, pages, genre, cover, year, ISBN, author, i }) {
         onKeyDown={() => {}}
         onClick={() => setFocused((focused) => !focused)}
         onMouseLeave={() => setFocused(false)}
-        className={`absolute top-0 left-0 p-5 flex flex-col h-full justify-between transition group-hover:bg-dark-alt-bg-opacity ${
+        className={`${styles.bookDetails} ${
           focused ? "bg-dark-alt-bg-opacity opacity-100" : ""
-        } opacity-0 group-hover:opacity-100 w-full h-full`}
+        } group-hover:opacity-100  group-hover:bg-dark-alt-bg-opacity `}
       >
         <div>
           <h3>{title}</h3>

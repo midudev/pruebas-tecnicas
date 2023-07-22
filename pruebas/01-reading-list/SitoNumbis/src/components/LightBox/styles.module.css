@@ -2,66 +2,8 @@
   @apply grid place-items-center transition duration-300 fixed z-50 top-0 left-0 bg-dark-alt-bg-opacity backdrop-blur-xl w-full h-screen;
 }
 
-.infoButton {
-  @apply bg-primary-dark-opacity  w-10 h-10 rounded-full absolute z-20 top-1 left-1;
-}
 
-@media (hover: hover) {
-  .infoButton {
-    @apply hover:bg-dark-text;
-  }
-}
-
-.seeCoverButton {
-  display: none;
-}
 
 .closeButton {
   @apply z-20 top-1 right-1 text-primary text-xl fixed;
-}
-
-.book {
-  @apply flex items-center justify-center gap-10;
-}
-
-.cover {
-  @apply h-[350px] w-[250px];
-}
-
-.synopsis {
-  @apply text-dark-alt-text mt-2;
-}
-
-.info {
-  @apply flex flex-col items-start justify-start h-[350px] transition duration-500 w-[30%];
-}
-
-@media (max-width: 900px) {
-  .info {
-    @apply w-[40%];
-  }
-}
-
-@media (max-width: 600px) {
-  .book {
-    @apply flex-col;
-  }
-
-  .info {
-    @apply w-full h-full p-20 absolute top-0 left-0 z-10 bg-dark-alt-bg-opacity;
-  }
-
-  .cover {
-    @apply absolute w-full h-full top-0 left-0 object-cover;
-  }
-
-  .seeCoverButton {
-    display: flex;
-  }
-}
-
-@media (max-width: 600px) {
-  .info {
-    @apply p-10;
-  }
 }

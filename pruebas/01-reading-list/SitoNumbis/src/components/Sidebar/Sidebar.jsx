@@ -1,11 +1,12 @@
 import { useEffect, useCallback, useMemo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import useOnclickOutside from "react-cool-onclickoutside";
 
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 
 // components
 import Empty from "../Empty/Empty";
-import Book from "../Book/SidebarBook";
+import Book from "../Book/Sidebar/SidebarBook";
 import IconButton from "../IconButton/IconButton";
 
 // contexts
@@ -21,6 +22,10 @@ function Sidebar() {
 
   const { languageState } = useLanguage();
   const { libraryState } = useLibrary();
+
+  const ref = useOnclickOutside(() => {
+    navigate("/");
+  });
 
   const booksToPrint = useMemo(() => {
     const toReturn = [];
@@ -58,6 +63,7 @@ function Sidebar() {
 
   return (
     <aside
+      ref={ref}
       className={`${styles.main} ${
         location.pathname === "/reading-list"
           ? "translate-x-0"

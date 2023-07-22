@@ -1,8 +1,10 @@
-import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo } from "react";
+import { useLocation } from "react-router-dom";
 import { createPortal } from "react-dom";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClose, faInfo } from "@fortawesome/free-solid-svg-icons";
+import { parseQueries } from "some-javascript-utils/browser";
+
+import { faClose } from "@fortawesome/free-solid-svg-icons";
 
 // contexts
 import { useLanguage } from "../../contexts/LanguageProvider";
@@ -11,16 +13,17 @@ import { useLightBox } from "./LightBoxProvider";
 
 // components
 import IconButton from "../IconButton/IconButton";
-import PrimaryButton from "../PrimaryButton/PrimaryButton";
+import LightBoxBook from "../Book/LightBox/LightBoxBook";
 
 // styles
 import styles from "./styles.module.css";
 
 function LightBox() {
-  const { languageState } = useLanguage();
+  const location = useLocation();
 
+  const { libraryState } = useLibrary();
+  const { languageState } = useLanguage();
   const { lightBoxState, setLightBoxState } = useLightBox();
-  const { libraryState, setLibraryState } = useLibrary();
 
   const onKeyDown = useCallback(
     (e) => {
@@ -38,44 +41,22 @@ function LightBox() {
 
   useEffect(() => {
     if (lightBoxState.id) document.body.style.overflowY = "hidden";
-    else {
-      document.body.style.overflowY = "auto";
-      setSeeingCover(false);
-    }
+    else document.body.style.overflowY = "auto";
   }, [lightBoxState]);
 
   const selectedBook = useMemo(() => {
     return libraryState.books[lightBoxState.id] || {};
   }, [libraryState, lightBoxState]);
 
-  const otherBooks = useMemo(() => {
-    if (selectedBook.author) {
-      const authorOtherBooks = []; /* libraryState.books.filter((book) => {
-        selectedBook.author.otherBooks.find((otherBook) => {
-          return otherBook === book.title;
-        });
-      }); */
-      return authorOtherBooks;
-    }
-  }, [selectedBook, libraryState]);
-
-  const addToReadingList = useCallback(
-    (e) => {
-      e.preventDefault();
-      setLibraryState({ type: "toggle-to-reading-list", id: lightBoxState.id });
-    },
-    [lightBoxState, setLibraryState]
-  );
-
-  const [seeingCover, setSeeingCover] = useState(false);
-
-  const isInReadingList = useMemo(() => {
-    return libraryState.readingList.has(lightBoxState.id);
-  }, [libraryState, lightBoxState]);
-
   const closeLightBox = useCallback(() => {
     setLightBoxState({ type: "remove" });
   }, [setLightBoxState]);
+
+  useEffect(() => {
+    const { search } = location;
+    const params = parseQueries(search);
+    if (params.id) setLightBoxState({ type: "set", id: params.id });
+  }, [location]);
 
   return createPortal(
     <section
@@ -92,65 +73,7 @@ function LightBox() {
         onClick={closeLightBox}
         className={`${styles.closeButton}`}
       />
-      <article className={styles.book}>
-        <img
-          src={selectedBook.cover}
-          alt={`${selectedBook.title}-${languageState.texts.book.cover}`}
-          className={styles.cover}
-        />
-        <div className={`${styles.info} ${seeingCover ? "!opacity-0" : ""}`}>
-          <h3 className="text-2xl">{selectedBook.title}</h3>
-          <p>
-            {selectedBook.genre}{" "}
-            <span className="alter-text">
-              ({selectedBook.pages}) {languageState.texts.book.pages}
-            </span>
-          </p>
-          <p>
-            <span className="alter-text">{languageState.texts.book.by}</span>{" "}
-            {selectedBook.author?.name}{" "}
-            <span className="alter-text">({selectedBook.year})</span>
-          </p>
-          <p className={styles.synopsis}>{selectedBook.synopsis}</p>
-          <div className="flex items-center gap-4 mt-5">
-            <PrimaryButton
-              name="add-to-reading-list"
-              onClick={addToReadingList}
-              ariaLabel={
-                !isInReadingList
-                  ? languageState.texts.ariaLabels.add
-                  : languageState.texts.ariaLabels.remove
-              }
-            >
-              {!isInReadingList
-                ? languageState.texts.book.add
-                : languageState.texts.book.remove}
-            </PrimaryButton>
-            <button
-              name="show-cover"
-              onClick={() => setSeeingCover((seeingCover) => !seeingCover)}
-              className={`${styles.seeCoverButton} secondary`}
-            >
-              {languageState.texts.book.seeCover}
-            </button>
-          </div>
-          {otherBooks?.length ? (
-            <Fragment>
-              <p>{languageState.texts.book.otherBooks}</p>
-              <div className="flex gap-5">{otherBooks}</div>
-            </Fragment>
-          ) : null}
-        </div>
-        {seeingCover ? (
-          <button
-            name="hide-cover"
-            onClick={() => setSeeingCover((seeingCover) => !seeingCover)}
-            className={`appear button ${styles.infoButton}`}
-          >
-            <FontAwesomeIcon icon={faInfo} />
-          </button>
-        ) : null}
-      </article>
+      <LightBoxBook {...selectedBook} />
     </section>,
     document.body
   );

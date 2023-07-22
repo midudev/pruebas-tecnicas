@@ -31,9 +31,7 @@
       "otherBooks": "Otros libros",
       "add": "Agregar",
       "remove": "Remover",
-      "reading": "En la lista",
-      "seeCover": "Ver cover",
-      "seeInfo": "Ver información"
+      "seeCover": "Ver cover"
     },
     "ariaLabels": {
       "filterBy": "Filtrar por",
@@ -48,7 +46,6 @@
       "genreLeft": "Deslizar géneros a la derecha",
       "genreRight": "Deslizar géneros a la izquierda",
       "seeDetails": "Ver detalles del libro",
-      "clickToAlter": "Click para ver sinopsis",
       "closeDialog": "Cerrar contenido flotante",
       "closeSidebar": "Cerrar barra lateral"
     }
