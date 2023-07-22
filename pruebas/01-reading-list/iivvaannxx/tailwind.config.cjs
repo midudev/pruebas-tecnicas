@@ -12,6 +12,11 @@ module.exports = {
 
     extend: {
 
+      aspectRatio: {
+
+        'cover': '2 / 3'
+      },
+
       gridTemplateAreas: {
 
         'base': [

@@ -1,22 +1,33 @@
+<script lang='ts' context='module'>
+
+  import Book from '$lib/components/book.svelte'
+  import Gallery from "$lib/layouts/gallery.svelte";
+
+</script>
+
 <script lang="ts">
+
 
   export let data
   const { library } = data
+
+  let index = 0
+
+  function handleIndex() {
+
+    index = (index + 1) % library.length
+  }
 
 </script>
 
 <h2>{library.length} libros disponibles</h2>
 
-{#each library as book}
+<Gallery>
 
-  <h4>{book.title}</h4>
-  <p>{book.author.name}</p>
-  <p>{book.ISBN}</p>
-  <p>{book.synopsis}</p>
-  <p>{book.genre}</p>
-  <p>{book.year}</p>
-  <p>{book.pages}</p>
+</Gallery>
 
-  <img src={book.cover} width={50} height={150} alt="book" />
+<!-- {#each library as bookData}
 
-{/each}
+  <Book {...bookData} />
+
+{/each} -->
