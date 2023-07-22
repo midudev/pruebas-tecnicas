@@ -1,12 +1,25 @@
-<h2>Catálogo libros</h2>
-<ul class="grilla-libros"cdkDropList cdkDropListConnectedTo=".lista-lectura" cdkDragBoundary=".lista-lectura">
-  <div *ngFor="let libro of libros" class="portada" cdkDrag (dblclick)="moverALectura(libro)">
-    <img [src]="libro.book.cover" alt="{{ libro.book.title }} Cover" width="200" height="300">
+<div class="container">
+  <div class="row aling-items-start">
+    <div class="col">
+    <h2>Catálogo libros</h2>
+    <hr>
+    <p>A continuación encontrarás los libros que tenemos disponibles para lectura.</p>
+    <h3>Libros disponibles: {{ libros.length }}</h3> <!-- Mostrar el número de libros en la grilla de catálogo -->
+    <p>Libros en la lista de lectura: {{ listaDeLectura.length }}</p> <!-- Mostrar el número de libros en la lista de lectura -->
+    <p>Dale doble clic a los libros que deseas leer.</p> 
+    <ul class="grilla-libros"cdkDropList cdkDropListConnectedTo=".lista-lectura" cdkDragBoundary=".lista-lectura">
+      <div *ngFor="let libro of libros" class="portada" cdkDrag (dblclick)="moverALectura(libro)">
+        <img [src]="libro.book.cover" alt="{{ libro.book.title }} Cover" width="200" height="300">
+      </div>  
+    </ul>
+    </div>  
+      <div class="col-6 col-sm-3">      
+      <h2>lista de lectura</h2>
+      <ul class="lista-lectura" class="grilla-lectura"cdkDropList (cdkDropListDropped)="onDrop($event)">
+        <div *ngFor="let libro of listaDeLectura" class="portada" cdkDrag (dblclick)="moverACatalogo(libro)">
+          <img [src]="libro.book.cover" alt="{{ libro.book.title }} Cover" width="200" height="300">
+        </div>
+      </ul>    
+      </div>
   </div>
-</ul>
-<h2>lista de lectura</h2>
-<ul class="lista-lectura" class="grilla-libros"cdkDropList (cdkDropListDropped)="onDrop($event)">
-  <div *ngFor="let libro of listaDeLectura" class="portada" cdkDrag (dblclick)="moverACatalogo(libro)">
-    <img [src]="libro.book.cover" alt="{{ libro.book.title }} Cover" width="200" height="300">
-  </div>
-</ul>
+</div>

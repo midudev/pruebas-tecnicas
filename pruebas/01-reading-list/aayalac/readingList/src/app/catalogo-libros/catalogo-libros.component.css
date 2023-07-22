@@ -7,17 +7,7 @@
 }
 .grilla-lectura {              
   display: grid;
-  gap:2px; 
+  gap:3px; 
   grid-auto-rows: 8rem;
-  grid-template-columns: repeat(auto-fill, minmax(5rem,1fr));
-}
-.contenedor-grid {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  grid-gap: 20px;
-}
-
-.columna-catalogo,
-.columna-lista {
-  padding: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(8rem,1fr));
 }
