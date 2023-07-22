@@ -5,33 +5,54 @@ import { create } from 'zustand';
 export interface BookStore {
   error: boolean;
   message: string;
+  maxPages: number;
+  genre: string;
+  pages: number;
   books: IBook[];
+  genres: string[];
   cartBooks: IBook[];
   addBook: (book: IBook) => void;
   addBooks: (books: IBook[]) => void;
   removeBook: (book: IBook) => void;
   clearBooks: () => void;
   clearMessage: () => void;
+  filterByPages: (pages: number) => void;
+  filterByGenre: (genre: string) => void;
 }
+
+const getInitialBooks = () => libraryData.map(({ book }) => book);
+
+const getGenres = () =>
+  getInitialBooks().reduce((acc: string[], book) => {
+    const exist = acc.some((a) => a === book.genre);
+    return exist ? acc : [...acc, book.genre];
+  }, []);
+
+const getBooks = (cartBooks: IBook[]) =>
+  getInitialBooks().filter((b) => cartBooks.some((cb) => cb.ISBN !== b.ISBN));
 
 export const useBookStore = create<BookStore>((set) => ({
   message: '',
+  pages: 0,
   error: false,
-  books: libraryData.map(({ book }) => book),
+  books: getInitialBooks(),
+  genres: getGenres(),
+  genre: 'all',
+  maxPages: Math.max(...libraryData.map(({ book }) => book.pages)),
   cartBooks: [],
   addBook: (book: IBook) => {
     set((state) => {
-      const cartBooks = [...state.cartBooks, book];
-      const books = state.books.filter((b) => b.ISBN !== book.ISBN);
+      const exist = state.cartBooks.some((b) => b.ISBN === book.ISBN);
+      const message = exist ? 'El libro ya existe' : 'Libro agregado';
+      const cartBooks = exist ? state.cartBooks : [...state.cartBooks, book];
+      const books = exist ? state.books : state.books.filter((b) => b.ISBN !== book.ISBN);
       global.localStorage?.setItem('cartBooks', JSON.stringify(cartBooks));
-      return { books, cartBooks, message: 'Libro agregado', error: false };
+      return { books, cartBooks, message, error: false };
     });
   },
   addBooks: (cartBooks) => {
-    set(() => {
-      const books = libraryData
-        .map(({ book }) => book)
-        .filter((b) => !cartBooks.some((cb) => cb.ISBN === b.ISBN));
+    set((state) => {
+      const books = state.books.filter((b) => !cartBooks.some((cb) => cb.ISBN === b.ISBN));
       return { cartBooks, books };
     });
   },
@@ -49,5 +70,20 @@ export const useBookStore = create<BookStore>((set) => ({
   },
   clearMessage: () => {
     set({ message: '', error: false });
+  },
+  filterByPages: (pages: number) => {
+    set((state) => {
+      const books = getBooks(state.cartBooks).filter((book) => book.pages >= pages);
+      const newBooks = state.genre === 'all' ? books : books.filter((book) => book.genre === state.genre);
+      return { books: newBooks, pages };
+    });
+  },
+  filterByGenre: (genre) => {
+    set((state) => {
+      if (genre === 'all') return { books: getInitialBooks() };
+      const books = getBooks(state.cartBooks).filter((book) => book.genre === genre);
+      const newBooks = state.pages === 0 ? books : books.filter((book) => book.pages >= state.pages);
+      return { books: newBooks, genre };
+    });
   },
 }));

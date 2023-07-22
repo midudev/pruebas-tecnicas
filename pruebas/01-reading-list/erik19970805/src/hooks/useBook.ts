@@ -4,8 +4,23 @@ import { useEffect, useRef, useState } from 'react';
 import { useLocalStorage } from './useLocalStorage';
 
 const useBook = () => {
-  const { books, cartBooks, addBook, clearBooks, removeBook, addBooks, error, message, clearMessage } =
-    useBookStore();
+  const {
+    books,
+    cartBooks,
+    addBook,
+    clearBooks,
+    removeBook,
+    filterByPages,
+    addBooks,
+    error,
+    message,
+    clearMessage,
+    genres,
+    filterByGenre,
+    genre,
+    pages,
+    maxPages,
+  } = useBookStore();
   useLocalStorage();
   const [loading, setLoading] = useState(true);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -26,7 +41,23 @@ const useBook = () => {
     };
   }, [clearMessage, message]);
 
-  return { books, cartBooks, error, message, loading, addBook, clearBooks, removeBook, clearMessage };
+  return {
+    books,
+    genres,
+    maxPages,
+    cartBooks,
+    error,
+    message,
+    loading,
+    filterByPages,
+    addBook,
+    clearBooks,
+    removeBook,
+    genre,
+    pages,
+    filterByGenre,
+    clearMessage,
+  };
 };
 
 export default useBook;

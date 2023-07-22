@@ -21,7 +21,6 @@ export const BookCart: FC<Props> = ({ books, loading }) => {
               className="rounded-t-lg h-28 object-cover"
               src={book.cover}
               alt={book.title}
-              loading="lazy"
             />
             <div className="flex flex-col gap-4 p-3">
               <div className="flex flex-col gap-2">
