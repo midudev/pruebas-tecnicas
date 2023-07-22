@@ -223,6 +223,66 @@
             "otherBooks": ["El resplandor", "It"]
           }
         }
+    },
+    {
+      "book": {
+        "title": "Cien años de soledad",
+        "pages": 417,
+        "genre": "Fantasía",
+        "cover": "https://covers.openlibrary.org/b/id/12703917-M.jpg",
+        "synopsis": "La historia de la familia Buendía en el ficticio pueblo de Macondo.",
+        "year": 1967,
+        "ISBN": "978-0060883287",
+        "author": {
+          "name": "Gabriel García Márquez",
+          "otherBooks": ["El amor en los tiempos del cólera", "Crónica de una muerte anunciada"]
+        }
       }
+    },
+    {
+      "book": {
+        "title": "Matar a un ruiseñor",
+        "pages": 384,
+        "genre": "Ficción histórica",
+        "cover": "https://covers.openlibrary.org/b/id/14289894-L.jpg",
+        "synopsis": "La historia de una niña en el Sur profundo que intenta entender la injusticia racial en su ciudad.",
+        "year": 1960,
+        "ISBN": "978-0446310789",
+        "author": {
+          "name": "Harper Lee",
+          "otherBooks": ["Ve y pon un centinela"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "La Odisea",
+        "pages": 324,
+        "genre": "Fantasía",
+        "cover": "https://covers.openlibrary.org/b/id/13766440-L.jpg",
+        "synopsis": "La historia de Odiseo y su largo viaje a casa después de la Guerra de Troya.",
+        "year": -800,
+        "ISBN": "978-0140268867",
+        "author": {
+          "name": "Homero",
+          "otherBooks": ["La Ilíada"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Orgullo y prejuicio",
+        "pages": 279,
+        "genre": "Novela romántica",
+        "cover": "https://covers.openlibrary.org/b/id/13225056-L.jpg",
+        "synopsis": "Las vidas de las hermanas Bennet y sus intentos de matrimonio en la sociedad inglesa del siglo XIX.",
+        "year": 1813,
+        "ISBN": "978-1503290563",
+        "author": {
+          "name": "Jane Austen",
+          "otherBooks": ["Sentido y sensibilidad", "Emma"]
+        }
+      }
+    }
   ]
 }
