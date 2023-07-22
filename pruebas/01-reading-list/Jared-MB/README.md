@@ -5,12 +5,12 @@ Librería con lista de lectura
 ## Tecnologías usadas
 
 ### Frontend
-- React
-- Tailwind
-- Framer motion
+- React + Typescript
+- TailwindCss (https://tailwindcss.com/)
+- Framer motion (https://www.framer.com/motion/)
 ### Testing
-- Vitest
-- React Testing Library
+- Vitest (https://vitest.dev/)
+- React Testing Library (https://testing-library.com/)
 
 ## Demo
 - https://coruscating-mermaid-5a7360.netlify.app/
