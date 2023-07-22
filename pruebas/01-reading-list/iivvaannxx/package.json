@@ -15,6 +15,7 @@
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
+		"@savvywombat/tailwindcss-grid-areas": "^3.1.0",
 		"@sveltejs/adapter-static": "^2.0.2",
 		"@sveltejs/kit": "^1.20.4",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
