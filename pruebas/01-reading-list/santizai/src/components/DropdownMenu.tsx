@@ -1,21 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { selectedGenre } from "../services/selectGenre";
 import "./../dropdown.css";
 
 interface Props {
     options: string[];
+    filter: (genre: string) => void;
 }
 
 const DropdownMenu = (props: Props) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [genre, setGenre] = useState<string>("");
+
+    // Cada vez que ocurra un cambio en el estado de genre, se llama a la función de filtrado
+    useEffect(() => {
+        props.filter(genre);
+    }, [genre]);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
 
     const selectOption = (e: React.MouseEvent<HTMLLIElement>) => {
+        const genreSelected = String(e.currentTarget.textContent);
         setIsOpen(!isOpen);
-        selectedGenre.set(String(e.currentTarget.textContent));
+        setGenre(genreSelected);
+        selectedGenre.set(genreSelected);
     };
 
     return (
@@ -24,7 +33,7 @@ const DropdownMenu = (props: Props) => {
                 className="btn"
                 onClick={toggleMenu}
             >
-                Genres
+                {genre === "" ? "Select an genre" : genre}
             </button>
             <div className={`dropdown-menu ${isOpen ? "open" : ""}`}>
                 <ul>

@@ -29,7 +29,14 @@ const UnreadBooks = (props: Props) => {
         setFilteredBooks(filtered);
     };
 
-    const $selectedGenre = useStore(selectedGenre)
+    //const $selectedGenre = useStore(selectedGenre);
+
+    const filterForGenre = (genre: string) => {
+        const filtered = books.filter(
+            (book: Library) => book.book.genre === genre
+        );
+        setFilteredBooks(filtered);
+    };
 
     return (
         <div className="w-full flex flex-col justify-center items-center">
@@ -48,8 +55,10 @@ const UnreadBooks = (props: Props) => {
                         />
                         <span>{pages}</span>
                     </div>
-                    <DropdownMenu options={genres} />
-                    <span>{$selectedGenre}</span>
+                    <DropdownMenu
+                        options={genres}
+                        filter={filterForGenre}
+                    />
                 </div>
             </div>
             <div className="w-3/4 flex flex-wrap gap-3">
