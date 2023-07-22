@@ -6,7 +6,7 @@ export default function ReadingList() {
   const { toggleReadingList, readingList } = useReadingList()
 
   return (
-    <div className='text-zinc-300 px-7 py-4 flex flex-col rounded-lg w-full max-w-xl min-w-[330px] min-h-[260px] h-full overflow-y-auto bg-zinc-950 max-h-[600px]'>
+    <div className='border border-zinc-700 shadow-md shadow-zinc-600 text-zinc-300 px-7 py-4 flex flex-col rounded-lg w-full max-w-xl min-w-[330px] min-h-[260px] h-full overflow-y-auto bg-zinc-950 max-h-[600px]'>
       <div className='flex items-center justify-between'>
         <h2 className='flex-1 text-3xl font-bold text-center 2xl:text-4xl'>
           Lista de lectura
