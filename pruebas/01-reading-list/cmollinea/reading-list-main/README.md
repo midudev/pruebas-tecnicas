@@ -13,8 +13,8 @@ Librería con lista de lectura desarrollada con ReactJS y TailwindCSS.
 - Posibilidad de filtrar libros por título, género y número mínimo de páginas.
 - Mobile friendly.
 
-![Responsibity-home-page](/public/images/muestra2.png)
-![Responsibity-Modal-is-open](/public/images/muestra3.png)
+![mobile-home-page](/public/images/muestra2.png)
+![mobile-Modal-is-open](/public/images/muestra3.png)
 
 ## ¿Cómo usar?
 
