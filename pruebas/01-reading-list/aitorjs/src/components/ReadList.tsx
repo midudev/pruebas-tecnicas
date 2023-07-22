@@ -1,20 +1,20 @@
-import { useBooksStore } from "../store/booksStore";
+import { useBooksStore } from '../store/booksStore'
 
 const ReadList = () => {
-  const { wantReadBooks, filteredBooks, setBooks } = useBooksStore() as any;
+  const { wantReadBooks, filteredBooks, setBooks } = useBooksStore()
 
   const handleClick = (isbn: string) => {
     const index = wantReadBooks.findIndex((f) => {
-      return f.book.ISBN === isbn;
-    });
-    console.log("index", index, wantReadBooks);
-    const [wantNoRead] = wantReadBooks.splice(index, 1);
+      return f.book.ISBN === isbn
+    })
+    console.log('index', index, wantReadBooks)
+    const [wantNoRead] = wantReadBooks.splice(index, 1)
 
-    console.log("new books", [...filteredBooks, wantNoRead]);
+    console.log('new books', [...filteredBooks, wantNoRead])
     // setWantReadBooks(wantReadBooks);
 
-    setBooks([...filteredBooks, wantNoRead]);
-  };
+    setBooks([...filteredBooks, wantNoRead])
+  }
 
   return (
     <>
@@ -25,7 +25,7 @@ const ReadList = () => {
         </p>
       ))}
     </>
-  );
-};
+  )
+}
 
-export default ReadList;
+export default ReadList

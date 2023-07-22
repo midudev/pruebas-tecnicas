@@ -21,7 +21,7 @@
 
 ## Linter (ts-standard)
 
-- Para que resuelva VSC los problemas que encuentra, tiene que ser 'Javascript JSX'.
+- Para que VSC resuelva los problemas que encuentra, tiene que ser su modo de lenguaje 'Javascript JSX' o 'Typescript' para ficheros con extensión tsx. Para .ts con typescript va bien. Para .js con 'Javascript JSX' va bien.
 
 ## TODO
 
