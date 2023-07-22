@@ -34,13 +34,13 @@ input[type=range]::-webkit-slider-runnable-track {
   cursor: pointer;
   animate: 0.2s;
   box-shadow: 0px 0px 0px #000000;
-  background: #7E22CE;
+  background: #D4D4D8;
   border-radius: 10px;
   border: 0px solid #000000;
 }
 input[type=range]::-webkit-slider-thumb {
   box-shadow: 0px 0px 0px #000000;
-  border: 1px solid #7E22CE;
+  border: 1px solid #D4D4D8;
   height: 18px;
   width: 18px;
   border-radius: 25px;
@@ -50,7 +50,7 @@ input[type=range]::-webkit-slider-thumb {
   margin-top: -7px;
 }
 input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #7E22CE;
+  background: #D4D4D8;
 }
 input[type=range]::-moz-range-track {
   width: 100%;
@@ -58,13 +58,13 @@ input[type=range]::-moz-range-track {
   cursor: pointer;
   animate: 0.2s;
   box-shadow: 0px 0px 0px #000000;
-  background: #7E22CE;
+  background: #D4D4D8;
   border-radius: 10px;
   border: 0px solid #000000;
 }
 input[type=range]::-moz-range-thumb {
   box-shadow: 0px 0px 0px #000000;
-  border: 1px solid #7E22CE;
+  border: 1px solid #D4D4D8;
   height: 18px;
   width: 18px;
   border-radius: 25px;
@@ -81,13 +81,13 @@ input[type=range]::-ms-track {
   color: transparent;
 }
 input[type=range]::-ms-fill-lower {
-  background: #7E22CE;
+  background: #D4D4D8;
   border: 0px solid #000000;
   border-radius: 20px;
   box-shadow: 0px 0px 0px #000000;
 }
 input[type=range]::-ms-fill-upper {
-  background: #7E22CE;
+  background: #D4D4D8;
   border: 0px solid #000000;
   border-radius: 20px;
   box-shadow: 0px 0px 0px #000000;
@@ -95,7 +95,7 @@ input[type=range]::-ms-fill-upper {
 input[type=range]::-ms-thumb {
   margin-top: 1px;
   box-shadow: 0px 0px 0px #000000;
-  border: 1px solid #7E22CE;
+  border: 1px solid #D4D4D8;
   height: 18px;
   width: 18px;
   border-radius: 25px;
@@ -103,8 +103,8 @@ input[type=range]::-ms-thumb {
   cursor: pointer;
 }
 input[type=range]:focus::-ms-fill-lower {
-  background: #7E22CE;
+  background: #D4D4D8;
 }
 input[type=range]:focus::-ms-fill-upper {
-  background: #7E22CE;
+  background: #D4D4D8;
 }
