@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { useBooks } from '../context/books'
 import CounterBooks from './CounterBooks'
-import { MinusCircleIcon } from '@heroicons/react/24/outline'
+import { MinusCircleIcon, BookOpenIcon } from '@heroicons/react/24/outline'
 import { Book } from '../types'
 interface Props {
   isShowingReadList: boolean
@@ -42,8 +42,9 @@ export default function ReadingList({ isShowingReadList }: Props) {
             />
             <h5 className='mb-10 font-bold'>{book.title}</h5>
             <p>{book.synopsis}</p>
-            <span className='absolute right-0 top-0 rounded-md bg-slate-500 p-2 text-xs'>
-              {book.pages} paginas
+            <span className='absolute right-0 top-0 flex items-center gap-1 rounded-md bg-slate-500 p-2 text-xs'>
+              <BookOpenIcon className='h-5' />
+              {book.pages}{' '}
             </span>
           </div>
         ))}
