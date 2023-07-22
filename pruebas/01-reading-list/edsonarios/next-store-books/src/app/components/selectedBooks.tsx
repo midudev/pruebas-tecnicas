@@ -1,4 +1,4 @@
-import { Library, LibraryData } from '@/types/library'
+import { Library } from '@/types/library'
 
 const SelectedBooks = ({ selectedBooks, deselectBook }: { selectedBooks: Library[], deselectBook: (book: Library) => void }) => {
   return selectedBooks.length > 0 && (
@@ -10,7 +10,7 @@ const SelectedBooks = ({ selectedBooks, deselectBook }: { selectedBooks: Library
         <div className='flex flex-col items-center'>
           {selectedBooks.map((item, index) => (
             <div key={index} className='m-1 relative'>
-              <div className='absolute top-0 right-0 p-1 cursor-pointer bg-gray-800 bg-opacity-50 rounded-full' onClick={() => deselectBook(item)}>
+              <div className='absolute top-0 right-0 p-2 cursor-pointer bg-gray-800 bg-opacity-50' onClick={() => deselectBook(item)}>
                 <span className='text-white text-sm'>X</span>
               </div>
               <img
