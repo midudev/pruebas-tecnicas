@@ -13,7 +13,8 @@ function SortList({values = [], books = {}}) {
 
     useEffect(() => {
         
-        setItems(Object.keys(books));
+        console.log('change items')
+        setItems(Object.entries(books));
 
     }, [books]);
 
@@ -31,8 +32,8 @@ function SortList({values = [], books = {}}) {
 
             setItems((items) => {
 
-                const oldIndex = items.indexOf(active.id);
-                const newIndex = items.indexOf(over.id);
+                const oldIndex = items.findIndex(([key]) => key === active.id);
+                const newIndex = items.findIndex(([key]) => key === over.id);
                 
                 return arrayMove(items, oldIndex, newIndex);
             });
@@ -48,11 +49,11 @@ function SortList({values = [], books = {}}) {
             autoScroll={false}
         >
 
-            <SortableContext items={items} strategy={verticalListSortingStrategy}>
+            <SortableContext items={items.map(([key]) => key)} strategy={verticalListSortingStrategy}>
                 {
-                    items.map(key => {
+                    items.map(([key, value]) => {
 
-                        const book = books[key];
+                        const book = value;
 
                         return <SortableItem key={key} id={key}>
 

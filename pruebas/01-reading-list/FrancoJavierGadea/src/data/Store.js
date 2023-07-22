@@ -1,9 +1,26 @@
 import { useStore } from "@nanostores/react";
 import { map } from "nanostores";
+import { persistentMap } from '@nanostores/persistent';
 
 
+//const SAVED_BOOKS = map({});
+const SAVED_BOOKS = persistentMap('book:', {}, {
 
-const SAVED_BOOKS = map({});
+    encode: (value) => {
+        return JSON.stringify(value)
+    },
+
+    decode: (value) => {
+        try {
+
+            return JSON.parse(value);
+        } 
+        catch(err) {
+
+            console.log(err);
+        }
+    }
+});
 
 
 export async function saveBook(key, book){
@@ -33,6 +50,27 @@ export async function getSavedBook(key){
     else {
 
         return {ok: false, data: null}
+    }
+}
+
+export async function removeBook(key){
+
+    const exist = SAVED_BOOKS.get()[key];
+
+    if(exist){
+
+        SAVED_BOOKS.setKey(key, undefined);
+        // const books = {...SAVED_BOOKS.get()};
+
+        // delete books[key];
+
+        // SAVED_BOOKS.set(books);
+
+        return {ok: true, message: 'Libro removido'}
+    }
+    else {
+
+        return {ok: false, message: 'El libro no existe'}
     }
 }
 

@@ -1,27 +1,60 @@
-import {saveBook} from "../../../data/Store.js";
+import { useEffect, useState } from "react";
+import {saveBook, removeBook, useSavedBooks} from "../../../data/Store.js";
 import "./SaveBookButton.css";
 
 
 function SaveBook({book}) {
 
+    const [isSaved, setIsSaved] = useState(false);
 
-    const handleClick = () => {
+    const savedBooks = useSavedBooks();
 
-        const {ISBN, title, cover}  = book;
+    useEffect(() => {
 
-        saveBook(ISBN, {ISBN, title, cover})
+        const exist = savedBooks[book.ISBN];
+
+        if(exist) {
+
+            setIsSaved(true);
+        }
+        else {
+
+            setIsSaved(false);
+        }
+        
+    }, [savedBooks]);
+
+    const save = () => {
+
+        const {ISBN, title, cover, author} = book;
+
+        saveBook(ISBN, {ISBN, title, cover, author: author?.name})
         .then((result) => {
 
             console.log(result);
+            if(result.ok) setIsSaved(true);
+        })
+    }
+
+    const remove = () => {
+
+        removeBook(book.ISBN)
+        .then((result) => {
+
+            console.log(result);
+            if(result.ok) setIsSaved(false);
         })
     }
 
     return (<>
-    
-        <button className="save-button" onClick={handleClick} title="Guardar"
-        >
-            <i className="bi bi-bookmark-plus-fill" />
-        </button>
+        {
+            !isSaved ? 
+                <button className="save-button" onClick={save} title="Guardar">
+                    <i className="bi bi-bookmark-plus-fill" />
+                </button>
+            :
+                <button className="remove-button" onClick={remove} title="Quitar de la lista" />
+        }
     </>);
 }
 
