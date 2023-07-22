@@ -5,6 +5,7 @@ import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-ki
 import { SortableItem } from "./SorteableItem";
 import SavedBookCard from "../SavedBookCard/SavedBookCard";
 import { restrictToVerticalAxis, restrictToFirstScrollableAncestor } from "@dnd-kit/modifiers";
+import { changeOrder } from "../../../data/Store";
 
 
 function SortList({values = [], books = {}}) {
@@ -14,7 +15,13 @@ function SortList({values = [], books = {}}) {
     useEffect(() => {
         
         console.log('change items')
-        setItems(Object.entries(books));
+
+        const items = Object.entries(books).sort(([keyA, bookA], [keyB, bookB]) => {
+
+            return bookA.order - bookB.order;
+        })
+
+        setItems(items);
 
     }, [books]);
 
@@ -35,7 +42,15 @@ function SortList({values = [], books = {}}) {
                 const oldIndex = items.findIndex(([key]) => key === active.id);
                 const newIndex = items.findIndex(([key]) => key === over.id);
                 
-                return arrayMove(items, oldIndex, newIndex);
+                const newOrderItems = arrayMove(items, oldIndex, newIndex);
+
+                changeOrder(newOrderItems)
+                .then(result => {
+
+                    console.log(result);
+                })
+
+                return newOrderItems;
             });
         }
     }

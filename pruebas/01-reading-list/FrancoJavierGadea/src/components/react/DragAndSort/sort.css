@@ -4,6 +4,9 @@
     display: flex;
     align-items: stretch;
     margin-bottom: 20px;
+
+    /* Importante */
+    touch-action: manipulation;
 }
 
 .sort-content {

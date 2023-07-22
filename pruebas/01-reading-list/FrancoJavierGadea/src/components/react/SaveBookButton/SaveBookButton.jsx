@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {saveBook, removeBook, useSavedBooks} from "../../../data/Store.js";
 import "./SaveBookButton.css";
 
@@ -24,11 +24,23 @@ function SaveBook({book}) {
         
     }, [savedBooks]);
 
+    const numberOfBooks = useMemo(() => {
+
+        return Object.keys(savedBooks).length;
+
+    }, [savedBooks]);
+
     const save = () => {
 
         const {ISBN, title, cover, author} = book;
 
-        saveBook(ISBN, {ISBN, title, cover, author: author?.name})
+        saveBook(ISBN, {
+            ISBN, 
+            title, 
+            cover,
+            author: author?.name,
+            order: numberOfBooks + 1
+        })
         .then((result) => {
 
             console.log(result);

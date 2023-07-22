@@ -4,6 +4,8 @@ import { persistentMap } from '@nanostores/persistent';
 
 
 //const SAVED_BOOKS = map({});
+
+
 const SAVED_BOOKS = persistentMap('book:', {}, {
 
     encode: (value) => {
@@ -39,6 +41,7 @@ export async function saveBook(key, book){
     }
 }
 
+
 export async function getSavedBook(key){
 
     const book = SAVED_BOOKS.get()[key];
@@ -52,6 +55,7 @@ export async function getSavedBook(key){
         return {ok: false, data: null}
     }
 }
+
 
 export async function removeBook(key){
 
@@ -75,6 +79,26 @@ export async function removeBook(key){
 }
 
 
+export async function changeOrder(newOrderItems = []){
+
+    //Aqui vendria bien un Object.groupBy
+
+    const newState = newOrderItems.reduce((acc, [key, value], index) => {
+
+        acc[key] = {
+            ...value, order: index + 1
+        }
+
+        return acc;
+    }, {});
+
+    SAVED_BOOKS.set(newState);
+
+    return {ok: true, message: 'Orden de los Libros cambiado'}
+}
+
+
+//? React Hook
 export function useSavedBooks(){
 
     return useStore(SAVED_BOOKS);

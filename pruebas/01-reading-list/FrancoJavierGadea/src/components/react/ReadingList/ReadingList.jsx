@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useSavedBooks } from "../../../data/Store";
 import SavedBookCard from "../SavedBookCard/SavedBookCard";
 
@@ -15,6 +15,12 @@ function ReadingList() {
         console.log('reading books', savedBooks);
 
     }, []);
+
+    const numberOfBooks = useMemo(() => {
+
+        return Object.keys(savedBooks).length;
+
+    }, [savedBooks]);
 
     const aux = {
         "978-8418450570": {
@@ -74,21 +80,20 @@ function ReadingList() {
 
     return (<div className="Reading-list">
 
-        <h3 className="py-2 border-bottom mb-4">Lista de lectura</h3>
+        <header className="pt-3 pb-2 mb-4 border-bottom d-flex align-items-baseline">
+
+            <h3>Lista de lectura</h3>
+
+            <h5 className="ms-auto">
+                <span>Total: </span>
+                <strong>{numberOfBooks}</strong>
+            </h5>
+
+        </header>
 
         <div className="Reading-list-content d-flex flex-column">
 
-            {
-                // Object.values(aux).map((book, i) => {
-
-                //     return <div key={book.ISBN} >
-
-                //         <SavedBookCard book={book} />
-                //     </div>
-                // })
-            }
-
-            <SortList values={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]} books={savedBooks} />
+            <SortList books={savedBooks} />
         </div>
     </div>);
 }
