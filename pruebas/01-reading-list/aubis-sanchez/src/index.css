@@ -31,3 +31,13 @@ body {
 .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected{
   background-color: rgba(25, 118, 210, 0.2) !important;
 }
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
+  color: white !important
+}
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root input{
+  color: white !important
+}
+
+#combo-box-demo {
+  color: white !important
+}

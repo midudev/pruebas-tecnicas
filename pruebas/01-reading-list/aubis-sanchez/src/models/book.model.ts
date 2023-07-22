@@ -13,3 +13,8 @@ export interface Author {
   name: string;
   otherBooks: string[];
 }
+
+export interface AutocompleteBook {
+  label: string;
+  id: string;
+}

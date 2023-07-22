@@ -8,6 +8,7 @@ import { useBook } from "../zustand/useBooks";
 import { useEffect } from "react";
 import { getBooksBySelectedGenres, getDefaultBooks } from "../utils";
 import { SortingSelector } from "./SortingSelector";
+import SearchFilter from "./SearchFilter";
 
 export const Books = () => {
   const books = useBook((state) => state.books);
@@ -26,6 +27,7 @@ export const Books = () => {
       <Stack direction="row" gap={2}>
         <BooksGenresFilter />
         <SortingSelector />
+        <SearchFilter />
       </Stack>
       <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         {books.map((book: Book) => (

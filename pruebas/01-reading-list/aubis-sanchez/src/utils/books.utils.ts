@@ -1,4 +1,5 @@
 import bookData from "../../../books.json";
+import { convertToAutocompleteData } from "../adapters/autocomplete.adapter";
 import { Book } from "../models";
 import { SortBy } from "../models/sorting.model";
 
@@ -37,4 +38,8 @@ export const orderBooksByPagesNumber = (
     : order === SortBy.asc
     ? books.sort((a, z) => a.pages - z.pages)
     : books;
+};
+
+export const getAutocompleteBooksData = () => {
+  return convertToAutocompleteData(getDefaultBooks());
 };
