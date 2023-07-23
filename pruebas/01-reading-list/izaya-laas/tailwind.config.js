@@ -11,6 +11,17 @@ export default {
 			backgroundImage: {
 				'grated-pattern': "url('public/grated-pattern.gif')",
 			},
+			keyframes: {
+				heightdown: {
+					'0%': { height: '100%' },
+					'33%': { height: '70%' },
+					'66%': { height: '33%' },
+					'100%': { height: '0' },
+				},
+			},
+			animation: {
+				heightdown: 'heightdown 1s ease-in-out',
+			},
 		},
 	},
 	plugins: [],

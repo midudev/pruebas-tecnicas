@@ -1,24 +1,34 @@
 {
-	"name": "izaya-laas",
-	"private": true,
-	"version": "0.0.0",
-	"type": "module",
-	"scripts": {
-		"dev": "vite",
-		"build": "vite build",
-		"preview": "vite preview"
-	},
-	"dependencies": {
-		"@preact/signals": "^1.1.5",
-		"preact": "^10.15.1",
-		"react-wrap-balancer": "^1.0.0",
-		"wouter": "^2.11.0"
-	},
-	"devDependencies": {
-		"@preact/preset-vite": "^2.5.0",
-		"autoprefixer": "^10.4.14",
-		"postcss": "^8.4.26",
-		"tailwindcss": "^3.3.3",
-		"vite": "^4.4.0"
-	}
+  "name": "izaya-laas",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@preact/signals": "1.1.5",
+    "preact": "10.15.1",
+    "wouter": "2.11.0"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "2.5.0",
+    "autoprefixer": "10.4.14",
+    "postcss": "8.4.26",
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.4.1",
+    "tailwindcss": "3.3.3",
+    "vite": "4.4.0",
+    "vitest": "0.33.0"
+  },
+  "prettier": {
+    "plugins": [
+      "prettier-plugin-tailwindcss"
+    ],
+    "singleQuote": true
+  }
 }

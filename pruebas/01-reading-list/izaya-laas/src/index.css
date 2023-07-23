@@ -19,3 +19,18 @@
 	src: url('../public/Handlee.ttf');
 	font-weight: 400;
 }
+
+/* @keyframes heightdown {
+	100% {
+		height: 0%;
+	}
+	66% {
+		height: 66%;
+	}
+	33% {
+		height: 33%;
+	}
+	0% {
+		height: 0;
+	}
+} */
