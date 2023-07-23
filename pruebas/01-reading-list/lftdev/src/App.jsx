@@ -12,9 +12,11 @@ export default function App () {
   // Custom hooks
   const {
     availableBooks,
+    setAvailableBooks,
     addToAvailables,
     removeFromAvailables,
     readingList,
+    setReadingList,
     addToReadingList,
     removeFromReadingList
   } = useBooksList()
@@ -24,7 +26,7 @@ export default function App () {
     setGenresList([...new Set(BooksJSON.library.map(bookObj => bookObj.book.genre))])
   , [])
   // Sync data between tabs
-  /* useEffect(() => {
+  useEffect(() => {
     function handleStorageChange (event) {
       const handlers = {
         availableBooks: () => setAvailableBooks(JSON.parse(event.newValue)),
@@ -34,7 +36,7 @@ export default function App () {
     }
     window.addEventListener('storage', handleStorageChange)
     return () => window.removeEventListener('storage', handleStorageChange)
-  }, []) */
+  }, [])
   return (
     <>
       <h3 className='text-2xl font-bold text-blue-500'>{readingList.length > 0 ? 'Con' : 'Sin'} libros en la lista de lectura</h3>
