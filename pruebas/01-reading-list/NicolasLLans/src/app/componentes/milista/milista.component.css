@@ -118,6 +118,17 @@
       font-family: var(--tipo-principal);
 }
 
+.icono-lista-vacia {
+      display: flex;
+      width: 100%;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: 0 25px;
+      font-family: var(--tipo-principal);
+}
+
 @media (max-width:745px) {
       .mibook .mibook-container {
             flex-direction: column;

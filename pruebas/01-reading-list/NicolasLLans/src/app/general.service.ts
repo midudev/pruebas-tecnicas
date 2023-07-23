@@ -13,6 +13,7 @@ export class GeneralService {
   contador: boolean = false;
   miLista: boolean = false;
   milibro:boolean = false;
+  vacio:boolean = true;
 
   private booksSubject = new Subject<any[]>();
   books$ = this.booksSubject.asObservable();

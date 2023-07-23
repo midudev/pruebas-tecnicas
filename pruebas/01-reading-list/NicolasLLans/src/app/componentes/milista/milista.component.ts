@@ -40,17 +40,26 @@ export class MilistaComponent implements OnInit {
 
   quitarBook(title: string) {
     const localStorageBooks = window.localStorage.getItem('books');
+    
     if (localStorageBooks) {
       const books = JSON.parse(localStorageBooks);
       const updatedBooks = books.filter((item: any) => item.book.title !== title);
+  
+      if (updatedBooks.length === 0) {
+        this.generalService.vacio = true;
+      } else {
+        this.generalService.vacio = false;
+      }
+  
       window.localStorage.setItem('books', JSON.stringify(updatedBooks));
-
+  
       // Actualizar la lista local this.misBooks con la lista actualizada
       this.misBooks = updatedBooks;
-
+  
       this.generalService.updateLocalStorageBooks(updatedBooks);
     }
   }
+  
 
 
   findBookInLocalStorage(title: string): any | null {

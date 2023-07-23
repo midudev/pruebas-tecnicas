@@ -17,6 +17,6 @@
 <app-milista></app-milista>
 <ul class="grilla">
       <li *ngFor="let item of filteredBooks">
-            <img class="tapa" [src]="item.book.cover" width="140px" height="200px" (click)="selectBook(item)">
+            <img class="tapa" [src]="item.book.cover" [alt]="item.book.title" width="140px" height="200px" (click)="selectBook(item)"  style="cursor: pointer;">
       </li>
 </ul>

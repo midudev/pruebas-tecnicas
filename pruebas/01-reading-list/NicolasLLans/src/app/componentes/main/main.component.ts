@@ -89,6 +89,7 @@ export class MainComponent implements OnInit {
     this.misBooks = existingList;
 
     this.generalService.nuevaLista.push(item);
+    this.generalService.vacio = false;
     this.generalService.contador = true;
     this.generalService.miLista = true;
   }
