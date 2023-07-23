@@ -19,7 +19,6 @@ export const FavoriteItem: React.FC<Props> = ({
   currentDragOverItem,
   dragOverIndex
 }) => {
-  const { title, cover } = book
   const { removeFromFavorites, favorites } = useBook()
 
   const handleDrag = (event: React.DragEvent<HTMLLIElement>) => {
@@ -80,8 +79,9 @@ export const FavoriteItem: React.FC<Props> = ({
 					</div>
 				</div>
 			</div>
-			<Image alt={title} src={cover} className="w-1/3 rounded-xl h-full overflow-hidden bg-gray-100 shadow-md" />
+			<Image alt={book.title} src={book.cover} className="w-1/3 rounded-xl h-full overflow-hidden bg-gray-100 shadow-md" />
 			<button
+				role="remove-button"
 				className="cursor-pointer absolute top-[-6px] right-[-6px] w-5 h-5"
 				onClick={handleRemoveFromFavorites}
 			>
