@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 export default function App () {
   // useState hooks
   const [genresList, setGenresList] = useState([])
+  const [selectedGenre, setSelectedGenre] = useState('Todos')
   // Custom hooks
   const {
     availableBooks,
@@ -75,7 +76,7 @@ export default function App () {
               </label>
               <label className='text-md' htmlFor='genre-filter'>
                 <div>Filtrar por género</div>
-                <GenreFilter id='genre-filter' className='bg-black' genres={genresList} />
+                <GenreFilter id='genre-filter' className='bg-black' genres={genresList} onItemClick={setSelectedGenre} />
               </label>
             </form>
           </div>
@@ -83,9 +84,8 @@ export default function App () {
             <BooksList
               className='grid grid-cols-4 place-items-start gap-4'
               list={availableBooks}
-              onItemClick={book => {
-                addToReadList(book)
-              }}
+              onItemClick={addToReadList}
+              filter={selectedGenre}
             />}
         </aside>
         {readList.length > 0 && (
