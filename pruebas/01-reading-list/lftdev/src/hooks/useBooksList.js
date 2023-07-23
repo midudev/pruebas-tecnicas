@@ -1,33 +1,25 @@
-import { useState } from 'react'
+import useLocalStorage from './useLocalStorage'
+import BooksJSON from '../database/books.json'
 
 export default function useBooksList () {
-  const [availableBooks, setAvailableBooks] = useState([])
-  const [readList, setReadList] = useState([])
+  const [availableBooks, setAvailableBooks] = useLocalStorage('availableBooks', BooksJSON.library.map(bookObj => bookObj.book))
+  const [readingList, setReadingList] = useLocalStorage('readingList', [])
 
-  const addToAvailables = (book) => setAvailableBooks(prevList => prevList.toSpliced(prevList.length, 1, book))
+  const addToAvailables = (book) => setAvailableBooks(availableBooks.toSpliced(availableBooks.length, 1, book))
 
-  const removeFromAvailables = (book) => setAvailableBooks(prevList => prevList.filter(item => item !== book))
+  const removeFromAvailables = (book) => setAvailableBooks(availableBooks.filter(item => item !== book))
 
-  function addToReadList (book) {
-    removeFromAvailables(book)
-    setReadList(prevList => prevList.toSpliced(prevList.length, 1, book))
-  }
+  const addToReadingList = (book) => setReadingList(readingList.toSpliced(readingList.length, 1, book))
 
-  function removeFromReadList (index) {
-    setReadList(prevList => {
-      addToAvailables(prevList[index])
-      const newList = prevList.toSpliced(index, 1)
-      return newList
-    })
-  }
+  const removeFromReadingList = book => setReadingList(readingList.filter(item => item !== book))
   return {
     availableBooks,
     setAvailableBooks,
     addToAvailables,
     removeFromAvailables,
-    readList,
-    setReadList,
-    addToReadList,
-    removeFromReadList
+    readingList,
+    setReadingList,
+    addToReadingList,
+    removeFromReadingList
   }
 }
