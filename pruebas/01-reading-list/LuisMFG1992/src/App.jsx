@@ -7,7 +7,7 @@ import { fetchBooks } from './redux/booksSlice'
 
 import DisplayBooks from './Components/DisplayBooks'
 import DropDownFilter from './Components/DropDownFilter'
-import SliderFilter from './Components/SliderFilter'
+// import SliderFilter from './Components/SliderFilter'
 import DisplayFilters from './Components/DisplayFilters'
 import Navbar from './Components/Navbar'
 import Sidebar from './Components/Sidebar'
@@ -43,7 +43,7 @@ function App() {
         <p>Libros disponibles: {booksList.length - readingList.length}</p>
         <p>Lista de lectura: {readingList.length}</p>
         <div className="w-full flex gap-8 p-4 items-center justify-evenly flex-wrap sm:flex-row sm:justify-evenly">
-          <SliderFilter />
+          {/* <SliderFilter /> */}
           <DropDownFilter genres={genres} />
         </div>
         <DisplayFilters selectedFilters={selectedFilters} />

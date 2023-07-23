@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { addBookToReadingList } from '../redux/booksSlice'
+import { addRemoveBookReadingList } from '../redux/booksSlice'
 
 import { AiFillStar } from 'react-icons/ai'
 
@@ -12,7 +12,7 @@ const DisplayBooks = ({ booksList, selectedFilters, readingList }) => {
   }
 
   const addBook = (book) => {
-    dispatch(addBookToReadingList(book))
+    dispatch(addRemoveBookReadingList(book))
   }
 
   const filterBooks = filterBooksByGenre(booksList, selectedFilters)
@@ -25,7 +25,9 @@ const DisplayBooks = ({ booksList, selectedFilters, readingList }) => {
             <img
               src={element.book.cover}
               className="w-[200px] h-[300px]"
-              onClick={() => addBook(element)}
+              onClick={() => {
+                addBook(element)
+              }}
             ></img>
 
             {readingList.some(

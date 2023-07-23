@@ -41,7 +41,7 @@ export const booksSlice = createSlice({
         (genero) => genero !== action.payload
       )
     },
-    addBookToReadingList: (state, action) => {
+    addRemoveBookReadingList: (state, action) => {
       const alreadyInTheList = state.readingList.some(
         (element) => element.book.ISBN === action.payload.book.ISBN
       )
@@ -49,14 +49,12 @@ export const booksSlice = createSlice({
         state.readingList.push(action.payload)
         // toast.success(`Has añadido ${action.payload.book.title} a tu lista.`)
         toast.success(`${action.payload.book.title} añadido a tu lista.`)
+      } else {
+        state.readingList = state.readingList.filter(
+          (element) => element.book.ISBN !== action.payload.book.ISBN
+        )
+        toast.success(`${action.payload.book.title} removido de tu lista.`)
       }
-    },
-    removeBookFromReadingList: (state, action) => {
-      state.readingList = state.readingList.filter(
-        (element) => element.book.ISBN !== action.payload.book.ISBN
-      )
-      // toast.success(`Has removido ${action.payload.book.title} de tu lista.`)
-      toast.success(`${action.payload.book.title} removido de tu lista.`)
     },
   },
 
@@ -79,8 +77,7 @@ export const booksSlice = createSlice({
 export const {
   addDropDownFilter,
   removeDropDownFilter,
-  addBookToReadingList,
-  removeBookFromReadingList,
+  addRemoveBookReadingList,
 } = booksSlice.actions
 
 export default booksSlice.reducer
