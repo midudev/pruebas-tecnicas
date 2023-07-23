@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { longpress } from '$lib/helpers/longPress';
 	import type { Book } from '../types';
 	import Icon from '@iconify/svelte';
 	import { createEventDispatcher } from 'svelte';
@@ -17,7 +18,7 @@
 	export let cta: string;
 </script>
 
-<div class=" flex flex-col overflow-hidden">
+<div class="flex flex-col overflow-hidden" use:longpress on:long>
 	<button class="relative overflow-hidden group rounded-2xl" on:click={goToDetail}>
 		<div class="absolute left-0 top-0 h-16 w-16">
 			<div
@@ -27,7 +28,7 @@
 			</div>
 		</div>
 		<img
-			class="h-[350px] w-full group-hover:scale-125 group-hover:cursor-pointer transition-all ease-in-out delay-75"
+			class={`h-[350px] w-full group-hover:scale-125 transition-all ease-in-out delay-75`}
 			src={book.cover}
 			alt="Cover for {book.title}"
 		/>
