@@ -1,4 +1,4 @@
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
 
 export const useToast = () => {
   const throwSuccessToast = (label: string) => {

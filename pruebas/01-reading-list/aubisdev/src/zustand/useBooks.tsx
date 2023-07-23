@@ -1,7 +1,7 @@
 import { Book } from "../models";
 import { create } from "zustand";
 import { persist, subscribeWithSelector } from "zustand/middleware";
-import { share, isSupported } from "shared-zustand";
+import { share } from "shared-zustand";
 
 export interface BookState {
   userLectureList: Book[];
