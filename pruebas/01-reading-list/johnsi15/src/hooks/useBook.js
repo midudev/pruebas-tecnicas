@@ -8,9 +8,16 @@ export function useBook () {
   const addBook = useBookStore(state => state.addBook)
   const removeBook = useBookStore(state => state.removeBook)
 
+  const getBooksLocalStorage = () => {
+    return {
+      booksLocal: JSON.parse(window.localStorage.getItem('books')),
+      booksListLocal: JSON.parse(window.localStorage.getItem('readingList'))
+    }
+  }
+
   const [genre, setGenres] = useState('All')
-  const [books, setBooks] = useState(JSON.parse(window.localStorage.getItem('books')) || booksStore)
-  const [readingList, setReadingList] = useState(JSON.parse(window.localStorage.getItem('readingList')) || readingListStore)
+  const [books, setBooks] = useState(getBooksLocalStorage().booksLocal || booksStore)
+  const [readingList, setReadingList] = useState(getBooksLocalStorage().booksListLocal || readingListStore)
 
   useEffect(() => {
     if (genre !== 'All') {
@@ -22,8 +29,7 @@ export function useBook () {
   }, [genre, booksStore])
 
   useEffect(() => {
-    let booksListLocal = JSON.parse(window.localStorage.getItem('readingList'))
-    let booksLocal = JSON.parse(window.localStorage.getItem('books'))
+    let { booksListLocal, booksLocal } = getBooksLocalStorage()
 
     if (!booksListLocal && !booksLocal) {
       booksListLocal = readingListStore
