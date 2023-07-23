@@ -20,6 +20,8 @@
     readingListItemUsecase.setStars(index, book)
   }
 
+  console.log(book)
+
   onMount(() => {
     hoveredIndex = book.stars
 

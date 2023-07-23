@@ -12,6 +12,10 @@
 
   beforeUpdate(() => {
     stateUseCase.subscribe(setAppState)
+
+    window.onstorage = function (event) {
+      stateUseCase.updateState(JSON.parse(event.newValue))
+    }
   })
 
   onMount(() => {

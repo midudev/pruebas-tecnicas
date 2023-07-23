@@ -8,6 +8,5 @@ export const appState = writable(stateUseCase.state, () =>
 )
 
 export const setAppState = (state: GlobalState) => {
-  console.log(state, 'svelte state')
   appState.set(state)
 }
