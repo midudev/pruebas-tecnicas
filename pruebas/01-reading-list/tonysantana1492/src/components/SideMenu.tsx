@@ -6,6 +6,7 @@ export const SideMenu = () => {
 
   return (
 		<nav
+			role='nav'
 			onClick={onClose}
 			className="fixed top-0 right-0 backdrop-blur-sm bg-[#6565659e] w-full h-screen flex justify-end"
 		>
