@@ -1,0 +1,23 @@
+h1, h2 {
+  text-align: center;
+}
+
+.cover-img {
+  height: 200px;
+  width: 150px;
+  object-fit: cover;
+}
+
+ul {
+  margin: 3rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.books-container{
+  max-width: 850px;
+  margin: 0 auto;
+}
+

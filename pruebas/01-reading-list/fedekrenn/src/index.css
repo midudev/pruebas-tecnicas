@@ -5,7 +5,15 @@
 }
 
 body {
-  background-color: #0b0727;
-  color: antiquewhite;
-  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  max-width: 100%;
 }
+
+img {
+  max-width: 100%;
+}
+
+li {
+  list-style: none;
+}
+
