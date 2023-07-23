@@ -2,7 +2,6 @@ import { Card, Grid } from "@mui/material";
 import { SectionContainer } from ".";
 import EmptyList from "./EmptyList";
 import { useBook } from "../zustand/useBooks";
-
 import { Book } from "../models";
 import { ReactSortable } from "react-sortablejs";
 import { adaptIdToBook } from "../adapters/book.adapter";
