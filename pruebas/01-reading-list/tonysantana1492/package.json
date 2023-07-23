@@ -9,7 +9,8 @@
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "cypress-open": "npx cypress open"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -25,6 +26,7 @@
     "@typescript-eslint/eslint-plugin": "^5.61.0",
     "@typescript-eslint/parser": "^5.61.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
+    "@vitest/coverage-v8": "^0.33.0",
     "autoprefixer": "^10.4.14",
     "cypress": "12.3.0",
     "eslint": "^8.44.0",
