@@ -11,6 +11,10 @@ const DisplayBooks = ({ booksList, selectedFilters, readingList }) => {
     )
   }
 
+  const addBook = (book) => {
+    dispatch(addBookToReadingList(book))
+  }
+
   const filterBooks = filterBooksByGenre(booksList, selectedFilters)
 
   return (
@@ -21,7 +25,7 @@ const DisplayBooks = ({ booksList, selectedFilters, readingList }) => {
             <img
               src={element.book.cover}
               className="w-[200px] h-[300px]"
-              onClick={() => dispatch(addBookToReadingList(element))}
+              onClick={() => addBook(element)}
             ></img>
 
             {readingList.some(

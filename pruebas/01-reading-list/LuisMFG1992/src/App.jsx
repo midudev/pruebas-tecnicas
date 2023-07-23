@@ -32,12 +32,14 @@ function App() {
   }
 
   return (
-    <div className="w-full  bg-[#202124] flex-col justify-center items-center min-h-screen">
+    <div className="w-full bg-[#202124] flex-col justify-center items-center min-h-screen">
       {isSidebarOpen && (
-        <Sidebar handelSidabar={handelSidabar} readingList={readingList} />
+        <div className="absolute top-0">
+          <Sidebar handelSidabar={handelSidabar} readingList={readingList} />
+        </div>
       )}
       <Navbar handelSidabar={handelSidabar} readingList={readingList} />
-      <div className="w-full px-5 pt-10 sm:px-0 max-w-[2000px] min-h-screen flex items-center flex-col">
+      <div className="w-full px-5 pt-20 sm:px-0 max-w-[2000px] min-h-screen flex items-center flex-col">
         <p>Libros disponibles: {booksList.length - readingList.length}</p>
         <p>Lista de lectura: {readingList.length}</p>
         <div className="w-full flex gap-8 p-4 items-center justify-evenly flex-wrap sm:flex-row sm:justify-evenly">
