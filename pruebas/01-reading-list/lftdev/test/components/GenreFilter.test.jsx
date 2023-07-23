@@ -5,7 +5,6 @@ import BooksJSON from '../books.json'
 
 const genres = [...new Set(BooksJSON.library.map(bookObj => bookObj.book.genre))]
 describe('GenreFilter', () => {
-  // ⚠️ Unnecessary tests will be left as a comment in order to leave them open for review.
   afterEach(cleanup)
   it('should render correctly;', () => render(<GenreFilter />))
   it('should render a combobox;', () => {

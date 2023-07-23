@@ -6,7 +6,6 @@ import BooksJSON from '../books.json'
 // Example book
 const book = BooksJSON.library[0].book
 describe('BookItem', () => {
-  // ⚠️ Unnecessary tests will be left as a comment in order to leave them open for review.
   afterEach(cleanup)
   it('should render correctly;', () => render(<BookItem book={book} />))
   it('should render an img;', () => {

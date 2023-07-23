@@ -64,8 +64,8 @@ export default function App () {
   return (
     <>
       <h3 className='text-2xl font-bold text-blue-500'>{readList.length > 0 ? 'Con' : 'Sin'} libros en la lista de lectura</h3>
-      <main className='grid [grid-template-columns:2fr_1fr] border border-white rounded-md pt-10 px-12'>
-        <aside className='flex flex-col gap-5' role='presentation'>
+      <div className='grid [grid-template-columns:2fr_1fr] border border-white rounded-md pt-10 px-12'>
+        <main className='flex flex-col gap-5'>
           <div className='flex flex-col gap-4'>
             <h1 className='text-4xl font-bold'>{availableBooks.length} libros disponibles</h1>
             {readList.length > 0 && <p className='text-lg'>{readList.length} en la lista de lectura</p>}
@@ -87,14 +87,14 @@ export default function App () {
               onItemClick={addToReadList}
               filter={selectedGenre}
             />}
-        </aside>
+        </main>
         {readList.length > 0 && (
           <aside className='sticky top-0 max-h-screen overflow-y-auto bg-[#040412] rounded-lg p-8' role='region'>
             <h2 className='text-3xl font-bold'>Lista de lectura</h2>
             <BooksList className='grid grid-cols-2 place-items-start gap-4' list={readList} removableItems onRemoveRequest={removeFromReadList} />
           </aside>
         )}
-      </main>
+      </div>
     </>
   )
 }

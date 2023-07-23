@@ -5,7 +5,6 @@ import BooksJSON from '../books.json'
 
 const list = BooksJSON.library.map(bookObj => bookObj.book)
 describe('BooksList', () => {
-  // ⚠️ Unnecessary tests will be left as a comment in order to leave them open for review.
   afterEach(cleanup)
   it('should render correctly;', () => render(<BooksList list={list} />))
   it('should render an ul;', () => {

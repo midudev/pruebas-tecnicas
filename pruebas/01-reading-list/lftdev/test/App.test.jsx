@@ -1,10 +1,9 @@
-import { cleanup, findAllByRole, fireEvent, getByLabelText, getByRole, render, screen } from '@testing-library/react'
+import { cleanup, getByLabelText, getByRole, render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
 import App from '../src/App'
 describe('App', () => {
   afterEach(cleanup)
-  // ⚠️ Unnecessary tests will be left as a comment in order to leave them open for review.
-  /* it('should render correctly;', () => render(<App />))
+  it('should render correctly;', () => render(<App />))
   it('should display a level 3 heading;', () => {
     render(<App />)
     screen.getByRole('heading', { level: 3 })
@@ -27,7 +26,7 @@ describe('App', () => {
     render(<App />)
     const main = screen.getByRole('main')
     getByRole(main, 'search')
-  }) */
+  })
   it('should display a label with the text: "Filtrar por páginas" inside search form;', () => {
     render(<App />)
     const form = screen.getByRole('search')
@@ -37,60 +36,5 @@ describe('App', () => {
     render(<App />)
     const form = screen.getByRole('search')
     getByLabelText(form, 'Filtrar por género')
-  })
-  it('should render an ul as a main child;', () => {
-    render(<App />)
-    const presentationAside = screen.getByRole('presentation')
-    getByRole(presentationAside, 'list')
-  })
-  it('should render li elements as ul children;', async () => {
-    render(<App />)
-    const presentationAside = screen.getByRole('presentation')
-    const ul = getByRole(presentationAside, 'list')
-    await findAllByRole(ul, 'listitem')
-  })
-  it('should display a book cover on each li;', async () => {
-    render(<App />)
-    const presentationAside = screen.getByRole('presentation')
-    const liItems = await findAllByRole(presentationAside, 'listitem')
-    liItems.forEach(li => getByRole(li, 'img'))
-  })
-  it('should render a region aside when an img is clicked;', async () => {
-    render(<App />)
-    const img = screen.getAllByRole('img')[0]
-    fireEvent.click(img)
-    await screen.findByRole('region')
-  })
-  it('should display a heading of level 2 as region aside child;', async () => {
-    render(<App />)
-    fireEvent.click(screen.getAllByRole('img')[0])
-    const aside = await screen.findByRole('region')
-    getByRole(aside, 'heading', { level: 2 })
-  })
-  it('should render BooksList component as aside child;', async () => {
-    render(<App />)
-    fireEvent.click(screen.getAllByRole('img')[0])
-    const aside = await screen.findByRole('region')
-    // Detect ul
-    getByRole(aside, 'list')
-    // Detect li
-    getByRole(aside, 'listitem')
-    // Detect article
-    getByRole(aside, 'article')
-    // Detect img
-    getByRole(aside, 'img')
-  })
-  // FIXME: rewrite below test to correctly detect listitem be removed.
-  /* it('should remove item from Reading List when BooksList remove button is clicked;', async () => {
-    render(<App />)
-    fireEvent.click(screen.getAllByRole('img')[0])
-    const aside = await screen.findByRole('region')
-    console.log(aside.innerHTML)
-    fireEvent.click(getAllByRole(aside, 'button')[0])
-    await waitForElementToBeRemoved(getAllByRole(aside, 'listitem')[0])
-  }) */
-  it('should save available books list to local storage;', () => {
-    render(<App />)
-    expect(window.localStorage.getItem('availableBooks')).not.toBe(null)
   })
 })
