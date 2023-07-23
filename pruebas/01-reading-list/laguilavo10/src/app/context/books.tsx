@@ -1,12 +1,12 @@
 'use client'
 import {
-  PropsWithChildren,
+  type PropsWithChildren,
   createContext,
   useContext,
   useEffect,
   useReducer
 } from 'react'
-import { library } from '../utils/books'
+import { library } from '../utils/data-books'
 import type { Book, Books } from '../types'
 import { Action, reducer } from '../utils/reducer'
 
@@ -44,7 +44,7 @@ export const DEFAULT_VALUE: Reducer = {
 const BookLandContext = createContext<Reducer>(DEFAULT_VALUE)
 
 export function CategoryProvider({ children }: PropsWithChildren) {
-  const [state, dispatch] = useReducer(reducer, DEFAULT_VALUE.state)
+  const [state, dispatch] = useReducer(reducer, DEFAULT_VALUE_STATE())
   useEffect(() => {
     const refreshTabs = (evt: StorageEvent) => {
       if (evt.key !== 'books') return

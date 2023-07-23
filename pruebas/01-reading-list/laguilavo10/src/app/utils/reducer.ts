@@ -24,10 +24,8 @@ export const reducer = (state: BooksContext, action: Action): BooksContext => {
     localStorage.getItem('books') as string
   )
   const updateList = (array: Book[]) => {
-    if (!Array.isArray(payload)) return []
     return array.filter((b) => b.ISBN !== (payload as Book).ISBN)
   }
-
   switch (type) {
     case 'AddToReadingList': {
       const alreadyIn = readingList.some((book) => book.ISBN === payload.ISBN)

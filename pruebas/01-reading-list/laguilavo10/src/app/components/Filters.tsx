@@ -1,5 +1,5 @@
 'use client'
-import { library } from '../utils/books'
+import { library } from '../utils/data-books'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import { useBooks } from '../context/books'
 
@@ -14,7 +14,7 @@ export default function Filters() {
     })
   }
   return (
-    <section className='relative mb-10 flex w-full items-center justify-center gap-5 flex-col'>
+    <section className='relative mb-10 flex w-full flex-col items-center justify-center gap-5'>
       <label className='flex items-center gap-4 rounded-lg border-2 border-slate-800 bg-white bg-opacity-90 p-2'>
         <MagnifyingGlassIcon className='h-6 w-6  stroke-black' />
         <input
@@ -26,7 +26,7 @@ export default function Filters() {
       </label>
       <select
         name='select'
-        className='md:absolute right-5 flex w-min flex-col items-center rounded-md px-4 py-3 text-black'
+        className='right-5 flex w-min flex-col items-center rounded-md px-4 py-3 text-black md:absolute'
         onChange={(e) => {
           dispatch({
             type: 'FilterByGenre',

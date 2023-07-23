@@ -6,9 +6,10 @@ interface Props {
   isShowingReadList: Boolean
 }
 export default function BookList({ isShowingReadList }: Props) {
-  // const [isShowingReadList, setIsShowingReadList] = useState<boolean>(true)
   const { state } = useBooks()
-  const { length } = state.bookList
+  if (typeof state === 'undefined') return
+  console.log(state)
+  const { length } = state?.bookList
   return (
     <section
       className={`${
