@@ -1,0 +1,44 @@
+.bookcard-wrapper {
+  margin: 5px;
+  max-width: 250px;
+  height: 400px;
+  min-height: auto;
+  border-radius: 5%;
+
+  .bookcard-img {
+    position: relative;
+    width: 100%;
+    height: 85%;
+    display: block;
+    border-radius: 5%;
+    object-fit: cover;
+    cursor: pointer;
+
+    &:hover {
+      object-fit: none;
+    }
+  }
+
+  .bookcard-img-hover {
+    position: absolute;
+    object-fit: none;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 5%;
+
+    color: white;
+  }
+
+  .bookcard-img-click {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 5%;
+
+    color: white;
+  }
+}
