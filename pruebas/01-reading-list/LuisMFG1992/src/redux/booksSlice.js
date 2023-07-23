@@ -27,7 +27,9 @@ export const booksSlice = createSlice({
     booksList: [],
     genres: [],
     selectedFilters: [],
-    readingList: [],
+    readingList: localStorage.getItem('readingList')
+      ? JSON.parse(localStorage.getItem('readingList'))
+      : [],
   },
 
   reducers: {
@@ -55,6 +57,7 @@ export const booksSlice = createSlice({
         )
         toast.success(`${action.payload.book.title} removido de tu lista.`)
       }
+      localStorage.setItem('readingList', JSON.stringify(state.readingList))
     },
   },
 

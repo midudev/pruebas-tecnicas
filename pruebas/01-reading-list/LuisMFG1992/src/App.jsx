@@ -7,10 +7,10 @@ import { fetchBooks } from './redux/booksSlice'
 
 import DisplayBooks from './Components/DisplayBooks'
 import DropDownFilter from './Components/DropDownFilter'
-// import SliderFilter from './Components/SliderFilter'
 import DisplayFilters from './Components/DisplayFilters'
 import Navbar from './Components/Navbar'
 import Sidebar from './Components/Sidebar'
+// import SliderFilter from './Components/SliderFilter'
 
 function App() {
   const dispatch = useDispatch()
