@@ -1,0 +1,28 @@
+
+.Books-filters {
+
+    display: flex;
+    align-items: end;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    padding: 15px 20px;
+}
+
+.Books-filters .custom-form-range {
+    margin: 6px 0;
+}
+
+#Accordion-filters {
+
+    --bs-accordion-border-width: 0;
+    --bs-accordion-body-padding-x: 0;
+    --bs-accordion-body-padding-y: 0;
+    --bs-accordion-active-bg: transparent;
+    --bs-accordion-btn-focus-border-color: transparent;
+    --bs-accordion-btn-focus-box-shadow: initial;
+    --bs-accordion-inner-border-radius: 0;
+    --bs-accordion-border-radius: 0;
+    --bs-accordion-btn-padding-x: 0; 
+    --bs-accordion-btn-padding-y: 0;
+}

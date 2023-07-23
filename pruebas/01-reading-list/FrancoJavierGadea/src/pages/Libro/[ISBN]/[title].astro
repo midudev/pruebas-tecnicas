@@ -1,5 +1,6 @@
 ---
 import RootLayout from '../../../layouts/RootLayout.astro';
+import Footer from '../../../components/Footer.astro';
 import {getBooksByISBN} from '../../../data/books.js';
 
 const { ISBN, title } = Astro.params;
@@ -70,6 +71,8 @@ linkToGenre.searchParams.set('genre', book.genre);
         </div>
 
     </div>
+
+    <Footer />
     
 </RootLayout>
 

@@ -1,0 +1,51 @@
+---
+
+const CONTACT = {
+    name: 'Fraco Javier Alvarez',
+    linkedin: 'https://www.linkedin.com/in/franco-javier-alvarez/',
+    github: 'https://github.com/midudev/pruebas-tecnicas/pull/75'
+}
+---
+
+
+<footer>
+
+    <div class="footer-content">
+
+        <p>
+            Hecho con <i class="bi bi-suit-heart-fill"/> por:
+            <strong>
+                <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer">{CONTACT.name}</a>
+            </strong>
+        </p>
+
+        <a href={CONTACT.github} target="_blank" rel="noopener noreferrer">
+            <i class="bi bi-github" />
+            <span class="">Github</span>
+        </a>
+    </div>
+
+</footer>
+
+<style>
+
+    footer {
+
+        padding-top: 30px;
+        padding-bottom: 15px;
+        background-color: var(--bs-tertiary-bg);
+        border-radius: 5px 5px 0 0;
+    }
+    footer .footer-content {
+        width: fit-content;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    footer a {
+        text-decoration: none;
+    }
+
+</style>

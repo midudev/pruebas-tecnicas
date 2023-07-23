@@ -2,6 +2,7 @@
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import CustomOffcanvas from "../components/react/CustomOffcanvas/CustomOffcanvas.jsx"
+import Footer from "../components/Footer.astro";
 
 const { title } = Astro.props;
 
@@ -47,6 +48,8 @@ const isLibrosPage = Astro.url.pathname.startsWith('/Libros');
 
 		</main>
 		
+		<Footer />
+
 	</body>
 </html>
 

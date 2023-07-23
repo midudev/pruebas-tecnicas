@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Accordion } from "react-bootstrap";
 import { getAllGenres } from "../../../data/books.js";
 
-import styles from "./BooksFilter.module.css";
+import "./BooksFilter.css";
 
 
 function BooksFilters(props) {
@@ -12,40 +12,52 @@ function BooksFilters(props) {
     const [genre, setGenre] = useState(props.genre || 'Todos');
 
 
-    return (<Form className={styles['Books-filters']} method="get" action={props.path} >
+    return (<Accordion id="Accordion-filters">
 
-        <Form.Group className="me-3">
+        <Accordion.Item eventKey="0">
+            <Accordion.Header className="pt-3 pb-2 border-bottom">
+                <h3> <i className="bi bi-funnel-fill" /> Filtros</h3>
+            </Accordion.Header>
 
-            <Form.Label>Paginas: {pages}</Form.Label>
+            <Accordion.Body>
 
-            <Form.Range className={styles['custom-form-range']} min={50} max={1000} step={10} value={pages} name="pages" 
-            
-                onChange={(e) => setPages(Number(e.currentTarget.value))}
-            />
+                <Form className="Books-filters" method="get" action={props.path} >
 
-        </Form.Group>
-  
-        <Form.Group className="me-3">
+                    <Form.Group className="flex-grow-1 flex-md-grow-0">
 
-            <Form.Label>Generos</Form.Label>
+                        <Form.Label>Paginas: {pages}</Form.Label>
 
-            <Form.Select value={genre} name="genre"
-            
-                onChange={(e) => setGenre(e.currentTarget.value)}
-            > 
+                        <Form.Range className="custom-form-range" min={50} max={1000} step={10} value={pages} name="pages"
 
-                <option value={'Todos'}>Todos</option>
-                {
-                    getAllGenres().map(value => {
+                            onChange={(e) => setPages(Number(e.currentTarget.value))}
+                        />
 
-                        return <option value={value} key={value}>{value}</option>
-                    })
-                }
-            </Form.Select>
-        </Form.Group>
+                    </Form.Group>
 
-        <Button variant="primary" type="submit">Aplicar</Button>
-    </Form>);
+                    <Form.Group className="flex-grow-1 flex-md-grow-0">
+
+                        <Form.Label>Generos</Form.Label>
+
+                        <Form.Select value={genre} name="genre"
+
+                            onChange={(e) => setGenre(e.currentTarget.value)}
+                        >
+                            <option value={'Todos'}>Todos</option>
+                            {
+                                getAllGenres().map(value => {
+
+                                    return <option value={value} key={value}>{value}</option>
+                                })
+                            }
+                        </Form.Select>
+                    </Form.Group>
+
+                    <Button className="flex-grow-1 flex-md-grow-0" variant="primary" type="submit">Aplicar</Button>
+                </Form>
+
+            </Accordion.Body>
+        </Accordion.Item>
+    </Accordion>);
 }
 
 export default BooksFilters;
