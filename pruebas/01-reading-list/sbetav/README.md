@@ -1,8 +1,8 @@
 <h1 align="center">Reading List</h1>
 
-[![Portfolio Vue][product-screenshot]](https://sbetav.me)
+[![Portfolio Vue][product-screenshot]](https://reading-list-ten.vercel.app/)
 
-<a align="center" href="https://sbetav.me" target="_blank">View Demo</a>
+<a align="center" href="https://reading-list-ten.vercel.app/" target="_blank">View Demo</a>
 
 ### Built With
 
@@ -27,12 +27,10 @@ npm run dev
 npm run test
 ```
 
-
 ### Contact
 
-Santiago Betancur - santibeta82@gmail.com
-
-Project Link: [https://github.com/sbetav/vue-portfolio](https://github.com/sbetav/vue-portfolio)
+Santiago Betancur - santibeta82@gmail.com - [sbetav.me](https://sbetav.me/)
+Project Link: [https://github.com/sbetav/pruebas-tecnicas/tree/main/pruebas/01-reading-list/sbetav](https://github.com/sbetav/pruebas-tecnicas/tree/main/pruebas/01-reading-list/sbetav)
 
 ### Acknowledgments
 
