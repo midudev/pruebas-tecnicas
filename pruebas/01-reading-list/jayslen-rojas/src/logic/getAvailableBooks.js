@@ -1,6 +1,6 @@
-export const availableBook = ({ allBooks, booksInList, books }) => {
+export const availableBook = ({ allBooks, booksInList }) => {
   let amountOfBooks
-  if (books.length === 0) {
+  if (allBooks.length === 0) {
     amountOfBooks = 0
   } else if (allBooks.length === 13) {
     amountOfBooks = allBooks.length - booksInList.length
