@@ -67,11 +67,12 @@ export default component$(() => {
 })
 
 export const head: DocumentHead = {
-  title: "Welcome to Qwik",
+  title: "Books Library",
   meta: [
     {
       name: "description",
-      content: "Qwik site description"
+      content:
+        "A book library to keep track of your reading list, filter and sort books, and save them locally."
     }
   ]
 }
