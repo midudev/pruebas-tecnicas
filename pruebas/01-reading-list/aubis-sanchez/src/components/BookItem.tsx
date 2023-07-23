@@ -12,14 +12,13 @@ import { useBook } from "../zustand/useBooks";
 interface Props {
   book: Book;
   lectureBook?: boolean;
+  priority?: number;
 }
 
-export const BookItem = ({ book, lectureBook }: Props) => {
+export const BookItem = ({ book, lectureBook, priority }: Props) => {
   const addToLectureList = useBook((state) => state.addToLectureList);
   const removeFromLectureList = useBook((state) => state.removeFromLectureList);
   const userLectureList = useBook((state) => state.userLectureList);
-  // const findBookOnLecture = useBook((state) => state.findBookOnLecture);
-
   const disableBtn =
     !lectureBook &&
     userLectureList.find((storageBook) => storageBook.ISBN === book.ISBN);
@@ -67,6 +66,16 @@ export const BookItem = ({ book, lectureBook }: Props) => {
           {lectureBook ? "Remove book" : "Add to lecture List"}
         </Button>
       </CardActions>
+      <Typography
+        variant="caption"
+        color="GrayText"
+        fontWeight="bold"
+        display="flex"
+        justifyContent="center"
+        py={1}
+      >
+        Priority: {typeof priority === "number" ? priority + 1 : ""}
+      </Typography>
     </Card>
   );
 };

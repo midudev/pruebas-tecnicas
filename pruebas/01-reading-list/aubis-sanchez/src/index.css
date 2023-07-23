@@ -38,6 +38,12 @@ body {
   color: white !important
 }
 
-#combo-box-demo {
+#search-bar {
   color: white !important
+}
+
+.card{
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
 }

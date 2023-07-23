@@ -15,6 +15,8 @@ export const SectionContainer = ({ children }: PropsWithChildren) => {
       m="auto"
       p={2}
       mb={4}
+      display="flex"
+      flexWrap="wrap"
     >
       {children}
     </Box>

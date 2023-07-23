@@ -11,6 +11,7 @@ export interface BookState {
   addToLectureList: (book: Book) => void;
   setSelectedGenres: (genres: string[]) => void;
   removeFromLectureList: (bookToRemoveISBN: string) => void;
+  setUserLectureList: (userLectureList: Book[]) => void;
   //findBookOnLecture: (bookISBN: string) => boolean;
 }
 
@@ -23,6 +24,10 @@ export const useBook = create<BookState>()(
       setBooks: (newAvailableBooksState: Book[]) =>
         set(() => ({
           books: newAvailableBooksState,
+        })),
+      setUserLectureList: (newLectureList: Book[]) =>
+        set(() => ({
+          userLectureList: newLectureList,
         })),
       addToLectureList: (newBook: Book) =>
         set((state) => ({

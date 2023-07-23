@@ -6,7 +6,7 @@ export default function SearchFilter() {
   return (
     <Autocomplete
       disablePortal
-      id="combo-box-demo"
+      id="search-bar"
       options={getAutocompleteBooksData()}
       sx={{
         width: 300,
