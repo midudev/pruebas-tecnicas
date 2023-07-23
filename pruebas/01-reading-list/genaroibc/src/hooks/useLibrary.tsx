@@ -9,8 +9,15 @@ type BCBooksUpdateMessage = {
   type: "removeBookFromReadingList" | "addBookToReadingList"
   payload: { bookISBN: string }
 }
+type BCGenreUpdateMessage = {
+  type: "updateGenre"
+  payload: { genre: Genre }
+}
 
-type BCMessage = BCBooksUpdateMessage | BCFiltersUpdateMessage
+type BCMessage =
+  | BCBooksUpdateMessage
+  | BCFiltersUpdateMessage
+  | BCGenreUpdateMessage
 
 type Params = {
   initialBooks: Book[]
@@ -30,14 +37,23 @@ export const useLibrary = ({ initialBooks, initialReadingList }: Params) => {
 
       if (message === "removeBookFromReadingList") {
         removeBookFromReadingList(payload.bookISBN)
+        return
       }
 
       if (message === "addBookToReadingList") {
         addBookToReadingList(payload.bookISBN)
+        return
       }
 
       if (message === "sortBooks") {
         updateFilter(payload.filter)
+        return
+      }
+
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+      if (message === "updateGenre") {
+        updateGenre(payload.genre)
+        return
       }
     }
   )
@@ -120,7 +136,15 @@ export const useLibrary = ({ initialBooks, initialReadingList }: Params) => {
   })
 
   const updateGenre = $((genre: Genre) => {
+    if (genre === currentGenre.value) return
     currentGenre.value = genre
+
+    sendMessage({
+      type: "updateGenre",
+      payload: {
+        genre: currentGenre.value
+      }
+    })
   })
 
   return {
