@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.1.4",
+    "@formkit/auto-animate": "^0.7.0",
     "antd": "^5.7.0",
+    "darkmode-js": "^1.5.7",
     "jest": "^29.6.1",
     "local-storage": "^2.0.0",
     "picocolors": "^1.0.0",

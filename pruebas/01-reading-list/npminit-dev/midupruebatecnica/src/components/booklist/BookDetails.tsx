@@ -2,6 +2,7 @@ import { Col, Divider, Dropdown, List, Row, Space } from "antd";
 import Typography from "antd/es/typography";
 import { Book } from "../../types/books";
 import { useEffect, useState } from "react";
+import '../../styles/global-variables.css'
 
 const { Text } = Typography
 

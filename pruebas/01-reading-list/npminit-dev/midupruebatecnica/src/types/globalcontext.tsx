@@ -9,5 +9,15 @@ export interface GlobalContextType {
   readList: InterestBook[] | null,
   dispatchRl: Dispatch<ReducerAction<Reducer<InterestBook[], any>>>,
   resetBookList: Function,
-  messageApi: MessageInstance | null
+  messageApi: MessageInstance | null,
+  wWidth: number,
+  colorMode: ColorMode
+  setColorMode: Dispatch<SetStateAction<ColorMode>>
 }
+
+export interface RlAction {
+  type: string,
+  payload: any
+}
+
+export type ColorMode = 'light' | 'dark'

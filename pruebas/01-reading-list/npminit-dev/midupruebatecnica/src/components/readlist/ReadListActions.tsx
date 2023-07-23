@@ -6,6 +6,7 @@ import { DeleteOutlined, ReadFilled, RightOutlined, WarningOutlined } from "@ant
 import { MdPending } from 'react-icons/md'
 import { IoMdCheckmarkCircle } from 'react-icons/io'
 import { GlobalContextType } from "../../types/globalcontext"
+import '../../styles/global-variables.css'
 
 const { Text } = Typography
 

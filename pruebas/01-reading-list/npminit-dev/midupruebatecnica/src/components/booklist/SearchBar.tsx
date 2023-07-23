@@ -3,6 +3,7 @@ import { FieldValues, FormProps, Mode, SubmitHandler, useForm } from 'react-hook
 import { FormEvent, useContext, useRef } from 'react'
 import { Book } from '../../types/books'
 import { GlobalContext } from '../../contexts/GlobalContext'
+import '../../styles/global-variables.css'
 
 export default function SearchBar(): JSX.Element {
 

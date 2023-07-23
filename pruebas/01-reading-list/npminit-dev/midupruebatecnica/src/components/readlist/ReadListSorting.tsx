@@ -2,6 +2,7 @@ import { Segmented, Space } from "antd"
 import { Typography } from "antd";
 import { useContext } from 'react';
 import { GlobalContext } from "../../contexts/GlobalContext";
+import '../../styles/global-variables.css'
 const { Text } = Typography
 
 export default function ReadListSorting(): JSX.Element {

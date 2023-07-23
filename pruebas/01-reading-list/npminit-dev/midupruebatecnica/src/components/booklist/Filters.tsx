@@ -5,6 +5,7 @@ import { GlobalContext, getBooksArray } from "../../contexts/GlobalContext";
 import GenreFilter from "./GenreFilter";
 import PagesNumFilter from "./PagesNumFilter";
 import data from '../../files/books'
+import '../../styles/global-variables.css'
 
 export default function Filters(): JSX.Element {
 

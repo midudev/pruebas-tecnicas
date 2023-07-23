@@ -2,6 +2,7 @@ import { Select } from "antd";
 import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { Book } from "../../types/books";
+import '../../styles/global-variables.css'
 
 type props = {
   setGenre: Dispatch<SetStateAction<string>>,

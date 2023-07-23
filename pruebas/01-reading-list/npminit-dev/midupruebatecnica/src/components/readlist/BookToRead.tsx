@@ -10,6 +10,7 @@ import { AiFillDelete } from 'react-icons/ai'
 import { CheckCircleFilled, CheckCircleOutlined, CloseCircleFilled, CreditCardFilled, DeleteFilled, ReadFilled } from "@ant-design/icons";
 import { Typography } from 'antd'
 const { Text } = Typography
+import '../../styles/global-variables.css'
 
 interface props {
   ISBN: string, 

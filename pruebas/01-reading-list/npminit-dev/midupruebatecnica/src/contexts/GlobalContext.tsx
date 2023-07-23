@@ -2,7 +2,7 @@ import React, { useState, useEffect, createContext, useReducer, Reducer, Dispatc
 import { Book, Library } from "../types/books.tsx";
 import data from '../files/books.tsx'
 import { InterestBook } from "../types/interestbook.tsx";
-import { GlobalContextType } from "../types/globalcontext.tsx";
+import { ColorMode, GlobalContextType, RlAction } from "../types/globalcontext.tsx";
 import * as ls from "local-storage";
 import { message } from "antd";
 
@@ -12,7 +12,10 @@ const defValues: GlobalContextType = {
   readList: [],
   dispatchRl: (): null => null,
   resetBookList: (): null => null,
-  messageApi: null
+  messageApi: null,
+  wWidth: innerWidth,
+  colorMode: 'light',
+  setColorMode: (): null => null
 }
 
 export const getBooksArray = (lib: Library): Book[] => lib.library.map(elem => elem.book)
@@ -21,9 +24,12 @@ export const GlobalContext = createContext<GlobalContextType>(defValues)
 
 export default function GlobalContextProvider({ children }: any): JSX.Element {
 
+  const [ wWidth, setWWidth ] = useState<number>(window.innerWidth)
   const [ bookList, setBookList ] = useState<Book[]>(getBooksArray(data));
+  const [ colorMode, setColorMode ] = useState<ColorMode>('dark')
   const [ readList, dispatchRl ] = useReducer(RlReducer, [])
   const [ messageApi, contextHolder ] = message.useMessage();
+
 
   const resetBookList = () => setBookList(getBooksArray(data));
   
@@ -36,14 +42,20 @@ export default function GlobalContextProvider({ children }: any): JSX.Element {
     newvalue !== old && dispatchRl({ type: 'set', payload: newvalue })
   })
 
+  onresize = () => setWWidth(innerWidth)
+
   return (
-    <GlobalContext.Provider value={{
+    <GlobalContext.Provider 
+      value={{
         bookList,
         setBookList,
         readList,
         dispatchRl,
         resetBookList,
-        messageApi
+        messageApi,
+        wWidth,
+        colorMode, 
+        setColorMode
       }}>
       { contextHolder }
       { children }
@@ -107,7 +119,4 @@ const RlReducer: Reducer<InterestBook[], RlAction> = (state: InterestBook[], act
   }
 }
 
-interface RlAction {
-  type: string,
-  payload: any
-}
+

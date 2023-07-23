@@ -1,6 +1,7 @@
 import { Button, Col, Divider, InputNumber, Row, Slider, Space } from "antd";
 import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
+import '../../styles/global-variables.css'
 
 type props = {
   setPagesRange: Dispatch<SetStateAction<number[]>>

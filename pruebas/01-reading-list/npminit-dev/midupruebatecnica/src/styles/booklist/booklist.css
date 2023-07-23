@@ -1,0 +1,29 @@
+/*  */
+.BL_row {
+  padding: 5px 0;
+}
+
+#BL_control {
+  padding: 0 10px 0 5px;
+  margin: 5px 0;
+}
+
+#BL_container {
+
+}
+
+/* lazy load styles */
+.LazyLoad {
+  opacity: 0;
+  filter: grayscale(1);
+  transition: all .5s ease-out;
+  min-height: 50vh;
+  height: 100%;
+}
+
+.is-visible {
+  opacity: 1;
+  filter: grayscale(0);
+}
+
+

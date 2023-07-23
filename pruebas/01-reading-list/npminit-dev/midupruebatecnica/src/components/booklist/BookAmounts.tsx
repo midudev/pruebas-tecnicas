@@ -1,6 +1,7 @@
 import { Col, Divider, Row, Space, Statistic } from "antd";
 import { useContext } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
+import '../../styles/global-variables.css'
 
 export default function BookAmount(): JSX.Element {
 

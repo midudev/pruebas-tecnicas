@@ -1,0 +1,24 @@
+:root{
+  /* darkmode colors */
+  --dark-background-1: #131629;
+  --dark-background-2: #161d40;
+  --dark-background-3: #1c2755;
+  --dark-background-4: #203175;
+  --dark-background-5: #263ea0;
+  --dark-background-6: #2b4acb;
+  --dark-ok-2: #306317;
+  --dark-ok-1: #3c8618;
+  --dark-ok-3: #6abe39;
+  --dark-ok-4: #8fd460;
+  --dark-pending-1: #146262;
+  --dark-pending-2: #138585;
+  --dark-pending-3: #13a8a8;
+  --dark-danger-1: #791a1f;
+  --dark-danger-2: #a61d24;
+  --dark-danger-3: #d32029;
+  --dark-font-1: #e2e9f8;
+  --dark-font-2: #f0f2f6;
+  --dark-font-3: #fbfcff;
+  --dark-font-4: #fefeff;
+}
+

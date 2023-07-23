@@ -1,19 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SectionSelected } from '../types/navigation';
 import { Menu } from "antd";
 import BookList from "./booklist/BookList";
 import ReadList from "./readlist/ReadList";
 import About from "./about/About";
 import { MenuItemType } from "antd/es/menu/hooks/useItems";
+import Logo from "./Logo";
+import '../styles/navigation.css'
+import '../styles/global-variables.css'
 
 
 export default function Navigation(): JSX.Element {
 
-  const [ itemSelected, setItemSelected ] = useState(1);
+  const [ itemSelected, setItemSelected ] = useState<number>(1);
+
+  useEffect(() => {
+    switch(itemSelected) {
+      case 1:
+        document.title = 'BookNexus - Books'
+        break;
+      case 2:
+        document.title = 'BookNexus - Read List'
+        break;
+      case 3:
+        document.title = 'BookNexus - About'
+        break;
+      default: document.title = 'BookNexus'
+    }
+  }, [itemSelected])
 
   const onClick = (e: any) => {
-    console.log(e.key)
-    setItemSelected(e.key);
+    setItemSelected(parseInt(e.key));
   }
   
   const items: MenuItemType[] = [
@@ -40,7 +57,8 @@ export default function Navigation(): JSX.Element {
         onClick={onClick}
       >
       </Menu> 
-      <main>
+      <Logo></Logo>
+      <main id="content">
       { 
         itemSelected == 1 
         ? <BookList setItemSelected={setItemSelected}></BookList> : 

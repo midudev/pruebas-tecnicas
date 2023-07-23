@@ -4,13 +4,14 @@ import { Space, Switch } from "antd";
 import { Book } from "../../types/books";
 import data from '../../files/books'
 import { getBooksArray } from "../../contexts/GlobalContext";
+import '../../styles/booklist/sortbooks.css'
 
 export default function SortBooks(): JSX.Element {
 
   const { setBookList } = useContext(GlobalContext)
 
   return (  
-    <div>
+    <div id="SBs-container">
       <Space direction="horizontal">
         <Switch 
           checkedChildren="A-Z" 
@@ -19,8 +20,8 @@ export default function SortBooks(): JSX.Element {
           onChange={(checked => setBookList(sortBookListByName(getBooksArray(data), checked)))}
         />
          <Switch 
-          checkedChildren="New" 
-          unCheckedChildren="Old"
+          checkedChildren="Newest" 
+          unCheckedChildren="Oldest"
           style={{ backgroundColor: '#4096ff' }}
           onChange={(checked => setBookList(sortBookListByYear(getBooksArray(data), checked)))}
         />
