@@ -1,8 +1,8 @@
 # BOOKS - Aplicación de Lista de Libros
 
-## Descripcion
+## Descripción
 
-[https://books-oscarprdev.netlify.app/]
+https://books-oscarprdev.netlify.app/
 
 Aplicación de lista de libros basada en una prueba técnica.
 La aplicación cuenta con las siguientes características:
@@ -20,6 +20,10 @@ La aplicación cuenta con las siguientes características:
 
 El stack de la aplicación es el siguiente: Svelte - TS - Tailwind, mientras que las pruebas unitarias y las pruebas 2E2 se han realizado con: Vitest y Playwright.
 
+## Demo
+
+[oscarprdev reading-list.webm](https://github.com/oscarprdev/pruebas-tecnicas/assets/94851836/8a829d07-2670-4ff1-aef5-62aef3d878d4)
+
 ## Instalación
 
 `npm run dev`
@@ -32,3 +36,4 @@ Tests 2E2: `npm run dev` & `npm run test:2e2`
 ## Créditos
 
 Prueba técnica realizada para contribuir al proyecto de pruebas técnicas de @midudev.
+
