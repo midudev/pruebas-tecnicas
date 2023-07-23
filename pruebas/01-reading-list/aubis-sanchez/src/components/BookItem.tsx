@@ -56,7 +56,7 @@ export const BookItem = ({ book, lectureBook, position }: Props) => {
           maxWidth: 250,
           boxShadow: 2,
           border: "1px solid rgba(217,217,219,0.1)",
-          cursor: lectureBook ? "pointer" : "default",
+          cursor: "pointer",
         }}
         component="article"
       >
@@ -76,7 +76,7 @@ export const BookItem = ({ book, lectureBook, position }: Props) => {
           }}
           onClick={handleOpenModal}
         />
-        <CardContent>
+        <CardContent onClick={handleOpenModal}>
           <Typography gutterBottom variant="body1" component="h2">
             {book.title}
           </Typography>
