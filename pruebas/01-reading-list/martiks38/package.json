@@ -8,8 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "test": "cross-env NODE_ENV=test && vitest",
-    "test:coverage": "cross-env NODE_ENV=test && vitest --coverage",
-    "test:ui": "cross-env NODE_ENV=test && vitest --ui"
+    "test:coverage": "pnpm run test --coverage",
+    "test:ui": "pnpm run test --ui",
+    "test:pattern": "pnpm run test -t"
   },
   "dependencies": {
     "@types/node": "20.4.2",
