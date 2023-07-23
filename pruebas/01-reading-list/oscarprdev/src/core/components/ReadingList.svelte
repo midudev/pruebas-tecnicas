@@ -39,6 +39,7 @@
 {#if $asideState.isOpen}
   <aside
     class="fixed flex flex-col inset-y-0 right-0 z-3 h-full mt-[100px] p-5 overflow-y-scroll bg-aside shadow-xl animate-slide-in xl:w-2/6 xl:mt-0"
+    data-testid="reading-list"
   >
     <header class="flex flex-col justify-between items-start mb-3 px-5">
       <h2 class="text-2xl"><i>Lista de lectura</i></h2>

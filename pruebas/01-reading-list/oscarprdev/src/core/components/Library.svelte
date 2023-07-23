@@ -1,6 +1,6 @@
 <script lang="ts">
   import { appState } from '../store/app-state-store'
-  import BooksList from './Books-list.svelte'
+  import BooksList from './BooksList.svelte'
   import { usePagination } from '../hooks/usePagination'
   import { filters } from '../store/filters-store'
   import FilterBooks from './filters/FilterBooks.svelte'

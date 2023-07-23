@@ -68,6 +68,7 @@
   on:dragstart={() => handleDragStart(book, index)}
   on:dragover={(event) => event.preventDefault()}
   on:drop={() => handleDrop(book, index)}
+  data-testid="reading-list-item"
 >
   <!-- svelte-ignore a11y-no-static-element-interactions -->
   <div

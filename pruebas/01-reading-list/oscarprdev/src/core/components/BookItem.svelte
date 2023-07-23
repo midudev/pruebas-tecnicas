@@ -70,12 +70,20 @@
     : 'animate-fade-in'}"
   on:mouseenter={handleOverlay}
   on:mouseleave={handleOverlay}
+  data-testid="book-item"
 >
   <div class="h-[200px] xl:h-5/6 shadow-[4.0px_5.0px_8.0px_rgba(0,0,0,0.38)]">
-    <img class="w-full h-full object-cover" src={book.cover} alt={book.title} />
+    <img
+      class="w-full h-full object-cover"
+      src={book.cover}
+      alt={book.title}
+      data-testid={`book-item-image-${index}`}
+    />
   </div>
   <div class="flex flex-col gap-2 max-w-xs overflow-hidden">
-    <h2 class="text-lg truncate ml-2">{book.title}</h2>
+    <h2 class="text-lg truncate ml-2" data-testid={`book-item-title-${index}`}>
+      {book.title}
+    </h2>
   </div>
   {#if $showOverlay}
     <div
@@ -91,6 +99,7 @@
         <button
           class="px-4 py-2 text-black cursor-pointer"
           on:click={addBookToReadingList}
+          data-testid="add-book-icon"
           ><BookOpenIcon
             size="30"
             class="text-light duration-300 hover:text-pagination"

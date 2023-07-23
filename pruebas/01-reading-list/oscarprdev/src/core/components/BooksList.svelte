@@ -8,7 +8,7 @@
   export let booksFiltered: Readable<Book[]>
 </script>
 
-<section class="flex flex-col p-5">
+<section class="flex flex-col p-5" data-testid="books-list">
   <ul
     class="flex flex-wrap w-screen gap-4 xl:gap-7 xl:w-[650px] xl:h-[250px] xxl:w-[780px] xxl:h-[200px]"
   >

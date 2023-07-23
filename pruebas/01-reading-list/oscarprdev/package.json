@@ -9,9 +9,11 @@
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "standard": "*",
-    "test": "vitest"
+    "unit:test": "vitest",
+    "e2e:test": "npx playwright test"
   },
   "devDependencies": {
+    "@playwright/test": "^1.36.1",
     "@sveltejs/vite-plugin-svelte": "^2.4.2",
     "@tailwindcss/forms": "^0.5.4",
     "@tsconfig/svelte": "^5.0.0",
