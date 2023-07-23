@@ -5,15 +5,16 @@ import { XMarkIcon } from "@heroicons/react/24/solid";
 import { useFilterContext } from "@/context/store";
 
 export default function FilterSection() {
-  const { genreFilter, setGenreFilter } = useFilterContext();
+  const { genreFilter, setGenreFilter, setSearchQuery } = useFilterContext();
   const onValueChangeHandler = (value) => {
     setGenreFilter(value);
   };
   const onClearButtonClickHander = () => {
     setGenreFilter("");
+    setSearchQuery("");
   };
   return (
-    <div className="flex gap-2 mt-3">
+    <div className="flex gap-2 mt-5">
       {genreFilter && (
         <button
           onClick={onClearButtonClickHander}

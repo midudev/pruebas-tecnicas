@@ -17,8 +17,18 @@ const GenreCounter = ({ count }) => (
 );
 
 export function AvailableList() {
-  const { availableList } = useAppContext();
-  return <BookList books={availableList}></BookList>;
+  const { availableList, availableListCount } = useAppContext();
+  const pluralWord = availableListCount > 1 ? "s" : "";
+  return (
+    <>
+      {availableListCount > 0 && (
+        <div className="mt-5 -mb-2 text-lg text-white">
+          {availableListCount} libro{pluralWord} disponible{pluralWord}
+        </div>
+      )}
+      <BookList books={availableList}></BookList>
+    </>
+  );
 }
 
 export function ReadingList() {

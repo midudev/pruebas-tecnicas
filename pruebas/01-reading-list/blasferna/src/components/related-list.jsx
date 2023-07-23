@@ -11,7 +11,7 @@ export default function RelatedList({ title, books }) {
             {books.map((book) => (
               <div
                 key={book.ISBN}
-                className="relative h-32 w-20 cursor-pointer overflow-hidden rounded"
+                className="relative h-[160px] w-[100px] cursor-pointer overflow-hidden rounded duration-75 ease-in hover:scale-105 hover:shadow-md"
               >
                 <Link href={`/books/${book.ISBN}`}>
                   <Image
