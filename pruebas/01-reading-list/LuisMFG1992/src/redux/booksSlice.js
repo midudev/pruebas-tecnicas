@@ -49,7 +49,6 @@ export const booksSlice = createSlice({
       )
       if (!alreadyInTheList) {
         state.readingList.push(action.payload)
-        // toast.success(`Has añadido ${action.payload.book.title} a tu lista.`)
         toast.success(`${action.payload.book.title} añadido a tu lista.`)
       } else {
         state.readingList = state.readingList.filter(
