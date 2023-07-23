@@ -1,7 +1,7 @@
 import { type Book } from '../types'
 import { useCallback } from 'react'
 
-const BOOK_LOCAL_STORE_NAME = 'favorites'
+export const BOOK_LOCAL_STORE_NAME = 'favorites'
 
 export const useLocalStore = () => {
   const setToLocalStorage = useCallback((favorites: Book[]) => {
