@@ -1,5 +1,6 @@
 import { Ploc } from "../../common/presentation/Ploc"
 import { Book } from "../domain/Book"
+import { AddBook } from "../domain/use_cases/AddBook"
 import { GetBooks } from "../domain/use_cases/GetBooks"
 import { RemoveBook } from "../domain/use_cases/RemoveBook"
 import { BooksState, booksInitialState } from "./BooksState"
@@ -7,6 +8,7 @@ import { BooksState, booksInitialState } from "./BooksState"
 export class BooksPloc extends Ploc<BooksState> {
   constructor(
     private readonly getBooks: GetBooks,
+    private readonly addBook: AddBook,
     private readonly removeBook: RemoveBook,
   ) {
     super(booksInitialState)
@@ -39,6 +41,19 @@ export class BooksPloc extends Ploc<BooksState> {
         kind: "ErrorBooksState",
         error: "Ha ocurrido un error. Por favor, prueba más tarde",
         filterGenre,
+      })
+    }
+  }
+
+  async add(book: Book): Promise<void> {
+    try {
+      await this.addBook.execute(book)
+      this.search(this.state.filterGenre)
+    } catch (error) {
+      this.changeState({
+        kind: "ErrorBooksState",
+        error: "Ha ocurrido un error. Por favor, prueba más tarde",
+        filterGenre: this.state.filterGenre,
       })
     }
   }
