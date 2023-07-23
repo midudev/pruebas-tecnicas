@@ -32,7 +32,7 @@ export const ViewSwitcher = ({ sectionOnView, setSectionOnView }: Props) => {
           borderRadius: 0,
           display: "flex",
           justifyContent: "center",
-          textAlign: "right",
+          textAlign: "center",
           transitionDuration: 300,
           color: sectionOnView === Views.books ? "white" : "primary",
           bgcolor: sectionOnView === Views.books ? "rgba(38,91,167,1)" : "",
@@ -53,7 +53,7 @@ export const ViewSwitcher = ({ sectionOnView, setSectionOnView }: Props) => {
           bgcolor: sectionOnView === Views.list ? "rgba(38,91,167,1)" : "",
         }}
       >
-        Lecture list {`(${userLectureList.length})`}
+        Lecture list{`(${userLectureList.length})`}
       </Button>
     </Box>
   );

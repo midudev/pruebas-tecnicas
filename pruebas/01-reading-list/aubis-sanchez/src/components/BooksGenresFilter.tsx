@@ -39,8 +39,7 @@ export const BooksGenresFilter = () => {
     <>
       <FormControl
         sx={{
-          my: 2,
-          width: "33%",
+          width: { xs: "100%", md: "50%" },
         }}
       >
         <InputLabel id="genres" sx={{ color: "white" }}>

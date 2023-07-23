@@ -23,10 +23,22 @@ export const Books = () => {
 
   return (
     <SectionContainer>
-      <Stack direction="row" gap={2} width="100%">
-        <BooksGenresFilter />
-        <SortingSelector />
+      <Stack
+        direction={{ xs: "column", md: "row" }}
+        gap={{ xs: 0, md: 2 }}
+        width="100%"
+        display="flex"
+        alignItems="center"
+      >
         <SearchFilter />
+        <Stack
+          direction={{ xs: "column", md: "row" }}
+          gap={2}
+          sx={{ width: { xs: "100%", md: "50%" }, my: 2 }}
+        >
+          <BooksGenresFilter />
+          <SortingSelector />
+        </Stack>
       </Stack>
       <Grid
         container

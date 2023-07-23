@@ -7,6 +7,8 @@ import { Book } from "../models";
 import { ReactSortable } from "react-sortablejs";
 import { adaptIdToBook } from "../adapters/book.adapter";
 import { BookItem } from "./BookItem";
+import { useEffect } from "react";
+import { toast } from "sonner";
 
 export interface DnDBook extends Book {
   id: string;
@@ -14,6 +16,10 @@ export interface DnDBook extends Book {
 export const LectureList = () => {
   const userLectureList = useBook((state) => state.userLectureList);
   const setUserLectureList = useBook((state) => state.setUserLectureList);
+
+  useEffect(() => {
+    toast("Sort your books by priority by drag and dropping where you prefer");
+  }, []);
 
   if (userLectureList.length === 0)
     return <EmptyList label="Your lecture list is empty" />;

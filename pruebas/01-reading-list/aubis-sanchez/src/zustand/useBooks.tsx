@@ -12,7 +12,6 @@ export interface BookState {
   setSelectedGenres: (genres: string[]) => void;
   removeFromLectureList: (bookToRemoveISBN: string) => void;
   setUserLectureList: (userLectureList: Book[]) => void;
-  //findBookOnLecture: (bookISBN: string) => boolean;
 }
 
 export const useBook = create<BookState>()(
@@ -49,6 +48,9 @@ export const useBook = create<BookState>()(
   )
 );
 
+/*
+ * To sync data through different browser tabs
+ */
 if ("BroadcastChannel" in globalThis /* || isSupported() */) {
   // share the property "count" of the state with other tabs
   share("books", useBook);

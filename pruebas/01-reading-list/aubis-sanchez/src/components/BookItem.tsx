@@ -9,6 +9,7 @@ import {
 import { Book } from "../models";
 import { useBook } from "../zustand/useBooks";
 import { getPriority, getPriorityColor } from "../utils";
+import { useToast } from "../hooks/useToast";
 
 interface Props {
   book: Book;
@@ -17,15 +18,25 @@ interface Props {
 }
 
 export const BookItem = ({ book, lectureBook, position }: Props) => {
+  const { throwSuccessToast } = useToast();
   const addToLectureList = useBook((state) => state.addToLectureList);
   const removeFromLectureList = useBook((state) => state.removeFromLectureList);
   const userLectureList = useBook((state) => state.userLectureList);
   const disableBtn =
     !lectureBook &&
     userLectureList.find((storageBook) => storageBook.ISBN === book.ISBN);
-
   const priority = getPriority(userLectureList.length, position);
   const priorityColor: string = getPriorityColor(priority);
+
+  const handleClick = () => {
+    if (lectureBook) {
+      removeFromLectureList(book.ISBN);
+      throwSuccessToast("Book have been removed");
+    } else {
+      addToLectureList(book);
+      throwSuccessToast("Book have been added to your lecture books");
+    }
+  };
 
   return (
     <Card
@@ -36,6 +47,7 @@ export const BookItem = ({ book, lectureBook, position }: Props) => {
         maxWidth: 250,
         boxShadow: 2,
         border: "1px solid rgba(217,217,219,0.1)",
+        cursor: lectureBook ? "pointer" : "default",
       }}
       component="article"
     >
@@ -71,11 +83,7 @@ export const BookItem = ({ book, lectureBook, position }: Props) => {
       <CardActions>
         <Button
           disabled={!!disableBtn}
-          onClick={() =>
-            lectureBook
-              ? removeFromLectureList(book.ISBN)
-              : addToLectureList(book)
-          }
+          onClick={handleClick}
           variant="contained"
           size="small"
           fullWidth

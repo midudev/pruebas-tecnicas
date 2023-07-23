@@ -9,10 +9,15 @@ function App() {
 
   return (
     <main className="container">
-      <Typography variant="h1" color="AppWorkspace" fontSize={60} py={3}>
-        Welcome to the{" "}
-        <Box component="span" color="#039296">
-          Library
+      <Typography
+        variant="h1"
+        color="AppWorkspace"
+        fontSize={{ xs: 28, sm: 40, md: 60 }}
+        py={3}
+      >
+        Welcome to{" "}
+        <Box component="span" color="#039296" fontWeight="bold">
+          The Library
         </Box>
       </Typography>
       <ViewSwitcher
@@ -32,7 +37,7 @@ function App() {
         richColors
         expand={true}
         position="bottom-right"
-        duration={1500}
+        duration={2000}
       />
     </main>
   );

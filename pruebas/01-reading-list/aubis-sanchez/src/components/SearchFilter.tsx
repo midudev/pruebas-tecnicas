@@ -9,10 +9,8 @@ export default function SearchFilter() {
       id="search-bar"
       options={getAutocompleteBooksData()}
       sx={{
-        width: "33%",
+        width: { xs: "100%", md: "50%" },
         display: "flex",
-        flex: "1 1 0%",
-        my: 2,
       }}
       renderInput={(params) => (
         <>
