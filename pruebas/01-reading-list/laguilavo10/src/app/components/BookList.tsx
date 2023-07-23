@@ -8,7 +8,6 @@ interface Props {
 export default function BookList({ isShowingReadList }: Props) {
   const { state } = useBooks()
   if (typeof state === 'undefined') return
-  console.log(state)
   const { length } = state?.bookList
   return (
     <section
