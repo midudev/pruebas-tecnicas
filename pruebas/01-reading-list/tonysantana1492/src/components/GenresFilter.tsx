@@ -15,6 +15,7 @@ export const ButtonGenres: React.FC<Props> = ({ genre }) => {
 
   return (
 		<button
+			role={genre}
 			className={`flex justify-center items-center h-9 relative rounded-full border py-3 px-4 font-semibold border-gray-200 whitespace-nowrap ${
 				isActive ? 'text-white bg-gray-800' : ' text-gray-800 bg-white'
 			}`}
