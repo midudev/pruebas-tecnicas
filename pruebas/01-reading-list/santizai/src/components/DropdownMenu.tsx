@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { selectedGenre } from "../services/selectGenre";
+import { selectedGenre } from "../services/nanostores";
 import "./../dropdown.css";
 
 interface Props {

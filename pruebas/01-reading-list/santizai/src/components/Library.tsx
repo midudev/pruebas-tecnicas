@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { Library, Books } from "../types/interfaces";
 import { filterForId } from "../services/filters";
 import UnreadBooks from "./UnreadBooks";
+import ReadingList from "./ReadingList";
 
 interface Props {
     library: Books;
@@ -13,15 +14,18 @@ const Library = (props: Props) => {
     const [readlist, setReadlist] = useState<string | null>(
         localStorage.getItem("books")
     );
+    const [booksReadList, setBooksReadList] = useState<Library[]>([]);
+    const [viewReadList, setViewReadList] = useState<boolean>(false);
 
     useEffect(() => {
         if (props.library && props.library.library.length > 0) {
             const booksLocalStorage: string[] = (readlist || "").split(",");
-            const filteredLibrary = filterForId(
+            const { readList, unread } = filterForId(
                 booksLocalStorage,
                 props.library.library
             );
-            setLibrary(filteredLibrary);
+            setBooksReadList(readList)
+            setLibrary(unread);
         }
     }, [localStorage, readlist]);
 
@@ -37,9 +41,11 @@ const Library = (props: Props) => {
             if (storage !== "") storage += `,${id}`;
             else storage += id;
             setReadlist(storage);
-            localStorage.setItem("books", String(readlist));
+            localStorage.setItem("books", storage);
         }
     };
+
+    const handleReadList = (visible: boolean) => setViewReadList(visible);
 
     return (
         <div>
@@ -48,11 +54,22 @@ const Library = (props: Props) => {
                 <button
                     onClick={() => console.log(localStorage.getItem("books"))}
                 >
-                    aaaa
+                    mostrar local storage
+                </button>
+                <button onClick={() => handleReadList(!viewReadList)}>
+                    handle list
                 </button>
             </div>
             <div>
-                <UnreadBooks unread={library} />
+                <UnreadBooks
+                    unread={library}
+                    moveToReadList={moveToReadList}
+                />
+                <ReadingList
+                    visible={viewReadList}
+                    handle={handleReadList}
+                    books={booksReadList}
+                />
             </div>
         </div>
     );

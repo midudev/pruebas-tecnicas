@@ -2,11 +2,15 @@ import type { Library } from "../types/interfaces";
 
 // Toma un array de ids para filtrar los libros que no esten en la lista de lectura pasada, si no están los devuelve para crear la lista de libros disponibles
 export const filterForId = (ids: string[], books: Library[]) => {
-    let result: Library[] = [];
+    let allBooks = {
+        readList: [] as Library[],
+        unread: [] as Library[]
+    }
     books.map((book: Library) => {
-        if (!ids.includes(book.book.ISBN)) result.push(book);
+        if (ids.includes(book.book.ISBN)) allBooks.readList.push(book)
+        else allBooks.unread.push(book)
     });
-    return result;
+    return allBooks;
 };
 
 // Dado un array de libros toma los generos para devolver un array de todos los géneros que hay en el array

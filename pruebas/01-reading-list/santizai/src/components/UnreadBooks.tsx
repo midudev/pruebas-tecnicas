@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import type { Library } from "../types/interfaces";
 import { obtainGenres } from "../services/filters";
 import DropdownMenu from "./DropdownMenu";
-import { useStore } from "@nanostores/react";
-import { selectedGenre } from "../services/selectGenre";
 
 interface Props {
     unread: Library[];
+    moveToReadList: (id: string) => void;
 }
 
 const UnreadBooks = (props: Props) => {
@@ -28,8 +27,6 @@ const UnreadBooks = (props: Props) => {
         );
         setFilteredBooks(filtered);
     };
-
-    //const $selectedGenre = useStore(selectedGenre);
 
     const filterForGenre = (genre: string) => {
         const filtered = books.filter(
@@ -67,6 +64,7 @@ const UnreadBooks = (props: Props) => {
                         <div
                             key={book.book.ISBN}
                             className="w-48"
+                            onClick={() => props.moveToReadList(book.book.ISBN)}
                         >
                             <img
                                 src={book.book.cover}
