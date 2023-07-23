@@ -16,7 +16,7 @@ export const Header = () => {
 			<div className="flex flex-col lg:flex-row gap-4 justify-between items-start w-full">
 				<div className="flex justify-between items-center w-full">
 					<h2 className="font-bold text-2xl text-left">Available Books</h2>
-					<button className="relative flex lg:hidden" onClick={onOpen}>
+					<button role='open-button' className="relative flex lg:hidden" onClick={onOpen}>
 						<OpenBook />
 						<Badge className='top-[-10px] right-[-10px] bg-red-500 rounded-full text-white w-5 h-5' value={favorites.length} />
 					</button>
