@@ -2,10 +2,22 @@ h1, h2 {
   text-align: center;
 }
 
+.open-modal-btn{
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
+
 .cover-img {
   height: 200px;
   width: 150px;
   object-fit: cover;
+}
+
+.cover-img:hover {
+  transform: scale(1.05);
+  transition: transform 0.5s ease-in-out;
+  cursor: pointer;
 }
 
 ul {
@@ -21,3 +33,27 @@ ul {
   margin: 0 auto;
 }
 
+span {
+  color: rgb(173, 11, 11);
+  font-weight: bold;
+}
+
+#readingList{
+  min-width: 50%;
+  max-width: 85%;
+  margin: auto;
+  border-radius: 5px;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#readingList ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#readingList button {
+  display: block;
+  margin: 0 auto;
+}
