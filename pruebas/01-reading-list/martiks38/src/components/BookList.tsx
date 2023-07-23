@@ -5,8 +5,15 @@ import { useBookList } from '@/hooks/useBookList'
 import { BookDataList } from '@/assets/values'
 import bookListStyles from '@/assets/styles/Book/BookList.module.css'
 import bookButton from '@/assets/styles/Book/Button.module.css'
+import { buttonTitles } from '@/assets/constants'
 
 type BookListProps = { books: BookDataList; listType: 'available' | 'reading' }
+
+export const generateLabelListOfBooks = (listType: 'available' | 'reading', title: string) => {
+  return listType === 'available'
+    ? `Agregar ${title} a la lista de lectura`
+    : `Remover ${title} de la lista de lectura`
+}
 
 export function BookList({ books, listType }: BookListProps) {
   const { addToReadingList, removeFromReadingList } = useBookList()
@@ -27,7 +34,12 @@ export function BookList({ books, listType }: BookListProps) {
               </div>
               <figcaption className={bookListStyles.bookList__item__description}>
                 <h3 className={bookListStyles.bookList__item__descriptionTitle}>{title}</h3>
-                <button className={bookButton.actionButton} onClick={() => buttonAction({ ISBN })}>
+                <button
+                  className={bookButton.actionButton}
+                  onClick={() => buttonAction({ ISBN })}
+                  title={buttonTitles[listType]}
+                  aria-label={generateLabelListOfBooks(listType, title)}
+                >
                   <span className={lineStyle}></span>
                 </button>
               </figcaption>

@@ -1,12 +1,13 @@
 import { allGenre, nameStorage } from './constants'
 import db from './db/books.json'
+import mockDB from './__mock__/books.json'
 
 import type { Book } from '@/typings/books'
 
 export type BookDataList = Omit<Book, 'author' | 'synopsis' | 'year'>[]
 type ListOfBookLists = { listBooksAvailable: BookDataList; readingList: BookDataList }
 
-const { library } = db
+const { library } = process.env.NODE_ENV === 'test' ? mockDB : db
 
 const books = library.map(({ book }) => book)
 const genres = [allGenre, ...new Set(books.map(({ genre }) => genre))]
