@@ -1,12 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { mapStateToProps } from "../redux/estado-aplicacion";
 import { mapDispatchToProps } from "../redux/mapDispatchToProps";
 import Libro from "./Libro";
 import { Book } from "../interfaces/interfaces";
 import Combobox from "./Combobox";
-import { renderBooks } from "../utils/renderBooks";
-import Spinner from "../utils/Spinner";
 import { TipoGenero } from "../interfaces/enums";
 import { cuentaLibros } from "../utils/helper.functions";
 
@@ -29,11 +27,11 @@ const Disponibles: React.FC<any> = (props) => {
     }
   });
 
-  const cuentaLibros2 = () => {
+/*   const cuentaLibros2 = () => {
     if (contador === 0) return <p>No hay libros disponibles</p>;
     if (contador === 1) return <p>Hay {contador} libro disponible</p>;
     return <p>Hay {contador} libros disponibles</p>;
-  };
+  }; */
 
   return (
     <>

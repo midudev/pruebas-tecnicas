@@ -8,7 +8,6 @@ import Spinner from "./utils/Spinner";
 //import "./styles/spinner.css";
 import { mapStateToProps } from "./redux/estado-aplicacion";
 import { mapDispatchToProps } from "./redux/mapDispatchToProps";
-import { TipoGenero } from './interfaces/enums';
 import { Book } from "./interfaces/interfaces";
 import { getFavoritos } from "./utils/helper.functions";
 
@@ -20,7 +19,6 @@ function App(props: any) {
   console.log(props)
   const { dataToRedux, addFavo, removeDisponibles, removeInitFavoritos } = props;
   const { response, loading, error } = useAxios(URL);
-  const { filtro } = props.libreria;
 
   useEffect(() => {
     console.log("en el useffect")
@@ -63,11 +61,3 @@ function App(props: any) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-function addFavo(libroSalvado: any) {
-  throw new Error("Function not implemented.");
-}
-
-function removeDisponibles(libroSalvado: any) {
-  throw new Error("Function not implemented.");
-}
-
