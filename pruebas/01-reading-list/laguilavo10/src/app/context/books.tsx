@@ -6,7 +6,7 @@ import {
   useEffect,
   useReducer
 } from 'react'
-import { library } from '../../../../books.json'
+import { library } from '../utils/books'
 import type { Book, Books } from '../types'
 import { Action, reducer } from '../utils/reducer'
 
@@ -20,12 +20,11 @@ interface Reducer {
   dispatch: React.Dispatch<Action>
 }
 
-export type ActionType =
-  | 'AddToReadingList'
-  | 'RemoveFromReadingList'
+export type ActionType = 'AddToReadingList' | 'RemoveFromReadingList'
 
 const DEFAULT_VALUE_STATE = () => {
-  const books = localStorage.getItem('books')
+  if (typeof window === 'undefined') return
+  const books = window.localStorage.getItem('books')
   if (typeof books === 'string') {
     return JSON.parse(books)
   }
@@ -33,7 +32,7 @@ const DEFAULT_VALUE_STATE = () => {
     bookList: (() => library.map((b: Books) => b.book))(),
     readingList: []
   }
-  localStorage.setItem('books', JSON.stringify(initialState))
+  window.localStorage.setItem('books', JSON.stringify(initialState))
   return initialState
 }
 
