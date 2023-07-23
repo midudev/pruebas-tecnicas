@@ -19,7 +19,7 @@ export const PageFilter: React.FC<Props> = ({ pageFilter, maxPages, updatePageFi
 				<label className='text-xs font-bold text-gray-500' htmlFor={idRange}>Pages:</label>
 				<p className='text-xs font-bold text-white bg-slate-900 px-2 rounded-full'>{pageFilter}</p>
 			</div>
-			<input className='w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-gray-800' id={idRange} type="range" onChange={handleChange} value={pageFilter} min={0} max={maxPages} />
+			<input role='filter-page' className='w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-gray-800' id={idRange} type="range" onChange={handleChange} value={pageFilter} min={0} max={maxPages} />
 		</div>
   )
 }
