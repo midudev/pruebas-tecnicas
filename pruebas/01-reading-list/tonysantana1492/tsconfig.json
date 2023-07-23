@@ -7,8 +7,7 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
+    "moduleResolution": "bundler",    
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
@@ -18,8 +17,12 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,   
+    "types": [
+      "cypress",
+      "@testing-library/cypress"
+  ],
   },
-  "include": ["src"],
+  "include": ["src" , "cypress", ".eslintrc.cjs", "vite.config.ts", "*.config.ts", "*.config.js"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
