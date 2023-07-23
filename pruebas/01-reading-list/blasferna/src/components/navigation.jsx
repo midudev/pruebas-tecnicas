@@ -82,9 +82,11 @@ export default function Navigation() {
                     }
                   >
                     Mi lista
-                    <div className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-orange-500  rounded-full -top-2 -right-2">
-                      {inReadingListCount}
-                    </div>
+                    {inReadingListCount > 0 && (
+                      <div className="absolute -right-2 -top-2 inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500  text-xs font-bold text-white">
+                        {inReadingListCount}
+                      </div>
+                    )}
                   </Link>
                 </div>
                 <SearchInput></SearchInput>
