@@ -8,7 +8,7 @@ interface Props {
   setSectionOnView: React.Dispatch<React.SetStateAction<Views>>;
 }
 
-export const Switch = ({ sectionOnView, setSectionOnView }: Props) => {
+export const ViewSwitcher = ({ sectionOnView, setSectionOnView }: Props) => {
   const books = useBook((state) => state.books);
   const userLectureList = useBook((state) => state.userLectureList);
   const [availableBooksAmount, setAvailableBooksAmount] = useState(

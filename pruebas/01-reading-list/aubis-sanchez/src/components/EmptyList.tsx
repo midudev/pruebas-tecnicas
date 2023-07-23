@@ -9,6 +9,7 @@ const EmptyList = ({ label }: EmptyListProps) => {
     <Box
       component="div"
       height="100%"
+      minHeight="80vh"
       width="100%"
       display="flex"
       alignItems="center"

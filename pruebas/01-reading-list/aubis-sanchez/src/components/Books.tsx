@@ -28,7 +28,11 @@ export const Books = () => {
         <SortingSelector />
         <SearchFilter />
       </Stack>
-      <Grid container alignItems="stretch" spacing={2} m="auto">
+      <Grid
+        container
+        gridTemplateColumns="repeat(auto-fill, minmax(250px, 1fr))"
+        display="grid"
+      >
         {books.map((book: Book) => (
           <Grid
             key={book.ISBN}

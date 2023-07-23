@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { Books, LectureList, Switch } from "./components";
+import { Books, LectureList, ViewSwitcher } from "./components";
 import { useState } from "react";
 import { Views } from "./models";
 import { Toaster } from "sonner";
@@ -15,7 +15,7 @@ function App() {
           Library
         </Box>
       </Typography>
-      <Switch
+      <ViewSwitcher
         sectionOnView={sectionOnView}
         setSectionOnView={setSectionOnView}
       />
