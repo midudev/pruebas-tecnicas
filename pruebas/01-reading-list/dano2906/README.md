@@ -1,5 +1,8 @@
 URL https://dano-reading-list.netlify.app 🔗
 
+## Leeme
+Para permitir ordenar por prioridad agregue la propiedad priority a cada objeto book en books.json
+
 ### Funcionalidad
 
 1. **Visualización de Libros Disponibles**: La aplicación debe mostrar una lista de libros disponibles que el usuario pueda revisar. ✅
