@@ -1,36 +1,25 @@
 'use client'
-import { useState, useEffect } from 'react'
-import { LibraryData, Library } from '@/types/library'
+import { useEffect } from 'react'
+import { LibraryData } from '@/types/library'
 import data from '../../../../../books.json'
 import SelectedBooks from './selectedBooks'
 import AvailableBooks from './availableBooks'
 import GenreFilter from './genreFilter'
+import { useStore } from '@/app/store/store'
 
 export function Main () {
-  const [libraryData, setLibraryData] = useState<LibraryData>(data)
-  const [selectedBooks, setSelectedBooks] = useState<Library[]>([])
-  const [genres, setGenres] = useState<string[]>([])
-  const [selectedGenre, setSelectedGenre] = useState('All')
-  const filteredBooks = libraryData.library.filter(item => selectedGenre === 'All' || item.book.genre === selectedGenre)
-
-  const selectBook = (selectedBook: Library) => {
-    setSelectedBooks([...selectedBooks, selectedBook])
-    setLibraryData({
-      library: libraryData.library.filter(book => book !== selectedBook)
-    })
-  }
-
-  const deselectBook = (deselectedBook: Library) => {
-    setSelectedBooks(selectedBooks.filter(book => book !== deselectedBook))
-    setLibraryData({
-      library: [...libraryData.library, deselectedBook]
-    })
-  }
+  const libraryData = data as LibraryData
+  const { setLibrary, selectedBooks, setListGenres, setFilteredBooks, filteredBooks, setSelectedGenre } = useStore(state => state)
 
   useEffect(() => {
+    setLibrary(libraryData.library.map(book => book))
+    setFilteredBooks(libraryData.library.map(book => book))
+
     const allGenres = libraryData.library.map(book => book.book.genre)
     const uniqueGenres = Array.from(new Set(allGenres))
-    setGenres(['All', ...uniqueGenres])
+    setListGenres(['All', ...uniqueGenres])
+
+    setSelectedGenre('All')
   }, [])
 
   return (
@@ -38,22 +27,11 @@ export function Main () {
       <div className='flex flex-col items-center'>
         <h1>Store books</h1>
         <h2>Books Availables: {filteredBooks.length}</h2>
-        <GenreFilter
-          genres={genres}
-          selectedGenre={selectedGenre}
-          setSelectedGenre={setSelectedGenre}
-        />
+        <GenreFilter />
       </div>
 
-      <AvailableBooks
-        libraryData={filteredBooks}
-        selectBook={selectBook}
-        selectedGenre={selectedGenre}
-      />
-      <SelectedBooks
-        selectedBooks={selectedBooks}
-        deselectBook={deselectBook}
-      />
+      <AvailableBooks />
+      <SelectedBooks />
     </div>
   )
 }

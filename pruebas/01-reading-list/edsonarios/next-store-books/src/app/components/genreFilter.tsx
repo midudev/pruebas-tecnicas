@@ -1,19 +1,19 @@
+import { useStore } from '@/app/store/store'
 
-import { Dispatch, SetStateAction } from 'react'
+const GenreFilter = () => {
+  const { library, listGenres, selectedGenre, setSelectedGenre, setFilteredBooks } = useStore(state => state)
 
-interface Props {
-  genres: string[]
-  selectedGenre: string
-  setSelectedGenre: Dispatch<SetStateAction<string>>
-}
+  const filterGenre = (newGenre: string) => {
+    setSelectedGenre(newGenre)
+    setFilteredBooks(library.filter(item => newGenre === 'All' || item.book.genre === newGenre))
+  }
 
-const GenreFilter = ({ genres, selectedGenre, setSelectedGenre }: Props) => {
   return (
     <div className='flex flex-wrap justify-center top-0'>
       <label>
         Genre:
-        <select className='text-zinc-950' value={selectedGenre} onChange={(e) => setSelectedGenre(e.target.value)}>
-          {genres.map((genre, index) => (
+        <select className='text-zinc-950' value={selectedGenre} onChange={(e) => filterGenre(e.target.value)}>
+          {listGenres.map((genre, index) => (
             <option key={index} value={genre}>
               {genre}
             </option>

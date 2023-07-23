@@ -1,6 +1,17 @@
 import { Library } from '@/types/library'
+import { useStore } from '@/app/store/store'
 
-const SelectedBooks = ({ selectedBooks, deselectBook }: { selectedBooks: Library[], deselectBook: (book: Library) => void }) => {
+const SelectedBooks = () => {
+  const { library, setLibrary, selectedBooks, setSelectedBooks, filteredBooks, setFilteredBooks, selectedGenre } = useStore(state => state)
+
+  const deselectBook = (deselectedBook: Library) => {
+    setSelectedBooks(selectedBooks.filter(book => book !== deselectedBook))
+    setLibrary([...library, deselectedBook])
+    if (selectedGenre === 'All' || deselectedBook.book.genre === selectedGenre) {
+      setFilteredBooks([...filteredBooks, deselectedBook])
+    }
+  }
+
   return selectedBooks.length > 0 && (
     <>
       <div className='fixed right-0 top-0 w-60 p-4 bg-gray-800 text-white z-10'>
