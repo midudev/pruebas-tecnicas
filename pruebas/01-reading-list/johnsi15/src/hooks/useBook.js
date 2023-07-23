@@ -40,6 +40,30 @@ export function useBook () {
     setBooks(booksLocal)
   }, [booksStore, readingListStore])
 
+  useEffect(() => {
+    console.log('initial load')
+    // Create a function to handle changes to localStorage
+    const storageEvent = (event) => {
+      const { key, newValue } = event
+      console.log(key)
+      if (key === 'books') {
+        console.log(JSON.parse(newValue))
+        setBooks(JSON.parse(newValue))
+      } else if (key === 'readingList') {
+        console.log(JSON.parse(newValue))
+        setReadingList(JSON.parse(newValue))
+      }
+    }
+
+    // Register a listener for changes to localStorage
+    window.addEventListener('storage', storageEvent)
+
+    // Return a function to remove the listener when the component is unmounted
+    return () => {
+      window.removeEventListener('storage', storageEvent)
+    }
+  }, [])
+
   function filterByGenre (genre) {
     setGenres(genre)
   }
