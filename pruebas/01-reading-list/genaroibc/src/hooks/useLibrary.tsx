@@ -4,10 +4,13 @@ import { $, useSignal, useStore } from "@builder.io/qwik"
 import type { Book, BookISBN, Filter, Genre } from "~/types"
 import { useBroadcastChannel } from "./useBroadcastChannel"
 
-type BCMessageType = "removeBookFromReadingList" | "addBookToReadingList"
-type BCMessagePayload = { bookISBN: string }
+type BCFiltersUpdateMessage = { type: "sortBooks"; payload: { filter: Filter } }
+type BCBooksUpdateMessage = {
+  type: "removeBookFromReadingList" | "addBookToReadingList"
+  payload: { bookISBN: string }
+}
 
-type BCMessage = { type: BCMessageType; payload: BCMessagePayload }
+type BCMessage = BCBooksUpdateMessage | BCFiltersUpdateMessage
 
 type Params = {
   initialBooks: Book[]
@@ -25,13 +28,16 @@ export const useLibrary = ({ initialBooks, initialReadingList }: Params) => {
     bcData => {
       const { type: message, payload } = bcData
 
-      console.log(bcData)
       if (message === "removeBookFromReadingList") {
         removeBookFromReadingList(payload.bookISBN)
       }
 
       if (message === "addBookToReadingList") {
         addBookToReadingList(payload.bookISBN)
+      }
+
+      if (message === "sortBooks") {
+        updateFilter(payload.filter)
       }
     }
   )
@@ -98,9 +104,17 @@ export const useLibrary = ({ initialBooks, initialReadingList }: Params) => {
     booksStore.books.sort(sortingFunction)
 
     saveStateLocally()
+    sendMessage({
+      type: "sortBooks",
+      payload: {
+        filter: currentFilter.value
+      }
+    })
   })
 
   const updateFilter = $((filter: Filter) => {
+    if (filter === currentFilter.value) return
+
     currentFilter.value = filter
     sortBooks()
   })
