@@ -1,26 +1,29 @@
 import { useState } from 'react'
 
-export default function useBooksList (initialList) {
-  const [availableBooks, setAvailableBooks] = useState(initialList)
+export default function useBooksList () {
+  const [availableBooks, setAvailableBooks] = useState([])
   const [readList, setReadList] = useState([])
 
-  const addToAvaiables = (books) => setAvailableBooks(prevList => [...prevList, ...Array.isArray(books) ? books : [books]])
+  const addToAvailables = (book) => setAvailableBooks(prevList => prevList.toSpliced(prevList.length, 1, book))
+
   const removeFromAvailables = (book) => setAvailableBooks(prevList => prevList.filter(item => item !== book))
+
   function addToReadList (book) {
     removeFromAvailables(book)
-    setReadList((prevList) => [...prevList, book])
+    setReadList(prevList => prevList.toSpliced(prevList.length, 1, book))
   }
+
   function removeFromReadList (index) {
-    setReadList((prevList) => {
-      addToAvaiables(prevList[index])
+    setReadList(prevList => {
+      addToAvailables(prevList[index])
       const newList = prevList.toSpliced(index, 1)
       return newList
     })
   }
   return {
-    setAvailableBooks,
     availableBooks,
-    addToAvaiables,
+    setAvailableBooks,
+    addToAvailables,
     removeFromAvailables,
     readList,
     setReadList,

@@ -17,7 +17,7 @@ export default function App () {
     setReadList,
     addToReadList,
     removeFromReadList
-  } = useBooksList([])
+  } = useBooksList()
   const { saveList, getList } = useLocalStorage()
   // useEffect hooks
   // On App mount restore data from local storage if, exists.
@@ -39,14 +39,21 @@ export default function App () {
   }, [])
   // Save changes made to lists to local storage. Wait 5 mills, so not override data on App mount.
   useEffect(() => {
-    setTimeout(() => saveList('availableBooks', availableBooks), 5)
+    const timer = setTimeout(() => saveList('availableBooks', availableBooks), 5)
+    return () => clearTimeout(timer)
   }, [availableBooks])
   useEffect(() => {
-    setTimeout(() => saveList('readList', readList), 5)
+    const timer = setTimeout(() => saveList('readList', readList), 5)
+    return () => clearTimeout(timer)
   }, [readList])
+  // Load books genres list.
+  useEffect(() => {
+    import('./database/books.json')
+      .then(BooksJSON => setGenresList([...new Set(BooksJSON.library.map(bookObj => bookObj.book.genre))]))
+  }, [])
   // Sync data between tabs
   useEffect(() => {
-    const handleStorageChange = event => {
+    function handleStorageChange (event) {
       const handlers = {
         availableBooks: () => setAvailableBooks(JSON.parse(event.newValue)),
         readList: () => setReadList(JSON.parse(event.newValue))
@@ -55,11 +62,6 @@ export default function App () {
     }
     window.addEventListener('storage', handleStorageChange)
     return () => window.removeEventListener('storage', handleStorageChange)
-  }, [])
-  // Load books genres list.
-  useEffect(() => {
-    import('./database/books.json')
-      .then(BooksJSON => setGenresList([...new Set(BooksJSON.library.map(bookObj => bookObj.book.genre))]))
   }, [])
   return (
     <>
