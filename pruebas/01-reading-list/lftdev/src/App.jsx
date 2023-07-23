@@ -1,76 +1,42 @@
 import './style.css'
 import BooksList from './components/BooksList'
 import GenreFilter from './components/GenreFilter'
-import useBooksList from './hooks/useBooksList'
 import useLocalStorage from './hooks/useLocalStorage'
 import { useEffect, useState } from 'react'
+import BooksJSON from './database/books.json'
 
 export default function App () {
   // useState hooks
   const [genresList, setGenresList] = useState([])
   const [selectedGenre, setSelectedGenre] = useState('Todos')
   // Custom hooks
-  const {
-    availableBooks,
-    setAvailableBooks,
-    readList,
-    setReadList,
-    addToReadList,
-    removeFromReadList
-  } = useBooksList()
-  const { saveList, getList } = useLocalStorage()
+  const [avBooks, setAvBooks] = useLocalStorage('availableBooks', BooksJSON.library.map(bookObj => bookObj.book))
+  const [rdList, setRdList] = useLocalStorage('rdList', [])
   // useEffect hooks
-  // On App mount restore data from local storage if, exists.
-  useEffect(() => {
-    function restoreAvailableBooks () {
-      const list = getList('availableBooks')
-      if (list) setAvailableBooks(list)
-      else {
-        import('./database/books.json')
-          .then(BooksJSON => setAvailableBooks(BooksJSON.library.map(bookObj => bookObj.book)))
-      }
-    }
-    function restoreReadList () {
-      const list = getList('readList')
-      if (list) setReadList(list)
-    }
-    restoreAvailableBooks()
-    restoreReadList()
-  }, [])
-  // Save changes made to lists to local storage. Wait 5 mills, so not override data on App mount.
-  useEffect(() => {
-    const timer = setTimeout(() => saveList('availableBooks', availableBooks), 5)
-    return () => clearTimeout(timer)
-  }, [availableBooks])
-  useEffect(() => {
-    const timer = setTimeout(() => saveList('readList', readList), 5)
-    return () => clearTimeout(timer)
-  }, [readList])
   // Load books genres list.
-  useEffect(() => {
-    import('./database/books.json')
-      .then(BooksJSON => setGenresList([...new Set(BooksJSON.library.map(bookObj => bookObj.book.genre))]))
-  }, [])
+  useEffect(() =>
+    setGenresList([...new Set(BooksJSON.library.map(bookObj => bookObj.book.genre))])
+  , [])
   // Sync data between tabs
-  useEffect(() => {
+  /* useEffect(() => {
     function handleStorageChange (event) {
       const handlers = {
         availableBooks: () => setAvailableBooks(JSON.parse(event.newValue)),
-        readList: () => setReadList(JSON.parse(event.newValue))
+        rdList: () => setrdList(JSON.parse(event.newValue))
       }
       handlers[event.key]()
     }
     window.addEventListener('storage', handleStorageChange)
     return () => window.removeEventListener('storage', handleStorageChange)
-  }, [])
+  }, []) */
   return (
     <>
-      <h3 className='text-2xl font-bold text-blue-500'>{readList.length > 0 ? 'Con' : 'Sin'} libros en la lista de lectura</h3>
+      <h3 className='text-2xl font-bold text-blue-500'>{rdList.length > 0 ? 'Con' : 'Sin'} libros en la lista de lectura</h3>
       <div className='grid [grid-template-columns:2fr_1fr] border border-white rounded-md pt-10 px-12'>
         <main className='flex flex-col gap-5'>
           <div className='flex flex-col gap-4'>
-            <h1 className='text-4xl font-bold'>{availableBooks.length} libros disponibles</h1>
-            {readList.length > 0 && <p className='text-lg'>{readList.length} en la lista de lectura</p>}
+            <h1 className='text-4xl font-bold'>{avBooks.length} libros disponibles</h1>
+            {rdList.length > 0 && <p className='text-lg'>{rdList.length} en la lista de lectura</p>}
             <form role='search' className='flex gap-32'>
               <label className='text-lg' htmlFor='pages-filter'>
                 <div>Filtrar por páginas</div>
@@ -82,18 +48,29 @@ export default function App () {
               </label>
             </form>
           </div>
-          {availableBooks.length > 0 &&
+          {avBooks.length > 0 &&
             <BooksList
               className='grid grid-cols-4 place-items-start gap-4'
-              list={availableBooks}
-              onItemClick={addToReadList}
+              list={avBooks}
+              onItemClick={book => {
+                setAvBooks(avBooks.filter(item => item !== book))
+                setRdList(rdList.toSpliced(rdList.length, 1, book))
+              }}
               filter={selectedGenre}
             />}
         </main>
-        {readList.length > 0 && (
+        {rdList.length > 0 && (
           <aside className='sticky top-0 max-h-screen overflow-y-auto bg-[#040412] rounded-lg p-8' role='region'>
             <h2 className='text-3xl font-bold'>Lista de lectura</h2>
-            <BooksList className='grid grid-cols-2 place-items-start gap-4' list={readList} removableItems onRemoveRequest={removeFromReadList} />
+            <BooksList
+              className='grid grid-cols-2 place-items-start gap-4'
+              list={rdList}
+              removableItems
+              onRemoveRequest={index => {
+                setAvBooks(avBooks.toSpliced(avBooks.length, 1, rdList[index]))
+                setRdList(rdList.toSpliced(index, 1))
+              }}
+            />
           </aside>
         )}
       </div>

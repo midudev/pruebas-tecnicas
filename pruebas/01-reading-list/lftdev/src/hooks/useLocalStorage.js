@@ -1,11 +1,18 @@
-export default function useLocalStorage () {
-  const saveList = (key, list) => window.localStorage.setItem(key, JSON.stringify(list))
-  function getList (key) {
-    const data = window.localStorage.getItem(key)
-    if (data) return JSON.parse(data)
+import { useState } from 'react'
+
+export default function useLocalStorage (key, initialValue) {
+  const [storedValue, setStoredValue] = useState(() => {
+    const value = window.localStorage.getItem(key)
+    if (value) return JSON.parse(value)
+    else window.localStorage.setItem(key, JSON.stringify(initialValue))
+    return initialValue
+  })
+  function setValue (value) {
+    setStoredValue(value)
+    window.localStorage.setItem(key, JSON.stringify(value))
   }
-  return {
-    saveList,
-    getList
-  }
+  return [
+    storedValue,
+    setValue
+  ]
 }
