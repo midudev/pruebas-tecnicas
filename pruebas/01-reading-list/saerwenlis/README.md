@@ -1,6 +1,16 @@
 Este proyecto fue realizado en base al challenge propuesto por Midudev en: [Pruebas Técnicas de Programación: Lista de lectura](https://pruebastecnicas.com/)
 
-Deploy: dejaré el deploy por aqui
+**Requisitos:**
+✅ Visualización de Libros Disponibles
+✅ Creación de Lista de Lectura
+-- Filtrado de Libros por Género
+✅ Sincronización de Estado
+✅ Persistencia de Datos
+-- Sincronización entre pestañas
+-- Despliegue
+-- Test
+
+**Deploy:** dejaré el deploy por aqui
 
 Pruebas técnicas [Midudev](https://github.com/midudev/pruebas-tecnicas)
 
