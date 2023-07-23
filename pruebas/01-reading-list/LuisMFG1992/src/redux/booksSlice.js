@@ -42,7 +42,6 @@ export const booksSlice = createSlice({
       )
     },
     addBookToReadingList: (state, action) => {
-      console.log(action.payload)
       const alreadyInTheList = state.readingList.some(
         (element) => element.book.ISBN === action.payload.book.ISBN
       )

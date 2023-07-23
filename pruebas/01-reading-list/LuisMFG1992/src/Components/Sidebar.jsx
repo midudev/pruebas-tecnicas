@@ -19,7 +19,7 @@ const Sidebar = ({ handelSidabar, readingList }) => {
         <div
           className={`flex bg-gray-002 rounded-2xl gap-4 justify-center ${
             isReadingListEmpthy ? 'items-center' : 'items-start'
-          } p-4 h-[85vh] overflow-hidden`}
+          } p-4 h-[85vh] overflow-hidden overflow-y-auto`}
         >
           <div className="flex flex-wrap gap-4 justify-center items-center">
             {isReadingListEmpthy ? (
