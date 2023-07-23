@@ -15,6 +15,7 @@
     "flowbite-react": "^0.4.11",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
     "react-icons": "^4.10.1",
     "react-redux": "^8.1.1"
   },

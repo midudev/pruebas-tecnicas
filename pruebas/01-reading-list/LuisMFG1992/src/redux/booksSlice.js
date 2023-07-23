@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import toast from 'react-hot-toast'
 
 export const fetchBooks = createAsyncThunk('books/fetch', async () => {
   const response = await fetch('../../data/books.json')
@@ -41,15 +42,20 @@ export const booksSlice = createSlice({
       )
     },
     addBookToReadingList: (state, action) => {
+      console.log(action.payload)
       const alreadyInTheList = state.readingList.some(
         (element) => element.book.ISBN === action.payload.book.ISBN
       )
-      if (!alreadyInTheList) state.readingList.push(action.payload)
+      if (!alreadyInTheList) {
+        state.readingList.push(action.payload)
+        toast.success(`Has añadido ${action.payload.book.title} a tu lista.`)
+      }
     },
     removeBookFromReadingList: (state, action) => {
       state.readingList = state.readingList.filter(
         (element) => element.book.ISBN !== action.payload.book.ISBN
       )
+      toast.success(`Has removido ${action.payload.book.title} de tu lista.`)
     },
   },
 

@@ -2,6 +2,8 @@ import { HiChevronDoubleRight } from 'react-icons/hi'
 import { useDispatch } from 'react-redux'
 import { removeBookFromReadingList } from '../redux/booksSlice'
 
+import { AiFillStar } from 'react-icons/ai'
+
 const Sidebar = ({ handelSidabar, readingList }) => {
   const dispatch = useDispatch()
 
@@ -19,10 +21,14 @@ const Sidebar = ({ handelSidabar, readingList }) => {
             readingList?.map((element) => (
               <div
                 key={element.book.ISBN}
-                className="max-w-[130px] "
+                className="max-w-[130px] max-h-[200px] relative overflow-hidden"
                 onClick={() => dispatch(removeBookFromReadingList(element))}
               >
-                <img src={element.book.cover} className="object-scale-down " />
+                <img src={element.book.cover} className="object-scale-down" />
+                <AiFillStar
+                  className="absolute top-1 right-1 text-purple-600 bg-white rounded-full border border-purple-500"
+                  size={'1.5rem'}
+                />
               </div>
             ))
           )}
