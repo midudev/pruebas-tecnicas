@@ -7,7 +7,6 @@ module.exports = {
     'standard-with-typescript',
     'plugin:react/recommended'
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs', '*.config.js', '*.config.ts'], 
   overrides: [
     {
       env: {
@@ -25,7 +24,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
     tsconfigRootDir: __dirname,
-    project: ['./tsconfig.json', './tsconfig.node.json']
+    project: ['./tsconfig.json']
   },
   plugins: [
     'react'
