@@ -12,6 +12,41 @@ module.exports = {
 
     extend: {
 
+      keyframes: {
+
+        'zoom-in': {
+
+          '0%': { transform: 'scale(0.7)' },
+          '100%': { transform: 'scale(1)' }
+        },
+
+        'zoom-out': {
+
+          '0%': { transform: 'scale(1)' },
+          '100%': { transform: 'scale(0.7)' }
+        },
+
+        'fade-in': {
+
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' }
+        },
+
+        'fade-out': {
+
+          '0%': { opacity: '1' },
+          '100%': { opacity: '0' }
+        }
+      },
+
+      animation: {
+
+        'zoom-in': 'zoom-in 0.25s ease-in-out forwards',
+        'zoom-out': 'zoom-out 0.25s ease-in-out forwards',
+        'fade-in': 'fade-in 0.25s ease-in-out forwards',
+        'fade-out': 'fade-out 0.25s ease-in-out forwards'
+      },
+
       aspectRatio: {
 
         'cover': '2 / 3'

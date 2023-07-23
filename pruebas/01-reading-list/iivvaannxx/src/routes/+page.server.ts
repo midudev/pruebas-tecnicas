@@ -1,4 +1,4 @@
-import type { Library } from '$app/types'
+import type { Library } from '$types'
 
 export async function load ({ fetch }) {
 

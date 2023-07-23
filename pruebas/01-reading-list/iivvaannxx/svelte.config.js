@@ -23,8 +23,15 @@ const config = {
 
   kit: {
 
-    adapter: adapter()
-  }
+    adapter: adapter(),
+    alias: {
+
+      $assets: 'src/assets',
+      $types: 'src/types',
+      $components: 'src/components',
+      $features: 'src/features',
+    }
+  },
 }
 
 export default config

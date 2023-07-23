@@ -1,6 +1,6 @@
 <script lang='ts' context='module'>
 
-  import Book from '$lib/components/book.svelte'
+  import Book from '$components/book.svelte'
   import Gallery from "$lib/layouts/gallery.svelte";
 
 </script>
