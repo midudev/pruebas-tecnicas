@@ -7,15 +7,18 @@ import type { Filter, Genre } from "~/types"
 type Props = {
   onFilterChange: PropFunction<(filter: Filter) => void>
   onGenreChange: PropFunction<(genre: Genre) => void>
+  filter: Filter
+  genre: Genre
 }
 
 export const Filters = component$(
-  ({ onFilterChange, onGenreChange }: Props) => {
+  ({ onFilterChange, onGenreChange, filter, genre }: Props) => {
     return (
       <section class="flex justify-between items-center my-12">
         <div class="flex items-center">
           <label class="mr-2">Sort by</label>
           <select
+            value={filter}
             class="rounded-md"
             onChange$={event => {
               const filter = event.target.value
@@ -32,6 +35,7 @@ export const Filters = component$(
         <div class="flex-items-center">
           <label class="mr-2">Genres</label>
           <select
+            value={genre}
             class="rounded-md"
             onChange$={event => {
               const genre = event.target.value

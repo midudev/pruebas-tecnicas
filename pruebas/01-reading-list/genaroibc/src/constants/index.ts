@@ -1,6 +1,6 @@
 import type { Filter, Genre } from "~/types"
 
-export const BOOK_FILTERS: Filter[] = ["genre", "pages", "title", "year"]
+export const BOOK_FILTERS: Filter[] = ["pages", "title", "year"]
 
 export const BOOK_GENRES = [
   "all",
