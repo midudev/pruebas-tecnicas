@@ -16,8 +16,8 @@ export default function Filter ({ changeFilters }) {
     }))
   }
   return (
-        <div className="flex gap-10 my-0 border-slate-100 dark:border-[darkslategray] border py-[5px] shadow-sm rounded px-[30px]">
-            <div className='flex justify-center items-center gap-8'>
+        <div className="flex 2xl:gap-10 gap-2 my-0 border-slate-100 dark:border-[darkslategray] 2xl:border py-[5px] shadow-sm rounded px-[30px] dark:bg-[#100c18]">
+            <div className='flex justify-center items-center gap-2 2xl:gap-8'>
                 <label htmlFor="pages">Páginas</label>
                 <input className='w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700'
                     type='range'
@@ -26,11 +26,11 @@ export default function Filter ({ changeFilters }) {
                     max='1000'
                     onChange={handleChangeMinPages}
                 />
-                <span className='w-[49px]'>{minPages}</span>
+                <span className='2xl:w-[49px] w-[102px]'>{minPages}</span>
             </div>
-            <div className='flex justify-center items-center gap-8'>
+            <div className='flex justify-center items-center gap-2 2xl:gap-8'>
                 <label htmlFor="genre">Género</label>
-                <select className='bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus-visible:border-blue-500 outline-none' name="genre" id="genre" onChange={handleChangeGenre}>
+                <select className='bg-gray-50 border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block 2xl:w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus-visible:border-blue-500 outline-none' name="genre" id="genre" onChange={handleChangeGenre}>
                     <option value="all">Todos</option>
                     <option value="Fantasía">Fantasía</option>
                     <option value="Ciencia ficción">Ciencia ficción</option>

@@ -8,10 +8,10 @@
 
 🆗 Persistencia de Datos: La aplicación debe persistir los datos de la lista de lectura en el almacenamiento local del navegador. Al recargar la página, la lista de lectura debe mantenerse.
 
-Sincronización entre pestañas: Si el usuario abre la aplicación en dos pestañas diferentes, los cambios realizados en una pestaña deben reflejarse en la otra. Sin necesidad de usar Backend. -> Sincronizar filtros?
+Sincronización entre pestañas: Si el usuario abre la aplicación en dos pestañas diferentes, los cambios realizados en una pestaña deben reflejarse en la otra. Sin necesidad de usar Backend. -> Sincronizar filtros y tema?
 
 Despliegue: La aplicación debe estar desplegada en algún servicio de hosting gratuito (Netlify, Vercel, Firebase, etc) y debe ser accesible a través de una URL pública. Indica la URL en el README.
 
 🆗 Test: La aplicación debe tener AL MENOS un test. Haz el test que consideres más importante para tu aplicación.
 
--- Botón de reset filters
+-- Botón de reset filters, imagen lista lectura vaciada

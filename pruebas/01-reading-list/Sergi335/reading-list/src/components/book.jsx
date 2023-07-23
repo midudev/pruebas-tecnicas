@@ -9,10 +9,10 @@ export default function Book ({ item, className }) {
   const [isMaximized, setIsMaximized] = useState(false)
 
   const liClass = isMaximized
-    ? ' maximized w-screen h-screen max-h-none bg-white fixed left-0 top-[111px] pt-[80px] items-start flex justify-center'
+    ? ' maximized w-screen 2xl:h-screen 2xl:max-h-none bg-white fixed left-0 top-[111px] 2xl:pt-[80px] pt-[380px] pb-[60px] 2xl:items-start flex justify-center 2xl:flex-row flex-col items-center max-h-[90vh] overflow-y-scroll'
     : ' '
   const divClass = isMaximized
-    ? ' flex flex-col justify-center items-start gap-5 ml-8'
+    ? ' flex flex-col justify-center 2xl:justify-start items-start gap-5 2x:ml-8 my-0 mx-[50px]'
     : ' '
 
   const handleClick = () => {
@@ -34,29 +34,29 @@ export default function Book ({ item, className }) {
   }
 
   return (
-    <li className={classList(className, item) + liClass + ' rounded-[21px] overflow-hidden shadow-indigo-500/40 hover:shadow-lg transition-shadow max-h-[685px] dark:text-gray-300 dark:bg-[#331D2C]' } key={item.book.ISBN}>
+    <li className={classList(className, item) + liClass + ' rounded-[21px] overflow-hidden shadow-indigo-500/40 hover:shadow-lg transition-shadow max-h-[715px] dark:text-gray-300 dark:bg-[#331D2C]' } key={item.book.ISBN}>
           <img className="aspect-[317/475] w-[320px] inline"
               src= {item.book.cover}
               alt= {item.book.title}
           />
           <div className={'pb-7' + divClass}>
-              <strong className='block mt-7'>{item.book.title}</strong>
-              <p>{item.book.author.name}</p>
-              <div className='flex justify-center gap-4 mb-7'>
+              <strong className='block mt-7 w-[100%] 2xl:w-auto'>{item.book.title}</strong>
+              <p className='w-[100%] 2xl:w-auto'>{item.book.author.name}</p>
+              <div className='flex justify-center gap-4 2xl:mb-5 w-[100%] 2xl:w-auto'>
                 <p>{item.book.year}</p>
                 <p>{item.book.genre}</p>
               </div>
               <p className={isMaximized ? '' : 'hidden'}>{item.book.synopsis}</p>
-              <p className={isMaximized ? '' : 'hidden'}>ISBN: {item.book.ISBN}</p>
-              <p className={isMaximized ? '' : 'hidden'}>Páginas: {item.book.pages}</p>
-              <button className='mx-3 py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700' onClick={handleClick}>
+              <p className={isMaximized ? 'w-[100%] 2xl:w-auto' : 'hidden'}>ISBN: {item.book.ISBN}</p>
+              <p className={isMaximized ? 'w-[100%] 2xl:w-auto' : 'hidden'}>Páginas: {item.book.pages}</p>
+              <button className='2xl:mx-3 py-2.5 px-5 2xl:mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-slate-200 rounded hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 my-8 mx-auto' onClick={handleClick}>
             {
                 isMaximized
                   ? 'Volver'
                   : 'Info'
             }
             </button>
-            <button className='theButt bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded dark:bg-[#100c18] dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white' onClick={() => {
+            <button className='theButt bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded dark:bg-[#100c18] dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white my-8 mx-auto 2xl:mx-0' onClick={() => {
               chekBookInList(item)
                 ? removeFromList(item)
                 : addToList(item)

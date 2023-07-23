@@ -17,15 +17,17 @@ function App () {
     pages: 0
   })
   // Estado del tema
-  const [theme, setTheme] = useState('light')
+  const [theme, setTheme] = useState(
+    JSON.parse(localStorage.getItem('theme')) || 'light')
   useEffect(() => {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark')
+      localStorage.setItem('theme', JSON.stringify('dark'))
     } else {
       document.documentElement.classList.remove('dark')
+      localStorage.setItem('theme', JSON.stringify('light'))
     }
   }, [theme])
-  console.log(theme)
   const handleThemeSwitch = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark')
   }
@@ -67,19 +69,19 @@ function App () {
           const total = calculateNumberOfBooks(number, list)
           return (
             <>
-              <header className='fixed top-0 z-10 w-full flex justify-between bg-white
-               items-center left-0 py-[20px] px-[150px] dark:bg-[#331D2C] dark:text-gray-300'>
-                <p className='font-bold text-xl'><BookIconOnly className="absolute left-[234px] top-[22px]"/>Books<span className='font-normal'>Inc</span></p>
+              <header className='fixed top-0 z-10 w-full flex 2xl:justify-center 2xl:gap-[50%] bg-white
+               items-center left-0 py-[20px] px-0 2xl:px-[150px] dark:bg-[#331D2C] dark:text-gray-300 justify-around'>
+                <p className='font-bold text-xl'><BookIconOnly className="absolute left-[26%] 2xl:left-[22%] top-[22px]"/>Books<span className='font-normal'>Inc</span></p>
                 <div className='flex gap-6'>
                   <ThemeSwitch changeTheme={handleThemeSwitch}/>
                   {/* Componente botón con icono */}
                     <BookIcon togglePanel={togglePanel} booksInList={list.length}/>
-                  <h2 id='title'>Colección de libros</h2>
+                  <h2 id='title' className='hidden 2xl:block'>Colección de libros</h2>
                 </div>
               </header>
               <main className='my-0 mt-52 mx-auto w-[100%]'>
-                <section className='filters bg-white z-10 mb-20 flex items-center fixed left-0 w-screen top-[68px] py-[20px] px-[150px] border-slate-100 border-y justify-between dark:bg-[#331D2C] dark:text-gray-300 dark:border-[darkslategray]'>
-                  <p className='w-[250px] border-slate-100 border py-[5px] shadow-sm rounded dark:border-[darkslategray]'>Libros Disponibles: <span className=' inline-block w-[30px]'>{total}</span></p>
+                <section className='filters bg-white z-10 mb-20 flex items-center fixed left-0 w-screen top-[68px] 2xl:py-[20px] p-0 border-slate-100 border-y 2xl:gap-[30%] dark:bg-[#331D2C] dark:text-gray-300 dark:border-[darkslategray] justify-center flex-col 2xl:flex-row py-[15px]'>
+                  <p className='w-[250px] border-slate-100 2xl:border py-[5px] shadow-sm rounded dark:border-[darkslategray] dark:bg-[#100c18]'>Libros Disponibles: <span className=' inline-block w-[30px]'>{total}</span></p>
                   {/* Componente filtro */}
                   <Filter changeFilters={setFilters} />
                 </section>

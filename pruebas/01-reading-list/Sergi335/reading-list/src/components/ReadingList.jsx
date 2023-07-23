@@ -8,7 +8,6 @@ export default function ReadingList ({ isOpen, togglePanel }) {
   const panelClass = isOpen
     ? 'abierto'
     : 'translate-x-full'
-  console.log(isOpen)
   // Efecto para que cuando se clique fuera del panel se esconda
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -26,7 +25,7 @@ export default function ReadingList ({ isOpen, togglePanel }) {
   }, [isOpen])
   const visible = 'block'
   return (
-        <section ref={panelRef} className={panelClass + ' readingList bg-slate-50 border-l w-[34vw] p-8 fixed top-[146px] right-0 transition-transform h-[89vh] overflow-y-scroll shadow-md dark:bg-[#331D2C] dark:border-[darkslategray] dark:text-gray-400'}>
+        <section ref={panelRef} className={panelClass + ' readingList bg-slate-50 border-l 2xl:w-[34vw] p-8 fixed top-[146px] right-0 transition-transform h-[89vh] overflow-y-scroll shadow-md dark:bg-[#331D2C] dark:border-[darkslategray] dark:text-gray-400'}>
           <header className='flex justify-between'>
             <h2>Lista De Lectura</h2>
             <span>Tienes {list.length} libros</span>
