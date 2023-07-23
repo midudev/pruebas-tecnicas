@@ -1,11 +1,16 @@
 import styles from './card.module.css'
 import Button from '../button/Button'
 
+import useDeviceDetect from '../../hooks/useDeviceDetect'
+
 // TODO: Scoring:https://dev.to/michaelburrows/create-a-custom-react-star-rating-component-5o6
 
 export default function Card({ book, isAvailable }) {
+    //TODO Change to Const
     if (!book) return null
     const { title, cover, synopsis, author } = book
+    const { isMobile, isVisible } = useDeviceDetect()
+    const isVisibleButton = isMobile || !isVisible
     return (
         <div className={styles.card}>
             <div>
@@ -30,7 +35,9 @@ export default function Card({ book, isAvailable }) {
                         <p>{author.name}</p>
                     </div>
                 </div>
-                {isAvailable() ? <Button book={book} /> : null}
+                {isAvailable() && isVisibleButton ? (
+                    <Button book={book} />
+                ) : null}
             </div>
         </div>
     )

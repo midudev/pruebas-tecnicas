@@ -3,7 +3,7 @@ import Card from '../card/Card'
 
 import { LIST_NAME } from '../../constant/constants'
 
-const BookList = ({ title, books, droppableId }) => {
+const BookList = ({ title, books, droppableId, id }) => {
     const { AVAILABLE_BOOKS } = LIST_NAME
     const isBookAvailable = () => droppableId === AVAILABLE_BOOKS //TODO Review
     // <ul className={'sticky top-20'}> TODO Review
@@ -15,6 +15,7 @@ const BookList = ({ title, books, droppableId }) => {
                     {...provided.droppableProps}
                     ref={provided.innerRef}
                     className="flex-1 min-w-full md:min-w-0"
+                    id={id}
                 >
                     <ul>
                         <h2 className="flex items-center justify-center pb-5">

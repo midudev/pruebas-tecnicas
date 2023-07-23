@@ -16,7 +16,12 @@ import useBooks from '../hooks/useBooks'
 
 export default function Home() {
     const { library } = initialBooksList
-    const { AVAILABLE_BOOKS, BOOKS_SELECTED } = LIST_NAME
+    const {
+        AVAILABLE_BOOKS,
+        BOOKS_SELECTED,
+        BOOKS_SELECTED_TITTLE,
+        AVAILABLE_BOOKS_TITTLE,
+    } = LIST_NAME
 
     const {
         books: booksAvailable,
@@ -29,9 +34,8 @@ export default function Home() {
     } = useBooks()
 
     const [draggingBook, setDraggingBook] = useState({
-        isDraggingBook: false,
         source: {},
-        isShown: true,
+        isShown: false,
     })
 
     useEffect(() => {
@@ -50,7 +54,7 @@ export default function Home() {
         const { source, destination } = events
         if (!destination) return
 
-        setDraggingBook({ isDraggingBook: false, source: {}, isShown: false })
+        setDraggingBook({ source: {}, isShown: false })
 
         const sourceList =
             source.droppableId === AVAILABLE_BOOKS
@@ -95,11 +99,11 @@ export default function Home() {
     }
 
     function handleOnDragStart(event) {
-        setDraggingBook({
-            ...draggingBook,
-            isDraggingBook: true,
-            source: event.source.droppableId,
-        })
+        if (booksSelected.length === 0)
+            setDraggingBook({
+                isShown: true,
+                source: event.source.droppableId,
+            })
     }
 
     const Drop = () => {
@@ -120,20 +124,24 @@ export default function Home() {
             onDragEnd={handleOnDragEnd}
             onDragStart={handleOnDragStart}
         >
-            <main className="flex justify-evenly flex-wrap pt-20">
-                <BookList
-                    title={'Libros'}
-                    books={booksAvailable}
-                    droppableId={AVAILABLE_BOOKS}
-                />
-                {draggingBook.isShown && draggingBook.isDraggingBook ? (
-                    <Drop />
-                ) : null}
-                <BookList
-                    title={'Lista de Lectura'}
-                    books={booksSelected}
-                    droppableId={BOOKS_SELECTED}
-                />
+            <main className="pt-20">
+                <div className="flex justify-evenly flex-wrap rounded-lg">
+                    <BookList
+                        title={AVAILABLE_BOOKS_TITTLE}
+                        books={booksAvailable}
+                        droppableId={AVAILABLE_BOOKS}
+                        id={AVAILABLE_BOOKS}
+                    />
+                    {draggingBook.isShown ? ( //TODO Review behavior
+                        <Drop />
+                    ) : null}
+                    <BookList
+                        title={BOOKS_SELECTED_TITTLE}
+                        books={booksSelected}
+                        droppableId={BOOKS_SELECTED}
+                        id={BOOKS_SELECTED}
+                    />
+                </div>
             </main>
         </DragDropContext>
     )
