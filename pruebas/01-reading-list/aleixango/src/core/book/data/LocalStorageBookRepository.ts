@@ -28,11 +28,25 @@ export class LocalStorageBookRepository implements BookRepository {
     })
   }
 
+  add(newBook: Book): Promise<boolean> {
+    return new Promise((resolve) => {
+      const indexToInsert = this.books.findIndex((book: Book) => book.ISBN > newBook.ISBN)
+      if (indexToInsert !== -1) {
+        this.books.splice(indexToInsert, 0, newBook)
+      } else {
+        this.books.push(newBook)
+      }
+      localStorage.setItem(this.booksKey, JSON.stringify(this.books))
+      resolve(true)
+    })
+  }
+
   remove(isbn: string): Promise<boolean> {
     return new Promise((resolve) => {
       const index = this.books.findIndex((book: Book) => book.ISBN === isbn)
       if (index !== -1) {
         this.books.splice(index, 1)
+        localStorage.setItem(this.booksKey, JSON.stringify(this.books))
         resolve(true)
       }
       resolve(false)
