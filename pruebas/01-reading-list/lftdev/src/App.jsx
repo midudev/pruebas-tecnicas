@@ -4,11 +4,13 @@ import GenreFilter from './components/GenreFilter'
 import useBooksList from './hooks/useBooksList'
 import { useEffect, useState } from 'react'
 import BooksJSON from './database/books.json'
+import PagesFilter from './components/PagesFilter'
 
 export default function App () {
   // useState hooks
   const [genresList, setGenresList] = useState([])
   const [selectedGenre, setSelectedGenre] = useState('Todos')
+  const [pagesFilter, setPagesFilter] = useState(50)
   // Custom hooks
   const {
     availableBooks,
@@ -48,7 +50,13 @@ export default function App () {
             <form role='search' className='flex gap-32'>
               <label className='text-lg' htmlFor='pages-filter'>
                 <div>Filtrar por páginas</div>
-                <input id='pages-filter' type='range' />
+                <PagesFilter
+                  id='pages-filter'
+                  booksPages={BooksJSON.library.map(bookObj => bookObj.book.pages)}
+                  onChange={setPagesFilter}
+                  value={pagesFilter}
+                />
+                <p>A partir de {pagesFilter} páginas</p>
               </label>
               <label className='text-md' htmlFor='genre-filter'>
                 <div>Filtrar por género</div>
