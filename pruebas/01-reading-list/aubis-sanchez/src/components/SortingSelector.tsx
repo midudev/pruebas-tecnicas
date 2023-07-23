@@ -5,7 +5,7 @@ import { orderBooksByPagesNumber } from "../utils";
 import { SortBy } from "../models/sorting.model";
 
 export const SortingSelector = () => {
-  const [orderBy, setOrderBy] = React.useState<SortBy>(SortBy.none);
+  const [orderBy, setOrderBy] = React.useState<SortBy | "">("");
   const books = useBook.getState().books;
   const setBooks = useBook((state) => state.setBooks);
 

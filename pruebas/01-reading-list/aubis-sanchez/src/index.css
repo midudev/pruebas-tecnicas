@@ -20,30 +20,12 @@ body {
   border-left: 2px solid rgba(255,255,255,0.2)
 }
 
-.css-1lwyua3-MuiChip-root{
-  background-color: rgba(255,255,255,0.2) !important
-}
-
-.css-1vzzde7-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
-  color: white !important;
-}
-
-.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected{
-  background-color: rgba(25, 118, 210, 0.2) !important;
-}
-.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
-  color: white !important
-}
-.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root input{
-  color: white !important
-}
-
-#search-bar {
-  color: white !important
-}
-
 .card{
  display: flex;
  flex-direction: row;
  flex-wrap: wrap;
+}
+
+svg {
+  color: white !important
 }

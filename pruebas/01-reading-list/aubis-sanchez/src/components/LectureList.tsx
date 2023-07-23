@@ -19,7 +19,14 @@ export const LectureList = () => {
     return <EmptyList label="Your lecture list is empty" />;
   return (
     <SectionContainer>
-      <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+      <Grid
+        container
+        rowSpacing={2}
+        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+        m="auto"
+        width="full"
+        px={3}
+      >
         <ReactSortable
           list={userLectureList.map((book) => adaptIdToBook(book))}
           setList={setUserLectureList}

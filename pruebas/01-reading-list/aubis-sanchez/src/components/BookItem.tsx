@@ -74,7 +74,9 @@ export const BookItem = ({ book, lectureBook, priority }: Props) => {
         justifyContent="center"
         py={1}
       >
-        Priority: {typeof priority === "number" ? priority + 1 : ""}
+        {lectureBook
+          ? `Priority: ${typeof priority === "number" ? priority + 1 : ""}`
+          : null}
       </Typography>
     </Card>
   );
