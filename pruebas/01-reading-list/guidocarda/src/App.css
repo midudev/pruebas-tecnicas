@@ -1,0 +1,172 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 20rem;
+  gap: 2rem;
+  margin-block: 4rem;
+  margin-inline: 2rem;
+}
+
+section {
+  width: min(1080px, 100% - 2rem);
+  margin-inline: auto;
+}
+
+aside {
+  background: rgb(34, 34, 35);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+/* 
+aside h2 {
+  padding-left: 1rem;
+} */
+aside > span {
+  color: gray;
+  /* padding-left: 1rem; */
+}
+
+.filters {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+  accent-color: rgb(74, 82, 124);
+}
+
+.filters > div > label {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.filters select {
+  height: 2.5rem;
+  padding-inline: 1rem;
+  width: 10rem;
+  border: none;
+  border-radius: 0.3rem;
+}
+
+.filters input[type="text"] {
+  height: 2.5rem;
+  padding-inline: 1rem;
+  width: 15rem;
+  font: inherit;
+}
+
+.filters .pages-count {
+  width: 3rem;
+  font-size: 0.875rem;
+  color: rgb(175, 175, 175);
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+}
+
+.search-input {
+  border: 1px solid grey;
+  border-radius: 0.3rem;
+  background: inherit;
+  color: rgb(181, 181, 181);
+}
+.search-input:focus {
+  outline: 1px solid rgb(161, 161, 161);
+  color: rgb(219, 219, 219);
+}
+
+.books {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  gap: 1rem;
+}
+
+.book {
+  overflow: hidden;
+  background: rgb(84, 86, 88);
+
+  border-radius: 0.3rem;
+  transition: all 0.25s;
+  position: relative;
+  animation: test 300ms ease-in-out;
+}
+
+.book:hover {
+  scale: 1.02;
+}
+
+.book:hover::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.74), transparent);
+  bottom: 0;
+  width: 100%;
+}
+
+.book .book-title {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  z-index: 10;
+  opacity: 0;
+}
+
+.book:hover .book-title {
+  opacity: 1;
+}
+
+.book img {
+  max-width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.reading-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+  /* border: 1px solid red; */
+}
+
+.reading-list .book {
+  position: relative;
+}
+
+@keyframes test {
+  0% {
+    translate: 0 10px;
+    opacity: 0.5;
+  }
+  100% {
+    translate: 0 0px;
+    opacity: 1;
+  }
+}
+
+.reading-list .book > .remove-book {
+  position: absolute;
+  z-index: 10;
+  top: 0.5rem;
+  right: 0.5rem;
+  height: 2rem;
+  width: 2rem;
+  background-color: white;
+  border: none;
+  border-radius: 0.3rem;
+  color: red;
+}
+
+.no-results {
+  margin-top: 2.5rem;
+  animation: test 100ms ease-in;
+}
