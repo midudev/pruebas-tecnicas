@@ -1,2 +1,2 @@
-export { default as Modal } from './modal.svelte'
-export { isOpen, open, close } from './store'
+export { default as Modal } from './components/modal.svelte'
+export { isOpen, title, setModalTitle, open, close } from './store'
