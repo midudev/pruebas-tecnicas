@@ -1,6 +1,6 @@
 import type { Book, GlobalState } from '../../../types'
 
-export const mockDetaultState: GlobalState = {
+export const mockDefaultState: GlobalState = {
   books: [
     {
       title: 'El Señor de los Anillos',

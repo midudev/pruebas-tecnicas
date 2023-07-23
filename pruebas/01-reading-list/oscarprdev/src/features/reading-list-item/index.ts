@@ -1,5 +1,5 @@
 import { stateInfra, stateRepository, stateUseCase } from '../../core/state'
-import { ReadingListItemUsecase } from './application/rading-list-item.usecase'
+import { ReadingListItemUsecase } from './application/reading-list-item.usecase'
 import { ReadingListItemRepository } from './repository/reading-list-item.repository'
 
 const readingListItemRepository = new ReadingListItemRepository(stateInfra)
