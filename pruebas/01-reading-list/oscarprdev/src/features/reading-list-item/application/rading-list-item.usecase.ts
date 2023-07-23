@@ -1,12 +1,14 @@
 import type { StatePorts } from '../../../core/state/application/state.ports'
-import { StateUsecase } from '../../../core/state/application/state.usecase'
+import type { Subscription } from '../../../core/state/application/state.types'
+import { DefaultStateUsecase } from '../../../core/state/application/state.usecase'
 import type { Book } from '../../../core/types'
 import type { ReadingListItemPorts } from './reading-list-item.ports'
 
-export class ReadingListItemUsecase extends StateUsecase {
+export class ReadingListItemUsecase extends DefaultStateUsecase {
   constructor(
     statePorts: StatePorts,
-    private readonly itemPorts: ReadingListItemPorts
+    private readonly itemPorts: ReadingListItemPorts,
+    readonly listeners: Subscription[]
   ) {
     super(statePorts)
   }

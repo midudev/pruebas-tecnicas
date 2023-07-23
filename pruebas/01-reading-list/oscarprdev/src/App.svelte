@@ -3,13 +3,20 @@
   import Library from './core/components/Library.svelte'
   import Modal from './core/components/modals/Modal.svelte'
   import ReadingList from './core/components/ReadingList.svelte'
-  import TopBooksList from './core/components/TopBooksList.svelte'
+  import { stateUseCase } from './core/state'
+  import { setAppState } from './core/store/app-state-store'
   import { modalStore } from './core/store/modal-store'
-  import { onMount } from 'svelte'
+  import { beforeUpdate, onMount } from 'svelte'
 
   let modal: any
 
-  onMount(() => modalStore.set(modal))
+  beforeUpdate(() => {
+    stateUseCase.subscribe(setAppState)
+  })
+
+  onMount(() => {
+    modalStore.set(modal)
+  })
 </script>
 
 <main

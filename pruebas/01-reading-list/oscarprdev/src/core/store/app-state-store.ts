@@ -1,13 +1,13 @@
 import { writable } from 'svelte/store'
 import books from '../../../../books.json'
-import { DefaultStateInfra } from '../state/infra/state.infra'
-import { StateRepository } from '../state/repository/state.repository'
-import { StateUsecase } from '../state/application/state.usecase'
-
-export const stateInfra = new DefaultStateInfra()
-export const stateRepository = new StateRepository(stateInfra)
-const stateUseCase = new StateUsecase(stateRepository)
+import type { GlobalState } from '../types'
+import { stateUseCase } from '../state'
 
 export const appState = writable(stateUseCase.state, () =>
   stateUseCase.setDefaultState(books)
 )
+
+export const setAppState = (state: GlobalState) => {
+  console.log(state, 'svelte state')
+  appState.set(state)
+}

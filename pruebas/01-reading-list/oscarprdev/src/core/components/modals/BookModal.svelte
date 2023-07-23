@@ -14,8 +14,7 @@
     readingListUsecase.addBook(book)
 
     asideState.update(() => ({
-      readingListIsOpen: true,
-      topBooksListIsOpen: false,
+      isOpen: true,
     }))
 
     actionsStore.update(() => ({

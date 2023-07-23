@@ -1,5 +1,6 @@
 import type { StatePorts } from '../../../core/state/application/state.ports'
-import { StateUsecase } from '../../../core/state/application/state.usecase'
+import type { Subscription } from '../../../core/state/application/state.types'
+import { DefaultStateUsecase } from '../../../core/state/application/state.usecase'
 import type { Book } from '../../../core/types'
 import type { ReadingListPorts } from './reading-list.ports'
 import type { OrderList } from './reading-list.types'
@@ -11,10 +12,11 @@ const READING = 'Leyendo'
 
 export const sortItems = [MAX_VAL, MIN_VAL, COMPLETED, READING]
 
-export class ReadingListUsecase extends StateUsecase {
+export class ReadingListUsecase extends DefaultStateUsecase {
   constructor(
     statePorts: StatePorts,
-    private readonly readingListPorts: ReadingListPorts
+    private readonly readingListPorts: ReadingListPorts,
+    readonly listeners: Subscription[]
   ) {
     super(statePorts)
   }

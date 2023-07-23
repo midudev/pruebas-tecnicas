@@ -10,7 +10,7 @@ export class StateRepository implements StatePorts {
     const books = defaultBooks.library.map((libraryItem) => ({
       ...libraryItem.book,
       stars: 0,
-      completed: false,
+      isDone: false,
     }))
 
     const globalState: GlobalState = {
