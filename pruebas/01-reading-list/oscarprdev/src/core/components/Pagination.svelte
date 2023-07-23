@@ -1,0 +1,69 @@
+<script lang="ts">
+  import { derived } from 'svelte/store'
+  import type { PaginationState } from './types'
+  import type { Book } from '../types'
+  import type { Readable } from 'svelte/motion'
+  import { ArrowRightIcon, ArrowLeftIcon } from 'svelte-feather-icons'
+  import { paginationState } from '../store/pagination-store'
+
+  export let booksFiltered: Readable<Book[]>
+
+  let leftIconIsDisabled = derived(
+    paginationState,
+    ($paginationState) => $paginationState.init <= 0
+  )
+  let rightIconIsDisabled = derived(
+    [paginationState, booksFiltered],
+    ([$paginationState, $booksFiltered]) =>
+      $booksFiltered && $paginationState.offset >= $booksFiltered.length
+  )
+
+  const showNext = () => {
+    paginationState.update((prevState: PaginationState) => ({
+      init: prevState.init + 4,
+      offset: prevState.offset + 4,
+    }))
+  }
+
+  const showPrev = () => {
+    paginationState.update((prevState: PaginationState) => ({
+      init: prevState.init - 4,
+      offset: prevState.offset - 4,
+    }))
+  }
+</script>
+
+{#if $booksFiltered.length > 4}
+  <section
+    class="self-center flex gap-5 py-2 px-3 mt-4 bg-dark rounded-full xl:self-end xl:mr-12 xxl:mt-28"
+  >
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
+    <button
+      class={!$leftIconIsDisabled && 'cursor-pointer'}
+      on:click={showPrev}
+      disabled={$leftIconIsDisabled}
+    >
+      <ArrowLeftIcon
+        size="25"
+        class={$leftIconIsDisabled
+          ? 'text-icons'
+          : 'text-light transtion-text-pagination duration-300 hover:text-pagination'}
+      />
+    </button>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
+    <button
+      class={!$rightIconIsDisabled && 'cursor-pointer'}
+      on:click={showNext}
+      disabled={$rightIconIsDisabled}
+    >
+      <ArrowRightIcon
+        size="25"
+        class={$rightIconIsDisabled
+          ? 'text-icons'
+          : 'text-light transtion-text-pagination duration-300 hover:text-pagination'}
+      />
+    </button>
+  </section>
+{/if}

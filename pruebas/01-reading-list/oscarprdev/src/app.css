@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'lora';
+  src: url('./assets/lora/Lora-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'soria';
+  src: url('./assets/soria/soria-font.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'subjectivity';
+  src: url('./assets/subjectivity/Subjectivity-Regular.otf') format('opentype');
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+}
