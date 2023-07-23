@@ -46,9 +46,9 @@ export const ReadingList = component$(({ books, onBookSelect }: Props) => {
 const NoBooksMessage = component$(() => {
   return (
     <div class="py-8">
-      <h2 class="text-2xl font-bold text-white mb-4">
+      <p class="text-2xl font-bold text-white mb-4">
         No books in your reading list
-      </h2>
+      </p>
 
       <p class="text-white">
         Add books to your reading list by clicking or dragging and dropping them
