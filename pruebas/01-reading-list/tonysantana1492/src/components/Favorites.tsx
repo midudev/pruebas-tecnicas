@@ -24,7 +24,7 @@ export const Favorites = () => {
 						<p className="font-bold text-xs text-center">{favorites.length}</p>
 					</div>
 				</div>
-				{isOpen && (<button onClick={handleCloseMenu}>
+				{isOpen && (<button role='open-side-menu' onClick={handleCloseMenu}>
 					<Close />
 				</button>)}
 			</div>
