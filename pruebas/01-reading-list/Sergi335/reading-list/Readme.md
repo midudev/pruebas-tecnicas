@@ -12,6 +12,6 @@ Sincronización entre pestañas: Si el usuario abre la aplicación en dos pesta�
 
 Despliegue: La aplicación debe estar desplegada en algún servicio de hosting gratuito (Netlify, Vercel, Firebase, etc) y debe ser accesible a través de una URL pública. Indica la URL en el README.
 
-Test: La aplicación debe tener AL MENOS un test. Haz el test que consideres más importante para tu aplicación.
+🆗 Test: La aplicación debe tener AL MENOS un test. Haz el test que consideres más importante para tu aplicación.
 
--- Botón de reset filters, tema oscuro
+-- Botón de reset filters

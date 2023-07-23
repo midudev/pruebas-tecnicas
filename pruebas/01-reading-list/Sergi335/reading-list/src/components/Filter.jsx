@@ -16,7 +16,7 @@ export default function Filter ({ changeFilters }) {
     }))
   }
   return (
-        <div className="flex gap-10 my-0 border-slate-100 border py-[5px] shadow-sm rounded px-[30px]">
+        <div className="flex gap-10 my-0 border-slate-100 dark:border-[darkslategray] border py-[5px] shadow-sm rounded px-[30px]">
             <div className='flex justify-center items-center gap-8'>
                 <label htmlFor="pages">Páginas</label>
                 <input className='w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700'

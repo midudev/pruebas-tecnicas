@@ -29,7 +29,12 @@
 .readingList::-webkit-scrollbar-thumb {
   background: #e3e4e5;
 }
-  
+html.dark .readingList::-webkit-scrollbar-thumb {
+  background: #5ea3e7;
+}
+html.dark body {
+  background-color: #3F2E3E;
+}
 a {
   font-weight: 500;
   color: #646cff;
@@ -65,14 +70,64 @@ button {
   transition: border-color 0.25s;
 }
 
-/* button:hover {
-  border-color: #646cff;
-} */
+/* the toggle switch */
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  max-width: 127px;
+  margin-right: 50px;
+}
+.toggle span {
+  margin: 0 0.5rem;
+}
+.toggle input[type="checkbox"] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+.toggle input[type="checkbox"]:checked + label {
+  background: teal;
+}
+.toggle input[type="checkbox"]:checked + label:after {
+  left: calc(100% - 2px);
+  transform: translateX(-100%);
+}
+.toggle label {
+  cursor: pointer;
+  width: 75px;
+  height: 28px;
+  background: rgba(0, 0, 0, 0.27);
+  display: block;
+  border-radius: 40px;
+  position: relative;
+}
+.toggle label:after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 24px;
+  height: 24px;
+  background: #fff;
+  border-radius: 40px;
+  transition: 0.3s;
+}
+/* make the toggle switch a bit more accessible */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+}
 
-/* button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-} */
+
 
 @media (prefers-color-scheme: light) {
   :root {

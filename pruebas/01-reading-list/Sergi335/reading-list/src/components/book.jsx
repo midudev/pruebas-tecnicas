@@ -34,7 +34,7 @@ export default function Book ({ item, className }) {
   }
 
   return (
-    <li className={classList(className, item) + liClass + ' rounded-[21px] overflow-hidden shadow-indigo-500/40 hover:shadow-lg transition-shadow max-h-[685px]' } key={item.book.ISBN}>
+    <li className={classList(className, item) + liClass + ' rounded-[21px] overflow-hidden shadow-indigo-500/40 hover:shadow-lg transition-shadow max-h-[685px] dark:text-gray-300 dark:bg-[#331D2C]' } key={item.book.ISBN}>
           <img className="aspect-[317/475] w-[320px] inline"
               src= {item.book.cover}
               alt= {item.book.title}
@@ -49,14 +49,14 @@ export default function Book ({ item, className }) {
               <p className={isMaximized ? '' : 'hidden'}>{item.book.synopsis}</p>
               <p className={isMaximized ? '' : 'hidden'}>ISBN: {item.book.ISBN}</p>
               <p className={isMaximized ? '' : 'hidden'}>Páginas: {item.book.pages}</p>
-              <button className='mx-3 py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' onClick={handleClick}>
+              <button className='mx-3 py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700' onClick={handleClick}>
             {
                 isMaximized
                   ? 'Volver'
                   : 'Info'
             }
             </button>
-            <button className='theButt bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded' onClick={() => {
+            <button className='theButt bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded dark:bg-[#100c18] dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white' onClick={() => {
               chekBookInList(item)
                 ? removeFromList(item)
                 : addToList(item)
