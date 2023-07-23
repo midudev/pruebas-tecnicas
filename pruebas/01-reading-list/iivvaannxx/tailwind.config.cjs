@@ -1,10 +1,12 @@
 import defaultConfig from 'tailwindcss/defaultConfig'
-import gridAreasPlugin from '@savvywombat/tailwindcss-grid-areas'
+
+import prelinePlugin from 'preline/plugin'
+import debugScreensPlugin from 'tailwindcss-debug-screens'
 
 module.exports = {
 
   presets: [defaultConfig],
-  content: ['./src/**/*.{svelte,html,js,ts}'],
+  content: ['node_modules/preline/dist/*.js', './src/**/*.{svelte,html,js,ts}'],
 
   theme: {
 
@@ -15,26 +17,17 @@ module.exports = {
         'cover': '2 / 3'
       },
 
-      gridTemplateAreas: {
-
-        'base': [
-
-          'header header',
-          'aside  main',
-        ]
-      },
-
       gridTemplateColumns: {
 
-        'base': '0.5fr 1.5fr'
+        'library': 'repeat(auto-fill, minmax(15rem, 1fr))'
       },
 
-      gridTemplateRows: {
+      content: {
 
-        'base': '0.15fr 1.85fr'
+        empty: '""'
       }
     }
   },
 
-  plugins: [gridAreasPlugin]
+  plugins: [debugScreensPlugin, prelinePlugin]
 }

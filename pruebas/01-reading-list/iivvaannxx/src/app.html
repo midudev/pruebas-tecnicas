@@ -11,11 +11,13 @@
 
 	</head>
 
-	<body data-sveltekit-preload-data="hover" class="w-full h-full">
+	<body data-sveltekit-preload-data="hover" class="w-full h-full debug-screens">
 
-		<div class='w-full min-h-full grid grid-areas-base grid-cols-base grid-rows-base'>
+		<div class='w-full h-full flex overflow-hidden'>
 			%sveltekit.body%
 		</div>
+
+		<script src="%sveltekit.assets%/assets/preline.js"></script>
 
 	</body>
 

@@ -7,7 +7,6 @@
 
 <script lang="ts">
 
-
   export let data
   const { library } = data
 
@@ -22,12 +21,13 @@
 
 <h2>{library.length} libros disponibles</h2>
 
+
 <Gallery>
 
-</Gallery>
-
-<!-- {#each library as bookData}
+  {#each library as bookData}
 
   <Book {...bookData} />
 
-{/each} -->
+  {/each}
+
+</Gallery>

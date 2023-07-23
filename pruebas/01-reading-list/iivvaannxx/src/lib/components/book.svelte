@@ -17,11 +17,12 @@
 
 </script>
 
-<div class='p-6 text-base rounded-2xl text-gray-900 bg-red-400 max-w-xs flex justify-center items-center gap-4'>
+<div class="relative flex flex-col w-full aspect-cover shadow-sm rounded-xl">
 
-  <img class='w-60 aspect-cover' src={cover} alt={title} title={title} />
+  <img class="w-full h-full rounded-xl" src={cover} alt={title} />
 
-  <h4 class='text-center font-bold text-lg'>{title}</h4>
-  <h6 class='font-normal uppercase'>{author.name} ({year})</h6>
+  <div class='absolute flex items-end p-4 h-full w-full bottom-0 bg-black rounded-xl bg-opacity-0 hover:bg-opacity-40 transition duration-200'>
+    <h4 class='text-white text-base font-bold uppercase'>{title}</h4>
+  </div>
 
 </div>

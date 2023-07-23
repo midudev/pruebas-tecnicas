@@ -4,9 +4,15 @@ dependencies:
   '@nanostores/persistent':
     specifier: ^0.9.1
     version: 0.9.1(nanostores@0.9.3)
+  '@preline/overlay':
+    specifier: ^1.4.0
+    version: 1.4.0
   nanostores:
     specifier: ^0.9.3
     version: 0.9.3
+  preline:
+    specifier: ^1.9.0
+    version: 1.9.0
   tailwindcss:
     specifier: ^3.3.3
     version: 3.3.3
@@ -15,9 +21,6 @@ devDependencies:
   '@playwright/test':
     specifier: ^1.28.1
     version: 1.36.1
-  '@savvywombat/tailwindcss-grid-areas':
-    specifier: ^3.1.0
-    version: 3.1.0(tailwindcss@3.3.3)
   '@sveltejs/adapter-static':
     specifier: ^2.0.2
     version: 2.0.2(@sveltejs/kit@1.22.3)
@@ -63,6 +66,9 @@ devDependencies:
   svelte-preprocess:
     specifier: ^5.0.4
     version: 5.0.4(postcss@8.4.26)(svelte@4.1.1)(typescript@5.1.6)
+  tailwindcss-debug-screens:
+    specifier: ^2.2.1
+    version: 2.2.1(tailwindcss@3.3.3)
   tslib:
     specifier: ^2.4.1
     version: 2.6.0
@@ -434,15 +440,13 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
-  /@savvywombat/tailwindcss-grid-areas@3.1.0(tailwindcss@3.3.3):
-    resolution: {integrity: sha512-CaNoCS7Zr3OeDDhCSXXU7dnqYjehdjNmDy6NdFxkLAyDcxA8YTI3rjPm6X+bTWyYINHXr+RONG3UKWrSv2UYSw==}
-    engines: {node: '>=14.18.2'}
-    peerDependencies:
-      tailwindcss: ^3.0.1
-    dependencies:
-      lodash: 4.17.21
-      tailwindcss: 3.3.3
-    dev: true
+  /@popperjs/core@2.11.8:
+    resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
+    dev: false
+
+  /@preline/overlay@1.4.0:
+    resolution: {integrity: sha512-K3Ybp1jGkonimWIlS986Lzz/4ezuYNqQNTK2ZS0tDka69hzutA10CraAeflEHG2A1n7EzWkZE1vjLuy7s7pgjg==}
+    dev: false
 
   /@sinclair/typebox@0.27.8:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
@@ -2240,10 +2244,6 @@ packages:
     resolution: {integrity: sha512-xfBaXQd9ryd9dlSDvnvI0lvxfLJlYAZzXomUYzLKtUeOQvOP5piqAWuGtrhWeqaXK9hhoM/iyJc5AV+XfsX3HQ==}
     dev: true
 
-  /lodash@4.17.21:
-    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: true
-
   /loupe@2.3.6:
     resolution: {integrity: sha512-RaPMZKiMy8/JruncMU5Bt6na1eftNoo++R4Y+N2FrxkDVTrGvcyzFTsaGif4QTeKESheMGegbhw6iUAq+5A8zA==}
     dependencies:
@@ -2930,6 +2930,12 @@ packages:
       picocolors: 1.0.0
       source-map-js: 1.0.2
 
+  /preline@1.9.0:
+    resolution: {integrity: sha512-zvOexsDBood9gBAQYSwz7iY8TaomtRD0/qxvCnJl3caq5pif6frl8Oe4b4DsxHHD3Clzl4I5RmVKTq9XjMvNJA==}
+    dependencies:
+      '@popperjs/core': 2.11.8
+    dev: false
+
   /prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
@@ -3361,6 +3367,14 @@ packages:
       css-tree: 2.3.1
       csso: 5.0.5
       picocolors: 1.0.0
+    dev: true
+
+  /tailwindcss-debug-screens@2.2.1(tailwindcss@3.3.3):
+    resolution: {integrity: sha512-EMyA0CYBzqcZJHtVDvBfmYzfx3NxuK4qDyVO5wnzcGOrmJsv25D9xPpWefVTORTvhE6pCh90Z1WYnLUKsg3yMw==}
+    peerDependencies:
+      tailwindcss: ^1.0 || ^2.0 || ^3.0.0-alpha.1 || ^3.0
+    dependencies:
+      tailwindcss: 3.3.3
     dev: true
 
   /tailwindcss@3.3.3:
