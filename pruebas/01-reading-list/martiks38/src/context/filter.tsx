@@ -26,7 +26,7 @@ type FilterContext = {
 
 const currentGenre = window.localStorage.getItem(nameStorage.currentGenre) ?? allGenre
 
-const STEPS: readonly [number, number, number] = [100, 50, 10]
+export const STEPS: readonly [number, number, number] = [100, 50, 10]
 
 export const FilterContext = createContext<FilterContext | null>(null)
 
@@ -65,7 +65,7 @@ export function FilterProvider({ children }: FilterProviderProps) {
   const changeCurrentGenre = (ev: React.ChangeEvent<HTMLInputElement>) => {
     const genre = ev.currentTarget.value
 
-    if (genre) {
+    if (genre && genre !== currentGenre) {
       window.localStorage.setItem(nameStorage.currentGenre, genre)
 
       setFilters((prevFilters) => {

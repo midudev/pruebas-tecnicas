@@ -26,7 +26,7 @@ describe('<BookList />', () => {
   afterEach(() => cleanup())
 
   it('Without context', () => {
-    expect(() => renderingWithoutContext()).toThrowError(/must be used within a/)
+    expect(() => renderingWithoutContext()).toThrowError(/must be used within a/i)
   })
 
   it(`The book ${listBooksAvailable[0].title} is in the list on the screen`, () => {
