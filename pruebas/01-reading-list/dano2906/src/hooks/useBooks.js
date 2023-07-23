@@ -4,23 +4,29 @@ import { useReadListStore } from '../stores/BookStore'
 import { getBooks } from '../services/books'
 
 export const useBooks = () => {
+  // Libros para renderizar y cantidad de libros renderizados...dependen de los filtros
   const [books, setBooks] = useState([])
   const [quantityByGenre, setQuantityByGenre] = useState(0)
+
+  // Filtros
   const [filterPages, setFilterPages] = useState(0)
   const debouncedFilterPages = useDebounce(filterPages, 300)
   const [filterGenre, setFilterGenre] = useState('Todos')
+  const [searchBooks, setSearchBooks] = useState('')
+  const debouncedSearchBooks = useDebounce(searchBooks, 300)
+
+  // Datos del estado global
   const loadStorage = useReadListStore(state => state.loadStorage)
   const { readList } = useReadListStore()
 
   const filterBooks = async () => {
-    const { library } = await getBooks()
+    let filteredBooks = (await getBooks()).library
 
     // Filtrar todos los libros
-    let filteredBooks = []
-    if (filterGenre === 'Todos') {
-      filteredBooks = library.filter((instance) => instance.book.pages >= Number(debouncedFilterPages))
-    } else {
-      filteredBooks = library.filter((instance) => instance.book.pages >= Number(debouncedFilterPages) && instance.book.genre === filterGenre)
+    if (filterGenre === 'Todos' && debouncedSearchBooks.length > 0) {
+      filteredBooks = filteredBooks.filter(({ book }) => book.pages >= Number(debouncedFilterPages) && book.title.includes(debouncedSearchBooks))
+    } else if (filterGenre !== 'Todos' && debouncedSearchBooks.length > 0) {
+      filteredBooks = filteredBooks.filter((book) => book.pages >= Number(debouncedFilterPages) && book.genre === filterGenre && book.title.includes(debouncedSearchBooks))
     }
     setBooks(filteredBooks)
 
@@ -53,7 +59,7 @@ export const useBooks = () => {
   // Obtener todos los libros al cargar la página o cambiar los filtros
   useEffect(() => {
     filterBooks()
-  }, [filterGenre, debouncedFilterPages])
+  }, [filterGenre, debouncedFilterPages, debouncedSearchBooks])
 
   // Sincronizar pestañas suscribiendo el evento storage
   useEffect(() => {
@@ -74,7 +80,10 @@ export const useBooks = () => {
   return {
     books,
     quantityByGenre,
+    filterPages,
+    searchBooks,
     setFilterGenre,
-    setFilterPages
+    setFilterPages,
+    setSearchBooks
   }
 }
