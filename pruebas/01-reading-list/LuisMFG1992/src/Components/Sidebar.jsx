@@ -7,6 +7,8 @@ import { AiFillStar } from 'react-icons/ai'
 const Sidebar = ({ handelSidabar, readingList }) => {
   const dispatch = useDispatch()
 
+  const isReadingListEmpthy = readingList.length === 0
+
   return (
     <div className="inline-flex">
       <div className="w-full min-h-[100vh] [z-index:100] backdrop-blur fixed top-0"></div>
@@ -14,24 +16,30 @@ const Sidebar = ({ handelSidabar, readingList }) => {
         <HiChevronDoubleRight size={'2rem'} onClick={handelSidabar} />
         <p className="text-center text-3xl font-semibold">Lista de lectura</p>
 
-        <div className="flex flex-wrap bg-gray-002 rounded-2xl gap-4 justify-center items-center p-4 h-[85vh] overflow-hidden ">
-          {readingList.length === 0 ? (
-            <p className="text-2xl">No hay libros en tu lista</p>
-          ) : (
-            readingList?.map((element) => (
-              <div
-                key={element.book.ISBN}
-                className="max-w-[130px] max-h-[200px] relative overflow-hidden"
-                onClick={() => dispatch(removeBookFromReadingList(element))}
-              >
-                <img src={element.book.cover} className="object-scale-down" />
-                <AiFillStar
-                  className="absolute top-1 right-1 text-purple-600 bg-white rounded-full border border-purple-500"
-                  size={'1.5rem'}
-                />
-              </div>
-            ))
-          )}
+        <div
+          className={`flex bg-gray-002 rounded-2xl gap-4 justify-center ${
+            isReadingListEmpthy ? 'items-center' : 'items-start'
+          } p-4 h-[85vh] overflow-hidden`}
+        >
+          <div className="flex flex-wrap gap-4 justify-center items-center">
+            {isReadingListEmpthy ? (
+              <p className="text-2xl">No hay libros en tu lista</p>
+            ) : (
+              readingList?.map((element) => (
+                <div
+                  key={element.book.ISBN}
+                  className="max-w-[130px] max-h-[200px] relative overflow-hidden"
+                  onClick={() => dispatch(removeBookFromReadingList(element))}
+                >
+                  <img src={element.book.cover} className="object-scale-down" />
+                  <AiFillStar
+                    className="absolute top-1 right-1 text-purple-600 bg-white rounded-full border border-purple-500"
+                    size={'1.5rem'}
+                  />
+                </div>
+              ))
+            )}
+          </div>
         </div>
       </div>
     </div>

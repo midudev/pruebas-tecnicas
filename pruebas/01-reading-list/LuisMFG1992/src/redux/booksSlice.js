@@ -48,14 +48,16 @@ export const booksSlice = createSlice({
       )
       if (!alreadyInTheList) {
         state.readingList.push(action.payload)
-        toast.success(`Has añadido ${action.payload.book.title} a tu lista.`)
+        // toast.success(`Has añadido ${action.payload.book.title} a tu lista.`)
+        toast.success(`${action.payload.book.title} añadido a tu lista.`)
       }
     },
     removeBookFromReadingList: (state, action) => {
       state.readingList = state.readingList.filter(
         (element) => element.book.ISBN !== action.payload.book.ISBN
       )
-      toast.success(`Has removido ${action.payload.book.title} de tu lista.`)
+      // toast.success(`Has removido ${action.payload.book.title} de tu lista.`)
+      toast.success(`${action.payload.book.title} removido de tu lista.`)
     },
   },
 
