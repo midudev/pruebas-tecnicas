@@ -7,7 +7,9 @@
   export interface Props {
 
     title: string
+
     open?: boolean
+    contentClass?: string
   }
 
 </script>
@@ -17,7 +19,9 @@
   export let {
 
     title,
+
     open = false,
+    contentClass = ''
 
   } = { } as Props
 
@@ -39,8 +43,10 @@
 
   </summary>
 
-  <div class='rounded-xl px-6 py-2'>
+  <div class={contentClass}>
     <slot />
   </div>
+
+  <hr class='mx-2 border-t-2 border-gray-300' />
 
 </details>

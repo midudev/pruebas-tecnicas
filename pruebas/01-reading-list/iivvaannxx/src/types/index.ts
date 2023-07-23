@@ -1,1 +1,1 @@
-export type { Author, Book, Library } from './book'
+export type { Author, Book, Library, BooksData } from './book'

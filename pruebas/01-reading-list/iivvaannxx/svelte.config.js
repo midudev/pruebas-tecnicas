@@ -28,7 +28,7 @@ const config = {
 
       $assets: 'src/assets',
       $types: 'src/types',
-      $components: 'src/components',
+      $components: 'src/lib/components',
       $features: 'src/features',
     }
   },

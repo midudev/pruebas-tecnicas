@@ -3,7 +3,7 @@
   import "../app.css";
 
   import { Modal } from '$features/modal'
-  import Sidebar from '$components/sidebar.svelte'
+  import Sidebar from '$lib/components/sidebar.svelte'
 
 </script>
 

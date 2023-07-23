@@ -25,3 +25,9 @@ export interface Library {
 
   library: BookEntry[]
 }
+
+export interface BooksData {
+
+  library: Book[]
+  genres: string[]
+}
