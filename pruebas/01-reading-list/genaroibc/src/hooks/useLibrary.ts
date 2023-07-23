@@ -1,9 +1,9 @@
 import { getSortingFunction } from "~/helpers/getSortingFunction"
-import { saveLocally } from "~/helpers/saveLocally"
 import { $, useSignal, useStore, useTask$ } from "@builder.io/qwik"
 import type { Book, BookISBN, Filter, Genre } from "~/types"
 import { useBroadcastChannel } from "./useBroadcastChannel"
 import { LOCAL_STORAGE_KEYS } from "~/constants"
+import { useLocalStorage } from "./useLocalStorage"
 
 type BCFiltersUpdateMessage = { type: "sortBooks"; payload: { filter: Filter } }
 type BCBooksUpdateMessage = {
@@ -37,6 +37,7 @@ export const useLibrary = ({
   const currentGenre = useSignal<Genre>(initialGenre)
   const booksStore = useStore<{ books: Book[] }>({ books: initialBooks })
   const readingList = useStore<{ books: Book[] }>({ books: initialReadingList })
+  const { save: saveLocally } = useLocalStorage()
 
   const { sendMessage } = useBroadcastChannel<BCMessage>(
     "BooksLibraryChannel",
