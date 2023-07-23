@@ -8,9 +8,9 @@
 	import { filterByPages, filterByCategory } from '$lib/helpers/filters';
 	import type { Writable } from 'svelte/store';
 	import SearchBooks from '../components/SearchBooks.svelte';
-	import Icon from '@iconify/svelte';
 	import { goto } from '$app/navigation';
 	import WishList from '../components/WishList.svelte';
+	import BookCard from '../components/BookCard.svelte';
 
 	let { library }: Library = libraryData;
 
@@ -50,18 +50,35 @@
 			...library.filter(({ book }) => book.ISBN === id)
 		];
 	}
-	function removeFromWishlist(id: string) {
+
+	function removeFromWishlist(id: string | CustomEvent<{ id: string }>) {
+		let bookToRemove: string | CustomEvent<{ id: string }>;
+
+		if (typeof id === 'string') {
+			bookToRemove = id;
+		} else {
+			bookToRemove = id.detail.id;
+		}
+
 		$initialDataStore.wishlist = [
-			...$initialDataStore.wishlist.filter(({ book }) => book.ISBN != id)
+			...$initialDataStore.wishlist.filter(({ book }) => book.ISBN != bookToRemove)
 		];
 		$initialDataStore.books = [
 			...$initialDataStore.books,
-			...library.filter(({ book }) => book.ISBN === id)
+			...library.filter(({ book }) => book.ISBN === bookToRemove)
 		];
 	}
 
-	function goToDetail(title: string) {
-		goto('/search/' + title.toLowerCase());
+	function goToDetail(title: string | CustomEvent<{ title: string }>) {
+		let destination: string | CustomEvent<{ title: string }>;
+
+		if (typeof title === 'string') {
+			destination = title;
+		} else {
+			destination = title.detail.title;
+		}
+
+		goto('/search/' + destination.toLowerCase());
 	}
 
 	afterUpdate(() => {
@@ -118,49 +135,19 @@
 
 	<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-20 mx-auto max-w-4xl">
 		{#each $initialDataStore.renderlist as { book }}
-			<div class=" flex flex-col overflow-hidden">
-				<div class="relative overflow-hidden group rounded-2xl" on:click={goToDetail(book.title)}>
-					<div class="absolute left-0 top-0 h-16 w-16">
-						<div
-							class="absolute z-10 transform -rotate-45 bg-blue-200/90 text-center text-gray-800 font-semibold py-1 left-[-34px] top-[32px] w-[170px]"
-						>
-							{book.genre}
-						</div>
-					</div>
-					<img
-						class="h-[350px] w-full group-hover:scale-125 group-hover:cursor-pointer transition-all ease-in-out delay-75"
-						src={book.cover}
-						alt="Cover for {book.title}"
-					/>
-				</div>
-				<div class="flex flex-col mt-2">
-					<strong>{book.title}</strong>
-					<span>{book.author.name}</span>
-				</div>
-				<button
-					class="btn variant-filled font-bold rounded-lg p-2 mx-auto mt-3 hover:bg-indigo-300"
-					on:click={() => addToWishlist(book.ISBN)}
-					><Icon icon="icon-park:list" />
-					<span>Agregar a lista de lectura</span>
-				</button>
-			</div>
+			<BookCard
+				cta="Agregar a lista de lectura"
+				{book}
+				on:update={() => addToWishlist(book.ISBN)}
+				on:navigate={() => goToDetail(book.title)}
+			/>
 		{/each}
 	</section>
 	<p>WHISLIST ({$initialDataStore.wishlist.length})</p>
-	<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-20 mx-auto max-w-5xl">
-		{#each $initialDataStore.wishlist as { book }}
-			<div>
-				<img class="h-[350px] w-full rounded-lg" src={book.cover} alt="Cover for {book.title}" />
-				<button on:click={() => removeFromWishlist(book.ISBN)}>QUITAR</button>
-			</div>
-		{/each}
-	</section>
 
-	<WishList wishlist={$initialDataStore.wishlist} />
+	<WishList
+		wishlist={$initialDataStore.wishlist}
+		on:navigate={goToDetail}
+		on:update={removeFromWishlist}
+	/>
 </section>
-
-<style>
-	h1 {
-		width: 100%;
-	}
-</style>

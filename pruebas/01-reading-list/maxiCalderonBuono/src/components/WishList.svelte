@@ -1,48 +1,47 @@
 <script lang="ts">
 	import { dndzone } from 'svelte-dnd-action';
-	import type { LibraryElement } from '../types';
-	import { goto } from '$app/navigation';
+	import type { Book, LibraryElement } from '../types';
+	import BookCard from './BookCard.svelte';
+	import { createEventDispatcher } from 'svelte';
+
 	export let wishlist: LibraryElement[];
 
+	interface customDndEvent extends Book {
+		id: string;
+	}
+
+	const dispatch = createEventDispatcher();
+
+	function updateWishlist(id: string) {
+		dispatch('update', { id });
+	}
+
 	function goToDetail(title: string) {
-		goto('/search/' + title.toLowerCase());
+		dispatch('navigate', { title });
 	}
 
-	function handelConsider(e: any) {
-		console.log('consider');
+	function handleSort(e: CustomEvent<DndEvent<customDndEvent>>) {
+		items = e.detail.items;
 	}
 
-	function handleFinalize(e: any) {
-		console.log('consider');
-	}
+	$: items = wishlist?.map(({ book }: { book: Book }) => {
+		const { ISBN, ...rest } = book;
+		return { id: ISBN, ...rest };
+	});
 </script>
 
 <section
-	class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-20 mx-auto max-w-4xl"
-	use:dndzone={{ items: wishlist }}
-	on:consider={handelConsider}
-	on:finalize={handleFinalize}
+	class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-20 mx-auto max-w-5xl"
+	use:dndzone={{ items }}
+	on:consider={handleSort}
+	on:finalize={handleSort}
 >
-	{#each wishlist as { book }}
-		<div class=" flex flex-col overflow-hidden">
-			<div class="relative overflow-hidden group rounded-2xl" on:click={goToDetail(book.title)}>
-				<div class="absolute left-0 top-0 h-16 w-16">
-					<div
-						class="absolute z-10 transform -rotate-45 bg-blue-200/90 text-center text-gray-800 font-semibold py-1 left-[-34px] top-[32px] w-[170px]"
-					>
-						{book.genre}
-					</div>
-				</div>
-				<img
-					class="h-[350px] w-full group-hover:scale-125 transition-all ease-in-out delay-75"
-					src={book.cover}
-					alt="Cover for {book.title}"
-				/>
-			</div>
-			<div class="flex flex-col mt-2">
-				<strong>{book.title}</strong>
-				<span>{book.author.name}</span>
-			</div>
-		</div>
+	{#each items as item (item.id)}
+		<BookCard
+			cta="Eliminar de la lista de lectura"
+			book={{ ...item, ISBN: item.id }}
+			on:navigate={() => goToDetail(item.title)}
+			on:update={() => updateWishlist(item.id)}
+		/>
 	{/each}
 </section>

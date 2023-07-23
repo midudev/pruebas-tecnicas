@@ -21,3 +21,28 @@ export interface Author {
 	name: string;
 	otherBooks: string[];
 }
+
+export interface Detail {
+	title: string;
+}
+
+export interface CustomEvent {
+	isTrusted: boolean;
+	detail: Detail;
+	type: string;
+	target: null;
+	currentTarget: null;
+	eventPhase: number;
+	bubbles: boolean;
+	cancelable: boolean;
+	defaultPrevented: boolean;
+	composed: boolean;
+	timeStamp: number;
+	srcElement: null;
+	returnValue: boolean;
+	cancelBubble: boolean;
+	NONE: number;
+	CAPTURING_PHASE: number;
+	AT_TARGET: number;
+	BUBBLING_PHASE: number;
+}

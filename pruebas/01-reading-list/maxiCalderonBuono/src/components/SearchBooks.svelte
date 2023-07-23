@@ -74,7 +74,7 @@
 	};
 </script>
 
-<svelte:window on:keydown={(e) => navigateList(e)} />
+<svelte:window on:keydown={(e) => navigateList(e)} on:mousemove />
 <form
 	class="relative flex flex-col max-w-xl mx-auto w-full"
 	autocomplete="off"
@@ -111,7 +111,7 @@
 				in:fly={{ y: 50, duration: 500 }}
 				class={`flex w-full items-center gap-3 ${
 					highlighted === i ? 'bg-green-300' : 'bg-gray-200'
-				} rounded-lg px-2 mb-2 hover:bg-green-300 hover:cursor-pointer`}
+				} rounded-lg px-2 mb-2 hover:bg-lime-200 hover:cursor-pointer`}
 			>
 				<span class="rounded-full bg-indigo-400 p-3"><Icon icon="ion:book-outline" /></span>
 				<span class="flex-auto overflow-hidden">
