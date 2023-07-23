@@ -1,9 +1,15 @@
 import BookItem from './BookItem'
 
 export default function BooksList (props) {
-  const { list, filter, onItemClick, removableItems, onRemoveRequest, className } = props
+  const { list, filters, onItemClick, removableItems, onRemoveRequest, className } = props
   const removeRequest = index => onRemoveRequest(index)
-  const filteredList = (filter === 'Todos') || !filter ? list : list.filter(book => book.genre === filter)
+  const filteredList = !filters
+    ? list
+    : list.filter(book =>
+      (!filters.selectedGenre || (filters.selectedGenre === 'Todos'))
+        ? book.pages >= filters.pagesFilter
+        : (book.pages >= filters.pagesFilter) && (book.genre === filters.selectedGenre)
+    )
   return (
     <ul className={className}>
       {filteredList.map((book, index) => {

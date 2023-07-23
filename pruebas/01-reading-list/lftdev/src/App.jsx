@@ -72,7 +72,7 @@ export default function App () {
                 addToReadingList(book)
                 removeFromAvailables(book)
               }}
-              filter={selectedGenre}
+              filters={{ selectedGenre, pagesFilter }}
             />}
         </main>
         {readingList.length > 0 && (
