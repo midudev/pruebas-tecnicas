@@ -30,3 +30,7 @@ body {
 .css-i4bv87-MuiSvgIcon-root {
   display: none !important
 }
+
+label {
+  z-index: 100 !important
+}

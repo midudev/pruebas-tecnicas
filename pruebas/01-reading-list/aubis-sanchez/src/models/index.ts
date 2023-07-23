@@ -1,3 +1,3 @@
 export * from "./book.model";
-export * from "./index";
+export * from "./sorting.model";
 export * from "./views.model";

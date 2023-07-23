@@ -7,9 +7,9 @@ import {
   Button,
 } from "@mui/material";
 import { Book } from "../models";
-import { useBook } from "../zustand/useBooks";
+import { useBook } from "../zustand";
 import { getPriority, getPriorityColor } from "../utils";
-import { useToast } from "../hooks/useToast";
+import { useToast } from "../hooks";
 import { useState } from "react";
 import { BookModal } from "./BookModal";
 

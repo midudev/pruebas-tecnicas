@@ -15,25 +15,24 @@ export const SortingSelector = () => {
   };
 
   return (
-    <FormControl
-      sx={{
-        width: { xs: "100%", md: "50%" },
-      }}
-    >
-      <InputLabel sx={{ color: "white" }} id="sorting-book-selector">
-        {SortBy.label}
-      </InputLabel>
-      <Select
-        labelId="sorting-book-selector"
-        value={orderBy}
-        label="Order by"
-        onChange={(e) => handleBookSorting(e.target.value as SortBy)}
-        sx={{ color: "white" }}
+    <>
+      <FormControl
+        sx={{
+          width: { xs: "100%", md: "50%" },
+        }}
       >
-        <MenuItem value={SortBy.label}>Sort by...</MenuItem>
-        <MenuItem value={SortBy.desc}>Descendent</MenuItem>
-        <MenuItem value={SortBy.asc}>Ascedent</MenuItem>
-      </Select>
-    </FormControl>
+        <InputLabel id="sorting-book-selector">{SortBy.label}</InputLabel>
+        <Select
+          labelId="sorting-book-selector"
+          value={orderBy}
+          onChange={(e) => handleBookSorting(e.target.value as SortBy)}
+          sx={{ color: "white" }}
+        >
+          <MenuItem value={SortBy.label}>Sort by...</MenuItem>
+          <MenuItem value={SortBy.desc}>Descendent</MenuItem>
+          <MenuItem value={SortBy.asc}>Ascedent</MenuItem>
+        </Select>
+      </FormControl>
+    </>
   );
 };

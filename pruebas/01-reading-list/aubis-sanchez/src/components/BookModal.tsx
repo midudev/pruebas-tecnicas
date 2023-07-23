@@ -1,5 +1,5 @@
 import { Box, Typography, Modal } from "@mui/material";
-import { Book } from "../models/book.model";
+import { Book } from "../models";
 
 interface ModalProps {
   book: Book;

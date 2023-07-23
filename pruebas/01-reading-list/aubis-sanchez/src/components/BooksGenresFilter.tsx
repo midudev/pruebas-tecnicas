@@ -42,9 +42,7 @@ export const BooksGenresFilter = () => {
           width: { xs: "100%", md: "50%" },
         }}
       >
-        <InputLabel id="genres" sx={{ color: "white" }}>
-          Filter by Genres
-        </InputLabel>
+        <InputLabel id="genres">Filter by Genres</InputLabel>
         <Select
           multiple
           labelId="genres"
@@ -61,11 +59,7 @@ export const BooksGenresFilter = () => {
               color="GrayText"
             >
               {selected.map((value: string) => (
-                <Chip
-                  key={value}
-                  label={value}
-                  sx={{ bgColor: "blue", color: "white" }}
-                />
+                <Chip key={value} label={value} />
               ))}
             </Box>
           )}
