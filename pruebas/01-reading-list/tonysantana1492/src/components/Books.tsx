@@ -13,6 +13,7 @@ export const Books = () => {
 
   return (
 		<section
+			role='section'
 			className="flex flex-col px-4 gap-4 w-full"
 			onDrop={handleDrop}
 			onDragOver={event => { event.preventDefault() }}
