@@ -3,11 +3,14 @@ import { useBookStore } from '../store/bookStore'
 
 export function useBook () {
   const booksStore = useBookStore(state => state.books)
-  const readingList = useBookStore(state => state.readingList)
+  const readingListStore = useBookStore(state => state.readingList)
   const genres = useBookStore(state => state.genres)
+  const addBook = useBookStore(state => state.addBook)
+  const removeBook = useBookStore(state => state.removeBook)
 
   const [genre, setGenres] = useState('All')
-  const [books, setBooks] = useState(booksStore)
+  const [books, setBooks] = useState(JSON.parse(window.localStorage.getItem('books')) || booksStore)
+  const [readingList, setReadingList] = useState(JSON.parse(window.localStorage.getItem('readingList')) || readingListStore)
 
   useEffect(() => {
     if (genre !== 'All') {
@@ -18,9 +21,42 @@ export function useBook () {
     }
   }, [genre, booksStore])
 
-  const filterByGenre = (genre) => {
+  useEffect(() => {
+    let booksListLocal = JSON.parse(window.localStorage.getItem('readingList'))
+    let booksLocal = JSON.parse(window.localStorage.getItem('books'))
+
+    if (!booksListLocal && !booksLocal) {
+      booksListLocal = readingListStore
+      booksLocal = booksStore
+    }
+
+    setReadingList(booksListLocal)
+    setBooks(booksLocal)
+  }, [booksStore, readingListStore])
+
+  function filterByGenre (genre) {
     setGenres(genre)
   }
 
-  return { books, readingList, genres, genre, filterByGenre }
+  const handleAddBook = (book) => {
+    addBook(book)
+    window.localStorage.setItem('readingList', JSON.stringify([...readingList, book]))
+    window.localStorage.setItem('books', JSON.stringify(books.filter(b => b.id !== book.id)))
+  }
+
+  const handleRemoveBook = (id) => {
+    removeBook(id)
+    window.localStorage.setItem('readingList', JSON.stringify(readingList.filter(b => b.id !== id)))
+    window.localStorage.setItem('books', JSON.stringify([...books, readingList.find(b => b.id === id)]))
+  }
+
+  return {
+    books,
+    readingList,
+    genres,
+    genre,
+    filterByGenre,
+    handleAddBook,
+    handleRemoveBook
+  }
 }

@@ -1,7 +1,7 @@
-import { useBookStore } from '../../store/bookStore'
+import { useBook } from '../../hooks/useBook'
 
 export default function ReadingList ({ books }) {
-  const removeBook = useBookStore(state => state.removeBook)
+  const { handleRemoveBook } = useBook()
 
   if (books.length === 0) {
     return null
@@ -14,7 +14,7 @@ export default function ReadingList ({ books }) {
         {books.map(book => {
           return <li key={book.id}>
             <h3>{book.title}</h3>
-            <button onClick={() => removeBook(book.id)}>Remove book</button>
+            <button onClick={() => handleRemoveBook(book.id)}>Remove book</button>
           </li>
         })}
       </ul>

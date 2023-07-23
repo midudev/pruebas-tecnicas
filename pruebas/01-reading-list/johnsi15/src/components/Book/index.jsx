@@ -1,11 +1,11 @@
 import styles from './Book.module.css'
-import { useBookStore } from '../../store/bookStore'
+import { useBook } from '../../hooks/useBook'
 
 export default function Book ({ id, title, cover, genre, pages }) {
-  const addBook = useBookStore(state => state.addBook)
+  const { handleAddBook } = useBook()
 
   const handleClick = () => {
-    addBook({ id, title, cover, genre, pages })
+    handleAddBook({ id, title, cover, genre, pages })
   }
 
   return (
