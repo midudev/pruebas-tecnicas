@@ -1,36 +1,40 @@
-# Reading List challenge
-This is my solution to the challenge [Reading List](https://github.com/midudev/pruebas-tecnicas/blob/main/pruebas/01-reading-list/README.md) by [midudev](https://github.com/midudev).
+# Prueba técnica | Lista de lectura
+Esta es mi solución a la prueba técnica [Lista de Lectura](https://github.com/midudev/pruebas-tecnicas/blob/main/pruebas/01-reading-list/README.md).
 
-## Table of contents
+## Tabla de contenidos
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-- [Author](#author)
+- [Requisitos](#requisitos)
+- [Mis procesos](#mis-procesos)
+  - [Tecnologías y técnicas empleadas](#tecnologías-y-técnicas-empleadas)
+  - [Explicación general](#explicación-general)
+- [Autor](#autor)
 
-## Overview
+## Requisitos
 
-### The challenge
+- [x] **Visualización de Libros Disponibles**: La aplicación debe mostrar una lista de libros disponibles que el usuario pueda revisar.
 
-Users should be able to:
+- [x] **Creación de Lista de Lectura**: El usuario debe ser capaz de crear una lista de lectura a partir de los libros disponibles. En la UI debe quedar claro qué libros están en la lista de lectura y cuáles no. También debe ser posible mover un libro de la lista de lectura a la lista de disponibles.
 
-- view a list of the avaiable books in the library;
-- filter books by number of pages;
-- filter books by genre;
-- add books to a reading list; and
-- remove books from the reading list.
+- [x] **Filtrado de Libros por Género**: Los usuarios deben poder filtrar la lista de libros disponibles por género, y se mostrará un contador con el número de libros disponibles, el número de libros en la lista de lectura y el número de libros disponibles en el género seleccionado.
 
-### Links
+- [x] **Sincronización de Estado**: Debe haber una sincronización del estado global que refleje el número de libros en la lista de lectura y el número de libros todavía disponibles. Si un libro se mueve de la lista de disponibles a la lista de lectura, el recuento de ambos debe actualizarse en consecuencia.
 
-- [Go to solution](https://github.com/lftdev/pruebas-tecnicas)
-- [Go to live site](#) (Not added yet)
+- [x] **Persistencia de Datos**: La aplicación debe persistir los datos de la lista de lectura en el almacenamiento local del navegador. Al recargar la página, la lista de lectura debe mantenerse.
 
-## My process
+- [x] **Sincronización entre pestañas**: Si el usuario abre la aplicación en dos pestañas diferentes, los cambios realizados en una pestaña deben reflejarse en la otra. Sin necesidad de usar Backend.
 
-### Built with
+- [x] **Despliegue**: La aplicación debe estar desplegada en algún servicio de hosting gratuito (Netlify, Vercel, Firebase, etc) y debe ser accesible a través de una URL pública. Indica la URL en el README.
+
+- [x] **Test**: La aplicación debe tener AL MENOS un test. Haz el test que consideres más importante para tu aplicación.
+
+### Enlaces
+
+- [Ir a la solución](https://github.com/lftdev/pruebas-tecnicas)
+- [Ir al sitio](#) (No añadido aún)
+
+## Mis procesos
+
+### Tecnologías y técnicas empleadas
 
 - Vite
 - React
@@ -40,11 +44,11 @@ Users should be able to:
 - CSS Grid
 - Desktop-first workflow
 
-### What I learned
+### Explicación general
 
-- Not added yet.
+- No añadido aún.
 
-## Author
+## Autor
 
-- Linkedin profile: [Lucas Franco Torres](www.linkedin.com/in/frontdev-lucastorres)
-- GitHub profile: [lftdev](https://github.com/lftdev)
+- Linkedin: [Lucas Franco Torres](www.linkedin.com/in/frontdev-lucastorres)
+- GitHub: [lftdev](https://github.com/lftdev)
