@@ -6,9 +6,9 @@ export default function BooksList (props) {
   const filteredList = !filters
     ? list
     : list.filter(book =>
-      (!filters.selectedGenre || (filters.selectedGenre === 'Todos'))
+      (!filters.genreFilter || (filters.genreFilter === 'Todos'))
         ? book.pages >= filters.pagesFilter
-        : (book.pages >= filters.pagesFilter) && (book.genre === filters.selectedGenre)
+        : (book.pages >= filters.pagesFilter) && (book.genre === filters.genreFilter)
     )
   return (
     <ul className={className}>

@@ -2,14 +2,13 @@ import './style.css'
 import BooksList from './components/BooksList'
 import GenreFilter from './components/GenreFilter'
 import useBooksList from './hooks/useBooksList'
-import { useEffect, useState } from 'react'
 import BooksJSON from './database/books.json'
 import PagesFilter from './components/PagesFilter'
+import { useEffect, useState } from 'react'
 
 export default function App () {
   // useState hooks
-  const [genresList, setGenresList] = useState([])
-  const [selectedGenre, setSelectedGenre] = useState('Todos')
+  const [genreFilter, setGenreFilter] = useState('Todos')
   const [pagesFilter, setPagesFilter] = useState(50)
   // Custom hooks
   const {
@@ -23,10 +22,6 @@ export default function App () {
     removeFromReadingList
   } = useBooksList()
   // useEffect hooks
-  // Load books genres list.
-  useEffect(() =>
-    setGenresList([...new Set(BooksJSON.library.map(bookObj => bookObj.book.genre))])
-  , [])
   // Sync data between tabs
   useEffect(() => {
     function handleStorageChange (event) {
@@ -60,7 +55,11 @@ export default function App () {
               </label>
               <label className='text-md' htmlFor='genre-filter'>
                 <div>Filtrar por género</div>
-                <GenreFilter id='genre-filter' className='bg-black' genres={genresList} onItemClick={setSelectedGenre} />
+                <GenreFilter
+                  id='genre-filter'
+                  className='bg-black'
+                  genres={[...new Set(BooksJSON.library.map(bookObj => bookObj.book.genre))]} onItemClick={setGenreFilter}
+                />
               </label>
             </form>
           </div>
@@ -72,7 +71,7 @@ export default function App () {
                 addToReadingList(book)
                 removeFromAvailables(book)
               }}
-              filters={{ selectedGenre, pagesFilter }}
+              filters={{ genreFilter, pagesFilter }}
             />}
         </main>
         {readingList.length > 0 && (
