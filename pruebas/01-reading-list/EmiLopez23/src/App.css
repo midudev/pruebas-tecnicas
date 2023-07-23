@@ -1,3 +1,6 @@
+*{
+  box-sizing: border-box;
+}
 .App {
   display: flex;
   flex-direction: row;
@@ -30,6 +33,7 @@ h1,h2,h3,h4,h5,h6{
 .filters{
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .body{
@@ -37,7 +41,7 @@ h1,h2,h3,h4,h5,h6{
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  padding: 3% calc((100% - (210px*5))/2);
+  padding: 3% 9%;
   width: 100%;
   gap: 10px;
 }
@@ -67,6 +71,7 @@ h1,h2,h3,h4,h5,h6{
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 520px;
 }
 
 .reading-list-header{
@@ -79,7 +84,7 @@ h1,h2,h3,h4,h5,h6{
   display: flex;
   align-items: center;
   gap: 10px;
-  width: 500px;
+  width: 100%;
   background-color: #17223d;
   padding: 10px;
   border-radius: 10px;
@@ -108,7 +113,6 @@ h1,h2,h3,h4,h5,h6{
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 500px;
   height: 100%;
   padding: 10px;
 }
@@ -121,4 +125,10 @@ h1,h2,h3,h4,h5,h6{
   border-radius: 3px;
   cursor: pointer;
   margin-right: 10px;
+}
+
+@media (max-width:520px) {
+  .reading-list{
+    width: 100%;
+  }
 }
