@@ -27,10 +27,12 @@ npm run dev
 npm run test
 ```
 
+
 ### Contact
 
-Santiago Betancur - santibeta82@gmail.com - [sbetav.me](https://sbetav.me/)
-Project Link: [https://github.com/sbetav/pruebas-tecnicas/tree/main/pruebas/01-reading-list/sbetav](https://github.com/sbetav/pruebas-tecnicas/tree/main/pruebas/01-reading-list/sbetav)
+Santiago Betancur - santibeta82@gmail.com
+
+Project Link: [https://github.com/sbetav/vue-portfolio](https://github.com/sbetav/vue-portfolio)
 
 ### Acknowledgments
 
