@@ -18,15 +18,14 @@ export default new Vuex.Store({
       state.library = payload
     },
     ADD_LECTURA(state,books){
-      // let exist = state.lectura.some(p=>p.id==books.id)
-      // if(!exist){
-      // }
-      state.lectura.push(books)
-      console.log('books',books)
+      let exist = state.lectura.some(p=>p.title==books.title)
+      console.log(exist)
+      if(!exist){
+        state.lectura.push(books)
+      }
     },
     DELETE_LECTURA(state,books){
       let index = state.lectura.findIndex(p=> p == books)
-      console.log(index)
       state.lectura.splice(index,1)
     }
   },

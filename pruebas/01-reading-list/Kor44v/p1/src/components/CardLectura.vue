@@ -32,11 +32,15 @@ export default {
   data() {
     return {};
   },
+  computed:{
+    
+  },
   props: {
     lectura:{
       type:Array,
       required:true
-    }
+    },
+
   },
   methods: {
     ...mapActions(['delete_lectura'])

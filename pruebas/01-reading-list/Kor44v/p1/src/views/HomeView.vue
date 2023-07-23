@@ -6,13 +6,13 @@
         <v-card flat color="transparent">
           <v-card-text>
             <v-row>
-              <!-- <v-btn @click="setGenreFilter()">hola</v-btn> -->
               <v-col class="pr-4">
                 <v-slider
                   v-model="slider"
                   class="align-center"
                   :max="max"
                   :min="min"
+                  step="20"
                   hide-details
                   dark
                 >
@@ -34,13 +34,14 @@
         </v-card>
       </v-col>
       <v-col cols="3">
-        <v-select v-model="selectedGenre" :value='selected' :items="items" label="Géneros" dense dark></v-select>
+        <v-select v-model="selectedGenre"  :items="items" label="Géneros" dense dark></v-select>
       </v-col>
+      <v-btn color="primary" @click="reset()">reset</v-btn>
     </v-row>
     <v-spacer></v-spacer>
     <v-row>
       <v-col cols="7">
-        <Cards :data="library" />
+        <Cards :data="filteredBooks" :selectedGenre="this.selectedGenre" />
       </v-col>
       <v-col cols="4" class="bg"> 
         <Lectura/>
@@ -59,11 +60,11 @@ export default {
   data() {
     return {
       min: 0,
-      max: 3000,
+      max: 1200,
       slider: 0,
       items: ['Fantasía','Terror','Ciencia ficción','Zombies'],
       // set:[],
-      selectedGenre:null
+      selectedGenre:''
     };
   },
   beforeCreate(){
@@ -76,17 +77,39 @@ export default {
   
   computed: {
     ...mapState(["library"]),
-    ...mapGetters(['getLength'])
+    ...mapGetters(['getLength']),
+    filteredBooks() {
+      if (!this.selectedGenre && this.slider == 0 ) {
+        // Si no se ha seleccionado un género, mostrar todos los libros
+        return this.library;
+      } else {
+        // Filtrar los libros según el género seleccionado
+        let books = this.library;
+
+        if (this.selectedGenre) {
+          books = books.filter(book => book.book.genre === this.selectedGenre);
+        }
+
+        if (this.slider > 0) {
+          books = books.filter(book => book.book.pages >= this.slider);
+        }
+        return books
+      }
+    },
 
   },
   methods: {
     ...mapActions(["getLibrary"]),
-    // async setGenreFilter() {
+        reset(){
+      this.selectedGenre = ''
+      this.slider = 0
+    }
+    // setGenreFilter() {
     //   this.library.forEach((element) => {
     //     const genre = element.book.genre;
     //     this.items.push(genre);
     //   });
-    //   let myset = await new Set(this.items)
+    //   let myset =  new Set(this.items)
     //   this.set = myset
     // },
     //FIXME: arreglar esta funcion porque no sirve del todo, necesita async await
