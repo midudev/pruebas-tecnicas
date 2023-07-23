@@ -44,12 +44,12 @@ export default function AddToListButton({ isbn }) {
       {checked ? (
         <>
           <CheckIcon className="h-5 w-5 mr-2"></CheckIcon>
-          Quitar de la lista
+          Quitar de mi lista
         </>
       ) : (
         <>
           <PlusIcon className="h-5 w-5  mr-2"></PlusIcon>
-          Añadir a la lista
+          Añadir a mi lista
         </>
       )}
     </button>

@@ -1,68 +1,62 @@
 import AddButton from "@/components/add-button";
-import { getAuthorOtherBooks, getByISBN } from "@/lib/books";
 import Image from "next/image";
-import Link from "next/link";
 
-export default function BookDetail({ isbn }) {
-  const book = getByISBN(isbn);
-  const otherBooks = getAuthorOtherBooks(book);
+export default function BookDetail({ book, seeMore = false }) {
   return (
     <>
       <div className="flex justify-center lg:flex-none lg:justify-start">
-        <div>
+        <div className="relative h-[363px] w-[234px] overflow-hidden rounded">
           <Image
             src={book.cover}
-            className="object-cover rounded shadow"
-            width={234}
-            height={363}
+            className="object-cover"
+            fill={true}
             alt={book.title}
           ></Image>
         </div>
       </div>
       <div>
-        <h1 className="font-medium text-3xl mb-1">{book.title}</h1>
-        <p className="text-gray-300 mb-2">{book.synopsis}</p>
-        <AddButton isbn={book.ISBN}></AddButton>
+        <h1 className="mb-1 text-3xl font-medium">{book.title}</h1>
+        <div className="mb-1 font-medium text-gray-300">{book.author.name}</div>
+        <div className="text-md text-gray-400">{book.pages} páginas</div>
 
-        <div className="text-sm mt-2">
-          <span className="text-gray-300">Género:</span> {book.genre}
+        <div className="mb-6 mt-6 ">
+          <p className="max-h-[70px] overflow-hidden text-gray-300">
+            {book.synopsis}
+          </p>
         </div>
-        <div className="text-sm">
-          <span className="text-gray-300">Año:</span> {book.year}
+
+        <div className="flex items-center">
+          <AddButton isbn={book.ISBN}></AddButton>
+          {seeMore && (
+            <a
+              href={`/books/${book.ISBN}`}
+              className="ml-2 inline-flex items-center rounded bg-gray-900/50 px-3 py-2 text-center text-sm font-medium text-white hover:bg-gray-950/50 focus:outline-none"
+            >
+              Ver más
+            </a>
+          )}
         </div>
-        <div className="text-sm">
-          <span className="text-gray-300">Autor:</span> {book.author.name}
-        </div>
-        <div className="text-sm">
-          <span className="text-gray-300">ISBN:</span> {book.ISBN}
-        </div>
-        <div className="text-sm">{book.pages} páginas</div>
-        {otherBooks.length > 0 && (
-          <div className="mt-2">
-            <span className="font-medium text-lg">
-              Más libros de {book.author.name}
-            </span>
-            <div className="flex flex-wrap gap-2">
-              {otherBooks.map((book) => (
-                <div
-                  key={book.ISBN}
-                  className="relative w-20 h-32 rounded overflow-hidden cursor-pointer"
-                >
-                  <Link href={`/books/${book.ISBN}`}>
-                    <Image
-                      src={book.cover}
-                      className="object-cover"
-                      sizes="100vw"
-                      fill={true}
-                      alt={book.title}
-                    ></Image>
-                  </Link>
-                </div>
-              ))}
-            </div>
+
+        <div className="mt-6 flex items-center">
+          <div className="w-[70px] text-[13px] font-medium uppercase text-gray-400">
+            Género
           </div>
-        )}
+          <div className="text-[15px]">{book.genre}</div>
+        </div>
+        <div className="mt-1 flex items-center">
+          <div className="w-[70px] text-[13px] font-medium uppercase text-gray-400">
+            Año
+          </div>
+          <div className="text-[15px]">{book.year}</div>
+        </div>
+        <div className="mt-1 flex items-center">
+          <div className="w-[70px] text-[13px] font-medium uppercase text-gray-400">
+            ISBN
+          </div>
+          <div className="text-[15px]">{book.ISBN}</div>
+        </div>
       </div>
+      <div></div>
     </>
   );
 }

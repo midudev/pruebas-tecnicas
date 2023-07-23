@@ -98,6 +98,11 @@ const getAuthorOtherBooks = (book) => {
   return otherBooks;
 };
 
+const getRelatedBooks = (book) => {
+  const genreBooks = groupByGenre(DATA.library)[book.genre];
+  return genreBooks.filter((element) => element.ISBN !== book.ISBN);
+}
+
 const getByISBN = (isbn) => {
   return DATA.library.find((obj) => obj.book.ISBN === isbn).book;
 };
@@ -118,7 +123,8 @@ export {
   getInReadingList,
   getReadingList,
   getReadingListCount,
+  getRelatedBooks,
   groupByGenre,
   isInReadingList,
-  removeFromReadingList,
+  removeFromReadingList
 };
