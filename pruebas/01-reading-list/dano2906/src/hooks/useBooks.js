@@ -19,6 +19,7 @@ export const useBooks = () => {
   const loadStorage = useReadListStore(state => state.loadStorage)
   const { readList } = useReadListStore()
 
+  // Función para filtrar los libros
   const filterBooks = async () => {
     let filteredBooks = (await getBooks()).library
 
