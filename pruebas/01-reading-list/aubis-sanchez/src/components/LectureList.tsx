@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Card, Grid } from "@mui/material";
 import { SectionContainer } from ".";
 import EmptyList from "./EmptyList";
 import { useBook } from "../zustand/useBooks";
@@ -19,14 +19,7 @@ export const LectureList = () => {
     return <EmptyList label="Your lecture list is empty" />;
   return (
     <SectionContainer>
-      <Grid
-        container
-        rowSpacing={2}
-        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-        m="auto"
-        width="full"
-        px={3}
-      >
+      <Grid container alignItems="stretch" spacing={2} m="auto">
         <ReactSortable
           list={userLectureList.map((book) => adaptIdToBook(book))}
           setList={setUserLectureList}
@@ -34,8 +27,18 @@ export const LectureList = () => {
           className="card"
         >
           {userLectureList.map((book, index) => (
-            <Grid item key={book.ISBN} xs={3} mb={4}>
-              <BookItem book={book} lectureBook priority={index} />
+            <Grid
+              key={book.ISBN}
+              item
+              component={Card}
+              display="flex"
+              sx={{
+                backgroundColor: "transparent",
+                backgroundImage: "none",
+                boxShadow: "none",
+              }}
+            >
+              <BookItem book={book} lectureBook position={index} />
             </Grid>
           ))}
         </ReactSortable>

@@ -9,7 +9,7 @@ export default function SearchFilter() {
       id="search-bar"
       options={getAutocompleteBooksData()}
       sx={{
-        width: 300,
+        width: "33%",
         display: "flex",
         flex: "1 1 0%",
         my: 2,
@@ -19,7 +19,13 @@ export default function SearchFilter() {
         color: "white",
       }}
       renderInput={(params) => (
-        <TextField sx={{ color: "white" }} {...params} label="Search book..." />
+        <>
+          <TextField
+            sx={{ color: "white" }}
+            {...params}
+            label="Search book..."
+          ></TextField>
+        </>
       )}
     />
   );

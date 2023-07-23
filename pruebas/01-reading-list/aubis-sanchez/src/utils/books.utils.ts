@@ -1,6 +1,6 @@
 import bookData from "../../../books.json";
 import { convertToAutocompleteData } from "../adapters/autocomplete.adapter";
-import { Book } from "../models";
+import { Book, Priority } from "../models";
 import { SortBy } from "../models/sorting.model";
 
 export const getBooksGenres = (): string[] => {
@@ -42,4 +42,26 @@ export const orderBooksByPagesNumber = (
 
 export const getAutocompleteBooksData = () => {
   return convertToAutocompleteData(getDefaultBooks());
+};
+
+export const getPriority = (amountOfBooks: number, bookPosition) => {
+  if (amountOfBooks === 1) return Priority.High;
+  if (amountOfBooks === 2 && bookPosition === 0) return Priority.High;
+  if (amountOfBooks === 2 && bookPosition === 1) return Priority.Medium;
+  const priority = Math.floor(amountOfBooks / 3);
+  if (bookPosition < priority) {
+    return Priority.High;
+  } else if (bookPosition < priority * 2) {
+    return Priority.Medium;
+  } else {
+    return Priority.Low;
+  }
+};
+
+export const getPriorityColor = (priority: Priority): string => {
+  return priority === Priority.High
+    ? "green"
+    : priority === Priority.Medium
+    ? "orange"
+    : "red";
 };

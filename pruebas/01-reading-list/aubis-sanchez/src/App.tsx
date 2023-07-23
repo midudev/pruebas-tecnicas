@@ -12,7 +12,7 @@ function App() {
       <Typography variant="h1" color="AppWorkspace" fontSize={60} py={3}>
         Welcome to the{" "}
         <Box component="span" color="#039296">
-          Bookstore
+          Library
         </Box>
       </Typography>
       <Switch

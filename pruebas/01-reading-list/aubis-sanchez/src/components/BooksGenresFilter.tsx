@@ -40,7 +40,7 @@ export const BooksGenresFilter = () => {
       <FormControl
         sx={{
           my: 2,
-          width: 300,
+          width: "33%",
           border: "1px solid rgba(255,255,255,0.05)",
           borderRadius: "5px",
           bgcolor: "rgba(255,255,255,0.1)",

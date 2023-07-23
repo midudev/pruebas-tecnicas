@@ -24,8 +24,10 @@ body {
  display: flex;
  flex-direction: row;
  flex-wrap: wrap;
+ align-items: "stretch";
+ margin: "auto";
 }
 
-svg {
-  color: white !important
+.css-i4bv87-MuiSvgIcon-root {
+  display: none !important
 }

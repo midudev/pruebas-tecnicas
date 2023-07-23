@@ -18,3 +18,9 @@ export interface AutocompleteBook {
   label: string;
   id: string;
 }
+
+export enum Priority {
+  High = "High",
+  Medium = "Medium",
+  Low = "Low",
+}
