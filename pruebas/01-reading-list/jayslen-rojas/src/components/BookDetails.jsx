@@ -17,7 +17,7 @@ export function BookDetails ({ book, closePopUp }) {
         <IconX className='absolute -top-12 -right-1 bg-white rounded-full p-2 h-10 w-10 text-red-500 hover:text-white hover:bg-red-500 transition-colors cursor-pointer' onClick={closePopUp}/>
 
         <img src={book.cover} alt="" className=" h-64 rounded-md md:h-full object-cover" />
-        <ul className='flex flex-col md:flex-wrap gap-x-4 w-auto overflow-scroll'>
+        <ul className='flex flex-col md:flex-wrap gap-x-4 w-auto overflow-scroll md:overflow-visible'>
             <LiDetails title={'Nombre del libro'} info={book.title}/>
             <LiDetails title={'Sypnosis'} info={book.synopsis}/>
             <LiDetails title={'Genero'} info={book.genre}/>
