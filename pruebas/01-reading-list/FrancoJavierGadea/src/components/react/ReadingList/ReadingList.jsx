@@ -82,7 +82,7 @@ function ReadingList() {
 
         <header className="pt-3 pb-2 mb-4 border-bottom d-flex align-items-baseline">
 
-            <h3>Lista de lectura</h3>
+            <h3> <i className="bi bi-book-half"/> Lista de lectura</h3>
 
             <h5 className="ms-auto">
                 <span>Total: </span>

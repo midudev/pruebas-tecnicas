@@ -40,36 +40,19 @@ const books = result.slice(start, end);
 
 <RootLayout title="Libros">
 
+    <BooksFilters client:load path="/Libros/1" pages={queries.pages} genre={queries.genre} />
 
-    <div class="container-fluid">
+    <div class="Books-container">
+        {
+            books.map(({book}) => {
     
-        <div class="row p-0">
-
-            <section class="col-md-12 col-lg-8">
-
-                <BooksFilters client:load path="/Libros/1" pages={queries.pages} genre={queries.genre} />
-
-                <div class="Books-container">
-                    {
-                        books.map(({book}) => {
-                
-                            return <BookCard book={book} />
-                        })
-                    }
-                </div>
-                
-                <BooksPagination path="/Libros" queryParams={queries} current={currentPage} next={currentPage + 1} prev={currentPage - 1} total={total} />
-            </section>
-
-            <section class="Reading-list-container d-none d-lg-block col-4">
-
-                <ReadingList client:only />
-            </section>
-
-        </div>
-    
+                return <BookCard book={book} />
+            })
+        }
     </div>
-
+    
+    <BooksPagination path="/Libros" queryParams={queries} current={currentPage} total={total} />
+    
 </RootLayout>
 
 <style>
@@ -83,10 +66,5 @@ const books = result.slice(start, end);
         padding: 20px 10px;
     }
 
-    .Reading-list-container {
-        position: sticky;
-        top: 72px;
-        height: fit-content;
-        padding-left: 0px;
-    }
+    
 </style>

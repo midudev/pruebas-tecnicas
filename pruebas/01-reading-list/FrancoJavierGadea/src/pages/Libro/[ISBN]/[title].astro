@@ -1,7 +1,8 @@
 ---
 import RootLayout from '../../../layouts/RootLayout.astro';
-import Footer from '../../../components/Footer.astro';
 import {getBooksByISBN} from '../../../data/books.js';
+import SaveBookButton from '../../../components/react/SaveBookButton2/SaveBookButton2.jsx';
+import ShareBook from '../../../components/ShareBook.astro';
 
 const { ISBN, title } = Astro.params;
 
@@ -26,38 +27,21 @@ linkToGenre.searchParams.set('genre', book.genre);
 
             <section class="col-md-12 col-lg-5">
 
-                <img src={book.cover} alt="">
+                <div class="portada">
+
+                    <img src={book.cover} alt="">
+    
+                    <SaveBookButton client:load book={book} />
+                </div>
 
             </section>
             
             <section class="col-md-12 col-lg-7">
 
-                <h1 class="title">{title}</h1>
-
-                <div class="details">
-
-                    <div class="">
-                        <span>Genero: </span>
-                        <strong>
-                            <a href={linkToGenre}>{book.genre}</a> 
-                        </strong>
-                    </div>
-
-                    {
-                        book.author && <div class="">   
-                            <span>Autor: </span>
-                            <strong>{book.author?.name}</strong>
-                        </div>
-                    }
-
-                    <div class="">
-                        <span>Cantidad de paginas: </span>
-                        <strong>{book.pages}</strong>
-                    </div>
-                </div>
+                <h1 class="title text-center mt-4 text-lg-start mt-lg-0">{title}</h1>
 
                 <div class="description">
-                    <h4 class="my-4">Descripcion</h4>
+                    <h5 class="border-bottom pb-2 mb-2">Descripcion</h5>
                     {
                         book.synopsis.split('\n').map(text => {
 
@@ -67,12 +51,50 @@ linkToGenre.searchParams.set('genre', book.genre);
                         }) 
                     }
                 </div>
+
+                <div class="details">
+
+                    <h5 class="border-bottom pb-2 mb-2">Detalles</h5>
+
+                    <div class="d-flex flex-wrap gap-3">
+
+                        <div class="flex-grow-1">
+                            <span>Genero: </span>
+                            <strong>
+                                <a href={linkToGenre}>{book.genre}</a> 
+                            </strong>
+                        </div>
+    
+                        {
+                            book.author && <div class="flex-grow-1">   
+                                <span>Autor: </span>
+                                <strong>{book.author?.name}</strong>
+                            </div>
+                        }
+    
+                        <div class="flex-grow-1">
+                            <span>Cantidad de paginas: </span>
+                            <strong>{book.pages}</strong>
+                        </div>
+
+                        <div class="flex-grow-1">
+                            <span>ISBN:</span>
+                            <strong>{book.ISBN}</strong>
+                        </div>
+
+                        <div class="flex-grow-1">
+                            <span>Año de publicacion:</span>
+                            <strong>{book.year}</strong>
+                        </div>
+                    </div>
+
+                </div>
+
+                <ShareBook link={Astro.url.href} message={`Estoy leyendo ${book.title} 😀`} />
             </section>
         </div>
 
     </div>
-
-    <Footer />
     
 </RootLayout>
 
@@ -81,27 +103,39 @@ linkToGenre.searchParams.set('genre', book.genre);
         padding: 30px ;
     }
 
-    img {
-        max-width: 400px;
-        max-height: 500px;
-        border-radius: 10px;
-        display: block;
+    .portada {
         margin: auto;
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+        gap: 20px;
+    }
+    .portada img {
+        max-width: 250px;
+        max-height: 350px;
+        border-radius: 10px;
     }
 
     .title {
-        font-size: clamp(20px, 10vw, 50px);
+        font-size: clamp(20px, 10vw, 40px);
+        text-wrap: balance;
     }
 
     .details {
-        margin-top: 20px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 15px;
+        margin-top: 40px;
     }
+    .details a {
+        text-decoration: none;
+    }
+
 
     .description {
         
         margin-top: 50px;
+    }
+    .description p {
+        text-wrap: balance;
     }
 </style>

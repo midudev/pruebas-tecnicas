@@ -4,18 +4,6 @@ import {generatePagination} from "../utils/pagination.js";
 const {current, total, path = '', queryParams = {}} = Astro.props;
 
 
-// const LINKS = Array.from({length: total}).map((_, i) => {
-
-//     const link = new URL(`${path}/${i + 1}`, Astro.url.origin);
-
-//     Object.entries(queryParams).forEach(([key, value]) => {
-
-//         if(value) link.searchParams.set(key, value);
-//     })
-
-//     return link;
-// })
-
 const pagination = generatePagination(total, {
 
     path, 
@@ -28,8 +16,6 @@ const pagination = generatePagination(total, {
 
     size: 5
 });
-
-console.log(pagination);
 ---
 
 <nav class="p-4">

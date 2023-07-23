@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import CustomOffcanvas from "../components/react/CustomOffcanvas/CustomOffcanvas.jsx"
 import Footer from "../components/Footer.astro";
+import ReadingList from "../components/react/ReadingList/ReadingList.jsx";
 
 const { title } = Astro.props;
 
@@ -36,23 +37,59 @@ const isLibrosPage = Astro.url.pathname.startsWith('/Libros');
 					<button class="btn btn-outline-success" type="submit">Buscar</button>
 				</form>
 
-				<div class="order-2 order-sm-3" class:list={{'d-block d-lg-none': isLibrosPage}} >
+				<div class="d-block d-lg-none order-2 order-sm-3">
+
 					<CustomOffcanvas client:load />
 				</div>
 			</div>
 		</nav>
 
-		<main>
+		<div class="container-fluid">
 
-			<slot />
+			<div class="row p-0">
+	
+				<main class="p-0 col-md-12 col-lg-8">
 
-		</main>
+					<div class="px-2">
+
+						<slot />
+
+					</div>
+	
+					<Footer />
+
+				</main>
+	
+				<section class="Reading-list-container d-none d-lg-block col-4">
+	
+					<ReadingList client:only />
+				</section>
+	
+			</div>
 		
-		<Footer />
+		</div>
 
 	</body>
 </html>
 
 <style is:global>
 
+	:root {
+
+		--main-nav-height: 72px;
+	}
+
+	main {
+		min-height: calc(100vh - var(--main-nav-height));
+
+		display: flex;
+		flex-direction: column;
+	}
+
+	.Reading-list-container {
+        position: sticky;
+        top: var(--main-nav-height);
+        height: fit-content;
+        padding-left: 0px;
+    }
 </style>
