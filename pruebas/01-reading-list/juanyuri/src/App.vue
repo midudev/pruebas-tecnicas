@@ -1,13 +1,12 @@
 <template>
   <div class="app">
-    <BookCatalogue />
-    <ReadList />
+    <MainView />
   </div>
 </template>
 
 <script setup>
-import BookCatalogue from '@/components/BookCatalogue.vue'
-import ReadList from '@/components/ReadList.vue'
+import MainView from '@/views/MainView.vue'
+
 </script>
 
 <style scoped>
@@ -19,4 +18,12 @@ import ReadList from '@/components/ReadList.vue'
   font-family: 'Inter';
   box-sizing: border-box;
 }
+
+
+.app{
+  background-color: #F2F2F2;
+  height: 100vh;
+}
+
+
 </style>

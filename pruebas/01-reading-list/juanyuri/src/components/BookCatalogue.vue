@@ -1,11 +1,12 @@
 <template>
-  <h1>Book Catalogue ({{ catalogueCount }})</h1>
-  <p>Genre count: {{ catalogueGenreCount }}</p>
-  <select name="genre-selector" id="genreSelector" @change="onSelectedGenre">
+  <h1>Catálogo </h1> <h3>({{ catalogueCount }})</h3>
+  <!-- <p>Genre count: {{ catalogueGenreCount }}</p> -->
+
+  <!-- <select name="genre-selector" id="genreSelector" @change="onSelectedGenre">
     <option :value="genre" v-for="genre in genres" :key="genre">{{ genre }}</option>
   </select>
 
-  <button @click="resetFilters">Reset Filters</button>
+  <button @click="resetFilters">Reset Filters</button> -->
 
   <div class="catalogue">
     <BookCard v-for="book in filteredCatalogue" :key="book.title" :book="book" @click="store.addToReadList(book)" />
@@ -56,10 +57,19 @@ const catalogueCount = computed(() => store.catalogue.length)
 
 
 <style scoped>
+
+h1, h2, h3, h4{
+  display: inline;
+}
+
+h3{
+  color:#535353;
+}
+
 .catalogue {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  background-color: blueviolet;
+  justify-content: left;
+  /* background-color: blueviolet; */
 }
 </style>

@@ -1,7 +1,5 @@
 Planificación de la Aplicación: Lista de Libros
 
-
-
 14/07/2023: Inicio
     Análisis de Requisitos
     Empezar un proyecto desde cero con npm
@@ -22,3 +20,7 @@ Planificación de la Aplicación: Lista de Libros
     He aprendido a eliminar dependencias inncesarias en un proyecto
     He aprendido cómo funciona la API de JavaScript relacionada con el Storage y el Event Listener 'storage'
     He aprendido a desplegar una aplicación en Vercel con líneas de comandos
+
+22/07/2023
+    Me he inspirado en mis anteriores Mock-ups de Diseño con Adobe XD para hacer uno nuevo
+    He empezado a implementar el CSS de la Aplicación. Creando las vistas necesarias en Vue

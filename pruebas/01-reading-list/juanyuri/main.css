@@ -1,0 +1,58 @@
+/* FLASH MESSAGE CSS STYLE */
+.toast-error {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  
+    /* Agregar animación */
+    animation-name: fadeOut;
+    animation-duration: .5s; /* Duración de la animación */
+  }
+  
+  
+  .toast-message-error {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--acento-complementario); /* Color negro */
+    color:white; /* Texto en blanco */
+    
+    /* Inicialmente establecer opacidad a cero y luego aumentarla gradualmente durante la animación */
+    animation-name:fadingInOpacity;
+    animation-duration: 3.8s;
+    opacity:0;
+  
+    border-radius: 5px; 
+  }
+  
+  
+  .toast-message-success {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #000000; /* Color negro */
+    color:white; /* Texto en blanco */
+    
+    /* Inicialmente establecer opacidad a cero y luego aumentarla gradualmente durante la animación */
+    animation-name:fadingInOpacity;
+    animation-duration: 3.37s;
+    opacity:0;
+  
+    border-radius: 5px; 
+  }
+  
+  
+  .fa-exclamation-circle {
+      margin-right:.5rem ; /* Espacio entre el ícono y el texto */
+  }
+  
+  
+  @keyframes fadeOut {  
+      to {bottom:-50%; opacity :0}  
+  }  
+  
+  @keyframes fadingInOpacity
+  {
+      from{opacity :0}
+      to{opacity :1}
+  }
