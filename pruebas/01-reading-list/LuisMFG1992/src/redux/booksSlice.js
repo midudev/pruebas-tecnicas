@@ -46,7 +46,11 @@ export const booksSlice = createSlice({
       )
       if (!alreadyInTheList) state.readingList.push(action.payload)
     },
-    // removeBookFromReadingList: (state, action) => {},
+    removeBookFromReadingList: (state, action) => {
+      state.readingList = state.readingList.filter(
+        (element) => element.book.ISBN !== action.payload.book.ISBN
+      )
+    },
   },
 
   extraReducers: (builder) => {
@@ -65,7 +69,11 @@ export const booksSlice = createSlice({
   },
 })
 
-export const { addDropDownFilter, removeDropDownFilter, addBookToReadingList } =
-  booksSlice.actions
+export const {
+  addDropDownFilter,
+  removeDropDownFilter,
+  addBookToReadingList,
+  removeBookFromReadingList,
+} = booksSlice.actions
 
 export default booksSlice.reducer
