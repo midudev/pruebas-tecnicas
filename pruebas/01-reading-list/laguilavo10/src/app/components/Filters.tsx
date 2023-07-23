@@ -1,3 +1,4 @@
+'use client'
 import { library } from '../../../../books.json'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import { useBooks } from '../context/books'

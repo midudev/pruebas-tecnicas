@@ -1,3 +1,4 @@
+'use client'
 import type { ActionType, BooksContext } from '../context/books'
 import type { Book } from '../types'
 

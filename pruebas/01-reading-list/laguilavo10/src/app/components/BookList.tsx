@@ -1,3 +1,4 @@
+'use client'
 import { useBooks } from '../context/books'
 import BookCard from './BookCard'
 import CounterBooks from './CounterBooks'

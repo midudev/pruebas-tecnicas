@@ -1,3 +1,4 @@
+'use client'
 export const BookIcon = (props: any) => {
   return (
     <svg
