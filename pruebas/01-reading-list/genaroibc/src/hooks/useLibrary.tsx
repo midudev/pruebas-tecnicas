@@ -2,6 +2,12 @@ import { getSortingFunction } from "~/helpers/getSortingFunction"
 import { saveLocally } from "~/helpers/saveLocally"
 import { $, useSignal, useStore } from "@builder.io/qwik"
 import type { Book, BookISBN, Filter, Genre } from "~/types"
+import { useBroadcastChannel } from "./useBroadcastChannel"
+
+type BCMessageType = "removeBookFromReadingList" | "addBookToReadingList"
+type BCMessagePayload = { bookISBN: string }
+
+type BCMessage = { type: BCMessageType; payload: BCMessagePayload }
 
 type Params = {
   initialBooks: Book[]
@@ -12,11 +18,27 @@ export const useLibrary = ({ initialBooks, initialReadingList }: Params) => {
   const booksStore = useStore<{ books: Book[] }>({ books: initialBooks })
   const currentFilter = useSignal<Filter>("title")
   const currentGenre = useSignal<Genre>("all")
-  const readingList: Book[] = useStore(initialReadingList)
+  const readingList = useStore<{ books: Book[] }>({ books: initialReadingList })
+
+  const { sendMessage } = useBroadcastChannel<BCMessage>(
+    "BooksLibraryChannel",
+    bcData => {
+      const { type: message, payload } = bcData
+
+      console.log(bcData)
+      if (message === "removeBookFromReadingList") {
+        removeBookFromReadingList(payload.bookISBN)
+      }
+
+      if (message === "addBookToReadingList") {
+        addBookToReadingList(payload.bookISBN)
+      }
+    }
+  )
 
   const saveStateLocally = $(() => {
     saveLocally([
-      ["__reading_list__", readingList],
+      ["__reading_list__", readingList.books],
       ["__books_list__", booksStore.books]
     ])
   })
@@ -29,7 +51,7 @@ export const useLibrary = ({ initialBooks, initialReadingList }: Params) => {
     const bookExists = newBookIndex !== -1
     if (!bookExists) return
 
-    const isAlreadyInReadingList = readingList.some(
+    const isAlreadyInReadingList = readingList.books.some(
       book => book.ISBN === newBookISBN
     )
     if (isAlreadyInReadingList) return
@@ -38,24 +60,36 @@ export const useLibrary = ({ initialBooks, initialReadingList }: Params) => {
 
     newBook.isInReadingList = true
 
-    readingList.push(newBook)
+    readingList.books.push(newBook)
 
     saveStateLocally()
+    sendMessage({
+      type: "addBookToReadingList",
+      payload: {
+        bookISBN: newBookISBN
+      }
+    })
   })
 
-  const removeBookFromReadingList = $((BookISBN: BookISBN) => {
-    const index = readingList.findIndex(book => book.ISBN === BookISBN)
+  const removeBookFromReadingList = $((bookISBN: BookISBN) => {
+    const index = readingList.books.findIndex(book => book.ISBN === bookISBN)
 
     const bookExists = index !== -1
     if (!bookExists) return
 
-    const removedBook = booksStore.books.find(book => book.ISBN === BookISBN)
+    const removedBook = booksStore.books.find(book => book.ISBN === bookISBN)
 
     if (removedBook) removedBook.isInReadingList = false
 
-    readingList.splice(index, 1) // remove book from reading list
+    readingList.books.splice(index, 1) // remove book from reading list
 
     saveStateLocally()
+    sendMessage({
+      type: "removeBookFromReadingList",
+      payload: {
+        bookISBN
+      }
+    })
   })
 
   const sortBooks = $(() => {
@@ -80,7 +114,7 @@ export const useLibrary = ({ initialBooks, initialReadingList }: Params) => {
     books: booksStore.books,
     removeBookFromReadingList,
     addBookToReadingList,
-    readingList,
+    readingList: readingList.books,
     updateFilter,
     updateGenre
   }
