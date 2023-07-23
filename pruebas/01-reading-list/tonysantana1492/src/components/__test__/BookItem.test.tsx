@@ -1,7 +1,8 @@
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 
 import { BookItem } from '..'
+import { DRAG_EVENTS } from '../../constants'
 
 const book = {
   title: 'El Señor de los Anillos',
@@ -51,13 +52,39 @@ describe('BookItem Component Test', () => {
     expect(pagesElement).toBeTruthy()
   })
 
-  it('should call addFavorite from useBook when clicked the add button', async () => {
+  it('should call addFavorite from useBook when clicked the add button', () => {
     render(<BookItem book={book} />)
 
-    const addButton = await screen.findByRole('add-button')
+    const addButton = screen.getByRole('add-button')
     addButton.click()
 
     expect(mockAddFavorite).toHaveBeenCalledTimes(1)
     expect(mockAddFavorite).toHaveBeenCalledWith({ newFavorite: book })
+  })
+
+  // it('should speak the book synopsis when speak button is clicked', () => {
+  //   window.speechSynthesis = {
+  //     speak: vi.fn()
+  //   } as any
+
+  //   render(<BookItem book={book} />)
+
+  //   fireEvent.click(screen.getByRole('speak-button'))
+
+  //   expect(window.speechSynthesis.speak).toHaveBeenCalledWith(
+  //     expect.objectContaining({ text: book.synopsis })
+  //   )
+  // })
+
+  it('should set dataTransfer with correct value when dragging starts', () => {
+    const setDataMock = vi.fn()
+    const dragStartEvent = { dataTransfer: { setData: setDataMock } }
+
+    render(<BookItem book={book} />)
+    const listItemElement = screen.getByRole('listitem')
+
+    fireEvent.dragStart(listItemElement, dragStartEvent)
+
+    expect(setDataMock).toHaveBeenCalledWith(DRAG_EVENTS.ADD_TO_FAVORITES, book.ISBN)
   })
 })
