@@ -25,7 +25,7 @@
 </script>
 
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-<dialog class='flex-col fixed w-1/3 h-1/2 inset-0 rounded-xl border-none backdrop:bg-black backdrop:bg-opacity-30 open:animate-zoom-in open:backdrop:animate-fade-in'
+<dialog class='fixed w-1/3 h-1/2 inset-0 rounded-xl border-none backdrop:bg-black backdrop:bg-opacity-30 open:animate-zoom-in open:backdrop:animate-fade-in'
 
   bind:this={dialog}
   on:close={close}
@@ -35,7 +35,7 @@
   on:click|stopPropagation
 >
 
-  <div class='flex flex-col h-full w-full'>
+  <div class='h-full w-full'>
 
     <Header title={$title} onShouldClose={close} />
 

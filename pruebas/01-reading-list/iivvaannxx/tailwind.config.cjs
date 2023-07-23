@@ -1,7 +1,13 @@
 import defaultConfig from 'tailwindcss/defaultConfig'
+import plugin from 'tailwindcss/plugin'
 
 import prelinePlugin from 'preline/plugin'
 import debugScreensPlugin from 'tailwindcss-debug-screens'
+
+const customVariantsPlugin = plugin(function ({ addVariant, e }) {
+
+  addVariant('details-marker', ['&::-webkit-details-marker', '&::marker'])
+})
 
 module.exports = {
 
@@ -11,6 +17,16 @@ module.exports = {
   theme: {
 
     extend: {
+
+      transitionProperty: {
+
+        'max-h': 'max-height',
+      },
+
+      rotate: {
+
+        '135': '135deg',
+      },
 
       keyframes: {
 
@@ -64,5 +80,5 @@ module.exports = {
     }
   },
 
-  plugins: [debugScreensPlugin, prelinePlugin]
+  plugins: [debugScreensPlugin, prelinePlugin, customVariantsPlugin]
 }

@@ -1,13 +1,13 @@
 <script lang='ts' context='module'>
 
   import "../app.css";
-  import { Modal } from '$features/modal';
+
+  import { Modal } from '$features/modal'
+  import Sidebar from '$components/sidebar.svelte'
 
 </script>
 
-<aside class='h-full border-r-2 hidden lg:block lg:w-80 p-4'>
-  Menu
-</aside>
+<Sidebar />
 
 <main class="relative h-full w-full overflow-auto">
 

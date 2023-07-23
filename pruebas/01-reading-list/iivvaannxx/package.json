@@ -29,6 +29,7 @@
 		"postcss": "^8.4.26",
 		"postcss-import": "^15.1.0",
 		"svelte": "^4.0.5",
+		"svelte-animated-details": "^1.0.1",
 		"svelte-check": "^3.4.3",
 		"svelte-preprocess": "^5.0.4",
 		"tailwindcss-debug-screens": "^2.2.1",

@@ -1,7 +1,7 @@
 import { atom } from 'nanostores'
 
 /** @brief Whether the modal dialog is opened or not. */
-export const isOpen = atom(true)
+export const isOpen = atom(false)
 
 /** @brief The title of the modal dialog. */
 export const title = atom('No Title')
