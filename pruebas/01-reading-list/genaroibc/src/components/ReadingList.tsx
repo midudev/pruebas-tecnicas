@@ -14,7 +14,9 @@ export const ReadingList = component$(({ books, onBookSelect }: Props) => {
         class="flex items-center gap-2 group/list"
       >
         {books.length === 0 ? (
-          <NoBooksMessage />
+          <li>
+            <NoBooksMessage />
+          </li>
         ) : (
           books.map((book, index) => (
             <li

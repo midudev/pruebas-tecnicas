@@ -16,6 +16,7 @@ export const BookCard = component$(
 
           <img
             src={cover}
+            alt={title}
             width={300}
             height={500}
             class="brightness-95 grayscale-[0.3] group-hover:grayscale-0 group-hover:brightness-110 transition-all duration-300 aspect-[1/1.4] group-hover:scale-110"
