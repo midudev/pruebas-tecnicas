@@ -3,6 +3,7 @@ import { saveLocally } from "~/helpers/saveLocally"
 import { $, useSignal, useStore, useTask$ } from "@builder.io/qwik"
 import type { Book, BookISBN, Filter, Genre } from "~/types"
 import { useBroadcastChannel } from "./useBroadcastChannel"
+import { LOCAL_STORAGE_KEYS } from "~/constants"
 
 type BCFiltersUpdateMessage = { type: "sortBooks"; payload: { filter: Filter } }
 type BCBooksUpdateMessage = {
@@ -65,18 +66,19 @@ export const useLibrary = ({
     }
   )
 
-  const saveStateLocally = $(() => {
+  const saveBooksLocally = $(() => {
     saveLocally([
-      ["__reading_list__", readingList.books],
-      ["__books_list__", booksStore.books]
+      [LOCAL_STORAGE_KEYS.readingList, readingList.books],
+      [LOCAL_STORAGE_KEYS.books, booksStore.books]
     ])
   })
 
   const saveFilterLocally = $(() => {
-    saveLocally([["__filter__", currentFilter.value]])
+    saveLocally([[LOCAL_STORAGE_KEYS.filter, currentFilter.value]])
   })
+
   const saveGenreLocally = $(() => {
-    saveLocally([["__genre__", currentGenre.value]])
+    saveLocally([[LOCAL_STORAGE_KEYS.genre, currentGenre.value]])
   })
 
   const addBookToReadingList = $((newBookISBN: BookISBN) => {
@@ -98,7 +100,7 @@ export const useLibrary = ({
 
     readingList.books.push(newBook)
 
-    saveStateLocally()
+    saveBooksLocally()
     sendMessage({
       type: "addBookToReadingList",
       payload: {
@@ -119,7 +121,7 @@ export const useLibrary = ({
 
     readingList.books.splice(index, 1) // remove book from reading list
 
-    saveStateLocally()
+    saveBooksLocally()
     sendMessage({
       type: "removeBookFromReadingList",
       payload: {
@@ -163,7 +165,7 @@ export const useLibrary = ({
   })
 
   useTask$(() => {
-    sortBooks()
+    sortBooks() // sort books in the first render
   })
 
   return {

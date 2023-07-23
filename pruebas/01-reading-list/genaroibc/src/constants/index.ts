@@ -17,3 +17,10 @@ export const GENRES_DICT: Record<Genre, string> = {
   horror: "terror",
   zombies: "zombies"
 }
+
+export const LOCAL_STORAGE_KEYS = {
+  books: "__books_list__",
+  readingList: "__reading_list__",
+  filter: "__filter__",
+  genre: "__genre__"
+} as const
