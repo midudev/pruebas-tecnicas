@@ -1,14 +1,11 @@
 import { afterEach, describe, expect, it } from 'vitest'
 import { cleanup, render, screen } from '@testing-library/react'
-import matchers from '@testing-library/jest-dom/matchers'
 
 import { BookList, generateLabelListOfBooks } from '@/components/BookList'
 import { BookListProvider } from '@/context/bookList'
 
 import { listBooksAvailable } from '@/assets/values'
 import { buttonTitles, listTypes } from '@/assets/constants'
-
-expect.extend(matchers)
 
 function renderingWithoutContext() {
   return render(<BookList books={listBooksAvailable} listType={listTypes.available} />)

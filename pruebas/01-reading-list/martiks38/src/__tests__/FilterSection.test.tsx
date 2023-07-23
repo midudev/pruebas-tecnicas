@@ -4,7 +4,7 @@ import matchers from '@testing-library/jest-dom/matchers'
 
 import { FilterSection } from '@/components/Filter/FilterSection'
 
-import { FilterProvider, STEPS } from '@/context/filter'
+import { FilterProvider } from '@/context/filter'
 import { BookListProvider } from '@/context/bookList'
 import { genres, listBooksAvailable } from '@/assets/values'
 import { allGenre } from '@/assets/constants'
@@ -81,7 +81,7 @@ describe('<FilterSection />', () => {
       ({ genre, pages }) =>
         genre !== bookOfMaxPages.genre && genre !== allGenre && pages / currentStep < 10
     )
-    console.log(booksOfAnotherGenre)
+
     const anotherGenre = [...new Set(booksOfAnotherGenre.map(({ genre }) => genre))]
 
     const input = screen.getByDisplayValue(anotherGenre[0])
