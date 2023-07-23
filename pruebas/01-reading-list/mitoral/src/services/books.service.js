@@ -3,16 +3,16 @@ import books from '../../../books.json'
 export function getBooks () {
   return books.library.map(book => {
     return {
-      title: book.title,
-      pages: book.pages,
-      genre: book.genre,
-      cover: book.cover,
-      synopsis: book.synopsis,
-      year: book.year,
-      ISBN: book.ISBN,
+      title: book.book.title,
+      pages: book.book.pages,
+      genre: book.book.genre,
+      cover: book.book.cover,
+      synopsis: book.book.synopsis,
+      year: book.book.year,
+      ISBN: book.book.ISBN,
       author: {
-        name: book.author.name,
-        otherBooks: book.author.otherBooks
+        name: book.book.author.name,
+        otherBooks: book.book.author.otherBooks
       }
     }
   })
@@ -24,4 +24,8 @@ export function getMaxPages () {
 
 export function getMinPages () {
   return Math.min(...books.library.map(book => book.book.pages))
+}
+
+export function getGenres () {
+  return [...new Set(books.library.map(book => book.book.genre))]
 }
