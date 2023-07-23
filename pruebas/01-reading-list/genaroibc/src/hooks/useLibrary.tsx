@@ -1,6 +1,6 @@
 import { getSortingFunction } from "~/helpers/getSortingFunction"
 import { saveLocally } from "~/helpers/saveLocally"
-import { $, useSignal, useStore } from "@builder.io/qwik"
+import { $, useSignal, useStore, useTask$ } from "@builder.io/qwik"
 import type { Book, BookISBN, Filter, Genre } from "~/types"
 import { useBroadcastChannel } from "./useBroadcastChannel"
 
@@ -22,12 +22,19 @@ type BCMessage =
 type Params = {
   initialBooks: Book[]
   initialReadingList: Book[]
+  initialFilter: Filter
+  initialGenre: Genre
 }
 
-export const useLibrary = ({ initialBooks, initialReadingList }: Params) => {
+export const useLibrary = ({
+  initialBooks,
+  initialReadingList,
+  initialGenre,
+  initialFilter
+}: Params) => {
+  const currentFilter = useSignal<Filter>(() => initialFilter)
+  const currentGenre = useSignal<Genre>(initialGenre)
   const booksStore = useStore<{ books: Book[] }>({ books: initialBooks })
-  const currentFilter = useSignal<Filter>("title")
-  const currentGenre = useSignal<Genre>("all")
   const readingList = useStore<{ books: Book[] }>({ books: initialReadingList })
 
   const { sendMessage } = useBroadcastChannel<BCMessage>(
@@ -63,6 +70,13 @@ export const useLibrary = ({ initialBooks, initialReadingList }: Params) => {
       ["__reading_list__", readingList.books],
       ["__books_list__", booksStore.books]
     ])
+  })
+
+  const saveFilterLocally = $(() => {
+    saveLocally([["__filter__", currentFilter.value]])
+  })
+  const saveGenreLocally = $(() => {
+    saveLocally([["__genre__", currentGenre.value]])
   })
 
   const addBookToReadingList = $((newBookISBN: BookISBN) => {
@@ -119,7 +133,7 @@ export const useLibrary = ({ initialBooks, initialReadingList }: Params) => {
 
     booksStore.books.sort(sortingFunction)
 
-    saveStateLocally()
+    saveFilterLocally()
     sendMessage({
       type: "sortBooks",
       payload: {
@@ -139,12 +153,17 @@ export const useLibrary = ({ initialBooks, initialReadingList }: Params) => {
     if (genre === currentGenre.value) return
     currentGenre.value = genre
 
+    saveGenreLocally()
     sendMessage({
       type: "updateGenre",
       payload: {
         genre: currentGenre.value
       }
     })
+  })
+
+  useTask$(() => {
+    sortBooks()
   })
 
   return {

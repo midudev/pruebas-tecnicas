@@ -1,4 +1,4 @@
-import type { Book, BookISBN } from "~/types"
+import type { Book, BookISBN, Filter, Genre } from "~/types"
 import { BooksList } from "~/components/BooksList"
 
 import { ReadingList } from "~/components/ReadingList"
@@ -10,10 +10,17 @@ import { GENRES_DICT } from "~/constants"
 type Props = {
   initialBooks: Book[]
   initialReadingList: Book[]
+  initialFilter: Filter
+  initialGenre: Genre
 }
 
 export const BooksLibrary = component$(
-  ({ initialBooks, initialReadingList }: Props) => {
+  ({
+    initialBooks,
+    initialReadingList,
+    initialFilter,
+    initialGenre
+  }: Props) => {
     const {
       readingList,
       addBookToReadingList,
@@ -22,7 +29,12 @@ export const BooksLibrary = component$(
       updateGenre,
       currentGenre,
       books
-    } = useLibrary({ initialBooks, initialReadingList })
+    } = useLibrary({
+      initialBooks,
+      initialReadingList,
+      initialFilter,
+      initialGenre
+    })
 
     const onBookSelect = $((bookISBN: BookISBN) => {
       const bookIsInReadingList = readingList.some(
