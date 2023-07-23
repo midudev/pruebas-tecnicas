@@ -19,6 +19,8 @@ export default function SearchFilter() {
   }, [inputValue.length]);
 
   const handleOptionSelection = (
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     event: React.SyntheticEvent,
     value: string
   ) => {
