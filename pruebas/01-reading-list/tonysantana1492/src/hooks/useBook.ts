@@ -57,21 +57,11 @@ export const useBook = () => {
 
   const filteredBooks = useMemo(() => {
     return availablesBooks.filter(({ genre, pages, title }) => {
-      const categoryCondition = () => {
-        if (genreFilter === '') return true
-
-        return genre === genreFilter
-      }
-
-      const pageCondition = () => {
-        return pages <= pageFilter
-      }
-
-      const titleCondition = () => {
-        return title.toLowerCase().includes(titleFilter.toLowerCase())
-      }
-
-      return categoryCondition() && pageCondition() && titleCondition()
+      return (
+        (titleFilter === '' || title.toLowerCase().includes(titleFilter.toLowerCase())) &&
+        (genreFilter === '' || genre === genreFilter) &&
+        (pages <= pageFilter)
+      )
     })
   }, [availablesBooks, genreFilter, pageFilter, titleFilter])
 
