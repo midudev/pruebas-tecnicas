@@ -3,20 +3,11 @@
   import { asideState } from '../store/aside-store'
   import { derived } from 'svelte/store'
 
-  let homeSelected = derived(
-    asideState,
-    ($asideState) =>
-      !$asideState.topBooksListIsOpen && !$asideState.readingListIsOpen
-  )
+  let homeSelected = derived(asideState, ($asideState) => !$asideState.isOpen)
 
   const readingListSelected = derived(
     asideState,
-    ($asideState) => $asideState.readingListIsOpen
-  )
-
-  const topBooksListSelected = derived(
-    asideState,
-    ($asideState) => $asideState.topBooksListIsOpen
+    ($asideState) => $asideState.isOpen
   )
 </script>
 
@@ -31,8 +22,7 @@
       : ''}"
     on:click={() =>
       asideState.update(() => ({
-        readingListIsOpen: false,
-        topBooksListIsOpen: false,
+        isOpen: false,
       }))}
   >
     <HomeIcon size="32" class={$homeSelected ? 'text-light' : 'text-icons'} />
@@ -45,30 +35,12 @@
       : ''}"
     on:click={() =>
       asideState.update(() => ({
-        readingListIsOpen: true,
-        topBooksListIsOpen: false,
+        isOpen: true,
       }))}
   >
     <BookOpenIcon
       size="32"
       class={$readingListSelected ? 'text-light' : 'text-icons'}
-    />
-  </button>
-  <!-- svelte-ignore a11y-click-events-have-key-events -->
-  <!-- svelte-ignore a11y-no-static-element-interactions -->
-  <button
-    class="cursor-pointer grid place-items-center w-14 h-14 rounded-full transition-bg-nav duration-500 {$topBooksListSelected
-      ? 'bg-nav'
-      : ''}"
-    on:click={() =>
-      asideState.update(() => ({
-        readingListIsOpen: false,
-        topBooksListIsOpen: true,
-      }))}
-  >
-    <AwardIcon
-      size="32"
-      class={$topBooksListSelected ? 'text-light' : 'text-icons'}
     />
   </button>
 </nav>

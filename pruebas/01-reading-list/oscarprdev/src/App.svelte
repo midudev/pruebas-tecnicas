@@ -18,6 +18,5 @@
   <Header />
   <Library />
   <ReadingList />
-  <TopBooksList />
   <Modal bind:this={modal} />
 </main>

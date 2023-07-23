@@ -17,8 +17,7 @@
 
     if ($appState.readingBooks.length === 0) {
       asideState.update(() => ({
-        readingListIsOpen: false,
-        topBooksListIsOpen: false,
+        isOpen: false,
       }))
     }
 
