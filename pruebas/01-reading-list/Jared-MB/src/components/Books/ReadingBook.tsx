@@ -3,7 +3,6 @@ import { useState } from "react"
 
 import { ElementBookProps } from "../../models/types"
 
-import { CgClose } from 'react-icons/cg'
 import { IoCloseCircleSharp } from 'react-icons/io5'
 import { useBooks } from "../../store"
 
