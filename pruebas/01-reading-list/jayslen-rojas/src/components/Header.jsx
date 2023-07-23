@@ -10,7 +10,8 @@ export function Header () {
   const { bookList } = useContext(BookListContext)
   const numOfBooksAvailable = availableBook({
     allBooks: books,
-    booksInList: bookList
+    booksInList: bookList,
+    books
   })
 
   return (

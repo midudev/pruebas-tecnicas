@@ -9,7 +9,6 @@ export function BooksProvider ({ children }) {
   const initialBooks = mappedBooks({ books: booksMocks.library })
   const [storage, setStorage] = useState(booksInStorage ?? initialBooks) // estado para guardar los libros y sus cambios(almacenar todo el objeto)
   const [books, setBooks] = useState(booksInStorage ?? storage) // estado que se usara para renderizar los libros, y para ejecutar el filtrado.
-
   const updateBooks = ({ isSaved, book }) => {
     const newBooks = [...storage]
     const index = newBooks.findIndex(item => item.ISBN === book.ISBN)
