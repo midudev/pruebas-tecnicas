@@ -12,12 +12,10 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@hello-pangea/dnd": "^16.3.0",
     "@mui/icons-material": "^5.14.1",
     "@mui/material": "^5.14.0",
     "@mui/styles": "^5.14.1",
     "react": "^18.2.0",
-    "react-beautiful-dnd": "^13.1.1",
     "react-dom": "^18.2.0",
     "react-sortablejs": "^6.1.4",
     "shared-zustand": "^2.0.0",
@@ -27,11 +25,10 @@
     "zustand": "^4.3.9"
   },
   "devDependencies": {
-    "@types/react-beautiful-dnd": "^13.1.4",
-    "@types/uuid": "^9.0.2",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "@types/sortablejs": "^1.15.1",
+    "@types/uuid": "^9.0.2",
     "@typescript-eslint/eslint-plugin": "^5.61.0",
     "@typescript-eslint/parser": "^5.61.0",
     "@vitejs/plugin-react": "^4.0.1",
