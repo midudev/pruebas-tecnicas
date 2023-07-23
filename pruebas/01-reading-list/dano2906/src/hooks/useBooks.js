@@ -22,11 +22,15 @@ export const useBooks = () => {
   const filterBooks = async () => {
     let filteredBooks = (await getBooks()).library
 
+    if (debouncedSearchBooks.length > 0) {
+      filteredBooks = filteredBooks.filter(({ book }) => book.title.includes(debouncedSearchBooks))
+    }
+
     // Filtrar todos los libros
-    if (filterGenre === 'Todos' && debouncedSearchBooks.length > 0) {
-      filteredBooks = filteredBooks.filter(({ book }) => book.pages >= Number(debouncedFilterPages) && book.title.includes(debouncedSearchBooks))
-    } else if (filterGenre !== 'Todos' && debouncedSearchBooks.length > 0) {
-      filteredBooks = filteredBooks.filter((book) => book.pages >= Number(debouncedFilterPages) && book.genre === filterGenre && book.title.includes(debouncedSearchBooks))
+    if (filterGenre === 'Todos') {
+      filteredBooks = filteredBooks.filter(({ book }) => book.pages >= Number(debouncedFilterPages))
+    } else if (filterGenre !== 'Todos') {
+      filteredBooks = filteredBooks.filter(({ book }) => book.pages >= Number(debouncedFilterPages) && book.genre === filterGenre)
     }
     setBooks(filteredBooks)
 

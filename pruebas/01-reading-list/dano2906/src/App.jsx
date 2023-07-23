@@ -4,6 +4,7 @@ import FiltersForm from './components/FiltersForm'
 import { useBooks } from './hooks/useBooks'
 import { useQuantity } from './hooks/useQuantity'
 import OpenTag from './components/OpenTag'
+import ResetFilters from './components/ResetFilters'
 
 function App () {
   const { books, quantityByGenre, filterPages, searchBooks, setFilterGenre, setFilterPages, setSearchBooks } = useBooks()
@@ -17,6 +18,7 @@ function App () {
       <AvailableBooksSection books={books} />
       <ReadList />
       <OpenTag />
+      <ResetFilters setFilterGenre={setFilterGenre} setFilterPages={setFilterPages} setSearchBooks={setSearchBooks} />
     </div>
   )
 }
