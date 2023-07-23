@@ -1,0 +1,155 @@
+.caja-milista {
+      max-width: 806px;
+      position: fixed;
+      top: 17%;
+      right: 5%;
+      border: 1px solid var(--color-grises);
+      border-radius: 10px;
+      padding: 15px;
+      background-color: var(--color-secundario);
+      box-shadow: var(--negros) 10px 10px 20px;
+      z-index: 4000;
+}
+
+.contenedor-milista {
+      display: flex;
+      width: 100%;
+      gap: 12px;
+      padding: 0 8px;
+      min-height: 319px;
+      max-width: 695px;
+      height: 400px;
+      overflow-y: scroll;
+      flex-wrap: wrap;
+}
+
+.caja-milista header {
+      display: flex;
+      gap: 10px;
+      padding-bottom: 10px;
+      flex-direction: row-reverse;
+}
+
+.caja-milista header h2 {
+      width: 85%;
+      padding: 0 8px;
+      margin-top: 10px;
+}
+
+.btn-hamburguesa {
+      width: 56px;
+      height: 56px;
+}
+
+.image-container {
+      height: fit-content;
+}
+
+.image-container img {
+      cursor: pointer;
+}
+
+.image-container img:hover {
+      border: 2px solid var(--color-principal);
+}
+
+.overlay {
+      position: relative;
+      top: 5px;
+      left: 82px;
+      height: 1px;
+}
+
+.close-button {
+      border-radius: 50%;
+      padding: 15px;
+      background-color: var(--color-detalle);
+      opacity: 0.3;
+      cursor: pointer;
+}
+
+.close-button:hover {
+      border-radius: 50%;
+      padding: 15px;
+      background-color: var(--color-detalle);
+      opacity: 1;
+      border: none;
+}
+
+.caja-book {
+      box-shadow: var(--negros) -35px 0px 70px;
+      z-index: 5000;
+}
+
+.mibook {
+      justify-content: center;
+      align-items: flex-start;
+}
+
+.mibook .mibook-container {
+      width: 80%;
+      justify-content: center;
+      display: flex;
+      align-content: center;
+      gap: 20px;
+}
+
+.mibook .mibook-container .book-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: fit-content;
+      gap: 26px;
+      padding-bottom: 18px;
+}
+
+.book-info .tag {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+}
+
+.mibook .mibook-container .book-info li span {
+      background-color: var(--color-detalle);
+      padding: 5px 15px;
+      border-radius: 7px;
+      color: var(--blanco);
+      box-shadow: var(--negros) 5px 5px 0px;
+      font-family: var(--tipo-principal);
+}
+
+.icono-lista-vacia {
+      display: flex;
+      width: 100%;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: 0 25px;
+      font-family: var(--tipo-principal);
+}
+
+@media (max-width:745px) {
+      .mibook .mibook-container {
+            flex-direction: column;
+            width: auto;
+      }
+}
+
+@media (max-width:399px) {
+      img {
+            width: 100px;
+            aspect-ratio: auto 100 / 140;
+            height: 140px;
+      }
+
+      .caja-milista {
+            right: 5%;
+            left: 10%;
+      }
+
+      .caja-milista header h2 {
+            width: 70%;
+            font-size: 18px;
+      }
+}

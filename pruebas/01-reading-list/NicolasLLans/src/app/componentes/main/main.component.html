@@ -1,0 +1,22 @@
+<nav class="barra-filtros">
+      <section class="content-filtros">
+            <div class="seccion-filtro">
+                  <label>Filtrar por Páginas</label>
+                  <input type="range" name="page" id="page" [(ngModel)]="maxPages" min="50" max="1500" step="250">
+                  <span>{{ maxPages }} Pág.</span>
+            </div>
+            <div class="seccion-filtro">
+                  <label>Filtrar por Género</label>
+                  <select [(ngModel)]="selectedGenre">
+                        <option value="">Todos los géneros</option>
+                        <option *ngFor="let genre of genres" [value]="genre">{{ genre }}</option>
+                  </select>
+            </div>
+      </section>
+</nav>
+<app-milista></app-milista>
+<ul class="grilla">
+      <li *ngFor="let item of filteredBooks">
+            <img class="tapa" [src]="item.book.cover" [alt]="item.book.title" width="140px" height="200px" (click)="selectBook(item)"  style="cursor: pointer;">
+      </li>
+</ul>
