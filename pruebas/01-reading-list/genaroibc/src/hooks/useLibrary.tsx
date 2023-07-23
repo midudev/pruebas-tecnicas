@@ -168,6 +168,7 @@ export const useLibrary = ({
 
   return {
     currentGenre: currentGenre.value,
+    currentFilter: currentFilter.value,
     books: booksStore.books,
     removeBookFromReadingList,
     addBookToReadingList,

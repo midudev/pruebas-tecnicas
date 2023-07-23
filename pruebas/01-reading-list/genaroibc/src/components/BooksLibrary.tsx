@@ -28,6 +28,7 @@ export const BooksLibrary = component$(
       updateFilter,
       updateGenre,
       currentGenre,
+      currentFilter,
       books
     } = useLibrary({
       initialBooks,
@@ -57,7 +58,12 @@ export const BooksLibrary = component$(
 
     return (
       <section class="relative">
-        <Filters onFilterChange={updateFilter} onGenreChange={updateGenre} />
+        <Filters
+          onFilterChange={updateFilter}
+          onGenreChange={updateGenre}
+          genre={currentGenre}
+          filter={currentFilter}
+        />
 
         <BooksList books={filteredByGenre} onBookSelect={onBookSelect} />
 
