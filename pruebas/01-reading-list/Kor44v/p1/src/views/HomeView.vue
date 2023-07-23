@@ -1,55 +1,58 @@
 <template>
-  <v-container>
+  <div>
+    <h1 class="white--text mx-5">Libros disponibles {{getLength}}</h1>
     <v-row>
       <v-col cols="3">
-          <v-card flat color="transparent">
-            <v-card-text>
-              <v-row>
-                <v-col class="pr-4">
-                  <v-slider
-                    v-model="slider"
-                    class="align-center"
-                    :max="max"
-                    :min="min"
-                    hide-details
-                  >
-                    <template v-slot:append>
-                      <v-text-field
-                        v-model="slider"
-                        class="mt-0 pt-0"
-                        hide-details
-                        single-line
-                        type="number"
-                        style="width: 50px"
-                        disabled
-                      ></v-text-field>
-                    </template>
-                  </v-slider>
-                </v-col>
-              </v-row>
-            </v-card-text>
-          </v-card>
+        <v-card flat color="transparent">
+          <v-card-text>
+            <v-row>
+              <!-- <v-btn @click="setGenreFilter()">hola</v-btn> -->
+              <v-col class="pr-4">
+                <v-slider
+                  v-model="slider"
+                  class="align-center"
+                  :max="max"
+                  :min="min"
+                  hide-details
+                  dark
+                >
+                  <template v-slot:append>
+                    <v-text-field
+                      v-model="slider"
+                      class="mt-0 pt-0"
+                      hide-details
+                      single-line
+                      type="number"
+                      style="width: 50px"
+                      disabled
+                    ></v-text-field>
+                  </template>
+                </v-slider>
+              </v-col>
+            </v-row>
+          </v-card-text>
+        </v-card>
       </v-col>
       <v-col cols="3">
-        <v-select
-          :items="items"
-          label="Standard"
-          dense
-        ></v-select>
-         </v-col>
+        <v-select v-model="selectedGenre" :value='selected' :items="items" label="Géneros" dense dark></v-select>
+      </v-col>
     </v-row>
+    <v-spacer></v-spacer>
     <v-row>
-      <v-col cols="8">
+      <v-col cols="7">
         <Cards :data="library" />
       </v-col>
-      <v-col cols="4"> carrito </v-col>
+      <v-col cols="4" class="bg"> 
+        <Lectura/>
+      </v-col>
     </v-row>
-  </v-container>
+  </div>
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapState, mapGetters} from "vuex";
 import Cards from "@/components/Cards.vue";
+import Lectura from '@/components/Lectura.vue'
 
 export default {
   name: "home-view",
@@ -57,22 +60,46 @@ export default {
     return {
       min: 0,
       max: 3000,
-      slider:0,
-      items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
+      slider: 0,
+      items: ['Fantasía','Terror','Ciencia ficción','Zombies'],
+      // set:[],
+      selectedGenre:null
     };
   },
+  beforeCreate(){
+    
+    },
   created() {
+    // this.setGenreFilter();
     this.getLibrary();
   },
+  
   computed: {
     ...mapState(["library"]),
+    ...mapGetters(['getLength'])
+
   },
   methods: {
     ...mapActions(["getLibrary"]),
+    // async setGenreFilter() {
+    //   this.library.forEach((element) => {
+    //     const genre = element.book.genre;
+    //     this.items.push(genre);
+    //   });
+    //   let myset = await new Set(this.items)
+    //   this.set = myset
+    // },
+    //FIXME: arreglar esta funcion porque no sirve del todo, necesita async await
   },
 
   components: {
     Cards,
+    Lectura
   },
 };
 </script>
+<style scoped>
+.bg{
+background: rgb(238,174,202);
+background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(130,185,250,1) 47%, rgba(0,0,0,0.5181722347141982) 100%);}
+</style>
