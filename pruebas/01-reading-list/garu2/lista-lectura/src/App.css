@@ -1,3 +1,6 @@
+html {
+  background-color: #F6F6F6;
+}
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,3 +8,35 @@
   text-align: center;
 }
 
+.shadow {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.card-book:hover .info-card {
+  transform: translateX(-170px);
+}
+.card-book:hover {
+  z-index: 50;
+}
+.info-card {
+  transition:  .5s;
+}
+
+.side-bar ul li {
+  background-color: #fff;
+  padding: 10px 15px;
+  margin-bottom: 8px;
+  border-radius: 3px;
+  text-align: left;
+  cursor: pointer;
+  font-weight: 500;
+}
+.side-bar ul li:hover {
+  background-color: #FFC93B;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+}
+
+ul li.current-cat {
+  background-color: #FFC93B;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+}
