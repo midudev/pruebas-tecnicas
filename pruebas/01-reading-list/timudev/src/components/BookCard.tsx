@@ -3,8 +3,6 @@ import { createContext, ReactElement, CSSProperties } from 'react';
 import { useBook } from '../hooks/useBook';
 import { BookContextProps, Book, onChangeStoreArgs } from '../interfaces/interfaces';
 
-import styles from '../styles/styles.module.css';
-
 export const BookContext = createContext({} as BookContextProps);
 const { Provider } = BookContext;
 
@@ -28,7 +26,7 @@ export const BookCard = ({ children, book, className, style, onChange, value }: 
             addToReadingList: readingListChange,
         }}>
             <div 
-                className={ `${ styles.bookCard } ${ className ? className : '' }`  }
+                className={ `${ className ? className : '' }`  }
                 style={ style } 
             >
                 { children }

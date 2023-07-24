@@ -2,70 +2,119 @@ import { BookCard, BookImage, BookTitle, BookButtons } from '../components';
 import { useReadingList } from '../hooks/useReadingList';
 
 import data from '../data/books.json';
-
 import '../styles/custom-styles.css';
+import { useState } from 'react';
 
 
 export const BookList = () => {
 
     const { readingList, onBookReadingChange} = useReadingList();
-    
+    const [genreFilter, setGenreFilter] = useState('all');
+
     const books = data.library.map( item => item.book );
+    const booksByGenre = genreFilter === 'all' ? books : books.filter( book => book.genre === genreFilter );
+    const availableBooks = books.filter( book => !readingList[book.ISBN]?.readingList );
+    const availableBooksByGenre = genreFilter === 'all' ? availableBooks : availableBooks.filter( book => book.genre === genreFilter );
     
+    const onSelectGenre = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setGenreFilter(e.target.value);
+        if ( e.target.value === 'all' ) {
+            return;
+        }
+    }
+
     return (
         <div>
             
-            <h1>Book List</h1>
-            <hr />
-            
-            <div style={{
-                display: 'flex',
-                flexDirection: 'row',
-                flexWrap: 'wrap',
-            }}> 
+            <header className="bg-white shadow">
+                <div className="flex flex-row items-center mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+                    
+                    <div className='w-1/2'>
+                        <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+                            {availableBooksByGenre.length} Libros { genreFilter !== 'all' ? `de ${genreFilter}` : '' } Disponibles
+                        </h1>
+                        <span>Hay { books.length - availableBooks.length} Libros en la lista de Lectura </span>
+                       
+                    </div>
 
-                {
-                    books.map( book => (
-                        <BookCard
-                            key={ book.ISBN }
-                            book={ book }
-                            className="bg-dark text-white"
-                            onChange={ onBookReadingChange }
-                            value={ readingList[book.ISBN]?.readingList }
+                    <div className="w-1/2">
+                        <label className="block mb-2 text-sm font-medium text-black">Filtrar por género</label>
+                        <select 
+                            id="genre" 
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            value={ genreFilter }
+                            onChange={onSelectGenre}
                         >
-                            <BookImage style={ readingList[book.ISBN]?.readingList ? { opacity: 0.25} : {}}/>
-                            <BookTitle className="text-bold" />
-                            <BookButtons className="custom-buttons" />
-                        </BookCard>
-                    ))
-                }
+                            <option value="all">Todos los géneros</option>
+                            <option value="Fantasía">Fantasía</option>
+                            <option value="Ciencia ficción">Ciencia ficción</option>
+                            <option value="Zombies">Zombies</option>
+                            <option value="Terror">Terror</option>
+                        </select>
+                    </div>
+                </div>
+                
+            </header>
+            
+            <div className="flex flex-row mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8" >
+
+                <div className="w-4/5">
+
+                    <div className="gap-3 pt-5 flex flex-wrap"> 
+
+                        {
+                            booksByGenre.map( book => (
+                                <BookCard
+                                    key={ book.ISBN }
+                                    book={ book }
+                                    className="bg-slate-800 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-100 w-60 p-2"
+                                    onChange={ onBookReadingChange }
+                                    value={ readingList[book.ISBN]?.readingList }
+                                >
+                                    <BookImage
+                                        className="object-cover relative flex items-end overflow-hidden mb-3 w-full h-72"
+                                        style={ readingList[book.ISBN]?.readingList ? { opacity: 0.25} : {}}
+                                    />
+                                    <BookTitle 
+                                        className="text-white text-sm font-semibold" 
+                                    />
+                                    <BookButtons 
+                                        className="mt-3 flex items-center justify-center space-x-1.5 bg-green-500 px-4 py-1.5 text-white duration-100 hover:bg-green-600" 
+                                    />
+                                </BookCard>
+                            ))
+                        }
+
+                    </div>
+                
+                </div>
+                
+                <div className="w-1/5">        
+
+                    <div className="gap-1 pt-5 flex flex-wrap"> 
+                        {
+                            Object.entries(readingList).map( ([key, book]) => (
+                                <BookCard 
+                                    key={ key }    
+                                    book={ book }
+                                    className="bg-slate-800 shadow-lg p-1 w-30"
+                                    value={ book.readingList }
+                                    onChange={ onBookReadingChange }
+                                >
+                                    <BookImage 
+                                        className="object-cover relative flex items-end overflow-hidden mb-3 w-full h-32"
+                                    />
+                                    <BookButtons
+                                        className="mt-3 flex items-center justify-center space-x-1.5 bg-green-500 px-4 py-1.5 text-white duration-100 hover:bg-green-600" 
+                                    />
+                                </BookCard>
+                            ))  
+                        }
+                    </div>
+                </div>
 
             </div>
 
-            <div className='book-reading-list'>
-                {
-                    Object.entries(readingList).map( ([key, book]) => (
-                        <BookCard 
-                            key={ key }    
-                            book={ book }
-                            className="bg-dark text-white"
-                            style={{ width: '100px' }}
-                            value={ book.readingList }
-                            onChange={ onBookReadingChange }
-                        >
-                            <BookImage className="custom-image" />
-                            <BookButtons 
-                                className="custom-buttons" 
-                                style={{ 
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                }}
-                            />
-                        </BookCard>
-                    ))  
-                }
-            </div>
-            
         </div>
     )
 }

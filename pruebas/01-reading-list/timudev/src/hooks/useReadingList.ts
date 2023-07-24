@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Book, BookInReadingList } from '../interfaces/interfaces';
 
 export const useReadingList = () => {
+
+    const readingListInitial = localStorage.getItem('readingList');
   
-    const [readingList, setReadingList] = useState<{ [key:string]:BookInReadingList }>({});
+    const [readingList, setReadingList] = useState<{ [key:string]:BookInReadingList }>( readingListInitial ? JSON.parse(readingListInitial) : {} );
 
     const onBookReadingChange = ( {readingList, book}: { readingList: boolean, book: Book} ) => {
 
@@ -21,6 +23,10 @@ export const useReadingList = () => {
         
         });
     };
+
+    useEffect(() => {
+         localStorage.setItem('readingList', JSON.stringify(readingList));
+    }, [readingList])
   
     return {
         readingList,

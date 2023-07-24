@@ -2,7 +2,7 @@ import { useContext, CSSProperties } from 'react';
 import { BookContext } from './BookCard';
 
 import noImage from '../assets/no-image.jpg';
-import styles from '../styles/styles.module.css';
+
 
 export interface Props {
     img?: string;
@@ -24,7 +24,7 @@ export const BookImage = ({ img = '', className, style }:Props) => {
 
     return (
         <img 
-            className={ `${styles.bookImg} ${ className ? className : '' }` }
+            className={ `${ className ? className : '' }` }
             style={ style } 
             src={ imgToShow } 
             alt="Product" 
