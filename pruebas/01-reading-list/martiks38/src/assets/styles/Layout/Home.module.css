@@ -28,54 +28,11 @@
   border-bottom-color: var(--border-section-color);
 }
 
-.homeMain__suggestSection__info {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.homeMain__suggestSection__info__button {
-  padding: 0.2em 0.8em;
-  width: fit-content;
-  border-radius: 0.375rem;
-  border-width: 0;
-  font-weight: 600;
-}
-
-.homeMain__suggestSection__synopsis {
-  margin-bottom: 1.4em;
-  max-width: 40ch;
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-.homeMain__suggestSection__title {
-  margin-bottom: 0.15em;
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-}
-
-.homeMain__suggestSection__subtitle {
-  margin-bottom: 0.65em;
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
 .homeMain__bookDashboard {
   display: grid;
   grid-template-columns: 60% 40%;
   grid-area: books;
   border-width: 0 1px 0 0;
-}
-
-.homeMain__bookListSection {
-  padding: 1rem var(--padding-content);
-}
-
-.homeMain__bookListSection__title {
-  margin-bottom: 0.8em;
-  font-size: 1.875rem;
-  line-height: 2.25rem;
 }
 
 @media (min-width: 90.0625rem) {
