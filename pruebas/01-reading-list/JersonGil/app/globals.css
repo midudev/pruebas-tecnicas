@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  :root {
+    --primary-100: 29, 46%, 37%;
+    --primary-200: 27, 42%, 56%;
+    --primary-300: 44, 100%, 87%;
+    --accent-100: 0, 0%, 75%;
+    --accent-200: 0, 0%, 38%;
+    --text-100: 0, 0%, 20%;
+    --text-200: 0, 0%, 36%;
+    --bg-100: 0, 0%, 90%;
+    --bg-200: 0, 0%, 86%;
+    --bg-300: 0, 0%, 70%;
+
+  }
+}
+
+navbar {
+  color: hsl(0, 0%, 20%);
+}
