@@ -13,7 +13,7 @@ const BookListHeader = () => {
   } = useBookListHeader();
 
   return (
-    <div className="book-list_title">
+    <div className="book-list_title" data-testid="book-list-title">
       {editingName && isEditable ? (
         <TitleEditor title={title} changeTitle={changeTitle} />
       ) : (

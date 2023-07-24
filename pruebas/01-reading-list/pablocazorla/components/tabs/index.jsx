@@ -11,7 +11,7 @@ const Tabs = () => {
   } = useTabs();
 
   return (
-    <nav className="list-nav">
+    <nav className="list-nav" data-testid="list-nav">
       <button
         className={classNames("tab tab-all", { active: !currentReadingListId })}
         onClick={() => {

@@ -11,7 +11,7 @@ const Filters = () => {
   } = useFilters();
 
   return (
-    <div className="filters">
+    <div className="filters" data-testid="filters">
       <div className="filter-set">
         <label htmlFor="pages">
           Cantidad de páginas ({maxPages || filtersOptions.maxPages})

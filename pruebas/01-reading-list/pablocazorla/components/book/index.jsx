@@ -1,8 +1,8 @@
 import Image from "next/image";
-import AddOrRemoveReadingList from "./addOrRemoveReadingList";
+import AddOrRemoveReadingList from "@/components/addOrRemoveReadingList";
 import { motion } from "framer-motion";
 
-const Book = ({ data }) => {
+const Book = ({ data, setSelectedBook }) => {
   const { title, pages, genre, cover, year, ISBN, author } = data;
 
   return (
@@ -10,10 +10,10 @@ const Book = ({ data }) => {
       key={ISBN}
       className="book"
       layout
+      layoutId={ISBN}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      // transition={{ type: "spring" }}
     >
       <div className="book-content">
         <picture>
@@ -23,6 +23,9 @@ const Book = ({ data }) => {
             height={335}
             alt={`Portada del libro "${title}"`}
             style={{ width: "100%", height: "auto" }}
+            onClick={() => {
+              setSelectedBook(data);
+            }}
           />
           <AddOrRemoveReadingList ISBN={ISBN} />
         </picture>

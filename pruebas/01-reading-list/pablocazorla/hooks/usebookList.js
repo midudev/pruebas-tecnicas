@@ -1,12 +1,14 @@
+import { useEffect, useState } from "react";
 import { useStore } from "@/store";
 import useGetData from "@/hooks/useGetData";
 import BookService from "@/services/book";
-import { useEffect, useState, useCallback } from "react";
 
 const useBookList = () => {
   const [getBooklist, bookListOriginal] = useGetData({
     service: BookService.getBooklist,
   });
+
+  const [selectedBook, setSelectedBook] = useState(null);
 
   useEffect(() => {
     getBooklist();
@@ -56,7 +58,8 @@ const useBookList = () => {
 
   return {
     bookList,
-    currentReadingListId,
+    selectedBook,
+    setSelectedBook,
   };
 };
 

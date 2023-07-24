@@ -4,6 +4,11 @@ body {
   margin: 0;
   overflow-x: hidden;
 }
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
 .main-header {
   background-color: #56713d;
   text-align: center;
@@ -55,20 +60,25 @@ body {
   margin: 0 auto;
   text-align: center;
 }
+
 .book h3 {
   margin: 0;
   font-size: 16px;
 }
-.book p {
+p {
   margin: 0 0 0.5rem;
   font-size: 12px;
 }
-.book p.author {
+p.author {
   font-style: italic;
   margin-bottom: 0.5rem;
 }
-.book p.synopsis {
+p.synopsis {
   margin-top: 0.5rem;
+}
+picture {
+  position: relative;
+  padding-bottom: 22px;
 }
 .book picture {
   margin-bottom: 0.7rem;
@@ -76,13 +86,18 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  position: relative;
-  padding-bottom: 22px;
 }
 .book img {
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.6);
   width: auto;
   height: auto;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.6);
+  transform-origin: 0;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.book img:hover {
+  transform: perspective(1000px) rotateY(-25deg);
 }
 
 .book-btn {
@@ -115,7 +130,7 @@ body {
   bottom: 100%;
   left: 50%;
   background-color: #fff;
-  width: 170px;
+  width: 190px;
   margin-left: -95px;
   border-radius: 6px;
   padding: 10px;
@@ -305,7 +320,92 @@ body {
   padding-bottom: 4px;
 }
 
-/* book-btn book-btn_add */
+/* MODAL */
+.modal {
+  position: fixed;
+  z-index: 1002;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.modal-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 0;
+  min-height: calc(100% - 20px);
+  width: 100vw;
+}
+.modal-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(3px);
+}
+
+.moda-body {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 15px;
+  min-height: 200px;
+}
+.modal-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 0;
+  margin: 0;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  background-color: transparent;
+  font-size: 18px;
+}
+.modal-close:hover,
+.modal-close:focus {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  transform: none;
+  opacity: 0.5;
+}
+
+.modal-book-content {
+  display: flex;
+}
+.modal-book-content picture {
+  flex: 0 0 200px;
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+}
+.modal-book-content img {
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.6);
+  width: auto;
+  height: auto;
+  display: block;
+}
+.modal-book-content_data {
+  padding-left: 30px;
+}
+
+.modal-book-content_data p.synopsis {
+  font-size: 16px;
+  margin-top: 25px;
+}
 
 @media screen and (max-width: 999px) {
   .book-list_header {
@@ -313,5 +413,20 @@ body {
   }
   .book-list_title {
     margin-bottom: 20px;
+  }
+}
+@media screen and (max-width: 770px) {
+  .moda-body {
+    border-radius: 0;
+  }
+  .modal-container {
+    padding: 0;
+  }
+  .modal-book-content {
+    display: block;
+  }
+  .modal-book-content_data {
+    padding-left: 0;
+    text-align: center;
   }
 }
