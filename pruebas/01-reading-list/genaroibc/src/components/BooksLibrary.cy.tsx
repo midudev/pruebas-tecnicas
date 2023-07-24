@@ -1,23 +1,6 @@
 import type { Book } from "~/types"
 import { BooksLibrary } from "./BooksLibrary"
 
-const mockedBook: Book = {
-  title: "Juego de Tronos",
-  pages: 694,
-  genre: "Fantasía",
-  cover:
-    "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1273763400i/8189620.jpg",
-  synopsis:
-    "En un reino donde las estaciones duran años, una batalla épica por el trono se desarrolla.",
-  year: 1996,
-  ISBN: "978-0553103540",
-  author: {
-    name: "George R. R. Martin",
-    otherBooks: ["Choque de Reyes", "Tormenta de Espadas", "Festín de Cuervos"]
-  },
-  isInReadingList: false
-}
-
 describe("BooksLibrary", () => {
   it("renders message when there are no books in reading list", () => {
     cy.mount(
@@ -36,6 +19,27 @@ describe("BooksLibrary", () => {
   })
 
   it("renders books in books list", () => {
+    const mockedBook: Book = {
+      title: "Juego de Tronos",
+      pages: 694,
+      genre: "Fantasía",
+      cover:
+        "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1273763400i/8189620.jpg",
+      synopsis:
+        "En un reino donde las estaciones duran años, una batalla épica por el trono se desarrolla.",
+      year: 1996,
+      ISBN: "978-0553103540",
+      author: {
+        name: "George R. R. Martin",
+        otherBooks: [
+          "Choque de Reyes",
+          "Tormenta de Espadas",
+          "Festín de Cuervos"
+        ]
+      },
+      isInReadingList: false
+    }
+
     cy.mount(
       <BooksLibrary
         initialBooks={[mockedBook]}
@@ -55,6 +59,27 @@ describe("BooksLibrary", () => {
   })
 
   it("adds book to reading list on click", () => {
+    const mockedBook: Book = {
+      title: "Juego de Tronos",
+      pages: 694,
+      genre: "Fantasía",
+      cover:
+        "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1273763400i/8189620.jpg",
+      synopsis:
+        "En un reino donde las estaciones duran años, una batalla épica por el trono se desarrolla.",
+      year: 1996,
+      ISBN: "978-0553103540",
+      author: {
+        name: "George R. R. Martin",
+        otherBooks: [
+          "Choque de Reyes",
+          "Tormenta de Espadas",
+          "Festín de Cuervos"
+        ]
+      },
+      isInReadingList: false
+    }
+
     cy.mount(
       <BooksLibrary
         initialBooks={[mockedBook]}
@@ -66,10 +91,7 @@ describe("BooksLibrary", () => {
 
     cy.get("section button").click()
 
-    cy.get("aside ul li div p").should(
-      "not.exist",
-      "No books in your reading list"
-    )
+    cy.get("aside ul li div p").should("not.exist") // no "empty reading list" message when there are books in reading list
 
     cy.get("aside ul li button img").should(
       "have.attr",
@@ -286,7 +308,7 @@ describe("BooksLibrary", () => {
       .siblings("select")
       .select("horror")
 
-    cy.get("article div span").contains("sci-fi").should("not.exist") // no books in sci-fi genre when selected horror
+    cy.get("article div span").contains("sci-fi").should("not.exist") // no books in sci-fi genre when "horror" genre is selected
 
     cy.get("article div span").contains("terror")
   })
