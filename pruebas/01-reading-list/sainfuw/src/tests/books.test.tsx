@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 
 import App from '../App';
 import { useBooks } from '../hooks/useBooks';
@@ -39,5 +39,15 @@ describe('App', () => {
 
     const { genres } = useBooks()
     expect(select.length).toEqual(genres.length + 1)
+  })
+
+  it('readlist should be visible when click on a book button', () => {
+    render(<App />)
+    const buttons = screen.getAllByRole('button')
+    let uls = screen.getAllByRole('list')
+    expect(uls.length).toBe(1)
+    fireEvent.click(buttons[0])
+    uls = screen.getAllByRole('list')
+    expect(uls.length).toBe(2)
   })
 })
