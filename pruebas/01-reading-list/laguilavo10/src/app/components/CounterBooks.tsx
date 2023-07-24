@@ -3,7 +3,7 @@ interface Props {
   title: string
   length: number
 }
-export default function CounterBooks({ title = '', length = 10 }: Props) {
+export default function CounterBooks({ title = '', length = 0 }: Props) {
   return (
     <header className='flex flex-col items-center'>
       <h2 className='w-full text-center text-2xl font-bold text-white'>

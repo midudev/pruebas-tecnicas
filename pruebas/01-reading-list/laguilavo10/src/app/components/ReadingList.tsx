@@ -7,7 +7,6 @@ interface Props {
 }
 export default function ReadingList({ isShowingReadList }: Props) {
   const { state } = useBooks()
-  // if (typeof state === 'undefined') return
   const { length } = state?.readingList
   const show = isShowingReadList
     ? '-translate-x-full'
