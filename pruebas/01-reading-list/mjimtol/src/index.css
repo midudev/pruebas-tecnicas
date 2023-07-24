@@ -14,7 +14,7 @@
   -webkit-text-size-adjust: 100%;
 }
 
-.estanteria section{
+.estanteria .contenedorLibros{
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -22,7 +22,7 @@
   justify-content: center;
 }
 
-.estanteria-lectura section{
+.estanteria-lectura .contenedorLibros{
   display: flex;
   flex-wrap: wrap;
   gap: 10px;

@@ -12,18 +12,27 @@ export function App() {
     addToList,
     removeFromList,
     setearLista,
+    addPriority,
+    reducePriority,
+    // setearListaDisp,
   } = useBooks();
 
   const [selectedGenre, setSelectedGenre] = useState("all");
+  const [titleSearched, setTitleSearched] = useState("");
+  const [maxPages, setMaxPages] = useState(1500);
   const [activeTab, setActiveTab] = useState(TABS.Libreria);
 
   const filterBooks = (e: any) => {
     setSelectedGenre(e.target.value);
   };
 
-  useEffect(() => {
-    console.log(activeTab);
-  }, [activeTab]);
+  const filterTitle = (e: any) => {
+    setTitleSearched(e.target.value);
+  };
+
+  const filterPages = (e: any) => {
+    setMaxPages(e.target.value);
+  };
 
   useEffect(() => {
     const stgLectura = localStorage.getItem("lectura");
@@ -32,18 +41,32 @@ export function App() {
     addEventListener("storage", () => {
       const stgLectura = localStorage.getItem("lectura");
 
-      // const libs = [...librosLista];
-      // if (stgLectura) {
+      // if (stgLectura && librosDisponibles.length > 0) {
+      //   const libs = [...librosDisponibles];
+      //   console.log({ libs });
       //   JSON.parse(stgLectura).forEach((book: BookSelectable) => {
       //     const i = libs.findIndex((b) => b.ISBN === book.ISBN);
       //     if (i >= 0) libs[i].selected = true;
       //   });
+      //   setearListaDisp(libs);
       // }
-      // if (stgLectura) setearLista(libs);
 
       if (stgLectura) setearLista(JSON.parse(stgLectura));
     });
   }, []);
+
+  const booksFiltered = () => {
+    return librosDisponibles
+      .filter((book) => {
+        if (selectedGenre === "all") return true;
+        return book.genre === selectedGenre;
+      })
+      .filter((book) => {
+        if (titleSearched === "") return true;
+        return book.title.toLowerCase().includes(titleSearched.toLowerCase());
+      })
+      .filter((book) => book.pages <= maxPages);
+  };
 
   return (
     <>
@@ -53,16 +76,7 @@ export function App() {
           onClick={() => setActiveTab(TABS.Libreria)}
           className={`${activeTab === TABS.Libreria && "selectedTab"}`}
         >
-          <h2>
-            Libros disponibles (
-            {
-              librosDisponibles.filter((book) => {
-                if (selectedGenre === "all") return true;
-                return book.genre === selectedGenre;
-              }).length
-            }
-            )
-          </h2>
+          <h2>Libros disponibles ({booksFiltered().length})</h2>
         </span>
         <span
           onClick={() => setActiveTab(TABS.Lectura)}
@@ -74,9 +88,21 @@ export function App() {
       {/* Contenido */}
       {activeTab === TABS.Libreria && (
         <section className="estanteria">
+          {/* Filtros */}
           <div className={"filtros"}>
             <div>
-              <input placeholder={"Título..."}></input>
+              <input onKeyUp={filterTitle} placeholder={"Título..."}></input>
+            </div>
+            <div>
+              Máximo de páginas ({maxPages})
+              <input
+                type="range"
+                min="0"
+                max="1500"
+                step="1"
+                onChange={filterPages}
+                placeholder={"Título..."}
+              />
             </div>
             <div style={{ marginBottom: "15px" }}>
               {"Filtro "}
@@ -89,44 +115,41 @@ export function App() {
             </div>
           </div>
           {/* Listas libros - completa */}
-          <section>
-            {librosDisponibles
-              .filter((book) => {
-                if (selectedGenre === "all") return true;
-                return book.genre === selectedGenre;
-              })
-              .map((book) => {
-                return (
-                  <BookComponent
-                    book={book}
-                    setSelected={setearLista}
-                    seleccionados={librosLista}
-                    addToList={addToList}
-                    removeFromList={removeFromList}
-                    zona="estanteria"
-                  />
-                );
-              })}
-          </section>
+          <div className="contenedorLibros">
+            {booksFiltered().map((book) => {
+              return (
+                <BookComponent
+                  book={book}
+                  setSelected={setearLista}
+                  seleccionados={librosLista}
+                  addToList={addToList}
+                  removeFromList={removeFromList}
+                  zona={TABS.Libreria}
+                />
+              );
+            })}
+          </div>
         </section>
       )}
       {/* Listas libros - para leer */}
       {activeTab === TABS.Lectura && (
         <section className="estanteria-lectura">
-          <section>
-            {librosLista.map((b) => {
+          <div className="contenedorLibros">
+            {librosLista.map((book) => {
               return (
                 <BookComponent
-                  book={b}
+                  book={book}
                   setSelected={setearLista}
                   seleccionados={librosLista}
                   addToList={addToList}
                   removeFromList={removeFromList}
-                  zona="lectura"
+                  zona={TABS.Lectura}
+                  addPriority={addPriority}
+                  reducePriority={reducePriority}
                 />
               );
             })}
-          </section>
+          </div>
         </section>
       )}
     </>

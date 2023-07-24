@@ -19,6 +19,7 @@ export interface Book {
 
 export interface BookSelectable extends Book {
     selected: boolean;
+    priority: number;
 }
 
 export interface Author {

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build:prod": "vite build --base=/pruebastecnicas/readinglist/",
     "preview": "vite preview"
   },
   "dependencies": {
