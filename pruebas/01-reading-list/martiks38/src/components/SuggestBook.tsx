@@ -6,7 +6,7 @@ import { useBookList } from '@/hooks/useBookList'
 
 import { nameStorage } from '@/assets/constants'
 import { books } from '@/assets/values'
-import suggestBookStyles from '@/assets/styles/Layout/Home.module.css'
+import suggestBookStyles from '@/assets/styles/Book/SuggestBook.module.css'
 
 import type { Book } from '@/typings/books'
 
@@ -34,16 +34,12 @@ export function SuggestBook() {
 
   return suggestion ? (
     <>
-      <div className={suggestBookStyles.homeMain__suggestSection__info}>
-        <h4 className={suggestBookStyles.homeMain__suggestSection__title}>{suggestion.title}</h4>
-        <h5 className={suggestBookStyles.homeMain__suggestSection__subtitle}>
-          {suggestion.author.name}
-        </h5>
-        <p className={suggestBookStyles.homeMain__suggestSection__synopsis}>
-          {suggestion.synopsis}
-        </p>
+      <div className={suggestBookStyles.suggestSection__info}>
+        <h4 className={suggestBookStyles.suggestSection__title}>{suggestion.title}</h4>
+        <h5 className={suggestBookStyles.suggestSection__subtitle}>{suggestion.author.name}</h5>
+        <p className={suggestBookStyles.suggestSection__synopsis}>{suggestion.synopsis}</p>
         <button
-          className={suggestBookStyles.homeMain__suggestSection__info__button}
+          className={suggestBookStyles.suggestSection__info__button}
           onClick={() => addToReadingList({ ISBN: suggestion.ISBN })}
         >
           Añadir a la lista
