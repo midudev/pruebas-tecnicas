@@ -63,8 +63,7 @@ export class BooksListComponent implements OnInit {
   manageGenreSelected(event: string) {
     this.genreSelected = event;
     this.filterByGenre(this.genreSelected);
-    if(this.booksList)
-    this.libraryLength = this.booksList?.length
+    if (this.booksList) this.libraryLength = this.booksList?.length;
   }
 
   filterByGenre(genre: string) {
@@ -80,16 +79,15 @@ export class BooksListComponent implements OnInit {
   managePagesSelected(event: number) {
     this.pagesSelected = event;
     this.filterByPages(event);
-    if(this.booksList)
-    this.libraryLength = this.booksList?.length
+    if (this.booksList) this.libraryLength = this.booksList?.length;
   }
 
   filterByPages(pages: number) {
-    if (pages === 0 || pages === 1000) {
+    if (pages === 0) {
       this.booksList = this.booksListCopy;
     } else {
       this.booksList = this.booksListCopy?.filter((book) => {
-        return book.book.pages <= pages;
+        return book.book.pages >= pages;
       });
     }
   }
@@ -102,5 +100,10 @@ export class BooksListComponent implements OnInit {
         book.book.synopsis.toLowerCase().includes(search.toLowerCase())
       );
     });
+  }
+
+  sortReadingList(){
+    this.readingService.readingList?.value.sort((a, b) => a.book.priority - b.book.priority)
+    this.readingService.saveOnLocalStorage()
   }
 }

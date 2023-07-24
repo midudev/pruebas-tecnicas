@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BooksListComponent } from './components/books-list/books-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BookCardComponent } from './components/book-card/book-card.component';
-import { HomeComponent } from './components/home/home.component'
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReadingBookComponent } from './components/reading-book/reading-book.component';
@@ -18,7 +17,6 @@ import { BooksFilterComponent } from './components/books-filter/books-filter.com
     AppComponent,
     BooksListComponent,
     BookCardComponent,
-    HomeComponent,
     ReadingBookComponent,
     BookDetailsComponent,
     BooksFilterComponent

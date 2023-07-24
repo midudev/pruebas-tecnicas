@@ -1,15 +1,40 @@
 .reading-container{
-    border: 2px solid #000;
+    border: 2px solid #2c2c2c;
     padding: 0.5rem;
     background-color: #2c2c2c;
 }
 
-.books-container{
-    border: 2px solid #000;
-    padding: 0.5rem;
-    min-height: 600px;
-}
-
-.reading-container > h2{
+.reading-container  h3{
     color: #f2f2f2;
 }
+
+.btn-desc {
+    border: 0;
+    background-color: transparent;
+    font-size: 2rem;
+    color: #f2f2f2;
+    position: relative;
+}
+
+ /* Estilos del popup */
+ .btn-desc:hover::after {
+    content: "¡Esto es un tooltip!";
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    position: absolute;
+    top: 100%; /* Posición del tooltip debajo del botón */
+    left: 50%; /* Centrar el tooltip horizontalmente */
+    transform: translateX(-50%); /* Centrar el tooltip */
+    white-space: nowrap; /* Evitar que el texto se desborde en varias líneas */
+    opacity: 0; /* Inicialmente oculto */
+    pointer-events: none; /* Para que no interfiera con el botón */
+    transition: opacity 0.2s ease-in-out; /* Animación de fade-in y fade-out */
+  }
+
+  /* Mostrar el tooltip cuando se hace hover sobre el botón */
+  .btn:hover::after {
+    opacity: 1;
+  }

@@ -19,9 +19,9 @@ export class ReadingServiceService {
       books.push(element)
       this.readingList.next(books)
       this.saveOnLocalStorage()
-      this.toast.success('Book added to reading list', "Success", {timeOut: 1000, positionClass: 'toast-bottom-left'})
+      this.toast.success('Book added to reading list', "Success", {timeOut: 1000})
     }else{
-      this.toast.warning("Book already on the reading list", "Warning", {timeOut: 1000, positionClass: 'toast-bottom-left'})
+      this.toast.warning("Book already on the reading list", "Warning", {timeOut: 1000})
     }
   }
 
@@ -32,7 +32,7 @@ export class ReadingServiceService {
     })
     this.readingList.next(filteredBooks)
     this.saveOnLocalStorage()
-    this.toast.info("Book removed from reading list", "Info", {timeOut: 1000, positionClass: 'toast-bottom-left'})
+    this.toast.info("Book removed from reading list", "Info", {timeOut: 1000})
   }
 
   isOnReadingList(element: LibraryElement): boolean{
@@ -57,6 +57,11 @@ export class ReadingServiceService {
 
   getReadingListlength(): number{
     return this.readingList.value.length
+  }
+
+  changePriority(element: LibraryElement, priority: number): void {
+    const index = this.readingList.value.indexOf(element)
+    this.readingList.value[index].book.priority = priority
   }
 
 }

@@ -17,6 +17,7 @@ export interface Book {
     year:     number;
     ISBN:     string;
     author:   Author;
+    priority: number
 }
 
 export interface Author {

@@ -1,24 +1,106 @@
 .card-container{
-    height: 280px;
-    width: 180px;
+    height: 22rem;
+    width: 16rem;
     margin-bottom: 1rem;
+    background-size: cover;
+    transition: 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
 }
 
-.card-container > img{
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
+.card-container:hover{
+    box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.2);
+    transform: scale(1.03);
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .is-on-reading-list{
     opacity: 0.5;
 }
 
+.content{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    transition: 0.5s ease-out;
+}
+
+.content:hover{
+    opacity: 1;
+}
+
+.content > button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+    width: 3.6rem;
+    height: 4.5rem;
+    padding: 0.6rem;
+    transition: .3s ease;
+}
+
+.content > button:hover{
+    background-color: transparent;
+    color: #fff;
+}
+
+.content > a{
+    text-decoration: none;
+    cursor: pointer;
+    color: #90d3ff;
+    font-size: 1.2rem;
+}
+
+.content > p{
+    width: fit-content;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 3px;
+}
+
 @media(max-width: 600px){
     .card-container{
-        height: auto;
-        width: auto;
+        height: 20rem;
+        width: 16rem;
         margin-bottom: 1rem;
+    }
+
+    .content{
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.0);
+        justify-content: space-between;
+    }
+
+    .content > button{
+        position: absolute;
+        top: 0;
+        right: 0;
+        border: 0;
+        width: 4.5rem;
+        height: 5.5rem;
+        padding: 0.6rem;
+        transition: .3s ease;
+    }
+
+    .content > p{
+        opacity: 0;
+    }
+
+    .content > a{
+        text-decoration: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+        width: 100%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
     }
 }
 
