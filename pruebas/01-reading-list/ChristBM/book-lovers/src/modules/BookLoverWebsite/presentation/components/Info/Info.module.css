@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  width: 100%;
+  padding-block: 10px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.available_text {
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+.added_text {
+  color: var(--primary-color);
+}
