@@ -1,18 +1,30 @@
 import { useReadListStore } from '../stores/BookStore'
+import { useSortable } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
 
-export default function ReadListBook ({ book }) {
+export default function ReadListBook ({ book, reloadBookList }) {
   const { title, cover, ISBN } = book
+  const { attributes, transform, transition, listeners, setNodeRef } = useSortable({
+    id: book.ISBN
+  })
   const remove = useReadListStore(state => state.remove)
 
-  const handleClick = (ISBN) => {
+  const handleRemove = (ISBN) => {
     remove(ISBN)
-    const event = new window.CustomEvent('IncrementBook')
-    window.dispatchEvent(event)
+    reloadBookList(ISBN)
   }
 
   return (
-    <article className='w-full h-full flex flex-col items-center justify-center my-1'>
-      <img src={cover} alt={`Portada del libro ${title}`} width={128} height={160} className='w-36 h-44 object-fill rounded-md relative transition-all hover:opacity-50 hover:shadow-md hover:shadow-red-500' onClick={() => handleClick(ISBN)} />
-    </article>
+    <div className='flex flex-col items-center justify-center'>
+      <article
+        className='w-full h-full flex flex-col items-center justify-center my-1' {...attributes} {...listeners} ref={setNodeRef} style={{
+          transform: CSS.Transform.toString(transform),
+          transition
+        }}
+      >
+        <img src={cover} alt={`Portada del libro ${title}`} width={128} height={160} className='w-36 h-44 object-fill rounded-md relative' />
+      </article>
+      <button onClick={() => handleRemove(ISBN)} className='bg-slate-700 text-red-600 font-semibold text-center p-1 rounded border border-red-600'>Quitar de la lista</button>
+    </div>
   )
 }
