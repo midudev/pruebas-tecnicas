@@ -7,6 +7,7 @@ Esta es mi solución a la prueba técnica [Lista de Lectura](https://github.com/
 - [Mis procesos](#mis-procesos)
   - [Tecnologías y técnicas empleadas](#tecnologías-y-técnicas-empleadas)
   - [Explicación general](#explicación-general)
+    - [Sobre las tecnologías empleadas](#sobre-las-tecnologías-empleadas)
 - [Autor](#autor)
 
 ## Requisitos
@@ -46,7 +47,14 @@ Esta es mi solución a la prueba técnica [Lista de Lectura](https://github.com/
 
 ### Explicación general
 
-- No añadido aún.
+#### Sobre las tecnologías empleadas
+Para empezar, opté por iniciar el proyecto mediante Vite + JavaScript Vanilla, e ir implementando manualmente los paquetes necesarios, de manera que esto me permita alivianar la carga del proyecto en el almacenamiento.
+
+He decidido valerme de únicamente de React por estos motivos:
+
+1. no me pareció necesario levantar la aplicación por el lado del servidor (SSR), ya que ésta no demanda una optimización de los motores de búsqueda;
+2. la consigna planteó la posibilidad de que el framework empleado no sea definitivo, lo cual me llevó al inciso siguiente;
+3. traté de hacer un desarrollo pensando en su posterior integración a un proyecto más grande, el cual podría ya estar desarrollado usando herramientas más complejas como Next.js.
 
 ## Autor
 
