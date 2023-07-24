@@ -8,6 +8,7 @@ Esta es mi solución a la prueba técnica [Lista de Lectura](https://github.com/
   - [Tecnologías y técnicas empleadas](#tecnologías-y-técnicas-empleadas)
   - [Explicación general](#explicación-general)
     - [Sobre las tecnologías empleadas](#sobre-las-tecnologías-empleadas)
+    - [Sobre la elaboración del código](#sobre-la-elaboración-del-código)
 - [Autor](#autor)
 
 ## Requisitos
@@ -55,6 +56,21 @@ He decidido valerme de únicamente de React por estos motivos:
 1. no me pareció necesario levantar la aplicación por el lado del servidor (SSR), ya que ésta no demanda una optimización de los motores de búsqueda;
 2. la consigna planteó la posibilidad de que el framework empleado no sea definitivo, lo cual me llevó al inciso siguiente;
 3. traté de hacer un desarrollo pensando en su posterior integración a un proyecto más grande, el cual podría ya estar desarrollado usando herramientas más complejas como Next.js.
+
+Otras tecnologías de las que hice uso fueron TailwindCSS para el estilizado y Vitest, testing-library y happy-dom para efectuar las pruebas necesarias.
+
+#### Sobre la elaboración del código
+
+En lo concerniente al código en sí, analizando cada sección de [App.jsx](/src/App.jsx):
+
+1. en primer lugar observamos los useState hooks, que permiten manipular el filtrado por páginas o por género, la aplicación mostrará, por defecto, libros a partir de 50 páginas de todos los géneros;
+2. en segundo lugar tenemos dos custom hooks, uno para trabajar con la lista de libros disponibles y el respectivo para la lista de lectura. Ambos son de similar funcionamiento; devuelven el estado actual de las listas y permiten añadir o eliminar libros en ellas;
+3. a continuación encontramos un useEffect hook, para suscribir a la aplicación a los eventos de Window interface en local storage; y
+4. finalmente tenemos el retorno de la estructura HTML del componente App.
+
+Al echar un vistazo sobre [App.jsx](/src/App.jsx), si bien la estructura HTML puede parecer un poco aparatosa, la desarrollé a modo de poder apreciar cada componente en funcionamiento.
+
+Centré mi atención en poder prescindir de dicha estructura y lograr que los componentes puedan ser fácilmente reimplementados, ya sea reutilizando la misma en un proyecto más grande o en otro diseño.
 
 ## Autor
 
