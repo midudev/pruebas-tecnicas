@@ -46,18 +46,51 @@ h1,h2,h3,h4,h5,h6{
   gap: 10px;
 }
 
+.reading-list-btn{
+  padding: 10px;
+  background-color: #2d4379;
+  color: lightgrey;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
 
 .list-of-books{
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 5px;
   width: 100%;
 }
 
-.book{
-  border-radius: 10px;
+.book-container{
+  width: 33%;
+  min-width: 350px;
   cursor: pointer;
-  height: auto;
+  height: 220px;
+}
+
+.book-description{
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-cover{
+  border-radius: 10px;
+  width: 35%;
+  height: 100%;
+}
+
+.reading-book-container,.book-container{
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #17223d;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .reading-list{
@@ -77,24 +110,6 @@ h1,h2,h3,h4,h5,h6{
 .reading-list-header{
   display: flex;
   justify-content: space-between;
-}
-
-.reading-list-book{
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  background-color: #17223d;
-  padding: 10px;
-  border-radius: 10px;
-}
-
-.reading-book-description{
-  width: 60%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 .remove-btn{
@@ -117,14 +132,12 @@ h1,h2,h3,h4,h5,h6{
   padding: 10px;
 }
 
-.reading-list-btn{
-  padding: 10px;
-  background-color: #2d4379;
-  color: lightgrey;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  margin-right: 10px;
+
+
+@media (max-width:1295px) {
+  .list-of-books{
+    justify-content: center;
+  }
 }
 
 @media (max-width:520px) {

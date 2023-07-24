@@ -14,6 +14,6 @@ export default function ListOfBooks({showReadingList}){
     }
 
     return <div className="list-of-books">
-        {availableBooks.map(({book},index)=><Book title={book.title} cover={book.cover} onClick={()=>handleClick(index)} key={book.ISBN}/>)}
+        {availableBooks.map(({book},index)=><Book className={"book-container"} title={book.title} cover={book.cover} authorName={book.author.name} synopsis={book.synopsis} onClick={()=>handleClick(index)} key={book.ISBN}/>)}
     </div>
 }
