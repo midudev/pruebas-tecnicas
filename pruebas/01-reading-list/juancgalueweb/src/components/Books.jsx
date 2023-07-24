@@ -26,14 +26,17 @@ export const Books = () => {
     shallow
   )
 
-  console.log('books', books)
-  console.log('readingList', readingList)
+  const dataFromLocalStorage = JSON.parse(
+    localStorage.getItem('reading-list-midudev-test')
+  )
 
   useEffect(() => {
     const getBooks = async () => {
       await setBooks()
     }
-    getBooks()
+    if (dataFromLocalStorage.state.books.length === 0) {
+      getBooks()
+    }
   }, [])
 
   return (
