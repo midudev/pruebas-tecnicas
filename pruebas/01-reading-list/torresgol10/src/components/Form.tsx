@@ -1,17 +1,18 @@
 import useBooks from "../hooks/useBooks"
 
 type Props = {
-    filterByGenre: (genre: string) => void
+    filterByGenre: (genre: string) => void,
+    filterByText: (text: string) => void
 }
 
-export default function Form({ filterByGenre }: Props) {
+export default function Form({ filterByGenre, filterByText }: Props) {
     const { genres } = useBooks()
 
     return (
         <form>
-            <fieldset className='flex justify-between'>
+            <fieldset className='flex justify-start gap-10'>
                 <legend className='text-lg font-bold'>Filtrar por:</legend>
-                <div className='flex gap-2'>
+                <div className='flex flex-col gap-2'>
                     <label htmlFor='genre'>Genero</label>
                     <select name='genre' id='genre' onChange={(e) => filterByGenre(e.target.value)}>
                         <option value=''>Todos</option>
@@ -20,8 +21,11 @@ export default function Form({ filterByGenre }: Props) {
                         ))}
                     </select>
                 </div>
+                <div className='flex flex-col gap-2'>
+                    <label htmlFor='genre'>Texto libre</label>
+                    <input type='text' className='border-4' placeholder='Buscar' onChange={(e) => filterByText(e.target.value)} />
+                </div>
             </fieldset>
-            <input type='text' className='border-4' placeholder='Buscar' />
         </form>
     )
 }

@@ -20,5 +20,11 @@ export default function useBooks() {
         setBooks([...store.filter(({ book }) => book.genre === genre)])
     }
 
-    return { books, booksRead: storeRead, genres: genres.current, addRead, removeRead, filterByGenre }
+    //Funcion para filtrar la store por una cadena de texto
+    const filterByText = (text: string): void => {
+        if (!text) return setBooks(store)
+        setBooks([...store.filter(({ book }) => book.title.toLowerCase().includes(text.toLowerCase()))])
+    }
+
+    return { books, booksRead: storeRead, genres: genres.current, addRead, removeRead, filterByGenre, filterByText }
 }
