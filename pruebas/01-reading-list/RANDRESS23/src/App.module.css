@@ -3,7 +3,7 @@ body {
 }
 
 .Library {
-  padding-top: 60px;
+  padding: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
