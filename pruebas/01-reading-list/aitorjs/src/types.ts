@@ -1,7 +1,3 @@
-/* interface Books {
-    library: Book[]
-} */
-
 interface Filters {
   [key: string]: any
 }
@@ -26,7 +22,6 @@ export interface Book {
     year: number
     ISBN: string
     author: Author
-    // wantRead: boolean
   }
 }
 
