@@ -83,8 +83,6 @@ function App() {
       setLocalStorage(undefined, updatedReadingList);
       return setBooks(books.filter((book) => book.ISBN !== ISBN));
     }
-
-    alert("something went wrong");
   };
 
   const removeFromReadingList = (ISBN: string) => {
@@ -97,109 +95,131 @@ function App() {
       setLocalStorage(undefined, updatedReadingList);
       return setReadingList(updatedReadingList);
     }
-    alert("something went wrong");
   };
 
   return (
     <main>
       <section>
-        <h1>{totalBooksCount} libros disponibles</h1>
-        <div className="filters">
-          <div>
-            <label htmlFor="pages-range">Cantidad de paginas</label>
-            <input
-              type="range"
-              name="pages-range"
-              value={pagesCount}
-              min={0}
-              max={1000}
-              onChange={(e) => setPagesCount(Number(e.target.value))}
-              step={100}
-            />
-            <span className="pages-count">
-              {pagesCount === 0 ? "" : `< ${pagesCount}`}
-            </span>
-          </div>
-          <div>
-            <label htmlFor="genre-filter">Filtrar por género</label>
-            <select
-              name="genre"
-              id="genre-filter"
-              value={genre}
-              onChange={(e) => setGenre(e.target.value)}
-            >
-              <option value={""}>Todas</option>
-              {bookGenres.map((genre) => (
-                <option key={genre} value={genre}>
-                  {genre}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label htmlFor="search">Buscar</label>
-            <input
-              type="text"
-              name="search"
-              className="search-input"
-              id="search"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
-        </div>
-        <span>
-          {filterResultsCount
-            ? `${filterResultsCount} Resultados encontrados`
-            : ""}
-        </span>
-        {filteredBooks.length === 0 ? (
-          <div className="no-results">
-            <h2>Lo sentimos, no se han encontrado resultados</h2>
-          </div>
-        ) : (
-          <div className="books">
-            {filteredBooks.map((book) => (
-              <div
-                key={book.ISBN}
-                className="book"
-                onClick={() => addToReadingList(book.ISBN)}
+        <div>
+          <header>
+            <h1>Biblioteca</h1>
+            <h3>{totalBooksCount} libros disponibles</h3>
+          </header>
+          <div className="filters">
+            <div>
+              <label htmlFor="pages-range">Cantidad de paginas</label>
+              <input
+                type="range"
+                name="pages-range"
+                value={pagesCount}
+                min={0}
+                max={1000}
+                onChange={(e) => setPagesCount(Number(e.target.value))}
+                step={100}
+              />
+              <span className="pages-count">
+                {pagesCount === 0 ? "" : `< ${pagesCount}`}
+              </span>
+            </div>
+            <div>
+              <label htmlFor="genre-filter">Filtrar por género</label>
+              <select
+                name="genre"
+                id="genre-filter"
+                value={genre}
+                onChange={(e) => setGenre(e.target.value)}
               >
-                <span className="book-title">{book.title}</span>
-                <img src={book.cover} />
-              </div>
-            ))}
+                <option value={""}>Todos</option>
+                {bookGenres.map((genre) => (
+                  <option key={genre} value={genre}>
+                    {genre}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="search">Buscar</label>
+              <input
+                type="text"
+                name="search"
+                className="search-input"
+                id="search"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
           </div>
-        )}
+          <span>
+            {filterResultsCount
+              ? `${filterResultsCount} Resultados encontrados`
+              : ""}
+          </span>
+          {filteredBooks.length === 0 ? (
+            <div className="no-results">
+              <h2>Lo sentimos, no se han encontrado resultados</h2>
+            </div>
+          ) : (
+            <BooksList
+              books={filteredBooks}
+              addToReadingList={addToReadingList}
+            />
+          )}
+        </div>
       </section>
 
-      <aside>
-        <h2>Lista de lectura</h2>
-        <span>
-          {readingListCount
-            ? `${readingListCount} libros agregados`
-            : "aun no agregaste libros"}
-        </span>
-        <div className="reading-list">
-          {readingList.length
-            ? readingList.map((book) => (
-                <div key={book.ISBN} className="book">
-                  <span className="book-title">{book.title}</span>
+      {Boolean(readingList.length) && (
+        <aside>
+          <header>
+            <h2>Lista de lectura</h2>
+            <span>
+              {readingListCount
+                ? `${readingListCount} libros agregados`
+                : "aun no agregaste libros"}
+            </span>
+          </header>
 
-                  <img src={book.cover} />
-                  <button
-                    className="remove-book"
-                    onClick={() => removeFromReadingList(book.ISBN)}
-                  >
-                    x
-                  </button>
-                </div>
-              ))
-            : null}
-        </div>
-      </aside>
+          <div className="reading-list">
+            {readingList.length
+              ? readingList.map((book) => (
+                  <div key={book.ISBN} className="book">
+                    <img src={book.cover} className="book-cover" />
+                    <span className="book-title">{book.title}</span>
+                    <button
+                      className="remove-book"
+                      onClick={() => removeFromReadingList(book.ISBN)}
+                    >
+                      x
+                    </button>
+                  </div>
+                ))
+              : null}
+          </div>
+        </aside>
+      )}
     </main>
   );
 }
 
+interface BooksListProps {
+  books: Book[];
+  addToReadingList: (ISBN: string) => void;
+}
+
+function BooksList({ books, addToReadingList }: BooksListProps) {
+  return (
+    <div className="books">
+      {books.map((book) => (
+        <div
+          key={book.ISBN}
+          className="book"
+          onClick={() => addToReadingList(book.ISBN)}
+        >
+          <img src={book.cover} className="book-cover" />
+          <span className="book-title">{book.title}</span>
+          <span className="book-author">{book.author.name}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
 export default App;
