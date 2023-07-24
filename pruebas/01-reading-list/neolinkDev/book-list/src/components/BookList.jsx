@@ -81,8 +81,7 @@ export const BookList = () => {
         <div className="books__box">
           <div className="counts">
             <h2 className="counts__books-available">
-              { books.length } { books.length === 1 ? 'libro' : 'libros' }{' '}
-              disponibles
+              { books.length } { books.length === 1 ? 'libro disponible' : 'libros disponibles' }
             </h2>
             
             {
