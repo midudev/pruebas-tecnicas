@@ -1,1 +1,12 @@
+<mat-form-field>
+    <mat-label>Select an option</mat-label>
+    <!-- <mat-select [(value)]="selected" (selectionChange)="filterByGenre($event.value)"> -->
+    <mat-select [(value)]="selected">
+      <mat-option>Todos</mat-option>
+      <mat-option value="Fantasía">Fantasía</mat-option>
+      <mat-option value="Ciencia ficción">Ciencia ficción</mat-option>
+      <mat-option value="Zombies">Zombies</mat-option>
+      <mat-option value="Terror">Terror</mat-option>
+    </mat-select>
+  </mat-form-field>
 <book-available-books-table [availableBooks]="availableBooks" />

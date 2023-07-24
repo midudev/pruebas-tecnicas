@@ -22,3 +22,5 @@ export interface Author {
   name: string;
   otherBooks: string[];
 }
+
+export type Genre = 'Todos' | 'Fantasía' | 'Ciencia ficción' | 'Zombies' | 'Terror';

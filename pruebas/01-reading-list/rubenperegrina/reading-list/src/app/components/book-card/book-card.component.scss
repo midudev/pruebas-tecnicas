@@ -16,15 +16,15 @@ body{
       transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
      overflow:hidden;
      border-radius:10px;
-     min-height:350px;
+     min-height:300px;
        box-shadow: 0 0 12px 0 rgba(0,0,0,0.2);
     
      @media (max-width: 768px) {
-      min-height:350px;
+      min-height:250px;
     }
     
     @media (max-width: 420px) {
-      min-height:350;
+      min-height:300;
     }
     
      &.card-has-bg{
