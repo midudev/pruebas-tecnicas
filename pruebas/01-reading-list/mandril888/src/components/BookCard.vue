@@ -1,29 +1,30 @@
 <template>
-  <div v-show="showCard">
+  <div v-show="showCard" class="mb-4">
     <img
       :src="book.book.cover"
       :alt="book.book.title"
-      class="w-full object-cover rounded-lg shadow-md max-h-96"
+      class="w-full object-cover rounded-lg shadow-md max-h-96 h-full"
     />
     <div class="relative px-4 -mt-16">
-      <div class="bg-white p-6 rounded-md shadow-lg">
-        <h4 class="mt-1 text-xl font-semibold leading-tight truncate">
+      <div class="bg-white p-4 rounded-md shadow-lg">
+        <h4 class="mt-1 mb-2 text-xl font-semibold leading-tight truncate">
           {{ book.book.title }}
         </h4>
-        <p>{{ type }}</p>
         <button
           v-show="type === 'bookAvilable'"
-          class="block"
+          class="flex m-auto"
           @click="$booksStore.addBookList(book)"
         >
-          Add book
+          Añadir libro
+          <CheckSvg class="ml-1" :color="'#008000'" />
         </button>
         <button
           v-show="type === 'bookList'"
-          class="block"
+          class="flex m-auto"
           @click="$booksStore.removeBookList(this.$.vnode.key)"
         >
-          Remove book
+          Quitar libro
+          <CloseSvg class="ml-1" :color="'#ff0000'" />
         </button>
       </div>
     </div>
@@ -33,6 +34,8 @@
 <script setup>
 import { useBooksStore } from "@/stores/BooksStore";
 import { ref, computed, watch } from "vue";
+import CheckSvg from "./svg/CheckSvg.vue";
+import CloseSvg from "./svg/CloseSvg.vue";
 
 const $booksStore = useBooksStore();
 const totalBooksList = computed(() => {
