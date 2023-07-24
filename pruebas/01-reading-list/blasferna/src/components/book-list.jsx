@@ -21,6 +21,10 @@ export function AvailableList() {
   const { availableList, availableListCount } = useAppContext();
   const pluralWord = availableListCount > 1 ? "s" : "";
 
+  if (availableListCount == null){
+    return null;
+  }
+
   if (availableListCount > 0) {
     if (Object.keys(availableList).length > 0) {
       return (
@@ -39,10 +43,10 @@ export function AvailableList() {
   } else {
     return (
       <EmptyState
-        title={"Ya no quedan libros disponibles"}
-        message={"Wow, has colocado todos los libros en la lista de lectura."}
+        title={"¡Biblioteca Agotada!"}
+        message={"Todos los libros ya están en tu lista de lectura."}
         href={"/reading-list"}
-        linkText={"Ver Mi lista"}
+        linkText={"Ver lista"}
       ></EmptyState>
     );
   }
@@ -50,6 +54,10 @@ export function AvailableList() {
 
 export function ReadingList() {
   const { readingList, inReadingListCount } = useAppContext();
+
+  if (inReadingListCount == null){
+    return null;
+  }
 
   if (inReadingListCount > 0) {
     if (Object.keys(readingList).length > 0) {
@@ -60,10 +68,10 @@ export function ReadingList() {
   } else {
     return (
       <EmptyState
-        title={"Sin libros"}
-        message={"Aún no has agregado libros a tu lista de lectura."}
+        title={"Lista de Lectura Vacía"}
+        message={"Parece que aún no has añadido ningún libro a tu lista. ¡Explora nuestra biblioteca y encuentra tu próxima gran lectura!"}
         href={"/"}
-        linkText={"Agregar"}
+        linkText={"Explorar"}
       ></EmptyState>
     );
   }

@@ -135,7 +135,9 @@ export function EmptyState({ title, message, linkText, href }) {
     <div className="mt-20 text-center">
       <EmptyFileIcon></EmptyFileIcon>
       <h3 className="mt-2 text-xl font-semibold text-white">{title}</h3>
-      <p className="text-lsm mt-1 text-gray-400">{message}</p>
+      <div className="flex justify-center">
+        <p className="text-sm mt-1 text-gray-400 max-w-lg">{message}</p>
+      </div>
       <div className="mt-6">
         <Link
           href={href}

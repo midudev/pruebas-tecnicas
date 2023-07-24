@@ -13,8 +13,8 @@ export const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const { genreFilter, searchQuery } = useFilterContext();
   const [inReadingList, setInReadingList] = useState(getInReadingList());
-  const [inReadingListCount, setInReadingListCount] = useState(0);
-  const [availableListCount, setavailableListCount] = useState(0);
+  const [inReadingListCount, setInReadingListCount] = useState(null);
+  const [availableListCount, setavailableListCount] = useState(null);
   const [availableList, setAvailableList] = useState([]);
   const [readingList, setReadingList] = useState([]);
 
@@ -22,7 +22,7 @@ export const AppProvider = ({ children }) => {
     setInReadingListCount(inReadingList.length);
     setReadingList(getReadingList({ genreFilter, searchQuery }));
     setAvailableList(getAvailableList({ genreFilter, searchQuery }));
-    setavailableListCount(availableList.length);
+    setavailableListCount(getAvailableListCount());
   }, [inReadingList, genreFilter, searchQuery]);
 
   useEffect(() => {
