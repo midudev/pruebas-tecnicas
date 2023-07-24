@@ -13,25 +13,23 @@
 <script setup>
 const props = defineProps({
     book: { type: Object, required: true }
-});
+})
 </script>
-  
+
+
 <style scoped>
 .BookCard {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     margin: 10px;
-    /* background-color: rgb(0, 255, 136); */
     cursor: pointer;
 }
 
 .BookCard-Details {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     width: 200px;
-    /* set width to the same as the image width */
+
 }
 
 .BookCard-Title {
@@ -39,8 +37,6 @@ const props = defineProps({
     font-weight: 800;
     font-size: .9em;
     max-width: 100%;
-    /* set max-width to 100% of the container div */
-    /* text-align: center; */
 }
 
 .BookCard-Author-Name {
@@ -48,6 +44,6 @@ const props = defineProps({
     font-weight: lighter;
     font-size: 0.75em;
     max-width: 100%;
-    /* set max-width to 100% of the container div */
-    /* text-align: center; */
-}</style>
+}
+
+</style>

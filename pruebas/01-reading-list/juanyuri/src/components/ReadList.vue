@@ -1,5 +1,5 @@
 <template>
-  <h1>Reading List </h1> <h3>({{ readingListCount }})</h3>
+  <h1>Favoritos: {{ readingListCount }}</h1>
 
   <div class="readlist"> <!-- change to reading list styling -->
     <BookCard v-for="book in store.readlist" :key="book.title" :book="book" @click="store.removeFromReadList(book)" />
@@ -19,14 +19,15 @@ const readingListCount = computed(() => store.readlist.length)
 
 
 <style scoped>
-h1, h2, h3, h4{
+h1 {
   display: inline;
+  font-size: 25px;
 }
+
 
 .readlist {
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
-  /* background-color: blueviolet; */
 }
 </style>

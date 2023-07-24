@@ -1,5 +1,5 @@
 <template>
-  <h1>Catálogo </h1> <h3>({{ catalogueCount }})</h3>
+  <h1>Libros Disponibles: {{ catalogueCount }} </h1>
   <!-- <p>Genre count: {{ catalogueGenreCount }}</p> -->
 
   <!-- <select name="genre-selector" id="genreSelector" @change="onSelectedGenre">
@@ -57,13 +57,9 @@ const catalogueCount = computed(() => store.catalogue.length)
 
 
 <style scoped>
-
-h1, h2, h3, h4{
+h1 {
   display: inline;
-}
-
-h3{
-  color:#535353;
+  font-size: 25px;
 }
 
 .catalogue {

@@ -1,11 +1,4 @@
 <template>
-    <nav>
-        <ul>
-            <li><a href="#">Catálogo</a></li>
-            <li><a href="#">Lista de Lectura</a></li>
-        </ul>
-    </nav>
-
     <main>
         <BookCatalogue />
         <ReadList />
