@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Library, Books } from "../types/interfaces";
-import { filterForId } from "../services/filters";
+import { filterForId, findBook } from "../services/filters";
 import UnreadBooks from "./UnreadBooks";
 import ReadingList from "./ReadingList";
 
@@ -24,12 +24,11 @@ const Library = (props: Props) => {
                 booksLocalStorage,
                 props.library.library
             );
-            setBooksReadList(readList)
+            setBooksReadList(readList);
             setLibrary(unread);
         }
     }, [localStorage, readlist]);
 
-    // TODO: usar esto
     const moveToReadList = (id: string) => {
         let storage: string | null = localStorage.getItem("books");
 
@@ -46,6 +45,22 @@ const Library = (props: Props) => {
     };
 
     const handleReadList = (visible: boolean) => setViewReadList(visible);
+
+    const handleReadBook = (id: string) => {
+        const book = findBook(id, booksReadList);
+        if (book) {
+            setLibrary((prev) => prev.concat(book));
+            const storage: string[] =
+                localStorage
+                    .getItem("books")
+                    ?.split(",")
+                    .filter((id) => book.book.ISBN !== id) ?? [];
+            localStorage.setItem("books", storage?.join(","));
+            setBooksReadList((prev) =>
+                prev.filter((book: Library) => book.book.ISBN !== id)
+            );
+        }
+    };
 
     return (
         <div>
@@ -67,8 +82,9 @@ const Library = (props: Props) => {
                 />
                 <ReadingList
                     visible={viewReadList}
-                    handle={handleReadList}
+                    handleVisible={handleReadList}
                     books={booksReadList}
+                    handleReadingBook={handleReadBook}
                 />
             </div>
         </div>

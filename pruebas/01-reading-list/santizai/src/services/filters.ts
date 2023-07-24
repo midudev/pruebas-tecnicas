@@ -4,11 +4,11 @@ import type { Library } from "../types/interfaces";
 export const filterForId = (ids: string[], books: Library[]) => {
     let allBooks = {
         readList: [] as Library[],
-        unread: [] as Library[]
-    }
+        unread: [] as Library[],
+    };
     books.map((book: Library) => {
-        if (ids.includes(book.book.ISBN)) allBooks.readList.push(book)
-        else allBooks.unread.push(book)
+        if (ids.includes(book.book.ISBN)) allBooks.readList.push(book);
+        else allBooks.unread.push(book);
     });
     return allBooks;
 };
@@ -18,6 +18,10 @@ export const obtainGenres = (books: Library[]) => {
     const genres: string[] = [];
     books.forEach((book: Library) => {
         !genres.includes(book.book.genre) && genres.push(book.book.genre);
-    })
+    });
     return genres;
-}
+};
+
+export const findBook = (id: string, books: Library[]): Library | undefined => {
+    return books.find((book: Library) => book.book.ISBN === id);
+};
