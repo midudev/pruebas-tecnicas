@@ -1,7 +1,7 @@
 import ListBooks from './components/BookList'
 import ReadingList from './components/ReadingList'
 import { useBook } from './hooks/useBook'
-import './App.css'
+import styles from './App.module.css'
 
 function App () {
   const { books, readingList, genres, genre, filterByGenre } = useBook()
@@ -13,8 +13,8 @@ function App () {
   }
 
   return (
-    <>
-      <h1>Lista de libros</h1>
+    <main className={styles.main}>
+      <h1 className={styles.title}>El viaje de tus lecturas</h1>
 
       <h2>{books.length} Libros disponibles</h2>
       <h3>{readingList.length} en la lista de lectura</h3>
@@ -30,7 +30,7 @@ function App () {
       <ListBooks books={books}/>
 
       <ReadingList books={readingList} />
-    </>
+    </main>
   )
 }
 

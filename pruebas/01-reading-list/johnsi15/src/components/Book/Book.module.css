@@ -9,12 +9,12 @@
 
 .book .cover {
   margin: 0;
-  height: 345px;
-  overflow: hidden;
+  /* height: 345px;
+  overflow: hidden; */
 }
 
 .cover img {
   object-fit: cover;
-  min-height: 345px;
+  /* min-height: 345px; */
   width: 100%;
 }
