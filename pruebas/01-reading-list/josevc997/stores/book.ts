@@ -1,14 +1,17 @@
-import { defineStore } from "pinia";
+import { defineStore, skipHydrate } from "pinia";
 import { Book } from "~/types/books";
+import { useLocalStorage } from "@vueuse/core";
 
 // main is the name of the store. It is unique across your application
 // and will appear in devtools
 export const useBookStore = defineStore("bookStore", {
   // a function that returns a fresh state
-  state: () => ({
-    counter: 0,
-    books: [] as Book[],
-  }),
+  state: () => {
+    return {
+      counter: 0,
+      books: useLocalStorage("my-state", [] as Book[]),
+    };
+  },
   // optional getters
   getters: {
     // getters receive the state as first parameter
@@ -30,9 +33,14 @@ export const useBookStore = defineStore("bookStore", {
       console.log(this.books);
     },
     removeBook(selectedBook: Book) {
-      this.books = this.books.filter((book) => {
+      this.books = this.books.filter((book: Book) => {
         return selectedBook.book.ISBN !== book.book.ISBN;
       });
     },
+  },
+  hydrate(state, initialState: any) {
+    // in this case we can completely ignore the initial state since we
+    // want to read the value from the browser
+    state.books = useLocalStorage<Book[]>("my-state", []);
   },
 });

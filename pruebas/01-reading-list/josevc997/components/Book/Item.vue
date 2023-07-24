@@ -10,11 +10,18 @@ const props = defineProps({
 });
 </script>
 <template>
-  <div class="border p-2 rounded-lg grid place-content-between grid-cols-1">
-    <div class="pb-2">
+  <div
+    class="border rounded-lg grid place-content-between grid-cols-1 relative cursor-pointer hover:shadow-2xl transition-all duration-300 ease-in-out"
+  >
+    <div
+      class="absolute h-full w-full hover:bg-slate-900/60 flex justify-center items-center text-base font-bold rounded-lg transition-all duration-500 ease-in-out text-white hover:text-white text-transparent"
+    >
+      <p class="text-center">Agregar a lista</p>
+    </div>
+    <!-- <div class="pb-2">
       <h1 class="text-xl font font-medium">{{ book.book.title }}</h1>
       <p class="text-sm text-gray-500">{{ book.book.author.name }}</p>
-    </div>
+    </div> -->
     <div class="aspect-[9/16] w-full">
       <img
         :src="book.book.cover"

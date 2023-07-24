@@ -5,7 +5,7 @@ const { locale } = useI18n();
   <main
     class="min-h-screen h-full bg-slate-100 text-slate-800 text-4xl relative"
   >
-    <header class="sticky top-0 w-full shadow py-2 bg-slate-100">
+    <header class="sticky top-0 w-full shadow py-2 bg-slate-100 z-50">
       <div class="max-w-7xl mx-auto flex justify-between px-4">
         <NuxtLink to="/" class="flex items-center">
           <Icon name="logos:nuxt-icon" class="h-8 w-8" />
