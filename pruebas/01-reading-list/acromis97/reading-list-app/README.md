@@ -1,6 +1,10 @@
 # Reading list of books
 Prueba técnica de práctica para midudev
 
+Usuario de Twitch: **Acromis97**
+
+**[Link de prueba técnica deplegada](https://readinglist-fepa.netlify.app/ "Prueba tecnica de acromis97 para midu")**
+
 ## Requisitos
 
 ### Funcionalidad
