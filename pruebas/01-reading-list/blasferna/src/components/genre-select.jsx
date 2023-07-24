@@ -13,10 +13,14 @@ import {
 
 const GenreSelect = forwardRef(({ ...props }, ref) => {
   const genres = getGenres();
+  let {value = "Género"} = props
+  if (value == ""){value="Género"}
   return (
     <Select ref={ref} {...props}>
       <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Género" />
+        <SelectValue>
+          {value}
+        </SelectValue>
       </SelectTrigger>
       <SelectContent>
         {genres.map((genre) => (
