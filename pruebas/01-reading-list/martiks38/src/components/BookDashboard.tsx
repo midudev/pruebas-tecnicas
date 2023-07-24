@@ -76,7 +76,7 @@ export function BookDashboard() {
             Libros disponibles{' '}
             {currentListBooksAvailable.length !== 0 ? currentListBooksAvailable.length : ''}
           </h2>
-          <search className={bookFinderAvailableStyles.searchContainer}>
+          <form className={bookFinderAvailableStyles.searchContainer}>
             <label
               htmlFor={`${searchId}-search`}
               className={bookFinderAvailableStyles.searchContainer__label}
@@ -91,7 +91,7 @@ export function BookDashboard() {
               placeholder='La llamada de Cthulhu'
               onChange={changeFilterWord}
             />
-          </search>
+          </form>
           {currentListBooksAvailable.length !== 0 ? (
             <BookList books={currentListBooksAvailable} listType='available' />
           ) : (
