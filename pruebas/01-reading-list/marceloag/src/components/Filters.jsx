@@ -1,14 +1,14 @@
 import { useBooks } from '../store/bookStore';
 
 function Filters() {
-  const { filterBooks, filterByPages, pagesFilter, filter } = useBooks();
+  const { filterBooks, filterByPages, pagesFilter, filter, genres } = useBooks();
 
   return (
     <div className="flex flex-row justify-between items-center w-full">
       <span className="text-md text-slate-500 font-medium flex flex-row items-center gap-2">
         Filtrando por{' '}
         <b className="bg-slate-200 text-slate-800 py-1 px-3 rounded-md font-medium">
-          {filter}
+          {filter == "all" ? "Todos" : filter}
         </b>
       </span>
 
@@ -19,7 +19,9 @@ function Filters() {
         <input
           type="range"
           min="100"
-          max="500"
+          max="700"
+          value={pagesFilter}
+          step="10"
           onChange={(paginas) => {
             filterByPages(paginas.target.value);
           }}
@@ -34,11 +36,11 @@ function Filters() {
           name="genre"
           id="genre"
           onChange={(e) => filterBooks(e.target.value)}
-          className="block w-full p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
+          className="block w-full p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
         >
           <option value="all">Todos</option>
-          {useBooks.getState().genres.map((genre) => (
-            <option value={genre}>{genre}</option>
+          {genres.map((genre) => (
+            <option value={genre} selected={filter == genre ? true : false} >{genre}</option>
           ))}
         </select>
       </div>

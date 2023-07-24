@@ -5,7 +5,7 @@ function Book(props) {
   const bookData = props;
 
   return (
-    <article key={bookData.ISBN} className="p-6 flex flex-col bg-[#FDFDFD]">
+    <article key={bookData.ISBN} className="p-6 flex flex-col">
       <div className="relative z-0">
         <img
           src={bookData.cover}

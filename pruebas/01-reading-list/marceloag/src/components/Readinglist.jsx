@@ -10,10 +10,11 @@ function Readinglist() {
 
   return (
     <aside
-      className={`bg-white py-6 px-3 rounded-l-xl drop-shadow-md shadow-slate-500 transition-all duration-300 ease-in ${opacity}`}
+      className={`bg-gray-100 py-6 px-3 rounded-l-xl drop-shadow-md shadow-slate-500 transition-all duration-300 ease-in ${opacity}`}
     >
-      <h2 className="text-xl font-sans text-center font-thin">Reading List </h2>
+      <h2 className="text-xl font-sans text-center font-thin">Lista de Lectura </h2>
       <section className="[&>ul]:grid [&>ul]:grid-cols-2 [&>ul]:xl:grid-cols-3">
+        <span className='text-slate-500 text-sm font-light'>Libros en la lista de lectura {readinglist.length}</span>
         <Reorder.Group axis="x" values={readinglist}>
           <AnimatePresence>
             {readinglist.map((bookData) => (
