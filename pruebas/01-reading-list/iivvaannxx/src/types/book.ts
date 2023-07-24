@@ -30,4 +30,6 @@ export interface BooksData {
 
   library: Book[]
   genres: string[]
+
+  pageLimits: [number, number]
 }

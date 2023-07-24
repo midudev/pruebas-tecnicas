@@ -1,7 +1,6 @@
 import defaultConfig from 'tailwindcss/defaultConfig'
 import plugin from 'tailwindcss/plugin'
 
-import prelinePlugin from 'preline/plugin'
 import debugScreensPlugin from 'tailwindcss-debug-screens'
 
 const customVariantsPlugin = plugin(function ({ addVariant, e }) {
@@ -12,7 +11,7 @@ const customVariantsPlugin = plugin(function ({ addVariant, e }) {
 module.exports = {
 
   presets: [defaultConfig],
-  content: ['node_modules/preline/dist/*.js', './src/**/*.{svelte,html,js,ts}'],
+  content: ['./src/**/*.{svelte,html,js,ts}'],
 
   theme: {
 
@@ -80,5 +79,5 @@ module.exports = {
     }
   },
 
-  plugins: [debugScreensPlugin, prelinePlugin, customVariantsPlugin]
+  plugins: [debugScreensPlugin, customVariantsPlugin]
 }

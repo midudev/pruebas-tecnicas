@@ -3,27 +3,14 @@
   import { CloseIcon } from '$assets/icons'
   import animatedDetails from 'svelte-animated-details'
 
-  /** @brief The props of the Accordion component. */
-  export interface Props {
-
-    title: string
-
-    open?: boolean
-    contentClass?: string
-  }
-
 </script>
 
 <script lang='ts'>
 
-  export let {
+  export let title: string
+  export let open = false
 
-    title,
-
-    open = false,
-    contentClass = ''
-
-  } = { } as Props
+  export let contentClass = ''
 
 </script>
 

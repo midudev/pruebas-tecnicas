@@ -1,6 +1,6 @@
 <script lang='ts' context='module'>
 
-  import type { Book } from '$types'
+  import type { Author } from '$types'
   import { InfoIcon } from '$assets/icons'
 
 </script>
@@ -8,13 +8,14 @@
 <script lang='ts'>
 
   // Export all the properties of the Book type.
-  export let {
-
-    title, pages, genre,
-    cover, synopsis, year,
-    ISBN, author
-
-  } = { } as Book
+  export let title: string
+  export let pages: number
+  export let genre: string
+  export let cover: string
+  export let synopsis: string
+  export let year: number
+  export let ISBN: string
+  export let author: Author
 
 </script>
 

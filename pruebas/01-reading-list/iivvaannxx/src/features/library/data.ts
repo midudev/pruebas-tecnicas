@@ -1,16 +1,33 @@
-import type { BooksData } from '$types'
+import type { BooksData, Book } from '$types'
 import Books from '$assets/data/books.json'
 
 /** @brief Retrieves all the books of the library. */
 function preloadBookData (): BooksData {
 
-  const library = Books.library.map(current => current.book)
+  const library = new Map<string, Book>()
+  const genres = new Set<string>()
 
-  const genres = library.map(current => current.genre)
-  const uniqueGenres = [...new Set(genres)]
+  let [minPages, maxPages] = [+Infinity, -Infinity]
 
-  return { library, genres: uniqueGenres }
+  Books.library.forEach(current => {
+
+    const book = current.book
+    genres.add(book.genre)
+    library.set(book.ISBN, book)
+
+    // Save the minimum and maximum number of pages (used to filter).
+    minPages = Math.min(minPages, book.pages)
+    maxPages = Math.max(maxPages, book.pages)
+  })
+
+  return {
+
+    library: Array.from(library.values()),
+    genres: Array.from(genres),
+
+    pageLimits: [minPages, maxPages]
+  }
 }
 
-// Helper caches to avoid repeating calculations.
+/** @brief The information about the entire book library. */
 export const booksData = preloadBookData()

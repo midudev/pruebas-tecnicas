@@ -12,5 +12,4 @@
 
   <PagesFilter />
 
-
 </aside>

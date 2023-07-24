@@ -1,41 +1,29 @@
 <script lang='ts' context='module'>
 
-  export interface Props {
-
-    min: number
-    max: number
-
-    valueMin: number
-    valueMax: number
-
-    minGap?: number
-  }
-
+  /** @brief The event that is triggered when the input value changes. */
   type OnInputEvent = Event & {
+
     currentTarget: EventTarget & HTMLInputElement;
   }
-
 
 </script>
 
 <script lang='ts'>
 
-  export let {
+  export let min: number
+  export let max: number
+  export let valueMin = min
+  export let valueMax = max
 
-    min, max,
-    valueMin = 100, valueMax = 800,
-
-    minGap = 300
-
-  } = { } as Props
-
-  let percentLeft: number
-  let percentRight: number
+  export let labelMin = 'Min'
+  export let labelMax = 'Max'
+  export let minGap = 100
 
   // Calculate the progress width depending on each range.
   $: percentLeft = (valueMin / max) * 100
   $: percentRight = 100 - ((valueMax / max) * 100)
 
+  /** @brief Ensures that the input is between valid ranges. */
   function ensureValidInput (event: OnInputEvent) {
 
     const isEmpty = event.currentTarget.value === ''
@@ -52,6 +40,7 @@
 
       }
 
+      // The value is empty or greater than the max.
       else if (newValue > max || isEmpty) {
 
         valueMax = max;
@@ -68,6 +57,7 @@
         event.currentTarget.value = valueMin.toString();
       }
 
+      // The value is empty or less than the min.
       else if (newValue < min || isEmpty) {
 
         valueMin = min;
@@ -76,67 +66,95 @@
     }
   }
 
+  // Extract common classes into simple constants.
+  const labelClasses = 'flex flex-col w-full justify-center items-center gap-2'
+  const inputClasses = 'border-2 rounded-lg text-center w-full h-10 border-gray-200'
+  const rangeClasses = 'absolute range-input -top-2 h-2 w-full'
 
 </script>
 
-<div class='p-4'>
+<div class='flex gap-4 justify-between mb-4'>
 
-  <div class='flex gap-4 justify-between mb-4'>
+    <label class={labelClasses}>
 
-    <input data-input='min' class='border-2 rounded-lg text-center w-full h-10 border-gray-200' type='number'
+      <span>{labelMin}</span>
+      <input
 
-      on:input={ensureValidInput}
-      bind:value={valueMin}
+        type='number'
+        class={inputClasses}
 
-      min={min}
-      max={max}
-    />
+        min={min}
+        max={max}
+        value={valueMin}
 
-    <input data-input='max' class='border-2 rounded-lg text-center w-full h-10 border-gray-200' type='number'
+        data-input='min'
+        on:change={ensureValidInput}
+      />
 
-      on:input={ensureValidInput}
-      bind:value={valueMax}
+    </label>
 
-      min={min}
-      max={max}
-    />
 
-  </div>
+    <label class={labelClasses}>
 
-  <div class='bg-gray-200 w-full h-2 rounded-lg relative'>
+      <span>{labelMax}</span>
+      <input
 
-    <div class='absolute progress bg-green-500 h-2 rounded-lg'
+        type='number'
+        class={inputClasses}
 
-      style:--percentLeft='{percentLeft}%'
-      style:--percentRight='{percentRight}%'
+        min={min}
+        max={max}
+        value={valueMax}
 
-    ></div>
+        data-input='max'
+        on:change={ensureValidInput}
+      />
 
-  </div>
-
-  <div class='relative'>
-
-    <input data-input='min' class='absolute range-input -top-2 h-2 w-full' type='range'
-
-      on:input={ensureValidInput}
-      bind:value={valueMin}
-
-      min={min}
-      max={max}
-    />
-
-    <input data-input='max' class='absolute range-input -top-2 h-2 w-full' type='range'
-
-      on:input={ensureValidInput}
-      bind:value={valueMax}
-
-      min={min}
-      max={max}
-    />
-
-  </div>
+    </label>
 
 </div>
+
+<div class='bg-gray-200 w-full h-2 rounded-lg relative'>
+
+  <div class='absolute progress bg-blue-400 h-2 rounded-lg'
+
+    style:--percentLeft='{percentLeft}%'
+    style:--percentRight='{percentRight}%'
+
+  ></div>
+
+</div>
+
+<div class='relative'>
+
+  <input
+
+    type='range'
+    class={rangeClasses}
+
+    min={min}
+    max={max}
+    bind:value={valueMin}
+
+    data-input='min'
+    on:input={ensureValidInput}
+  />
+
+  <input
+
+    type='range'
+    class={rangeClasses}
+
+    min={min}
+    max={max}
+    bind:value={valueMax}
+
+    data-input='max'
+    on:input={ensureValidInput}
+  />
+
+</div>
+
 
 <style>
 
@@ -163,7 +181,7 @@
     height: 1rem;
 
     border-radius: 50%;
-    background: theme('colors.green.300');
+    background: theme('colors.blue.500');
 
     appearance: none;
     -webkit-appearance: none;

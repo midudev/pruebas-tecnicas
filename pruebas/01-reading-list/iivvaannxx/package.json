@@ -43,7 +43,6 @@
 	"dependencies": {
 		"@nanostores/persistent": "^0.9.1",
 		"nanostores": "^0.9.3",
-		"preline": "^1.9.0",
 		"tailwindcss": "^3.3.3"
 	}
 }
