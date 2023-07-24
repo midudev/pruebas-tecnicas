@@ -1,1 +1,1 @@
-export { default as BookReducer } from "./BookReducer";
+export {default as BookReducer} from './BookReducer';

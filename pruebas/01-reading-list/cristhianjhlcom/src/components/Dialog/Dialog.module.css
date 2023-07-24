@@ -1,17 +1,17 @@
 .dialog {
-  background-color: var(--color-background);
-  position: fixed;
-  border: none;
-  border-radius: var(--radius-sm);
-  padding: 40px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+	background-color: var(--color-background);
+	position: fixed;
+	border: none;
+	border-radius: var(--radius-sm);
+	padding: 40px;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 }
 
 .dialog::backdrop {
-  /* background-color: rgba(238, 187, 195, 0.8); */
-  background-color: rgba(184, 193, 236, 0.8);
-  backdrop-filter: blur(5px);
+	/* background-color: rgba(238, 187, 195, 0.8); */
+	background-color: rgba(184, 193, 236, 0.8);
+	backdrop-filter: blur(5px);
 }

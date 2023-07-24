@@ -1,11 +1,13 @@
-import { BookTypes } from "../enums";
-import { Book } from "../interfaces/Book";
+import {BookTypes} from '../enums';
+import {Book} from '../interfaces/Book';
 
 export type InitialBookState = {
 	books: Array<BookElement>;
+	filteredBooks: Array<BookElement>;
 	favorites: Array<Book>;
+	selectedGenre: string;
 	bookPreview: Book | null;
-	categories: Array<string>;
+	genres: Array<string>;
 	loading: boolean;
 	error: string | null;
 };

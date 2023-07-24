@@ -8,7 +8,7 @@ root = true
 end_of_line = lf
 insert_final_newline = true
 
-# 4 space indentation
+# 2 space indentation
 [*.{js,ts,jsx,tsx}]
 charset = utf-8
 indent_style = tab

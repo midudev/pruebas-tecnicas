@@ -1,11 +1,11 @@
-import { useContext, useEffect } from "react";
-import { Dialog } from "../../components";
-import { BookTypes } from "../../enums";
-import { BookContext } from "../../utils/context";
-import styles from "./BookDialog.module.css";
+import {useContext, useEffect} from 'react';
+import {Dialog} from '../../components';
+import {BookTypes} from '../../enums';
+import {BookContext} from '../../utils/context';
+import styles from './BookDialog.module.css';
 
 export default function BooksDialog() {
-	const { bookPreview, dispatch, modalRef } = useContext(BookContext);
+	const {bookPreview, dispatch, modalRef} = useContext(BookContext);
 
 	useEffect(() => {
 		return () => {
@@ -26,7 +26,7 @@ export default function BooksDialog() {
 					{bookPreview?.author.name} ({bookPreview?.year})
 				</p>
 			</div>
-			<button className={styles.button} type="button">
+			<button className={styles.button} type='button'>
 				Cerrar
 			</button>
 		</Dialog>

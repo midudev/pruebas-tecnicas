@@ -1,36 +1,36 @@
 .title {
-  font-size: clamp(1.525rem, 5vw, 2.825rem);
-  color: var(--color-headling);
-  line-height: 1.1;
-  letter-spacing: -0.5px;
+	font-size: clamp(1.525rem, 5vw, 2.825rem);
+	color: var(--color-headling);
+	line-height: 1.1;
+	letter-spacing: -0.5px;
 }
 
 .synopsis {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  color: var(--color-paragraph);
-  line-height: 1.4;
-  letter-spacing: -0.5px;
-  max-width: 60%;
+	font-size: clamp(1rem, 2vw, 1.25rem);
+	color: var(--color-paragraph);
+	line-height: 1.4;
+	letter-spacing: -0.5px;
+	max-width: 60%;
 }
 
 .content {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 1rem;
 }
 
 .genre,
 .author {
-  color: var(--color-paragraph);
-  font-weight: 600;
+	color: var(--color-paragraph);
+	font-weight: 600;
 }
 
 .button {
-  display: inline-block;
-  background-color: var(--color-button);
-  padding: 1.525rem 1.25rem;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
-  cursor: pointer;
+	display: inline-block;
+	background-color: var(--color-button);
+	padding: 1.525rem 1.25rem;
+	border-radius: var(--radius-sm);
+	font-weight: 600;
+	cursor: pointer;
 }

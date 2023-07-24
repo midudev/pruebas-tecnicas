@@ -1,4 +1,4 @@
-import { Book } from "./Book";
+import {Book} from './Book';
 
 export interface Library {
 	library: LibraryElement[];

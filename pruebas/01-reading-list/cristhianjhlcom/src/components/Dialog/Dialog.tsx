@@ -1,13 +1,13 @@
-import { ReactNode, useEffect, useRef } from "react";
-import { Book } from "../../interfaces";
-import styles from "./Dialog.module.css";
+import {ReactNode, useEffect, useRef} from 'react';
+import {Book} from '../../interfaces';
+import styles from './Dialog.module.css';
 
 type Props = {
 	data: Book | null;
 	children: ReactNode;
 };
 
-export default function Dialog({ data = null, children }: Props): JSX.Element {
+export default function Dialog({data = null, children}: Props): JSX.Element {
 	const ref = useRef<HTMLDialogElement>();
 
 	useEffect(() => {
@@ -16,7 +16,7 @@ export default function Dialog({ data = null, children }: Props): JSX.Element {
 	}, [data]);
 
 	return (
-		<dialog open={false} ref={ref} className={styles.dialog}>
+		<dialog ref={ref} className={styles.dialog}>
 			{children}
 		</dialog>
 	);

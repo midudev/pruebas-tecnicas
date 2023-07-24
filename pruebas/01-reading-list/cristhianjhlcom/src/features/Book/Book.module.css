@@ -1,16 +1,21 @@
 .wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
+	max-width: 1200px;
+	margin: 0 auto;
+	row-gap: 10px;
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 10px;
+}
+
+.menu {
+	margin-bottom: 1rem;
 }
 
 @media screen and (min-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr 300px;
-  }
+	.grid {
+		grid-template-columns: 1fr 300px;
+	}
 }

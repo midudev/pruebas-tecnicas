@@ -1,5 +1,5 @@
-import { Book } from "./features/Book";
-import { BookContextProvider } from "./utils/context";
+import {Book} from './features/Book';
+import {BookContextProvider} from './utils/context';
 
 function App() {
 	return (

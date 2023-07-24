@@ -1,53 +1,53 @@
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	width: 100%;
 }
 
 .book {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  border-radius: var(--radius-sm);
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	border-radius: var(--radius-sm);
 }
 
 .cover {
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
+	width: 100%;
+	height: 100%;
+	object-fit: fill;
 }
 
 .button {
-  position: absolute;
-  top: 2%;
-  right: 2%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-highlight);
-  border-radius: 100%;
-  width: 35px;
-  height: 35px;
-  padding: 5px;
-  border: none;
-  cursor: pointer;
+	position: absolute;
+	top: 2%;
+	right: 2%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--color-highlight);
+	border-radius: 100%;
+	width: 35px;
+	height: 35px;
+	padding: 5px;
+	border: none;
+	cursor: pointer;
 }
 
 .icon {
-  width: 35px;
-  height: 35px;
-  color: var(--color-red-500);
+	width: 35px;
+	height: 35px;
+	color: var(--color-red-500);
 }
 
 .previewButton {
-  display: block;
-  border: 2px solid transparent;
-  background-color: var(--color-highlight);
-  padding: 10px 12px;
-  border-radius: var(--radius-sm);
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
+	display: block;
+	border: 2px solid transparent;
+	background-color: var(--color-highlight);
+	padding: 10px 12px;
+	border-radius: var(--radius-sm);
+	font-size: 1rem;
+	font-weight: 500;
+	cursor: pointer;
 }

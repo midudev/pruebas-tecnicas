@@ -1,1 +1,1 @@
-export { default as HeartIcon } from "./Heart";
+export {default as HeartIcon} from './Heart';

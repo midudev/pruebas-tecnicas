@@ -1,0 +1,19 @@
+.wrapper {
+	padding: 0 20px;
+}
+
+@media screen and (min-width: 765px) {
+	.wrapper {
+		padding: 0;
+	}
+}
+
+.select {
+	display: inline-block;
+	background-color: var(--color-stroke);
+	padding: 12px 16px;
+	border-radius: 5px;
+	text-align: center;
+	font-weight: 600;
+	cursor: pointer;
+}
