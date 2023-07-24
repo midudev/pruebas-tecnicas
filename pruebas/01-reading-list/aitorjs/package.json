@@ -34,6 +34,9 @@
     "parserOptions": {
       "project": "./tsconfig.json"
     },
-    "extends": "./node_modules/ts-standard/eslintrc.json"
+    "extends": "./node_modules/ts-standard/eslintrc.json",
+    "rules": {
+      "typescript-eslint/explicit-function-return-type": "off"
+    }
   }
 }

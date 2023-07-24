@@ -3,7 +3,7 @@ import booksJson from '../books.json'
 import { Book, BooksState } from '../types'
 import { persist } from 'zustand/middleware'
 
-type StoreWithPersist = Mutate<StoreApi<BooksState>, [['zustand/persist', unknown]]>
+type StoreWithPersist = Mutate<StoreApi<BooksState>, [['zustand/persist', BooksState]]>
 
 export const withStorageDOMEvents = (store: StoreWithPersist) => {
   const storageEventCallback = (e: StorageEvent) => {
@@ -20,7 +20,8 @@ export const withStorageDOMEvents = (store: StoreWithPersist) => {
   }
 }
 
-export const useBooksStore = create<any>(persist(
+// UseBoundStore<Write<StoreApi<BooksState>, StorePersist<BooksState, BooksState>>>
+export const useBooksStore = create<BooksState>()(persist(
   (set, get) => ({
     books: [],
     filteredBooks: [],
@@ -60,7 +61,7 @@ export const useBooksStore = create<any>(persist(
       const wantReadBooks = get().wantReadBooks
       let base = get().filteredBooks
 
-      // exclude want books using it has base filter
+      // exclude want books using it as base filter
       if (wantReadBooks.length > 0) {
         const books = get().books
 
@@ -75,15 +76,15 @@ export const useBooksStore = create<any>(persist(
         base = excludeWantReadBooks
       }
 
-      // no genre or has genre, filter base from all books
-      else if (filters.genre === undefined || filters.genre) {
+      // no want books and no genre or has genre, filter base from all books
+      else if (filters.genre === undefined || filters.genre === true) {
         base = get().books
       }
 
       console.log('filters', filters)
 
-      // filter using filters properties
-      Object.keys(filters).map((f) => {
+      // filter using filters object properties
+      Object.keys(filters).forEach((f) => {
         base = base.filter((d) => {
           if (f === 'pages') {
             return filters[f] > 0 ? d.book[f] <= filters[f] : true
