@@ -5,7 +5,6 @@ import useBooks from './hooks/useBooks'
 function App() {
   const { store, storeRead, genres, addRead, filterByGenre } = useBooks()
 
-  console.log(genres)
   return (
     <>
       <main className='p-4'>
