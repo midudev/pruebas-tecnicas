@@ -18,7 +18,6 @@ export const filterBooks = (books, filterOptions, readingListISBN) => {
 
   if (!Number(min)) min = '';
   if (!Number(max)) max = '';
-
   let booksFiltered = books;
 
   if (excludeBooks && readingListISBN?.length > 0) {
