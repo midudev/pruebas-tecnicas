@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/midudev/pruebas-tecnicas#readme",
   "dependencies": {
+    "@astrojs/sitemap": "^2.0.1",
     "@sentry/vite-plugin": "^2.4.0",
     "astro": "^2.9.2",
     "yarn": "^1.22.19"
