@@ -3,34 +3,19 @@
 @tailwind utilities;
 
 @font-face {
-	font-family: 'Mystery Quest';
-	src: url('../public/MysteryQuest.ttf');
-	font-weight: 400;
+  font-family: 'Mystery Quest';
+  src: url('../public/MysteryQuest.ttf');
+  font-weight: 400;
 }
 
 @font-face {
-	font-family: 'Tilt Neon';
-	src: url('../public/TiltNeon.woff2');
-	font-weight: 400;
+  font-family: 'Tilt Neon';
+  src: url('../public/TiltNeon.woff2');
+  font-weight: 400;
 }
 
 @font-face {
-	font-family: 'Handlee';
-	src: url('../public/Handlee.ttf');
-	font-weight: 400;
+  font-family: 'Handlee';
+  src: url('../public/Handlee.ttf');
+  font-weight: 400;
 }
-
-/* @keyframes heightdown {
-	100% {
-		height: 0%;
-	}
-	66% {
-		height: 66%;
-	}
-	33% {
-		height: 33%;
-	}
-	0% {
-		height: 0;
-	}
-} */

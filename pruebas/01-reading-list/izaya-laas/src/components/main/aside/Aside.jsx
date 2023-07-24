@@ -23,7 +23,7 @@ const Aside = () => {
       className={`sticky bottom-0 z-10 w-full rounded-br-[5px_800px] rounded-tl-[800px_5px] rounded-tr-[5px_800px] border-t-2 border-black bg-white pb-4 pt-2 transition-transform duration-500  sm:top-8 sm:h-auto sm:rounded-tl-none sm:border-r-2 sm:border-t-0 sm:pt-4 ${
         isHiddenAside.value
           ? 'h-0 translate-y-full animate-[heightdown_500ms] sm:translate-y-0'
-          : 'h-max translate-y-0 animate-[heightup_500ms]'
+          : 'h-min translate-y-0 animate-[heightup_500ms]'
       }`}
     >
       <div
