@@ -10,4 +10,5 @@ export interface Book {
 		name: string;
 		otherBooks: string[];
 	};
+	inReadingList: Boolean;
 }
