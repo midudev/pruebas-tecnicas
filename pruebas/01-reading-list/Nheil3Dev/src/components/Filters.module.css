@@ -77,7 +77,8 @@ input[type='text']::placeholder {
 	left: 10px;
 }
 
-label {
+label,
+p {
 	font-weight: bold;
 }
 

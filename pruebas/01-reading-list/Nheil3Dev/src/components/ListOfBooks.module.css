@@ -13,9 +13,11 @@
 	gap: 20px;
 }
 
-.header h3 {
+.header p {
 	display: flex;
 	flex-wrap: wrap;
+	font-size: 18px;
+	font-weight: bold;
 }
 
 /**/

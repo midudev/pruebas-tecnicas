@@ -12,6 +12,7 @@ export function PageSelector({ page, totalPages, dispatchFilters }) {
 				icon={ArrowLeft}
 				handleClick={() => dispatchFilters(pageChanged(page - 1))}
 				disabled={page === 1}
+				aria-label='previous-page'
 			/>
 			<span>
 				Página {page} de {totalPages}
@@ -21,6 +22,7 @@ export function PageSelector({ page, totalPages, dispatchFilters }) {
 				icon={ArrowRight}
 				handleClick={() => dispatchFilters(pageChanged(page + 1))}
 				disabled={page === totalPages}
+				aria-label='next-page'
 			/>
 		</div>
 	)

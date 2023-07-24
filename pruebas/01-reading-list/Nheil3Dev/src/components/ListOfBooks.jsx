@@ -19,7 +19,7 @@ export function ListOfBooks({
 	return (
 		<section className={style.container}>
 			<header className={style.header}>
-				<h3>
+				<p>
 					{mainList.filter(el => !el.isReading).length} libros disponibles
 					<span>
 						{`${'/ '}${
@@ -31,7 +31,7 @@ export function ListOfBooks({
 							books.filter(el => !el.isReading).length
 						} libros disponibles del género '${genre}'`}</span>
 					)}
-				</h3>
+				</p>
 
 				{totalPages > 0 && (
 					<PageSelector

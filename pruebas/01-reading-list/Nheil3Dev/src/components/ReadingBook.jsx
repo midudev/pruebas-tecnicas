@@ -20,21 +20,24 @@ export function ReadingBook({
 			<img src={book.cover} alt={book.title} />
 			<div className={style.iconsContainer}>
 				<IconButton
-					className={style.close}
+					className={style.delete}
 					icon={CloseIcon}
 					handleClick={() => dispatchBooks(removeBook(book.ISBN))}
+					aria-label='delete'
 				/>
 				<IconButton
 					className={style.up}
 					icon={ArrowUpIcon}
 					handleClick={() => dispatchBooks(upgradePreference(book.ISBN))}
 					disabled={index === 0}
+					aria-label='upgrade'
 				/>
 				<IconButton
 					className={style.down}
 					icon={ArrowDownIcon}
 					handleClick={() => dispatchBooks(downgradePreference(book.ISBN))}
 					disabled={index === readingBooks.length - 1}
+					aria-label='downgrade'
 				/>
 			</div>
 		</li>

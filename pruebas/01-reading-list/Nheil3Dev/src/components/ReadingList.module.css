@@ -46,7 +46,7 @@
 	gap: 10px;
 }
 
-.close,
+.delete,
 .up,
 .down {
 	width: 25px;
@@ -97,7 +97,7 @@
 		gap: 20px;
 	}
 
-	.close,
+	.delete,
 	.up,
 	.down {
 		width: 40px;
@@ -107,7 +107,7 @@
 		background-color: white;
 	}
 
-	.close:checked,
+	.delete:checked,
 	.up:checked,
 	.down:checked {
 		background-color: white;
@@ -133,7 +133,7 @@
 		gap: 60px;
 	}
 
-	.close,
+	.delete,
 	.up,
 	.down {
 		width: 60px;

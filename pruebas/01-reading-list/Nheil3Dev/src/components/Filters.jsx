@@ -37,7 +37,7 @@ export function Filters({
 	return (
 		<div className={!show ? style.form : style.visible}>
 			<div className={style.column}>
-				<label htmlFor='search'>Buscar</label>
+				<p>Buscar</p>
 				<div className={style.searchContainer}>
 					<input
 						id='search'

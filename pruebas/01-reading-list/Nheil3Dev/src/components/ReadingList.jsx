@@ -16,6 +16,7 @@ export function ReadingList({ readingBooks, dispatchBooks, show }) {
 					icon={TrashIcon}
 					handleClick={() => dispatchBooks(reset())}
 					disabled={readingBooks.length === 0}
+					aria-label='trash'
 				/>
 			</header>
 			{readingBooks.length > 0 ? (
