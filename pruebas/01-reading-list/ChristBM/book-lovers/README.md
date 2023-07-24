@@ -7,6 +7,10 @@ Note:
 
 - In a more serious project, this variable should not be in the repository.
 
+## Deploy
+
+[Book-Lovers](https://book-lovers.vercel.app/)
+
 ## Steps to run the app locally and more.
 
 1- Cloning the repository: ```git clone ...```
