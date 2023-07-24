@@ -1,5 +1,6 @@
-import { afterEach, beforeEach, describe, expect, it } from 'vitest'
-import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { act, cleanup, fireEvent, render, screen } from '@testing-library/react'
+import matchers from '@testing-library/jest-dom/matchers'
 
 import { BookDashboard } from '@/components/BookDashboard'
 
@@ -8,6 +9,8 @@ import { FilterProvider } from '@/context/filter'
 
 import { genres, listBooksAvailable } from '@/assets/values'
 import { buttonTitles, listTypes, nameStorage } from '@/assets/constants'
+
+expect.extend(matchers)
 
 describe('<BookDashboard />', () => {
   beforeEach(() => {
@@ -109,5 +112,61 @@ describe('<BookDashboard />', () => {
     expect(JSON.parse(localStorage.getItem(nameStorage.listOfReading) || '[]')).toHaveLength(
       numberReadingBooks
     )
+  })
+
+  it(`When searching for the book "${listBooksAvailable[0].title}", from the list of available books it should show only that book in the list`, () => {
+    vi.useFakeTimers()
+
+    const bookTitle = listBooksAvailable[0].title
+    const searcher = screen.getByPlaceholderText('La llamada de Cthulhu')
+
+    expect(searcher).toBeDefined()
+
+    act(() => {
+      fireEvent.change(searcher, { target: { value: bookTitle } })
+
+      vi.advanceTimersByTime(400)
+    })
+
+    expect(screen.getByDisplayValue(bookTitle)).toBeDefined()
+
+    expect(screen.getAllByTitle(buttonTitles[listTypes.available]).length).toBeGreaterThanOrEqual(1)
+
+    vi.clearAllTimers()
+  })
+
+  it('When adding all the books to the list or if there are none, the message: "No hay libros disponibles" should be displayed on the screen', () => {
+    const addBookButton = screen.getAllByTitle(buttonTitles[listTypes.available])
+
+    act(() => {
+      addBookButton.forEach((btn) => fireEvent.click(btn))
+    })
+
+    expect(screen.getByText('No hay libros disponibles')).toBeDefined()
+  })
+
+  it(`When searching for the book "${listBooksAvailable[0].title} 2", the list of available books should display the message: "No books found matching ${listBooksAvailable[0].title} 2"`, () => {
+    vi.useFakeTimers()
+
+    const bookTitle = `${listBooksAvailable[0].title} 2`
+    const searcher = screen.getByPlaceholderText('La llamada de Cthulhu')
+
+    expect(searcher).toBeDefined()
+
+    act(() => {
+      fireEvent.change(searcher, { target: { value: bookTitle } })
+
+      vi.advanceTimersByTime(400)
+    })
+
+    const { getByDisplayValue, getByText, queryAllByTitle } = screen
+
+    expect(getByDisplayValue(bookTitle)).toHaveValue(bookTitle)
+
+    expect(queryAllByTitle(buttonTitles[listTypes.available]).length).toEqual(0)
+
+    expect(getByText(/^No se encontraron libros que coincidan con/i)).toBeDefined()
+
+    vi.clearAllTimers()
   })
 })
