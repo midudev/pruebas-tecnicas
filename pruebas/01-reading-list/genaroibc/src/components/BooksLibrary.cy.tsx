@@ -1,5 +1,6 @@
 import type { Book } from "~/types"
 import { BooksLibrary } from "./BooksLibrary"
+import { FILTERS_DICT, GENRES_DICT } from "~/constants"
 
 describe("BooksLibrary", () => {
   it("renders message when there are no books in reading list", () => {
@@ -202,7 +203,7 @@ describe("BooksLibrary", () => {
     cy.get("section label")
       .contains("Sort by")
       .siblings("select")
-      .select("year")
+      .select(FILTERS_DICT.year)
 
     cy.get("article div h6").contains(mockedBooks[0].title)
     cy.get("article div p").contains(mockedBooks[0].author.name)
@@ -298,7 +299,7 @@ describe("BooksLibrary", () => {
     cy.get("section label")
       .contains("Genres")
       .siblings("select")
-      .select("fantasy")
+      .select(GENRES_DICT.fantasy)
 
     cy.get("section section").should("not.contain.html") // no books in fantasy genre
 
@@ -306,10 +307,10 @@ describe("BooksLibrary", () => {
     cy.get("section label")
       .contains("Genres")
       .siblings("select")
-      .select("horror")
+      .select(GENRES_DICT.horror)
 
     cy.get("article div span").contains("sci-fi").should("not.exist") // no books in sci-fi genre when "horror" genre is selected
 
-    cy.get("article div span").contains("terror")
+    cy.get("article div span").contains(GENRES_DICT.horror)
   })
 })

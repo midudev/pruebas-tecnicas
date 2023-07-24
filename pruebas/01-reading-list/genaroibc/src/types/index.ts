@@ -1,4 +1,4 @@
-import type { BOOK_GENRES } from "~/constants"
+import type { BOOK_FILTERS, BOOK_GENRES } from "~/constants"
 
 export type BookISBN = string
 export type BookAuthor = {
@@ -18,6 +18,6 @@ export type Book = {
   isInReadingList: boolean
 }
 
-export type Filter = keyof Book
+export type Filter = (typeof BOOK_FILTERS)[number]
 
 export type Genre = (typeof BOOK_GENRES)[number]
