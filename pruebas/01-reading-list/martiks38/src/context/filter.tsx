@@ -65,7 +65,7 @@ export function FilterProvider({ children }: FilterProviderProps) {
   const changeCurrentGenre = (ev: React.ChangeEvent<HTMLInputElement>) => {
     const genre = ev.currentTarget.value
 
-    if (genre && genre !== currentGenre) {
+    if (genre && genre !== filters.currentGenre) {
       window.localStorage.setItem(nameStorage.currentGenre, genre)
 
       setFilters((prevFilters) => {
