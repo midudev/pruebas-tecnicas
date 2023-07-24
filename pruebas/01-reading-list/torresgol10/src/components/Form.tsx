@@ -22,6 +22,10 @@ export default function Form({ filterByGenre, filterByText }: Props) {
                     </select>
                 </div>
                 <div className='flex flex-col gap-2'>
+                    <label htmlFor='genre'>Numero de pagina</label>
+                    <input type="range" min="20" max="500" step="50" />
+                </div>
+                <div className='flex flex-col gap-2'>
                     <label htmlFor='genre'>Texto libre</label>
                     <input type='text' className='border-4' placeholder='Buscar' onChange={(e) => filterByText(e.target.value)} />
                 </div>
