@@ -1,3 +1,4 @@
+import { setActivePinia, createPinia } from "pinia";
 import { render, screen } from "@testing-library/vue";
 import "@testing-library/jest-dom";
 import BooksList from "@/components/BooksList.vue";
@@ -8,12 +9,17 @@ jest.mock("@/services/booksRepository");
 
 describe("BooksList", () => {
   describe("when user loads the component", () => {
-    it("should list books", async () => {
+    it("should list books availables", async () => {
+      setActivePinia(createPinia());
+
       const books = generateBook();
 
       getAllBooks.mockResolvedValueOnce(books);
 
-      render(BooksList);
+      render(BooksList, {
+        type: "bookAvilable",
+        props: { books },
+      });
 
       const title = await screen.findByRole("heading", {
         name: books[0].book.title,

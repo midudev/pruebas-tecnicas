@@ -2,7 +2,7 @@
   <header>
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
       <div
-        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 relative"
       >
         <router-link to="/">
           <img class="max-w-[200px]" src="../assets/logo.png" alt="Midudev" />
@@ -38,7 +38,7 @@
           id="navbar-default"
         >
           <ul
-            class="absolute min-w-[200px] right-0 font-medium flex flex-col pr-2 md:pr-0 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+            class="absolute min-w-[175px] right-4 md:right-0 top-20 md:top-8 font-medium flex flex-col pr-2 md:pr-0 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
           >
             <li>
               <router-link
