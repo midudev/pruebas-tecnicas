@@ -20,11 +20,17 @@ export function useBook () {
   const [readingList, setReadingList] = useState(getBooksLocalStorage().booksListLocal || readingListStore)
 
   useEffect(() => {
+    let { booksLocal } = getBooksLocalStorage()
+
+    if (!booksLocal) {
+      booksLocal = booksStore
+    }
+
     if (genre !== 'All') {
-      const filteredBooks = booksStore.filter(book => book.genre === genre)
+      const filteredBooks = booksLocal.filter(book => book.genre === genre)
       setBooks(filteredBooks)
     } else {
-      setBooks(booksStore)
+      setBooks(booksLocal)
     }
   }, [genre, booksStore])
 
