@@ -128,7 +128,6 @@ export default function Home() {
             <p className="text-center mt-4">No hay libros disponibles...</p>
         }
 
-
       </section >
       <section className=" w-1/2 bg-gray-300 ">
         <header className="bg-gray-300  text-center  ">
