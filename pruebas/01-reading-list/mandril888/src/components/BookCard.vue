@@ -1,5 +1,5 @@
 <template>
-  <div v-show="showCard" class="mb-4">
+  <div v-if="showCard" class="mb-4">
     <img
       :src="book.book.cover"
       :alt="book.book.title"
@@ -11,7 +11,7 @@
           {{ book.book.title }}
         </h4>
         <button
-          v-show="type === 'bookAvilable'"
+          v-show="type === 'bookAvailable'"
           class="flex m-auto"
           @click="$booksStore.addBookList(book)"
         >

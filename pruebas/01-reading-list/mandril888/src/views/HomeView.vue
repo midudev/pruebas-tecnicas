@@ -17,7 +17,7 @@
     >
       {{ $booksStore.totalBooksList }} libros en la lista de lectura
     </p>
-    <BooksList :books="books" :type="'bookAvilable'" />
+    <BooksList :books="books" :type="'bookAvailable'" />
     <div v-show="$booksStore.booksList.length">
       <h2
         class="mt-12 mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-4xl dark:text-white"
