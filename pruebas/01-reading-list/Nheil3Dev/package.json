@@ -8,13 +8,15 @@
 		"build": "vite build",
 		"format": "prettier --write .",
 		"lint": "eslint . --ext js,jsx --fix",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"test": "playwright test"
 	},
 	"dependencies": {
 		"react": "18.2.0",
 		"react-dom": "18.2.0"
 	},
 	"devDependencies": {
+		"@playwright/test": "1.36.1",
 		"@types/react": "18.2.15",
 		"@types/react-dom": "18.2.7",
 		"@vitejs/plugin-react-swc": "3.3.2",
