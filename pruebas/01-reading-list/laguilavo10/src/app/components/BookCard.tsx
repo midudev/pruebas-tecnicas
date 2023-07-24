@@ -6,7 +6,8 @@ import {
   PlusCircleIcon
 } from '@heroicons/react/24/outline'
 import { BookOpenIcon } from '@heroicons/react/24/solid'
-import { ActionType, useBooks } from '../context/books'
+import { useBooks } from '../context/books'
+import type { ActionType } from '../utils/reducer'
 interface Props {
   book: Book
   action: ActionType

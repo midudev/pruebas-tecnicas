@@ -1,7 +1,8 @@
 'use client'
-import type { ActionType, BooksContext } from '../context/books'
+import type { BooksContext } from '../context/books'
 import type { Book } from '../types'
 
+export type ActionType = 'AddToReadingList' | 'RemoveFromReadingList'
 interface ActionCRUD {
   type: ActionType
   payload: Book

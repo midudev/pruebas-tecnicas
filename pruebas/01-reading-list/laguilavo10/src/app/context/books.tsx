@@ -20,9 +20,19 @@ interface Reducer {
   dispatch: React.Dispatch<Action>
 }
 
-export type ActionType = 'AddToReadingList' | 'RemoveFromReadingList'
+const INITIAL_STATE_VALUE = {
+  bookList: [],
+  readingList: []
+}
 
-const DEFAULT_VALUE_STATE = () => {
+const DEFAULT_VALUE: Reducer = {
+  state: INITIAL_STATE_VALUE,
+  dispatch: () => {}
+}
+
+const BookLandContext = createContext<Reducer>(DEFAULT_VALUE)
+
+const getLocalStorageData = () => {
   if (typeof window === 'undefined') {
     return {
       bookList: [],
@@ -41,15 +51,14 @@ const DEFAULT_VALUE_STATE = () => {
   return initialState
 }
 
-export const DEFAULT_VALUE: Reducer = {
-  state: DEFAULT_VALUE_STATE(),
-  dispatch: () => {}
-}
-
-const BookLandContext = createContext<Reducer>(DEFAULT_VALUE)
-
 export function CategoryProvider({ children }: PropsWithChildren) {
-  const [state, dispatch] = useReducer(reducer, DEFAULT_VALUE_STATE())
+  const [state, dispatch] = useReducer(reducer, INITIAL_STATE_VALUE)
+
+  useEffect(() => {
+    const initialData = getLocalStorageData()
+    dispatch({ type: 'UpdateTabs', payload: initialData })
+  }, [])
+
   useEffect(() => {
     const refreshTabs = (evt: StorageEvent) => {
       if (evt.key !== 'books') return
