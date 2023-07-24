@@ -10,12 +10,12 @@ export const useBooks = () => {
 
   // Filtros
   const [filterPages, setFilterPages] = useState(0)
-  const debouncedFilterPages = useDebounce(filterPages, 300)
   const [filterGenre, setFilterGenre] = useState('Todos')
   const [searchBooks, setSearchBooks] = useState('')
+  const debouncedFilterPages = useDebounce(filterPages, 300)
   const debouncedSearchBooks = useDebounce(searchBooks, 300)
 
-  // Datos del estado global
+  // Estado global
   const loadStorage = useReadListStore(state => state.loadStorage)
   const { readList } = useReadListStore()
 
@@ -23,11 +23,12 @@ export const useBooks = () => {
   const filterBooks = async () => {
     let filteredBooks = (await getBooks()).library
 
+    // Filtrar todos los libros por nombre
     if (debouncedSearchBooks.length > 0) {
       filteredBooks = filteredBooks.filter(({ book }) => book.title.includes(debouncedSearchBooks))
     }
 
-    // Filtrar todos los libros
+    // Filtrar todos los libros por páginas y genero
     if (filterGenre === 'Todos') {
       filteredBooks = filteredBooks.filter(({ book }) => book.pages >= Number(debouncedFilterPages))
     } else if (filterGenre !== 'Todos') {

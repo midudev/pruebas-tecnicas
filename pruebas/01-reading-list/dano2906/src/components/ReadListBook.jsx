@@ -10,6 +10,7 @@ export default function ReadListBook ({ book, reloadBookList }) {
   const remove = useReadListStore(state => state.remove)
 
   const handleRemove = (ISBN) => {
+    // Al eliminar de la lista de lectura se sincroniza el estado global y el estado local
     remove(ISBN)
     reloadBookList(ISBN)
   }

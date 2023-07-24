@@ -12,6 +12,7 @@ export default function ReadList () {
   const [booksList, setBooksList] = useState([])
 
   function handleDragEnd (ev) {
+    // Al terminar el evento Drag reorganizo el arreglo
     setBooksList((booksList) => {
       const oldIndex = booksList.findIndex((book) => book.ISBN === ev.active.id)
       const newIndex = booksList.findIndex((book) => book.ISBN === ev.over.id)
@@ -20,12 +21,14 @@ export default function ReadList () {
   }
 
   function reloadBookList (ISBN) {
+    // Al eliminar de la lista de lectura me aseguro que no se renderize
     setBooksList((booksList) => {
       return booksList.filter((book) => book.ISBN !== ISBN)
     })
   }
 
   useEffect(() => {
+    // Si cambia la lista de lectura actualizo los libros a mostrar
     setBooksList(readList)
   }, [readList])
 
