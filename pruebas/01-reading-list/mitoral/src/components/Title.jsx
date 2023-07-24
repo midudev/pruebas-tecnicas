@@ -15,7 +15,7 @@ export function Title () {
   const sequence = useRef(formatSequence(phrasesData.phrases))
   return (
     <>
-      <section className='flex flex-col items-center mt-5'>
+      <section className='flex flex-col items-center mt-5 px-5 md:px-10'>
         <div>
           <h2 className='text-3xl font-bold mb-1'>Inicia tu viaje a través de las páginas</h2>
           <TypeAnimation
