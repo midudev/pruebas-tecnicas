@@ -15,7 +15,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang='es'>
       <BookListProvider>
         <FilterProvider>
-          <body>{children}</body>
+          <body>
+            {children}
+            <div id='toast'></div>
+          </body>
         </FilterProvider>
       </BookListProvider>
     </html>
