@@ -1,4 +1,4 @@
-import styles from './card.module.css'
+import styles from './Card.module.css'
 import Button from '../button/Button'
 
 import useDeviceDetect from '../../hooks/useDeviceDetect'

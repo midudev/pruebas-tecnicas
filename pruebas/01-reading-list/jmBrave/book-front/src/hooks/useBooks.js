@@ -20,8 +20,6 @@ export default function useBooks() {
             (bookAvailable) => !ISBN_SELECTED.includes(bookAvailable.book.ISBN)
         )
 
-        console.log('FILTERED BOOKS: ', filterBooksAvailable)
-
         if (genreSelected !== 'Todas') {
             const filterByGenre = filterBooksAvailable.filter(
                 (book) => book.book.genre === genreSelected
