@@ -1,9 +1,10 @@
 import './style.css'
 import BooksList from './components/BooksList'
-import GenreFilter from './components/GenreFilter'
-import useBooksList from './hooks/useBooksList'
 import BooksJSON from './database/books.json'
+import GenreFilter from './components/GenreFilter'
 import PagesFilter from './components/PagesFilter'
+import useBooksList from './hooks/useBooksList'
+import useReadingList from './hooks/useReadingList'
 import { useEffect, useState } from 'react'
 
 export default function App () {
@@ -11,23 +12,23 @@ export default function App () {
   const [genreFilter, setGenreFilter] = useState('Todos')
   const [pagesFilter, setPagesFilter] = useState(50)
   // Custom hooks
-  const {
+  const [
     availableBooks,
-    setAvailableBooks,
     addToAvailables,
-    removeFromAvailables,
+    removeFromAvailables
+  ] = useBooksList(BooksJSON.library.map(bookObj => bookObj.book))
+  const [
     readingList,
-    setReadingList,
     addToReadingList,
     removeFromReadingList
-  } = useBooksList()
+  ] = useReadingList([])
   // useEffect hooks
   // Sync data between tabs
   useEffect(() => {
     function handleStorageChange (event) {
       const handlers = {
-        availableBooks: () => setAvailableBooks(JSON.parse(event.newValue)),
-        readingList: () => setReadingList(JSON.parse(event.newValue))
+        availableBooks: () => addToAvailables(JSON.parse(event.newValue)),
+        readingList: () => addToReadingList(JSON.parse(event.newValue))
       }
       handlers[event.key]()
     }
