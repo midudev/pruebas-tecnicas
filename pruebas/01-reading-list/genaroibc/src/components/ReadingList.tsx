@@ -1,4 +1,5 @@
 import { type PropFunction, component$ } from "@builder.io/qwik"
+import { pluralize } from "~/helpers/pluralize"
 import type { Book, BookISBN } from "~/types"
 
 type Props = {
@@ -39,6 +40,11 @@ export const ReadingList = component$(({ books, onBookSelect }: Props) => {
           ))
         )}
       </ul>
+      <p>
+        <span class="text-white">
+          {pluralize("book", books.length)} in reading list
+        </span>
+      </p>
     </aside>
   )
 })

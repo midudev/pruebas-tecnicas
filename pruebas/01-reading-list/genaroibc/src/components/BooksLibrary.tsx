@@ -6,6 +6,7 @@ import { Filters } from "~/components/Filters"
 import { $, component$ } from "@builder.io/qwik"
 import { useLibrary } from "~/hooks/useLibrary"
 import { GENRES_DICT } from "~/constants"
+import { pluralize } from "~/helpers/pluralize"
 
 type Props = {
   initialBooks: Book[]
@@ -64,6 +65,14 @@ export const BooksLibrary = component$(
           genre={currentGenre}
           filter={currentFilter}
         />
+
+        <p class="text-white">
+          {pluralize(
+            "book",
+            books.filter(book => !book.isInReadingList).length
+          )}{" "}
+          available
+        </p>
 
         <BooksList books={filteredByGenre} onBookSelect={onBookSelect} />
 
