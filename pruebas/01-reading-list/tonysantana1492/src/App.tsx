@@ -1,4 +1,5 @@
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
+
 import { Books, Favorites, Loading, SideMenu } from './components'
 import { useBook, useLocalStore } from './hooks'
 import { useMenu } from './store'
@@ -8,17 +9,33 @@ export const App = () => {
   const { getFromLocalStorage } = useLocalStore()
   const { isOpen } = useMenu()
 
-  useEffect(() => {
+  const updateFromLocalStorage = useCallback(() => {
+    const favorites = getFromLocalStorage()
+    setFavoritesFromLocalStore({ updatedFavorites: favorites })
+  }, [getFromLocalStorage, setFavoritesFromLocalStore])
+
+  const handlegetBooks = useCallback(async () => {
     setLoading(true)
-    getBooks()
-      .then(() => {
-        const favorites = getFromLocalStorage()
-        setFavoritesFromLocalStore({ updatedFavorites: favorites })
-      })
-      .finally(() => {
-        setLoading(false)
-      })
-  }, [getBooks, getFromLocalStorage, setFavoritesFromLocalStore, setLoading])
+
+    try {
+      await getBooks()
+      updateFromLocalStorage()
+    } catch (error) {
+      console.error(error)
+    } finally {
+      setLoading(false)
+    }
+  }, [getBooks, setLoading, updateFromLocalStorage])
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    handlegetBooks()
+  }, [handlegetBooks])
+
+  useEffect(() => {
+    window.addEventListener('storage', updateFromLocalStorage)
+    return () => { window.removeEventListener('storage', updateFromLocalStorage) }
+  }, [setFavoritesFromLocalStore, getFromLocalStorage, updateFromLocalStorage])
 
   if (loading) {
     return <Loading />
