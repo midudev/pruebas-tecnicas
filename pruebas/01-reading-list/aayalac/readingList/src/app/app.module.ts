@@ -4,15 +4,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { DragDropModule } from '@angular/cdk/drag-drop'; 
 import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './filter.pipe';
-
-
 import { AppComponent } from './app.component';
 import { CatalogoLibrosComponent } from './catalogo-libros/catalogo-libros.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CatalogoLibrosComponent,
+    CatalogoLibrosComponent,    
     FilterPipe
   ],
   imports: [

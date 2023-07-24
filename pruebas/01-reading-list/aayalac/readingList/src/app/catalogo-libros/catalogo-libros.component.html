@@ -12,18 +12,18 @@
       </div>
       <hr>
       <ul class="grilla-libros" cdkDropList cdkDropListConnectedTo=".lista-lectura" cdkDragBoundary=".lista-lectura">
-        <div *ngFor="let libro of libros | filter: filtroTitulo" class="portada" cdkDrag (dblclick)="moverALectura(libro)">
+        <li *ngFor="let libro of libros | filter: filtroTitulo" class="portada" cdkDrag (dblclick)="moverALectura(libro)">
           <img [src]="libro.book.cover" alt="{{ libro.book.title }} Cover" width="200" height="300">
-        </div>  
-      </ul>      
+        </li>
+      </ul>
     </div>  
       <div class="col-6 col-sm-3">      
         <h2>lista de lectura</h2>
-        <ul class="lista-lectura" class="grilla-lectura"cdkDropList (cdkDropListDropped)="onDrop($event)">
-          <div *ngFor="let libro of listaDeLectura" class="portada" cdkDrag (dblclick)="moverACatalogo(libro)">
+        <ul class="lista-lectura" class="grilla-lectura" cdkDropList (cdkDropListDropped)="onDrop($event)">
+          <li *ngFor="let libro of listaDeLectura" class="portada" cdkDrag (dblclick)="moverACatalogo(libro)">
             <img [src]="libro.book.cover" alt="{{ libro.book.title }} Cover" width="200" height="300">
-          </div>
-        </ul>    
+          </li>
+        </ul>            
       </div>
   </div>
 </div>
