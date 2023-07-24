@@ -114,7 +114,7 @@ export function NoResultState() {
         No se encontraron resultados
       </h3>
       <p className="text-lsm mt-1 text-gray-400">
-        <span className="font-medium">"{text.join(", ")}"</span> no coincidió
+        <span className="font-medium">&quot;{text.join(', ')}&quot;</span> no coincidió
         con ningún resultado. <br /> Inténtalo de nuevo.
       </p>
       <div className="mt-6">

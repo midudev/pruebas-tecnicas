@@ -33,4 +33,6 @@ const GenreSelect = forwardRef(({ ...props }, ref) => {
   );
 });
 
+GenreSelect.displayName = "GenreSelect";
+
 export { GenreSelect };
