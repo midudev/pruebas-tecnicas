@@ -1,10 +1,17 @@
 //import listBooks from '../data/books.json'
 import { filterCat } from "../helpers/filterCat"
+import { removeBook } from "../helpers/removeBook";
 import AddList from "./icon/AddList";
 
-const ListsBooks = ({ data, category, setMyList }) => {
+const ListsBooks = ({ data, category, setMyList, myList, setData }) => {
   //console.log('data: ', listBooks);
   const newFilter = filterCat(data, category);
+
+  const addList = (book) => {
+    console.log('book: ',book);
+    setMyList([...myList, book])
+    setData(removeBook(data, book))
+  }
 
   return (
     <section className='flex flex-wrap gap-5 justify-center w-[80%]'>
@@ -12,15 +19,19 @@ const ListsBooks = ({ data, category, setMyList }) => {
         newFilter.map(item => (
           <div
             key={item.book.ISBN}
-            className='bg-[#C6B1FE] rounded w-[200px] shadow relative card-book'
+            className='bg-[#C6B1FE] rounded w-[200px] shadow relative card-book h-[300px]'
           >
             <img 
-              className='h-[100%] rounded object-cover' 
+              className='h-[100%] w-[100%] rounded object-cover' 
               src={item.book.cover} 
-              alt=""
+              alt={item.book.title}
             />
-            <div>
-
+            <div 
+              className="absolute z-10 top-0 right-0 cursor-pointer text-[#ffc124] hover:text-[#f4b002]"
+              title="Agregar a Lista"  
+              onClick={()=>addList(item)}
+            >
+              <AddList/>
             </div>
 
             <div className='bg-[#B9D9FF] absolute inset-0 -z-10 info-card rounded p-3 pr-8 flex flex-col justify-between'>
