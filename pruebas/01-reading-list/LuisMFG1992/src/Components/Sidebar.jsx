@@ -31,7 +31,7 @@ const Sidebar = ({ handelSidabar, readingList }) => {
               readingList?.map((element) => (
                 <div
                   key={element.book.ISBN}
-                  className="max-w-[130px] max-h-[200px] relative overflow-hidden"
+                  className="max-w-[130px] max-h-[200px] relative overflow-hidden transition-transform active:scale-110"
                   onClick={() => dispatch(addRemoveBookReadingList(element))}
                 >
                   <img src={element.book.cover} className="object-scale-down" />

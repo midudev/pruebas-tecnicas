@@ -18,10 +18,13 @@ const DisplayBooks = ({ booksList, selectedFilters, readingList }) => {
   const filterBooks = filterBooksByGenre(booksList, selectedFilters)
 
   return (
-    <div className="flex flex-wrap  gap-4 p-4 justify-center items-center">
+    <div className="flex flex-wrap gap-4 justify-center items-center">
       {(selectedFilters.length === 0 ? booksList : filterBooks).map(
         (element) => (
-          <div key={element.book.ISBN} className="relative">
+          <button
+            key={element.book.ISBN}
+            className="relative transition-transform active:scale-110"
+          >
             <img
               src={element.book.cover}
               className="w-[200px] h-[300px]"
@@ -38,7 +41,7 @@ const DisplayBooks = ({ booksList, selectedFilters, readingList }) => {
                 size={'2rem'}
               />
             )}
-          </div>
+          </button>
         )
       )}
     </div>

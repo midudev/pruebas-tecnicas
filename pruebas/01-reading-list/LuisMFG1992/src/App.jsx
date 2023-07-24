@@ -39,14 +39,16 @@ function App() {
         </div>
       )}
       <Navbar handelSidabar={handelSidabar} readingList={readingList} />
-      <div className="w-full px-5 pt-20 sm:px-0 max-w-[2000px] min-h-screen flex items-center flex-col">
-        <p>Libros disponibles: {booksList.length - readingList.length}</p>
-        <p>Lista de lectura: {readingList.length}</p>
-        <div className="w-full flex gap-8 p-4 items-center justify-evenly flex-wrap sm:flex-row sm:justify-evenly">
+      <div className="w-full px-5 pt-20 sm:px-0 max-w-[2000px] min-h-screen flex items-center flex-col gap-2">
+        <div className="inline-flex gap-5">
+          <p>Libros disponibles: {booksList.length - readingList.length}</p>
+          <p>Lista de lectura: {readingList.length}</p>
+        </div>
+        <DisplayFilters selectedFilters={selectedFilters} />
+        <div className="w-full flex gap-8 items-center justify-evenly flex-wrap sm:flex-row sm:justify-evenly">
           {/* <SliderFilter /> */}
           <DropDownFilter genres={genres} />
         </div>
-        <DisplayFilters selectedFilters={selectedFilters} />
         <DisplayBooks
           booksList={booksList}
           selectedFilters={selectedFilters}
