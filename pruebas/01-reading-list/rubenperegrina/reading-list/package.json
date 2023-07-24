@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
-    "prepare": "npm husky install",
+    "prepare": "npm i husky",
     "prettier": "npx pretty-quick --staged && npm run lint:fix"
   },
   "private": true,
