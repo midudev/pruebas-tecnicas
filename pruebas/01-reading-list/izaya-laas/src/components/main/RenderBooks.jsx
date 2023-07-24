@@ -1,4 +1,5 @@
-import { filterBooks } from '../../filters/forBook';
+import { filterBooks } from '../../filters/filterBooks';
+import { filterOptions } from '../../signals/inputs.signals';
 import { currentPath, isDark, myReadingListISBN } from '../../signals/store';
 import HasNotBeenFound from './HasNotBeenFound ';
 
@@ -15,7 +16,11 @@ const addBookToReadingList = (ISBN) => {
 };
 
 const RenderBooks = ({ books }) => {
-  const filterBooksData = filterBooks(books);
+  const filterBooksData = filterBooks(
+    books,
+    filterOptions.value,
+    myReadingListISBN.value,
+  );
 
   if (filterBooksData.length === 0) return <HasNotBeenFound />;
 
