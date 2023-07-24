@@ -8,10 +8,10 @@
 - [x] Filtros: número de páginas y tipo de libro (17/07/2023)
 - [x] Lista de lectura (18/07/2023)
 - [x] Persistencia en localstorage (19/07/2023)
-- [ ] Sincronización de pestañas https://www.threads.net/@midu.dev/post/CumWgyPN89G
-- [ ] Test
-- [ ] Despliegue en Vercel
+- [x] Sincronización de pestañas https://www.threads.net/@midu.dev/post/CumWgyPN89G (20/07/2023)
+- [x] Test (21/07/2023)
 - [ ] Mejorar estilos
+- [ ] Despliegue en Vercel
 
 ## Como levantar el proyecto
 

@@ -27,7 +27,7 @@ const Book = ({ data }) => {
           onClick={() => {
             handleClick(data.ISBN)
           }}
-          className='cursor-pointer'
+          className='cursor-pointer max-h-[300px] object-cover rounded-md'
         />
       </p>
     </>

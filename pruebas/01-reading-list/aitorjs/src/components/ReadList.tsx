@@ -14,12 +14,29 @@ const ReadList = () => {
 
   return (
     <>
-      <span>Lista de lectura ({wantReadBooks.length})</span>
-      {wantReadBooks.map(({ book }) => (
-        <p key={book.ISBN}>
-          - {book.title} <a onClick={() => handleClick(book.ISBN)}>Cerrar</a>
-        </p>
-      ))}
+      <p className='text-2xl pb-4 font-medium flex items-center gap-4'>
+        <span>Lista de lectura</span>
+        <span className='px-2 py-1 text-xs font-bold leading-none text-purple-100 bg-purple-600 rounded-full'>
+          {wantReadBooks.length}
+        </span>
+      </p>
+
+      <div className='flex flex-wrap gap-4 flex-row w-[250px]'>
+        {wantReadBooks.map(({ book }) => (
+          <span key={book.ISBN}>
+            <img
+              src={book.cover}
+              width={200}
+              height={200}
+              alt='alt image'
+              onClick={() => {
+                handleClick(book.ISBN)
+              }}
+              className='cursor-pointer max-w-[100px] object-cover rounded-md'
+            />
+          </span>
+        ))}
+      </div>
     </>
   )
 }
