@@ -24,15 +24,21 @@ export function AvailableBooksProvider({children}){
         return ()=> window.removeEventListener('storage',handleStorageChange)
     },[])
 
-    function filterByGenre(wantedGenre){
-        (wantedGenre==="")
-        ? setAvailableBooks(BooksData.library)
-        : setAvailableBooks(BooksData.library.filter(book=>book.book.genre === wantedGenre))
-    }
-
-    function filterByTitle(bookName){
-        setAvailableBooks(BooksData.library.filter(book=>book.book.title.toLowerCase().includes(bookName.toLowerCase())))
-    }
+    function handleFilters(filters) {
+        return availableBooks.filter(({ book }) => {
+          if (filters.genre && filters.title) {
+            return book.genre === filters.genre && book.title.toLowerCase().includes(filters.title.toLowerCase());
+          }
+          else if (filters.genre) {
+            return book.genre === filters.genre;
+          }
+          else if (filters.title) {
+            return book.title.toLowerCase().includes(filters.title.toLowerCase());
+          }
+          return true;
+        });
+      }
+      
 
     function removeBookFromAvailable(bookCode){
         const newArray = availableBooks.filter(book=>book.book.ISBN !== bookCode)
@@ -41,13 +47,13 @@ export function AvailableBooksProvider({children}){
     }
 
     function addBookToAvailable(book){
-        const newArray = [...availableBooks,{book:book}]
+        const newArray = [...JSON.parse(localStorage.getItem(AVAILABLE_BOOKS)),{book:book}]
         setAvailableBooks(newArray)
         localStorage.setItem(AVAILABLE_BOOKS,JSON.stringify(newArray))
     }
 
 
-    return <AvailableBooksContext.Provider value={{availableBooks,filterByGenre,filterByTitle,removeBookFromAvailable,addBookToAvailable}}>
+    return <AvailableBooksContext.Provider value={{availableBooks,removeBookFromAvailable,handleFilters,addBookToAvailable}}>
         {children}
     </AvailableBooksContext.Provider>
 }

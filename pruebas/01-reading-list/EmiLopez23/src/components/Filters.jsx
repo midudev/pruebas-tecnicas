@@ -1,16 +1,14 @@
-import { useAvailableBooksContext } from "../context/AvailableBooksContext"
 import { getGenresFromJson } from "../utils/BookUtils"
 
-export default function Filters(){
+export default function Filters({handleFilters}){
     const genres = getGenresFromJson()
-    const {filterByGenre,filterByTitle} = useAvailableBooksContext()
 
     function handleGenreFilterChange(event){
-        filterByGenre(event.target.value)
+        handleFilters(prevState=>({...prevState,genre:event.target.value}))
       }
     
     function handleTitleFilterChange(event){
-        filterByTitle(event.target.value)
+      handleFilters(prevState=>({...prevState,title:event.target.value}))
     }
     return <div className="filters">
         <input type='text' onChange={handleTitleFilterChange} placeholder='Harry Potter' className='input-text'/>

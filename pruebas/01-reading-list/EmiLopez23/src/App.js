@@ -7,21 +7,24 @@ import { useState } from 'react';
 import { useReadingListContext } from './context/ReadingListContext';
 
 function App() {
-  const {availableBooks} = useAvailableBooksContext()
+  const {handleFilters} = useAvailableBooksContext()
   const {booksToRead} = useReadingListContext()
   const [showReadingList,setShowReadingList] = useState(false)
+  const [filters,setFilters] = useState({genre:'',title:''})
+  const filteredBooks = handleFilters(filters)
 
+  
   
   return (
     <div className="App">
       <main className="body">
-        <h1>Available books: {availableBooks.length}</h1>
+        <h1>Available books: {filteredBooks.length}</h1>
         <h3>Books in reading list: {booksToRead.length} </h3>
         <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',width:'100%', flexWrap:'wrap-reverse',gap:'10px'}}>
-        <Filters />
+        <Filters handleFilters={setFilters}/>
         <button className='reading-list-btn' onClick={()=>setShowReadingList(!showReadingList)}>Reading List</button>
         </div>
-        <ListOfBooks showReadingList={setShowReadingList}/>
+        <ListOfBooks books={filteredBooks} showReadingList={setShowReadingList}/>
       </main>
       {showReadingList && <BooksToRead showReadingList={setShowReadingList}/>}
     </div>
