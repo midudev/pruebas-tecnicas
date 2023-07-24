@@ -15,7 +15,7 @@ const Library = () => {
 
   useEffect(() => {
     getBooks()
-  }, [getBooks])
+  }, [])
 
   return (
     <article className={`${bookSelected && "flex flex-row w-full"} gap-4`}>
