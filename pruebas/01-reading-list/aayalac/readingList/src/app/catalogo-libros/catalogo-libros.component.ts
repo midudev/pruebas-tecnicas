@@ -10,11 +10,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 export class CatalogoLibrosComponent implements OnInit {
   libros: any[] = [];
   listaDeLectura: any[] = [];
-  librosFiltrados: any[] = []; // Arreglo para almacenar los libros filtrados por título
-  busqueda: string = ''; // Variable para almacenar el término de búsqueda por título
-  librosFiltradosPorGenero: any[] = []; // Arreglo para almacenar los libros filtrados por género
-  busquedaPorGenero: string = ''; // Variable para almacenar el término de búsqueda por género
-
+  filtroTitulo = '';
 
   constructor(private http: HttpClient) { }
 

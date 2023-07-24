@@ -7,11 +7,15 @@
       <h3>Libros disponibles: {{ libros.length }}</h3> <!-- Mostrar el número de libros en la grilla de catálogo -->
       <p>Libros en la lista de lectura: {{ listaDeLectura.length }}</p> <!-- Mostrar el número de libros en la lista de lectura -->
       <p>Dale doble clic a los libros que deseas leer.</p> 
-      <ul class="grilla-libros"cdkDropList cdkDropListConnectedTo=".lista-lectura" cdkDragBoundary=".lista-lectura">
-        <div *ngFor="let libro of libros" class="portada" cdkDrag (dblclick)="moverALectura(libro)">
+      <div class="col">
+        <input type="text" [(ngModel)]="filtroTitulo" placeholder="Buscar por título">
+      </div>
+      <hr>
+      <ul class="grilla-libros" cdkDropList cdkDropListConnectedTo=".lista-lectura" cdkDragBoundary=".lista-lectura">
+        <div *ngFor="let libro of libros | filter: filtroTitulo" class="portada" cdkDrag (dblclick)="moverALectura(libro)">
           <img [src]="libro.book.cover" alt="{{ libro.book.title }} Cover" width="200" height="300">
         </div>  
-      </ul>
+      </ul>      
     </div>  
       <div class="col-6 col-sm-3">      
         <h2>lista de lectura</h2>
