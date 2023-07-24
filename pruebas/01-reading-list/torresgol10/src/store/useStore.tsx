@@ -3,8 +3,7 @@ import { persist, createJSONStorage, subscribeWithSelector } from 'zustand/middl
 import { share } from "shared-zustand";
 
 import type { Library } from './../types';
-/* importa del json books y extrae librery para no tener un dependencia de ellos, solo quiero el listado books*/
-import { library } from '../../../books.json'
+import { getBooks } from '../services/getBooks';
 
 type Store = {
     store: Library,
@@ -17,7 +16,7 @@ export const useStore = create<Store>()(
     subscribeWithSelector(
         persist(
             (set) => ({
-                store: library,
+                store: getBooks(),
                 //Variable para almacenar los libros leidos, inicialmente vacia
                 storeRead: [],
                 //Funcion para añadir libros leidos, recibe el ISBN del libro, lo busca en la lista de libros y lo añade a la lista de libros leidos, luego lo elimina de la lista de libros
@@ -36,8 +35,8 @@ export const useStore = create<Store>()(
                 })
             }),
             {
-                name: 'books-storage', // name of the item in the storage (must be unique)
-                storage: createJSONStorage(() => localStorage), // (optional) by default, 'localStorage' is used
+                name: 'books-storage', // nombre del elemento en el storage (debe ser único)
+                storage: createJSONStorage(() => localStorage), // el storage a usar "localStorage"
             }
         )
     )
