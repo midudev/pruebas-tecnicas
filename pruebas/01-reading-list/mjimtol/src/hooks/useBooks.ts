@@ -79,7 +79,7 @@ export const useBooks = () => {
                 if (i >= 0) arr[i].selected = true;
             });
         }
-console.log(arr)
+        
         setLibrosDisponibles(arr)
         setGeneros(() =>{ return Array.from(new Set(arr.map((item) => item.genre)))})
     },[])

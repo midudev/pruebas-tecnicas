@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build:prod": "vite build --base=/pruebastecnicas/readinglist/",
-    "preview": "vite preview"
+    "test": "vitest --watch"
   },
   "dependencies": {
     "preact": "10.15.1"
@@ -17,6 +17,10 @@
     "@typescript-eslint/parser": "6.1.0",
     "eslint": "8.45.0",
     "typescript": "5.0.2",
-    "vite": "4.4.0"
+    "vite": "4.4.0",
+    "@testing-library/jest-dom": "5.17.0",
+    "@testing-library/preact": "3.2.3",
+    "jsdom": "22.1.0",
+    "vitest": "0.33.0"
   }
 }
