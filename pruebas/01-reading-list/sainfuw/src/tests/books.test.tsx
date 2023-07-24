@@ -41,13 +41,21 @@ describe('App', () => {
     expect(select.length).toEqual(genres.length + 1)
   })
 
+  it('book list should be removed from list when clicked', () => {
+    render(<App />)
+    const ul = screen.getByRole('list')
+    const buttons = ul.querySelectorAll('button')
+    const length = buttons.length
+    fireEvent.click(buttons[0])
+    expect(ul.querySelectorAll('button').length).toEqual(length - 1)
+  })
+
   it('readlist should be visible when click on a book button', () => {
     render(<App />)
     const buttons = screen.getAllByRole('button')
-    let uls = screen.getAllByRole('list')
-    expect(uls.length).toBe(1)
+    const uls = screen.getAllByRole('list')
     fireEvent.click(buttons[0])
-    uls = screen.getAllByRole('list')
-    expect(uls.length).toBe(2)
+    const itemsOnReadList = uls[1].querySelectorAll('li').length
+    expect(itemsOnReadList).greaterThan(0)
   })
 })
