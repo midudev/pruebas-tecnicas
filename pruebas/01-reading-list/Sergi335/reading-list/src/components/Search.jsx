@@ -37,7 +37,7 @@ export default function Search ({ books }) {
   const [key, setKey] = useState(1)
   const cleanSearch = (event) => {
     if (visible && event.target.nodeName !== 'BUTTON') {
-      console.log(event.target)
+      // console.log(event.target)
       setVisible(false)
       setKey((prevKey) => prevKey + 1)
     }
