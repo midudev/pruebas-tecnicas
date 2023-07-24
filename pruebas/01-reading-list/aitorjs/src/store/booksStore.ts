@@ -3,7 +3,7 @@ import booksJson from '../books.json'
 import { Book, BooksState } from '../types'
 import { persist } from 'zustand/middleware'
 
-type StoreWithPersist = Mutate<StoreApi<BooksState>, [['zustand/persist', unknown]]>
+type StoreWithPersist = Mutate<StoreApi<BooksState>, [['zustand/persist', BooksState]]>
 
 export const withStorageDOMEvents = (store: StoreWithPersist) => {
   const storageEventCallback = (e: StorageEvent) => {
@@ -20,7 +20,7 @@ export const withStorageDOMEvents = (store: StoreWithPersist) => {
   }
 }
 
-export const useBooksStore = create<any>(persist(
+export const useBooksStore = create<BooksState>()(persist(
   (set, get) => ({
     books: [],
     filteredBooks: [],

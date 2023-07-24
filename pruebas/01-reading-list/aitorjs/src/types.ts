@@ -2,11 +2,15 @@
     library: Book[]
 } */
 
+interface Filters {
+  [key: string]: any
+}
+
 export interface BooksState {
   wantReadBooks: Book[]
   filteredBooks: Book[]
   books: Book[]
-  filters: {}
+  filters: Filters
   getBooks: () => void
   setBooks: (book: Book[]) => void
   filter: (name: string, value: string | number) => void
