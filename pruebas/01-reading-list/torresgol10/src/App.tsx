@@ -1,12 +1,11 @@
 import './App.css'
 import Aside from './components/Aside'
-import { useStore } from './store/useStore'
-
+import useBooks from './hooks/useBooks'
 
 function App() {
-  const { store, storeRead, addRead, filterByGenre } = useStore()
+  const { store, storeRead, genres, addRead, filterByGenre } = useBooks()
 
-  
+  console.log(genres)
   return (
     <>
       <main className='p-4'>
@@ -16,9 +15,10 @@ function App() {
               <legend className='text-lg font-bold'>Filtrar por:</legend>
               <div className='flex gap-2'>
                 <label htmlFor='genre'>Genero</label>
-                <select name='genre' id='genre' onChange={ (e) => filterByGenre(e.target.value) }>
-                  {store.map(({ book }) => (
-                    <option key={book.ISBN} value={book.genre}>{book.genre}</option>
+                <select name='genre' id='genre' onChange={(e) => filterByGenre(e.target.value)}>
+                  <option value=''>Todos</option>
+                  {genres.map((genre: string, index: number) => (
+                    <option key={index} value={genre}>{genre}</option>
                   ))}
                 </select>
               </div>
@@ -26,7 +26,7 @@ function App() {
 
             <input type='text' className='border-4' placeholder='Buscar' />
           </form>
-        </section>
+        </section> 
         <section>
           <h1>{store.length} Libros Disponibles</h1>
           <div className='grid grid-flow-col gap-4' style={{ gridTemplateColumns: "repeat(auto-fit, minmax(300px,1fr))" }}>

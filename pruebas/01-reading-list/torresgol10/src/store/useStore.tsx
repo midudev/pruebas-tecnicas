@@ -8,7 +8,7 @@ type Store = {
     storeRead: Library,
     addRead: (ISBN: string) => void,
     removeRead: (ISBN: string) => void
-    filterByGenre: (genre: string) => void
+    //filterByGenre: (genre: string) => void
 }
 
 
@@ -29,12 +29,6 @@ export const useStore = create<Store>()((set) => ({
         return {
             store: [...state.store, state.storeRead.find(({ book }) => book.ISBN === ISBN)],
             storeRead: state.storeRead.filter(({ book }) => book.ISBN !== ISBN)
-        }
-    }),
-    //Funcion para filtrar la store paandole un genero por parametro
-    filterByGenre: (genre) => set((state) => {
-        return {
-            store: state.store.filter(({ book }) => book.genre === genre)
         }
     })
 }))

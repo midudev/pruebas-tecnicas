@@ -1,7 +1,7 @@
-import { useStore } from "../store/useStore"
+import useBooks from "../hooks/useBooks"
 
 export default function Aside() {
-    const { storeRead, removeRead } = useStore()
+    const { storeRead, removeRead } = useBooks()
     
     return (
         <aside className='max-w-sm h-max min-h-screen px-4 pb-4 bg-slate-300'>
