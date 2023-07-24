@@ -11,7 +11,7 @@ export default function Header() {
   const { filterBooks } = useFilters()
   const filteredBooks = filterBooks()
 
-  const title = Array.from('BookStore')
+  const title = Array.from('miduBooks')
 
   return (
     <header className='flex flex-col items-center justify-between px-8 mt-8 md:flex-row-reverse'>
@@ -24,7 +24,7 @@ export default function Header() {
         {title.map((letter, index) => (
           <motion.span
             key={index}
-            className="text-8xl lg:text-9xl font-pp"
+            className="text-7xl lg:text-9xl font-pp"
             variants={child}
             whileHover={{ color: `#67dcf8`, textDecoration: 'underline', scale: 2 }}
           >
@@ -32,7 +32,7 @@ export default function Header() {
           </motion.span>
         ))}
       </motion.div>
-      <section className="flex flex-col-reverse gap-6 p-6 rounded-lg bg-background-light text-primary md:flex-row">
+      <section className="flex flex-col-reverse w-full gap-6 p-6 rounded-lg bg-background-light text-primary md:flex-row md:w-auto">
         <Filters />
         <div className="flex flex-col min-w-[240px] justify-center gap-1 bg-blue-600 bg-opacity-10 p-4 rounded-lg">
           <h3 className="flex justify-between font-pop">

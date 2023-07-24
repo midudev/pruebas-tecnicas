@@ -19,7 +19,7 @@ export function Filters() {
     <section className="flex flex-col items-center justify-center gap-4">
       <div className="flex flex-col gap-2 w-[160px]">
         <label htmlFor={pageId} className="flex justify-between text-xs font-pop">
-          <span>Maximo de Paginas:</span>
+          <span>Maximum Pages:</span>
           <span> {filters.pages}</span>
         </label>
         <input

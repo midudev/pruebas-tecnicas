@@ -20,7 +20,7 @@ describe('App', () => {
 
   it('should be render header', () => {
     render(<App />)
-    screen.getByText(/maximo de paginas/i)
+    screen.getByText(/maximum pages/i)
   })
 
   it('should be render book list', () => {
@@ -29,7 +29,7 @@ describe('App', () => {
     expect(ul).toBeVisible()
 
     const { books } = useBooks()
-    const buttons = screen.getAllByRole('button')
+    const buttons = ul.querySelectorAll('button')
     expect(buttons.length).toEqual(books.length)
   })
 

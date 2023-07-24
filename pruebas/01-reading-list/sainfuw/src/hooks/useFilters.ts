@@ -10,7 +10,16 @@ export function useFilters() {
   const { filters, setFilters } = useContext(FiltersContext)
 
   function filterBooks(): IBook[] {
-    return books.filter(book => {
+    const filterBySearch = (filters.search) ? (
+      books.filter(book => {
+        return (
+          book.title.toLowerCase().includes(filters.search.toLowerCase()) ||
+          book.author.name.toLowerCase().includes(filters.search.toLowerCase())
+        )
+      })
+    ) : books
+
+    return filterBySearch.filter(book => {
       return (
         book.pages >= filters.pages &&
         (filters.genre === 'all' || book.genre === filters.genre) &&
