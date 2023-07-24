@@ -3,7 +3,7 @@
 URL https://pruebas-tecnicas-psi.vercel.app 🔗
 
 <p align="center">
-  <a href="https://pruebas-tecnicas-psi.vercel.app" target="_blank"><img src="https://github.com/rubenperegrina/pruebas-tecnicas/blob/ad3e3905ee3bef3e996f5484b00cb6b9549260c9/pruebas/01-reading-list/rubenperegrina/reading-list/public/readme-img.PNG" alt="Reading list app"></a>
+  <a href="https://pruebas-tecnicas-psi.vercel.app" target="_blank"><img src="https://github.com/rubenperegrina/pruebas-tecnicas/blob/67b9f63700854ca10f7ed8d0b00aeba191e933b3/pruebas/01-reading-list/rubenperegrina/reading-list/public/readme-img.PNG" alt="Reading list app"></a>
   <br/><br/>
 </p>
 
