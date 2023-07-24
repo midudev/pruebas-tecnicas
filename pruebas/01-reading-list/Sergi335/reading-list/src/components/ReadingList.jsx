@@ -25,16 +25,21 @@ export default function ReadingList ({ isOpen, togglePanel }) {
   }, [isOpen])
   const visible = 'block'
   return (
-        <section ref={panelRef} className={panelClass + ' readingList bg-slate-50 border-l 2xl:w-[34vw] p-8 fixed top-[146px] right-0 transition-transform h-[89vh] overflow-y-scroll shadow-md dark:bg-[#331D2C] dark:border-[darkslategray] dark:text-gray-400'}>
+        <section ref={panelRef} className={panelClass + ' readingList bg-slate-50 border-l 2xl:w-[34vw] p-8 fixed top-[146px] right-0 transition-transform h-[89vh] overflow-y-scroll shadow-md dark:bg-[#331D2C] dark:border-[darkslategray] dark:text-gray-400 w-[100%]'}>
           <header className='flex justify-between'>
             <h2>Lista De Lectura</h2>
             <span>Tienes {list.length} libros</span>
           </header>
-          <ul className=' w-[100%] h-auto flex flex-wrap gap-8 p-0 justify-center pt-12'>
+          {
+            list.length > 0
+              ? (<ul className=' w-[100%] h-auto flex flex-wrap gap-8 p-0 justify-center pt-12'>
             {list.map(item => (
                 <Book key={item.book.ISBN} removeFromList={() => removeFromList(item)} item={item} className={visible} />
             ))}
-          </ul>
+          </ul>)
+              : <h1 className='relative top-[40%]'>No tienes ningún libro, añade algunos!! 📚🤓</h1>
+          }
+
         </section>
   )
 }

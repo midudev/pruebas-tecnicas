@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { library } from '../data/books.json'
 import { ReadingListContext, ReadingListProvider } from './context/ReadListContext'
 import { BookIconOnly } from './components/BookIconOnly'
@@ -8,6 +8,8 @@ import ReadingList from './components/ReadingList'
 import BookIcon from './components/ToggleButton'
 import Illustration from './components/Illustration'
 import ThemeSwitch from './components/ThemeSwitch'
+import Modal from './components/Modal'
+import Search from './components/Search'
 import './App.css'
 
 function App () {
@@ -16,21 +18,6 @@ function App () {
     genre: 'all',
     pages: 0
   })
-  // Estado del tema
-  const [theme, setTheme] = useState(
-    JSON.parse(localStorage.getItem('theme')) || 'light')
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark')
-      localStorage.setItem('theme', JSON.stringify('dark'))
-    } else {
-      document.documentElement.classList.remove('dark')
-      localStorage.setItem('theme', JSON.stringify('light'))
-    }
-  }, [theme])
-  const handleThemeSwitch = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark')
-  }
   // Estado del panel
   const [isOpen, setIsOpen] = useState(false)
   const togglePanel = () => {
@@ -69,19 +56,20 @@ function App () {
           const total = calculateNumberOfBooks(number, list)
           return (
             <>
-              <header className='fixed top-0 z-10 w-full flex 2xl:justify-center 2xl:gap-[50%] bg-white
+              <header className='fixed top-0 z-10 w-full flex 2xl:justify-center 2xl:gap-[17%] bg-white
                items-center left-0 py-[20px] px-0 2xl:px-[150px] dark:bg-[#331D2C] dark:text-gray-300 justify-around'>
                 <p className='font-bold text-xl'><BookIconOnly className="absolute left-[26%] 2xl:left-[22%] top-[22px]"/>Books<span className='font-normal'>Inc</span></p>
+                <Search books={library}/>
                 <div className='flex gap-6'>
-                  <ThemeSwitch changeTheme={handleThemeSwitch}/>
+                  <ThemeSwitch />
                   {/* Componente botón con icono */}
                     <BookIcon togglePanel={togglePanel} booksInList={list.length}/>
                   <h2 id='title' className='hidden 2xl:block'>Colección de libros</h2>
                 </div>
               </header>
-              <main className='my-0 mt-52 mx-auto w-[100%]'>
-                <section className='filters bg-white z-10 mb-20 flex items-center fixed left-0 w-screen top-[68px] 2xl:py-[20px] p-0 border-slate-100 border-y 2xl:gap-[30%] dark:bg-[#331D2C] dark:text-gray-300 dark:border-[darkslategray] justify-center flex-col 2xl:flex-row py-[15px]'>
-                  <p className='w-[250px] border-slate-100 2xl:border py-[5px] shadow-sm rounded dark:border-[darkslategray] dark:bg-[#100c18]'>Libros Disponibles: <span className=' inline-block w-[30px]'>{total}</span></p>
+              <main className='my-0 mt-60 mx-auto w-[100%] 2xl:min-h-[79vh]'>
+                <section className='filters bg-white z-10 mb-20 flex items-center fixed left-0 w-screen top-[68px] 2xl:py-[20px] p-0 border-slate-100 border-y 2xl:gap-[30%] 2xl:dark:bg-[#331D2C] dark:text-gray-300 dark:border-[darkslategray] justify-center flex-col 2xl:flex-row py-[15px] dark:bg-[#100c18]'>
+                  <p className='w-[250px] border-slate-100 2xl:border py-[5px] 2xl:shadow-sm rounded dark:bg-[#100c18] dark:2xl:border-0'>Libros Disponibles: <span className=' inline-block w-[30px]'>{total}</span></p>
                   {/* Componente filtro */}
                   <Filter changeFilters={setFilters} />
                 </section>
@@ -96,8 +84,9 @@ function App () {
                   {/* Componente lista de lectura */}
                   <ReadingList isOpen={isOpen} togglePanel={togglePanel} />
                 </section>
+              <Modal list={list}/>
               </main>
-              <footer className='w-full bg-gray-50 dark:bg-[#331D2C] dark:text-gray-300 flex justify-center items-end pb-4 min-h-[30vh]'>
+              <footer className='w-full bg-gray-50 dark:bg-[#331D2C] dark:text-gray-300 flex justify-center items-center min-h-[5vh]'>
                 <p> 👋 Sergio Sánchez</p>
               </footer>
             </>

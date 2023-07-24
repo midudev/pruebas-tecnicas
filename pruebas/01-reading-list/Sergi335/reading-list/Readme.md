@@ -8,10 +8,21 @@
 
 🆗 Persistencia de Datos: La aplicación debe persistir los datos de la lista de lectura en el almacenamiento local del navegador. Al recargar la página, la lista de lectura debe mantenerse.
 
-Sincronización entre pestañas: Si el usuario abre la aplicación en dos pestañas diferentes, los cambios realizados en una pestaña deben reflejarse en la otra. Sin necesidad de usar Backend. -> Sincronizar filtros y tema?
+🆗 Sincronización entre pestañas: Si el usuario abre la aplicación en dos pestañas diferentes, los cambios realizados en una pestaña deben reflejarse en la otra. Sin necesidad de usar Backend. -> Sincronizar filtros?
 
 Despliegue: La aplicación debe estar desplegada en algún servicio de hosting gratuito (Netlify, Vercel, Firebase, etc) y debe ser accesible a través de una URL pública. Indica la URL en el README.
 
 🆗 Test: La aplicación debe tener AL MENOS un test. Haz el test que consideres más importante para tu aplicación.
 
--- Botón de reset filters, imagen lista lectura vaciada
+-- Búsqueda?
+
+Consejos sobre el código
+Estructura del código: El código debe estar bien organizado y fácil de leer.
+
+Semántica HTML: El HTML debe ser semántico y accesible.
+
+Pensando en equipo: Prepara tu proyecto pensando que cualquier persona de tu equipo puede tener que trabajar en él en el futuro. (scripts en el package.json, mínima documentación en el README, comentarios en el código si es necesario, etc)
+
+Formatea tu código: Asegúrate de que tu código está formateado de forma consistente. Puedes usar Prettier o cualquier otra herramienta que te guste.
+
+Preparado para producción: Asegúrate de que tu aplicación está lista para producción. Minimiza el código, optimiza las imágenes, etc.

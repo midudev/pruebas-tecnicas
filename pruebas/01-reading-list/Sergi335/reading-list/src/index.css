@@ -35,6 +35,22 @@ html.dark .readingList::-webkit-scrollbar-thumb {
 html.dark body {
   background-color: #3F2E3E;
 }
+html.dark input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 10px 0;
+}
+html.dark input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000031;
+  border: 1px solid rgb(55 65 81);
+  height: 15px;
+  width: 15px;
+  border-radius: 23px;
+  background: whitesmoke;
+  -webkit-appearance: none;
+  margin-top: 1px;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -87,7 +103,7 @@ button {
   visibility: hidden;
 }
 .toggle input[type="checkbox"]:checked + label {
-  background: teal;
+  background: #100c18;
 }
 .toggle input[type="checkbox"]:checked + label:after {
   left: calc(100% - 2px);
@@ -97,7 +113,7 @@ button {
   cursor: pointer;
   width: 75px;
   height: 28px;
-  background: rgba(0, 0, 0, 0.27);
+  background: rgb(229 231 235);
   display: block;
   border-radius: 40px;
   position: relative;
