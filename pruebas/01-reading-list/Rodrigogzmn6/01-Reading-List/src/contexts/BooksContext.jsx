@@ -6,7 +6,12 @@ const BooksContextProvider = ({ children }) => {
   const [books, setBooks] = useState([]);
   const [readingList, setReadingList] = useState([]);
   const [genders, setGenders] = useState(["All"]);
-  const [filter, setFilter] = useState("All");
+  const [filter, setFilter] = useState({
+    gender: "All",
+    minPages: 0,
+    title: "",
+  });
+  const [booksPages, setBooksPages] = useState([]);
 
   useEffect(() => {
     Books.library.forEach((book) => {
@@ -15,6 +20,9 @@ const BooksContextProvider = ({ children }) => {
       }
     });
 
+    const pagesArray = Books.library.map((book) => book.book.pages);
+    setBooksPages(pagesArray);
+
     window.addEventListener("storage", () => {
       setLists();
     });
@@ -22,8 +30,6 @@ const BooksContextProvider = ({ children }) => {
     return () => {
       window.removeEventListener("storage", () => {});
     };
-
-    // checkLocalStorage();
   }, [books, readingList]);
 
   useEffect(() => {
@@ -95,6 +101,7 @@ const BooksContextProvider = ({ children }) => {
         moveToLibrary,
         filter,
         filterLibraryBooks,
+        booksPages,
       }}
     >
       {children}
