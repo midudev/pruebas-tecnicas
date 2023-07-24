@@ -8,6 +8,8 @@ type Props = {
 }
 
 export const ReadingList = component$(({ books, onBookSelect }: Props) => {
+  const booksCount = pluralize("book", books.length)
+
   return (
     <aside class="bg-blue-950 px-8 p-4 max-w-full overflow-auto">
       <ul
@@ -40,10 +42,9 @@ export const ReadingList = component$(({ books, onBookSelect }: Props) => {
           ))
         )}
       </ul>
+
       <p>
-        <span class="text-white">
-          {pluralize("book", books.length)} in reading list
-        </span>
+        <span class="text-white">{booksCount} in reading list</span>
       </p>
     </aside>
   )
