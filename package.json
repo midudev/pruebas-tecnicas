@@ -24,6 +24,7 @@
     "@astrojs/tailwind": "^4.0.0",
     "@sentry/vite-plugin": "^2.4.0",
     "astro": "^2.9.2",
+    "globby": "^13.2.2",
     "yarn": "^1.22.19"
   }
 }
