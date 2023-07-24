@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/midudev/pruebas-tecnicas#readme",
   "dependencies": {
-    "astro": "^2.9.2"
+    "astro": "^2.9.2",
+    "yarn": "^1.22.19"
   }
 }
