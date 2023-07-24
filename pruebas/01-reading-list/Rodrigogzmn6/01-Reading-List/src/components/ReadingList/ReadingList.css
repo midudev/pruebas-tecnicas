@@ -11,7 +11,7 @@
 
 @media screen and (min-width: 1024px) {
   .reading-list-books div:not(:first-child) {
-    margin-top: -200px;
+    margin-top: -250px;
     margin-left: 0px;
   }
 }
