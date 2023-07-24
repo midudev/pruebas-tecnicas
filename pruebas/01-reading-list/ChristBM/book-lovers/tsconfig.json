@@ -23,7 +23,15 @@
     "paths": {
       "@public/*": ["public/*"],
       "@common/*": ["src/common/*"],
-      "@app/*": ["src/app*"],
+      "@commonApi/*": ["src/common/api/*"],
+      "@commonComponents/*": ["src/common/components/*"],
+      "@commonContext/*": ["src/common/context/*"],
+      "@commonHooks/*": ["src/common/hooks/*"],
+      "@commonStyles/*": ["src/common/styles/*"],
+      "@websiteApi/*": ["src/modules/BookLoverWebsite/api/*"],
+      "@websiteViews/*": ["src/modules/BookLoverWebsite/presentation/views/*"],
+      "@websiteComponents/*": ["src/modules/BookLoverWebsite/presentation/components/*"],
+      "@websiteUtils/*": ["src/modules/BookLoverWebsite/utils/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

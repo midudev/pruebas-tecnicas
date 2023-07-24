@@ -1,34 +1,41 @@
+# Book-Lovers
+
+It is a simple Next.js 13 application with TypeScript created to solve [the technical test #1](https://github.com/midudev/pruebas-tecnicas) of the page [https://pruebastecnicas.com/](https://pruebastecnicas.com/)
+
+Note:
+- The environment variable used is in the .env.example file, and you only need to rename the file to .env.local
+
+- In a more serious project, this variable should not be in the repository.
+
+## Steps to run the app locally and more.
+
+1- Cloning the repository: ```git clone ...```
+
+2- Install dependencies: ```yarn install```
+
+3- Run the development server: ```yarn dev``` and open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+4- Static tests with ESlint: ```yarn lint``` and ESlint fix: ```yarn lint:fix``` for the rules with automatic fixing.
+
+5- Run all tests and generate coverage: ```yarn test:ci```
+
+6- Build the application: ```yarn build``` and run it locally with: ```yarn start```, then you can open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Future tasks.
+
+[ ] Using Tailwind instead of CSS.
+
+[ ] Test the entire application.
+
+[ ] Allow reorganization of books in the reading list by priority.
+
+[ ] Create a page to view book details.
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Licencia :unlock:
 
-First, run the development server:
+Copyright © 2023 [Christian Boffill](https://github.com/ChristBM)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is [MIT](https://choosealicense.com/licenses/mit/) licensed

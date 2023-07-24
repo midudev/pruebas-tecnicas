@@ -1,0 +1,25 @@
+.container {
+  width: max-content;
+  height: max-content;
+  margin: 0;
+  position: relative;
+  user-select: none;
+}
+
+.remove_card_btn {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  z-index: 1;
+}
+
+.cover_container {
+  width: 126px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.cover {
+  width: 126px;
+  height: 200px;
+}

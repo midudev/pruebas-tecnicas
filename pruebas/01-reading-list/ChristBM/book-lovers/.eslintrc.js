@@ -71,6 +71,7 @@ module.exports = {
         lang: 'en_US',
         skipWords: [
           'gql',
+          'ssl',
           'glb',
           'fov',
           'jsx',
@@ -92,6 +93,7 @@ module.exports = {
           'href',
           'rect',
           'func',
+          'utf8',
           'devs',
           'proj',
           'ecma',
@@ -115,6 +117,7 @@ module.exports = {
           'pathname',
           'noopener',
           'linebreak',
+          'blockquote',
           'noreferrer',
           'tailwindcss',
           'webmanifest',
