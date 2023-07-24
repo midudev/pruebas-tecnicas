@@ -1,0 +1,49 @@
+.Filter {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.FilterLabel {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  color: #2c1810;
+}
+
+.InputRange {
+  -webkit-appearance: none;
+  appearance: none; 
+  width: 200px;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.InputRange::-webkit-slider-runnable-track {
+  height: 15px;
+  background: #daaa63;
+  border-radius: 16px;
+}
+
+.InputRange::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none; 
+  height: 15px;
+  width: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 2px solid #2c1810;
+  box-shadow: -407px 0 0 400px #2c1810;
+}
+
+.InputRange:active {
+	cursor: grabbing;
+}
+
+.InputRange:disabled {
+	filter: grayscale(1);
+	opacity: 0.3;
+	cursor: not-allowed;
+}

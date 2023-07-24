@@ -1,0 +1,15 @@
+.CarouselBooks {
+  width: 57%;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  cursor: grab;
+  overflow: hidden;
+  transform: translateY(10%);
+}
+
+.BooksContainer {
+  display: flex;
+  padding-right: 30px;
+  gap: 30px;
+}

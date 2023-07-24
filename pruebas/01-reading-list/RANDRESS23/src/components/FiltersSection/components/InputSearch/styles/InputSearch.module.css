@@ -1,0 +1,30 @@
+.Filter {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.IconContainer {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  width: 40px;
+}
+
+.InputSearch {
+  background-color: #fff;
+  color: #2c1810;
+  border: none;
+  padding: 12px 40px;
+  border-radius: 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}
+
+.InputSearch:focus {
+  outline: none;
+}

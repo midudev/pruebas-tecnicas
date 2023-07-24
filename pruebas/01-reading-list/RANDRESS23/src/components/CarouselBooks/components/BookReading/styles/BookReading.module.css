@@ -1,0 +1,58 @@
+.BookReading {
+  position: relative;
+  display: flex;
+  width: 180px;
+  height: 240px;
+}
+
+.BookCover {
+  position: relative;
+  z-index: 10;
+  width: 96%;
+  height: 100%;
+  border-radius: 8px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  pointer-events: none;
+}
+
+.BookColumn {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 7%;
+  height: 100%;
+  border-radius: 8px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: inset rgba(0, 0, 0, 0.56) 0px 3px 5px 2px;
+}
+
+.BorderSheets {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  width: 4%;
+  background-color: #aea190;
+  border: 1px solid #aea190;
+  clip-path: polygon(0 2%, 0 2%, 100% 10%, 100% 90%, 0 98%, 0 98%, 0% 70%, 0% 30%);
+}
+
+.Sheets {
+  width: 100%;
+  height: 100%;
+  background-color: #f3f1ee;
+  clip-path: polygon(0 4%, 0 4%, 100% 10%, 100% 90%, 0 96%, 0 96%, 0 65%, 0% 30%);
+}
+
+.BookShadow {
+  top: 0;
+  left: -5%;
+  width: 165%;
+  height: 145%;
+  position: absolute;
+  z-index: 1;
+  clip-path: polygon(25% 0, 58% 0, 79% 40%, 100% 76%, 100% 100%, 30% 100%, 16% 70%, 18% 31%);
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 140px 4px inset;
+}

@@ -1,0 +1,62 @@
+.Filter {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.FilterLabel {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  color: #2c1810;
+}
+
+.FilterSelectContainer {
+  position: relative;
+  display: flex;
+  width: 250px;
+  height: 40px;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}
+
+.FilterSelectContainer::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  background-color: #daaa63;
+  color: #2c1810;
+  transition: .25s all ease;
+  pointer-events: none;
+}
+
+.FilterSelectContainer:hover::after {
+  color: #5c3323;
+}
+
+.FilterSelect {
+  color: #2c1810;
+  font-size: 15px;
+  appearance: none;
+  border: none;
+  flex: 1;
+  padding: 0 20px;
+  color: #2c1810;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.FilterSelect::-ms-expand {
+  display: none;
+}
+
+.FilterSelect:focus {
+  outline: none;
+}
+
+.FilterOption {
+  border-radius: 30px;
+}
