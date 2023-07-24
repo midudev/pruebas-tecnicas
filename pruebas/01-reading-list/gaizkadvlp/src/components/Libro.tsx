@@ -6,7 +6,7 @@ import { removeFavorite, saveFavorito } from "../utils/helper.functions";
 
 const Libro = (props: any) => {
   const { addFavo, removeFavo, addDisponibles, removeDisponibles } = props;
-  const { title, author, cover, synopsis, ISBN } = props.libro;
+  const { title, cover, ISBN } = props.libro;
 
   const handleAdd = (ISBN: Book["ISBN"]) => {
     const { libro } = props;
