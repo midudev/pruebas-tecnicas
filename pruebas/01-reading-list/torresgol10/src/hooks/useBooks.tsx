@@ -8,19 +8,17 @@ export default function useBooks() {
     const [books, setBooks] = useState(store)
     const genres = useRef([...new Set(store.map(({ book }) => book.genre))])
 
-
     useEffect(() => {
         setBooks(store)
         genres.current = [...new Set(store.map(({ book }) => book.genre))]
     }, [store])
 
 
-
-    //Funcion para filtrar la store paandole un genero por parametro
-    const filterByGenre = (genre: string) => {
+    //Funcion para filtrar la store pasandole un genero por parametro
+    const filterByGenre = (genre: string): void => {
         if (!genre) return setBooks(store)
-        setBooks(store.filter(({ book }) => book.genre === genre))
+        setBooks([...store.filter(({ book }) => book.genre === genre)])
     }
 
-    return { store: books, storeRead, genres: genres.current, addRead, removeRead, filterByGenre }
+    return { books, booksRead: storeRead, genres: genres.current, addRead, removeRead, filterByGenre }
 }
