@@ -6,8 +6,6 @@ URL https://pruebas-tecnicas-psi.vercel.app 🔗
   <a href="https://pruebas-tecnicas-psi.vercel.app" target="_blank"><img src="https://github.com/rubenperegrina/pruebas-tecnicas/blob/ad3e3905ee3bef3e996f5484b00cb6b9549260c9/pruebas/01-reading-list/rubenperegrina/reading-list/public/readme-img.PNG" alt="Reading list app"></a>
   <br/><br/>
 </p>
-![Sin título-2023-03-24-0943 (1)](https://github.com/rubenperegrina/pruebas-tecnicas/blob/ad3e3905ee3bef3e996f5484b00cb6b9549260c9/pruebas/01-reading-list/rubenperegrina/reading-list/public/readme-img.PNG)
-
 
 ## Contexto
 
