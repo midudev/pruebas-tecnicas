@@ -3,6 +3,14 @@ import { Book } from "../interfaces/interfaces";
 
 const MIS_LIBROS_FAVORITOS = KeyFavorites.MIS_LIBROS_FAVORITOS
 
+/**
+ * Función que recibe el contador de libros disponibles y, opcionalmente, los
+ * favoritos y el "género" aplicado en el  filtro
+ * @param {number} contador El número de libros Disponibles
+ * @param {number} contadorGenero Opcional, el número de libros disponibles de un género específico
+ *                          Si se le pasa el valor 0, no devuelve valor.
+ * @param {string} filtro Opcional. El filtro que se ha usado en el género.
+ */
 export const cuentaLibros = (contador: number, contadorGenero?: number, filtro?: string): any => {
   if (contador === 0) return <p>No hay libros disponibles</p>;
   if (contador === 1) return <h4>Hay {contador} libro disponible</h4>;
@@ -15,6 +23,12 @@ export const cuentaLibros = (contador: number, contadorGenero?: number, filtro?:
     );
 };
 
+/**
+ * Guarda un libro en localStorage.
+ * Recupera la key: MIS_LIBROS_FAVORITOS
+ * y la actualiza
+ * @param {Book} libro 
+ */
 export const saveFavorito = (libro: Book): void => {
   try {
     const misFavoritos = localStorage.getItem(MIS_LIBROS_FAVORITOS)

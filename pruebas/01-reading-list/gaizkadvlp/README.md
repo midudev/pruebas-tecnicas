@@ -3,6 +3,7 @@
 
 # Deployed at:
 https://libreria-nowhqmxq3-gaizkadvlp.vercel.app/?vercelToolbarCode=tITMKfydmHHeIV3
+https://libreria-opal.vercel.app/
 
 El objetivo de esta prueba es diseñar e implementar una pequeña aplicación web de lista de libros utilizando las herramientas de tu elección.
 

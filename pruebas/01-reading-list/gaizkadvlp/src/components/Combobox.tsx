@@ -7,8 +7,9 @@ import { Book } from "../interfaces/interfaces";
 const Combobox: React.FC<any> = (props) => {
   const { disponibles, filtro } = props.libreria;
   const { changeFiltro } = props;
-  let genre: string[] = [TipoGenero.TODOS_LOS_GENEROS]; //Tipos de género disponibles para mostrar en el ComboBox
-  
+  const TODOS_LOS_GENEROS: string = TipoGenero.TODOS_LOS_GENEROS;
+  let genre: string[] = [TODOS_LOS_GENEROS]; //Tipos de género disponibles para mostrar en el ComboBox
+
   const getGenero = disponibles.map((libro: Book) => {
     if (!genre.includes(libro.genre)) {
       genre.push(libro.genre);
@@ -24,16 +25,15 @@ const Combobox: React.FC<any> = (props) => {
     <div className="combo">
       <label htmlFor="genero">Filtrar por género:</label>
       <select
-      className="combo"
+        className="combo"
         id="genero"
         defaultValue={filtro}
         onChange={(event) => changeFiltro(event.target.value)}
       >
-        <option key={TipoGenero.TODOS_LOS_GENEROS} value= {TipoGenero.TODOS_LOS_GENEROS}>
+        <option key={TODOS_LOS_GENEROS} value={TODOS_LOS_GENEROS}>
           Todos los géneros
         </option>
         {getGenero}
-        
       </select>
     </div>
   );
