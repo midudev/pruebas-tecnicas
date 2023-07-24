@@ -30,7 +30,6 @@ export const useBookStore = defineStore("bookStore", {
     },
     addBook(book: Book) {
       this.books.push(book);
-      console.log(this.books);
     },
     removeBook(selectedBook: Book) {
       this.books = this.books.filter((book: Book) => {
