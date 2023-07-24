@@ -10,9 +10,9 @@ interface Props {
   books: Book[]
 }
 
-export const FavoriteList: React.FC<Props> = ({ books }) => {
+export const FavoriteList: React.FC<Props> = ({ books: favorites }) => {
   const [dragOverIndex, setDragOverIndex] = useState<number | null>(null)
-  const { favorites, updateFavorites, availablesBooks } = useBook()
+  const { updateFavorites, availablesBooks } = useBook()
 
   const reorderFavorites = ({ fromIndex, toIndex }: { fromIndex: number, toIndex: number }) => {
     setDragOverIndex(null)
@@ -66,7 +66,7 @@ export const FavoriteList: React.FC<Props> = ({ books }) => {
     }
   }
 
-  if (books.length === 0) {
+  if (favorites.length === 0) {
     return (
 			<div className="flex flex-col justify-center items-center h-full gap-14">
 				<img className="w-44" src={NotFoundImage} alt="not-found"></img>
@@ -81,7 +81,7 @@ export const FavoriteList: React.FC<Props> = ({ books }) => {
 			onDrop={handleDrop}
 			onDragOver={event => { event.preventDefault() }}
 		>
-			{books.map((book, index) => (
+			{favorites.map((book, index) => (
 				<FavoriteItem
 					key={book.title}
 					book={book}
