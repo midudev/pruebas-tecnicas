@@ -1,6 +1,6 @@
 import type { Filter, Genre } from "~/types"
 
-export const BOOK_FILTERS: Filter[] = ["pages", "title", "year"]
+export const BOOK_FILTERS = ["pages", "title", "year"] as const
 
 export const BOOK_GENRES = [
   "all",
@@ -16,6 +16,12 @@ export const GENRES_DICT: Record<Genre, string> = {
   fantasy: "fantasía",
   horror: "terror",
   zombies: "zombies"
+}
+
+export const FILTERS_DICT: Record<Filter, string> = {
+  pages: "páginas",
+  title: "título",
+  year: "año"
 }
 
 export const LOCAL_STORAGE_KEYS = {

@@ -57,15 +57,21 @@ export const BooksLibrary = component$(
             book => book.genre.toLowerCase() === GENRES_DICT[currentGenre]
           )
 
-    const allBooksCount = pluralize(
-      "book",
-      books.filter(book => !book.isInReadingList).length
-    )
+    const allBooksCount = books.filter(book => !book.isInReadingList).length
 
-    const currentGenreBooksCount = pluralize(
-      `${currentGenre} book`,
-      filteredByGenre.filter(book => !book.isInReadingList).length
-    )
+    const allBooksMessage = `${allBooksCount} ${pluralize(
+      "libro",
+      allBooksCount
+    )} ${pluralize("disponible", allBooksCount)}`
+
+    const byGenreCount = filteredByGenre.filter(
+      book => !book.isInReadingList
+    ).length
+
+    const byGenreMessage = `${byGenreCount} ${pluralize(
+      "libro",
+      byGenreCount
+    )} de ${GENRES_DICT[currentGenre]} ${pluralize("disponible", byGenreCount)}`
 
     return (
       <section class="relative">
@@ -76,9 +82,9 @@ export const BooksLibrary = component$(
           filter={currentFilter}
         />
 
-        <p class="text-white">{allBooksCount} available</p>
+        <p class="text-white">{allBooksMessage}</p>
 
-        <p class="text-white">{currentGenreBooksCount} available</p>
+        <p class="text-white">{byGenreMessage}</p>
 
         <BooksList books={filteredByGenre} onBookSelect={onBookSelect} />
 

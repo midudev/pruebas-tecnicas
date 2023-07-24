@@ -1,5 +1,10 @@
 import { type PropFunction, component$ } from "@builder.io/qwik"
-import { BOOK_FILTERS, BOOK_GENRES } from "~/constants"
+import {
+  BOOK_FILTERS,
+  BOOK_GENRES,
+  FILTERS_DICT,
+  GENRES_DICT
+} from "~/constants"
 import { isValidFilter } from "~/helpers/isValidFilter"
 import { isValidGenre } from "~/helpers/isValidGenre"
 import type { Filter, Genre } from "~/types"
@@ -16,7 +21,7 @@ export const Filters = component$(
     return (
       <section class="flex justify-between items-center my-12">
         <div class="flex items-center">
-          <label class="mr-2 text-white">Sort by</label>
+          <label class="mr-2 text-white">Ordenar por</label>
           <select
             value={filter}
             class="rounded-md"
@@ -27,13 +32,15 @@ export const Filters = component$(
             }}
           >
             {BOOK_FILTERS.map(filter => (
-              <option key={filter}>{filter}</option>
+              <option key={filter} value={filter}>
+                {FILTERS_DICT[filter]}
+              </option>
             ))}
           </select>
         </div>
 
         <div class="flex-items-center">
-          <label class="mr-2 text-white">Genres</label>
+          <label class="mr-2 text-white">Filtrar por género</label>
           <select
             value={genre}
             class="rounded-md"
@@ -44,7 +51,9 @@ export const Filters = component$(
             }}
           >
             {BOOK_GENRES.map(filter => (
-              <option key={filter}>{filter}</option>
+              <option key={filter} value={filter}>
+                {GENRES_DICT[filter]}
+              </option>
             ))}
           </select>
         </div>

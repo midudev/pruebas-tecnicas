@@ -1,5 +1,6 @@
 import type { Book } from "~/types"
 import { BooksLibrary } from "./BooksLibrary"
+import { FILTERS_DICT, GENRES_DICT } from "~/constants"
 
 describe("BooksLibrary", () => {
   it("renders message when there are no books in reading list", () => {
@@ -14,7 +15,7 @@ describe("BooksLibrary", () => {
 
     cy.get("aside ul li div p").should(
       "contain.text",
-      "No books in your reading list"
+      "No hay libros en la lista de lectura"
     )
   })
 
@@ -135,7 +136,7 @@ describe("BooksLibrary", () => {
 
     cy.get("aside ul li div p").should(
       "contain.text",
-      "No books in your reading list"
+      "No hay libros en la lista de lectura"
     )
   })
 
@@ -200,9 +201,9 @@ describe("BooksLibrary", () => {
 
     // filter by year
     cy.get("section label")
-      .contains("Sort by")
+      .contains("Ordenar por")
       .siblings("select")
-      .select("year")
+      .select(FILTERS_DICT.year)
 
     cy.get("article div h6").contains(mockedBooks[0].title)
     cy.get("article div p").contains(mockedBooks[0].author.name)
@@ -296,20 +297,20 @@ describe("BooksLibrary", () => {
 
     // filter by genre "fantasy"
     cy.get("section label")
-      .contains("Genres")
+      .contains("Filtrar por género")
       .siblings("select")
-      .select("fantasy")
+      .select(GENRES_DICT.fantasy)
 
     cy.get("section section").should("not.contain.html") // no books in fantasy genre
 
     // filter by genre "horror"
     cy.get("section label")
-      .contains("Genres")
+      .contains("Filtrar por género")
       .siblings("select")
-      .select("horror")
+      .select(GENRES_DICT.horror)
 
     cy.get("article div span").contains("sci-fi").should("not.exist") // no books in sci-fi genre when "horror" genre is selected
 
-    cy.get("article div span").contains("terror")
+    cy.get("article div span").contains(GENRES_DICT.horror)
   })
 })

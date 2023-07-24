@@ -8,7 +8,7 @@ type Props = {
 }
 
 export const ReadingList = component$(({ books, onBookSelect }: Props) => {
-  const booksCount = pluralize("book", books.length)
+  const booksCount = pluralize("libro", books.length)
 
   return (
     <aside class="bg-blue-950 px-8 p-4 max-w-full overflow-auto">
@@ -44,7 +44,9 @@ export const ReadingList = component$(({ books, onBookSelect }: Props) => {
       </ul>
 
       <p>
-        <span class="text-white">{booksCount} in reading list</span>
+        <span class="text-white">
+          {books.length} {booksCount} en la lista de lectura
+        </span>
       </p>
     </aside>
   )
@@ -54,11 +56,7 @@ const NoBooksMessage = component$(() => {
   return (
     <div class="py-8">
       <p class="text-2xl font-bold text-white mb-4">
-        No books in your reading list
-      </p>
-
-      <p class="text-white">
-        Add books to your reading list by clicking or dragging and dropping them
+        No hay libros en la lista de lectura
       </p>
     </div>
   )
