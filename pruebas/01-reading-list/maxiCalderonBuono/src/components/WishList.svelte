@@ -22,8 +22,23 @@
 		dispatch('navigate', { title });
 	}
 
-	function handleSort(e: CustomEvent<DndEvent<customDndEvent>>) {
-		items = e.detail.items;
+	
+
+	function handleConsider(e: CustomEvent<DndEvent<customDndEvent>>) {
+		const {items: newItems, info: {source, trigger}} = e.detail;
+		items = newItems;
+		if (source === SOURCES.KEYBOARD && trigger === TRIGGERS.DRAG_STOPPED) {
+			dragDisabled = true;
+		}
+	}
+
+		function handleFinalize(e: CustomEvent<DndEvent<customDndEvent>>) {
+		const {items: newItems, info: {source}} = e.detail;
+		items = newItems;
+		// Ensure dragging is stopped on drag finish via pointer (mouse, touch)
+		if (source === SOURCES.POINTER) {
+			dragDisabled = true;
+		}
 	}
 
 	function startDrag() {
@@ -39,8 +54,8 @@
 <section
 	class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-20 mx-auto max-w-5xl"
 	use:dndzone={{ items, dragDisabled }}
-	on:consider={handleSort}
-	on:finalize={handleSort}
+	on:consider={handleConsider}
+	on:finalize={handleFinalize}
 >
 	{#each items as item (item.id)}
 		<BookCard
