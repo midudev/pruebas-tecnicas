@@ -17,6 +17,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
 /* Estilos para WebKit (Chrome, Safari, Opera) */
 .readingList::-webkit-scrollbar {
   width: 6px;
@@ -29,17 +30,21 @@
 .readingList::-webkit-scrollbar-thumb {
   background: #e3e4e5;
 }
+
 html.dark .readingList::-webkit-scrollbar-thumb {
   background: #5ea3e7;
 }
+
 html.dark body {
   background-color: #3F2E3E;
 }
+
 html.dark input[type=range] {
   -webkit-appearance: none;
   appearance: none;
   margin: 10px 0;
 }
+
 html.dark input[type=range]::-webkit-slider-thumb {
   box-shadow: 1px 1px 1px #000031;
   border: 1px solid rgb(55 65 81);
@@ -56,11 +61,27 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 .searchResults li {
   max-height: 626px;
 }
+.searchResults li.maximized {
+  max-height: none;
+}
+
 a:hover {
   color: #535bf2;
+}
+
+input[type='text']:focus-visible {
+  outline: #3b82f6;
+  outline-width: 1px;
+  outline-style: solid;
+}
+html.dark input[type='text']:focus-visible {
+  outline: #100c18;
+  outline-width: 1px;
+  outline-style: solid;
 }
 
 body {
@@ -96,21 +117,26 @@ button {
   max-width: 127px;
   margin-right: 50px;
 }
+
 .toggle span {
   margin: 0 0.5rem;
 }
+
 .toggle input[type="checkbox"] {
   height: 0;
   width: 0;
   visibility: hidden;
 }
-.toggle input[type="checkbox"]:checked + label {
+
+.toggle input[type="checkbox"]:checked+label {
   background: #100c18;
 }
-.toggle input[type="checkbox"]:checked + label:after {
+
+.toggle input[type="checkbox"]:checked+label:after {
   left: calc(100% - 2px);
   transform: translateX(-100%);
 }
+
 .toggle label {
   cursor: pointer;
   width: 75px;
@@ -120,6 +146,7 @@ button {
   border-radius: 40px;
   position: relative;
 }
+
 .toggle label:after {
   content: "";
   position: absolute;
@@ -131,6 +158,7 @@ button {
   border-radius: 40px;
   transition: 0.3s;
 }
+
 /* make the toggle switch a bit more accessible */
 .screen-reader-text {
   border: 0;
