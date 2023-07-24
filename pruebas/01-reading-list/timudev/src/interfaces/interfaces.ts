@@ -44,5 +44,13 @@ export interface BookInReadingList extends Book {
     readingList: boolean;
 }
 
+export interface StorageEvent extends Event {
+    readonly key: string | null;
+    readonly newValue: string | null;
+    readonly oldValue: string | null;
+    readonly storageArea: Storage | null;
+    readonly url: string;
+}
+
 
 

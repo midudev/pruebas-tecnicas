@@ -1,21 +1,26 @@
+import { useState } from 'react';
+
 import { BookCard, BookImage, BookTitle, BookButtons } from '../components';
 import { useReadingList } from '../hooks/useReadingList';
 
 import data from '../data/books.json';
-import '../styles/custom-styles.css';
-import { useState } from 'react';
 
 
 export const BookList = () => {
 
+    
     const { readingList, onBookReadingChange} = useReadingList();
+    
+    //TODO: crear un custom hook para el filtro de género
     const [genreFilter, setGenreFilter] = useState('all');
 
     const books = data.library.map( item => item.book );
     const booksByGenre = genreFilter === 'all' ? books : books.filter( book => book.genre === genreFilter );
     const availableBooks = books.filter( book => !readingList[book.ISBN]?.readingList );
     const availableBooksByGenre = genreFilter === 'all' ? availableBooks : availableBooks.filter( book => book.genre === genreFilter );
-    
+
+    //TODO: optimizar imagenes creando thumbnails
+
     const onSelectGenre = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setGenreFilter(e.target.value);
         if ( e.target.value === 'all' ) {

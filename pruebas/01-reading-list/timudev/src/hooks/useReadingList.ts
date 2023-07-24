@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Book, BookInReadingList } from '../interfaces/interfaces';
+import { Book, BookInReadingList, StorageEvent } from '../interfaces/interfaces';
+
 
 export const useReadingList = () => {
 
@@ -27,6 +28,20 @@ export const useReadingList = () => {
     useEffect(() => {
          localStorage.setItem('readingList', JSON.stringify(readingList));
     }, [readingList])
+
+    useEffect(() => {
+        const handleStorageChange = (e: StorageEvent) => {
+          if (e.key === 'readingList') {
+            setReadingList(JSON.parse(e.newValue!));
+          }
+        };
+    
+        window.addEventListener('storage', handleStorageChange);
+    
+        return () => {
+          window.removeEventListener('storage', handleStorageChange);
+        };
+      }, []);
   
     return {
         readingList,
