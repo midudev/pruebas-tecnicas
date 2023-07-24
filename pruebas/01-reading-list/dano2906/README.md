@@ -1,5 +1,11 @@
 URL https://dano-reading-list.netlify.app 🔗
 
+## Documentación
+1. Se usa Zustand para el estado global, Tailwindcss para los estilos, Dnd kit para reorganizar los libros por prioridad y Vitest para las pruebas. 🧑‍💻
+2. El custom hook useBook maneja la lógica para actualizar la lista de lectura al cambiar los filtros. 🌀
+3. Se usa la librería useHooks para hacer el debounce de los campos del formulario de filtros. ⛹️‍♂️
+4. Permite abrir la página en otra pestaña, limpiar los filtros, reorganizar y limpiar la lista de lectura. 📦
+
 ### Funcionalidad
 
 1. **Visualización de Libros Disponibles**: La aplicación debe mostrar una lista de libros disponibles que el usuario pueda revisar. ✅
@@ -18,18 +24,6 @@ URL https://dano-reading-list.netlify.app 🔗
 
 8. **Test**: La aplicación debe tener AL MENOS un test. Haz el test que consideres más importante para tu aplicación. ✅
 
-## Consejos sobre el código
-
-1. **Estructura del código**: El código debe estar bien organizado y fácil de leer.
-
-2. **Semántica HTML**: El HTML debe ser semántico y accesible.
-
-3. **Pensando en equipo**: Prepara tu proyecto pensando que cualquier persona de tu equipo puede tener que trabajar en él en el futuro. (scripts en el package.json, mínima documentación en el README, comentarios en el código si es necesario, etc)
-
-4. **Formatea tu código**: Asegúrate de que tu código está formateado de forma consistente. Puedes usar Prettier o cualquier otra herramienta que te guste.
-
-5. **Preparado para producción**: Asegúrate de que tu aplicación está lista para producción. Minimiza el código, optimiza las imágenes, etc.
-
 ## Desafíos adicionales
 
 **¿Quieres ir más allá?** Estos son algunos desafíos adicionales que puedes intentar:
@@ -38,13 +32,3 @@ URL https://dano-reading-list.netlify.app 🔗
 - Añade un nuevo filtro para filtrar los libros por número de páginas. ✅
 - Permitir la reorganización de los libros en la lista de lectura por prioridad. ✅
 - Haz que tu diseño sea responsive. ✅
-
-## Entrevista
-
-Si pasas a la siguiente fase, te pediremos que hagas una entrevista con nosotros. Durante la entrevista, te pediremos que expliques tu código y que hagas algunos cambios en el mismo.
-
-- Nos tendrás que explicar el código que has escrito y las decisiones que has tomado.
-- Haremos cambios en el JSON y tendrás que adaptar el código en vivo.
-- Añadiremos un nuevo filtro a la aplicación y tendrás que implementarlo.
-
-Buena suerte y ¡diviértete programando!
