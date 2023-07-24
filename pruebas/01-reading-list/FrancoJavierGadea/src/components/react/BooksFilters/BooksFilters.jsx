@@ -52,6 +52,15 @@ function BooksFilters(props) {
                         </Form.Select>
                     </Form.Group>
 
+                    {
+                        props.queryParams && Object.entries(props.queryParams).map(([key, value]) => {
+
+                            console.log([key, value])
+
+                            return <input type="hidden" name={key} value={value} key={key}/>
+                        })
+                    }
+
                     <Button className="flex-grow-1 flex-md-grow-0" variant="primary" type="submit">Aplicar</Button>
                 </Form>
 

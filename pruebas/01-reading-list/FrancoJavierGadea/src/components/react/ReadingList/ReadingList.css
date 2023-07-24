@@ -4,7 +4,7 @@
 
 .Reading-list-content {
     padding-right: 10px;
-    max-height: 80svh;
+    max-height: 77svh;
     overflow-x: hidden;
     overflow-y: auto;
     overscroll-behavior: contain;

@@ -12,7 +12,6 @@ if(result.length === 0) return Astro.redirect('/404');
 
 const book = result[0].book;
 
-console.log(Astro.url.origin);
 
 const linkToGenre = new URL(`/Libros/1`, Astro.url.origin);
 
@@ -44,8 +43,6 @@ linkToGenre.searchParams.set('genre', book.genre);
                     <h5 class="border-bottom pb-2 mb-2">Descripcion</h5>
                     {
                         book.synopsis.split('\n').map(text => {
-
-                            console.log(text);
 
                             return <p>{text}</p>
                         }) 

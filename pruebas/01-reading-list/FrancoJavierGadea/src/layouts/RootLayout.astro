@@ -5,7 +5,7 @@ import CustomOffcanvas from "../components/react/CustomOffcanvas/CustomOffcanvas
 import Footer from "../components/Footer.astro";
 import ReadingList from "../components/react/ReadingList/ReadingList.jsx";
 
-const { title } = Astro.props;
+const { title, searchPlaceholder = '' } = Astro.props;
 
 const isLibrosPage = Astro.url.pathname.startsWith('/Libros');
 ---
@@ -31,9 +31,10 @@ const isLibrosPage = Astro.url.pathname.startsWith('/Libros');
 
 				<form class="ms-auto d-flex order-3 order-sm-2 flex-grow-1 flex-sm-grow-0" role="search"
 
-					style="flex-basis: 335px;"
+					style="flex-basis: 335px;" action="/search"
 				>
-					<input class="form-control me-2" type="search" placeholder="Search">
+					<input class="form-control me-2" type="search" name="search" placeholder={searchPlaceholder}>
+
 					<button class="btn btn-outline-success" type="submit">Buscar</button>
 				</form>
 
