@@ -82,9 +82,11 @@ export const BooksLibrary = component$(
           filter={currentFilter}
         />
 
-        <p class="text-white">{allBooksMessage}</p>
+        <div class="my-4">
+          <p class="text-white">{allBooksMessage}</p>
 
-        <p class="text-white">{byGenreMessage}</p>
+          <p class="text-white">{byGenreMessage}</p>
+        </div>
 
         <BooksList books={filteredByGenre} onBookSelect={onBookSelect} />
 

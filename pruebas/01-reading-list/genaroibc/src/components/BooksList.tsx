@@ -9,7 +9,7 @@ type Props = {
 
 export const BooksList = component$(({ books, onBookSelect }: Props) => {
   return (
-    <section class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,200px),1fr))] gap-12">
+    <section class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,200px),1fr))] gap-8">
       {books.map(book => (
         <button
           key={book.ISBN}

@@ -10,7 +10,7 @@ import {
 export const BookCard = component$(
   ({ cover, genre, isInReadingList, pages, title, year, author }: Book) => {
     return (
-      <article class="aspect-[1/1.6] group hover:shadow-lg transition-transform duration-300 ease-in-out text-white relative bg-black rounded-md">
+      <article class="aspect-[1/1.6] group hover:shadow-lg transition-transform duration-300 ease-in-out text-white relative bg-blue-950 rounded-md">
         <div class="relative overflow-hidden rounded-tl-md rounded-tr-md">
           <BookBadge isInReadingList={isInReadingList} />
 
@@ -32,9 +32,11 @@ export const BookCard = component$(
               {year}
             </li>
           </ul>
+
+          <span class="absolute inset-0 shadow-inner group-hover:opacity-0 transition-opacity duration-300" />
         </div>
 
-        <div class="p-4">
+        <div class="p-4 relative bg-gradient-to-br from-slate-950 to-blue-950 rounded-bl-md rounded-br-md">
           <h6 class="whitespace-nowrap truncate max-w-full my-2 font-bold text-base text-left">
             {title}
           </h6>
@@ -43,7 +45,7 @@ export const BookCard = component$(
             {author.name}
           </p>
 
-          <span class="whitespace-nowrap truncate px-2 py-1 block mt-4 bg-gray-800 text-gray-400 rounded-xl text-xs w-fit">
+          <span class="whitespace-nowrap truncate px-2 py-1 block mt-4 bg-gray-700 text-gray-300 rounded-xl text-xs w-fit">
             {genre.toLocaleLowerCase()}
           </span>
         </div>
