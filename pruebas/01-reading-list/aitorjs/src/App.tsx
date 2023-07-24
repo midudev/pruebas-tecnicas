@@ -6,15 +6,14 @@ import ReadList from './components/ReadList'
 import PageFilter from './components/PageFilter'
 import GenreFilter from './components/GenreFilter'
 import Header from './components/Header'
+import FiltersSelected from './components/FiltersSelected'
 
 function App () {
-  const { getBooks, filteredBooks, filters, books } = useBooksStore()
+  const { getBooks, filteredBooks } = useBooksStore()
 
   useEffect(() => {
     const data = window.localStorage.getItem('booksLibrary')
     const isData = JSON.parse(data).state.books.length > 0
-
-    console.log('isdata', JSON.parse(data).state)
 
     if (!isData) {
       getBooks()
@@ -36,7 +35,7 @@ function App () {
         </div>
       </div>
 
-      <p>Filters {JSON.stringify(filters)}</p>
+      <FiltersSelected />
 
       <div className='flex'>
         <div className='flex flex-wrap gap-2 w-4/5' id='books'>
@@ -46,7 +45,6 @@ function App () {
         </div>
 
         <div className='flex flex-col' id='readList'>
-          {books.length}
           <ReadList />
         </div>
       </div>

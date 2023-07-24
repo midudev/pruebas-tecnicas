@@ -1,22 +1,18 @@
 import { useBooksStore } from '../store/booksStore'
 
 const Book = ({ data }) => {
-  const { setWantReadBooks, filteredBooks, books, setBooks } = useBooksStore()
+  const { setWantReadBooks, filteredBooks, setBooks } = useBooksStore()
 
   const handleClick = (isbn: string) => {
     const index = filteredBooks.findIndex((f) => {
       return f.book.ISBN === isbn
     })
-    // const [wantRead] = filteredBooks.splice(index, 1);
 
     const filtered = filteredBooks.filter((f) => {
       return f.book.ISBN !== isbn
     })
-    console.log('filtered', filtered)
-    console.log('books antes', books)
-    setWantReadBooks(filteredBooks[index])
-    console.log('books despues', books)
 
+    setWantReadBooks(filteredBooks[index])
     setBooks(filtered)
   }
 

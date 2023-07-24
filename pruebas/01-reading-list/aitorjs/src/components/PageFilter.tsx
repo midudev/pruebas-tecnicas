@@ -19,7 +19,7 @@ const PageFilter = () => {
         name='pageFilter'
         onChange={(e) => filterPageBooks(Number(e.target.value))}
       />
-      {filters.pages > 0 && <span>PAGES {filters.pages}</span>}
+      {/* {filters.pages > 0 && <span>PAGES {filters.pages}</span>} */}
     </>
   )
 }

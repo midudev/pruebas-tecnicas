@@ -22,7 +22,7 @@ const GenreFilter = () => {
         <option value='Zombies'>Zombies</option>
         <option value='Terror'>Terror</option>
       </select>
-      {filters.genre && <span>GENRE {filters.genre}</span>}
+      {/* {filters.genre && <span>GENRE {filters.genre}</span>} */}
     </>
   )
 }

@@ -1,13 +1,13 @@
 import { useBooksStore } from '../store/booksStore'
 
 const Header = () => {
-  const { filteredBooks, books } = useBooksStore()
+  const { filteredBooks } = useBooksStore()
   return (
     <>
       <h1 className='text-6xl font-bold'> Librería de libros </h1>
 
       <h2>
-        {filteredBooks.length} libros disponibles {books.length}
+        {filteredBooks.length} libros disponibles
       </h2>
     </>
   )

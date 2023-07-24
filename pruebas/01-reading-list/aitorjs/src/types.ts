@@ -9,6 +9,7 @@ export interface BooksState {
   filters: Filters
   getBooks: () => void
   setBooks: (book: Book[]) => void
+  setWantReadBooks: (book: Book) => void
   filter: (name: string, value: string | number) => void
 }
 
