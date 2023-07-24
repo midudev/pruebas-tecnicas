@@ -1,5 +1,5 @@
 import { expect, it, describe } from 'vitest';
-import { filterBooks } from '../src/filters/forBook';
+import { filterBooks } from '../src/filters/filterBooks';
 import {
   books,
   booksExcluided,
