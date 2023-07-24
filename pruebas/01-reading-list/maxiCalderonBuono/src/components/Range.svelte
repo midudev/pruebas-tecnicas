@@ -66,13 +66,16 @@
 		thumbHover = thumbHover ? false : true;
 	}
 
-	function onDragStart(e: MouseEvent | TouchEvent) {
+	function onDragStart(e: MouseEvent | TouchEvent | KeyboardEvent) {
 		if (e.type === 'mousedown' && mouseEventShield) {
 			const fragment = document.createDocumentFragment();
 			fragment.appendChild(mouseEventShield);
 			window.document.body.appendChild(fragment);
 		}
 		currentThumb = thumb;
+		dispatch('currentPage', {
+			value
+		});
 	}
 
 	function onDragEnd(e: MouseEvent | TouchEvent) {
@@ -185,7 +188,7 @@
 	on:resize={resizeWindow}
 />
 
-<p class="text-xl p-2">Pages:</p>
+<p class="text-xl p-2">Pages: <span class="text-lime-200">{value}</span></p>
 <div class="range w-full max-w-xl">
 	<div
 		class="range__wrapper"
@@ -210,6 +213,8 @@
 				on:mousedown={onDragStart}
 				on:mouseover={() => (thumbHover = true)}
 				on:mouseout={() => (thumbHover = false)}
+				on:focus={() => {}}
+				on:blur={() => {}}
 			>
 				{#if holding || thumbHover}
 					<div class="range__tooltip" in:fly={{ y: 7, duration: 200 }} out:fade={{ duration: 100 }}>

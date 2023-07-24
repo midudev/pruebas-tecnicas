@@ -10,5 +10,5 @@
 
 <section class="flex items-center my-10 mx-20">
 	<Filters {library} on:selectedfilter {availables} {savedFilter} />
-	<Range {library} />
+	<Range {library} on:currentPage />
 </section>

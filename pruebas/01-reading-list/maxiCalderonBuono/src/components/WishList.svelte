@@ -63,23 +63,30 @@
 	});
 </script>
 
-<section
-	class={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-20 mx-auto max-w-5xl outline-none ${
-		!dragDisabled ? 'outline-dashed outline-white outline-[3px]' : ''
-	}`}
-	use:dndzone={{ items, dragDisabled, dropTargetStyle }}
-	on:consider={handleConsider}
-	on:finalize={handleFinalize}
->
-	{#each items as item (item.id)}
-		<BookCard
-			onDragStyles={item.id === itemSelected ? true : false}
-			{isDragabble}
-			on:long={() => startDrag(item.id)}
-			cta="Eliminar de la lista de lectura"
-			book={{ ...item, ISBN: item.id }}
-			on:navigate={() => goToDetail(item.title)}
-			on:update={() => updateWishlist(item.id)}
-		/>
-	{/each}
+<section class="my-20 mx-auto max-w-5xl w-full">
+	<h1 class="font-bold text-5xl flex gap-3 items-center mb-10">Lista de lectura</h1>
+
+	{#if wishlist.length === 0}
+		<p class="font-bold text-3xl text-center">No hay libros para mostrar</p>
+	{/if}
+	<div
+		class={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 outline-none ${
+			!dragDisabled ? 'outline-dashed outline-white outline-[3px]' : ''
+		}`}
+		use:dndzone={{ items, dragDisabled, dropTargetStyle }}
+		on:consider={handleConsider}
+		on:finalize={handleFinalize}
+	>
+		{#each items as item (item.id)}
+			<BookCard
+				onDragStyles={item.id === itemSelected ? true : false}
+				{isDragabble}
+				on:long={() => startDrag(item.id)}
+				cta="Eliminar de la lista de lectura"
+				book={{ ...item, ISBN: item.id }}
+				on:navigate={() => goToDetail(item.title)}
+				on:update={() => updateWishlist(item.id)}
+			/>
+		{/each}
+	</div>
 </section>

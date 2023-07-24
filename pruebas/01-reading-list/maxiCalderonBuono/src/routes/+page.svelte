@@ -19,32 +19,32 @@
 		wishlist: LibraryElement[];
 		renderlist: LibraryElement[];
 		filter: string;
+		pages: number;
 	}
 
 	const initialDataStore: Writable<initialData> = localStorageStore('initialDataStore', {
 		books: library,
 		wishlist: [],
 		renderlist: library,
-		filter: 'Todos'
+		filter: 'Todos',
+		pages: 0
 	});
 
-	let filters = {
-		selectedPagesRanges: '0'
-	};
-
-	function handleFilters(e: CustomEvent<{ filter: string }>) {
+	function handleFilters(e: CustomEvent<{ filter: string; value: number }>) {
+		console.log(e.detail.value);
 		$initialDataStore.filter = e.detail.filter;
+		$initialDataStore.pages = e.detail.value;
 		updateFilteredBooks();
 	}
 
 	const updateFilteredBooks = () => {
-		if ($initialDataStore.filter === 'Todos' && filters.selectedPagesRanges === '0') {
+		if ($initialDataStore.filter === 'Todos' && $initialDataStore.pages === 0) {
 			$initialDataStore.renderlist = $initialDataStore.books;
 		} else {
 			$initialDataStore.renderlist = $initialDataStore.books.filter(
 				({ book }) =>
 					filterByCategory(book, $initialDataStore.filter) &&
-					filterByPages(book, filters.selectedPagesRanges)
+					filterByPages(book, $initialDataStore.pages)
 			);
 		}
 	};
@@ -104,6 +104,7 @@
 	<Selectors
 		{library}
 		on:selectedfilter={handleFilters}
+		on:currentPage={handleFilters}
 		savedFilter={$initialDataStore.filter}
 		availables={$initialDataStore.renderlist.length}
 	/>
@@ -129,7 +130,6 @@
 			{/each}
 		</div>
 	</section>
-	<p>WHISLIST ({$initialDataStore.wishlist.length})</p>
 
 	<WishList
 		wishlist={$initialDataStore.wishlist}
