@@ -1,16 +1,32 @@
 async function getData() {
     try {
     //get data from json
-        const res = await fetch('/books.json')
-        const data = await res.json()
-        const library = data.library
-        const ul = document.getElementById('library')
-        const avaiableBooks = document.getElementById('avaiableBooks')
-        const readList = document.getElementById('readList')
-    
+        const res = await fetch('/books.json'),
+            data = await res.json(),
+            library = data.library
 
-        let booktitle
-        let totalBooks = []
+        const ul = document.getElementById('library'),
+            avaiableBooks = document.getElementById('avaiableBooks'),
+            readList = document.getElementById('readList'),
+            booksInReadList = document.querySelector('#booksInread')
+
+        const saveLocal = (key, data) =>{
+            localStorage.setItem(key, JSON.stringify(data))
+        }
+
+        const getLocal = (key) =>{
+            const data = localStorage.getItem(key)
+            return data ? JSON.parse(data) : null
+        }
+
+       
+        
+
+            
+        const booksToRead = [] 
+
+        let booktitle,
+            totalBooks = []
 
         library.map((each) => {
             //put the data in the list
@@ -74,27 +90,50 @@ async function getData() {
             
             filter()
         })
-
         avaiableBooks.innerHTML = totalBooks.length
+        
         
         //add the book to the read list
         const AddReadList = () => {
             const addBtns = document.querySelectorAll('.addBtn')
-            const booksInread = document.querySelector('#booksInread')
-            const booksToRead = []
 
+            //storage
+            booksInReadList.textContent = booksToRead.length
+            saveLocal('booksInReadList', booksInReadList)
+            console.log(getLocal('booksInReadList'))
+            
+
+            const removeBook = (book, btn) => {
+                readList.removeChild(book)
+                const index = booksToRead.indexOf(book)
+                if (index !== -1) {
+                    booksToRead.splice(index, 1)
+                }
+                btn.disabled = false
+                btn.textContent = 'Read List'
+                //storage
+                booksInReadList.textContent = booksToRead.length
+                
+                
+
+            }
+
+            
             
 
             addBtns.forEach((btn) => {
                 //Create a clone and pushed to the reading list
                 btn.addEventListener('click', () => {
-                    const parent = btn.parentNode.parentNode.parentNode
-                    const clone = parent.cloneNode(true)
-                    const cloneTittle = clone.children[0].children[1].children[0]
+                    const parent = btn.parentNode.parentNode.parentNode,
+                        clone = parent.cloneNode(true),
+                        cloneTittle = clone.querySelector('.truncate')
 
                     btn.disabled = true
                     btn.textContent = 'Added!'
-                    booksInread.textContent = booksToRead.length + 1
+                    
+                    //storage
+                    booksInReadList.textContent = booksToRead.length + 1
+
                     
                     clone.classList.add('clone')
                     booksToRead.push(clone)
@@ -121,45 +160,17 @@ async function getData() {
                             div.className += ' opacity-0 invisible'
                         }, 1000)
                     }
-
-                    
-
-                    
                     addedNotification()
 
-                    const RemoveReadList = () => {
-                        const removeBtn = document.querySelectorAll('.clone .removeBtn')
-                        removeBtn.forEach((Remove) => {
-                            
-                            if(Remove.EliminateBtn){
-                                Remove.removeEventListener('click', Remove.EliminateBtn)
-                            }
+                    const removeBtn = clone.querySelector('.removeBtn')
+                    removeBtn.addEventListener('click', () => {
+                        removeBook(clone, btn)
+                    })
 
-                            const clickEvent = () =>{
-                                const CloneParent = Remove.parentNode.parentNode.parentNode
-                                readList.removeChild(CloneParent)
-                                booksToRead.pop(CloneParent)
-
-                                btn.disabled = false
-                                btn.textContent = 'Read List'
-                                booksInread.textContent = booksToRead.length 
-                                console.log(btn)
-                                console.log(booksToRead)
-                            }
-
-                            Remove.addEventListener('click', clickEvent)
-
-                            Remove.EliminateBtn = clickEvent
-                        })
-                        
-                    }
-                    RemoveReadList()
+                    
 
                 })
             })
-
-           
-            
         }
         AddReadList()
 
