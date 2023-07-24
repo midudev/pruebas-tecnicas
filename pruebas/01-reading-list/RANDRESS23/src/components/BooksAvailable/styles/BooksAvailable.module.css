@@ -1,3 +1,7 @@
 .BooksAvailable {
   padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  place-items: center;
+  gap: 20px;
 }

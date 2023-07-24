@@ -11,3 +11,8 @@ export interface Book {
     otherBooks: string[]
   }
 }
+
+export enum LOCAL_STORAGE_KEYS {
+  BOOKS_AVAILABLE = 'booksAvailable',
+  BOOKS_TO_READ = 'booksToRead'
+}

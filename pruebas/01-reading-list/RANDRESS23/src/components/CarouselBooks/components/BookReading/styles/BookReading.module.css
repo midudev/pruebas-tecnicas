@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   width: 180px;
-  height: 240px;
+  height: 100%;
 }
 
 .BookCover {
@@ -55,4 +55,29 @@
   z-index: 1;
   clip-path: polygon(25% 0, 58% 0, 79% 40%, 100% 76%, 100% 100%, 30% 100%, 16% 70%, 18% 31%);
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 140px 4px inset;
+}
+
+.RemoveIconButton {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 5px;
+  right: 15px;
+  z-index: 20;
+  cursor: pointer;
+  border: none;
+  background-color: #fff;
+  width: 27px;
+  height: 27px;
+  clip-path: polygon(25% 10%, 100% 10%, 100% 90%, 25% 90%, 0 50%);
+}
+
+.RemoveIcon {
+  fill: #daaa63;
+  transition: .3s ease all;
+}
+
+.RemoveIconButton:hover .RemoveIcon {  
+  fill: #2c1810;
 }

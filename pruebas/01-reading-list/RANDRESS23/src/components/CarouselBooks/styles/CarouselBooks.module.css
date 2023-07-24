@@ -1,5 +1,6 @@
 .CarouselBooks {
   width: 57%;
+  height: 240px;
   position: relative;
   z-index: 10;
   display: flex;
