@@ -23,7 +23,7 @@ async function getData() {
         
 
             
-        const booksToRead = [] 
+        const BookList = readList.children
 
         let booktitle,
             totalBooks = []
@@ -96,31 +96,12 @@ async function getData() {
         //add the book to the read list
         const AddReadList = () => {
             const addBtns = document.querySelectorAll('.addBtn')
+            const allBooks = getLocal('allBooks') || []
+            allBooks.map(book =>{ readList.append(book)} )
 
-            //storage
-            booksInReadList.textContent = booksToRead.length
-            saveLocal('booksInReadList', booksInReadList)
-            console.log(getLocal('booksInReadList'))
-            
-
-            const removeBook = (book, btn) => {
-                readList.removeChild(book)
-                const index = booksToRead.indexOf(book)
-                if (index !== -1) {
-                    booksToRead.splice(index, 1)
-                }
-                btn.disabled = false
-                btn.textContent = 'Read List'
-                //storage
-                booksInReadList.textContent = booksToRead.length
-                
-                
-
-            }
 
             
             
-
             addBtns.forEach((btn) => {
                 //Create a clone and pushed to the reading list
                 btn.addEventListener('click', () => {
@@ -130,14 +111,30 @@ async function getData() {
 
                     btn.disabled = true
                     btn.textContent = 'Added!'
-                    
+                
                     //storage
-                    booksInReadList.textContent = booksToRead.length + 1
 
-                    
+                
                     clone.classList.add('clone')
-                    booksToRead.push(clone)
-                    readList.append(clone)
+               
+                    
+                    
+                    saveLocal('allBooks', allBooks)
+                    allBooks.push(clone)
+                    allBooks.map(book =>{ readList.append(book)} )
+                    console.log(allBooks)
+
+
+                    const removeBtn = clone.querySelector('.removeBtn')
+                    removeBtn.addEventListener('click', () => {
+                        readList.removeChild(clone)
+                        booksInReadList.textContent = BookList.length
+                        btn.textContent = 'Read List '
+                        btn.disabled = false
+                        allBooks.pop(clone)
+
+                    })
+                    
 
                     // Create a notification when a book is added to the read list
                     const addedNotification = () => {
@@ -162,13 +159,10 @@ async function getData() {
                     }
                     addedNotification()
 
-                    const removeBtn = clone.querySelector('.removeBtn')
-                    removeBtn.addEventListener('click', () => {
-                        removeBook(clone, btn)
-                    })
-
                     
 
+                    
+                    booksInReadList.textContent = BookList.length
                 })
             })
         }
@@ -193,3 +187,6 @@ toggleList.forEach((btn) => {
         ReadList.classList.toggle('top-0')
     })
 })
+
+
+localStorage.removeItem('allBooks')
