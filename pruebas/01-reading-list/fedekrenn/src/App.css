@@ -1,8 +1,9 @@
-h1, h2 {
+h1,
+h2 {
   text-align: center;
 }
 
-.open-modal-btn{
+.open-modal-btn {
   display: block;
   margin: 0 auto;
   margin-bottom: 1rem;
@@ -28,7 +29,7 @@ ul {
   gap: 1rem;
 }
 
-.books-container{
+.books-container {
   max-width: 850px;
   margin: 0 auto;
 }
@@ -38,7 +39,7 @@ span {
   font-weight: bold;
 }
 
-#readingList{
+#readingList {
   min-width: 50%;
   max-width: 85%;
   margin: auto;
