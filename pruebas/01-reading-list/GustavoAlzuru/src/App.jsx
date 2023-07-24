@@ -7,9 +7,18 @@ import ListCart from '../components/ListCart'
 
 function App() {
   const [books, setBooks] = useState(library)
+  const [cartBooks, setCartBooks] = useState([])
   const [open, setOpen] = useState(false)
   const handleOpen = () => {
     setOpen(!open)
+  }
+  const handleBooks = (infoBook) => {
+    setCartBooks([...cartBooks, infoBook])
+    setBooks(books.filter(book => book.book.ISBN !== infoBook.book.ISBN))
+  }
+  const handleRemoveBooks = (bookToRemove) => {
+    setBooks([...books, bookToRemove])
+    setCartBooks(cartBooks.filter(book => book.book.ISBN !== bookToRemove.book.ISBN))
   }
   return (
     <>
@@ -22,10 +31,10 @@ function App() {
         <option value="terror">terror</option>
         <option value="love">love</option>
       </select>
-      <Cart handleOpen={handleOpen}/>
+      <Cart handleOpen={handleOpen} cartItems={cartBooks.length}/>
       <div className='flex'>
-        <Allbooks books={books} />
-        {open &&  <ListCart />}
+        {books.length ? <Allbooks books={books} handleBooks={handleBooks}/> : <div style={{flexGrow: '1'}}>No books available</div>}
+        {open && <ListCart cartBooks={cartBooks} handleRemoveBooks={handleRemoveBooks}/>}
       </div>
     </>
   )
