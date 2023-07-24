@@ -13,9 +13,9 @@ describe("BooksLibrary", () => {
       />
     )
 
-    cy.get("aside ul li div p").should(
+    cy.get("aside ul li p").should(
       "contain.text",
-      "No hay libros en la lista de lectura"
+      "No hay libros aún. Añade alguno!"
     )
   })
 
@@ -134,9 +134,9 @@ describe("BooksLibrary", () => {
 
     cy.get("aside ul li button").click()
 
-    cy.get("aside ul li div p").should(
+    cy.get("aside ul li p").should(
       "contain.text",
-      "No hay libros en la lista de lectura"
+      "No hay libros aún. Añade alguno!"
     )
   })
 
