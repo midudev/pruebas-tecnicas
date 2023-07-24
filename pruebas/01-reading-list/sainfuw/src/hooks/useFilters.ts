@@ -1,11 +1,11 @@
 import { useContext } from "react"
-import { BooksContext } from "../context/BooksContext"
 import { FiltersContext } from "../context/FiltersContext"
 import { ReadListContext } from "../context/ReadListContext"
 import { IBook } from "../types"
+import { useBooks } from "./useBooks"
 
 export function useFilters() {
-  const { books } = useContext(BooksContext)
+  const { books } = useBooks()
   const { readList } = useContext(ReadListContext)
   const { filters, setFilters } = useContext(FiltersContext)
 

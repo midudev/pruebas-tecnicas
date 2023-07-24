@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import { useContext } from "react";
-import { BooksContext } from "../context/BooksContext";
 import { ReadListContext } from "../context/ReadListContext";
+import { useBooks } from "../hooks/useBooks";
 import { useFilters } from "../hooks/useFilters";
 import { Filters } from "./Filters";
 
 export default function Header() {
-  const { books } = useContext(BooksContext)
+  const { books } = useBooks()
   const { readList } = useContext(ReadListContext)
   const { filterBooks } = useFilters()
   const filteredBooks = filterBooks()
@@ -32,9 +32,9 @@ export default function Header() {
           </motion.span>
         ))}
       </motion.div>
-      <section className="flex gap-8 p-6 rounded-lg bg-background-light text-primary">
+      <section className="flex flex-col-reverse gap-6 p-6 rounded-lg bg-background-light text-primary md:flex-row">
         <Filters />
-        <div className="flex flex-col min-w-[180px] justify-center gap-1">
+        <div className="flex flex-col min-w-[240px] justify-center gap-1 bg-blue-600 bg-opacity-10 p-4 rounded-lg">
           <h3 className="flex justify-between font-pop">
             Total books:
             <span className="font-bold">{books.length}</span>

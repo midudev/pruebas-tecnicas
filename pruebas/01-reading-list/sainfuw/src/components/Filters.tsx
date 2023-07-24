@@ -1,9 +1,9 @@
-import { useContext, useId } from "react";
-import { BooksContext } from "../context/BooksContext";
+import { useId } from "react";
+import { useBooks } from "../hooks/useBooks";
 import { useFilters } from "../hooks/useFilters";
 
 export function Filters() {
-  const { genres } = useContext(BooksContext)
+  const { genres } = useBooks()
   const { filters, setFilters } = useFilters()
   const pageId = useId()
 
