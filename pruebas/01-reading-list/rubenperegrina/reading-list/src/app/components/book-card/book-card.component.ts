@@ -4,11 +4,12 @@ import { Book } from 'src/app/models/data-from-api.interface';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { BooksService } from 'src/app/services/books.service';
+import { MatChipsModule } from '@angular/material/chips';
 
 @Component({
   selector: 'book-card',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule],
+  imports: [CommonModule, MatIconModule, MatButtonModule, MatChipsModule],
   templateUrl: './book-card.component.html',
   styleUrls: ['./book-card.component.scss'],
 })

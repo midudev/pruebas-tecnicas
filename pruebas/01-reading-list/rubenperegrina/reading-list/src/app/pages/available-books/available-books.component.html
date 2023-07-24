@@ -1,12 +1,8 @@
-<mat-form-field>
-    <mat-label>Select an option</mat-label>
-    <!-- <mat-select [(value)]="selected" (selectionChange)="filterByGenre($event.value)"> -->
-    <mat-select [(value)]="selected">
-      <mat-option>Todos</mat-option>
-      <mat-option value="Fantasía">Fantasía</mat-option>
-      <mat-option value="Ciencia ficción">Ciencia ficción</mat-option>
-      <mat-option value="Zombies">Zombies</mat-option>
-      <mat-option value="Terror">Terror</mat-option>
-    </mat-select>
-  </mat-form-field>
+  <mat-chip-listbox class="mb-4 mt-4" aria-label="Genre selection">
+    <mat-chip-option selected [value]="'Todos'" (selectionChange)="filterByGenre($event)" >Todos</mat-chip-option>
+    <mat-chip-option [value]="'Fantasía'" (selectionChange)="filterByGenre($event)" color="accent">Fantasía</mat-chip-option>
+    <mat-chip-option [value]="'Ciencia ficción'" (selectionChange)="filterByGenre($event)" color="accent">Ciencia ficción</mat-chip-option>
+    <mat-chip-option [value]="'Zombies'" (selectionChange)="filterByGenre($event)" color="accent">Zombies</mat-chip-option>
+    <mat-chip-option [value]="'Terror'" (selectionChange)="filterByGenre($event)" color="accent">Terror</mat-chip-option>
+  </mat-chip-listbox>
 <book-available-books-table [availableBooks]="availableBooks" />
