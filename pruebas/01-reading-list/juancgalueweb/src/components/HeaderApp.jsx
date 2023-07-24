@@ -9,7 +9,7 @@ export const HeaderApp = () => {
   return (
     <Header className='header-style'>
       <div className='header-content'>
-        <div>Aplicación de lista de libros</div>
+        <div>📚 Aplicación de lista de libros</div>
         <div className='icons'>
           <ReactIcon />
           <ViteIcon />

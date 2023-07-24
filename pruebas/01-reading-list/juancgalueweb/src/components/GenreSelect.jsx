@@ -9,14 +9,16 @@ export const GenreSelect = () => {
     copyBooks,
     setCategories,
     booksBySelectedCategory,
-    setSelectedCategory
+    setSelectedCategory,
+    selectedCategory
   ] = useBooksStore(
     (state) => [
       state.categories,
       state.copyBooks,
       state.setCategories,
       state.booksBySelectedCategory,
-      state.setSelectedCategory
+      state.setSelectedCategory,
+      state.selectedCategory
     ],
     shallow
   )
@@ -32,7 +34,7 @@ export const GenreSelect = () => {
 
   return (
     <Select
-      defaultValue='Todos'
+      defaultValue={selectedCategory}
       style={{ width: 150, textAlign: 'left' }}
       onChange={handleChange}
       options={categories.map((cat) => {

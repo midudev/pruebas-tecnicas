@@ -1,10 +1,9 @@
 import { Layout } from 'antd'
 import { Books } from './components/Books'
 import { HeaderApp } from './components/HeaderApp'
-import { ReadingList } from './components/ReadingList'
 
 function App() {
-  const { Footer, Sider, Content } = Layout
+  const { Footer, Content } = Layout
 
   const footerStyle = {
     textAlign: 'center',
@@ -14,14 +13,9 @@ function App() {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <HeaderApp />
-      <Layout hasSider>
-        <Content>
-          <Books />
-        </Content>
-        <Sider width={600}>
-          <ReadingList />
-        </Sider>
-      </Layout>
+      <Content>
+        <Books />
+      </Content>
       <Footer style={footerStyle}>Footer</Footer>
     </Layout>
   )

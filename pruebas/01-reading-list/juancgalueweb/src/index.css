@@ -5,7 +5,6 @@
 
   color-scheme: dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -16,8 +15,6 @@
   /* Variables */
   --header-color: #232323;
   --books-container-color: #27272a;
-  --books-heading-color: #3730a3;
-  --reading-heading-color: #0891b2;
 }
 
 body {
@@ -47,6 +44,8 @@ body {
 .books-container {
   display: flex;
   flex-direction: column;
+  background-color: var(--books-container-color);
+  min-height: 84.5vh;
 }
 
 .reading-container {
@@ -55,74 +54,32 @@ body {
 }
 
 .books-cards {
-  margin: 20px;
+  margin: 40px 60px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 20px
 }
 
 .book-card:hover {
-  filter: contrast(.75);
-  transform: scale(1.02);
+  filter: contrast(1.1);
+  transform: scale(1.01);
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
 }
 
-.books-heading-h1 {
+.books-heading {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem;
-  font-weight: 600;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  height: 40px;
-  width: 100%;
-  background-color: var(--books-heading-color);
-}
-
-.books-heading-h2 {
-  display: flex;
-  justify-content: space-between;
+  justify-content: start;
+  gap: 40px;
   align-items: center;
   font-size: 0.9rem;
   font-weight: 400;
   text-align: center;
-  margin: 0;
+  margin: 5px 0;
   padding: 20px 40px;
   height: 30px;
   width: 100%;
-  background-color: var(--books-heading-color);
-}
-
-.reading-heading-h1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem;
-  font-weight: 600;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  height: 40px;
-  width: 100%;
-  background-color: var(--reading-heading-color);
-}
-
-.reading-heading-h2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 0.9rem;
-  font-weight: 400;
-  text-align: center;
-  margin: 0;
-  padding: 20px 0px;
-  height: 30px;
-  width: 100%;
-  background-color: var(--reading-heading-color);
 }
 
 .empty-reading-list {

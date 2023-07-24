@@ -1,9 +1,9 @@
-import { Badge, Card } from 'antd'
+import { Card, Drawer } from 'antd'
 import { shallow } from 'zustand/shallow'
 import { useBooksStore } from '../stores/books'
 import { CloseIcon } from './Icons/CloseIcon'
 
-export const ReadingList = () => {
+export const ReadingList = ({ open, onClose }) => {
   const { Meta } = Card
   const [readingList, removeFromReadingList] = useBooksStore(
     (state) => [state.readingList, state.removeFromReadingList],
@@ -11,30 +11,17 @@ export const ReadingList = () => {
   )
 
   return (
-    <div className='reading-container'>
-      <div className='reading-heading-h1'>
-        <h1>📖 Lista de lectura</h1>
-      </div>
-      {/* Div vacío solo para la visual */}
-      <div className='reading-heading-h2'></div>
-      <div className='reading-heading-h2'>
-        <h2>
-          N° de libros disponibles{' '}
-          <Badge
-            count={readingList.length}
-            color='#52c41a'
-            showZero
-            style={{
-              borderColor: 'transparent',
-              fontWeight: 700,
-              marginLeft: '6px'
-            }}
-          />
-        </h2>
-      </div>
+    <Drawer
+      className='reading-container'
+      title='📖 Lista de lectura'
+      placement='right'
+      onClose={onClose}
+      open={open}
+      size='large'
+    >
       {readingList.length === 0 && (
         <div className='empty-reading-list'>
-          <p>Aún no hay libros en la lista de lectura</p>
+          <p>Aún no hay libros en la lista de lectura 🥺</p>
         </div>
       )}
       <div className='books-cards'>
@@ -56,6 +43,6 @@ export const ReadingList = () => {
           )
         })}
       </div>
-    </div>
+    </Drawer>
   )
 }
