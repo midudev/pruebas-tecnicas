@@ -1,0 +1,11 @@
+.librosContainer {
+    display: flex;
+    flex-direction: row;
+    //background-color: white;
+    border-style: dotted;
+    border-color: $color-font;
+    
+    flex-flow: row wrap;
+    justify-content: space-around;
+
+}

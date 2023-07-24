@@ -1,8 +1,5 @@
-// import { EstadoAplicacion } from "./estado-aplicacion"
+import { EstadoAplicacion } from "../interfaces/interfaces";
 
-// export const mapStateToProps = (state: EstadoAplicacion) => {
-//     return {
-//        disponibles: null,
-//        favoritos: null
-//     }
-// }
+export function mapStateToProps(state: EstadoAplicacion): EstadoAplicacion {
+  return state;
+}

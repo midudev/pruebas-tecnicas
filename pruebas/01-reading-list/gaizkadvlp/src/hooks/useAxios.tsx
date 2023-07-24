@@ -14,16 +14,13 @@ const useAxios = (url: string = "/books.json") => {
   const [error, setError] = React.useState<any>();
   const [loading, setLoading] = React.useState<Boolean>(true);
   
-  //console.log("EN EL USEAXIOS!!!");
   useEffect(() => {
-    //console.log("EN EL USEAXIOS REALIZANDO LA PETICIÓN!!!");
     const fetchData = async () => {
       setTimeout(async () => {  //TODO --> Quitar retardo, está puesto para que salga el Spinner
         await axios
           .get(url)
           .then((res) => {
             setResponse(res.data)
-            //setLoading(false)
           })
           .catch((err) => setError(err))
           .finally(() => setLoading(false));

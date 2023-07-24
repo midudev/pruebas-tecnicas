@@ -1,6 +1,5 @@
 import * as actionTypes from "../types/actionTypes";
-import { Book } from "../../interfaces/interfaces";
-import { EstadoAplicacion } from "../estado-aplicacion";
+import { Book, EstadoAplicacion } from "../../interfaces/interfaces";
 import { TipoGenero } from "../../interfaces/enums";
 import { REMOVE_INIT_FAVORITOS } from "../types/actionTypes";
 
@@ -25,7 +24,6 @@ const initialState: EstadoAplicacion = {
 const booksReducer = (state: EstadoAplicacion = initialState, action: any) => {
   switch (action.type) {
     case FETCH_INIT_DATA:
-      console.log(action.payload)
         return {
           ...state,
           disponibles: action.payload
@@ -44,7 +42,6 @@ const booksReducer = (state: EstadoAplicacion = initialState, action: any) => {
         favoritos: removeFavoriteBook,
       };
     case ADD_DISPONIBLES:
-      console.log("Lo añade a disponibles", action.payload.title);
       return {
         ...state,
         disponibles: [...state.disponibles, action.payload],
@@ -63,19 +60,16 @@ const booksReducer = (state: EstadoAplicacion = initialState, action: any) => {
         disponibles: action.payload,
       };
     case CHANGE_FILTRO:
-      console.log("En filtro reducer: ", action.payload);
       return {
         ...state,
         filtro: action.payload,
       };
     case LIBROS_FILTRADOS:
-      console.log("En LIBROS FILTRADOS reducer: ", action.payload);
       return {
         ...state,
         filtro: action.payload,
       };
       case REMOVE_INIT_FAVORITOS:
-        console.log(`Borrando libro: ${action.payload}`)
         return {
           ...state,
           favoritos: []

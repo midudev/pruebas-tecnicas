@@ -78,9 +78,10 @@
 }
 
 @mixin listas {
+    list-style: none;
     border-style: double;
     border-radius: 1em;
-    margin: 5em;
+    margin: 1em;
     //width: 90%;
     padding: 2em;
 }

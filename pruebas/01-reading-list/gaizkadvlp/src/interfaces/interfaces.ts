@@ -1,3 +1,5 @@
+import { TipoGenero } from "./enums";
+
 export interface Author {
     name: string,
     otherBooks?: string[]
@@ -17,3 +19,10 @@ export interface Book{
 export interface Library {
     book: Book
 };
+
+export interface EstadoAplicacion {
+    disponibles: Book[];
+    favoritos: Book[];
+    filtro: TipoGenero | string;
+    filtrados: Book[];
+  }

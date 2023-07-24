@@ -1,12 +1,11 @@
 import { connect } from "react-redux";
-import { mapStateToProps } from "../redux/estado-aplicacion";
+import { mapStateToProps } from "../redux/mapStateToProps";
 import { mapDispatchToProps } from "../redux/mapDispatchToProps";
 import Libro from "./Libro";
 import { Book } from "../interfaces/interfaces";
 import { cuentaLibros } from "../utils/helper.functions";
 
 const Favoritos = (props: any) => {
-  //console.log(props);
   const favoritos: Book[] = props.libreria.favoritos;
   let contador:number = 0;
 
@@ -25,7 +24,7 @@ const Favoritos = (props: any) => {
     <>
       <ul className="listaLibros favoritos">
         <h2>Favoritos</h2>
-        {cuentaLibros(contador)}
+        {cuentaLibros(contador, 0)}
         {favoritos.length ? renderBooks : <p>No hay favoritos</p>}
       </ul>
     </>

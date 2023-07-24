@@ -1,11 +1,10 @@
 import { connect } from "react-redux";
 import { Book } from "../interfaces/interfaces";
-import { mapStateToProps } from "../redux/estado-aplicacion";
+import { mapStateToProps } from "../redux/mapStateToProps";
 import { mapDispatchToProps } from "../redux/mapDispatchToProps";
 import { removeFavorite, saveFavorito } from "../utils/helper.functions";
 
 const Libro = (props: any) => {
-  //console.log(props)
   const { addFavo, removeFavo, addDisponibles, removeDisponibles } = props;
   const { title, author, cover, synopsis, ISBN } = props.libro;
 
@@ -31,11 +30,10 @@ const Libro = (props: any) => {
 
   return (
     <div className="libro">
+      {/* <p>{author.name}</p> */}
       <h3>{title}</h3>
-      <p>{author.name}</p>
       <img src={cover} alt={title} className="portada" onClick={() => handleAdd(ISBN)}  />
-      <p>{synopsis}</p>
-      {/* <button onClick={() => handleAdd(ISBN)}>Favorites</button> */}
+      {/* <p>{synopsis}</p> */}
     </div>
   );
 };
