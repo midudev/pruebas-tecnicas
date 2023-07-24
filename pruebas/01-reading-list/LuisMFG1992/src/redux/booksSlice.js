@@ -58,6 +58,9 @@ export const booksSlice = createSlice({
       }
       localStorage.setItem('readingList', JSON.stringify(state.readingList))
     },
+    setSharedData: (state, action) => {
+      state.readingList = action.payload
+    },
   },
 
   extraReducers: (builder) => {
@@ -80,6 +83,7 @@ export const {
   addDropDownFilter,
   removeDropDownFilter,
   addRemoveBookReadingList,
+  setSharedData,
 } = booksSlice.actions
 
 export default booksSlice.reducer
