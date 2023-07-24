@@ -2,6 +2,7 @@
 import { DragDropContext } from 'react-beautiful-dnd'
 import { useState, useEffect } from 'react'
 import BookList from '../components/bookList/BookList'
+import Filter from '../components/filter/Filter'
 import initialBooksList from '../mocks/books.js'
 import { LIST_NAME } from '../constant/constants'
 import { moveAndReorder, reorder, isSameList } from '../utils/drag-and-drop'
@@ -27,7 +28,12 @@ export default function Home() {
         books: booksAvailable,
         handleAddAllBooks: handleAddAllBooksAvailable,
         handleFilterBooks: handleFilterBooksAvailable,
+        handleFilterBooksGenre: handleFilterBooksGenreAvailable,
+        genres: genresAvailable,
+        genreSelected,
+        handleGetAllGenres,
     } = useBooks()
+
     const {
         books: booksSelected,
         handleAddAllBooks: handleAddAllBooksSelected,
@@ -41,14 +47,16 @@ export default function Home() {
     useEffect(() => {
         handleFilterBooksAvailable(library, getBooksCurrentlist())
         handleAddAllBooksSelected(getBooksCurrentlist())
+        handleGetAllGenres(library)
 
-        const onStorageChange = (e) => {
+        const onStorageChange = (_) => {
             handleFilterBooksAvailable(library, getBooksCurrentlist())
-            handleAddAllBooksSelected(getBooksCurrentlist())
+            //handleAddAllBooksSelected(getBooksCurrentlist())
+            //handleFilterBooksGenreAvailable()
         }
         window.addEventListener('storage', onStorageChange)
         return () => window.removeEventListener('storage', onStorageChange)
-    }, [])
+    }, [genreSelected])
 
     function handleOnDragEnd(events) {
         const { source, destination } = events
@@ -125,6 +133,12 @@ export default function Home() {
             onDragStart={handleOnDragStart}
         >
             <main className="pt-20">
+                <Filter
+                    genres={genresAvailable}
+                    handleFilterBooksGenreAvailable={
+                        handleFilterBooksGenreAvailable
+                    }
+                />
                 <div className="flex justify-evenly flex-wrap rounded-lg">
                     <BookList
                         title={AVAILABLE_BOOKS_TITTLE}
