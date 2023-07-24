@@ -10,9 +10,7 @@ module.exports = {
 	],
 	theme: {
 		extend: {
-       fontFamily: {
-        "regular-mona": ["var(--font-regular-mona)"],
-      },
+   
         animation: {
         'shake': 'shake 2s linear infinite',
       },

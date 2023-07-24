@@ -76,13 +76,15 @@
 
 <svelte:window on:keydown={(e) => navigateList(e)} on:mousemove />
 <form
-	class="relative flex flex-col max-w-xl mx-auto w-full"
+	class="relative flex flex-col max-w-xl w-full"
 	autocomplete="off"
 	on:submit|preventDefault={submitSearch}
 >
-	<label class="font-bold text-2xl" for={id}>{label}</label>
+	<label class="font-bold text-2xl hidden" aria-label="Buscador de libros por título" for={id}
+		>{label}</label
+	>
 
-	<div class="flex h-11">
+	<div class="flex h-12">
 		<input
 			class="input w-full
 		rounded-lg h-full border-2 border-green-500
@@ -97,13 +99,13 @@
 			<button
 				out:fly={{ x: 0, duration: 500 }}
 				in:fly={{ x: 50, duration: 500 }}
-				class="btn variant-filled border-2 border-green-500 border-l-none font-bold h-11 absolute right-0 hover:bg-green-500 hover:text-gray-200 rounded-r-lg rounded-l-none"
+				class="btn variant-filled border-2 border-green-500 border-l-none font-bold h-12 absolute right-0 hover:bg-green-500 hover:text-gray-200 rounded-r-lg rounded-l-none"
 				>{action}</button
 			>
 		{/if}
 	</div>
 
-	<dl class="mt-2 text-black">
+	<dl class="absolute w-full top-11 mt-2 text-black z-10">
 		{#each filteredTitles as option, i}
 			<a
 				href={`/search/${option.slug.toLocaleLowerCase()}`}

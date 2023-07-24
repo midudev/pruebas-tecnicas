@@ -1,16 +1,16 @@
 <script lang="ts">
 	import libraryData from '../lib/data/books.json';
 	import type { Library, LibraryElement } from '../types';
-	import { AppBar, localStorageStore } from '@skeletonlabs/skeleton';
-	import { afterUpdate } from 'svelte';
-	import Dropdown from '../components/Dropdown.svelte';
-	import { PAGE_RANGE, getUniqueGenres } from '$lib/data/const';
+	import { localStorageStore } from '@skeletonlabs/skeleton';
 	import { filterByPages, filterByCategory } from '$lib/helpers/filters';
 	import type { Writable } from 'svelte/store';
-	import SearchBooks from '../components/SearchBooks.svelte';
 	import { goto } from '$app/navigation';
 	import WishList from '../components/WishList.svelte';
 	import BookCard from '../components/BookCard.svelte';
+	import Header from '../components/Header.svelte';
+	import Selectors from '../components/Selectors.svelte';
+	import Icon from '@iconify/svelte';
+	import { afterUpdate } from 'svelte';
 
 	let { library }: Library = libraryData;
 
@@ -18,26 +18,32 @@
 		books: LibraryElement[];
 		wishlist: LibraryElement[];
 		renderlist: LibraryElement[];
+		filter: string;
 	}
 
 	const initialDataStore: Writable<initialData> = localStorageStore('initialDataStore', {
 		books: library,
 		wishlist: [],
-		renderlist: library
+		renderlist: library,
+		filter: 'Todos'
 	});
 
 	let filters = {
-		selectedGenre: 'All',
 		selectedPagesRanges: '0'
 	};
 
+	function handleFilters(e: CustomEvent<{ filter: string }>) {
+		$initialDataStore.filter = e.detail.filter;
+		updateFilteredBooks();
+	}
+
 	const updateFilteredBooks = () => {
-		if (filters.selectedGenre === 'All' && filters.selectedPagesRanges === '0') {
+		if ($initialDataStore.filter === 'Todos' && filters.selectedPagesRanges === '0') {
 			$initialDataStore.renderlist = $initialDataStore.books;
 		} else {
 			$initialDataStore.renderlist = $initialDataStore.books.filter(
 				({ book }) =>
-					filterByCategory(book, filters.selectedGenre) &&
+					filterByCategory(book, $initialDataStore.filter) &&
 					filterByPages(book, filters.selectedPagesRanges)
 			);
 		}
@@ -93,55 +99,35 @@
 </svelte:head>
 
 <section class="flex flex-col">
-	<AppBar class="w-full">
-		<h1 class="h1">
-			<span
-				class="bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone font-bold"
-				>ReadStack.</span
-			>
+	<Header />
+
+	<Selectors
+		{library}
+		on:selectedfilter={handleFilters}
+		savedFilter={$initialDataStore.filter}
+		availables={$initialDataStore.renderlist.length}
+	/>
+
+	<section class="my-20 mx-auto max-w-5xl w-full">
+		<h1 class="font-bold text-5xl flex gap-3 items-center mb-10">
+			Nuestra librería <Icon icon="ion:book-outline" />
 		</h1>
-	</AppBar>
 
-	<SearchBooks
-		label="Busca tu libro favorito"
-		id="search-form"
-		action="Buscar"
-		placeholder="Harry Potter..."
-	/>
-
-	<Dropdown
-		label="Selecciona una categoría"
-		identifier="filtro-categoría"
-		options={getUniqueGenres('All', library)}
-		bind:value={filters.selectedGenre}
-	/>
-
-	<Dropdown
-		label="Selecciona un rango de páginas"
-		identifier="filtro-paginas"
-		options={PAGE_RANGE}
-		bind:value={filters.selectedPagesRanges}
-	/>
-
-	<h1 class="font-bold text-4xl">
-		Libros Disponibles {filters.selectedGenre === 'All'
-			? `(${$initialDataStore.renderlist.length})`
-			: `- ${filters.selectedGenre} (${$initialDataStore.renderlist.length})`}
-	</h1>
-
-	{#if $initialDataStore.renderlist.length === 0}
-		<p class="font-bold text-3xl">No hay libros para mostrar</p>
-	{/if}
-
-	<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-20 mx-auto max-w-4xl">
-		{#each $initialDataStore.renderlist as { book }}
-			<BookCard
-				cta="Agregar a lista de lectura"
-				{book}
-				on:update={() => addToWishlist(book.ISBN)}
-				on:navigate={() => goToDetail(book.title)}
-			/>
-		{/each}
+		{#if $initialDataStore.renderlist.length === 0}
+			<p class="font-bold text-3xl text-center">No hay libros para mostrar</p>
+		{/if}
+		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+			{#each $initialDataStore.renderlist as { book }}
+				{#key book.ISBN}
+					<BookCard
+						cta="Agregar a lista de lectura"
+						{book}
+						on:update={() => addToWishlist(book.ISBN)}
+						on:navigate={() => goToDetail(book.title)}
+					/>
+				{/key}
+			{/each}
+		</div>
 	</section>
 	<p>WHISLIST ({$initialDataStore.wishlist.length})</p>
 

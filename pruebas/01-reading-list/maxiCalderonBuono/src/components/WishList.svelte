@@ -6,7 +6,13 @@
 
 	export let wishlist: LibraryElement[];
 
-	let dragDisabled: boolean = true;
+	let dragDisabled = true;
+
+	let itemSelected = '';
+
+	let isDragabble = true;
+
+	let dropTargetStyle = { outline: 'rgba(255, 255, 255, 1) dashed 3px' };
 
 	interface customDndEvent extends Book {
 		id: string;
@@ -22,27 +28,33 @@
 		dispatch('navigate', { title });
 	}
 
-	
-
 	function handleConsider(e: CustomEvent<DndEvent<customDndEvent>>) {
-		const {items: newItems, info: {source, trigger}} = e.detail;
+		const {
+			items: newItems,
+			info: { source, trigger }
+		} = e.detail;
 		items = newItems;
 		if (source === SOURCES.KEYBOARD && trigger === TRIGGERS.DRAG_STOPPED) {
 			dragDisabled = true;
+			itemSelected = '';
 		}
 	}
 
-		function handleFinalize(e: CustomEvent<DndEvent<customDndEvent>>) {
-		const {items: newItems, info: {source}} = e.detail;
+	function handleFinalize(e: CustomEvent<DndEvent<customDndEvent>>) {
+		const {
+			items: newItems,
+			info: { source }
+		} = e.detail;
 		items = newItems;
-		// Ensure dragging is stopped on drag finish via pointer (mouse, touch)
 		if (source === SOURCES.POINTER) {
 			dragDisabled = true;
+			itemSelected = '';
 		}
 	}
 
-	function startDrag() {
+	function startDrag(id: string) {
 		dragDisabled = false;
+		itemSelected = id;
 	}
 
 	$: items = wishlist?.map(({ book }: { book: Book }) => {
@@ -52,14 +64,18 @@
 </script>
 
 <section
-	class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-20 mx-auto max-w-5xl"
-	use:dndzone={{ items, dragDisabled }}
+	class={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-20 mx-auto max-w-5xl outline-none ${
+		!dragDisabled ? 'outline-dashed outline-white outline-[3px]' : ''
+	}`}
+	use:dndzone={{ items, dragDisabled, dropTargetStyle }}
 	on:consider={handleConsider}
 	on:finalize={handleFinalize}
 >
 	{#each items as item (item.id)}
 		<BookCard
-			on:long={startDrag}
+			onDragStyles={item.id === itemSelected ? true : false}
+			{isDragabble}
+			on:long={() => startDrag(item.id)}
 			cta="Eliminar de la lista de lectura"
 			book={{ ...item, ISBN: item.id }}
 			on:navigate={() => goToDetail(item.title)}

@@ -1,3 +1,4 @@
 :root {
-	--regular: 'MonaSans', sans-serif;
+	--theme-font-family-base: 'MonaSans', sans-serif;
+	--theme-font-family-heading: 'Luma', sans-serif;
 }

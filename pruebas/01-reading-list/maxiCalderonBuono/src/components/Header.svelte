@@ -1,0 +1,24 @@
+<script>
+	import Avatar from './Avatar.svelte';
+
+	import SearchBooks from './SearchBooks.svelte';
+</script>
+
+<header class="w-full h-20 py-4 px-8 shadow-lg flex items-center justify-between">
+	<h1
+		class="bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone font-bold text-4xl"
+	>
+		ReadStack.
+	</h1>
+
+	<div class="flex gap-5 flex-1 justify-end items-center">
+		<SearchBooks
+			label="Busca tu libro favorito"
+			id="search-form"
+			action="Buscar"
+			placeholder="Busca el título de tu libro..."
+		/>
+
+		<Avatar />
+	</div>
+</header>

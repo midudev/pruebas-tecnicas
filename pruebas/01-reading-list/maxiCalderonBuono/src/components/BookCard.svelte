@@ -16,10 +16,29 @@
 
 	export let book: Book;
 	export let cta: string;
+	export let isDragabble: boolean = false;
+	export let onDragStyles: boolean = false;
 </script>
 
-<div class="flex flex-col overflow-hidden" use:longpress on:long>
-	<button class="relative overflow-hidden group rounded-2xl" on:click={goToDetail}>
+<div class="flex flex-col overflow-hidden w-[250px]" use:longpress on:long>
+	<button
+		class={`relative overflow-hidden group rounded-2xl ${
+			onDragStyles ? 'animate-shake opacity-70' : 'opacity-100'
+		}`}
+		on:click={goToDetail}
+	>
+		{#if onDragStyles}
+			<Icon
+				icon="ic:round-move-down"
+				class="absolute top-[50%] left-0 right-0 mx-auto text-5xl font-bold rounded-full bg-gray-900/40 p-2 z-10"
+			/>
+		{/if}
+		{#if isDragabble}
+			<Icon
+				icon="mdi:drag"
+				class="absolute top-2 right-2 z-10 text-3xl bg-indigo-400/80 rounded-full font-bold"
+			/>
+		{/if}
 		<div class="absolute left-0 top-0 h-16 w-16">
 			<div
 				class="absolute z-10 transform -rotate-45 bg-blue-200/90 text-center text-gray-800 font-semibold py-1 left-[-34px] top-[32px] w-[170px]"
