@@ -29,3 +29,14 @@ export function getMinPages () {
 export function getGenres () {
   return [...new Set(books.library.map(book => book.book.genre))]
 }
+
+export function filterBooks (filters) {
+  const books = getBooks()
+  return books.filter(book => {
+    return (
+      (filters.search === '' || book.title.toLowerCase().includes(filters.search.toLowerCase()) || book.author.name.toLowerCase().includes(filters.search.toLowerCase())) &&
+      (filters.genres.length === 0 || filters.genres.includes(book.genre)) &&
+      (book.pages <= filters.pages)
+    )
+  })
+}
