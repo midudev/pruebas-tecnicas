@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import data from "./books.json";
 import { getLocalStorage, setLocalStorage } from "./storage";
 import { getBooks } from "./api";
+import BooksList from "./components/BooksList";
+import BooksFilters from "./components/BooksFilters";
+import ReadingListSidebar from "./components/ReadingListSidebar";
 
 export interface Book {
   ISBN: string;
@@ -53,12 +55,9 @@ function App() {
 
   const totalBooksCount = books.length;
   const filterResultsCount = genre || pagesCount ? filteredBooks.length : 0;
-  const readingListCount = readingList.length;
 
   //Get only the available categories from the books api/json data
-  const bookGenres = Array.from(
-    new Set(data.library.map((item) => item.book.genre))
-  );
+  const bookGenres = Array.from(new Set(books.map((book) => book.genre)));
 
   //Sync reading list on local storage change
   useEffect(() => {
@@ -97,129 +96,83 @@ function App() {
     }
   };
 
+  const seachFiltersProps = {
+    pagesCount,
+    setPagesCount,
+    genre,
+    setGenre,
+    searchQuery,
+    setSearchQuery,
+    bookGenres,
+  };
+
   return (
     <main>
       <section>
-        <div>
+        <div className="container">
           <header>
             <h1>Biblioteca</h1>
-            <h3>{totalBooksCount} libros disponibles</h3>
+            <span>{totalBooksCount} libros disponibles</span>
           </header>
-          <div className="filters">
-            <div>
-              <label htmlFor="pages-range">Cantidad de paginas</label>
-              <input
-                type="range"
-                name="pages-range"
-                value={pagesCount}
-                min={0}
-                max={1000}
-                onChange={(e) => setPagesCount(Number(e.target.value))}
-                step={100}
-              />
-              <span className="pages-count">
-                {pagesCount === 0 ? "" : `< ${pagesCount}`}
-              </span>
-            </div>
-            <div>
-              <label htmlFor="genre-filter">Filtrar por género</label>
-              <select
-                name="genre"
-                id="genre-filter"
-                value={genre}
-                onChange={(e) => setGenre(e.target.value)}
-              >
-                <option value={""}>Todos</option>
-                {bookGenres.map((genre) => (
-                  <option key={genre} value={genre}>
-                    {genre}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label htmlFor="search">Buscar</label>
-              <input
-                type="text"
-                name="search"
-                className="search-input"
-                id="search"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </div>
-          </div>
-          <span>
+          <BooksFilters {...seachFiltersProps} />
+
+          <span className="filter-results-count">
             {filterResultsCount
-              ? `${filterResultsCount} Resultados encontrados`
+              ? `${filterResultsCount} ${
+                  filterResultsCount === 1
+                    ? "Resultado encontrado"
+                    : "Resultados encontrados"
+                } `
               : ""}
           </span>
-          {filteredBooks.length === 0 ? (
-            <div className="no-results">
-              <h2>Lo sentimos, no se han encontrado resultados</h2>
-            </div>
-          ) : (
-            <BooksList
-              books={filteredBooks}
-              addToReadingList={addToReadingList}
-            />
-          )}
+
+          <BooksList
+            books={filteredBooks}
+            addToReadingList={addToReadingList}
+          />
         </div>
       </section>
 
       {Boolean(readingList.length) && (
-        <aside>
-          <header>
-            <h2>Lista de lectura</h2>
-            <span>
-              {readingListCount
-                ? `${readingListCount} libros agregados`
-                : "aun no agregaste libros"}
-            </span>
-          </header>
-
-          <div className="reading-list">
-            {readingList.length
-              ? readingList.map((book) => (
-                  <div key={book.ISBN} className="book">
-                    <img src={book.cover} className="book-cover" />
-                    <span className="book-title">{book.title}</span>
-                    <button
-                      className="remove-book"
-                      onClick={() => removeFromReadingList(book.ISBN)}
-                    >
-                      x
-                    </button>
-                  </div>
-                ))
-              : null}
-          </div>
-        </aside>
+        <ReadingListSidebar
+          readingList={readingList}
+          removeFromReadingList={removeFromReadingList}
+        />
       )}
     </main>
   );
 }
 
-interface BooksListProps {
-  books: Book[];
-  addToReadingList: (ISBN: string) => void;
-}
+// interface BookCardProps {
+//   book: Book;
+//   addToReadingList?: (ISBN: string) => void;
+//   removeFromReadingList?: (ISBN: string) => void;
+// }
 
-function BooksList({ books, addToReadingList }: BooksListProps) {
-  return (
-    <div className="books">
-      {books.map((book) => (
-        <div
-          key={book.ISBN}
-          className="book"
-          onClick={() => addToReadingList(book.ISBN)}
-        >
-          <img src={book.cover} className="book-cover" />
-          <span className="book-title">{book.title}</span>
-          <span className="book-author">{book.author.name}</span>
-        </div>
-      ))}
-    </div>
-  );
-}
+// function BookCard({
+//   book,
+//   addToReadingList,
+//   removeFromReadingList,
+// }: BookCardProps) {
+//   return (
+//     <div
+//       key={book.ISBN}
+//       className="book"
+//       onClick={() => addToReadingList(book.ISBN)}
+//     >
+//       <img src={book.cover} className="book-cover" />
+//       <span className="book-title">{book.title}</span>
+//       <span className="book-author">{book.author.name}</span>
+//       {
+//         <button
+//           className="remove-book"
+//           onClick={() => removeFromReadingList(book.ISBN)}
+//         >
+//           x
+//         </button>
+//       }
+//     </div>
+//   );
+// }
+
 export default App;

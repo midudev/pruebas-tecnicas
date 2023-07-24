@@ -8,6 +8,10 @@
   height: 100%;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 html,
 body {
   height: 100%;
@@ -27,7 +31,7 @@ section {
   flex-grow: 999;
 }
 
-section > div {
+.container {
   width: min(1080px, 100%);
   margin-inline: auto;
 }
@@ -39,20 +43,21 @@ aside {
   flex-grow: 1;
   min-height: 100%;
   border-radius: 0.4rem;
-}
-
-aside > header > span {
-  color: rgb(184, 184, 184);
+  animation: fade-left 100ms ease-in;
 }
 
 section h1 {
   font-size: 2rem;
 }
 
-section h3 {
+section header {
+  margin-bottom: 3rem;
+}
+
+section header > span {
   color: grey;
   font-size: 1rem;
-  margin-bottom: 3rem;
+  font-weight: bold;
 }
 
 .filters {
@@ -62,7 +67,7 @@ section h3 {
   accent-color: rgb(74, 82, 124);
 }
 
-.filters > div > label {
+.filters .filter-group label {
   display: block;
   margin-bottom: 0.3rem;
 }
@@ -73,13 +78,8 @@ section h3 {
   width: 10rem;
   border: none;
   border-radius: 0.3rem;
-}
-
-.filters input[type="text"] {
-  height: 2.5rem;
-  padding-inline: 1rem;
-  width: 15rem;
   font: inherit;
+  background: #2b2b2d;
 }
 
 .filters .pages-count {
@@ -88,16 +88,161 @@ section h3 {
   color: rgb(175, 175, 175);
   display: inline-block;
   font-variant-numeric: tabular-nums;
+  padding-left: 0.25rem;
+}
+
+.filters .range {
+  -webkit-appearance: none;
+  appearance: none;
+  vertical-align: middle;
+  outline: none;
+  border: none;
+  padding: 0;
+  background: none;
+  height: 2.5rem;
+  /* border: 2px solid white; */
+}
+
+@media screen and (max-width: 768px) {
+  .filters {
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+  }
+
+  .filter-group {
+    width: 100%;
+  }
+
+  .filter-group:has(.range) {
+    display: grid;
+    grid-template-columns: 2fr 0.5fr;
+    grid-template-rows: auto;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filter-group:has(.range) label {
+    grid-column: span 2;
+  }
+
+  .filters .range {
+    width: 100%;
+  }
+
+  .filters select {
+    width: 100%;
+  }
+}
+
+.range::-webkit-slider-runnable-track {
+  background-color: #d7dbdd;
+  height: 6px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+}
+
+.range[disabled]::-webkit-slider-runnable-track {
+  border: 1px solid #d7dbdd;
+  background-color: transparent;
+  opacity: 0.4;
+}
+
+.range::-moz-range-track {
+  background-color: #d7dbdd;
+  height: 6px;
+  border-radius: 3px;
+  border: none;
+}
+
+.range::-ms-track {
+  color: transparent;
+  border: none;
+  background: none;
+  height: 6px;
+}
+
+.range::-ms-fill-lower {
+  background-color: #d7dbdd;
+  border-radius: 3px;
+}
+
+.range::-ms-fill-upper {
+  background-color: #d7dbdd;
+  border-radius: 3px;
+}
+
+.range::-ms-tooltip {
+  display: none; /* display and visibility only */
+}
+
+.range::-moz-range-thumb {
+  border-radius: 20px;
+  height: 18px;
+  width: 18px;
+  border: none;
+  background: none;
+  background-color: #606670;
+}
+
+.range:active::-moz-range-thumb {
+  outline: none;
+}
+
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  border-radius: 100%;
+  background-color: #606670;
+  height: 18px;
+  width: 18px;
+  margin-top: -7px;
+}
+
+.range[disabled]::-webkit-slider-thumb {
+  background-color: transparent;
+  border: 1px solid #d7dbdd;
+}
+
+.range:active::-webkit-slider-thumb {
+  outline: none;
+}
+
+.range::-ms-thumb {
+  border-radius: 100%;
+  background-color: #606670;
+  height: 18px;
+  width: 18px;
+  border: none;
+}
+
+.range:active::-ms-thumb {
+  border: none;
+}
+
+.filter-results-count {
+  display: block;
+  margin-top: 1rem;
+  color: grey;
+  text-align: right;
+}
+
+.filter-group:has(.search-input) {
+  width: 100%;
+  flex: 1;
 }
 
 .search-input {
-  border: 1px solid grey;
+  height: 2.5rem;
+  padding-inline: 1rem;
+  font: inherit;
+  min-width: 100%;
+  border: 1px solid transparent;
   border-radius: 0.3rem;
-  background: inherit;
+  background: #2b2b2d;
   color: rgb(181, 181, 181);
 }
+
 .search-input:focus {
-  outline: 1px solid rgb(161, 161, 161);
+  outline: 1px solid rgb(48, 49, 52);
   color: rgb(219, 219, 219);
 }
 
@@ -108,9 +253,15 @@ section h3 {
   gap: 3rem 2.5rem;
 }
 
+@media screen and (max-width: 768px) {
+  .books {
+    gap: 1.25rem 0.75rem;
+  }
+}
+
 .book {
   transition: all 0.25s;
-  animation: test 300ms ease-in-out;
+  animation: fade-up 300ms ease-in-out;
 }
 
 .book:hover {
@@ -147,7 +298,7 @@ section h3 {
   display: block;
 }
 
-@keyframes test {
+@keyframes fade-up {
   0% {
     translate: 0 10px;
     opacity: 0.5;
@@ -156,6 +307,23 @@ section h3 {
     translate: 0 0px;
     opacity: 1;
   }
+}
+
+@keyframes fade-left {
+  0% {
+    translate: 10px 0;
+    opacity: 0;
+  }
+  100% {
+    translate: 0 0;
+    opacity: 1;
+  }
+}
+
+.sidebar-header > span {
+  color: rgb(184, 184, 184);
+  margin-bottom: 2rem;
+  display: block;
 }
 
 .reading-list {
@@ -199,5 +367,5 @@ button {
 
 .no-results {
   margin-top: 2.5rem;
-  animation: test 100ms ease-in;
+  animation: fade-up 100ms ease-in;
 }
