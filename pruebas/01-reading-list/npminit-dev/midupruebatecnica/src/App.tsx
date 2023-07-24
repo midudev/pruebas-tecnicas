@@ -1,15 +1,18 @@
+import { useContext } from "react"
 import Navigation from "./components/Navigation"
-import GlobalContextProvider from "./contexts/GlobalContext"
+import GlobalContextProvider, { GlobalContext } from "./contexts/GlobalContext"
 import './styles/global-variables.css'
 
 function App() {
 
+  const { colorMode } = useContext(GlobalContext)
+
   return (
-    <div>
-      <GlobalContextProvider>
+    <GlobalContextProvider>
+      <div>
         <Navigation></Navigation>
-      </GlobalContextProvider>
-    </div>
+      </div>
+    </GlobalContextProvider>
   )
 }
 

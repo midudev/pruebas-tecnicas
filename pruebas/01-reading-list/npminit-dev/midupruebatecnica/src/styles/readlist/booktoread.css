@@ -1,0 +1,12 @@
+.BookToRead-container {
+  transition-duration: .2s;
+  border-radius: 23px 10px 10px 23px;
+}
+
+.BookToRead-pending {
+  background-color: var(--dark-pending-4);
+}
+
+.BookToRead-read {
+  background-color: var(--dark-ok-5);
+}

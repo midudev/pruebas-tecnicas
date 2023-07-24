@@ -1,0 +1,26 @@
+.ThemeSw-container {
+  position: absolute;
+  top: 12px;
+  right: 175px
+}
+
+.ThemeSwitch, .ThemeSwitch:hover {
+  box-sizing: border-box;
+  background: linear-gradient(90deg, #ffa700, #accedc, #91cee6, #87ceeb, #87ceeb, #87ceeb) !important;
+}
+
+.ThemeSwitch.ant-switch-checked {
+  background: linear-gradient(90deg, #151517, #05215f, #062B79, #16498A, #5995B7, #fdffa2 ) !important;
+}
+
+.ThemeSWSun-icon {
+  height: 14px;
+  width: 14px;
+  color: #ffff00;
+  margin-top: 3px
+}
+
+.ThemeSWMoon-icon {
+  margin-top: 5px;
+  color: #F4F6F0
+}

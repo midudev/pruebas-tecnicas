@@ -25,7 +25,6 @@ export default function SearchBar(): JSX.Element {
     <form onSubmit={e => e.preventDefault()}>
       <Search
         placeholder="Look for a book"
-        style={{ width: 200 }}
         maxLength={50}
         minLength={1}
         allowClear={true}

@@ -1,8 +1,11 @@
-import { Select } from "antd";
+import { Col, Row, Select, Space } from "antd";
 import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
+import  { Typography } from "antd";
 import { Book } from "../../types/books";
 import '../../styles/global-variables.css'
+const { Text } = Typography
+
 
 type props = {
   setGenre: Dispatch<SetStateAction<string>>,
@@ -20,21 +23,27 @@ export default function GenreFilter({ setGenre, genre }: props): JSX.Element {
 
   return (
     <div>
-      <label>Genre</label>
-      <Select
-        showSearch
-        style={{
-          width: 200,
-        }}
-        placeholder="Select genre"
-        filterOption={(input, option) => (option?.label ?? "").includes(input)}
-        allowClear={true}
-        defaultValue={genre}
-        value={genre}
-        options={ genres.map(genre => Object.create({ value: genre, label: genre })) }
-        onSelect={(value) => setGenre(value)}
-        onClear={() => setGenre('All')}
-      />
+      <Row justify={'space-between'}>
+        <Col span={6}>
+          <Text>Gender</Text>
+        </Col>
+        <Col span={14}>
+          <Select
+            showSearch
+            style={{
+              width: 200,
+            }}
+            placeholder="Select genre"
+            filterOption={(input, option) => (option?.label ?? "").includes(input)}
+            allowClear={true}
+            defaultValue={genre}
+            value={genre}
+            options={ genres.map(genre => Object.create({ value: genre, label: genre })) }
+            onSelect={(value) => setGenre(value)}
+            onClear={() => setGenre('All')}
+          />
+        </Col>  
+      </Row>
     </div>
   );
 }

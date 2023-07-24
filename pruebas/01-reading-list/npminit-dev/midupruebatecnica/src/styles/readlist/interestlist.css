@@ -1,0 +1,37 @@
+.IL_Empty-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30vh;
+  width: 100vw;
+}
+
+#AutoAnimate-parent {
+  cursor: pointer
+}
+
+/* dragable styles */
+.Btr_drag-container {
+  animation: unset;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer
+}
+
+.Btr_drag-container_dragging {
+  pointer-events: none;
+  cursor: pointer;
+  border-radius: 10px;
+  animation: alternate .4s infinite drag_breath;
+}
+
+@keyframes drag_breath{
+  0%{
+    background-color: #f5f5f5;
+    opacity: .6;
+  }
+  100%{
+    background-color: #f2f2f2;
+    opacity: .8;
+  }
+}

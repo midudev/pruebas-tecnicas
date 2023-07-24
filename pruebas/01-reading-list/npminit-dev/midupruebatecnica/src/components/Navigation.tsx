@@ -1,70 +1,87 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SectionSelected } from '../types/navigation';
 import { Menu } from "antd";
 import BookList from "./booklist/BookList";
 import ReadList from "./readlist/ReadList";
 import About from "./about/About";
-import { MenuItemType } from "antd/es/menu/hooks/useItems";
+import { MenuItemType, SubMenuType } from "antd/es/menu/hooks/useItems";
 import Logo from "./Logo";
 import '../styles/navigation.css'
 import '../styles/global-variables.css'
+import { GlobalContext } from "../contexts/GlobalContext";
+import { BarsOutlined, CaretRightOutlined } from "@ant-design/icons";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 
 export default function Navigation(): JSX.Element {
 
-  const [ itemSelected, setItemSelected ] = useState<number>(1);
+  const { colorMode, wWidth } = useContext(GlobalContext)
+  const [ itemSelected, setItemSelected ] = useState<SectionSelected>('booklist');
 
   useEffect(() => {
     switch(itemSelected) {
-      case 1:
+      case 'booklist':
         document.title = 'BookNexus - Books'
         break;
-      case 2:
+      case 'readlist':
         document.title = 'BookNexus - Read List'
         break;
-      case 3:
+      case 'about':
         document.title = 'BookNexus - About'
         break;
       default: document.title = 'BookNexus'
     }
   }, [itemSelected])
 
-  const onClick = (e: any) => {
-    setItemSelected(parseInt(e.key));
-  }
+  const handleSelect = (e: any) => setItemSelected(e.key);
+  
   
   const items: MenuItemType[] = [
     {
-      key: '1',
-      label: 'Books',
+      key: 'booklist',
+      label: 'Books'
     },
     {
-      key: '2',
+      key: 'readlist',
       label: 'Read list',
     },
     {
-      key: '3',
+      key: 'about',
       label: 'About',
+    }
+  ]
+
+  const itemsMobile: SubMenuType[] = [
+    {
+      label: 'Menu',
+      key: 'MenuMobile',
+      icon: <BarsOutlined />,
+      children: items.map(item => { return { ...item, icon: <CaretRightOutlined /> }}),
+      style: {left: '-10px'},
+      className: 'Menu_Mobile_Header'
     }
   ]
 
   return ( 
     <div>
       <Menu 
-        items={items}
+        items={ wWidth > 473 ? items : itemsMobile }
         mode="horizontal"
-        defaultSelectedKeys={['1']}
-        onClick={onClick}
+        defaultSelectedKeys={['booklist']}
+        triggerSubMenuAction={wWidth > 473 ? 'hover' : 'click'}
+        onSelect={handleSelect}
+        selectedKeys={[itemSelected]}
       >
       </Menu> 
       <Logo></Logo>
+      <ThemeSwitcher></ThemeSwitcher>
       <main id="content">
       { 
-        itemSelected == 1 
+        itemSelected === 'booklist' 
         ? <BookList setItemSelected={setItemSelected}></BookList> : 
-        itemSelected == 2
-        ? <ReadList></ReadList> : 
-        itemSelected == 3
+        itemSelected === 'readlist'
+        ? <ReadList setItemSelected={setItemSelected}></ReadList> : 
+        itemSelected === 'about'
         ? <About></About> : <></>
       }
       </main>

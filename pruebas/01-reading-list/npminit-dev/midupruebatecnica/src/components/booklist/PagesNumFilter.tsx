@@ -1,7 +1,9 @@
 import { Button, Col, Divider, InputNumber, Row, Slider, Space } from "antd";
 import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
+import { Typography } from 'antd'
 import '../../styles/global-variables.css'
+const { Text } = Typography
 
 type props = {
   setPagesRange: Dispatch<SetStateAction<number[]>>
@@ -12,30 +14,27 @@ export default function PagesNumFilter({ setPagesRange, pagesRange }: props): JS
 
   return (
     <div> 
-      <Row>
-        <Col>
-          <label>Min pages</label>
-          <InputNumber
-            onChange={(value) => setPagesRange(range => [value || 0, range[1]])}
-            min={1}
-            max={1999}
-            defaultValue={pagesRange[0]}
-            value={pagesRange[0]}
-          ></InputNumber>
+      <Row justify={'space-between'}>
+        <Col span={6}>
+          <Text>Pages</Text>
         </Col>
-        <Col>
-          <label>Max pages</label>
-          <InputNumber
-            onChange={(value) => setPagesRange(range => [range[0], value || 0])}
-            min={pagesRange[0] + 1}
-            max={2000}
-            defaultValue={pagesRange[1]}
-            value={pagesRange[1]}
-          ></InputNumber>
+        <Col span={14}>
+          <Space>
+            <InputNumber
+              onChange={(value) => setPagesRange(range => [value || 0, range[1]])}
+              min={1}
+              max={1999}
+              placeholder="Min"
+            ></InputNumber>
+            <InputNumber
+              onChange={(value) => setPagesRange(range => [range[0], value || 0])}
+              min={pagesRange[0] + 1}
+              max={2000}
+              placeholder="Max"
+            ></InputNumber>
+          </Space>
         </Col>
-        <Divider type="vertical"></Divider>
       </Row>
-
     </div>
   );
 }

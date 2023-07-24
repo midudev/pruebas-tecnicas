@@ -14,7 +14,7 @@ const defValues: GlobalContextType = {
   resetBookList: (): null => null,
   messageApi: null,
   wWidth: innerWidth,
-  colorMode: 'light',
+  colorMode: 'dark',
   setColorMode: (): null => null
 }
 
@@ -29,7 +29,6 @@ export default function GlobalContextProvider({ children }: any): JSX.Element {
   const [ colorMode, setColorMode ] = useState<ColorMode>('dark')
   const [ readList, dispatchRl ] = useReducer(RlReducer, [])
   const [ messageApi, contextHolder ] = message.useMessage();
-
 
   const resetBookList = () => setBookList(getBooksArray(data));
   

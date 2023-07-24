@@ -1,16 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { Book } from "../../types/books";
 import { Col, Row, Image, Button, Space, Switch, Popconfirm } from "antd";
 import booksdata from '../../files/books'
 import { getBooksArray } from "../../contexts/GlobalContext";
-import { MdPending } from 'react-icons/md'
-import { IoMdCheckmarkCircle } from 'react-icons/io'
-import { AiFillDelete } from 'react-icons/ai'
-import { CheckCircleFilled, CheckCircleOutlined, CloseCircleFilled, CreditCardFilled, DeleteFilled, ReadFilled } from "@ant-design/icons";
+import { CheckCircleFilled, DeleteFilled, ReadFilled } from "@ant-design/icons";
 import { Typography } from 'antd'
 const { Text } = Typography
 import '../../styles/global-variables.css'
+import '../../styles/readlist/booktoread.css'
 
 interface props {
   ISBN: string, 
@@ -28,20 +26,32 @@ export default function BookToRead({ ISBN, read }: props): JSX.Element {
 
   return (
     <div>
-      <Row align={'middle'} justify={'space-between'}>
+      <Row className={`BookToRead-container ${read ? 'BookToRead-read' : 'BookToRead-pending'}`}
+        align={'middle'} 
+        justify={'space-between'}
+        style={{ margin: '5px 0' }}>
         <Col span={2}>
           <Image 
             src={ data?.cover }
             preview={true}
+            width='50px'
+            height='50px'
+            style={{ borderRadius: '50%', justifySelf: 'center'}}
           ></Image>
         </Col>
-        <Col span={8}>
-          <span> { data?.title } </span>
-        </Col>
-        <Col span={8}>
-        <span> { data?.author.name } </span>
+        <Col span={7}>
+          <Text strong> { data?.title } </Text>
         </Col>
         <Col span={6}>
+          <Text type="secondary" italic> { data?.author.name } </Text>
+        </Col>
+        <Col span={2}>
+          <Text type='secondary'> { data?.year } </Text>
+        </Col>
+        <Col span={4}>
+          <Text type='secondary'> { data?.genre } </Text>
+        </Col>
+        <Col span={3}>
           <Row align={'middle'} justify={'center'}>
             <Space direction="horizontal">
               <Col span={10}>

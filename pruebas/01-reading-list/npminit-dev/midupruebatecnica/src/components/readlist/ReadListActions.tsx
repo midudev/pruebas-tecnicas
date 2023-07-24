@@ -79,14 +79,14 @@ export default function ReadListActions(): JSX.Element {
   }
 
   return (
-    <div>
+    <div className='ReadList-container' style={{ float: 'right'}}>
       <Dropdown.Button 
         disabled={readList?.length ? false : true}
         type="default"
         trigger={['click']}
         menu={itemProps}
       >
-        Actions
+        More actions
       </Dropdown.Button>
       <Modal
         title='Deleting the reading list...'

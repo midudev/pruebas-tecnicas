@@ -7,6 +7,7 @@ import BookDetails from './BookDetails';
 import { GlobalContext } from '../../contexts/GlobalContext';
 import * as ls from 'local-storage';
 import '../../styles/global-variables.css'
+import { SectionSelected } from '../../types/navigation';
 
 
 const { Text } = Typography
@@ -14,7 +15,7 @@ const { Text } = Typography
 type props = {
   bookData: Booktype,
   selectable: boolean,
-  setItemSelected: Dispatch<SetStateAction<number>>,
+  setItemSelected: Dispatch<SetStateAction<SectionSelected>>,
 }
 
 export default function Book({ bookData, selectable = false, setItemSelected }: props): JSX.Element {
@@ -29,7 +30,7 @@ export default function Book({ bookData, selectable = false, setItemSelected }: 
         type: 'success', 
         content: `"${bookData.title}" added succesfully`, 
         duration: 2, 
-        onClick: () => setItemSelected(2),
+        onClick: () => setItemSelected('readlist'),
         style: {cursor: 'pointer'}
       })
     } catch(error) {

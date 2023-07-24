@@ -10,9 +10,11 @@
   --dark-ok-1: #3c8618;
   --dark-ok-3: #6abe39;
   --dark-ok-4: #8fd460;
+  --dark-ok-5: #8ed46035;
   --dark-pending-1: #146262;
   --dark-pending-2: #138585;
   --dark-pending-3: #13a8a8;
+  --dark-pending-4: #13a8a827;
   --dark-danger-1: #791a1f;
   --dark-danger-2: #a61d24;
   --dark-danger-3: #d32029;
@@ -22,3 +24,48 @@
   --dark-font-4: #fefeff;
 }
 
+.dark {
+  background: var(--dark-background-3) !important;
+  color: var(--dark-font-1) !important;
+  border-color: var(--dark-background-6) !important;
+}
+
+.dark2 {
+  background: var(--dark-background-2) !important;
+  color: var(--dark-font-1) !important;
+  border-color: var(--dark-background-6) !important;
+}
+
+.dark3 {
+  background: var(--dark-background-6) !important;
+  color: var(--dark-font-1) !important;
+  border-color: var(--dark-background-6) !important;
+}
+
+.dark-ok {
+  background: var(--dark-ok-1) !important;
+  color: var(--dark-font-1) !important;
+  border-color: var(--dark-ok-4) !important;
+}
+
+.dark-pending {
+  background: var(--dark-pending-1) !important;
+  color: var(--dark-font-2) !important;
+}
+
+.dark-danger {
+  background-color: var(--dark-danger-2) !important;
+  color: var(--dark-font-4) !important;
+}
+
+.dark-font1 {
+  color: var(--dark-font-4) !important;
+}
+
+.dark-font2 {
+  color: var(--dark-font-1) !important;
+}
+
+.d {
+  color: red !important;
+}

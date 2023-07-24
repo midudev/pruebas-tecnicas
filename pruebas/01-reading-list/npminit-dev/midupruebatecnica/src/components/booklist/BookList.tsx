@@ -11,7 +11,9 @@ import { SectionSelected } from '../../types/navigation';
 import SortBooks from './SortBooks';
 import '../../styles/global-variables.css'
 
-type props = { setItemSelected: Dispatch<SetStateAction<number>> }
+export type props = { 
+  setItemSelected: Dispatch<SetStateAction<SectionSelected>> 
+}
 
 export default function BookList( { setItemSelected }: props ): JSX.Element {
 
@@ -32,30 +34,29 @@ export default function BookList( { setItemSelected }: props ): JSX.Element {
       </Row>
       <Filters></Filters>
       <Row justify={"space-around"} align={"middle"} className='BL_row'>
-        {bookList &&
-          bookList.map((book, i) => (
-            <Col span={
-              wWidth > 1600 ? 4 :
-              wWidth < 1600 && wWidth >= 1275 ? 5 : 
-              wWidth < 1275 && wWidth >= 822 ? 7 : 
-              wWidth < 822 && wWidth > 450 ? 10 : 20
-            } key={i}>
-              <LazyLoad
-                key={i}
-                onContentVisible={() => console.log("loaded")}
-                >
-                <Book
-                  setItemSelected={setItemSelected}
-                  bookData={book}
-                  selectable={
-                    readList?.some((interest) => interest.ISBN === book.ISBN)
-                      ? false
-                      : true
-                  }
-                ></Book>
-              </LazyLoad>
-            </Col>
-          ))}
+      { bookList &&
+        bookList.map((book, i) => (
+          <Col span={
+            wWidth > 1600 ? 4 :
+            wWidth < 1600 && wWidth >= 1275 ? 5 : 
+            wWidth < 1275 && wWidth >= 822 ? 7 : 
+            wWidth < 822 && wWidth > 450 ? 10 : 20
+          } key={i}>
+            <LazyLoad
+              key={i}
+              onContentVisible={() => console.log("loaded")}>
+              <Book
+                setItemSelected={setItemSelected}
+                bookData={book}
+                selectable={
+                  readList?.some((interest) => interest.ISBN === book.ISBN)
+                    ? false
+                    : true
+                }
+              ></Book>
+            </LazyLoad>
+          </Col>
+        ))}
       </Row>
     </section>
   );
