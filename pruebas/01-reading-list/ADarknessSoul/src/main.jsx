@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import './normalize.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import { WhatABook } from './WhatABook';

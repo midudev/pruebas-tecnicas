@@ -75,9 +75,21 @@ a {
     text-decoration: none;
 }
 
+label {
+
+  color: var(--second-color);
+
+}
+
 p {
   font-family: var(--main-font);
   font-size: 1.6rem;
+}
+
+main {
+
+  width: 95%;
+
 }
 
 /* Navbar */
@@ -198,5 +210,286 @@ p {
 
   background-color: var(--accent-hover)!important;
   color: var(--main-color)!important;
+
+}
+
+/* Books */
+
+.Books {
+
+  display: flex;
+  /* gap: 1rem; */
+  flex-wrap: nowrap;
+  position: relative;
+  flex-direction: column-reverse;
+  align-items: center;
+
+}
+
+@media (min-width: 1024px) {
+    
+  .Books {
+
+    flex-direction: row;
+    align-items: baseline;
+
+  }
+
+}
+
+.Books__available {
+
+  background-color: var(--backgrounds);
+  box-shadow: -5px 7px 5px -4px rgba(72,70,70,0.31);
+  flex: 0 0 66%;
+
+}
+
+.Books__myBooks {
+
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  height: 97vh;
+  max-width: min(50rem, 100%);
+  background-color: var(--backgrounds);
+  box-shadow: -5px 7px 5px -4px rgba(72,70,70,0.31);
+  flex: 1;
+  position: static;
+  top: 1rem;
+
+}
+
+.flex-grow-1 {
+  flex-grow: 1; /* Make this div (BookCard container) take up all the available space */
+}
+
+@media (min-width: 1024px) {
+  
+.Books__myBooks {
+
+  position: sticky;
+  margin-left: 1rem;
+  margin-bottom: 0;
+
+}
+
+
+}
+
+.Books__header {
+
+  text-align: center;
+  margin: 1rem 1rem;
+  background-color: var(--main-color);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+
+}
+
+.Books__cards {
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+}
+
+.Books__cards--smaller {
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+}
+
+@media (min-width: 480px) {
+    
+  .Books__cards {
+
+    grid-template-columns: repeat(2, 1fr)!important;
+
+  }
+
+  
+  .Books__cards--smaller {
+
+    grid-template-columns: repeat(2, 1fr)!important;
+
+  }
+
+}
+
+@media (min-width: 768px) {
+    
+  .Books__cards {
+
+    grid-template-columns: repeat(3, 1fr)!important;
+
+  }
+
+  .Books__cards--smaller {
+
+    grid-template-columns: repeat(3, 1fr)!important;
+
+  }
+
+}
+
+@media (min-width: 1024px) {
+    
+  .Books__cards {
+
+    grid-template-columns: repeat(4, 1fr)!important;
+
+  }
+
+}
+
+@media (min-width: 1200px) {
+    
+  .Books__cards {
+
+    grid-template-columns: repeat(5, 1fr)!important;
+
+  }
+
+}
+
+/* BookCard */
+
+.Book__card {
+
+  height: 35rem;
+
+}
+
+.Book__card--size {
+
+  height: 100%;
+
+}
+
+.Book__figure {
+  filter: brightness(40%);
+  transition: all 0.5s ease;
+}
+
+.Book__figure:hover {
+  filter: brightness(100%);
+  cursor: pointer;
+}
+
+.Img__figcaption {
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 1;
+  color: var(--main-color);
+  background-color: rgba(47, 47, 47, 0.606);
+  padding: 0.5rem;
+  border-radius: 1rem;
+  visibility: hidden;
+  
+}
+
+.Img__figcaption--numbers {
+
+  bottom: 7px;
+  right: 7px;
+  color: var(--main-color);
+  background-color: rgba(47, 47, 47, 0.606);
+  padding: 0.5rem;
+  border-radius: 1rem;
+  
+}
+
+.Book__figure:hover .Img__figcaption {
+  visibility: visible;
+  transition: visibility 0.5s ease;
+}
+
+
+.Book__title {
+
+  font-size: 1.6rem;
+  text-align: center;
+
+}
+
+.Book__synopsis {
+
+  font-size: 1.3rem;
+  color: var(--second-color)
+
+}
+
+.Book__agregar {
+
+  font-size: 1.2rem;
+  background-color: var(--accent);
+  color: var(--main-color);
+  border-start-start-radius: 0;
+  border-start-end-radius: 0;
+  padding: 0.8rem;
+
+}
+
+.Book__agregar:hover {
+
+  background-color: var(--accent-hover);
+  color: var(--main-color);
+
+}
+
+.Book__footer {
+
+  /* background-color: var(--accent); */
+
+}
+
+.Book__invert {
+
+  filter: invert(100%);
+
+}
+
+.Book__buttonIcon {
+
+  flex: 0 0 calc(50%);
+  border-radius: 0;
+  padding: 0.5rem;
+  
+
+}
+
+.Book__footerIcons:first-child {
+
+  background-color: var(--accent);
+  flex: 0 0 calc(50% - 1px);
+  border-start-start-radius: 0;
+    padding: 0.5rem;
+
+}
+
+.Book__footerIcons:last-child {
+
+  background-color: var(--accent);
+  flex: 0 0 calc(50% - 1px);
+  border-start-end-radius: 0;
+  padding: 0.5rem;
+}
+
+.Book__footerIcons:hover {
+
+  background-color: var(--accent-hover);
+
+}
+
+.Book__footerIcons img {
+
+  filter: invert(100%);
 
 }

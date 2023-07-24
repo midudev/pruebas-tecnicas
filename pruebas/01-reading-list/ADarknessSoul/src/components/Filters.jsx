@@ -69,7 +69,7 @@ export const Filters = () => {
                     <label className="mb-3">Buscar por número de páginas</label>
                     <input type="range" min={minNumPages} max={maxNumPages} id="NumPaginas" onChange={(e) => onRangeChange(e)}/>
                     
-                    <div className="d-flex justify-content-center gap-3 align-items-center mt-2">
+                    <div className="d-flex justify-content-center gap-3 align-items-center mt-2 mb-3">
 
                         <button className="btn form_buttonLeft" onClick={onDecrementRange}><img src="/src/assets/images/leftArrow.svg" alt="Flecha izquierda" width="20px"/></button>
                         <p className="text-center m-0">{rangeNumber}</p>
@@ -89,7 +89,7 @@ export const Filters = () => {
 
                     <label className="mb-3">Buscar por genero</label>
 
-                    <select name="genre" id="genre" className="form-select filter__select">
+                    <select name="genre" id="genre" className="form-select filter__select mb-3">
 
                         {
                             genres.map((genre) => (
