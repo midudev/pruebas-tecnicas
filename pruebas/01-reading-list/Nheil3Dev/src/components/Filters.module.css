@@ -1,0 +1,118 @@
+.form,
+.visible {
+	width: 250px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	padding: 20px 40px;
+	gap: 30px;
+}
+
+.filters {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	width: 100%;
+	padding: 20px 0;
+	border-top: 2px solid white;
+	border-bottom: 2px solid white;
+}
+
+.column {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	width: 100%;
+}
+
+.row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+}
+
+select,
+input[type='text'] {
+	background-color: white;
+	color: #141414;
+	padding: 10px;
+	border-radius: 10px;
+	border: none;
+}
+
+.searchContainer {
+	position: relative;
+	height: 35px;
+}
+
+input[type='text'] {
+	width: 100%;
+	padding-left: 40px;
+}
+
+input[type='text']::placeholder {
+	color: #141414;
+}
+
+.range {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.range input {
+	width: 65%;
+}
+
+.range span {
+	width: 35%;
+}
+
+.glass {
+	position: absolute;
+	top: -28px;
+	left: 10px;
+}
+
+label {
+	font-weight: bold;
+}
+
+.visible {
+	visibility: visible;
+}
+
+.glass {
+	position: relative;
+	color: #141414;
+	width: 20px;
+}
+
+@media (width <= 1320px) {
+	.form {
+		visibility: hidden;
+		width: 0;
+		overflow: hidden;
+	}
+}
+
+@media (width <= 950px) {
+	.visible {
+		position: fixed;
+		min-height: 100vh;
+		height: auto;
+		background-color: #141414;
+		z-index: 1;
+		overflow: hidden;
+	}
+}
+
+@media (width < 500px) {
+	.visible {
+		position: absolute;
+		width: 100%;
+	}
+}

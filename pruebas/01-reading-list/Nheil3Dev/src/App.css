@@ -1,0 +1,11 @@
+main {
+	display: flex;
+	position: relative;
+	padding-top: 90px;
+}
+
+@media (width < 417px) {
+	main {
+		padding-top: 120px;
+	}
+}

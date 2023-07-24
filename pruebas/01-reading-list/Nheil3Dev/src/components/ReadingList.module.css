@@ -1,0 +1,142 @@
+.container {
+	width: 600px;
+	margin: 0 40px;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px 0;
+	border-bottom: 1px solid white;
+}
+
+.trash {
+	padding: 10px 20px;
+	border-radius: 20px;
+}
+
+.list {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 20px;
+	list-style: none;
+	margin: 0 auto;
+	padding: 40px 0;
+}
+
+.book {
+	position: relative;
+}
+
+.book img {
+	width: 100%;
+	height: 100%;
+}
+
+.iconsContainer {
+	position: absolute;
+	top: -15px;
+	right: -15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
+
+.close,
+.up,
+.down {
+	width: 25px;
+	height: 25px;
+	padding: 5px;
+}
+
+.void {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+	font-weight: bold;
+}
+
+.visible {
+	visibility: visible;
+	width: 600px;
+	height: 100%;
+	margin: 0 40px;
+}
+
+@media (width <= 1320px) {
+	.container {
+		visibility: hidden;
+		width: 0;
+		overflow: hidden;
+	}
+}
+
+@media (width <= 950px) {
+	.visible {
+		position: absolute;
+		right: 0;
+		margin: 0;
+		padding: 0 40px;
+		width: 100%;
+		background-color: #141414;
+		min-height: calc(100vh - 90px);
+		height: auto;
+	}
+
+	.visible .list {
+		grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	}
+
+	.iconsContainer {
+		gap: 20px;
+	}
+
+	.close,
+	.up,
+	.down {
+		width: 40px;
+		height: 40px;
+		padding: 10px;
+		color: #141414;
+		background-color: white;
+	}
+
+	.close:checked,
+	.up:checked,
+	.down:checked {
+		background-color: white;
+	}
+
+	.up:disabled,
+	.down:disabled {
+		color: black;
+	}
+
+	.trash {
+		color: #141414;
+		background-color: white;
+	}
+
+	.trash:disabled {
+		color: white;
+	}
+}
+
+@media (width <= 476px) {
+	.visible .list {
+		gap: 60px;
+	}
+
+	.close,
+	.up,
+	.down {
+		width: 60px;
+		height: 60px;
+	}
+}
