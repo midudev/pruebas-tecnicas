@@ -25,7 +25,7 @@ export const useBooks = () => {
 
     // Filtrar todos los libros por nombre
     if (debouncedSearchBooks.length > 0) {
-      filteredBooks = filteredBooks.filter(({ book }) => book.title.includes(debouncedSearchBooks))
+      filteredBooks = filteredBooks.filter(({ book }) => book.title.toLowerCase().includes(debouncedSearchBooks.toLowerCase()))
     }
 
     // Filtrar todos los libros por páginas y genero
