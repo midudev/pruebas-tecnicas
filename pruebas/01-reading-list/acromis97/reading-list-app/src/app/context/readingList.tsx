@@ -15,7 +15,11 @@ export const ReadingListContext = createContext<ReadingListType>({
 	removeFromReadingList: () => {},
 });
 
-export function ReadingListProvider({ children }) {
+type ReadingListProps = {
+	children?: React.ReactNode;
+};
+
+export function ReadingListProvider({ children } : ReadingListProps) {
 	const [readingList, setReadingList] = useState<Book[]>([]);
 
 	const addToReadingList = (newBook: Book) => {

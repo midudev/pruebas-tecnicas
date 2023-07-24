@@ -12,7 +12,11 @@ export const StoreListContext = createContext<StoreListType>({
 	storeList: [],
 });
 
-export function StoreListProvider({ children }) {
+type StoreListProps = {
+	children?: React.ReactNode;
+};
+
+export function StoreListProvider({ children } : StoreListProps) {
     // Inicializo la lista de libros mockeada
 	const [ storeList ] = useState<Book[]>(
 		libraryMock.library.map((book) => {
