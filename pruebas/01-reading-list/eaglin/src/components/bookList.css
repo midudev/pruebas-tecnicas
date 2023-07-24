@@ -1,0 +1,14 @@
+.selected{
+ opacity: 0.6;
+ background: grey;
+}
+.container {
+
+
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex: 1; position: relative;
+    border: double grey;
+    padding: 2rem;
+     max-width: 30vw;
+}
