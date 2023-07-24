@@ -51,7 +51,7 @@ export default function Home() {
 
         const onStorageChange = (_) => {
             handleFilterBooksAvailable(library, getBooksCurrentlist())
-            //handleAddAllBooksSelected(getBooksCurrentlist())
+            handleAddAllBooksSelected(getBooksCurrentlist())
             //handleFilterBooksGenreAvailable()
         }
         window.addEventListener('storage', onStorageChange)
