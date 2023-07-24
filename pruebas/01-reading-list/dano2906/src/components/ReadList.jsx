@@ -39,7 +39,7 @@ export default function ReadList () {
       {booksList.length > 0 &&
         <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
           <SortableContext items={readList} strategy={verticalListSortingStrategy}>
-            <div className={`${show ? 'grid' : 'hidden'} botttom-0 left-0 p-2 w-[180px] max-h-48 sm:w-[360px] sm:max-h-96 overflow-y-scroll mt-3 rounded-md shadow-md bg-slate-800 grid-cols-1 sm:grid-cols-2 gap-2 place-items-center`}>
+            <div className={`${show ? 'grid' : 'hidden'} botttom-0 left-0 p-2 w-[180px] max-h-96 sm:w-[360px] overflow-y-scroll mt-3 rounded-md shadow-md bg-slate-800 grid-cols-1 sm:grid-cols-2 gap-2 place-items-center`}>
               {booksList.map((book) => (
                 <ReadListBook key={book.ISBN} book={book} reloadBookList={reloadBookList} />
               ))}

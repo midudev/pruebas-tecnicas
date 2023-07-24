@@ -24,7 +24,7 @@ export default function ReadListBook ({ book, reloadBookList }) {
       >
         <img src={cover} alt={`Portada del libro ${title}`} width={128} height={160} className='w-36 h-44 object-fill rounded-md relative' />
       </article>
-      <button onClick={() => handleRemove(ISBN)} className='bg-slate-700 text-red-600 font-semibold text-center p-1 rounded border border-red-600'>Quitar de la lista</button>
+      <button onClick={() => handleRemove(ISBN)} className='bg-slate-700 text-red-600 font-semibold text-center p-1 rounded border border-red-600 hover:bg-red-200/75'>Quitar de la lista</button>
     </div>
   )
 }

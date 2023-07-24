@@ -20,7 +20,12 @@ export const useReadListStore = create(persist(
       set(() => ({
         readList: list
       }))
-    }
+    },
+    clean: () => (
+      set(() => ({
+        readList: []
+      }))
+    )
   }), {
     name: 'readList'
   }

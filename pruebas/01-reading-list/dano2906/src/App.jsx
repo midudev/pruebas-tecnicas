@@ -5,6 +5,7 @@ import { useBooks } from './hooks/useBooks'
 import { useQuantity } from './hooks/useQuantity'
 import OpenTag from './components/OpenTag'
 import ResetFilters from './components/ResetFilters'
+import CleanReadList from './components/CleanReadList'
 
 function App () {
   const { books, quantityByGenre, filterPages, searchBooks, setFilterGenre, setFilterPages, setSearchBooks } = useBooks()
@@ -18,6 +19,7 @@ function App () {
       <AvailableBooksSection books={books} />
       <ReadList />
       <OpenTag />
+      <CleanReadList />
       <ResetFilters setFilterGenre={setFilterGenre} setFilterPages={setFilterPages} setSearchBooks={setSearchBooks} />
     </div>
   )
