@@ -23,7 +23,12 @@ interface Reducer {
 export type ActionType = 'AddToReadingList' | 'RemoveFromReadingList'
 
 const DEFAULT_VALUE_STATE = () => {
-  if (typeof window === 'undefined') return null
+  if (typeof window === 'undefined') {
+    return {
+      bookList: [],
+      readingList: []
+    }
+  }
   const books = window.localStorage.getItem('books')
   if (typeof books === 'string') {
     return JSON.parse(books)
