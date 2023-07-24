@@ -1,6 +1,6 @@
 "use client";
 
-import { BookList } from "../components/BookList";
+import { ReadingList } from "../components/ReadingList";
 import { useReadingList } from "../hooks/useReadingList";
 import { Book } from "../types/Book";
 
@@ -16,7 +16,7 @@ export default function Page() {
 				{readingList.length == 0 ? (
 					<h2>No tienes libros en tu lista</h2>
 				) : (
-					<BookList books={readingList} />
+					<ReadingList />
 				)}
 			</div>
 		</div>

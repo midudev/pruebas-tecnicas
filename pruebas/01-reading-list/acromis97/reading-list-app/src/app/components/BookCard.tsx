@@ -7,8 +7,7 @@ import { Book } from "../types/Book";
 import { useReadingList } from "../hooks/useReadingList";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { faHeart as faHeartAlt } from "@fortawesome/free-regular-svg-icons";
+import { faHeart, faHeartBroken } from "@fortawesome/free-solid-svg-icons";
 
 export function BookCard(props: any) {
 	let book: Book = props.book;
@@ -19,7 +18,7 @@ export function BookCard(props: any) {
 			<button
 				className="text-sky-700 px-6 hover:scale-105"
 				onClick={() => removeFromReadingList(book)}>
-				<FontAwesomeIcon className="pr-1" icon={faHeartAlt} size="sm" />
+				<FontAwesomeIcon className="pr-1" icon={faHeartBroken} size="sm" />
 				Quitar de la lista
 			</button>
 		) : (
