@@ -5,10 +5,10 @@
 <div class="d-flex flex-column">
   <div class="card-body">
     <div class="row mb-3">
-      <h4 class="card-title mt-0">
+      <h4 class="card-title mt-2">
         <b class="text-dark">{{ book.title.length < 6 ? book.title : book.title.slice(0, 24) + '...' }}</b>
       </h4>
-      <mat-chip class="mb-2 mt-2">
+      <mat-chip class="mb-2">
         {{book.author.name}}
       </mat-chip>
       <mat-chip>
