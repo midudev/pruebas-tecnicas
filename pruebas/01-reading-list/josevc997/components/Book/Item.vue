@@ -7,6 +7,10 @@ const props = defineProps({
     type: Object as PropType<Book>,
     required: true,
   },
+  isAdded: {
+    type: Boolean,
+    required: true,
+  },
 });
 </script>
 <template>
@@ -14,9 +18,11 @@ const props = defineProps({
     class="border rounded-lg grid place-content-between grid-cols-1 relative cursor-pointer hover:shadow-2xl transition-all duration-300 ease-in-out"
   >
     <div
-      class="absolute h-full w-full hover:bg-slate-900/60 flex justify-center items-center text-base font-bold rounded-lg transition-all duration-500 ease-in-out text-white hover:text-white text-transparent"
+      class="absolute h-full w-full hover:bg-slate-900/60 flex justify-center items-center text-base font-bold rounded-lg transition-all duration-500 ease-in-out hover:text-white text-transparent"
     >
-      <p class="text-center">Agregar a lista</p>
+      <p class="text-center">
+        {{ isAdded ? "Quitar de lista" : "Agregar a lista" }}
+      </p>
     </div>
     <!-- <div class="pb-2">
       <h1 class="text-xl font font-medium">{{ book.book.title }}</h1>
