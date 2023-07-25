@@ -5,10 +5,10 @@ import { Book } from "../interfaces/library.interface";
 
 const list:Book[] = require('../JSON/library.json').library.map( (x:any) => x.book );
 const genres:string[] = list.map(x => x.genre).filter( (item,index,array) => array.indexOf(item) === index ); genres.push('all');
-    const minAndMaxOfPages:number[] = list
-    .map(x => x.pages)
-    .sort( (a,b) => a - b)
-    //.filter( (item,index,array) => (index == 0 || index == array.length - 1) );
+const minAndMaxOfPages:number[] = list
+.map(x => x.pages)
+.sort( (a,b) => a - b)
+//.filter( (item,index,array) => (index == 0 || index == array.length - 1) );
 
 export interface userList {library:Book[],forReading:Book[]}
 export interface genreAndPages {genre:string,pages:number}
