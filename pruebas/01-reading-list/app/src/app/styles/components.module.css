@@ -6,15 +6,16 @@
 }
 
 .bookCard {
-    min-width: 23% ;
-    min-height: 23% ;
-    max-width: 23% ;
-    max-height: 23% ;
+    min-width: 15% ;
+    min-height: 15% ;
+    max-width: 15% ;
+    max-height: 15% ;
     overflow: hidden;
     margin: 5px;
     border-radius: 15px;
     background-size: cover;
     background-position: center;
+    cursor: pointer;
 }
 
 .bookCard > img {

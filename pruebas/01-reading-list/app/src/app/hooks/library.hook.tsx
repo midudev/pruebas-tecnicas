@@ -1,20 +1,43 @@
 'use client'
 
-import { useEffect , useState } from 'react';
-
+import { useState , useEffect } from 'react';
 import { Book } from "../interfaces/library.interface";
 
-const libraryHook = () => {
-
-    const list:Book[] = require('../JSON/library.json').library.map( (x:any) => x.book );
-    const genres:string[] = list.map(x => x.genre).filter( (item,index,array) => array.indexOf(item) === index );
+const list:Book[] = require('../JSON/library.json').library.map( (x:any) => x.book );
+const genres:string[] = list.map(x => x.genre).filter( (item,index,array) => array.indexOf(item) === index ); genres.push('all');
     const minAndMaxOfPages:number[] = list
     .map(x => x.pages)
     .sort( (a,b) => a - b)
-    .filter( (item,index,array) => (index == 0 || index == array.length - 1) );
+    //.filter( (item,index,array) => (index == 0 || index == array.length - 1) );
 
-    const [ userList , setUserList ] = useState<{library:Book[],forReading:Book[]}>({library:list,forReading:[]});
+interface userList {library:Book[],forReading:Book[]}
+interface genreAndPages {genre:string,pages:number}
 
+const libraryHook = () => {
+
+    const [ userList , setUserList ] = useState<userList>({library:list,forReading:[]});
+    const [ genreAndPages , setGenreAndPages ] = useState<genreAndPages>({genre:'all',pages:minAndMaxOfPages[0]});
+
+    useEffect(() => {
+        setUserList(v => ({...v,library:listFiltered()}))
+    },[genreAndPages,userList.forReading])
+
+    const libraryHookCRUD = {
+        setAndUnsetForReading:{
+            setForReading:(bookName:string) => {},
+            unsetForReading:(bookName:string) => {}
+        }
+    }
+
+    const listFiltered = ():Book[] => list
+        .filter( (x) => {
+            if(userList.forReading.length == 0){ return true } 
+            !userList.forReading.map(x => x.title).includes(x.title)
+        })
+        .filter( (x) => (genreAndPages.genre == 'all' || genreAndPages.genre == x.genre) )
+        .filter( (x) => x.pages >= genreAndPages.pages )
+
+    
     return({userList,setUserList})
 
 }
