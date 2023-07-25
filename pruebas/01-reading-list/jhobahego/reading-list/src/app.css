@@ -11,7 +11,6 @@
 
 .books {
   grid-area: books;
-  /* max-width: 750px; */
 }
 
 .books__header {
@@ -51,6 +50,7 @@
 .books__img {
   max-width: 150px;
   border-radius: 8px;
+  margin-bottom: .6em;
 }
 
 aside {
@@ -92,7 +92,7 @@ aside {
   transition: transform 0.3s ease;
 }
 
-.books__list li:hover .books__img {
+.books__img:hover {
   opacity: 0.7;
   /* Al pasar el mouse, la opacidad se reduce a 70% */
   transform: scale(1.1);
@@ -109,10 +109,11 @@ aside {
   .form__select select {
     min-width: 160px;
   }
-
+  
   .books__read {
     max-width: 180px;
     min-width: 0;
+    padding: 0 1.2em;
   }
 }
 
@@ -160,6 +161,10 @@ aside {
     gap: 2em;
   }
 
+  .books__container {
+    grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+  }
+  
   .books {
     margin: 0 0;
   }
@@ -170,8 +175,7 @@ aside {
   }
 
   .books__read {
-    width: 100%;
-    max-width: 400px;
+    margin: 0 auto;
   }
 
   .books__img--readed {
