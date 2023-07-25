@@ -34,6 +34,7 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    'react/prop-types': 'off',
     'import/no-duplicates': 'off',
     quotes: 'off',
     'block-spacing': 'off',
