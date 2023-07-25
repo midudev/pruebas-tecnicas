@@ -3,7 +3,7 @@ Hecha con [Next.js](https://nextjs.org/)
 
 ## URL VERCEL
 
-URL: "" <br>
+URL: <a href=" https://pruebas-tecnicas-eta.vercel.app/" target="_blank">TRENDING BOOKS</a> <br>
 VERSION: 0.1.0-alpha-.1  <br>
 BY: <a href="https://github.com/kevnnard" target="_blank">Kevnnard</a>  
 
