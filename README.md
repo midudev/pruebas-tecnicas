@@ -2,24 +2,46 @@
 
 Pruebas técnicas de programación para desarrolladores frontend y backend.
 
-## Lista de pruebas técnicas
+## Prueba tecnica desarrollada
 
 - [01 - Reading List (FrontEnd - Nivel: Junior)](./pruebas/01-reading-list/README.md)
 
-## ¿Cómo participar?
+## Links 
+  Repositorio: https://github.com/AubisDev/pruebas-tecnicas
 
-1. Haz un fork de este repositorio
-2. Crea una carpeta con **tu nombre de usuario de GitHub** dentro de la carpeta `pruebas/[nombre-de-la-prueba]`, por ejemplo: `pruebas/01-reading-list/midudev`.
-3. Siempre **sólo modifica los ficheros y carpetas dentro de tu carpeta**, de otra manera, tu pull request será rechazada. Nunca formatees o modifiques el código de otros participantes.
+  Live demo: https://pruebas-tecnicas-aubisdev.vercel.app/
 
-- Recurso: [Cómo crear una Pull Request a un proyecto](https://www.youtube.com/watch?v=BPns9r76vSI)
+## Instalacion
+Pasos para la instalacion del proyecto
+```
+git clone https://github.com/AubisDev/pruebas-tecnicas.git
+```
 
-## Sígueme en las redes sociales
 
-- [Twitter](https://twitter.com/midudev)
-- [Instagram](https://instagram.com/midu.dev)
-- [Twitch](https://twitch.tv/midudev)
-- [YouTube](https://youtube.com/midudev)
-- [TikTok](https://tiktok.com/@midudev)
-- [LinkedIn](https://linkedin.com/in/midudev)
-- [Web](https://midu.dev)
+```
+cd pruebas/01-reading-list/aubisdev
+
+pnpm install
+
+pnpm dev
+```
+For testing
+```
+pnpm test
+```
+
+## Features
+- [x] Visualización de Libros Disponibles
+- [x] Creación de Lista de Lectura
+- [x] Filtrado de Libros por Género
+- [x] Sincronización de Estado
+- [x] Persistencia de Datos*
+- [x] Sincronización entre pestañas
+- [ ]  Filtro por número de páginas (Entendi mal me di cuenta colocando haciendo el readme, porque hice fue un sorting :upside_down_face: pero bueno)
+- [x] Reorganización de los libros en la lista de lectura por prioridad (En este caso con un drag and drop y prioridad automatica dependiendo de donde se coloca el libro)
+- [x] Responsive
+- [x] Test (Basicos porque no sé mucho testing)
+
+
+
+### Gracias por la prueba tecnica midu!
