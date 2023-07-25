@@ -14,28 +14,28 @@ const isDark = signal(storageIsDark || false);
 
 //Computed signals
 const myReadingListBooks = computed(() => {
-	return allBooks.value.filter((book) =>
-		myReadingListISBN.value.includes(book.ISBN)
-	);
+  return allBooks.value.filter((book) =>
+    myReadingListISBN.value.includes(book.ISBN),
+  );
 });
 const myReadingListLength = computed(() => myReadingListISBN.value.length);
 const totalFreeBooks = computed(() => books.length - myReadingListLength.value);
 
 //Actualizamos el localStorage cada vez que se agrege un ISBN
 effect(() => {
-	localStorage.setItem('readingList', JSON.stringify(myReadingListISBN));
+  localStorage.setItem('readingList', JSON.stringify(myReadingListISBN));
 });
 
 effect(() => {
-	localStorage.setItem('isDark', isDark.value);
+  localStorage.setItem('isDark', isDark.value);
 });
 
 export {
-	myReadingListISBN,
-	myReadingListBooks,
-	myReadingListLength,
-	totalFreeBooks,
-	allBooks,
-	currentPath,
-	isDark,
+  myReadingListISBN,
+  myReadingListBooks,
+  myReadingListLength,
+  totalFreeBooks,
+  allBooks,
+  currentPath,
+  isDark,
 };

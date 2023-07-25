@@ -4,7 +4,7 @@ const GridList = ({ title, children, handleDrop }) => {
   };
 
   return (
-    <div className="h-full w-full border border-black p-4 text-center ">
+    <div className="h-full w-full rounded-bl-[255px_5px] rounded-br-[255px_5px] rounded-tl-[255px_5px]  rounded-tr-[255px_5px] border border-black p-4 text-center">
       <h4 className="mb-4 text-center text-lg">{title}</h4>
       <div
         droppable="true"

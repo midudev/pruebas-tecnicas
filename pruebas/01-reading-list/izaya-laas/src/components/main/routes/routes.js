@@ -1,6 +1,5 @@
 import AllBooks from './AllBooks';
 import MyBooks from './MyBooks';
-import Recommends from './Recommends';
 import Sandbox from './Sandbox';
 
 export const ROUTES = [
@@ -13,11 +12,6 @@ export const ROUTES = [
     name: 'My books',
     pathname: '/my-books',
     component: MyBooks,
-  },
-  {
-    name: 'Recommends for you',
-    pathname: '/recommends',
-    component: Recommends,
   },
   {
     name: 'Sandbox',
