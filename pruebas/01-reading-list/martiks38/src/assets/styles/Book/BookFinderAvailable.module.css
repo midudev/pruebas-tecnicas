@@ -9,7 +9,7 @@
 .searchContainer__label,
 .searchContainer__message {
   font-size: 1.125rem;
-  line-height: 1.5rem;
+  line-height: 1.75rem;
 }
 
 .searchContainer__input {
@@ -29,4 +29,12 @@
 
 .searchContainer__input::placeholder {
   color: rgb(255 255 255 / 0.75);
+}
+
+@media (min-width: 96rem) {
+  .searchContainer__input,
+  .searchContainer__label,
+  .searchContainer__message {
+    font-size: 1.25rem;
+  }
 }
