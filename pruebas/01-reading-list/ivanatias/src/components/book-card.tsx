@@ -21,7 +21,7 @@ export default function BookCard({ book }: Props) {
     ? 'Quitar de la lista de lectura'
     : 'Agregar a lista de lectura'
 
-  const handleReadingList = (ISBN: string) => {
+  const handleReadingList = () => {
     isInReadingList ? removeFromReadingList(ISBN) : addToReadingList(ISBN)
   }
 
@@ -45,13 +45,7 @@ export default function BookCard({ book }: Props) {
           </time>
           <p className='text-xs 2xl:text-sm'>{pages} páginas</p>
         </div>
-        <Button
-          onClick={() => {
-            handleReadingList(ISBN)
-          }}
-        >
-          {buttonText}
-        </Button>
+        <Button onClick={handleReadingList}>{buttonText}</Button>
       </div>
     </div>
   )
