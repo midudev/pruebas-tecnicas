@@ -42,7 +42,7 @@ const GenresFragment = ({genres,value,setValue}:genresProps) => {
 
 }
 
-const Filter = ({userList,genres,minAndMaxOfPages}:libraryProps) => {
+const Filter = () => {
 
     const [ rangeValue , setRangeValue ] = useState<number>(minAndMaxOfPages[minAndMaxOfPages.length - 1]);
     const [ genre , setGenre ] = useState<string>('all');

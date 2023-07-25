@@ -1,4 +1,7 @@
+'use client'
+
 import global from './styles/global.module.css';
+import { MainProvider } from './context/main.context';
 
 const Bootstrap = () => 
   <>
@@ -10,7 +13,9 @@ export default function RootLayout({children}:{children: React.ReactNode}) {
   return (
     <html lang="en">
       <head><Bootstrap/></head>
-      <body className={global.body}>{children}</body>
+      <body className={global.body}>
+        <MainProvider>{children}</MainProvider>
+      </body>
     </html>
   )
 }

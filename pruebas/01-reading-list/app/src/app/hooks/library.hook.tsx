@@ -11,7 +11,7 @@ const genres:string[] = list.map(x => x.genre).filter( (item,index,array) => arr
     //.filter( (item,index,array) => (index == 0 || index == array.length - 1) );
 
 export interface userList {library:Book[],forReading:Book[]}
-interface genreAndPages {genre:string,pages:number}
+export interface genreAndPages {genre:string,pages:number}
 
 const libraryHook = () => {
 
@@ -39,7 +39,7 @@ const libraryHook = () => {
 
     
     return({    userList , setGenreAndPages ,
-                genres , minAndMaxOfPages})
+                genres , minAndMaxOfPages   })
 
 }
 

@@ -7,12 +7,11 @@ import { userList } from '../hooks/library.hook'
 
 export const sortAbc = (text1:string,text2:string) => (text1.toLowerCase() < text2.toLowerCase()) ? -1 : (text1.toLowerCase() > text2.toLowerCase()) ? 1 : 0 ;
 
-export interface libraryProps { userList:userList , genres:string[] , minAndMaxOfPages:number[] }
-const Library = ({ userList:{library,forReading} , genres , minAndMaxOfPages , setGenreAndPages }:libraryProps) => {
+const Library = () => {
 
     return(
         <>
-            <Filter userList={{library,forReading}} genres={genres} minAndMaxOfPages={minAndMaxOfPages}/>
+            <Filter/>
             <div className={styles.bookList}>{
                 library
                 .sort( (a,b) => sortAbc(a.title,b.title) )
