@@ -1,0 +1,5 @@
+[build]
+  command = "next build" 
+  publish = "pruebas-tecnicas/pruebas/01-reading-list/manup94
+/my-app" 
+  branch = "main"
