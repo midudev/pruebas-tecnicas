@@ -25,25 +25,33 @@ const props = defineProps({
     cursor: pointer;
 }
 
+.BookCard-Image img:hover {
+    opacity: 0.85;
+    transition-duration: 400ms;
+    box-shadow: 0px 7px 12px 2px #8d8d8d;
+}
+
+.BookCard-Image img {
+    border-radius: 12px;
+}
+
 .BookCard-Details {
     display: flex;
     flex-direction: column;
     width: 200px;
-
 }
 
 .BookCard-Title {
     margin-top: 10px;
     font-weight: 800;
-    font-size: .9em;
+    font-size: 1em;
     max-width: 100%;
 }
 
 .BookCard-Author-Name {
     margin-top: 5px;
     font-weight: lighter;
-    font-size: 0.75em;
+    font-size: 0.85em;
     max-width: 100%;
 }
-
 </style>

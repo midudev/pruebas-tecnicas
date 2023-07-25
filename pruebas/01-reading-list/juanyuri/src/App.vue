@@ -13,6 +13,7 @@ import MainView from '@/views/MainView.vue'
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap');
 
 :root {
     --flash-message-success: #000000;

@@ -1,16 +1,17 @@
 <template>
-  <h1>Libros Disponibles: {{ catalogueCount }} </h1>
-  <!-- <p>Genre count: {{ catalogueGenreCount }}</p> -->
+  <div class="Catalogue">
+    <h1>Catálogo: {{ catalogueCount }} </h1>
 
-  <!-- <select name="genre-selector" id="genreSelector" @change="onSelectedGenre">
-    <option :value="genre" v-for="genre in genres" :key="genre">{{ genre }}</option>
-  </select>
+    <select name="genre-selector" id="genreSelector" class="Genre-Selector" @change="onSelectedGenre">
+      <option :value="genre" v-for="genre in genres" :key="genre" selected="Todos">{{ genre }}</option>
+    </select>
 
-  <button @click="resetFilters">Reset Filters</button> -->
-
-  <div class="catalogue">
-    <BookCard v-for="book in filteredCatalogue" :key="book.title" :book="book" @click="store.addToReadList(book)" />
+    <div class="Catalogue-List">
+      <BookCard v-for="book in filteredCatalogue" :key="book.title" :book="book" @click="store.addToReadList(book)" />
+    </div>
   </div>
+
+  <!-- <p>Genre count: {{ catalogueGenreCount }}</p> -->
 </template>
 
 
@@ -28,7 +29,7 @@ const store = useStore()
 const { books } = useBooks()
 
 /* Data to be used in selector/filters */
-const genres = [...new Set(books.value.map(book => book.genre))]
+const genres = [...new Set([...books.value.map(book => book.genre), "Todos"])];
 let selectedGenre = ref('')
 
 const onSelectedGenre = (event) => {
@@ -36,7 +37,7 @@ const onSelectedGenre = (event) => {
 }
 
 const filteredCatalogue = computed(() => {
-  if (selectedGenre.value !== '')
+  if (selectedGenre.value !== '' && selectedGenre.value !== "Todos")
     return store.catalogue.filter(book => book.genre === selectedGenre.value)
 
   return store.catalogue
@@ -57,15 +58,28 @@ const catalogueCount = computed(() => store.catalogue.length)
 
 
 <style scoped>
+.Catalogue {
+  display: block;
+  padding-left: 3em;
+  padding-top: 2em;
+}
+
 h1 {
   display: inline;
   font-size: 25px;
+  margin-left: 10px;
 }
 
-.catalogue {
+.Catalogue-List {
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
-  /* background-color: blueviolet; */
+  margin-top: 0.75em;
+}
+
+.Genre-Selector {
+  border-radius: 6px;
+  height: 2em;
+  width: 11em;
 }
 </style>
