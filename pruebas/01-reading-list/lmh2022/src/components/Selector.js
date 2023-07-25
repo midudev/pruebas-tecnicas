@@ -16,7 +16,7 @@ function Selector({field, record, object, setSelected, selected}) {
     <>
 
       <select name="selector" id="selector" onChange={handleChange} value={selected}>
-            {options.map(o=><option value={o} key={Math.random()}>{o}</option>)}
+            {options.map(option=><option value={option} key={Math.random()}>{option}</option>)}
     </select>
 
     </>
