@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 export default function ThemeSwitch () {
+  const checkboxRef = useRef(null)
   // Estado del tema
   const [theme, setTheme] = useState(
     JSON.parse(localStorage.getItem('theme')) || 'light')
@@ -12,15 +13,18 @@ export default function ThemeSwitch () {
       localStorage.setItem('theme', JSON.stringify('light'))
     }
   }, [theme])
+  useEffect(() => {
+    if (checkboxRef.current && theme === 'dark') {
+      checkboxRef.current.checked = true
+    }
+  }, [])
   const handleThemeSwitch = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark')
   }
   return (
         <div className="toggle">
-          <span>☀️</span>
-          <input onChange={handleThemeSwitch} type="checkbox" id="toggle-switch" />
+          <input ref={checkboxRef} onChange={handleThemeSwitch} type="checkbox" id="toggle-switch" />
           <label htmlFor="toggle-switch"><span className="screen-reader-text">Toggle Color Scheme</span></label>
-          <span>🌙</span>
         </div>
   )
 }

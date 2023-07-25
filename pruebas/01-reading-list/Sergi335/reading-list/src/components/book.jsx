@@ -33,7 +33,7 @@ export default function Book ({ item, className }) {
     }
   }
   return (
-    <li className={classList(className, item) + liClass + ' rounded-[21px] overflow-hidden shadow-indigo-500/40 hover:shadow-lg transition-shadow max-h-[715px] dark:text-gray-300 dark:bg-[#331D2C]' } key={item.book.ISBN}>
+    <li className={classList(className, item) + liClass + ' rounded-[21px] overflow-hidden shadow-indigo-500/40 hover:shadow-lg transition-shadow max-h-[620px] dark:text-gray-300 dark:bg-[#331D2C]' } key={item.book.ISBN}>
           <img className="aspect-[317/475] w-[275px] inline"
               src= {item.book.cover}
               alt= {item.book.title}

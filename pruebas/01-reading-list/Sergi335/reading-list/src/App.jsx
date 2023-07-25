@@ -56,9 +56,9 @@ function App () {
           const total = calculateNumberOfBooks(number, list)
           return (
             <>
-              <header className='fixed top-0 z-10 w-full flex 2xl:justify-center 2xl:gap-[17%] bg-white
+              <header className='fixed top-0 z-10 w-full flex 2xl:justify-center 2xl:gap-[15.5%] bg-white
                items-center left-0 py-[20px] px-0 2xl:px-[150px] dark:bg-[#331D2C] dark:text-gray-300 justify-around'>
-                <p className='font-bold text-xl'><BookIconOnly className="absolute left-[26%] 2xl:left-[18%] top-[22px]"/>Books<span className='font-normal'>Inc</span></p>
+                <p className='font-bold text-xl'><BookIconOnly className="absolute left-[31%] 2xl:left-[21.6%] top-[22px]"/>Books<span className='font-normal'>Inc</span></p>
                 <Search books={library}/>
                 <div className='flex gap-6'>
                   <ThemeSwitch />
