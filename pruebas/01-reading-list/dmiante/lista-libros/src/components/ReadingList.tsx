@@ -5,7 +5,7 @@ export default function ReadingList () {
   const { readingList, removeReadingList } = useBooksContext()
   return (
     <List>
-      <h2>Books to read</h2>
+      <h2>Libros por leer</h2>
       <span>{readingList.length} libro{readingList.length <= 1 ? '' : 's'} por leer</span>
       <ul>
         {
@@ -60,9 +60,6 @@ const List = styled.section`
   img {
     height: 100%;
     max-width: 100%;
-  }
-
-  .deleteIcon {
-
+    border-radius: .4rem;
   }
 `

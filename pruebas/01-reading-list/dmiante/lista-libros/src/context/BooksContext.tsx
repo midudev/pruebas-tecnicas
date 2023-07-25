@@ -1,6 +1,7 @@
 import { useState, createContext, useEffect, useContext } from 'react'
 import type { Book } from '../types/types.d.ts'
 import { getAllBook } from '../services/data'
+import useLocalStorage from '../hooks/useLocalStorage.ts'
 
 interface BookTypeContext {
   books: Book[]
@@ -23,8 +24,8 @@ const BookContext = createContext<BookTypeContext>({
 })
 
 export function BooksProvider ({ children }: React.PropsWithChildren) {
-  const [books, setBooks] = useState<Book[]>([])
-  const [readingList, setReadingList] = useState<Book[]>([])
+  const [books, setBooks] = useLocalStorage<Book[]>('Books', [])
+  const [readingList, setReadingList] = useLocalStorage<Book[]>('ReadingList', [])
   const [genre, setGenre] = useState<string>('Todos')
 
   const genreMapped = books.map(el => el.genre)
