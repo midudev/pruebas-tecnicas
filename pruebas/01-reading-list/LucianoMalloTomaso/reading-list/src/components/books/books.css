@@ -33,9 +33,8 @@
   }
   .book-photo {
     border-radius: 4px;
-    width: 100%;
-
-    aspect-ratio: 16/9;
+    width: 50%;
+    aspect-ratio: 2/3;
     display: block;
     object-fit: cover;
     background: #fff;

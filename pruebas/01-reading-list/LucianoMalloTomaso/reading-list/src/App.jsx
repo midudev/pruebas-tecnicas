@@ -6,6 +6,7 @@ import { library } from './mocks/books'
 import { useFilters } from './hooks/useFilters'
 import { useState } from 'react'
 import { ListOfLectureProvider } from './contexts/listOfLecture'
+import { v4 as uuid } from 'uuid'
 
 function App () {
   const [books] = useState(library)
@@ -13,8 +14,10 @@ function App () {
 
   // map books to the format that the Books component expects and add an id to each book
   const mappedBooks = books.map((book, index) => {
+    const uniqueId = uuid()
+    const smallId = uniqueId.slice(0, 8)
     return {
-      id: index,
+      id: smallId,
       title: book.book.title,
       genre: book.book.genre,
       cover: book.book.cover,
