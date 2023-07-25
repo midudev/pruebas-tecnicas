@@ -1,7 +1,7 @@
 .list {
     background: #000;
     display: none;
-    padding: 32px;
+    padding: 45px;
     position: fixed;
     right: 0px;
     top: 0px;
@@ -17,13 +17,20 @@
     object-fit: cover;
     background: #fff;
     box-shadow: 0 0 20px 20px #c9c9c91a;
+    cursor: pointer;
   }
   
   .list li {
     border-bottom: 1px solid #444;
     padding-bottom: 16px;
+    padding-top: 16px;
+
   }
-  
+
+  .list li:active {
+    background: #34153d;
+  }
+
   .list footer {
     display: flex;
     gap: 8px;

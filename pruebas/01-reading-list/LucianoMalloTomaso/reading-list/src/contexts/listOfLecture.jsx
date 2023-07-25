@@ -25,12 +25,17 @@ function useListOfLectureReducer () {
   const setInitialState = () => {
     dispatch({ type: 'SET_INITIAL_STATE', payload: JSON.parse(window.localStorage.getItem('list')) })
   }
-  return { state, addToLectureList, removeFromLectureList, clearLectureList, setInitialState }
+
+  const setNewListSorted = (newList) => {
+    dispatch({ type: 'SET_NEW_LIST_SORTED', payload: newList })
+  }
+
+  return { state, addToLectureList, removeFromLectureList, clearLectureList, setInitialState, setNewListSorted }
 }
 
 // Provider
 export function ListOfLectureProvider ({ children }) {
-  const { state, addToLectureList, removeFromLectureList, clearLectureList, setInitialState } = useListOfLectureReducer()
+  const { state, addToLectureList, removeFromLectureList, clearLectureList, setInitialState, setNewListSorted } = useListOfLectureReducer()
 
   // Update the localStorage when the state changes
   useEffect(() => {
@@ -52,7 +57,7 @@ export function ListOfLectureProvider ({ children }) {
   }, [])
 
   return (
-    <ListOfLecture.Provider value={{ list: state, addToLectureList, removeFromLectureList, clearLectureList, setInitialState }}>
+    <ListOfLecture.Provider value={{ list: state, addToLectureList, removeFromLectureList, clearLectureList, setInitialState, setNewListSorted }}>
       {children}
     </ListOfLecture.Provider>
 

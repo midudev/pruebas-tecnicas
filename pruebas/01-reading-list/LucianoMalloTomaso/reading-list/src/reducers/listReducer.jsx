@@ -5,7 +5,8 @@ export const LIST_ACTIONS_TYPES = {
   ADD_TO_LECTURE_LIST: 'ADD_TO_LECTURE_LIST',
   REMOVE_FROM_LECTURE_LIST: 'REMOVE_FROM_LECTURE_LIST',
   CLEAR_LECTURE_LIST: 'CLEAR_LECTURE_LIST',
-  SET_INITIAL_STATE: 'SET_INITIAL_STATE'
+  SET_INITIAL_STATE: 'SET_INITIAL_STATE',
+  SET_NEW_LIST_SORTED: 'SET_NEW_LIST_SORTED'
 }
 
 // update localStorage when the list changes
@@ -39,11 +40,15 @@ export const listOfLectureReducer = (state, action) => {
     }
     case LIST_ACTIONS_TYPES.CLEAR_LECTURE_LIST:{
       updateLocalStorage([])
-      console.log(listOfLectureInitialState)
       return []
     }
     case LIST_ACTIONS_TYPES.SET_INITIAL_STATE:{
       return actionPayload
+    }
+    case LIST_ACTIONS_TYPES.SET_NEW_LIST_SORTED:{
+      const newState = [...actionPayload]
+      updateLocalStorage(newState)
+      return newState
     }
 
     default:
