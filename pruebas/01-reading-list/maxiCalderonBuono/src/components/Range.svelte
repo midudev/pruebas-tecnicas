@@ -128,11 +128,11 @@
 
 	function calculateNewValue(clientX: number) {
 		if (container) {
-			// Find distance between cursor and element's left cord (20px / 2 = 10px) - Center of thumb
-			let delta = (elementX ?? 0) + container.clientWidth - clientX - 10;
+			// Find distance between cursor and element's right cord (20px / 2 = 10px) - Center of thumb
+			let delta = clientX - (elementX ?? 0) - 10;
 
 			// Use width of the container minus (5px * 2 sides) offset for percent calc
-			let percent = (delta * 100) / (container.clientWidth - 10);
+			let percent = 100 - (delta * 100) / (container.clientWidth - 10);
 
 			// Limit percent 0 -> 100
 			percent = percent < 0 ? 0 : percent > 100 ? 100 : percent;
