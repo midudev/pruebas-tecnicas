@@ -1,0 +1,20 @@
+.countFragment{
+    min-width: 100%;
+}
+
+.filterComponent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    margin-left: 5px;
+    min-width: 25%;
+}
+
+.rangeComponent {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-width: 25%;
+    margin-right: 30px;
+}

@@ -1,7 +1,7 @@
 'use client'
 
 import { Book } from "../interfaces/library.interface"
-import components from '../styles/components.module.css'
+import components from '../styles/library.module.css'
 
 interface bookProps { book:Book , cleanOption:boolean }
 const BookComponent = ({ book , cleanOption }:bookProps) => {
