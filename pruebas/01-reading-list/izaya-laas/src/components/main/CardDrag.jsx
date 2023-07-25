@@ -1,18 +1,21 @@
 import { currentPath, isDark, myReadingListISBN } from '../../signals/store';
 
 const CardDrag = ({ title, cover, name, ISBN }) => {
+  const startDrag = (e, bookId) => {
+    e.dataTransfer.setData('bookId', bookId);
+  };
+
   return (
     <figure
-      className={`md:34 h-min w-36 rounded-bl-[15px_255px] rounded-br-[255px_15px] rounded-tl-[255px_15px] rounded-tr-[15px_255px] border border-black bg-opacity-20 p-2 pb-2 sm:w-36 lg:w-40 ${
+      draggable
+      onDragStart={(e) => startDrag(e, ISBN)}
+      className={`md:34 h-min w-36 cursor-grab rounded-bl-[15px_255px] rounded-br-[255px_15px] rounded-tl-[255px_15px] rounded-tr-[15px_255px] border border-black bg-opacity-20 p-2 pb-2  sm:w-36 lg:w-40 ${
         myReadingListISBN.value.includes(ISBN) &&
         currentPath.value !== '/my-books'
           ? 'bg-grated-pattern '
           : 'bg-white'
       }`}
       id={ISBN}
-      onClick={() => {
-        addBookToReadingList(ISBN);
-      }}
     >
       <img
         className={`relative aspect-[305/400] w-full rounded-tl-[255px_15px] rounded-tr-[15px_255px] object-cover grayscale-[60%] ${

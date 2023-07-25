@@ -7,8 +7,8 @@ render(<App />, document.getElementById('app'));
 
 //Mantenemos sincronización de datos entre diferentes pestañas
 window.addEventListener('storage', (e) => {
-	if (e.key === 'readingList') {
-		const newValue = e.newValue;
-		myReadingListISBN.value = JSON.parse(newValue);
-	}
+  if (e.key === 'readingList') {
+    const newValue = e.newValue;
+    myReadingListISBN.value = JSON.parse(newValue);
+  }
 });
