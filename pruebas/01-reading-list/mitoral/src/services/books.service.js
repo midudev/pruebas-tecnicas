@@ -40,3 +40,11 @@ export function filterBooks (filters) {
     )
   })
 }
+
+export function getReadingList () {
+  return JSON.parse(window.localStorage.getItem('readingList') || '[]')
+}
+
+export function updateReadingList (readingList) {
+  window.localStorage.setItem('readingList', JSON.stringify(readingList))
+}

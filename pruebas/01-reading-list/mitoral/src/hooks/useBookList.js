@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { filterBooks, getBooks } from '../services/books.service'
+import { filterBooks, getBooks, updateReadingList } from '../services/books.service'
 import { ReadingListContext } from '../context/ReadingListContext'
 import { FiltersContext } from '../context/FiltersContext'
 
@@ -31,6 +31,7 @@ export function useBookList () {
       newReadingList.splice(destinationIndex, 0, bookToMove)
       setBooks(newBooks)
       setReadingList(newReadingList)
+      updateReadingList(newReadingList)
     }
 
     if (sourceDroppableId === 'reading' && destinationDroppableId === 'catalog') {
@@ -38,12 +39,14 @@ export function useBookList () {
       newBooks.splice(destinationIndex, 0, bookToMove)
       setBooks(newBooks)
       setReadingList(newReadingList)
+      updateReadingList(newReadingList)
     }
 
     if (sourceDroppableId === 'reading' && destinationDroppableId === 'reading') {
       const [bookToMove] = newReadingList.splice(sourceIndex, 1)
       newReadingList.splice(destinationIndex, 0, bookToMove)
       setReadingList(newReadingList)
+      updateReadingList(newReadingList)
     }
   }
 
