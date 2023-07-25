@@ -38,7 +38,9 @@ export const BookCard = component$(
         id={ISBN}
         draggable={!isInReadingList}
         class={`aspect-[1/1.6] group hover:shadow-lg transition-transform duration-300 ease-in-out text-white relative bg-blue-950 rounded-md ${
-          isInReadingList ? "cursor-pointer" : "cursor-grab"
+          isInReadingList
+            ? "cursor-pointer"
+            : "cursor-grab hover:animate-shake-and-scale"
         } ${isDragging.value ? "opacity-25" : ""}`}
       >
         <div class="relative overflow-hidden rounded-tl-md rounded-tr-md">

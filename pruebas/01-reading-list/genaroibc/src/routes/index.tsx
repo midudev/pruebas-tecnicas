@@ -60,7 +60,7 @@ export default component$(() => {
       initialFilter={filter.value}
     />
   ) : (
-    <div class="text-5xl text-white w-full flex justify-center items-center h-screen">
+    <div class="text-2xl text-white w-full flex justify-center items-center h-screen">
       loading...
     </div>
   )

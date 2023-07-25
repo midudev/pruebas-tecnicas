@@ -97,3 +97,26 @@ main {
 *::-webkit-scrollbar-thumb:active {
   background-color: #000;
 }
+
+/* make an animation that shakes and scales a card */
+@keyframes shakeAndScale {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  20% {
+    transform: scale(1.005) rotate(-2deg);
+  }
+
+  50% {
+    transform: scale(1.005) rotate(2deg);
+  }
+
+  80% {
+    transform: scale(1.005) rotate(-2deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
