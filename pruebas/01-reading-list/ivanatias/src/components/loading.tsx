@@ -17,15 +17,15 @@ export default function Loading({
 
   return (
     <div
-      className={`${
+      className={
         isFullScreen
           ? 'absolute inset-0 grid place-content-center bg-black/50'
           : ''
-      }`}
+      }
     >
       <div
         role='progressbar'
-        className={`${size} rounded-full border-4 border-slate-400 border-l-blue-600 animate-spin`}
+        className={`${size} rounded-full border-4 border-zinc-500 border-l-blue-600 animate-spin`}
       />
     </div>
   )
