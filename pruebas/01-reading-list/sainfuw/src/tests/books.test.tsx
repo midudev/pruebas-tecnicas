@@ -1,4 +1,3 @@
-import "@testing-library/jest-dom";
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 
 import App from '../App';
@@ -37,8 +36,8 @@ describe('App, basic testings', () => {
     render(<App />)
     const select = screen.getAllByRole('option')
 
-    const { genres } = useBooks()
-    expect(select.length).toEqual(genres.length + 1)
+    const { uniqueGenres } = useBooks()
+    expect(select.length).toEqual(uniqueGenres.length + 1)
   })
 
   it('book list should be removed from list when clicked', () => {
