@@ -81,7 +81,7 @@
 }
 
 .filterSection__checkGenre:checked + .filterSection__labelGenre {
-  color: rgb(56 189 248);
+  color: #38bdf8;
 }
 
 @media (hover: hover) {

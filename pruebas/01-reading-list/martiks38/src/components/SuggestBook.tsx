@@ -9,6 +9,7 @@ import { toast } from 'react-toastify'
 import { nameStorage } from '@/assets/constants'
 import { books } from '@/assets/values'
 import suggestBookStyles from '@/assets/styles/Book/SuggestBook.module.css'
+import buttonStyle from '@/assets/styles/Book/Button.module.css'
 
 import type { Book } from '@/typings/books'
 
@@ -65,7 +66,7 @@ export function SuggestBook() {
         <p className={suggestBookStyles.suggestSection__synopsis}>{suggestion.synopsis}</p>
         <div className={suggestBookStyles.addBookContainer}>
           <button
-            className={suggestBookStyles.suggestSection__info__button}
+            className={`${buttonStyle.actionButton} ${suggestBookStyles.suggestSection__info__button}`}
             onClick={() => addBook({ ISBN: suggestion.ISBN, title: suggestion.title })}
             onMouseLeave={restartAnimation}
             aria-disabled={isAdd}
