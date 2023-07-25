@@ -12,7 +12,7 @@ const MyBooks = () => {
                     return (
                         <Card
                             cover={book.book.cover}
-                            title={book.book.title}
+                            // title={book.book.title}
                             isbn={book.book.ISBN}
                             key={index}
                             isReading={book?.readings}

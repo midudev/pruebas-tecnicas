@@ -25,6 +25,7 @@ export const booksSlice = createSlice({
         // agrega libros a la lista de lectura
         addToReading: (state, action) => {
             const data = { readings: true, ...action.payload };
+            if (state.reading.find(book => book.book?.ISBN === action.payload.book?.ISBN)) return;
             state.reading.push(data);
             const newShow = state.show.map((book) => {
                 if (book.book?.ISBN === action.payload.book?.ISBN) {

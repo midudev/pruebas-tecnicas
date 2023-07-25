@@ -15,3 +15,9 @@
     gap: 3rem;
     font-size: xx-large;
 }
+
+@media screen and (max-width: 768px) {
+    .my-books-container{
+        gap: 2rem;
+    }
+}

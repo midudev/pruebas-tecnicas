@@ -28,7 +28,6 @@ export default function Lateral() {
                         id="pages"
                         max={1500}
                         onChange={handleChange}
-                        defaultValue={counters.numPages}
                         value={counters.numPages}
                     />
                     <span>{counters.numPages}</span>
@@ -36,7 +35,7 @@ export default function Lateral() {
             </div>
             <div className="select">
                 <label htmlFor="genre">Genero</label>
-                <select id="genre" defaultValue="All genres" onChange={handleChange} value={genreFilter} >
+                <select id="genre" onChange={handleChange} value={genreFilter} >
                     <option value="All genres">Todos</option>
                     {genres?.map((genre, index) => (
                         <option key={index} value={genre}>

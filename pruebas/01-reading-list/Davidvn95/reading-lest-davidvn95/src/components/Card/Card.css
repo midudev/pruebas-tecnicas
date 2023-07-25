@@ -1,21 +1,61 @@
-.card{
+.card {
+    position: relative;
     width: 14rem;
     height: 20rem;
-    border-radius: 1rem;
+    background-color: #f2f2f2;
+    border-radius: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
-    padding: 0;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     cursor: pointer;
-    position: relative;
+    perspective: 1000px;
+    /* box-shadow: 0 0 0 5px #ffffff80; */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.card-img{
+.card-img {
     object-fit: cover;
     width: 100%;
     height: 100%;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
 }
 
-.card-bookmark{
+
+.card-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: var(--color-background);
+    transform: rotateX(90deg);
+    transform-origin: center;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover .card-content {
+    transform: rotateX(0deg);
+}
+
+.card-title {
+    margin: 0;
+    font-size: x-large;
+    color: #333;
+    font-weight: 700;
+}
+
+
+.card-description {
+    margin: 10px 0 0;
+    font-size: 20px;
+}
+
+.card-bookmark {
     position: absolute;
     color: rgb(0, 255, 13);
     font-size: xx-large;
@@ -25,4 +65,17 @@
     display: grid;
     place-items: center;
     background-color: rgba(41, 41, 41, 0.623);
+}
+
+@media screen and (max-width: 400px) {
+    .card {
+        width: 9.8rem;
+        height: 14rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+  .card:hover .card-content {
+    transform: rotateX(90deg);
+  }
 }

@@ -4,7 +4,7 @@ import { addToReading, removeToReading } from "../../redux/booksSlice";
 import Book from "../../data";
 import "./Card.css";
 
-const Card = ({ cover, isbn, readings, isReading }) => {
+const Card = ({ cover, isbn, readings, isReading, title, synopsis }) => {
     const dispatch = useDispatch();
 
     const handleClick = () => {
@@ -12,9 +12,13 @@ const Card = ({ cover, isbn, readings, isReading }) => {
         else dispatch(addToReading(Book.getById(isbn)));
     };
     return (
-        <div className="card">
+        <div className="card" onClick={handleClick}>
             {readings && <span className="card-bookmark">En mi lista</span>}
-            <img className="card-img" src={cover} alt="" onClick={handleClick} />
+            <img className="card-img" src={cover} alt=""  />
+            {title && <div className="card-content">
+                <p className="card-title">{title}</p>
+                <p className="card-description">{synopsis}</p>
+            </div>}
         </div>
     );
 };
