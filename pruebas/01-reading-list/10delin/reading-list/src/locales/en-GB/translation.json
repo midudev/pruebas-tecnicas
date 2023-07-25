@@ -1,0 +1,20 @@
+{
+  "home": {
+    "title": "Javascript Publishers",
+    "resetApp": "Reset App",
+    "resetFilter": "Reset Filter",
+    "availableBooks": "Available Books : ",
+    "readingBooks": "Reading Books : ",
+    "addBook": "Add",
+    "genre": "Genre",
+    "allBooks": "All",
+    "searchBook": "Search Book",
+    "writeBookName": "Write Book Name",
+    "numberPages": "Number of Pages",
+    "priority": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    }
+  }
+}

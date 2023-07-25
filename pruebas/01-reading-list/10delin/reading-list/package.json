@@ -1,0 +1,34 @@
+{
+  "name": "01---desarrollo-de-una-aplicaci-n-de-lista-de-libros",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "cy:run": "npx cypress run",
+    "cy:open": "cypress open"
+  },
+  "dependencies": {
+    "rc-slider": "^10.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^6.0.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "@vitejs/plugin-react": "^4.0.1",
+    "cypress": "^12.17.2",
+    "eslint": "^8.44.0",
+    "eslint-plugin-cypress": "^2.13.3",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.1",
+    "i18next": "^23.2.11",
+    "react-i18next": "^13.0.2",
+    "vite": "^4.4.0"
+  }
+}
