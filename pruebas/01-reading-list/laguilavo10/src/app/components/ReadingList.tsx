@@ -2,7 +2,7 @@
 import { useBooks } from '../context/books'
 import CounterBooks from './CounterBooks'
 import BookCard from './BookCard'
-import Loader from './Loader'
+import EmptyState from './EmptyState'
 interface Props {
   isShowingReadList: boolean
 }
@@ -17,7 +17,7 @@ export default function ReadingList({ isShowingReadList }: Props) {
         className='scrollbar-w-2 grid h-full grid-cols-auto-fit gap-5 p-2 pb-24 scrollbar scrollbar-track-gray-100 scrollbar-thumb-[#596886] md:overflow-auto'
         id='readList'
       >
-        <Loader>
+        <EmptyState length={length}>
           {state.readingList.map((book, index) => (
             <div key={book.ISBN} data-test-id={`libro ${index.toString()}`}>
               <BookCard
@@ -28,7 +28,7 @@ export default function ReadingList({ isShowingReadList }: Props) {
               />
             </div>
           ))}
-        </Loader>
+        </EmptyState>
       </ul>
     </section>
   )
