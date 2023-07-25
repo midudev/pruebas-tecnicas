@@ -51,18 +51,14 @@ export function useReadingListContext(storageKey: string) {
     (ISBN: string) => {
       const bookToAdd = books.find(book => book.ISBN === ISBN)
 
-      const isInReadingList = checkIfBookInReadingList(ISBN)
-
-      const shouldAddBook = bookToAdd !== undefined && !isInReadingList
-
-      if (!shouldAddBook) return
+      if (bookToAdd === undefined) return
 
       const newReadingList = [...readingList, bookToAdd]
 
       window.localStorage.setItem(storageKey, JSON.stringify(newReadingList))
       setReadingList(newReadingList)
     },
-    [books, readingList, storageKey, checkIfBookInReadingList]
+    [books, readingList, storageKey]
   )
 
   const toggleReadingList = useCallback(() => {
