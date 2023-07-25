@@ -12,7 +12,7 @@ function App () {
   const { getBooks, filteredBooks } = useBooksStore()
 
   useEffect(() => {
-    const data = window.localStorage.getItem('booksLibrary')
+    const data: any = window.localStorage.getItem('booksLibrary')
     const isData = JSON.parse(data).state.books.length > 0
 
     if (!isData) {
