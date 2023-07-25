@@ -21,8 +21,6 @@ export function BookList({ books, listType }: BookListProps) {
 
   const typeIsAvailable = listType === 'available'
 
-  const lineStyle = typeIsAvailable ? bookButton.addButton__line : bookButton.removeButton__line
-
   const buttonAction = ({ ISBN, title }: { ISBN: string; title: string }) => {
     if (typeIsAvailable) {
       addToReadingList({ ISBN })
