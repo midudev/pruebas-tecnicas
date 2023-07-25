@@ -42,7 +42,7 @@ export const useBooks = () => {
         {
             librosCopia[index] = librosCopia[index - 1];
             librosCopia[index - 1] = book;
-
+            
             setLibrosLista(librosCopia)
             saveStorage(librosCopia)
         }
@@ -52,7 +52,7 @@ export const useBooks = () => {
         const librosCopia = [...librosLista]
         const index = librosCopia.findIndex(libro => libro.ISBN === book.ISBN)
         
-        if (index < librosCopia.length){
+        if (index < librosCopia.length - 1){
             librosCopia[index] = librosCopia[index + 1];
             librosCopia[index + 1] = book;
             
