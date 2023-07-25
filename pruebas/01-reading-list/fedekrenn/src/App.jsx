@@ -15,6 +15,9 @@ function App () {
   const [books, setBooks] = useState(JSON.parse(localStorage.getItem('books')) || [])
   const [readingList, setReadingList] = useState(JSON.parse(localStorage.getItem('readingList')) || [])
 
+  const [pages, setPages] = useState(0)
+  const [genre, setGenre] = useState('Todos')
+
   const dialog = useRef(null)
   const baseBooks = useRef([])
 
@@ -22,12 +25,18 @@ function App () {
     getBooks().then((allBooks) => {
       baseBooks.current = allBooks.library
 
-      if (books.length === 0 && readingList.length === 0) {
-        setBooks(allBooks.library)
-      }
+      const filteredBooks = allBooks.library.filter(book => (
+        !readingList.some(item => item.book.ISBN === book.book.ISBN)
+      ))
+      setBooks(filteredBooks)
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  useEffect(() => {
+    handleFilter(baseBooks.current)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [genre, pages])
 
   useEffect(() => {
     localStorage.setItem('books', JSON.stringify(books))
@@ -39,8 +48,8 @@ function App () {
 
   const addBookToReadingList = (book) => {
     const filteredBooks = books.filter(item => item.book.ISBN !== book.book.ISBN)
-
     setBooks(filteredBooks)
+
     setReadingList([...readingList, book])
 
     alert('Libro añadido a la lista de lectura')
@@ -54,23 +63,29 @@ function App () {
       !newReadingList.some(item => item.book.ISBN === book.book.ISBN)
     ))
     setBooks(filteredBooks)
+    setGenre('Todos')
 
     alert('Libro eliminado de la lista de lectura')
   }
 
-  const handleFilter = (e) => {
-    const genre = e.target.value
-    if (genre === 'Todos') {
-      const filteredBooks = baseBooks.current.filter(book => (
-        !readingList.some(item => item.book.ISBN === book.book.ISBN)
-      ))
+  const handleFilter = (b) => {
+    let filteredBooks = [...b]
 
-      setBooks(filteredBooks)
+    if (genre !== 'Todos') {
+      filteredBooks = filteredBooks.filter(book => book.book.genre === genre)
+    }
+
+    filteredBooks = filteredBooks.filter(book => book.book.pages >= pages)
+
+    filteredBooks = filteredBooks.filter(book => (
+      !readingList.some(item => item.book.ISBN === book.book.ISBN)
+    ))
+
+    if (filteredBooks.length === 0 && genre !== 'Todos') {
+      setPages(0)
+      setGenre('Todos')
+      alert('No hay libros disponibles con los filtros seleccionados')
     } else {
-      const filteredBooks = baseBooks.current.filter(book => (
-        book.book.genre === genre && !readingList.some(item => item.book.ISBN === book.book.ISBN)
-      ))
-
       setBooks(filteredBooks)
     }
   }
@@ -92,13 +107,26 @@ function App () {
           Abrir lista de lectura (<span>{readingList.length}</span>)
         </button>
         <label htmlFor='select-genre'>Filtrar por género:</label>
-        <select name='select-genre' id='select-genre' onChange={handleFilter}>
+        <select
+          name='select-genre'
+          id='select-genre'
+          value={genre}
+          onChange={(e) => setGenre(e.target.value)}
+        >
           {GENRES_LIST.map((genre) => (
             <option key={genre} value={genre}>
               {genre}
             </option>
           ))}
         </select>
+        <label htmlFor='page-lenght'>Cantidad de páginas: {pages}</label>
+        <input
+          type='range'
+          name='page-lenght'
+          min='0' max='1200'
+          value={pages}
+          onChange={(e) => setPages(e.target.value)}
+        />
         {books.length === 0 && readingList.length > 0
           ? (
             <h2>Todos los libros están en la lista de lectura</h2>
