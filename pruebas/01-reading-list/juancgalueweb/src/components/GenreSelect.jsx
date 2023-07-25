@@ -5,6 +5,7 @@ import { useBooksStore } from '../stores/books'
 
 export const GenreSelect = () => {
   const [
+    books,
     categories,
     setCategories,
     booksBySelectedCategory,
@@ -12,6 +13,7 @@ export const GenreSelect = () => {
     selectedCategory
   ] = useBooksStore(
     (state) => [
+      state.books,
       state.categories,
       state.setCategories,
       state.booksBySelectedCategory,
@@ -28,7 +30,7 @@ export const GenreSelect = () => {
 
   useEffect(() => {
     setCategories()
-  }, [])
+  }, [books])
 
   return (
     <Select
