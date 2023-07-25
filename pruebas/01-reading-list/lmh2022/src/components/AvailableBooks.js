@@ -12,14 +12,16 @@ function AvailableBooks() {
   const [selected, setSelected] = useState("")
   let books= data.library
   const [filteredBooks, setFilteredBooks] = useState(books)
-  const [pages, setPages] = useState(2000)
+  const [pages, setPages] = useState(0)
+
 
 
   useEffect(
     ()=>{
       setFilteredBooks(books.filter(f=>f.book.genre===(selected===""?f.book.genre:selected)&&f.book.pages<=pages))
-
-    },[selected, pages]
+      localStorage.setItem("genre", selected)
+      onstorage = ()=> localStorage.getItem("genre")
+     },[selected, pages]
   )
 
  
