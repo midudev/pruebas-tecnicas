@@ -8,7 +8,6 @@ interface HeaderProps {
 const HeaderComponent: React.FC<HeaderProps> = ({ handleChageCategory }) => {
   const { library, readingBooks } = useBookContext()
 
-  console.log(library)
   return (
     <header>
     <h1>Libros disponibles {library?.length}</h1>

@@ -13,7 +13,7 @@ interface BookListProps {
 const BookListToRead: React.FC<BookListProps> = ({ library, addElement, imgHeight = 150, imgWidth = 125 }) => {
   return (
 
-    <div className='container' >
+    <div role='books-to-read' className='container' >
       <h1>Lista de lectura</h1>
       <div style={{ flexDirection: 'row', display: 'flex', flexWrap: 'wrap', gap: 40, flex: 1, position: 'relative', borderRadius: 'red' }}>
  {library?.map(library => {
