@@ -3,12 +3,16 @@ import { render, screen, cleanup, fireEvent } from '@testing-library/preact';
 import RenderBooks from '../src/components/main/RenderBooks';
 import { books } from '../src/database/books';
 import {
+  allBooks,
   currentPath,
   myReadingListISBN,
   myReadingListLength,
   totalFreeBooks,
 } from '../src/signals/store';
 import { filterBooks } from '../src/filters/filterBooks';
+import MyBooks from '../src/components/main/routes/MyBooks';
+import { notFoundLogs } from '../src/utils/notFoundLogs';
+import AllBooks from '../src/components/main/routes/AllBooks';
 
 const cleanupSignals = () => {
   myReadingListISBN.value = [];
@@ -90,23 +94,21 @@ describe('RenderBooks', () => {
 
   it('Al querer renderizarse con 0 books en /my-books, deberia renderizarse el componente HasNotBeFound', () => {
     currentPath.value = '/my-books';
-    const textNotFound = 'No books have been added to your reading list yet.';
-    const newBooks = filterBooks(books, { genre: 'Genero No Existente' });
+    myReadingListISBN.value = [];
 
-    render(<RenderBooks books={newBooks} />);
+    render(<MyBooks />);
 
-    const isRender = Boolean(screen.getByText(textNotFound));
+    const isRender = Boolean(notFoundLogs.noRenderMyBooks);
     expect(isRender).toBe(true);
   });
 
   it('Al querer renderizarse con 0 books, deberia renderizarse el componente HasNotBeFound con otro mensaje', () => {
     currentPath.value = '/';
-    const textNotFound = 'No books found with the selected filter.';
-    const newBooks = filterBooks(books, { genre: 'Genero No Existente' });
+    allBooks.value = [];
 
-    render(<RenderBooks books={newBooks} />);
+    render(<AllBooks />);
 
-    const isRender = Boolean(screen.getByText(textNotFound));
+    const isRender = Boolean(screen.getByText(notFoundLogs.noRenderAllBooks));
 
     expect(isRender).toBe(true);
   });

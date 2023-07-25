@@ -1,5 +1,5 @@
 import { it, describe, expect } from 'vitest';
-import { normalizeText } from '../src/helpers/normalizeText';
+import { normalizeText } from '../src/utils/normalizeText';
 
 describe('NormalizeText test', () => {
   it('Debera retornar un error si se envia un tipo diferente a string', () => {
