@@ -37,7 +37,6 @@
 
         valueMax = Math.max(valueMin + minGap, newValue);
         event.currentTarget.value = valueMax.toString();
-
       }
 
       // The value is empty or greater than the max.
