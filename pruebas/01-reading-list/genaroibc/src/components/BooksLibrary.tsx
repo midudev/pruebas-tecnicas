@@ -96,7 +96,11 @@ export const BooksLibrary = component$(
         <BooksList books={filteredByGenre} onBookSelect={onBookSelect} />
 
         <div class="sticky bottom-0 mt-8 z-30">
-          <ReadingList books={readingList} onBookSelect={onBookSelect} />
+          <ReadingList
+            books={readingList}
+            onBookSelect={onBookSelect}
+            onDrop={addBookToReadingList}
+          />
         </div>
       </section>
     )

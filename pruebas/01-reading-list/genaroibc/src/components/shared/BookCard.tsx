@@ -1,4 +1,4 @@
-import { component$, useSignal } from "@builder.io/qwik"
+import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik"
 import type { Book } from "~/types"
 import {
   IconBookOutlined,
@@ -20,18 +20,26 @@ export const BookCard = component$(
   }: Book) => {
     const isDragging = useSignal(false)
 
+    useVisibleTask$(() => {
+      if (isInReadingList) return
+
+      const el = document.getElementById(ISBN)
+      if (!el) return
+
+      el.addEventListener("dragstart", (event: DragEvent) => {
+        event.dataTransfer?.setData("text/plain", ISBN)
+        isDragging.value = true
+      })
+      el.addEventListener("dragend", () => (isDragging.value = false))
+    })
+
     return (
       <article
-        draggable
-        onDragStart$={event => {
-          event.dataTransfer.setData("text/plain", ISBN)
-          isDragging.value = true
-        }}
-        onDragEnd$={() => {
-          isDragging.value = false
-        }}
-        class="aspect-[1/1.6] group hover:shadow-lg transition-transform duration-300 ease-in-out text-white relative bg-blue-950 rounded-md"
-        style={isDragging.value ? { opacity: "0.1" } : undefined}
+        id={ISBN}
+        draggable={!isInReadingList}
+        class={`aspect-[1/1.6] group hover:shadow-lg transition-transform duration-300 ease-in-out text-white relative bg-blue-950 rounded-md ${
+          isInReadingList ? "cursor-pointer" : "cursor-grab"
+        } ${isDragging.value ? "opacity-25" : ""}`}
       >
         <div class="relative overflow-hidden rounded-tl-md rounded-tr-md">
           <BookBadge isInReadingList={isInReadingList} />
@@ -41,7 +49,7 @@ export const BookCard = component$(
             alt={title}
             width={300}
             height={500}
-            class="brightness-95 grayscale-[0.3] group-hover:grayscale-0 group-hover:brightness-110 transition-all duration-300 aspect-[1/1.4] group-hover:scale-110"
+            class="brightness-95 grayscale-[0.3] group-hover:grayscale-0 group-hover:brightness-110 transition-all duration-300 aspect-[1/1.4] group-hover:scale-110 pointer-events-none"
           />
 
           <ul class="absolute bottom-0 flex items-center justify-between gap-4 w-full py-1.5 px-3 bg-black/60 text-gray-200">
