@@ -1,28 +1,9 @@
 import { TextInput, MultiSelect, MultiSelectItem } from '@tremor/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
-import { getGenres, getMaxPages, getMinPages } from '../services/books.service'
-import { useContext, useId } from 'react'
-import { FiltersContext } from '../context/FiltersContext'
+import { useFilters } from '../hooks/useFilters'
 
 export function Filters () {
-  const { filters, setFilters } = useContext(FiltersContext)
-
-  const searchFilterId = useId()
-  const genresFilterId = useId()
-  const pagesFilterId = useId()
-
-  const minPages = getMinPages()
-  const maxPages = getMaxPages()
-  const genres = getGenres()
-
-  const handleChange = (e) => {
-    if (e.target.id === searchFilterId) setFilters({ ...filters, search: e.target.value })
-    if (e.target.id === pagesFilterId) setFilters({ ...filters, pages: e.target.value })
-  }
-
-  const handleGenresChange = (selectedItems) => {
-    setFilters({ ...filters, genres: selectedItems })
-  }
+  const { searchFilterId, genresFilterId, pagesFilterId, genres, minPages, maxPages, filters, handleChange, handleGenresChange } = useFilters()
 
   return (
     <section className='flex flex-col gap-3 justify-between lg:gap-10 sm:gap-5 sm:flex-row'>

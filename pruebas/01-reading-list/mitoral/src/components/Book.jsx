@@ -1,17 +1,9 @@
 import { Draggable } from 'react-beautiful-dnd'
 import { Badge } from './Badge'
-import { useContext } from 'react'
-import { ReadingListContext } from '../context/ReadingListContext'
+import { useBook } from '../hooks/useBook'
 
 export function Book ({ draggableIndex, book }) {
-  const { readingList, setReadingList } = useContext(ReadingListContext)
-  const isInReadingList = readingList.find((readingBook) => readingBook.ISBN === book.ISBN)
-
-  const toggleBook = () => {
-    isInReadingList
-      ? setReadingList(readingList.filter((readingBook) => readingBook.ISBN !== book.ISBN))
-      : setReadingList([...readingList, book])
-  }
+  const { isInReadingList, toggleBook } = useBook({ book })
 
   return (
     <Draggable draggableId={book.ISBN} index={draggableIndex}>

@@ -1,54 +1,10 @@
 import { Books } from './Books'
-import { filterBooks, getBooks } from '../services/books.service'
-import { useContext, useEffect, useState } from 'react'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { Filters } from './Filters'
-import { ReadingListContext } from '../context/ReadingListContext'
-import { FiltersContext } from '../context/FiltersContext'
+import { useBookList } from '../hooks/useBookList'
 
 export function BookList () {
-  const [books, setBooks] = useState(getBooks())
-  const { readingList, setReadingList } = useContext(ReadingListContext)
-  const { filters } = useContext(FiltersContext)
-
-  useEffect(() => {
-    setBooks(filterBooks(filters).filter((book) => !readingList.find((readingBook) => readingBook.ISBN === book.ISBN)))
-  }, [filters, readingList])
-
-  const handleDragEnd = ({ source, destination }) => {
-    if (!destination) return
-
-    const sourceDroppableId = source.droppableId
-    const destinationDroppableId = destination.droppableId
-
-    const sourceIndex = source.index - 1
-    const destinationIndex = destination.index - 1
-
-    if (sourceDroppableId === 'catalog' && destinationDroppableId === 'catalog') return
-
-    const newBooks = structuredClone(books)
-    const newReadingList = structuredClone(readingList)
-
-    if (sourceDroppableId === 'catalog' && destinationDroppableId === 'reading') {
-      const [bookToMove] = newBooks.splice(sourceIndex, 1)
-      newReadingList.splice(destinationIndex, 0, bookToMove)
-      setBooks(newBooks)
-      setReadingList(newReadingList)
-    }
-
-    if (sourceDroppableId === 'reading' && destinationDroppableId === 'catalog') {
-      const [bookToMove] = newReadingList.splice(sourceIndex, 1)
-      newBooks.splice(destinationIndex, 0, bookToMove)
-      setBooks(newBooks)
-      setReadingList(newReadingList)
-    }
-
-    if (sourceDroppableId === 'reading' && destinationDroppableId === 'reading') {
-      const [bookToMove] = newReadingList.splice(sourceIndex, 1)
-      newReadingList.splice(destinationIndex, 0, bookToMove)
-      setReadingList(newReadingList)
-    }
-  }
+  const { books, readingList, handleDragEnd } = useBookList()
 
   return (
     <main className='mt-10 flex flex-col gap-10 max-w-[1280px] mx-auto w-full flex-1 px-5 md:px-10'>
