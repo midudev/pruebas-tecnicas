@@ -19,7 +19,6 @@ describe('BookListComponent', () => {
       imports: [BookListComponent, HttpClientTestingModule],
       providers: [BooksService, provideRouter([])],
     });
-    // .compileComponents();
   });
 
   beforeEach(() => {
