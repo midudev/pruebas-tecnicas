@@ -33,4 +33,14 @@
 .filtros{
   display: flex;
   gap: 8px;
+  max-width: 100vw;
+}
+
+@media only screen and (max-width: 600px) {
+  .filtros{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 100vw;
+  }
 }
