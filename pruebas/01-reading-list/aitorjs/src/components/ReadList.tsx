@@ -14,7 +14,7 @@ const ReadList = () => {
 
   return (
     <>
-      <p className='text-2xl pb-4 font-medium flex items-center gap-4'>
+      <p className='text-2xl pb-4 mt-8 sm:mt-[0] font-medium flex items-center gap-4'>
         <span>Lista de lectura</span>
         <span className='px-2 py-1 text-xs font-bold leading-none text-purple-100 bg-purple-600 rounded-full'>
           {wantReadBooks.length}

@@ -25,10 +25,10 @@ function App () {
       <Header />
 
       <section className='bg-purple-100 p-4 mb-8 '>
-        <div className='rounded-lg w-[38%] flex justify-start align-center gap-4'>
+        <div className='rounded-lg sm:w-[38%] w-[100%] flex justify-center sm:justify-start align-center gap-4'>
           <span className='text-2xl font-medium'>Filtros:</span>
 
-          <div className='flex gap-6'>
+          <div className='flex gap-6 flex-col sm:flex-row'>
             <div className='flex flex-col justify-center align-center'>
               <PageFilter />
 
@@ -43,8 +43,8 @@ function App () {
         <FiltersSelected />
       </section>
 
-      <div className='flex'>
-        <div className='flex flex-wrap gap-4 w-4/5' id='books'>
+      <div className='flex flex-col sm:flex-row '>
+        <div className='flex flex-wrap gap-4 sm:w-4/5 w-[100%]' id='books'>
           {filteredBooks.map(({ book }) => (
             <Book key={book.ISBN} data={book} />
           ))}
