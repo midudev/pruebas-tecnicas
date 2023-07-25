@@ -129,7 +129,7 @@
 	function calculateNewValue(clientX: number) {
 		if (container) {
 			// Find distance between cursor and element's left cord (20px / 2 = 10px) - Center of thumb
-			let delta = clientX - ((elementX ?? 0) + 10);
+			let delta = (elementX ?? 0) + container.clientWidth - clientX - 10;
 
 			// Use width of the container minus (5px * 2 sides) offset for percent calc
 			let percent = (delta * 100) / (container.clientWidth - 10);
@@ -159,7 +159,7 @@
 	}
 
 	// React to left position of element relative to window
-	$: if (element) elementX = element.getBoundingClientRect().left;
+	$: if (element) elementX = element.getBoundingClientRect().right;
 
 	// Set a class based on if dragging
 	$: holding = Boolean(currentThumb);
