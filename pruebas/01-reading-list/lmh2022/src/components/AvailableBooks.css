@@ -1,12 +1,11 @@
-.books {
+.availablebooks {
   display: flex;
-  width: 80%;
+  width: 60%;
   height: 80%;
   flex-wrap: wrap;
-
+  border: solid red 1px;
 
 }
-
 
 .book {
     background-size: contain;
