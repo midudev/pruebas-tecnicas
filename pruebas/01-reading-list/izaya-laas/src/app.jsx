@@ -1,8 +1,9 @@
 import { Header } from './components/header/Header';
+import DataBooks from './components/main/DataBooks';
 import Aside from './components/main/aside/Aside';
 import Navbar from './components/main/navbar/Navbar';
 import Pages from './components/main/routes/Routes.jsx';
-import { isDark, myReadingListLength, totalFreeBooks } from './signals/store';
+import { isDark } from './signals/store';
 
 export function App() {
   return (
@@ -17,11 +18,7 @@ export function App() {
         <article className="w-full overflow-y-scroll p-4">
           <div className="flex max-w-5xl items-end">
             <h2 className="border-b border-white text-3xl">Books</h2>
-            <div className="flex w-full justify-end gap-x-4 ">
-              <p>My books {myReadingListLength}</p>
-              <p>Free books {totalFreeBooks.value}</p>
-              <p></p>
-            </div>
+            <DataBooks />
           </div>
           <Navbar />
           <section className="mt-6 flex max-w-5xl flex-wrap gap-4 pb-20">

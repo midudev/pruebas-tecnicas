@@ -1,8 +1,5 @@
 import { isDark } from '../../signals/store';
-
-const handleIsDark = () => {
-  isDark.value = !isDark.value;
-};
+import DarkMode from './DarkMode';
 
 export const Header = () => {
   return (
@@ -15,11 +12,7 @@ export const Header = () => {
         Good<span className="font-normal">reads</span>
       </h1>
       <div className="flex w-full max-w-5xl justify-end sm:pr-4">
-        <img
-          onClick={handleIsDark}
-          src="/public/dark-mode.svg"
-          className="w-8 transition-transform duration-300 hover:scale-90 hover:animate-pulse"
-        />
+        <DarkMode />
       </div>
     </header>
   );
