@@ -13,7 +13,7 @@ export function SortableItem(props) {
         transition,
     };
   
-    return (<li className="sort-item bg-body-tertiary p-1 rounded" ref={setNodeRef} style={style} >
+    return (<li className="sort-item p-1 rounded" ref={setNodeRef} style={style} >
 
         <button className="sort-btn" {...attributes} {...listeners} title="Mover">
 

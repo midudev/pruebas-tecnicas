@@ -33,7 +33,7 @@
     padding: 0 5px;
     font-size: 21px;
 
-    color: var(--bs-blue);
+    color: #F3B61F;
 }
 .remove-button::after {
     content: "\F195";

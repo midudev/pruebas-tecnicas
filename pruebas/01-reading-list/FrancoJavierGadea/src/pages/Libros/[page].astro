@@ -39,7 +39,7 @@ const books = result.slice(start, end);
 
 <RootLayout title="Libros">
 
-    <BooksFilters client:load path="/Libros/1" pages={queries.pages} genre={queries.genre} />
+    <BooksFilters client:load path="/Libros/1" pages={queries.pages} genre={queries.genre} total={result.length} />
 
     <div class="Books-container">
         {

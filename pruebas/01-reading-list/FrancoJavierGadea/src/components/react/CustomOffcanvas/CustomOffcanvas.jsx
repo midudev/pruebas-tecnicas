@@ -30,7 +30,10 @@ function CustomOffcanvas() {
             </Offcanvas.Body>
         </Offcanvas>
     
-        <Button variant="primary" onClick={handleShow}>
+        <Button className="bg-transparent border-0 p-0 fs-1" variant="primary" onClick={handleShow}
+        
+            title="Lista de lectura"
+        >
             <i className="bi bi-list" />
         </Button>
     </>);

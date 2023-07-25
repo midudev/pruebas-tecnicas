@@ -25,4 +25,23 @@
     --bs-accordion-border-radius: 0;
     --bs-accordion-btn-padding-x: 0; 
     --bs-accordion-btn-padding-y: 0;
+
+    --bs-accordion-active-color: var(--bs-accordion-btn-color)
+
+    /* position: sticky;
+    top: var(--main-nav-height);
+    z-index: 2500; */
+}
+
+#Accordion-filters .accordion-header {
+    border-bottom: 2px solid #F3B61F;
+}
+
+#Accordion-filters .title {
+
+    color: #F3B61F;
+}
+
+#Accordion-filters .accordion-button::after {
+    margin: 0;
 }

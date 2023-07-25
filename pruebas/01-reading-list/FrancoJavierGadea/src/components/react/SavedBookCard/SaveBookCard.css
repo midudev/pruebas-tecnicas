@@ -21,4 +21,13 @@
     -webkit-box-orient: vertical;
     line-height: 1.5rem;
     min-height: 3rem;
+    color: #fff;
+}
+
+.saved-book-card .author strong {
+    color: #fff;
+}
+
+.saved-book-card .show-btn {
+    color: #F3B61F;
 }

@@ -9,6 +9,10 @@
     touch-action: manipulation;
 }
 
+.sort-item {
+    background-color: #11427D;
+}
+
 .sort-content {
     flex-grow: 1;
 }

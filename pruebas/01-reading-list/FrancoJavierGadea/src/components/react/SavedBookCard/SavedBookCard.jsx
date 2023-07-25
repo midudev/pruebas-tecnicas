@@ -25,7 +25,7 @@ function SavedBookCard({book}) {
             
             {
                 book.author &&
-                <div className="mt-auto">
+                <div className="author mt-auto">
                     <span>Autor: </span>
                     <strong>{book.author}</strong>
                 </div>
@@ -34,7 +34,7 @@ function SavedBookCard({book}) {
 
         <div className="ms-auto me-1 d-flex flex-column justify-content-center gap-3">
 
-            <Button className="border-0 p-0 bg-transparent" variant="outline-secondary"  size="lg"
+            <Button className="show-btn border-0 p-0 bg-transparent" variant="outline-secondary"  size="lg"
             
                 href={`/Libro/${book.ISBN}/${encodeURI(book.title)}`}
 
@@ -43,7 +43,7 @@ function SavedBookCard({book}) {
                 <i className="bi bi-arrow-up-right-square-fill" />
             </Button>
 
-            <Button className="border-0 p-0 bg-transparent" variant="outline-danger" size="lg"
+            <Button className="del-btn border-0 p-0 bg-transparent" variant="outline-danger" size="lg"
             
                 title="Quitar de la lista" onClick={remove}
             >

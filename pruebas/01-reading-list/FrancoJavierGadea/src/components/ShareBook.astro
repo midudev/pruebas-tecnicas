@@ -25,23 +25,35 @@ const mail = encodeURI(`mailto:?body=${message}\n\n${link}`)
 
         <h5>Compartelo:</h5>
         
-        <a href={twitter.href} target="_blank" rel="noopener noreferrer" title="Compartir en twitter">
+        <a href={twitter.href} target="_blank" rel="noopener noreferrer" title="Compartir en twitter"
+        
+            style={{color: '#1d9bf0'}}
+        >
 
             <i class="bi bi-twitter" />
         </a>
 
-        <a href={whatsapp.href} target="_blank" rel="noopener noreferrer" title="Compartir en whatsapp">
+        <a href={whatsapp.href} target="_blank" rel="noopener noreferrer" title="Compartir en whatsapp"
+        
+            style={{color: '#25d366'}}
+        >
         
             <i class="bi bi-whatsapp" />
         </a>
 
 
-        <a href={telegram.href} target="_blank" rel="noopener noreferrer" title="Compartir en telegram">
+        <a href={telegram.href} target="_blank" rel="noopener noreferrer" title="Compartir en telegram"
+        
+            style={{color: '#0088cc'}}
+        >
         
             <i class="bi bi-telegram" />
         </a>
 
-        <a href={mail} target="_blank" rel="noopener noreferrer" title="Compartir por mail">
+        <a href={mail} target="_blank" rel="noopener noreferrer" title="Compartir por mail"
+        
+            style={{color: '#a7a7a7'}}
+        >
         
             <i class="bi bi-envelope" />
         </a>
@@ -54,6 +66,10 @@ const mail = encodeURI(`mailto:?body=${message}\n\n${link}`)
     footer {
 
         margin-top: 50px;
+    }
+
+    h5 {
+        color: #F3B61F;
     }
 
     a {

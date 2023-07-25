@@ -7,7 +7,7 @@ const linkToGenre = new URL(`/Libros/1`, Astro.url.origin);
 linkToGenre.searchParams.set('genre', book.genre);
 ---
 
-<div class="finded-book-card bg-tertiary">
+<div class="finded-book-card">
     
     <a class="portada me-3 align-self-center d-none d-sm-block" href={`/Libro/${book.ISBN}/${book.title}`}>
     
@@ -42,7 +42,7 @@ linkToGenre.searchParams.set('genre', book.genre);
 
         <div class="details mt-auto d-flex flex-wrap column-gap-3 row-gap-1">
 
-            <div class="flex-grow-0">
+            <div class="details-item">
                 <span>Genero: </span>
                 <strong>
                     <a href={linkToGenre}>{book.genre}</a> 
@@ -50,7 +50,7 @@ linkToGenre.searchParams.set('genre', book.genre);
             </div>
 
             {
-                book.author && <div class="flex-grow-0">   
+                book.author && <div class="details-item">   
                     <span>Autor: </span>
                     <strong>{book.author?.name}</strong>
                 </div>
@@ -72,7 +72,7 @@ linkToGenre.searchParams.set('genre', book.genre);
         display: flex;
         padding: 10px;
 
-        background-color: var(--bs-tertiary-bg);
+        background-color: #005494;
         border-radius: 10px;
     }
     .finded-book-card a {
@@ -92,9 +92,17 @@ linkToGenre.searchParams.set('genre', book.genre);
         scale: 1.05;
     }
 
+    .title a {
+        color: #F3B61F;
+    }
+
     .description p {
         text-wrap: balance;
         max-width: 75ch;
+        color: white;
     }
 
+    .details .details-item strong {
+        color: white;
+    }
 </style>

@@ -19,7 +19,7 @@ const result = searchBooks(search, filters);
 
 <RootLayout title="Resultados de la busqueda" searchPlaceholder={search}>
 
-    <BooksFilters client:load path="/search" pages={filters.pages} genre={filters.genre} queryParams={{search}} />
+    <BooksFilters client:load path="/search" pages={filters.pages} genre={filters.genre} queryParams={{search}} total={result.length}/>
 
     <div class="Books-container">
         {

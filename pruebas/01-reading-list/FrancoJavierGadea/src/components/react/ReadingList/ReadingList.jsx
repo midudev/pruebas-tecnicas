@@ -5,13 +5,15 @@ import SavedBookCard from "../SavedBookCard/SavedBookCard";
 import "./ReadingList.css";
 import SortList from "../DragAndSort/SortList";
 
+import BooksImage from "../../../assets/BooksImage";
+
 
 function ReadingList() {
 
     const savedBooks = useSavedBooks();
 
     useEffect(() => {
-        
+
         console.log('reading books', savedBooks);
 
     }, []);
@@ -80,11 +82,11 @@ function ReadingList() {
 
     return (<div className="Reading-list">
 
-        <header className="pt-3 pb-2 mb-4 border-bottom d-flex align-items-baseline">
+        <header className="pt-3 pb-2 mb-4 d-flex align-items-baseline">
 
-            <h3> <i className="bi bi-book-half"/> Lista de lectura</h3>
+            <h3 className="Reading-list-title m-0"> <i className="bi bi-book-half" /> Lista de lectura</h3>
 
-            <h5 className="ms-auto">
+            <h5 className="Reading-list-total m-0 ms-auto">
                 <span>Total: </span>
                 <strong>{numberOfBooks}</strong>
             </h5>
@@ -95,6 +97,8 @@ function ReadingList() {
 
             <SortList books={savedBooks} />
         </div>
+
+        <BooksImage className="books-img" />
     </div>);
 }
 

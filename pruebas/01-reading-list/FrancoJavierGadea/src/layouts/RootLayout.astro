@@ -24,18 +24,21 @@ const isLibrosPage = Astro.url.pathname.startsWith('/Libros');
 	</head>
 	<body>
 
-		<nav class="navbar p-3 position-sticky top-0 bg-body-tertiary" style="z-index: 3000;">
-			<div class="container-fluid gap-4">
+		<nav class="navbar p-3" id="Main-nav">
+			<div class="container-fluid gap-4 p-0">
 
-				<a class="navbar-brand order-1" href="/Libros/1">Libros</a>
+				<a class="navbar-brand order-1" href="/Libros/1">
+				
+					<img src="/logo-1.png" alt="">
+				</a>
 
-				<form class="ms-auto d-flex order-3 order-sm-2 flex-grow-1 flex-sm-grow-0" role="search"
+				<form class="navbar-search d-flex order-3 order-sm-2 flex-grow-1 flex-sm-grow-0" role="search"
 
-					style="flex-basis: 335px;" action="/search"
+					action="/search"
 				>
 					<input class="form-control me-2" type="search" name="search" placeholder={searchPlaceholder}>
 
-					<button class="btn btn-outline-success" type="submit">Buscar</button>
+					<button class="btn btn-success" type="submit">Buscar</button>
 				</form>
 
 				<div class="d-block d-lg-none order-2 order-sm-3">
@@ -47,9 +50,9 @@ const isLibrosPage = Astro.url.pathname.startsWith('/Libros');
 
 		<div class="container-fluid">
 
-			<div class="row p-0">
+			<div class="row">
 	
-				<main class="p-0 col-md-12 col-lg-8">
+				<main class="px-3 col-md-12 col-lg-8">
 
 					<div class="px-2">
 
@@ -57,19 +60,19 @@ const isLibrosPage = Astro.url.pathname.startsWith('/Libros');
 
 					</div>
 	
-					<Footer />
-
+					
 				</main>
-	
+				
 				<section class="Reading-list-container d-none d-lg-block col-4">
-	
+					
 					<ReadingList client:only />
 				</section>
-	
+				
 			</div>
-		
+			
 		</div>
-
+		
+		<Footer />
 	</body>
 </html>
 
@@ -77,7 +80,40 @@ const isLibrosPage = Astro.url.pathname.startsWith('/Libros');
 
 	:root {
 
-		--main-nav-height: 72px;
+		--main-nav-height: 80px;
+		--bs-body-bg: #1C3144 !important;
+	}
+
+	body {
+		background-image: radial-gradient(#ffffff29 0.7px, transparent 0.1px);
+    	background-size: 10px 10px
+	}
+
+	#Main-nav {
+		box-sizing: border-box;
+		z-index: 3000;
+		background-color: #11427D;
+		min-height: var(--main-nav-height);
+
+		position: sticky;
+		top: 0;
+
+		transition: top 0.2s;
+	}
+	#Main-nav .navbar-brand img {
+		max-width: 170px;
+	}
+	#Main-nav .navbar-search {
+		flex-basis: 245px;
+		margin-left: auto;
+	}
+
+	@media (min-width: 768px) {
+
+		#Main-nav .navbar-search {
+			flex-basis: 345px;
+			margin-left: auto;
+		}
 	}
 
 	main {

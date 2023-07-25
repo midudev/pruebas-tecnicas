@@ -15,8 +15,14 @@ function BooksFilters(props) {
     return (<Accordion id="Accordion-filters">
 
         <Accordion.Item eventKey="0">
-            <Accordion.Header className="pt-3 pb-2 border-bottom">
-                <h3> <i className="bi bi-funnel-fill" /> Filtros</h3>
+            <Accordion.Header className="d-flex align-items-baseline pt-3 pb-2">
+
+                <h3 className="title m-0"> <i className="bi bi-funnel-fill" /> Filtros</h3>
+
+                <h5 className="Reading-list-total  m-0 ms-auto">
+                    <span>Libros disponibles: </span>
+                    <strong>{props.total || 0}</strong>
+                </h5>
             </Accordion.Header>
 
             <Accordion.Body>
