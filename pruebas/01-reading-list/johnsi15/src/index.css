@@ -48,7 +48,7 @@
   color-scheme: light dark;
   color: var(--colo-white);
   /* background-color: var(--color-primary); */
-  background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  background: linear-gradient(225deg, var(--color-primary) 60%, var(--color-secondary) 100%);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

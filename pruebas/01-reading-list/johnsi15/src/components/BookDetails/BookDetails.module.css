@@ -1,0 +1,15 @@
+.bookDetails {
+  position: absolute;
+  top: 0;
+  background: var(--color-secondary);
+  height: 100%;
+  box-sizing: border-box;
+  padding: 30px 20px;
+  border-radius: 20px;
+  transition: all ease-in .5s;
+  width: 100%;
+}
+
+.title {
+  color: var(--color-quaternary);
+}

@@ -3,9 +3,37 @@
   margin: 0 10px;
 }
 
+.main .booksCounter {
+  max-width: 1000px;
+  margin: 30px auto 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.booksCounter p {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
 .title {
   margin: 0;
   text-align: center;
   font-size: 4rem;
   text-transform: capitalize;
+}
+
+.genres {
+  max-width: 1000px;
+  margin: 20px auto;
+  display: grid;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.genres label {
+  font-size: 1.2rem;
+  font-weight: 500;
 }

@@ -7,7 +7,7 @@ export default function BookList ({ books }) {
 
   return (
     <ul className={styles.books}>
-      {books.map(({ id, title, cover, genre, pages }) => {
+      {books.map(({ id, title, cover, genre, pages, synopsis, year, author }) => {
         return (
           <Book
             key={id}
@@ -16,6 +16,9 @@ export default function BookList ({ books }) {
             cover={cover}
             genre={genre}
             pages={pages}
+            synopsis={synopsis}
+            year={year}
+            author={author}
           />
         )
       })}

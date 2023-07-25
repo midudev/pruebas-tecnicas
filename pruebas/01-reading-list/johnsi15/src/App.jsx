@@ -14,12 +14,15 @@ function App () {
 
   return (
     <main className={styles.main}>
-      <h1 className={styles.title}>El viaje de tus lecturas</h1>
+      <header className='header'>
+        <h1 className={styles.title}>El viaje de tus lecturas</h1>
+        <div className={styles.booksCounter}>
+          <p>{books.length} Libros disponibles</p>
+          <p>{readingList.length} en la lista de lectura</p>
+        </div>
+      </header>
 
-      <h2>{books.length} Libros disponibles</h2>
-      <h3>{readingList.length} en la lista de lectura</h3>
-
-      <div className="genres">
+      <div className={styles.genres}>
         <label htmlFor="genre">Filtrar por género</label>
         <select id='genre' value={genre} onChange={handleFilter}>
           <option value="All">Todas</option>

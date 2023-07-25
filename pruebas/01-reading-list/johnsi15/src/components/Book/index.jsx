@@ -1,21 +1,36 @@
+import { useState } from 'react'
 import styles from './Book.module.css'
-import { useBook } from '../../hooks/useBook'
+import BookDetails from '../BookDetails'
 
-export default function Book ({ id, title, cover, genre, pages }) {
-  const { handleAddBook } = useBook()
+export default function Book ({ id, title, cover, genre, pages, synopsis, year, author }) {
+  const [isHovering, setIsHovering] = useState(false)
 
-  const handleClick = () => {
-    handleAddBook({ id, title, cover, genre, pages })
+  const handleMouseOver = () => {
+    setIsHovering(true)
+  }
+
+  const handleMouseOut = () => {
+    setIsHovering(false)
   }
 
   return (
-    <li className={styles.book}>
+    <li className={styles.book} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
       <figure className={styles.cover}>
-        <img src={cover} alt={title} />
+        <img src={cover} alt={title} loading='lazy' />
       </figure>
-      <h2 className={styles.title}>{title}</h2>
 
-      <button onClick={handleClick}>Add book</button>
+      {isHovering && (
+        <BookDetails
+          id={id}
+          title={title}
+          cover={cover}
+          pages={pages}
+          genre={genre}
+          synopsis={synopsis}
+          year={year}
+          author={author}
+        />
+      )}
     </li>
   )
 }
