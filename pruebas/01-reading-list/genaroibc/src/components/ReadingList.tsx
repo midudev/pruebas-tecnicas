@@ -39,7 +39,11 @@ export const ReadingList = component$(
       window.addEventListener("drop", (event: DragEvent) => {
         isDraggingOver.value = false
 
-        if ((event.target as HTMLElement | null)?.matches("aside")) {
+        const eventTarget = event.target as HTMLElement | null
+
+        if (!eventTarget) return
+
+        if (eventTarget.matches("aside") || eventTarget.matches("aside *")) {
           const bookISBN = event.dataTransfer?.getData("text/plain")
 
           if (!bookISBN) return
