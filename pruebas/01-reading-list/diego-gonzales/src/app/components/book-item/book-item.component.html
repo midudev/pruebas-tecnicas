@@ -1,6 +1,6 @@
 <figure
   class="rounded transition-all hover:contrast-75 contenedor relative"
-  [routerLink]="['/detail', book.ISBN]"
+  (click)="goToBookDetail()"
 >
   <label class="top-2 right-2">
     <button
@@ -18,7 +18,7 @@
 
   <img
     [src]="book.cover"
-    [alt]="'Book of ' + book.title"
     class="aspect-[320px/450px] w-full h-auto object-contain rounded-md"
+    [alt]="'Book of ' + book.title"
   />
 </figure>
