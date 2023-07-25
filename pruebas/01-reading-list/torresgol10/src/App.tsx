@@ -35,8 +35,8 @@ function App() {
 
                   {book.author?.otherBooks.length > 0 && (
                     <>
-                      <p className='pt-4'>+ Sobre el autor</p>
-                      <ul className='overflow-x-auto h-8 border-y border-white pt-1'>
+                      <p className='pt-4 pb-1'>+ Sobre el autor</p>
+                      <ul className='overflow-x-auto h-8 border-y border-white'>
                         {book.author.otherBooks.map((name) => (
                           <li>{name}</li>
                         ))}
