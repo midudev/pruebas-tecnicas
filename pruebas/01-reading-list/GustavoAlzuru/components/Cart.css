@@ -1,4 +1,4 @@
-.cart{
+.cart {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -10,7 +10,8 @@
     color: black;
     user-select: none;
 }
-.wrapper{
+
+.wrapper {
     width: 100%;
     display: flex;
     justify-content: end;
