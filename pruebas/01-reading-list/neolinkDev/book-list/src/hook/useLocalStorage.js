@@ -34,7 +34,6 @@ function useLocalStorage(key, initialValue) {
 
         const newValue = JSON.parse(e.newValue);
         
-        // esta validación sirve para evitar duplicidad o comportamientos raros si se quitan libros rápidamente de la lista de lectura, revisando que el nuevo valor tenga que ser diferente al valor actual para poder actualizar
         if (JSON.stringify( storedValue ) !== JSON.stringify( newValue )) {
           setValue( newValue );
         }

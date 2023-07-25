@@ -54,13 +54,22 @@ export const BookList = () => {
 
     if (!bookToRemove) return;
 
-    // filtra para mostrar los libros que no tengan el ISBN del libro a remover
-    setReadingList((prevReadingList) =>
-      prevReadingList.filter(({ book }) => book.ISBN !== ISBN)
-    );
+    const { title } = bookToRemove.book;
 
-    // agrega el libro de la lista de lectura removido a la lista de libros
-    setBooks((prevBooks) => [...prevBooks, bookToRemove]);
+    const confirm = window.confirm(`¿Quieres quitar ${ title } de la lista de lectura?`);
+
+    if (confirm) {
+      
+      // filtra para mostrar los libros que no tengan el ISBN del libro a remover
+      setReadingList((prevReadingList) =>
+        prevReadingList.filter(({ book }) => book.ISBN !== ISBN)
+      );
+
+      // agrega el libro de la lista de lectura removido a la lista de libros
+      setBooks((prevBooks) => [...prevBooks, bookToRemove]);
+    }
+
+    
   }
 
   return (
