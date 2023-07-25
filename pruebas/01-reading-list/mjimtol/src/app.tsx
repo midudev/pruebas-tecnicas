@@ -91,7 +91,11 @@ export function App() {
           {/* Filtros */}
           <div className={"filtros"}>
             <div>
-              <input onKeyUp={filterTitle} placeholder={"Título..."}></input>
+              <input
+                aria-label={"inputSearch"}
+                onKeyUp={filterTitle}
+                placeholder={"Título..."}
+              ></input>
             </div>
             <div>
               Máximo de páginas ({maxPages})
