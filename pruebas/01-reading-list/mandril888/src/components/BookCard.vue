@@ -1,5 +1,5 @@
 <template>
-  <div v-if="showCard" class="mb-4">
+  <div class="mb-4">
     <img
       :src="book.book.cover"
       :alt="book.book.title"
@@ -33,34 +33,13 @@
 
 <script setup>
 import { useBooksStore } from "@/stores/BooksStore";
-import { ref, computed, watch } from "vue";
 import CheckSvg from "./svg/CheckSvg.vue";
 import CloseSvg from "./svg/CloseSvg.vue";
 
 const $booksStore = useBooksStore();
-const totalBooksList = computed(() => {
-  return $booksStore.totalBooksList;
-});
-
-const showCard = ref(
-  props.type === "bookList"
-    ? true
-    : !$booksStore.booksList.some(
-        (bookList) => bookList.book.title == props.book.book.title
-      )
-);
-
-watch(totalBooksList, () => {
-  showCard.value =
-    props.type === "bookList"
-      ? true
-      : !$booksStore.booksList.some(
-          (bookList) => bookList.book.title == props.book.book.title
-        );
-});
 
 // eslint-disable-next-line no-undef
-const props = defineProps({
+defineProps({
   type: String,
   book: Object,
 });

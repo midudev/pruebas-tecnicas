@@ -17,8 +17,8 @@
     >
       {{ $booksStore.totalBooksList }} libros en la lista de lectura
     </p>
-    <BooksList :books="books" :type="'bookAvailable'" />
-    <div v-show="$booksStore.booksList.length">
+    <BooksList :books="booksFiltered" :type="'bookAvailable'" />
+    <div v-show="$booksStore.totalBooksList">
       <h2
         class="mt-12 mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-4xl dark:text-white"
       >
@@ -33,9 +33,28 @@
 import BooksList from "@/components/BooksList.vue";
 import { useBooksStore } from "@/stores/BooksStore";
 import { getAllBooks } from "@/services/booksRepository";
-import { ref } from "vue";
+import { ref, computed, watch } from "vue";
 
 const $booksStore = useBooksStore();
 const books = ref([]);
-getAllBooks().then((data) => (books.value = data));
+const booksFiltered = ref([]);
+const totalBooksList = computed(() => $booksStore.totalBooksList);
+
+getAllBooks().then((data) => {
+  books.value = data;
+  getAvailableBooks();
+});
+
+watch(totalBooksList, () => getAvailableBooks());
+
+function getAvailableBooks() {
+  booksFiltered.value = books.value.filter((book) => {
+    if (
+      !$booksStore.booksList.some(
+        (bookList) => bookList.book.title == book.book.title
+      )
+    )
+      return book;
+  });
+}
 </script>

@@ -12,7 +12,7 @@
       <div class="w-6 m-auto">
         <SpinnerItem />
       </div>
-      <p class="italic mt-4">Loading books...</p>
+      <p class="italic mt-4">Cargando libros...</p>
     </div>
   </Transition>
 </template>
