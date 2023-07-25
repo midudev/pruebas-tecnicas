@@ -1,4 +1,3 @@
-
 export interface Library {
   library: LibraryElement[]
 }
@@ -7,7 +6,6 @@ export interface LibraryElement {
   book: Book
   toRead?: boolean = false
 }
-
 export interface Book {
   title: string
   pages: number

@@ -3,6 +3,13 @@ import { createContext, useContext, useState } from 'react'
 import { library as InitialLibrary } from './../mocks/books.json'
 import { type LibraryElement } from '../types'
 
+export enum BOOK_GENRES {
+  CYFY = 'Ciencia ficción',
+  TERROR = 'Terror',
+  FANTASY = 'Fantasía',
+  ALL = 'All'
+}
+
 export interface GlobalContent {
   library: LibraryElement[]
   readingBooks: LibraryElement[] | []
@@ -44,6 +51,38 @@ export const BooksProvider = ({ children }: { children: React.ReactNode }) => {
       }>
 { children }
     </BooksContext.Provider>
+  )
+}
+
+export interface FilterContent {
+  filter: BOOK_GENRES
+  setFilter?: (e: BOOK_GENRES) => void
+}
+export const FilterContext = createContext<FilterContent>(
+  {
+    filter: BOOK_GENRES.ALL,
+    setFilter: () => {}
+
+  }
+)
+
+export const FilterProvider = ({ children }: { children: React.ReactNode }) => {
+  const [filter, setFilter] = useState<BOOK_GENRES>(localStorage.getItem('__filter__') != null
+    ? (JSON.parse(localStorage.getItem('__library__')!) as BOOK_GENRES)
+    : BOOK_GENRES.ALL)
+
+  window.addEventListener('storage', event => {
+    if (event.key === '__filter__') {
+      setFilter(JSON.parse(event.newValue!) as BOOK_GENRES)
+    }
+  })
+
+  return (
+    <FilterContext.Provider value={
+      { filter, setFilter }
+      }>
+{ children }
+    </FilterContext.Provider>
   )
 }
 

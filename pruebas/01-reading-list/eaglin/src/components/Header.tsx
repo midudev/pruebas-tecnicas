@@ -1,16 +1,14 @@
 import React from 'react'
-import { useBookContext } from '../context/context'
-import { BOOK_GENRES } from '../App'
+import { BOOK_GENRES, useBookContext } from '../context/context'
 
-interface HeaderProps {
-  handleChageCategory: (event: React.ChangeEvent<HTMLSelectElement>) => void
-}
-const HeaderComponent: React.FC<HeaderProps> = ({ handleChageCategory }) => {
+import { useFilterBooks } from '../hooks/useFilterBooks'
+
+const HeaderComponent: React.FC = () => {
   const { library, readingBooks } = useBookContext()
-
+  const { filterBooks, handleChageCategory } = useFilterBooks(library)
   return (
     <header>
-    <h1>Libros disponibles {library?.length}</h1>
+    <h1>Libros disponibles {filterBooks?.length}</h1>
     <h2>Libros en lectura {readingBooks?.length}</h2>
     <div className='genreFilter'>
     <span>Filtrar por género</span>

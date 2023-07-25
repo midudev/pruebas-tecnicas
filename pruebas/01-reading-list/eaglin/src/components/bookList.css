@@ -4,11 +4,13 @@
 }
 .container {
 
-
-    flex-direction: column;
-    flex-wrap: wrap;
-    flex: 1; position: relative;
-    border: double grey;
-    padding: 2rem;
-     max-width: 30vw;
+    display:grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(
+            150px,
+            1fr
+        )
+    );
+    gap: 16px;
 }

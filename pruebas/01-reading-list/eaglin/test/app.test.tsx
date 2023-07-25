@@ -32,9 +32,9 @@ render(<App ></App>)
        const filterButton =  screen.getByRole('combobox')
        const option =  screen.getAllByRole('option')
 
-       fireEvent.change(filterButton,{target:{value:'Terror'}})
+       fireEvent.change(filterButton,{selectValue: 'Terror'})
+       const books = screen.getByText(/Libros en lectura/)
+       console.log(books)
 
-
-       //NO HA SALIDO LOS TEST COMO ESPERABA
             })
 })
