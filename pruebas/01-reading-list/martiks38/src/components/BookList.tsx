@@ -2,6 +2,8 @@ import Image from 'next/image'
 
 import { useBookList } from '@/hooks/useBookList'
 
+import { toast } from 'react-toastify'
+
 import { BookDataList } from '@/assets/values'
 import bookListStyles from '@/assets/styles/Book/BookList.module.css'
 import bookButton from '@/assets/styles/Book/Button.module.css'
@@ -21,7 +23,16 @@ export function BookList({ books, listType }: BookListProps) {
   const typeIsAvailable = listType === 'available'
 
   const lineStyle = typeIsAvailable ? bookButton.addButton__line : bookButton.removeButton__line
-  const buttonAction = typeIsAvailable ? addToReadingList : removeFromReadingList
+
+  const buttonAction = (isbn: { ISBN: string }) => {
+    if (typeIsAvailable) {
+      addToReadingList(isbn)
+      toast.success('Libro añadido')
+    } else {
+      removeFromReadingList(isbn)
+      toast.success('Libro removido')
+    }
+  }
 
   return (
     <ul className={bookListStyles.bookList}>

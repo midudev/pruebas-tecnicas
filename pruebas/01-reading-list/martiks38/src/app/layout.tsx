@@ -1,7 +1,10 @@
+import { ToastContainer } from 'react-toastify'
+
 import { FilterProvider } from '@/context/filter'
 import { BookListProvider } from '@/context/bookList'
 
 import './globals.css'
+import 'react-toastify/dist/ReactToastify.css'
 
 import type { Metadata } from 'next'
 
@@ -17,7 +20,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <FilterProvider>
           <body>
             {children}
-            <div id='toast'></div>
+            <ToastContainer
+              position='top-right'
+              autoClose={2000}
+              hideProgressBar={false}
+              closeOnClick={true}
+              pauseOnHover={false}
+              draggable={false}
+              theme='light'
+            />
           </body>
         </FilterProvider>
       </BookListProvider>
