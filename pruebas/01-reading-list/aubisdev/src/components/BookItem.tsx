@@ -82,12 +82,21 @@ export const BookItem = ({ book, lectureBook, position }: Props) => {
           </Typography>
           <Typography
             gutterBottom
-            variant="body1"
-            component="div"
+            variant="body2"
+            component="p"
             fontStyle="italic"
             color="GrayText"
           >
-            {book.author.name} {`(${book.year})`} {`pages: ${book.pages}`}
+            <span>{book.author.name}</span> <span>{`(${book.year})`}</span>
+          </Typography>
+          <Typography
+            gutterBottom
+            variant="body2"
+            component="p"
+            fontStyle="italic"
+            color="GrayText"
+          >
+            {`${book.pages} Pages`}
           </Typography>
         </CardContent>
         <CardActions>

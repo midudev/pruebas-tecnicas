@@ -44,9 +44,11 @@ export const Books = () => {
         container
         gridTemplateColumns="repeat(auto-fill, minmax(250px, 1fr))"
         display="grid"
+        role="grid"
       >
         {books.map((book: Book) => (
           <Grid
+            role="book-item"
             key={book.ISBN}
             item
             component={Card}
