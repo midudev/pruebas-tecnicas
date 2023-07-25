@@ -1,7 +1,11 @@
 <script lang='ts' context='module'>
 
+import PrimaryButton from '$lib/buttons/primary.svelte'
+import SecondaryButton from '$lib/buttons/secondary.svelte'
   import type { Book } from '$types'
-  import { InfoIcon } from '$assets/icons'
+
+  import { addBook, currentListName } from '$features/booklist';
+  import { BookmarkIcon, InfoIcon } from '$assets/icons'
 
 </script>
 
@@ -11,23 +15,42 @@
 
 </script>
 
-<li
+<article class='flex space-x-8 p-4'>
 
-  class="relative flex flex-col w-52 aspect-cover shadow-sm rounded-xl group"
->
+  <img class="w-44 aspect-cover rounded-xl" src={bookData.cover} alt={bookData.title} />
 
-  <img class="w-full h-full rounded-xl" src={bookData.cover} alt={bookData.title} />
+  <div class='flex-grow flex flex-col px-4 gap-2'>
 
-  <!-- <div class='absolute h-full w-full'>
-    <div class='h-full w-full bg-black rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-40'></div>
+    <h4 class='text-orange-400 font-bold text-2xl'>{bookData.title}</h4>
+    <h6 class='uppercase text-base font-light mb-4'>{bookData.author.name}</h6>
+
+    <p class='text-base'>{bookData.synopsis}</p>
+    <p class='text-base'>Genre(s): <span class='capitalize'>{bookData.genre}</span></p>
+
   </div>
 
-  <div class='absolute flex items-center justify-center h-full w-full'>
+  <div class='w-60 bg-gray-300 rounded-lg p-4 flex flex-col items-center justify-center gap-8'>
 
-    <button class='w-10 h-10 rounded-full flex items-center justify-center  transition-all duration-300 bg-white opacity-0 group-hover:opacity-100 hover:bg-black hover:text-white'>
-      <InfoIcon />
-    </button>
+    <PrimaryButton onClick={() => addBook($currentListName, bookData)} extraClasses='w-3/4 h-12'>
 
-  </div> -->
+      <span class='mr-4'>
+        <BookmarkIcon />
+      </span>
 
-</li>
+      <span class='text-lg flex-grow text-center uppercase'>Añadir</span>
+
+    </PrimaryButton>
+
+    <SecondaryButton extraClasses='w-3/4 h-12'>
+
+      <span class='mr-4'>
+        <InfoIcon />
+      </span>
+
+      <span class='text-base flex-grow text-center uppercase'>Detalles</span>
+
+    </SecondaryButton>
+
+  </div>
+
+</article>

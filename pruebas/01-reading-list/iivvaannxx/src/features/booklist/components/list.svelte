@@ -3,15 +3,14 @@
   import { dndzone } from 'svelte-dnd-action'
   import { flip } from 'svelte/animate'
 
-  import { lists, createList, deleteList } from '../store';
+  import { allListNames, currentListName, currentList, setCurrentList, clearList } from '../store';
   import Book from '$features/library/layouts/items/grid-book.svelte';
-
-  deleteList('test')
-  createList('test', [])
+  import SecondaryButton from '$lib/buttons/secondary.svelte';
 
 </script>
 
 <script lang='ts'>
+
 
   export let name: string
 
@@ -20,12 +19,12 @@
   export let animationDuration = 200
   export let disable = false
 
-/*   $: books = $toReadList.books
- */
+  $: books = $currentList.books
+
   /** @brief The options of the drop-zone. */
   $: options = {
 
-    items: [],
+    items: books,
 
     type: category,
     flipDurationMs: animationDuration,
@@ -35,35 +34,55 @@
     dropTargetClasses: 'outline-dashed outline-2 outline-red-400 bg-red-100 bg-opacity-40'.split(' '),
   }
 
-  function handleDndConsider(e) {
+  function handleDndConsider(e: any) {
 
     console.log(e)
 	}
 
-	function handleDndFinalize(e) {
+	function handleDndFinalize(e: any) {
 
 		console.log(e)
 	}
 
 </script>
 
-<section
+<article class='w-full h-full p-4 space-y-4 overflow-auto'>
 
-  use:dndzone={options}
+  <header class=' h-20 bg-blue-100'>
 
-  aria-label={name}
-  class='w-full h-full space-y-4'
+    <select value={$currentList.displayName} on:change={(event) => setCurrentList(event.currentTarget.value)}>
 
-  on:consider={handleDndConsider}
-  on:finalize={handleDndFinalize}
->
+      {#each $allListNames as listName}
+        <option value={listName}>{listName}</option>
+      {/each}
 
+    </select>
 
-    <!-- {#each books as book(book.ISBN)}
+    <SecondaryButton onClick={() => clearList($currentListName)}>
+      Clear
+    </SecondaryButton>
 
-      <Book {...book} />
+  </header>
 
-    {/each} -->
+  <ul
 
+    use:dndzone={options}
 
-</section>
+    aria-label={name}
+    class='w-full space-y-4 bg-red-100'
+
+    on:consider={handleDndConsider}
+    on:finalize={handleDndFinalize}
+  >
+
+    {#each books as book (book.ISBN)}
+
+      <li class='w-full'>
+        <Book bookData={book} />
+      </li>
+
+    {/each}
+
+  </ul>
+
+</article>

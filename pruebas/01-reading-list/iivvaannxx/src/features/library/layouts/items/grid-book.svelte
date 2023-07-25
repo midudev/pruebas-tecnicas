@@ -13,7 +13,7 @@
 
 <li
 
-  class="relative flex flex-col w-52 aspect-cover shadow-sm rounded-xl group"
+  class="relative flex flex-col w-28 aspect-cover shadow-sm rounded-xl group"
 >
 
   <img class="w-full h-full rounded-xl" src={bookData.cover} alt={bookData.title} />

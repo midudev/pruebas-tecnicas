@@ -1,6 +1,6 @@
 import kebabCase from 'just-kebab-case'
 import { action, computed } from 'nanostores'
-import { persistentMap } from '@nanostores/persistent'
+import { persistentMap, persistentAtom } from '@nanostores/persistent'
 
 import type { BookList } from './types'
 import type { Book } from '$types'
@@ -29,22 +29,27 @@ function getListKey (name: string) {
 /** @brief The store that contains all the lists. */
 export const lists = persistentMap<Record<string, BookList>>('list:', { }, defaultSerializer)
 
-/** @brief The default list which contains the books the user wants to read. */
-export const toReadList = computed(lists, (store) => store[getListKey(DEFAULT_LISTS.TO_READ)])
+/** @brief The name of the list that is currently being displayed. */
+export const currentListName = persistentAtom<string>('currentList', DEFAULT_LISTS.TO_READ)
 
-/** @brief The default list which contains the books the user is currently reading. */
-export const readingList = computed(lists, (store) => store[getListKey(DEFAULT_LISTS.READING)])
-
-/** @brief The default list which contains the books the user has marked as favorites. */
-export const favoriteList = computed(lists, (store) => store[getListKey(DEFAULT_LISTS.FAVORITES)])
+export const currentList = computed([currentListName, lists], (listName) => getList(listName))
+export const allListNames = computed(lists, (store) => Object.keys(store).map((key) => store[key].displayName))
 
 /** @brief Checks if there's a list with the given name. */
 export function existsList (name: string) {
 
-  const currentLists = lists.get()
-  const listName = getListKey(name)
+  try {
 
-  return currentLists[listName] !== undefined
+    // Try to retrieve the list with the given name.
+    getList(name)
+
+  } catch (_) {
+
+    // If the method throws an error, the list doesn't exist.
+    return false
+  }
+
+  return true
 }
 
 /** @brief Checks if there's a book with the given ISBN in the list with the given name. */
@@ -63,20 +68,46 @@ export function getList (name: string) {
   const listName = getListKey(name)
 
   // Repeated names aren't allowed. Case insensitive.
-  if (currentLists[name] === undefined) {
+  if (currentLists[listName] === undefined) {
 
-    throw new Error(`A list with ${name} doesn't exist.`)
+    throw new Error(`A list with name ${name} doesn't exist.`)
   }
 
   return currentLists[listName]
 }
+
+/** @brief Sets the current list to the one with the given name. */
+export const setCurrentList = action(currentListName, 'setCurrentList', (store, name: string) => {
+
+  if (!(existsList(name))) {
+
+    throw new Error(`A list with name ${name} doesn't exist.`)
+  }
+
+  store.set(name)
+})
+
+export const clearList = action(lists, 'clearList', (store, name: string) => {
+
+  if (!(existsList(name))) {
+
+    throw new Error(`A list with name ${name} doesn't exist.`)
+  }
+
+  const list = getList(name)
+  store.setKey(getListKey(name), {
+
+    ...list,
+    books: []
+  })
+})
 
 /** @brief Creates a new list with the given name and initial set of books. */
 export const createList = action(lists, 'createList', (store, name: string, initialBooks: Book[]) => {
 
   if (existsList(name)) {
 
-    throw new Error(`A list with ${name} already exists.`)
+    throw new Error(`A list with name ${name} already exists.`)
   }
 
   // Create the new list.
@@ -92,7 +123,7 @@ export const deleteList = action(lists, 'deleteList', (store, name: string) => {
 
   if (!(existsList(name))) {
 
-    throw new Error(`A list with ${name} doesn't exist.`)
+    throw new Error(`A list with name ${name} doesn't exist.`)
   }
 
   // We need to cast undefined as any because the persistentMap type doesn't allow undefined values (but they are needed to delete them).
@@ -104,7 +135,7 @@ export const renameList = action(lists, 'renameList', (store, oldName: string, n
 
   if (!(existsList(oldName))) {
 
-    throw new Error(`A list with ${oldName} doesn't exist.`)
+    throw new Error(`A list with name ${oldName} doesn't exist.`)
   }
 
   // Retrieve the current list to keep the books in it.
@@ -143,7 +174,7 @@ export const removeBook = action(lists, 'removeBook', (store, listName: string, 
   }
 
   // Remove the book from the list.
-  const list = store.get()[listName]
+  const list = getList(listName)
   store.setKey(listName, {
 
     ...list,

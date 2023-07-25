@@ -46,9 +46,9 @@
 
 <svelte:component this={layoutComponent}>
 
-  {#each library as book}
+  {#each library as book (book.ISBN)}
 
-    <li>
+    <li class='p-4'>
       <svelte:component this={layoutItem} bookData={book} />
     </li>
 
