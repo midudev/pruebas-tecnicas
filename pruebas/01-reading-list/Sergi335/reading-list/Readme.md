@@ -1,4 +1,4 @@
-https://magnificent-figolla-ca1db4.netlify.app/
+https://vocal-crepe-0cc9d1.netlify.app/
 
 Mi primer proyecto con React y TailwindCSS (Vite + Node.js)
 
