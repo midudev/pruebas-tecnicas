@@ -11,7 +11,7 @@
 	// Props
 	export let min: number = minPage;
 	export let max: number = maxPage;
-	export let initialValue: number | string = 0;
+	export let initialValue: number | string = maxPage;
 	export let value: number =
 		typeof initialValue === 'string' ? parseInt(initialValue) : initialValue;
 
@@ -46,7 +46,7 @@
 
 	function resizeWindow() {
 		if (element) {
-			elementX = element.getBoundingClientRect().left;
+			elementX = element.getBoundingClientRect().right;
 		}
 	}
 
