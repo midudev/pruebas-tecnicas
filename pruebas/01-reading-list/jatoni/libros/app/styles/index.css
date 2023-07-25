@@ -1,0 +1,51 @@
+:root {
+    --primary: #E4C8A2;
+    --secondary: #F0E9E0;
+    --third: #A16530;
+    --dark: #131B1A;
+    --dark-clear: #554F3C;
+    --clear-brow: #A58F71;
+    --clear-brow-two: #BAAB96;
+    --green-light: #64866E;
+}
+
+* {
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    background-color: #f5ebe0;
+}
+
+div.error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10% auto;
+}
+
+div.error h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+}
+
+div.error p {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+div.error a {
+    background-color: #c6ac8f;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    transition: all .3s ease-out;
+}
+
+div.error a:hover {
+    transition: all .3s ease-in-out;
+    background-color: #5e503f;
+}
