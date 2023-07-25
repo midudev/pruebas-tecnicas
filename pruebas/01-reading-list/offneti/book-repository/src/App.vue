@@ -26,6 +26,13 @@ function countBooksAvailable() {
   const numBooks = books.value.length;
   return numBooks > 0 ? numBooks : 0;
 }
+
+const selectedBook = ref(null);
+
+function showBookPopup(book) {
+  selectedBook.value = book;
+}
+
 </script>
 
 <template>
@@ -58,7 +65,8 @@ function countBooksAvailable() {
         <article>
           <div id="main_grid">
             <div v-for="(book, index) in getBooks()" :key="book.book.title" class="book_item">
-              <img :src="book.book.cover" alt="Book" style="width: 200px; height: 300px;" />
+              <img :src="book.book.cover" alt="Book" style="width: 200px; height: 300px;"
+                @click="showBookPopup(book.book)" />
             </div>
           </div>
         </article>
@@ -72,9 +80,43 @@ function countBooksAvailable() {
         </div>
       </aside>
     </div>
+    <div v-if="selectedBook" class="modal">
+      <div class="modal-content">
+        <span class="close" @click="selectedBook = null">&times;</span>
+        <img :src="selectedBook.cover" alt="Book" style="width: 200px; height: 280px;" />
+      </div>
+      <h4>{{ selectedBook.title }}</h4>
+    </div>
   </body>
 </template>
 <style scoped>
+.modal {
+  /* Change this to none initially */
+  padding: 1%;
+  border-radius: 10px;
+  position: fixed;
+  background-color: rgba(69, 71, 63, 0.8);
+}
+
+.modal-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fefefe;
+  border-radius: 40px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+  color: #aaaaaa;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 section {
   height: 120px;
   text-align: left;
