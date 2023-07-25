@@ -92,6 +92,21 @@ main {
 
 }
 
+/* Utilities */
+
+.no-filter {
+
+  filter: none;
+
+}
+
+.text-secondColor {
+
+  color: var(--second-color);
+  font-weight: bold;
+
+}
+
 /* Navbar */
 
 .Navbar {
@@ -218,9 +233,9 @@ main {
 .Books {
 
   display: flex;
-  /* gap: 1rem; */
   flex-wrap: nowrap;
   position: relative;
+  justify-content: center;
   flex-direction: column-reverse;
   align-items: center;
 
@@ -231,7 +246,7 @@ main {
   .Books {
 
     flex-direction: row;
-    align-items: baseline;
+    align-items: flex-start;
 
   }
 
@@ -251,7 +266,7 @@ main {
   flex-direction: column;
   margin-bottom: 1rem;
   height: 97vh;
-  max-width: min(50rem, 100%);
+  max-width: min(35rem, 100%);
   background-color: var(--backgrounds);
   box-shadow: -5px 7px 5px -4px rgba(72,70,70,0.31);
   flex: 1;
@@ -268,7 +283,6 @@ main {
   
 .Books__myBooks {
 
-  position: sticky;
   margin-left: 1rem;
   margin-bottom: 0;
 
@@ -397,7 +411,9 @@ main {
 
 .Img__figcaption--numbers {
 
-  bottom: 7px;
+  /* bottom: 7px;
+  right: 7px; */
+  top: 7px;
   right: 7px;
   color: var(--main-color);
   background-color: rgba(47, 47, 47, 0.606);
@@ -444,12 +460,6 @@ main {
 
 }
 
-.Book__footer {
-
-  /* background-color: var(--accent); */
-
-}
-
 .Book__invert {
 
   filter: invert(100%);
@@ -470,6 +480,7 @@ main {
   background-color: var(--accent);
   flex: 0 0 calc(50% - 1px);
   border-start-start-radius: 0;
+  border-end-end-radius: 0;
     padding: 0.5rem;
 
 }
@@ -479,6 +490,7 @@ main {
   background-color: var(--accent);
   flex: 0 0 calc(50% - 1px);
   border-start-end-radius: 0;
+  border-end-start-radius: 0;
   padding: 0.5rem;
 }
 
@@ -491,5 +503,48 @@ main {
 .Book__footerIcons img {
 
   filter: invert(100%);
+
+}
+
+.Books__headerButtons:first-child {
+
+  flex: 0 0 calc(50% - 1px);
+  font-size: 1.5rem;
+  background-color: var(--accent);
+  color: var(--main-color);
+  border-end-start-radius: 0;
+  border-start-end-radius: 0;
+
+}
+
+
+.Books__headerButtons:last-child {
+
+  flex: 0 0 calc(50% - 1px);
+  font-size: 1.5rem;
+  background-color: var(--accent);
+  color: var(--main-color);
+  border-start-start-radius: 0;
+  border-end-end-radius: 0;
+
+}
+
+.Books__headerButtons:hover {
+
+  background-color: var(--accent-hover);
+
+}
+
+/* Modal */
+
+.Modal__item {
+
+  font-size: 1.4rem;
+
+}
+
+.Modal__image {
+
+  height: inherit;
 
 }

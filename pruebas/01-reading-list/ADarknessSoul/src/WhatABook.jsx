@@ -16,15 +16,21 @@ export const WhatABook = () => {
 
   }, []);
 
+
+
   return (
     <>
     
         <Navbar/>
 
+        {/* <button type="button" class="btn btn-primary" >
+  Open modal
+</button> */}
+
         <Filters/>
 
         <Books/>
-    
+
     </>
   )
 }
