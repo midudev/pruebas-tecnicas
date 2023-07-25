@@ -8,7 +8,7 @@ import { AnimatePresence, LayoutGroup } from "framer-motion";
 export default function Home() {
   return (
     <AnimatePresence>
-      <main className="w-full flex ml-20">
+      <main className="w-full h-auto flex ml-20">
         <section className="w-7/12 flex flex-col mt-12 pl-8">
           <div className="flex justify-between items-center">
             <h1 className="text-2xl font-bold pl-8">Explore Books</h1>

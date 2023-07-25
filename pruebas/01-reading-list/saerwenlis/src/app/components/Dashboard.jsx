@@ -4,7 +4,7 @@ import { useLibrary } from "../store/useLibrary";
 import { motion, Reorder, useDragControls } from "framer-motion";
 
 export default function Dashboard() {
-    const {setList, books, setBooks } = useLibrary()
+    const {setList, books } = useLibrary()
     console.log('books', books);
 
     const [items, setItems] = useState(books)
@@ -21,8 +21,8 @@ export default function Dashboard() {
     }
 
     return (
-        <section className="w-full h-8/12 mt-12 pl-8">
-            <Reorder.Group axis="x" values={items} onReorder={setItems} className="grid grid-cols-6 gap-8" onChange={() => setBooks(books)}>
+        <section className="w-full h-auto mt-8 pl-8">
+            <Reorder.Group axis="x" values={items} onReorder={setItems} className="grid grid-cols-6 gap-8">
                 {books.map(book => (
                     <Reorder.Item 
                     key={book.ISBN} 
