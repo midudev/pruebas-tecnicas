@@ -2,6 +2,7 @@ import { Books } from './Books'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { Filters } from './Filters'
 import { useBookList } from '../hooks/useBookList'
+import { DROPPABLE_IDS } from '../../constants'
 
 export function BookList () {
   const { books, readingList, handleDragEnd } = useBookList()
@@ -13,11 +14,11 @@ export function BookList () {
         <section className='flex flex-col gap-10 lg:flex-row lg:gap-20'>
           <article className='w-full'>
             <h3 className='text-2xl font-bold mb-5'>Catálogo de libros disponibles {`(${books.length})`}</h3>
-            <Books droppableId='catalog' books={books} placeholder={<EmptyCatalogPlaceholder />} />
+            <Books droppableId={DROPPABLE_IDS.CATALOG} books={books} placeholder={<EmptyCatalogPlaceholder />} />
           </article>
           <article className='w-full'>
             <h3 className='text-2xl font-bold mb-5'>Lista de lectura {`(${readingList.length})`}</h3>
-            <Books droppableId='reading' books={readingList} placeholder={<EmptyReadingListPlaceholder />} />
+            <Books droppableId={DROPPABLE_IDS.READING} books={readingList} placeholder={<EmptyReadingListPlaceholder />} />
           </article>
         </section>
       </DragDropContext>

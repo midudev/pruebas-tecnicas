@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { filterBooks, getBooks, updateReadingList } from '../services/books.service'
 import { ReadingListContext } from '../context/ReadingListContext'
 import { FiltersContext } from '../context/FiltersContext'
+import { DROPPABLE_IDS } from '../../constants'
 
 export function useBookList () {
   const [books, setBooks] = useState(getBooks())
@@ -29,12 +30,12 @@ export function useBookList () {
     const sourceIndex = source.index - 1
     const destinationIndex = destination.index - 1
 
-    if (sourceDroppableId === 'catalog' && destinationDroppableId === 'catalog') return
+    if (sourceDroppableId === DROPPABLE_IDS.CATALOG && destinationDroppableId === DROPPABLE_IDS.CATALOG) return
 
     const newBooks = structuredClone(books)
     const newReadingList = structuredClone(readingList)
 
-    if (sourceDroppableId === 'catalog' && destinationDroppableId === 'reading') {
+    if (sourceDroppableId === DROPPABLE_IDS.CATALOG && destinationDroppableId === DROPPABLE_IDS.READING) {
       const [bookToMove] = newBooks.splice(sourceIndex, 1)
       newReadingList.splice(destinationIndex, 0, bookToMove)
       setBooks(newBooks)
@@ -42,7 +43,7 @@ export function useBookList () {
       updateReadingList(newReadingList)
     }
 
-    if (sourceDroppableId === 'reading' && destinationDroppableId === 'catalog') {
+    if (sourceDroppableId === DROPPABLE_IDS.READING && destinationDroppableId === DROPPABLE_IDS.CATALOG) {
       const [bookToMove] = newReadingList.splice(sourceIndex, 1)
       newBooks.splice(destinationIndex, 0, bookToMove)
       setBooks(newBooks)
@@ -50,7 +51,7 @@ export function useBookList () {
       updateReadingList(newReadingList)
     }
 
-    if (sourceDroppableId === 'reading' && destinationDroppableId === 'reading') {
+    if (sourceDroppableId === DROPPABLE_IDS.READING && destinationDroppableId === DROPPABLE_IDS.READING) {
       const [bookToMove] = newReadingList.splice(sourceIndex, 1)
       newReadingList.splice(destinationIndex, 0, bookToMove)
       setReadingList(newReadingList)
