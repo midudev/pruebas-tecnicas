@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react';
 import data from '.././books.json';
 import Selector from './Selector';
 import RangeControl from './RangeControl';
-import book from './AvailableBooks.css';
+import './AvailableBooks.css';
 
 
 
@@ -38,13 +38,13 @@ function AvailableBooks() {
       <RangeControl setCurrentValue={setPages} currentValue={pages} attribute="pages" item="book" object={books}/>
       <Selector field="genre" record="book" object={books} setSelected={setSelected} selected={selected}/>
 
-      {filteredBooks.map(e=>
-        <div key={e.book.ISBN} 
-        style={{backgroundImage: "url("+e.book.cover+")"}} className={book}>
-          {e.book.title} - {e.book.pages}
-        
-        
-        </div>)}
+      <div className="books" >
+        {filteredBooks.map(e=>
+          <div key={e.book.ISBN} className="book"
+          style={{backgroundImage: "url("+e.book.cover+")"}} >
+                      
+          </div>)}
+      </div>
 
     </>
   );

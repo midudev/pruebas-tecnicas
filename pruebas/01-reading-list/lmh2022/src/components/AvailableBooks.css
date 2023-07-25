@@ -1,5 +1,22 @@
+.books {
+  display: flex;
+  width: 80%;
+  height: 80%;
+  flex-wrap: wrap;
+
+
+}
+
+
+
+
+
+
 .book {
-    background-size: "cover";
-    height: "200px";
-    width: "200px";
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 1vh;
+   height: 35vh;
+    width: 25vh;
 }
