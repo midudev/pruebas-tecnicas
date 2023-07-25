@@ -2,7 +2,7 @@ import type { PropFunction } from "@builder.io/qwik"
 import { component$, useSignal, useVisibleTask$, useId } from "@builder.io/qwik"
 import { pluralize } from "~/helpers/pluralize"
 import type { Book, BookISBN } from "~/types"
-import { IconLibraryOutlined } from "./shared/Icons"
+import { IconCirclePlus, IconLibraryOutlined } from "./shared/Icons"
 
 type Props = {
   books: Book[]
@@ -22,26 +22,29 @@ export const ReadingList = component$(
 
       if (!readingList) return
 
-      readingList.addEventListener("dragenter", (event: DragEvent) => {
+      window.addEventListener("dragenter", (event: DragEvent) => {
         event.preventDefault()
+        event.stopPropagation()
+
         isDraggingOver.value = true
       })
-      readingList.addEventListener("dragover", (event: DragEvent) => {
+
+      window.addEventListener("dragover", (event: DragEvent) => {
         event.preventDefault()
+        event.stopPropagation()
+
         isDraggingOver.value = true
       })
-      readingList.addEventListener("dragleave", () => {
-        isDraggingOver.value = false
-      })
-      readingList.addEventListener("drop", (event: DragEvent) => {
-        event.preventDefault()
 
-        const bookISBN = event.dataTransfer?.getData("text/plain")
-
+      window.addEventListener("drop", (event: DragEvent) => {
         isDraggingOver.value = false
 
-        if (!bookISBN) return
-        onDrop(bookISBN)
+        if ((event.target as HTMLElement | null)?.matches("aside")) {
+          const bookISBN = event.dataTransfer?.getData("text/plain")
+
+          if (!bookISBN) return
+          onDrop(bookISBN)
+        }
       })
     })
 
@@ -66,44 +69,46 @@ export const ReadingList = component$(
           style={books.length > 0 ? { width: 0 } : undefined}
           class="flex items-center gap-2 group/list"
         >
-          {books.length === 0 ? (
+          {books.map((book, index) => (
+            <li
+              key={book.ISBN}
+              class="aspect-[1/1.4] group"
+              style={{
+                transform: `translateX(-${1.8 * index}rem)`
+              }}
+            >
+              <button
+                onClick$={() => onBookSelect(book.ISBN)}
+                class="w-28 h-full"
+              >
+                <img
+                  src={book.cover}
+                  alt={book.title}
+                  width={300}
+                  height={500}
+                  class="h-full w-full shadow-2xl group-hover/list:grayscale-[1] group-hover/list:brightness-75 hover:!grayscale-0 hover:!brightness-110 group-hover:-translate-x-5 transition-all duration-300 rounded-md"
+                />
+              </button>
+            </li>
+          ))}
+
+          {books.length === 0 && !isDraggingOver.value && (
             <li>
               <NoBooksMessage />
             </li>
-          ) : (
-            books.map((book, index) => (
-              <li
-                key={book.ISBN}
-                class="aspect-[1/1.4] group"
-                style={{
-                  transform: `translateX(-${1.8 * index}rem)`
-                }}
-              >
-                <button
-                  onClick$={() => onBookSelect(book.ISBN)}
-                  class="w-28 h-full"
-                >
-                  <img
-                    src={book.cover}
-                    alt={book.title}
-                    width={300}
-                    height={500}
-                    class="h-full w-full shadow-2xl group-hover/list:grayscale-[1] group-hover/list:brightness-75 hover:!grayscale-0 hover:!brightness-110 group-hover:-translate-x-5 transition-all duration-300 rounded-md"
-                  />
-                </button>
-              </li>
-            ))
           )}
 
           {isDraggingOver.value && (
             <li
-              class="aspect-[1/1.4] group"
+              class="aspect-[1/1.4] group outline-dashed outline-2 outline-blue-400 rounded-md"
               style={{
                 transform: `translateX(-${1.8 * books.length}rem)`
               }}
             >
               <p class="w-28 aspect-[1/1.4] grid place-content-center font-medium text-white p-2 leading-6 bg-slate-900 text-center rounded-md">
-                No hay libros aún. Añade alguno!
+                <span aria-hidden aria-label="drop to add the book">
+                  <IconCirclePlus size={50} />
+                </span>
               </p>
             </li>
           )}
