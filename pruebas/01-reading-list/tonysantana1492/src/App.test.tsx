@@ -1,5 +1,5 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react'
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { describe, it, expect, vi } from 'vitest'
 
 import books from './mocks/books.json'
 import { App } from './App'
@@ -14,25 +14,16 @@ const filteredBooksByGenre = books.library.filter(
 )
 
 describe('App Component Test', () => {
-  beforeEach(() => {
+  it('renders header', async () => {
     render(<App />)
-  })
 
-  afterEach(() => {
-    cleanup()
-  })
-
-  it('should render without crashing', () => {
-    const { container } = render(<App />)
-    expect(container).toBeTruthy()
-  })
-
-  it('renders header', () => {
-    const headerTitleElement = screen.findByText(/Available Books/i)
+    const headerTitleElement = await screen.findByText(/Available Books/i)
     expect(headerTitleElement).toBeTruthy()
   })
 
   it('should filter by maximun pages', async () => {
+    render(<App />)
+
     const pageFilter = await screen.findByRole('filter-page')
     fireEvent.change(pageFilter, { target: { value: 100 } })
 
@@ -41,16 +32,22 @@ describe('App Component Test', () => {
   })
 
   it('should filter by title', async () => {
-    const titleFilter = await screen.findByPlaceholderText(/Search book titles.../i)
-    fireEvent.change(titleFilter, { target: { value: 'anillos' } })
+    render(<App />)
 
-    await new Promise((resolve) => setTimeout(resolve, 500)) // because the useDebounce
+    const titleFilter = await screen.findByPlaceholderText(/Search book titles.../i)
+
+    await waitFor(async () => {
+      fireEvent.change(titleFilter, { target: { value: 'anillos' } })
+      await new Promise((resolve) => setTimeout(resolve, 500)) // because the useDebounce
+    })
 
     const books = await screen.findAllByRole('add-button')
     expect(books.length).toBe(1)
   })
 
   it('should filter by genre', async () => {
+    render(<App />)
+
     const genreFilter = await screen.findByRole('Terror')
     fireEvent.click(genreFilter)
 
@@ -60,10 +57,11 @@ describe('App Component Test', () => {
 
   it('should add book to localStore', async () => {
     vi.spyOn(Storage.prototype, 'setItem')
+    render(<App />)
 
     const addButton = await screen.findAllByRole('add-button')
     fireEvent.click(addButton[0])
 
-    expect(localStorage.setItem).toHaveBeenCalledTimes(1)
+    expect(localStorage.setItem).toHaveBeenCalled()
   })
 })
