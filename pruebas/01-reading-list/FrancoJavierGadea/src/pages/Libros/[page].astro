@@ -39,18 +39,22 @@ const books = result.slice(start, end);
 
 <RootLayout title="Libros">
 
-    <BooksFilters client:load path="/Libros/1" pages={queries.pages} genre={queries.genre} total={result.length} />
+    <div transition:animate="slide">
 
-    <div class="Books-container">
-        {
-            books.map(({book}) => {
+        <BooksFilters client:load path="/Libros/1" pages={queries.pages} genre={queries.genre} total={result.length} />
     
-                return <BookCard book={book} />
-            })
-        }
+        <div class="Books-container">
+            {
+                books.map(({book}) => {
+        
+                    return <BookCard book={book} />
+                })
+            }
+        </div>
+        
+        <BooksPagination path="/Libros" queryParams={queries} current={currentPage} total={total} />
+
     </div>
-    
-    <BooksPagination path="/Libros" queryParams={queries} current={currentPage} total={total} />
     
 </RootLayout>
 

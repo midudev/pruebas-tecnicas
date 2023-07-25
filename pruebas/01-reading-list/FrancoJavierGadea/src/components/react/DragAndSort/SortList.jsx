@@ -13,8 +13,6 @@ function SortList({values = [], books = {}}) {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        
-        console.log('change items')
 
         const items = Object.entries(books).sort(([keyA, bookA], [keyB, bookB]) => {
 

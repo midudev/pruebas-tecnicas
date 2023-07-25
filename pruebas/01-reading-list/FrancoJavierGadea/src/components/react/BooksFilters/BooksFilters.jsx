@@ -61,8 +61,6 @@ function BooksFilters(props) {
                     {
                         props.queryParams && Object.entries(props.queryParams).map(([key, value]) => {
 
-                            console.log([key, value])
-
                             return <input type="hidden" name={key} value={value} key={key}/>
                         })
                     }

@@ -10,8 +10,6 @@ export const get = async ({params, request, url}) => {
         pages: url.searchParams.get('pages')
     }
 
-    console.log(search, filters);
-
     const books = searchBooks(search, filters);
     
     return new Response(JSON.stringify(books), {

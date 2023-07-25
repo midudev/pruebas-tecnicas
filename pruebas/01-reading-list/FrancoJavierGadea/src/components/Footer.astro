@@ -7,54 +7,68 @@ const CONTACT = {
 }
 ---
 
+<astro-footer>
+    <footer id="Main-footer">
 
-<footer id="Main-footer">
+        <div class="footer-content">
 
-    <div class="footer-content">
+            <p class="p-0 m-0">
+                Hecho con <i class="bi bi-suit-heart-fill" style={{color: '#f00'}} /> por:
+                <strong>
+                    <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer"
+                    
+                        style={{color: '#F3B61F'}}
+                    >
+                        {CONTACT.name}
+                    </a>
+                </strong>
+            </p>
 
-        <p class="p-0 m-0">
-            Hecho con <i class="bi bi-suit-heart-fill" style={{color: '#f00'}} /> por:
-            <strong>
-                <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer"
-                
-                    style={{color: '#F3B61F'}}
-                >
-                    {CONTACT.name}
-                </a>
-            </strong>
-        </p>
+            <a href={CONTACT.github} target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-github" />
+                <span class="">Github</span>
+            </a>
+        </div>
 
-        <a href={CONTACT.github} target="_blank" rel="noopener noreferrer">
-            <i class="bi bi-github" />
-            <span class="">Github</span>
-        </a>
-    </div>
-
-</footer>
+    </footer>
+</astro-footer>
 
 <script>
-
     // Hide nav when footer appears in the viewport
+    console.log('hide nav script');
 
-    const $footer = document.getElementById('Main-footer');
-    const $nav = document.getElementById('Main-nav');
+    class AstroFooter extends HTMLElement {
 
-    const observer = new IntersectionObserver(([e]) => {
+        constructor(){
 
-        if(e.isIntersecting){
-            
-            const navHeight = $nav.getBoundingClientRect().height;
-            
-            $nav.style.top = `-${navHeight}px`;
+            super();
+
+            const $footer = this.querySelector('footer');
+
+            const $nav = document.getElementById('Main-nav');
+
+            const observer = new IntersectionObserver(([e]) => {
+
+                if(e.isIntersecting){
+                    
+                    const navHeight = $nav.getBoundingClientRect().height;
+                    
+                    $nav.style.top = `-${navHeight}px`;
+
+                    console.log('hide nav');
+                }
+                else {
+
+                    $nav.style.top = '0px';
+                };
+
+            }, {root: null, threshold: 0});
+
+            observer.observe($footer);
         }
-        else {
+    }
 
-            $nav.style.top = '0px';
-        };
-
-    }, {root: null, threshold: 0});
-
-    observer.observe($footer);
+    customElements.define('astro-footer', AstroFooter);
 
 </script>
 

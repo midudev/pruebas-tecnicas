@@ -12,23 +12,26 @@ const filters = {
     pages: Astro.url.searchParams.get('pages')
 }
 
-console.log(search, filters);
-
 const result = searchBooks(search, filters);
 ---
 
 <RootLayout title="Resultados de la busqueda" searchPlaceholder={search}>
 
-    <BooksFilters client:load path="/search" pages={filters.pages} genre={filters.genre} queryParams={{search}} total={result.length}/>
+    <div transition:animate="slide">
 
-    <div class="Books-container">
-        {
-            result.map(({book}) => {
+        <BooksFilters client:load path="/search" pages={filters.pages} genre={filters.genre} queryParams={{search}} total={result.length}/>
     
-                return <FindedBookCard book={book} />
-            })
-        }
+        <div class="Books-container">
+            {
+                result.map(({book}) => {
+        
+                    return <FindedBookCard book={book} />
+                })
+            }
+        </div>
+
     </div>
+
 
 </RootLayout>
 

@@ -28,7 +28,7 @@ linkToGenre.searchParams.set('genre', book.genre);
 
                 <div class="portada">
 
-                    <img src={book.cover} alt="">
+                    <img src={book.cover} alt={`Portada de ${book.title}`}>
     
                     <SaveBookButton client:load book={book} />
                 </div>

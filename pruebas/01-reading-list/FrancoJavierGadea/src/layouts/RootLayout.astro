@@ -5,6 +5,8 @@ import CustomOffcanvas from "../components/react/CustomOffcanvas/CustomOffcanvas
 import Footer from "../components/Footer.astro";
 import ReadingList from "../components/react/ReadingList/ReadingList.jsx";
 
+import { ViewTransitions } from 'astro:transitions';
+
 const { title, searchPlaceholder = '' } = Astro.props;
 
 const isLibrosPage = Astro.url.pathname.startsWith('/Libros');
@@ -21,6 +23,8 @@ const isLibrosPage = Astro.url.pathname.startsWith('/Libros');
 		<meta name="generator" content={Astro.generator} />
 		
 		<title>{title}</title>
+
+		<ViewTransitions />
 	</head>
 	<body>
 
