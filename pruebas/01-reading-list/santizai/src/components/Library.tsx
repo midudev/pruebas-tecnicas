@@ -65,7 +65,8 @@ const Library = (props: Props) => {
     return (
         <div>
             <div>
-                <h2>Hay {props.library.library.length} libros</h2>
+                <h2>{library.length} libros disponibles</h2>
+                <h2>{booksReadList.length > 0 && `${booksReadList.length} en la lista de lectura`}</h2>
                 <button
                     onClick={() => console.log(localStorage.getItem("books"))}
                 >
