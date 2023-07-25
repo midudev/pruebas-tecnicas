@@ -4,7 +4,7 @@
     'suggest suggest'
     'bookGenres books';
   grid-template-columns: 12.5rem 1fr;
-  grid-template-rows: 15.625rem 1fr;
+  grid-template-rows: min-content 1fr;
   flex-grow: 1;
   margin: 0 auto;
   width: 100%;

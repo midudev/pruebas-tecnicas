@@ -27,23 +27,26 @@
   z-index: 1;
 }
 
-.suggestSection__synopsis {
-  margin-bottom: 1.4em;
-  max-width: 40ch;
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
 .suggestSection__title {
-  margin-bottom: 0.15em;
+  max-width: 20ch;
+  margin-bottom: 0.25em;
   font-size: 2.25rem;
   line-height: 2.5rem;
 }
 
-.suggestSection__subtitle {
-  margin-bottom: 0.65em;
+.suggestSection__subtitle,
+.suggestSection__synopsis {
   font-size: 1rem;
   line-height: 1.5rem;
+}
+
+.suggestSection__subtitle {
+  margin-bottom: 0.65em;
+}
+
+.suggestSection__synopsis {
+  margin-bottom: 1.4em;
+  max-width: 40ch;
 }
 
 .tooltip {
@@ -71,4 +74,13 @@
   height: var(--height-arrow);
   background-color: inherit;
   clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+@media (min-width: 96rem) {
+  .suggestSection__subtitle,
+  .suggestSection__synopsis,
+  .suggestSection__info__button {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
 }
