@@ -9,7 +9,6 @@ import {
   myReadingListLength,
   totalFreeBooks,
 } from '../src/signals/store';
-import { filterBooks } from '../src/filters/filterBooks';
 import MyBooks from '../src/components/main/routes/MyBooks';
 import { notFoundLogs } from '../src/utils/notFoundLogs';
 import AllBooks from '../src/components/main/routes/AllBooks';

@@ -1,21 +1,10 @@
-import { filterBooks } from '../../filters/filterBooks';
-import { filterOptions } from '../../signals/inputs.signals';
-import { myReadingListISBN } from '../../signals/store';
 import Card from './Card';
-import HasNotBeenFound from './HasNotBeenFound ';
+import CardDrag from './CardDrag';
 
 const RenderBooks = ({ books, isDrag = false }) => {
-  const filterBooksData = filterBooks(
-    books,
-    filterOptions.value,
-    myReadingListISBN.value,
-  );
-
-  if (filterBooksData.length === 0) return <HasNotBeenFound />;
-
   return (
     <>
-      {filterBooksData.map((book) => {
+      {books.map((book) => {
         const { title, cover, author, ISBN } = book;
         const { name } = author;
 
@@ -29,18 +18,17 @@ const RenderBooks = ({ books, isDrag = false }) => {
               key={ISBN}
             />
           );
-        } else {
-          return (
-            //Card con drag and drop
-            <Card
-              name={name}
-              title={title}
-              cover={cover}
-              ISBN={ISBN}
-              key={ISBN}
-            />
-          );
         }
+
+        return (
+          <CardDrag
+            name={name}
+            title={title}
+            cover={cover}
+            ISBN={ISBN}
+            key={ISBN}
+          />
+        );
       })}
     </>
   );

@@ -1,4 +1,4 @@
-import { normalizeText } from '../helpers/normalizeText';
+import { normalizeText } from '../utils/normalizeText';
 
 export const filterGenre = (books, genre) => {
   const normalizeGenre = normalizeText(genre).toLowerCase();

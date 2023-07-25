@@ -1,4 +1,4 @@
-import { normalizeText } from '../helpers/normalizeText';
+import { normalizeText } from '../utils/normalizeText';
 
 export const filterSpecificBook = (books, specificBook) => {
   const normalizeSpecificBook = normalizeText(specificBook).toLowerCase();

@@ -1,26 +1,49 @@
-import { currentPath, myReadingListBooks } from '../../../signals/store';
+import {
+  allBooks,
+  currentPath,
+  myReadingListBooks,
+  myReadingListISBN,
+} from '../../../signals/store';
 import RenderBooks from '../RenderBooks';
-import { books } from '../../../database/books';
-import { localPathname } from '../../../helpers/localPathname';
+import { localPathname } from '../../../utils/localPathname';
+import { filterBooks } from '../../../filters/filterBooks';
+import HasNotBeenFound from '../HasNotBeenFound';
+import { filterOptions } from '../../../signals/inputs.signals';
+import GridList from '../GridList';
+import { notFoundLogs } from '../../../utils/notFoundLogs';
 
 const Sandbox = () => {
   currentPath.value = localPathname();
 
+  const books = filterBooks(
+    allBooks.value,
+    {
+      ...filterOptions.value,
+      excludeBooks: true,
+    },
+    myReadingListISBN.value,
+  );
+
+  if (books.length === 0)
+    return <HasNotBeenFound log={notFoundLogs.noRenderAllBooks} />;
+
   return (
     <>
       <div className="grid w-full grid-flow-row grid-cols-2 gap-x-2 lg:gap-x-20">
-        <div className="border border-black p-4 ">
-          <h4 className="mb-4 text-center text-lg">Free Books</h4>
-          <div className="flex h-min w-full flex-wrap items-start justify-center gap-4 ">
-            <RenderBooks books={books} />
-          </div>
-        </div>
-        <div className="border border-black p-4">
-          <h4 className="mb-4 text-center text-lg">My Books</h4>
-          <div className="flex h-min w-full flex-wrap items-start justify-center gap-4 ">
-            <RenderBooks books={myReadingListBooks.value} />
-          </div>
-        </div>
+        <GridList title="Free Books">
+          <RenderBooks
+            books={books}
+            isDrag
+            notFoundLog={notFoundLogs.noRenderAllBooks}
+          />
+        </GridList>
+        <GridList title="My Reading List">
+          <RenderBooks
+            books={myReadingListBooks.value}
+            isDrag
+            notFoundLog={notFoundLogs.noRenderMyBooks}
+          />
+        </GridList>
       </div>
     </>
   );

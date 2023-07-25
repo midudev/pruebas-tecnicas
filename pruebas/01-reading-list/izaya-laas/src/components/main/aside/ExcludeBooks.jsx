@@ -1,7 +1,9 @@
 import { currentPath } from '../../../signals/store';
 import { computed } from '@preact/signals';
 
-const isDisabled = computed(() => currentPath.value === '/my-books');
+const isDisabled = computed(
+  () => currentPath.value === '/my-books' || currentPath.value === '/sandbox',
+);
 
 const ExcludeBooks = ({ inputValue, handleChange }) => {
   return (

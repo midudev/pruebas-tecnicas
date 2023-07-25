@@ -1,4 +1,4 @@
-import { localPathname } from '../../../helpers/localPathname';
+import { localPathname } from '../../../utils/localPathname';
 import { currentPath } from '../../../signals/store';
 
 const Recommends = () => {
