@@ -1,5 +1,6 @@
-import { EyeIcon, GitHubIcon } from '@/components/icons'
 import Filters from '@/components/filters'
+import Button from '@/components/button'
+import { EyeIcon, GitHubIcon } from '@/components/icons'
 import { useReadingList } from '@/hooks/use-reading-list'
 import { useBooks } from '@/hooks/use-books'
 
@@ -22,7 +23,7 @@ function Header() {
         >
           <GitHubIcon />
         </a>
-        <button
+        <Button
           aria-label='Mostrar lista de lectura'
           onClick={toggleReadingList}
           className='relative'
@@ -33,7 +34,7 @@ function Header() {
             </div>
           )}
           <EyeIcon />
-        </button>
+        </Button>
       </div>
       <div className='flex flex-col gap-4 mb-6 text-zinc-300'>
         <h1 className='text-5xl font-bold text-center 2xl:text-6xl'>
