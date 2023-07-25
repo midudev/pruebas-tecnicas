@@ -4,6 +4,8 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { useBookList } from '@/hooks/useBookList'
 
+import { toast } from 'react-toastify'
+
 import { nameStorage } from '@/assets/constants'
 import { books } from '@/assets/values'
 import suggestBookStyles from '@/assets/styles/Book/SuggestBook.module.css'
@@ -22,7 +24,7 @@ const restartAnimation = (ev: React.MouseEvent<HTMLButtonElement>) => {
 export function SuggestBook() {
   const [suggestion, setSuggestion] = useState<Book | null>(null)
   const [isAdd, setIsAdd] = useState(false)
-  const { addToReadingList } = useBookList()
+  const { readingList, addToReadingList } = useBookList()
 
   useEffect(() => {
     const topGenresStr = window.localStorage.getItem(nameStorage.topGenre)
@@ -42,11 +44,17 @@ export function SuggestBook() {
     }
   }, [])
 
+  useEffect(() => {
+    if (readingList.every(({ title }) => title !== suggestion?.title)) setIsAdd(false)
+  }, [readingList, suggestion])
+
   const addBook = (ISBN: string) => {
     if (isAdd) return
 
     setIsAdd(true)
     addToReadingList({ ISBN })
+
+    toast.success('Libro añadido')
   }
 
   return suggestion ? (
