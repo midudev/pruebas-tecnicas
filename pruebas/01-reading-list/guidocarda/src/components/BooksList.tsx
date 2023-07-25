@@ -18,6 +18,7 @@ function BooksList({ books, addToReadingList }: BooksListProps) {
     <div className="books">
       {books.map((book) => (
         <div
+          role="book"
           key={book.ISBN}
           className="book"
           onClick={() => addToReadingList(book.ISBN)}
