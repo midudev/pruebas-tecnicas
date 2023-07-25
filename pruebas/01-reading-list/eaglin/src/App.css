@@ -1,0 +1,11 @@
+.main-container{
+    border:solid gray;
+    background-color: rgb(230, 221, 221);
+    padding: 2rem;
+}
+.genreFilter{
+    flex-direction: column;
+    gap: 1rem;
+    display:flex;
+    max-width: 150px;
+}

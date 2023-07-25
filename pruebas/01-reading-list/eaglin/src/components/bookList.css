@@ -1,0 +1,16 @@
+.selected{
+ opacity: 0.6;
+ background: grey;
+}
+.container {
+
+    display:grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(
+            150px,
+            1fr
+        )
+    );
+    gap: 16px;
+}
