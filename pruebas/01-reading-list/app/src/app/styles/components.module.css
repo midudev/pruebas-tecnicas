@@ -1,0 +1,23 @@
+.bookList{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.bookCard {
+    min-width: 23% ;
+    min-height: 23% ;
+    max-width: 23% ;
+    max-height: 23% ;
+    overflow: hidden;
+    margin: 5px;
+    border-radius: 15px;
+    background-size: cover;
+    background-position: center;
+}
+
+.bookCard > img {
+    max-width: 100%;
+    max-height: 100%;
+}
