@@ -92,6 +92,7 @@ export default function BookCard({
         <button
           className='absolute right-3 top-3 flex h-8 cursor-pointer flex-col items-center justify-around text-sm'
           onClick={handleBookAction}
+          role='button'
         >
           {icon}
         </button>
