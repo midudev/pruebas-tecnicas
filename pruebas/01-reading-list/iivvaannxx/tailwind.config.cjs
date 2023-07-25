@@ -17,9 +17,32 @@ module.exports = {
 
     extend: {
 
-      transitionProperty: {
+      colors: {
 
-        'max-h': 'max-height',
+        primary: {
+
+          50:  '#fff2f1',
+          100: '#ffe3e1',
+          200: '#ffccc8',
+          300: '#ffa8a1',
+          400: '#fe766b',
+          500: '#f74b3c',
+          600: '#e74133',
+          700: '#c02215',
+          800: '#9f2015',
+          900: '#842018',
+          950: '#480c07',
+        },
+      },
+
+      spacing: {
+
+        header: '6rem',
+      },
+
+      height: {
+
+        sidebar: 'calc(100vh - 6rem)',
       },
 
       rotate: {
@@ -69,12 +92,18 @@ module.exports = {
 
       gridTemplateColumns: {
 
+        'main': 'auto 1fr auto',
         'library': 'repeat(auto-fill, minmax(15rem, 1fr))'
+      },
+
+      gridTemplateRows: {
+
+        'app': 'auto 1fr'
       },
 
       content: {
 
-        empty: '""'
+        empty: ''
       }
     }
   },

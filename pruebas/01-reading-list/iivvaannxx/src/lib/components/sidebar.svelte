@@ -4,7 +4,7 @@
 
 </script>
 
-<aside class='h-full border-r-2 hidden lg:block lg:w-96 p-4 space-y-6'>
+<aside class='sticky top-header w-96 h-sidebar col-start-1 border-r-2 p-4 space-y-6'>
 
   <GenreFilter />
 
