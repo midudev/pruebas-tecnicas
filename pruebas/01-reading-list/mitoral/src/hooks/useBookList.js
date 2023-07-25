@@ -12,6 +12,14 @@ export function useBookList () {
     setBooks(filterBooks(filters).filter((book) => !readingList.find((readingBook) => readingBook.ISBN === book.ISBN)))
   }, [filters, readingList])
 
+  useEffect(() => {
+    window.addEventListener('storage', (event) => {
+      if (event.key === 'readingList') {
+        setReadingList(JSON.parse(window.localStorage.getItem('readingList') || '[]'))
+      }
+    })
+  })
+
   const handleDragEnd = ({ source, destination }) => {
     if (!destination) return
 
