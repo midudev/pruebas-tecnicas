@@ -70,39 +70,40 @@ export const BooksLibrary = component$(
     const byGenreAvailability = pluralize("disponible", byGenreCount)
 
     return (
-      <section class="relative">
-        <Filters
-          onFilterChange={updateFilter}
-          onGenreChange={updateGenre}
-          genre={currentGenre}
-          filter={currentFilter}
-        />
+      <>
+        <section class="relative max-w-7xl mx-auto">
+          <Filters
+            onFilterChange={updateFilter}
+            onGenreChange={updateGenre}
+            genre={currentGenre}
+            filter={currentFilter}
+          />
 
-        <div class="my-4 mb-6 font-bold text-white text-lg w-full flex items-center justify-between">
-          <p class="bg-zinc-900 py-1.5 px-4 rounded-md">
-            <span class="text-blue-500">{allBooksCount}</span> de{" "}
-            <span class="text-blue-500">{books.length}</span> libros{" "}
-            {allBooksAvailability}
-          </p>
+          <div class="my-4 mb-6 font-bold text-white text-lg w-full flex items-center justify-between">
+            <p class="bg-zinc-900 py-1.5 px-4 rounded-md">
+              <span class="text-blue-500">{allBooksCount}</span> de{" "}
+              <span class="text-blue-500">{books.length}</span> libros{" "}
+              {allBooksAvailability}
+            </p>
 
-          <p class="bg-zinc-900 py-1.5 px-4 rounded-md">
-            <span class="text-blue-500">{byGenreCount}</span>{" "}
-            {byGenrePluralized} de{" "}
-            <span class="text-blue-500">{GENRES_DICT[currentGenre]}</span>{" "}
-            {byGenreAvailability}
-          </p>
-        </div>
+            <p class="bg-zinc-900 py-1.5 px-4 rounded-md">
+              <span class="text-blue-500">{byGenreCount}</span>{" "}
+              {byGenrePluralized} de{" "}
+              <span class="text-blue-500">{GENRES_DICT[currentGenre]}</span>{" "}
+              {byGenreAvailability}
+            </p>
+          </div>
 
-        <BooksList books={filteredByGenre} onBookSelect={onBookSelect} />
-
-        <div class="sticky bottom-0 mt-8 z-30">
+          <BooksList books={filteredByGenre} onBookSelect={onBookSelect} />
+        </section>
+        <div class="w-full sticky bottom-0 mt-8 z-30">
           <ReadingList
             books={readingList}
             onBookSelect={onBookSelect}
             onDrop={addBookToReadingList}
           />
         </div>
-      </section>
+      </>
     )
   }
 )
