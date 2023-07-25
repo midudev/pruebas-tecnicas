@@ -1,41 +1,48 @@
 import { readable } from 'svelte/store';
 import type { StoreApi } from 'zustand';
+import { page } from '$app/stores';
 
-type SveltStore = Pick<IBooks.NextStore, 'min' | 'max' | 'genres' | 'getNumAvaileblesBooks'>
-
-const getSveltetore = ({ books, readingList }: IBooks.Store) => {
-  const booksGenres = [...new Set(books.map(b => b.genre))];
-  const bookPages = books.map(b => b.pages);
-
-  const min = Math.min(...bookPages);
-  const max = Math.max(...bookPages);
-  const genres = booksGenres;
-
-  const getNumAvaileblesBooks = (filteredBooks: IBook[]) => {
-    return filteredBooks.filter(b => !readingList.includes(b.ISBN)).length
-  };
-
-  const store: SveltStore = {
-    min,
-    max,
-    genres,
-    getNumAvaileblesBooks
-  }
-
-  return store;
-}
+import { getNumAvaileblesBooksFunction } from '$lib/helpers/getNumAvaileblesBooksFunction';
 
 export function svelteBooksStore(zustandStore: StoreApi<IBooks.Store>) {
   const booksStore = zustandStore.getState();  
-  const initialStore = getSveltetore(booksStore);
+
+  const getNumAvaileblesBooks = getNumAvaileblesBooksFunction(booksStore);
+  const initialSvelteState = {
+    min: 0,
+    max: 0,
+    genres: [],
+    getNumAvaileblesBooks
+  }
   
   const svelteStore = readable<IBooks.NextStore>({
+    ...initialSvelteState,
     ...booksStore,
-    ...initialStore
-  }, set => {
-    zustandStore.subscribe(booksStore => {
-      const store = getSveltetore(booksStore)
-      set({...booksStore, ...store})
+  }, (_set, update) => {
+
+    page.subscribe(({ data }) => {
+      const books = data.books;
+      const booksGenres = [...new Set(books.map(b => b.genre))];
+      const bookPages = books.map(b => b.pages);
+  
+      const min = Math.min(...bookPages);
+      const max = Math.max(...bookPages);
+      const genres = booksGenres;
+  
+      update((store) => ({
+        ...store,
+        min, max, genres,
+      }))
+    })
+
+    zustandStore.subscribe(async (booksStore) => {
+      const newNumAvaileblesBooks = getNumAvaileblesBooksFunction(booksStore);
+
+      update((store) => ({
+        ...store,
+        ...booksStore,
+        getNumAvaileblesBooks: newNumAvaileblesBooks
+      }))
     });
   });
 
