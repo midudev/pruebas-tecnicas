@@ -3,12 +3,12 @@ Este proyecto fue realizado en base al challenge propuesto por Midudev en: [Prue
 **Requisitos:**
 ✅ Visualización de Libros Disponibles
 ✅ Creación de Lista de Lectura
--- Filtrado de Libros por Género
+✅ Filtrado de Libros por Género
 ✅ Sincronización de Estado
 ✅ Persistencia de Datos
--- Sincronización entre pestañas
--- Despliegue
+✅ Sincronización entre pestañas
 -- Test
+-- Despliegue
 
 **Deploy:** dejaré el deploy por aqui
 
