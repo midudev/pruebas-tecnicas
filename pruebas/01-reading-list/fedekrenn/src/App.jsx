@@ -8,19 +8,15 @@ const GENRES_LIST = [
   'Zombies',
   'Ciencia ficción',
   'Fantasía',
-  'Terror',
+  'Terror'
 ]
 
-function App() {
-  const [books, setBooks] = useState(
-    JSON.parse(localStorage.getItem('book')) || []
-  )
-  const [readingList, setReadingList] = useState(
-    JSON.parse(localStorage.getItem('readingList')) || []
-  )
+function App () {
+  const [books, setBooks] = useState(JSON.parse(localStorage.getItem('books')) || [])
+  const [readingList, setReadingList] = useState(JSON.parse(localStorage.getItem('readingList')) || [])
 
   const dialog = useRef(null)
-  let baseBooks = useRef([])
+  const baseBooks = useRef([])
 
   useEffect(() => {
     getBooks().then((allBooks) => {
@@ -33,30 +29,31 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  useEffect(() => {
+    localStorage.setItem('books', JSON.stringify(books))
+  }, [books])
+
+  useEffect(() => {
+    localStorage.setItem('readingList', JSON.stringify(readingList))
+  }, [readingList])
+
   const addBookToReadingList = (book) => {
-    const filteredBooks = books.filter(
-      (item) => item.book.ISBN !== book.book.ISBN
-    )
+    const filteredBooks = books.filter(item => item.book.ISBN !== book.book.ISBN)
 
     setBooks(filteredBooks)
-    localStorage.setItem('book', JSON.stringify(filteredBooks))
-
     setReadingList([...readingList, book])
-    localStorage.setItem('readingList', JSON.stringify([...readingList, book]))
 
     alert('Libro añadido a la lista de lectura')
   }
 
   const removeBookFromReadingList = (book) => {
-    const newReadingList = readingList.filter(
-      (item) => item.book.ISBN !== book.book.ISBN
-    )
-
+    const newReadingList = readingList.filter(item => item.book.ISBN !== book.book.ISBN)
     setReadingList(newReadingList)
-    localStorage.setItem('readingList', JSON.stringify(newReadingList))
 
-    setBooks([...books, book])
-    localStorage.setItem('book', JSON.stringify([...books, book]))
+    const filteredBooks = baseBooks.current.filter(book => (
+      !newReadingList.some(item => item.book.ISBN === book.book.ISBN)
+    ))
+    setBooks(filteredBooks)
 
     alert('Libro eliminado de la lista de lectura')
   }
@@ -64,11 +61,16 @@ function App() {
   const handleFilter = (e) => {
     const genre = e.target.value
     if (genre === 'Todos') {
-      setBooks(JSON.parse(localStorage.getItem('book')))
+      const filteredBooks = baseBooks.current.filter(book => (
+        !readingList.some(item => item.book.ISBN === book.book.ISBN)
+      ))
+
+      setBooks(filteredBooks)
     } else {
-      const filteredBooks = JSON.parse(localStorage.getItem('book')).filter(
-        (book) => book.book.genre === genre
-      )
+      const filteredBooks = baseBooks.current.filter(book => (
+        book.book.genre === genre && !readingList.some(item => item.book.ISBN === book.book.ISBN)
+      ))
+
       setBooks(filteredBooks)
     }
   }
@@ -97,50 +99,54 @@ function App() {
             </option>
           ))}
         </select>
-        {books.length == 0 && readingList.length > 0 ? (
-          <h2>Todos los libros están en la lista de lectura</h2>
-        ) : (
-          <ul>
-            {books.map((book) => {
-              const { ISBN, cover, title } = book.book
-              return (
-                <li key={ISBN}>
-                  <img
-                    className='cover-img'
-                    src={cover}
-                    alt={title}
-                    onClick={() => addBookToReadingList(book)}
-                  />
-                </li>
-              )
-            })}
-          </ul>
-        )}
+        {books.length === 0 && readingList.length > 0
+          ? (
+            <h2>Todos los libros están en la lista de lectura</h2>
+            )
+          : (
+            <ul>
+              {books.map((book) => {
+                const { ISBN, cover, title } = book.book
+                return (
+                  <li key={ISBN}>
+                    <img
+                      className='cover-img'
+                      src={cover}
+                      alt={title}
+                      onClick={() => addBookToReadingList(book)}
+                    />
+                  </li>
+                )
+              })}
+            </ul>
+            )}
       </section>
       <section>
         <dialog id='readingList' ref={dialog}>
-          {readingList.length > 0 ? (
-            <>
-              <h2>Lista de lectura</h2>
-              <ul>
-                {readingList.map((book) => {
-                  const { ISBN, cover, title } = book.book
-                  return (
-                    <li key={ISBN}>
-                      <img
-                        className='cover-img'
-                        src={cover}
-                        alt={title}
-                        onClick={() => removeBookFromReadingList(book)}
-                      />
-                    </li>
-                  )
-                })}
-              </ul>
-            </>
-          ) : (
-            <p>No hay libros en la lista de lectura</p>
-          )}
+          {readingList.length > 0
+            ? (
+              <>
+                <h2>Lista de lectura</h2>
+                <ul>
+                  {readingList.map((book) => {
+                    const { ISBN, cover, title } = book.book
+                    return (
+                      <li key={ISBN}>
+                        <img
+                          className='cover-img'
+                          src={cover}
+                          alt={title}
+                          onClick={() => removeBookFromReadingList(book)}
+                        />
+                      </li>
+                    )
+                  })}
+                </ul>
+              </>
+              )
+            : (
+              <p>No hay libros en la lista de lectura</p>
+              )}
           <button onClick={closeModal}>Cerrar</button>
         </dialog>
       </section>
