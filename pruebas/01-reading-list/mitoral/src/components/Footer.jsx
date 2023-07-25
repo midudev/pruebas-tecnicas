@@ -1,6 +1,6 @@
 export function Footer () {
   return (
-    <footer className='flex items-center justify-center gap-4 mt-32 p-5 bg-black text-white'>
+    <footer className='flex items-center justify-center gap-4 mt-10 p-5 bg-black text-white'>
       <span>Desarrollado por Miguel Torres</span>
       <hr className='bg-white w-[1px] h-5' />
       <nav>
