@@ -1,17 +1,27 @@
+import { useSelector } from 'react-redux'
 import { TitleContent } from '.'
+import { BOOKS_GENRE_TYPES, type FiltersBooks, type Library } from '../../models'
+import { type AppStore } from '../../redux/store'
 import styles from './styles/TitlesContainerCount.module.css'
 
 export const TitlesContainerCount: React.FC = () => {
+  const booksAvailable: Library = useSelector((state: AppStore) => state.booksAvailable)
+  const filtersBooks: FiltersBooks = useSelector((state: AppStore) => state.filtersBooks)
+
+  const countBooksByGenre = filtersBooks.genre === BOOKS_GENRE_TYPES.ALL
+    ? booksAvailable.length
+    : booksAvailable.filter((book) => book.genre === filtersBooks.genre).length
+
   return (
     <div className={styles.TitlesContainerCount}>
       <TitleContent
         title='Books Available'
-        count={10}
+        count={booksAvailable.length}
         isTitleGenre={false}
       />
       <TitleContent
         title='Genre Books'
-        count={5}
+        count={countBooksByGenre}
         isTitleGenre={true}
       />
     </div>

@@ -1,8 +1,19 @@
+.BookAvailableInfo {
+  position: relative;
+  /* background-color: aqua; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  /* height: 190px; */
+}
+
 .BookAvailableReading {
   position: relative;
   display: flex;
-  width: 130px;
   height: 190px;
+  width: 130px;
 }
 
 .BookAvailableCover {
@@ -56,4 +67,27 @@
   clip-path: polygon(25% 0, 58% 0, 79% 40%, 100% 76%, 100% 100%, 30% 100%, 16% 70%, 18% 31%);
   background: rgb(0,0,0);
   background: linear-gradient(325deg, rgba(0,0,0,0) 20%, rgba(0,0,0,0.12368697478991597) 43%, rgba(0,0,0,0.23853291316526615) 61%, rgba(0,0,0,0.3897934173669467) 77%, rgba(0,0,0,0.7091211484593838) 100%);
+}
+
+.BookAvailableTitlesContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.BookAvailableTitle {
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Libre Caslon Text', serif;
+  text-align: center;
+  color: #2c1810;
+}
+
+.BookAvailableAuthor {
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  color: #9b9a9a;
 }

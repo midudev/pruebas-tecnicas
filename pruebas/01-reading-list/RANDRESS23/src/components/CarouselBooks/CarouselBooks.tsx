@@ -3,10 +3,11 @@ import { motion } from 'framer-motion'
 import styles from './styles/CarouselBooks.module.css'
 import { BookReading } from './components/BookReading'
 import { type Book, type Library } from '../../models'
-import { type AppStore } from '../../redux/store'
+import { type AppStore } from '../../redux'
 import { useSelector, useDispatch } from 'react-redux'
 import { removeBookToRead } from '../../redux/states/booksToRead'
 import { addBookAvailable } from '../../redux/states/booksAvailable'
+import { addBookFiltered } from '../../redux/states/booksFiltered'
 
 export const CarouselBooks: React.FC = () => {
   const booksToRead: Library = useSelector((state: AppStore) => state.booksToRead)
@@ -16,12 +17,14 @@ export const CarouselBooks: React.FC = () => {
   const handleRemoveBookToRead = ({ book }: { book: Book }): void => {
     dispatch(removeBookToRead({ bookISBN: book.ISBN }))
     dispatch(addBookAvailable({ newBook: book }))
+    dispatch(addBookFiltered({ newBook: book }))
   }
 
   return (
     <div
-      className={styles.CarouselBooks}
-      ref={boxRef}
+    ref={boxRef}
+    className={styles.CarouselBooks}
+    style={booksToRead.length > 0 ? { cursor: 'grab' } : { cursor: 'default' }}
     >
       <motion.div
         drag='x'
