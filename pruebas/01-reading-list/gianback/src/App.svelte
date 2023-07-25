@@ -1,40 +1,37 @@
 <script lang="ts">
   import "./app.css";
-  import Aside from "./components/Aside.svelte";
-  import books from "../../books.json";
+  import { bookList } from "./store/books.store";
+  import { filter } from "./store/filter.store";
+  import Aside from "./lib/Aside.svelte";
+  import Card from "./lib/Card.svelte";
+  import Form from "./lib/Form.svelte";
+  import type { Library } from "./models/book.model";
 
-  let library = books.library;
+  let filteredBooks: Library[] = [];
+  $: {
+    filteredBooks = $bookList.filter(({ book }) => book.genre !== $filter);
+  }
 </script>
 
 <main class="main">
   <Aside />
-  <section class="bg-[#F3F3F7] min-h-screen p-[44px]">
-    <ul class="Book-list">
-      {#each library as book (book.book.title)}
-        <li>
-          <picture>
-            <img
-              src={book.book.cover}
-              alt={book.book.title}
-              class="object-cover w-full md:h-[450px]"
-            />
-          </picture>
-          <h2>
-            {book.book.title}
-          </h2>
-          <p>
-            {book.book.synopsis}
-          </p>
-          <p>
-            {book.book.genre}
-          </p>
-          <span>
-            {book.book.author.name}
-          </span>
-        </li>
-      {/each}
-    </ul>
-  </section>
+  <div>
+    <Form />
+    <section class="bg-[#F3F3F7] min-h-screen p-[44px]">
+      <ul class="Book-list">
+        {#each filteredBooks as book (book.book.title)}
+          <Card
+            name={book.book.title}
+            image={book.book.cover}
+            description={book.book.synopsis}
+            author={book.book.author.name}
+            genre={book.book.genre}
+          />
+        {/each}
+        <!-- {$fileteredBooks} -->
+      </ul>
+    </section>
+  </div>
 </main>
 
 <style>
