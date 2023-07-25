@@ -104,7 +104,8 @@ body {
   background-color: var(--books-container-color)
 }
 
-.add-icon {
+.add-icon,
+.remove-icon {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -114,4 +115,25 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.slider-page {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 400px;
+}
+
+.slider-page p {
+  width: 120px;
+  text-align: left;
+}
+
+.slider-page span {
+  width: 20px;
+  margin-left: 10px;
+}
+
+.slider-component {
+  width: 260px;
 }

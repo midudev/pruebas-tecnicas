@@ -8,24 +8,26 @@ export const GenreSelect = () => {
     books,
     categories,
     setCategories,
-    booksBySelectedCategory,
+    booksFilter,
     setSelectedCategory,
-    selectedCategory
+    selectedCategory,
+    sliderValue
   ] = useBooksStore(
     (state) => [
       state.books,
       state.categories,
       state.setCategories,
-      state.booksBySelectedCategory,
+      state.booksFilter,
       state.setSelectedCategory,
-      state.selectedCategory
+      state.selectedCategory,
+      state.sliderValue
     ],
     shallow
   )
 
   const handleChange = (value) => {
-    booksBySelectedCategory(value)
     setSelectedCategory(value)
+    booksFilter(value, sliderValue)
   }
 
   useEffect(() => {

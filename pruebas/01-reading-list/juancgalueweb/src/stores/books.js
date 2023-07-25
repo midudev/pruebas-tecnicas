@@ -9,6 +9,8 @@ export const useBooksStore = create(
       readingList: [],
       categories: [],
       selectedCategory: 'Todos',
+      maxPage: null,
+      sliderValue: null,
       setBooks: async () => {
         try {
           const response = await fetch('./src/data/books.json')
@@ -16,8 +18,12 @@ export const useBooksStore = create(
           const jsonData = await response.json()
           const { library } = jsonData
           const books = library.map((item) => item.book)
+          const booksPages = books.map((book) => book.pages)
           set({ books })
           set({ copyBooks: books })
+          set({ maxPage: Math.max(...booksPages) })
+          const { maxPage } = get()
+          set({ sliderValue: maxPage })
         } catch (error) {
           console.log('Error al cargar los libros')
         }
@@ -56,7 +62,7 @@ export const useBooksStore = create(
         })
         set({ categories: sortedCategories })
       },
-      booksBySelectedCategory: (value) => {
+      booksFilter: (genre, pageNumber) => {
         const { readingList, books } = get()
         // Función para obtener la lista de libros que no están en readingList
         const getBooksNotInReadingList = (books, readingList) => {
@@ -67,19 +73,21 @@ export const useBooksStore = create(
           })
         }
 
-        if (value === 'Todos') {
-          const newBooks = getBooksNotInReadingList(books, readingList)
-          set({ copyBooks: newBooks })
-          return
+        // Obtener la lista de libros que no están en readingList
+        let filteredBooks = getBooksNotInReadingList(books, readingList)
+
+        // Filtrar por género si el valor no es 'Todos'
+        if (genre !== 'Todos') {
+          filteredBooks = filteredBooks.filter((book) => book.genre === genre)
         }
 
-        const booksToBeFiltered = getBooksNotInReadingList(books, readingList)
-        const filteredBooks = booksToBeFiltered.filter(
-          (book) => book.genre === value
-        )
+        // Filtrar por número de páginas
+        filteredBooks = filteredBooks.filter((book) => book.pages <= pageNumber)
+
         set({ copyBooks: filteredBooks })
       },
-      setSelectedCategory: (value) => set({ selectedCategory: value })
+      setSelectedCategory: (value) => set({ selectedCategory: value }),
+      setSliderValue: (value) => set({ sliderValue: value })
     }),
     {
       name: 'reading-list-midudev-test'

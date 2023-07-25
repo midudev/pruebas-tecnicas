@@ -33,8 +33,7 @@ export const ReadingList = ({ open, onClose }) => {
           return (
             <Card
               key={book.ISBN}
-              title='Eliminar'
-              extra={<CloseIcon />}
+              title={<CloseIcon />}
               className='book-card'
               hoverable
               cover={
