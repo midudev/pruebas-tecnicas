@@ -12,7 +12,7 @@ export const ReadingList = component$(({ books, onBookSelect }: Props) => {
   const booksAvailabilityMessage = pluralize("libro", books.length)
 
   return (
-    <aside class="bg-black text-white px-8 py-6 max-w-full overflow-auto">
+    <aside class="bg-black text-white px-4 md:px-8 py-6 max-w-full overflow-auto">
       <p class="flex items-center gap-2 font-bold text-xl mb-4">
         <IconLibraryOutlined size={34} />
         <span>Lista de lectura</span>

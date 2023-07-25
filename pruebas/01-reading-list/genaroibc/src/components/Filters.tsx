@@ -20,8 +20,8 @@ export const Filters = component$(
   ({ onFilterChange, onGenreChange, filter, genre }: Props) => {
     return (
       <section class="flex justify-between items-center my-4">
-        <div class="flex items-center">
-          <label class="mr-2 text-lg text-white">Ordenar por</label>
+        <div class="flex items-start gap-2 flex-col md:!flex-row md:items-center">
+          <label class="text-lg text-white">Ordenar por</label>
           <select
             value={filter}
             class="rounded-md"
@@ -39,8 +39,8 @@ export const Filters = component$(
           </select>
         </div>
 
-        <div class="flex-items-center">
-          <label class="mr-2 text-lg text-white">Filtrar por género</label>
+        <div class="flex items-end gap-2 flex-col md:!flex-row md:items-center">
+          <label class="text-lg text-white">Filtrar por género</label>
           <select
             value={genre}
             class="rounded-md"

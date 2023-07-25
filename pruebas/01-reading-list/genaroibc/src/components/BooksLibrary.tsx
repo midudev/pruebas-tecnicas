@@ -78,7 +78,7 @@ export const BooksLibrary = component$(
           filter={currentFilter}
         />
 
-        <div class="my-4 font-bold text-white text-lg w-full flex items-center justify-between">
+        <div class="my-4 mb-6 font-bold text-white text-lg w-full flex items-center justify-between">
           <p class="bg-zinc-900 py-1.5 px-4 rounded-md">
             <span class="text-blue-500">{allBooksCount}</span> de{" "}
             <span class="text-blue-500">{books.length}</span> libros{" "}
