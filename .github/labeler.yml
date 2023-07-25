@@ -1,0 +1,15 @@
+'pruebas':
+- pruebas/**
+
+'prueba-1':
+- pruebas/01-reading-list/**
+
+'web':
+- web/**
+
+'chore':
+- .github/**
+- .gitignore
+- LICENSE
+- README.md
+- package.json
