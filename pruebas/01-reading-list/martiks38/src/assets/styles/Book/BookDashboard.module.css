@@ -2,8 +2,18 @@
   padding: 1rem var(--padding-content);
 }
 
+.bookListSection:last-child > ul {
+  padding-top: calc(4.5625rem + 1.25rem);
+}
+
 .bookListSection__title {
   margin-bottom: 0.8em;
   font-size: 1.875rem;
   line-height: 2.25rem;
+}
+
+@media (min-width: 96rem) {
+  .bookListSection:last-child > ul {
+    padding-top: calc(4.9375rem + 1.25rem);
+  }
 }

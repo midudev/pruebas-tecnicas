@@ -1,42 +1,35 @@
 .actionButton {
-  --size-button: 2rem;
-  --border-button: solid 1px #fff6;
+  position: relative;
+  padding: 0.2em 0.8em;
+  width: fit-content;
+  background-color: transparent;
+  color: rgb(255 255 255 / 0.75);
+  border: solid 2px rgb(255 255 255 / 0.75);
+  border-radius: 0.375rem;
+  font-weight: 600;
+  overflow: hidden;
+  transition: border-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 
+.actionButton::before {
+  content: '';
   position: absolute;
   top: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.2rem;
-  width: var(--size-button);
-  height: var(--size-button);
-  background-color: #141414;
-  border-width: 0;
-  border-bottom-left-radius: var(--rounded-4);
-  border-left: var(--border-button);
-  border-bottom: var(--border-button);
-}
-
-.addButton__line,
-.removeButton__line {
-  --height-line: 0.25rem;
-
-  width: 80%;
-  height: var(--height-line);
-  background-color: #fff;
-  border-radius: calc(var(--height-line) / 2);
-  opacity: 0.8;
-}
-
-.addButton__line::before {
-  content: '';
-
+  left: 0;
   display: block;
+  width: 0;
+  height: 100%;
+  background-color: #38bdf8;
+  z-index: -1;
+  transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.actionButton:hover {
+  color: #222;
+  border-color: #167eab;
+}
+
+.actionButton:hover::before {
   width: 100%;
-  height: inherit;
-  background-color: inherit;
-  border-radius: inherit;
-  transform-origin: center;
-  transform: rotate(90deg);
 }

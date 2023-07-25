@@ -7,7 +7,6 @@ import { toast } from 'react-toastify'
 import { BookDataList } from '@/assets/values'
 import bookListStyles from '@/assets/styles/Book/BookList.module.css'
 import bookButton from '@/assets/styles/Book/Button.module.css'
-import { buttonTitles } from '@/assets/constants'
 
 type BookListProps = { books: BookDataList; listType: 'available' | 'reading' }
 
@@ -48,10 +47,9 @@ export function BookList({ books, listType }: BookListProps) {
                 <button
                   className={bookButton.actionButton}
                   onClick={() => buttonAction({ ISBN, title })}
-                  title={buttonTitles[listType]}
                   aria-label={generateLabelListOfBooks(listType, title)}
                 >
-                  <span className={lineStyle}></span>
+                  <span> {typeIsAvailable ? 'Añadir' : 'Remover'}</span>
                 </button>
               </figcaption>
             </figure>
