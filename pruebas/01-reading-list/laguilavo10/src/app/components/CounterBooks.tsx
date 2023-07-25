@@ -9,9 +9,9 @@ export default function CounterBooks({ title = '', length = 0 }: Props) {
       <h2 className='w-full text-center text-2xl font-bold text-white'>
         {title}
       </h2>
-      <span className='w-full px-7 text-end tracking-wider text-slate-300'>
+      <div className='w-full px-7 text-end tracking-wider text-slate-300' data-test-id={`counter of ${title}`}>
         {length} libro{length !== 1 ? 's' : ''}
-      </span>
+      </div>
     </header>
   )
 }

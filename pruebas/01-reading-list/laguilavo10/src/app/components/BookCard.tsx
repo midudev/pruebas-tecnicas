@@ -47,7 +47,6 @@ export default function BookCard({
       <div
         className=' relative h-auto w-full overflow-hidden rounded-md border border-slate-500 p-2 text-white'
         onClick={handleBookAction}
-        key={book.ISBN}
       >
         <div className='pointer-cursor absolute left-0 top-0 flex h-full w-full flex-col items-center justify-center bg-black text-white opacity-0 hover:opacity-80'>
           {icon}

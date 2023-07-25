@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='es'>
-      <body className={`${inter.className} overflow-x-hidden`}>
+      <body className={`${inter.className} overflow-x-hidden scrollbar scrollbar-thumb-[#596886] scrollbar-track-gray-100`}>
         <CategoryProvider>{children}</CategoryProvider>
       </body>
     </html>
