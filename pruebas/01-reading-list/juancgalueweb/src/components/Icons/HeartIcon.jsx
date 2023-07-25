@@ -2,7 +2,14 @@ import React from 'react'
 
 export const HeartIcon = () => {
   return (
-    <svg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <svg
+      width={25}
+      height={25}
+      viewBox='0 0 24 24'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+      style={{ margin: '0 4px' }}
+    >
       <g id='SVGRepo_bgCarrier' strokeWidth='0'></g>
       <g
         id='SVGRepo_tracerCarrier'
