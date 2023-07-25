@@ -30,3 +30,4 @@
 - [x] Persistencia de Datos
 - [x] Sincronización entre pestañas
 - [x] Despliegue
+- [x] Tests 
