@@ -7,8 +7,8 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #0A0808;
+  background-color: #F7F7F7;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -17,3 +17,15 @@
   -webkit-text-size-adjust: 100%;
 }
 
+@layer utilities {
+	/* Hide scrollbar for Chrome, Safari and Opera */
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+
+	/* Hide scrollbar for IE, Edge and Firefox */
+	.no-scrollbar {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
+	}
+}
