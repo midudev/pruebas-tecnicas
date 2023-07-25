@@ -9,39 +9,6 @@
     z-index: 1;
   }
   
-  .list img {
-    border-radius: 4px;
-    width: 100%;
-    aspect-ratio: 2/3;
-    display: block;
-    object-fit: cover;
-    background: #fff;
-    box-shadow: 0 0 20px 20px #c9c9c91a;
-    cursor: pointer;
-  }
-  
-  .list li {
-    border-bottom: 1px solid #444;
-    padding-bottom: 16px;
-    padding-top: 16px;
-
-  }
-
-  .list li:active {
-    background: #34153d;
-  }
-
-  .list footer {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .list footer button {
-    padding: 8px;
-  }
-  
   .list-button-toggle {
     align-items: center;
     background: #09f;

@@ -19,9 +19,9 @@ export const listOfLectureReducer = (state, action) => {
   const { type: actionType, payload: actionPayload } = action
   switch (actionType) {
     case LIST_ACTIONS_TYPES.ADD_TO_LECTURE_LIST:{
-      const id = actionPayload.title
+      const id = actionPayload.id
       // Check if book is already in list
-      const bookInCartIndex = state.findIndex(item => item.title === id)
+      const bookInCartIndex = state.findIndex(item => item.id === id)
 
       // If book is in list, return the state without changes
       if (bookInCartIndex >= 0) {
@@ -33,8 +33,8 @@ export const listOfLectureReducer = (state, action) => {
       return newState
     }
     case LIST_ACTIONS_TYPES.REMOVE_FROM_LECTURE_LIST:{
-      const id = actionPayload.title
-      const newState = state.filter(item => item.title !== id)
+      const id = actionPayload.id
+      const newState = state.filter(item => item.id !== id)
       updateLocalStorage(newState)
       return newState
     }

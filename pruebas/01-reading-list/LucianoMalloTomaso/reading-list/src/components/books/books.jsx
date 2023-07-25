@@ -7,7 +7,6 @@ export default function Books ({ books }) {
   const { list, addToLectureList, removeFromLectureList } = useListOfLecture()
 
   const checkBookInList = book => {
-    // return false
     return list.some(item => item.title === book.title)
   }
   return (
@@ -16,7 +15,7 @@ export default function Books ({ books }) {
         {books.slice(0, booksToShow).map(book => {
           const isBookInList = checkBookInList(book)
           return (
-            <li key={book.title}>
+            <li key={book.id}>
               <div data-testid='book-title'>{book.title}</div>
               <img className='book-photo' src={book.cover} alt={book.title} loading='lazy' />
               <div>

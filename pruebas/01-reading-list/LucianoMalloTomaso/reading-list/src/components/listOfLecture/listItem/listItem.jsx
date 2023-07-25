@@ -2,12 +2,16 @@ import './listItem.css'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 
-export default function ListItem ({ cover, title, pages, removeFromList }) {
-  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: title })
+export default function ListItem ({ uniqueId, cover, title, pages, removeFromList }) {
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: uniqueId })
 
   const style = {
     transform: CSS.Transform.toString(transform),
     transition
+  }
+
+  const handleRemoveClick = () => {
+    removeFromList(uniqueId)
   }
 
   return (
@@ -25,7 +29,7 @@ export default function ListItem ({ cover, title, pages, removeFromList }) {
         <p> {pages} Pages</p>
       </div>
       <footer>
-        <button onClick={removeFromList}>
+        <button onClick={handleRemoveClick}>
           Remove
         </button>
       </footer>

@@ -3,11 +3,18 @@ import { CloseBookIcon, OpenBookIcon, RemoveAllBooks } from '../icons/icons.jsx'
 import './listOfLecture.css'
 import ListItem from './listItem/listItem.jsx'
 import { useListOfLecture } from '../../hooks/useListOfLecture.jsx'
-import { DndContext, closestCenter } from '@dnd-kit/core'
+import { DndContext, closestCenter, useSensor, useSensors, PointerSensor } from '@dnd-kit/core'
 import { SortableContext, arrayMove, verticalListSortingStrategy } from '@dnd-kit/sortable'
 
 export default function ListOfLecture () {
   const { list, clearLectureList, removeFromLectureList, setNewListSorted } = useListOfLecture()
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 8
+      }
+    })
+  )
   const bookListCheckboxId = useId()
   const [isOpen, setIcon] = useState(false)
   function handleChangeIcon () {
@@ -16,8 +23,8 @@ export default function ListOfLecture () {
   const handleDragEnd = (event) => {
     const { active, over } = event
     if (active.id !== over.id) {
-      const olderIndex = list.findIndex((book) => book.title === active.id)
-      const newIndex = list.findIndex((book) => book.title === over.id)
+      const olderIndex = list.findIndex((book) => book.id === active.id)
+      const newIndex = list.findIndex((book) => book.id === over.id)
       const newList = arrayMove(list, olderIndex, newIndex)
       setNewListSorted(newList)
     }
@@ -25,6 +32,7 @@ export default function ListOfLecture () {
 
   return (
     <DndContext
+      sensors={sensors}
       collisionDetection={closestCenter}
       onDragEnd={handleDragEnd}
     >
@@ -46,8 +54,11 @@ export default function ListOfLecture () {
           >
             {list.map(book => (
               <ListItem
-                key={book.title}
-                removeFromList={() => removeFromLectureList(book)}
+                key={book.id}
+                uniqueId={book.id}
+                removeFromList={() => {
+                  removeFromLectureList(book)
+                }}
                 {...book}
               />
             ))}

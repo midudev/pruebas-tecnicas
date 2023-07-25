@@ -1,3 +1,32 @@
-.footer{
-    margin-top: 20px;
-}
+
+img {
+    border-radius: 4px;
+    width: 50%;
+    aspect-ratio: 2/3;
+    display: block;
+    object-fit: cover;
+    background: #fff;
+    box-shadow: 0 0 20px 20px #c9c9c91a;
+    cursor: pointer;
+    margin: 0 auto;
+  }
+  li {
+    border-bottom: 1px solid #444;
+    padding-bottom: 20px;
+    padding-top: 16px;
+
+  }
+  li:active {
+    background: #34153d;
+  }
+  footer {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+  }
+  footer button {
+    padding: 8px;
+    z-index: 9999;
+  }

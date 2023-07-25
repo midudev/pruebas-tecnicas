@@ -11,8 +11,10 @@ function App () {
   const [books] = useState(library)
   const { filterBooks, sortBooks } = useFilters()
 
-  const mappedBooks = books.map((book) => {
+  // map books to the format that the Books component expects and add an id to each book
+  const mappedBooks = books.map((book, index) => {
     return {
+      id: index,
       title: book.book.title,
       genre: book.book.genre,
       cover: book.book.cover,
