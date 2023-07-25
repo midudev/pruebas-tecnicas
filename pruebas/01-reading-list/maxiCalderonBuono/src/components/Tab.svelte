@@ -6,7 +6,6 @@
 	const dispatch = createEventDispatcher();
 
 	export let active: boolean;
-	$: console.log(active);
 	function selectedFilter() {
 		dispatch('selectedfilter', {
 			filter

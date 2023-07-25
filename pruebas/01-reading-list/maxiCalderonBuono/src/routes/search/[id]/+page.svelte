@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let data;
 
-	console.log(data);
+	
 </script>
 
 <section class="max-w-5xl w-full mx-auto flex py-10 h-screen justify-center items-center gap-5">

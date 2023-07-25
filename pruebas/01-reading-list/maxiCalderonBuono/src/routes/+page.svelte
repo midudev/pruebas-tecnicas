@@ -30,9 +30,12 @@
 		pages: 0
 	});
 
-	function handleFilters(e: CustomEvent<{ filter: string; value: number }>) {
-		console.log(e.detail.value);
+	function handleCategory(e: CustomEvent<{ filter: string}>) {
 		$initialDataStore.filter = e.detail.filter;
+		updateFilteredBooks();
+	}
+
+	function handlePage(e: CustomEvent<{ value: number }>) {
 		$initialDataStore.pages = e.detail.value;
 		updateFilteredBooks();
 	}
@@ -103,8 +106,8 @@
 
 	<Selectors
 		{library}
-		on:selectedfilter={handleFilters}
-		on:currentPage={handleFilters}
+		on:selectedfilter={handleCategory}
+		on:currentPage={handlePage}
 		savedFilter={$initialDataStore.filter}
 		availables={$initialDataStore.renderlist.length}
 	/>
