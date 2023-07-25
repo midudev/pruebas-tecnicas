@@ -1,12 +1,13 @@
-import { useMemo } from 'react'
+import { useMemo, lazy, Suspense } from 'react'
 import { createPortal } from 'react-dom'
 import Layout from '@/components/layout'
 import BooksList from '@/components/books-list'
-import Modal from '@/components/modal'
-import ReadingList from '@/components/reading-list'
+import Loading from '@/components/loading'
 import { useBooks } from '@/hooks/use-books'
 import { useReadingList } from '@/hooks/use-reading-list'
 import { useFilters } from './hooks/use-filters'
+
+const ReadingListModal = lazy(() => import('@/components/reading-list-modal'))
 
 function App() {
   const { books } = useBooks()
@@ -20,9 +21,9 @@ function App() {
       <BooksList books={booksToShow} />
       {readingListOpen &&
         createPortal(
-          <Modal>
-            <ReadingList />
-          </Modal>,
+          <Suspense fallback={<Loading isFullScreen />}>
+            <ReadingListModal />
+          </Suspense>,
           document.querySelector('#modal') as HTMLElement
         )}
     </Layout>

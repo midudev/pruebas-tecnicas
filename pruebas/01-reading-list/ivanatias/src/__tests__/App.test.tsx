@@ -86,7 +86,7 @@ describe('GIVEN <App />', () => {
     await userEvent.click(readingListBtn)
 
     expect(
-      screen.getByRole('heading', {
+      await screen.findByRole('heading', {
         name: 'Lista de lectura',
         level: 2
       })
