@@ -12,8 +12,7 @@ export default function BookList({ isShowingReadList }: Props) {
   return (
     <section className='border-r-2 border-slate-500 p-5 transition-transform delay-1000 duration-500 ease-in-out md:block md:translate-x-0 md:border-none'>
       <CounterBooks title='Libros Disponibles' length={length} />
-      {/* <Loader> */}
-      <ul className='grid w-full grid-cols-auto-fit gap-5 py-2'>
+      <ul className='grid w-full grid-cols-auto-fit gap-5 py-2 h-full'>
         <EmptyState length={length}>
           {state.bookList.map((book, index) => (
             <div key={book.ISBN} data-test-id={`libro disponible #${index}`}>
@@ -22,7 +21,6 @@ export default function BookList({ isShowingReadList }: Props) {
           ))}
         </EmptyState>
       </ul>
-      {/* </Loader> */}
     </section>
   )
 }

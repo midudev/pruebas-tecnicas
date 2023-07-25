@@ -1,34 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Bookland - README
 
-## Getting Started
 
-First, run the development server:
+## Introducción
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Bookland es una aplicación web construida con Next.js 13 y Tailwind CSS, como prueba tecnica formulada por el programador y creador de contenido [Midudev](https://github.com/midudev), siendo este la primera prueba del proyecto [pruebastecnicas.com](https://pruebastecnicas.com/). Bookland permite a los usuarios crear y gestionar sus listas de lectura, filtrando los libros por nombre y categoría.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Demo en vivo:** [Bookland - Demo en vivo](https://pruebas-tecnicas-one.vercel.app/)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Funcionalidades
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Crea una lista de lectura personalizada añadiendo tus libros de interes.
+- Filtra los libros por su nombre o categoría para una navegación sencilla.
+- Interfaz amigable para el usuario con un diseño responsive para todos los dispositivos.
 
-## Learn More
+## Tecnologías y Herramientas utilizadas
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js 13
+- Tailwind CSS
+- useReducer y useContext
+- Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Empezar
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Para ejecutar este proyecto localmente, sigue estos pasos:
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Clona el repositorio
+2. Instala las dependencias: `npm install`
+3. Inicia el servidor de desarrollo: `npm run dev`
+4. Abre tu navegador y visita: `http://localhost:3000`
