@@ -47,7 +47,7 @@ export const useLibrary = create(
             }),
             {
                 name: 'readListStorage',
-                storage: createJSONStorage(() => localStorage),
+                partialize: (state) => ({filter: state.filter, list: state.list, books: state.books, data: state.data })
             }
         ),
         {
