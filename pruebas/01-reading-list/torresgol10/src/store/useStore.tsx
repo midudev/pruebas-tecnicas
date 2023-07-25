@@ -20,19 +20,15 @@ export const useStore = create<Store>()(
                 //Variable para almacenar los libros leidos, inicialmente vacia
                 storeRead: [],
                 //Funcion para añadir libros leidos, recibe el ISBN del libro, lo busca en la lista de libros y lo añade a la lista de libros leidos, luego lo elimina de la lista de libros
-                addRead: (ISBN) => set((state) => {
-                    return {
-                        storeRead: [...state.storeRead, state.store.find(({ book }) => book.ISBN === ISBN)],
-                        store: state.store.filter(({ book }) => book.ISBN !== ISBN)
-                    }
-                }),
+                addRead: (ISBN) => set((state) => ({
+                    storeRead: [...state.storeRead, state.store?.find(({ book }) => book.ISBN === ISBN)] as Library,
+                    store: state.store.filter(({ book }) => book.ISBN !== ISBN) as Library
+                })),
                 //Funcion para eleminar un libro de la lista de libros leidos, recibe el ISBN del libro, lo busca en la lista de libros leidos y lo elimina de la lista y vuelve a la lista de libros
-                removeRead: (ISBN) => set((state) => {
-                    return {
-                        store: [...state.store, state.storeRead.find(({ book }) => book.ISBN === ISBN)],
-                        storeRead: state.storeRead.filter(({ book }) => book.ISBN !== ISBN)
-                    }
-                })
+                removeRead: (ISBN) => set((state) => ({
+                    store: [...state.store, state.storeRead?.find(({ book }) => book.ISBN === ISBN)] as Library,
+                    storeRead: state.storeRead.filter(({ book }) => book.ISBN !== ISBN) as Library
+                }))
             }),
             {
                 name: 'books-storage', // nombre del elemento en el storage (debe ser único)
