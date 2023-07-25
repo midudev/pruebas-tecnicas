@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useLibrary } from "../contexts/library.context";
 
 type GenreCountMap = {
@@ -7,6 +7,7 @@ type GenreCountMap = {
 
 const AsideMenu: React.FC = () => {
   const { books, setFilteredBooks } = useLibrary();
+  const [searchedBook, setSearchedBook] = useState<string>("");
 
   const genreCountMap: GenreCountMap = books.reduce((acc, book) => {
     const genre = book.book.genre;
@@ -19,17 +20,45 @@ const AsideMenu: React.FC = () => {
     setFilteredBooks(booksByGenre);
   };
 
+  const handleSearcher = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchedBook(e.target.value);
+  };
+
+  useEffect(() => {
+    const searchedBooks = books.filter((book) => {
+      const title = book.book.title
+        .toLowerCase()
+        .includes(searchedBook.toLowerCase());
+      const author = book.book.author.name
+        .toLowerCase()
+        .includes(searchedBook.toLowerCase());
+      return title || author;
+    });
+
+    setFilteredBooks(searchedBooks);
+  }, [searchedBook, books]);
+
   return (
-    <aside className="w-1/6 bg-stone-100 text-stone-800 shadow-lg">
+    <aside className="w-1/6 bg-stone-100 text-stone-800 shadow-xl">
       <div className="sticky top-0 left-0 flex flex-col gap-8 p-8">
         <h3 className="font-bold text-xl">Libroteca</h3>
         <div>
           <h4 className="font-medium text-lg">Catálogo</h4>
-          <ul className="flex flex-col gap-4">
-            <li className="text-sm">
+          <ul className="flex flex-col gap-6">
+            <li className="flex flex-col gap-2 text-sm">
               <div className="font-medium">Disponibles ({books.length})</div>
             </li>
-            <li className="text-sm">
+            <li className="flex flex-col gap-2 text-sm">
+              <div className="font-medium">Buscar</div>
+              <input
+                type="text"
+                className="px-2 py-1 rounded border border-stone-300 bg-stone-100 text-stone-800"
+                placeholder="Título, autor..."
+                defaultValue={searchedBook}
+                onChange={handleSearcher}
+              />
+            </li>
+            <li className="flex flex-col gap-2 text-sm">
               <div className="font-medium">Géneros</div>
               <ul>
                 {Object.entries(genreCountMap).map(([genre, count]) => {

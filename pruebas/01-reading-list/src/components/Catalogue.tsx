@@ -21,7 +21,9 @@ const Catalogue: React.FC = () => {
 
   return (
     <section
-      className={`transition-all duration-300 ${isOpen ? "w-0" : "w-4/6"}`}
+      className={`transition-all duration-300 bg-primary-green ${
+        isOpen ? "w-0" : "w-4/6"
+      }`}
     >
       <div className="flex flex-col gap-8 p-8">
         <h1 className="font-bold text-stone-800 text-3xl">Catálogo</h1>

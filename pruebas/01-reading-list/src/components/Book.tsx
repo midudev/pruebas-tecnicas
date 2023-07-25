@@ -39,14 +39,14 @@ const Book: React.FC<Props> = ({
             <div className="grid place-items-center absolute p-2 opacity-0 bottom-0 left-0 right-0 group-hover:opacity-100 transition duration-500">
               {isInMyList ? (
                 <button
-                  className="bg-stone-100 text-sm text-center py-1.5 px-4 rounded w-full z-10"
+                  className="bg-primary-green text-sm text-center py-1.5 px-4 rounded w-full z-10"
                   onClick={() => removeFromMyList(book)}
                 >
                   Remove
                 </button>
               ) : (
                 <button
-                  className="bg-stone-100 text-sm text-center py-1.5 px-4 rounded w-full z-10"
+                  className="bg-primary-green text-sm text-center py-1.5 px-4 rounded w-full z-10"
                   onClick={() => addToMyList(book)}
                 >
                   Add

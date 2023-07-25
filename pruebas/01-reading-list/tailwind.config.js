@@ -6,6 +6,11 @@ export default {
       minWidth: {
         "15vw": "15vw",
       },
+      colors: {
+        primary: {
+          green: "#A4BFA8",
+        },
+      },
     },
   },
   plugins: [],

@@ -5,7 +5,7 @@ import MyList from "./components/MyList";
 const App = () => {
   return (
     <main className="bg-stone-50">
-      <div className="flex">
+      <div className="min-h-screen flex">
         <AsideMenu />
         <Catalogue />
         <MyList />

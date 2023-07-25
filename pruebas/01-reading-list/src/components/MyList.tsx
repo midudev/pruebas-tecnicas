@@ -17,7 +17,7 @@ const MyList: React.FC = () => {
   return (
     <section
       className={`transition-all duration-300 ${isOpen ? "w-5/6" : "w-1/6"}
-       bg-stone-100 text-stone-800 shadow-lg `}
+       bg-stone-100 text-stone-800 shadow-xl `}
     >
       <div className="sticky top-0 right-0">
         <div className="flex flex-col p-8 gap-4">
