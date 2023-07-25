@@ -14,12 +14,11 @@ export function App() {
     setearLista,
     addPriority,
     reducePriority,
-    // setearListaDisp,
   } = useBooks();
 
   const [selectedGenre, setSelectedGenre] = useState("all");
   const [titleSearched, setTitleSearched] = useState("");
-  const [maxPages, setMaxPages] = useState(1500);
+  const [maxPages, setMaxPages] = useState(1200);
   const [activeTab, setActiveTab] = useState(TABS.Libreria);
 
   const filterBooks = (e: any) => {
@@ -40,17 +39,6 @@ export function App() {
 
     addEventListener("storage", () => {
       const stgLectura = localStorage.getItem("lectura");
-
-      // if (stgLectura && librosDisponibles.length > 0) {
-      //   const libs = [...librosDisponibles];
-      //   console.log({ libs });
-      //   JSON.parse(stgLectura).forEach((book: BookSelectable) => {
-      //     const i = libs.findIndex((b) => b.ISBN === book.ISBN);
-      //     if (i >= 0) libs[i].selected = true;
-      //   });
-      //   setearListaDisp(libs);
-      // }
-
       if (stgLectura) setearLista(JSON.parse(stgLectura));
     });
   }, []);

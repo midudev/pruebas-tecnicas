@@ -42,13 +42,8 @@
   text-align: center;
   justify-content: center;
   align-items: center;
-  /* max-width: 200px;
-  min-width: 200px; */
-  /* width: 200px; */
-  /* width: 12vw; */
   width: clamp(160px, 15vw, 200px);
   min-height: clamp(150px, 10vh, 275px);
-  /* min-height: 275px; */
   border: 1px solid rgb(212, 212, 212);
   border-radius: 10px;
   padding: 5px;
@@ -92,10 +87,13 @@
 }
 
 .bookCover {
-  /* width: 150px;
-  height: 210px; */
-
-  width: clamp(100px, 100%, 150px);
-  height: clamp(140px, 100%, 210px);
+  width: 150px;
+  height: 210px;
 }
 
+@media only screen and (max-width: 600px) {
+  .bookCover {
+    width: 100px;
+    height: 140px;
+  }
+}

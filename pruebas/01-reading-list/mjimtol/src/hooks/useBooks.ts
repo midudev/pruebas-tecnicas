@@ -83,6 +83,26 @@ export const useBooks = () => {
         setLibrosDisponibles(arr)
         setGeneros(() =>{ return Array.from(new Set(arr.map((item) => item.genre)))})
     },[])
+
+    useEffect(()=>{
+        if (librosLista && librosDisponibles.length > 0) {
+            // Marcamos como seleccionados
+            const libs = [...librosDisponibles];
+            librosLista.forEach((book: BookSelectable) => {
+                const i = libs.findIndex((b) => b.ISBN === book.ISBN);
+                if (i >= 0) libs[i].selected = true;
+            });
+            // Desmarcamos los no seleccionados
+            librosDisponibles.forEach((book: BookSelectable) => {
+                const i = librosLista.findIndex((b) => b.ISBN === book.ISBN);
+                if (i < 0) {
+                    const newI = librosDisponibles.findIndex((b) => b.ISBN === book.ISBN)                    
+                    libs[newI].selected = false;
+                }
+            });
+            setearListaDisp(libs);
+        }
+    },[librosLista])
     
     return { librosDisponibles, librosLista, generos, addToList, removeFromList, setearLista, setearListaDisp, addPriority, reducePriority };
 }

@@ -12,4 +12,4 @@ export const BookList = {
     LongestBook
 }
 
-export const pages = (book: Book) => book.pages ?? 0
+export const pages = (book: Book) => book.pages || 0
