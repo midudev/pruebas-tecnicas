@@ -1,27 +1,10 @@
 import { writable } from "svelte/store";
 import { library } from "../../../books.json";
+import type { Book } from "../models/book.model";
 
-export let bookList = writable(library);
-// const createBookStore = () => {
-//   const { set, subscribe } = writable(library);
+const favoriteBookList: Book[] = JSON.parse(localStorage.getItem('favorites'))
+const titleFavorites :string[] = favoriteBookList.map(({title}) => title )
 
-//   return {
-//     subscribe,
-//     filterBooks: (genreSelected: string) => {
-//       if (genreSelected.trim() !== "") {
-//         const booksFiltered = library.filter(
-//           ({ book }) => book.genre !== genreSelected
-//         );
-//         set(booksFiltered);
-//       } else {
-//         set(library);
-//       }
-//     },
-//   };
-// };
+const currentBooksToShow = library.filter(({book}) => !titleFavorites.includes(book.title))
 
-// export const bookStore = createBookStore();
-
-// export const filteredBooks = derived(bookStore, (_$bookStore) => {
-//   return bookStore.filterBooks(get(filter));
-// });
+export const bookList = writable(currentBooksToShow)
