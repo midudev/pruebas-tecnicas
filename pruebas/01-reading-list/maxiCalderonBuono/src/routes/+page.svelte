@@ -11,8 +11,11 @@
 	import Selectors from '../components/Selectors.svelte';
 	import Icon from '@iconify/svelte';
 	import { afterUpdate } from 'svelte';
+	import { getRangeOfPages } from '$lib/data/const';
 
 	let { library }: Library = libraryData;
+
+	const { maxPage } = getRangeOfPages(library);
 
 	interface initialData {
 		books: LibraryElement[];
@@ -27,10 +30,10 @@
 		wishlist: [],
 		renderlist: library,
 		filter: 'Todos',
-		pages: 0
+		pages: maxPage
 	});
 
-	function handleCategory(e: CustomEvent<{ filter: string}>) {
+	function handleCategory(e: CustomEvent<{ filter: string }>) {
 		$initialDataStore.filter = e.detail.filter;
 		updateFilteredBooks();
 	}
@@ -41,7 +44,7 @@
 	}
 
 	const updateFilteredBooks = () => {
-		if ($initialDataStore.filter === 'Todos' && $initialDataStore.pages === 0) {
+		if ($initialDataStore.filter === 'Todos' && $initialDataStore.pages === maxPage) {
 			$initialDataStore.renderlist = $initialDataStore.books;
 		} else {
 			$initialDataStore.renderlist = $initialDataStore.books.filter(
@@ -107,7 +110,7 @@
 	<Selectors
 		{library}
 		on:selectedfilter={handleCategory}
-		on:currentPage={handlePage}
+		on:change={handlePage}
 		savedFilter={$initialDataStore.filter}
 		availables={$initialDataStore.renderlist.length}
 	/>
@@ -118,7 +121,16 @@
 		</h1>
 
 		{#if $initialDataStore.renderlist.length === 0}
-			<p class="font-bold text-3xl text-center">No hay libros para mostrar</p>
+			<article class="flex flex-col items-center justify-center gap-5">
+				<img class="w-[600px]" src="/images/library.png" alt="Imagen de wishlist" />
+				<p class="font-bold text-3xl text-center">No hay libros para mostrar</p>
+
+				<a
+					class="w-full text-[10px] text-center"
+					href="https://www.freepik.com/free-vector/book-readers-concept_9174332.htm#query=reading%20illustration&position=0&from_view=keyword&track=ais"
+					>Image by pch.vector on Freepik</a
+				>
+			</article>
 		{/if}
 		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 			{#each $initialDataStore.renderlist as { book }}

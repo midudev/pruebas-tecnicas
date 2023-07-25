@@ -22,7 +22,7 @@
 	}
 </script>
 
-<div class="flex w-full max-w-3xl items-center justify-evenly">
+<div class="flex w-full max-w-2xl items-center justify-between">
 	{#each uniqueFilters as filter}
 		<Tab
 			{filter}

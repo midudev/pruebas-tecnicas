@@ -67,10 +67,19 @@
 	<h1 class="font-bold text-5xl flex gap-3 items-center mb-10">Lista de lectura</h1>
 
 	{#if wishlist.length === 0}
-		<p class="font-bold text-3xl text-center">No hay libros para mostrar</p>
+		<article class="flex flex-col items-center justify-center gap-5">
+			<img class="w-[600px]" src="/images/wishlist.png" alt="Imagen de wishlist" />
+			<p class="font-bold text-3xl text-center">Todavía no has agregado ningún libro</p>
+
+			<a
+				class="w-full text-[10px] text-center"
+				href="https://www.freepik.com/free-vector/book-readers-concept_9174332.htm#query=reading%20illustration&position=0&from_view=keyword&track=ais"
+				>Image by pch.vector on Freepik</a
+			>
+		</article>
 	{/if}
 	<div
-		class={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 outline-none ${
+		class={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 outline-none ${
 			!dragDisabled ? 'outline-dashed outline-white outline-[3px]' : ''
 		}`}
 		use:dndzone={{ items, dragDisabled, dropTargetStyle }}
@@ -82,7 +91,7 @@
 				onDragStyles={item.id === itemSelected ? true : false}
 				{isDragabble}
 				on:long={() => startDrag(item.id)}
-				cta="Eliminar de la lista de lectura"
+				cta="Eliminar de la lista"
 				book={{ ...item, ISBN: item.id }}
 				on:navigate={() => goToDetail(item.title)}
 				on:update={() => updateWishlist(item.id)}

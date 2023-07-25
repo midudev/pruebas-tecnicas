@@ -27,6 +27,14 @@
 		}`}
 		on:click={goToDetail}
 	>
+		<div
+			class="bg-green-100 flex flex-col justify-end z-10 absolute right-0 bottom-0 text-green-800 text-xs font-medium pr-1 pl-2 py-0.5 rounded-tl-lg dark:bg-slate-300 dark:text-gray-800"
+		>
+			<span>
+				{book.pages}
+			</span>
+			<span> Pages </span>
+		</div>
 		{#if onDragStyles}
 			<Icon
 				icon="ic:round-move-down"
@@ -41,7 +49,7 @@
 		{/if}
 		<div class="absolute left-0 top-0 h-16 w-16">
 			<div
-				class="absolute z-10 transform -rotate-45 bg-blue-200/90 text-center text-gray-800 font-semibold py-1 left-[-34px] top-[32px] w-[170px]"
+				class="absolute z-10 transform -rotate-45 bg-blue-200/90 text-center text-sm text-gray-800 font-semibold py-1 left-[-34px] top-[32px] w-[170px]"
 			>
 				{book.genre}
 			</div>
@@ -54,13 +62,9 @@
 	</button>
 	<div class="flex justify-between mt-2 relative">
 		<div class="flex flex-col">
-			<strong>{book.title}</strong>
-			<span>{book.author.name}</span>
+			<span class="text-sm">{book.author.name}</span>
+			<strong class="text-md">{book.title}</strong>
 		</div>
-		<span
-			class="bg-green-100 absolute right-0 bottom-0 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300"
-			>Pages: {book.pages}</span
-		>
 	</div>
 	<button
 		class="btn variant-filled font-bold rounded-lg p-2 mx-auto mt-3 hover:bg-indigo-300"

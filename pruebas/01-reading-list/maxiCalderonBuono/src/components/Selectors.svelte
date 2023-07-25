@@ -8,7 +8,7 @@
 	export let savedFilter: string;
 </script>
 
-<section class="flex items-center my-10 mx-20">
+<section class="flex items-center my-10 justify-evenly w-full max-w-6xl mx-auto gap-10">
 	<Filters {library} on:selectedfilter {availables} {savedFilter} />
-	<Range {library} on:currentPage />
+	<Range {library} on:change />
 </section>
