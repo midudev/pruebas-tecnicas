@@ -1,0 +1,40 @@
+.header{
+  top: 0;
+  z-index: 100;
+  display: flex;
+  padding: 10px 20px;
+  position: sticky;
+  transition: box-shadow 0.3s, background-color 0.3s;
+  align-items: center;
+  justify-content: space-between;
+
+  &.active{
+    box-shadow: var(--header-shadow);
+    background-color: var(--background-start);
+  }
+
+  & a{
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+  }
+
+  &-bookList{
+    height: 100%;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    font-size: 30px;
+    transition: box-shadow 0.3s, background-color 0.3s;
+    border-radius: 6px;
+
+    &.active{
+      color: var(--accent);
+    }
+
+    &:hover{
+      box-shadow: 2px 2px 6px #242424, -2px -2px 6px #242424;
+      background-color: #3e4146;
+    }
+  }
+}

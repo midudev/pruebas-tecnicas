@@ -1,0 +1,6 @@
+{
+  "eslint.format.enable": true,
+  "eslint.debug": true,
+  "eslint.enable": true,
+  "eslint.run": "onSave"
+}
