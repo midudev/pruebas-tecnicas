@@ -3,6 +3,28 @@
   right: 10px;
   top: 10px;
   z-index: 999;
+  max-width: 350px;
+}
+
+/* Tablet */
+/* @media screen and (min-width: 480px) {
+  .reading-list-card {
+    
+  }
+} */
+
+/* Small screens, laptops */
+/* @media screen and (min-width: 768px) {
+  .reading-list-card {
+    
+  }
+} */
+
+/* Large screens */
+@media screen and (min-width: 1025px) {
+  .reading-list-card {
+    width: 350px;
+  }
 }
 
 .card-container {
