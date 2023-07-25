@@ -17,6 +17,7 @@ export function Books ({ droppableId, books, placeholder }) {
                 <Book key={book.ISBN} draggableIndex={index + 1} book={book} />
               ))
           }
+          {provided.placeholder}
         </div>
       )}
     </Droppable>
