@@ -12,6 +12,7 @@
 	import Icon from '@iconify/svelte';
 	import { afterUpdate } from 'svelte';
 	import { getRangeOfPages } from '$lib/data/const';
+	import Drawer from '../components/Drawer.svelte';
 
 	let { library }: Library = libraryData;
 
@@ -145,6 +146,10 @@
 			{/each}
 		</div>
 	</section>
+
+	<button>ABRIR</button>
+
+	<Drawer />
 
 	<WishList
 		wishlist={$initialDataStore.wishlist}
