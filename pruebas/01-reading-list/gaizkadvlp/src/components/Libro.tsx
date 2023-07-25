@@ -14,26 +14,29 @@ const Libro = (props: any) => {
 
     disponibles.forEach((element: Book) => {
       if (element.ISBN === ISBN) {
-        addFavo(libro);           //Se añade a favoritos
+        addFavo(libro); //Se añade a favoritos
         removeDisponibles(libro); //Se borra de Disponibles
-        saveFavorito(libro)       //Se guarda en localStorage
+        saveFavorito(libro); //Se guarda en localStorage
       }
     });
     favoritos.forEach((element: Book) => {
       if (element.ISBN === ISBN) {
-        removeFavo(libro);      //Se borra de favoritos
-        addDisponibles(libro);  //Se añade a disponibles
-        removeFavorite(element) //Se borra de localStorage
+        removeFavo(libro); //Se borra de favoritos
+        addDisponibles(libro); //Se añade a disponibles
+        removeFavorite(element); //Se borra de localStorage
       }
     });
   };
 
   return (
     <div className="libro">
-      {/* <p>{author.name}</p> */}
       <h3>{title}</h3>
-      <img src={cover} alt={title} className="portada" onClick={() => handleAdd(ISBN)}  />
-      {/* <p>{synopsis}</p> */}
+      <img
+        src={cover}
+        alt={title}
+        className="portada"
+        onClick={() => handleAdd(ISBN)}
+      />
     </div>
   );
 };

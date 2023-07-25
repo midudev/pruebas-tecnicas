@@ -20,7 +20,7 @@ const Disponibles: React.FC<any> = (props) => {
         contadorGenero++;
       }
       return (
-        <li className="libro" key={libro.ISBN}>
+        <li key={libro.ISBN}>
           <Libro libro={libro} />
         </li>
       );
@@ -29,13 +29,11 @@ const Disponibles: React.FC<any> = (props) => {
 
   return (
     <>
-      <ul className="listaLibros disponibles">
+      <ul className="disponibles">
         <h2>Disponibles</h2>
         {cuentaLibros(disponibles.length, contadorGenero, filtro)}
         <Combobox />
-        <div className="libroContainer">
-          {disponibles.length ? renderBooks : <p>No hay disponibles</p>}
-        </div>
+        {disponibles.length ? renderBooks : <p>No hay disponibles</p>}
       </ul>
     </>
   );

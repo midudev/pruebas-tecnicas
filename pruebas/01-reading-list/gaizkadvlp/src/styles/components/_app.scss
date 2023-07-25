@@ -6,7 +6,7 @@
   color-scheme: light dark;
   color: $color-font;
   background-color: $color-background;
-  
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -14,44 +14,42 @@
   -webkit-text-size-adjust: 100%;
 }
 
-/* max-width: 1280px; */
-/* #root {
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-} */
-
-.favoritos button {
-  background-color: pink;
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
 }
 
 .listaContainer {
-  /* border-style: double;
-  border-radius: 1em;
-  border-color: green; */
-  display: flex;
-  flex-direction: row;
-  margin: 5em;
-  width: 90%
+  @include container;
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
 }
 
 .disponibles {
   @include listas;
+  background-color: $color-disponibles;
   width: 80%;
-  border-color:green;
+  @media (max-width: 700px) {
+    .portada {
+      width: 75%;
+      height: auto;
+    }
+  }
 }
 .favoritos {
   @include listas;
+  background-color: $color-favorites;
   width: 30%;
-  border-color: pink;
+  .portada {
+    width: 75%;
+    height: auto;
+  }
+  @media (max-width: 700px) {
+    width: 80%;
+  }
 }
 
-.listaLibros {
-  list-style: none;
-
-  //width: 100%;
-}  
 .libro {
   padding: 1em;
-
 }

@@ -6,25 +6,26 @@ import { Library } from "../interfaces/interfaces";
 //axios.defaults.baseURL ='/';
 
 export interface Respuesta {
-  library: Library[]
+  library: Library[];
 }
 
 const useAxios = (url: string = "/books.json") => {
   const [response, setResponse] = React.useState<Respuesta>();
   const [error, setError] = React.useState<any>();
   const [loading, setLoading] = React.useState<Boolean>(true);
-  
+
   useEffect(() => {
     const fetchData = async () => {
-      setTimeout(async () => {  //TODO --> Quitar retardo, está puesto para que salga el Spinner
+      setTimeout(async () => {
+        //TODO --> Quitar retardo, está puesto para que salga el Spinner
         await axios
           .get(url)
           .then((res) => {
-            setResponse(res.data)
+            setResponse(res.data);
           })
           .catch((err) => setError(err))
           .finally(() => setLoading(false));
-      }, 1500);                 //TODO --> Quitar retardo, está puesto para que salga el Spinner
+      }, 1500); //TODO --> Quitar retardo, está puesto para que salga el Spinner
     };
 
     fetchData();

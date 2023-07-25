@@ -14,24 +14,26 @@ import { getFavoritos } from "./utils/helper.functions";
 const URL = "/books.json"; //TODO --> process.env.REACT_APP_BASE_URL
 
 function App(props: any) {
-  const { dataToRedux, addFavo, removeDisponibles, removeInitFavoritos } = props;
+  const { dataToRedux, addFavo, removeDisponibles, removeInitFavoritos } =
+    props;
   const { response, loading, error } = useAxios(URL);
 
   useEffect(() => {
-    if (response) {    //Guardamos todos los libros en el estadoGlobal
+    if (response) {
+      //Guardamos todos los libros en el estadoGlobal
       let fetchedData: Book[] = [];
       let savedBooks: any = getFavoritos();
-      
+
       for (let libro of response.library) {
         fetchedData.push(libro.book);
       }
       dataToRedux(fetchedData);
-      removeInitFavoritos()
+      removeInitFavoritos();
       if (savedBooks) {
         for (let libroSalvado of savedBooks) {
-          for (let i = 0; i < fetchedData.length; i++){
-            if (fetchedData[i].ISBN === libroSalvado.ISBN){
-              addFavo(libroSalvado);           //Se añade a favoritos
+          for (let i = 0; i < fetchedData.length; i++) {
+            if (fetchedData[i].ISBN === libroSalvado.ISBN) {
+              addFavo(libroSalvado); //Se añade a favoritos
               removeDisponibles(libroSalvado); //Se borra de Disponibles
             }
           }

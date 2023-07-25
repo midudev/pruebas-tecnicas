@@ -24,10 +24,10 @@ const initialState: EstadoAplicacion = {
 const booksReducer = (state: EstadoAplicacion = initialState, action: any) => {
   switch (action.type) {
     case FETCH_INIT_DATA:
-        return {
-          ...state,
-          disponibles: action.payload
-      }
+      return {
+        ...state,
+        disponibles: action.payload,
+      };
     case ADD_FAVORITOS:
       return {
         ...state,
@@ -69,11 +69,11 @@ const booksReducer = (state: EstadoAplicacion = initialState, action: any) => {
         ...state,
         filtro: action.payload,
       };
-      case REMOVE_INIT_FAVORITOS:
-        return {
-          ...state,
-          favoritos: []
-        }
+    case REMOVE_INIT_FAVORITOS:
+      return {
+        ...state,
+        favoritos: [],
+      };
     default:
       return state;
   }

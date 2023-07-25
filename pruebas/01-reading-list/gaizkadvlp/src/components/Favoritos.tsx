@@ -7,14 +7,14 @@ import { cuentaLibros } from "../utils/helper.functions";
 
 const Favoritos = (props: any) => {
   const favoritos: Book[] = props.libreria.favoritos;
-  let contador:number = 0;
+  let contador: number = 0;
 
   if (!favoritos) return;
 
   const renderBooks = favoritos.map((libro: Book) => {
-    contador++
+    contador++;
     return (
-      <li className="libro" key={libro.ISBN}>
+      <li key={libro.ISBN}>
         <Libro libro={libro} />
       </li>
     );
@@ -22,7 +22,7 @@ const Favoritos = (props: any) => {
 
   return (
     <>
-      <ul className="listaLibros favoritos">
+      <ul className="favoritos">
         <h2>Favoritos</h2>
         {cuentaLibros(contador, 0)}
         {favoritos.length ? renderBooks : <p>No hay favoritos</p>}
