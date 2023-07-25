@@ -1,0 +1,69 @@
+.cover {
+  height: 100%;
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+}
+
+.book-info {
+  visibility: hidden;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.856);
+  padding: 1.5em 1em;
+}
+
+.book-info > header > h4, .book-info > header > h6 {
+  margin: 5px 0px;
+}
+
+.book-info > header {
+  padding-bottom: 2em;
+  border-bottom: 1px solid rgb(255, 58, 58);
+}
+
+.category{
+  display: inline-block;
+  margin-top: 8px;
+  border-radius: 15px;
+  background-color: rgb(255, 58, 58);
+  padding: 3px 10px;
+  font-size: small;
+  font-weight: bold;
+  width: fit-content;
+}
+
+.book-info > main {
+  margin-top: 20px;
+  text-align: justify;
+  font-size: small;
+  width: 95%;
+}
+
+.button-add {
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
+  border: none;
+  background-color: rgb(255, 58, 58);
+  color: white;
+  transition: background-color .3s ease;
+}
+
+.button-add:hover {
+  background-color: white;
+  color: black;
+}
+
+.book-info > footer {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}

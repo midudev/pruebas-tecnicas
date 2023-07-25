@@ -1,0 +1,37 @@
+@media only screen and (min-width: 600px) {
+  .book-list {
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    list-style: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .book-list {
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    list-style: none;
+  }
+}
+
+
+
+.book-list > li {
+  position: relative;
+}
+
+.book-list > li:hover {
+  transform: scale(1.1);
+  transition: all .3s ease;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.book-list > li:hover > .book-info {
+  visibility: visible;
+}
+

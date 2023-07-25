@@ -1,34 +1,39 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { BookList } from './components/BookList/BookList'
+import { Filters } from './components/Filters/Filters'
+import { Footer } from './components/Footer/Footer'
+import { ReadList } from './components/ReadList/ReadList'
+import { useFilters } from './hooks/useFilters'
+import { useReadList } from './hooks/useReadList'
+import { useWindows } from './hooks/useWindows'
+import bookList from './mocks/books.json'
+import { type Book } from './types'
 
-function App() {
-  const [count, setCount] = useState(0)
+const initialState: Book[] = bookList.library.map(item => item.book)
+
+const App: React.FC = () => {
+  const [books] = useState(initialState)
+  const { displayReadList, displayFilters, toggleFilters, toggleReadList } = useWindows()
+
+  const { filterBooks } = useFilters()
+  const { readBooks } = useReadList()
+
+  const filteredBooks = filterBooks(books)
+  const filteredReadBooks = filterBooks(readBooks)
+
+  const totalBooks = filteredBooks.length
+  const booksInReadList = filteredReadBooks.length
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className='app'>
+
+      <ReadList display={displayReadList} />
+      <Filters booksInList={booksInReadList} available={totalBooks - booksInReadList} displayFilters={displayFilters}></Filters>
+
+      <BookList books={filteredBooks}/>
+      <Footer toggleReadList={toggleReadList} toggleFilters={toggleFilters} />
+    </div>
   )
 }
 

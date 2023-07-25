@@ -1,0 +1,46 @@
+
+.read-list-item {
+  display: flex;
+  gap: 2em;
+  min-width: 70%;
+  padding: 10px 20px;
+  border-bottom: 2px solid rgb(37, 9, 9);
+}
+
+.read-list-item h2, .read-list-item h4 {
+  margin-top: 0;
+  margin-bottom: 3px;
+}
+
+.read-list-item > img {
+  aspect-ratio: 11/16;
+  object-fit: cover;
+  height: 15em;
+}
+
+.read-list-item > div {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+.remove-button {
+  align-self: flex-end;
+  width: 8em;
+  padding: 0.5em 2em;
+  border: 2px solid rgb(255, 60, 60);
+  border-radius: 25px;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(255, 60, 60);
+  transition: all .3s ease;
+}
+
+.remove-button:hover {
+  background-color: rgb(255, 60, 60);
+  color: white;
+}
+
+.remove-button > svg {
+  height: 3em;
+  width: 3em;
+}
