@@ -3,10 +3,12 @@ import { render, screen, cleanup, fireEvent } from '@testing-library/preact';
 import RenderBooks from '../src/components/main/RenderBooks';
 import { books } from '../src/database/books';
 import {
+  currentPath,
   myReadingListISBN,
   myReadingListLength,
   totalFreeBooks,
 } from '../src/signals/store';
+import { filterBooks } from '../src/filters/filterBooks';
 
 const cleanupSignals = () => {
   myReadingListISBN.value = [];
@@ -84,5 +86,28 @@ describe('RenderBooks', () => {
         totalFreeBooks.value + myReadingListLength.value,
       );
     });
+  });
+
+  it('Al querer renderizarse con 0 books en /my-books, deberia renderizarse el componente HasNotBeFound', () => {
+    currentPath.value = '/my-books';
+    const textNotFound = 'No books have been added to your reading list yet.';
+    const newBooks = filterBooks(books, { genre: 'Genero No Existente' });
+
+    render(<RenderBooks books={newBooks} />);
+
+    const isRender = Boolean(screen.getByText(textNotFound));
+    expect(isRender).toBe(true);
+  });
+
+  it('Al querer renderizarse con 0 books, deberia renderizarse el componente HasNotBeFound con otro mensaje', () => {
+    currentPath.value = '/';
+    const textNotFound = 'No books found with the selected filter.';
+    const newBooks = filterBooks(books, { genre: 'Genero No Existente' });
+
+    render(<RenderBooks books={newBooks} />);
+
+    const isRender = Boolean(screen.getByText(textNotFound));
+
+    expect(isRender).toBe(true);
   });
 });
