@@ -21,12 +21,14 @@ specifiers:
   standard: ^17.1.0
   tailwindcss: ^3.3.3
   typescript: '>=2.8.0'
+  uuid: ^9.0.0
   vite: ^4.4.5
   vite-plugin-eslint: ^1.8.1
 
 dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  uuid: 9.0.0
 
 devDependencies:
   '@babel/core': 7.22.9
@@ -4712,6 +4714,11 @@ packages:
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
+
+  /uuid/9.0.0:
+    resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==}
+    hasBin: true
+    dev: false
 
   /version-guard/1.1.1:
     resolution: {integrity: sha512-MGQLX89UxmYHgDvcXyjBI0cbmoW+t/dANDppNPrno64rYr8nH4SHSuElQuSYdXGEs0mUzdQe1BY+FhVPNsAmJQ==}
