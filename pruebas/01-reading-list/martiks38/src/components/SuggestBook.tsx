@@ -48,13 +48,13 @@ export function SuggestBook() {
     if (readingList.every(({ title }) => title !== suggestion?.title)) setIsAdd(false)
   }, [readingList, suggestion])
 
-  const addBook = (ISBN: string) => {
+  const addBook = ({ ISBN, title }: { ISBN: string; title: string }) => {
     if (isAdd) return
 
     setIsAdd(true)
     addToReadingList({ ISBN })
 
-    toast.success('Libro añadido')
+    toast.success(`Se ha añadido: ${title}`)
   }
 
   return suggestion ? (
@@ -66,7 +66,7 @@ export function SuggestBook() {
         <div className={suggestBookStyles.addBookContainer}>
           <button
             className={suggestBookStyles.suggestSection__info__button}
-            onClick={() => addBook(suggestion.ISBN)}
+            onClick={() => addBook({ ISBN: suggestion.ISBN, title: suggestion.title })}
             onMouseLeave={restartAnimation}
             aria-disabled={isAdd}
             aria-describedby='disabledReasonSuggestBook'

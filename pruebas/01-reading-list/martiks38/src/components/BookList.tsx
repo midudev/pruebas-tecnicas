@@ -24,13 +24,13 @@ export function BookList({ books, listType }: BookListProps) {
 
   const lineStyle = typeIsAvailable ? bookButton.addButton__line : bookButton.removeButton__line
 
-  const buttonAction = (isbn: { ISBN: string }) => {
+  const buttonAction = ({ ISBN, title }: { ISBN: string; title: string }) => {
     if (typeIsAvailable) {
-      addToReadingList(isbn)
-      toast.success('Libro añadido')
+      addToReadingList({ ISBN })
+      toast.success(`Se ha añadido: ${title}`)
     } else {
-      removeFromReadingList(isbn)
-      toast.success('Libro removido')
+      removeFromReadingList({ ISBN })
+      toast.success(`Se ha removido: ${title}`)
     }
   }
 
@@ -47,7 +47,7 @@ export function BookList({ books, listType }: BookListProps) {
                 <h3 className={bookListStyles.bookList__item__descriptionTitle}>{title}</h3>
                 <button
                   className={bookButton.actionButton}
-                  onClick={() => buttonAction({ ISBN })}
+                  onClick={() => buttonAction({ ISBN, title })}
                   title={buttonTitles[listType]}
                   aria-label={generateLabelListOfBooks(listType, title)}
                 >
