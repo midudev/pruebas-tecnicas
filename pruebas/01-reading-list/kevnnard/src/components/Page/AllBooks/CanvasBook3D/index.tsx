@@ -6,6 +6,7 @@ import {
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { Model } from "./BookModel";
+import LoaderModel from "./LoaderModel";
 const CanvasBook = ({ img }: { img: string }) => {
   return (
     <Canvas
@@ -16,7 +17,7 @@ const CanvasBook = ({ img }: { img: string }) => {
       }}
       dpr={[1, 2]}
     >
-      <Suspense fallback={null}>
+      <Suspense fallback={<LoaderModel />}>
         <Environment preset="warehouse" />
         <PerspectiveCamera makeDefault position={[0, 30, 600]} />
         <PresentationControls

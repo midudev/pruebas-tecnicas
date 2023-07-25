@@ -3,6 +3,7 @@ import { IconInterface } from "@/interfaces/Icon.interface";
 
 const IconsComponent = ({
   icon = IconsCatalog.MENU,
+  icon2,
   isSolid = false,
   strokeWidth = 1.5,
   className,
@@ -25,6 +26,7 @@ const IconsComponent = ({
       onClick={onClick}
     >
       <path strokeLinecap="round" strokeLinejoin="round" d={icon} />
+      {icon2 && <path strokeLinecap="round" strokeLinejoin="round" d={icon2} />}
     </svg>
   );
 };

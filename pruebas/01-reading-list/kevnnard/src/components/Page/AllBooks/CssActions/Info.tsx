@@ -30,7 +30,7 @@ const Info = () => {
       <span
         className={`${classes.info} absolute text-[11px] text-center backdrop-blur-md p-2 z-[100] font-sans rounded-full top-3 left-12 transition ease-in-out duration-500 select-none`}
       >
-        Interactue con el libro, Doble click para ver su información
+        Interactue con el libro, click sobre el ojo para ver la información
       </span>
     </>
   );

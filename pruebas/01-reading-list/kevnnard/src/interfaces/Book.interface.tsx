@@ -1,5 +1,3 @@
-import { Dispatch, SetStateAction } from "react";
-
 /**
  * ↓↓ BookSliceProps - /INTERFACE/ __ PARA TIPAR DATOS DE ESTADOS GLOBALES CON REDUX TOOLKIT ↓↓
  */
@@ -111,33 +109,3 @@ export interface BookProps {
   priority?: number;
 }
 /** ***********************************************************  **/
-
-/**
- * ↓↓ DataBookInterface - /INTERFACE/ __ PARA TIPAR DATOS DE UN COMPONENTE Y PASAR PROPIEDADES ↓↓
- */
-export interface DataBookInterface {
-  /**
-   * ↓↓ index - /NUMBER/ __ NUMERO DE INDICE DEL LIBRO SELECCIONADO ↓↓
-   */
-  index: number;
-  /**
-   * ↓↓ item - /BookProps/ __ TIPADO PARA DATOS DE 1 LIBRO ↓↓
-   */
-  item: BookProps;
-  /**
-   * ↓↓ dataStatus - /BOOLEAN/ __ ESTADO VERDADERIO O FALSE PARA MOSTRAR O ESCONDER DATOS DE UN LIBRO ↓↓
-   */
-  dataStatus: boolean;
-  /**
-   * ↓↓ setDataStatus - /DISPATCH STATE/ __ FUNCION PARA CAMBIAR ESTADO DE VERDADERO O FALSO PARA MOSTRAR O ESCONDER DATOS DE 1 LIBRO ↓↓
-   */
-  setDataStatus: Dispatch<SetStateAction<boolean>>;
-  /**
-   * ↓↓ accessKey - /NUMBER or UNDEFINED/ __ ESTADO DE NUMERO DE INDICE DEL LIBRO PARA PODER IDENTIFICAR 1 LIBRO Y MOSTRAR SUS DATOS ↓↓
-   */
-  accessKey: number | undefined;
-  /**
-   * ↓↓ setAccessKey - /DISPATCH STATE/ __ FUNCION PARA GUARDAR INDICE EN EL QUE SE ENCUENTRA LA ACCION DE MOSTRAR  ↓↓
-   */
-  setAccessKey: Dispatch<SetStateAction<any>>;
-}
