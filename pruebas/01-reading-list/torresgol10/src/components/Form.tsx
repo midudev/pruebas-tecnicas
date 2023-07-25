@@ -1,12 +1,22 @@
+import { useState } from "react"
 import useBooks from "../hooks/useBooks"
 
 type Props = {
     filterByGenre: (genre: string) => void,
-    filterByText: (text: string) => void
+    filterByText: (text: string) => void,
+    filterByPages: (pages: number) => void
 }
 
-export default function Form({ filterByGenre, filterByText }: Props) {
+export default function Form({ filterByGenre, filterByText, filterByPages }: Props) {
     const { genres } = useBooks()
+    //Variable para controlar el numero de pagina y mostrarlo en el label
+    const [pages, setPages] = useState<number | null>(null)
+
+    const handlerChangePages = (e: React.FormEvent<HTMLInputElement>) => {
+        const nPages = parseInt(e.currentTarget.value)
+        setPages(nPages)
+        filterByPages(nPages)
+    }
 
     return (
         <form>
@@ -22,8 +32,8 @@ export default function Form({ filterByGenre, filterByText }: Props) {
                     </select>
                 </div>
                 <div className='flex flex-col gap-2'>
-                    <label htmlFor='genre'>Numero de pagina</label>
-                    <input type="range" min="20" max="500" step="50" />
+                    <label htmlFor='genre'>Numero de pagina maximo: {pages ?? ''}</label>
+                    <input type="range" min="100" max="1200" step="100" onChange={handlerChangePages} />
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor='genre'>Texto libre</label>

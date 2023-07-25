@@ -26,5 +26,11 @@ export default function useBooks() {
         setBooks([...store.filter(({ book }) => book.title.toLowerCase().includes(text.toLowerCase()))])
     }
 
-    return { books, booksRead: storeRead, genres: genres.current, addRead, removeRead, filterByGenre, filterByText }
+    //Funcion para filtrar por numero de paginas pasandole un numero maximo de paginas por parametro
+    const filterByPages = (pages: number): void => {
+        if (!pages) return setBooks(store)
+        setBooks([...store.filter(({ book }) => book.pages <= pages)])
+    }
+
+    return { books, booksRead: storeRead, genres: genres.current, addRead, removeRead, filterByGenre, filterByText, filterByPages }
 }

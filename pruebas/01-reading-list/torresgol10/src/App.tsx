@@ -5,13 +5,13 @@ import Form from './components/Form'
 
 
 function App() {
-  const { books, booksRead, addRead, filterByGenre, filterByText } = useBooks()
+  const { books, booksRead, addRead, filterByGenre, filterByText, filterByPages } = useBooks()
 
   return (
     <>
       <main className='p-4'>
         <section className='my-4'>
-          <Form filterByGenre={filterByGenre} filterByText={filterByText} />
+          <Form filterByGenre={filterByGenre} filterByText={filterByText} filterByPages={filterByPages} />
         </section>
         <section>
           <h1 className='py-4'>{books.length} Libros Disponibles</h1>
