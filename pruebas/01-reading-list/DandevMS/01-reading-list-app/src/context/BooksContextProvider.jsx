@@ -17,21 +17,18 @@ export const BooksProvider = ({ children }) => { //eslint-disable-line
 
  // Filtrar libros por género
  const filterBooksByGenre = (genre) => {
-  const filteredBooks = data.library.filter((book) => book.book.genre === genre);
+  const filteredBooks = data.library.filter((book) => book.book.genre === genre || genre === "todos" );
   setBooks(filteredBooks);
 };
 
-
-
-  // remove book list render
-  const removeFromReadingList  = (book) => {
-    setReadingList((prevReadingList) => prevReadingList.filter((item) => item.id !== book.id));
-  }
-
-  // update localStorage with change list render
-  // useEffect(() => {
-  //   localStorage.setItem("readingList", JSON.stringify(readingList));
-  // }, [readingList]);
+// Eliminar un libro de la lista de lectura y actualizar el localStorage
+const removeBook = (book) => {
+  setReadingList((prevReadingList) => prevReadingList.filter((b) => b !== book));
+  localStorage.setItem(
+    "readingList",
+    JSON.stringify(readingList.filter((b) => b !== book))
+  );
+}
 
 
   const contextValue = {
@@ -39,10 +36,10 @@ export const BooksProvider = ({ children }) => { //eslint-disable-line
     setBooks,
     readingList,
     setReadingList,
-    removeFromReadingList,
     genres,
     setGenres,
     filterBooksByGenre,
+    removeBook,
   }
 
   return (

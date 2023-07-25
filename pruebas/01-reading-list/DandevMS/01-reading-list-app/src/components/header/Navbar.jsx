@@ -1,10 +1,11 @@
 import Logo from "../../assets/images/logo-icon.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BiBookContent } from "react-icons/bi";
 import Sidebar from "../Sidebar/Sidebar";
 
 function Navbar() {
   const [toggleSidebar, setToggleSidebar] = useState(false);
+
 
   const HandleToggleSidebar = () => {
     setToggleSidebar(!toggleSidebar);
@@ -15,9 +16,10 @@ function Navbar() {
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
     // Aquí puedes agregar lógica adicional para cambiar el tema de tu aplicación
-  };
+  }
+
   return (
-    <nav className="flex justify-between bg-white w-full h-15">
+    <nav className={`fixed flex justify-between bg-white w-full h-15 z-10 `}>
       <div className="logo-icon ml-10 flex justify-center items-center ">
         <div className="bg-[#F7F5F6] p-3">
           <img src={Logo} alt="" className="w-16" />

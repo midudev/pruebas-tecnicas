@@ -1,19 +1,23 @@
 import { useContext, useEffect } from "react"
 import { BooksContext } from "../../context/BooksContextProvider"
-
+import { BiBookAdd } from "react-icons/bi";
 
 
 function ListRender() {
 
-  const { readingList, removeFromReadingList, setReadingList} = useContext(BooksContext);
+  const { readingList, removeBook, setReadingList} = useContext(BooksContext);
 
   // obtenet la data del localStorage
-  // useEffect(() => {
-  //   const data = localStorage.getItem("readingList");
-  //   if (data) {
-  //     setReadingList(JSON.parse(data));
-  //   }
-  // }, []);
+  useEffect(() => {
+    const storedReadingList  = JSON.parse(localStorage.getItem("readingList"));
+    if (storedReadingList ) {
+      setReadingList(storedReadingList );
+    }
+  }, []); //eslint-disable-line
+
+
+
+
 
   return (
     <div className="grid grid-cols-2 gap-3 mt-4">
@@ -38,13 +42,13 @@ function ListRender() {
               <p>Año: {book.book.year}</p>
             </div>
           </div>
-          {/* <div className="flex justify-center items-center p-4 mt-2 relative">
-            <button onClick={() => addToRedingList(book)}  className="bg-cyan-400 p-4 rounded-md hover:bg-cyan-300 flex justify-center items-center">
+          <div className="flex justify-center items-center p-4 mt-2 relative">
+            <button onClick={() => removeBook(book)}  className="bg-red-400 p-4 rounded-md hover:bg-red-300 flex justify-center items-center">
               <BiBookAdd className="text-2xl mr-2" />
-              add book
+              remove book
               </button>
            
-          </div> */}
+          </div>
         </div>
         ))
       }

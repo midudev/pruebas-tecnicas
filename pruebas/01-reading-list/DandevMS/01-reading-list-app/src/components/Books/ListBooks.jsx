@@ -7,9 +7,6 @@ import { useEffect } from "react";
 function ListBooks() {
   const [selectedGenre, setSelectedGenre] = useState("");
   const [avaliableBooks, setAvailableBooks] = useState([]);
-  const [counter, setCounter] = useState(0); //eslint-disable-line
-
-
 
   // contexto global
   const {books, setBooks, setReadingList, readingList, genres, filterBooksByGenre} = useContext(BooksContext);
@@ -25,19 +22,14 @@ function ListBooks() {
     setAvailableBooks(books.length);
   }, [books]);
 
-  // agregar libro a la lista de lectura
+  
   const addToRedingList = (book) => {
     setReadingList((prevReadingList) => [...prevReadingList, book]);
 
-    // guardar en localStorage
     localStorage.setItem("readingList", JSON.stringify(readingList));
 
-    // eliminar libro de la lista de libros disponibles
-   
-   
+    setBooks((prevBooks) => prevBooks.filter((b) => b !== book));
   }
-
-  console.log(readingList);
 
 
   return (
@@ -57,11 +49,14 @@ function ListBooks() {
             }}
             className="p-2 border rounded-md"
           >
+             <option value="todos">todos</option>
             {genres.map((genre, index) => (
               <option key={index} value={genre}>
                 {genre}
+
               </option>
             ))}
+           
             
           </select>
         </div> 
