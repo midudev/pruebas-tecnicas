@@ -19,9 +19,9 @@ type Props = {
 export const Filters = component$(
   ({ onFilterChange, onGenreChange, filter, genre }: Props) => {
     return (
-      <section class="flex justify-between items-center my-12">
+      <section class="flex justify-between items-center my-4">
         <div class="flex items-center">
-          <label class="mr-2 text-white">Ordenar por</label>
+          <label class="mr-2 text-lg text-white">Ordenar por</label>
           <select
             value={filter}
             class="rounded-md"
@@ -40,7 +40,7 @@ export const Filters = component$(
         </div>
 
         <div class="flex-items-center">
-          <label class="mr-2 text-white">Filtrar por género</label>
+          <label class="mr-2 text-lg text-white">Filtrar por género</label>
           <select
             value={genre}
             class="rounded-md"
