@@ -1,39 +1,54 @@
 import React from "react";
+import { useLibrary } from "../contexts/library.context";
+
+type GenreCountMap = {
+  [genre: string]: number;
+};
 
 const AsideMenu: React.FC = () => {
+  const { books, setFilteredBooks, myList } = useLibrary();
+
+  const genreCountMap: GenreCountMap = books.reduce((acc, book) => {
+    const genre = book.book.genre;
+    acc[genre] = (acc[genre] || 0) + 1;
+    return acc;
+  }, {} as GenreCountMap);
+
+  const filterBooksByGenre = (genre: string) => {
+    const booksByGenre = books.filter((book) => book.book.genre === genre);
+    setFilteredBooks(booksByGenre);
+  };
+
   return (
-    <aside className="w-15vw bg-stone-100 text-stone-800">
+    <aside className="min-w-15vw bg-stone-100 text-stone-800">
       <div className="sticky top-0 left-0 flex flex-col gap-8 p-8">
         <h3 className="font-bold text-xl">Libroteca</h3>
         <div>
           <h4 className="font-medium text-lg">Catálogo</h4>
           <ul className="flex flex-col gap-4">
             <li className="text-sm">
-              <div className="font-medium">Disponibles</div>
+              <div className="font-medium">Disponibles ({books.length})</div>
             </li>
-            <li className="text-sm">
-              <div className="font-medium">Número de páginas</div>
-              <ul className="flex flex-col gap-2">
-                <li>hasta 200 páginas</li>
-                <li>200 a 600 páginas</li>
-                <li>más de 600 páginas</li>
-                <li>
-                  <input className="input w-full" placeholder="desde" />
-                  <input className="input w-full" placeholder="hasta" />
-                </li>
-              </ul>
-            </li>
-
             <li className="text-sm">
               <div className="font-medium">Géneros</div>
               <ul>
-                <li>Romance (2)</li>
+                {Object.entries(genreCountMap).map(([genre, count]) => {
+                  return (
+                    <li
+                      key={genre}
+                      className="cursor-pointer"
+                      onClick={() => filterBooksByGenre(genre)}
+                    >
+                      {genre} ({count})
+                    </li>
+                  );
+                })}
               </ul>
             </li>
           </ul>
         </div>
         <div>
-          <p>Mi lista</p>
+          <h4>Mi lista ({myList.length})</h4>
         </div>
       </div>
     </aside>
