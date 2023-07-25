@@ -17,6 +17,7 @@ export const ReadingList = component$(
     const booksAvailabilityMessage = pluralize("libro", books.length)
 
     const readingListId = useId()
+
     useVisibleTask$(() => {
       const readingList = document.getElementById(readingListId)
 
@@ -43,7 +44,10 @@ export const ReadingList = component$(
 
         if (!eventTarget) return
 
-        if (eventTarget.matches("aside") || eventTarget.matches("aside *")) {
+        if (
+          eventTarget.matches(`#${readingListId}`) ||
+          eventTarget.matches(`#${readingListId} *`)
+        ) {
           const bookISBN = event.dataTransfer?.getData("text/plain")
 
           if (!bookISBN) return
