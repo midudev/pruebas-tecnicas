@@ -47,3 +47,9 @@
 	opacity: 0.3;
 	cursor: not-allowed;
 }
+
+.RangeLabelValue {
+  font-size: 12px;
+  font-family: 'Libre Caslon Text', serif;
+  color: #9b9a9a;
+}

@@ -17,7 +17,11 @@ export const SelectGenre: React.FC = () => {
     <div className={styles.Filter}>
       <label className={styles.FilterLabel}>Filter by genre</label>
       <div className={styles.FilterSelectContainer}>
-        <select className={styles.FilterSelect} onChange={handleChangeGenre} defaultValue={filtersBooks.genre}>
+        <select
+          defaultValue={filtersBooks.genre}
+          onChange={handleChangeGenre}
+          className={styles.FilterSelect}
+        >
           <option value="All" className={styles.FilterOption}>All</option>
           <option value="Fantasía" className={styles.FilterOption}>Fantasy</option>
           <option value="Ciencia ficción" className={styles.FilterOption}>Science fiction</option>

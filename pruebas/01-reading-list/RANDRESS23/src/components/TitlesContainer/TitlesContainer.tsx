@@ -5,7 +5,7 @@ export const TitlesContainer: React.FC = () => {
   return (
     <div className={styles.TitlesContainer}>
       <motion.h1 className={styles.TitleShelf}>Reading List</motion.h1>
-      <motion.p className={styles.SubTitleShelf}>Lorem ipsum dolor sit amet.</motion.p>
+      <motion.p className={styles.SubTitleShelf}>Books on reading list</motion.p>
     </div>
   )
 }

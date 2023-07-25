@@ -8,7 +8,7 @@ export const BookSign: React.FC = () => {
 
   return (
     <div className={styles.BookSign}>
-      <div className={styles.Sign}>Books to read: {booksToRead.length}</div>
+      <div className={styles.Sign}>{booksToRead.length}</div>
     </div>
   )
 }

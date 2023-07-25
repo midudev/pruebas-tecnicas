@@ -8,12 +8,14 @@
 
 .TitleShelf {
   font-size: 50px;
+  text-align: center;
   font-family: 'Libre Caslon Text', serif;
   color: #2c1810;
 }
 
 .SubTitleShelf {
   font-size: 16px;
+  text-align: center;
   font-family: 'Montserrat', sans-serif;
   color: #2c1810;
 }

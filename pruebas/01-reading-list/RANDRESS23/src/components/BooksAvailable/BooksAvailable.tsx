@@ -1,29 +1,9 @@
-import { useEffect } from 'react'
 import { BookItem } from '.'
-import { useSelector, useDispatch } from 'react-redux'
-import { type FiltersBooks, type Book, type Library } from '../../models'
-import { type AppStore } from '../../redux'
-import { removeBookAvailable } from '../../redux/states/booksAvailable'
-import { addBookToRead } from '../../redux/states/booksToRead'
 import styles from './styles/BooksAvailable.module.css'
-import { removeBookFiltered, sortByGenre } from '../../redux/states/booksFiltered'
+import { useDebounceFilters } from '../../hooks/useDebounceFilters'
 
 export const BooksAvailable: React.FC = () => {
-  const booksAvailable: Library = useSelector((state: AppStore) => state.booksAvailable)
-  const filtersBooks: FiltersBooks = useSelector((state: AppStore) => state.filtersBooks)
-  const booksFiltered: Library = useSelector((state: AppStore) => state.booksFiltered)
-  const dispatch = useDispatch()
-
-  const handleAddToRead = ({ book }: { book: Book }): void => {
-    dispatch(addBookToRead({ newBook: book }))
-    dispatch(removeBookAvailable({ bookISBN: book.ISBN }))
-    dispatch(removeBookFiltered({ bookISBN: book.ISBN }))
-  }
-  console.log({ filtersBooks })
-
-  useEffect(() => {
-    dispatch(sortByGenre({ booksAvailable, genre: filtersBooks.genre }))
-  }, [filtersBooks])
+  const { booksFiltered, handleAddToRead } = useDebounceFilters()
 
   return (
     <div className={styles.BooksAvailable}>
