@@ -1,0 +1,39 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+    & #app {
+        width: 100%;
+        position: relative;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        
+        
+        & > div {
+            height: 100vh;
+            overflow: auto;
+            
+            &.dark {
+                background-color: #05020d;
+                color: white;
+            }
+        }
+        
+        & label {
+            text-align: center;
+            display: inline-block;
+               
+            &.with-color.full, &.with-color:first-letter {
+                color: orange;
+                
+            }
+        }
+        
+        & section {
+            //padding-inline: 1em;
+        }
+        
+    }
+}

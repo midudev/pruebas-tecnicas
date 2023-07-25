@@ -1,0 +1,46 @@
+.filters {
+    display: block;
+    text-align: center;
+    max-width: 70ch;
+    margin: 5em auto 0 auto;
+    
+    & .filters-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        //flex-wrap: wrap;
+
+        & label {
+            all: unset;
+            width: 150px;
+            display: flex;
+            border: 1px solid blue;
+            flex-direction: column;
+            margin-block: 1em;
+            gap: 50px;
+            
+            & input, & select, {
+                cursor: pointer;
+                margin-block: .5em;
+                text-align: center;
+                max-width: 80%;
+                background: none;
+                padding: .3em;
+                border-radius: 2px;
+                border: none;
+                border-bottom: 1px solid green ;
+            }
+            
+            & select {
+                border: 1px solid green;
+            }
+        }
+        
+    }
+}
+
+.dark div label {
+    & input, & select {
+        color: white;
+    }
+}
