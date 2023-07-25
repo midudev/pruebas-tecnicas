@@ -10,8 +10,16 @@ const minAndMaxOfPages:number[] = list
 .sort( (a,b) => a - b)
 //.filter( (item,index,array) => (index == 0 || index == array.length - 1) );
 
+const getBookByName = (name:string) => list.filter(x => x.title == name)[0];
+
 export interface userList {library:Book[],forReading:Book[]}
 export interface genreAndPages {genre:string,pages:number}
+export interface libraryHookCRUD {
+    setAndUnsetForReading:{
+        setForReading:(bookName:string) => void,
+        unsetForReading:(bookName:string) => void,
+    }
+}
 
 const libraryHook = () => {
 
@@ -24,8 +32,8 @@ const libraryHook = () => {
 
     const libraryHookCRUD = {
         setAndUnsetForReading:{
-            setForReading:(bookName:string) => {},
-            unsetForReading:(bookName:string) => {}
+            setForReading:(bookName:string) => setUserList(v => ({...v,forReading:[...v.forReading,getBookByName(bookName)]})),
+            unsetForReading:(bookName:string) => setUserList(v => ({...v,forReading:v.forReading.filter(x => x.title !== bookName)}))
         }
     }
 
@@ -39,7 +47,8 @@ const libraryHook = () => {
 
     
     return({    userList , setGenreAndPages ,
-                genres , minAndMaxOfPages   })
+                genres , minAndMaxOfPages,
+                libraryHookCRUD })
 
 }
 

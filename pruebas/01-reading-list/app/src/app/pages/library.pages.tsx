@@ -18,7 +18,7 @@ const Library = () => {
             <div className={styles.bookList}>{
                 library
                 .sort( (a,b) => sortAbc(a.title,b.title) )
-                .map( (x,i) => (<BookComponent key={i} book={x} cleanOption={false}/>) ) 
+                .map( (x,i) => (<BookComponent key={i} book={x} intoToReadList={false}/>) ) 
             }</div>
         </>
     )
