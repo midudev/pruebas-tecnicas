@@ -1,9 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { userList } from '../hooks/library.hook';
-import { libraryProps, sortAbc } from '../pages/library.pages';
+import { sortAbc } from '../pages/library.pages';
 import styles from '../styles/filter.module.css';
+import { mainContext } from '../context/main.context';
 
 const CountFragment = ({userList}:{userList:userList}) => 
     <div className={styles.countFragment}>
@@ -35,7 +36,7 @@ const GenresFragment = ({genres,value,setValue}:genresProps) => {
                 {genres
                     .sort( (a,b) => (a == 'all') ? 1 : -1)
                     .sort( (a,b) => sortAbc(a,b))
-                    .map( (x,i) => (<option>{(x == 'all') ? 'Todos' : x}</option>))}
+                    .map( (x,i) => (<option key={i} value={x}>{(x == 'all') ? 'Todos' : x}</option>))}
             </select>
         </div>
     )
@@ -44,8 +45,12 @@ const GenresFragment = ({genres,value,setValue}:genresProps) => {
 
 const Filter = () => {
 
-    const [ rangeValue , setRangeValue ] = useState<number>(minAndMaxOfPages[minAndMaxOfPages.length - 1]);
+    const { minAndMaxOfPages , userList , genres , setGenreAndPages } = useContext(mainContext) ;
+
+    const [ rangeValue , setRangeValue ] = useState<number>(minAndMaxOfPages[0]);
     const [ genre , setGenre ] = useState<string>('all');
+
+    useEffect(() => setGenreAndPages({genre,pages:rangeValue}),[rangeValue,genre])
 
     return(
         <div className={styles.filterComponent}>
