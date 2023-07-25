@@ -1,29 +1,24 @@
 <script lang='ts' context='module'>
 
-  import type { Author } from '$types'
+  import type { Book } from '$types'
   import { InfoIcon } from '$assets/icons'
 
 </script>
 
 <script lang='ts'>
 
-  // Export all the properties of the Book type.
-  export let title: string
-  export let pages: number
-  export let genre: string
-  export let cover: string
-  export let synopsis: string
-  export let year: number
-  export let ISBN: string
-  export let author: Author
+  export let bookData: Book
 
 </script>
 
-<div class="relative flex flex-col w-full aspect-cover shadow-sm rounded-xl group">
+<li
 
-  <img class="w-full h-full rounded-xl" src={cover} alt={title} />
+  class="relative flex flex-col w-52 aspect-cover shadow-sm rounded-xl group"
+>
 
-  <div class='absolute h-full w-full'>
+  <img class="w-full h-full rounded-xl" src={bookData.cover} alt={bookData.title} />
+
+  <!-- <div class='absolute h-full w-full'>
     <div class='h-full w-full bg-black rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-40'></div>
   </div>
 
@@ -33,6 +28,6 @@
       <InfoIcon />
     </button>
 
-  </div>
+  </div> -->
 
-</div>
+</li>
