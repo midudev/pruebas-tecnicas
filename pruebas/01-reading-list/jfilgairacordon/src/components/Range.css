@@ -1,0 +1,29 @@
+.range-container{
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  gap: 12px;
+  height: 100%;
+}
+
+.range-container input[type=range]{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 138px;
+  height: 8px;
+  border-radius: 8px;
+  background-color: black;
+  outline: none;
+  user-select: none;
+  transition: border-color 150ms linear;
+}
+
+.range-container .control-row{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.range-container .control-row span{
+  width: 50px;
+}

@@ -1,0 +1,22 @@
+button.primary-button{
+  background-color: #09f;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  height: 40px;
+  width: 200px;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button.primary-button:hover{
+  background-color: #0cf;
+}
+
+button.primary-button:active{
+  background-color: rgb(1, 68, 112);
+}

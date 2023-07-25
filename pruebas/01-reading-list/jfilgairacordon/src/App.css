@@ -1,0 +1,69 @@
+#root{
+  height: 100%;
+  flex: grid;
+  gap: 6px;
+}
+
+.app{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.app .main-content {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 60px 70px 1fr;
+  gap: 16px;
+  padding: 1rem;
+  overflow: hidden; /* Para hacer scroll independiente en las listas. */
+}
+
+.app .main-content > * {
+  grid-column: 1;
+}
+
+.app header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px
+}
+
+.app header h1{
+  font-weight: normal;
+}
+
+.app header span.filter-total{
+  font-size: 2em;
+}
+
+.app .vertical-separator{
+  height: 28px;
+  width: 5px;
+  border-radius: 20px;
+  background-color: #09f;
+}
+
+.app .main-content aside{
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  width: 300px;
+}
+
+.app .footer{
+  height: 40px;
+  background-color: black;
+  color: #09f;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 12px;
+}
+
+a{
+  color: #09f;
+  text-decoration: none;
+}
