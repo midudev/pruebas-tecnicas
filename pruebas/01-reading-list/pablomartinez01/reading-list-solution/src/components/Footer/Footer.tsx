@@ -8,13 +8,16 @@ interface Props {
 
 export const Footer: React.FC<Props> = ({ toggleReadList, toggleFilters }) => {
   return (
-    <footer className='app-footer'>
-        <label onClick={toggleReadList}>
+    <>
+      <div className="mobile-correction"></div>
+      <footer className="app-footer">
+        <button onClick={toggleReadList}>
           <MenuIcon />
-        </label>
-        <label onClick={toggleFilters}>
+        </button>
+        <button onClick={toggleFilters}>
           <FiltersIcon />
-        </label>
+        </button>
       </footer>
+    </>
   )
 }

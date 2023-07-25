@@ -1,11 +1,14 @@
 .filters {
   background-color: rgba(0, 0, 0, 0.961);
   position: fixed;
+  display: flex;
+  flex-direction: column;
   bottom: 0;
   right: 0;
   margin: 0px 4px;
   border-radius: 10px;
   z-index: 2;
+  max-height: 70%;
   transition: all .2s ease;
 }
 
@@ -21,7 +24,7 @@
 }
 
 .filters-header > h1 {
-  margin: 0px 1em;
+  margin: 0px 15px;
 }
 
 .filters-main, .group{
@@ -116,6 +119,11 @@
   margin-bottom: 0.5em;
 }
 
+.filters-main > label > .bubble {
+  font-size: small;
+  margin-left: 0.5em;
+}
+
 
 .bubble {
   display: inline-flex;
@@ -123,7 +131,7 @@
   background-color: rgb(255, 58, 58);
   border-radius: 20px;
   padding: 5px 10px;
-  font-size: small;
+  font-size: medium;
 }
 
 .numbers-zone {

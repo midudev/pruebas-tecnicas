@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const ReadList: React.FC<Props> = ({ display }) => {
-  const { readBooks } = useReadList()
+  const { readBooks, removeBookFromList } = useReadList()
 
   return (
     <div className={`read-list-window ${display ? 'show-read-list-window' : 'hide-window'}`}>
@@ -16,7 +16,12 @@ export const ReadList: React.FC<Props> = ({ display }) => {
       </header>
       <main className='scroll'>
         <ul className='read-list'>
-        { readBooks.map(item => <ReadItem key={item.ISBN} book={item} />) }
+        {
+          readBooks.map(item => {
+            const removeBook = () => { removeBookFromList(item) }
+            return <ReadItem key={item.ISBN} book={item} onRemove={removeBook} />
+          })
+        }
         </ul>
       </main>
     </div>

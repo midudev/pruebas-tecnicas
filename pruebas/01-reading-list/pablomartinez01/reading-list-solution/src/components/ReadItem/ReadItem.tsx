@@ -4,9 +4,10 @@ import './readItem.css'
 
 interface Props {
   book: Book
+  onRemove: () => void
 }
 
-export const ReadItem: React.FC<Props> = ({ book }) => {
+export const ReadItem: React.FC<Props> = ({ book, onRemove }) => {
   return (
     <li className="read-list-item" key={book.ISBN}>
       <img src={book.cover} alt={book.title} />
@@ -15,7 +16,7 @@ export const ReadItem: React.FC<Props> = ({ book }) => {
         <h4>{book.author.name}</h4>
         <span className="category">{book.genre}</span>
         <p>{book.synopsis}</p>
-        <button className='remove-button'>
+        <button onClick={() => { onRemove() }} className='remove-button'>
           <RemoveIcon />
         </button>
       </div>

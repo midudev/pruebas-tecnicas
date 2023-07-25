@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
+import { Toaster } from 'react-hot-toast'
 import './App.css'
 import { BookList } from './components/BookList/BookList'
 import { Filters } from './components/Filters/Filters'
@@ -13,25 +14,23 @@ import { type Book } from './types'
 const initialState: Book[] = bookList.library.map(item => item.book)
 
 const App: React.FC = () => {
-  const [books] = useState(initialState)
   const { displayReadList, displayFilters, toggleFilters, toggleReadList } = useWindows()
-
-  const { filterBooks } = useFilters()
+  const { filters, filterBooks } = useFilters()
+  const [books] = useState(initialState)
   const { readBooks } = useReadList()
 
-  const filteredBooks = filterBooks(books)
-  const filteredReadBooks = filterBooks(readBooks)
+  const filteredBooks = useMemo(() => { return filterBooks(books) }, [filters])
+  const filteredReadBooks = useMemo(() => { return filterBooks(readBooks) }, [filters, readBooks])
 
   const totalBooks = filteredBooks.length
   const booksInReadList = filteredReadBooks.length
 
   return (
     <div className='app'>
-
+      <Toaster position="top-right" reverseOrder={false}/>
       <ReadList display={displayReadList} />
-      <Filters booksInList={booksInReadList} available={totalBooks - booksInReadList} displayFilters={displayFilters}></Filters>
-
       <BookList books={filteredBooks}/>
+      <Filters booksInList={booksInReadList} available={totalBooks - booksInReadList} displayFilters={displayFilters}></Filters>
       <Footer toggleReadList={toggleReadList} toggleFilters={toggleFilters} />
     </div>
   )

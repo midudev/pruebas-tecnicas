@@ -8,15 +8,16 @@ interface Props {
 }
 
 export const BookList: React.FC<Props> = ({ books }) => {
-  const { addBookToList } = useReadList()
+  const { addBookToList, isBookInList } = useReadList()
   return (
     <ul className="book-list">
       {books.map((item) => (
-        <BookItem
-          key={item.ISBN}
-          book={item}
-          addBookToList={addBookToList}
-        />
+          <BookItem
+            key={item.ISBN}
+            book={item}
+            onAdd={addBookToList}
+            isSelected={isBookInList(item)}
+          />
       ))}
     </ul>
   )

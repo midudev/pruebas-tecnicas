@@ -1,4 +1,5 @@
 
+
 .read-list-item {
   display: flex;
   gap: 2em;
@@ -7,7 +8,8 @@
   border-bottom: 2px solid rgb(37, 9, 9);
 }
 
-.read-list-item h2, .read-list-item h4 {
+.read-list-item h2,
+.read-list-item h4 {
   margin-top: 0;
   margin-bottom: 3px;
 }
@@ -32,7 +34,7 @@
   border-radius: 25px;
   background-color: rgba(0, 0, 0, 0);
   color: rgb(255, 60, 60);
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
 .remove-button:hover {
@@ -43,4 +45,31 @@
 .remove-button > svg {
   height: 3em;
   width: 3em;
+}
+
+@media only screen and (max-width: 600px) {
+  .read-list-item > img {
+    height: 8em;
+  }
+
+  .read-list-item h2 {
+    font-size: small;
+  }
+  .read-list-item h4 {
+    font-size: xx-small;
+  }
+
+  .read-list-item p {
+    font-size: x-small;
+  }
+
+  .remove-button {
+    width: 4em;
+    padding: 0;
+  }
+
+  .remove-button > svg {
+    height: 2em;
+    width: 2em;
+  }
 }

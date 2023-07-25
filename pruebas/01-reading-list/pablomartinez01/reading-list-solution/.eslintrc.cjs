@@ -20,7 +20,7 @@ module.exports = {
             }
         }
     ],
-    "ignorePatterns" : [".eslintrc.cjs"],
+  "ignorePatterns" : [".eslintrc.cjs", "**/*/*.spec.ts", "**/*.config.ts"],
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module",

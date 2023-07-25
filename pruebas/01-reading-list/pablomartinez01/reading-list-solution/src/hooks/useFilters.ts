@@ -15,7 +15,7 @@ export function useFilters () {
 
   function filterBooks (books: Book[]) {
     return books.filter(book => {
-      const filterPages = book.pages >= filters.pages
+      const filterPages = book.pages <= filters.pages
       const filterGenre = book.genre === filters.genre
 
       if (filters.genre === Genres.ALL) {
