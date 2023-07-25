@@ -16,3 +16,6 @@ npm install
 
 npm run dev
 `
+## Link de deploy
+
+https://elian-emir--cool-faloodeh-982325.netlify.app/
