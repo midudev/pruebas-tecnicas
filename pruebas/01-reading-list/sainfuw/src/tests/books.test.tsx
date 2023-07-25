@@ -5,10 +5,10 @@ import App from '../App';
 import { useBooks } from '../hooks/useBooks';
 
 
-describe('App', () => {
+describe('App, basic testings', () => {
   afterEach(cleanup)
 
-  it('shold be books in the collection', () => {
+  it('should be books in the collection', () => {
     const { books } = useBooks()
     expect(books.length).toBeGreaterThan(0)
   })

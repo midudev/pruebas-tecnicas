@@ -3,7 +3,7 @@ import { useBooks } from "../hooks/useBooks";
 import { useFilters } from "../hooks/useFilters";
 
 export function Filters() {
-  const { genres } = useBooks()
+  const { uniqueGenres, maximumPages } = useBooks()
   const { filters, setFilters } = useFilters()
   const pageId = useId()
 
@@ -26,7 +26,7 @@ export function Filters() {
           type="range"
           id={pageId}
           min='0'
-          max='2000'
+          max={maximumPages}
           onChange={handleRangeChange}
           value={filters.pages}
         />
@@ -37,7 +37,7 @@ export function Filters() {
         className="border border-background-light bg-secondary text-sm rounded-lg block w-full p-2.5 text-primary self-start font-pop"
       >
         <option value="all">All Genres</option>
-        {genres.map(genre => <option key={genre} value={genre}>{genre}</option>)}
+        {uniqueGenres.map(genre => <option key={genre} value={genre}>{genre}</option>)}
       </select>
     </section>
   );
