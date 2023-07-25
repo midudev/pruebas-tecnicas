@@ -3,8 +3,8 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: dark;
-  color: rgba(255, 255, 255, 0.87);
+  color-scheme: light;
+  color: rgb(17 24 39);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,8 +13,8 @@
   -webkit-text-size-adjust: 100%;
 
   /* Variables */
-  --header-color: #232323;
-  --books-container-color: #27272a;
+  --header-color: rgb(45 212 191);
+  --books-container-color: rgb(241 245 249);
 }
 
 body {
@@ -76,7 +76,7 @@ body {
   font-size: 0.9rem;
   font-weight: 400;
   text-align: center;
-  margin: 5px 0;
+  margin-top: 15px;
   padding: 20px 40px;
   height: 30px;
   width: 100%;
@@ -89,4 +89,29 @@ body {
   width: 100%;
   font-size: 1.6rem;
   font-weight: 600;
+}
+
+.drawer-title {
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+.drawer-title span {
+  margin-right: 8px;
+}
+
+.ant-drawer-body {
+  background-color: var(--books-container-color)
+}
+
+.add-icon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.book-footer-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

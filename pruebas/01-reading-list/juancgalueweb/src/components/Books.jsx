@@ -1,4 +1,4 @@
-import { Card, ConfigProvider, message, theme } from 'antd'
+import { Card, message } from 'antd'
 import { useEffect } from 'react'
 import { shallow } from 'zustand/shallow'
 import { useBooksStore } from '../stores/books'
@@ -34,9 +34,7 @@ export const Books = () => {
 
   return (
     <>
-      <ConfigProvider theme={{ algorithm: theme.defaultAlgorithm }}>
-        {contextHolder}
-      </ConfigProvider>
+      {contextHolder}
       <div className='books-container'>
         <div className='books-heading'>
           <GenreSelect />
@@ -53,8 +51,7 @@ export const Books = () => {
               <Card
                 className='book-card'
                 key={book.ISBN}
-                title='Agregar'
-                extra={<AddIcon />}
+                title={<AddIcon />}
                 hoverable
                 cover={
                   <img

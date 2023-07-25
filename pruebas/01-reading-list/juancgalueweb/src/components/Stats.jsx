@@ -1,5 +1,5 @@
 import { Badge, Button } from 'antd'
-import { useState } from 'react'
+import { useDrawer } from '../hooks/useDrawer'
 import { useBooksStore } from '../stores/books'
 import { ReadingList } from './ReadingList'
 
@@ -8,15 +8,7 @@ export const Stats = () => {
   const selectedCategory = useBooksStore((state) => state.selectedCategory)
   const readingList = useBooksStore((state) => state.readingList)
   const books = useBooksStore((state) => state.books)
-  const [open, setOpen] = useState(false)
-
-  const showDrawer = () => {
-    setOpen(true)
-  }
-
-  const onClose = () => {
-    setOpen(false)
-  }
+  const { open, showDrawer, onClose } = useDrawer()
 
   return (
     <>
@@ -29,9 +21,7 @@ export const Stats = () => {
           Libros disponibles{' '}
           <Badge
             count={books?.length - readingList?.length}
-            color='#14ff30'
             style={{
-              borderColor: 'transparent',
               fontWeight: 700,
               marginLeft: '6px'
             }}
@@ -42,9 +32,7 @@ export const Stats = () => {
           <Badge
             showZero
             count={selectedCategory === 'Todos' ? 0 : copyBooks?.length}
-            color='#14ff30'
             style={{
-              borderColor: 'transparent',
               fontWeight: 700,
               marginLeft: '6px'
             }}
@@ -54,10 +42,8 @@ export const Stats = () => {
           Libros en lista de lectura{' '}
           <Badge
             count={readingList.length}
-            color='#14ff30'
             showZero
             style={{
-              borderColor: 'transparent',
               fontWeight: 700,
               marginLeft: '6px'
             }}

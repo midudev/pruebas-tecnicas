@@ -6,7 +6,6 @@ import { useBooksStore } from '../stores/books'
 export const GenreSelect = () => {
   const [
     categories,
-    copyBooks,
     setCategories,
     booksBySelectedCategory,
     setSelectedCategory,
@@ -14,7 +13,6 @@ export const GenreSelect = () => {
   ] = useBooksStore(
     (state) => [
       state.categories,
-      state.copyBooks,
       state.setCategories,
       state.booksBySelectedCategory,
       state.setSelectedCategory,
@@ -30,7 +28,7 @@ export const GenreSelect = () => {
 
   useEffect(() => {
     setCategories()
-  }, [copyBooks])
+  }, [])
 
   return (
     <Select

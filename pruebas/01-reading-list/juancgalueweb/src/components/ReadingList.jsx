@@ -13,7 +13,11 @@ export const ReadingList = ({ open, onClose }) => {
   return (
     <Drawer
       className='reading-container'
-      title='📖 Lista de lectura'
+      title={
+        <div className='drawer-title'>
+          <span>📖</span> Lista de lectura
+        </div>
+      }
       placement='right'
       onClose={onClose}
       open={open}
