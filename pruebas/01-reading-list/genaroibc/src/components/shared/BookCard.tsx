@@ -1,4 +1,4 @@
-import { component$ } from "@builder.io/qwik"
+import { component$, useSignal } from "@builder.io/qwik"
 import type { Book } from "~/types"
 import {
   IconBookOutlined,
@@ -8,9 +8,31 @@ import {
 } from "~/components/shared/Icons"
 
 export const BookCard = component$(
-  ({ cover, genre, isInReadingList, pages, title, year, author }: Book) => {
+  ({
+    cover,
+    genre,
+    isInReadingList,
+    pages,
+    title,
+    year,
+    author,
+    ISBN
+  }: Book) => {
+    const isDragging = useSignal(false)
+
     return (
-      <article class="aspect-[1/1.6] group hover:shadow-lg transition-transform duration-300 ease-in-out text-white relative bg-blue-950 rounded-md">
+      <article
+        draggable
+        onDragStart$={event => {
+          event.dataTransfer.setData("text/plain", ISBN)
+          isDragging.value = true
+        }}
+        onDragEnd$={() => {
+          isDragging.value = false
+        }}
+        class="aspect-[1/1.6] group hover:shadow-lg transition-transform duration-300 ease-in-out text-white relative bg-blue-950 rounded-md"
+        style={isDragging.value ? { opacity: "0.1" } : undefined}
+      >
         <div class="relative overflow-hidden rounded-tl-md rounded-tr-md">
           <BookBadge isInReadingList={isInReadingList} />
 

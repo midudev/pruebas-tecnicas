@@ -39,11 +39,11 @@ export const BooksLibrary = component$(
     })
 
     const onBookSelect = $((bookISBN: BookISBN) => {
-      const bookIsInReadingList = readingList.some(
+      const isAlreadyInReadingList = readingList.some(
         book => book.ISBN === bookISBN
       )
 
-      if (bookIsInReadingList) {
+      if (isAlreadyInReadingList) {
         removeBookFromReadingList(bookISBN)
       } else {
         addBookToReadingList(bookISBN)
@@ -96,10 +96,7 @@ export const BooksLibrary = component$(
         <BooksList books={filteredByGenre} onBookSelect={onBookSelect} />
 
         <div class="sticky bottom-0 mt-8 z-30">
-          <ReadingList
-            books={readingList}
-            onBookSelect={removeBookFromReadingList}
-          />
+          <ReadingList books={readingList} onBookSelect={onBookSelect} />
         </div>
       </section>
     )
