@@ -8,7 +8,14 @@ import { BookListProvider } from '@/context/bookList'
 import { FilterProvider } from '@/context/filter'
 
 import { genres, listBooksAvailable } from '@/assets/values'
-import { buttonTitles, listTypes, nameStorage } from '@/assets/constants'
+import { listTypes, nameStorage } from '@/assets/constants'
+
+const labelButton = {
+  [listTypes.available]: /^Agregar .* a la lista de lectura$/i,
+  [listTypes.reading]: /^Remover .* de la lista de lectura$/i
+}
+
+const { available, reading } = listTypes
 
 expect.extend(matchers)
 
@@ -25,10 +32,8 @@ describe('<BookDashboard />', () => {
   afterEach(() => cleanup())
 
   it(`${listBooksAvailable.length} book should be displayed in the available list and 0 in the reading list`, () => {
-    const { available, reading } = listTypes
-
-    const booksAvailable = screen.getAllByTitle(buttonTitles[available])
-    const readingBooks = screen.queryAllByTitle(buttonTitles[reading])
+    const booksAvailable = screen.getAllByLabelText(labelButton[available])
+    const readingBooks = screen.queryAllByLabelText(labelButton[reading])
 
     expect(booksAvailable).toHaveLength(listBooksAvailable.length)
     expect(readingBooks).toHaveLength(0)
@@ -40,26 +45,25 @@ describe('<BookDashboard />', () => {
     fireEvent.click(inputGenre)
 
     const displayBooks = listBooksAvailable.filter(({ genre }) => genre === genres[1])
+    const booksAvailable = screen.getAllByLabelText(labelButton[available])
 
-    expect(screen.getAllByTitle(buttonTitles[listTypes.available])).toHaveLength(
-      displayBooks.length
-    )
+    expect(booksAvailable).toHaveLength(displayBooks.length)
   })
 
   it('Add a book from the list of available books. Adds a book to the reading list and decreases one to the list of available books', () => {
     const { available, reading } = listTypes
     let numberReadingBooks = 0
 
-    const booksAvailable = screen.getAllByTitle(buttonTitles[available])
+    const booksAvailable = screen.getAllByLabelText(labelButton[available])
 
     expect(booksAvailable).toHaveLength(listBooksAvailable.length)
 
     fireEvent.click(booksAvailable[0])
     numberReadingBooks++
 
-    const readingBooks = screen.getAllByTitle(buttonTitles[reading])
+    const readingBooks = screen.getAllByLabelText(/^Remover .* de la lista de lectura/i)
 
-    expect(screen.getAllByTitle(buttonTitles[available])).toHaveLength(
+    expect(screen.getAllByLabelText(labelButton[available])).toHaveLength(
       booksAvailable.length - numberReadingBooks
     )
     expect(readingBooks).toHaveLength(numberReadingBooks)
@@ -75,7 +79,7 @@ describe('<BookDashboard />', () => {
     const addBooksToReadingList = 2
     let numberReadingBooks = 0
 
-    const booksAvailable = screen.getAllByTitle(buttonTitles[available])
+    const booksAvailable = screen.getAllByLabelText(labelButton[available])
 
     expect(booksAvailable).toHaveLength(listBooksAvailable.length)
 
@@ -84,9 +88,9 @@ describe('<BookDashboard />', () => {
       numberReadingBooks++
     }
 
-    const readingBooks = screen.getAllByTitle(buttonTitles[reading])
+    const readingBooks = screen.getAllByLabelText(labelButton[reading])
 
-    expect(screen.getAllByTitle(buttonTitles[available])).toHaveLength(
+    expect(screen.getAllByLabelText(labelButton[available])).toHaveLength(
       booksAvailable.length - numberReadingBooks
     )
     expect(readingBooks).toHaveLength(numberReadingBooks)
@@ -94,8 +98,8 @@ describe('<BookDashboard />', () => {
     fireEvent.click(readingBooks[0])
     numberReadingBooks--
 
-    expect(screen.getAllByTitle(buttonTitles[reading])).toHaveLength(numberReadingBooks)
-    expect(screen.getAllByTitle(buttonTitles[available])).toHaveLength(
+    expect(screen.getAllByLabelText(labelButton[reading])).toHaveLength(numberReadingBooks)
+    expect(screen.getAllByLabelText(labelButton[available])).toHaveLength(
       booksAvailable.length - numberReadingBooks
     )
 
@@ -104,8 +108,8 @@ describe('<BookDashboard />', () => {
     fireEvent.click(readingBooks[1])
     numberReadingBooks--
 
-    expect(screen.queryAllByTitle(buttonTitles[reading])).toHaveLength(numberReadingBooks)
-    expect(screen.getAllByTitle(buttonTitles[available])).toHaveLength(
+    expect(screen.queryAllByTitle(labelButton[reading])).toHaveLength(numberReadingBooks)
+    expect(screen.getAllByLabelText(labelButton[available])).toHaveLength(
       booksAvailable.length - numberReadingBooks
     )
 
@@ -130,13 +134,13 @@ describe('<BookDashboard />', () => {
 
     expect(screen.getByDisplayValue(bookTitle)).toBeDefined()
 
-    expect(screen.getAllByTitle(buttonTitles[listTypes.available]).length).toBeGreaterThanOrEqual(1)
+    expect(screen.getAllByLabelText(labelButton[available]).length).toBeGreaterThanOrEqual(1)
 
     vi.clearAllTimers()
   })
 
   it('When adding all the books to the list or if there are none, the message: "No hay libros disponibles" should be displayed on the screen', () => {
-    const addBookButton = screen.getAllByTitle(buttonTitles[listTypes.available])
+    const addBookButton = screen.getAllByLabelText(labelButton[available])
 
     act(() => {
       addBookButton.forEach((btn) => fireEvent.click(btn))
@@ -159,11 +163,11 @@ describe('<BookDashboard />', () => {
       vi.advanceTimersByTime(400)
     })
 
-    const { getByDisplayValue, getByText, queryAllByTitle } = screen
+    const { getByDisplayValue, getByText, queryAllByLabelText } = screen
 
     expect(getByDisplayValue(bookTitle)).toHaveValue(bookTitle)
 
-    expect(queryAllByTitle(buttonTitles[listTypes.available]).length).toEqual(0)
+    expect(queryAllByLabelText(labelButton[available]).length).toEqual(0)
 
     expect(getByText(/^No se encontraron libros que coincidan con/i)).toBeDefined()
 

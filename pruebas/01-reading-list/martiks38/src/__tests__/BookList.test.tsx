@@ -5,7 +5,7 @@ import { BookList, generateLabelListOfBooks } from '@/components/BookList'
 import { BookListProvider } from '@/context/bookList'
 
 import { listBooksAvailable } from '@/assets/values'
-import { buttonTitles, listTypes } from '@/assets/constants'
+import { listTypes } from '@/assets/constants'
 
 function renderingWithoutContext() {
   return render(<BookList books={listBooksAvailable} listType={listTypes.available} />)
@@ -37,7 +37,7 @@ describe('<BookList />', () => {
 
     renderWithContent(available)
 
-    expect(screen.getAllByTitle(buttonTitles[available])).toHaveLength(listBooksAvailable.length)
+    expect(screen.getAllByLabelText(/^Agregar/i)).toHaveLength(listBooksAvailable.length)
   })
 
   it(`The list button of type "available" must have an aria-label with value: "${generateLabelListOfBooks(
@@ -64,22 +64,5 @@ describe('<BookList />', () => {
         generateLabelListOfBooks(listTypes.available, listBooksAvailable[0].title)
       )
     ).toBeDefined()
-  })
-
-  it(`The list of type "${listTypes.available}", the button must have title="${
-    buttonTitles[listTypes.available]
-  }"`, () => {
-    const [book] = listBooksAvailable
-    const { available } = listTypes
-
-    render(
-      <BookListProvider>
-        <BookList books={[book]} listType={available} />
-      </BookListProvider>
-    )
-
-    const title = screen.getByTitle(buttonTitles[available])
-
-    expect(title).toBeDefined()
   })
 })
