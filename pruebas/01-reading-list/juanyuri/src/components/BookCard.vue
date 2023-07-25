@@ -1,7 +1,13 @@
 <template>
     <div class="BookCard">
         <div class="BookCard-Image">
-            <img :src="book.cover" width="200" height="300" />
+            <img :src="book.cover" width="250" height="420" />
+            <div class="BookCard-Overlay">
+                <div class="BookCard-Overlay-Text">
+                    <p>Añadir a Favoritos</p>
+                    <!-- <p>{{ book.author.name }}</p> -->
+                </div>
+            </div>
         </div>
         <div class="BookCard-Details">
             <div class="BookCard-Title">{{ book.title }}</div>
@@ -15,24 +21,66 @@ const props = defineProps({
     book: { type: Object, required: true }
 })
 </script>
-
-
+  
 <style scoped>
 .BookCard {
     display: flex;
     flex-direction: column;
     margin: 10px;
     cursor: pointer;
+    position: relative;
+    flex: 1;
+    height: 500px;
+    /* background-color: blue; */
 }
 
-.BookCard-Image img:hover {
-    opacity: 0.85;
-    transition-duration: 400ms;
-    box-shadow: 0px 7px 12px 2px #8d8d8d;
+.BookCard-Image {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 250px;
+    height: 420px;
 }
 
 .BookCard-Image img {
-    border-radius: 12px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.BookCard:hover .BookCard-Image img {
+    transform: scale(1.1);
+    filter: grayscale(100%);
+}
+
+.BookCard-Overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.BookCard:hover .BookCard-Overlay {
+    opacity: 1;
+}
+
+.BookCard-Overlay-Text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+}
+
+.BookCard-Overlay-Text p {
+    margin: 0;
+    font-size: 2em;
+    font-weight: bold;
+    color: #DAAA63;
 }
 
 .BookCard-Details {
@@ -51,7 +99,7 @@ const props = defineProps({
 .BookCard-Author-Name {
     margin-top: 5px;
     font-weight: lighter;
-    font-size: 0.85em;
+    font-size: 1.05em;
     max-width: 100%;
 }
 </style>

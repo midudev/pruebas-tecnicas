@@ -1,20 +1,20 @@
 <template>
   <div class="Catalogue">
-    <h1>Catálogo: {{ catalogueCount }} </h1>
+    <h1>{{ catalogueCount }} libros disponibles </h1>
 
-    <select name="genre-selector" id="genreSelector" class="Genre-Selector" @change="onSelectedGenre">
-      <option :value="genre" v-for="genre in genres" :key="genre" selected="Todos">{{ genre }}</option>
-    </select>
+    <div class="Catalogue-Tags">
+      <button class="Catalogue-Tags-Button" v-for="tag in genres" :key="tag" @click="onSelectedGenre(tag)">
+        {{ tag }}
+      </button>
+    </div>
 
     <div class="Catalogue-List">
-      <BookCard v-for="book in filteredCatalogue" :key="book.title" :book="book" @click="store.addToReadList(book)" />
+      <div class="BookCard-Grid" v-for="(book, index) in filteredCatalogue" :key="index">
+        <BookCard :book="book" @click="store.addToReadList(book)" />
+      </div>
     </div>
   </div>
-
-  <!-- <p>Genre count: {{ catalogueGenreCount }}</p> -->
 </template>
-
-
 
 <script setup>
 import { ref, computed } from 'vue'
@@ -32,8 +32,8 @@ const { books } = useBooks()
 const genres = [...new Set([...books.value.map(book => book.genre), "Todos"])];
 let selectedGenre = ref('')
 
-const onSelectedGenre = (event) => {
-  selectedGenre.value = event.target.value
+const onSelectedGenre = (genreValue) => {
+  selectedGenre.value = genreValue
 }
 
 const filteredCatalogue = computed(() => {
@@ -43,8 +43,6 @@ const filteredCatalogue = computed(() => {
   return store.catalogue
 })
 
-
-
 const resetFilters = () => {
   selectedGenre.value = ''
 }
@@ -52,34 +50,56 @@ const resetFilters = () => {
 /* Counters of differents Lists */
 const catalogueGenreCount = computed(() => store.catalogue.filter(e => e.genre === selectedGenre.value).length)
 const catalogueCount = computed(() => store.catalogue.length)
-
 </script>
-
-
 
 <style scoped>
 .Catalogue {
-  display: block;
-  padding-left: 3em;
-  padding-top: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5em;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 h1 {
   display: inline;
   font-size: 25px;
-  margin-left: 10px;
 }
 
 .Catalogue-List {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: left;
-  margin-top: 0.75em;
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-gap: 2em;
+  margin-top: 1.35em;
 }
 
-.Genre-Selector {
-  border-radius: 6px;
-  height: 2em;
-  width: 11em;
+.Catalogue-Tags {
+  padding-top: 15px;
+  padding-bottom: 10px;
+  /* background-color: blue; */
+}
+
+.Catalogue-Tags-Button {
+  width: auto;
+  padding: 14px;
+  cursor: pointer;
+  border-radius: 12px;
+  border: 1px solid rgb(180, 180, 180);
+  margin: 15px;
+}
+
+.Catalogue-Tags-Button:hover {
+  background-color: #DAAA63;
+  border: 1px solid transparent;
+  /* font-weight: bold; */
+  color: white;
+}
+
+
+.BookCard-Grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

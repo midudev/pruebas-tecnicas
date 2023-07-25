@@ -25,12 +25,10 @@ import MainView from '@/views/MainView.vue'
   padding:0;
   font-family: 'Inter';
   box-sizing: border-box;
+  
 }
-
-
-.app{
+body{
   background-color: #F2F2F2;
-  height: 100vh;
 }
 
 </style>
