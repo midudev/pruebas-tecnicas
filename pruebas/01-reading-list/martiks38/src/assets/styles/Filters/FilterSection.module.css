@@ -16,9 +16,14 @@
   margin-bottom: 1.2rem;
 }
 
+.filterSection__field > label {
+  font-size: 1rem;
+  line-height: 1.75rem;
+}
+
 .filterSection__fieldTitle {
   padding: 0;
-  margin-bottom: 0.4em;
+  margin-bottom: 0.6em;
   font-size: 1.125rem;
   line-height: 1.75rem;
 }
@@ -26,10 +31,10 @@
 .filterSection__containerOptions {
   display: flex;
   flex-direction: column;
-  gap: 0.6em;
+  gap: 0.2em;
   font-weight: 600;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.75rem;
 }
 
 .filterSection__pageNumberFilter {
@@ -72,7 +77,6 @@
 }
 
 .filterSection__labelGenre {
-  padding: 0.3em 0.6em 0.3em 0;
   color: rgb(255 255 255 / 0.75);
 }
 
@@ -95,5 +99,22 @@
 @media (min-width: 90.0625rem) {
   .filterSection {
     border-left-color: var(--border-section-color);
+  }
+}
+
+@media (min-width: 96rem) {
+  .filterSection__fieldTitle {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .filterSection__labelGenre {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .filterSection__field > label {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 }
