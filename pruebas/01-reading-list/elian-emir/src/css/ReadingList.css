@@ -1,3 +1,5 @@
-.reading_list-container {
-  
+@media (max-width: 768px) {
+  .reading-list-container img {
+    display: none;
+  }
 }

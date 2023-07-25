@@ -1,4 +1,4 @@
-import {  useState } from 'react'
+import {  useState, useEffect } from 'react'
 import './css/App.css'
 import Book from './components/Book'
 import Header from './components/Header'
@@ -9,6 +9,7 @@ import type{ IBook } from './types'
 
 function App() {
   const [booksByGenre, setBooksByGenre] = useState<IBook[]>([])
+  const [widthDevice, setWidthDevice] = useState<number>(window.innerWidth)
   const { books, readingList, countBookAvalaible } = useBooksStore()
   // trae los géneros de todos los libros
   const genre = selectGenre()
@@ -21,6 +22,14 @@ function App() {
     if (genero === '') return
     setBooksByGenre(filterBooks(genero))
   }
+  // detecta tamaño del dispositivo y para settear estilos
+  useEffect(() => {
+    const onResize = () => {
+      setWidthDevice(window.innerWidth)
+    }
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
   return (
     <>
       <Header />
@@ -44,12 +53,17 @@ function App() {
                 ))}
               </select>
             </form>
+            {
+              readingList.length > 0 && widthDevice < 768 && (
+                <ReadingList />
+              )
+            }
           </div>
           <div className='flex gap-2r'>
             <section
               className={`main_library ${readingList ? 'w-75' : 'w-100'}`}
             >
-              {booksByGenre.length > 0
+              {booksByGenre.length > 0 
               ? booksByGenre.map((book) => {
                 return <Book book={book} key={book.ISBN} />
               }) 
@@ -57,8 +71,8 @@ function App() {
                 return <Book book={book} key={book.ISBN} />
               })}
             </section>
-            {readingList.length > 0 && (
-              <section className='w-25'>
+            {readingList.length > 0 && widthDevice > 768 &&  (
+              <section className='w-30'>
                 <ReadingList />
               </section>
             )}

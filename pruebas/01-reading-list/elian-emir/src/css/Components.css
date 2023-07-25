@@ -5,7 +5,7 @@
 
 .btn {
   all: unset;
-  padding: 1rem;
+  padding: 0.7rem;
   text-align: center;
   color: var(--colorPrimary);
   text-transform: uppercase;

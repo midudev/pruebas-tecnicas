@@ -6,8 +6,8 @@ const ReadingList = () => {
   const { readingList, countBookToRead } = useBooksStore()
 
   return (
-    <aside className='h-screen reading-list-container'>
-      <h2 className='heading'>Lista de lectura</h2>
+    <aside className='reading-list-container'>
+      <h3 className='heading'>Lista de lectura</h3>
       <p>
         Libros disponibles: <span>{countBookToRead}</span>
       </p>
