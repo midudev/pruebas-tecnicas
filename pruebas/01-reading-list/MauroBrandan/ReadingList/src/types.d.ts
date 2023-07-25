@@ -1,0 +1,31 @@
+export type AuthorType = {
+    name: string;
+    otherBooks: string[];
+}
+
+export type BookType = {
+    title: string;
+    pages: number;
+    genre: string;
+    cover: string;
+    synopsis: string;
+    year: number;
+    ISBN: string;
+    author: AuthorType;
+}
+
+export type LibraryType = {
+    book: BookType;
+}
+
+export type ReadingListContextType = {
+    state: BookType[],
+    addToList: (book: BookType) => void,
+    removeFromList: (book: BookType) => void,
+    clearList: () => void
+    isInList: (book: BookType) => boolean
+}
+
+export type FiltersType = {
+    genre: 'all' | 'Fantasía' | 'Ciencia ficción' | 'Zombies' | 'Terror'
+}
