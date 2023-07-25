@@ -33,7 +33,7 @@ export function BookCard(props: any) {
 
 	return (
 		<article
-			className="flex flex-1 flex-col place-items-center p-2 shadow-lg shadow-slate-500/50"
+			className="flex flex-col lg:w-64 place-items-center p-2 shadow-lg shadow-slate-500/50"
 			key={book.ISBN}
 			id={book.ISBN}>
 			<Link
@@ -47,7 +47,7 @@ export function BookCard(props: any) {
 				</div>
 			</Link>
 
-			<p className="font-bold my-2 truncate">{book.title}</p>
+			<p className="font-bold my-2 break-words">{book.title}</p>
 			<p className="my-1">{book.author.name}</p>
 			<div className="flex w-max">{buttonReadingList()}</div>
 		</article>

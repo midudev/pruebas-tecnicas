@@ -23,17 +23,13 @@ export function ReadingListProvider({ children } : ReadingListProps) {
 	const [readingList, setReadingList] = useState<Book[]>([]);
 
 	const addToReadingList = (newBook: Book) => {
-		console.log("Added to reading list");
-
 		// Busco si el libro ya esta en la lista
 		const bookIndex = readingList.findIndex(
 			(book: Book) => book.ISBN === newBook.ISBN
 		);
-		console.log("🚀 ~ bookIndex:", bookIndex);
 
 		// Si no existe el libro
 		if (bookIndex == -1) {
-			console.log("Añadido");
 
 			newBook.inReadingList = true;
 
@@ -42,7 +38,6 @@ export function ReadingListProvider({ children } : ReadingListProps) {
 	};
 
 	const removeFromReadingList = (bookToDelete: Book) => {
-		console.log(`Removed ${bookToDelete.title}`);
 
 		const bookIndex = readingList.findIndex(
 			(book: Book) => book.ISBN === bookToDelete.ISBN

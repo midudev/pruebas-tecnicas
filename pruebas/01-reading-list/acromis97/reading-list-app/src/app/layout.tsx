@@ -6,6 +6,7 @@ import { Shantell_Sans } from "next/font/google";
 import { Navbar } from "./components/Navbar";
 import { ReadingListProvider } from "./context/readingList";
 import { StoreListProvider } from "./context/storeList";
+import { GenreFilterProvider } from "./context/genreFilter";
 
 const shantell_sans = Shantell_Sans({
 	weight: "400",
@@ -28,10 +29,12 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={shantell_sans.className}>
 				<StoreListProvider>
-					<ReadingListProvider>
-						<Navbar />
-						{children}
-					</ReadingListProvider>
+					<GenreFilterProvider>
+						<ReadingListProvider>
+							<Navbar />
+							{children}
+						</ReadingListProvider>
+					</GenreFilterProvider>
 				</StoreListProvider>
 			</body>
 		</html>
