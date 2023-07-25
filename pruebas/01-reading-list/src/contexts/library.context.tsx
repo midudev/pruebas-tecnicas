@@ -11,10 +11,6 @@ export const useLibrary = () => {
   return context;
 };
 
-interface Props {
-  children: React.ReactNode;
-}
-
 interface ILibraryState {
   books: IBook[];
   setBooks: React.Dispatch<React.SetStateAction<IBook[]>>;
@@ -30,6 +26,10 @@ interface ILibraryStorage {
   filteredBooks: IBook[];
 }
 
+interface Props {
+  children: React.ReactNode;
+}
+
 export const LibraryProvider: React.FC<Props> = ({ children }) => {
   const [books, setBooks] = useState<IBook[]>(() => {
     const libraryStorage = localStorage.getItem("libraryData");
@@ -40,7 +40,6 @@ export const LibraryProvider: React.FC<Props> = ({ children }) => {
       return jsonData.library;
     }
   });
-
   const [myList, setMyList] = useState<IBook[]>(() => {
     const libraryStorage = localStorage.getItem("libraryData");
     if (libraryStorage) {
@@ -51,16 +50,6 @@ export const LibraryProvider: React.FC<Props> = ({ children }) => {
     }
   });
   const [filteredBooks, setFilteredBooks] = useState<IBook[]>([]);
-
-  // useEffect(() => {
-  //   const libraryStorage = localStorage.getItem("libraryData");
-  //   if (libraryStorage) {
-  //     const parsedLibraryStorage = JSON.parse(libraryStorage);
-  //     setBooks(parsedLibraryStorage.books);
-  //     setMyList(parsedLibraryStorage.myList);
-  //     setFilteredBooks(parsedLibraryStorage.filteredBooks);
-  //   }
-  // }, []);
 
   useEffect(() => {
     const libraryData: ILibraryStorage = { books, myList, filteredBooks };

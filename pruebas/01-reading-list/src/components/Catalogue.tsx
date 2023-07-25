@@ -2,9 +2,10 @@ import React from "react";
 import Book from "./Book";
 import { useLibrary } from "../contexts/library.context";
 import { IBook } from "../types/books";
+import { useNavigationContext } from "../contexts/navigation.context";
 const Catalogue: React.FC = () => {
   const { books, setBooks, myList, setMyList, filteredBooks } = useLibrary();
-
+  const { isOpen } = useNavigationContext();
   const addToMyList = (book: IBook) => {
     // Verifico que no este en myList
     const foundBook = myList.find((elem) => elem.book.ISBN === book.book.ISBN);
@@ -19,11 +20,13 @@ const Catalogue: React.FC = () => {
   };
 
   return (
-    <section>
+    <section
+      className={`transition-all duration-300 ${isOpen ? "w-0" : "w-4/6"}`}
+    >
       <div className="flex flex-col gap-8 p-8">
         <h1 className="font-bold text-stone-800 text-3xl">Catálogo</h1>
 
-        <div className="grid grid-cols-4 gap-8">
+        <div className={`${isOpen ? "" : "grid grid-cols-4 gap-8"} `}>
           {filteredBooks.map((book, i) => {
             const foundBook = myList.find(
               (elem) => elem.book.ISBN === book.book.ISBN

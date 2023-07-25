@@ -6,7 +6,7 @@ type GenreCountMap = {
 };
 
 const AsideMenu: React.FC = () => {
-  const { books, setFilteredBooks, myList } = useLibrary();
+  const { books, setFilteredBooks } = useLibrary();
 
   const genreCountMap: GenreCountMap = books.reduce((acc, book) => {
     const genre = book.book.genre;
@@ -20,7 +20,7 @@ const AsideMenu: React.FC = () => {
   };
 
   return (
-    <aside className="min-w-15vw bg-stone-100 text-stone-800">
+    <aside className="w-1/6 bg-stone-100 text-stone-800 shadow-lg">
       <div className="sticky top-0 left-0 flex flex-col gap-8 p-8">
         <h3 className="font-bold text-xl">Libroteca</h3>
         <div>
@@ -46,9 +46,6 @@ const AsideMenu: React.FC = () => {
               </ul>
             </li>
           </ul>
-        </div>
-        <div>
-          <h4>Mi lista ({myList.length})</h4>
         </div>
       </div>
     </aside>

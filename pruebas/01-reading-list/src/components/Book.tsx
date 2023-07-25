@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { IBook } from "../types/books";
+import BookModal from "./BookModal";
 
 interface Props {
   book: IBook;
@@ -13,38 +14,58 @@ const Book: React.FC<Props> = ({
   addToMyList,
   removeFromMyList,
 }) => {
-  const { title, ISBN, author, cover, genre, pages, synopsis, year } =
-    book.book;
+  const { title, author, cover } = book.book;
 
+  const [openModal, setOpenModal] = useState<boolean>(false);
   return (
-    <article className="mb-4">
-      <div className="object-cover">
-        <img src={cover} alt={title} className="w-full h-full" />
-      </div>
-      <div className="bg-stone-50">
-        <div className="flex flex-col gap-4 text-stone-800">
-          <h4>{title}</h4>
-          <p>{author.name}</p>
+    <>
+      <article>
+        <div className="group flex flex-col gap-4">
+          <div className="relative">
+            <div className="w-full h-full">
+              <img
+                src={cover}
+                alt={title}
+                className="w-full h-full object-cover"
+                onClick={() => {
+                  if (isInMyList) {
+                    setOpenModal(openModal);
+                  } else {
+                    setOpenModal(!openModal);
+                  }
+                }}
+              />
+            </div>
+            <div className="grid place-items-center absolute p-2 opacity-0 bottom-0 left-0 right-0 group-hover:opacity-100 transition duration-500">
+              {isInMyList ? (
+                <button
+                  className="bg-stone-100 text-sm text-center py-1.5 px-4 rounded w-full z-10"
+                  onClick={() => removeFromMyList(book)}
+                >
+                  Remove
+                </button>
+              ) : (
+                <button
+                  className="bg-stone-100 text-sm text-center py-1.5 px-4 rounded w-full z-10"
+                  onClick={() => addToMyList(book)}
+                >
+                  Add
+                </button>
+              )}
+            </div>
+          </div>
+          <div className="flex flex-col text-stone-800 text-center">
+            <h4 className="font-medium text-lg">{title}</h4>
+            <p className="text-sm">{author.name}</p>
+          </div>
         </div>
-      </div>
-      <div>
-        {isInMyList ? (
-          <button
-            className="bg-stone-100 px-4 py-1 rounded border border-stone-300"
-            onClick={() => removeFromMyList(book)}
-          >
-            Remove
-          </button>
-        ) : (
-          <button
-            className="bg-stone-100 px-4 py-1 rounded border border-stone-300"
-            onClick={() => addToMyList(book)}
-          >
-            Add
-          </button>
-        )}
-      </div>
-    </article>
+      </article>
+      <BookModal
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        book={book}
+      />
+    </>
   );
 };
 
