@@ -6,6 +6,9 @@ import useBookStore from "../store/store";
 export const Book = ({ book, added }) => {
   const [openModal, setOpenModal] = useState();
   const { title, cover } = book;
+  const isActive = useBookStore((state) => state.current).find(
+    (item) => item.title === title,
+  );
 
   const handleRemove = () => {
     // remove the book from the reading list
@@ -25,27 +28,33 @@ export const Book = ({ book, added }) => {
   };
 
   return (
-    <div className="relative h-72 w-48">
-      <div
-        className="h-full w-full rounded-lg border-dashed border-neutral-700 transition-all hover:cursor-pointer hover:border-neutral-500"
-        onClick={() => setOpenModal("dimissible")}
-      >
-        <img
-          src={cover}
-          alt={`${title} image`}
-          className="h-full w-full rounded-lg object-cover"
-        />
-      </div>
-      <BookButtons
-        added={added}
-        handleAdd={handleAdd}
-        handleRemove={handleRemove}
-      />
-      <ModalBook
-        openModal={openModal}
-        setOpenModal={setOpenModal}
-        book={book}
-      />
-    </div>
+    <>
+      {(!isActive && !added) || added ? (
+        <div className="relative h-72 w-48">
+          <div
+            className="h-full w-full rounded-lg border-dashed border-neutral-700 transition-all hover:cursor-pointer hover:border-neutral-500"
+            onClick={() => setOpenModal("dimissible")}
+          >
+            <img
+              src={cover}
+              alt={`${title} image`}
+              className="h-full w-full rounded-lg object-cover"
+            />
+          </div>
+          <BookButtons
+            added={added}
+            handleAdd={handleAdd}
+            handleRemove={handleRemove}
+          />
+          <ModalBook
+            openModal={openModal}
+            setOpenModal={setOpenModal}
+            book={book}
+          />
+        </div>
+      ) : (
+        ""
+      )}
+    </>
   );
 };
