@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'Mystery Quest';
-  src: url('../public/MysteryQuest.ttf');
+  src: url('../public/MysteryQuest.woff2');
   font-weight: 400;
 }
 
@@ -16,6 +16,6 @@
 
 @font-face {
   font-family: 'Handlee';
-  src: url('../public/Handlee.ttf');
+  src: url('../public/Handlee.woff2');
   font-weight: 400;
 }
