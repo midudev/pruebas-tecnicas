@@ -1,28 +1,33 @@
 <script lang="ts">
+    import { bookList } from "../store/books.store";
   export let name: string;
   export let description: string;
   export let author: string;
   export let image: string;
   export let genre: string;
-  import { bookList } from "../store/read.list.store";
+  import { readBookList } from "../store/read.list.store";
 
   window.addEventListener("storage", (event) => {
     if (event.key === "favorites") {
-      bookList.update(JSON.parse(event.newValue));
+      readBookList.update(JSON.parse(event.newValue));
     }
   });
 
   const handleAddFavorites = () => {
-    bookList.update((prevData) => [
-      ...prevData,
-      {
-        title: name,
+
+    const bookSelected = {
+      title: name,
         synopsis: description,
         genre,
         author: { name: author },
         cover: image,
-      },
+    }
+
+    readBookList.update((prevData) => [
+      ...prevData,
+      bookSelected
     ]);
+    bookList.update(prevData => prevData.filter(({book}) => book.title !== bookSelected.title))
   };
 </script>
 

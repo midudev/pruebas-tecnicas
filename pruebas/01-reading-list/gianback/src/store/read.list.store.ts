@@ -3,11 +3,11 @@ import { writable } from "svelte/store";
 const booksStored = localStorage.getItem("favorites");
 window.addEventListener("storage", (event) => {
   if (event.key === "favorites") {
-    bookList.set(JSON.parse(event.newValue));  
+    readBookList.set(JSON.parse(event.newValue));  
   }
 });
-export const bookList = writable(JSON.parse(booksStored) || []);
+export const readBookList = writable(JSON.parse(booksStored) || []);
 
-bookList.subscribe((value) =>
+readBookList.subscribe((value) =>
   localStorage.setItem("favorites", JSON.stringify(value))
 );
