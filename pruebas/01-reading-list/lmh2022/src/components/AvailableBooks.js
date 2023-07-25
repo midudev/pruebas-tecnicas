@@ -15,20 +15,12 @@ function AvailableBooks() {
   const [pages, setPages] = useState(2000)
 
 
-
-
-
-
   useEffect(
     ()=>{
       setFilteredBooks(books.filter(f=>f.book.genre===(selected===""?f.book.genre:selected)&&f.book.pages<=pages))
 
     },[selected, pages]
   )
-
-
-
-
 
  
  

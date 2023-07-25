@@ -8,15 +8,11 @@
 }
 
 
-
-
-
-
 .book {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     margin: 1vh;
-   height: 35vh;
+    height: 35vh;
     width: 25vh;
 }
