@@ -39,8 +39,8 @@ const libraryHook = () => {
 
     const listFiltered = ():Book[] => list
         .filter( (x) => {
-            if(userList.forReading.length == 0){ return true } 
-            !userList.forReading.map(x => x.title).includes(x.title)
+            if(userList.forReading.length == 0){ return true }
+            return !userList.forReading.map(x => x.title).includes(x.title)
         })
         .filter( (x) => (genreAndPages.genre == 'all' || genreAndPages.genre == x.genre) )
         .filter( (x) => x.pages >= genreAndPages.pages )

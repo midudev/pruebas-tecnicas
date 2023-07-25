@@ -11,6 +11,7 @@ const ForReading = () => {
 
     return(
         <div className={styles.forReading}>
+            { (forReading.length > 0) && <p> lecturas pendientes: </p>}
             { forReading.map( (x,i) => (<BookComponent key={i} book={x} intoToReadList={true}/>)) }
         </div>
     )

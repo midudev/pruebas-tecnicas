@@ -1,13 +1,13 @@
 .bookList {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
 .bookCard {
-    min-width: 15% ;
-    min-height: 15% ;
+    min-width: 80px ;
+    min-height: 120px ;
     max-width: 15% ;
     max-height: 15% ;
     overflow: hidden;
@@ -24,7 +24,13 @@
 }
 
 .forReading {
-    background-color: blue;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.forReading > p {
+    min-width: 100%;
 }
 
 
