@@ -12,6 +12,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "shared-zustand": "^2.0.0",
     "zustand": "^4.3.9"
   },
   "devDependencies": {
