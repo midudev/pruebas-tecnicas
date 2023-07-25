@@ -1,0 +1,63 @@
+div.dark > div > span {
+  color: var(--dark-font-1);
+}
+
+div.dark > div > div.ant-collapse-expand-icon {
+  color: var(--dark-font-1);
+}
+
+.dark.ApplyButton {
+  border: 1px solid var(--dark-font-1) !important;
+  color: var(--dark-font-4) !important;
+  background-color: var(--dark-ok-2) !important;
+  box-shadow: none !important;
+}
+
+.dark.ClearButton {
+  box-shadow: 0 0 5px var(--dark-font-4) !important;
+  color: var(--dark-font-4) !important;
+  background-color: var(--dark-pending-4) !important;
+  box-shadow: none !important;
+}
+
+.dark.ApplyButton:hover {
+  box-shadow: 0 0 5px var(--dark-font-4) !important;
+  background-color: var(--dark-ok-2) !important;
+  border: 1px solid white;
+}
+
+.dark.ClearButton:hover {
+  box-shadow: 0 0 5px var(--dark-font-4) !important;
+  background-color: var(--dark-background-4) !important;
+  border: 1px solid white;
+} 
+
+.dark.GenderFilter-container > div > span {
+  color: var(--dark-font-4);
+}
+
+div.dark.GenderFilter-select > div.ant-select-selector {
+  padding: 0 0 0 5px !important;
+  background-color: var(--dark-background-4) !important;
+}
+
+div.ant-col.ant-col-14.css-dev-only-do-not-override-1m62vyb > div > span.ant-select-clear > span > svg {
+  background-color: var(--dark-background-4) !important;
+  color: var(--dark-background-6);
+}
+
+div.dark.GenderFilter-select > div > span > input {
+  color: white !important;
+}
+
+.rc-virtual-list-holder-inner {
+  background-color: var(--dark-background-5);
+}
+
+div.ant-select-dropdown.css-dev-only-do-not-override-1m62vyb {
+  padding: 0;
+}
+
+.rc-virtual-list-holder-inner > div.ant-select-item {
+  color: var(--dark-font-1) !important;
+}

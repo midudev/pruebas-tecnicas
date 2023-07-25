@@ -1,6 +1,7 @@
 /*  */
 .BL_row {
   padding: 5px 0;
+  max-width: 1400px;
 }
 
 #BL_control {

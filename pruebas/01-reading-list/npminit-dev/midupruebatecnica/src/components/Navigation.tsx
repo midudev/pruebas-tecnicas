@@ -39,15 +39,18 @@ export default function Navigation(): JSX.Element {
   const items: MenuItemType[] = [
     {
       key: 'booklist',
-      label: 'Books'
+      label: 'Books',
+      className: `${colorMode}`
     },
     {
       key: 'readlist',
       label: 'Read list',
+      className: `${colorMode}`
     },
     {
       key: 'about',
       label: 'About',
+      className: `${colorMode}`
     }
   ]
 
@@ -58,7 +61,7 @@ export default function Navigation(): JSX.Element {
       icon: <BarsOutlined />,
       children: items.map(item => { return { ...item, icon: <CaretRightOutlined /> }}),
       style: {left: '-10px'},
-      className: 'Menu_Mobile_Header'
+      className: `Menu_Mobile_Header ${colorMode}`
     }
   ]
 
@@ -71,11 +74,13 @@ export default function Navigation(): JSX.Element {
         triggerSubMenuAction={wWidth > 473 ? 'hover' : 'click'}
         onSelect={handleSelect}
         selectedKeys={[itemSelected]}
+        className={`${colorMode}`}
+        rootClassName={`${colorMode}`}
       >
       </Menu> 
       <Logo></Logo>
       <ThemeSwitcher></ThemeSwitcher>
-      <main id="content">
+      <main id="content" className={`${colorMode}`}>
       { 
         itemSelected === 'booklist' 
         ? <BookList setItemSelected={setItemSelected}></BookList> : 

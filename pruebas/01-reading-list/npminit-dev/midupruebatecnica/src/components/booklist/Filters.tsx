@@ -6,11 +6,12 @@ import GenreFilter from "./GenreFilter";
 import PagesNumFilter from "./PagesNumFilter";
 import data from '../../files/books'
 import '../../styles/global-variables.css'
+import '../../styles/booklist/filters.css'
 
 
 export default function Filters(): JSX.Element {
 
-  const { resetBookList, setBookList } = useContext(GlobalContext)
+  const { resetBookList, setBookList, colorMode } = useContext(GlobalContext)
 
   const [genre, setGenre] = useState<string>('All');
   const [pagesRange, setPagesRange] = useState<number[]>([1, 2000])
@@ -48,11 +49,13 @@ export default function Filters(): JSX.Element {
         </Col>
         <Col span={24}>          
           <Button
+            className={`${colorMode} ApplyButton`}
             onClick={() => setBookList(applyFilters())}
           >
             Apply
           </Button>
           <Button
+            className={`${colorMode} ClearButton`}
             onClick={() => {
               resetBookList()
               setGenre('All')
@@ -75,11 +78,12 @@ export default function Filters(): JSX.Element {
             key: '1',
             label: 'Show filters',
             children: jsxContent,
+            className: `${colorMode} FilterHeader`
           }
         ]}
         bordered={false}  
         size="small"
-        className="Collapse_Header"
+        className={`${colorMode} Collapse_Header}`}
       >  
       </Collapse> 
     </section>

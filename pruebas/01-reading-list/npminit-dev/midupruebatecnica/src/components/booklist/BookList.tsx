@@ -40,8 +40,8 @@ export default function BookList( { setItemSelected }: props ): JSX.Element {
             wWidth > 1600 ? 4 :
             wWidth < 1600 && wWidth >= 1275 ? 5 : 
             wWidth < 1275 && wWidth >= 822 ? 7 : 
-            wWidth < 822 && wWidth > 450 ? 10 : 20
-          } key={i}>
+            wWidth < 822 && wWidth > 412 ? 10 : 20
+          } key={i} style={{ margin: '10px 0'}}>
             <LazyLoad
               key={i}
               onContentVisible={() => console.log("loaded")}>
@@ -56,7 +56,7 @@ export default function BookList( { setItemSelected }: props ): JSX.Element {
               ></Book>
             </LazyLoad>
           </Col>
-        ))}
+        ))}  
       </Row>
     </section>
   );

@@ -14,7 +14,7 @@ type props = {
 
 export default function GenreFilter({ setGenre, genre }: props): JSX.Element {
 
-  const { bookList } = useContext(GlobalContext);
+  const { bookList, colorMode } = useContext(GlobalContext);
   const [ genres, setGenres ] = useState<string[]>([])
 
   useEffect(() => {
@@ -23,13 +23,14 @@ export default function GenreFilter({ setGenre, genre }: props): JSX.Element {
 
   return (
     <div>
-      <Row justify={'space-between'}>
+      <Row justify={'space-between'} className={`${colorMode} GenderFilter-container`}>
         <Col span={6}>
           <Text>Gender</Text>
         </Col>
         <Col span={14}>
           <Select
             showSearch
+            className={`${colorMode} GenderFilter-select`}
             style={{
               width: 200,
             }}

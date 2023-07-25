@@ -11,14 +11,14 @@ export default function Logo(): JSX.Element {
   const { colorMode } = useContext(GlobalContext)
 
   return (
-    <div id="logo_container">
-      <Text id="logo_firstword">Book</Text>
+    <div id="logo_container" className={`${colorMode}`}>
+      <Text id="logo_firstword" className={`${colorMode}`}>Book</Text>
       <div 
-        id="logo_icon-container">
-        <GiBookmarklet id='logo_icon'/>
+        id="logo_icon-container" className={`${colorMode}`}>
+        <GiBookmarklet id='logo_icon' className={`${colorMode}`}/>
       </div>
       <Text 
-        id='logo_secondword'
+        id='logo_secondword' className={`${colorMode}`}
       >Nexus</Text>
     </div>
   )

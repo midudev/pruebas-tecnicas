@@ -5,10 +5,11 @@ import { Book } from "../../types/books";
 import data from '../../files/books'
 import { getBooksArray } from "../../contexts/GlobalContext";
 import '../../styles/booklist/sortbooks.css'
+import '../../styles/booklist/sortbooks.css'
 
 export default function SortBooks(): JSX.Element {
 
-  const { setBookList } = useContext(GlobalContext)
+  const { setBookList, colorMode } = useContext(GlobalContext)
 
   return (  
     <div id="SBs-container">
@@ -16,14 +17,14 @@ export default function SortBooks(): JSX.Element {
         <Switch 
           checkedChildren="A-Z" 
           unCheckedChildren="Z-A"
-          style={{ backgroundColor: '#4096ff' }}
           onChange={(checked => setBookList(sortBookListByName(getBooksArray(data), checked)))}
+          className={`${colorMode} AlphabeticalSort`}
         />
          <Switch 
           checkedChildren="Newest" 
           unCheckedChildren="Oldest"
-          style={{ backgroundColor: '#4096ff' }}
           onChange={(checked => setBookList(sortBookListByYear(getBooksArray(data), checked)))}
+          className={`${colorMode} AgeSorting`}
         />
       </Space>
     </div>

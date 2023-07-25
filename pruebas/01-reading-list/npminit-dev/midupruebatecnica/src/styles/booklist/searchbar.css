@@ -1,0 +1,34 @@
+.dark.SearchBar-input {
+  
+}
+
+.dark.SearchBar-input {
+
+}
+
+span.dark > span > .ant-input-affix-wrapper.css-dev-only-do-not-override-1m62vyb, 
+span.dark > span > span > .ant-input.css-dev-only-do-not-override-1m62vyb,
+span.dark > span > span > .ant-input.css-dev-only-do-not-override-1m62vyb::placeholder {
+  background-color: var(--dark-background-4);
+  color: var(--dark-font-4);
+}
+
+span.dark > span > .ant-input-affix-wrapper.css-dev-only-do-not-override-1m62vyb:hover {
+  border: 1px solid grey;
+}
+
+span.dark > span > span > .ant-input.css-dev-only-do-not-override-1m62vyb::placeholder {
+  color: grey;
+}
+
+span.dark > span > span > button {
+  background-color: var(--dark-background-4);
+}
+
+span.dark > span > span > button:hover {
+  border: 1px solid grey !important;
+}
+
+span.dark > span > span > button > span > span > svg {
+  color: white;
+}

@@ -4,10 +4,11 @@ import { FormEvent, useContext, useRef } from 'react'
 import { Book } from '../../types/books'
 import { GlobalContext } from '../../contexts/GlobalContext'
 import '../../styles/global-variables.css'
+import '../../styles/booklist/searchbar.css'
 
 export default function SearchBar(): JSX.Element {
 
-  const { setBookList } = useContext(GlobalContext)
+  const { setBookList, colorMode } = useContext(GlobalContext)
 
   const { register, setValue, handleSubmit, formState: { isDirty, isValid }} = useForm(
     { 
@@ -28,6 +29,7 @@ export default function SearchBar(): JSX.Element {
         maxLength={50}
         minLength={1}
         allowClear={true}
+        className={`${colorMode} SearchBar-input`}
         status={!isValid && isDirty ? 'error' : ''}
         onInput={(e: FormEvent<HTMLInputElement>) => setValue('toSearch', e.currentTarget.value)}
         onSearch={(value, e) => {

@@ -43,3 +43,13 @@
   -webkit-user-select: none;
   user-select: none;
 }
+
+/* dark */
+
+#logo_icon.dark {
+  color: var(--dark-font-3);
+}
+
+#logo_firstword.dark, #logo_secondword.dark {
+  color: var(--dark-font-1)
+}
