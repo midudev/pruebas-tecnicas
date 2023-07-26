@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 import { Provider } from 'react-redux';
 import { store } from '../../store/store';
