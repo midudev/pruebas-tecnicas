@@ -13,14 +13,14 @@ export const Current = () => {
   }, []);
 
   return (
-    <div className="hidden overflow-y-auto h-full rounded-lg bg-neutral-900/75 p-3 md:block md:w-5/12">
+    <div className="hidden h-full overflow-y-auto rounded-lg bg-neutral-900/75 p-3 md:block md:w-5/12">
       <h1 className="my-2 text-center text-xl font-bold">
         {books?.length || 0} Books on Reading List
       </h1>
       <div className="flex flex-wrap content-start justify-center gap-4">
-        {books?.map((book, i) => (
-          <Book book={book} key={i} added />
-        ))}
+        {books.length
+          ? books?.map((book, i) => <Book book={book} key={i} added />)
+          : "no books on reading list"}
       </div>
     </div>
   );
