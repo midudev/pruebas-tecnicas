@@ -20,5 +20,11 @@
   "homepage": "https://github.com/midudev/pruebas-tecnicas#readme",
   "dependencies": {
     "rc-slider": "^10.2.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.22.9",
+    "@babel/preset-react": "^7.22.5",
+    "babel-jest": "^29.6.1",
+    "jest": "^29.6.1"
   }
 }
