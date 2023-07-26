@@ -1,0 +1,59 @@
+.card {
+    display: flex;
+    gap: 10px;
+    min-width: 150px;
+    max-width: 600px;
+    margin: 0;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.cover {
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 1);
+    border-radius: 5px;
+    max-width: 150px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-width: 75px;
+    max-width: 300px;
+}
+
+.score {
+    padding-bottom: 20px
+}
+
+.content {
+    width: 100%;
+    color: rgb(44, 24, 16);
+    flex:1;
+}
+
+.content p {
+    padding-bottom:15px;
+}
+
+.synopsis {
+    font-size: 12px;
+}
+
+.addList button{
+    width: 100%;
+    color: rgb(218,170,99);
+    background-color: transparent;
+    border-radius: 50px;
+    border: 1px solid rgb(218,170,99);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+}
+
+.addList button:hover{
+    background-color: rgb(218,170,99);
+    color:white;
+}
