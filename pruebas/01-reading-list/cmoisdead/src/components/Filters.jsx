@@ -73,12 +73,14 @@ export const Filters = ({ setBooks }) => {
         list={authors.map((author) => author.name)}
         handler={handleChange}
       /> */}
-      <input
-        type="text"
-        className="rounded-lg border border-neutral-800 bg-neutral-900 p-2"
-        placeholder="Author, Book search"
-        onChange={handleSearch}
-      />
+      <div className="hidden md:block">
+        <input
+          type="text"
+          className="rounded-lg border border-neutral-800 bg-neutral-900 p-2"
+          placeholder="Author, Book search"
+          onChange={handleSearch}
+        />
+      </div>
     </div>
   );
 };
