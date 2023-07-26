@@ -25,6 +25,9 @@ export default function useBooks(repo: BooksRepo) {
 
 	useEffect(() => {
 		localStorage.setItem('reading_list_books', JSON.stringify(books));
+		window.addEventListener('storage', () => {
+			loadBooks();
+		});
 	}, [books]);
 
 	const loadBooks = async () => {
