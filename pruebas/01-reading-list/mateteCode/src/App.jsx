@@ -24,7 +24,8 @@ function App() {
   } = useAppContext();
 
   console.log(state);
-  useEffect(() => {
+
+  const handleStorage = () => {
     getBooksAvailable()
       .then((resp) => {
         dispatch({ type: "SET_BOOKS_AVAILABLE", value: resp });
@@ -35,7 +36,10 @@ function App() {
     if (resp) {
       dispatch({ type: "SET_BOOKS_TO_READ", value: resp });
     }
+  };
 
+  useEffect(() => {
+    handleStorage();
     getBooksData()
       .then(({ genres, maxPage }) => {
         dispatch({ type: "SET_GENRES", value: genres });
@@ -43,6 +47,9 @@ function App() {
         dispatch({ type: "SET_LOADING", value: false });
       })
       .catch((err) => console.log(err.message));
+
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
   }, []);
 
   useEffect(() => {
