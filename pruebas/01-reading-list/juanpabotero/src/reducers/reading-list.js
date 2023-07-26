@@ -13,27 +13,10 @@ export const READING_LIST_ACTION_TYPES = {
 
 const UPDATE_STATE_BY_ACTION = {
   [READING_LIST_ACTION_TYPES.ADD_TO_READING_LIST]: (state, action) => {
-    const { id } = action.payload;
-    const bookInReadingListIndex = state.findIndex((item) => item.id === id);
-
-    if (bookInReadingListIndex >= 0) {
-      const newState = [
-        ...state.slice(0, bookInReadingListIndex),
-        {
-          ...state[bookInReadingListIndex],
-          quantity: state[bookInReadingListIndex].quantity + 1,
-        },
-        ...state.slice(bookInReadingListIndex + 1),
-      ];
-      updateLocalStorage(newState);
-      return newState;
-    }
-
     const newState = [
       ...state,
       {
-        ...action.payload, // product
-        quantity: 1,
+        ...action.payload, // book
       },
     ];
 
@@ -52,7 +35,7 @@ const UPDATE_STATE_BY_ACTION = {
   },
 };
 
-export const cartReducer = (state, action) => {
+export const readingListReducer = (state, action) => {
   const { type: actionType } = action;
   const updateState = UPDATE_STATE_BY_ACTION[actionType];
   return updateState ? updateState(state, action) : state;

@@ -2,6 +2,7 @@
   "library": [
     {
       "book": {
+        "id": 1,
         "title": "El Señor de los Anillos",
         "pages": 1200,
         "genre": "Fantasía",
@@ -17,6 +18,7 @@
     },
     {
       "book": {
+        "id": 2,
         "title": "Juego de Tronos",
         "pages": 694,
         "genre": "Fantasía",
@@ -36,6 +38,7 @@
     },
     {
       "book": {
+        "id": 3,
         "title": "Harry Potter y la piedra filosofal",
         "pages": 223,
         "genre": "Fantasía",
@@ -55,6 +58,7 @@
     },
     {
       "book": {
+        "id": 4,
         "title": "1984",
         "pages": 328,
         "genre": "Ciencia ficción",
@@ -70,6 +74,7 @@
     },
     {
       "book": {
+        "id": 5,
         "title": "Apocalipsis Zombie",
         "pages": 444,
         "genre": "Zombies",
@@ -85,6 +90,7 @@
     },
     {
       "book": {
+        "id": 6,
         "title": "Dune",
         "pages": 412,
         "genre": "Ciencia ficción",
@@ -100,6 +106,7 @@
     },
     {
       "book": {
+        "id": 7,
         "title": "La Guía del Autoestopista Galáctico",
         "pages": 216,
         "genre": "Ciencia ficción",
@@ -118,6 +125,7 @@
     },
     {
       "book": {
+        "id": 8,
         "title": "Neuromante",
         "pages": 271,
         "genre": "Ciencia ficción",
@@ -133,6 +141,7 @@
     },
     {
       "book": {
+        "id": 9,
         "title": "Fahrenheit 451",
         "pages": 249,
         "genre": "Ciencia ficción",
@@ -148,6 +157,7 @@
     },
     {
       "book": {
+        "id": 10,
         "title": "El resplandor",
         "pages": 688,
         "genre": "Terror",
@@ -163,6 +173,7 @@
     },
     {
       "book": {
+        "id": 11,
         "title": "Drácula",
         "pages": 418,
         "genre": "Terror",
@@ -181,6 +192,7 @@
     },
     {
       "book": {
+        "id": 12,
         "title": "Frankenstein",
         "pages": 280,
         "genre": "Terror",
@@ -196,6 +208,7 @@
     },
     {
       "book": {
+        "id": 13,
         "title": "La llamada de Cthulhu",
         "pages": 43,
         "genre": "Terror",
