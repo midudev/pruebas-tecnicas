@@ -4,18 +4,22 @@
 
 @font-face {
   font-family: 'Mystery Quest';
-  src: url('../public/MysteryQuest.woff2');
+  src: url('./assets/fonts/MysteryQuest.woff2');
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'Tilt Neon';
-  src: url('../public/TiltNeon.woff2');
+  src: url('./assets/fonts/TiltNeon.woff2');
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'Handlee';
-  src: url('../public/Handlee.woff2');
+  src: url('./assets/fonts/Handlee.woff2');
   font-weight: 400;
+}
+
+.bg-grated-pattern {
+  background-image: url('./assets/grated-pattern.webp');
 }

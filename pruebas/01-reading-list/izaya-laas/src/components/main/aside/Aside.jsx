@@ -2,6 +2,7 @@ import SpecificBook from './SpecificBook';
 import RangePages from './RangePages';
 import SelectGenre from './SelectGenre';
 import ExcludeBooks from './ExcludeBooks';
+import upIcon from '../../../assets/up.svg';
 import {
   filterOptions,
   handleGenre,
@@ -32,7 +33,7 @@ const Aside = () => {
         }`}
         onClick={handleIsHiddenAside}
       >
-        <img src="/public/up.svg" alt="down icon" className={`w-5 `} />
+        <img src={upIcon} alt="down/up icon" className={`w-5 `} />
       </div>
       <div className="mx-auto hidden w-min rounded-b-md bg-grated-pattern pb-1 sm:block">
         <h4 className="mt-1 h-full bg-white text-center text-lg">Filters</h4>

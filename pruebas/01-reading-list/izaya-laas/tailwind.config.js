@@ -8,9 +8,6 @@ export default {
         tilt: ['Tilt Neon', 'cursive'],
         handlee: ['Handlee', 'cursive'],
       },
-      backgroundImage: {
-        'grated-pattern': "url('public/grated-pattern.webp')",
-      },
       keyframes: {
         heightdown: {
           '0%': { height: 'auto' },
