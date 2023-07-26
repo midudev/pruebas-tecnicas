@@ -1,9 +1,10 @@
 import { useDispatch } from 'react-redux';
-import { getBooks } from './store/slices/WhatABook';
+import { allowSave, getBooks } from './store/slices/WhatABook';
 import { useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Filters } from './components/Filters';
 import { Books } from './components/Books';
+import { getLocalStorage } from './store/slices/WhatABook';
 
 
 export const WhatABook = () => {
@@ -16,16 +17,17 @@ export const WhatABook = () => {
 
   }, []);
 
+  useEffect(() => {
 
+    dispatch(getLocalStorage());
+    dispatch(allowSave());
+
+  }, []);
 
   return (
     <>
     
         <Navbar/>
-
-        {/* <button type="button" class="btn btn-primary" >
-  Open modal
-</button> */}
 
         <Filters/>
 

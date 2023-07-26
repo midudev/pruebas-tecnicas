@@ -1,11 +1,62 @@
 import { useDispatch, useSelector } from "react-redux";
-import { pushMyBook, removeAvailableBook, pushAvailableBooks, removeMyBook, pushMyFavs, removeFavorite, setIsModal } from '../store/slices/WhatABook/';
+import { pushMyBook, removeAvailableBook, pushAvailableBooks, removeMyBook, pushMyFavs, removeFavorite, setIsModal, saveLocalStorage } from '../store/slices/WhatABook/';
 import { Modal } from "./Modal";
+import { useEffect } from "react";
 
 export const BookCard = ({book = {}, type, isFavorite=false}) => {
 
     const dispatch = useDispatch();
-    const { myBooks, currentBook, myFavs } = useSelector(state => state.WhatABook);
+    const { myBooks, currentBook, myFavs, booksAvailable, isModal, canSave } = useSelector(state => state.WhatABook);
+
+    useEffect(() => {
+
+        if(canSave) {
+
+            dispatch(saveLocalStorage());
+
+        }
+
+    }, [myBooks]);
+    
+    useEffect(() => {
+
+        if(canSave) {
+
+            dispatch(saveLocalStorage());
+
+        }
+
+    }, [booksAvailable]);
+
+    useEffect(() => {
+
+        if(canSave) {
+
+            dispatch(saveLocalStorage());
+
+        }
+
+    }, [myFavs]);
+
+    useEffect(() => {
+
+        if(canSave) {
+
+            dispatch(saveLocalStorage());
+
+        }
+
+    }, [currentBook]);
+
+    useEffect(() => {
+
+        if(canSave) {
+
+            dispatch(saveLocalStorage());
+
+        }
+
+    }, [isModal]);
 
     const onMoveBook = () => {
 
@@ -42,7 +93,14 @@ export const BookCard = ({book = {}, type, isFavorite=false}) => {
 
             <figure className="position-relative Book__figure">
 
-                <img src={book?.cover} alt="Portada del libro" width="100%" className="Book__card rounded-top" data-bs-toggle="modal" data-bs-target={`#staticBackdrop-${book.ISBN}`} onClick={() => dispatch(setIsModal(true))}/>
+                <img 
+                    src={book?.cover} 
+                    alt="Portada del libro" 
+                    width="100%" 
+                    className="Book__card rounded-top" 
+                    data-bs-toggle="modal" 
+                    data-bs-target={`#staticBackdrop-${book.ISBN}`} 
+                    onClick={() => dispatch(setIsModal(true))}/>
                 <figcaption className="position-absolute Img__figcaption" data-bs-toggle="modal" data-bs-target={`#staticBackdrop-${book.ISBN}`} onClick={() => dispatch(setIsModal(true))}>Ver más...</figcaption>
 
             </figure>

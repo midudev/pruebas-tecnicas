@@ -12,6 +12,7 @@ export const WhatABookSlice = createSlice({
         myFavs: [],
         isFav: false,
         isModal: false,
+        canSave: false,
 
     },
     reducers: {
@@ -123,12 +124,82 @@ export const WhatABookSlice = createSlice({
 
         searchBook: (state, action) => {
 
-            // state.
+            const search = action.payload;
+            search.toLowerCase();
+            
 
         },
+
+        saveLocalStorage: (state) => {
+
+            try {
+
+                const { canSave, isModal, ...stateToSave } = state; // Extract "canSave" from the state
+                const serializedState = JSON.stringify(stateToSave);
+                localStorage.setItem('reduxState', serializedState);
+
+            } catch(error) {
+
+                console.error("Error saving in local storage: ", error);
+
+            }
+
+        },
+
+        getLocalStorage: (state) => {
+
+            try {
+
+                const serializedState = localStorage.getItem('reduxState');
+                if(serializedState === null) {
+
+                    return;
+
+                }
+                const parsedState = JSON.parse(serializedState);
+                state.books = parsedState.books || [];
+                state.booksAvailable = parsedState.booksAvailable || [];
+                state.myBooks = parsedState.myBooks || [];
+                state.currentBook = parsedState.currentBook || 0;
+                state.myFavs = parsedState.myFavs || [];
+                state.isFav = parsedState.isFav || false;
+                state.isModal = parsedState.isModal || false;
+
+            } catch(error) {
+
+                console.error("Error retrieving data from local storage: ", error);
+
+            }
+
+        },
+
+        allowSave: (state) => {
+
+            state.canSave = true;
+
+        }
 
     },
 
 });
 
-export const { setBooks, pushMyBook, removeAvailableBook, incrementCurrentBook, decrementCurrentBook, pushAvailableBooks, removeMyBook, pushMyFavs, resetCurrentBook, setIsFav, setAll, removeFavorite, setIsModal } = WhatABookSlice.actions;
+export const { 
+
+    setBooks, 
+    pushMyBook, 
+    removeAvailableBook, 
+    incrementCurrentBook, 
+    decrementCurrentBook, 
+    pushAvailableBooks, 
+    removeMyBook, 
+    pushMyFavs, 
+    resetCurrentBook, 
+    setIsFav, 
+    setAll, 
+    removeFavorite, 
+    setIsModal, 
+    saveLocalStorage, 
+    getLocalStorage,
+    allowSave,
+
+} = WhatABookSlice.actions;

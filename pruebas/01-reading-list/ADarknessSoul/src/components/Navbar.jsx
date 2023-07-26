@@ -4,6 +4,7 @@ export const Navbar = () => {
     const submit = (e) => {
 
         e.preventDefault();
+        const searchBook = e.target.value;
         
 
     }

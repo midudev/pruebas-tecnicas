@@ -41,7 +41,7 @@ export const Modal = ({ISBN=0, author={}, cover="", genre="", pages=0, synopsis=
 
                                 author?.otherBooks?.map((book) => (
 
-                                    <li key={book} className="list-group-item"><span className="text-secondColor">Otra obra:</span> {book}</li>
+                                    <li key={book} className="list-group-item Modal__item"><span className="text-secondColor">Otra obra:</span> {book}</li>
 
                                 ))
 

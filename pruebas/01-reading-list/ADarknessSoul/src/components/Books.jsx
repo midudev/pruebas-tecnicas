@@ -1,17 +1,16 @@
 import { useDispatch, useSelector } from "react-redux"
 import { BookCard } from "./BookCard";
-import { incrementCurrentBook, decrementCurrentBook, resetCurrentBook, setIsFav, setAll, setIsModal } from '../store/slices/WhatABook/';
+import { incrementCurrentBook, decrementCurrentBook, resetCurrentBook, setIsFav, setAll, setIsModal, saveLocalStorage } from '../store/slices/WhatABook/';
 import { useEffect, useState } from "react";
 import { EmptyFavorites } from "./EmptyFavorites";
 
 export const Books = () => {
 
     const dispatch = useDispatch();
-    const { booksAvailable, myBooks, currentBook, myFavs, isModal } = useSelector(state => state.WhatABook);
+    const { booksAvailable, myBooks, currentBook, myFavs, isFav, isModal, canSave } = useSelector(state => state.WhatABook);
     const [reduxBooksAvailable, setReduxBooksAvailable] = useState([]);
     const [reduxMyFavs, setReduxMyFavs] = useState([]);
     const [reduxMyBooks, setReduxMyBooks] = useState([]);
-    const [isFavorite, setIsFavorite] = useState(false);
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
     useEffect(() => {
@@ -21,6 +20,17 @@ export const Books = () => {
         setReduxMyFavs([...myFavs]);
 
     }, [booksAvailable, myBooks, myFavs]);
+
+    useEffect(() => {
+
+        if(canSave) {
+
+            dispatch(saveLocalStorage());
+
+        }
+
+    }, [isFav])
+    
 
     const handleWindowChange = () => {
 
@@ -56,12 +66,6 @@ export const Books = () => {
 
                     </div>
 
-                    {
-
-                        console.log(screenWidth)
-
-                    }
-
                     <div className={myBooks.length === 0 ? "mx-3 Books__cards mb-3" : "mx-3 Books__cards--smaller mb-3"}>
 
                         {
@@ -92,14 +96,12 @@ export const Books = () => {
 
                                 <button className="btn Books__headerButtons" onClick={() => {
 
-                                    setIsFavorite(false);
                                     dispatch(setAll());
                                     dispatch(resetCurrentBook());
 
                                 }}>Todos</button>
                                 <button className="btn Books__headerButtons" onClick={() => {
 
-                                    setIsFavorite(true);
                                     dispatch(setIsFav());
                                     dispatch(resetCurrentBook());
 
@@ -109,11 +111,11 @@ export const Books = () => {
 
                             <div className="d-flex flex-column Books__header">
 
-                                <h4>{isFavorite ? "Mis favoritos: " : "Mis libros: "}<span>{!isFavorite ? `${myBooks.length}` : `${myFavs.length}`}</span></h4>
+                                <h4>{isFav ? "Mis favoritos: " : "Mis libros: "}<span>{!isFav ? `${myBooks.length}` : `${myFavs.length}`}</span></h4>
 
                             </div>
 
-                            <div className={isFavorite ? "mx-3 flex-grow-1 d-flex flex-column justify-content-center align-items-center" : "mx-3 flex-grow-1"}>
+                            <div className={isFav ? "mx-3 flex-grow-1 d-flex flex-column justify-content-center align-items-center" : "mx-3 flex-grow-1"}>
 
                                 {
 
@@ -121,7 +123,7 @@ export const Books = () => {
 
                                         <></>
 
-                                    ) : !isFavorite ? (
+                                    ) : !isFav ? (
 
                                         <BookCard book={reduxMyBooks[currentBook].book} type={2}/>
 
@@ -131,7 +133,7 @@ export const Books = () => {
 
                                     ) : (
 
-                                        <BookCard book={reduxMyFavs[currentBook]?.book} type={2} isFavorite={isFavorite}/>
+                                        <BookCard book={reduxMyFavs[currentBook]?.book} type={2} isFavorite={isFav}/>
 
                                     )
 
