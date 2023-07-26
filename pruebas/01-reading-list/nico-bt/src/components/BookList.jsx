@@ -15,8 +15,12 @@ export default function BookList({ filteredBooks }) {
             return null
           } else {
             return (
-              <li key={item.ISBN} onClick={() => handleClickAddToList(item)}>
+              <li key={item.ISBN}>
                 <img src={item.cover} alt={`${item.title} cover`} />
+                <div className="booklist-btns">
+                  <button onClick={() => handleClickAddToList(item)}>Add to List</button>
+                  <button onClick={() => console.log("Show details")}>Details</button>
+                </div>
               </li>
             )
           }

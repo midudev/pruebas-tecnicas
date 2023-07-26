@@ -22,6 +22,10 @@ img {
   max-width: 100%;
 }
 
+button {
+  cursor: pointer;
+}
+
 /* User list */
 /*************************************************/
 .readingList-container {
@@ -103,9 +107,45 @@ img {
   gap: 1rem;
 }
 
-.booklist-container > li {
+.booklist-container li {
   max-height: 320px;
-  cursor: pointer;
+  display: grid;
+}
+.booklist-btns {
+  max-height: 320px;
+  grid-row: 1/-1;
+  grid-column: 1/-1;
+  align-self: center;
+  justify-self: center;
+  z-index: 10;
+  display: none;
+  gap: 10px;
+}
+.booklist-btns button {
+  width: 140px;
+  font-size: 1.1rem;
+  padding: 8px 1px;
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  letter-spacing: 1px;
+  transition: all ease 0.3s;
+}
+
+.booklist-btns button:hover {
+  transform: scale(1.1);
+  background-color: darkgreen;
+}
+.booklist-container img {
+  justify-self: center;
+  max-height: 320px;
+  grid-row: 1/-1;
+  grid-column: 1/-1;
+}
+
+.booklist-container li:hover .booklist-btns {
+  display: flex;
+  flex-direction: column;
 }
 
 /* FilterDiv */
