@@ -28,7 +28,10 @@ const Catalogue: React.FC = () => {
       <div className="flex flex-col gap-8 p-8">
         <h1 className="font-bold text-stone-800 text-3xl">Catálogo</h1>
 
-        <div className={`${isOpen ? "" : "grid grid-cols-4 gap-8"} `}>
+        <div
+          className={`${isOpen ? "" : "grid grid-cols-4 gap-8"} `}
+          data-cy="catalogue-list"
+        >
           {filteredBooks.map((book, i) => {
             const foundBook = myList.find(
               (elem) => elem.book.ISBN === book.book.ISBN

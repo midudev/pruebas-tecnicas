@@ -29,6 +29,7 @@ const MyList: React.FC = () => {
           </h3>
           <div
             className={`grid ${isOpen ? "grid-cols-4" : "grid-cols-1"} gap-4`}
+            data-cy="my-list"
           >
             {myList.map((book, i) => {
               return (

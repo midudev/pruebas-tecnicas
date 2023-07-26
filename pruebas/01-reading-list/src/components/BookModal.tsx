@@ -17,13 +17,13 @@ const BookModal: React.FC<Props> = ({ openModal, setOpenModal, book }) => {
       }  fixed top-0 left-0 w-full h-full justify-center items-center z-20`}
     >
       <div
-        className="fixed top-0 left-0 w-full h-full bg-stone-900 opacity-30"
+        className="fixed top-0 left-0 w-full h-full bg-stone-900 opacity-50"
         onClick={() => setOpenModal(!openModal)}
       ></div>
       <article className="relative z-30 bg-stone-50 rounded max-w-[40rem] h-[30rem]">
         <div className="flex items-start w-full h-full">
           <div className="w-1/2 h-full">
-            <img src={cover} className="w-full h-full rounded" alt={title} />
+            <img src={cover} className="w-full h-full" alt={title} />
           </div>
           <div className="w-1/2 h-full relative flex flex-col gap-4 p-4 text-stone-800">
             <div>
@@ -31,9 +31,6 @@ const BookModal: React.FC<Props> = ({ openModal, setOpenModal, book }) => {
               <p className="text-sm">por {author.name}</p>
             </div>
             <p className="text-sm font-light">{synopsis}</p>
-            {/* <span className="w-fit text-sm border border-stone-300 bg-stone-200 text-stone-500 rounded px-2 py-0.5">
-              {genre}
-            </span> */}
             <div className="text-sm border-t border-stone-200 pt-4 rounded">
               <h4 className="font-medium pb-2">Detalles</h4>
               <div className="flex flex-col gap-1">

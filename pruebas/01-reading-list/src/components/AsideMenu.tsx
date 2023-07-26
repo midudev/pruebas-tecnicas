@@ -56,11 +56,12 @@ const AsideMenu: React.FC = () => {
                 placeholder="Título, autor..."
                 defaultValue={searchedBook}
                 onChange={handleSearcher}
+                data-cy="search-by-title-or-author"
               />
             </li>
             <li className="flex flex-col gap-2 text-sm">
               <div className="font-medium">Géneros</div>
-              <ul>
+              <ul data-cy="search-by-genre">
                 {Object.entries(genreCountMap).map(([genre, count]) => {
                   return (
                     <li

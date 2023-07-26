@@ -18,7 +18,7 @@ const Book: React.FC<Props> = ({
 
   const [openModal, setOpenModal] = useState<boolean>(false);
   return (
-    <>
+    <div>
       <article>
         <div className="group flex flex-col gap-4">
           <div className="relative">
@@ -26,7 +26,7 @@ const Book: React.FC<Props> = ({
               <img
                 src={cover}
                 alt={title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover cursor-pointer"
                 onClick={() => {
                   if (isInMyList) {
                     setOpenModal(openModal);
@@ -65,7 +65,7 @@ const Book: React.FC<Props> = ({
         setOpenModal={setOpenModal}
         book={book}
       />
-    </>
+    </div>
   );
 };
 
