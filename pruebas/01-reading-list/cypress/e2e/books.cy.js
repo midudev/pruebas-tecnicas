@@ -86,7 +86,85 @@ describe("Verify searcher filter", () => {
   afterEach(() => {
     // Limpio el buscador
     cy.get("@book-searcher").clear();
+    cy.get("@catalogue-list").children().should("have.length", 13);
+  });
+});
 
+describe("Verify genres filter", () => {
+  beforeEach(() => {
+    // Visito la página
+    cy.visit("/");
+
+    // Realizo las queries
+    cy.get('[data-cy="search-by-genre"]').as("genre-searcher");
+    cy.get('[data-cy="catalogue-list"]').as("catalogue-list");
+
+    // Verifico que estén todas las categorías
+    cy.get("@genre-searcher").children().should("have.length", 5);
+    // Y el catálogo este completo
+    cy.get("@catalogue-list").children().should("have.length", 13);
+  });
+
+  it("Testing one genre", () => {
+    // Verifico que exista el género
+    cy.get("@genre-searcher").children().contains("Fantasía").as("fantasy");
+
+    // Busco libros del género fantasía
+    cy.get("@fantasy").click();
+
+    // Verfico el catálogo
+    cy.get("@catalogue-list").children().should("have.length", 3);
+  });
+
+  it("Testing navigation between genres", () => {
+    // Verifico que haya dos géneros
+    cy.get("@genre-searcher").children().contains("Terror").as("horror");
+    cy.get("@genre-searcher")
+      .children()
+      .contains("Ciencia ficción")
+      .as("sci-fi");
+
+    // Navego al primer género
+    cy.get("@horror").click();
+    cy.get("@catalogue-list").children().should("have.length", 4);
+
+    // Navego al segundo género
+    cy.get("@sci-fi").click();
+    cy.get("@catalogue-list").children().should("have.length", 5);
+  });
+
+  it("When adding a book to my list catalog reset", () => {
+    // Busco el libro del género que quiero
+    cy.get("@genre-searcher").children().contains("Zombies").as("zombies");
+    cy.get("@zombies").click();
+    cy.get("@catalogue-list").children().should("have.length", 1);
+    cy.get("@catalogue-list").first().contains("Apocalipsis Zombie");
+    cy.get("@catalogue-list").first().as("first-book");
+
+    // Agrego el libro a la lista
+    cy.get("@first-book").contains("Add").as("add-btn");
+    cy.get("@add-btn").click();
+
+    // Verifico que vuelva al catálogo original y no aparezca dicho título
+    cy.get("@catalogue-list").children().should("have.length", 12);
+    cy.get("@catalogue-list")
+      .children()
+      .each((book) => {
+        cy.wrap(book).should("not.contain", "Apocalipsis Zombie");
+      });
+
+    // Devuelvo el libro al catálogo
+    cy.get('[data-cy="my-list"]').as("my-list");
+    cy.get("@my-list").first().contains("Apocalipsis Zombie");
+    cy.get("@my-list").first().as("mylist-book");
+    cy.get("@mylist-book").contains("Remove").as("remove-btn");
+    cy.get("@remove-btn").click();
+  });
+
+  afterEach(() => {
+    // Limpio el catálogo de género
+    cy.get("@genre-searcher").children().first().contains("Todos").as("all");
+    cy.get("@all").click();
     cy.get("@catalogue-list").children().should("have.length", 13);
   });
 });

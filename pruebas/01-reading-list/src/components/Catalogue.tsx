@@ -21,7 +21,7 @@ const Catalogue: React.FC = () => {
 
   return (
     <section
-      className={`transition-all duration-300 bg-primary-green ${
+      className={`transition-all duration-700 bg-primary-green ${
         isOpen ? "w-0" : "w-4/6"
       }`}
     >

@@ -62,6 +62,12 @@ const AsideMenu: React.FC = () => {
             <li className="flex flex-col gap-2 text-sm">
               <div className="font-medium">Géneros</div>
               <ul data-cy="search-by-genre">
+                <li
+                  className="cursor-pointer"
+                  onClick={() => setFilteredBooks(books)}
+                >
+                  Todos ({books.length})
+                </li>
                 {Object.entries(genreCountMap).map(([genre, count]) => {
                   return (
                     <li
