@@ -1,0 +1,70 @@
+<div *ngIf="book; else noBook">
+
+ <div class="flex items-center">
+  <a [routerLink]="['']">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  </a>
+  <h1 class="ml-4 text-3xl font-bold tracking-tight">{{book.title}}</h1>
+ </div>
+  
+  <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
+    <div class="grid">
+      <img [src]="book.cover" [alt]="book.title" class="aspect-[2/3] h-full object-cover w-full max-w-full rounded">
+      </div>
+    <div>
+      <p class="mt-4 text-2xl">{{book.synopsis}}</p>
+      <dl class="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
+        <div class="border-t pt-2">
+          <dt class="font-medium">Author</dt>
+          <dd class="mt-2 text-sm">{{book.author.name}}</dd>
+        </div>
+        <div class="border-t pt-4">
+          <dt class="font-medium">Genre</dt>
+          <dd class="mt-2 text-sm">{{book.genre}}</dd>
+        </div>
+        <div class="border-t pt-2">
+          <dt class="font-medium" >Year</dt>
+          <dd class="mt-2 text-sm">{{book.year}}</dd>
+        </div>
+        <div class="border-t pt-2">
+          <dt class="font-medium">Pages</dt>
+          <dd class="mt-2 text-sm">{{book.pages}}</dd>
+        </div>
+        <div class="border-t pt-4">
+          <dt class="font-medium">Other {{book.author.name}} books</dt>
+          <dd *ngIf="book.author.otherBooks.length" class="mt-2 text-sm">
+            <div class="badge badge-outline m-1" *ngFor="let book of book.author.otherBooks">{{book}}</div>
+          </dd>
+          <dd *ngIf="!book.author.otherBooks.length" class="mt-2 text-sm">-</dd>
+        </div>
+        <div class="border-t pt-2">
+          <dt class="font-medium">In list to read</dt>
+          <dd class="mt-2 text-sm">{{book.inListToRead ? 'Yes' : 'No'}}
+            <button 
+              (click)="addOrRemoveBook(book)"
+              type="button"
+              class="btn btn-sm btn-neutral mt-1 ml-1">
+              {{book.inListToRead ? 'Remove' : 'Add'}}
+            </button>
+          </dd>
+        </div>
+      </dl>
+    </div>
+    
+  </div>
+</div>
+
+<ng-template #noBook>
+  <div class="mt-10">
+    <a [routerLink]="['']">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </a>
+    <h1 class="text-3xl font-bold tracking-tight">Ooops... no book selected</h1>
+    </div>
+</ng-template>
+
+
