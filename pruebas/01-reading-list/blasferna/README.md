@@ -1,6 +1,7 @@
 # Bookbuddy
 
-![Imagen del proyecto](url_de_tu_imagen)
+![Imagen del proyecto](https://github.com/blasferna/pruebas-tecnicas/assets/8385910/733d958f-edb9-465e-a63b-1248b1e8cca9)
+
 
 ## Acerca del Proyecto
 
