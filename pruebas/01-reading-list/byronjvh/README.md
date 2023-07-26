@@ -6,4 +6,4 @@ Prueba técnica de:
 [Pruebas técnicas de programación](https://pruebastecnicas.com/)
 
 ## Deploy
-* [Vercel](https://pruebas-tecnicas-murex.vercel.app/) 
+* [Vercel](https://pruebas-tecnicas-murex.vercel.app/)
