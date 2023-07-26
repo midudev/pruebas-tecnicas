@@ -3,7 +3,7 @@ import styles from './BookList.module.css'
 
 export default function BookList ({ books }) {
   // console.log(books)
-  if (books.length === 0) return <p>No hay libros</p>
+  if (books.length === 0) return <p>No hay libros disponibles</p>
 
   return (
     <ul className={styles.books}>
