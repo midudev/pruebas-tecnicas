@@ -1,4 +1,4 @@
-import { createSlice, current } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 export const WhatABookSlice = createSlice({
 
@@ -72,8 +72,6 @@ export const WhatABookSlice = createSlice({
                 state.currentBook += 1;
 
             } else if(state.currentBook < state.myFavs.length - 1 && state.isFav) {
-
-                console.log("hola patata");
 
                 state.currentBook += 1;
 

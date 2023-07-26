@@ -546,6 +546,17 @@ main {
 .Modal__image {
 
   height: inherit;
+  margin-bottom: 1rem;
+
+}
+
+@media (min-width: 580px) {
+    
+  .Modal__image {
+
+    margin-bottom: 0;
+
+  }
 
 }
 
