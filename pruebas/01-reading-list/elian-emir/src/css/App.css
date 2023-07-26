@@ -100,8 +100,30 @@ select {
 select::-moz-placeholder {
   font-size: 1.5rem;
 }
-@media (max-width: 768px) {
-  .reading-responsive > img {
-    
-  }
+
+.heading {
+  text-align: center;
+  font-size: 1.7rem;
+}
+
+.btn {
+  all: unset;
+  padding: 0.7rem;
+  text-align: center;
+  color: var(--colorPrimary);
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: medium;
+  display: block;
+  margin: 0 auto;
+  border: solid 1px var(--colorPrimary);
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  background-color: var(--colorBg);
+}
+
+.btn:hover {
+  cursor: pointer;
+  border-color: var(--colorAccent);
+  color: var(--colorAccent)
 }
