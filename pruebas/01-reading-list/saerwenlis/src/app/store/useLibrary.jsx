@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware';
+import { persist } from 'zustand/middleware';
 import { shared } from 'use-broadcast-ts';
 import libraryBooks from "../data/books.json";
 
@@ -23,9 +23,7 @@ export const useLibrary = create(
                     set((state) => ({
                         list: state.list.filter((list) => list.ISBN !== book.ISBN),
                         data: [...state.data, book],
-                        books: [...state.books, book]/* .filter((e) => {
-                            e.genre == state.filter
-                        }) */
+                        books: [...state.books, book]
                     }))
                 },
                 filter: 'All',
