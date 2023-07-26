@@ -86,7 +86,7 @@
 		on:consider={handleConsider}
 		on:finalize={handleFinalize}
 	>
-		{#each items as item (item.id)}
+		{#each items as item, index(item.id)}
 			<BookCard
 				onDragStyles={item.id === itemSelected ? true : false}
 				{isDragabble}

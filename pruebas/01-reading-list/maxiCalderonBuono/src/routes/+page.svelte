@@ -134,7 +134,7 @@
 			</article>
 		{/if}
 		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-			{#each $initialDataStore.renderlist as { book }(book.ISBN)}
+			{#each $initialDataStore.renderlist as { book }, index(book.ISBN)}
 					<BookCard
 						cta="Agregar a lista de lectura"
 						{book}
