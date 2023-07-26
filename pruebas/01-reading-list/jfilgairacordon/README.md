@@ -29,7 +29,7 @@ No ha dado tiempo a todo, pero se ha intentado. 😀😀 La próxima prueba a ve
 
 - [ ] Test: La aplicación debe tener AL MENOS un test. Haz el test que consideres más importante para tu aplicación.
 
-- [ ] Implementar una funcionalidad de búsqueda en la lista de libros disponibles.
+- [😎] Implementar una funcionalidad de búsqueda en la lista de libros disponibles.
 
 - [😎] Añade un nuevo filtro para filtrar los libros por número de páginas.
 
