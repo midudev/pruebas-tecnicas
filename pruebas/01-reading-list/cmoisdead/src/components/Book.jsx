@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BookButtons } from "./BookButtons";
 import { ModalBook } from "./ModalBook";
+import { animated, useSpring } from "@react-spring/web";
 import useBookStore from "../store/store";
 
 export const Book = ({ book, added }) => {
@@ -9,6 +10,11 @@ export const Book = ({ book, added }) => {
   const isActive = useBookStore((state) => state.current).find(
     (item) => item.title === title,
   );
+
+  const springs = useSpring({
+    from: { scale: 0.8 },
+    to: { scale: 1 },
+  });
 
   const handleRemove = () => {
     // remove the book from the reading list
@@ -30,7 +36,12 @@ export const Book = ({ book, added }) => {
   return (
     <>
       {(!isActive && !added) || added ? (
-        <div className="relative h-72 w-48">
+        <animated.div
+          className="relative h-72 w-48"
+          style={{
+            ...springs,
+          }}
+        >
           <div
             className="h-full w-full rounded-lg border-dashed border-neutral-700 transition-all hover:cursor-pointer hover:border-neutral-500"
             onClick={() => setOpenModal("dimissible")}
@@ -51,7 +62,7 @@ export const Book = ({ book, added }) => {
             setOpenModal={setOpenModal}
             book={book}
           />
-        </div>
+        </animated.div>
       ) : (
         ""
       )}

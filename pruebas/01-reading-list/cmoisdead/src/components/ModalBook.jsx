@@ -22,7 +22,7 @@ export const ModalBook = ({ openModal, setOpenModal, book }) => {
               className="rounded-lg"
             />
           </div>
-          <div className="md:w-2/3 space-y-6">
+          <div className="space-y-6 md:w-2/3">
             <h3 className="text-3xl text-rose-700">Synopsis:</h3>
             <p className="text-base leading-relaxed text-white">
               {description}
