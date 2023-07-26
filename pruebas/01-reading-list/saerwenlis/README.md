@@ -2,6 +2,8 @@
 
 Este proyecto fue realizado en base al challenge propuesto por Midudev en: [Pruebas Técnicas de Programación: Lista de lectura](https://pruebastecnicas.com/)
 
+**Deploy:** [Enlace a solución](https://main--stunning-jalebi-e13a53.netlify.app/)
+
 **Requisitos:**
 
 ✅ Visualización de Libros Disponibles
@@ -18,10 +20,18 @@ Este proyecto fue realizado en base al challenge propuesto por Midudev en: [Prue
 
 -- Test
 
--- Despliegue
+✅ Despliegue
 
+**Tecnologias utilizadas**
 
-**Deploy:** dejaré el deploy por aqui
+- Nextjs
+
+- Zustand
+
+- Framer Motion
+
+- Tailwind CSS
+
 
 Pruebas técnicas [Midudev](https://github.com/midudev/pruebas-tecnicas)
 
