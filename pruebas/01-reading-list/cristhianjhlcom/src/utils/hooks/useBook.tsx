@@ -1,5 +1,6 @@
 import {useContext} from 'react';
 import pushButtonSound from '../../assets/sounds/button-push.mp3';
+import library from '../../data/library';
 import {BookTypes} from '../../enums';
 import {BookElement} from '../../interfaces';
 import {BookContext} from '../context';
@@ -31,18 +32,21 @@ export default function useBook() {
 
 	function handleLoadInitialBooksAndFavorites() {
 		const initialData = storage.getItem();
+		console.log('storage', initialData);
 		if (!initialData) {
 			const defaultData = {books: library, favorites: []};
+			console.log('default datal', defaultData);
 			storage.setItem(defaultData);
 			dispatch({
 				type: BookTypes.LOAD_BOOKS,
 				payload: defaultData,
 			});
 		} else {
+			console.log('initial data', initialData);
 			dispatch({
 				type: BookTypes.LOAD_BOOKS,
 				payload: {
-					books: initialData.library,
+					books: initialData.books,
 					favorites: initialData.favorites,
 				},
 			});

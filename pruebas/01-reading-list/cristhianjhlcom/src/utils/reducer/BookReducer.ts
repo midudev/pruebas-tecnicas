@@ -22,8 +22,8 @@ export function bookReducer(
 		case BookTypes.RELOAD:
 			return {
 				...state,
-				books: action.payload.library,
-				favorites: action.payload.favorites,
+				books: action.payload?.library || [],
+				favorites: action.payload?.favorites || [],
 			};
 		case BookTypes.LOAD_BOOKS:
 			return {
