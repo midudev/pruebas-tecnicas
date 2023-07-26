@@ -1,6 +1,15 @@
-# Angular 15 Project
+# Reading List
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.5.
+[Deploy](https://reading-list-diego-barroso.netlify.app/)
+
+
+This project was generated using: 
+- Angular 16
+- Tailwind-css
+- DaisyUI
+
+## Install project
+Run `npm install` for a install dependencies.
 
 ## Development server
 

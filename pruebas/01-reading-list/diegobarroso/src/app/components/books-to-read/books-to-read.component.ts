@@ -1,3 +1,4 @@
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component, inject } from '@angular/core';
 import { Book } from 'src/app/interfaces/book';
 import { BooksService } from 'src/app/services/books.service';
@@ -15,7 +16,7 @@ export class BookToReadComponent {
   }
   bookService = inject(BooksService);
 
-  drop(event: any) {
+  drop(event: CdkDragDrop<Book[]>) {
     if(event.previousContainer !== event.container) {
       this.bookService.addOrRemoveBook(event.item.data);
     }

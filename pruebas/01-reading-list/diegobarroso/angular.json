@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ia-image-generator": {
+    "reading-list": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ia-image-generator",
+            "outputPath": "dist/reading-list",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ia-image-generator:build:production"
+              "browserTarget": "reading-list:build:production"
             },
             "development": {
-              "browserTarget": "ia-image-generator:build:development"
+              "browserTarget": "reading-list:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ia-image-generator:build"
+            "browserTarget": "reading-list:build"
           }
         },
         "test": {

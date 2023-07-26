@@ -37,7 +37,6 @@ export class BookDetailComponent implements OnInit, OnDestroy{
   getBook(id: string) {
     this.bookService.getBook(id)
       .subscribe(book => {
-        console.log('Book: ', book)
         this.book = book;
       })
   }

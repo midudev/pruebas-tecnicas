@@ -1,3 +1,4 @@
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges, inject } from '@angular/core';
 import { Book } from 'src/app/interfaces/book';
 import { BooksService } from 'src/app/services/books.service';
@@ -29,7 +30,7 @@ export class BookListComponent implements OnInit{
       .subscribe(genres => this.genres = genres);
   }
 
-  drop(event: any) {
+  drop(event: CdkDragDrop<Book[]>) {
     if(event.previousContainer !== event.container) {
       this.bookService.addOrRemoveBook(event.item.data);
     }

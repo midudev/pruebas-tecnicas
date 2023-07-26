@@ -53,7 +53,7 @@ export class BooksService {
     return of(bookList);
   }
 
-  addOrRemoveBook(book: any) {
+  addOrRemoveBook(book: Book) {
     const bookToMove = this.books.findIndex(b => b.ISBN === book.ISBN)
     if (bookToMove > -1 ) {
       this.books[bookToMove].inListToRead = !this.books[bookToMove].inListToRead;
