@@ -15,7 +15,7 @@ const addBookToReadingList = (ISBN) => {
 const Card = ({ title, cover, name, ISBN }) => {
   return (
     <figure
-      className={`h-min w-36 rounded-bl-[15px_255px] rounded-br-[255px_15px] rounded-tl-[255px_15px] rounded-tr-[15px_255px] border border-black bg-opacity-20 p-2 pb-2 sm:w-44 lg:w-48 ${
+      className={`h-min w-36 cursor-pointer rounded-bl-[15px_255px] rounded-br-[255px_15px] rounded-tl-[255px_15px] rounded-tr-[15px_255px] border border-black bg-opacity-20 p-2 pb-2 sm:w-44 lg:w-48 ${
         currentPath.value === '/sandbox' && 'sm:w-36 lg:w-40'
       } ${
         myReadingListISBN.value.includes(ISBN) &&

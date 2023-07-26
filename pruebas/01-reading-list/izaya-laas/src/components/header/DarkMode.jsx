@@ -7,7 +7,7 @@ const handleIsDark = () => {
 
 const DarkMode = () => {
   return (
-    <div onClick={handleIsDark}>
+    <div className="cursor-pointer" onClick={handleIsDark}>
       <img
         src={logo}
         alt="logo"
