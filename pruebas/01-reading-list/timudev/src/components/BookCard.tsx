@@ -25,7 +25,8 @@ export const BookCard = ({ children, book, className, style, onChange, value }: 
             readingList,
             addToReadingList: readingListChange,
         }}>
-            <div 
+            <div
+                data-testid={ `${ !readingList ? 'book-card' : '' }`  }
                 className={ `${ className ? className : '' }`  }
                 style={ style } 
             >
