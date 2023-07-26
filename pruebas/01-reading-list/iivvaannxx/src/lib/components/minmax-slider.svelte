@@ -3,7 +3,7 @@
   /** @brief The event that is triggered when the input value changes. */
   type OnInputEvent = Event & {
 
-    currentTarget: EventTarget & HTMLInputElement;
+    currentTarget: EventTarget & HTMLInputElement
   }
 
 </script>
@@ -19,6 +19,13 @@
   export let labelMax = 'Max'
   export let minGap = 100
 
+  // Debounce the onInput handler to avoid spamming the event.
+  export let onInput = (min: number, max: number) => { }
+
+  // Ensure that the given props are within valid ranges.
+  $: valueMin = Math.max(min, valueMin)
+  $: valueMax = Math.min(max, valueMax)
+
   // Calculate the progress width depending on each range.
   $: percentLeft = (valueMin / max) * 100
   $: percentRight = 100 - ((valueMax / max) * 100)
@@ -27,24 +34,26 @@
   function ensureValidInput (event: OnInputEvent) {
 
     const isEmpty = event.currentTarget.value === ''
-    const newValue = parseInt(event.currentTarget.value, 10);
-    const isMaxInput = event.currentTarget.dataset.input === 'max';
+    const newValue = parseInt(event.currentTarget.value, 10)
+    const isMaxInput = event.currentTarget.dataset.input === 'max'
 
     if (isMaxInput) {
 
       // We are trying to cross the max over the min.
       if (newValue - valueMin < minGap) {
 
-        valueMax = Math.max(valueMin + minGap, newValue);
-        event.currentTarget.value = valueMax.toString();
+        valueMax = Math.max(valueMin + minGap, newValue)
+        event.currentTarget.value = valueMax.toString()
       }
 
       // The value is empty or greater than the max.
       else if (newValue > max || isEmpty) {
 
-        valueMax = max;
-        event.currentTarget.value = valueMax.toString();
+        valueMax = max
+        event.currentTarget.value = valueMax.toString()
       }
+
+      else { valueMax = newValue }
     }
 
     else {
@@ -52,17 +61,21 @@
       // We are trying to cross the min over the max.
       if (valueMax - newValue < minGap) {
 
-        valueMin = Math.min(valueMax - minGap, newValue);
-        event.currentTarget.value = valueMin.toString();
+        valueMin = Math.min(valueMax - minGap, newValue)
+        event.currentTarget.value = valueMin.toString()
       }
 
       // The value is empty or less than the min.
       else if (newValue < min || isEmpty) {
 
-        valueMin = min;
-        event.currentTarget.value = valueMin.toString();
+        valueMin = min
+        event.currentTarget.value = valueMin.toString()
       }
+
+      else { valueMin = newValue }
     }
+
+    onInput(valueMin, valueMax)
   }
 
   // Extract common classes into simple constants.
