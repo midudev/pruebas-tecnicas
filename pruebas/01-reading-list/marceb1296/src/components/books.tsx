@@ -17,7 +17,7 @@ export const Books = ({ books }: Books) => {
         <section className="books">
             { books.length > 0
                 ? books.map(({ book }) =>
-                    <div key={book.ISBN} className={bookList.includes(book.ISBN) ? "book-container added" : "book-container"}>
+                    <div aria-label="book-box" key={book.ISBN} className={bookList.includes(book.ISBN) ? "book-container added" : "book-container"}>
                         <img src={book.cover} alt={`cover ${book.title}`} loading="lazy"/>
                         <div className="book-info">
                             <label className="with-color dp-block">

@@ -1,15 +1,15 @@
-import {App} from './index'
-import { render, screen, userEvent, waitFor } from '../utils/test-utils'
+import { Main } from './main'
+import { render, screen, waitFor } from '../utils/test-utils'
 import { store } from '../store'
 import { Provider } from 'react-redux'
 
-describe('App', () => {
+describe('Books', () => {
     
     
     beforeEach(() => {
         render(
             <Provider store={store}>
-                <App />
+                <Main />
             </Provider>
         )
     })
@@ -19,14 +19,12 @@ describe('App', () => {
     })
     
     
-    it('should display images', () => {
+    it('should display images', async () => {
         
-            waitFor(() => {
-                expect(screen.getAllByRole("image", {
-                    name: /cover ./
-                })).toBeVisible();
-            })
-            
+            await waitFor(() => {
+                expect(screen.getAllByAltText(/cover.*/i)).not.toHaveLength(0);
+            }, { timeout: 3000})
+
         })
         
     })
