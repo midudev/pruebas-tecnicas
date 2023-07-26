@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "lista-lectura-qwik",
+  "short_name": "Lista de lectura de Qwik",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "Gestiona tu lista de lectura con Qwik."
+}
