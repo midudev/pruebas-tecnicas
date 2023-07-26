@@ -34,6 +34,7 @@
   line-height: 2.5rem;
   text-align: center;
   text-wrap: balance;
+  text-shadow: 2px 2px 5px rgb(18 131 181 / 30%), 2px 2px 8px rgb(18 131 181 / 16%);
 }
 
 .suggestSection__subtitle,
