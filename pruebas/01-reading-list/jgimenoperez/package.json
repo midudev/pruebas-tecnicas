@@ -1,0 +1,38 @@
+{
+  "name": "listalectura",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "jsdom": "^22.0.0",
+    "framer-motion": "^10.13.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.1.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.4.2"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^14.0.0",    
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "@vitejs/plugin-react-swc": "^3.3.2",
+    "@vitest/ui": "^0.33.0",
+    "eslint": "^8.44.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.1",
+    "redux-mock-store": "^1.5.4",
+    "vite": "^4.4.0",
+    "vitest": "^0.33.0"
+
+  }
+}
