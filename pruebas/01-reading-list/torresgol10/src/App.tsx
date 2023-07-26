@@ -18,7 +18,7 @@ function App() {
           <h1 className='py-4'>{books.length} Libros Disponibles</h1>
           <div className='grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4'>
             {books.map(({ book }) => (
-              <Card book={book} addRead={addRead} />
+              <Card key={book.ISBN} book={book} addRead={addRead} />
             ))}
           </div>
         </section>

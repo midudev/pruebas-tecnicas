@@ -7,7 +7,7 @@ type Props = {
 
 export default function Card({ book, addRead }: Props) {
     return (
-        <article key={book.ISBN} className='group relative flex flex-col justify-end h-[35rem] w-[25rem] overflow-hidden rounded'>
+        <article className='group relative flex flex-col justify-end h-[35rem] w-[25rem] overflow-hidden rounded'>
             <img src={book.cover} className='absolute top-0 left-0 w-full h-5/6 object-cover object-top' />
 
             <div className='background-graniend h-3/6 z-10 text-gray-300 p-4'>
