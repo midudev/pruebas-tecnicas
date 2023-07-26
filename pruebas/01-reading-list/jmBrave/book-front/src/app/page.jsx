@@ -140,7 +140,7 @@ export default function Home() {
                 onDragEnd={handleOnDragEnd}
                 onDragStart={handleOnDragStart}
             >
-                <main className="pt-20">
+                <main className="pt-10">
                     <div className="flex justify-evenly flex-wrap rounded-lg">
                         <BookList
                             title={AVAILABLE_BOOKS_TITTLE}

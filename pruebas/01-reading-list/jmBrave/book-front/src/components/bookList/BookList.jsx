@@ -18,7 +18,7 @@ const BookList = ({ title, books, droppableId, id }) => {
                     id={id}
                 >
                     <ul>
-                        <h2 className="flex items-center justify-center pb-5">
+                        <h2 className="flex items-center justify-center text-2xl pb-5 pt-10">
                             {title}
                         </h2>
                         {books.map((item, index) => {
