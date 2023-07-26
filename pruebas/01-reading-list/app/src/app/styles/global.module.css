@@ -1,3 +1,10 @@
 .body {
     background-color: grey;
+    font-family: 'Courgette', cursive;
 }
+
+.body > * {
+    color: white;
+    font-size: 1.3rem !important
+}
+

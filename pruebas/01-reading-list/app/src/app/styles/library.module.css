@@ -20,6 +20,10 @@
     align-items: center;
 }
 
+.bookCard > * {
+    user-select: none;
+}
+
 .bookCard > img {
     min-width: 100%;
     max-height: 100%;
