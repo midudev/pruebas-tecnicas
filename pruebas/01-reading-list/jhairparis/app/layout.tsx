@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "La libreria",
+  description: "Esta es una aplicacion de una libreria basica",
 };
 
 export default function RootLayout({

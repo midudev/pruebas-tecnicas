@@ -53,6 +53,7 @@ const Book = ({ book, click }: BookProps) => {
       variants={bookVariant}
       initial="initial"
       whileHover="hover"
+      id={book.ISBN}
       onClick={(e) => click(book)}
     >
       <motion.div variants={frontVariant} className={classNameFront}>
