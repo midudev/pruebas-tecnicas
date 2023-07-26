@@ -40,6 +40,7 @@ export const LibraryProvider: React.FC<Props> = ({ children }) => {
       return jsonData.library;
     }
   });
+
   const [myList, setMyList] = useState<IBook[]>(() => {
     const libraryStorage = localStorage.getItem("libraryData");
     if (libraryStorage) {
@@ -49,6 +50,7 @@ export const LibraryProvider: React.FC<Props> = ({ children }) => {
       return [];
     }
   });
+
   const [filteredBooks, setFilteredBooks] = useState<IBook[]>([]);
 
   useEffect(() => {

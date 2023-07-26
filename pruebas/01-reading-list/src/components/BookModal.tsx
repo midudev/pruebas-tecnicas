@@ -20,7 +20,7 @@ const BookModal: React.FC<Props> = ({ openModal, setOpenModal, book }) => {
         className="fixed top-0 left-0 w-full h-full bg-stone-900 opacity-50"
         onClick={() => setOpenModal(!openModal)}
       ></div>
-      <article className="relative z-30 bg-stone-50 rounded max-w-[40rem] h-[30rem]">
+      <article className="relative z-30 bg-stone-50 rounded w-[40rem] h-[30rem]">
         <div className="flex items-start w-full h-full">
           <div className="w-1/2 h-full">
             <img src={cover} className="w-full h-full" alt={title} />

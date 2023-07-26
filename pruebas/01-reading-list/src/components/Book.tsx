@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { IBook } from "../types/books";
 import BookModal from "./BookModal";
-
 interface Props {
   book: IBook;
   isInMyList: boolean;
@@ -15,7 +14,6 @@ const Book: React.FC<Props> = ({
   removeFromMyList,
 }) => {
   const { title, author, cover } = book.book;
-
   const [openModal, setOpenModal] = useState<boolean>(false);
   return (
     <div>

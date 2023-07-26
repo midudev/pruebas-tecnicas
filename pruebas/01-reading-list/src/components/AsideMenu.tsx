@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLibrary } from "../contexts/library.context";
+import logo from "../assets/icons/logo.svg";
+import heart from "../assets/icons/heart.svg";
 
 type GenreCountMap = {
   [genre: string]: number;
@@ -47,7 +49,10 @@ const AsideMenu: React.FC = () => {
   return (
     <aside className="w-1/6 bg-stone-100 text-stone-800 shadow-xl">
       <div className="sticky top-0 left-0 flex flex-col gap-8 p-8">
-        <h3 className="font-bold text-xl">Libroteca</h3>
+        <div className="flex items-center gap-4">
+          <img src={logo} alt="logo" />
+          <h2 className="font-bold text-2xl">Libroteca</h2>
+        </div>
         <div>
           <h4 className="font-medium text-lg">Catálogo</h4>
           <ul className="flex flex-col gap-6">
@@ -97,6 +102,21 @@ const AsideMenu: React.FC = () => {
               />
             </li>
           </ul>
+        </div>
+        <div className="text-xs">
+          <div className="flex gap-1">
+            Hecho con <img src={heart} alt="love" />
+          </div>
+          <p>
+            por
+            <a
+              href="https://github.com/MaximilianoLeonel23"
+              className="text-primary-green px-1"
+              target="_blank"
+            >
+              Maximiliano Leonel
+            </a>
+          </p>
         </div>
       </div>
     </aside>
