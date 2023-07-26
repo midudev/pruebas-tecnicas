@@ -4,12 +4,14 @@ import BookCard from "./components/BookCard";
 import PageFilter from "./components/PageFilter";
 import GenreFilter from "./components/GenreFilter";
 import { UseGetData } from "./hooks/useGetData";
+import SearchFilter from "./components/SearchFilter";
 
 function App() {
   const {
     page,
     perPage,
     books,
+    search,
     currentGenre,
     filteredBooks,
     setFilteredBooks,
@@ -25,10 +27,13 @@ function App() {
         ?.filter(({ book: { genre } }) =>
           currentGenre !== "" ? genre === currentGenre : true
         )
+        .filter(({ book: { title } }) =>
+          title.toLowerCase().includes(search.toLowerCase())
+        )
         .filter(({ book: { ISBN } }) => !selectedBooks.includes(ISBN))
         .map(({ book: { ISBN } }) => ISBN)
     );
-  }, [currentGenre, books, selectedBooks]);
+  }, [currentGenre, search, books, selectedBooks]);
 
   return (
     <main className="p-5 box-border flex flex-wrap w-screen h-screen overflow-hidden gap-5">
@@ -57,6 +62,7 @@ function App() {
             <div className="filters-wrapper mb-5 flex gap-10 align-center">
               <PageFilter />
               <GenreFilter />
+              <SearchFilter />
             </div>
 
             <div className="grid grid-cols-4 gap-10">

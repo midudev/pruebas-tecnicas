@@ -5,6 +5,8 @@ export type Store = {
   perPage: number;
   page: number;
   changePage: (value: number) => void;
+  search: string;
+  changeSearch: (value: string) => void;
   genres: Array<string>;
   setGenres: (genres: Array<string>) => void;
   currentGenre: string;

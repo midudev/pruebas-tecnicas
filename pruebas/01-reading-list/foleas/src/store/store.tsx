@@ -30,6 +30,12 @@ export const useStore = create<Store>((set) => ({
       setLocalStorage("page", newPage);
       return { page: newPage };
     }),
+  search: (getLocalStorage("search") as string) || "",
+  changeSearch: (newSearch) =>
+    set(() => {
+      setLocalStorage("search", newSearch);
+      return { search: newSearch };
+    }),
   genres: [],
   setGenres: (genres) => set(() => ({ genres })),
   currentGenre: (getLocalStorage("currentGenre") as string) || "",
