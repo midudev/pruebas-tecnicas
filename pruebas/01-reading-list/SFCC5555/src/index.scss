@@ -1,0 +1,83 @@
+// Importing a Google Fonts font
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+// Importing base styles, components and utilities from Tailwind CSS
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Setting box-sizing, margin, and padding for all elements in the document
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+// Color and font variables defined in the :root selector
+:root {
+    --main-font: 'Josefin Sans', sans-serif;
+    --background-dark: #02263E;
+    --text-dark: #DFF1F3;
+    --background-light: #DFF1F3;
+    --text-light: #02263E;
+    --color-1: #0fadc9;
+    --color-2: #F70057;
+}
+
+// General styles for the body and the element with the id "root of the document
+body {
+    height: 100%;
+    font-family: var(--main-font);
+}
+
+#root {
+    height: 100%;
+    min-height: 100svh; // Set the minimum height of the element as 100% of the visible small viewport height.
+}
+
+
+// @each loop generating styles for .light-mode and .dark-mode classes
+@each $mode in 'light', 'dark' {
+    .#{$mode}-mode {
+        background-color: var(--background-#{$mode}); // Color variables used here depending on the mode
+        color: var(--text-#{$mode}); // Color variables used here depending on the mode
+    }
+
+    // Styling the slider handle in different browsers
+    @each $browser in 'webkit-slider', 'moz-range' {
+
+        .#{$mode}-mode::-#{$browser}-thumb {
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--background-#{$mode}); // Color variables used here depending on the mode
+        }
+    }
+}
+
+
+
+// Color fill for Bootstrap icons
+.bi-plus-circle-fill {
+    color: var(--color-1);
+}
+
+.bi-dash-circle-fill {
+    color: var(--color-2);
+}
+
+// Styles for images (book covers) when hovered over and when not allowed
+.cover:hover {
+    transform: scale(0.98);
+}
+
+// Styles for icons with class "bi" (add and remove icons) when hovered over
+.bi:hover {
+    opacity: 1;
+}
+
+// Styles for icons with class "bi" (add and remove icons) when hovered over an an immediately adjacent sibling image (book covers)
+.cover:hover + .bi {
+    opacity: 1;
+}
