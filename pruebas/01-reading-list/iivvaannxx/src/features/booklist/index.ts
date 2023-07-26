@@ -1,4 +1,6 @@
 export { default as BookList } from './components/list.svelte'
+export { DEFAULT_LISTS } from './feature'
+
 export {
 
   lists,

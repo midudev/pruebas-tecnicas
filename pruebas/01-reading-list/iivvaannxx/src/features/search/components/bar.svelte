@@ -10,9 +10,9 @@
 <script lang='ts'>
 
   let query: string = ''
-  const onInput = debounce(() => {
-    setSearchQuery(query)
-  }, 200)
+
+  // Debounce the input event to avoid making too many requests.
+  const onInput = debounce(() => { setSearchQuery(query) }, 200)
 
 </script>
 
@@ -20,9 +20,10 @@
 
   for='search-bar'
   class='mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white'
-
->Search</label
 >
+  Search
+</label>
+
 <div class='relative'>
 
   <div class='absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none'>
@@ -34,8 +35,11 @@
     id='search-bar'
     type='search'
     placeholder='Buscar libro...'
+
     bind:value={ query }
     on:input={ onInput }
+
     class='block w-full p-3 pl-12 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50'
   />
+
 </div>
