@@ -10,11 +10,16 @@ import { useEffect, useState } from 'react';
 const BOOKS = _books.library.map(({book}) => book) as Book[];
 
 function getBooksOnLocalStorage(): Book[] {
-  const _selectedBooks = window.localStorage.getItem('selectedBooks');
-  if (_selectedBooks) {
-    return JSON.parse(_selectedBooks) as Book[];
-  }
+
+  try {
+    const _selectedBooks = window.localStorage.getItem('selectedBooks');
+    if (_selectedBooks) {
+      return JSON.parse(_selectedBooks) as Book[];
+    }
+  } catch (error) {}
+
   return [];
+
 }
 
 
@@ -23,13 +28,15 @@ export default function Home() {
   const [availableBooks, setAvailableBooks] = useState([] as Book[]);
   const [selectedBooks, setSelectedBooks] = useState(getBooksOnLocalStorage());
 
-  window.addEventListener('storage', (event) => {
+  try {
+    window.addEventListener('storage', (event) => {
 
-    if(event.key === 'selectedBooks') {
-      setSelectedBooks(getBooksOnLocalStorage());
-    }
+      if(event.key === 'selectedBooks') {
+        setSelectedBooks(getBooksOnLocalStorage());
+      }
 
-  });
+    });
+  } catch (error) {}
 
   const createHandleBook = (book: Book) => () => {
 
