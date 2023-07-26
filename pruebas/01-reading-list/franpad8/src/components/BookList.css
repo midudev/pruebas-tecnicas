@@ -1,0 +1,24 @@
+.bookList {
+  border: 1px solid white;
+  border-radius: 15px;
+  padding: 1rem;
+  height: 100%;
+}
+
+.book-item .deleteButton {
+  background-color: white;
+  color: black;
+  font-size: 10px;
+  border: 1px solid black;
+  width: 2rem;
+  height: 1.6rem;
+  position: absolute;
+  top: -.6rem;
+  right: -.8rem;
+  line-height: 1.4rem;
+  cursor: pointer;
+}
+
+.bookList .book-item {
+  cursor: auto;
+}
