@@ -12,13 +12,13 @@ import {
 } from './testData';
 
 describe('FilterBooks test', () => {
-  it('should return an [] if received a type different to an array on books', () => {
+  it('Debera retornar un array vacío si recibe un tipo diferent a un array', () => {
     expect(filterBooks()).toStrictEqual([]);
     expect(filterBooks({})).toStrictEqual([]);
     expect(filterBooks('sdasd')).toStrictEqual([]);
   });
 
-  it('Should return the same array if not received options', () => {
+  it('Debera retornar el mismo array si no recive opciones de filtro', () => {
     expect(filterBooks(books)).toStrictEqual(books);
   });
 
