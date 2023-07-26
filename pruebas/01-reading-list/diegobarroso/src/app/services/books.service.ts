@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Book } from '../interfaces/book';
-import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import  books from '../data/books.json';
 
 @Injectable({
@@ -22,13 +22,15 @@ export class BooksService {
     return this.bookDetailSubject.asObservable();
   }
   getBook(id: string) {
-    const book = this.books.find(b => b.ISBN === id);
-    this.updateBookDetail(book);
-    if (book) {
-      return of(book);
+    let book: Book;
+    if (localStorage.getItem('books') !== 'null') {
+      const books = JSON.parse(localStorage.getItem('books')!);
+      book = books.find ((b: Book) => b.ISBN === id);
     } else {
-      return throwError("No book");
+    book = this.books.find(b => b.ISBN === id)!;
     }
+    this.updateBookDetail(book);
+    return of(book);
   }
   getBookListToReadNumber(): Observable<number> {
     return this.booksToReadNumberSubject.asObservable();
@@ -50,6 +52,7 @@ export class BooksService {
     this.updateBooks(bookList);
     this.updateBookListToReadNumber();
     this.updateGenres();
+    console.log('Books', bookList)
     return of(bookList);
   }
 
@@ -64,7 +67,7 @@ export class BooksService {
   }
   
   updateBookListToReadNumber() {
-    const bookToReadNumber = this.books.filter(b => b.inListToRead).length;
+    const bookToReadNumber = this.books?.filter(b => b.inListToRead).length;
     this.booksToReadNumberSubject.next(bookToReadNumber)
   }
 
