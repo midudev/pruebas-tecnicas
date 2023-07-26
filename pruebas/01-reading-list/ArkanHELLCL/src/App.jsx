@@ -1,4 +1,3 @@
-import { library as initialLibrary } from './mocks/library.json'
 import { Library } from './components/Library.jsx'
 import { DarkModeToggle } from './components/darkMode.jsx'
 import { Header } from './components/Header.jsx'
@@ -6,11 +5,12 @@ import { useFilters } from './hooks/useFilters.jsx'
 import { ReadingList } from './components/readingList.jsx'
 import { Pagination } from './components/Pagination.jsx'
 import { ReadingListProvider } from './context/readingList.jsx'
+import { useMappedLibrary } from './hooks/useMappedLibrary.jsx'
 
-function App() {  
-  const {filterLibrary} = useFilters()
-
-  const filteredLibrary = filterLibrary(initialLibrary)
+function App() {
+  const {library: mappedLibrary} = useMappedLibrary()
+  const {filterLibrary} = useFilters()  
+  const filteredLibrary = filterLibrary(mappedLibrary)
 
   return (
     <ReadingListProvider>

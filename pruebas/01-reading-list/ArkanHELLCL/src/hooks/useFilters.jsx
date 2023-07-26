@@ -6,12 +6,12 @@ export function useFilters() {
 
     const filterLibrary = (library) => {
       const pageFiltered = library.filter((item) => {
-        return (
-          (filters.type === 'all' || Object.keys(item)[0] === filters.type) &&         
-          (filters.genre === 'all' || item[Object.keys(item)[0]].genre === filters.genre) &&
-          (filters.author === 'all' || item[Object.keys(item)[0]].author.name === filters.author) &&
-          (filters.year === 0 || item[Object.keys(item)[0]].year >= filters.year) &&
-          (filters.totalPages === 0 || item[Object.keys(item)[0]].pages >= filters.totalPages)
+        return (          
+          (filters.type === 'all' || item.type === filters.type) &&         
+          (filters.genre === 'all' || item.genre === filters.genre) &&
+          (filters.author === 'all' || item.author === filters.author) &&
+          (filters.year === 0 || item.year >= filters.year) &&
+          (filters.totalPages === 0 || item.pages >= filters.totalPages)
         )
       })
       filters.totalFilterd = pageFiltered.length

@@ -16,8 +16,8 @@ export const readingListReducer = (state, action) => {
     
     switch (actionType) {
         case READINGLIST_ACTION_TYPES.ADD_TO_READING_LIST: {
-            const { ISBN } = actionPayload;
-            const itemInReadingList = state.find((element) => element.ISBN === ISBN)
+            const { id } = actionPayload;
+            const itemInReadingList = state.find((element) => element.id === id)
 
             if(itemInReadingList) {
                 return
@@ -34,8 +34,8 @@ export const readingListReducer = (state, action) => {
             return newState
         }
         case READINGLIST_ACTION_TYPES.REMOVE_FROM_READING_LIST: {
-            const { ISBN } = actionPayload;
-            const newState = state.filter(element => element.ISBN !== ISBN)
+            const { id } = actionPayload;
+            const newState = state.filter(element => element.id !== id)
 
             updateLocalStorage(newState)
             return newState
