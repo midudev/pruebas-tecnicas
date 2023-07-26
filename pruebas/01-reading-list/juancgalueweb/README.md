@@ -1,8 +1,24 @@
-# React + Vite
+# 01. 🔨 Requisitos de instalación
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Deben tener instalado pnpm. Pueden consultar su [web oficial](https://pnpm.io/es/installation) para más información.
+- En la carpeta raíz, donde tengan el **package.json**, abran la terminal y ejecuten el comando `pnpm i`
 
-Currently, two official plugins are available:
+# 02. Reading List
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+El objetivo de esta prueba es diseñar e implementar una pequeña aplicación web de lista de libros utilizando las herramientas de tu elección.
+
+# 03. Funcionalidades exigidas
+
+- ✅ Visualización de libros disponibles.
+- ✅ Creación de lista de lectura.
+- ✅ Filtrado de libros por género.
+- ✅ Sincronización de estados
+- ✅ Persistencia de datos
+- ❌ Sincronización entre pestañas
+- ✅ Despliegue
+- ✅ Test
+
+# 04. Desafíos adicionales
+
+- ✅ Nuevo filtro para filtrar los libros por número de páginas
+- ✅ Permitir la reorganización de los libros en la lista de lectura por prioridad.
