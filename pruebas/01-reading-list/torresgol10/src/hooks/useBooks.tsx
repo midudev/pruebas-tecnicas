@@ -8,7 +8,7 @@ export default function useBooks() {
     const [books, setBooks] = useState(store)
     const genres = useRef([...new Set(store.map(({ book }) => book.genre))])
 
-    // Crreamos un state para cadaa posible filtro que se puede aplicar
+    // Creamos un state para cadaa posible filtro que se puede aplicar
     const [filterGenre, setFilterGenre] = useState<string>("")
     const [filterText, setFilterText] = useState<string>("")
     const [filterPages, setFilterPages] = useState<number>(1200)
