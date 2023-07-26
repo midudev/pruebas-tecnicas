@@ -23,9 +23,18 @@ export default function useBooks(repo: BooksRepo) {
 		loadBooks();
 	}, []);
 
+	useEffect(() => {
+		localStorage.setItem('reading_list_books', JSON.stringify(books));
+	}, [books]);
+
 	const loadBooks = async () => {
-		const books: BookProps[] = await repo.getBooks();
-		dispatch(loadNewBooks(books));
+		let newBooks: BookProps[];
+		const storedBooks = await localStorage.getItem('reading_list_books');
+		newBooks = await repo.getBooks();
+		if (storedBooks && storedBooks !== '[]') {
+			newBooks = await JSON.parse(storedBooks);
+		}
+		dispatch(loadNewBooks(newBooks));
 	};
 
 	const selectBook = (book: BookProps) => {
