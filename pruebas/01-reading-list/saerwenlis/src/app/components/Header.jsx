@@ -14,14 +14,14 @@ export default function Header() {
         <Image src={books} width='auto' height='auto' alt="books" className="p-3" />
         <nav className="h-3/5 p-6 flex flex-col items-center">
             <Image src={dashboard} width='auto' height='auto' alt="dashboard" className="h-[72px] pb-8" />
-            <Image src={bell} width='auto' height='auto' alt="dashboard" className="h-[72px] pb-6" />
-            <Image src={bookmark} width='auto' height='auto' alt="dashboard" className="h-[72px] pb-6" />
-            <Image src={friends} width='auto' height='auto' alt="dashboard" className="h-[72px] pb-6" />
-            <Image src={config} width='auto' height='auto' alt="dashboard" className="h-[72px] pb-6" />
+            <Image src={bell} width='auto' height='auto' alt="bell" className="h-[72px] pb-6" />
+            <Image src={bookmark} width='auto' height='auto' alt="bookmark" className="h-[72px] pb-6" />
+            <Image src={friends} width='auto' height='auto' alt="friends" className="h-[72px] pb-6" />
+            <Image src={config} width='auto' height='auto' alt="config" className="h-[72px] pb-6" />
         </nav>
         <nav className="flex flex-col items-center justify-center">
-            <Image src={user} width='182' height='181' alt="dashboard" className="p-4" />
-            <Image src={logout} width='auto' height='auto' alt="dashboard" className="px-2 pt-3 pb-6" />
+            <Image src={user} width='182' height='181' alt="user" className="p-4" />
+            <Image src={logout} width='auto' height='auto' alt="log out" className="px-2 pt-3 pb-6" />
         </nav>
       </header>
     )
