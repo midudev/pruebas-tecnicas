@@ -21,8 +21,8 @@ export function Filters () {
     const pageSizeFilterid = useId()
     const totalSizeFilterid = useId()
 
-    const lisItems = filters.itemsFileterd.map(item => item[Object.keys(item)[0]])
-    const itemsAvailable = lisItems.filter(item => !readingList.some((element) => element.ISBN === item.ISBN))
+    const lisItems = filters.itemsFileterd.map(item => item)
+    const itemsAvailable = lisItems.filter(item => !readingList.some((element) => element.id === item.id))
     const totalItemesAvailable = itemsAvailable.length
 
     const handleChangeMinYear = () => (e) => {         
