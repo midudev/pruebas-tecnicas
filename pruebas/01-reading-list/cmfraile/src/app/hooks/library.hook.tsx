@@ -3,6 +3,8 @@
 import { useState , useEffect } from 'react';
 import { Book } from "../interfaces/library.interface";
 
+interface storage {userList:userList,genreAndPages:genreAndPages}
+
 const list:Book[] = require('../JSON/library.json').library.map( (x:any) => x.book );
 const genres:string[] = list.map(x => x.genre).filter( (item,index,array) => array.indexOf(item) === index ); genres.push('all');
 const minAndMaxOfPages:number[] = list
@@ -23,8 +25,17 @@ export interface libraryHookCRUD {
 
 const libraryHook = () => {
 
+    const [ init , setInit ] = useState<boolean>(false)
     const [ userList , setUserList ] = useState<userList>({library:list,forReading:[]});
     const [ genreAndPages , setGenreAndPages ] = useState<genreAndPages>({genre:'all',pages:minAndMaxOfPages[0]});
+
+    useEffect(() => {
+        const launchStorage = localStorage.getItem('state');
+        if(!launchStorage){return};
+        const parseStorage = JSON.parse(launchStorage) as storage;
+        setUserList(v => parseStorage.userList) ; setGenreAndPages(v => parseStorage.genreAndPages);
+        setInit(true)
+    },[])
 
     useEffect(() => {
         
@@ -36,7 +47,7 @@ const libraryHook = () => {
 
         //cargar de store:
         const callback = () => {
-            const store = JSON.parse(localStorage.getItem('state') as string) as {userList:userList,genreAndPages:genreAndPages};
+            const store = JSON.parse(localStorage.getItem('state') as string) as storage ;
             setUserList(v => store.userList) ; setGenreAndPages(v => store.genreAndPages);
         } ;
         window.addEventListener('storage',callback) ;
@@ -60,7 +71,8 @@ const libraryHook = () => {
         .filter( (x) => x.pages >= genreAndPages.pages )
 
     
-    return({    userList , setGenreAndPages ,
+    return({    init ,
+                userList , setGenreAndPages ,
                 genres , minAndMaxOfPages,
                 libraryHookCRUD })
 

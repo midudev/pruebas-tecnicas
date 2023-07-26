@@ -3,7 +3,8 @@
 import React, { ReactNode, createContext } from "react"
 import libraryHook, { genreAndPages, libraryHookCRUD, userList } from "../hooks/library.hook"
 
-interface libraryHookReturn { 
+interface libraryHookReturn {
+        init:boolean 
         userList:userList , 
         genres:string[] , 
         minAndMaxOfPages:number[] , 
