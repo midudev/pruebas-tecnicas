@@ -2,7 +2,12 @@ import kebabCase from 'just-kebab-case'
 import { action, computed } from 'nanostores'
 import { persistentMap, persistentAtom } from '@nanostores/persistent'
 
-import type { BookList } from './types'
+/** @brief Represents a persistable book list. */
+interface BookList {
+
+  displayName: string
+  books: BookArray
+}
 
 /** @brief The methods used to serialize and deserialize the data. */
 const defaultSerializer = {
@@ -26,7 +31,7 @@ function getListKey (name: string) {
 }
 
 /** @brief The store that contains all the lists. */
-export const lists = persistentMap<Record<string, BookList>>('list:', { }, defaultSerializer)
+export const lists = persistentMap<Record<string, BookList>>('list:', {}, defaultSerializer)
 
 /** @brief The name of the list that is currently being displayed. */
 export const currentListName = persistentAtom<string>('currentList', DEFAULT_LISTS.TO_READ)

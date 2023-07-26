@@ -60,11 +60,6 @@ const svelteOverride = {
     'svelte/html-quotes': ['error', {
 
       prefer: 'single',
-      dynamic: {
-
-        quoted: false,
-        avoidInvalidUnquotedInHTML: true
-      }
     }],
 
     'svelte/indent': 'error',
