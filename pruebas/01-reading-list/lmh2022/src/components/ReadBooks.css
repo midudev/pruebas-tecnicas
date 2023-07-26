@@ -1,7 +1,7 @@
 .books {
   display: flex;
   width: 35%;
-  height: 80%;
+  height: 600px;
   flex-wrap: wrap;
   border: solid blue 1px;
   color: red;
