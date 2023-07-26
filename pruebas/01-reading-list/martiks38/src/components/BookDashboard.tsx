@@ -1,6 +1,6 @@
 'use client'
 
-import { useId, useRef, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import { useBookList } from '@/hooks/useBookList'
 import { useFilters } from '@/hooks/useFilters'
 
@@ -10,39 +10,62 @@ import { FilterSection } from './Filter/FilterSection'
 import homeStyles from '@/assets/styles/Layout/Home.module.css'
 import bookDashboardStyles from '@/assets/styles/Book/BookDashboard.module.css'
 import bookFinderAvailableStyles from '@/assets/styles/Book/BookFinderAvailable.module.css'
-import { allGenre } from '@/assets/constants'
+import { filterBook } from '@/helpers/filterBook'
 
-function filterBook({
-  genre,
-  maxNumberPages,
-  currentGenre,
-  pages,
-  title,
-  word
-}: {
-  currentGenre: string
-  genre: string
-  maxNumberPages: number
-  pages: number
-  title?: string
-  word?: string
-}) {
-  const inRange = pages <= maxNumberPages
-  const equalGenre = currentGenre === allGenre ? true : currentGenre === genre
-
-  if (word === undefined || title === undefined) return inRange && equalGenre
-
-  const regex = new RegExp(word, 'i')
-
-  return regex.test(title) && inRange && equalGenre
-}
+const initialViews = { bookListAvailable: true, readingList: true, mode: 'desktop' }
 
 export function BookDashboard() {
   const [filterWord, setFilterWord] = useState('')
+  const [seeLists, setSeeLists] = useState<typeof initialViews>(initialViews)
   const { range, currentGenre } = useFilters()
   const { listBooksAvailable, readingList } = useBookList()
   const searchId = useId()
   const setTimeoutId = useRef<number | undefined>(undefined)
+  const isFirstRender = useRef(true)
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth
+
+      const changeDashboardView = width < 881
+
+      if (seeLists.mode === 'desktop' && changeDashboardView) {
+        setSeeLists({ bookListAvailable: true, readingList: false, mode: 'mobile' })
+      }
+
+      if (!changeDashboardView) setSeeLists(initialViews)
+    }
+
+    if (isFirstRender.current) {
+      handleResize()
+      isFirstRender.current = false
+    }
+
+    const throttle = (callback: () => void, delay: number) => {
+      let lastCall = 0
+      return function () {
+        const now = new Date().getTime()
+        if (now - lastCall >= delay) {
+          lastCall = now
+          callback()
+        }
+      }
+    }
+
+    const throttledHandleResize = throttle(handleResize, 200)
+
+    window.addEventListener('resize', throttledHandleResize)
+
+    return () => window.removeEventListener('resize', throttledHandleResize)
+  }, [seeLists])
+
+  const changeList = (type: 'available' | 'reading') => {
+    setSeeLists((prevViews) => ({
+      ...prevViews,
+      bookListAvailable: !prevViews.bookListAvailable,
+      readingList: !prevViews.readingList
+    }))
+  }
 
   const changeFilterWord = (ev: React.ChangeEvent<HTMLInputElement>) => {
     if (setTimeoutId.current) window.clearTimeout(setTimeoutId.current)
@@ -68,12 +91,35 @@ export function BookDashboard() {
   )
 
   return (
-    <>
+    <article className={homeStyles.homeMain__bookDashboard}>
       <FilterSection />
-      <article className={homeStyles.homeMain__bookDashboard}>
+      <menu className={bookDashboardStyles.bookListMenu}>
+        <li>
+          <button
+            className={`${bookDashboardStyles.bookListMenu__item} ${
+              seeLists.bookListAvailable ? bookDashboardStyles.active : ''
+            }`}
+            onClick={() => changeList('available')}
+          >
+            Ver libros disponibles
+          </button>
+        </li>
+        <li>
+          <button
+            className={`${bookDashboardStyles.bookListMenu__item} ${
+              seeLists.readingList ? bookDashboardStyles.active : ''
+            }`}
+            onClick={() => changeList('reading')}
+          >
+            Ver lista de lectura
+          </button>
+        </li>
+      </menu>
+
+      {seeLists.bookListAvailable && (
         <section className={bookDashboardStyles.bookListSection}>
           <h2 className={bookDashboardStyles.bookListSection__title}>
-            Libros disponibles{' '}
+            Libros disponibles&nbsp;
             {currentListBooksAvailable.length !== 0 ? currentListBooksAvailable.length : ''}
           </h2>
           <form className={bookFinderAvailableStyles.searchContainer}>
@@ -102,9 +148,12 @@ export function BookDashboard() {
             </p>
           )}
         </section>
+      )}
+      {seeLists.readingList && (
         <section className={bookDashboardStyles.bookListSection}>
           <h2 className={bookDashboardStyles.bookListSection__title}>
-            Lista de lectura {currentReadingList.length !== 0 ? currentReadingList.length : ''}
+            Lista de lectura&nbsp;
+            {currentReadingList.length !== 0 ? currentReadingList.length : ''}
           </h2>
           {currentReadingList.length !== 0 ? (
             <BookList books={currentReadingList} listType='reading' />
@@ -119,7 +168,7 @@ export function BookDashboard() {
             </>
           )}
         </section>
-      </article>
-    </>
+      )}
+    </article>
   )
 }
