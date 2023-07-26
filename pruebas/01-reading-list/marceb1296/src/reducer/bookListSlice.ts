@@ -6,7 +6,6 @@ const initialState: IBookList = JSON.parse(localStorage.getItem("book_list") ?? 
     "isOpen": false,
     "list": []
 }`);
-console.log(initialState)
 
 const bookListSlice = createSlice({
     name: 'bookList',

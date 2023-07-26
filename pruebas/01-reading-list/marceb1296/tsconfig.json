@@ -25,7 +25,8 @@
       "noFallthroughCasesInSwitch": true,
   
       "typeRoots": ["./node_modules/@types"],
-      "declaration": true
+      "declaration": true,
+      "types": ["vitest/globals"]
     },
     "include": ["src"],
     "references": [{ "path": "tsconfig.node.json" }]
