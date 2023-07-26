@@ -20,7 +20,7 @@ export default function Form({ filterByGenre, filterByText, filterByPages }: Pro
 
     return (
         <form>
-            <fieldset className='flex justify-start gap-10'>
+            <fieldset className='flex flex-col md:flex-row justify-start gap-10'>
                 <legend className='text-lg font-bold'>Filtrar por:</legend>
                 <div className="flex flex-col gap-2">
                     <label htmlFor='genre'>Genero</label>
