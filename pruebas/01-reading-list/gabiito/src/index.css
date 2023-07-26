@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: 'Inter';
+  src: local('Inter'), url(./assets/fonts/Inter.ttf) format('truetype');
+  swap: swap;
+}
+
+body {
+
+  background-color: #f1f5f9;
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color:  transparent; 
+}
+
+::-moz-selection { /* Code for Firefox */
+  color: white;
+  background: #38465c;
+}
+
+::selection {
+  color: white;
+  background: #38465c;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #38465c;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #526481;
+}
