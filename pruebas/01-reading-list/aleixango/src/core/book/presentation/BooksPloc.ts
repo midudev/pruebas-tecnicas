@@ -14,7 +14,7 @@ export class BooksPloc extends Ploc<BooksState> {
     super(booksInitialState)
   }
 
-  public get genres(): string[] {
+  public get allGenres(): string[] {
     if (this.state.kind !== "LoadedBooksState") {
       return []
     }
