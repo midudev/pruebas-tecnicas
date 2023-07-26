@@ -20,16 +20,30 @@
   display: block;
   width: 0;
   height: 100%;
-  background-color: #38bdf8;
+  background-color: var(--color-primary);
   z-index: -1;
   transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.actionButton:hover {
-  color: #222;
-  border-color: #167eab;
+@media (hover: hover) {
+  .actionButton:hover {
+    color: #222;
+    border-color: #167eab;
+  }
+
+  .actionButton:hover::before {
+    width: 100%;
+  }
 }
 
-.actionButton:hover::before {
-  width: 100%;
+@media (hover: none) {
+  .actionButton {
+    color: #222;
+    border-color: #167eab;
+    transition: none;
+  }
+  .actionButton::before {
+    width: 100%;
+    transition: none;
+  }
 }
