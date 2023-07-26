@@ -15,12 +15,10 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useEffect, useState } from "react";
 import { CloseButton } from "@chakra-ui/react";
 
+type s = string | undefined | null;
 const Filters = () => {
-  const { genre, filter } = useGlobalState();
-  const filteredGenre: string[] = [];
-  genre.forEach((val) => filteredGenre.push(val));
-
-  const [value, setValue] = useState<string | null | undefined>(undefined);
+  const { data, filter } = useGlobalState();
+  const [value, setValue] = useState<s>(undefined);
 
   useEffect(() => {
     if (value) {
@@ -44,9 +42,9 @@ const Filters = () => {
         </Slider> */}
       </div>
       <div>
-        {value ? (
+        {value || (data.isFilter[0] && data.isFilter[1] != "") ? (
           <>
-            <Text>{value}</Text>
+            <Text>{value || data.isFilter[1]}</Text>
             <CloseButton onClick={() => setValue(null)} />
           </>
         ) : (
@@ -59,7 +57,7 @@ const Filters = () => {
               Genero
             </MenuButton>
             <MenuList>
-              {filteredGenre.map((v) => (
+              {Object.keys(data.genre).map((v) => (
                 <MenuItem key={v} onClick={() => setValue(v)}>
                   {v}
                 </MenuItem>

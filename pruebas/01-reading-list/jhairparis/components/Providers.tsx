@@ -1,21 +1,12 @@
 "use client";
 import { CacheProvider } from "@chakra-ui/next-js";
 import { ChakraProvider } from "@chakra-ui/react";
-import GlobalState from "@/lib/globalContext";
-import type { StateType } from "@/lib/globalContext";
+import GlobalState, { dataDefault } from "@/lib/globalContext";
 import { useState } from "react";
-import type { BookType, LibraryType } from "@/types/books";
+import type { BookType, LibraryType } from "@/types/data";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
-  const [globalState, setGlobalState] = useState<StateType>({
-    library: [],
-    read: [],
-    genre: new Set<string>(),
-    total: 0,
-    nRead: 0,
-    origin: "",
-    isFilter: [false, ""],
-  });
+  const [globalState, setGlobalState] = useState(dataDefault);
 
   const addRead = (book: BookType) => {
     let count = 0;
@@ -30,7 +21,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     const copy = JSON.stringify(origin);
 
     if (count <= 1) {
-      globalState.genre.delete(book.genre);
+      delete globalState.genre[book.genre];
     }
 
     setGlobalState({
@@ -45,7 +36,10 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 
   const addLibrary = (book: BookType) => {
     const readUpdate = globalState.read.filter((b) => b.ISBN !== book.ISBN);
-    globalState.genre.add(book.genre);
+
+    if (globalState.genre[book.genre] === undefined) {
+      globalState.genre[book.genre] = book.genre;
+    }
 
     let origin: LibraryType[] = JSON.parse(globalState.origin);
     origin = [...origin, { book }];
@@ -103,7 +97,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
       <ChakraProvider>
         <GlobalState.Provider
           value={{
-            ...globalState,
+            data: globalState,
             addLibrary,
             addRead,
             setGlobalState,
