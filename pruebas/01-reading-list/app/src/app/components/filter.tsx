@@ -42,7 +42,7 @@ const GenresFragment = ({genres,value,setValue}:genresProps) => {
 
     return(
         <div className={styles.rangeComponent}>
-            <label htmlFor="customSelect"></label>
+            <label htmlFor="customSelect">Género :</label>
             <select id='customSelect' value={value} onChange={(e) => setValue(e.target.value)}>
                 {genres
                     .sort( (a,b) => (a == 'all') ? 1 : -1)

@@ -12,6 +12,19 @@
     min-width: 25%;
 }
 
+.rangeComponent > select {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    border: none;
+    background-color: transparent;
+    color: white;
+}
+
+.rangeComponent > select > option {
+    background-color: grey;
+}
+
 .range {
     position: relative;
     min-width: 100%

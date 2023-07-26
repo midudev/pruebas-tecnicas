@@ -8,6 +8,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: grey;
+    z-index: 10;
 }
 
 .credits > p {
