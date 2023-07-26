@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import {saveBook, removeBook, useSavedBooks} from "../../../data/Store.js";
+import {saveBook, removeBook, useSavedBooks} from "../../../data/BooksStore.js";
 import "./SaveBookButton.css";
 
 

@@ -15,6 +15,9 @@
 .Books-filters input[type=range]::-webkit-slider-runnable-track {
     background-color: #005494;
 }
+.Books-filters input[type=range]::-moz-range-track {
+    background-color: #005494;
+}
 
 .Books-filters .form-label {
     color: #fff;

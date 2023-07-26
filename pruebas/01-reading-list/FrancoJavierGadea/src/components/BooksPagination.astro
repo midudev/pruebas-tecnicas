@@ -18,34 +18,83 @@ const pagination = generatePagination(total, {
 });
 ---
 
-<nav class="p-4">
-    <ul class="pagination justify-content-center">
+<app-pagination>
 
-        <li class="page-item">
-            <a class="page-link" href={pagination.prev?.url.href} title="Anterior" 
-            
-                class:list={[{disabled: !pagination.prev}]}
-            >
-                <i class="bi bi-chevron-left" />
-            </a>
-        </li>
+    <nav class="p-4">
+        <ul class="pagination justify-content-center">
+    
+            <li class="page-item">
+                <a class="page-link" href={pagination.prev?.url.href} title="Anterior" 
+                
+                    class:list={[{disabled: !pagination.prev}]}
+                >
+                    <i class="bi bi-chevron-left" />
+                </a>
+            </li>
+    
+            {
+                pagination.links.map((link) => {
+    
+                    return <li class="page-item">
+                        <a class="page-link" href={link.url.href} class:list={[{active: current === link.page}]}>{link.page}</a>
+                    </li>
+                })
+            }
+    
+            <li class="page-item">
+                <a class="page-link" href={pagination.next?.url.href} title="Siguiente" 
+                
+                    class:list={[{disabled: !pagination.next}]}
+                >
+                    <i class="bi bi-chevron-right" />
+                </a>
+            </li>
+        </ul>
+    </nav>
 
-        {
-            pagination.links.map((link) => {
+</app-pagination>
 
-                return <li class="page-item">
-                    <a class="page-link" href={link.url.href} class:list={[{active: current === link.page}]}>{link.page}</a>
-                </li>
-            })
+
+<script>
+
+    import {listenShow, getShow} from "../data/ShowStore.js";
+
+    class Pagination extends HTMLElement {
+
+        constructor(){
+
+            super();
+
+            const links = [...this.querySelectorAll('a')].filter(link => link.href);
+
+            const show = getShow();
+
+            if(show){
+
+                links.forEach((link) => {
+
+                    const url = new URL(link.href);
+
+                    url.searchParams.set('show', show);
+
+                    link.href = url.href;
+                })
+            }
+
+            listenShow((value) => {
+
+                links.forEach((link) => {
+
+                    const url = new URL(link.href);
+
+                    url.searchParams.set('show', value);
+
+                    link.href = url.href;
+                })
+            });
         }
+    }
 
-        <li class="page-item">
-            <a class="page-link" href={pagination.next?.url.href} title="Siguiente" 
-            
-                class:list={[{disabled: !pagination.next}]}
-            >
-                <i class="bi bi-chevron-right" />
-            </a>
-        </li>
-    </ul>
-</nav>
+    customElements.define('app-pagination', Pagination);
+
+</script>

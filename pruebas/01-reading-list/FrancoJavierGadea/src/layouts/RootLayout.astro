@@ -6,10 +6,9 @@ import Footer from "../components/Footer.astro";
 import ReadingList from "../components/react/ReadingList/ReadingList.jsx";
 
 import { ViewTransitions } from 'astro:transitions';
+import "../assets/transitions/custom-slide.css";
 
 const { title, searchPlaceholder = '' } = Astro.props;
-
-const isLibrosPage = Astro.url.pathname.startsWith('/Libros');
 ---
 
 <!DOCTYPE html>
@@ -21,7 +20,20 @@ const isLibrosPage = Astro.url.pathname.startsWith('/Libros');
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		
+
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="Libros - Midudev prueba tecnica 1">
+		<meta property="og:url" content="https://libros1812.netlify.app/">
+		<meta property="og:description" content="Desarrollo de la prueba tecnica nº 1 de Midudev hecha con Astro y React">
+		<meta property="og:image" content="/libros.webp">
+		<meta property="og:image:width" content="1200">
+		<meta property="og:image:height" content="630">
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Libros - Midudev prueba tecnica 1" />
+		<meta name="twitter:description" content="Desarrollo de la prueba tecnica nº 1 de Midudev hecha con Astro y React" />
+		<meta name="twitter:image" content="/libros.webp" />
+
 		<title>{title}</title>
 
 		<ViewTransitions />
@@ -77,8 +89,6 @@ const isLibrosPage = Astro.url.pathname.startsWith('/Libros');
 		</div>
 		
 		<Footer />
-
-		<resolve-spa />
 	</body>
 </html>
 

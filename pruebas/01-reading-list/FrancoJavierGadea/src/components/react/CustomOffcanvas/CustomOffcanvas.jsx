@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import ReadingList from '../ReadingList/ReadingList';
 
-import styles from "./CustomOffcanvas.module.css";
+import "./CustomOffcanvas.css";
 
 function CustomOffcanvas() {
 
@@ -18,7 +18,7 @@ function CustomOffcanvas() {
     
         <Offcanvas show={show} onHide={handleClose} placement="end" scroll={true} backdrop={false}
         
-           className={styles["Custom-offcanvas"]} style={{zIndex: 3100}} 
+           id="Custom-offcanvas" style={{zIndex: 3100}} 
         >
 
             <Offcanvas.Header closeButton />

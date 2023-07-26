@@ -1,6 +1,6 @@
 import { useStore } from "@nanostores/react";
 import { map } from "nanostores";
-import { persistentMap } from '@nanostores/persistent';
+import { persistentAtom, persistentMap } from '@nanostores/persistent';
 
 
 //const SAVED_BOOKS = map({});

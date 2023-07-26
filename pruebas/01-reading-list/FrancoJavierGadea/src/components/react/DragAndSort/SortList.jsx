@@ -5,7 +5,7 @@ import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-ki
 import { SortableItem } from "./SorteableItem";
 import SavedBookCard from "../SavedBookCard/SavedBookCard";
 import { restrictToVerticalAxis, restrictToFirstScrollableAncestor } from "@dnd-kit/modifiers";
-import { changeOrder } from "../../../data/Store";
+import { changeOrder } from "../../../data/BooksStore";
 
 
 function SortList({values = [], books = {}}) {

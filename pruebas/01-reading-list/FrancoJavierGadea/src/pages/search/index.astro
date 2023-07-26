@@ -4,6 +4,8 @@ import FindedBookCard from "../../components/FindedBookCard.astro";
 import {searchBooks} from "../../data/books.js"
 import BooksFilters from "../../components/react/BooksFilters/BooksFilters";
 
+// Open Filters ?
+const show = Astro.url.searchParams.get('show');
 
 const search = Astro.url.searchParams.get('search');
 
@@ -19,7 +21,7 @@ const result = searchBooks(search, filters);
 
     <div transition:animate="slide">
 
-        <BooksFilters client:load path="/search" pages={filters.pages} genre={filters.genre} queryParams={{search}} total={result.length}/>
+        <BooksFilters client:load path="/search" pages={filters.pages} genre={filters.genre} queryParams={{search}} total={result.length} show={show}/>
     
         <div class="Books-container">
             {

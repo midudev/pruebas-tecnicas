@@ -1,7 +1,7 @@
 
 import { Button } from "react-bootstrap";
 import "./SaveBookCard.css";
-import { removeBook } from "../../../data/Store.js";
+import { removeBook } from "../../../data/BooksStore.js";
 
 
 function SavedBookCard({book}) {

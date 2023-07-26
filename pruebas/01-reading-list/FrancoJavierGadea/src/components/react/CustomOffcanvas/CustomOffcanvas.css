@@ -1,5 +1,5 @@
 
-.Custom-offcanvas {
+#Custom-offcanvas {
 
     --bs-offcanvas-zindex: 3100;
     --bs-offcanvas-width: 100%;
@@ -8,7 +8,7 @@
 
 @media (min-width: 768px) {
 
-    .Custom-offcanvas {
+    #Custom-offcanvas {
 
         --bs-offcanvas-width: 400px;
     }
