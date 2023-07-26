@@ -1,0 +1,122 @@
+<aside class="top-0 left-0 z-10 hidden h-full transition-all md:flex">
+  <section
+    [ngClass]="{ 'reading-list-overflow': isReadingList }"
+    class="min-h-screen p-4 bg-secondary-color"
+  >
+    <h2 class="mb-4 text-xl font-semibold text-center whitespace-nowrap">
+      Lista de Lectura
+      <span *ngIf="readingList.length > 0"> / </span>
+      <span
+        [ngClass]="{ active: readingList.length > 0 }"
+        *ngIf="readingList.length > 0"
+        class="font-semibold min-w-[2ch]"
+      >
+        {{ readingList.length }}
+      </span>
+    </h2>
+
+    <h3 *ngIf="readingList.length === 0" class="text-sm opacity-90">
+      Aún no hay libros en la lista de lectura
+    </h3>
+
+    <div
+      class="grid grid-cols-1 gap-2 md:place-items-start place-items-center md:grid-cols-2 md:gap-4"
+    >
+      <article
+        [title]="item.book.title"
+        *ngFor="let item of readingList"
+        class="relative"
+      >
+        <button
+          (click)="removeFromReadingList(item.book.ISBN)"
+          class="absolute top-0 right-0 p-1 transition-colors select-none bg-secondary-color hover:bg-cyan-50 rounded-es-lg"
+        >
+          <img
+            alt="Button to delete"
+            height="24"
+            src="./assets/icons/x.svg"
+            width="24"
+          />
+        </button>
+
+        <img
+          [alt]="item.book.title"
+          [src]="item.book.cover"
+          class="object-contain last-article-margin"
+          height="250"
+          width="150"
+        />
+      </article>
+    </div>
+  </section>
+</aside>
+
+<!-- Responsive Nav -->
+<aside
+  [ngClass]="{ 'is-reading-list': isReadingList }"
+  class="fixed top-0 left-0 z-10 flex h-full transition-all -translate-x-full md:hidden"
+>
+  <button
+    (click)="toggleReadingList()"
+    class="absolute flex items-center justify-center gap-1 p-3 transition-colors rounded-r-lg select-none bg-secondary-color md:hidden md:hover:bg-gray-900 left-full w-fit h-fit"
+    title="Lista de Lectura"
+    type="button"
+  >
+    <img
+      alt="Reading list books"
+      height="24"
+      class="w-4"
+      src="./assets/icons/books.svg"
+      width="24"
+    />
+    <span
+      [ngClass]="{ active: readingList.length > 0 }"
+      class="font-semibold min-w-[2ch]"
+    >
+      {{ readingList.length }}
+    </span>
+  </button>
+
+  <section
+    [ngClass]="{ 'reading-list-overflow': isReadingList }"
+    class="min-h-screen p-4 bg-secondary-color"
+  >
+    <h2 class="mb-4 text-xl font-semibold text-center whitespace-nowrap">
+      Lista de Lectura
+    </h2>
+
+    <h3 *ngIf="readingList.length === 0" class="text-sm opacity-90">
+      Aún no hay libros en la lista de lectura
+    </h3>
+
+    <div
+      class="grid grid-cols-1 gap-2 md:place-items-start place-items-center md:grid-cols-2 md:gap-4"
+    >
+      <article
+        [title]="item.book.title"
+        *ngFor="let item of readingList"
+        class="relative"
+      >
+        <button
+          (click)="removeFromReadingList(item.book.ISBN)"
+          class="absolute top-0 right-0 p-1 transition-colors select-none bg-secondary-color hover:bg-cyan-50 rounded-es-lg"
+        >
+          <img
+            alt="Button to delete"
+            height="24"
+            src="./assets/icons/x.svg"
+            width="24"
+          />
+        </button>
+
+        <img
+          [alt]="item.book.title"
+          [src]="item.book.cover"
+          class="object-contain last-article-margin"
+          height="250"
+          width="150"
+        />
+      </article>
+    </div>
+  </section>
+</aside>
