@@ -1,15 +1,15 @@
-import { BookProps } from '../model/book';
-import { BooksRepo } from '../services/books.repo';
+import { BookProps } from '../components/model/book';
+import { BooksRepo } from '../components/services/books.repo';
 import { useAppDispatch, useAppSelector } from './useStore';
 import {
 	BookId,
 	deleteBookByISBN,
 	loadNewBooks,
 	updateBook,
-} from '../../store/books/slice';
+} from '../store/books/slice';
 
 import { useEffect } from 'react';
-import { FilterProps, updateFilter } from '../../store/filter/slice';
+import { FilterProps, updateFilter } from '../store/filter/slice';
 
 const NO_BOOKS: number = 0;
 

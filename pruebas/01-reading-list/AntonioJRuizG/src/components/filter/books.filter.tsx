@@ -1,7 +1,7 @@
 import { useState, useEffect, SyntheticEvent, useMemo } from 'react';
 
 import styles from './books.filter.module.scss';
-import useBooks from '../hooks/useBooks';
+import useBooks from '../../hooks/useBooks';
 import { BooksRepo } from '../services/books.repo';
 
 export default function BooksFilter() {

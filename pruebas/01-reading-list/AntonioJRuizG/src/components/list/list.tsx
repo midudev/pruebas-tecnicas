@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import useBooks from '../hooks/useBooks';
+import useBooks from '../../hooks/useBooks';
 import { BooksRepo } from '../services/books.repo';
 import styles from './list.module.scss';
 import { BookProps } from '../model/book';
