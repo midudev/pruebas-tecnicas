@@ -16,7 +16,6 @@
 </template>
 
 <script setup>
-import StarIcon from '@/components/icons/StarIcon.vue'
 const props = defineProps({
     book: { type: Object, required: true }
 })
