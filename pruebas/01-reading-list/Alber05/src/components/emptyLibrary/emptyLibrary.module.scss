@@ -1,0 +1,32 @@
+.noBooksMain {
+  width: 90%;
+  margin: 250px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-height: calc(100vh - 250px);
+
+  @media (min-width: 768px) {
+    margin: 170px auto 0 auto;
+    min-height: calc(100vh - 170px);
+  }
+
+  .noBooksTitle {
+    font-family: "Amazon Ember Heavy", sans-serif;
+    color: #353838;
+    font-size: 1.6rem;
+
+    @media (min-width: 768px) {
+      font-size: 2.4rem;
+    }
+  }
+
+  .noBooksImage {
+    image-rendering: optimizeQuality;
+
+    img {
+      width: 100%;
+    }
+  }
+}

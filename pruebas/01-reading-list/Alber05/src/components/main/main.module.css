@@ -1,0 +1,13 @@
+.main {
+  width: 90%;
+  margin: 250px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+  place-items: center;
+}
+@media (min-width: 768px) {
+  .main {
+    margin: 170px auto;
+  }
+}

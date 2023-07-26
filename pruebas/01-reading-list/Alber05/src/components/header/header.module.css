@@ -1,0 +1,30 @@
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(53, 56, 56);
+  z-index: 999;
+  /* BROWSER */
+}
+.header .browserContainer {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3rem;
+  padding: 1rem;
+  border-radius: 1.1rem;
+  width: min(600px, 50%);
+}
+.header .browserContainer .browser {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-family: "Amazon Ember Light", sans-serif;
+}
