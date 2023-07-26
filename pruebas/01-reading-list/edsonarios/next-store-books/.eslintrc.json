@@ -12,6 +12,10 @@
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-misused-promises": "off",
         "@next/next/no-img-element":"off",
-        "react-hooks/exhaustive-deps":"off"
+        "react-hooks/exhaustive-deps":"off",
+        "indent": ["error", 4, {"SwitchCase": 1}],
+        "@typescript-eslint/indent": ["error", 4],
+        "react/jsx-indent":"off",
+        "react/jsx-indent-props":"off"
     }
 }

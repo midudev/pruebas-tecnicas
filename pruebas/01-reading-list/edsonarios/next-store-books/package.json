@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@types/node": "20.4.2",
@@ -24,6 +26,10 @@
     "zustand": "^4.3.9"
   },
   "devDependencies": {
-    "ts-standard": "^12.0.2"
+    "@testing-library/react": "^14.0.0",
+    "@vitejs/plugin-react": "^4.0.3",
+    "happy-dom": "^10.5.2",
+    "ts-standard": "^12.0.2",
+    "vitest": "^0.33.0"
   }
 }

@@ -22,4 +22,4 @@ pnpm run build
 - ✅ 5. Persistencia de Datos
 - ✅ 6. Sincronización entre pestañas
 - ✅ 7. Despliegue
-- 8. Test
+- ✅ 8. Test
