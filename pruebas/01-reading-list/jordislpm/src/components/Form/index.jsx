@@ -37,6 +37,7 @@ setFilters({...filters, genre:genre})
     const handleSubmit = (e) =>{
     e.preventDefault()
     setSearch(newSearch)
+    setFilters({...filters, search:newSearch})
     }
 
 
@@ -56,7 +57,7 @@ setFilters({...filters, genre:genre})
         </form>
         <div className={styles.filters}>
             <div className={styles.genreFilter}>
-                <label>Filtar por genero</label>
+                <label className={styles.label}>Filtar por genero</label>
             <select onChange={onChangeSelect}>
                     {genres && genres.map((genre)=>{
                         return<option key={genre}>{genre}</option>
@@ -64,7 +65,7 @@ setFilters({...filters, genre:genre})
                 </select>
             </div> 
             <div className={styles.pagesFilter}>
-                <label htmlFor="pages">Filtar por paginas</label>
+                <label className={styles.label}>Filtar por paginas</label>
                 <div>
                     <input 
                         type="range"
@@ -76,7 +77,7 @@ setFilters({...filters, genre:genre})
                         onChange={onChangePages}  
                         placeholder="Filtrar por paginas">
                     </input>
-                    <span>Minimo de paginas {paginas}</span> 
+                    <span className={styles.span}>Minimo de paginas {paginas}</span> 
                 </div> 
             </div>      
         </div>

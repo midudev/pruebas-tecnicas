@@ -1,7 +1,7 @@
 .options{
     display: flex;
     flex-direction: column;
-    min-width: 80%;
+    max-width: 100%;
     gap: 1rem;
     align-items: center;
 }
@@ -19,6 +19,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    gap: 1rem;
 }
 
 .pagesFilter{
@@ -36,12 +37,18 @@
     gap: 1rem;
 }
 
-span{
-    font-size: 20px;
+.span{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secundary-blue);
+    max-width: max-content;
 }
 
-label{
-    font-size: 20px;
+.label{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secundary-blue);
+    max-width: max-content;
 }
 
 .searchInput{
@@ -72,4 +79,14 @@ label{
 
 .searchButton > img{
     background-color: var(--primary-beige);
+}
+
+@media only screen and (max-width: 900px) {
+    .filters{
+ 
+        flex-direction: column-reverse;
+      
+    }
+
+    
 }

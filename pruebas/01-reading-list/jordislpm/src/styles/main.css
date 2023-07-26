@@ -7,18 +7,18 @@
 }
 
 
-/* html {
+html {
    font-size: 62.5%; 
-  line-height: 1.15;
-  -webkit-text-size-adjust: 100%;
-} */
+  /* line-height: 1.15;
+  -webkit-text-size-adjust: 100%; */
+}
 
-/* html:focus-within {
+html:focus-within {
   scroll-behavior: smooth;
-} */
+}
 
 body {
-  /* font-size: 1.6rem; */
+  font-size: 1.6rem;
   font-family: var(--font);
   text-rendering: optimizeSpeed;
   min-height: 100vh;

@@ -13,10 +13,10 @@ const {books, read}=useFilter()
 
   return (
     <div className={styles.header}>
-            <div className={styles.boxTitle}>
-              <img className={styles.icon} src={icon}></img>
-            <h1>Book Lover</h1>
-            </div>
+        <div className={styles.boxTitle}>
+          <img className={styles.icon} src={icon}></img>
+          <h1>Book Lover</h1>
+        </div>
            
         <p className={styles.availables}>{`Tienes ${books.length} libro${books.length != 1 ? "s" : ""} disponible${books.length != 1 ? "s" : ""}`}</p>
         {read.length == 0
