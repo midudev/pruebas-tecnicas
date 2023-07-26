@@ -5,6 +5,7 @@ import useFilterBooks from "./hooks/useFilterBooks"
 import { useEffect } from "react"
 import UserList from "./components/UserList"
 import BookList from "./components/BookList"
+import FilterDiv from "./components/FilterDiv"
 
 function App() {
   const { books, isLoading, error } = useBooksData()
@@ -22,8 +23,17 @@ function App() {
   return (
     <main>
       <UserList />
+      <section style={{ marginTop: 222 }}>
+        <FilterDiv
+          filter={filter}
+          setFilter={setFilter}
+          allGenres={allGenres}
+          maxPages={maxPages}
+          minPages={minPages}
+        />
 
-      <BookList filteredBooks={filteredBooks} />
+        <BookList filteredBooks={filteredBooks} />
+      </section>
     </main>
   )
 }

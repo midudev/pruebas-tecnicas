@@ -1,3 +1,6 @@
+/* Como el proyecto no es muy grande, pongo todo css en un sólo archivo por comodidad */
+/* De crecer sería mejor separar en módulos */
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -15,6 +18,8 @@ img {
   max-width: 100%;
 }
 
+/* User list */
+/*************************************************/
 .readingList-container {
   position: fixed;
   top: 0;
@@ -36,6 +41,8 @@ img {
   position: relative;
 }
 
+/* Book list */
+/*************************************************/
 .close-btn {
   position: absolute;
   right: 0;
@@ -58,10 +65,33 @@ img {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1rem;
-  padding-top: 250px;
 }
 
 .booklist-container > li {
   max-height: 320px;
   cursor: pointer;
+}
+
+/* FilterDiv */
+/*************************************************/
+.filters-container {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.filters-btns-container {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.filters-container select {
+  font-size: 1rem;
+  text-transform: capitalize;
+  line-height: 1.6;
+  padding: 6px;
 }
