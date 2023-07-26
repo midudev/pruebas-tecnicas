@@ -6,7 +6,7 @@ const Header = (): ReactElement => {
   return (
 
     <section className='flex justify-center'>
-      <h1 className='text-6xl font-bold mt-4 mb-8'> Tu librería</h1>
+      <h1 className='text-4xl sm:text-6xl font-bold mt-4 mb-8'> Tu librería</h1>
 
       <div className='bg-purple-100 p-4 flex justify-center items-center flex-wrap'>
         <span className='relative inline-block'>

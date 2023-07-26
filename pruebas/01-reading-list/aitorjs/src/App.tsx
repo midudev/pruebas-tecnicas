@@ -25,10 +25,10 @@ function App (): ReactElement {
     <div className='min-h-full bg-purple-100 '>
       <Header />
 
-      <section className='bg-slate-50 p-8 px-56 mb-8 w-[100%] flex flex-row gap-14'>
+      <section className='bg-slate-50 p-8 px-10 lg:px-56 mb-8 w-[100%] flex flex-col sm:flex-row gap-14'>
         <LibraryInfo />
 
-        <div className='rounded-lg w-1/3 flex flex-col justify-center gap-4'>
+        <div className='rounded-lg w-[100%] sm:w-1/3 flex flex-col justify-center gap-4'>
           <div className='flex flex-col justify-center'>
             <PageFilter />
 
@@ -41,13 +41,13 @@ function App (): ReactElement {
       </section>
 
       <section className='flex flex-col sm:flex-row mb-8'>
-        <div className='flex flex-wrap pl-56 gap-4 w-[73.8%]' id='books'>
+        <div className='flex flex-wrap pl-20 lg:pl-40 xl:pl-56 gap-4 xl:w-[73.8%] lg:w-[90%] w-[100%]' id='books'>
           {filteredBooks.map(({ book }) => (
             <Book key={book.ISBN} data={book} />
           ))}
         </div>
 
-        <div className='flex flex-col' id='readList'>
+        <div className='flex flex-col pl-20 sm:pl-0' id='readList'>
           <ReadList />
         </div>
       </section>
