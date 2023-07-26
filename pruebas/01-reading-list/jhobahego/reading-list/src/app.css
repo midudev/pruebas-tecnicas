@@ -1,12 +1,12 @@
 .main{
   padding: 2em 3em;
-  gap: 2em;
   display: grid;
   place-content: center;
 }
 .container {
   display: grid;
   grid-template-areas: "books readedbooks";
+  gap: 2em;
 }
 
 .books {
@@ -162,7 +162,9 @@ aside {
   }
 
   .books__container {
-    grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+    width: 90%;
+    grid-template-columns: minmax(165px, 1fr);
+    margin: 0 auto;
   }
   
   .books {
