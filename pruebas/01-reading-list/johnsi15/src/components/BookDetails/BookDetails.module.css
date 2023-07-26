@@ -6,10 +6,48 @@
   box-sizing: border-box;
   padding: 30px 20px;
   border-radius: 20px;
-  transition: all ease-in .5s;
+  /* transition: all ease-in .5s; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   width: 100%;
 }
 
 .title {
   color: var(--color-quaternary);
+  font-size: 1.7rem;
+  line-height: 2.1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.bookDetails p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.4rem;
+}
+
+.bookDetails button {
+  border-radius: 5px;
+  border: none;
+  font-weight: 700;
+  padding: 15px 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  align-self: center;
+  background-color: var(--color-quaternary);
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: all ease-in .2s;
+}
+
+.bookDetails button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-quaternary);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

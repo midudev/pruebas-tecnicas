@@ -30,9 +30,12 @@ function App () {
         </select>
       </div>
 
-      <ListBooks books={books}/>
+      <section className={styles.listBooks}>
+        <ListBooks books={books}/>
 
-      <ReadingList books={readingList} />
+        <ReadingList books={readingList} />
+      </section>
+
     </main>
   )
 }

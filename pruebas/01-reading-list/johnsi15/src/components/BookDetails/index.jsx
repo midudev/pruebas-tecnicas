@@ -11,10 +11,14 @@ export default function BookDetails ({ id, title, cover, pages, genre, synopsis,
   return (
     <article className={styles.bookDetails}>
       <h2 className={styles.title}>{title}</h2>
-      <p>{genre}</p>
-      <p>{synopsis}</p>
-      <span>{author?.name}</span>
-      <button onClick={handleClick}>Add book</button>
+      <div className={styles.info}>
+        <p><strong>Descripción:</strong> {synopsis}</p>
+        <p><strong>Género:</strong> {genre}</p>
+        <p><strong>Autor:</strong> {author?.name}</p>
+        <p><strong>Año:</strong> {year}</p>
+      </div>
+
+      <button onClick={handleClick}>Agregar a la lista</button>
     </article>
   )
 }

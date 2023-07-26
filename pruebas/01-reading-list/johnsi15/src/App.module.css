@@ -37,3 +37,8 @@
   font-size: 1.2rem;
   font-weight: 500;
 }
+
+.listBooks {
+  display: flex;
+  gap: 20px;
+}
