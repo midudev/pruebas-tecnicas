@@ -1,21 +1,47 @@
+import { useReadingList } from '../hooks/useReadingList'
+import { CloseIcon, ExpandIcon, TrashBinIcon, ListIcon } from './Icons'
 import { Book } from './Book'
-import { type BookType } from '../types.d'
 
-type Props = {
-  books: BookType[],
-  isDisplay: boolean
-}
+export function ReadingList () {
+  const { state, show, updateShow, clearList } = useReadingList()
 
-export function ReadingList ({ isDisplay = false, books = [] }: Props) {
-  const displayClass = isDisplay ? '' : 'hidden'
+  const displayClass = show ? '' : 'hidden'
+
+  const handleClose = () => {
+    updateShow()
+  }
+
+  const handleExpand = () => {
+    // change styles
+  }
+
+  const handleClear = () => {
+    clearList()
+  }
 
   return (
     <div className={`${displayClass} w-80 ml-11`}>
       <aside className={`${displayClass} fixed top-0 right-0 w-80 h-screen animate-slide-in-fwd-right`}>
         <div className='h-full overflow-y-auto bg-gray-800 no-scrollbar'>
-          <h2 className='fixed px-3 py-3 w-full h-16 bg-gray-800 font-bold text-2xl border-b-2 border-white text-white'>Mi Lista</h2>
+          <div className='fixed px-3 py-3 w-full h-20 bg-gray-800 border-b-2 border-white'>
+            <div className='flex justify-between mb-2'>
+              <div className='flex gap-5 [&>span]:hover:cursor-pointer'>
+                <span>
+                  <CloseIcon onClick={handleClose} />
+                </span>
+                <span>
+                  <ExpandIcon onClick={handleExpand} />
+                </span>
+              </div>
+              <span className='hover:cursor-pointer' onClick={handleClear}>
+                <TrashBinIcon />
+              </span>
+            </div>
+            <h2 className='font-bold text-2xl text-white'>Mi Lista</h2>
+          </div>
           <ul className='flex flex-col items-center gap-16 mt-16 py-16 overflow-y-hidden'>
-            {books.map((book) => (
+            {!(state.length > 0) && (<p className='text-2xl text-white text-center'>Aun no tienes libros agregados 😀</p>)}
+            {state.map((book) => (
               <li key={book.ISBN}>
                 <Book book={book} />
               </li>
@@ -24,5 +50,16 @@ export function ReadingList ({ isDisplay = false, books = [] }: Props) {
         </div>
       </aside>
     </div>
+  )
+}
+
+export function ReadingListButton () {
+  const { show, updateShow } = useReadingList()
+  const displayClass = show ? 'hidden' : ''
+
+  return (
+    <button onClick={() => updateShow()} className={`${displayClass} absolute right-10 top-10`}>
+      <ListIcon className='w-10' />
+    </button>
   )
 }

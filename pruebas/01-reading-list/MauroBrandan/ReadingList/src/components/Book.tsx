@@ -7,7 +7,7 @@ type Props = {
 
 export function Book ({ book }: Props) {
   const { cover } = book
-  const { addToList, removeFromList, isInList } = useReadingList()
+  const { addToList, removeFromList, isInList, updateShow } = useReadingList()
 
   const isAdded = isInList(book)
   const btnText = isAdded ? 'Quitar de la lista' : 'Añadir a lista'
@@ -19,6 +19,7 @@ export function Book ({ book }: Props) {
       return
     }
 
+    updateShow(true)
     return addToList(book)
   }
 

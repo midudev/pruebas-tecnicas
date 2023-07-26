@@ -20,6 +20,8 @@ export type LibraryType = {
 
 export type ReadingListContextType = {
     state: BookType[],
+    show: boolean,
+    updateShow: (newState?: boolean) => void,
     addToList: (book: BookType) => void,
     removeFromList: (book: BookType) => void,
     clearList: () => void
