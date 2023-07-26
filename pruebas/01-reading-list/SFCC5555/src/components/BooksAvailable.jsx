@@ -32,7 +32,7 @@ const BooksAvailable = () => {
         <h2 className="text-3xl">{booksAvailable} Libro{booksAvailable !== 1 && 's'} Disponible{booksAvailable !== 1 && 's'}</h2>
         {booksListed > 0 && <p className="text-2xl">{booksListed} en la Lista de Lectura</p>}
       </section>
-      <section className="w-full flex items-end justify-between gap-2 pr-5">
+      <section className="w-full flex flex-col items-start sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-2 pr-5">
         <PagesFilter />
         <SearchEngine />
         <GenreFilter />

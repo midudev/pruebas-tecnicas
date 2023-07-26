@@ -16,7 +16,7 @@ const GenreFilter = () => {
   const genreBooks = genre === 'Todos' ? library.length : library.filter(i => i.book.genre === genre).length;
 
   return (
-    <div className="flex flex-col text-lg gap-3 relative z-20" >
+    <div className="flex flex-col text-lg sm:gap-3 relative z-20" >
       <p>Filtrar por Género: </p>
       {/* Button to toggle the status of the genre filter menu */}
       <button onClick={() => setFilterMenuStatus(prev => !prev)} className={`${darkMode ? 'light-mode' : 'dark-mode'} px-2 py-1 rounded-md hover:opacity-80`} >

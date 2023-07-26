@@ -14,7 +14,7 @@ const SearchEngine = () => {
   }
 
   return (
-    <div className="relative flex flex-col gap-3">
+    <div className="relative flex flex-col sm:gap-3">
       <p className="text-lg">Buscar por Título:</p>
       <input
         id="search"
