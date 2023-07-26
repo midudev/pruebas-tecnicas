@@ -1,7 +1,7 @@
 <script lang='ts' context='module'>
 
-  import GenreFilter from "./genre-filter.svelte";
-  import PagesFilter from "./pages-filter.svelte";
+  import GenreFilter from './genre-filter.svelte'
+  import PagesFilter from './pages-filter.svelte'
 
 </script>
 

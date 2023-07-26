@@ -1,14 +1,16 @@
 <script lang='ts' context='module'>
 
-  import { ToggleBadge, ToggleAccordion }  from "$lib";
-  import { genres } from "$features/library";
+  import { genres } from '$features/library'
+  import { ToggleBadge, ToggleAccordion } from '$lib'
 
   import {
 
-    addGenreToFilter, removeGenreFromFilter,
-    setFilterEnabled, filters
+    addGenreToFilter,
+    removeGenreFromFilter,
+    setFilterEnabled,
+    filters
 
-  } from "../store";
+  } from '../store'
 
 </script>
 
@@ -18,28 +20,21 @@
   $: filterGenres = $filters.genre.data.genres
 
   // Invert the current value of the filter.
-  function toggleGenreFilter() {
+  function toggleGenreFilter () {
 
-    setFilterEnabled('genre', !(enabled));
+    setFilterEnabled('genre', !enabled)
   }
 
+  // Add or remove a genre from the filter.
   function onGenreToggled (toggled: boolean, name: string) {
 
-    const callback = toggled
-      ? addGenreToFilter
-      : removeGenreFromFilter;
-
-    callback(name);
+    const callback = toggled ? addGenreToFilter : removeGenreFromFilter
+    callback(name)
   }
 
 </script>
 
-<ToggleAccordion
-
-  label={'Género'}
-  toggled={enabled}
-  onToggle={toggleGenreFilter}
->
+<ToggleAccordion label='Género' toggled={ enabled } onToggle={ toggleGenreFilter }>
 
   <ul class='mt-2 p-4 flex flex-wrap justify-around gap-4'>
 
@@ -49,17 +44,16 @@
 
         <ToggleBadge
 
-          text={genre}
+          text={ genre }
+          toggled={ filterGenres.includes(genre) }
 
-          toggled={filterGenres.includes(genre)}
-          onToggle={toggled => onGenreToggled(toggled, genre)}
+          onToggle={ (toggled) => { onGenreToggled(toggled, genre) } }
         />
 
       </li>
 
     {/each}
 
-</ul>
-
+  </ul>
 
 </ToggleAccordion>

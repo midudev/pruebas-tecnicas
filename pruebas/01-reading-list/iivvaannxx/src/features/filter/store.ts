@@ -8,6 +8,7 @@ import {
 
 } from './feature'
 
+/** @brief The filters that can be applied to the book list. */
 export const filters = map<FilterMap>({
 
   genre: {
@@ -36,52 +37,48 @@ export const filters = map<FilterMap>({
   }
 })
 
-export const addGenreToFilter = action(filters, 'addGenre',
-  (filters, genre: string) => {
+/** @brief adds the given genre to the the genre filter. */
+export const addGenreToFilter = action(filters, 'addGenre', (filters, genre: string) => {
 
-    const filter = filters.get().genre
-    const genres = filter.data.genres
+  const filter = filters.get().genre
+  const genres = filter.data.genres
 
-    // Don't include it if it's already there.
-    if (genres.includes(genre)) {
+  // Don't include it if it's already there.
+  if (genres.includes(genre)) {
 
-      return
-    }
-
-    const newGenres = [...genres, genre]
-    filters.setKey('genre', { ...filter, data: { genres: newGenres } })
+    return
   }
-)
 
-export const removeGenreFromFilter = action(filters, 'addGenre',
-  (filters, genre: string) => {
+  const newGenres = [...genres, genre]
+  filters.setKey('genre', { ...filter, data: { genres: newGenres } })
+})
 
-    const filter = filters.get().genre
-    const genres = filter.data.genres
+/** @brief Removes the given genre from the genre filter. */
+export const removeGenreFromFilter = action(filters, 'removeGenre', (filters, genre: string) => {
 
-    // Can't remove it if it's not there.
-    if (!(genres.includes(genre))) {
+  const filter = filters.get().genre
+  const genres = filter.data.genres
 
-      return
-    }
+  // Can't remove it if it's not there.
+  if (!(genres.includes(genre))) {
 
-    const newGenres = genres.filter(current => current !== genre)
-    filters.setKey('genre', { ...filter, data: { genres: newGenres } })
+    return
   }
-)
 
-export const setPagesFilter = action(filters, 'setPages',
-  (filters, min: number, max: number) => {
+  const newGenres = genres.filter(current => current !== genre)
+  filters.setKey('genre', { ...filter, data: { genres: newGenres } })
+})
 
-    const pages = filters.get().pages
-    filters.setKey('pages', { ...pages, data: { min, max } })
-  }
-)
+/** @brief Sets the page range of the page filter. */
+export const setPagesFilter = action(filters, 'setPages', (filters, min: number, max: number) => {
 
-export const setFilterEnabled = action(filters, 'setEnabled',
-  (filters, name: Filter, enabled: boolean) => {
+  const pages = filters.get().pages
+  filters.setKey('pages', { ...pages, data: { min, max } })
+})
 
-    const filter = filters.get()[name]
-    filters.setKey(name, { ...filter, enabled })
-  }
-)
+/** @brief Sets the enabled state of the given filter. */
+export const setFilterEnabled = action(filters, 'setEnabled', (filters, name: Filter, enabled: boolean) => {
+
+  const filter = filters.get()[name]
+  filters.setKey(name, { ...filter, enabled })
+})
