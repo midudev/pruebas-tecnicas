@@ -11,10 +11,10 @@ import { BookComponent } from './components/book/book.component';
 import { BooksComponent } from './pages/books/books.component';
 import { FilterByGenrePipe } from './pipes/filter-by-genre.pipe';
 import { DragDropModule} from '@angular/cdk/drag-drop';
-import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [

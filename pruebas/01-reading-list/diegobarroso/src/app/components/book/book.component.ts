@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Book } from 'src/app/interfaces/book';
 import { BooksService } from 'src/app/services/books.service';
+
 
 @Component({
   selector: 'Book',
