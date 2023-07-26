@@ -23,9 +23,7 @@ export default function Home() {
         </h1>
       </header>
       <main className={homeStyles.homeMain}>
-        <section className={homeStyles.homeMain__suggestSection}>
-          <SuggestBook />
-        </section>
+        <SuggestBook />
         <BookDashboard />
       </main>
     </>

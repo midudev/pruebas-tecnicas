@@ -1,11 +1,18 @@
-.suggestSection__info {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+.suggestSection {
+  display: grid;
+  grid-template-areas:
+    'suggestionTitle suggestionTitle'
+    'suggestionSubtitle suggestionSubtitle'
+    'suggestionSynopsis suggestionImgBook'
+    'suggestionButton suggestionImgBook';
+  grid-template-columns: minmax(10ch, 40ch) min-content;
+  grid-template-rows: auto auto min-content 1fr;
+  column-gap: 1.5rem;
+  place-content: center;
 }
 
-.addBookContainer {
-  position: relative;
+.suggestSection__info__button {
+  grid-area: suggestionButton;
 }
 
 .suggestSection__info__button[aria-disabled='true'] {
@@ -19,10 +26,14 @@
 }
 
 .suggestSection__title {
-  max-width: 20ch;
+  grid-area: suggestionTitle;
+  max-width: 100%;
   margin-bottom: 0.25em;
+  color: var(--color-primary);
   font-size: 2.25rem;
   line-height: 2.5rem;
+  text-align: center;
+  text-wrap: balance;
 }
 
 .suggestSection__subtitle,
@@ -32,12 +43,27 @@
 }
 
 .suggestSection__subtitle {
+  grid-area: suggestionSubtitle;
   margin-bottom: 0.65em;
+  text-align: center;
+  text-wrap: balance;
 }
 
 .suggestSection__synopsis {
+  grid-area: suggestionSynopsis;
   margin-bottom: 1.4em;
   max-width: 40ch;
+}
+
+.suggestSection__img {
+  grid-area: suggestionImgBook;
+  max-width: none;
+  place-self: center;
+}
+
+.addBookContainer {
+  position: relative;
+  place-self: start center;
 }
 
 .tooltip {
@@ -66,6 +92,29 @@
   height: var(--height-arrow);
   background-color: inherit;
   clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+@media (min-width: 35rem) {
+  .suggestSection__title {
+    max-width: 20ch;
+  }
+
+  .suggestSection__title,
+  .suggestSection__subtitle {
+    text-align: left;
+    text-wrap: inherit;
+  }
+}
+
+@media (min-width: 40rem) {
+  .suggestSection {
+    grid-template-areas:
+      'suggestionTitle suggestionImgBook'
+      'suggestionSubtitle suggestionImgBook'
+      'suggestionSynopsis suggestionImgBook'
+      'suggestionButton suggestionImgBook';
+    column-gap: 3rem;
+  }
 }
 
 @media (min-width: 96rem) {
