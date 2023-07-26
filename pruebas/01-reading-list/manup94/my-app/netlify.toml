@@ -1,0 +1,3 @@
+[build]
+  command = "next build"
+  publish = "MY-APP/out"
