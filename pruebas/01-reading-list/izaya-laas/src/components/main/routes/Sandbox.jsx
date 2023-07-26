@@ -4,6 +4,7 @@ import {
   myReadingListBooks,
   myReadingListISBN,
   myReadingListLength,
+  totalFreeBooks,
 } from '../../../signals/store';
 
 import RenderBooks from '../RenderBooks';
@@ -46,14 +47,14 @@ const Sandbox = () => {
           {freeBooks.length === 0 ? (
             <HasNotBeenFound
               className="col-span-full"
-              log={notFoundLogs.noRenderAllBooks}
+              log={
+                totalFreeBooks.value === 0
+                  ? notFoundLogs.thereAreNotBooks
+                  : notFoundLogs.noRenderMyBooks
+              }
             />
           ) : (
-            <RenderBooks
-              books={freeBooks}
-              isDrag
-              notFoundLog={notFoundLogs.noRenderAllBooks}
-            />
+            <RenderBooks books={freeBooks} isDrag />
           )}
         </GridList>
         <GridList title="My Reading List" handleDrop={handleAddToMyReadingList}>
@@ -63,11 +64,7 @@ const Sandbox = () => {
               log={notFoundLogs.noRenderMyBooks}
             />
           ) : (
-            <RenderBooks
-              books={myReadingListBooks.value}
-              isDrag
-              notFoundLog={notFoundLogs.noRenderAllBooks}
-            />
+            <RenderBooks books={myReadingListBooks.value} isDrag />
           )}
         </GridList>
       </div>
