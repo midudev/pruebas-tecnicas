@@ -42,8 +42,12 @@ const List = ({ children }) => {
   );
 };
 
-const Item = ({ children }) => {
-  return <li>{children}</li>;
+const Item = ({ children, handleClick }) => {
+  return (
+    <li className="hover:cursor-pointer" onClick={handleClick}>
+      {children}
+    </li>
+  );
 };
 
 FlyOut.Toggle = Toggle;

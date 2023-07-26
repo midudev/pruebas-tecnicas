@@ -18,7 +18,7 @@ Desafíos adicionales
 ¿Quieres ir más allá? Estos son algunos desafíos adicionales que puedes intentar:
 
 [X] - Implementar una funcionalidad de búsqueda en la lista de libros disponibles.
-[] - Añade un nuevo filtro para filtrar los libros por número de páginas.
+[X] - Añade un nuevo filtro para filtrar los libros por número de páginas.
 [] - Permitir la reorganización de los libros en la lista de lectura por prioridad.
-[] - Añadir una funcionalidad para guardar la lista de lectura en el almacenamiento local del navegador para su recuperación posterior.
-[] - Haz que tu diseño sea responsive.
+[X] - Añadir una funcionalidad para guardar la lista de lectura en el almacenamiento local del navegador para su recuperación posterior.
+[X] - Haz que tu diseño sea responsive.

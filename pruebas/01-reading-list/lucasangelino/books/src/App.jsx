@@ -1,12 +1,17 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import Layout from "./components/base/Layout";
 import { Library } from "./components/framework/Library";
 import { Head } from "./components/framework/Head";
 import { Title, Subtitle } from "./components/framework/AppTitles";
+import { useLocalStorage } from "./hooks/useLocalStorage";
+import { LibraryContext } from "./context/LibraryContext";
+import { Footer } from "./components/framework/Footer";
 
 import "./App.css";
 
 function App() {
+  const { setReadingList } = useContext(LibraryContext);
+
   useEffect(() => {
     window.addEventListener("storage", syncTabs);
     return () => window.removeEventListener("storage", syncTabs);
@@ -19,26 +24,17 @@ function App() {
   };
 
   return (
-    <Layout>
-      <Head>
+    <>
+      <Layout>
+        {/* <Head>
         <Title />
         <Subtitle />
-      </Head>
-      <Library />
-    </Layout>
+      </Head> */}
+        <Library />
+      </Layout>
+      <Footer />
+    </>
   );
 }
 
 export default App;
-
-// const filteredBooksByGenre = useMemo(() => {
-//   return genre.length > 0
-//     ? books.filter(({ book }) => book.genre === genre)
-//     : books;
-// }, [books, genre]);
-
-// const filteredBooksByPages = useMemo(() => {
-//   return pages > 0
-//     ? filteredBooksByGenre.filter(({ book }) => book.pages <= pages)
-//     : filteredBooksByGenre;
-// }, [books, pages, filteredBooksByGenre]);
