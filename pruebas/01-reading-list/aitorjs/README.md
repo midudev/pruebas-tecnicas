@@ -31,12 +31,8 @@
 - [x] Persistencia en localstorage (19/07/2023)
 - [x] Sincronización de pestañas https://www.threads.net/@midu.dev/post/CumWgyPN89G (20/07/2023)
 - [x] Test (21/07/2023)
-- [x] Mejorar estilos (24/07/2023)
+- [x] Mejorar estilos (24/07/2023, 26/07/2023)
 - [x] Despliegue en Vercel (25/07/2023)
-
-## Linter (ts-standard) 🌂
-
-- Para que VSC resuelva los problemas que encuentra, tiene que ser su modo de lenguaje 'Javascript JSX' o 'Typescript' para ficheros con extensión tsx. Para .ts con typescript va bien. Para .js con 'Javascript JSX' va bien.
 
 ## Enlaces 🔗
 
