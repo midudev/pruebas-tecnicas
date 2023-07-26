@@ -11,7 +11,8 @@ export function useFilters() {
           (filters.genre === 'all' || item.genre === filters.genre) &&
           (filters.author === 'all' || item.author === filters.author) &&
           (filters.year === 0 || item.year >= filters.year) &&
-          (filters.totalPages === 0 || item.pages >= filters.totalPages)
+          (filters.totalPages === 0 || item.pages >= filters.totalPages) &&
+          (filters.search === '' || item.title.toLowerCase().includes(filters.search.toLowerCase()))
         )
       })
       filters.totalFilterd = pageFiltered.length

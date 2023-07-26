@@ -10,7 +10,7 @@ export function useMappedLibrary (){
       genre: item[Object.keys(item)[0]].genre,
       synopsis: item[Object.keys(item)[0]].synopsis,
       author: item[Object.keys(item)[0]].author.name,
-      type: Object.keys(item)[0]
+      type: Object.keys(item)[0]      
     }))
   
     return {library: mappedLibrary}  

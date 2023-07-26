@@ -12,8 +12,7 @@ function storageEvent(renderReadingList){
 
 export function ReadingList() {
     const realingListChkboxId = useId();    
-    const { removeFromReadingList, clearReadingList, renderReadingList, readingList } = useReadingList()
-
+    const { removeFromReadingList, clearReadingList, renderReadingList, readingList } = useReadingList()    
     storageEvent(renderReadingList)
         
     return (
@@ -34,6 +33,7 @@ export function ReadingList() {
                                 className="w-36 h-52 rounded-lg"
                                 src={item.cover}
                                 alt={item.title}
+                                id={item.id}
                             />
                         </li>
                     ))}

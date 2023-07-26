@@ -8,7 +8,7 @@ function useReadingListReducer () {
     const [state, dispatch] = useReducer(readingListReducer, readingListinitialState);
     const addToReadingList = readingList => dispatch({ 
         type: READINGLIST_ACTION_TYPES.ADD_TO_READING_LIST, 
-        payload: readingList 
+        payload: readingList
     });
 
     const removeFromReadingList = readingList => dispatch({

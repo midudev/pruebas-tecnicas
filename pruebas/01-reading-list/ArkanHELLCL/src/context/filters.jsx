@@ -13,7 +13,9 @@ export function FiltersProvider({ children }) {
         type:'all',
         totalFilterd:0,
         itemsFileterd:[],
-        totalPages:0
+        totalPages:0,
+        error:null,
+        search:''
     })
     return (
         <FiltersContext.Provider value={{

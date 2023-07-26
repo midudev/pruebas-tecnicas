@@ -15,8 +15,8 @@ export const readingListReducer = (state, action) => {
     const { type: actionType, payload: actionPayload } = action;
     
     switch (actionType) {
-        case READINGLIST_ACTION_TYPES.ADD_TO_READING_LIST: {
-            const { id } = actionPayload;
+        case READINGLIST_ACTION_TYPES.ADD_TO_READING_LIST: {            
+            const { id } = actionPayload;            
             const itemInReadingList = state.find((element) => element.id === id)
 
             if(itemInReadingList) {
