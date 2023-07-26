@@ -4,10 +4,24 @@
 	import { BookmarkSquareIcon } from './ui/icons';
 
 	export let toggleReadingList: () => void;
+	let isSticky = false;
+
+	function scrollListener() {
+		isSticky = window.scrollY > 0;
+	}
 </script>
 
-<header class="flex items-center justify-between py-6">
-	<h1 class="text-3xl font-bold">Librería</h1>
+<svelte:window on:scroll={scrollListener} />
+
+<header
+	class={cn(
+		'z-10 flex items-center justify-between bg-slate-950 py-6 [transition:padding_128ms_ease]',
+		isSticky && 'sticky top-0 py-4'
+	)}
+>
+	<h1 class={cn('text-3xl font-bold [transition:font-size_128ms_ease]', isSticky && 'text-xl')}>
+		Librería
+	</h1>
 	<button
 		class={cn(
 			'group/button flex items-center gap-2 rounded-md bg-slate-800 p-1.5 text-sm font-medium text-slate-300 shadow-sm',
