@@ -10,15 +10,15 @@ export default function BookInfoPage({ params }) {
   return (
     <>
       <div className="pb-5 text-white">
-        <div className="flex gap-5 mt-5 flex-col md:flex-row">
+        <section className="flex gap-5 mt-5 flex-col md:flex-row">
           <BookDetail book={book}></BookDetail>
-        </div>
-        <div className="mt-8">
+        </section>
+        <section className="mt-8">
           <RelatedBooks book={book}></RelatedBooks>
-        </div>
-        <div className="mt-8">
+        </section>
+        <section className="mt-8">
           <OtherBooks book={book}></OtherBooks>
-        </div>
+        </section>
       </div>
     </>
   );

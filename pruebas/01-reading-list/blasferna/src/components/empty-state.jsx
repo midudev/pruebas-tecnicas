@@ -108,44 +108,48 @@ export function NoResultState() {
   if (!searchQuery && !genreFilter) return null;
 
   return (
-    <div className="mt-20 text-center">
-      <NoResultIcon></NoResultIcon>
-      <h3 className="mt-2 text-xl font-semibold text-white">
-        No se encontraron resultados
-      </h3>
-      <p className="text-lsm mt-1 text-gray-400">
-        <span className="font-medium">&quot;{text.join(', ')}&quot;</span> no coincidió
-        con ningún resultado. <br /> Inténtalo de nuevo.
-      </p>
-      <div className="mt-6">
-        <button
-          type="button"
-          onClick={onClickHandler}
-          className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        >
-          Limpiar filtros
-        </button>
+    <section className="h-[calc(100vh-170px)] flex flex-col items-center justify-center">
+      <div className="text-center">
+        <NoResultIcon></NoResultIcon>
+        <h3 className="mt-2 text-xl font-semibold text-white">
+          No se encontraron resultados
+        </h3>
+        <p className="text-lsm mt-1 text-gray-400">
+          <span className="font-medium">&quot;{text.join(', ')}&quot;</span> no coincidió
+          con ningún resultado. <br /> Inténtalo de nuevo.
+        </p>
+        <div className="mt-6">
+          <button
+            type="button"
+            onClick={onClickHandler}
+            className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Limpiar filtros
+          </button>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 
 export function EmptyState({ title, message, linkText, href }) {
   return (
-    <div className="mt-20 text-center">
-      <EmptyFileIcon></EmptyFileIcon>
-      <h3 className="mt-2 text-xl font-semibold text-white">{title}</h3>
-      <div className="flex justify-center">
-        <p className="text-sm mt-1 text-gray-400 max-w-lg">{message}</p>
+    <section className="h-[calc(100vh-170px)] flex flex-col items-center justify-center">
+      <div className="text-center">
+        <EmptyFileIcon></EmptyFileIcon>
+        <h3 className="mt-2 text-xl font-semibold text-white">{title}</h3>
+        <div className="flex justify-center">
+          <p className="text-sm mt-1 text-gray-400 max-w-lg">{message}</p>
+        </div>
+        <div className="mt-6">
+          <Link
+            href={href}
+            className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            {linkText}
+          </Link>
+        </div>
       </div>
-      <div className="mt-6">
-        <Link
-          href={href}
-          className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        >
-          {linkText}
-        </Link>
-      </div>
-    </div>
+    </section>
   );
 }

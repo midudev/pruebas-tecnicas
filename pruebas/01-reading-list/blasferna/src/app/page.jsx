@@ -4,8 +4,12 @@ import FilterSection from "@/components/filter-section";
 export default function Home() {
   return (
     <>
-      <FilterSection></FilterSection>
-      <AvailableList></AvailableList>
+      <section>
+        <FilterSection></FilterSection>
+      </section>
+      <section>
+        <AvailableList></AvailableList>
+      </section>
     </>
   );
 }
