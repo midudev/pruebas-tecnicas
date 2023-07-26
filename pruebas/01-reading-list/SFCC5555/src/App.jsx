@@ -12,8 +12,8 @@ function App() {
 
   return (
     // Apply the dark-mode or light-mode class depending on the darkMode value
-    <div className={`min-h-screen flex flex-col items-center px-4 sm:px-6 py-12 gap-8 ${darkMode ? "dark-mode" : "light-mode"}`}>
-      <h1 className="text-4xl sm:text-6xl cursor-crosshair font-bold">
+    <div className={`min-h-screen flex flex-col items-center px-4 sm:px-6 py-12 gap-4 ${darkMode ? "dark-mode" : "light-mode"}`}>
+      <h1 className="text-4xl sm:text-6xl cursor-crosshair font-bold mt-5 md:mt-0">
         B<i className="bi bi-plus-circle-fill text-3xl sm:text-5xl" /><i className="bi bi-dash-circle-fill text-3xl sm:text-5xl" />k-List
       </h1>
       <section className="w-full flex flex-col sm:flex-row gap-3">

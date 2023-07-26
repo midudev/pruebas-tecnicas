@@ -26,7 +26,7 @@ const BooksAvailable = () => {
 
   return (
     // If there are listed books in the reading list, the width of the books available section is reduced to 2/3 to make space for the reading list section, which will occupy the remaining 1/3 (Only in Desktop version)
-    <div className={`w-full ${booksListed > 0 && 'sm:w-2/3'} flex flex-col gap-8`}>
+    <div className={`w-full ${booksListed > 0 && 'sm:w-2/3'} flex flex-col gap-4`}>
       <section>
         {/* If the number of available books is greater than 1, an 's' is added to the words to make them plural. */}
         <h2 className="text-3xl">{booksAvailable} Libro{booksAvailable !== 1 && 's'} Disponible{booksAvailable !== 1 && 's'}</h2>
@@ -38,7 +38,7 @@ const BooksAvailable = () => {
         <GenreFilter />
       </section>
       {/* If there are books in the reading list, an extra padding in the bottom is added in the mobile version to ensure that the reading list section does not overlap with the books available section, allowing all of them to be visible. */}
-      <section className={`flex items-center flex-wrap gap-8 ${booksListed > 0 && 'pb-96 sm:pb-0'}`}>
+      <section className={`flex items-center flex-wrap gap-8 mt-4 ${booksListed > 0 && 'pb-96 sm:pb-0'}`}>
         {library
           .filter(i=>regExp.test(i.book.title) || regExp.test(i.book.title.normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) // Filter the "library" array to obtain books whose titles match the "regExp" regular expression. The normalize and replace methods are used to ensure that it also works regardless of the presence of accents.
           .filter(i => i.book.pages <= pages) // The filter by maximum number of pages is applied when rendering the books in the books available section
