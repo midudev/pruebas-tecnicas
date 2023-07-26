@@ -7,7 +7,7 @@ export const Header = () => {
         className="h-full w-full rounded-lg object-cover"
       />
       <div className="absolute bottom-0 left-0 right-0 top-0 flex w-full flex-col content-center items-center justify-center rounded-lg backdrop-brightness-50">
-        <h1 className="classic mb-5 text-3xl text-rose-700 md:text-5xl lg:text-7xl">
+        <h1 className="classic mb-5 text-4xl text-rose-700 md:text-5xl lg:text-7xl">
           Library & Books.
         </h1>
         <p className="text-sm text-neutral-500">

@@ -1,17 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { authorsList } from "../utils/authors";
 
 export const AuthorCard = ({ name }) => {
-  const [author, setAuthor] = useState({});
-
-  useEffect(() => {
-    // NOTE: suppose to fetch author image
-  }, []);
+  const [author, setAuthor] = useState(
+    authorsList.find((author) => author.name === name),
+  );
 
   return (
-    <div>
-      <p className="text-neutral-500">
-        {name}
-      </p>
+    <div className="flex flex-col content-center items-center justify-center">
+      <img
+        src={author.photo}
+        alt={author.name}
+        className="h-28 w-28 rounded-lg object-contain"
+      />
+      <p className="truncate text-center text-neutral-500">{name}</p>
     </div>
   );
 };

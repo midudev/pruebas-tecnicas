@@ -9,6 +9,7 @@ import { Footer } from "./components/Footer";
 import { Authors } from "./components/Authors";
 
 function App() {
+  // initialize the store and the local storage with data
   useEffect(() => {
     let genres = [];
     let authors = [];

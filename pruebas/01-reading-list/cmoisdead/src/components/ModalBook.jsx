@@ -56,7 +56,7 @@ export const ModalBook = ({ openModal, setOpenModal, book }) => {
       </Modal.Body>
       <footer className="border border-transparent border-t-neutral-800 bg-neutral-900 p-5">
         <button
-          className="rounded-lg bg-rose-700 px-3 py-2 text-white hover:bg-rose-600"
+          className="w-full rounded-lg bg-rose-700 px-3 py-2 text-white hover:bg-rose-600"
           onClick={() => setOpenModal(undefined)}
         >
           close

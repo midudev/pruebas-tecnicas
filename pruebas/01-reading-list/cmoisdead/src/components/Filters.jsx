@@ -32,13 +32,14 @@ export const Filters = ({ setBooks }) => {
     }),
     shallow,
   );
+  // manage filtred books
   const [filtred, setFiltred] = useState([]);
 
   useEffect(() => {
     setFiltred(library);
   }, [library]);
 
-  // function to handle all selects filters, by genre or author but can be extended to other filters.
+  // handle all selects filters, by genre or author, but can be extended to other filters
   const handleChange = (e) => {
     const { value, name } = e.target;
     const selector = (book) => {
