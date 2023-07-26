@@ -26,17 +26,25 @@ function getBooksOnLocalStorage(): Book[] {
 export default function Home() {
 
   const [availableBooks, setAvailableBooks] = useState(BOOKS);
-  const [selectedBooks, setSelectedBooks] = useState(getBooksOnLocalStorage());
+  const [selectedBooks, setSelectedBooks] = useState([] as Book[]);
 
-  try {
-    window.addEventListener('storage', (event) => {
+  
 
-      if(event.key === 'selectedBooks') {
-        setSelectedBooks(getBooksOnLocalStorage());
-      }
+  useEffect(() => {
 
-    });
-  } catch (error) {}
+    setSelectedBooks(getBooksOnLocalStorage());
+
+    try {
+      window.addEventListener('storage', (event) => {
+
+        if(event.key === 'selectedBooks') {
+          setSelectedBooks(getBooksOnLocalStorage());
+        }
+
+      });
+    } catch (error) {}
+
+  }, []);
 
   const createHandleBook = (book: Book) => () => {
 
