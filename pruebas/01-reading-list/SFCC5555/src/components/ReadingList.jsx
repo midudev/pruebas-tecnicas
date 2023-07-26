@@ -29,7 +29,7 @@ const ReadingList = () => {
       </div>
       {/* Section to dynamically render the books listed in the reading list */}
       {/* Add a scrollbar if necessary: horizontal for mobile version and vertical for desktop version, using the classes overflow-x-auto and overflow-y-auto, respectively. */}
-      <section className="flex items-center sm:flex-wrap gap-8 p-5 ml-3 overflow-x-auto sm:overflow-y-auto " >
+      <section className="flex items-center sm:flex-wrap gap-y-8 gap-x-12 sm:gap-x-8 p-5 ml-3 overflow-x-auto sm:overflow-y-auto " >
         {
           library.filter(i => i.listed) // Filter the books that are listed in the reading list.
           .sort((a,b)=>orderByPriority&&a.priority-b.priority) //if the option to sort by priority is enabled (orderByPriority is true), sort the books by their priority.
