@@ -2,8 +2,8 @@
 
 ### ReadSome
 
-[Imgur](https://i.imgur.com/dgQzo1B.png)
-[Imgur](https://i.imgur.com/UumSsa0.png)
+!(image)[https://i.imgur.com/dgQzo1B.png]
+!(image)[https://i.imgur.com/UumSsa0.png]
 
 ### Funcionalidades Implementadas
 
