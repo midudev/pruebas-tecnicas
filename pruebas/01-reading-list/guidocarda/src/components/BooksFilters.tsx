@@ -43,6 +43,7 @@ function BooksFilters(props: BooksFiltersProps) {
         <label htmlFor="genre-filter">Filtrar por género</label>
         <select
           name="genre"
+          className="genre-filter"
           id="genre-filter"
           value={genre}
           onChange={(e) => setGenre(e.target.value)}

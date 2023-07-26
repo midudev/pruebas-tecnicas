@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { getLocalStorage, setLocalStorage } from "./storage";
-import { getBooks } from "./api";
+import { getBooks } from "./services";
 import BooksList from "./components/BooksList";
 import BooksFilters from "./components/BooksFilters";
 import ReadingListSidebar from "./components/ReadingListSidebar";
@@ -36,9 +36,7 @@ function getBookState() {
 
 function App() {
   const [books, setBooks] = useState<Book[]>(getBookState);
-  const [readingList, setReadingList] = useState<Book[]>(() =>
-    getLocalStorage()
-  );
+  const [readingList, setReadingList] = useState<Book[]>(getLocalStorage);
 
   // Filters
   const [genre, setGenre] = useState<string>("");
@@ -114,6 +112,7 @@ function App() {
             <h1>Biblioteca</h1>
             <span>{totalBooksCount} libros disponibles</span>
           </header>
+
           <BooksFilters {...seachFiltersProps} />
 
           <span className="filter-results-count">
@@ -142,37 +141,5 @@ function App() {
     </main>
   );
 }
-
-// interface BookCardProps {
-//   book: Book;
-//   addToReadingList?: (ISBN: string) => void;
-//   removeFromReadingList?: (ISBN: string) => void;
-// }
-
-// function BookCard({
-//   book,
-//   addToReadingList,
-//   removeFromReadingList,
-// }: BookCardProps) {
-//   return (
-//     <div
-//       key={book.ISBN}
-//       className="book"
-//       onClick={() => addToReadingList(book.ISBN)}
-//     >
-//       <img src={book.cover} className="book-cover" />
-//       <span className="book-title">{book.title}</span>
-//       <span className="book-author">{book.author.name}</span>
-//       {
-//         <button
-//           className="remove-book"
-//           onClick={() => removeFromReadingList(book.ISBN)}
-//         >
-//           x
-//         </button>
-//       }
-//     </div>
-//   );
-// }
 
 export default App;

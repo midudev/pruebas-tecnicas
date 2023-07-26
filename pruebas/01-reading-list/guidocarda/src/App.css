@@ -17,6 +17,11 @@ body {
   height: 100%;
 }
 
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
 main {
   min-height: 100%;
   gap: 2rem;
@@ -32,12 +37,12 @@ section {
 }
 
 .container {
-  width: min(1080px, 100%);
+  width: min(1280px, 100%);
   margin-inline: auto;
 }
 
-aside {
-  background: rgb(34, 34, 35);
+.sidebar {
+  background: rgb(31, 31, 33);
   padding: 1rem;
   flex-basis: 20rem;
   flex-grow: 1;
@@ -70,9 +75,10 @@ section header > span {
 .filters .filter-group label {
   display: block;
   margin-bottom: 0.3rem;
+  color: rgb(223, 223, 223);
 }
 
-.filters select {
+.filters .genre-filter {
   height: 2.5rem;
   padding-inline: 1rem;
   width: 10rem;
@@ -84,7 +90,7 @@ section header > span {
 
 .filters .pages-count {
   width: 3rem;
-  font-size: 0.875rem;
+  font-size: 0.7rem;
   color: rgb(175, 175, 175);
   display: inline-block;
   font-variant-numeric: tabular-nums;
@@ -100,10 +106,17 @@ section header > span {
   padding: 0;
   background: none;
   height: 2.5rem;
-  /* border: 2px solid white; */
 }
 
 @media screen and (max-width: 768px) {
+  main {
+    gap: 1rem;
+    flex-direction: column;
+  }
+
+  .sidebar {
+    flex-basis: auto;
+  }
   .filters {
     flex-direction: column-reverse;
     flex-wrap: wrap;
@@ -129,7 +142,7 @@ section header > span {
     width: 100%;
   }
 
-  .filters select {
+  .filters .genre-filter {
     width: 100%;
   }
 }
@@ -221,6 +234,7 @@ section header > span {
 .filter-results-count {
   display: block;
   margin-top: 1rem;
+  height: 1rem;
   color: grey;
   text-align: right;
 }
@@ -262,6 +276,10 @@ section header > span {
 .book {
   transition: all 0.25s;
   animation: fade-up 300ms ease-in-out;
+}
+
+.books > .book {
+  cursor: pointer;
 }
 
 .book:hover {
@@ -354,15 +372,18 @@ section header > span {
   right: 0.5rem;
   height: 2rem;
   width: 2rem;
-  background-color: rgb(40, 38, 38);
+  background-color: rgb(233, 229, 229);
   border: none;
   border-radius: 0.3rem;
-  color: rgb(210, 210, 210);
+  color: rgb(29, 28, 28);
   font-size: 1rem;
+  transition: all 200ms;
 }
 
-button {
-  cursor: pointer;
+.reading-list .book .remove-book:hover {
+  scale: 1.05;
+  background: rgb(247, 162, 162);
+  color: rgb(122, 25, 25);
 }
 
 .no-results {

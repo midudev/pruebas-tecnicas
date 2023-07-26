@@ -1,9 +1,7 @@
 import { afterEach, describe, expect, it } from "vitest";
 import {
   cleanup,
-  findByText,
   fireEvent,
-  getByText,
   render,
   screen,
   waitFor,
@@ -53,15 +51,13 @@ describe("App", () => {
     expect(elements.length).toEqual(13);
   });
 
-  it("should add a book to the reading list", async () => {
+  it("should add a book to the reading list and show the reading list", async () => {
     render(<App />);
+
     const bookCard = document.querySelector(".book") as Element;
 
-    // fireEvent(bookCard, new MouseEvent("click"));
     fireEvent.click(bookCard);
 
-    // const readingList = await screen.findByText("Lista de lectura");
-    // expect(readingList).toBeTruthy();
     await waitFor(() => {
       const elements = screen.queryAllByRole("book");
       expect(elements.length).toEqual(12);

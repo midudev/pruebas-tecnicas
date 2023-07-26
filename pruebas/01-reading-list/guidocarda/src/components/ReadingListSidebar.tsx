@@ -12,7 +12,7 @@ function ReadingListSidebar({
   const readingListCount = readingList.length;
 
   return (
-    <aside>
+    <aside className="sidebar">
       <header className="sidebar-header">
         <h2>Lista de lectura</h2>
         <span>
