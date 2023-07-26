@@ -27,7 +27,7 @@ const libraryHook = () => {
     const [ genreAndPages , setGenreAndPages ] = useState<genreAndPages>({genre:'all',pages:minAndMaxOfPages[0]});
 
     useEffect(() => {
-
+        
         //guardar en store:
         const newStateInStore = {userList,genreAndPages};
         localStorage.setItem('state',JSON.stringify(newStateInStore));
