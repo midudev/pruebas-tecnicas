@@ -1,22 +1,33 @@
+import { useEffect, useState } from 'react'
 import TrashIcon from '@/components/Icons/TrashIcon'
 import './ReadingList.css'
+import { useReadingListStore } from '@/store/useReadingListStore'
 
-const ReadingList = ({ readingList, setReadingList }) => {
-  function removeBookFromReadingList(book) {
-    setReadingList(readingList.filter((b) => b !== book))
-  }
+const ReadingList = () => {
+  const removeBookFromReadingList = useReadingListStore(
+    (state) => state.removeBookFromReadingList
+  )
+
+  const [readingListState, setReadingListState] = useState([])
+
+  const readingList = useReadingListStore((state) => state.readingList)
+
+  useEffect(() => {
+    setReadingListState(readingList)
+  }, [readingList])
+
   return (
     <div className='reading-list-card'>
       <div className='card-container'>
         <div className='card-header'>
           <h5 className='card-title'>My Reading List</h5>
         </div>
-        {readingList && readingList.length > 0 ? (
+        {readingListState && readingListState.length > 0 ? (
           <div className='card-content'>
             <ul
               role='list'
               className='list divide-y divide-gray-200 dark:divide-gray-700'>
-              {readingList.map((book) => (
+              {readingListState.map((book) => (
                 <li key={book.title} className='list-item'>
                   <div className='list-item-content'>
                     <div className='list-item-image-container'>
