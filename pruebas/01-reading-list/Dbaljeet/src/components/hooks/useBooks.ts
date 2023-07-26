@@ -9,23 +9,24 @@ interface PropsMove {
 
 const useBooks = () => {
   const {
-    saveBooksFav,
+    saveReadingList,
     deleteBook,
-    deleteFavsBooks,
+    deleteReadingList,
     saveBook,
     books,
     replaceBooks,
+    replaceReadingList,
   } = useContext(ContextBook) as IContextBook
 
   const AddFav = ({ book }: IBook) => {
-    saveBooksFav({ book })
+    saveReadingList({ book })
     deleteBook({ book })
   }
 
   const deleteFav = ({ book }: IBook) => {
     console.log('entra')
     saveBook({ book })
-    deleteFavsBooks({ book })
+    deleteReadingList({ book })
   }
 
   const MoveBook = ({ book, left }: PropsMove) => {
@@ -44,6 +45,35 @@ const useBooks = () => {
     )
   }
 
-  return { AddFav, deleteFav, MoveBook, filterByGenre }
+  const reorderBooks = (
+    booksAux: IBook[],
+    startIndex: number,
+    endIndex: number
+  ) => {
+    const result = Array.from(booksAux)
+    const [removed] = result.splice(startIndex, 1)
+    result.splice(endIndex, 0, removed)
+    replaceBooks(result)
+  }
+
+  const reorderReading = (
+    readingList: IBook[],
+    startIndex: number,
+    endIndex: number
+  ) => {
+    const result = Array.from(readingList)
+    const [removed] = result.splice(startIndex, 1)
+    result.splice(endIndex, 0, removed)
+    replaceReadingList(result)
+  }
+
+  return {
+    AddFav,
+    deleteFav,
+    MoveBook,
+    filterByGenre,
+    reorderBooks,
+    reorderReading,
+  }
 }
 export default useBooks

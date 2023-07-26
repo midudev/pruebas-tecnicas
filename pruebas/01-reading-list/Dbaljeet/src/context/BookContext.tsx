@@ -6,10 +6,11 @@ export interface IContextBook {
   books: IBook[]
   readingList: IBook[]
   saveBook: (book: IBook) => void
-  saveBooksFav: (book: IBook) => void
+  saveReadingList: (book: IBook) => void
   deleteBook: (book: IBook) => void
-  deleteFavsBooks: (book: IBook) => void
+  deleteReadingList: (book: IBook) => void
   replaceBooks: (books: IBook[]) => void
+  replaceReadingList: (books: IBook[]) => void
 }
 
 interface Props {
@@ -76,11 +77,11 @@ export const BookContextProvider = ({ children }: Props) => {
     )
   }
 
-  const saveBooksFav = (book: IBook) => {
+  const saveReadingList = (book: IBook) => {
     setReadingList((prev) => [book, ...prev])
   }
 
-  const deleteFavsBooks = ({ book }: IBook) => {
+  const deleteReadingList = ({ book }: IBook) => {
     setReadingList(
       readingList.filter((auxBook) => {
         return auxBook.book.title !== book.title
@@ -88,8 +89,12 @@ export const BookContextProvider = ({ children }: Props) => {
     )
   }
 
-  const replaceBooks = (books: IBook[]) => {
-    setbooks(books)
+  const replaceBooks = (booksAux: IBook[]) => {
+    setbooks(booksAux)
+  }
+
+  const replaceReadingList = (booksAux: IBook[]) => {
+    setReadingList(booksAux)
   }
 
   return (
@@ -99,9 +104,10 @@ export const BookContextProvider = ({ children }: Props) => {
         saveBook,
         deleteBook,
         readingList,
-        saveBooksFav,
-        deleteFavsBooks,
+        saveReadingList,
+        deleteReadingList,
         replaceBooks,
+        replaceReadingList,
       }}
     >
       {children}

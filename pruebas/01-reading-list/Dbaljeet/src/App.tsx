@@ -31,7 +31,7 @@ function App() {
         </select>
       </form>
 
-      <main className="flex flex-wrap w-full m-auto justify-center py-5  gap-5">
+      <main className="flex flex-wrap w-full m-auto justify-center py-5">
         <ListOfBook
           library={books}
           title="Libros disponibles"
