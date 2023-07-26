@@ -11,8 +11,10 @@ export const BookList = ({ book, handleReadingList }) => {
       <div className="book-info-container">
         <h3 className="book-title">{book.book.title}</h3>
         <h4 className="book-author">{book.book.author.name}</h4>
+        <button onClick={() => handleReadingList(book.book.ISBN)}>
+          Agregar
+        </button>
       </div>
-      <button onClick={() => handleReadingList(book.book.ISBN)}>Agregar</button>
     </article>
   );
 };
