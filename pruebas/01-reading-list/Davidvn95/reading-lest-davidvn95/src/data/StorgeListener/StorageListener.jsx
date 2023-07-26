@@ -1,5 +1,5 @@
-import { store } from "../redux/store";
-import { syncsTabs } from "../redux/booksSlice";
+import { store } from "../../redux/store";
+import { syncsTabs } from "../../redux/booksSlice";
 import { useEffect } from "react";
 
 export default function StorageListener() {

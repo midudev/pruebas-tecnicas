@@ -65,6 +65,7 @@
     display: grid;
     place-items: center;
     background-color: rgba(41, 41, 41, 0.623);
+    z-index: 10;
 }
 
 @media screen and (max-width: 400px) {
