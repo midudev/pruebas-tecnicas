@@ -77,8 +77,20 @@ const isLibrosPage = Astro.url.pathname.startsWith('/Libros');
 		</div>
 		
 		<Footer />
+
+		<resolve-spa />
 	</body>
 </html>
+
+<script>
+	
+	window.navigation.addEventListener("navigate", (event) => {
+
+		/* Importante para las view transitions */
+		document.documentElement.scrollTop = 0;
+	});
+
+</script>
 
 <style is:global>
 
@@ -86,6 +98,9 @@ const isLibrosPage = Astro.url.pathname.startsWith('/Libros');
 
 		--main-nav-height: 80px;
 		--bs-body-bg: #1C3144 !important;
+
+		/* Importante para las view transitions */
+		scroll-behavior: auto !important;
 	}
 
 	body {

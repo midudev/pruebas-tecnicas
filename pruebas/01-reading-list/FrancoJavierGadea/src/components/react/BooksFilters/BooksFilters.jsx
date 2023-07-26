@@ -29,18 +29,18 @@ function BooksFilters(props) {
 
                 <Form className="Books-filters" method="get" action={props.path} >
 
-                    <Form.Group className="flex-grow-1 flex-md-grow-0">
+                    <Form.Group className="form-pages flex-grow-1 flex-md-grow-0">
 
-                        <Form.Label>Paginas: {pages}</Form.Label>
+                        <Form.Label>Paginas: <strong>{pages}</strong></Form.Label>
 
-                        <Form.Range className="custom-form-range" min={50} max={1000} step={10} value={pages} name="pages"
+                        <Form.Range min={50} max={1000} step={10} value={pages} name="pages"
 
                             onChange={(e) => setPages(Number(e.currentTarget.value))}
                         />
 
                     </Form.Group>
 
-                    <Form.Group className="flex-grow-1 flex-md-grow-0">
+                    <Form.Group className="form-genre flex-grow-1 flex-md-grow-0">
 
                         <Form.Label>Generos</Form.Label>
 

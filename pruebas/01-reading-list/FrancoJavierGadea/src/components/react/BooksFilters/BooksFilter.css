@@ -9,9 +9,17 @@
     padding: 15px 20px;
 }
 
-.Books-filters .custom-form-range {
+.Books-filters input[type=range] {
     margin: 6px 0;
 }
+.Books-filters input[type=range]::-webkit-slider-runnable-track {
+    background-color: #005494;
+}
+
+.Books-filters .form-label {
+    color: #fff;
+}
+
 
 #Accordion-filters {
 
@@ -25,12 +33,9 @@
     --bs-accordion-border-radius: 0;
     --bs-accordion-btn-padding-x: 0; 
     --bs-accordion-btn-padding-y: 0;
+    --bs-accordion-bg: transparent;
 
-    --bs-accordion-active-color: var(--bs-accordion-btn-color)
-
-    /* position: sticky;
-    top: var(--main-nav-height);
-    z-index: 2500; */
+    --bs-accordion-active-color: var(--bs-accordion-btn-color);
 }
 
 #Accordion-filters .accordion-header {
