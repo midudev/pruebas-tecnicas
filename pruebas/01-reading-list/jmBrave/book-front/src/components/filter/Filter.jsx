@@ -6,7 +6,7 @@ const Filter = ({ genres, handleFilterBooksGenreAvailable }) => {
         handleFilterBooksGenreAvailable(selectRef.current.value)
 
     return (
-        <div className="flex justify-center">
+        <div className="text-black">
             <select name="categories" ref={selectRef} onChange={handleChange}>
                 {genres.map((category) => {
                     return (

@@ -2,7 +2,7 @@
 import { DragDropContext } from 'react-beautiful-dnd'
 import { useState, useEffect } from 'react'
 import BookList from '../components/bookList/BookList'
-import Filter from '../components/filter/Filter'
+import Sidebar from '../components/sidebar/Sidebar'
 import initialBooksList from '../mocks/books.js'
 import { LIST_NAME } from '../constant/constants'
 import { moveAndReorder, reorder, isSameList } from '../utils/drag-and-drop'
@@ -127,35 +127,39 @@ export default function Home() {
     }
 
     return (
-        <DragDropContext
-            onDragEnd={handleOnDragEnd}
-            onDragStart={handleOnDragStart}
-        >
-            <main className="pt-20">
-                <Filter
-                    genres={genresAvailable}
+        <>
+            <div className="flex flex-col items-center justify-center">
+                <Sidebar
+                    genresAvailable={genresAvailable}
                     handleFilterBooksGenreAvailable={
                         handleFilterBooksGenreAvailable
                     }
                 />
-                <div className="flex justify-evenly flex-wrap rounded-lg">
-                    <BookList
-                        title={AVAILABLE_BOOKS_TITTLE}
-                        books={booksAvailable}
-                        droppableId={AVAILABLE_BOOKS}
-                        id={AVAILABLE_BOOKS}
-                    />
-                    {draggingBook.isShown ? ( //TODO Review behavior
-                        <Drop />
-                    ) : null}
-                    <BookList
-                        title={BOOKS_SELECTED_TITTLE}
-                        books={booksSelected}
-                        droppableId={BOOKS_SELECTED}
-                        id={BOOKS_SELECTED}
-                    />
-                </div>
-            </main>
-        </DragDropContext>
+            </div>
+            <DragDropContext
+                onDragEnd={handleOnDragEnd}
+                onDragStart={handleOnDragStart}
+            >
+                <main className="pt-20">
+                    <div className="flex justify-evenly flex-wrap rounded-lg">
+                        <BookList
+                            title={AVAILABLE_BOOKS_TITTLE}
+                            books={booksAvailable}
+                            droppableId={AVAILABLE_BOOKS}
+                            id={AVAILABLE_BOOKS}
+                        />
+                        {draggingBook.isShown ? ( //TODO Review behavior
+                            <Drop />
+                        ) : null}
+                        <BookList
+                            title={BOOKS_SELECTED_TITTLE}
+                            books={booksSelected}
+                            droppableId={BOOKS_SELECTED}
+                            id={BOOKS_SELECTED}
+                        />
+                    </div>
+                </main>
+            </DragDropContext>
+        </>
     )
 }
