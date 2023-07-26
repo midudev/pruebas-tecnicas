@@ -33,7 +33,6 @@ export default function useBooks() {
     }, [filterGenre, filterText, filterPages, store])
 
     useEffect(() => {
-        setBooks(store)
         genres.current = [...new Set(store.map(({ book }) => book.genre))]
     }, [store])
 
