@@ -25,7 +25,7 @@ export const List = () => {
         <Filters books={books} setBooks={setBooks} />
       </div>
       <div className="flex h-[92vh] flex-wrap justify-center gap-4 overflow-y-auto overflow-x-hidden py-3 md:justify-start">
-        {books.length ? (
+        {books?.length ? (
           books.map(({ book }, i) => <Book book={book} key={i} />)
         ) : (
           <div className="flex h-full w-full flex-col content-center items-center justify-center gap-4 text-neutral-700">

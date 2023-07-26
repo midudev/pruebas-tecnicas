@@ -31,10 +31,10 @@ export const Current = () => {
         } m-5 w-11/12 overflow-y-auto rounded-lg bg-neutral-900 p-3 md:static md:m-0 md:block md:h-full md:w-5/12`}
       >
         <h1 className="my-2 text-center text-xl font-bold">
-          {books.length || 0} Books on Reading List
+          {books?.length || 0} Books on Reading List
         </h1>
         <div className="flex flex-wrap content-start justify-center gap-4">
-          {books.length ? (
+          {books?.length ? (
             books.map((book, i) => <Book book={book} key={i} added />)
           ) : (
             <div className="my-72 flex flex-col content-center items-center justify-center gap-4 text-neutral-500">
