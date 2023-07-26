@@ -7,7 +7,7 @@ import useBookStore from "../store/store";
 export const Book = ({ book, added }) => {
   const [openModal, setOpenModal] = useState();
   const { title, cover } = book;
-  const isActive = useBookStore((state) => state.current).find(
+  const isActive = useBookStore((state) => state.current)?.find(
     (item) => item.title === title,
   );
 
