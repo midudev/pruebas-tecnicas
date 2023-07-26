@@ -15,7 +15,7 @@ export const InputRange: React.FC = () => {
 
   return (
     <div className={styles.Filter}>
-      <label className={styles.FilterLabel}>Filtrar por paginas</label>
+      <label className={styles.FilterLabel}>Filter by pages</label>
       <input
         type="range"
         value={filtersBooks.pages}

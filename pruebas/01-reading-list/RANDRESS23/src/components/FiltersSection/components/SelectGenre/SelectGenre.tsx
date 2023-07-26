@@ -18,7 +18,7 @@ export const SelectGenre: React.FC = () => {
       <label className={styles.FilterLabel}>Filter by genre</label>
       <div className={styles.FilterSelectContainer}>
         <select
-          defaultValue={filtersBooks.genre}
+          value={filtersBooks.genre}
           onChange={handleChangeGenre}
           className={styles.FilterSelect}
         >

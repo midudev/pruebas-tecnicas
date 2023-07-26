@@ -67,10 +67,11 @@
   z-index: 20;
   cursor: pointer;
   border: none;
-  background-color: #fff;
-  width: 27px;
-  height: 27px;
-  clip-path: polygon(25% 10%, 100% 10%, 100% 90%, 25% 90%, 0 50%);
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.56);
+  width: 30px;
+  height: 30px;
+  padding: 5px;
 }
 
 .RemoveIcon {
@@ -79,5 +80,5 @@
 }
 
 .RemoveIconButton:hover .RemoveIcon {  
-  fill: #2c1810;
+  fill: #fff;
 }

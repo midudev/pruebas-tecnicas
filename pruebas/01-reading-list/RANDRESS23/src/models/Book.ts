@@ -20,8 +20,7 @@ export enum LOCAL_STORAGE_KEYS {
 }
 
 export interface FiltersBooks {
-  title: string
-  author: string
+  titleOrAuthor: string
   genre: string
   pages: number
 }

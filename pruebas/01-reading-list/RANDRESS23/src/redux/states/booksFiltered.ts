@@ -7,57 +7,36 @@ const initialState: Library = booksStorage !== null
   ? JSON.parse(booksStorage)
   : BOOKS
 
+const compareTitleOrAuthor = (text: string, titleOrAuthor: string): boolean => {
+  const isMatchWithTitle = text
+    .toLowerCase()
+    .includes(titleOrAuthor.toLowerCase())
+
+  return isMatchWithTitle
+}
+
 export const booksFilteredSlice = createSlice({
   name: LOCAL_STORAGE_KEYS.BOOKS_FILTERED,
   initialState,
   reducers: {
     sortBooks: (_, action) => {
-      const { booksAvailable, title, author, genre, pages } = action.payload
+      const { booksAvailable, titleOrAuthor, genre, pages } = action.payload
 
       const newBooksFiltered = booksAvailable.filter((book: Book) => {
-        if (genre === BOOKS_GENRE_TYPES.ALL) {
-          return (
-          // book.title.includes(title) &&
-          // book.author.name.includes(author) &&
-            book.pages >= pages
-          )
-        }
+        const isSelectAllBoks = genre === BOOKS_GENRE_TYPES.ALL
+          ? book.pages >= pages
+          : book.genre === genre && book.pages >= pages
 
         return (
-        // book.title.includes(title) &&
-        // book.author.name.includes(author) &&
-          book.genre === genre &&
-            book.pages >= pages
+          (compareTitleOrAuthor(book.title, titleOrAuthor) ||
+          compareTitleOrAuthor(book.author.name, titleOrAuthor)) &&
+          isSelectAllBoks
         )
       })
 
       localStorage.setItem(LOCAL_STORAGE_KEYS.BOOKS_FILTERED, JSON.stringify(newBooksFiltered))
       return newBooksFiltered
     },
-    // sortByGenre: (state, action) => {
-    //   const { booksAvailable, genre } = action.payload
-    //   const booksFilteredState = booksAvailable.length !== state.length
-    //     ? state
-    //     : booksAvailable
-
-    //   const newBooksFiltered = genre === BOOKS_GENRE_TYPES.ALL
-    //     ? booksAvailable
-    //     : booksFilteredState.filter((book: Book) => book.genre === genre)
-
-    //   localStorage.setItem(LOCAL_STORAGE_KEYS.BOOKS_FILTERED, JSON.stringify(newBooksFiltered))
-    //   return newBooksFiltered
-    // },
-    // sortByPages: (state, action) => {
-    //   const { booksAvailable, pages } = action.payload
-    //   const booksFilteredState = booksAvailable.length !== state.length
-    //     ? state
-    //     : booksAvailable
-
-    //   const newBooksFiltered = booksFilteredState.filter((book: Book) => book.pages >= pages)
-
-    //   localStorage.setItem(LOCAL_STORAGE_KEYS.BOOKS_FILTERED, JSON.stringify(newBooksFiltered))
-    //   return newBooksFiltered
-    // },
     addBookFiltered: (state, action) => {
       const { newBook } = action.payload
       const newBooksFiltered = [...state, newBook]
@@ -71,6 +50,11 @@ export const booksFilteredSlice = createSlice({
 
       localStorage.setItem(LOCAL_STORAGE_KEYS.BOOKS_FILTERED, JSON.stringify(newBooksFiltered))
       return newBooksFiltered
+    },
+    changeBooksFiltered: (_, action) => {
+      const { newBooksFiltered } = action.payload
+
+      return newBooksFiltered
     }
   }
 })
@@ -78,6 +62,8 @@ export const booksFilteredSlice = createSlice({
 export const {
   sortBooks,
   addBookFiltered,
-  removeBookFiltered
+  removeBookFiltered,
+  changeBooksFiltered
 } = booksFilteredSlice.actions
+
 export default booksFilteredSlice.reducer

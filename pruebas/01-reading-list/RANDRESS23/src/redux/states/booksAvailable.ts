@@ -24,9 +24,18 @@ export const booksAvailableSlice = createSlice({
 
       localStorage.setItem(LOCAL_STORAGE_KEYS.BOOKS_AVAILABLE, JSON.stringify(newBooksAvailable))
       return newBooksAvailable
+    },
+    changeBooksAvailable: (_, action) => {
+      const { newBooksAvailable } = action.payload
+
+      return newBooksAvailable
     }
   }
 })
 
-export const { addBookAvailable, removeBookAvailable } = booksAvailableSlice.actions
+export const {
+  addBookAvailable,
+  removeBookAvailable,
+  changeBooksAvailable
+} = booksAvailableSlice.actions
 export default booksAvailableSlice.reducer

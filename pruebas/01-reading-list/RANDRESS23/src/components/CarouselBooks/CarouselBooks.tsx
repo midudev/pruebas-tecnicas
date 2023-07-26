@@ -2,23 +2,11 @@ import { useRef } from 'react'
 import { motion } from 'framer-motion'
 import styles from './styles/CarouselBooks.module.css'
 import { BookReading } from './components/BookReading'
-import { type Book, type Library } from '../../models'
-import { type AppStore } from '../../redux'
-import { useSelector, useDispatch } from 'react-redux'
-import { removeBookToRead } from '../../redux/states/booksToRead'
-import { addBookAvailable } from '../../redux/states/booksAvailable'
-import { addBookFiltered } from '../../redux/states/booksFiltered'
+import { useDebounceFilters } from '../../hooks/useDebounceFilters'
 
 export const CarouselBooks: React.FC = () => {
-  const booksToRead: Library = useSelector((state: AppStore) => state.booksToRead)
   const boxRef = useRef(null)
-  const dispatch = useDispatch()
-
-  const handleRemoveBookToRead = ({ book }: { book: Book }): void => {
-    dispatch(removeBookToRead({ bookISBN: book.ISBN }))
-    dispatch(addBookAvailable({ newBook: book }))
-    dispatch(addBookFiltered({ newBook: book }))
-  }
+  const { booksToRead, handleRemoveBookToRead } = useDebounceFilters()
 
   return (
     <div

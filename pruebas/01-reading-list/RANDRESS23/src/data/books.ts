@@ -3,8 +3,7 @@ import { type Library } from '../models'
 
 export const BOOKS: Library = booksJSON.library.map(({ book }) => book)
 export const FILTERS_BOOKS = {
-  title: '',
-  author: '',
+  titleOrAuthor: '',
   genre: 'All',
   pages: 0
 }

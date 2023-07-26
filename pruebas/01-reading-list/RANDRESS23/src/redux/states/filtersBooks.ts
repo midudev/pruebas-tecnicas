@@ -15,8 +15,7 @@ export const filtersBooksSlice = createSlice({
       const { newTitleOrAuthor } = action.payload
       const newFiltersBooks = {
         ...state,
-        title: newTitleOrAuthor,
-        author: newTitleOrAuthor
+        titleOrAuthor: newTitleOrAuthor
       }
 
       localStorage.setItem(LOCAL_STORAGE_KEYS.FILTERS_BOOKS, JSON.stringify(newFiltersBooks))
@@ -41,9 +40,19 @@ export const filtersBooksSlice = createSlice({
 
       localStorage.setItem(LOCAL_STORAGE_KEYS.FILTERS_BOOKS, JSON.stringify(newFiltersBooks))
       return newFiltersBooks
+    },
+    changeFiltersBooks: (_, action) => {
+      const { newFiltersBooks } = action.payload
+
+      return newFiltersBooks
     }
   }
 })
 
-export const { changeTitleOrAuthor, changeGenre, changePages } = filtersBooksSlice.actions
+export const {
+  changeTitleOrAuthor,
+  changeGenre,
+  changePages,
+  changeFiltersBooks
+} = filtersBooksSlice.actions
 export default filtersBooksSlice.reducer

@@ -1,9 +1,11 @@
 import { BookItem } from '.'
 import styles from './styles/BooksAvailable.module.css'
 import { useDebounceFilters } from '../../hooks/useDebounceFilters'
+import { useSyncStorage } from '../../hooks/useSyncStorage'
 
 export const BooksAvailable: React.FC = () => {
   const { booksFiltered, handleAddToRead } = useDebounceFilters()
+  useSyncStorage()
 
   return (
     <div className={styles.BooksAvailable}>
