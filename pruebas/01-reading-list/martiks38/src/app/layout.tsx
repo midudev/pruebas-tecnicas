@@ -1,7 +1,5 @@
+import { Providers } from './providers'
 import { ToastContainer } from 'react-toastify'
-
-import { FilterProvider } from '@/context/filter'
-import { BookListProvider } from '@/context/bookList'
 
 import './globals.css'
 import 'react-toastify/dist/ReactToastify.css'
@@ -13,25 +11,21 @@ export const metadata: Metadata = {
   description: 'Prueba técnica frontend junior'
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: JSX.Element | JSX.Element[] }) {
   return (
     <html lang='es'>
-      <BookListProvider>
-        <FilterProvider>
-          <body>
-            {children}
-            <ToastContainer
-              position='top-right'
-              autoClose={2000}
-              hideProgressBar={false}
-              closeOnClick={true}
-              pauseOnHover={false}
-              draggable={false}
-              theme='light'
-            />
-          </body>
-        </FilterProvider>
-      </BookListProvider>
+      <body>
+        <Providers>{children}</Providers>
+        <ToastContainer
+          position='top-right'
+          autoClose={2000}
+          hideProgressBar={false}
+          closeOnClick={true}
+          pauseOnHover={false}
+          draggable={false}
+          theme='light'
+        />
+      </body>
     </html>
   )
 }
