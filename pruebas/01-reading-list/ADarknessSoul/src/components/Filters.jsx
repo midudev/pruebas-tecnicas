@@ -95,7 +95,7 @@ export const Filters = () => {
                 <form className="d-flex flex-column col-sm" onSubmit={(e) => onSubmitRange(e)}>
 
                     <label className="mb-3">Buscar por número de páginas</label>
-                    <input type="range" min={minNumPages} max={maxNumPages} id="NumPaginas" onChange={(e) => onRangeChange(e)}/>
+                    <input type="range" min={minNumPages} max={maxNumPages} id="NumPaginas" onChange={(e) => onRangeChange(e)} value={rangeNumber}/>
                     
                     <div className="d-flex justify-content-center gap-3 align-items-center mt-2 mb-3">
 

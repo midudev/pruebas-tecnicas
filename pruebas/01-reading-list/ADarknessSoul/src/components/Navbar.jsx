@@ -1,10 +1,11 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { allowSave, denySave, getLocalStorage, resetCurrentBook, searchBook } from "../store/slices/WhatABook";
 import { useState } from "react";
 
 export const Navbar = () => {
 
     const dispatch = useDispatch();
+    const { books } = useSelector(state => state.WhatABook);
     const [inputBook, setInputBook] = useState("");
     const [undo, setUndo] = useState(false);
 
@@ -46,7 +47,20 @@ export const Navbar = () => {
                     <div className="d-flex">
                         
                         
-                        <input className="form-control mr-sm-2 navbar__input" type="search" placeholder="¿Qué buscas hoy?" id="SearchBook" onChange={(e) => setInputBook(e.target.value)}/>
+                        <input className="form-control mr-sm-2 navbar__input" type="search" placeholder="¿Qué buscas hoy?" id="SearchBook" onChange={(e) => setInputBook(e.target.value)} list="bookNames"/>
+                        <datalist id="bookNames">
+
+                            {
+
+                                books.map(({book}) => (
+
+                                    <option key={book.title}>{book.title}</option>
+
+                                ))
+
+                            }
+
+                        </datalist>
                         <button className="btn mx-2 my-sm-0 btn__submit" type="submit" onClick={submit}>Buscar</button>  
 
                     </div> {/* navbar__label */}
