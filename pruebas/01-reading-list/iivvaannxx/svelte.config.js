@@ -1,5 +1,6 @@
 import adapter from '@sveltejs/adapter-static'
 import preprocess from 'svelte-preprocess'
+
 import { vitePreprocess } from '@sveltejs/kit/vite'
 import autoprefixer from 'autoprefixer'
 
@@ -13,10 +14,7 @@ const config = {
 
       postcss: {
 
-        plugins: [
-
-          autoprefixer
-        ]
+        plugins: [autoprefixer]
       }
     })
   ],
@@ -26,9 +24,9 @@ const config = {
     adapter: adapter(),
     alias: {
 
-      $features: 'src/features',
+      $features: 'src/features'
     }
-  },
+  }
 }
 
 export default config

@@ -60,7 +60,7 @@ const svelteOverride = {
 
     'svelte/html-quotes': ['error', {
 
-      prefer: 'single',
+      prefer: 'single'
     }],
 
     'svelte/indent': 'error',

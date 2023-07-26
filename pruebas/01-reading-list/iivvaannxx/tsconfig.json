@@ -14,5 +14,21 @@
 		"strict": true,
 
 		"outDir": "./build",
-	}
+	},
+
+	"include": [
+
+		"./.svelte-kit/ambient.d.ts",
+		"./.svelte-kit/types/**/$types.d.ts",
+
+		"./vite.config.ts",
+		"./src/**/*.js",
+		"./src/**/*.ts",
+		"./src/**/*.svelte",
+
+		".eslintrc.cjs",
+		"./*.cjs",
+		"./*.ts",
+		"./*.js",
+	],
 }

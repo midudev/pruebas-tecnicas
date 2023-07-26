@@ -1,15 +1,11 @@
 <script lang='ts' context='module'>
 
   import '../app.css'
-  import { overrideItemIdKeyNameBeforeInitialisingDndZones } from 'svelte-dnd-action'
 
   import { Library } from '$features/library'
   import { FilterMenu } from '$features/filter'
   import { SearchBar } from '$features/search'
   import { BookList, DEFAULT_LISTS } from '$features/booklist'
-
-  // We will only be dragging book objects, which 'ID' is their ISBN.
-  overrideItemIdKeyNameBeforeInitialisingDndZones('ISBN')
 
 </script>
 

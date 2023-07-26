@@ -1,8 +1,7 @@
 import defaultConfig from 'tailwindcss/defaultConfig'
 import plugin from 'tailwindcss/plugin'
 
-import debugScreensPlugin from 'tailwindcss-debug-screens'
-
+// Custom variants.
 const customVariantsPlugin = plugin(function ({ addVariant, e }) {
 
   addVariant('details-marker', ['&::-webkit-details-marker', '&::marker'])
@@ -21,7 +20,7 @@ module.exports = {
 
         primary: {
 
-          50:  '#fff2f1',
+          50: '#fff2f1',
           100: '#ffe3e1',
           200: '#ffccc8',
           300: '#ffa8a1',
@@ -31,30 +30,30 @@ module.exports = {
           700: '#c02215',
           800: '#9f2015',
           900: '#842018',
-          950: '#480c07',
-        },
+          950: '#480c07'
+        }
       },
 
       inset: {
 
         header: '6rem',
-        sidebar: '24rem',
+        sidebar: '24rem'
       },
 
       width: {
 
-        sidebar: '24rem',
+        sidebar: '24rem'
       },
 
       height: {
 
         header: '6rem',
-        sidebar: 'calc(100vh - 6rem)',
+        sidebar: 'calc(100vh - 6rem)'
       },
 
       rotate: {
 
-        '135': '135deg',
+        135: '135deg'
       },
 
       keyframes: {
@@ -94,18 +93,18 @@ module.exports = {
 
       aspectRatio: {
 
-        'cover': '2 / 3'
+        cover: '2 / 3'
       },
 
       gridTemplateColumns: {
 
-        'main': 'auto 1fr auto',
-        'library': 'repeat(auto-fill, minmax(15rem, 1fr))'
+        main: 'auto 1fr auto',
+        library: 'repeat(auto-fill, minmax(15rem, 1fr))'
       },
 
       gridTemplateRows: {
 
-        'app': 'auto 1fr'
+        app: 'auto 1fr'
       },
 
       content: {
@@ -115,5 +114,5 @@ module.exports = {
     }
   },
 
-  plugins: [debugScreensPlugin, customVariantsPlugin]
+  plugins: [customVariantsPlugin]
 }
