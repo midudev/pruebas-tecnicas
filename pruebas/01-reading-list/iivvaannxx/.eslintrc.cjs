@@ -2,6 +2,7 @@
 const preferredRules = {
 
   '@typescript-eslint/explicit-function-return-type': 'off',
+  '@typescript-eslint/brace-style': 'off',
 
   'padded-blocks': 'off',
   'padding-line-between-statements': [
