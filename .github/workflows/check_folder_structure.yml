@@ -22,12 +22,14 @@ jobs:
         IFS=' ' read -r -a FILES_ARR <<< "$FILES"
         
         for FILE in "${FILES_ARR[@]}"; do
-          TEST_FOLDER=$(echo ${FILE} | cut -d'/' -f2)
-          if [[ ${FILE} != pruebas/${TEST_FOLDER}/${PR_USERNAME}/* ]]; then
-            echo "Incorrect folder structure in file: ${FILE}. Requesting changes."
-            echo "Asegúrese de que los cambios se realicen en 'pruebas/${TEST_FOLDER}/${PR_USERNAME}/'. :file_folder:" > message.txt
-            echo "::set-output name=comment::$(cat message.txt)"
-            break
+          if [[ ${FILE} == pruebas/* ]]; then
+            TEST_FOLDER=$(echo ${FILE} | cut -d'/' -f2)
+            if [[ ${FILE} != pruebas/${TEST_FOLDER}/${PR_USERNAME}/* ]]; then
+              echo "Incorrect folder structure in file: ${FILE}. Requesting changes."
+              echo "Asegúrese de que los cambios se realicen en 'pruebas/${TEST_FOLDER}/${PR_USERNAME}/'. :file_folder:" > message.txt
+              echo "::set-output name=comment::$(cat message.txt)"
+              break
+            fi
           fi
         done
     - name: Comment PR
