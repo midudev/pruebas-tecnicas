@@ -1,8 +1,10 @@
 import { useState } from "react";
-import propTypes from "prop-types";
-import Slider from "rc-slider";
-import styled from "styled-components";
 import { useTranslation } from "react-i18next";
+
+import propTypes from "prop-types";
+import styled from "styled-components";
+
+import Slider from "rc-slider";
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -10,7 +12,7 @@ const StyledWrapper = styled.div`
   align-items: center;
 `;
 
-const StyledTitle = styled.h3`
+const StyledTitle = styled.h2`
   text-align: center;
   font-size: 1.5rem;
   font-weight: 600;
@@ -53,10 +55,11 @@ const StyledSlider = styled(Slider)`
     border: 1px solid #000000;
     background-color: #ffffff;
     opacity: 1;
+    z-index: 0;
   }
 `;
 
-export const PagesNumber = ({ originalBooks, setAvaliableBooks }) => {
+export const PagesNumber = ({ originalBooks, setAvailableBooks }) => {
   const { t } = useTranslation();
 
   const defaultPages = 600;
@@ -68,7 +71,7 @@ export const PagesNumber = ({ originalBooks, setAvaliableBooks }) => {
       (book) => book.book.pages <= maxPages
     );
 
-    setAvaliableBooks(filterPages);
+    setAvailableBooks(filterPages);
   };
 
   const findMaxPages = () => {
@@ -92,12 +95,13 @@ export const PagesNumber = ({ originalBooks, setAvaliableBooks }) => {
         max={findMaxPages()}
         onChange={onChangePages}
         data-cy="slider-pages"
+        aria-label="slider"
       />
     </StyledWrapper>
   );
 };
 
 PagesNumber.propTypes = {
-  setAvaliableBooks: propTypes.func.isRequired,
+  setAvailableBooks: propTypes.func.isRequired,
   originalBooks: propTypes.array.isRequired,
 };

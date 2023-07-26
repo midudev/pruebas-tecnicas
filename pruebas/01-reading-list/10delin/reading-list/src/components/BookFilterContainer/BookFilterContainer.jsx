@@ -12,28 +12,33 @@ const StyledWrapper = styled.div`
   justify-content: space-around;
   align-items: flex-start;
   margin: 0 0 40px 0;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
-export const BookFilterContainer = ({ originalBooks, setAvaliableBooks }) => {
+export const BookFilterContainer = ({ originalBooks, setAvailableBooks }) => {
   return (
     <StyledWrapper>
       <SelectGenre
         originalBooks={originalBooks}
-        setAvaliableBooks={setAvaliableBooks}
+        setAvailableBooks={setAvailableBooks}
       />
       <SearchBooks
         originalBooks={originalBooks}
-        setAvaliableBooks={setAvaliableBooks}
+        setAvailableBooks={setAvailableBooks}
       />
       <PagesNumber
         originalBooks={originalBooks}
-        setAvaliableBooks={setAvaliableBooks}
+        setAvailableBooks={setAvailableBooks}
       />
     </StyledWrapper>
   );
 };
 
 BookFilterContainer.propTypes = {
-  setAvaliableBooks: PropTypes.func.isRequired,
+  setAvailableBooks: PropTypes.func.isRequired,
   originalBooks: PropTypes.array.isRequired,
 };

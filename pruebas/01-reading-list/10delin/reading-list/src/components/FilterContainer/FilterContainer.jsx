@@ -15,12 +15,19 @@ const StyledWrapper = styled.div`
   text-align: center;
   padding-right: ${({ $readingBooks }) =>
     $readingBooks.length > 0 ? "calc(250px + 50px)" : "0rem"};
+
+  @media (max-width: 768px) {
+    align-items: center;
+    margin: 0;
+    margin-top: 150px;
+    padding-right: 0rem;
+  }
 `;
 
 export const FilterContainer = ({
   originalBooks,
-  avaliableBooks,
-  setAvaliableBooks,
+  availableBooks,
+  setAvailableBooks,
   readingBooks,
 }) => {
   return (
@@ -28,20 +35,20 @@ export const FilterContainer = ({
       <ResetApp />
       <BookFilterContainer
         originalBooks={originalBooks}
-        setAvaliableBooks={setAvaliableBooks}
+        setAvailableBooks={setAvailableBooks}
       />
       <ResetFilter
-        avaliableBooks={avaliableBooks}
+        availableBooks={availableBooks}
         originalBooks={originalBooks}
-        setAvaliableBooks={setAvaliableBooks}
+        setAvailableBooks={setAvailableBooks}
       />
     </StyledWrapper>
   );
 };
 
 FilterContainer.propTypes = {
-  setAvaliableBooks: PropTypes.func.isRequired,
+  setAvailableBooks: PropTypes.func.isRequired,
   originalBooks: PropTypes.array.isRequired,
   readingBooks: PropTypes.array.isRequired,
-  avaliableBooks: PropTypes.array.isRequired,
+  availableBooks: PropTypes.array.isRequired,
 };

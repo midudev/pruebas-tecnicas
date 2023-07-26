@@ -13,10 +13,18 @@ const StyledPriorityIcon = styled.div`
   font-weight: bold;
   color: white;
   font-size: 1rem;
-  background-color: ${({ priority }) =>
-    priority === 2 ? "#F44336" : priority === 1 ? "#FFC107" : "#989999"};
+  background-color: ${({ $priority }) =>
+    $priority === 2 ? "#F44336" : $priority === 1 ? "#FFC107" : "#989999"};
   border-radius: 50%;
   z-index: 1;
+
+  @media (max-width: 768px) {
+    top: -10px;
+    left: -15px;
+    width: 25px;
+    height: 25px;
+    font-size: 15px;
+  }
 `;
 
 const priorityName = (priority) => {
@@ -34,12 +42,12 @@ const priorityName = (priority) => {
 
 export const PriorityIcon = ({ priority }) => {
   return (
-    <StyledPriorityIcon priority={priority}>
+    <StyledPriorityIcon $priority={priority}>
       {priorityName(priority)}
     </StyledPriorityIcon>
   );
 };
 
 PriorityIcon.propTypes = {
-  priority: PropTypes.oneOf(["high", "medium", "low"]),
+  priority: PropTypes.number.isRequired,
 };

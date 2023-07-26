@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import { PriorityButton } from "../PriorityButton/PriorityButton";
 import { PriorityIcon } from "../PriorityIcon/PriorityIcon";
-import { useTranslation } from "react-i18next";
 
 const StyledWrapperButtons = styled.div`
   display: flex;
@@ -34,6 +34,13 @@ const StyledRemoveButton = styled.button`
 
   &:hover {
     background-color: #b9b9b9;
+  }
+
+  @media (max-width: 768px) {
+    top: -10px;
+    right: -15px;
+    padding: 10px 10px;
+    font-size: 5px;
   }
 `;
 
@@ -74,6 +81,13 @@ const StyledImg = styled.img`
 
   &:hover {
     box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    width: 100px;
+    max-width: 100px;
+    height: 150px;
+    max-height: 150px;
   }
 `;
 

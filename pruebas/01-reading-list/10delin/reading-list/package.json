@@ -9,7 +9,9 @@
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "cy:run": "npx cypress run",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "prepare": "husky install .husky",
+    "husky": "node ./node_modules/husky/lib/bin.js"
   },
   "dependencies": {
     "rc-slider": "^10.2.1",
@@ -18,6 +20,8 @@
     "styled-components": "^6.0.5"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.6.7",
+    "@commitlint/config-conventional": "^17.6.7",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "@vitejs/plugin-react": "^4.0.1",
@@ -27,6 +31,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.1",
+    "husky": "^8.0.3",
     "i18next": "^23.2.11",
     "react-i18next": "^13.0.2",
     "vite": "^4.4.0"

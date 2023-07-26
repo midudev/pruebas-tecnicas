@@ -11,7 +11,7 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledButton = styled.button`
-  background-color: #c02828;
+  background-color: #54a957;
   color: #ffffff;
   text-align: center;
   padding: 7px;
@@ -23,7 +23,7 @@ const StyledButton = styled.button`
   font-weight: 600;
   width: 100%;
   &:hover {
-    background-color: #691212;
+    background-color: #448a48;
     color: #ffffff;
   }
 `;

@@ -1,5 +1,6 @@
-import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
+
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const StyledWrapper = styled.div`
@@ -18,13 +19,12 @@ const StyledButton = styled.button`
   padding: 7px;
   border: 2px solid #ffffff;
   border-radius: 5px;
-  margin-top: 20px;
   font-size: 1.5rem;
   font-weight: 600;
   width: 100%;
 
-  ${({ $avaliableBooks, $originalBooks }) =>
-    $avaliableBooks.length !== $originalBooks.length
+  ${({ $availableBooks, $originalBooks }) =>
+    $availableBooks.length !== $originalBooks.length
       ? `
       background-color: #2472e7;
       &:hover {
@@ -38,20 +38,20 @@ const StyledButton = styled.button`
 `;
 
 export const ResetFilter = ({
-  avaliableBooks,
-  setAvaliableBooks,
+  availableBooks,
+  setAvailableBooks,
   originalBooks,
 }) => {
   const { t } = useTranslation();
 
   const handleReset = () => {
-    setAvaliableBooks(originalBooks);
+    setAvailableBooks(originalBooks);
   };
 
   return (
     <StyledWrapper>
       <StyledButton
-        $avaliableBooks={avaliableBooks}
+        $availableBooks={availableBooks}
         $originalBooks={originalBooks}
         onClick={handleReset}
       >
@@ -62,7 +62,7 @@ export const ResetFilter = ({
 };
 
 ResetFilter.propTypes = {
-  setAvaliableBooks: PropTypes.func.isRequired,
+  setAvailableBooks: PropTypes.func.isRequired,
   originalBooks: PropTypes.array.isRequired,
-  avaliableBooks: PropTypes.array.isRequired,
+  availableBooks: PropTypes.array.isRequired,
 };

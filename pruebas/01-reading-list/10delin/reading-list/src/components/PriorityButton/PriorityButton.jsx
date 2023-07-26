@@ -22,6 +22,11 @@ const StyledButton = styled.button`
     color: #a7a7a7;
     cursor: not-allowed;
   }
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+    padding: 5px 5px;
+  }
 `;
 
 export const PriorityButton = ({

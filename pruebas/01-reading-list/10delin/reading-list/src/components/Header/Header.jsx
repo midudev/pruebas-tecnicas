@@ -11,6 +11,8 @@ const StyledWrapper = styled.div`
   padding: 20px;
   text-align: center;
   position: fixed;
+  display: flex;
+  justify-content: center;
   width: 100%;
   z-index: 1;
 `;
@@ -20,6 +22,10 @@ const StyledTitle = styled.h1`
   font-family: "Roboto", sans-serif;
   font-size: 30px;
   letter-spacing: 2px;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
 `;
 
 export const Header = () => {

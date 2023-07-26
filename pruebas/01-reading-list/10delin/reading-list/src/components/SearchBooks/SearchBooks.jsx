@@ -1,8 +1,10 @@
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import { normaliceText } from "../../utils/normaliceText";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+
+import PropTypes from "prop-types";
+import styled from "styled-components";
+
+import { normaliceText } from "../../utils/normaliceText";
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -10,7 +12,7 @@ const StyledWrapper = styled.div`
   align-items: center;
 `;
 
-const StyledTitle = styled.h3`
+const StyledTitle = styled.h2`
   text-align: center;
   font-size: 1.5rem;
   font-weight: 600;
@@ -53,7 +55,7 @@ const StyledRemoveButton = styled.input`
   z-index: 0;
 `;
 
-export const SearchBooks = ({ originalBooks, setAvaliableBooks }) => {
+export const SearchBooks = ({ originalBooks, setAvailableBooks }) => {
   const [bookTitle, setBookTitle] = useState("");
 
   const { t } = useTranslation();
@@ -68,15 +70,15 @@ export const SearchBooks = ({ originalBooks, setAvaliableBooks }) => {
     if (searchTitle.length === 0) {
       alert("No se encontró el libro");
       setBookTitle("");
-      setAvaliableBooks(originalBooks);
+      setAvailableBooks(originalBooks);
       return;
     }
-    setAvaliableBooks(searchTitle);
+    setAvailableBooks(searchTitle);
   };
 
   const removeFilter = () => {
     setBookTitle("");
-    setAvaliableBooks(originalBooks);
+    setAvailableBooks(originalBooks);
   };
 
   return (
@@ -105,6 +107,6 @@ export const SearchBooks = ({ originalBooks, setAvaliableBooks }) => {
 };
 
 SearchBooks.propTypes = {
-  setAvaliableBooks: PropTypes.func.isRequired,
+  setAvailableBooks: PropTypes.func.isRequired,
   originalBooks: PropTypes.array.isRequired,
 };

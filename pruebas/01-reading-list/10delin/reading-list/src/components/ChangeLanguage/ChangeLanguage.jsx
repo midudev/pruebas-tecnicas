@@ -9,18 +9,23 @@ import { styled } from "styled-components";
 const StyledWrapper = styled.div`
   position: absolute;
   top: 100px;
-  right: left;
+  left: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   margin: 0 0 20px 0;
   width: 15%;
+
+  @media (max-width: 768px) {
+    top: 80px;
+    width: 100%;
+  }
 `;
 
 const StyledContent = styled.div`
   display: flex;
-  background-color: ${({ isSpanish }) => (isSpanish ? "#699eec" : "#dbdbdb")};
+  background-color: ${({ $isSpanish }) => ($isSpanish ? "#699eec" : "#dbdbdb")};
   color: #ffffff;
   align-items: center;
   justify-content: center;
@@ -34,7 +39,8 @@ const StyledContent = styled.div`
   cursor: pointer;
 
   &:hover {
-    background-color: ${({ isSpanish }) => (isSpanish ? "#2472e7" : "#699eec")};
+    background-color: ${({ $isSpanish }) =>
+      $isSpanish ? "#2472e7" : "#699eec"};
   }
 `;
 
@@ -56,14 +62,14 @@ export const ChangeLanguage = () => {
   return (
     <StyledWrapper>
       <StyledContent
-        isSpanish={isSpanish}
+        $isSpanish={isSpanish}
         onClick={() => setLanguage("es")}
         data-cy="es-lang"
       >
         <StyledImage src={SpainIcon} alt="Spanish" />
       </StyledContent>
       <StyledContent
-        isSpanish={!isSpanish}
+        $isSpanish={!isSpanish}
         onClick={() => setLanguage("en")}
         data-cy="en-lang"
       >
