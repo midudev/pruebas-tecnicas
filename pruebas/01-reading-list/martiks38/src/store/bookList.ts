@@ -1,3 +1,5 @@
+'use client'
+
 import { BOOK_LIST_TYPES, nameStorage } from '@/assets/constants'
 import { initialListBooks } from '@/assets/values'
 

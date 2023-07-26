@@ -7,12 +7,20 @@ import type { Book } from '@/typings/books'
 export type BookDataList = Omit<Book, 'author' | 'synopsis' | 'year'>[]
 type ListOfBookLists = { listBooksAvailable: BookDataList; readingList: BookDataList }
 
-const { library } = process.env.NODE_ENV === 'test' ? mockDB : db
+let library = db.library
+
+if (typeof window !== 'undefined') {
+  if (process.env.NODE_ENV === 'test') library = mockDB.library
+}
 
 const books = library.map(({ book }) => book)
 const genres = [allGenre, ...new Set(books.map(({ genre }) => genre))]
 
-const readingListStr = window.localStorage.getItem(nameStorage.listOfReading) || '[]'
+let readingListStr = '[]'
+
+if (typeof window !== 'undefined') {
+  readingListStr = window.localStorage.getItem(nameStorage.listOfReading) || '[]'
+}
 
 const readingList: BookDataList = JSON.parse(readingListStr)
 

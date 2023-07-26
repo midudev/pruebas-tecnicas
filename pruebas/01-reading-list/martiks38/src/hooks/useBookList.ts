@@ -1,5 +1,3 @@
-'use client'
-
 import { useContext } from 'react'
 import { BookListContext } from '@/context/bookList'
 

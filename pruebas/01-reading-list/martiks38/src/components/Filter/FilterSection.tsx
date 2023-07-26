@@ -1,4 +1,4 @@
-import { Fragment, useId } from 'react'
+import { useId } from 'react'
 import { useFilters } from '@/hooks/useFilters'
 
 import { genres } from '@/assets/values'
@@ -31,7 +31,7 @@ export function FilterSection() {
         <legend className={filterStyles.filterSection__fieldTitle}>Género</legend>
         {genres.map((genre) => {
           return (
-            <Fragment key={genre}>
+            <div key={genre}>
               <input
                 type='radio'
                 name={`${filterID}-genre`}
@@ -47,7 +47,7 @@ export function FilterSection() {
               >
                 {genre}
               </label>
-            </Fragment>
+            </div>
           )
         })}
       </fieldset>
