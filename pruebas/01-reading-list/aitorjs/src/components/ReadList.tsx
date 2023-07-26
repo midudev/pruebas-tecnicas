@@ -1,9 +1,10 @@
+import { ReactElement } from 'react'
 import { useBooksStore } from '../store/booksStore'
 
-const ReadList = () => {
+const ReadList = (): ReactElement => {
   const { wantReadBooks, filteredBooks, setBooks } = useBooksStore()
 
-  const handleClick = (isbn: string) => {
+  const handleClick = (isbn: string): void => {
     const index = wantReadBooks.findIndex((f) => {
       return f.book.ISBN === isbn
     })

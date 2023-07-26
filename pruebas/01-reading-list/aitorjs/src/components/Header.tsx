@@ -1,6 +1,7 @@
+import { ReactElement } from 'react'
 import { useBooksStore } from '../store/booksStore'
 
-const Header = () => {
+const Header = (): ReactElement => {
   const { filteredBooks } = useBooksStore()
   return (
 

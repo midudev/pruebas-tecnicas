@@ -1,6 +1,7 @@
+import { ReactElement } from 'react'
 import { useBooksStore } from '../store/booksStore'
 
-const FiltersSelected = () => {
+const FiltersSelected = (): ReactElement => {
   const { filters } = useBooksStore()
 
   return (

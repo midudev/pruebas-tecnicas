@@ -1,9 +1,10 @@
+import { ReactElement } from 'react'
 import { useBooksStore } from '../store/booksStore'
 
-const PageFilter = () => {
+const PageFilter = (): ReactElement => {
   const { filter, filters } = useBooksStore()
 
-  const filterPageBooks = (pages: number) => {
+  const filterPageBooks = (pages: number): void => {
     filter('pages', pages)
   }
 

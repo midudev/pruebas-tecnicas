@@ -1,9 +1,10 @@
+import { ReactElement } from 'react'
 import { useBooksStore } from '../store/booksStore'
 
-const GenreFilter = () => {
+const GenreFilter = (): ReactElement => {
   const { filters, filter } = useBooksStore()
 
-  const filterGenreBooks = (genre: string) => {
+  const filterGenreBooks = (genre: string): void => {
     filter('genre', genre)
   }
 

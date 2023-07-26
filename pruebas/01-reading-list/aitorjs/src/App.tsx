@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
-import './App.css'
+import { ReactElement, useEffect } from 'react'
+// import './App.css'
 import { useBooksStore } from './store/booksStore'
 import Book from './components/Book'
 import ReadList from './components/ReadList'
@@ -8,7 +8,7 @@ import GenreFilter from './components/GenreFilter'
 import Header from './components/Header'
 import FiltersSelected from './components/FiltersSelected'
 
-function App () {
+function App (): ReactElement {
   const { getBooks, filteredBooks } = useBooksStore()
 
   useEffect(() => {
