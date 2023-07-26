@@ -1,7 +1,8 @@
 import { Library } from '@/types/library'
 import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
-interface State {
+export interface State {
   library: Library[]
   setLibrary: (library: Library[]) => void
 
@@ -18,19 +19,26 @@ interface State {
   setFilteredBooks: (filteredBooks: Library[]) => void
 }
 
-export const useStore = create<State>()((set) => ({
-  library: [],
-  setLibrary: (library: Library[]) => set(() => ({ library })),
+export const useStore = create<State>()(
+  persist(
+    (set) => ({
+      library: [],
+      setLibrary: (library: Library[]) => set(() => ({ library })),
 
-  selectedBooks: [],
-  setSelectedBooks: (selectedBooks: Library[]) => set(() => ({ selectedBooks })),
+      selectedBooks: [],
+      setSelectedBooks: (selectedBooks: Library[]) => set(() => ({ selectedBooks })),
 
-  listGenres: [],
-  setListGenres: (listGenres: string[]) => set(() => ({ listGenres })),
+      listGenres: [],
+      setListGenres: (listGenres: string[]) => set(() => ({ listGenres })),
 
-  selectedGenre: '',
-  setSelectedGenre: (selectedGenre: string) => set(() => ({ selectedGenre })),
+      selectedGenre: '',
+      setSelectedGenre: (selectedGenre: string) => set(() => ({ selectedGenre })),
 
-  filteredBooks: [],
-  setFilteredBooks: (filteredBooks: Library[]) => set(() => ({ filteredBooks }))
-}))
+      filteredBooks: [],
+      setFilteredBooks: (filteredBooks: Library[]) => set(() => ({ filteredBooks }))
+    }),
+    {
+      name: 'library-storage'
+    }
+  )
+)

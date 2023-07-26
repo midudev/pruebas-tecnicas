@@ -1,3 +1,4 @@
+'use client'
 import { useStore } from '@/app/store/store'
 
 const GenreFilter = () => {
@@ -12,7 +13,7 @@ const GenreFilter = () => {
     <div className='flex flex-wrap justify-center top-0'>
       <label>
         Genre:
-        <select className='text-zinc-950' value={selectedGenre} onChange={(e) => filterGenre(e.target.value)}>
+        <select className='text-zinc-950' value={selectedGenre} onChange={async (e) => filterGenre(e.target.value)}>
           {listGenres.map((genre, index) => (
             <option key={index} value={genre}>
               {genre}

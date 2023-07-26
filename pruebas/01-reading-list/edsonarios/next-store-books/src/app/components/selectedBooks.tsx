@@ -1,3 +1,4 @@
+'use client'
 import { Library } from '@/types/library'
 import { useStore } from '@/app/store/store'
 

@@ -6,20 +6,24 @@ import SelectedBooks from './selectedBooks'
 import AvailableBooks from './availableBooks'
 import GenreFilter from './genreFilter'
 import { useStore } from '@/app/store/store'
+import { useSyncedLocalStorage } from '@/app/hooks/useSyncedLocalStorage'
 
 export function Main () {
   const libraryData = data as LibraryData
-  const { setLibrary, selectedBooks, setListGenres, setFilteredBooks, filteredBooks, setSelectedGenre } = useStore(state => state)
+  const { library, setLibrary, selectedBooks, setListGenres, setFilteredBooks, filteredBooks, setSelectedGenre } = useStore(state => state)
+
+  useSyncedLocalStorage()
 
   useEffect(() => {
-    setLibrary(libraryData.library.map(book => book))
-    setFilteredBooks(libraryData.library.map(book => book))
+    if (library.length === 0) {
+      setLibrary(libraryData.library.map(book => book))
+      setFilteredBooks(libraryData.library.map(book => book))
+      const allGenres = libraryData.library.map(book => book.book.genre)
+      const uniqueGenres = Array.from(new Set(allGenres))
+      setListGenres(['All', ...uniqueGenres])
 
-    const allGenres = libraryData.library.map(book => book.book.genre)
-    const uniqueGenres = Array.from(new Set(allGenres))
-    setListGenres(['All', ...uniqueGenres])
-
-    setSelectedGenre('All')
+      setSelectedGenre('All')
+    }
   }, [])
 
   return (
