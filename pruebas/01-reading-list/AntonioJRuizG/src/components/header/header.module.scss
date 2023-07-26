@@ -1,0 +1,26 @@
+.headerContainer {
+	min-height: 13rem;
+	padding: 2rem;
+
+	h1 {
+		align-items: center;
+	}
+
+	.firstParagraph {
+		text-align: left;
+		font-size: larger;
+
+		span {
+			font-size: xx-large;
+		}
+	}
+
+	.secondParagraph {
+		text-align: left;
+		font-size: large;
+
+		span {
+			font-size: x-large;
+		}
+	}
+}
