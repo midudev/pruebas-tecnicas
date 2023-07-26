@@ -1,10 +1,22 @@
-import { atom } from 'nanostores'
+import Books from './assets/books.json'
+import { atom, computed } from 'nanostores'
 
-/** @brief The information about the book currently being dragged (ISBN). */
-export const bookDragTarget = atom<string | null>(null)
+/** @brief The information about the entire book library. */
+export const library = atom<BookArray>(Books.library.map(current => current.book))
+export const genres = computed(library, books => {
 
-/** @brief Sets the book currently being dragged. */
-export function setDragBook (isbn: string | null): void {
+  const genres = books.map(current => current.genre)
+  return Array.from(new Set(genres))
+})
 
-  bookDragTarget.set(isbn)
-}
+export const pageLimits = computed(library, books => {
+
+  let [minPages, maxPages] = [+Infinity, -Infinity]
+  books.forEach(current => {
+
+    minPages = Math.min(minPages, current.pages)
+    maxPages = Math.max(maxPages, current.pages)
+  })
+
+  return [minPages, maxPages]
+})

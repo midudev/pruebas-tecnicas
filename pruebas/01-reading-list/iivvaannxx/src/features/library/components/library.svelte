@@ -1,55 +1,57 @@
 <script lang='ts' context='module'>
 
-  import Book from '../layouts/items/grid-book.svelte'
+  import Grid from "./layouts/grid.svelte"
+  import VerticalList from "./layouts/vertical-list.svelte"
 
-  import Grid from "../layouts/grid.svelte"
-  import VerticalList from "../layouts/vertical-list.svelte"
-  import HorizontalList from "../layouts/horizontal-list.svelte"
+  import GridBook from "./items/grid-book.svelte";
+  import VerticalListBook from "./items/vertical-list-book.svelte";
 
-  import { booksData } from '../data';
-  import { LibraryLayout } from '../types';
+  import { library } from "../store";
+  import { searchResults, showSearchResults } from '$features/search';
+  import { filter, filters } from '$features/filter';
 
-  import GridBook from "../layouts/items/grid-book.svelte";
-  import VerticalListBook from "../layouts/items/vertical-list-book.svelte";
-  import HorizontalListBook from "../layouts/items/horizontal-list-book.svelte";
+  import { fade } from "svelte/transition";
 
-  // Extract the library information.
-  const { library } = booksData
+  /** @brief Defines the allowed layouts for the library. */
+  type Layout = 'grid' | 'vertical-list'
 
+  /** @brief Maps each layout type to it's layout and item components. */
   const layouts = {
 
-    [LibraryLayout.Grid]: Grid,
-    [LibraryLayout.VerticalList]: VerticalList,
-    [LibraryLayout.HorizontalList]: HorizontalList,
-  }
+    'grid': {
 
-  const items = {
+      layout: Grid,
+      item: GridBook,
+    },
 
-    [LibraryLayout.Grid]: GridBook,
-    [LibraryLayout.VerticalList]: VerticalListBook,
-    [LibraryLayout.HorizontalList]: HorizontalListBook,
+    'vertical-list': {
+
+      layout: VerticalList,
+      item: VerticalListBook,
+    },
   }
 
 </script>
 
 <script lang='ts'>
 
-  export let layout: LibraryLayout = LibraryLayout.VerticalList
+  export let layout: Layout = 'vertical-list'
 
-  $: layoutComponent = layouts[layout]
-  $: layoutItem = items[layout]
+  $: layoutData = layouts[layout]
+  $: books = $showSearchResults ? $searchResults : $library
+  $: filteredBooks = filter(books, $filters)
 
 </script>
 
-<h2>{library.length} libros disponibles</h2>
+<h2>{books.length} libros disponibles</h2>
 
 
-<svelte:component this={layoutComponent}>
+<svelte:component this={layoutData.layout}>
 
-  {#each library as book (book.ISBN)}
+  {#each filteredBooks as book (book.ISBN)}
 
     <li class='p-4'>
-      <svelte:component this={layoutItem} bookData={book} />
+      <svelte:component this={layoutData.item} bookData={book} />
     </li>
 
   {/each}
