@@ -1,0 +1,27 @@
+{
+  "name": "prueba-midudev",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "playwright test index.spec.ts",
+    "format": "prettier -w '**/*.{js,jsx,cjs,ts,tsx,astro}'",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/solid-js": "^2.2.0",
+    "@astrojs/tailwind": "^4.0.0",
+    "@tailwindcss/forms": "^0.5.4",
+    "astro": "^2.9.3",
+    "prettier-plugin-astro": "^0.11.0",
+    "solid-js": "^1.7.8",
+    "tailwindcss": "^3.3.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.36.2",
+    "prettier": "^3.0.0"
+  }
+}
