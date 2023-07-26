@@ -1,4 +1,4 @@
-import { FilesExtensionToDownload, Book } from '~/types/types'
+import { type FilesExtensionToDownload, type Book } from '~/types/types'
 
 export function removeAccents(str: string) {
   return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
@@ -37,9 +37,12 @@ export function downloadFromLocalStorage(
     case 'csv':
       // Assuming the data is an array of objects. If it's another structure, additional processing is needed.
       try {
-        const jsonObj = JSON.parse(value)
-        formattedData = Object.keys(jsonObj[0]).join(',') + '\n'
-        formattedData += jsonObj
+        if (booksInReadingList.length === 0) {
+          console.warn('No books in reading list for CSV conversion.')
+          return
+        }
+        formattedData = Object.keys(booksInReadingList[0]).join(',') + '\n'
+        formattedData += booksInReadingList
           .map((row: Book) => Object.values(row).join(','))
           .join('\n')
       } catch (err) {

@@ -1,9 +1,4 @@
-import {
-  component$,
-  useComputed$,
-  useStore,
-  useVisibleTask$,
-} from '@builder.io/qwik'
+import { component$, useComputed$, useVisibleTask$ } from '@builder.io/qwik'
 import { type DocumentHead } from '@builder.io/qwik-city'
 import { BooksList } from '~/components/books-list/books-list'
 import { Filters } from '~/components/filters/filters'

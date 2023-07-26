@@ -2,7 +2,7 @@ import { $, component$ } from '@builder.io/qwik'
 import { useGlobalState } from '~/ctx/ctx'
 import { priorityTransformer } from '~/functions/functions'
 import { css } from '~/styled-system/css'
-import { StoredBook, type Book } from '~/types/types'
+import { type StoredBook } from '~/types/types'
 import {
   bookSpineInnerStyles,
   bookSpineStyles,

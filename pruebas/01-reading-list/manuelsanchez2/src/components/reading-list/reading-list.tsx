@@ -1,6 +1,6 @@
-import { component$, useComputed$, useSignal } from '@builder.io/qwik'
+import { component$, useComputed$ } from '@builder.io/qwik'
 import { useGlobalState } from '~/ctx/ctx'
-import { Book, type StoredBook } from '~/types/types'
+import { type Book, type StoredBook } from '~/types/types'
 import { BookSpine } from '../book-spine/book-spine'
 import { downloadFromLocalStorage } from '~/functions/utils'
 import { STORE_ID } from '~/constants/constants'
