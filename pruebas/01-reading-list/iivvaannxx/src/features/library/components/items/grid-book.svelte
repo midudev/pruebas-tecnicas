@@ -1,7 +1,6 @@
 <script lang='ts' context='module'>
 
-  import type { Book } from '$types'
-  import { InfoIcon } from '$assets/icons'
+  import { InfoIcon } from '$lib/icons'
 
 </script>
 
@@ -11,12 +10,10 @@
 
 </script>
 
-<li
-
-  class="relative flex flex-col w-28 aspect-cover shadow-sm rounded-xl group"
+<li class='relative flex flex-col w-28 aspect-cover shadow-sm rounded-xl group'
 >
 
-  <img class="w-full h-full rounded-xl" src={bookData.cover} alt={bookData.title} />
+  <img class='w-full h-full rounded-xl' src={ bookData.cover } alt={ bookData.title } />
 
   <!-- <div class='absolute h-full w-full'>
     <div class='h-full w-full bg-black rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-40'></div>
