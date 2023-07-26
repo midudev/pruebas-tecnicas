@@ -35,13 +35,20 @@ module.exports = {
         },
       },
 
-      spacing: {
+      inset: {
 
         header: '6rem',
+        sidebar: '24rem',
+      },
+
+      width: {
+
+        sidebar: '24rem',
       },
 
       height: {
 
+        header: '6rem',
         sidebar: 'calc(100vh - 6rem)',
       },
 
@@ -103,7 +110,7 @@ module.exports = {
 
       content: {
 
-        empty: ''
+        empty: "''"
       }
     }
   },

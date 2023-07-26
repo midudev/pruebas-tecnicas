@@ -27,7 +27,6 @@ const config = {
     alias: {
 
       $assets: 'src/assets',
-      $types: 'src/types',
       $components: 'src/lib/components',
       $features: 'src/features',
     }

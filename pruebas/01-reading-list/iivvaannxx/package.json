@@ -43,6 +43,8 @@
 	"type": "module",
 	"dependencies": {
 		"@nanostores/persistent": "^0.9.1",
+		"fuse.js": "^6.6.2",
+		"just-debounce-it": "^3.2.0",
 		"just-kebab-case": "^4.2.0",
 		"nanostores": "^0.9.3",
 		"tailwindcss": "^3.3.3"
