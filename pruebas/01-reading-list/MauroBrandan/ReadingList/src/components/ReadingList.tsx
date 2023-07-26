@@ -22,8 +22,8 @@ export function ReadingList () {
   return (
     <div className={`${displayClass} w-80 ml-11`}>
       <aside className={`${displayClass} fixed top-0 right-0 w-80 h-screen animate-slide-in-fwd-right`}>
-        <div className='h-full overflow-y-auto bg-gray-800 no-scrollbar'>
-          <div className='fixed px-3 py-3 w-full h-20 bg-gray-800 border-b-2 border-white'>
+        <div className='h-full overflow-y-auto bg-[#121421] no-scrollbar'>
+          <div className='fixed px-3 py-3 w-full h-20 bg-[#121421] border-b-2 border-white'>
             <div className='flex justify-between mb-2'>
               <div className='flex gap-5 [&>span]:hover:cursor-pointer'>
                 <span>
