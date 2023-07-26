@@ -5,8 +5,10 @@ import App from '@/App'
 import {
   render,
   MOCK_BOOKS,
-  getFromTestStorage,
-  maxPages as pages
+  getFromReadingListTestStorage,
+  maxPages as pages,
+  resetFiltersStorage,
+  resetReadingListStorage
 } from '@/__tests__/utils'
 
 const setup = () => {
@@ -21,6 +23,8 @@ const setup = () => {
 describe('GIVEN <App />', () => {
   afterEach(() => {
     cleanup()
+    resetFiltersStorage()
+    resetReadingListStorage()
   })
 
   it('SHOULD render the books list properly', () => {
@@ -104,12 +108,12 @@ describe('GIVEN <App />', () => {
 
     expect(btn.innerText).toBe('Quitar de la lista de lectura')
 
-    expect(getFromTestStorage()).toEqual([MOCK_BOOKS[0]])
+    expect(getFromReadingListTestStorage()).toEqual([MOCK_BOOKS[0]])
 
     await userEvent.click(btn)
 
     expect(btn.innerText).toBe('Agregar a lista de lectura')
 
-    expect(getFromTestStorage()).toEqual([])
+    expect(getFromReadingListTestStorage()).toEqual([])
   })
 })

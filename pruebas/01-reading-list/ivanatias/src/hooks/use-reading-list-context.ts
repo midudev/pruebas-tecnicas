@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
-import { useBooks } from './use-books'
+import { useState } from 'react'
+import { useBooks } from '@/hooks/use-books'
+import { useSyncStorage } from '@/hooks/use-sync-storage'
 import type { BooksList } from '@/utils/books'
 
 export function useReadingListContext(storageKey: string) {
@@ -15,20 +16,7 @@ export function useReadingListContext(storageKey: string) {
 
   const { books } = useBooks()
 
-  useEffect(() => {
-    const handleStorageChange = (event: StorageEvent) => {
-      if (event.key === storageKey) {
-        const newReadingList = JSON.parse(event.newValue ?? '[]') as BooksList
-        setReadingList(newReadingList)
-      }
-    }
-
-    window.addEventListener('storage', handleStorageChange)
-
-    return () => {
-      window.removeEventListener('storage', handleStorageChange)
-    }
-  }, [storageKey])
+  useSyncStorage(storageKey, readingList, setReadingList)
 
   const checkIfBookInReadingList = (ISBN: string) => {
     return Boolean(readingList.find(book => book.ISBN === ISBN))

@@ -45,6 +45,7 @@ export default function Filters() {
           id={genreFilterId}
           className='text-zinc-300 cursor-pointer w-full max-w-[185px] py-2 px-1 border border-zinc-500 bg-zinc-600 rounded-md'
           onChange={handleChangeGenre}
+          value={filters.genre}
         >
           {SELECT_OPTIONS.map(option => (
             <option

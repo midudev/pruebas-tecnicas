@@ -56,13 +56,24 @@ export const MOCK_BOOKS = [
   }
 ]
 
-const TEST_STORAGE_KEY = 'test'
+export const TEST_STORAGE_READING_LIST_KEY = 'testReadingList'
+export const TEST_STORAGE_FILTERS_KEY = 'testFilters'
 
 export const minPages = getPagesNumberLimit(MOCK_BOOKS, 'min')
 export const maxPages = getPagesNumberLimit(MOCK_BOOKS, 'max')
 
-export const getFromTestStorage = () => {
-  const value = window.localStorage.getItem(TEST_STORAGE_KEY) as string
+export const resetFiltersStorage = () => {
+  window.localStorage.removeItem(TEST_STORAGE_FILTERS_KEY)
+}
+
+export const resetReadingListStorage = () => {
+  window.localStorage.removeItem(TEST_STORAGE_READING_LIST_KEY)
+}
+
+export const getFromReadingListTestStorage = () => {
+  const value = window.localStorage.getItem(
+    TEST_STORAGE_READING_LIST_KEY
+  ) as string
   return JSON.parse(value) as BooksList
 }
 
@@ -74,8 +85,10 @@ const AllTheProviders = ({ children }: { children: ReactNode }) => (
       minPages
     }}
   >
-    <ReadingListProvider storageKey={TEST_STORAGE_KEY}>
-      <FiltersProvider>{children}</FiltersProvider>
+    <ReadingListProvider storageKey={TEST_STORAGE_READING_LIST_KEY}>
+      <FiltersProvider storageKey={TEST_STORAGE_FILTERS_KEY}>
+        {children}
+      </FiltersProvider>
     </ReadingListProvider>
   </BooksContext.Provider>
 )
