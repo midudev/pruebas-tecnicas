@@ -12,8 +12,8 @@ interface Props {
 export function AvailableBooks({ books, handleBook }: Props) {
 
   const [genres, setGenres] = useState([] as string[]);
-  const [maxPages, setMaxPages] = useState(0);
-  const [minPages, setMinPages] = useState(0);
+  const [maxPages, setMaxPages] = useState(books.length === 0 ? 0 : Math.max(...books.map(({ pages }) => pages)));
+  const [minPages, setMinPages] = useState(books.length === 0 ? 0 : Math.min(...books.map(({ pages }) => pages)));
 
   
   
@@ -41,11 +41,24 @@ export function AvailableBooks({ books, handleBook }: Props) {
   
   useEffect(() => {
 
-    setGenres([...new Set(books.map(({ genre }) => genre))]);
+    // Generos
+    const newGenres = books.length === 0 ? [] : [...new Set(books.map(({ genre }) => genre))];
+    
+    if(newGenres.find((genre) => genre === filterGenre) === undefined) {
+      setFilterGenre('');
+    }
 
-    setMaxPages(Math.max(...books.map(({ pages }) => pages)));
-    setMinPages(Math.min(...books.map(({ pages }) => pages)));
-    setFilterPagesRealTime(maxPages);
+    setGenres(newGenres);
+
+    // Paginas
+    const newMaxPages = books.length === 0 ? 0 : Math.max(...books.map(({ pages }) => pages));
+    const newMinPages = books.length === 0 ? 0 : Math.min(...books.map(({ pages }) => pages));
+    setMaxPages(newMaxPages);
+    setMinPages(newMinPages);
+
+    if(filterPagesRealTime > newMaxPages || filterPagesRealTime < newMinPages) {
+      setFilterPagesRealTime(newMaxPages);
+    }
 
   }, [books]);
   
