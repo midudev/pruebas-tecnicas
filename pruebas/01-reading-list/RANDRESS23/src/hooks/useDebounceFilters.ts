@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { type Library, type FiltersBooks, type Book } from '../models'
+import { type Library, type FiltersBooks, type Book, BOOKS_GENRE_TYPES } from '../models'
 import { type AppStore } from '../redux'
 import { addBookFiltered, removeBookFiltered, sortBooks } from '../redux/states/booksFiltered'
 import { addBookAvailable, removeBookAvailable } from '../redux/states/booksAvailable'
@@ -30,7 +30,7 @@ export const useDebounceFilters = (): UseDebounceFilters => {
     dispatch(removeBookToRead({ bookISBN: book.ISBN }))
     dispatch(addBookAvailable({ newBook: book }))
 
-    if (filtersBooks.genre === book.genre) {
+    if (filtersBooks.genre === book.genre || filtersBooks.genre === BOOKS_GENRE_TYPES.ALL) {
       dispatch(addBookFiltered({ newBook: book }))
     }
   }

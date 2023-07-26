@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { RemoveIcon } from '.'
 import styles from './styles/BookReading.module.css'
 
@@ -9,7 +10,12 @@ interface Props {
 
 export const BookReading: React.FC<Props> = ({ title, cover, handleRemoveBookToRead }) => {
   return (
-    <div className={styles.BookReading}>
+    <motion.div
+      layout
+      initial={{ scale: 0.2, opacity: 0, rotate: -80 }}
+      animate={{ scale: 1, opacity: 1, rotate: 0, transition: { duration: 0.5 } }}
+      className={styles.BookReading}
+    >
       <img
         src={cover}
         alt={title}
@@ -26,6 +32,6 @@ export const BookReading: React.FC<Props> = ({ title, cover, handleRemoveBookToR
       >
         <RemoveIcon className={styles.RemoveIcon} />
       </button>
-    </div>
+    </motion.div>
   )
 }

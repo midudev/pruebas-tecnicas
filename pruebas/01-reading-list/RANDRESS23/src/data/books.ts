@@ -7,3 +7,5 @@ export const FILTERS_BOOKS = {
   genre: 'All',
   pages: 0
 }
+
+export const GENRE_BOOKS = Array.from(new Set(BOOKS.map(({ genre }) => genre)))

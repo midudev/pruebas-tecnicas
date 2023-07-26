@@ -10,9 +10,9 @@ export const CarouselBooks: React.FC = () => {
 
   return (
     <div
-    ref={boxRef}
-    className={styles.CarouselBooks}
-    style={booksToRead.length > 0 ? { cursor: 'grab' } : { cursor: 'default' }}
+      ref={boxRef}
+      className={styles.CarouselBooks}
+      style={booksToRead.length > 0 ? { cursor: 'grab' } : { cursor: 'default' }}
     >
       <motion.div
         drag='x'

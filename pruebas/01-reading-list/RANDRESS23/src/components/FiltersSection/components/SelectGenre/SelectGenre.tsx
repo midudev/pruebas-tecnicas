@@ -3,6 +3,7 @@ import { changeGenre } from '../../../../redux/states/filtersBooks'
 import styles from './styles/SelectGenre.module.css'
 import { type FiltersBooks } from '../../../../models'
 import { type AppStore } from '../../../../redux'
+import { GENRE_BOOKS } from '../../../../data/books'
 
 export const SelectGenre: React.FC = () => {
   const filtersBooks: FiltersBooks = useSelector((state: AppStore) => state.filtersBooks)
@@ -23,10 +24,17 @@ export const SelectGenre: React.FC = () => {
           className={styles.FilterSelect}
         >
           <option value="All" className={styles.FilterOption}>All</option>
-          <option value="Fantasía" className={styles.FilterOption}>Fantasy</option>
-          <option value="Ciencia ficción" className={styles.FilterOption}>Science fiction</option>
-          <option value="Zombies" className={styles.FilterOption}>Zombies</option>
-          <option value="Terror" className={styles.FilterOption}>Horror</option>
+          {
+            GENRE_BOOKS.map(genre => (
+              <option
+                key={genre}
+                value={genre}
+                className={styles.FilterOption}
+              >
+                {genre}
+              </option>
+            ))
+          }
         </select>
       </div>
     </div>

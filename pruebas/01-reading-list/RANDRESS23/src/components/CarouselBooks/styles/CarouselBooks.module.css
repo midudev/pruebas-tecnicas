@@ -4,6 +4,7 @@
   position: relative;
   z-index: 10;
   display: flex;
+  justify-content: flex-end;
   overflow: hidden;
   transform: translateY(10%);
 }

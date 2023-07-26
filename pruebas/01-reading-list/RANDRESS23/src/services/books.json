@@ -231,6 +231,362 @@
           ]
         }
       }
+    },
+    {
+      "book": {
+        "title": "Orgullo y prejuicio",
+        "pages": 432,
+        "genre": "Clásico",
+        "cover": "https://m.media-amazon.com/images/I/51lpxMEhsiL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
+        "synopsis": "La historia de amor entre Elizabeth Bennet y el señor Darcy en la Inglaterra del siglo XIX.",
+        "year": 1813,
+        "ISBN": "978-0141439518",
+        "author": {
+          "name": "Jane Austen",
+          "otherBooks": [
+            "Sentido y sensibilidad",
+            "Emma",
+            "Mansfield Park"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Los juegos del hambre",
+        "pages": 374,
+        "genre": "Distopía",
+        "cover": "https://m.media-amazon.com/images/I/41d34PS7J5L._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
+        "synopsis": "En un futuro distópico, Katniss Everdeen lucha por sobrevivir en un reality show mortal.",
+        "year": 2008,
+        "ISBN": "978-0439023481",
+        "author": {
+          "name": "Suzanne Collins",
+          "otherBooks": [
+            "En llamas",
+            "Sinsajo",
+            "Balada de pájaros cantores y serpientes"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Cien años de soledad",
+        "pages": 417,
+        "genre": "Realismo mágico",
+        "cover": "https://m.media-amazon.com/images/I/51Mz+wLs5gL._SX371_BO1,204,203,200_.jpg",
+        "synopsis": "La historia de la familia Buendía a lo largo de varias generaciones en Macondo.",
+        "year": 1967,
+        "ISBN": "978-0307474728",
+        "author": {
+          "name": "Gabriel García Márquez",
+          "otherBooks": [
+            "El otoño del patriarca",
+            "El amor en los tiempos del cólera",
+            "Crónica de una muerte anunciada"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Los pilares de la Tierra",
+        "pages": 976,
+        "genre": "Histórico",
+        "cover": "https://m.media-amazon.com/images/I/51g-BgiY9KL.jpg",
+        "synopsis": "La construcción de una catedral en la Inglaterra medieval es el telón de fondo para esta epopeya histórica.",
+        "year": 1989,
+        "ISBN": "978-0451225245",
+        "author": {
+          "name": "Ken Follett",
+          "otherBooks": [
+            "Un mundo sin fin",
+            "La caída de los gigantes",
+            "El umbral de la eternidad"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "La sombra del viento",
+        "pages": 487,
+        "genre": "Misterio",
+        "cover": "https://m.media-amazon.com/images/I/513aLEseZiL.jpg",
+        "synopsis": "Un joven busca el rastro de un autor desconocido mientras descubre oscuros secretos en Barcelona.",
+        "year": 2001,
+        "ISBN": "978-8408163382",
+        "author": {
+          "name": "Carlos Ruiz Zafón",
+          "otherBooks": [
+            "El juego del ángel",
+            "El prisionero del cielo",
+            "El laberinto de los espíritus"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Las aventuras de Sherlock Holmes",
+        "pages": 480,
+        "genre": "Detective",
+        "cover": "https://m.media-amazon.com/images/I/51NAS1fIz8L.jpg",
+        "synopsis": "Recopilación de casos del famoso detective Sherlock Holmes y su compañero Watson.",
+        "year": 1892,
+        "ISBN": "978-1539679752",
+        "author": {
+          "name": "Arthur Conan Doyle",
+          "otherBooks": [
+            "El sabueso de los Baskerville",
+            "El signo de los cuatro",
+            "El valle del miedo"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "El alquimista",
+        "pages": 197,
+        "genre": "Espiritualidad",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/81l3rZK4lnL.jpg",
+        "synopsis": "Santiago emprende un viaje en busca de un tesoro y descubre lecciones espirituales en el camino.",
+        "year": 1988,
+        "ISBN": "978-0062511409",
+        "author": {
+          "name": "Paulo Coelho",
+          "otherBooks": [
+            "Brida",
+            "Veronika decide morir",
+            "Once minutos"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Los miserables",
+        "pages": 1488,
+        "genre": "Drama",
+        "cover": "https://m.media-amazon.com/images/I/613FCU-5u-L.jpg",
+        "synopsis": "La historia de Jean Valjean y su lucha por la redención en la Francia del siglo XIX.",
+        "year": 1862,
+        "ISBN": "978-8423338642",
+        "author": {
+          "name": "Victor Hugo",
+          "otherBooks": [
+            "El jorobado de Notre-Dame",
+            "Los trabajadores del mar",
+            "Nuestra Señora de París"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "La ladrona de libros",
+        "pages": 560,
+        "genre": "Histórico",
+        "cover": "https://m.media-amazon.com/images/I/51lJkjllUpL.jpg",
+        "synopsis": "La vida de Liesel Meminger, una niña que roba libros en la Alemania nazi, contada por la Muerte.",
+        "year": 2005,
+        "ISBN": "978-0307475732",
+        "author": {
+          "name": "Markus Zusak",
+          "otherBooks": [
+            "El puente de Clay",
+            "Cartas cruzadas",
+            "Bajo la misma estrella"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Jurassic Park",
+        "pages": 448,
+        "genre": "Ciencia ficción",
+        "cover": "https://m.media-amazon.com/images/I/51CPc-I0+vL.jpg",
+        "synopsis": "Un parque temático con dinosaurios se sale de control y pone en peligro a los visitantes.",
+        "year": 1990,
+        "ISBN": "978-0345370778",
+        "author": {
+          "name": "Michael Crichton",
+          "otherBooks": [
+            "El mundo perdido",
+            "Parque Jurásico III",
+            "Congo"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Los hombres que no amaban a las mujeres",
+        "pages": 688,
+        "genre": "Thriller",
+        "cover": "https://m.media-amazon.com/images/I/414FoP4mPIL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
+        "synopsis": "El periodista Mikael Blomkvist investiga la desaparición de una joven con la ayuda de Lisbeth Salander.",
+        "year": 2005,
+        "ISBN": "978-8423341536",
+        "author": {
+          "name": "Stieg Larsson",
+          "otherBooks": [
+            "La chica que soñaba con una cerilla y un bidón de gasolina",
+            "La chica que jugaba con fuego",
+            "Lo que no te mata te hace más fuerte"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "El retrato de Dorian Gray",
+        "pages": 288,
+        "genre": "Clásico",
+        "cover": "https://m.media-amazon.com/images/I/41HYX7IBLlL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
+        "synopsis": "El retrato de un joven se convierte en un reflejo de sus acciones inmorales mientras él mantiene su juventud eterna.",
+        "year": 1890,
+        "ISBN": "978-8491050631",
+        "author": {
+          "name": "Oscar Wilde",
+          "otherBooks": [
+            "El fantasma de Canterville",
+            "El príncipe feliz y otros cuentos",
+            "De profundis"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "El nombre del viento",
+        "pages": 864,
+        "genre": "Fantasía",
+        "cover": "https://m.media-amazon.com/images/I/6195Z6SDAkL.jpg",
+        "synopsis": "La vida de Kvothe, un músico y mago legendario, narrada por él mismo.",
+        "year": 2007,
+        "ISBN": "978-8401352105",
+        "author": {
+          "name": "Patrick Rothfuss",
+          "otherBooks": [
+            "El temor de un hombre sabio",
+            "Las puertas de piedra"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "El perfume",
+        "pages": 304,
+        "genre": "Histórico",
+        "cover": "https://m.media-amazon.com/images/I/51gpKPmUl9L.jpg",
+        "synopsis": "La historia de Jean-Baptiste Grenouille, un asesino en serie obsesionado con el olor humano.",
+        "year": 1985,
+        "ISBN": "978-8432217431",
+        "author": {
+          "name": "Patrick Süskind",
+          "otherBooks": [
+            "La paloma",
+            "La historia del señor Sommer",
+            "Tres historias y una reflexión"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Memorias de una geisha",
+        "pages": 448,
+        "genre": "Histórico",
+        "cover": "https://m.media-amazon.com/images/I/41UNVRL5ZkL.jpg",
+        "synopsis": "La historia de la geisha Sayuri desde su infancia hasta la Segunda Guerra Mundial.",
+        "year": 1997,
+        "ISBN": "978-0307476470",
+        "author": {
+          "name": "Arthur Golden",
+          "otherBooks": []
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "El código Da Vinci",
+        "pages": 592,
+        "genre": "Misterio",
+        "cover": "https://m.media-amazon.com/images/I/51Z2zazZG7L.jpg",
+        "synopsis": "Un profesor de simbología y una criptóloga siguen pistas en busca de un secreto milenario.",
+        "year": 2003,
+        "ISBN": "978-1400074616",
+        "author": {
+          "name": "Dan Brown",
+          "otherBooks": [
+            "Ángeles y demonios",
+            "El símbolo perdido",
+            "Inferno"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Los cuatro acuerdos",
+        "pages": 160,
+        "genre": "Autoayuda",
+        "cover": "https://m.media-amazon.com/images/I/61ZFU2Eao7L.jpg",
+        "synopsis": "Cuatro principios toltecas para alcanzar la libertad personal y la paz interior.",
+        "year": 1997,
+        "ISBN": "978-1878424310",
+        "author": {
+          "name": "Don Miguel Ruiz",
+          "otherBooks": [
+            "La maestría del amor",
+            "La voz del conocimiento",
+            "El quinto acuerdo"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Mujercitas",
+        "pages": 759,
+        "genre": "Clásico",
+        "cover": "https://m.media-amazon.com/images/I/61OFkznf0jL.jpg",
+        "synopsis": "La vida de las cuatro hermanas March mientras crecen y enfrentan desafíos en la Guerra Civil estadounidense.",
+        "year": 1868,
+        "ISBN": "978-1548617024",
+        "author": {
+          "name": "Louisa May Alcott",
+          "otherBooks": [
+            "Aquellas mujercitas",
+            "Hombrecitos",
+            "Los muchachos de Jo"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "La naranja mecánica",
+        "pages": 213,
+        "genre": "Distopía",
+        "cover": "https://m.media-amazon.com/images/I/51pSm6ytscL.jpg",
+        "synopsis": "La historia de Alex, un joven delincuente, y su tratamiento experimental para corregir su conducta violenta.",
+        "year": 1962,
+        "ISBN": "978-6073103407",
+        "author": {
+          "name": "Anthony Burgess",
+          "otherBooks": [
+            "Tiempo naranja",
+            "Poder naranja",
+            "El querido tonto"
+          ]
+        }
+      }
     }
   ]
 }

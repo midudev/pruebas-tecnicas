@@ -3,3 +3,16 @@
   margin: 0;
   padding: 0;
 }
+
+html::-webkit-scrollbar {
+  width: .7rem;
+}
+
+html::-webkit-scrollbar-track {
+  background: #2c1810;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #daaa63;
+  border-radius: 5rem;
+}
