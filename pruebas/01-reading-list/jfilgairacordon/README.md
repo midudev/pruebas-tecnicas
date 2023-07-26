@@ -27,7 +27,7 @@ No ha dado tiempo a todo, pero se ha intentado. 😀😀 La próxima prueba a ve
 
 - [ ] Despliegue: La aplicación debe estar desplegada en algún servicio de hosting gratuito (Netlify, Vercel, Firebase, etc) y debe ser accesible a través de una URL pública. Indica la URL en el README.
 
-- [ ] Test: La aplicación debe tener AL MENOS un test. Haz el test que consideres más importante para tu aplicación.
+- [😎] Test: La aplicación debe tener AL MENOS un test. Haz el test que consideres más importante para tu aplicación.
 
 - [😎] Implementar una funcionalidad de búsqueda en la lista de libros disponibles.
 
