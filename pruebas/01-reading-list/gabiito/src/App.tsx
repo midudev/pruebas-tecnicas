@@ -7,6 +7,8 @@ import { Drawer, Modal } from "@/components";
 import { Home } from "@/pages";
 import { ReadingListKey } from "@/constants";
 import { LocalStore } from "@/types";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { CgSpinner } from "react-icons/cg";
 
 function App() {
@@ -49,6 +51,14 @@ function App() {
       <BrowserRouter>
         <Drawer />
         <Modal />
+        <ToastContainer 
+          position="bottom-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={true}
+          closeOnClick={true}
+          pauseOnHover={false}
+        />
         <RootLayout>
           <RoutesWithNotFound>
             <Route index element={<Home />} />
