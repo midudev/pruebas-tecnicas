@@ -5,7 +5,7 @@
 
 ## Acerca del Proyecto
 
-Este proyecto es una aplicación web de libros construida con Next.js 13 y App router para el canal de Twitch, [midudev](https://www.twitch.tv/midudev). La aplicación permite a los usuarios agregar libros a una lista de lectura, buscar libros y filtrar por géneros. 
+Este proyecto es una aplicación web de libros construida con Next.js 13 y App router para el canal de Twitch, [midudev](https://www.twitch.tv/midudev) como reto de prueba prueba técnica. La aplicación permite a los usuarios agregar libros a una lista de lectura, buscar libros y filtrar por géneros. 
 
 
 La aplicación se encuentra alojada en: [https://bookbuddy-one.vercel.app/](https://bookbuddy-one.vercel.app/)
