@@ -2,7 +2,11 @@
 
 ### ReadSome
 
-<img src="https://i.imgur.com/dgQzo1B.png" width="300">
+<img src="https://i.imgur.com/dgQzo1B.png" width="100%">
+
+### Tecnologias
+
+Para este proyecto use `React JS`, `Typescript`, `CSS3` y `vitest`
 
 ### Funcionalidades Implementadas
 
@@ -31,3 +35,7 @@ Permitir la reorganización de los libros en la lista de lectura por prioridad.
 2. [x] **Filtro por paginas**: Añade un nuevo filtro para filtrar los libros por número de páginas.
 
 3. [x] **Diseño responsive**
+
+### Screenshots
+
+<img src="https://i.imgur.com/UumSsa0.png" width="100%">
