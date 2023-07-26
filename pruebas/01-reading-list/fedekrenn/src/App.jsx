@@ -34,6 +34,23 @@ function App () {
   }, [])
 
   useEffect(() => {
+    const handleStorage = (e) => {
+      if (e.key === 'books') {
+        setBooks(JSON.parse(e.newValue))
+      }
+      if (e.key === 'readingList') {
+        setReadingList(JSON.parse(e.newValue))
+      }
+    }
+
+    window.addEventListener('storage', handleStorage)
+
+    return () => {
+      window.removeEventListener('storage', handleStorage)
+    }
+  }, [])
+
+  useEffect(() => {
     handleFilter(baseBooks.current)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [genre, pages])
