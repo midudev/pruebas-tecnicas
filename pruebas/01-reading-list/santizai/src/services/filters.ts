@@ -1,4 +1,4 @@
-import type { Library } from "../types/interfaces";
+import { Library } from "../types/interfaces";
 
 // Toma un array de ids para filtrar los libros que no esten en la lista de lectura pasada y los que esten, para luego devolver un objeto para posteriormente elegir lo que se necesita
 export const filterForId = (ids: string[], books: Library[]) => {
