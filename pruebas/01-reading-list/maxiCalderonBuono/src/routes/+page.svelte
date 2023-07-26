@@ -1,7 +1,7 @@
 <script lang="ts">
 	import libraryData from '../lib/data/books.json';
 	import type { Library, LibraryElement } from '../types';
-	import { filter, localStorageStore } from '@skeletonlabs/skeleton';
+	import { localStorageStore } from '@skeletonlabs/skeleton';
 	import { filterByPages, filterByCategory } from '$lib/helpers/filters';
 	import type { Writable } from 'svelte/store';
 	import { goto } from '$app/navigation';
@@ -65,7 +65,6 @@
 		];
 	}
 
-	let show = 'library ';
 	function removeFromWishlist(id: string | CustomEvent<{ id: string }>) {
 		let bookToRemove: string | CustomEvent<{ id: string }>;
 
@@ -99,6 +98,8 @@
 	afterUpdate(() => {
 		updateFilteredBooks();
 	});
+
+	let show: string = 'library';
 </script>
 
 <svelte:head>
@@ -132,14 +133,14 @@
 	/>
 
 	<section class="my-10 mx-auto max-w-5xl w-full">
-		<header class="flex gap-3 items-center mb-10 justify-between">
-			<h1 class="font-bold text-5xl flex gap-3 items-center">
+		<header class="flex gap-3 items-center mb-10 justify-between mx-5 lg:mx-0">
+			<h1 class="font-bold text-xl lg:text-5xl flex gap-3 items-center">
 				{show === 'library' ? ' Nuestra librería' : 'Lista de lectura'}<Icon
 					icon="ion:book-outline"
 				/>
 			</h1>
 			<RadioGroup
-				active="variant-filled-primary"
+				active="bg-lime-300"
 				hover="hover:bg-lime-300"
 				background="bg-slate-200"
 				class="text-gray-900 font-bold"
@@ -147,21 +148,21 @@
 				<RadioItem
 					class={`${show === 'library' ? 'bg-lime-300' : ''}`}
 					bind:group={show}
-					name="justify"
+					name="show"
 					on:change={() => (show = 'library')}
-					value={0}>Librería</RadioItem
+					value={'library'}>Librería</RadioItem
 				>
 				<RadioItem
 					class={`${show === 'list' ? 'bg-lime-300' : ''}`}
 					bind:group={show}
-					name="justify"
+					name="show"
 					on:change={() => (show = 'list')}
-					value={1}>Mi lista</RadioItem
+					value={'list'}>Mi lista</RadioItem
 				>
 			</RadioGroup>
 		</header>
 		{#if $initialDataStore.renderlist.length === 0}
-			<article class="flex flex-col items-center justify-center gap-5">
+			<article class="flex flex-col items-center justify-center gap-5 mx-5 lg:mx-0">
 				<img class="w-[600px]" src="/images/library.png" alt="Imagen de wishlist" />
 				<p class="font-bold text-3xl text-center">No hay libros para mostrar</p>
 
@@ -176,7 +177,6 @@
 			<div
 				class="grid items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
 				in:fly={{ y: 200, duration: 500 }}
-				out:fly={{ y: 0, duration: 500 }}
 			>
 				{#each $initialDataStore.renderlist as { book }}
 					{#key book.ISBN}

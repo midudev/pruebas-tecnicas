@@ -15,7 +15,14 @@
 	$: dispatch('change', { value });
 </script>
 
-<RangeSlider name="range-slider" bind:value max={maxPage} min={minPage} step={1} class="w-1/3">
+<RangeSlider
+	name="range-slider"
+	bind:value
+	max={maxPage}
+	min={minPage}
+	step={1}
+	class="w-full lg:w-1/3"
+>
 	<div class="flex justify-between items-center">
 		<div class="font-bold text-xl">Pages:</div>
 		<div class=" text-lime-200 font-bold text-xl">{value}</div>

@@ -64,9 +64,9 @@
 	});
 </script>
 
-<section class="my-20 mx-auto max-w-5xl w-full">
+<section class="my-20 mx-auto max-w-5xl w-full" in:fly={{ y: 200, duration: 500 }}>
 	{#if wishlist.length === 0}
-		<article class="flex flex-col items-center justify-center gap-5">
+		<article class="flex flex-col items-center justify-center gap-5 mx-5 lg:mx-0">
 			<img class="w-[500px]" src="/images/wishlist.png" alt="Imagen de wishlist" />
 			<p class="font-bold text-2xl text-center">Todavía no has agregado ningún libro</p>
 
