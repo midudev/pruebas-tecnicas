@@ -10,11 +10,8 @@ export {
   createList,
   renameList,
   deleteList,
-  existsList,
-  getList,
 
   addBook,
-  removeBook,
-  hasBook
+  removeBook
 
 } from './store'
