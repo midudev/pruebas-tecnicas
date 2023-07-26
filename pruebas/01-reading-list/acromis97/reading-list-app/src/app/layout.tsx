@@ -28,14 +28,14 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={shantell_sans.className}>
-				<StoreListProvider>
-					<GenreFilterProvider>
-						<ReadingListProvider>
+				<ReadingListProvider>
+					<StoreListProvider>
+						<GenreFilterProvider>
 							<Navbar />
 							{children}
-						</ReadingListProvider>
-					</GenreFilterProvider>
-				</StoreListProvider>
+						</GenreFilterProvider>
+					</StoreListProvider>
+				</ReadingListProvider>
 			</body>
 		</html>
 	);
