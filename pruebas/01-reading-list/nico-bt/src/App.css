@@ -3,6 +3,11 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  position: relative;
+}
+
+li {
+  list-style: none;
 }
 
 img {
@@ -10,13 +15,53 @@ img {
   max-width: 100%;
 }
 
+.readingList-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  padding: 2px;
+  z-index: 1;
+}
+.readingList-container ul {
+  margin: 8px;
+  gap: 1rem;
+  display: flex;
+  /* flex-wrap: wrap; */
+  height: 175px;
+}
+.readingList-container li {
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gainsboro;
+  color: black;
+}
+.close-btn:hover {
+  background-color: rgb(245, 50, 0);
+  color: white;
+}
+
 .booklist-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1rem;
+  padding-top: 250px;
 }
 
 .booklist-container > li {
-  list-style: none;
   max-height: 320px;
+  cursor: pointer;
 }
