@@ -30,7 +30,7 @@ const libraryHook = () => {
 
         setUserList(v => {
             const newState =  {...v,library:listFiltered()}
-            localStorage.setItem('state',JSON.stringify({userList:newState,genreAndPages}));
+            localStorage.setItem('userList',JSON.stringify(newState));
             return newState
         });
 
