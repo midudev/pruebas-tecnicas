@@ -64,6 +64,7 @@ export const Filters = ({ setBooks }) => {
             book.author.name.toLowerCase().includes(value.toLowerCase()),
         ),
       );
+    setBooks(filtred);
   };
 
   return (
