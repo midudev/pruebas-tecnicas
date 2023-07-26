@@ -23,7 +23,7 @@ export const CategoryFilter = ({ filterIcon }) => {
           onChange={handleSelectChange}
           className={style.selectCategoryFilter}
         >
-          <option value="all">All</option>
+          <option value="all">Todas</option>
 
           {allCategories.map((category) => (
             <option value={category} key={category}>

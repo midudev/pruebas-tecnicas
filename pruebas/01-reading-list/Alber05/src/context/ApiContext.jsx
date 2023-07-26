@@ -73,11 +73,11 @@ export const ApiContext = ({ children }) => {
 
   // Efecto para sincronizar cambios en el localStorage con el estado del componente
   useEffect(() => {
-    const handleStorageChange = (event) => {
-      if (event.key === "storageAllBooks") {
-        setAllBooks(JSON.parse(event.newValue));
-      } else if (event.key === "storageLibraryBooks") {
-        setLibraryBooks(JSON.parse(event.newValue));
+    const handleStorageChange = (e) => {
+      if (e.key === "storageAllBooks") {
+        setAllBooks(JSON.parse(e.newValue));
+      } else if (e.key === "storageLibraryBooks") {
+        setLibraryBooks(JSON.parse(e.newValue));
       }
     };
 
