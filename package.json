@@ -1,0 +1,21 @@
+{
+  "name": "pruebas-tecnicas",
+  "version": "1.0.0",
+  "description": "Pruebas técnicas de programación para desarrolladores frontend y backend.",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd web && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/midudev/pruebas-tecnicas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/midudev/pruebas-tecnicas/issues"
+  },
+  "homepage": "https://github.com/midudev/pruebas-tecnicas#readme"
+}
