@@ -138,6 +138,7 @@
 					<BookCard
 						cta="Agregar a lista de lectura"
 						{book}
+						key={book.ISBN}
 						on:update={() => addToWishlist(book.ISBN)}
 						on:navigate={() => goToDetail(book.title)}
 					/>

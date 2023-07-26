@@ -90,6 +90,7 @@
 			<BookCard
 				onDragStyles={item.id === itemSelected ? true : false}
 				{isDragabble}
+				key={item.id}
 				on:long={() => startDrag(item.id)}
 				cta="Eliminar de la lista"
 				book={{ ...item, ISBN: item.id }}
