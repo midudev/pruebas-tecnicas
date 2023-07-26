@@ -4,6 +4,7 @@
 	import libraryData from '../lib/data/books.json';
 	import type { Library } from '../types';
 	import Icon from '@iconify/svelte';
+	import { error } from '@sveltejs/kit';
 
 	interface searchResults {
 		title: string;
@@ -47,7 +48,9 @@
 	export let placeholder: string;
 
 	function submitSearch() {
-		goto('/search/' + searchValue.toLowerCase());
+		if (searchValue) {
+			goto('/search/' + searchValue.toLowerCase());
+		}
 	}
 
 	let highlighted: number = -1;

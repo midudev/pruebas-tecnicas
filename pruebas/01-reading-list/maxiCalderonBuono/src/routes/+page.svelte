@@ -25,7 +25,6 @@
 		renderlist: LibraryElement[];
 		filter: string;
 		pages: number;
-		show: string;
 	}
 
 	const initialDataStore: Writable<initialData> = localStorageStore('initialDataStore', {
@@ -33,8 +32,7 @@
 		wishlist: [],
 		renderlist: library,
 		filter: 'Todos',
-		pages: maxPage,
-		show: 'library'
+		pages: maxPage
 	});
 
 	function handleCategory(e: CustomEvent<{ filter: string }>) {
@@ -67,6 +65,7 @@
 		];
 	}
 
+	let show = 'library ';
 	function removeFromWishlist(id: string | CustomEvent<{ id: string }>) {
 		let bookToRemove: string | CustomEvent<{ id: string }>;
 
@@ -108,7 +107,7 @@
 	<link rel="icon" href="/favicon.ico" />
 </svelte:head>
 
-<svelte:window
+<!-- <svelte:window
 	on:storage={(event) => {
 		console.log(event);
 		if (event.key === 'initialDataStore') {
@@ -119,7 +118,7 @@
 			}
 		}
 	}}
-/>
+/> -->
 
 <Header />
 
@@ -135,7 +134,7 @@
 	<section class="my-10 mx-auto max-w-5xl w-full">
 		<header class="flex gap-3 items-center mb-10 justify-between">
 			<h1 class="font-bold text-5xl flex gap-3 items-center">
-				{$initialDataStore.show === 'library' ? ' Nuestra librería' : 'Lista de lectura'}<Icon
+				{show === 'library' ? ' Nuestra librería' : 'Lista de lectura'}<Icon
 					icon="ion:book-outline"
 				/>
 			</h1>
@@ -146,17 +145,17 @@
 				class="text-gray-900 font-bold"
 			>
 				<RadioItem
-					class={`${$initialDataStore.show === 'library' ? 'bg-lime-300' : ''}`}
-					bind:group={$initialDataStore.show}
+					class={`${show === 'library' ? 'bg-lime-300' : ''}`}
+					bind:group={show}
 					name="justify"
-					on:change={() => ($initialDataStore.show = 'library')}
+					on:change={() => (show = 'library')}
 					value={0}>Librería</RadioItem
 				>
 				<RadioItem
-					class={`${$initialDataStore.show === 'list' ? 'bg-lime-300' : ''}`}
-					bind:group={$initialDataStore.show}
+					class={`${show === 'list' ? 'bg-lime-300' : ''}`}
+					bind:group={show}
 					name="justify"
-					on:change={() => ($initialDataStore.show = 'list')}
+					on:change={() => (show = 'list')}
 					value={1}>Mi lista</RadioItem
 				>
 			</RadioGroup>
@@ -173,7 +172,7 @@
 				>
 			</article>
 		{/if}
-		{#if $initialDataStore.show === 'library'}
+		{#if show === 'library'}
 			<div
 				class="grid items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
 				in:fly={{ y: 200, duration: 500 }}
@@ -192,7 +191,7 @@
 			</div>
 		{/if}
 
-		{#if $initialDataStore.show === 'list'}
+		{#if show === 'list'}
 			<WishList
 				wishlist={$initialDataStore.wishlist}
 				on:navigate={goToDetail}

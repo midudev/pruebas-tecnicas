@@ -8,7 +8,7 @@
 	// export let wishlist: LibraryElement[];
 </script>
 
-<header class="w-full h-20 py-4 px-8 shadow-lg flex items-center justify-between">
+<header class="w-full h-20 py-4 px-12 shadow-lg flex items-center justify-between">
 	<h1
 		class="bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone font-bold text-4xl"
 	>
