@@ -1,4 +1,6 @@
-# Deployment In Vercel
+# JavaScript Publishers
+
+## Deployment In Vercel
 
 [Link to the website displayed in Vercel](https://javascript-publishers.vercel.app/)
 
