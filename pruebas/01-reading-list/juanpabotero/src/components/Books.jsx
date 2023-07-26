@@ -1,9 +1,7 @@
 import { useReadingList } from '../hooks/useReadingList';
-import { library } from '../mocks/books.json';
 import { AddBookIcon, BookAddedIcon } from './Icons';
 
-/* eslint-disable react/prop-types */
-export function Books() {
+export function Books({ books }) {
   const { addToReadingList, removeFromReadingList, readingList } =
     useReadingList();
 
@@ -13,7 +11,7 @@ export function Books() {
 
   return (
     <section className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      {library.map(({ book }) => {
+      {books.map(({ book }) => {
         const isBookInReadingList = checkBookInReadingList(book);
 
         return (
@@ -22,7 +20,8 @@ export function Books() {
             className="grid relative justify-center justify-items-center content-start rounded p-4 m-4 max-w-[256px]"
           >
             <button
-              className="absolute top-0 right-0 rounded-full bg-white p-1 border border-black"
+              className="absolute top-0 right-0 rounded-full bg-gray-900 text-yellow-500 p-1 
+              border border-yellow-500"
               onClick={() => {
                 isBookInReadingList
                   ? removeFromReadingList(book)

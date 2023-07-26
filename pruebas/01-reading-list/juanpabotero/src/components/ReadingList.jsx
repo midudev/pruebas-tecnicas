@@ -1,17 +1,21 @@
 /* eslint-disable react/prop-types */
-import './Cart.css';
+import './ReadingList.css';
 
 import { useId } from 'react';
-import { ReadingListIcon } from './Icons.jsx';
+import { ReadingListIcon, RemoveBookIcon } from './Icons.jsx';
 import { useReadingList } from '../hooks/useReadingList';
 
 function Book({ cover, title, removeFromReadingList }) {
   return (
-    <li className="border-b-[1px] border-b-white pb-4 mb-4 grid gap-2 justify-items-center">
-      <img className="w-32 aspect-auto" src={cover} alt={title} />
+    <li className="border-b-[1px] border-b-white pb-4 mb-5 grid gap-2 justify-items-center relative">
+      <img className="w-28 aspect-auto" src={cover} alt={title} />
       <p className="text-white text-center">{title}</p>
-      <button className="bg-gray-300 px-2 rounded" onClick={removeFromReadingList}>
-        Remover de la lista
+      <button
+        className="remove-button-item bg-gray-50 text-red-600 p-[2px] rounded-full absolute 
+        -top-2 right-1 border border-black"
+        onClick={removeFromReadingList}
+      >
+        <RemoveBookIcon  />
       </button>
     </li>
   );
@@ -28,6 +32,7 @@ export function ReadingList() {
         <ReadingListIcon />
       </label>
       <input id={itemCheckboxId} type="checkbox" hidden />
+      <div className="reading-list-count">{readingList.length}</div>
 
       <aside className="reading-list">
         <ul>
@@ -40,8 +45,11 @@ export function ReadingList() {
           ))}
         </ul>
 
-        <button className='justify-self-center mt-6' onClick={clearReadingList}>
-          <ReadingListIcon />
+        <button
+          className="justify-self-center mt-6 text-white bg-red-800 py-1 px-2 rounded"
+          onClick={clearReadingList}
+        >
+          Limpiar lista
         </button>
       </aside>
     </>

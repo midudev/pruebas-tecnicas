@@ -1,7 +1,7 @@
 export function ReadingListIcon() {
   return (
     <svg
-      className="text-white w-10 h-10"
+      className="text-white"
       xmlns="http://www.w3.org/2000/svg"
       width="32"
       height="32"
@@ -44,6 +44,22 @@ export function BookAddedIcon() {
       <path
         fill="currentColor"
         d="m12 18l-4.2 1.8q-1 .425-1.9-.163T5 17.976V5q0-.825.588-1.413T7 3h7q-.5.75-.75 1.438T13 6q0 1.8 1.137 3.175T17 10.9q.575.075 1 .075t1-.075v7.075q0 1.075-.9 1.663t-1.9.162L12 18Zm5.825-11.825L20.65 3.35q.3-.3.713-.3t.712.3q.3.3.3.712t-.3.713L18.525 8.3q-.3.3-.7.3t-.7-.3L15.7 6.875q-.275-.275-.275-.687t.275-.713q.3-.3.713-.3t.712.3l.7.7Z"
+      />
+    </svg>
+  );
+}
+
+export function RemoveBookIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="32"
+      height="32"
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill="currentColor"
+        d="M16 7q-.425 0-.713-.288T15 6q0-.425.288-.713T16 5h4q.425 0 .713.288T21 6q0 .425-.288.713T20 7h-4Zm-4 11l-4.2 1.8q-1 .425-1.9-.163T5 17.976V5q0-.825.588-1.413T7 3h7q-.5.75-.75 1.438T13 6q0 1.8 1.137 3.175T17 10.9q.575.075 1 .075t1-.075v7.075q0 1.075-.9 1.663t-1.9.162L12 18Z"
       />
     </svg>
   );

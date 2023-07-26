@@ -1,7 +1,7 @@
 .reading-list {
   align-content: start;
   align-items: start;
-  background: #000;
+  background: #131313;
   display: none;
   justify-content: center;
   overflow-y: scroll;
@@ -11,22 +11,53 @@
   top: 0px;
   width: 250px;
 }
+.reading-list ul {
+  margin-top: 40px;
+}
 
 .reading-list-button {
   align-items: center;
-  background: #09f;
-  border-radius: 9999px;
+  background: rgb(234, 178, 8);
+  border-radius: 4px 0 0 4px;
+  color: black;
   cursor: pointer;
   display: flex;
   height: 32px;
   justify-content: center;
   padding: 4px;
   position: fixed;
-  right: 8px;
-  top: 8px;
+  right: 36px;
+  top: 14px;
   transition: all 0.3s ease;
   width: 32px;
   z-index: 9999;
+}
+
+.reading-list-button svg {
+  color: black;
+
+}
+
+.reading-list-count {
+  align-items: center;
+  background: rgb(234 179 8);
+  border-radius: 0 4px 4px 0;
+  color: black;
+  display: flex;
+  font-weight: bold;
+  height: 32px;
+  justify-content: center;
+  padding: 4px;
+  position: fixed;
+  right: 12px;
+  top: 14px;
+  width: 24px;
+  z-index: 9999;
+}
+
+.remove-button-item svg {
+  width: 24px;
+  height: 24px;
 }
 
 .reading-list-button:hover {
