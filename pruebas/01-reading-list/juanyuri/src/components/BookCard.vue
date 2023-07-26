@@ -4,11 +4,7 @@
             <img :src="book.cover" width="250" height="420" />
             <div class="BookCard-Overlay">
                 <div class="BookCard-Overlay-Text">
-                    <StarIcon />
-                    <StarIcon />
-                    <!-- <img src="./icons/star.svg" alt="" width="100" height="100"> -->
-                    <!-- <img src="./icons/bookmark.svg" alt="" width="100" height="100"> -->
-                    <!-- <p>{{ book.author.name }}</p> -->
+                    <p>{{ book.pages }} páginas</p>
                 </div>
             </div>
         </div>
@@ -18,14 +14,14 @@
         </div>
     </div>
 </template>
-  
+
 <script setup>
 import StarIcon from '@/components/icons/StarIcon.vue'
 const props = defineProps({
     book: { type: Object, required: true }
 })
 </script>
-  
+
 <style scoped>
 .BookCard {
     display: flex;
@@ -43,16 +39,19 @@ const props = defineProps({
     overflow: hidden;
     width: var(--image-width);
     height: var(--image-height);
+    filter: brightness(100%);
+    transition: filter 0.5s ease-in-out;
 }
+
+.BookCard:hover .BookCard-Image img{
+    filter: brightness(60%);
+   
+}
+
 
 .BookCard-Image img {
     object-fit: cover;
     transition: transform 0.5s ease-in-out;
-}
-
-.BookCard:hover .BookCard-Image img {
-    transform: scale(1.1);
-    filter: grayscale(80%);
 }
 
 .BookCard-Overlay {
@@ -70,6 +69,11 @@ const props = defineProps({
     opacity: 1;
 }
 
+.BookCard:hover .BookCard-Image img {
+    /* transform: scale(1.1); */
+    filter: grayscale(100%);
+}
+
 .BookCard-Overlay-Text {
     position: absolute;
     top: 50%;
@@ -80,10 +84,9 @@ const props = defineProps({
 }
 
 .BookCard-Overlay-Text p {
-    margin: 0;
-    font-size: var(--overlay-text-font-size);
-    font-weight: var(--overlay-text-font-weight);
-    color: var(--overlay-text-color-highlight);
+    color:white;
+    font-size: var(--title-font-size);
+    font-weight: var(--title-font-weight);
 }
 
 .BookCard-Details {
@@ -105,4 +108,5 @@ const props = defineProps({
     font-size: var(--author-name-font-size);
     max-width: 100%;
 }
+
 </style>
