@@ -48,6 +48,7 @@ export default function App() {
     ]);
   }
 
+
   const quitCard = ISBN => {
     const updateBookToRead = listReading.filter(list => list.book.ISBN === ISBN);
     const updatedCard = listReading.filter(list => list.book.ISBN != ISBN);
@@ -61,12 +62,13 @@ export default function App() {
       <Outlet
         context={
           [
+            books,
             addListReading,
             listReading,
-            setListReading,
             quitCard,
             booksAvailable,
-            setBookSelect
+            bookSelect,
+            setBooksAvailable
           ]
         }
       />
