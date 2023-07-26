@@ -35,3 +35,7 @@ You can un `pnpm run test` and `pnpm run test:watch` to execute the unit tests [
 ## Build
 
 Run `pnpm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Link to deployed version
+
+https://my-reading-list-app.netlify.app/
