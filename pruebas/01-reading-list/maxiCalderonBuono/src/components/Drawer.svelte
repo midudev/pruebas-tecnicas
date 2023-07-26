@@ -11,8 +11,12 @@
 		rounded: 'rounded-br-xl rounded-tr-xl'
 	};
 
+	function trigger(position: 'left' | 'top' | 'right' | 'bottom'): void {
+		drawerStore.open(drawerSettings);
+	}
+
 	drawerStore.open(drawerSettings);
 </script>
 
 <Drawer />
-<button on:click={drawerStore.open(drawerSettings)}>ABRIR</button>
+<button class="btn variant-filled font-bold rounded-lg p-2 mx-auto mt-3 hover:bg-indigo-300" on:click={()=> trigger("right)}>ABRIR</button>
