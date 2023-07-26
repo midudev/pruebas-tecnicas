@@ -20,7 +20,7 @@
 		<fieldset>
 			<select
 				name="genre"
-				class="appearance-none rounded-md bg-slate-900 px-4 py-2.5 text-sm font-medium text-slate-300"
+				class="rounded-md bg-slate-900 px-4 py-2.5 text-sm font-medium text-slate-300"
 				bind:value={$genre}
 			>
 				<option value="">Género</option>
