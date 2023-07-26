@@ -2,6 +2,7 @@
 const preferredRules = {
 
   '@typescript-eslint/explicit-function-return-type': 'off',
+
   'padded-blocks': 'off',
   'padding-line-between-statements': [
 
@@ -27,7 +28,7 @@ const preferredRules = {
 const svelteOverride = {
 
   extends: 'plugin:svelte/recommended',
-  files: '*.svelte',
+  files: ['*.svelte'],
 
   parser: 'svelte-eslint-parser',
   parserOptions: {
@@ -43,12 +44,6 @@ const svelteOverride = {
     'svelte/no-dupe-use-directives': 'error',
 
     'svelte/require-store-callbacks-use-set-param': 'error',
-    'svelte/block-lang': ['error', {
-
-      script: 'ts',
-      style: 'postcss'
-    }],
-
     'svelte/no-target-blank': 'error',
     'svelte/button-has-type': 'error',
     'svelte/no-useless-mustaches': 'error',
@@ -93,7 +88,7 @@ const svelteSettings = {
 
   compileOptions: {
 
-    postcss: { configFilePath: './postcss.config.js' }
+    postcss: { configFilePath: './postcss.config.cjs' }
   }
 }
 
