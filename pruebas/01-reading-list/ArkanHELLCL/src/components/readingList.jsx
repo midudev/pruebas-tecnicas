@@ -10,18 +10,6 @@ function storageEvent(renderReadingList){
     })
 }
 
-function openReadingList() {
-    console.log(this)
-    this.addEventListener('click', () => {
-    if(this.checked){
-        window.localStorage.setItem('openReadingList', true)
-    } else {        
-        window.localStorage.setItem('openReadingList', false)
-        }   
-    })
-}
-
-
 export function ReadingList() {
     const realingListChkboxId = useId();    
     const { removeFromReadingList, clearReadingList, renderReadingList, readingList } = useReadingList()
