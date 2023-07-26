@@ -25,7 +25,7 @@ function getBooksOnLocalStorage(): Book[] {
 
 export default function Home() {
 
-  const [availableBooks, setAvailableBooks] = useState([] as Book[]);
+  const [availableBooks, setAvailableBooks] = useState(BOOKS);
   const [selectedBooks, setSelectedBooks] = useState(getBooksOnLocalStorage());
 
   try {
