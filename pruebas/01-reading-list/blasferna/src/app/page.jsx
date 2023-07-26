@@ -1,7 +1,7 @@
 import { AvailableList } from "@/components/book-list";
 import FilterSection from "@/components/filter-section";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <section>
