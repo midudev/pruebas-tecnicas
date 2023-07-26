@@ -1,4 +1,10 @@
-# Reading list
+🔗
+
+# Prueba técnica 01 - Desarrollo de una Aplicación de Lista de Libros
+
+Proyecto de pruebas técnicas para desarrolladores frontend y backend creado por [midudev](https://github.com/midudev).
+
+El objetivo de esta prueba es diseñar e implementar una pequeña aplicación web de lista de libros utilizando las herramientas de tu elección.
 
 ## Requisitos
 
@@ -16,24 +22,6 @@
 
 - [x] **Sincronización entre pestañas**: Si el usuario abre la aplicación en dos pestañas diferentes, los cambios realizados en una pestaña deben reflejarse en la otra. Sin necesidad de usar Backend.
 
-- [ ] **Despliegue**: La aplicación debe estar desplegada en algún servicio de hosting gratuito (Netlify, Vercel, Firebase, etc) y debe ser accesible a través de una URL pública. Indica la URL en el README.
-
-- [x] **Test**: La aplicación debe tener AL MENOS un test. Haz el test que consideres más importante para tu aplicación.
-
-- [ ] **Semántica** Revisar semántica
-
-## Consejos sobre el código
-
-- [ ] **Estructura del código**: El código debe estar bien organizado y fácil de leer.
-
-- [ ] **Semántica HTML**: El HTML debe ser semántico y accesible.
-
-- [ ] **Pensando en equipo**: Prepara tu proyecto pensando que cualquier persona de tu equipo puede tener que trabajar en él en el futuro. (scripts en el package.json, mínima documentación en el README, comentarios en el código si es necesario, etc)
-
-- [x] **Formatea tu código**: Asegúrate de que tu código está formateado de forma consistente. Puedes usar Prettier o cualquier otra herramienta que te guste.
-
-- [ ] **Preparado para producción**: Asegúrate de que tu aplicación está lista para producción. Minimiza el código, optimiza las imágenes, etc.
-
 ## Desafíos adicionales
 
 **¿Quieres ir más allá?** Estos son algunos desafíos adicionales que puedes intentar:
@@ -42,3 +30,8 @@
 - [x] Añade un nuevo filtro para filtrar los libros por número de páginas.
 - [ ] Permitir la reorganización de los libros en la lista de lectura por prioridad.
 - [x] Haz que tu diseño sea responsive.
+
+## Tecnologías usadas
+
+La página web está desarrollada con el framework [Next.js](https://nextjs.org) y utilizó CSS Modules para estilizar.
+Para probar y validar el funcionamiento de la aplicación, utilizó la librería Vitest.
