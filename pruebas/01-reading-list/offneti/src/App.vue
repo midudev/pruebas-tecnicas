@@ -153,7 +153,7 @@ footer {
   left: 0;
   right: 0;
   width: 100%;
-  height: 50px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -297,8 +297,8 @@ p {
 }
 
 aside {
-  margin-right: 40px;
-  margin-top: 7%;
+  margin-right: 80px;
+  margin-top: 6%;
   background-image: linear-gradient(to right, #3f6b56, #4a9c77, #445e48);
   border-radius: 40px;
   top: 0;
@@ -308,17 +308,20 @@ aside {
   height: 822px;
   width: 440px;
   overflow: auto;
+  scale : 0.9;
 }
 
 
 main {
   position: fixed;
   margin-left: 40px;
-  top: 134px;
+  top: 114px;
   background-image: linear-gradient(to right, #2c463a, #42b883, #445e48);
   border-radius: 40px;
   padding: 1%;
+  scale : 0.9;
 }
+
 
 
 header {
