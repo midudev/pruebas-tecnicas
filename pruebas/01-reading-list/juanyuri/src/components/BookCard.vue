@@ -4,7 +4,10 @@
             <img :src="book.cover" width="250" height="420" />
             <div class="BookCard-Overlay">
                 <div class="BookCard-Overlay-Text">
-                    <p>Añadir a Favoritos</p>
+                    <StarIcon />
+                    <StarIcon />
+                    <!-- <img src="./icons/star.svg" alt="" width="100" height="100"> -->
+                    <!-- <img src="./icons/bookmark.svg" alt="" width="100" height="100"> -->
                     <!-- <p>{{ book.author.name }}</p> -->
                 </div>
             </div>
@@ -17,6 +20,7 @@
 </template>
   
 <script setup>
+import StarIcon from '@/components/icons/StarIcon.vue'
 const props = defineProps({
     book: { type: Object, required: true }
 })
@@ -31,7 +35,6 @@ const props = defineProps({
     position: relative;
     flex: 1;
     height: 500px;
-    /* background-color: blue; */
 }
 
 .BookCard-Image {
@@ -44,12 +47,12 @@ const props = defineProps({
 
 .BookCard-Image img {
     object-fit: cover;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.5s ease-in-out;
 }
 
 .BookCard:hover .BookCard-Image img {
     transform: scale(1.1);
-    filter: grayscale(100%);
+    filter: grayscale(80%);
 }
 
 .BookCard-Overlay {
@@ -60,7 +63,7 @@ const props = defineProps({
     height: 100%;
     background-color: var(--overlay-color);
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.43s ease-in-out;
 }
 
 .BookCard:hover .BookCard-Overlay {
