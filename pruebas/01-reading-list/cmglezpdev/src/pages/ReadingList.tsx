@@ -4,7 +4,7 @@ import { AppContext } from '../context/AppContext';
 import { AppLayout } from '../layout';
 import { useFilterBooks } from '../hook';
 
-import '../styles/Home.css';
+import '../styles/Content.css';
 
 export const ReadingList = () => {
   const { readingBooks: books } = useContext(AppContext);
@@ -20,15 +20,17 @@ export const ReadingList = () => {
 
   return (
     <AppLayout>
-    <BreadCrumbs setOpenFilter={() => setOpenFilter(c => !c)} />
-      <FilterGenresMenu open={openFilter} books={books} filters={filterOptions} toggleSelect={toggleSelectOption}  />
-      <section className='library'>
-        {
-          filterBooks(books).map(book => (
-            <BookItem key={book.ISBN} book={book} removeBook />
-          ))
-        }
-      </section>
+      <BreadCrumbs setOpenFilter={() => setOpenFilter(c => !c)} />
+      <div className='app-general-content'>
+        <FilterGenresMenu open={openFilter} books={books} filters={filterOptions} toggleSelect={toggleSelectOption}  />
+        <section className='library'>
+          {
+            filterBooks(books).map(book => (
+              <BookItem key={book.ISBN} book={book} removeBook />
+            ))
+          }
+        </section>
+      </div>
     </AppLayout>
   )
 }

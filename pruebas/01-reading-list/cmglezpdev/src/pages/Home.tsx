@@ -4,7 +4,7 @@ import { BookItem, BreadCrumbs, FilterGenresMenu } from '../components';
 import { AppLayout } from '../layout';
 import { useFilterBooks } from '../hook';
 
-import '../styles/Home.css';
+import '../styles/Content.css';
 
 
 export const Home = () => {
@@ -22,7 +22,7 @@ export const Home = () => {
 
   return (
     <AppLayout>
-    <BreadCrumbs setOpenFilter={() => setOpenFilter(c => !c)} />
+      <BreadCrumbs setOpenFilter={() => setOpenFilter(c => !c)} />
 
       <div className='app-general-content'>
           <FilterGenresMenu open={openFilter} books={books} filters={filterOptions} toggleSelect={toggleSelectOption} />
