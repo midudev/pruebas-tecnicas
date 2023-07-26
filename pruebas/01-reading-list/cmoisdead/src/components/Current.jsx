@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Book } from "./Book";
 import { shallow } from "zustand/shallow";
 import useBookStore from "../store/store";
+import { BsBookmark } from "react-icons/bs";
 
 export const Current = () => {
   const [visible, setVisible] = useState(true);
@@ -18,9 +19,14 @@ export const Current = () => {
         {books?.length || 0} Books on Reading List
       </h1>
       <div className="flex flex-wrap content-start justify-center gap-4">
-        {books.length
-          ? books?.map((book, i) => <Book book={book} key={i} added />)
-          : "no books on reading list"}
+        {books.length ? (
+          books?.map((book, i) => <Book book={book} key={i} added />)
+        ) : (
+          <div className="my-72 flex flex-col content-center items-center justify-center gap-4 text-neutral-500">
+            <BsBookmark className="text-6xl" />
+            <p className="text-sm">no books on reading list</p>
+          </div>
+        )}
       </div>
     </div>
   );

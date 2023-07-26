@@ -3,6 +3,7 @@ import useBookStore from "../store/store";
 import { useEffect, useState } from "react";
 import { Filters } from "./Filters";
 import { shallow } from "zustand/shallow";
+import { BsBook } from "react-icons/bs";
 
 export const List = () => {
   const { library, current } = useBookStore(
@@ -24,9 +25,14 @@ export const List = () => {
         <Filters books={books} setBooks={setBooks} />
       </div>
       <div className="flex h-[92vh] flex-wrap justify-center gap-4 overflow-y-auto overflow-x-hidden py-3 md:justify-start">
-        {books.length
-          ? books.map(({ book }, i) => <Book book={book} key={i} />)
-          : "no books found"}
+        {books.length ? (
+          books.map(({ book }, i) => <Book book={book} key={i} />)
+        ) : (
+          <div className="flex h-full w-full flex-col content-center items-center justify-center gap-4 text-neutral-700">
+            <BsBook className="text-6xl" />
+            <p className="text-sm">no books on list</p>
+          </div>
+        )}
       </div>
     </section>
   );
