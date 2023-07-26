@@ -1,5 +1,6 @@
 
 export interface Book {
+    n:number,
     title: string
     pages: number
     genre: string
