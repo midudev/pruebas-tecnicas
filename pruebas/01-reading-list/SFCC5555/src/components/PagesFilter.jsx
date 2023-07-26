@@ -26,7 +26,7 @@ const PagesFilter = () => {
       <p className="text-lg" >Filtrar por Páginas:</p>
       {/* Display the maximum number of pages allowed */}
       <p>max {pages} páginas </p>
-      <section className="flex items-center gap-3">
+      <section className="flex items-center gap-1">
         {/* Input range for selecting the number of pages */}
         <input onChange={handleChange} type="range" min={min} max={max} step={1} value={pages} className={`appearance-none h-1 cursor-pointer hover:opacity-90 ${darkMode?'light-mode':'dark-mode'}`} />
         {/* Number of filtered books with pages less than or equal to the current value */}

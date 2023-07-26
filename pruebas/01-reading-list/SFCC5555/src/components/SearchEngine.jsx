@@ -21,7 +21,7 @@ const SearchEngine = () => {
         type="text"
         value={searchInputValue}
         onChange={handleChange}
-        className={`appearance-none border-none outline-none focus:ring-0 hover:opacity-95 text-lg rounded-md pl-2 pr-8 py-1 ${darkMode ? 'light-mode' : 'dark-mode'}`}
+        className={`appearance-none w-40 sm:w-auto  md:w-36 lg:w-auto border-none outline-none focus:ring-0 hover:opacity-95 text-lg rounded-md pl-2 pr-8 py-1 ${darkMode ? 'light-mode' : 'dark-mode'}`}
       />
       {/*Icon placed within a label element to associate it with the search field.*/}
       <label
