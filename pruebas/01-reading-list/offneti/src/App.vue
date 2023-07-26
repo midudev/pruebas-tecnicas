@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import booksData from './books.json';
+import booksData from '../../books.json';
 import { ref } from 'vue';
 
 const selectedType = ref('all');
@@ -7,6 +7,7 @@ const books = ref(booksData['library']);
 const readingList = ref([]);
 const selectedBook = ref(null);
 const alreadyInReadingList = ref(false);
+const books_avaliables = ref();
 
 function getFilteredBooks() {
   if (selectedType.value === 'all') {
@@ -40,6 +41,19 @@ function addToReadingList(cover, title) {
     }
   }
   readingList.value.push({ cover, title });
+  books_avaliables.value = true;
+}
+
+function deleteFromReadingList(title) {
+  for (let i = 0; i < readingList.value.length; i++) {
+    if (readingList.value[i].title === title) {
+      readingList.value.splice(i, 1);
+      break;
+    }
+  }
+  if (readingList.value.length === 0) {
+    books_avaliables.value = false;
+  }
 }
 
 </script>
@@ -49,6 +63,9 @@ function addToReadingList(cover, title) {
     <div class="container">
       <header>
         <h4 id="navbar_title">Book repository</h4>
+        <img id="logo"
+          src="https://static.vecteezy.com/system/resources/previews/009/902/691/original/stack-of-colored-books-3d-render-png.png"
+          alt="Book" style="width: 70px; height: 70px; margin-left:5px; margin-top:10px;" />
       </header>
       <main>
         <section>
@@ -73,7 +90,7 @@ function addToReadingList(cover, title) {
         <article>
           <div id="main_grid">
             <div v-for="(book, index) in books" :key="book.book.title" class="book_item">
-              <img :src="book.book.cover" alt="Book" style="width: 200px; height: 300px;"
+              <img class="have_hover" :src="book.book.cover" alt="Book" style="width: 200px; height: 300px;"
                 @click="showBookPopup(book.book)" />
             </div>
           </div>
@@ -82,9 +99,13 @@ function addToReadingList(cover, title) {
       <aside>
         <h2>Reading list</h2>
         <div id="aside_grid">
-          <div v-for="(book, index) in readingList" :key="book.title" class="book_item">
-            <img :src="book.cover" alt="Book" style="width: 100px; height: 140px;" />
+          <div v-show="readingList.length" v-for="(book, index) in readingList" :key="book.title" class="book_item">
+            <img @click="deleteFromReadingList(book.title)" class="have_hover" :src="book.cover" alt="Book"
+              style="width: 100px; height: 140px;" />
           </div>
+        </div>
+        <div v-show="!readingList.length">
+          <h4>You are not reading any book :(</h4>
         </div>
       </aside>
     </div>
@@ -116,9 +137,28 @@ function addToReadingList(cover, title) {
         </div>
       </div>
     </div>
+    <footer>
+      <h6 style="color: rgb(68, 67, 67);">This is a technical test by midudev (Junior Level) | Developed
+        by
+        Aniol Nevado
+        | Github
+        user: offneti</h6>
+    </footer>
   </body>
 </template>
 <style scoped>
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #modal-backdrop {
   width: 100vw;
   height: 100vh;
@@ -173,6 +213,15 @@ function addToReadingList(cover, title) {
   height: 50px;
 }
 
+.have_hover:hover {
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+#logo:hover {
+  transform: scale(1.3);
+  transition: transform .4s ease-in-out;
+}
 
 .modal-content {
   justify-content: center;
@@ -182,7 +231,7 @@ function addToReadingList(cover, title) {
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
-  background-color: #6e9987;
+  background-image: linear-gradient(to right, #577c6a, #366650, #3c9249);
   border-radius: 20px;
   padding: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
@@ -248,15 +297,15 @@ p {
 }
 
 aside {
-  margin-right: 30px;
-  margin-top: 6%;
-  background-color: #6e9987;
+  margin-right: 40px;
+  margin-top: 7%;
+  background-image: linear-gradient(to right, #5b8170, #53816d, #488650);
   border-radius: 40px;
   top: 0;
   right: 0;
   position: fixed;
   padding: 1%;
-  height: 820px;
+  height: 822px;
   width: 440px;
   overflow: auto;
 }
@@ -264,20 +313,13 @@ aside {
 
 main {
   position: fixed;
-  margin-left: 20px;
-  top: 115px;
-  background-color: #6e9987;
+  margin-left: 40px;
+  top: 134px;
+  background-image: linear-gradient(to right, #2c463a, #42b883, #445e48);
   border-radius: 40px;
   padding: 1%;
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
 
 header {
   display: flex;
@@ -286,7 +328,7 @@ header {
   right: 0;
   position: fixed;
   font-size: calc(10px + 1vmin);
-  background: #114d4d;
+  background-image: linear-gradient(to right, #2c463a, #42b883, #445e48);
 }
 
 article {
