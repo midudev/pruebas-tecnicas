@@ -6,7 +6,8 @@ import ReadList from './components/ReadList'
 import PageFilter from './components/PageFilter'
 import GenreFilter from './components/GenreFilter'
 import Header from './components/Header'
-import FiltersSelected from './components/FiltersSelected'
+import Footer from './components/Footer'
+import LibraryInfo from './components/LibraryInfo'
 
 function App (): ReactElement {
   const { getBooks, filteredBooks } = useBooksStore()
@@ -21,30 +22,26 @@ function App (): ReactElement {
   }, [])
 
   return (
-    <div className='container mx-auto'>
+    <div className='min-h-full bg-purple-100 '>
       <Header />
 
-      <section className='bg-purple-100 p-4 mb-8 '>
-        <div className='rounded-lg sm:w-[38%] w-[100%] flex justify-center sm:justify-start align-center gap-4'>
-          <span className='text-2xl font-medium'>Filtros:</span>
+      <section className='bg-slate-50 p-8 px-56 mb-8 w-[100%] flex flex-row gap-14'>
+        <LibraryInfo />
 
-          <div className='flex gap-6 flex-col sm:flex-row'>
-            <div className='flex flex-col justify-center align-center'>
-              <PageFilter />
+        <div className='rounded-lg w-1/3 flex flex-col justify-center gap-4'>
+          <div className='flex flex-col justify-center'>
+            <PageFilter />
 
-            </div>
+          </div>
 
-            <div className='flex flex-col justify-center align-center'>
-              <GenreFilter />
-            </div>
+          <div className='flex flex-col justify-center'>
+            <GenreFilter />
           </div>
         </div>
-
-        <FiltersSelected />
       </section>
 
-      <div className='flex flex-col sm:flex-row '>
-        <div className='flex flex-wrap gap-4 sm:w-4/5 w-[100%]' id='books'>
+      <section className='flex flex-col sm:flex-row mb-8'>
+        <div className='flex flex-wrap pl-56 gap-4 w-[73.8%]' id='books'>
           {filteredBooks.map(({ book }) => (
             <Book key={book.ISBN} data={book} />
           ))}
@@ -53,7 +50,9 @@ function App (): ReactElement {
         <div className='flex flex-col' id='readList'>
           <ReadList />
         </div>
-      </div>
+      </section>
+
+      <Footer />
     </div>
   )
 }
