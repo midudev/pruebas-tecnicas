@@ -28,13 +28,17 @@ const libraryHook = () => {
 
     useEffect(() => {
 
-        setUserList(v => {
-            const newState =  {...v,library:listFiltered()}
-            localStorage.setItem('userList',JSON.stringify(newState));
-            return newState
-        });
+        //guardar en store:
+        const newStateInStore = {userList,genreAndPages};
+        localStorage.setItem('state',JSON.stringify(newStateInStore));
 
-        const callback = () => console.log('hit') ;
+        setUserList(v => ({...v,library:listFiltered()}));
+
+        //cargar de store:
+        const callback = () => {
+            const store = JSON.parse(localStorage.getItem('state') as string) as {userList:userList,genreAndPages:genreAndPages};
+            setUserList(v => store.userList) ; setGenreAndPages(v => store.genreAndPages);
+        } ;
         window.addEventListener('storage',callback) ;
         return () => window.removeEventListener('storage',callback) ;
 
