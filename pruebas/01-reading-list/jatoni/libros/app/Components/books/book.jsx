@@ -1,20 +1,13 @@
 import { Link, useOutletContext } from "@remix-run/react";
 
-const Book = ({ bookLis }) => {
-    const [addListReading] = useOutletContext()
+const Book = ({ bookLis, addListReading }) => {
 
     const {
         book: {
             title,
-            pages,
-            genre,
             cover,
-            synopsis,
-            year,
-            ISBN,
             author: {
                 name,
-                otherBooks
             }
         }
     } = bookLis;

@@ -1,6 +1,6 @@
 import Book from "./book"
 
-const ListBooks = ({ books }) => {
+const ListBooks = ({ books, addListReading }) => {
     return (
         <>
             {
@@ -8,6 +8,7 @@ const ListBooks = ({ books }) => {
                     <Book
                         key={index}
                         bookLis={bookLis}
+                        addListReading={addListReading}
                     />
                 ))
             }

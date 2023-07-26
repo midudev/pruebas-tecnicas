@@ -8,23 +8,53 @@ import {
   ScrollRestoration,
   isRouteErrorResponse,
   useRouteError,
+  useLoaderData,
 } from "@remix-run/react";
 import MenuBooks from "./Components/navegation/menuBooks";
 import StylesMenu from '~/styles/menu.css';
 import StylesIndex from '~/styles/index.css';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getAllBooks } from "./data/books";
+
+
+export async function loader() {
+  const books = await getAllBooks();
+  return books;
+}
 
 export default function App() {
 
   const [listReading, setListReading] = useState([]);
+  const [booksAvailable, setBooksAvailable] = useState([]);
+  const [bookSelect, setBookSelect] = useState({});
+  const books = useLoaderData({});
 
-  const addListReading = (data) => {
+  useEffect(() => {
+    if (listReading <= 0) {
+      setBooksAvailable(books);
+    } else {
+      if (Object.entries(bookSelect).length !== 0) {
+        const updateBooksAvailable = booksAvailable.filter(book => book.book.title !== bookSelect.book.title);
+        setBooksAvailable(updateBooksAvailable);
+      }
+    }
+  }, [listReading])
+
+  const addListReading = data => {
+    setBookSelect(data);
     setListReading([
       ...listReading,
       data,
     ]);
   }
 
+  const quitCard = ISBN => {
+    const updateBookToRead = listReading.filter(list => list.book.ISBN === ISBN);
+    const updatedCard = listReading.filter(list => list.book.ISBN != ISBN);
+    setBookSelect({});
+    setListReading(updatedCard);
+    setBooksAvailable([...booksAvailable, updateBookToRead[0]]);
+  }
 
   return (
     <Document>
@@ -32,7 +62,11 @@ export default function App() {
         context={
           [
             addListReading,
-            listReading
+            listReading,
+            setListReading,
+            quitCard,
+            booksAvailable,
+            setBookSelect
           ]
         }
       />
