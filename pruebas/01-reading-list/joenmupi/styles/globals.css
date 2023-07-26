@@ -1,0 +1,45 @@
+:root {
+  --fontColor: #adadad;
+  --backgroundColor: #131313;
+  --primaryColor: #00a7db;  
+}
+
+::-webkit-scrollbar {
+  width: .4vw;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(32, 180, 180, 0);
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 167, 219, 1);
+  border-radius: 1000px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 167, 219, 0.3); 
+} 
+
+::-webkit-inner-spin-button {
+  display: none;
+}
+
+html,
+body {
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    scroll-behavior: smooth;
+    color: var(--fontColor);
+    background: var(--backgroundColor);
+  }
+}
