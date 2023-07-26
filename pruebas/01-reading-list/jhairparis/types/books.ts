@@ -1,12 +1,12 @@
-export interface Root {
-  library: Library[];
+export interface JsonType {
+  library: LibraryType[];
 }
 
-export interface Library {
-  book: Book;
+export interface LibraryType {
+  book: BookType;
 }
 
-export interface Book {
+export interface BookType {
   title: string;
   pages: number;
   genre: string;
@@ -14,10 +14,10 @@ export interface Book {
   synopsis: string;
   year: number;
   ISBN: string;
-  author: Author;
+  author: AuthorType;
 }
 
-export interface Author {
+export interface AuthorType {
   name: string;
   otherBooks: string[];
 }
