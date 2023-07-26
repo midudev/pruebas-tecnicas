@@ -1,0 +1,30 @@
+aside.books {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60vw;
+    max-height: 80%;
+    overflow-y: auto;
+    padding: 1em;
+    box-shadow: inset -1px -1px 5px orange;
+    background-color: #0a6b8bb8;
+    gap: 10px;
+    border-radius: 3px;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    transition: right .3s ease;
+    
+    & .book-container {
+        max-width: 120px;
+        max-height: 180px;
+        border: 1px solid white;
+        
+        & .book-info {
+            font-size: clamp(.7rem, 1vw, .9rem);
+            z-index: 3;
+            
+            & label, & button {
+                margin: .5em;
+            }
+        }
+    }
+}
