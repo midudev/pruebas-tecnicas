@@ -1,0 +1,189 @@
+.container-home {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.books-container {
+    width: 72%;
+    height: 100vh;
+    margin: 10px auto 10px auto;
+    padding: 4px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+
+.book {
+    width: 230px;
+    text-align: center;
+    border-radius: 10px;
+    position: relative;
+}
+
+.book h2 {
+    position: absolute;
+    top: 0;
+    text-align: center;
+    width: 100%;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+
+.book p {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    transition: all .3s ease-in-out;
+    font-family: 'Montserrat', sans-serif;
+    opacity: 0;
+}
+
+.book a {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transition: all .3s ease-in-out;
+    font-family: 'Montserrat', sans-serif;
+    opacity: 0;
+    font-weight: 900;
+    color: #fff;
+}
+
+.book img {
+    width: 100%;
+    height: 100%;
+}
+
+.books-reading {
+    border: 1px solid purple;
+    background-color: #d5bdaf;
+    border-radius: 10px;
+    width: 25%;
+    height: 100vh;
+    animation-name: slideDown;
+    animation-duration: 1s;
+    position: relative;
+    top: 10px;
+    text-align: center;
+    overflow: scroll;
+}
+
+.cardReading {
+    width: 80%;
+    height: 20vh;
+    position: relative;
+    margin: auto;
+    transition: all .3s ease-out;
+}
+
+.cardReading:hover {
+    animation-name: slide-up;
+    animation-duration: .3s;
+    animation-direction: normal;
+    transform: translateY(-30px);
+    transition: all .3s ease-out;
+    box-shadow: 0px 3px 10px black;
+}
+
+.cards {
+    cursor: pointer;
+}
+
+.cards img {
+    width: 100%;
+    height: auto;
+}
+
+.cardReading .quitCard {
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    right: 0;
+    top: -5px;
+    cursor: pointer;
+    font-size: 1.4rem;
+    color: red;
+}
+
+.cardReading .quitCard:hover {
+    color: rgb(231, 90, 90);
+}
+
+.books-reading::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.books-reading::-webkit-scrollbar:vertical {
+    width: 10px;
+}
+
+.books-reading::-webkit-scrollbar-button:increment,
+.books-reading::-webkit-scrollbar-button {
+    display: none;
+}
+
+.books-reading::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.books-reading::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+
+.books-reading::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+.book:hover img {
+    transition: all 1s ease;
+    opacity: .5;
+    background-color: black;
+}
+
+.book:hover h2 {
+    transition: all .3s ease-in-out;
+    opacity: 1;
+}
+
+.book:hover p {
+    transition: all .3s ease-in-out;
+    opacity: 1;
+}
+
+.book:hover a {
+    transition: all .3s ease-in-out;
+    opacity: 1;
+}
+
+@keyframes slideDown {
+    from {
+        top: 0px;
+        opacity: 0;
+    }
+
+    to {
+        top: 10px;
+        opacity: 1;
+    }
+
+}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(-30px);
+    }
+
+}

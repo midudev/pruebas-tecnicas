@@ -1,0 +1,31 @@
+.menu-container {
+    background-color: #b5838d;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    color: white;
+}
+
+.menu-container img {
+    width: 15.5%;
+    height: auto;
+}
+
+.nav-container {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-container a {
+    color: var(--secondary);
+    transition: all .3s ease-in;
+    font-size: 1.5rem;
+}
+
+.nav-container a:hover {
+    /* color: var(--third); */
+    color: #0077b6;
+}
