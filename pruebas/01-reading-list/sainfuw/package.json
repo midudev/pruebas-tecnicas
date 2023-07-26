@@ -21,6 +21,7 @@
     "@testing-library/react": "14.0.0",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
+    "@types/testing-library__jest-dom": "^5.14.9",
     "@typescript-eslint/eslint-plugin": "5.61.0",
     "@typescript-eslint/parser": "5.61.0",
     "@vitejs/plugin-react-swc": "3.3.2",

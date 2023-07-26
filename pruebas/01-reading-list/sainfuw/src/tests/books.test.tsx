@@ -1,8 +1,10 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 
+import matches from '@testing-library/jest-dom';
+expect.extend(matches)
+
 import App from '../App';
 import { useBooks } from '../hooks/useBooks';
-
 
 describe('App, basic testings', () => {
   afterEach(cleanup)
@@ -55,6 +57,6 @@ describe('App, basic testings', () => {
     const uls = screen.getAllByRole('list')
     fireEvent.click(buttons[0])
     const itemsOnReadList = uls[1].querySelectorAll('li').length
-    expect(itemsOnReadList).greaterThan(0)
+    expect(itemsOnReadList).toBeGreaterThan(0)
   })
 })
