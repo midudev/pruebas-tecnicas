@@ -1,173 +1,195 @@
 /* Normalize */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 * {
   margin: 0;
   font-weight: 400;
 }
-html, body {
+html,
+body {
   height: 100%;
 }
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
 }
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
-h1{
-  text-align: center;
-  margin-top: 2rem;
-}
-
-.main-container{
-  display: flex;
-  gap: 20px;  
+h1 {
   padding: 2rem;
-  @media screen and (max-width:700px) {
-    flex-direction: column-reverse;
-  }
+  text-align: center;
+  text-shadow: -1px 4px 2px #251683;
+  font-size: 4rem;
 }
 
-.books-list-container{
+.main-container {
+  display: flex;
+  gap: 20px;
+  padding: 2rem;
+}
+
+.books-list-container {
   width: 70%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
-  align-items: stretch;
+  align-items: start;
   justify-items: center;
-  @media screen and (max-width:600px) {
-    width: 100%;
-  }
 }
 
-.book-container{
+.book-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: .5rem;
+  padding: 1rem;
+  height: 450px;
+  border: 2px solid #ccc;
+  border-radius: 1rem;
 }
 
-.book-cover-container{
+.book-cover-container {
   width: 100%;
-  height: 70%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
-.book-cover{
-  width: 100%;
-  height: 100%;
+.book-cover {
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
+  transition: all 0.5s ease-in-out;
 }
 
-.book-info-container{
+.book-cover:hover {
+  transform: scale(1.2);
+}
+
+.book-info-container {
   height: 30%;
-  text-align: center;
   padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
 }
 
-.book-title{
+.book-title {
   font-weight: 700;
-
+  text-align: center;
 }
 
-button{
+button {
+  margin-top: auto;
   width: 100%;
-  padding: .5rem;
+  padding: 0.5rem;
   border-radius: 1rem;
   background-color: #251683;
   color: white;
   font-weight: 500;
   border: none;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   cursor: pointer;
 }
 
-button:hover{
+button:hover {
   border: 1px solid #251683;
   color: #251683;
   background-color: white;
 }
 
-button:focus{
+button:focus {
   outline: none;
 }
 
-.read-list{
+.read-list {
   width: 30%;
   border-radius: 1rem;
   border: 1px solid #251683;
-  @media screen and (max-width:700px) {
-    width: 100%;
-  }
 }
 
-.reading-list-nobooks{
+.reading-list-nobooks {
   text-align: center;
   margin-bottom: 1rem;
+  padding-inline: 2rem;
 }
 
-.books-inReadListContainer{
+.books-inReadListContainer {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
   flex-wrap: wrap;
-  gap: .5rem;
+  gap: 0.5rem;
   margin-top: 1rem;
   padding-inline: 1rem;
 }
 
-.book-inReadinList{
-  width: calc(50% - .3rem);
+.book-inReadinList {
+  width: calc(50% - 0.3rem);
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
   text-align: center;
-  gap: .3rem;
+  gap: 0.3rem;
   margin-bottom: 1rem;
-  @media screen and (max-width:700px) {
-    width: calc(33% - .3rem);
-  }
 }
-.book-inReadinList-figure{
+.book-inReadinList-figure {
   width: 100%;
   height: 100%;
-  
 }
-.book-inReadinList-img{
+.book-inReadinList-img {
   object-fit: cover;
-    width: 100%;
-    aspect-ratio: 2/3;
+  width: 100%;
+  aspect-ratio: 2/3;
 }
 
-.reading-list-title{
+.reading-list-title {
   padding: 1.5rem;
   text-align: center;
 }
 
-.contador-libros{
+.contador-libros {
   padding: 2rem;
-  text-align: right;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
-.contador-libros>h4{
+.contador-libros > h4 {
   font-weight: 400;
 }
 
-.contador-libros>h4>span{
+.contador-libros > h4 > span {
   font-weight: 700;
   color: #251683;
 }
 
-.filterBy-form{
+.filterBy-form {
   color: white;
   display: flex;
   flex-direction: row;
@@ -180,7 +202,7 @@ button:focus{
   border-radius: 1rem;
 }
 
-.filterBy-pages{
+.filterBy-pages {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -204,6 +226,13 @@ button:focus{
   animation: rotation 2s linear infinite;
 }
 
+select {
+  width: 20%;
+  height: 2rem;
+  border-radius: 0.5rem;
+  padding-inline: 1rem;
+}
+
 @keyframes rotation {
   0% {
     transform: rotate(0deg);
@@ -211,4 +240,40 @@ button:focus{
   100% {
     transform: rotate(360deg);
   }
-} 
+}
+
+.form-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 700px) {
+  .main-container {
+    flex-direction: column-reverse;
+  }
+  .books-list-container {
+    width: 100%;
+  }
+
+  .book-inReadinList {
+    width: calc(33% - 0.3rem);
+  }
+  .read-list {
+    width: 100%;
+  }
+  .filterBy-form {
+    flex-direction: column;
+  }
+  .filterBy-pages {
+    flex-direction: column;
+  }
+  select {
+    width: 100%;
+  }
+  .book-container {
+    min-width: 50%;
+  }
+}
