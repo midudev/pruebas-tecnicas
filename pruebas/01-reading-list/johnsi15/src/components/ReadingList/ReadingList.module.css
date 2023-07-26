@@ -1,9 +1,14 @@
 .readingList {
   min-width: 300px;
+  background: #060616;
+  padding: 20px 10px;
+  box-sizing: border-box;
+  min-height: 100vh;
+  position: relative;
 }
 
 .title {
-  margin: 0;
+  margin: 0 0 20px;
   text-align: center;
   font-size: 2rem;
 }
@@ -15,4 +20,35 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
+  justify-content: center;
+  position: relative;
+  padding-top: 20px;
+  margin-bottom: -120px;
+}
+
+.readingList li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.cover {
+  margin: 0;
+  position: relative;
+}
+
+.cover button {
+  background: transparent;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: -15px;
+  right: -20px;
+  cursor: pointer;
+  background: rgb(0 0 0 / 70%);
+  padding: 0;
+  height: 30px;
+  width: 30px;
 }

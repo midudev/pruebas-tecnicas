@@ -1,6 +1,6 @@
 .main {
-  padding: 50px 0;
-  margin: 0 10px;
+  display: flex;
+  gap: 30px;
 }
 
 .main .booksCounter {
@@ -26,8 +26,7 @@
 }
 
 .genres {
-  max-width: 1000px;
-  margin: 20px auto;
+  margin: 20px 0;
   display: grid;
   gap: 10px;
   justify-content: flex-start;
@@ -38,7 +37,19 @@
   font-weight: 500;
 }
 
+.genres select {
+  border: 1px solid var(--color-secondary);
+  height: 40px;
+  width: 200px;
+  background: var(--color-primary);
+  font-size: 1.2rem;
+  outline: none;
+  border-radius: 4px;
+}
+
 .listBooks {
   display: flex;
   gap: 20px;
+  flex-direction: column;
+  padding: 50px 0;
 }

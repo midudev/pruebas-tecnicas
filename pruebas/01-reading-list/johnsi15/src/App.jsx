@@ -14,27 +14,27 @@ function App () {
 
   return (
     <main className={styles.main}>
-      <header className='header'>
-        <h1 className={styles.title}>El viaje de tus lecturas</h1>
-        <div className={styles.booksCounter}>
-          <p>{books.length} Libros disponibles</p>
-          <p>{readingList.length} en la lista de lectura</p>
-        </div>
-      </header>
-
-      <div className={styles.genres}>
-        <label htmlFor="genre">Filtrar por género</label>
-        <select id='genre' value={genre} onChange={handleFilter}>
-          <option value="All">Todas</option>
-          {genres.map(genre => (<option key={genre} value={genre}>{genre}</option>))}
-        </select>
-      </div>
 
       <section className={styles.listBooks}>
+        <header className='header'>
+          <h1 className={styles.title}>El viaje de tus lecturas</h1>
+          <div className={styles.booksCounter}>
+            <p>{books.length} Libros disponibles</p>
+            {readingList.length > 0 && <p>{readingList.length} en la lista de lectura</p>}
+          </div>
+        </header>
+
+        <div className={styles.genres}>
+          <label htmlFor="genre">Filtrar por género</label>
+          <select id='genre' value={genre} onChange={handleFilter}>
+            <option value="All">Todas</option>
+            {genres.map(genre => (<option key={genre} value={genre}>{genre}</option>))}
+          </select>
+        </div>
         <ListBooks books={books}/>
 
-        <ReadingList books={readingList} />
       </section>
+      <ReadingList books={readingList} />
 
     </main>
   )

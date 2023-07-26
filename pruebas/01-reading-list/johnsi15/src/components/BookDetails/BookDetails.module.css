@@ -6,7 +6,7 @@
   box-sizing: border-box;
   padding: 30px 20px;
   border-radius: 20px;
-  /* transition: all ease-in .5s; */
+  border: 1px solid var(--color-tertiary);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
