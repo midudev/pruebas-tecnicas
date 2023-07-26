@@ -3,14 +3,20 @@
     <h1>{{ catalogueCount }} libros en catálogo </h1>
 
     <div class="Catalogue-Tags">
-      <button class="Catalogue-Tags-Button" @click="onSelectedGenre('Todos')" :class="{ 'selected': 'Todos' === selectedGenre }">Todos</button>
-      <button class="Catalogue-Tags-Button" v-for="tag in genres" :key="tag" :class="{ 'selected': tag === selectedGenre }" @click="onSelectedGenre(tag)">
+      <button class="Catalogue-Tags-Button" @click="onSelectedGenre('Todos')"
+        :class="{ 'selected': 'Todos' === selectedGenre }">Todos</button>
+      <button class="Catalogue-Tags-Button" v-for="tag in genres" :key="tag"
+        :class="{ 'selected': tag === selectedGenre }" @click="onSelectedGenre(tag)">
         {{ tag }} ({{ numBooksFiltered(tag) }})
       </button>
     </div>
 
+    <div class="Catalogue-Search">
+      <input type="text" placeholder="Buscar..." v-model="searchText">
+    </div>
+
     <div class="Catalogue-List">
-      <div class="BookCard-Grid" v-for="(book, index) in filteredCatalogue" :key="index">
+      <div class="BookCard" v-for="(book, index) in filteredCatalogue" :key="index">
         <BookCard :book="book" @click="store.addToReadList(book)" />
       </div>
     </div>
@@ -38,22 +44,25 @@ const onSelectedGenre = (genreValue) => {
 }
 
 const filteredCatalogue = computed(() => {
-  if (selectedGenre.value !== "Todos")
-    return store.catalogue.filter(book => book.genre === selectedGenre.value)
+  let tempStore = store.catalogue
 
-  return store.catalogue
+  if (selectedGenre.value !== "Todos")
+    tempStore = tempStore.filter(book => book.genre === selectedGenre.value)
+
+  if(searchText.value !== '')
+    tempStore = tempStore.filter(book => book.title.toLowerCase().includes(searchText.value.toLowerCase()) )
+
+  return tempStore
 })
 
-const resetFilters = () => {
-  selectedGenre.value = ''
-}
 
 const numBooksFiltered = (genre) => {
   return store.catalogue.filter(e => e.genre === genre).length
 }
 
-/* Counters of differents Lists */
-const catalogueGenreCount = computed(() => store.catalogue.filter(e => e.genre === selectedGenre.value).length)
+let searchText = ref('')
+
+
 const catalogueCount = computed(() => store.catalogue.length)
 </script>
 
@@ -98,14 +107,42 @@ h1 {
 }
 
 .Catalogue-Tags-Button.selected {
-  background-color: var(--primary-color); /* Added selected background color */
-  color: white; /* Added selected font color */
-  border:1px solid transparent;
+  background-color: var(--primary-color);
+  color: white;
+  border: 1px solid transparent;
 }
 
-.BookCard-Grid {
+.BookCard {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.Catalogue-Search {
+  position: relative;
+  margin-top: 10px;
+}
+
+.Catalogue-Search input {
+  width: 500px;
+  padding: 15px;
+  border: none;
+  border-radius: 9px;
+  background-color: var(--input-background-color);
+  color: black;
+  font-size: var(--input-font-size);
+  box-shadow: var(--input-box-shadow);
+  border: 2px solid rgb(187, 187, 187);
+  outline-offset: 12px;
+}
+
+.Catalogue-Search input:focus {
+  outline: none;
+  box-shadow: var(--input-box-shadow-focus);
+}
+
+.Catalogue-Search input::placeholder {
+  color:black;
+  opacity: 0.5;
 }
 </style>

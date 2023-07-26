@@ -18,11 +18,15 @@ import NavigationBar from '@/components/NavigationBar.vue'
   /* COLORS */
   --primary-color: #DAAA63;
   --secondary-color: #333;
+  --background-color: #f5f5f5;
+  --input-background-color: #fff;
+  --input-color: #333;
+  --input-placeholder-color: #999;
 
   /* MAIN FONTS */
   --font-size-h1: 2em;
   --title-font-weight: 800;
-  --title-font-size: 1em;
+  --title-font-size: .9em;
   --author-name-font-weight: lighter;
   --author-name-font-size: 1.05em;
 
@@ -41,10 +45,6 @@ import NavigationBar from '@/components/NavigationBar.vue'
   /* IMAGES */
   --image-width: 250px;
   --image-height: 420px;
-
-  /* FLASH MESSAGES */
-  --flash-message-success: #000000;
-  --flash-message-error: #de0404;
 }
 
 * {

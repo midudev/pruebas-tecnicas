@@ -42,9 +42,9 @@ const props = defineProps({
     transition: filter 0.5s ease-in-out;
 }
 
-.BookCard:hover .BookCard-Image img{
+.BookCard:hover .BookCard-Image img {
     filter: brightness(60%);
-   
+
 }
 
 
@@ -83,14 +83,16 @@ const props = defineProps({
 }
 
 .BookCard-Overlay-Text p {
-    color:white;
-    font-size: var(--title-font-size);
+    color: white;
+    font-size: 2.3em;
     font-weight: var(--title-font-weight);
 }
 
 .BookCard-Details {
     display: flex;
     flex-direction: column;
+    margin-right:auto;
+    margin-top:4px;
     width: 200px;
 }
 
@@ -107,5 +109,4 @@ const props = defineProps({
     font-size: var(--author-name-font-size);
     max-width: 100%;
 }
-
 </style>
