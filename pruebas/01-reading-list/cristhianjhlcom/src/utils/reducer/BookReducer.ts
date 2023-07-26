@@ -1,29 +1,36 @@
 import {BookTypes} from '../../enums';
-import {BookElement} from '../../interfaces';
 import {type BookAction, type InitialBookState} from '../../types';
 
-export function getInitialBookState(
-	library: Array<BookElement>,
-): InitialBookState {
-	return {
-		books: library,
-		favorites: [],
-		filteredBooks: [],
-		selectedGenre: 'All',
-		bookPreview: null,
-		genres: new Set<string>(),
-		loading: false,
-		error: null,
-	};
-}
+export const BOOKS_INITIAL_STATE = {
+	books: [],
+	favorites: [],
+	filters: {
+		genre: 'All',
+		search: '',
+	},
+	bookPreview: {},
+	genres: ['All', 'Fantasía', 'Ciencia ficción', 'Zombies', 'Terror'],
+	loading: false,
+	error: null,
+};
 
 export function bookReducer(
 	state: InitialBookState,
 	action: BookAction,
 ): InitialBookState {
 	switch (action.type) {
+		case BookTypes.RELOAD:
+			return {
+				...state,
+				books: action.payload.library,
+				favorites: action.payload.favorites,
+			};
 		case BookTypes.LOAD_BOOKS:
-			return {...state};
+			return {
+				...state,
+				books: action.payload.books,
+				favorites: action.payload.favorites,
+			};
 		case BookTypes.SELECT_BOOK:
 			return {
 				...state,
@@ -32,10 +39,8 @@ export function bookReducer(
 		case BookTypes.ADD_TO_FAVORITE:
 			return {
 				...state,
-				books: state.books.filter((book) => {
-					return book.book.ISBN !== action.payload.ISBN;
-				}),
-				favorites: state.favorites.concat(action.payload),
+				books: action.payload.library,
+				favorites: action.payload.favorites,
 			};
 		case BookTypes.LOAD_GENRES:
 			return {
@@ -45,19 +50,24 @@ export function bookReducer(
 		case BookTypes.SELECTING_GENRE:
 			return {
 				...state,
-				selectedGenre: action.payload,
-				filteredBooks: state.books.filter((book) => {
-					if (action.payload === 'All') return book;
-					return book.book.genre === action.payload;
-				}),
+				filters: {
+					...state.filters,
+					genre: action.payload,
+				},
+			};
+		case BookTypes.SEARCH:
+			return {
+				...state,
+				filters: {
+					...state.filters,
+					search: action.payload,
+				},
 			};
 		case BookTypes.REMOVE_FROM_FAVORITES:
 			return {
 				...state,
-				books: state.books.concat(action.payload),
-				favorites: state.favorites.filter((book) => {
-					return book.ISBN !== action.payload.book.ISBN;
-				}),
+				books: action.payload.books,
+				favorites: action.payload.favorites,
 			};
 		default:
 			throw new Error('Error: Invalid type');
