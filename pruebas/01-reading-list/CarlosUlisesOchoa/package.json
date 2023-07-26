@@ -17,7 +17,9 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "zustand": "^4.3.9",
+    "zustand-persist": "^0.4.0"
   },
   "devDependencies": {
     "@babel/core": ">=7.0.0-0 <8.0.0",
