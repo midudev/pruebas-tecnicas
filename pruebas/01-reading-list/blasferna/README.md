@@ -27,6 +27,14 @@ La aplicación se encuentra alojada en: [https://bookbuddy-one.vercel.app/](http
 * Node.js
 * npm
    
+### Instalación
+
+1. Instala los paquetes NPM
+
+```
+npm install
+```
+
 ### Ejecución
 
 Para iniciar el servidor de desarrollo:
