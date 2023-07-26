@@ -1,9 +1,10 @@
 .bookList {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(12.5rem, 13.75rem));
+  justify-content: center;
   gap: 2rem 1rem;
   padding-left: 0;
-  list-style: none;
+  list-style-type: none;
 }
 
 .bookList__item {
@@ -33,4 +34,10 @@
   text-align: center;
   text-wrap: balance;
   overflow-wrap: normal;
+}
+
+@media (min-width: 55rem) {
+  .bookList {
+    justify-content: flex-start;
+  }
 }
