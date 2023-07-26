@@ -6,15 +6,15 @@ test.beforeEach(async ({ page }) => {
 
 test('append book, filter, de-append book and filter again', async ({ page }) => {
   await page.locator('#books p >> nth=0').click()
-  const readList1 = page.locator('#readList p')
+  const readList1 = page.locator('#readList div span')
   await expect(readList1).toHaveCount(1)
 
   await page.locator('#genreFilter').selectOption('Fantasía')
   const list1 = page.locator('#books p')
   await expect(list1).toHaveCount(2)
 
-  await page.locator('#readList p a >> nth=0').click()
-  const readList2 = page.locator('#readList p')
+  await page.locator('#readList div span >> nth=0').click()
+  const readList2 = page.locator('#readList div span')
   await expect(readList2).toHaveCount(0)
 
   await page.locator('#genreFilter').selectOption('Fantasía')
@@ -71,7 +71,7 @@ test('append book to reading list', async ({ page }) => {
 
 test('de-append book to reading list', async ({ page }) => {
   await page.locator('#books p >> nth=0').click()
-  await page.locator('#readList p a >> nth=0').click()
-  const readList = page.locator('#readList p')
+  await page.locator('#readList div span >> nth=0').click()
+  const readList = page.locator('#readList div span')
   await expect(readList).toHaveCount(0)
 })
