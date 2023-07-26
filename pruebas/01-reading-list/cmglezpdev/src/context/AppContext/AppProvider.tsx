@@ -31,12 +31,12 @@ export const AppProvider:FC<IAppProvider> = ({ children }) => {
     }
 
     document.onvisibilitychange = () => {
-        console.log("✅ Visibility Change");
+        // console.log("✅ Visibility Change");
         setData();
     }
     
     window.onfocus = () => {
-        console.log("✅ Focused");
+        // console.log("✅ Focused");
         setData();
     }
 
