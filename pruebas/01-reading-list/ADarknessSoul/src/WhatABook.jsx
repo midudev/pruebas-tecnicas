@@ -13,14 +13,15 @@ export const WhatABook = () => {
 
   useEffect(() => {
 
+    
+    dispatch(getLocalStorage());
     dispatch( getBooks() );
+    dispatch(allowSave());
 
   }, []);
 
   useEffect(() => {
 
-    dispatch(getLocalStorage());
-    dispatch(allowSave());
 
   }, []);
 

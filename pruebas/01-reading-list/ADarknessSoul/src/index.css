@@ -548,3 +548,9 @@ main {
   height: inherit;
 
 }
+
+.Search__button {
+
+  filter: invert(100%);
+
+}

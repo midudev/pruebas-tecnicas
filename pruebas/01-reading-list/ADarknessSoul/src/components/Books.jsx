@@ -125,7 +125,7 @@ export const Books = () => {
 
                                     ) : !isFav ? (
 
-                                        <BookCard book={reduxMyBooks[currentBook].book} type={2}/>
+                                        <BookCard book={reduxMyBooks[currentBook]?.book} type={2}/>
 
                                     ) : myFavs.length === 0 ? (
 

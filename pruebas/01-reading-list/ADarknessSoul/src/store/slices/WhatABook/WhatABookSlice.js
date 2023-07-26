@@ -20,8 +20,12 @@ export const WhatABookSlice = createSlice({
         setBooks: (state, action) => {
 
             state.books = action.payload.books;
-            state.booksAvailable = action.payload.books;
+            if(state.booksAvailable.length === 0) {
 
+                state.booksAvailable = action.payload.books;
+
+            }
+        
         },
 
         pushMyBook: (state, action) => {
@@ -65,12 +69,12 @@ export const WhatABookSlice = createSlice({
 
             if(state.currentBook < state.myBooks.length - 1 && !state.isFav) {
 
-                console.log(state.isFav);
                 state.currentBook += 1;
 
-            } else if(state.currentBook < state.myFavs.length - 1) {
+            } else if(state.currentBook < state.myFavs.length - 1 && state.isFav) {
 
-                console.log("hola");
+                console.log("hola patata");
+
                 state.currentBook += 1;
 
             }
@@ -124,23 +128,46 @@ export const WhatABookSlice = createSlice({
 
         searchBook: (state, action) => {
 
-            const search = action.payload;
-            search.toLowerCase();
-            
+            const search = action.payload.toLowerCase();
+
+            state.booksAvailable = [...state.booksAvailable].filter(({book}) => book.title.toLowerCase() === search); 
+            state.myBooks = [...state.myBooks].filter(({book}) => book.title.toLowerCase() === search); 
+
+
+        },
+
+        filterRange: (state, action) => {
+
+            const range = Number(action.payload);
+            state.booksAvailable = [...state.booksAvailable].filter(({book}) => book.pages <= range);
+            state.myBooks = [...state.myBooks].filter(({book}) => book.pages <= range);
+
+        },
+
+        filterGenre: (state, action) => {
+
+            const genre = action.payload;
+
+            state.booksAvailable = [...state.booksAvailable].filter(({book}) => book.genre === genre);
+            state.myBooks = [...state.myBooks].filter(({book}) => book.genre === genre);
 
         },
 
         saveLocalStorage: (state) => {
 
-            try {
+            if(state.canSave) {
 
-                const { canSave, isModal, ...stateToSave } = state; // Extract "canSave" from the state
-                const serializedState = JSON.stringify(stateToSave);
-                localStorage.setItem('reduxState', serializedState);
+                try {
 
-            } catch(error) {
-
-                console.error("Error saving in local storage: ", error);
+                    const { canSave, isModal, ...stateToSave } = state; // Extract "canSave" from the state
+                    const serializedState = JSON.stringify(stateToSave);
+                    localStorage.setItem('reduxState', serializedState);
+    
+                } catch(error) {
+    
+                    console.error("Error saving in local storage: ", error);
+    
+                }
 
             }
 
@@ -177,6 +204,12 @@ export const WhatABookSlice = createSlice({
 
             state.canSave = true;
 
+        },
+
+        denySave: (state) => {
+
+            state.canSave = false;
+
         }
 
     },
@@ -201,5 +234,9 @@ export const {
     saveLocalStorage, 
     getLocalStorage,
     allowSave,
+    searchBook,
+    denySave,
+    filterRange,
+    filterGenre,
 
 } = WhatABookSlice.actions;

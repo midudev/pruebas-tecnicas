@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { pushMyBook, removeAvailableBook, pushAvailableBooks, removeMyBook, pushMyFavs, removeFavorite, setIsModal, saveLocalStorage } from '../store/slices/WhatABook/';
+import { pushMyBook, removeAvailableBook, pushAvailableBooks, removeMyBook, pushMyFavs, removeFavorite, setIsModal, saveLocalStorage, getLocalStorage } from '../store/slices/WhatABook/';
 import { Modal } from "./Modal";
 import { useEffect } from "react";
 
