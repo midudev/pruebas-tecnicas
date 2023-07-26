@@ -27,7 +27,7 @@ const RangeFragment = ({range,setRange,minAndMaxOfPages}:RangeFragmentProps) => 
     return(
         <div className={styles.rangeComponent}>
             <label htmlFor="customRange" >Número de páginas máximo :</label>
-            <input  type="range" ref={inputRef} className={`form-range`} value={range} id="customRange" 
+            <input  type="range" ref={inputRef} className='form-range' value={range} id="customRange" 
                     onChange={(e) => onChangeCallback(parseInt(e.target.value))}
                     min={minAndMaxOfPages[0]} max={minAndMaxOfPages[minAndMaxOfPages.length - 1]}
             ></input>

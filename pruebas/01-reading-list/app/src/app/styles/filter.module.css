@@ -19,7 +19,7 @@
     border: none;
     background-color: transparent;
     color: white;
-}
+} 
 
 .rangeComponent > select > option {
     background-color: grey;
