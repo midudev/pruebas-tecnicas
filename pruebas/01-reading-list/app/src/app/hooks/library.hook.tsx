@@ -27,7 +27,17 @@ const libraryHook = () => {
     const [ genreAndPages , setGenreAndPages ] = useState<genreAndPages>({genre:'all',pages:minAndMaxOfPages[0]});
 
     useEffect(() => {
-        setUserList(v => ({...v,library:listFiltered()}))
+
+        setUserList(v => {
+            const newState =  {...v,library:listFiltered()}
+            localStorage.setItem('state',JSON.stringify({userList:newState,genreAndPages}));
+            return newState
+        });
+
+        const callback = () => console.log('hit') ;
+        window.addEventListener('storage',callback) ;
+        return () => window.removeEventListener('storage',callback) ;
+
     },[genreAndPages,userList.forReading])
 
     const libraryHookCRUD = {
