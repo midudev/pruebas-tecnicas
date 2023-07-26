@@ -26,7 +26,7 @@
     padding: 15px 10px;
     margin-block-end: 50px;
     grid-template-columns: 7fr 3fr;
-    grid-template-rows: 150px max-content 1fr;
+    grid-template-rows: 120px max-content 1fr;
   }
 
   .info {

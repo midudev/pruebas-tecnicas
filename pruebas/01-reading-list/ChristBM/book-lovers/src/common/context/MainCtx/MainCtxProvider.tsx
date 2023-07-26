@@ -13,6 +13,7 @@ export default function MainCtxProvider({ children }: { children: React.ReactNod
     changeRangeValue,
     changeSelectedOpt,
     onSearch,
+    handlePriority,
   } = useMainCtxProvider();
 
   return (
@@ -25,6 +26,7 @@ export default function MainCtxProvider({ children }: { children: React.ReactNod
         changeRangeValue,
         changeSelectedOpt,
         onSearch,
+        handlePriority,
       }}
     >
       {children}

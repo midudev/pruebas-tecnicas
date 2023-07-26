@@ -23,3 +23,38 @@
   width: 126px;
   height: 200px;
 }
+
+.priority_btn_container {
+  display: flex;
+  width: 100%;
+  height: max-content;
+  padding-block: 10px;
+  padding-inline: 5px;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  background-color: rgba(30, 29, 29, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+.priority_btn {
+  display: flex;
+  width: 40px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transform: translateY(0px);
+  transition: transform 0.2s linear;
+}
+
+.up:hover {
+  transform: translateY(-5px);
+  transition: transform 0.8s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+.down:hover {
+  transform: translateY(5px);
+  transition: transform 0.8s cubic-bezier(0.85, 0, 0.15, 1);
+}

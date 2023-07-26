@@ -132,9 +132,29 @@ export default function useMainCtxProvider() {
   /* Status management for genre filtering */
   const changeSelectedOpt = (opt: string) => dispatch({ type: 'SET_SELECTED_OPT', payload: opt });
 
-  /*  */
+  /* Status management for search criteria */
   const onSearch = (criteria: { searchBy: string; inputText: string; }) => {
     dispatch({ type: 'SET_SEARCH_CRITERIA', payload: criteria });
+  };
+
+  /* Reorganize by priority */
+  const handlePriority = (id: number, priority: 'increase' | 'decrease') => {
+    if (states.booksAdded.length > 1) {
+      const booksAddedCopy = [...states.booksAdded];
+      const idIdx = states.booksAdded.findIndex((bookId) => bookId === id);
+
+      if (priority === 'increase') {
+        if (idIdx) {
+          booksAddedCopy.splice(idIdx, 1, states.booksAdded[idIdx - 1]);
+          booksAddedCopy.splice(idIdx - 1, 1, id);
+          dispatch({ type: 'SET_BOOKS', payload: booksAddedCopy });
+        }
+      } else if (idIdx < states.booksAdded.length - 1) {
+        booksAddedCopy.splice(idIdx, 1, states.booksAdded[idIdx + 1]);
+        booksAddedCopy.splice(idIdx + 1, 1, id);
+        dispatch({ type: 'SET_BOOKS', payload: booksAddedCopy });
+      }
+    }
   };
 
   return {
@@ -145,5 +165,6 @@ export default function useMainCtxProvider() {
     changeRangeValue,
     changeSelectedOpt,
     onSearch,
+    handlePriority,
   };
 }

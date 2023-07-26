@@ -19,6 +19,7 @@ const initialCtx: MainCtxType = {
   changeRangeValue: () => null,
   changeSelectedOpt: () => null,
   onSearch: () => null,
+  handlePriority: () => null,
 };
 
 const MainCtx = createContext<MainCtxType>(initialCtx);

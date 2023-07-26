@@ -9,7 +9,12 @@ import useReadingList from './useReadingList';
 import styles from './ReadingList.module.css';
 
 export default function ReadingList({ title = 'Reading list' }: ReadingListProps) {
-  const { openAside, readingList, removeFromReadingList } = useReadingList();
+  const {
+    openAside,
+    readingList,
+    removeFromReadingList,
+    handlePriority,
+  } = useReadingList();
 
   return (
     <div
@@ -34,6 +39,8 @@ export default function ReadingList({ title = 'Reading list' }: ReadingListProps
             key={book.title}
             cover={book.cover}
             onRemoveCard={() => removeFromReadingList(id)}
+            increasePriority={() => handlePriority(id, 'increase')}
+            decreasePriority={() => handlePriority(id, 'decrease')}
           />
         ))}
       </ul>

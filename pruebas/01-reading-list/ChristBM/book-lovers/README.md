@@ -31,7 +31,7 @@ Note:
 
 [ ] Test the entire application.
 
-[ ] Allow reorganization of books in the reading list by priority.
+[x] Allow reorganization of books in the reading list by priority.
 
 [ ] Create a page to view book details.
 

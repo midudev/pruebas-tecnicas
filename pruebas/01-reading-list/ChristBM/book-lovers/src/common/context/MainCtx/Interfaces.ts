@@ -18,6 +18,7 @@ export interface MainCtxType {
   changeRangeValue: (value: number) => void;
   changeSelectedOpt: (opt: string) => void;
   onSearch: ({ searchBy, inputText }: { searchBy: string; inputText: string; }) => void;
+  handlePriority: (id: number, priority: 'increase' | 'decrease') => void
 }
 
 export type ACTION_TYPE =
