@@ -172,3 +172,19 @@ body {
 .underline-magical:hover {
   background-size: 100% 88%;
 }
+
+.reading-card-rate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.rate {
+  margin-top: 5px;
+}
+
+.rate span {
+  margin-right: 10px;
+  font-size: 1rem;
+}

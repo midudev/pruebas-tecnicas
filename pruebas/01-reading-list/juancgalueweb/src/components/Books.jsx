@@ -10,12 +10,21 @@ import { Stats } from './Stats'
 export const Books = () => {
   const [messageApi, contextHolder] = message.useMessage()
   const { Meta } = Card
-  const [setBooks, setReadingList, copyBooks, selectedCategory] = useBooksStore(
+  const [
+    setBooks,
+    setReadingList,
+    copyBooks,
+    selectedCategory,
+    minPage,
+    sliderValue
+  ] = useBooksStore(
     (state) => [
       state.setBooks,
       state.setReadingList,
       state.copyBooks,
-      state.selectedCategory
+      state.selectedCategory,
+      state.minPage,
+      state.sliderValue
     ],
     shallow
   )
@@ -47,9 +56,9 @@ export const Books = () => {
             <p>{`No hay más libros de ${selectedCategory.toLowerCase()} disponibles`}</p>
           </div>
         )}
-        {copyBooks?.length === 0 && (
+        {sliderValue <= minPage && (
           <div className='empty-reading-list'>
-            <p>No hay libros disponibles</p>
+            <p>No existen libros para ese filtro de número de páginas </p>
           </div>
         )}
         <div className='books-cards'>

@@ -7,9 +7,11 @@ export const useBooksStore = create(
       books: [],
       copyBooks: [],
       readingList: [],
+      copyReadingList: [],
       categories: [],
       selectedCategory: 'Todos',
       maxPage: null,
+      minPage: null,
       sliderValue: null,
       setBooks: async () => {
         try {
@@ -22,6 +24,7 @@ export const useBooksStore = create(
           set({ books })
           set({ copyBooks: books })
           set({ maxPage: Math.max(...booksPages) })
+          set({ minPage: Math.min(...booksPages) })
           const { maxPage } = get()
           set({ sliderValue: maxPage })
         } catch (error) {
@@ -34,7 +37,13 @@ export const useBooksStore = create(
         const findClickedBook = copyBooks.find((book) => book.ISBN === bookId)
         // Si encontramos el libro al que se le hace click, actualizamos los estados
         if (findClickedBook) {
+          if (
+            !Object.prototype.hasOwnProperty.call(findClickedBook, 'priority')
+          ) {
+            findClickedBook.priority = null
+          }
           set({ readingList: [...readingList, findClickedBook] })
+          set({ copyReadingList: [...readingList, findClickedBook] })
           set({ copyBooks: copyBooks.filter((book) => book.ISBN !== bookId) })
         }
       },
@@ -48,6 +57,7 @@ export const useBooksStore = create(
             (book) => book.ISBN !== bookId
           )
           set({ readingList: updatedReadingList })
+          set({ copyReadingList: updatedReadingList })
           set({ copyBooks: [...copyBooks, bookToRemove] })
         }
       },
@@ -87,7 +97,29 @@ export const useBooksStore = create(
         set({ copyBooks: filteredBooks })
       },
       setSelectedCategory: (value) => set({ selectedCategory: value }),
-      setSliderValue: (value) => set({ sliderValue: value })
+      setSliderValue: (value) => set({ sliderValue: value }),
+      modifyReadingListWithPriorities: (rate, bookId) => {
+        const { readingList } = get()
+        const updatedReadingList = readingList.map((book) => {
+          if (book.ISBN === bookId) {
+            return { ...book, priority: rate }
+          }
+          return book
+        })
+        set({ readingList: updatedReadingList })
+        set({ copyReadingList: updatedReadingList })
+      },
+      sortReadingListByPriority: (checked) => {
+        const { readingList, copyReadingList } = get()
+        if (checked) {
+          const sortedList = readingList.toSorted((a, b) => {
+            return b.priority - a.priority
+          })
+          set({ readingList: sortedList })
+        } else {
+          set({ readingList: copyReadingList })
+        }
+      }
     }),
     {
       name: 'reading-list-midudev-test'

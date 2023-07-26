@@ -1,14 +1,28 @@
-import { Card, Drawer } from 'antd'
+import { Card, Drawer, Rate, Switch } from 'antd'
 import { shallow } from 'zustand/shallow'
 import { useBooksStore } from '../stores/books'
 import { CloseIcon } from './Icons/CloseIcon'
 
 export const ReadingList = ({ open, onClose }) => {
   const { Meta } = Card
-  const [readingList, removeFromReadingList] = useBooksStore(
-    (state) => [state.readingList, state.removeFromReadingList],
+  const [
+    readingList,
+    removeFromReadingList,
+    modifyReadingListWithPriorities,
+    sortReadingListByPriority
+  ] = useBooksStore(
+    (state) => [
+      state.readingList,
+      state.removeFromReadingList,
+      state.modifyReadingListWithPriorities,
+      state.sortReadingListByPriority
+    ],
     shallow
   )
+
+  const onChange = (checked) => {
+    sortReadingListByPriority(checked)
+  }
 
   return (
     <Drawer
@@ -28,21 +42,40 @@ export const ReadingList = ({ open, onClose }) => {
           <p>Aún no hay libros en la lista de lectura 🥺</p>
         </div>
       )}
+      {readingList.length > 1 && (
+        <div className='empty-reading-list'>
+          <span style={{ marginRight: '10px' }}>Ordenar por prioridad </span>
+          <Switch onChange={onChange} />
+        </div>
+      )}
       <div className='books-cards'>
         {readingList?.map((book) => {
           return (
-            <Card
-              key={book.ISBN}
-              title={<CloseIcon />}
-              className='book-card'
-              hoverable
-              cover={
-                <img alt={`Imagel del libro ${book.title}`} src={book.cover} />
-              }
-              onClick={() => removeFromReadingList(book.ISBN)}
-            >
-              <Meta title={book.title} description={book.author.name} />
-            </Card>
+            <div key={book.ISBN} className='reading-card-rate'>
+              <Card
+                title={<CloseIcon />}
+                className='book-card'
+                hoverable
+                cover={
+                  <img
+                    alt={`Imagel del libro ${book.title}`}
+                    src={book.cover}
+                  />
+                }
+                onClick={() => removeFromReadingList(book.ISBN)}
+              >
+                <Meta title={book.title} description={book.author.name} />
+              </Card>
+              <div className='rate'>
+                <span>Prioridad</span>
+                <Rate
+                  value={book.priority !== null ? book.priority : 0}
+                  onChange={(value) =>
+                    modifyReadingListWithPriorities(value, book.ISBN)
+                  }
+                />
+              </div>
+            </div>
           )
         })}
       </div>
