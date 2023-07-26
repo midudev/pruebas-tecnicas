@@ -4,7 +4,7 @@ import { BsSunFill, BsMoonStarsFill, BsFillSunFill } from 'react-icons/bs'
 import { FaSun } from 'react-icons/fa'
 import { Switch } from 'antd';
 import '../styles/global-variables.css'
-import '../styles/themeswitch.css'
+import '../styles/themeswitcher.css'
 
 
 export default function ThemeSwitcher(): JSX.Element {

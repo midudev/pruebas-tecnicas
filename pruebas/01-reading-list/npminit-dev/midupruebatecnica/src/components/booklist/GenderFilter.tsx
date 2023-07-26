@@ -42,6 +42,7 @@ export default function GenreFilter({ setGenre, genre }: props): JSX.Element {
             options={ genres.map(genre => Object.create({ value: genre, label: genre })) }
             onSelect={(value) => setGenre(value)}
             onClear={() => setGenre('All')}
+            popupClassName={`${colorMode}`}
           />
         </Col>  
       </Row>

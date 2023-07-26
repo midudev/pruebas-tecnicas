@@ -1,3 +1,118 @@
-.Card-container {
+.Card-container.dark {
+  background-color: var(--dark-background-1);
+  border-radius: 4px;
+  border: 1px solid grey;
+}
 
+.Card-container.dark:hover {
+  outline: 1px solid white;
+}
+
+.Card-container.light {
+  background-color: rgb(235, 235, 235);
+}
+
+.Card-container.dark > .ant-card-body, .Card-container > .ant-card-body {
+  padding-top: 0px !important;
+}
+
+.Card-container-root.dark {
+  color: var(--dark-font-1) !important;
+}
+
+.Card-container > .ant-card-cover {
+  height: 100%;
+}
+
+.Card-container > .ant-card-head {
+  border-bottom: unset !important
+}
+
+.Card-image-root.dark > img {
+  border-radius: unset !important;
+  margin: none;
+  padding: 2px;
+  height: 300px;
+  object-fit: contain;
+}
+
+.Card-image-root.light > img {
+  border-radius: unset !important;
+  margin: none;
+  padding: 2px;
+  height: 300px;
+  object-fit: contain;
+}
+
+.Card-author.dark {
+  float: left;
+  color: var(--dark-font-4);
+}
+
+.Card-author {
+  float: left;
+}
+
+.Card-gender.dark > i {
+  float: right;
+  color: rgb(161, 161, 161);
+}
+
+.Card-gender > i {
+  float: right;
+}
+
+.Card-synopsis-main.dark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(217, 224, 116);
+  margin: 10px 0;
+}
+
+.Card-synopsis-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+
+.Card-synopsis-root.dark > ul > li > div {
+  background-color: var(--dark-background-2) !important;
+  color: var(--dark-font-1) !important;
+}
+
+.Card-synopsis-root.light > ul > li > div {
+  color: #333 !important;
+}
+
+
+.Card-details-main.dark {
+  background-color: var(--dark-pending-1) !important;
+  color: var(--dark-font-1) !important;
+  box-shadow: none;
+  border: none;
+}
+
+.Card-details-main.dark:hover {
+  background-color: var(--dark-pending-2) !important;
+}
+
+.Card-details-root.dark > .ant-popover-arrow::before {
+  background-color: var(--dark-background-2);}
+
+.Card-details-root.dark > .ant-popover-content > .ant-popover-inner {
+  background-color: var(--dark-pending-1);
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.Card-add-button.dark {
+  background-color: var(--dark-ok-2) !important;
+  box-shadow: none;
+}
+
+.dark.Card-add-button:hover {
+  background-color: var(--dark-ok-1) !important;
 }

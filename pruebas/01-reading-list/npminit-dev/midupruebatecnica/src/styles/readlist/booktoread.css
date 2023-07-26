@@ -10,3 +10,10 @@
 .BookToRead-read {
   background-color: var(--dark-ok-5);
 }
+
+.BookToRead-container.dark > .ant-col:nth-child(2) > span.ant-typography,
+.BookToRead-container.dark > .ant-col:nth-child(3) > span.ant-typography,
+.BookToRead-container.dark > .ant-col:nth-child(4) > span.ant-typography
+{
+  color: var(--dark-font-1);
+}

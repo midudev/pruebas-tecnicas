@@ -17,7 +17,7 @@ interface props {
 
 export default function BookToRead({ ISBN, read }: props): JSX.Element {
 
-  const { dispatchRl } = useContext(GlobalContext)
+  const { dispatchRl, colorMode, wWidth } = useContext(GlobalContext)
   const [ data, setData ] = useState<Book>()
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function BookToRead({ ISBN, read }: props): JSX.Element {
 
   return (
     <div>
-      <Row className={`BookToRead-container ${read ? 'BookToRead-read' : 'BookToRead-pending'}`}
+      <Row className={`BookToRead-container ${colorMode} ${read ? 'BookToRead-read' : 'BookToRead-pending'}`}
         align={'middle'} 
         justify={'space-between'}
         style={{ margin: '5px 0' }}>
@@ -39,24 +39,21 @@ export default function BookToRead({ ISBN, read }: props): JSX.Element {
             style={{ borderRadius: '50%', justifySelf: 'center'}}
           ></Image>
         </Col>
-        <Col span={7}>
-          <Text strong> { data?.title } </Text>
+        <Col span={wWidth >= 718 ? 7 : 10}>
+          <Text strong style={{ marginLeft: wWidth <= 705 ? '10px' : 'left' }}> { data?.title } </Text>
         </Col>
-        <Col span={6}>
+        <Col span={wWidth <= 544 ? 0 : 7}>
           <Text type="secondary" italic> { data?.author.name } </Text>
         </Col>
-        <Col span={2}>
-          <Text type='secondary'> { data?.year } </Text>
-        </Col>
-        <Col span={4}>
+        <Col span={ wWidth < 718 ? 0 : 5}>
           <Text type='secondary'> { data?.genre } </Text>
         </Col>
-        <Col span={3}>
+        <Col span={wWidth >= 718 ? 3 : 5 }>
           <Row align={'middle'} justify={'center'}>
             <Space direction="horizontal">
               <Col span={10}>
                 <Switch 
-                  style={{ backgroundColor: !read ? 'teal' : 'green' }}
+                  style={{ backgroundColor: !read ? '#138585' : '#3c8618' }}
                   checkedChildren={<ReadFilled/>}
                   unCheckedChildren={<CheckCircleFilled/>}
                   defaultChecked={!read}

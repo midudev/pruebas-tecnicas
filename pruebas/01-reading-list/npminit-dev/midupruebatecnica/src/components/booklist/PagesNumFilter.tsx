@@ -2,6 +2,7 @@ import { Button, Col, Divider, InputNumber, Row, Slider, Space } from "antd";
 import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { Typography } from 'antd'
+import '../../styles/booklist/pagesnumfilter.css'
 import '../../styles/global-variables.css'
 const { Text } = Typography
 
@@ -12,9 +13,11 @@ type props = {
 
 export default function PagesNumFilter({ setPagesRange, pagesRange }: props): JSX.Element {
 
+  const { colorMode } = useContext(GlobalContext)
+
   return (
     <div> 
-      <Row justify={'space-between'}>
+      <Row justify={'space-between'} className={`${colorMode} PagesNum-container`}>
         <Col span={6}>
           <Text>Pages</Text>
         </Col>
@@ -25,12 +28,14 @@ export default function PagesNumFilter({ setPagesRange, pagesRange }: props): JS
               min={1}
               max={1999}
               placeholder="Min"
+              rootClassName={`${colorMode} MinPage-input`}
             ></InputNumber>
             <InputNumber
               onChange={(value) => setPagesRange(range => [range[0], value || 0])}
               min={pagesRange[0] + 1}
               max={2000}
               placeholder="Max"
+              rootClassName={`${colorMode} MaxPage-input`}
             ></InputNumber>
           </Space>
         </Col>

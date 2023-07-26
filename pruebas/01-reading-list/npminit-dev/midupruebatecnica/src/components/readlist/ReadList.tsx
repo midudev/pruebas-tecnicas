@@ -1,4 +1,5 @@
 import { Col, Divider, Row, Space } from "antd";
+import { useContext } from 'react'
 import ReadListActions from "./ReadListActions";
 import ReadListSorting from './ReadListSorting';
 import '../../styles/readlist/readlist.css'
@@ -6,6 +7,7 @@ import '../../styles/global-variables.css'
 import InterestList from "./InterestList";
 import { Dispatch, SetStateAction } from 'react';
 import { SectionSelected } from '../../types/navigation';
+import { GlobalContext } from "../../contexts/GlobalContext";
 
 type props = {
   setItemSelected: Dispatch<SetStateAction<SectionSelected>>
@@ -13,13 +15,15 @@ type props = {
 
 export default function ReadList({ setItemSelected }: props): JSX.Element {
 
+  const { wWidth } = useContext(GlobalContext)
+
   return (
     <section id='RL-container'>
       <Row justify={'space-around'} align={'middle'}>
-        <Col span={12}>
+        <Col span={wWidth <= 310 ? 24 : 12}>
           <ReadListSorting></ReadListSorting>
         </Col>
-        <Col span={12}>
+        <Col span={wWidth <= 310 ? 24 : 12}>
           <ReadListActions></ReadListActions>
         </Col>
       </Row>

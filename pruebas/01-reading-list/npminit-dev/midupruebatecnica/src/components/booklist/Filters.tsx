@@ -2,7 +2,7 @@ import { Row, Col, Button, Collapse, CollapsePanelProps, CollapseProps, Space } 
 import { FC, useContext, useEffect, useState } from "react";
 import { Book } from "../../types/books";
 import { GlobalContext, getBooksArray } from "../../contexts/GlobalContext";
-import GenreFilter from "./GenreFilter";
+import GenreFilter from "./GenderFilter";
 import PagesNumFilter from "./PagesNumFilter";
 import data from '../../files/books'
 import '../../styles/global-variables.css'
@@ -47,23 +47,25 @@ export default function Filters(): JSX.Element {
             pagesRange={pagesRange}
           ></PagesNumFilter>
         </Col>
-        <Col span={24}>          
-          <Button
-            className={`${colorMode} ApplyButton`}
-            onClick={() => setBookList(applyFilters())}
-          >
-            Apply
-          </Button>
-          <Button
-            className={`${colorMode} ClearButton`}
-            onClick={() => {
-              resetBookList()
-              setGenre('All')
-              setPagesRange([1, 2000])
-            }}
-          >
-            Clear filters
-          </Button>
+        <Col span={24}>   
+          <Space size='small'>
+            <Button
+              className={`${colorMode} ClearButton`}
+              onClick={() => {
+                resetBookList()
+                setGenre('All')
+                setPagesRange([1, 2000])
+              }}
+            >
+              Clear
+            </Button>
+            <Button
+              className={`${colorMode} ApplyButton`}
+              onClick={() => setBookList(applyFilters())}
+            >
+              Apply
+            </Button>
+          </Space>         
         </Col>
       </Space>
     </Row> 
@@ -83,7 +85,7 @@ export default function Filters(): JSX.Element {
         ]}
         bordered={false}  
         size="small"
-        className={`${colorMode} Collapse_Header}`}
+        className={`${colorMode} Collapse_Header`}
       >  
       </Collapse> 
     </section>

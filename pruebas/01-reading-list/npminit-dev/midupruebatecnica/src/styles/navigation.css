@@ -2,6 +2,14 @@
   padding: 10px 2px;
 }
 
+#content.light {
+  background-color: rgb(242, 242, 242);
+}
+
+div > ul.ant-menu.light {
+  background-color: #edf3ff;
+}
+
 div > div > ul.dark,
 li.ant-menu-overflow-item.ant-menu-item.ant-menu-item-selected.ant-menu-item-only-child.dark > span,
 ul > li.ant-menu-overflow-item.ant-menu-item.ant-menu-item-selected.ant-menu-item-only-child.dark > span::after

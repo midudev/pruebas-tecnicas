@@ -1,18 +1,16 @@
 import { useContext, useState } from "react"
 import { GlobalContext } from "../../contexts/GlobalContext"
-import { Button, Col, Dropdown, MenuProps, Modal, Popover, Row, Segmented, Space } from "antd"
-import { Typography } from "antd"
-import { DeleteOutlined, ReadFilled, RightOutlined, WarningOutlined } from "@ant-design/icons"
-import { MdPending } from 'react-icons/md'
+import { Dropdown, MenuProps, Modal } from "antd"
+import { DeleteOutlined, ReadFilled } from "@ant-design/icons"
 import { IoMdCheckmarkCircle } from 'react-icons/io'
 import { GlobalContextType } from "../../types/globalcontext"
+import '../../styles/readlist/readlistactions.css'
 import '../../styles/global-variables.css'
 
-const { Text } = Typography
 
 export default function ReadListActions(): JSX.Element {
   
-  const { readList, dispatchRl, messageApi } = useContext<GlobalContextType>(GlobalContext)
+  const { readList, dispatchRl, messageApi, colorMode, wWidth } = useContext<GlobalContextType>(GlobalContext)
   const [ clearReadsModal, setclearReadsModal ] = useState<boolean>(false)
   const [ clearAllModal, setclearAllModal ] = useState<boolean>(false)
 
@@ -21,13 +19,15 @@ export default function ReadListActions(): JSX.Element {
       label: 'Set all as read',
       key: '1',
       icon: <IoMdCheckmarkCircle />,
-      disabled: !readList?.some(interest => !interest.read)
+      disabled: !readList?.some(interest => !interest.read),
+      className: `ActionItem ${colorMode}`
     },
     {
       label: 'Set all as unread',
       key: '2',
       disabled: !readList?.some(interest => interest.read),
       icon: <ReadFilled />,
+      className: `ActionItem ${colorMode}`
     },
     { 
       label: 'Clear reads',
@@ -35,12 +35,14 @@ export default function ReadListActions(): JSX.Element {
       danger: true,
       disabled: !readList?.some(interest => interest.read),
       icon: <DeleteOutlined />,
+      className: `ActionItem ${colorMode}`
     },
     {
       label: 'Clear read list',
       key: '4',
       danger: true,
       icon: <DeleteOutlined />,
+      className: `ActionItem ${colorMode}`
     },
   ]
 
@@ -79,12 +81,15 @@ export default function ReadListActions(): JSX.Element {
   }
 
   return (
-    <div className='ReadList-container' style={{ float: 'right'}}>
+    <div className='ReadList-container' style={{ float: wWidth < 310 ? 'left' : 'right'}}>
       <Dropdown.Button 
+        size={ wWidth < 310 ? 'small' : 'middle' }
         disabled={readList?.length ? false : true}
         type="default"
         trigger={['click']}
         menu={itemProps}
+        className={`RLActionsDropdown-main ${colorMode}`}
+        overlayClassName={`RLActionsDropdown-overlay ${colorMode}`}
       >
         More actions
       </Dropdown.Button>

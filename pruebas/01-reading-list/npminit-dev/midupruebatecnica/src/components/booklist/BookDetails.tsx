@@ -1,8 +1,9 @@
-import { Col, Divider, Dropdown, List, Row, Space } from "antd";
+import { Col, Divider, List, Row } from "antd";
 import Typography from "antd/es/typography";
-import { Book } from "../../types/books";
-import { useEffect, useState } from "react";
+import '../../styles/booklist/bookdetails.css'
 import '../../styles/global-variables.css'
+import { GlobalContext } from "../../contexts/GlobalContext";
+import { useContext } from "react";
 
 const { Text } = Typography
 
@@ -16,19 +17,25 @@ type props = {
 
 export default function BookDetails(props: props): JSX.Element {
 
+  const { colorMode } = useContext(GlobalContext)
+
   return (
     <List
       style={{minWidth: '200px'}}
-      dataSource={ Object.entries(props).slice(0, 3) }
+      dataSource={ Object.entries(props).slice(1, 3) }
+      className={`BookDetsList ${colorMode}`}
+      rootClassName={`BookDetsListRoot ${colorMode}`}
       renderItem={(item, i) => {
         return (
           <div>
             <Row justify={'space-between'}>
               <Col span={8}> 
-                <Text>{ item[0] }</Text> 
+                <Text className={`BookDetsPropName ${colorMode}`}>
+                  { item[0][0].toUpperCase() + item[0].slice(1) }
+                </Text> 
               </Col>
               <Col span={16}> 
-                <Text type='secondary' style={{float: 'right'}}>{ item[1] }</Text> 
+                <Text className={`BookDetsPropValue ${colorMode}`} type='secondary' style={{float: 'right'}}>{ item[1] }</Text> 
               </Col>
             </Row>
             <Divider style={{margin: '2px 0'}}></Divider>
@@ -37,12 +44,12 @@ export default function BookDetails(props: props): JSX.Element {
       }}>
       <Row justify={'space-between'} align={'middle'}>
         <Col span={12}>
-          <Text>More from { props.author }</Text>
+          <Text className={`BookDetsPropName ${colorMode}`}>More from { props.author }</Text>
         </Col>
         <Col span={12}>
         { props.otherBooks.map((elem, i) => 
           <span key={i}>
-            <Text type="secondary"> { `> ${elem}` }</Text>
+            <Text className={`BookDetsPropValue ${colorMode}`} type="secondary"> { `- ${elem}` }</Text>
             <br></br>
           </span>
         ) }

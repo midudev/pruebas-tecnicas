@@ -1,0 +1,44 @@
+.dark.ActionItem.dark {
+
+}
+
+.RLActionsDropdown-main.dark > button[disabled] {
+  border: none !important;
+  color: rgb(170, 170, 170) !important;
+  background-color: var(--dark-background-4) !important;
+}
+
+.dark.RLActionsDropdown-main.dark > button {
+  background-color: var(--dark-background-3);
+  color: var(--dark-font-1);
+  box-shadow: 0 0 3px var(--dark-font-1);
+}
+
+.dark.RLActionsDropdown-overlay > ul {
+  background-color: var(--dark-background-3);
+}
+
+.dark.RLActionsDropdown-overlay > ul > li:not(.ant-dropdown-menu-item-danger) {
+  color: var(--dark-font-1);
+}
+
+.dark.RLActionsDropdown-overlay > ul > li:not(.ant-dropdown-menu-item-danger):hover {
+  background-color: var(--dark-font-1);
+  color: #333333;
+}
+
+.dark.RLActionsDropdown-overlay > ul > .ant-dropdown-menu-item-disabled {
+  color: rgb(119, 119, 119) !important;
+}
+
+.dark.RLActionsDropdown-overlay > ul > .ant-dropdown-menu-item-disabled:hover {
+  background-color: rgb(170, 170, 170) !important;
+}
+
+.RLSortSegmented.dark > div > .ant-segmented-item.ant-segmented-item-disabled > div.ant-segmented-item-label {
+  color: rgb(181, 181, 181);
+}
+
+.RLSortSegmented.dark > div > .ant-segmented-item-selected.ant-segmented-item-disabled {
+  background-color: grey;
+}

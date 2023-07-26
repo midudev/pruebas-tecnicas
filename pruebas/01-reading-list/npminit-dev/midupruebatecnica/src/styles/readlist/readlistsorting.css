@@ -1,0 +1,36 @@
+.RLSortSegmented.dark {
+  background-color: var(--dark-background-4);
+  box-shadow: 0 0 3px var(--dark-font-1);
+}
+
+.RLSortSegmented.dark > div > label.ant-segmented-item-disabled {
+  color: rgb(159, 159, 159) !important;
+}
+
+.RLSortSegmented.dark.ant-segmented-disabled {
+  outline: none !important;
+}
+
+.RLSortSegmented.dark > div > .ant-segmented-item:not(.ant-segmented-item-selected) {
+  color: var(--dark-font-1) !important;
+}
+
+.RLSortSegmented.dark > .ant-segmented-group > .ant-segmented-item-selected {
+
+}
+
+.ant-segmented-disabled.RLSortSegmented.dark {
+
+}
+
+.ant-segmented-disabled.RLSortSegmented.dark > div > label > div.ant-segmented-item-label {
+
+}
+
+.RLActionsDropdown-root.dark {
+
+}
+
+.dark.RLSortSegmented-root {
+
+}

@@ -9,13 +9,13 @@ import Logo from "./Logo";
 import '../styles/navigation.css'
 import '../styles/global-variables.css'
 import { GlobalContext } from "../contexts/GlobalContext";
-import { BarsOutlined, CaretRightOutlined } from "@ant-design/icons";
+import { BarsOutlined, BgColorsOutlined, CaretRightOutlined, EllipsisOutlined, MinusOutlined } from "@ant-design/icons";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 
 export default function Navigation(): JSX.Element {
 
-  const { colorMode, wWidth } = useContext(GlobalContext)
+  const { colorMode, setColorMode, wWidth } = useContext(GlobalContext)
   const [ itemSelected, setItemSelected ] = useState<SectionSelected>('booklist');
 
   useEffect(() => {
@@ -33,14 +33,14 @@ export default function Navigation(): JSX.Element {
     }
   }, [itemSelected])
 
-  const handleSelect = (e: any) => setItemSelected(e.key);
+  const handleSelect = (e: any) => e.key !== 'theme' && setItemSelected(e.key);
   
   
   const items: MenuItemType[] = [
     {
       key: 'booklist',
       label: 'Books',
-      className: `${colorMode}`
+      className: `${colorMode}`,
     },
     {
       key: 'readlist',
@@ -54,12 +54,19 @@ export default function Navigation(): JSX.Element {
     }
   ]
 
+  const itemsWithIcons = items.map(item => { return { ...item, icon: <EllipsisOutlined /> }})
+
   const itemsMobile: SubMenuType[] = [
     {
       label: 'Menu',
       key: 'MenuMobile',
       icon: <BarsOutlined />,
-      children: items.map(item => { return { ...item, icon: <CaretRightOutlined /> }}),
+      children: wWidth > 398 ? itemsWithIcons : [...itemsWithIcons, {
+        key: 'theme',
+        label: 'Theme',
+        icon: <BgColorsOutlined/>,
+        onClick: () => setColorMode(color => color === 'dark' ? 'light' : 'dark')
+      }],
       style: {left: '-10px'},
       className: `Menu_Mobile_Header ${colorMode}`
     }
@@ -78,8 +85,8 @@ export default function Navigation(): JSX.Element {
         rootClassName={`${colorMode}`}
       >
       </Menu> 
+      { wWidth >= 398 ? <ThemeSwitcher></ThemeSwitcher> : <></> }
       <Logo></Logo>
-      <ThemeSwitcher></ThemeSwitcher>
       <main id="content" className={`${colorMode}`}>
       { 
         itemSelected === 'booklist' 

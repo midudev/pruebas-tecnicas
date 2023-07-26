@@ -6,30 +6,35 @@ div.dark > div > div.ant-collapse-expand-icon {
   color: var(--dark-font-1);
 }
 
+.FilterHeader.light > div > span.ant-collapse-header-text:hover {
+  text-decoration: underline #333333;
+}
+
+.FilterHeader.dark > div > span.ant-collapse-header-text:hover {
+  text-decoration: underline var(--dark-font-1);
+}
+
 .dark.ApplyButton {
-  border: 1px solid var(--dark-font-1) !important;
   color: var(--dark-font-4) !important;
-  background-color: var(--dark-ok-2) !important;
-  box-shadow: none !important;
+  background-color: var(--dark-ok-1) !important;
+  border: unset !important;
+  box-shadow: none;
 }
 
 .dark.ClearButton {
-  box-shadow: 0 0 5px var(--dark-font-4) !important;
   color: var(--dark-font-4) !important;
-  background-color: var(--dark-pending-4) !important;
+  background-color: var(--dark-pending-3) !important;
+  border: unset !important;
   box-shadow: none !important;
+
 }
 
 .dark.ApplyButton:hover {
-  box-shadow: 0 0 5px var(--dark-font-4) !important;
   background-color: var(--dark-ok-2) !important;
-  border: 1px solid white;
 }
 
 .dark.ClearButton:hover {
-  box-shadow: 0 0 5px var(--dark-font-4) !important;
-  background-color: var(--dark-background-4) !important;
-  border: 1px solid white;
+  background-color: var(--dark-pending-1) !important;
 } 
 
 .dark.GenderFilter-container > div > span {
@@ -41,23 +46,32 @@ div.dark.GenderFilter-select > div.ant-select-selector {
   background-color: var(--dark-background-4) !important;
 }
 
-div.ant-col.ant-col-14.css-dev-only-do-not-override-1m62vyb > div > span.ant-select-clear > span > svg {
+.dark.GenderFilter-select.ant-select-focused > div > span{
+  color: var(--dark-font-1);
+}
+
+.dark.GenderFilter-select > span > span > svg {
   background-color: var(--dark-background-4) !important;
   color: var(--dark-background-6);
 }
 
-div.dark.GenderFilter-select > div > span > input {
-  color: white !important;
+.dark.ant-select-dropdown {
+  background-color: var(--dark-background-3);
 }
 
-.rc-virtual-list-holder-inner {
-  background-color: var(--dark-background-5);
+.dark.ant-select-dropdown > div > .rc-virtual-list > .rc-virtual-list-holder > div > .rc-virtual-list-holder-inner > div {
+  color: var(--dark-font-1);
 }
 
-div.ant-select-dropdown.css-dev-only-do-not-override-1m62vyb {
-  padding: 0;
+.dark.ant-select-dropdown > div > .rc-virtual-list > .rc-virtual-list-holder > div > .rc-virtual-list-holder-inner > div:hover {
+  background-color: var(--dark-background-1) !important;
 }
 
-.rc-virtual-list-holder-inner > div.ant-select-item {
-  color: var(--dark-font-1) !important;
+.dark.ant-select-dropdown > div > .rc-virtual-list > .rc-virtual-list-holder > div > .rc-virtual-list-holder-inner > div.ant-select-item-option-selected,
+.dark.ant-select-dropdown > div > .rc-virtual-list > .rc-virtual-list-holder > div > .rc-virtual-list-holder-inner > div.ant-select-item-option-active {
+  color: #333333;
+}
+
+.dark.ant-select-dropdown > div > .rc-virtual-list > .rc-virtual-list-holder > div > .rc-virtual-list-holder-inner > div.ant-select-item-option-active:hover {
+  color: var(--dark-font-1);
 }

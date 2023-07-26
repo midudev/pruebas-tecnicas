@@ -11,7 +11,7 @@ const { Text } = Typography
 
 export default function InterestList({ setItemSelected }: props): JSX.Element {
 
-  const { readList, dispatchRl } = useContext(GlobalContext)
+  const { readList, dispatchRl, colorMode } = useContext(GlobalContext)
   const [ AAParent, enableAnimation ] = useAutoAnimate({})
 
   const handleDrop = (droppedItem: DragUpdate) => {
@@ -25,7 +25,7 @@ export default function InterestList({ setItemSelected }: props): JSX.Element {
   };
   
   return (
-    <section>
+    <section id="InterestList-container">
       <DragDropContext onDragEnd={handleDrop}>
         <Droppable droppableId="list-container">
           {(provided) => (
@@ -45,8 +45,8 @@ export default function InterestList({ setItemSelected }: props): JSX.Element {
                       {(provided, snapshot) => (
                         <div 
                           className={snapshot.isDragging ? 
-                            'Btr_drag-container_dragging Btr_drag-container' : 
-                            'Btr_drag-container'
+                            'Btr_drag-container_dragging Btr_drag-container ' + colorMode : 
+                            'Btr_drag-container ' + colorMode
                           }
                           ref={provided.innerRef}
                           {...provided.dragHandleProps}
@@ -65,8 +65,8 @@ export default function InterestList({ setItemSelected }: props): JSX.Element {
                 ) : 
                 <div className='IL_Empty-container'>                 
                   <Text 
+                    className={`EmptyMessage ${colorMode}`}
                     type='secondary'
-                    style={{ display: 'block', textAlign: 'center'}} 
                     onClick={() => setItemSelected('booklist')}
                     strong> 
                     This is getting very lonely, why don't you add some books?
