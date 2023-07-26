@@ -3,5 +3,6 @@
   "semi": false,
   "singleQuote": true,
   "jsxSingleQuote": true,
-  "arrowParens": "avoid"
+  "arrowParens": "avoid",
+  "plugins": ["prettier-plugin-tailwindcss"]
 }

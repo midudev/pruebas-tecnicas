@@ -1,3 +1,5 @@
+import { BOOK_FILTERS } from "./constants/constants"
+
 export interface dataBooks {
   library: LibraryItem[]
 }
@@ -21,3 +23,16 @@ export interface Author {
   name: string
   otherBooks: string[]
 }
+
+export interface IFilters {
+  search: null | string
+  genres: string[]
+  pages: number
+}
+
+export type FilterValue = (typeof BOOK_FILTERS)[keyof typeof BOOK_FILTERS]
+
+
+
+ 
+

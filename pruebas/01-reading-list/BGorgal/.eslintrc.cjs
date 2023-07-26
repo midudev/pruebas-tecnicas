@@ -1,4 +1,3 @@
-
 module.exports = {
   root: true,
   env: { browser: true, es2020: true },
@@ -28,5 +27,6 @@ module.exports = {
     '@typescript-eslint/promise-fuction-async': 'off',
     '@typescript-eslint/no-floating-promises': 'off',
     'import/no-absolute-path': 'off',
+    '@typescript-eslint/strict-boolean-expressions': 'off',
   },
 }

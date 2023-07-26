@@ -1,40 +1,36 @@
-import { LibraryItem, dataBooks } from '../types'
 import data from '../mocks/books.json'
+import { Book, Author, LibraryItem, dataBooks } from '../types'
 
-interface MappedLibraryItem {
-  book: {
-    title: string
-    numPages: number
-    genre: string
-    image: string
-    synopsis: string
-    publicationYear: number
-    bookId: string
-    authorName: string
-    otherBooks: string[]
-  }
+export interface BookMapped {
+  title: Book['title']
+  numPages: Book['pages']
+  genre: Book['genre']
+  image: Book['cover']
+  synopsis: Book['synopsis']
+  publicationYear: Book['year']
+  bookId: Book['ISBN']
+  authorName: Author['name']
+  otherBooks: Author['otherBooks']
 }
 
-function mapLibrary(data: dataBooks): MappedLibraryItem[] {
+function mapLibrary(data: dataBooks): BookMapped[] {
   const { library } = data
   return library.map((item: LibraryItem) => {
     const { book } = item
     const { author, ...bookInfo } = book
 
     return {
-      book: {
-        authorName: author.name,
-        otherBooks: author.otherBooks,
-        title: bookInfo.title,
-        numPages: bookInfo.pages,
-        genre: bookInfo.genre,
-        image: bookInfo.cover,
-        synopsis: bookInfo.synopsis,
-        publicationYear: bookInfo.year,
-        bookId: bookInfo.ISBN,
-      },
+      authorName: author.name,
+      otherBooks: author.otherBooks,
+      title: bookInfo.title,
+      numPages: bookInfo.pages,
+      genre: bookInfo.genre,
+      image: bookInfo.cover,
+      synopsis: bookInfo.synopsis,
+      publicationYear: bookInfo.year,
+      bookId: bookInfo.ISBN,
     }
   })
 }
 
-export const mappedLibrary = mapLibrary(data)
+export const books = mapLibrary(data)

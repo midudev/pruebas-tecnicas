@@ -1,14 +1,35 @@
 import './App.css'
-import { mappedLibrary } from './utils/mapLibrary'
-
+import BookList from './components/Book/BookList'
+import Header from './components/Header'
+import ModalBookInfo from './components/ModalBookInfo/ModalBookInfo'
+import { useBooksStore } from './store/books'
+import { twMerge } from 'tailwind-merge'
+import Aside from './components/Aside'
 
 function App() {
+  const listOfBooks = useBooksStore(state => state.listOfBooks)
+  const isModalOpen = useBooksStore(state => state.isModalOpen)
 
-  console.log(mappedLibrary)
+
+  const variants = {
+    modalOpen: isModalOpen && ' transition-all duration-500',
+  }
 
   return (
     <>
-      <h1 className=''>hello world!</h1>
+      <Header />
+      <main
+        className={twMerge(
+          'flex w-full border-y-2 border-gray-700 bg-slate-900 ',
+          variants.modalOpen,
+        )}
+      >
+        <section className=' flex h-[calc(100vh-48px)] w-full flex-1 flex-col items-center  overflow-y-scroll py-4 sm:p-10 '>
+          <BookList books={listOfBooks} />
+        </section>
+        <Aside />
+      </main>
+      {isModalOpen && <ModalBookInfo />}
     </>
   )
 }
