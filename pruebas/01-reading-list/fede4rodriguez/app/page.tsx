@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 const BOOKS = _books.library.map(({book}) => book) as Book[];
 
 function getBooksOnLocalStorage(): Book[] {
-  const _selectedBooks = localStorage.getItem('selectedBooks');
+  const _selectedBooks = window.localStorage.getItem('selectedBooks');
   if (_selectedBooks) {
     return JSON.parse(_selectedBooks) as Book[];
   }
@@ -49,7 +49,7 @@ export default function Home() {
   
     setAvailableBooks(books);
 
-    localStorage.setItem('selectedBooks', JSON.stringify(selectedBooks));
+    window.localStorage.setItem('selectedBooks', JSON.stringify(selectedBooks));
   
   }, [selectedBooks]);
 
