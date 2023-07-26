@@ -1,13 +1,35 @@
 import type { StateType } from "@/types/context";
 
-export const ReadStorage = (): StateType | undefined => {
-  const { state: value }: Storage = localStorage;
+export const StorageKey = "state";
 
-  if (!value) return undefined;
+type ReadStorageType = (
+  init: boolean,
+  newValue?: string
+) => StateType | undefined;
 
-  return JSON.parse(value);
+export const ReadStorage: ReadStorageType = (init = false, newValue) => {
+  let res;
+
+  if (init) {
+    const { [StorageKey]: value }: Storage = localStorage;
+    if (!value) return undefined;
+    res = JSON.parse(value);
+  } else {
+    if (!newValue) return undefined;
+    res = JSON.parse(newValue);
+  }
+
+  return {
+    library: res.library,
+    read: res.read,
+    total: res.total,
+    nRead: res.nRead,
+    genre: res.genre,
+    origin: res.origin,
+    isFilter: res.isFilter,
+  };
 };
 
 export const WriteStorage = (state: StateType) => {
-  localStorage.setItem("state", JSON.stringify(state));
+  localStorage.setItem(StorageKey, JSON.stringify(state));
 };
