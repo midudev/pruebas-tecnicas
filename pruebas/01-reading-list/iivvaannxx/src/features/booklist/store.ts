@@ -3,7 +3,6 @@ import { action, computed } from 'nanostores'
 import { persistentMap, persistentAtom } from '@nanostores/persistent'
 
 import type { BookList } from './types'
-import type { Book } from '$types'
 
 /** @brief The methods used to serialize and deserialize the data. */
 const defaultSerializer = {

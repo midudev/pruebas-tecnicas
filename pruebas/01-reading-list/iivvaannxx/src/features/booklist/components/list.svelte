@@ -4,7 +4,7 @@
   import { flip } from 'svelte/animate'
 
   import { allListNames, currentListName, currentList, setCurrentList, clearList } from '../store';
-  import Book from '$features/library/layouts/items/grid-book.svelte';
+  import Book from '$features/library/components/items/grid-book.svelte';
   import SecondaryButton from '$lib/buttons/secondary.svelte';
 
 </script>
@@ -65,8 +65,6 @@
   </header>
 
   <ul
-
-    use:dndzone={options}
 
     aria-label={name}
     class='w-full space-y-4 bg-red-100'
