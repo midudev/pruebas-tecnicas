@@ -20,7 +20,7 @@ export const List = () => {
     <section className="h-full w-full md:w-11/12">
       <div className="mx-5 flex content-center items-center justify-between gap-4">
         <h1 className="my-3 text-lg font-bold md:text-2xl">
-          {library.length - current.length || 0} Books on Library
+          {library?.length - current?.length || 0} Books on Library
         </h1>
         <Filters books={books} setBooks={setBooks} />
       </div>
