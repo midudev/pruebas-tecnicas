@@ -73,6 +73,6 @@ const menuOpen = ref(false);
 
 <style lang="scss" scoped>
 .active {
-  color: rgb(26, 86, 219);
+  color: #09f;
 }
 </style>

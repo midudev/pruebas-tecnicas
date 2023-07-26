@@ -33,22 +33,12 @@
 import BooksList from "@/components/BooksList.vue";
 import { useBooksStore } from "@/stores/BooksStore";
 import { getAllBooks } from "@/services/booksRepository";
-import { ref, computed, watch } from "vue";
+import { ref, computed } from "vue";
 
 const $booksStore = useBooksStore();
 const books = ref([]);
-const booksFiltered = ref([]);
-const totalBooksList = computed(() => $booksStore.totalBooksList);
-
-getAllBooks().then((data) => {
-  books.value = data;
-  getAvailableBooks();
-});
-
-watch(totalBooksList, () => getAvailableBooks());
-
-function getAvailableBooks() {
-  booksFiltered.value = books.value.filter((book) => {
+const booksFiltered = computed(() => {
+  return books.value.filter((book) => {
     if (
       !$booksStore.booksList.some(
         (bookList) => bookList.book.title == book.book.title
@@ -56,5 +46,9 @@ function getAvailableBooks() {
     )
       return book;
   });
-}
+});
+
+getAllBooks().then((data) => {
+  books.value = data;
+});
 </script>

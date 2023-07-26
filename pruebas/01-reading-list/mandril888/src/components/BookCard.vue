@@ -21,7 +21,7 @@
         <button
           v-show="type === 'bookList'"
           class="flex m-auto"
-          @click="$booksStore.removeBookList(this.$.vnode.key)"
+          @click="$booksStore.removeBookList(book.book.ISBN)"
         >
           Quitar libro
           <CloseSvg class="ml-1" :color="'#ff0000'" />
