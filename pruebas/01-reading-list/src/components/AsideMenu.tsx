@@ -20,6 +20,12 @@ const AsideMenu: React.FC = () => {
     setFilteredBooks(booksByGenre);
   };
 
+  const filterBooksByPages = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const pages = parseInt(e.target.value, 10);
+    const booksByPages = books.filter((book) => book.book.pages >= pages);
+    setFilteredBooks(booksByPages);
+  };
+
   const handleSearcher = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchedBook(e.target.value);
   };
@@ -80,6 +86,15 @@ const AsideMenu: React.FC = () => {
                   );
                 })}
               </ul>
+            </li>
+            <li className="flex flex-col gap-2 text-sm">
+              <div className="font-medium">Páginas</div>
+              <input
+                type="range"
+                min={0}
+                max={1000}
+                onChange={filterBooksByPages}
+              />
             </li>
           </ul>
         </div>

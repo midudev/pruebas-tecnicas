@@ -26,7 +26,7 @@ const Book: React.FC<Props> = ({
               <img
                 src={cover}
                 alt={title}
-                className="w-full h-full object-cover cursor-pointer"
+                className="w-full h-full object-center cursor-pointer"
                 onClick={() => {
                   if (isInMyList) {
                     setOpenModal(openModal);
