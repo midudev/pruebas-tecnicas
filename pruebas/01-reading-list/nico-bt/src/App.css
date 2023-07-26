@@ -9,8 +9,12 @@
   position: relative;
 }
 
+ul {
+  padding: 0;
+}
 li {
   list-style: none;
+  padding: 0;
 }
 
 img {
@@ -34,11 +38,43 @@ img {
   margin: 8px;
   gap: 1rem;
   display: flex;
-  /* flex-wrap: wrap; */
-  height: 175px;
+  justify-content: center;
+  height: 150px;
 }
+
 .readingList-container li {
   position: relative;
+}
+.readingList-container h2 {
+  margin: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.readingList-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.readingList-header h2 {
+  margin-bottom: 0;
+}
+.readingList-header p {
+  margin: 0;
+  padding: 0;
+}
+
+.readingList-header-btns {
+  color: black;
+  cursor: pointer;
+  background: gainsboro;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.readingList-header-btns:hover {
+  background-color: rgb(187, 187, 187);
 }
 
 /* Book list */
