@@ -1,15 +1,13 @@
 import { useGlobalState } from "@/lib/globalContext";
 import {
-  Slider,
-  SliderTrack,
-  SliderFilledTrack,
-  SliderThumb,
+  HStack,
   Text,
   Menu,
   MenuButton,
   MenuList,
   Button,
   MenuItem,
+  Box,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useEffect, useState } from "react";
@@ -31,40 +29,38 @@ const Filters = () => {
 
   return (
     <div className="flex flex-row gap-2">
-      <Text fontSize="md">Filtrar por: </Text>
-      <div className="w-[50%]">
-        <Text fontSize="sm">paginas</Text>
-        {/* <Slider aria-label="slider-ex-1" defaultValue={30}>
-          <SliderTrack>
-            <SliderFilledTrack />
-          </SliderTrack>
-          <SliderThumb />
-        </Slider> */}
-      </div>
       <div>
-        {value || (data.isFilter[0] && data.isFilter[1] != "") ? (
-          <>
-            <Text>{value || data.isFilter[1]}</Text>
-            <CloseButton onClick={() => setValue(null)} />
-          </>
-        ) : (
-          <Menu id="menu">
-            <MenuButton
-              as={Button}
-              rightIcon={<ChevronDownIcon />}
-              id="menu-button"
-            >
-              Genero
-            </MenuButton>
-            <MenuList>
-              {Object.keys(data.genre).map((v) => (
-                <MenuItem key={v} onClick={() => setValue(v)}>
-                  {v}
-                </MenuItem>
-              ))}
-            </MenuList>
-          </Menu>
-        )}
+        <HStack spacing="24px">
+          {value || (data.isFilter[0] && data.isFilter[1] != "") ? (
+            <>
+              <Text>{value || data.isFilter[1]}</Text>
+              <CloseButton onClick={() => setValue(null)} />
+            </>
+          ) : (
+            <Menu id="menu">
+              <MenuButton
+                as={Button}
+                rightIcon={<ChevronDownIcon />}
+                id="menu-button"
+              >
+                Genero
+              </MenuButton>
+              <MenuList>
+                {Object.keys(data.genre).map((v) => (
+                  <MenuItem key={v} onClick={() => setValue(v)}>
+                    {v}
+                  </MenuItem>
+                ))}
+              </MenuList>
+            </Menu>
+          )}
+          <div>
+            <Text fontSize="md">
+              {data.total - data.nRead} libros disponibles
+            </Text>
+            <Text fontSize="sm">{data.nRead} en lista de lectura</Text>
+          </div>
+        </HStack>
       </div>
     </div>
   );

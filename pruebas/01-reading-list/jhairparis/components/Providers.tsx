@@ -4,6 +4,10 @@ import { ChakraProvider } from "@chakra-ui/react";
 import GlobalState, { dataDefault } from "@/lib/globalContext";
 import { useState } from "react";
 import type { BookType, LibraryType } from "@/types/data";
+import { ColorModeScript } from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react";
+
+export const theme = extendTheme({});
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const [globalState, setGlobalState] = useState(dataDefault);
@@ -93,20 +97,23 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <CacheProvider>
-      <ChakraProvider>
-        <GlobalState.Provider
-          value={{
-            data: globalState,
-            addLibrary,
-            addRead,
-            setGlobalState,
-            filter,
-          }}
-        >
-          {children}
-        </GlobalState.Provider>
-      </ChakraProvider>
-    </CacheProvider>
+    <>
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+      <CacheProvider>
+        <ChakraProvider theme={theme}>
+          <GlobalState.Provider
+            value={{
+              data: globalState,
+              addLibrary,
+              addRead,
+              setGlobalState,
+              filter,
+            }}
+          >
+            {children}
+          </GlobalState.Provider>
+        </ChakraProvider>
+      </CacheProvider>
+    </>
   );
 }
