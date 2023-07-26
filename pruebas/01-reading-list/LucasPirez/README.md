@@ -45,5 +45,5 @@ El objetivo fue crear una aplicacion que permita la visualizacion de libros con 
  * bookStore.ts, filterStore.ts: manejan el estado de los libros dentro y fuera de lista de lectura, y el estado de los filtros respectivamente.
 
    
-  
+  ### Link deploy **https://prueba-tecnica-fe6bb.web.app/**
  
