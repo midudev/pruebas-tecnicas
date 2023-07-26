@@ -24,22 +24,52 @@ const readingListCount = computed(() => store.readlist.length)
 
 
 <style scoped>
-.Readlist{
-  display: block;
-  padding-left:3em;
-  padding-top:2em;
+.Readlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5em;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 h1 {
   display: inline;
-  font-size: 25px;
-  margin-left:10px;
+  font-size: var(--font-size-h1);
 }
 
 .Readlist-List {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-gap: 2em;
+  margin-top: 1.35em;
+}
+
+.Readlist-Tags {
+  padding-top: 15px;
+  padding-bottom: 10px;
+  /* background-color: blue; */
+}
+
+.Readlist-Tags-Button {
+  width: auto;
+  padding: var(--button-padding);
+  cursor: pointer;
+  border-radius: var(--button-border-radius);
+  border: var(--button-border);
+  margin: 15px;
+}
+
+.Readlist-Tags-Button:hover {
+  background-color: var(--primary-color);
+  border: 1px solid transparent;
+  /* font-weight: bold; */
+  color: white;
+}
+
+.BookCard-Grid {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: left;
-  margin-top:0.75em;
+  justify-content: center;
+  align-items: center;
 }
 </style>

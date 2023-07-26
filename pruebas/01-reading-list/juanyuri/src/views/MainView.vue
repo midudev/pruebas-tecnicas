@@ -1,14 +1,12 @@
 <template>
   <main>
-    <NavigationBar />
+    
 
     <br>
     <div class="BookCatalogueContainer">
       <BookCatalogue />
     </div>
-    <div class="ReadListContainer">
-      <ReadList />
-    </div>
+
   </main>
 </template>
   
