@@ -17,10 +17,7 @@
 * [Funcionalidades de la aplicación](#funcionalidades-de-la-aplicación)
 * [Acceso al proyecto](#acceso-proyecto)
 * [Tecnologías utilizadas](#tecnologías-utilizadas)
-* [Personas Contribuyentes](#personas-contribuyentes)
-* [Personas-Desarrolladores del Proyecto](#personas-desarrolladores)
-* [Licencia](#licencia)
-* [Conclusión](#conclusión)
+* [Autor](#autor)
 
 ## Descripción del proyecto
   
