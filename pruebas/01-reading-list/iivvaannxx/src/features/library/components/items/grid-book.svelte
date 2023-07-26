@@ -1,7 +1,5 @@
 <script lang='ts' context='module'>
 
-  import { InfoIcon } from '$lib/icons'
-
 </script>
 
 <script lang='ts'>
