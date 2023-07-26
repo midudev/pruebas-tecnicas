@@ -1,6 +1,6 @@
+import { useEffect, useState } from "react";
 import { Book } from "./Book";
 import useBookStore from "../store/store";
-import { useEffect, useState } from "react";
 import { Filters } from "./Filters";
 import { shallow } from "zustand/shallow";
 import { BsBook } from "react-icons/bs";
@@ -20,7 +20,7 @@ export const List = () => {
     <section className="h-full w-full md:w-11/12">
       <div className="mr-5 flex content-center items-center justify-between gap-4">
         <h1 className="my-3 text-2xl font-bold">
-          {library?.length - current?.length || 0} Books on Library
+          {library.length - current.length || 0} Books on Library
         </h1>
         <Filters books={books} setBooks={setBooks} />
       </div>

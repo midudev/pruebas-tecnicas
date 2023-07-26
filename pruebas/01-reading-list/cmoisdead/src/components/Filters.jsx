@@ -38,8 +38,8 @@ export const Filters = ({ setBooks }) => {
     setFiltred(library);
   }, [library]);
 
+  // function to handle all selects filters, by genre or author but can be extended to other filters.
   const handleChange = (e) => {
-    // function to handle all selects filters, by genre or author but can be extended to other filters.
     const { value, name } = e.target;
     const selector = (book) => {
       if (name === "author") return book.author.name;

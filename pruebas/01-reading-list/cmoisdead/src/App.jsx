@@ -12,15 +12,13 @@ function App() {
   useEffect(() => {
     let genres = [];
     let authors = [];
+    if (window.localStorage.getItem("current") === null) {
+      window.localStorage.setItem("current", JSON.stringify([]));
+    }
     library.forEach((item) => {
-      const genre = item.book.genre;
-      if (genres.includes(genre)) return;
-      genres.push(genre);
-    });
-    library.forEach((item) => {
-      const author = item.book.author;
-      if (authors.includes(author)) return;
-      authors.push(author);
+      const { genre, author } = item.book;
+      if (!genres.includes(genre)) genres.push(genre);
+      if (!authors.includes(author)) authors.push(author);
     });
     useBookStore.setState({ books: library, genres, authors });
   }, []);
