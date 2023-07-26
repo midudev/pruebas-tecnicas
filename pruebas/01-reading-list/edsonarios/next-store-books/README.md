@@ -23,3 +23,7 @@ pnpm run build
 - ✅ 6. Sincronización entre pestañas
 - ✅ 7. Despliegue
 - ✅ 8. Test
+
+## Extra Tasks:
+
+- ✅ Implementar una funcionalidad de búsqueda en la lista de libros disponibles.

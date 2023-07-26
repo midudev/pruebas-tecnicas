@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@types/lodash':
+    specifier: ^4.14.196
+    version: 4.14.196
   '@types/node':
     specifier: 20.4.2
     version: 20.4.2
@@ -23,6 +26,9 @@ dependencies:
   eslint-config-next:
     specifier: 13.4.10
     version: 13.4.10(eslint@8.45.0)(typescript@5.1.6)
+  lodash:
+    specifier: 4.17.21
+    version: 4.17.21
   next:
     specifier: 13.4.10
     version: 13.4.10(@babel/core@7.22.9)(react-dom@18.2.0)(react@18.2.0)
@@ -42,24 +48,24 @@ dependencies:
     specifier: 5.1.6
     version: 5.1.6
   zustand:
-    specifier: ^4.3.9
+    specifier: 4.3.9
     version: 4.3.9(react@18.2.0)
 
 devDependencies:
   '@testing-library/react':
-    specifier: ^14.0.0
+    specifier: 14.0.0
     version: 14.0.0(react-dom@18.2.0)(react@18.2.0)
   '@vitejs/plugin-react':
-    specifier: ^4.0.3
+    specifier: 4.0.3
     version: 4.0.3(vite@4.4.7)
   happy-dom:
-    specifier: ^10.5.2
+    specifier: 10.5.2
     version: 10.5.2
   ts-standard:
-    specifier: ^12.0.2
+    specifier: 12.0.2
     version: 12.0.2(typescript@5.1.6)
   vitest:
-    specifier: ^0.33.0
+    specifier: 0.33.0
     version: 0.33.0(happy-dom@10.5.2)
 
 packages:
@@ -748,6 +754,10 @@ packages:
 
   /@types/json5@0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
+
+  /@types/lodash@4.14.196:
+    resolution: {integrity: sha512-22y3o88f4a94mKljsZcanlNWPzO0uBsBdzLAngf2tp533LzZcQzb6+eZPJ+vCTt+bqF2XnvT9gejTLsAcJAJyQ==}
+    dev: false
 
   /@types/node@20.4.2:
     resolution: {integrity: sha512-Dd0BYtWgnWJKwO1jkmTrzofjK2QXXcai0dmtzvIBhcA+RsG5h8R3xlyta0kGOZRNfL9GuRtb1knmPEhQrePCEw==}
@@ -2613,6 +2623,10 @@ packages:
 
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
+
+  /lodash@4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+    dev: false
 
   /loose-envify@1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}

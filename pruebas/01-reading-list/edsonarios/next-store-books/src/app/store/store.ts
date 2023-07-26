@@ -17,6 +17,9 @@ export interface State {
 
     filteredBooks: Library[]
     setFilteredBooks: (filteredBooks: Library[]) => void
+
+    filterName: string
+    setFilterName: (filterName: string) => void
 }
 
 export const useStore = create<State>()(
@@ -35,7 +38,10 @@ export const useStore = create<State>()(
             setSelectedGenre: (selectedGenre: string) => set(() => ({ selectedGenre })),
 
             filteredBooks: [],
-            setFilteredBooks: (filteredBooks: Library[]) => set(() => ({ filteredBooks }))
+            setFilteredBooks: (filteredBooks: Library[]) => set(() => ({ filteredBooks })),
+
+            filterName: '',
+            setFilterName: (filterName: string) => set(() => ({ filterName }))
         }),
         {
             name: 'library-storage'

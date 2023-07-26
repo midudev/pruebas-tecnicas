@@ -7,10 +7,17 @@ import { AvailableBooks } from './availableBooks'
 import { GenreFilter } from './genreFilter'
 import { useStore } from '../store/store'
 import { useSyncedLocalStorage } from '../hooks/useSyncedLocalStorage'
+import { NameFilter } from './nameFilter'
 
 export const Main = () => {
     const libraryData = data as LibraryData
-    const { library, setLibrary, selectedBooks, setListGenres, setFilteredBooks, filteredBooks, setSelectedGenre } = useStore(state => state)
+    const { library, setLibrary, selectedBooks, setListGenres, setFilteredBooks, filteredBooks, setSelectedGenre, filterName } = useStore(state => state)
+
+    const filteredBooksByName = filterName !== ''
+        ? filteredBooks.filter((item) =>
+            item.book.title.toLowerCase().includes(filterName.toLowerCase())
+        )
+        : filteredBooks
 
     useSyncedLocalStorage()
 
@@ -31,11 +38,14 @@ export const Main = () => {
         <div className={`flex min-h-screen flex-col items-center justify-between p-24 ${selectedBooks.length > 0 ? 'pr-72' : ''}`}>
             <div className='flex flex-col items-center'>
                 <h1>Lista de Libros</h1>
-                <h2>Libros Disponibles: {filteredBooks.length}</h2>
+                <NameFilter />
+                <h2>Libros Disponibles: {filteredBooksByName.length}</h2>
                 <GenreFilter />
             </div>
 
-            <AvailableBooks />
+            <AvailableBooks
+                books={filteredBooksByName}
+            />
             <SelectedBooks />
         </div>
     )
