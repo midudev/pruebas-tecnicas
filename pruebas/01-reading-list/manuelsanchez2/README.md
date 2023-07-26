@@ -6,7 +6,7 @@
 
 Aplicación útil realizada con Qwik y PandaCSS para gestionar tus próximas lecturas
 
-Deploy [aquí](https://pruebas-tecnicas-lista-lectura-manuelsanchez2.vercel.app/)
+Deploy [aquí](https://pruebas-tecnicas-lista-lectura-manuelsanchez2-59ggnem6y.vercel.app/)
 
 </div>
 
