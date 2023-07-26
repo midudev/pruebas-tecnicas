@@ -3,6 +3,7 @@
 	import type { Book, LibraryElement } from '../types';
 	import BookCard from './BookCard.svelte';
 	import { createEventDispatcher } from 'svelte';
+	import { fly } from 'svelte/transition';
 
 	export let wishlist: LibraryElement[];
 
@@ -64,12 +65,10 @@
 </script>
 
 <section class="my-20 mx-auto max-w-5xl w-full">
-	<h1 class="font-bold text-5xl flex gap-3 items-center mb-10">Lista de lectura</h1>
-
 	{#if wishlist.length === 0}
 		<article class="flex flex-col items-center justify-center gap-5">
-			<img class="w-[600px]" src="/images/wishlist.png" alt="Imagen de wishlist" />
-			<p class="font-bold text-3xl text-center">Todavía no has agregado ningún libro</p>
+			<img class="w-[500px]" src="/images/wishlist.png" alt="Imagen de wishlist" />
+			<p class="font-bold text-2xl text-center">Todavía no has agregado ningún libro</p>
 
 			<a
 				class="w-full text-[10px] text-center"
@@ -79,18 +78,18 @@
 		</article>
 	{/if}
 	<div
-		class={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 outline-none ${
+		class={`grid items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 outline-none ${
 			!dragDisabled ? 'outline-dashed outline-white outline-[3px]' : ''
 		}`}
 		use:dndzone={{ items, dragDisabled, dropTargetStyle }}
 		on:consider={handleConsider}
 		on:finalize={handleFinalize}
+		in:fly={{ y: 100, duration: 500 }}
 	>
-		{#each items as item, index(item.id)}
+		{#each items as item}
 			<BookCard
 				onDragStyles={item.id === itemSelected ? true : false}
 				{isDragabble}
-				key={item.id}
 				on:long={() => startDrag(item.id)}
 				cta="Eliminar de la lista"
 				book={{ ...item, ISBN: item.id }}

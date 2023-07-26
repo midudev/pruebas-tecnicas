@@ -1,7 +1,7 @@
 <script lang="ts">
 	import libraryData from '../lib/data/books.json';
 	import type { Library, LibraryElement } from '../types';
-	import { localStorageStore } from '@skeletonlabs/skeleton';
+	import { filter, localStorageStore } from '@skeletonlabs/skeleton';
 	import { filterByPages, filterByCategory } from '$lib/helpers/filters';
 	import type { Writable } from 'svelte/store';
 	import { goto } from '$app/navigation';
@@ -12,7 +12,8 @@
 	import Icon from '@iconify/svelte';
 	import { afterUpdate } from 'svelte';
 	import { getRangeOfPages } from '$lib/data/const';
-	import Drawer from '../components/Drawer.svelte';
+	import { RadioGroup, RadioItem } from '@skeletonlabs/skeleton';
+	import { fly } from 'svelte/transition';
 
 	let { library }: Library = libraryData;
 
@@ -24,6 +25,7 @@
 		renderlist: LibraryElement[];
 		filter: string;
 		pages: number;
+		show: string;
 	}
 
 	const initialDataStore: Writable<initialData> = localStorageStore('initialDataStore', {
@@ -31,7 +33,8 @@
 		wishlist: [],
 		renderlist: library,
 		filter: 'Todos',
-		pages: maxPage
+		pages: maxPage,
+		show: 'library'
 	});
 
 	function handleCategory(e: CustomEvent<{ filter: string }>) {
@@ -105,9 +108,22 @@
 	<link rel="icon" href="/favicon.ico" />
 </svelte:head>
 
-<section class="flex flex-col">
-	<Header />
+<svelte:window
+	on:storage={(event) => {
+		console.log(event);
+		if (event.key === 'initialDataStore') {
+			if (event.newValue) {
+				const newInitialDataStoreValue = JSON.parse(event.newValue);
+				const { books, wishlist, filter, pages, renderlist, show } = newInitialDataStoreValue;
+				console.log(show);
+			}
+		}
+	}}
+/>
 
+<Header />
+
+<section class="flex flex-col items-star">
 	<Selectors
 		{library}
 		on:selectedfilter={handleCategory}
@@ -116,11 +132,35 @@
 		availables={$initialDataStore.renderlist.length}
 	/>
 
-	<section class="my-20 mx-auto max-w-5xl w-full">
-		<h1 class="font-bold text-5xl flex gap-3 items-center mb-10">
-			Nuestra librería <Icon icon="ion:book-outline" />
-		</h1>
-
+	<section class="my-10 mx-auto max-w-5xl w-full">
+		<header class="flex gap-3 items-center mb-10 justify-between">
+			<h1 class="font-bold text-5xl flex gap-3 items-center">
+				{$initialDataStore.show === 'library' ? ' Nuestra librería' : 'Lista de lectura'}<Icon
+					icon="ion:book-outline"
+				/>
+			</h1>
+			<RadioGroup
+				active="variant-filled-primary"
+				hover="hover:bg-lime-300"
+				background="bg-slate-200"
+				class="text-gray-900 font-bold"
+			>
+				<RadioItem
+					class={`${$initialDataStore.show === 'library' ? 'bg-lime-300' : ''}`}
+					bind:group={$initialDataStore.show}
+					name="justify"
+					on:change={() => ($initialDataStore.show = 'library')}
+					value={0}>Librería</RadioItem
+				>
+				<RadioItem
+					class={`${$initialDataStore.show === 'list' ? 'bg-lime-300' : ''}`}
+					bind:group={$initialDataStore.show}
+					name="justify"
+					on:change={() => ($initialDataStore.show = 'list')}
+					value={1}>Mi lista</RadioItem
+				>
+			</RadioGroup>
+		</header>
 		{#if $initialDataStore.renderlist.length === 0}
 			<article class="flex flex-col items-center justify-center gap-5">
 				<img class="w-[600px]" src="/images/library.png" alt="Imagen de wishlist" />
@@ -133,27 +173,31 @@
 				>
 			</article>
 		{/if}
-		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-			{#each $initialDataStore.renderlist as { book }, index(book.ISBN)}
-					<BookCard
-						cta="Agregar a lista de lectura"
-						{book}
-						key={book.ISBN}
-						on:update={() => addToWishlist(book.ISBN)}
-						on:navigate={() => goToDetail(book.title)}
-					/>
-				
-			{/each}
-		</div>
+		{#if $initialDataStore.show === 'library'}
+			<div
+				class="grid items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
+				in:fly={{ y: 200, duration: 500 }}
+				out:fly={{ y: 0, duration: 500 }}
+			>
+				{#each $initialDataStore.renderlist as { book }}
+					{#key book.ISBN}
+						<BookCard
+							cta="Agregar a lista de lectura"
+							{book}
+							on:update={() => addToWishlist(book.ISBN)}
+							on:navigate={() => goToDetail(book.title)}
+						/>
+					{/key}
+				{/each}
+			</div>
+		{/if}
+
+		{#if $initialDataStore.show === 'list'}
+			<WishList
+				wishlist={$initialDataStore.wishlist}
+				on:navigate={goToDetail}
+				on:update={removeFromWishlist}
+			/>
+		{/if}
 	</section>
-
-	
-
-	<Drawer />
-
-	<WishList
-		wishlist={$initialDataStore.wishlist}
-		on:navigate={goToDetail}
-		on:update={removeFromWishlist}
-	/>
 </section>

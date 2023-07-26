@@ -6,6 +6,7 @@
 	const dispatch = createEventDispatcher();
 
 	export let active: boolean;
+
 	function selectedFilter() {
 		dispatch('selectedfilter', {
 			filter
@@ -24,7 +25,7 @@
 			>{availables}</span
 		>
 	{/if}
-	<span class="font-bold text-xl text-black">
+	<span class="font-bold text-lg text-black">
 		{filter}
 	</span>
 </button>

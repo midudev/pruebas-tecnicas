@@ -1,15 +1,27 @@
 <script lang="ts">
-	export let data;
+	import Icon from '@iconify/svelte';
+	import { fly } from 'svelte/transition';
 
-	
+	export let data;
 </script>
 
-<section class="max-w-5xl w-full mx-auto flex py-10 h-screen justify-center items-center gap-5">
-	<img src={data.cover} alt={data.title} class="object-cover h-96" />
-	<div class="flex flex-col gap-2">
-		<h1 class="font-bold text-3xl">{data.title}</h1>
-		<p class="italic text-xl opacity-70">{data.synopsis}</p>
-		<p>Autor: <strong>{data.author.name}</strong></p>
-		<p>Año: <strong>{data.year}</strong></p>
+<section
+	class="max-w-5xl w-full mx-auto flex py-10 h-screen justify-center items-center gap-5"
+	in:fly={{ y: 50, duration: 500 }}
+	out:fly={{ duration: 500 }}
+>
+	<img src={data.cover} alt={data.title} class="object-cover h-96 rounded-xl" />
+	<div class="flex flex-col justify-center items-start gap-20">
+		<div class="flex flex-col gap-2">
+			<h1 class="font-bold text-3xl">{data.title}</h1>
+			<p class="italic text-xl opacity-70">{data.synopsis}</p>
+			<p>Autor: <strong>{data.author.name}</strong></p>
+			<p>Año: <strong>{data.year}</strong></p>
+		</div>
+
+		<a href="/" class="btn variant-filled font-bold rounded-lg p-2 mt-3 hover:bg-indigo-300"
+			><Icon icon="ep:back" />
+			<span>Vovler</span>
+		</a>
 	</div>
 </section>

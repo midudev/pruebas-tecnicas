@@ -1,7 +1,11 @@
-<script>
+<script lang="ts">
 	import Avatar from './Avatar.svelte';
-
+	import type { LibraryElement } from '../types';
+	import Icon from '@iconify/svelte';
 	import SearchBooks from './SearchBooks.svelte';
+	// import Icon from '@iconify/svelte';
+
+	// export let wishlist: LibraryElement[];
 </script>
 
 <header class="w-full h-20 py-4 px-8 shadow-lg flex items-center justify-between">
