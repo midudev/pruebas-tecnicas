@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./../readingList.css";
 import type { Library } from "../types/interfaces";
 
@@ -30,15 +30,22 @@ const ReadingList = (props: Props) => {
             </div>
             <h2>Reading List</h2>
             <div className="flex flex-wrap justify-center gap-3 p-2">
-                {
-                    props.books.map((book: Library) => {
-                        return (
-                            <div key={book.book.ISBN} className="w-36" onClick={() => props.handleReadingBook(book.book.ISBN)}>
-                                <img src={book.book.cover} className="w-full h-full" />
-                            </div>
-                        )
-                    })
-                }
+                {props.books.map((book: Library) => {
+                    return (
+                        <div
+                            key={book.book.ISBN}
+                            className="w-36"
+                            onClick={() =>
+                                props.handleReadingBook(book.book.ISBN)
+                            }
+                        >
+                            <img
+                                src={book.book.cover}
+                                className="w-full h-full"
+                            />
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );

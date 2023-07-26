@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import type { Library, Books } from "../types/interfaces";
 import { filterForId, findBook } from "../services/filters";
 import UnreadBooks from "./UnreadBooks";
@@ -66,12 +66,10 @@ const Library = (props: Props) => {
         <div>
             <div>
                 <h2>{library.length} libros disponibles</h2>
-                <h2>{booksReadList.length > 0 && `${booksReadList.length} en la lista de lectura`}</h2>
-                <button
-                    onClick={() => console.log(localStorage.getItem("books"))}
-                >
-                    mostrar local storage
-                </button>
+                <h2>
+                    {booksReadList.length > 0 &&
+                        `${booksReadList.length} en la lista de lectura`}
+                </h2>
                 <button onClick={() => handleReadList(!viewReadList)}>
                     handle list
                 </button>

@@ -8,8 +8,7 @@
         },
         "testMatch": [
             "**/__tests__/**/*.[jt]s?(x)",
-            "**/?(*.)+(spec|test).[jt]s?(x)",
-            "**/__tests__/**/*.mjs"
+            "**/?(*.)+(spec|test).[jt]s?(x)"
         ],
         "moduleFileExtensions": [
             "ts",

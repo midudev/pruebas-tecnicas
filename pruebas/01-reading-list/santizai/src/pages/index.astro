@@ -9,11 +9,11 @@ const books = jsonBooks;
 ---
 
 <Layout title="Lista de libros">
-    <div>
+    <main>
         <Library
             library={books}
             readList={readList}
             client:only="react"
         />
-    </div>
+    </main>
 </Layout>
