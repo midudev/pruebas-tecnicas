@@ -1,27 +1,18 @@
-# React + TypeScript + Vite
+# Biblioteca Virtual
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Url de la aplicación
 
-Currently, two official plugins are available:
+[https://01-reading-list-one.vercel.app/](https://01-reading-list-one.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este proyecto esta realizado con React y Typescript, para la parte de estilos se utiliza TailwindCSS, para el manejo del estado se utiliza zustand y para la parte de los test se utiliza Vitest + Testing Library
 
-## Expanding the ESLint configuration
+Todos los comandos disponibles se encuentran en el archivo `package.json` en la sección `scripts` (iniciar, compilación y test).
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Gran parte del codigo esta comentado para aclarar posibles dudas
 
-- Configure the top-level `parserOptions` property like this:
+## Mejoras
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- [ ] Añadir la posibilidad de ordenar los libros en ambos listado por los distintos datos (Fecha de publicación, paginas, etc)
+- [ ] Mejorar el responsive de la aplicación añadiendo botones en movil para el desplazamiento entre las diferentes secciones
+- [ ] Recortar imagenes de los libros para que todas tengan el mismo tamaño y optimizados para web
+- [ ] Añadir más tests (Servicios, Hooks, Componentes)

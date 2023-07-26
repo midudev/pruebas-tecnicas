@@ -1,9 +1,4 @@
-/*export interface Data {
-    library: Library[]
-}*/
-
 export type Library = Data[]
-
 
 export interface Data {
     book: Book
