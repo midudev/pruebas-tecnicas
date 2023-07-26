@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useBookStore } from '../store/bookStore'
 
+const getBooksLocalStorage = () => {
+  return {
+    booksLocal: JSON.parse(window.localStorage.getItem('books')),
+    booksListLocal: JSON.parse(window.localStorage.getItem('readingList'))
+  }
+}
+
 export function useBook () {
   const booksStore = useBookStore(state => state.books)
   const readingListStore = useBookStore(state => state.readingList)
@@ -8,31 +15,9 @@ export function useBook () {
   const addBook = useBookStore(state => state.addBook)
   const removeBook = useBookStore(state => state.removeBook)
 
-  const getBooksLocalStorage = () => {
-    return {
-      booksLocal: JSON.parse(window.localStorage.getItem('books')),
-      booksListLocal: JSON.parse(window.localStorage.getItem('readingList'))
-    }
-  }
-
   const [genre, setGenres] = useState('All')
   const [books, setBooks] = useState(getBooksLocalStorage().booksLocal || booksStore)
   const [readingList, setReadingList] = useState(getBooksLocalStorage().booksListLocal || readingListStore)
-
-  useEffect(() => {
-    let { booksLocal } = getBooksLocalStorage()
-
-    if (!booksLocal) {
-      booksLocal = booksStore
-    }
-
-    if (genre !== 'All') {
-      const filteredBooks = booksLocal.filter(book => book.genre === genre)
-      setBooks(filteredBooks)
-    } else {
-      setBooks(booksLocal)
-    }
-  }, [genre, booksStore])
 
   useEffect(() => {
     let { booksListLocal, booksLocal } = getBooksLocalStorage()
@@ -42,9 +27,16 @@ export function useBook () {
       booksLocal = booksStore
     }
 
+    if (genre !== 'All') {
+      const filteredBooks = booksLocal.filter(book => book.genre === genre)
+      setBooks(filteredBooks)
+    } else {
+      setBooks(booksLocal)
+    }
+
     setReadingList(booksListLocal)
-    setBooks(booksLocal)
-  }, [booksStore, readingListStore])
+    // setBooks(booksLocal)
+  }, [booksStore, readingListStore, genre])
 
   useEffect(() => {
     // Create a function to handle changes to localStorage

@@ -19,8 +19,8 @@ function App () {
         <header className='header'>
           <h1 className={styles.title}>El viaje de tus lecturas</h1>
           <div className={styles.booksCounter}>
-            <p>{books.length} Libros disponibles</p>
-            {readingList.length > 0 && <p>{readingList.length} en la lista de lectura</p>}
+            <p><strong>{books.length}</strong> Libros disponibles</p>
+            {readingList.length > 0 && <p><strong>{readingList.length}</strong> en la lista de lectura</p>}
           </div>
         </header>
 

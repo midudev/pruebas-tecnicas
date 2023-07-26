@@ -53,3 +53,18 @@
   flex-direction: column;
   padding: 50px 0;
 }
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 3.5rem;
+  }
+
+  .main {
+    flex-direction: column;
+  }
+
+  .listBooks {
+    width: 96%;
+    margin: 0 auto;
+  }
+}
