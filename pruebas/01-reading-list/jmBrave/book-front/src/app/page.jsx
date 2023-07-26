@@ -52,7 +52,6 @@ export default function Home() {
         const onStorageChange = (_) => {
             handleFilterBooksAvailable(library, getBooksCurrentlist())
             handleAddAllBooksSelected(getBooksCurrentlist())
-            //handleFilterBooksGenreAvailable()
         }
         window.addEventListener('storage', onStorageChange)
         return () => window.removeEventListener('storage', onStorageChange)
@@ -116,7 +115,7 @@ export default function Home() {
 
     const Drop = () => {
         return (
-            <div className="fixed inset-x-0 top-0 flex justify-center items-center min-h-full">
+            <div className="fixed inset-x-0 top-0 flex justify-center items-center min-h-full -z-10">
                 <div className="round ">
                     <div id="cta">
                         <span className="arrow primera next "></span>

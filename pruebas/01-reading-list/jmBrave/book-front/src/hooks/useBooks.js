@@ -10,11 +10,11 @@ export default function useBooks() {
 
     function handleGetAllGenres(books) {
         const set = new Set(books.map((book) => book.book.genre))
-        setGenres(Array.from(set))
+        const allGenres = Array.from(set)
+        setGenres(['Todas', ...allGenres])
     }
 
     function handleFilterBooks(sourceBooks, books) {
-        //TODO add ISBN in name
         const ISBN_SELECTED = books.map((book) => book.book.ISBN)
         const filterBooksAvailable = sourceBooks.filter(
             (bookAvailable) => !ISBN_SELECTED.includes(bookAvailable.book.ISBN)

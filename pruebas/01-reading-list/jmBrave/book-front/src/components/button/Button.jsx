@@ -1,26 +1,25 @@
 import styles from './Button.module.css'
-const Button = (book) => {
-    const handleClick = (book) => {
-        const localStorage = window.localStorage
-        const booksCurrentlist = localStorage.getItem('bookList')
+import { addBook, deleteBook } from '../../utils/localstorage'
+const Button = ({ book, isAvailable }) => {
+    const handleClick = (book, action) => action({ book: book })
 
-        if (!booksCurrentlist) {
-            localStorage.setItem('bookList', JSON.stringify([book]))
-        }
-        if (booksCurrentlist) {
-            const currentBooks = JSON.parse(booksCurrentlist)
-            localStorage.setItem(
-                'bookList',
-                JSON.stringify([...currentBooks, book])
-            )
-        }
-        window.dispatchEvent(new Event('storage'))
+    if (isAvailable()) {
+        return (
+            <div className={styles.addList}>
+                <button onClick={() => handleClick(book, addBook)}>
+                    Añadir a la lista
+                </button>
+            </div>
+        )
+    } else {
+        return (
+            <div className={styles.deleteList}>
+                <button onClick={() => handleClick(book, deleteBook)}>
+                    Eliminar de la lista
+                </button>
+            </div>
+        )
     }
-    return (
-        <div className={styles.addList}>
-            <button onClick={() => handleClick(book)}>Añadir a la lista</button>
-        </div>
-    )
 }
 
 export default Button

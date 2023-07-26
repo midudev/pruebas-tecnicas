@@ -35,8 +35,8 @@ export default function Card({ book, isAvailable }) {
                         <p>{author.name}</p>
                     </div>
                 </div>
-                {isAvailable() && isVisibleButton ? (
-                    <Button book={book} />
+                {isVisibleButton ? (
+                    <Button book={book} isAvailable={isAvailable} />
                 ) : null}
             </div>
         </div>
