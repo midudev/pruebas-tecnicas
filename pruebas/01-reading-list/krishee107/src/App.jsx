@@ -16,6 +16,13 @@ export const App = () => {
     localStorage.setItem('selectedBooks', JSON.stringify(selectedBooks));
   }, [selectedBooks]);
 
+  //Actualizamos el localstorage en todas las pestañas
+  window.addEventListener('storage', event => {
+    if (event.key === 'selectedBooks') {
+      setSelectedBooks(JSON.parse(event.newValue));
+    }
+  });
+
   //Mostramos la lista de lectura o la ocultamos
   const handleReadingList = () => {
     setReadingListVisible(!readingListVisible);
