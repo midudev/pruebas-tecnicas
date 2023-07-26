@@ -25,25 +25,28 @@ const Favoritos = () => {
         <Button
           variant="default"
           size="icon"
-          className="float-right ml-2 fixed right-8 bottom-4 w-16 h-16"
+          className="float-right ml-2 fixed right-2 bottom-2 sm:right-6 sm:bottom-4 w-12 h-12 sm:w-16 sm:h-16"
         >
-          <BookOpenCheck className="h-8 w-8" />
+          <BookOpenCheck className="w-6 h-6 sm:h-8 sm:w-8" />
         </Button>
       </SheetTrigger>
       <SheetContent className="overflow-y-auto">
         <SheetHeader>
-          <SheetTitle>Listado de favoritos</SheetTitle>
+          <SheetTitle className="my-2">
+            Lista de favoritos
+            <span>{favoritos.length > 0 ? ` (${favoritos.length})` : ""}</span>
+          </SheetTitle>
           <SheetDescription className="gap-3 flex flex-col">
             {favoritos.map((favorito) => {
               return (
-                <Card>
+                <Card key={favorito.ISBN + "fav-card"}>
                   <CardHeader className="p-0">
                     <div className="flex">
-                      <div className="bg-red-500 w-24">
+                      <div className="bg-red-500 w-20 rounded-l-md">
                         <img
                           src={favorito.cover}
                           alt=""
-                          className="h-full w-full"
+                          className="h-full w-full rounded-l-sm object-cover"
                         />
                       </div>
                       <div className="p-4 w-64 relative">

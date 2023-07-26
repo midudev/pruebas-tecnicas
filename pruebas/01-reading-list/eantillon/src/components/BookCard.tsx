@@ -23,16 +23,16 @@ const BookCard: React.FC<Props> = ({ book }) => {
 
   return (
     <Card className="flex flex-col justify-between">
-      <CardHeader>
+      <CardHeader className="pb-1 px-0 pt-0">
         <img
           alt="Signage"
           src={book.cover}
           className="h-96 w-full rounded-md object-cover sm:h-64 lg:h-96 mb-2"
         />
-        <CardTitle>{book.title}</CardTitle>
-        <CardDescription>{book.synopsis}</CardDescription>
+        <CardTitle className="text-xl truncate w-full px-6">{book.title}</CardTitle>
+        <CardDescription className="px-6 line-clamp-3">{book.synopsis}</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="pb-1">
         <div>
           <dl className="divide-y divide-gray-100 text-sm">
             <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
