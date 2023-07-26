@@ -1,17 +1,14 @@
 .filterSection {
-  grid-area: filters;
   display: flex;
-  gap: 3rem;
+  flex-wrap: wrap-reverse;
+  gap: 1.5rem 3rem;
   padding: 1em var(--padding-content);
-  border-style: solid;
-  border-color: transparent;
-  border-width: 0 1px 0;
-  border-right-color: var(--border-section-color);
+  height: max-content;
 }
 
 .filterSection__field {
   padding: 0;
-  width: max-content;
+  width: fit-content;
   border-width: 0;
 }
 
@@ -29,8 +26,9 @@
 
 .filterSection__containerOptions {
   display: flex;
-  /* flex-direction: ; */
-  gap: 0.7em;
+  flex-wrap: wrap;
+  gap: 0.3em 0.7em;
+  margin-top: -0.5rem;
   font-weight: 600;
   font-size: 1rem;
   line-height: 1.75rem;
@@ -77,16 +75,12 @@
 }
 
 .filterSection__labelGenre {
-  padding: 0.2em 0.6em;
+  padding: 0.2em 0.6em 0.2em 0;
   color: rgb(255 255 255 / 0.75);
 }
 
-.filterSection__labelGenre:first-of-type {
-  padding-left: 0;
-}
-
 .filterSection__checkGenre:checked + .filterSection__labelGenre {
-  color: #38bdf8;
+  color: var(--color-primary);
 }
 
 @media (hover: hover) {
@@ -98,6 +92,12 @@
 @media (hover: none) {
   .filterSection__labelGenre {
     color: #fff;
+  }
+}
+
+@media (min-width: 55rem) {
+  .filterSection {
+    grid-area: filters;
   }
 }
 

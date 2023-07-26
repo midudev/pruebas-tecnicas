@@ -14,6 +14,7 @@
   grid-area: bookListMenu;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   padding: 0;
   list-style-type: none;
 }
@@ -22,8 +23,17 @@
   flex-grow: 1;
 }
 
+.bookListMenu > li:last-child button {
+  border-bottom-width: 0;
+}
+
+.bookListMenu > li:not(:last-child) {
+  flex-basis: 50%;
+}
+
 .bookListMenu__item {
   padding: 0.4em 2em;
+  height: 100%;
   width: 100%;
   font-size: 1.125rem;
   line-height: 1.5rem;
