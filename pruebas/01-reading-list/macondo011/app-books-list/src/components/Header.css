@@ -1,0 +1,10 @@
+h2{
+    margin-inline-start: 3rem;
+
+}
+.title{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}

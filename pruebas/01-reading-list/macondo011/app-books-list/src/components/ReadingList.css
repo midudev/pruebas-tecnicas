@@ -1,0 +1,18 @@
+.ReadingList li{
+    display: flex;
+    width: 75%;
+    flex-direction: column;
+    gap: 0.5rem;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, .1);
+    border-radius: 4px;
+    background: #111;
+    color: #fff;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    
+    
+}
+.ReadingList img{
+    border-radius: 8px;
+    margin-top: 8px;
+}

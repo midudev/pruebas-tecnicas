@@ -1,0 +1,30 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.Body{
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+
+.principal{
+  width: 65%;
+  justify-content: inline-start;
+  
+  
+}
+.article{
+  width: 40%;
+  border-radius: 4px;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, .1);
+  background-color: rgba(18, 18, 20, 0.247);
+  padding: 0.5rem;
+  text-align: center;
+  float: inline-end;
+  
+}
+
+

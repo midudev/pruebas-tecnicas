@@ -1,0 +1,40 @@
+
+  .books{
+    
+    display: flex;
+    justify-content: block-start;
+    align-items: block-start;
+    
+  }
+  
+  .books ul {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit, 
+        minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .books li {
+   
+    display: flex;
+
+    flex-direction: column;
+    gap: 0.5rem;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, .1);
+    border-radius: 4px;
+    background: #111;
+    color: #fff;
+    padding: 0.5rem;
+   
+   
+  }
+  
+
+  
+  .books img {
+    border-radius: 8px;
+    margin-top: 15px;
+  
+   
+  }
+  
