@@ -7,7 +7,11 @@ import { isDark } from './signals/store';
 
 export function App() {
   return (
-    <div className={`bg-white ${isDark.value ? 'invert' : ''}`}>
+    <div
+      className={`bg-white selection:bg-black selection:text-white ${
+        isDark.value ? 'invert' : ''
+      }`}
+    >
       <div className="mx-auto max-w-[1366px]">
         <Header />
         <main
