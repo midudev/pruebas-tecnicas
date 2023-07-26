@@ -10,7 +10,8 @@ export function useFilters() {
           (filters.type === 'all' || Object.keys(item)[0] === filters.type) &&         
           (filters.genre === 'all' || item[Object.keys(item)[0]].genre === filters.genre) &&
           (filters.author === 'all' || item[Object.keys(item)[0]].author.name === filters.author) &&
-          (filters.year === 0 || item[Object.keys(item)[0]].year >= filters.year)
+          (filters.year === 0 || item[Object.keys(item)[0]].year >= filters.year) &&
+          (filters.totalPages === 0 || item[Object.keys(item)[0]].pages >= filters.totalPages)
         )
       })
       filters.totalFilterd = pageFiltered.length

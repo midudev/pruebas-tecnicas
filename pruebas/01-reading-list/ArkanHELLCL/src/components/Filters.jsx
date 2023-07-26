@@ -19,6 +19,7 @@ export function Filters () {
     const authorFilterId = useId()
     const yearFilterId = useId()    
     const pageSizeFilterid = useId()
+    const totalSizeFilterid = useId()
 
     const lisItems = filters.itemsFileterd.map(item => item[Object.keys(item)[0]])
     const itemsAvailable = lisItems.filter(item => !readingList.some((element) => element.ISBN === item.ISBN))
@@ -60,10 +61,18 @@ export function Filters () {
             page: 1
         }))
     }
+
+    const handelChangetotalSize = () => (e) => {        
+        setFilters(prevState => ({
+            ...prevState, 
+            totalPages: e.target.value,
+            page: 1
+        }))
+    }
     
     return(
         <>
-            <section className="list-none grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 min-w-fit pt-4 grid-col items-center">
+            <section className="list-none grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 min-w-fit pt-4 grid-col items-center">
                 <div className="mb-2 grid">                
                     <label htmlFor={typeFilterId} className="block mb-2 text-gray-900 dark:text-gray-100">Tipo :</label>
                     <select id={typeFilterId} onChange={handelChangeType()} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-100 dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -103,7 +112,22 @@ export function Filters () {
                         value={filters.year}
                     />
                     <span className="block text-gray-900 dark:text-gray-100 text-right">{filters.year}</span>                
-                </div>            
+                </div> 
+
+                <div className="mb-2 grid">
+                    <label htmlFor={totalSizeFilterid} className="block mb-2 text-gray-900 dark:text-gray-100">Páginas mayor a:</label>
+                    <input
+                        type='range'
+                        id={totalSizeFilterid}
+                        onChange={handelChangetotalSize()}
+                        min={0}
+                        max={1000}
+                        step={1}
+                        value={filters.totalPages}
+                    />
+                    <span className="block text-gray-900 dark:text-gray-100 text-right">{filters.totalPages}</span>                
+                </div> 
+
                 <div className="mb-2 grid">
                     <label htmlFor={pageSizeFilterid} className="block mb-2 text-gray-900 dark:text-gray-100">Items por página</label>
                     <input

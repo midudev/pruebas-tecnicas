@@ -12,7 +12,8 @@ export function FiltersProvider({ children }) {
         year:1800,
         type:'all',
         totalFilterd:0,
-        itemsFileterd:[]
+        itemsFileterd:[],
+        totalPages:0
     })
     return (
         <FiltersContext.Provider value={{
