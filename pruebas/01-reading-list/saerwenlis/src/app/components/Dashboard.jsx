@@ -7,9 +7,6 @@ import Image from "next/image";
 
 export default function Dashboard() {
     const {setList, books } = useLibrary()
-
-    console.log('books', books);
-
     const [items, setItems] = useState(books)
     const controls = useDragControls()
 

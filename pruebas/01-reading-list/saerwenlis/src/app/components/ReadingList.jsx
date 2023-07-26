@@ -7,7 +7,6 @@ import Image from "next/image";
 
 export default function ReadingList() {
     const {list, removeList } = useLibrary()
-    console.log('list', list);
 
     const [ mounted, setMounted ] = useState(false)
 
