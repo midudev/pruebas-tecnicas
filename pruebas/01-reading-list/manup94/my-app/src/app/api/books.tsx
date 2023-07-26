@@ -10,5 +10,6 @@ async function fetchBooks() {
     } catch (error) {
         console.error("Error fetching data:", error);
     }
-};
+}
+
 export { fetchBooks }
