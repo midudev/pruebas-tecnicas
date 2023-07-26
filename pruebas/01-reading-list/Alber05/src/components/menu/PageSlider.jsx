@@ -1,36 +1,30 @@
-import { useContext, useEffect } from "react";
-import Box from "@mui/material/Box";
-import Slider from "@mui/material/Slider";
+import { useContext } from "react";
 import { DataContext } from "../../context/DataContext";
-import style from "./pageSlider.module.css";
-
-function valuetext(value) {
-  return `${value} Páginas`;
-}
+import style from "./menu.module.css";
 
 export const PageSlider = ({ filterIcon }) => {
   const { selectedPageRange, setSelectedPageRange } = useContext(DataContext);
 
-  const handleSliderChange = (e, newValue) => {
-    setSelectedPageRange(newValue);
+  const handleSliderChange = (e) => {
+    setSelectedPageRange(parseInt(e.target.value));
   };
 
   return (
-    <Box sx={{ width: 150 }} className={style.pageSliderContainer}>
-      <h4 className={style.pageSliderH4}>{filterIcon} Páginas:</h4>
-
-      <Slider
-        value={selectedPageRange}
-        defaultValue={0}
-        onChange={handleSliderChange}
-        getAriaValueText={valuetext}
-        valueLabelDisplay="auto"
-        step={10}
-        marks
-        min={0}
-        max={1000}
-        className={style.silderRange}
-      />
-    </Box>
+    <div className={style.pageRangeContainer}>
+      <div className={style.titleContainer}>
+        <h4 className={style.pageSliderH4}>{filterIcon} Páginas:</h4>
+      </div>
+      <div className={style.sliderInputContainer}>
+        <input
+          step="10"
+          type="range"
+          min="0"
+          max="1000"
+          value={selectedPageRange}
+          className={style.slider}
+          onChange={handleSliderChange}
+        />
+      </div>
+    </div>
   );
 };

@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { DataContext } from "../../context/DataContext";
 import { NavLink } from "react-router-dom";
-import style from "./navLinks.module.css";
+import style from "./menu.module.css";
 
 export const NavLinks = () => {
+  const { allBooks, libraryBooks } = useContext(DataContext);
+
   return (
     <div className={style.navLinksContainer}>
       <NavLink
@@ -11,7 +14,7 @@ export const NavLinks = () => {
         }
         to="/"
       >
-        Todos los libros
+        Todos los libros {allBooks.length}
       </NavLink>
       <NavLink
         className={({ isActive }) =>
@@ -19,7 +22,7 @@ export const NavLinks = () => {
         }
         to="/biblioteca"
       >
-        Lista de lectura
+        Lista de lectura {libraryBooks.length}
       </NavLink>
     </div>
   );

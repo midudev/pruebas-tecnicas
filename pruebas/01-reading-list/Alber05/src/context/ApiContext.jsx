@@ -13,8 +13,8 @@ export const ApiContext = ({ children }) => {
   // Estado para manejar el término de búsqueda
   const [search, setSearch] = useState("");
 
-  // Estado para almacenar el rango de páginas seleccionado [min, max]
-  const [selectedPageRange, setSelectedPageRange] = useState([0, 0]);
+  // Estado para almacenar el rango de páginas seleccionado
+  const [selectedPageRange, setSelectedPageRange] = useState(0);
 
   // Estado para almacenar la categoría seleccionada
   const [selectedCategory, setSelectedCategory] = useState("all");

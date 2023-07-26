@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { DataContext } from "../../context/DataContext";
-import style from "./bookCard.module.css";
 import {
   BsFillBookmarkPlusFill,
   BsFillBookmarkHeartFill,
 } from "react-icons/bs";
+import style from "./bookCard.module.css";
 
 export const BookCard = ({ added, booksToDisplay }) => {
   const { handleAddToLibrary, handleDeleteFromLibrary } =

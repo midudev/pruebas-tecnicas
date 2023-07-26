@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { DataContext } from "../../context/DataContext";
-import style from "./categoryFilter.module.css";
+import style from "./menu.module.css";
 
 export const CategoryFilter = ({ filterIcon }) => {
   // Obtener el estado y funciones desde el contexto
@@ -14,20 +14,24 @@ export const CategoryFilter = ({ filterIcon }) => {
 
   return (
     <div className={style.categoryFilter}>
-      <h4 className={style.categoryFilterH4}>{filterIcon} Categorías:</h4>
-      <select
-        value={selectedCategory}
-        onChange={handleSelectChange}
-        className={style.selectCategoryFilter}
-      >
-        <option value="all">All</option>
+      <div className={style.titleContainer}>
+        <h4 className={style.categoryFilterH4}>{filterIcon} Categorías:</h4>
+      </div>
+      <div className={style.selectContainer}>
+        <select
+          value={selectedCategory}
+          onChange={handleSelectChange}
+          className={style.selectCategoryFilter}
+        >
+          <option value="all">All</option>
 
-        {allCategories.map((category) => (
-          <option value={category} key={category}>
-            {category}
-          </option>
-        ))}
-      </select>
+          {allCategories.map((category) => (
+            <option value={category} key={category}>
+              {category}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 };

@@ -37,9 +37,8 @@ export const useFilteredBooks = (
         selectedCategory === searchedBook.book.genre;
 
       const pageRangeMatch =
-        (selectedPageRange[0] === 0 && selectedPageRange[1] === 0) ||
-        (searchedBook.book.pages >= selectedPageRange[0] &&
-          searchedBook.book.pages <= selectedPageRange[1]);
+        selectedPageRange == 0 ||
+        (selectedPageRange > 0 && searchedBook.book.pages <= selectedPageRange);
 
       return categoryMatch && searchMatch && pageRangeMatch;
     });
