@@ -1,6 +1,8 @@
-describe('App', () => {
+/// <reference types="cypress" />
+
+describe('Elements are in the DOM', () => {
   beforeEach(() => {
-    cy.visit('')
+    cy.visit('http://localhost:5175')
   })
 
   it('should have a reading list, filters and books list', () => {

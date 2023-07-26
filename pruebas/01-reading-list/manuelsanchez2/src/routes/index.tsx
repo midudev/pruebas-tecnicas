@@ -17,20 +17,15 @@ import { css } from '~/styled-system/css'
 import { timeline, stagger, type TimelineDefinition } from 'motion'
 
 export default component$(() => {
-  const { books, booksWithUserPreferences } = useGlobalState()
+  const { books, booksWithUserPreferences, filters } = useGlobalState()
 
   const readingList = useComputed$(() =>
     booksWithUserPreferences.value.filter((book) => book.isInReadingList)
   )
 
-  const filters = useStore({
-    genre: DEFAULT_GENRE,
-    title: '',
-    numberOfPages: 750,
-  })
-
   // Here we could filter the books by other settings like genre, number of pages
   const booksFiltered = useComputed$(() => {
+    if (booksWithUserPreferences.value.length === 0) return []
     // Filtro por género
     let booksFiltered =
       filters.genre === DEFAULT_GENRE
@@ -118,7 +113,7 @@ export default component$(() => {
             </div>
           </div>
 
-          <ReadingList />
+          <ReadingList filters={filters} />
         </section>
 
         <section

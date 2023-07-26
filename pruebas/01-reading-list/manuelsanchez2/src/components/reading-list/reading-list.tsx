@@ -1,6 +1,6 @@
 import { component$, useComputed$, useSignal } from '@builder.io/qwik'
 import { useGlobalState } from '~/ctx/ctx'
-import { type StoredBook } from '~/types/types'
+import { Book, type StoredBook } from '~/types/types'
 import { BookSpine } from '../book-spine/book-spine'
 import { downloadFromLocalStorage } from '~/functions/utils'
 import { STORE_ID } from '~/constants/constants'
@@ -15,10 +15,21 @@ import {
 } from './styles'
 import { IconDownload, IconPrioritySort } from '../icons/icons'
 
-export const ReadingList = component$(() => {
-  const { readingList } = useGlobalState()
+export const ReadingList = component$(({ filters }: { filters: any }) => {
+  const { booksWithUserPreferences } = useGlobalState()
 
-  const isSorted = useSignal(false)
+  const readingList = useComputed$(() => {
+    let readingList: Book[]
+    if (booksWithUserPreferences.value.length > 0) {
+      readingList = booksWithUserPreferences.value.filter(
+        (book) => book.isInReadingList === true
+      )
+    } else {
+      readingList = []
+    }
+
+    return readingList
+  })
 
   const booksSorted = useComputed$(() => {
     const copyOfReadingList = [...readingList.value]
@@ -26,20 +37,24 @@ export const ReadingList = component$(() => {
       return b.priority - a.priority
     })
 
-    return isSorted.value === true ? booksSorted : readingList.value
+    return filters.isReadingListSorted === true
+      ? booksSorted
+      : readingList.value
   })
 
   return (
-    <div class={readingListWrapperStyles}>
+    <div data-cy="reading-list" class={readingListWrapperStyles}>
       {readingList.value.length > 0 && (
         <header class={readingListHeaderStyles}>
           <button
             class={sortButtonStyles}
-            onClick$={() => (isSorted.value = !isSorted.value)}
+            onClick$={() =>
+              (filters.isReadingListSorted = !filters.isReadingListSorted)
+            }
           >
             <IconPrioritySort />
             <span>
-              {isSorted.value === false
+              {filters.isReadingListSorted === false
                 ? 'Ordenar por prioridad'
                 : 'Quitar filtro de prioridad'}
             </span>

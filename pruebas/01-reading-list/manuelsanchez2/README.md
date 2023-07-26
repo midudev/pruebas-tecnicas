@@ -36,9 +36,9 @@ Podríamos dividir los objetivos en dos tipos: must y nice-to-have.
 - [x] Añadir la posibilidad de filtrar los libros disponibles por género
 - [x] Sincronización de estado (tanto de libros disponibles como de lista de lectura)
 - [x] Persistencia de datos (local storage)
-- [ ] Sincronización entre pestañas
+- [x] Sincronización entre pestañas
 - [x] Despliegue en Vercel
-- [ ] Test (en este caso unit test o end to end)
+- [x] Test (en este caso unit test o end to end)
 
 ### Nice-to-have
 
@@ -57,3 +57,9 @@ Hemos creado unos code tours en el repositorio. Para poder acceder a ellos, simp
 ## ✉️ Contacto
 
 En caso de dudas, siempre puedes escribir al [Team Lead](mailto:manusansan22@gmail.com) del proyecto.
+
+## 🧪 Test
+
+Estamos trabajando duro para crear tests e2e en el proyecto. Al intentar crear algo avanzado, nos topamos con la siguiente información, que parece ser un error de Qwik y no de Cypress. ¡Nos hemos puesto en contacto con ellos para ver si lo podemos arreglar!
+
+![Test Error](./public/test-error.png)

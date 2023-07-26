@@ -1,4 +1,4 @@
-import { FilesExtensionToDownload, StoredBook } from '~/types/types'
+import { FilesExtensionToDownload, Book } from '~/types/types'
 
 export function removeAccents(str: string) {
   return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
@@ -6,7 +6,7 @@ export function removeAccents(str: string) {
 
 export function downloadFromLocalStorage(
   key: string,
-  type: FilesExtensionToDownload = 'txt'
+  type: FilesExtensionToDownload = 'json'
 ) {
   const value = localStorage.getItem(key)
 
@@ -15,17 +15,20 @@ export function downloadFromLocalStorage(
     return
   }
 
-  let formattedData = value
+  const books = JSON.parse(value) as Book[]
+  const booksInReadingList = books.filter((book) => book.isInReadingList)
+
   const mimeTypes = {
-    txt: 'text/plain',
     json: 'application/json',
     csv: 'text/csv',
   }
 
+  let formattedData = ''
+
   switch (type) {
     case 'json':
       try {
-        formattedData = JSON.stringify(JSON.parse(value), null, 2)
+        formattedData = JSON.stringify(booksInReadingList, null, 2)
       } catch (err) {
         console.error('Error parsing JSON:', err)
         return
@@ -37,15 +40,12 @@ export function downloadFromLocalStorage(
         const jsonObj = JSON.parse(value)
         formattedData = Object.keys(jsonObj[0]).join(',') + '\n'
         formattedData += jsonObj
-          .map((row: StoredBook) => Object.values(row).join(','))
+          .map((row: Book) => Object.values(row).join(','))
           .join('\n')
       } catch (err) {
         console.error('Error converting to CSV:', err)
         return
       }
-      break
-    case 'txt':
-      // No formatting needed, just use the raw value
       break
     default:
       console.warn(`Unsupported type: ${type}`)

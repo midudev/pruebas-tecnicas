@@ -22,5 +22,11 @@
     }
   },
   "files": ["./.eslintrc.cjs"],
-  "include": ["src", "./*.d.ts", "./*.config.ts", "styled-system"]
+  "include": [
+    "src",
+    "./*.d.ts",
+    "./*.config.ts",
+    "styled-system",
+    "cypress/e2e/test-books/exist.cy.js"
+  ]
 }

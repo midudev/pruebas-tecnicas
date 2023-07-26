@@ -10,9 +10,21 @@
     },
     {
       "file": "pruebas/01-reading-list/manuelsanchez2/src/ctx/ctx.tsx",
-      "description": "En el contexto es donde tenemos no solo todos los libros, sino la lista de libros con las preferencias del usuario y además la lista de lectura.\nHacemos que se activen los useVisibleTasks$ cuando haya cambios en el localStorage y luego hacemos un merge con los libros para siempre tener el estado actualizado.",
+      "description": "En el contexto es donde tenemos no solo todos los libros, sino la lista de libros con las preferencias del usuario.\nHacemos que se activen los useVisibleTasks$ cuando haya cambios en el localStorage y luego hacemos un merge con los libros para siempre tener el estado actualizado.",
       "line": 27,
       "title": "El contexto"
+    },
+    {
+      "file": "pruebas/01-reading-list/manuelsanchez2/src/components/reading-list/reading-list.tsx",
+      "description": "Aquí es donde sacamos la lista de lectura al filtrar por la propiedad.",
+      "line": 21,
+      "title": "Lista de lectura"
+    },
+    {
+      "file": "pruebas/01-reading-list/manuelsanchez2/src/routes/index.tsx",
+      "description": "Aquí es donde gestionamos los filtros que el usuario selecciona en la vista.",
+      "line": 33,
+      "title": "Archivo principal (default filters, filter logic...)"
     }
   ]
 }

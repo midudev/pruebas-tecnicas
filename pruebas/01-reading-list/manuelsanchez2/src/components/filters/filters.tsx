@@ -163,7 +163,7 @@ export const Filters = component$<FiltersProps>(({ filters, books }) => {
         </>
       ) : (
         <button
-          data-cy="open-filters-btn"
+          data-cy="filters"
           onClick$={() => (showFilters.value = true)}
           class={filterOpenButtonStyles}
         >

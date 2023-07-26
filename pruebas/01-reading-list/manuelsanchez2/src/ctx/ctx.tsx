@@ -9,16 +9,24 @@ import {
   useTask$,
 } from '@builder.io/qwik'
 import { fetchBooks } from '~/api/fetchBooks'
-import { StoredBook, type Book } from '~/types/types'
+import { type Book } from '~/types/types'
 
 import debugFactory from 'debug'
+import { DEFAULT_GENRE } from '~/constants/constants'
 
 const debug = debugFactory('ctx/BookStore')
+
+interface Filters {
+  genre: string
+  title: string
+  numberOfPages: number
+  isReadingListSorted: boolean
+}
 
 interface BookStore {
   books: Signal<Book[]>
   booksWithUserPreferences: Signal<Book[]>
-  readingList: Signal<Book[]>
+  filters: Filters
 }
 
 const STORE_ID = 'books-reading-list'
@@ -26,10 +34,13 @@ const BookContext = createContextId<BookStore>(STORE_ID)
 
 export const useProvideGlobalState = () => {
   const books = useSignal<Book[]>([])
-
   const booksWithUserPreferences = useSignal<Book[]>([])
-
-  const readingList = useSignal<Book[]>([])
+  const filters = useStore<Filters>({
+    genre: DEFAULT_GENRE,
+    title: '',
+    numberOfPages: 750,
+    isReadingListSorted: false,
+  })
 
   // Solo se ejecuta una vez, al cargar la página
   // Nos traemos todos los libros y vamos a guardarlos en el estado de dos variables
@@ -53,30 +64,11 @@ export const useProvideGlobalState = () => {
 
         if (storedReadingList) {
           const parsedReadingList = JSON.parse(storedReadingList)
-
-          // Merge fetchedBooks with parsedReadingList
-          const mergedBooks = booksWithUserPreferences.value.map((book) => {
-            // Find the book in the parsedReadingList
-            const storedBook = parsedReadingList.find(
-              (storedBook: StoredBook) => storedBook.title === book.title
-            )
-
-            // If the book is found in the parsedReadingList, replace the priority and isInReadingList values
-            if (storedBook) {
-              return {
-                ...book,
-                priority: storedBook.priority,
-                isInReadingList: storedBook.isInReadingList,
-              }
-            }
-
-            // If the book is not found in the parsedReadingList, return the book as is
-            return book
-          })
-
-          booksWithUserPreferences.value = mergedBooks
+          booksWithUserPreferences.value = parsedReadingList
           debug('There are some books in the local storage')
         } else {
+          booksWithUserPreferences.value = books.value
+          console.log(booksWithUserPreferences.value)
           debug('There are no books in the local storage')
         }
       } catch (error) {
@@ -97,28 +89,18 @@ export const useProvideGlobalState = () => {
   // Se ejecuta cada vez que se modifica el estado de los libros
   // y actualiza el localStorage
   useVisibleTask$(({ track }) => {
-    track(booksWithUserPreferences) // track the booksWithUserPreferences signal
+    track(booksWithUserPreferences)
 
-    readingList.value = booksWithUserPreferences.value.filter(
-      (book) => book.isInReadingList
+    localStorage.setItem(
+      STORE_ID,
+      JSON.stringify(booksWithUserPreferences.value)
     )
-
-    const booksToStore = readingList.value.map((book) => ({
-      id: book.id,
-      title: book.title,
-      priority: book.priority, // assuming 'priority' is a property of your Book type
-      isInReadingList: book.isInReadingList,
-      cover: book.cover,
-    }))
-
-    localStorage.setItem(STORE_ID, JSON.stringify(booksToStore))
-    debug('These are all the books on the reading list', booksToStore)
   })
 
   const store = useStore({
     books,
     booksWithUserPreferences,
-    readingList,
+    filters,
   })
 
   useContextProvider(BookContext, store)

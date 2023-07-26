@@ -25,4 +25,4 @@ export interface StoredBook {
   cover: string
 }
 
-export type FilesExtensionToDownload = 'txt' | 'json' | 'csv'
+export type FilesExtensionToDownload = 'json' | 'csv'

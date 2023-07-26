@@ -13,7 +13,7 @@ export const BooksList = component$(({ booksFiltered }: BooksListProps) => {
   if (!booksFiltered) return null
 
   return (
-    <ul data-books-list class={BooksListULStyles}>
+    <ul data-cy="books-list" class={BooksListULStyles}>
       {booksFiltered.value.slice(0, NUMBER_OF_BOOKS_PER_PAGE).map((book) => (
         <li key={book.ISBN}>
           <BookItem book={book} />
