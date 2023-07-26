@@ -51,7 +51,7 @@
 
 <svelte:window on:storage={storageListener} />
 
-<div class="mx-auto grid h-screen w-full max-w-7xl grid-rows-[auto_1fr] px-8 xl:px-0">
+<div class="mx-auto grid min-h-screen w-full max-w-7xl grid-rows-[auto_1fr] px-8 xl:px-0">
 	<Topbar {toggleReadingList} />
 
 	<main class="grid grid-rows-[auto_1fr] border-t border-t-slate-800/60 py-6">
