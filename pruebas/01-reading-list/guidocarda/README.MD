@@ -2,8 +2,7 @@
 
 ### ReadSome
 
-!(image)[https://i.imgur.com/dgQzo1B.png]
-!(image)[https://i.imgur.com/UumSsa0.png]
+<img src="https://i.imgur.com/dgQzo1B.png" width="300">
 
 ### Funcionalidades Implementadas
 
