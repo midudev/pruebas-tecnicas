@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import { useBooks } from './use-books'
 import type { BooksList } from '@/utils/books'
 
@@ -30,40 +30,31 @@ export function useReadingListContext(storageKey: string) {
     }
   }, [storageKey])
 
-  const checkIfBookInReadingList = useCallback(
-    (ISBN: string) => {
-      return Boolean(readingList.find(book => book.ISBN === ISBN))
-    },
-    [readingList]
-  )
+  const checkIfBookInReadingList = (ISBN: string) => {
+    return Boolean(readingList.find(book => book.ISBN === ISBN))
+  }
 
-  const removeFromReadingList = useCallback(
-    (ISBN: string) => {
-      const newReadingList = readingList.filter(book => book.ISBN !== ISBN)
+  const removeFromReadingList = (ISBN: string) => {
+    const newReadingList = readingList.filter(book => book.ISBN !== ISBN)
 
-      window.localStorage.setItem(storageKey, JSON.stringify(newReadingList))
-      setReadingList(newReadingList)
-    },
-    [readingList, storageKey]
-  )
+    window.localStorage.setItem(storageKey, JSON.stringify(newReadingList))
+    setReadingList(newReadingList)
+  }
 
-  const addToReadingList = useCallback(
-    (ISBN: string) => {
-      const bookToAdd = books.find(book => book.ISBN === ISBN)
+  const addToReadingList = (ISBN: string) => {
+    const bookToAdd = books.find(book => book.ISBN === ISBN)
 
-      if (bookToAdd === undefined) return
+    if (bookToAdd === undefined) return
 
-      const newReadingList = [...readingList, bookToAdd]
+    const newReadingList = [...readingList, bookToAdd]
 
-      window.localStorage.setItem(storageKey, JSON.stringify(newReadingList))
-      setReadingList(newReadingList)
-    },
-    [books, readingList, storageKey]
-  )
+    window.localStorage.setItem(storageKey, JSON.stringify(newReadingList))
+    setReadingList(newReadingList)
+  }
 
-  const toggleReadingList = useCallback(() => {
+  const toggleReadingList = () => {
     setReadingListOpen(prev => !prev)
-  }, [])
+  }
 
   const readingListCount = readingList.length
 

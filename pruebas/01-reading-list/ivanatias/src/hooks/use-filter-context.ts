@@ -25,19 +25,19 @@ export function useFiltersContext() {
     [filters]
   )
 
-  const filterByPages = useCallback((minPages: number) => {
+  const filterByPages = (minPages: number) => {
     setFilters(prev => ({
       ...prev,
       minPages
     }))
-  }, [])
+  }
 
-  const filterByGenre = useCallback((genre: string) => {
+  const filterByGenre = (genre: string) => {
     setFilters(prev => ({
       ...prev,
       genre
     }))
-  }, [])
+  }
 
   return {
     filters,
