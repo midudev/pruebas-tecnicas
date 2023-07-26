@@ -24,7 +24,11 @@ type FilterContext = {
   }
 }
 
-const currentGenre = window.localStorage.getItem(nameStorage.currentGenre) ?? allGenre
+let currentGenre = allGenre
+
+if (typeof window !== 'undefined') {
+  currentGenre = window.localStorage.getItem(nameStorage.currentGenre) ?? currentGenre
+}
 
 export const STEPS: readonly [number, number, number] = [100, 50, 10]
 

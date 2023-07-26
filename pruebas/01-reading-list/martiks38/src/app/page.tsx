@@ -8,7 +8,7 @@ import headerStyles from '@/assets/styles/Layout/HeaderPage.module.css'
 
 import logo from './icon.svg'
 
-export default function Home() {
+export default function Page() {
   return (
     <>
       <header className={headerStyles.headerPage}>
