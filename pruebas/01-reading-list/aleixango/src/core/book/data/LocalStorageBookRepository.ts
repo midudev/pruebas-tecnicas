@@ -24,7 +24,7 @@ export class LocalStorageBookRepository implements BookRepository {
       if (filterGenre === "") {
         resolve(booksData.library.map((book: { book: Book }) => book.book))
       }
-      resolve(this.books.filter((book: Book) => book.genre === filterGenre))
+      resolve(this.books.filter((book: Book) => book.genre.includes(filterGenre)))
     })
   }
 
