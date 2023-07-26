@@ -1,5 +1,5 @@
 # Detalles
-Url: https://bookshelf-frontend.vercel.app/
+Url: https://pruebas-tecnicas-git-main-jfilgairacordon.vercel.app/
 
 Para probar los test:
 ```
