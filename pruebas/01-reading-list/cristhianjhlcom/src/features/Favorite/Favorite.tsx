@@ -1,24 +1,24 @@
-import {useContext} from 'react';
-import {BookTypes} from '../../enums';
-import {BookContext} from '../../utils/context';
+import {useFavorite} from '../../utils/hooks';
 import styles from './Favorite.module.css';
 
 export default function Favorite() {
-	const {favorites, dispatch} = useContext(BookContext);
+	const {favorites, handleRemoveFromFavoritesClick} = useFavorite();
 
 	if (!favorites.length) {
 		return (
-			<aside className={styles.aside}>
-				<h2 className={styles.title}>Agrega un libro a favoritos</h2>
-			</aside>
+			<div className={styles.wrapper}>
+				<aside className={styles.aside}>
+					<h2 className={styles.title}>Agrega un libro a favoritos</h2>
+				</aside>
+			</div>
 		);
 	}
 
 	return (
-		<div>
+		<div className={styles.wrapper}>
 			<h2 className={styles.title}>Favoritos ({favorites.length})</h2>
 			<aside className={styles.aside}>
-				<div>
+				<div className={styles.favoritesList}>
 					{favorites.map((favorite) => (
 						<div className={styles.card} key={favorite.ISBN}>
 							<img
@@ -33,12 +33,7 @@ export default function Favorite() {
 								<button
 									className={styles.button}
 									type='button'
-									onClick={() => {
-										dispatch({
-											type: BookTypes.REMOVE_FROM_FAVORITES,
-											payload: {book: favorite},
-										});
-									}}
+									onClick={() => handleRemoveFromFavoritesClick(favorite)}
 								>
 									Remove
 								</button>

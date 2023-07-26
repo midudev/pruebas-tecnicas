@@ -1,34 +1,29 @@
-import {useContext, useEffect} from 'react';
-import {Dialog} from '../../components';
-import {BookTypes} from '../../enums';
-import {BookContext} from '../../utils/context';
+import {ForwaredDialog} from '../../components';
+import {useBook} from '../../utils/hooks';
 import styles from './BookDialog.module.css';
 
 export default function BooksDialog() {
-	const {bookPreview, dispatch, modalRef} = useContext(BookContext);
-
-	useEffect(() => {
-		return () => {
-			dispatch({
-				type: BookTypes.SELECT_BOOK,
-				payload: null,
-			});
-		};
-	}, []);
+	const {booksDialogRef, bookPreview, handleCloseDialogClick} = useBook();
 
 	return (
-		<Dialog data={bookPreview}>
-			<h2 className={styles.title}>{bookPreview?.title}</h2>
-			<p className={styles.synopsis}>{bookPreview?.synopsis}</p>
-			<div className={styles.content}>
-				<span className={styles.genre}>Género {bookPreview?.genre}</span>
-				<p className={styles.author}>
-					{bookPreview?.author.name} ({bookPreview?.year})
-				</p>
+		<ForwaredDialog ref={booksDialogRef}>
+			<div className={styles.wrapper}>
+				<h2 className={styles.title}>{bookPreview?.title}</h2>
+				<p className={styles.synopsis}>{bookPreview?.synopsis}</p>
+				<div className={styles.content}>
+					<span className={styles.genre}>Género {bookPreview?.genre}</span>
+					<p className={styles.author}>
+						{bookPreview?.author?.name} ({bookPreview?.year})
+					</p>
+				</div>
+				<button
+					className={styles.button}
+					type='button'
+					onClick={() => handleCloseDialogClick()}
+				>
+					Cerrar
+				</button>
 			</div>
-			<button className={styles.button} type='button'>
-				Cerrar
-			</button>
-		</Dialog>
+		</ForwaredDialog>
 	);
 }

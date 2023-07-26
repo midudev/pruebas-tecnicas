@@ -1,8 +1,6 @@
-import {useContext} from 'react';
 import {HeartIcon} from '../../components/Icons';
-import {BookTypes} from '../../enums';
 import {Book} from '../../interfaces';
-import {BookContext} from '../../utils/context';
+import {useBook} from '../../utils/hooks';
 import styles from './BookListItem.module.css';
 
 interface Props {
@@ -10,26 +8,14 @@ interface Props {
 }
 
 export default function BooksListItem({book}: Props) {
-	const {dispatch, modalRef} = useContext(BookContext);
-
-	function handlePreviewClick(book) {
-		dispatch({
-			type: BookTypes.SELECT_BOOK,
-			payload: book,
-		});
-	}
+	const {handleAddToFavoriteClick, handlePreviewClick} = useBook();
 
 	return (
 		<article className={styles.wrapper}>
 			<div className={styles.book}>
 				<button
 					type='button'
-					onClick={() => {
-						dispatch({
-							type: BookTypes.ADD_TO_FAVORITE,
-							payload: book,
-						});
-					}}
+					onClick={() => handleAddToFavoriteClick(book)}
 					className={styles.button}
 				>
 					<HeartIcon className={styles.icon} />

@@ -1,33 +1,39 @@
-import {useContext} from 'react';
-import {Header} from '../../components';
+import {useEffect} from 'react';
+import {Search} from '../../components/Search';
 import {Select} from '../../components/Select';
-import {BookTypes} from '../../enums';
-import {BookContext} from '../../utils/context';
+import {useBook, useFilters} from '../../utils/hooks';
 import {Favorite} from '../Favorite';
 import styles from './Book.module.css';
 import BookDialog from './BookDialog';
 import BookList from './BookList';
 
 export default function Book() {
-	const {books, genres, selectedGenre, dispatch} = useContext(BookContext);
+	const {books, handleLoadInitialBooksAndFavorites, handleStorageUpdate} =
+		useBook();
+	const {genres, filters, handleSelectGenre, handleSearch} = useFilters();
 
-	function handleSelectGenre(ev): void {
-		dispatch({
-			type: BookTypes.SELECTING_GENRE,
-			payload: ev.target.value,
-		});
-	}
+	useEffect(() => {
+		handleLoadInitialBooksAndFavorites();
+	}, []);
+
+	useEffect(() => {
+		window.addEventListener('storage', handleStorageUpdate);
+
+		return () => {
+			window.removeEventListener('storage', handleStorageUpdate);
+		};
+	}, []);
 
 	return (
 		<>
-			<Header>({books.length}) Libros Disponibles</Header>
 			<div className={styles.wrapper}>
 				<div className={styles.menu}>
 					<Select
 						options={genres}
 						onChange={handleSelectGenre}
-						value={selectedGenre}
+						value={filters.genre}
 					/>
+					<Search value={filters.search} onChange={handleSearch} />
 				</div>
 				<div className={styles.grid}>
 					<BookList />

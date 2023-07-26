@@ -1,13 +1,19 @@
 .wrapper {
+	display: flex;
+	flex-direction: column;
+	row-gap: 20px;
+	padding: 0 25px;
+}
+
+.grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(0, calc(50% - 0.825rem)));
 	justify-content: space-around;
 	gap: 0.825rem;
-	padding: 0 20px;
 }
 
 @media screen and (min-width: 547px) {
-	.wrapper {
+	.grid {
 		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 	}
 }

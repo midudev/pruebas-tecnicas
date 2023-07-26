@@ -1,7 +1,15 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	row-gap: 20px;
+	padding: 0 25px;
+}
+
 .aside {
 	display: flex;
 	flex-direction: column;
 	row-gap: 16px;
+	width: 100%;
 	background-color: var(--color-stroke);
 	align-self: flex-start;
 	padding: 1.525rem 1.25rem;
@@ -14,6 +22,12 @@
 
 .aside::-webkit-scrollbar {
 	display: none;
+}
+
+.favoritesList {
+	display: flex;
+	flex-direction: column;
+	gap: 1.825rem;
 }
 
 .title {
@@ -74,5 +88,17 @@
 	padding: 8px 12px;
 	border-radius: var(--radius-sm);
 	background-color: var(--color-button);
+	color: var(--color-stroke);
+	font-weight: 600;
 	cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+	.wrapper {
+		padding: 0;
+	}
+
+	.aside {
+		margin: 0;
+	}
 }

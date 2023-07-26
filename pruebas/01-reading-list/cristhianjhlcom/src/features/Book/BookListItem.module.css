@@ -45,9 +45,10 @@
 	display: block;
 	border: 2px solid transparent;
 	background-color: var(--color-highlight);
+	color: var(--color-stroke);
 	padding: 10px 12px;
 	border-radius: var(--radius-sm);
 	font-size: 1rem;
-	font-weight: 500;
+	font-weight: 600;
 	cursor: pointer;
 }

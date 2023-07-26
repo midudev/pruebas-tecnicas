@@ -1,6 +1,12 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
 .title {
 	font-size: clamp(1.525rem, 5vw, 2.825rem);
-	color: var(--color-headling);
+	color: var(--color-heading);
 	line-height: 1.1;
 	letter-spacing: -0.5px;
 }
