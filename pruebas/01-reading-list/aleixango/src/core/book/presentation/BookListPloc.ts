@@ -12,6 +12,15 @@ export class BookListPloc extends Ploc<BookListState> {
     private readonly removeBookFromList: RemoveBookFromList,
   ) {
     super(bookListInitialState)
+    window.addEventListener("storage", (event: StorageEvent) => {
+      if (event.key === "bookList" && event.newValue) {
+        const books: Book[] = JSON.parse(event.newValue)
+        this.changeState({
+          kind: "LoadedBookListState",
+          books,
+        })
+      }
+    })
   }
 
   async get(): Promise<void> {

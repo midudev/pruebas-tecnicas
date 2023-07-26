@@ -12,6 +12,16 @@ export class BooksPloc extends Ploc<BooksState> {
     private readonly removeBook: RemoveBook,
   ) {
     super(booksInitialState)
+    window.addEventListener("storage", (event: StorageEvent) => {
+      if (event.key === "books" && event.newValue) {
+        const books: Book[] = JSON.parse(event.newValue)
+        this.changeState({
+          kind: "LoadedBooksState",
+          filterGenre: this.state.filterGenre,
+          books,
+        })
+      }
+    })
   }
 
   public get allGenres(): string[] {
