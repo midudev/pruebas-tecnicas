@@ -13,7 +13,7 @@ export const ApiContext = ({ children }) => {
   // Estado para manejar el término de búsqueda
   const [search, setSearch] = useState("");
 
-  // Estado para almacenar el rango de páginas seleccionado
+  // Estado para almacenar el rango de páginas seleccionado [min, max]
   const [selectedPageRange, setSelectedPageRange] = useState(0);
 
   // Estado para almacenar la categoría seleccionada
@@ -51,12 +51,6 @@ export const ApiContext = ({ children }) => {
     );
   };
 
-  // Efecto para guardar los libros en el localStorage cada vez que cambian
-  useEffect(() => {
-    localStorage.setItem("storageLibraryBooks", JSON.stringify(libraryBooks));
-    localStorage.setItem("storageAllBooks", JSON.stringify(allBooks));
-  }, [allBooks, libraryBooks]);
-
   // Efecto para cargar los libros almacenados en el localStorage al montar el componente
   useEffect(() => {
     const storagedAllBooks = localStorage.getItem("storageAllBooks");
@@ -71,13 +65,19 @@ export const ApiContext = ({ children }) => {
     }
   }, []);
 
+  // Efecto para guardar los libros en el localStorage cada vez que cambian
+  useEffect(() => {
+    localStorage.setItem("storageLibraryBooks", JSON.stringify(libraryBooks));
+    localStorage.setItem("storageAllBooks", JSON.stringify(allBooks));
+  }, [allBooks, libraryBooks]);
+
   // Efecto para sincronizar cambios en el localStorage con el estado del componente
   useEffect(() => {
-    const handleStorageChange = (e) => {
-      if (e.key === "storageAllBooks") {
-        setAllBooks(JSON.parse(e.newValue));
-      } else if (e.key === "storageLibraryBooks") {
-        setLibraryBooks(JSON.parse(e.newValue));
+    const handleStorageChange = (event) => {
+      if (event.key === "storageAllBooks") {
+        setAllBooks(JSON.parse(event.newValue));
+      } else if (event.key === "storageLibraryBooks") {
+        setLibraryBooks(JSON.parse(event.newValue));
       }
     };
 
