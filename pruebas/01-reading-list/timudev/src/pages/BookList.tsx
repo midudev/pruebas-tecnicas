@@ -1,55 +1,27 @@
-import { useState } from 'react';
-
 import { BookCard, BookImage, BookTitle, BookButtons } from '../components';
 import { useReadingList } from '../hooks/useReadingList';
 
+import { useFilter } from '../hooks/useFilter';
+import { bookUtils } from '../helpers/bookUtils';
+
 import data from '../data/books.json';
-
-//TODO: ver como refactorizar un poco esta parte
 const books = data.library.map( item => item.book );
-
-const minPages = books.reduce((min, book) => {
-    return book.pages < min ? book.pages : min;
-    }, Infinity);
-
-const maxPages = books.reduce((max, book) => {
-    return book.pages > max ? book.pages : max;
-}, 0);
-  
+const { minPages, maxPages } = bookUtils(books);
 
 export const BookList = () => {
 
     const { readingList, onBookReadingChange} = useReadingList();
+    const { genreFilter, pagesFilter, onSelectGenre, onSelectPages } = useFilter({genre:'all', pages: maxPages})
     
-    //TODO: crear un custom hook para el filtro de género
-    const [genreFilter, setGenreFilter] = useState('all');
-
-    //TODO: crear un custom hook para el filtro por pagina género
-    const [pagesFilter, setPagesFilter] = useState( maxPages );
-
     const booksByGenre = genreFilter === 'all' ? books : books.filter( book => book.genre === genreFilter );
     const booksByGenreAndPages = pagesFilter === 0 ? booksByGenre : booksByGenre.filter( book => book.pages <= pagesFilter );
     const availableBooks = books.filter( book => !readingList[book.ISBN]?.readingList );
     const availableBooksByGenre = genreFilter === 'all' ? availableBooks : availableBooks.filter( book => book.genre === genreFilter );
     const availableBooksByGenreAndPages = pagesFilter === 0 ? availableBooksByGenre : availableBooksByGenre.filter( book => book.pages <= pagesFilter );
    
-    const onSelectGenre = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setGenreFilter(e.target.value);
-        if ( e.target.value === 'all' ) {
-            return;
-        }
-    }
-
-    const onSelectPages = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPagesFilter(Number(e.target.value));
-        if ( Number(e.target.value) === 0 ) {
-            return;
-        }
-    }
-
     return (
         <div>
-            
+
             <header className="bg-white shadow">
                 <div className="flex flex-row items-center mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                     
@@ -58,7 +30,6 @@ export const BookList = () => {
                             {availableBooksByGenreAndPages.length} Libros { genreFilter !== 'all' ? `de ${genreFilter}` : '' } Disponibles
                         </h1>
                         <span>Hay { books.length - availableBooks.length} Libros en la lista de Lectura </span>
-                       
                     </div>
 
                     <div className="w-1/2">
@@ -99,7 +70,6 @@ export const BookList = () => {
                 <div className="w-4/5">
 
                     <div className="gap-3 pt-5 flex flex-wrap"> 
-
                         {
                             booksByGenreAndPages.map( book => (
                                 <BookCard
@@ -122,7 +92,6 @@ export const BookList = () => {
                                 </BookCard>
                             ))
                         }
-
                     </div>
                 
                 </div>
@@ -151,6 +120,10 @@ export const BookList = () => {
                     </div>
                 </div>
 
+            </div>
+
+            <div className="footer-container bg-slate-800 text-white text-center py-4">
+                <p>⚛︎ 2023 timudev | Prueba Técnica: 01 - Reading List (FrontEnd - Nivel: Junior)</p>
             </div>
 
         </div>

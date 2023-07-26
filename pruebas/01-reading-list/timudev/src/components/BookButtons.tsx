@@ -12,11 +12,10 @@ export const BookButtons = ({ className, style }:Props) => {
     const { readingList, addToReadingList } = useContext( BookContext );
     
     return (
-        <div 
-            className={ `${ className ? className : '' }`}
-            style={ style }
-        >
-            <button 
+        <div className="flex flex-col">
+            <button
+                className={ className }
+                style={ style } 
                 onClick={ () => addToReadingList(readingList) } 
             >{ readingList ? 'Remove' : 'Add to List'}</button>
         </div>
