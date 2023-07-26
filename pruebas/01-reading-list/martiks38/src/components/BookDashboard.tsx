@@ -12,7 +12,10 @@ import bookDashboardStyles from '@/assets/styles/Book/BookDashboard.module.css'
 import bookFinderAvailableStyles from '@/assets/styles/Book/BookFinderAvailable.module.css'
 import { filterBook } from '@/helpers/filterBook'
 
-const initialViews = { bookListAvailable: true, readingList: true, mode: 'desktop' }
+const initialViews = {
+  tabs: { bookListAvailable: true, readingList: true, filters: true },
+  mode: 'desktop'
+}
 
 export function BookDashboard() {
   const [filterWord, setFilterWord] = useState('')
@@ -30,7 +33,10 @@ export function BookDashboard() {
       const changeDashboardView = width < 881
 
       if (seeLists.mode === 'desktop' && changeDashboardView) {
-        setSeeLists({ bookListAvailable: true, readingList: false, mode: 'mobile' })
+        setSeeLists({
+          tabs: { bookListAvailable: true, readingList: false, filters: false },
+          mode: 'mobile'
+        })
       }
 
       if (!changeDashboardView) setSeeLists(initialViews)
@@ -52,18 +58,25 @@ export function BookDashboard() {
       }
     }
 
-    const throttledHandleResize = throttle(handleResize, 200)
+    const throttledHandleResize = throttle(handleResize, 50)
 
     window.addEventListener('resize', throttledHandleResize)
 
     return () => window.removeEventListener('resize', throttledHandleResize)
   }, [seeLists])
 
-  const changeList = (type: 'available' | 'reading') => {
+  const changeList = (type: keyof typeof initialViews.tabs) => {
+    const tabs = Object.entries(initialViews.tabs)
+
+    tabs.forEach((tab, ind, entries) => {
+      const [key] = tab
+
+      entries[ind][1] = key === type
+    })
+
     setSeeLists((prevViews) => ({
       ...prevViews,
-      bookListAvailable: !prevViews.bookListAvailable,
-      readingList: !prevViews.readingList
+      tabs: Object.fromEntries(tabs) as typeof initialViews.tabs
     }))
   }
 
@@ -92,14 +105,13 @@ export function BookDashboard() {
 
   return (
     <article className={homeStyles.homeMain__bookDashboard}>
-      <FilterSection />
       <menu className={bookDashboardStyles.bookListMenu}>
         <li>
           <button
             className={`${bookDashboardStyles.bookListMenu__item} ${
-              seeLists.bookListAvailable ? bookDashboardStyles.active : ''
+              seeLists.tabs.bookListAvailable ? bookDashboardStyles.active : ''
             }`}
-            onClick={() => changeList('available')}
+            onClick={() => changeList('bookListAvailable')}
           >
             Ver libros disponibles
           </button>
@@ -107,16 +119,26 @@ export function BookDashboard() {
         <li>
           <button
             className={`${bookDashboardStyles.bookListMenu__item} ${
-              seeLists.readingList ? bookDashboardStyles.active : ''
+              seeLists.tabs.readingList ? bookDashboardStyles.active : ''
             }`}
-            onClick={() => changeList('reading')}
+            onClick={() => changeList('readingList')}
           >
             Ver lista de lectura
           </button>
         </li>
+        <li>
+          <button
+            className={`${bookDashboardStyles.bookListMenu__item} ${
+              seeLists.tabs.filters ? bookDashboardStyles.active : ''
+            }`}
+            onClick={() => changeList('filters')}
+          >
+            Filtros
+          </button>
+        </li>
       </menu>
-
-      {seeLists.bookListAvailable && (
+      {seeLists.tabs.filters && <FilterSection />}
+      {seeLists.tabs.bookListAvailable && (
         <section className={bookDashboardStyles.bookListSection}>
           <h2 className={bookDashboardStyles.bookListSection__title}>
             Libros disponibles&nbsp;
@@ -149,7 +171,7 @@ export function BookDashboard() {
           )}
         </section>
       )}
-      {seeLists.readingList && (
+      {seeLists.tabs.readingList && (
         <section className={bookDashboardStyles.bookListSection}>
           <h2 className={bookDashboardStyles.bookListSection__title}>
             Lista de lectura&nbsp;
