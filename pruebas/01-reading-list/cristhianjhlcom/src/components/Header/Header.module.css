@@ -1,17 +1,8 @@
 .header {
 	font-size: clamp(18px, 2vh, 20px);
-	background-color: var(--color-stroke);
 	color: var(--color-heading);
 	font-weight: 600;
-	padding: 25px 20px;
-	margin-bottom: 20px;
 }
-@media screen and (min-width: 768px) {
-	.header {
-		padding: 25px 0;
-	}
-}
-
 .wrapper {
 	max-width: 1200px;
 	margin: 0 auto;

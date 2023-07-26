@@ -7,7 +7,6 @@ type Props = {
 };
 
 export default function Select({options, onChange, value}: Props) {
-	console.log({value});
 	return (
 		<div className={styles.wrapper}>
 			<select className={styles.select} onChange={onChange} value={value}>
