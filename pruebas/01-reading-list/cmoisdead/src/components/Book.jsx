@@ -36,12 +36,7 @@ export const Book = ({ book, added }) => {
   return (
     <>
       {(!isActive && !added) || added ? (
-        <animated.div
-          className="relative h-72 w-48"
-          style={{
-            ...springs,
-          }}
-        >
+        <animated.div className="relative h-72 w-48" style={springs}>
           <div
             className="h-full w-full rounded-lg border-dashed border-neutral-700 transition-all hover:cursor-pointer hover:border-neutral-500"
             onClick={() => setOpenModal("dimissible")}

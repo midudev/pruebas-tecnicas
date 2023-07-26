@@ -30,7 +30,7 @@ function App() {
       <Navbar />
       <div className="container mx-auto py-3">
         <Header />
-        <div className="mt-6 flex h-screen gap-2" id="books">
+        <div className="my-6 flex h-screen gap-2" id="books">
           <List />
           <Current />
         </div>

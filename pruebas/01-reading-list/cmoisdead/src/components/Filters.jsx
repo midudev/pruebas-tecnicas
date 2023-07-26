@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { shallow } from "zustand/shallow";
 import useBookStore from "../store/store";
+import { BsFullscreen } from "react-icons/bs";
 
 const Filter = ({ name, list, handler }) => {
   return (
@@ -66,7 +67,7 @@ export const Filters = ({ setBooks }) => {
   };
 
   return (
-    <div className="flex gap-4">
+    <div className="flex content-center gap-4">
       <Filter name="genre" list={genres} handler={handleChange} />
       {/* <Filter
         name="author"
@@ -81,6 +82,12 @@ export const Filters = ({ setBooks }) => {
           onChange={handleSearch}
         />
       </div>
+      <a
+        className="flex content-center items-center justify-center rounded-lg px-2 text-rose-700 transition-colors hover:bg-neutral-900/75 hover:text-rose-600"
+        href="#books"
+      >
+        <BsFullscreen />
+      </a>
     </div>
   );
 };
