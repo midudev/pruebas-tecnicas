@@ -28,8 +28,8 @@ export default function Card({ book, addRead }: Props) {
                     <>
                         <p className='pt-4 pb-1'>+ Sobre el autor</p>
                         <ul className='overflow-x-auto h-8 border-y border-white'>
-                            {book.author.otherBooks.map((name) => (
-                                <li>{name}</li>
+                            {book.author.otherBooks.map((name, index) => (
+                                <li key={index}>{name}</li>
                             ))}
                         </ul>
                     </>
