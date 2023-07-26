@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import { useLibrary } from "../store/useLibrary";
 import { motion, Reorder, useDragControls } from "framer-motion";
+import bookmark from "../../../public/assets/bookmark-off.svg";
+import Image from "next/image";
 
 export default function Dashboard() {
     const {setList, books } = useLibrary()
@@ -30,8 +32,16 @@ export default function Dashboard() {
                     value={book} 
                     dragListener={false}
                     dragControls={controls}
-                    className="m-auto h-52 cursor-pointer flex justify-start items-start" 
-                    onClick={() => setList(book)}>                
+                    className="m-auto h-auto cursor-pointer flex justify-center items-start relative" 
+                    onClick={() => setList(book)}>   
+                        <motion.div
+                        initial={{opacity: 0}}
+                        whileHover={{opacity: 0.9}}
+                        className="h-full w-full m-auto text-center bg-primary flex flex-col justify-center items-center absolute p-2">
+                            <Image src={bookmark} width='auto' height='auto' alt="bookmark" className="h-[40px] pb-2" />
+                            <h5 className="font-bold text-xs text-bgwarn">{book.title}</h5>
+                            <p className="font-semibold text-xs">{book.author.name}</p>
+                        </motion.div>
                         <motion.img
                         draggable='false'
                         layoutId={book}
@@ -39,7 +49,7 @@ export default function Dashboard() {
                         alt={book.title}
                         width='auto'
                         height='auto'
-                        className="h-auto max-h-56 w-auto rounded-r-lg shadow-lg cursor-pointer aspect-[inherit]"
+                        className="h-auto max-h-52 w-auto rounded-r-lg shadow-lg cursor-pointer aspect-[inherit]"
                         />
                     </Reorder.Item>
                 ))}
