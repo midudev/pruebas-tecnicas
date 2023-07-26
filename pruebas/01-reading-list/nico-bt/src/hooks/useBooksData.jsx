@@ -7,8 +7,8 @@ export default function useBooksData() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    setBooks(data.library)
+    setBooks(data.library.map((item) => item.book))
   }, [])
 
-  return { books, error, isLoading }
+  return { books, setBooks, error, isLoading }
 }
