@@ -1,34 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Bookbuddy
 
-## Getting Started
+![Imagen del proyecto](url_de_tu_imagen)
 
-First, run the development server:
+## Acerca del Proyecto
 
-```bash
+Este proyecto es una aplicación web de libros construida con Next.js 13 y App router para el canal de Twitch, [midudev](https://www.twitch.tv/midudev). La aplicación permite a los usuarios agregar libros a una lista de lectura, buscar libros y filtrar por géneros. 
+
+
+La aplicación se encuentra alojada en: [https://bookbuddy-one.vercel.app/](https://bookbuddy-one.vercel.app/)
+
+## Funcionalidades
+
+* **Páginas de libros disponibles:** Explore el catálogo de libros disponibles.
+* **Páginas de libros en lista de lectura:** Vea los libros que ha agregado a su lista de lectura.
+* **Página detallada de un libro:** Obtenga información detallada sobre un libro, incluyendo una lista de libros similares y otros libros del mismo autor.
+* **Búsqueda de libros:** Busque libros en la página de disponibles y en su lista de lectura.
+* **Sincronización de estados entre pestañas:** Mantenga sincronizadas todas sus pestañas abiertas en la aplicación.
+* **Modal de detalle:** Obtenga una vista rápida de los detalles de un libro a través de un modal.
+* **Filtro por géneros:** Filtre libros por género para encontrar más fácilmente lo que le gusta.
+* **Visualización responsive:** La aplicación está diseñada para funcionar en cualquier dispositivo.
+
+## Cómo comenzar
+
+### Prerrequisitos
+
+* Node.js
+* npm
+   
+### Ejecución
+
+Para iniciar el servidor de desarrollo:
+```
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Para hacer un build de producción:
+```
+npm run build
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Después de hacer el build, puedes iniciar el servidor de producción con:
+```
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Contacto
 
-## Learn More
+Autor - Blás Isaias Fernández
 
-To learn more about Next.js, take a look at the following resources:
+Web - [https://blasferna.com](https://blasferna.com)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Github - [@blasferna](https://github.com/blasferna)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Correo electrónico - blasferna@gmail.com
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
