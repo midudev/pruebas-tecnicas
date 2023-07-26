@@ -38,7 +38,7 @@ const BooksAvailable = () => {
         <GenreFilter />
       </section>
       {/* If there are books in the reading list, an extra padding in the bottom is added in the mobile version to ensure that the reading list section does not overlap with the books available section, allowing all of them to be visible. */}
-      <section className={`flex items-center flex-wrap gap-8 mt-4 ${booksListed > 0 && 'pb-96 sm:pb-0'}`}>
+      <section className={`flex items-center flex-wrap gap-8 mt-4 pl-3 ${booksListed > 0 && 'pb-96 sm:pb-0'}`}>
         {library
           .filter(i=>regExp.test(i.book.title) || regExp.test(i.book.title.normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) // Filter the "library" array to obtain books whose titles match the "regExp" regular expression. The normalize and replace methods are used to ensure that it also works regardless of the presence of accents.
           .filter(i => i.book.pages <= pages) // The filter by maximum number of pages is applied when rendering the books in the books available section
