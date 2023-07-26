@@ -52,7 +52,6 @@ export class BooksService {
     this.updateBooks(bookList);
     this.updateBookListToReadNumber();
     this.updateGenres();
-    console.log('Books', bookList)
     return of(bookList);
   }
 
