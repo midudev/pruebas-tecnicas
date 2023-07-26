@@ -29,29 +29,27 @@ export function FilterSection() {
       </fieldset>
       <fieldset className={filterStyles.filterSection__field}>
         <legend className={filterStyles.filterSection__fieldTitle}>Género</legend>
-        <div className={filterStyles.filterSection__containerOptions}>
-          {genres.map((genre) => {
-            return (
-              <Fragment key={genre}>
-                <input
-                  type='radio'
-                  name={`${filterID}-genre`}
-                  id={`${filterID}-${genre}`}
-                  value={genre}
-                  className={filterStyles.filterSection__checkGenre}
-                  checked={genre === currentGenre}
-                  onChange={changeCurrentGenre}
-                />
-                <label
-                  htmlFor={`${filterID}-${genre}`}
-                  className={filterStyles.filterSection__labelGenre}
-                >
-                  {genre}
-                </label>
-              </Fragment>
-            )
-          })}
-        </div>
+        {genres.map((genre) => {
+          return (
+            <Fragment key={genre}>
+              <input
+                type='radio'
+                name={`${filterID}-genre`}
+                id={`${filterID}-${genre}`}
+                value={genre}
+                className={filterStyles.filterSection__checkGenre}
+                checked={genre === currentGenre}
+                onChange={changeCurrentGenre}
+              />
+              <label
+                htmlFor={`${filterID}-${genre}`}
+                className={filterStyles.filterSection__labelGenre}
+              >
+                {genre}
+              </label>
+            </Fragment>
+          )
+        })}
       </fieldset>
     </form>
   )
