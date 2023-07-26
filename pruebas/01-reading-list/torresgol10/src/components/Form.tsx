@@ -9,7 +9,7 @@ type Props = {
 
 export default function Form({ filterByGenre, filterByText, filterByPages, nPages }: Props) {
     const { genres } = useBooks()
-    console.log(nPages)
+
     return (
         <form>
             <fieldset className='flex flex-col md:flex-row justify-start gap-10'>
