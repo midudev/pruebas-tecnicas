@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BookItemComponent } from '../BookItemComponent/BookItemComponent';
 import './BookGridComponent.css';
-import { FilterComponent } from '../FilterComponent.jsx/FilterComponent';
+import { FilterComponent } from '../FilterComponent/FilterComponent';
 
 export const BookGridComponent = ({ bookList, selectedBooks, setSelectedBooks, addBookToReadingList }) => {
     const [filteredBooks, setFilteredBooks] = useState(bookList);
