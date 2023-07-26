@@ -54,6 +54,7 @@
       }
 
       else { valueMax = newValue }
+
     }
 
     else {
@@ -70,9 +71,7 @@
 
         valueMin = min
         event.currentTarget.value = valueMin.toString()
-      }
-
-      else { valueMin = newValue }
+      } else { valueMin = newValue }
     }
 
     onInput(valueMin, valueMax)
@@ -87,51 +86,52 @@
 
 <div class='flex gap-4 justify-between mb-4'>
 
-    <label class={labelClasses}>
+  <label class={ labelClasses }>
 
-      <span>{labelMin}</span>
-      <input
+    <span>{ labelMin }</span>
+    <input
 
-        type='number'
-        class={inputClasses}
+      type='number'
+      class={ inputClasses }
 
-        min={min}
-        max={max}
-        value={valueMin}
+      { min }
+      { max }
+      value={ valueMin }
 
-        data-input='min'
-        on:change={ensureValidInput}
-      />
+      data-input='min'
+      on:change={ ensureValidInput }
+    />
 
-    </label>
+  </label>
 
+  <label class={ labelClasses }>
 
-    <label class={labelClasses}>
+    <span>{ labelMax }</span>
+    <input
 
-      <span>{labelMax}</span>
-      <input
+      type='number'
+      class={ inputClasses }
 
-        type='number'
-        class={inputClasses}
+      { min }
+      { max }
+      value={ valueMax }
 
-        min={min}
-        max={max}
-        value={valueMax}
+      data-input='max'
+      on:change={ ensureValidInput }
+    />
 
-        data-input='max'
-        on:change={ensureValidInput}
-      />
-
-    </label>
+  </label>
 
 </div>
 
 <div class='bg-gray-200 w-full h-2 rounded-lg relative'>
 
-  <div class='absolute progress bg-blue-400 h-2 rounded-lg'
+  <div
 
-    style:--percentLeft='{percentLeft}%'
-    style:--percentRight='{percentRight}%'
+    class='absolute progress bg-blue-400 h-2 rounded-lg'
+
+    style:--percentLeft='{ percentLeft }%'
+    style:--percentRight='{ percentRight }%'
 
   ></div>
 
@@ -142,31 +142,30 @@
   <input
 
     type='range'
-    class={rangeClasses}
+    class={ rangeClasses }
 
-    min={min}
-    max={max}
-    bind:value={valueMin}
+    { min }
+    { max }
+    bind:value={ valueMin }
 
     data-input='min'
-    on:input={ensureValidInput}
+    on:input={ ensureValidInput }
   />
 
   <input
 
     type='range'
-    class={rangeClasses}
+    class={ rangeClasses }
 
-    min={min}
-    max={max}
-    bind:value={valueMax}
+    { min }
+    { max }
+    bind:value={ valueMax }
 
     data-input='max'
-    on:input={ensureValidInput}
+    on:input={ ensureValidInput }
   />
 
 </div>
-
 
 <style>
 
