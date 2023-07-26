@@ -17,8 +17,8 @@ export const Logo = component$(() => {
           mr: '1rem',
           borderRadius: '50%',
         })}
-        width={75}
-        height={75}
+        width={50}
+        height={50}
         src="./1.webp"
         alt="Logo Lista de Lectura"
       />

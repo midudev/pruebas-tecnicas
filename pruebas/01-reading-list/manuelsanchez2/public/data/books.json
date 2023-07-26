@@ -208,6 +208,87 @@
           "otherBooks": ["El horror de Dunwich", "En las montañas de la locura"]
         }
       }
+    },
+    {
+      "book": {
+        "title": "Cien años de soledad",
+        "pages": 417,
+        "genre": "Realismo mágico",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327881361i/320.jpg",
+        "synopsis": "La saga de la familia Buendía en el pueblo de Macondo, una obra maestra del realismo mágico.",
+        "year": 1967,
+        "ISBN": "978-0307474728",
+        "author": {
+          "name": "Gabriel García Márquez",
+          "otherBooks": [
+            "El otoño del patriarca",
+            "Crónica de una muerte anunciada"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Orgullo y prejuicio",
+        "pages": 279,
+        "genre": "Clásico / Romance",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1320399351i/1885.jpg",
+        "synopsis": "La compleja relación entre Elizabeth Bennet y el Sr. Darcy en la Inglaterra del siglo XIX.",
+        "year": 1813,
+        "ISBN": "978-0486284736",
+        "author": {
+          "name": "Jane Austen",
+          "otherBooks": ["Sentido y sensibilidad", "Emma"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Crimen y castigo",
+        "pages": 671,
+        "genre": "Clásico / Novela psicológica",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1611982103i/56883826.jpg",
+        "synopsis": "Un estudiante comete un asesinato y enfrenta una intensa lucha interna por su culpa y castigo.",
+        "year": 1866,
+        "ISBN": "978-0486415871",
+        "author": {
+          "name": "Fyodor Dostoyevsky",
+          "otherBooks": ["Los hermanos Karamazov", "El idiota"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Cazadores de sombras: Ciudad de hueso",
+        "pages": 512,
+        "genre": "Fantasía / Paranormal",
+        "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1432730315l/256683._SY475_.jpg",
+        "synopsis": "Una joven descubre su conexión con una sociedad secreta de cazadores de demonios.",
+        "year": 2007,
+        "ISBN": "978-8408086880",
+        "author": {
+          "name": "Cassandra Clare",
+          "otherBooks": [
+            "Cazadores de sombras: Ciudad de ceniza",
+            "Cazadores de sombras: Ciudad de cristal"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Los juegos del hambre",
+        "pages": 374,
+        "genre": "Ciencia ficción / Aventura",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1447303603i/2767052._UY200_.jpg",
+        "synopsis": "En un futuro distópico, jóvenes luchan por sobrevivir en un siniestro juego televisado.",
+        "year": 2008,
+        "ISBN": "978-8427202122",
+        "author": {
+          "name": "Suzanne Collins",
+          "otherBooks": ["En llamas", "Sinsajo"]
+        }
+      }
     }
   ]
 }

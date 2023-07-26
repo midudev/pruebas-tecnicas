@@ -23,7 +23,7 @@ export function filterBooksByTitle(books: Book[], title: string) {
 export function priorityTransformer(priority: number) {
   switch (priority) {
     case 0:
-      return '🟢'
+      return '⚪️'
     case 1:
       return '🟠'
     case 2:

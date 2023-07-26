@@ -10,17 +10,23 @@ import { Filters } from '~/components/filters/filters'
 import { Logo } from '~/components/logo/logo'
 import { ReadingList } from '~/components/reading-list/reading-list'
 import { useGlobalState } from '~/ctx/ctx'
-import { HeadlineH2Styles, wrapperStyles } from './styles'
+import { InnerWrapperStyles, OuterWrapperStyles } from './styles'
 import { filterBooksByGenre, filterBooksByTitle } from '~/functions/functions'
 import { DEFAULT_GENRE } from '~/constants/constants'
 import { css } from '~/styled-system/css'
 import { timeline, stagger, type TimelineDefinition } from 'motion'
 
 export default component$(() => {
-  const { books, readingList, booksWithUserPreferences } = useGlobalState()
+  const { books, booksWithUserPreferences } = useGlobalState()
+
+  const readingList = useComputed$(() =>
+    booksWithUserPreferences.value.filter((book) => book.isInReadingList)
+  )
+
   const filters = useStore({
     genre: DEFAULT_GENRE,
     title: '',
+    numberOfPages: 750,
   })
 
   // Here we could filter the books by other settings like genre, number of pages
@@ -36,6 +42,11 @@ export default component$(() => {
       filters.title === ''
         ? booksFiltered
         : filterBooksByTitle(booksWithUserPreferences.value, filters.title)
+
+    // Filtro por número de páginas
+    booksFiltered = booksFiltered.filter(
+      (book) => book.pages <= filters.numberOfPages
+    )
 
     return booksFiltered
   })
@@ -75,44 +86,57 @@ export default component$(() => {
 
   return (
     <>
-      <Logo />
-
-      <Filters filters={filters} books={books} />
-
-      <div class={wrapperStyles}>
-        <section
-          data-section="books"
-          aria-label="Todos los libros disponibles"
-          style={{
-            opacity: 0,
-          }}
-        >
-          <h2 class={HeadlineH2Styles}>
-            Número total de libros: {books.value.length}
-          </h2>
-          <BooksList booksFiltered={booksFiltered} />
-        </section>
-
+      <div class={OuterWrapperStyles}>
         <section
           data-section="reading"
           aria-label="Libros en la lista de lectura"
+          class={css({
+            maxWidth: 'var(--max-width-outer)',
+            minWidth: '100%',
+          })}
           style={{
             opacity: 0,
           }}
         >
-          <h2 class={HeadlineH2Styles}>
-            Libros en la lista de lectura: {readingList.value.length}
-          </h2>
-          <p
-            class={css({
-              marginY: '1rem',
-            })}
-          >
-            Los libros están ordenados por prioridad.
-          </p>
+          <div class={InnerWrapperStyles}>
+            <Logo />
+            <div
+              class={css({
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.5rem',
+                textAlign: 'right',
+              })}
+            >
+              <span>
+                <strong>Libros en la lista de lectura:</strong>{' '}
+                {readingList.value.length}
+              </span>
+              <span>
+                <strong>Número total de libros:</strong> {books.value.length}
+              </span>
+            </div>
+          </div>
+
           <ReadingList />
         </section>
+
+        <section
+          data-section="books"
+          aria-label="Todos los libros disponibles"
+          class={css({
+            maxWidth: 'var(--max-width-outer)',
+            minWidth: '100%',
+          })}
+          style={{
+            opacity: 0,
+          }}
+        >
+          <BooksList booksFiltered={booksFiltered} />
+        </section>
       </div>
+
+      <Filters filters={filters} books={books} />
     </>
   )
 })

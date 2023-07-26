@@ -4,7 +4,7 @@ export type BookAuthor = {
 }
 
 export type Book = {
-  id: number
+  id: number | string
   title: string
   synopsis: string
   pages: number
@@ -16,3 +16,13 @@ export type Book = {
   isInReadingList: boolean
   priority: number
 }
+
+export interface StoredBook {
+  id: number | string
+  title: string
+  priority: number
+  isInReadingList: boolean
+  cover: string
+}
+
+export type FilesExtensionToDownload = 'txt' | 'json' | 'csv'

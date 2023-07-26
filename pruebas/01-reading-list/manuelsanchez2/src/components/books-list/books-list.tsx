@@ -1,35 +1,19 @@
 import { type Signal, component$ } from '@builder.io/qwik'
-import { css } from '~/styled-system/css'
 import { BookItem } from '../book-item/book-item'
 import { type Book } from '~/types/types'
+import { BooksListULStyles } from './styles'
 
-const NUMBER_OF_BOOKS_PER_PAGE = 8
+const NUMBER_OF_BOOKS_PER_PAGE = 10
 
 interface BooksListProps {
-  booksFiltered: Signal<Book[]>
+  booksFiltered?: Signal<Book[]>
 }
 
 export const BooksList = component$(({ booksFiltered }: BooksListProps) => {
+  if (!booksFiltered) return null
+
   return (
-    <ul
-      class={css({
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-        alignItems: 'center',
-        margin: '0 auto',
-        gap: '3rem',
-        width: '100%',
-        maxWidth: '1000px',
-        flex: 1,
-        lg: {
-          alignItems: 'flex-start',
-          justifyContent: 'flex-start',
-          margin: '0',
-          width: '1000px',
-        },
-      })}
-    >
+    <ul data-books-list class={BooksListULStyles}>
       {booksFiltered.value.slice(0, NUMBER_OF_BOOKS_PER_PAGE).map((book) => (
         <li key={book.ISBN}>
           <BookItem book={book} />

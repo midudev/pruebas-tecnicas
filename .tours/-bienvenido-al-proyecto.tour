@@ -7,6 +7,12 @@
       "description": "Este es el porqué del proyecto. Aquí encontrarás los requisitos y los extras que el cliente quiere, además del tech stack actual.",
       "line": 11,
       "title": "Motivación - Empezamos en el README"
+    },
+    {
+      "file": "pruebas/01-reading-list/manuelsanchez2/src/ctx/ctx.tsx",
+      "description": "En el contexto es donde tenemos no solo todos los libros, sino la lista de libros con las preferencias del usuario y además la lista de lectura.\nHacemos que se activen los useVisibleTasks$ cuando haya cambios en el localStorage y luego hacemos un merge con los libros para siempre tener el estado actualizado.",
+      "line": 27,
+      "title": "El contexto"
     }
   ]
 }

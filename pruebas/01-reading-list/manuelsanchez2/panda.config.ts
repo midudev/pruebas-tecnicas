@@ -2,7 +2,7 @@ import { defineConfig, defineGlobalStyles } from '@pandacss/dev'
 
 const globalCss = defineGlobalStyles({
   'html, body': {
-    bg: 'wheat',
+    bg: 'white',
   },
 })
 

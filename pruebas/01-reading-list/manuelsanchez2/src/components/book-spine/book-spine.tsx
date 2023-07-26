@@ -2,29 +2,48 @@ import { $, component$ } from '@builder.io/qwik'
 import { useGlobalState } from '~/ctx/ctx'
 import { priorityTransformer } from '~/functions/functions'
 import { css } from '~/styled-system/css'
-import { type Book } from '~/types/types'
+import { StoredBook, type Book } from '~/types/types'
+import {
+  bookSpineInnerStyles,
+  bookSpineStyles,
+  bookSpineTitleStyles,
+  buttonCloseSpineStyles,
+} from './styles'
 
-type BookSpineProps = {
-  book: Book
-}
-
-export const BookSpine = component$(({ book }: BookSpineProps) => {
-  const { title, isInReadingList } = book
+export const BookSpine = component$(({ book }: { book: StoredBook }) => {
+  const { title } = book
   const { booksWithUserPreferences } = useGlobalState()
 
-  const toggleIsBookSelected = $(() => {
-    booksWithUserPreferences.value = booksWithUserPreferences.value.map((b) =>
-      b.id !== book.id ? b : { ...b, isInReadingList: !b.isInReadingList }
-    )
+  const removeBookFromReadingList = $(() => {
+    booksWithUserPreferences.value = booksWithUserPreferences.value.map((b) => {
+      if (b.id === book.id) {
+        return { ...b, isInReadingList: false }
+      }
+      return b
+    })
   })
 
-  const bookSpineStyles = css({
-    display: 'flex',
-    borderRadius: '0.5rem',
-    border: '1px solid #ccc',
-    padding: '0.5rem',
-    width: '300px',
-    justifyContent: 'center',
+  const toggleBookPriority = $(() => {
+    booksWithUserPreferences.value = booksWithUserPreferences.value.map((b) => {
+      if (b.id === book.id) {
+        let newPriority
+        switch (b.priority) {
+          case 0:
+            newPriority = 1
+            break
+          case 1:
+            newPriority = 2
+            break
+          case 2:
+            newPriority = 0
+            break
+          default:
+            newPriority = b.priority // keep the priority unchanged if it's an unexpected value
+        }
+        return { ...b, priority: newPriority }
+      }
+      return b
+    })
   })
 
   return (
@@ -41,27 +60,27 @@ export const BookSpine = component$(({ book }: BookSpineProps) => {
           background: `linear-gradient(rgba(151, 101, 64, 0.7), rgba(134, 137, 117, 0.7)), url(${book.cover})`,
         }}
       >
-        <button
-          aria-label={
-            isInReadingList
-              ? 'Sacar libro de la lista de lectura'
-              : 'Añadir libro a la lista de lectura'
-          }
-          onClick$={toggleIsBookSelected}
-          class={css({
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            cursor: 'pointer',
-            width: '100%',
-            color: '#fff',
-          })}
-        >
-          <div>{title}</div>
-          <div>x</div>
-        </button>
+        <div class={bookSpineInnerStyles}>
+          <div class={bookSpineTitleStyles}>{title}</div>
+          <button
+            class={buttonCloseSpineStyles}
+            aria-label="Sacar libro de la lista de lectura"
+            onClick$={removeBookFromReadingList}
+          >
+            x
+          </button>
+          <button
+            onClick$={toggleBookPriority}
+            class={css({
+              cursor: 'pointer',
+              position: 'absolute',
+              top: '0',
+            })}
+          >
+            {priorityTransformer(book.priority)}
+          </button>
+        </div>
       </div>
-      <small>{priorityTransformer(book.priority)}</small>
     </div>
   )
 })
