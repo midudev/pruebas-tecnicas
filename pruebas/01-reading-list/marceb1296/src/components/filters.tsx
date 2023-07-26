@@ -56,8 +56,8 @@ export const Filters = ({handleFilters, filterValues, filterInputValues}: IFilte
                     Genero:
                     <select name="genre" onChange={handleChange} value={filterValues.genre}>
                         {
-                            filterInputValues.genre.map(el =>
-                                <option value={el}>{el}</option>
+                            filterInputValues.genre.map((el, index: number) =>
+                                <option key={index} value={el}>{el}</option>
                             )
                         }
                     </select>

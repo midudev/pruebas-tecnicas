@@ -18,12 +18,12 @@ export const Books = ({ books }: Books) => {
             { books.length > 0
                 ? books.map(({ book }) =>
                     <div key={book.ISBN} className={bookList.includes(book.ISBN) ? "book-container added" : "book-container"}>
-                        <img src="/33.jpg" alt={`cover ${book.title}`} />
+                        <img src={book.cover} alt={`cover ${book.title}`} loading="lazy"/>
                         <div className="book-info">
-                            <label className="with-color full">
+                            <label className="with-color dp-block">
                                 {book.title}
                             </label>
-                            <label>
+                            <label className="with-color dp-block">
                                 {book.synopsis}
                             </label>
                             <button onClick={() => dispatch(addBookList(book.ISBN))}>

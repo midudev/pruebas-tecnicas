@@ -21,9 +21,9 @@ export const NavSide = ({books}: INavSideProps) => {
             { books.length > 0
                 ? books.map(({ book }) =>
                     <div key={`list-${book.ISBN}`} className="book-container">
-                        <img src="/33.jpg" alt={`cover ${book.title}`} />
+                        <img src={book.cover} alt={`cover ${book.title}`} loading="lazy" />
                         <div className="book-info">
-                            <label className="with-color full">
+                            <label className="with-color full dp-block">
                                 {book.title}
                             </label>
                             <button onClick={() => dispatch(removeBookList(book.ISBN))}>

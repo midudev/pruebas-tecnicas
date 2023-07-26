@@ -7,6 +7,7 @@
     "start": "vite",
     "build": "rm -rf build && vite build",
     "preview": "vite preview",
+    "test": "vitest",
     "host": "vite --host"
   },
   "devDependencies": {
@@ -14,6 +15,7 @@
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
     "@vitejs/plugin-react": "4.0.3",
+    "happy-dom": "^10.5.2",
     "sass": "1.63.6",
     "standard": "17.1.0",
     "typescript": "5.1.6",

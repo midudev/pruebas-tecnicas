@@ -10,15 +10,16 @@ aside.books {
     background-color: #0a6b8bb8;
     gap: 10px;
     border-radius: 3px;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     transition: right .3s ease;
     
     & .book-container {
-        max-width: 110px;
+        max-width: 120px;
+        max-height: 180px;
         border: 1px solid white;
         
         & .book-info {
-            font-size: clamp(.65rem, 1vw, .9rem);
+            font-size: clamp(.7rem, 1vw, .9rem);
             z-index: 3;
             
             & label, & button {

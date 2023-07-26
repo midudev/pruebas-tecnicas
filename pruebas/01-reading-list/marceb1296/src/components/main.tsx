@@ -38,7 +38,7 @@ export const Main = () => {
             { isLoading &&
                 <label style={{
                     width: "100%"
-                }} className="with-color">Cargando...</label>
+                }} className="with-color dp-block">Cargando...</label>
             }
             { books &&
                 <Books books={filterResult} />

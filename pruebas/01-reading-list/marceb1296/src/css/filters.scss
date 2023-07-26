@@ -8,18 +8,17 @@
         display: flex;
         justify-content: center;
         gap: 20px;
-        //flex-wrap: wrap;
+        flex-wrap: wrap;
 
-        & label {
-            all: unset;
+        & .filter-input {
             width: 150px;
             display: flex;
-            border: 1px solid blue;
             flex-direction: column;
-            margin-block: 1em;
-            gap: 50px;
+            margin-block: 2em;
+            gap: 10px;
+            align-items: center;
             
-            & input, & select, {
+            & input, & select {
                 cursor: pointer;
                 margin-block: .5em;
                 text-align: center;
@@ -42,5 +41,10 @@
 .dark div label {
     & input, & select {
         color: white;
+
+        & option {
+
+            background-color: black;
+        }
     }
 }
