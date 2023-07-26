@@ -299,7 +299,7 @@ p {
 aside {
   margin-right: 40px;
   margin-top: 7%;
-  background-image: linear-gradient(to right, #5b8170, #53816d, #488650);
+  background-image: linear-gradient(to right, #3f6b56, #4a9c77, #445e48);
   border-radius: 40px;
   top: 0;
   right: 0;
