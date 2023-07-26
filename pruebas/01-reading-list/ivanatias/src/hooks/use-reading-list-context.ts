@@ -3,12 +3,14 @@ import { useBooks } from '@/hooks/use-books'
 import { useSyncStorage } from '@/hooks/use-sync-storage'
 import type { BooksList } from '@/utils/books'
 
+const defaultState: BooksList = []
+
 export function useReadingListContext(storageKey: string) {
   const [readingList, setReadingList] = useState<BooksList>(() => {
     const storedReadingList = window.localStorage.getItem(storageKey)
 
     return storedReadingList === null
-      ? []
+      ? defaultState
       : (JSON.parse(storedReadingList) as BooksList)
   })
 
@@ -16,7 +18,7 @@ export function useReadingListContext(storageKey: string) {
 
   const { books } = useBooks()
 
-  useSyncStorage(storageKey, readingList, setReadingList)
+  useSyncStorage(storageKey, defaultState, setReadingList)
 
   const checkIfBookInReadingList = (ISBN: string) => {
     return Boolean(readingList.find(book => book.ISBN === ISBN))

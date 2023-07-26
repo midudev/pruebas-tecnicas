@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useRef, useCallback } from 'react'
 import { useBooks } from '@/hooks/use-books'
 import { useSyncStorage } from '@/hooks/use-sync-storage'
 import type { BooksList } from '@/utils/books'
@@ -13,18 +13,20 @@ interface FiltersState {
 export function useFiltersContext(storageKey: string) {
   const { minPages } = useBooks()
 
+  const defaultState = useRef<FiltersState>({
+    minPages,
+    genre: DEFAULT_GENRE
+  })
+
   const [filters, setFilters] = useState<FiltersState>(() => {
     const storedFilters = window.localStorage.getItem(storageKey)
 
     return storedFilters === null
-      ? {
-          minPages,
-          genre: DEFAULT_GENRE
-        }
+      ? defaultState.current
       : (JSON.parse(storedFilters) as FiltersState)
   })
 
-  useSyncStorage(storageKey, filters, setFilters)
+  useSyncStorage(storageKey, defaultState.current, setFilters)
 
   const filterBooks = useCallback(
     (books: BooksList) => {
