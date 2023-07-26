@@ -7,7 +7,7 @@ import './AvailableBooks.css';
 
 
 
-function AvailableBooks({alreadyRead=[]}) {
+function AvailableBooks({alreadyRead}) {
 
   const [selected, setSelected] = useState(localStorage.getItem("genre")? localStorage.getItem("genre"):"") //nullish coalescing me daba error de sintaxis
   const books= data.library

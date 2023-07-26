@@ -16,3 +16,14 @@
     height: 35vh;
     width: 25vh;
 }
+
+.close-button {
+    width: 2vh;
+    height: 2vh;
+    position: relative;
+    right: 0px;
+}
+
+.close-button:hover {
+  cursor: pointer;
+}

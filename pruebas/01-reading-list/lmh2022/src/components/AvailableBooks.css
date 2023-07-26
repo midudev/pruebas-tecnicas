@@ -15,3 +15,7 @@
     height: 35vh;
     width: 25vh;
 }
+
+.book:hover {
+  cursor: grab;
+}
