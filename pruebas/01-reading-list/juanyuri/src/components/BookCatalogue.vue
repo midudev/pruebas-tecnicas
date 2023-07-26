@@ -1,6 +1,6 @@
 <template>
   <div class="Catalogue">
-    <h1>{{ catalogueCount }} libros disponibles </h1>
+    <h1>{{ catalogueCount }} libros en catálogo </h1>
 
     <div class="Catalogue-Tags">
       <button class="Catalogue-Tags-Button" v-for="tag in genres" :key="tag" @click="onSelectedGenre(tag)">
@@ -64,7 +64,7 @@ const catalogueCount = computed(() => store.catalogue.length)
 
 h1 {
   display: inline;
-  font-size: 25px;
+  font-size: var(--font-size-h1);
 }
 
 .Catalogue-List {
@@ -82,20 +82,19 @@ h1 {
 
 .Catalogue-Tags-Button {
   width: auto;
-  padding: 14px;
+  padding: var(--button-padding);
   cursor: pointer;
-  border-radius: 12px;
-  border: 1px solid rgb(180, 180, 180);
+  border-radius: var(--button-border-radius);
+  border: var(--button-border);
   margin: 15px;
 }
 
 .Catalogue-Tags-Button:hover {
-  background-color: #DAAA63;
+  background-color: var(--primary-color);
   border: 1px solid transparent;
   /* font-weight: bold; */
   color: white;
 }
-
 
 .BookCard-Grid {
   display: flex;

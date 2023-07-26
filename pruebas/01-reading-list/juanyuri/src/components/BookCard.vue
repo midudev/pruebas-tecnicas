@@ -38,8 +38,8 @@ const props = defineProps({
     position: relative;
     border-radius: 12px;
     overflow: hidden;
-    width: 250px;
-    height: 420px;
+    width: var(--image-width);
+    height: var(--image-height);
 }
 
 .BookCard-Image img {
@@ -58,7 +58,7 @@ const props = defineProps({
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--overlay-color);
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
 }
@@ -73,14 +73,14 @@ const props = defineProps({
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: #fff;
+    color: var(--overlay-text-color);
 }
 
 .BookCard-Overlay-Text p {
     margin: 0;
-    font-size: 2em;
-    font-weight: bold;
-    color: #DAAA63;
+    font-size: var(--overlay-text-font-size);
+    font-weight: var(--overlay-text-font-weight);
+    color: var(--overlay-text-color-highlight);
 }
 
 .BookCard-Details {
@@ -91,15 +91,15 @@ const props = defineProps({
 
 .BookCard-Title {
     margin-top: 10px;
-    font-weight: 800;
-    font-size: 1em;
+    font-weight: var(--title-font-weight);
+    font-size: var(--title-font-size);
     max-width: 100%;
 }
 
 .BookCard-Author-Name {
     margin-top: 5px;
-    font-weight: lighter;
-    font-size: 1.05em;
+    font-weight: var(--author-name-font-weight);
+    font-size: var(--author-name-font-size);
     max-width: 100%;
 }
 </style>

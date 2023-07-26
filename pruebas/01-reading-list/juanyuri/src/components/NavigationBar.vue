@@ -35,7 +35,7 @@
 .Navigation-Bar-Links {
     display: flex;
     align-items: center;
-    margin-left:auto;
+    margin-left: auto;
 }
 
 .Navigation-Bar-Links ul {
