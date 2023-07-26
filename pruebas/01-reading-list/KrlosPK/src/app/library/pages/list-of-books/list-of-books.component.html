@@ -15,7 +15,8 @@
     <header>
       <h1 class="mt-6 mb-4 text-2xl font-bold md:text-4xl">
         <span class="text-red-600">{{ books.length }}</span>
-        Libros disponibles
+        <span *ngIf="books.length > 1"> Libros disponibles </span>
+        <span *ngIf="books.length === 1"> Libro disponible </span>
       </h1>
     </header>
 
