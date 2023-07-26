@@ -257,11 +257,13 @@ header h1 {
   border-radius: 6px;
   box-sizing: border-box;
   padding: 0.75rem;
-  padding-right: 0;
   position: sticky;
   top: 11vh;
   max-height: 84vh;
   overflow: auto;
+}
+.library__book-list .book-list__books {
+  padding-right: 0;
 }
 .book-list__books--empty p {
   margin: 0;
@@ -299,7 +301,7 @@ header h1 {
 .book__actions .book-action__remove {
   border: 0;
   background-color: whitesmoke;
-  padding: 5px 15px;
+  padding: 5px 10px;
   border-radius: 6px;
   color: #ff5353;
   display: none;
@@ -307,10 +309,45 @@ header h1 {
 .book-list__books .books__book:hover .book-action__remove {
   display: block;
   cursor: pointer;
+  border: 1px solid #ff5353;
 }
 .book-list__books .books__book:hover .book-action__remove:active {
   background-color: #ff5353;
   color: whitesmoke;
+}
+
+@media screen and (max-width: 1200px) {
+  .library .library__books {
+    margin-right: 1rem;
+    flex: auto;
+  }
+  .library .library__book-list {
+    min-width: 320px;
+    flex: 0;
+  }
+}
+@media screen and (max-width: 605px) {
+  header {
+    text-align: center;
+  }
+  main.library {
+    overflow-x: hidden;
+    position: relative;
+  }
+  .library .library__filters input {
+    width: 100%;
+  }
+  .library .library__books {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 1.5rem;
+  }
+  .library .library__book-list {
+    flex: auto;
+    margin-top: 2rem;
+  }
 }
 /* #endregion */
 </style>
