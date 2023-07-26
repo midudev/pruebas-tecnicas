@@ -5,20 +5,25 @@ import './Filters.css'
 interface Props {
   pagesFilter: number
   categoryFilter: Genre
+  searchFilter: string
   changeCategoryFilter: (category: Genre) => void
   changePagesFilter: (pages: number) => void
+  changeSearchFilter: (search: string) => void
   categoryCountElement: JSX.Element | null
 }
 
 function Filters ({
   categoryFilter,
   pagesFilter,
+  searchFilter,
   changeCategoryFilter,
   changePagesFilter,
+  changeSearchFilter,
   categoryCountElement
 }: Props) {
   const categorySelectId = useId()
   const priceSelectId = useId()
+  const searchInputId = useId()
 
   function handleCategoryChange (event: ChangeEvent<HTMLSelectElement>) {
     if (!Object.values(Genre).includes(event.target.value as Genre)) return
@@ -27,6 +32,10 @@ function Filters ({
 
   function handlePriceChange (event: ChangeEvent<HTMLInputElement>) {
     changePagesFilter(Number(event.target.value))
+  }
+
+  function handleSearchChange (event: ChangeEvent<HTMLInputElement>) {
+    changeSearchFilter(event.target.value)
   }
 
   return (
@@ -48,6 +57,10 @@ function Filters ({
           </select>
         </div>
         {categoryCountElement}
+      </div>
+      <div>
+        <label htmlFor={searchInputId}>Búsqueda por título: </label>
+        <input id={searchInputId} type='text' name='search' onChange={handleSearchChange} value={searchFilter} />
       </div>
     </div>
   )

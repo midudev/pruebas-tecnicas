@@ -9,7 +9,7 @@ function useBookList (books: Book[]) {
     if (ids === null || ids === undefined) return
 
     const list: Book[] = ids
-      .map(id => books.find(book => book.ISBN === id))
+      .map(id => books.find(book => book.id === id))
       .filter(book => book !== undefined) as Book[]
     setBookList(list)
   }
@@ -21,13 +21,13 @@ function useBookList (books: Book[]) {
 
   function addToBookList (book: Book) {
     const newBookList = [...bookList, book]
-    window.localStorage.setItem('bookList', newBookList.map(book => book.ISBN).join(','))
+    window.localStorage.setItem('bookList', newBookList.map(book => book.id).join(','))
     setBookList(newBookList)
   }
 
   function removeFromBookList (bookToRemove: Book): void {
-    const newBookList = bookList.filter(book => book.ISBN !== bookToRemove.ISBN)
-    window.localStorage.setItem('bookList', newBookList.map(book => book.ISBN).join(','))
+    const newBookList = bookList.filter(book => book.id !== bookToRemove.id)
+    window.localStorage.setItem('bookList', newBookList.map(book => book.id).join(','))
     setBookList(newBookList)
   }
 

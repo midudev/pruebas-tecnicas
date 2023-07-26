@@ -5,6 +5,16 @@ export interface Book {
   cover: string
   synopsis: string
   year: number
+  id: string
+}
+
+export interface IMDBBook {
+  title: string
+  pages: number
+  genre: string
+  cover: string
+  synopsis: string
+  year: number
   ISBN: string
   author: Author
 }
@@ -15,9 +25,4 @@ export enum Genre {
   FANTASY = 'Fantasía',
   TERROR = 'Terror',
   ZOMBIES = 'Zombies'
-}
-
-interface Author {
-  name: string
-  otherBooks: string[]
 }

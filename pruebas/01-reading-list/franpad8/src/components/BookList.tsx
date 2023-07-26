@@ -14,7 +14,7 @@ function BookList ({ bookList, removeFromBookList }: Props) {
         {
           bookList.map((book: Book) => {
             return (
-              <li className='book-item' key={book.ISBN} >
+              <li className='book-item' key={book.id} >
                 <img src={book.cover} alt={book.title}/>
                 <label className='deleteButton' onClick={() => { removeFromBookList(book) }}>x</label>
               </li>

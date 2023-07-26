@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useMemo } from 'react'
 import './App.css'
-import { library as initialLibrary } from './books.json'
+import books from './data/books/fromFile'
 import { Genre, type Book } from './types.d'
 import Books from './components/Books'
 import BookList from './components/BookList'
@@ -10,18 +10,21 @@ import Filters from './components/Filters'
 import useBookList from './hooks/useBookList'
 
 function App () {
-  const books: Book[] = useMemo(() => initialLibrary.map((book) => book.book), [])
-
   const { bookList, addToBookList, removeFromBookList } = useBookList(books)
   const {
     filterByCategoryBooks,
+    filterByTitleBooks,
     pagesFilter,
     categoryFilter,
+    searchFilter,
     changePagesFilter,
-    changeCategoryFilter
+    changeCategoryFilter,
+    changeSearchFilter
   } = useFilters()
 
-  const filteredByCategoryBooks = useMemo(() => filterByCategoryBooks(books), [categoryFilter])
+  const filteredByTitle = useMemo(() => filterByTitleBooks(books), [searchFilter])
+
+  const filteredByCategoryBooks = useMemo(() => filterByCategoryBooks(filteredByTitle), [categoryFilter, searchFilter])
 
   const categoryCountElement = useMemo(() => {
     return categoryFilter !== Genre.ALL
@@ -29,7 +32,9 @@ function App () {
       : null
   }, [categoryFilter])
 
-  const filteredBooks: Book[] = filteredByCategoryBooks.filter(book => Number(book.pages) <= pagesFilter)
+  const filteredBooks: Book[] = useMemo(() => {
+    return filteredByCategoryBooks.filter(book => Number(book.pages) <= pagesFilter)
+  }, [categoryFilter, searchFilter, pagesFilter])
 
   return (
     <>
@@ -50,8 +55,10 @@ function App () {
             categoryCountElement={categoryCountElement}
             pagesFilter={pagesFilter}
             categoryFilter={categoryFilter}
+            searchFilter={searchFilter}
             changePagesFilter={changePagesFilter}
-            changeCategoryFilter={changeCategoryFilter}/>
+            changeCategoryFilter={changeCategoryFilter}
+            changeSearchFilter={changeSearchFilter}/>
           <Books addToBookList={addToBookList} bookList={bookList} books={filteredBooks} />
         </div>
         <div>
