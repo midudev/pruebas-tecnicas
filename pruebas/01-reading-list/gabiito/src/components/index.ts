@@ -1,3 +1,5 @@
+export { default as BookCard } from './BookCard/BookCard';
+export { default as Orderbuttons } from './BookCard/Orderbuttons';
 export { default as Container } from './Container/Container';
 export { default as Drawer } from './Drawer/Drawer';
 export { default as Footer } from './Footer/Footer';
