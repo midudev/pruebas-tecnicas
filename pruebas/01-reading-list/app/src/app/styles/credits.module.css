@@ -20,3 +20,8 @@
 .divisor{
     margin: 0px 100px;
 }
+
+@media (max-width: 768px) {
+    .credits > p { font-size: 0.8rem }
+    .divisor { margin: 0 }
+}

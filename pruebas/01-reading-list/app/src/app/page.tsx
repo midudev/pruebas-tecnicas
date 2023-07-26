@@ -14,8 +14,8 @@ const Main = () => {
 
     return(
         <div className="container my-5"><div className="row">
-            <div className="col-8"><Library/></div>
-            <div className="col-4"><ForReading/></div>
+            <div className="col-lg-8 col-md-12"><Library/></div>
+            <div className="col-lg-4 col-md-12"><ForReading/></div>
         </div>
         <Credits/>
         </div>

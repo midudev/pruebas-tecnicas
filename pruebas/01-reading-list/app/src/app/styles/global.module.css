@@ -8,3 +8,9 @@
     font-size: 1.3rem !important
 }
 
+@media (max-width: 768px) {
+    .body > * {
+        font-size: 1rem !important;
+    }
+}
+
