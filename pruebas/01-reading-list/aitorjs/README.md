@@ -34,6 +34,15 @@
 - [x] Mejorar estilos (24/07/2023, 26/07/2023)
 - [x] Despliegue en Vercel (25/07/2023)
 
+## Conclusión 😶‍🌫️
+
+  - Primera vez que uso zustand para gestionar el estado de una aplicación. Me ha resultado fácil entenderlo y poder usarlo. Se queda en mi stack personal! :)
+  - Primera app que hago con react. He usado anteriormente nextjs. Me ha servido para seguir practicando con el.
+  - Usado typescript para seguir practicando con el. Primera vez que uso un linter con typescript. Me he decidido por standard. Con ts me ha dado un poco de guerra configurarlo sobre todo en visual studio code.
+  - Primera vez que uso playwright para hacer tests e2e. Me ha gustado mucho pero en un futuro practicaré con vitest tantp para los tests unitarios como para los e2e.
+  - Seguir practicando con tailwindcss.
+  - Aprender a usar vercel para subir la app. Me ha parecido muy cómodo e intuitivo.
+
 ## Enlaces 🔗
 
 - BookService https://github.com/midudev/pruebas-tecnicas/commit/448ebd1f4cb6c2f273f6bc6c255b94bec7ef2233
