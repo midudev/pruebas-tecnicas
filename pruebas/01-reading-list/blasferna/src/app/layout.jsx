@@ -1,18 +1,19 @@
-import "./globals.css";
-import { Inter } from "next/font/google";
-import { AppProvider, FilterProvider } from "@/context/store";
-const inter = Inter({ subsets: ["latin"] });
 import Navigation from "@/components/navigation";
+import { AppProvider, FilterProvider } from "@/context/store";
+import { Inter } from "next/font/google";
+import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "BookBuddy",
-  description: "App desarrollada como prueba técnica según requerimientos de midudev",
+  description: "Prueba técnica desarrollada por Blás Isaias Fernández para Midudev",
 };
 
 export default function RootLayout({ children, modal }) {
   return (
     <html lang="en">
-      <body className="bg-gray-700">
+      <body className={`bg-gray-700 ${inter.className}`}>
         <FilterProvider>
           <AppProvider>
             <Navigation></Navigation>

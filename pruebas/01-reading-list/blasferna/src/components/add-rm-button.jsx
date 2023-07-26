@@ -11,7 +11,7 @@ import {
 import Loading from "@/components/loading";
 import { useAppContext } from "@/context/store";
 
-export default function AddToListButton({ isbn }) {
+export default function AddRmButton({ isbn }) {
   const { inReadingList, setInReadingList } = useAppContext();
   const [checked, setChecked] = useState(null);
 
@@ -39,7 +39,7 @@ export default function AddToListButton({ isbn }) {
   return (
     <button
       onClick={() => onClickHander(!checked)}
-      className="px-3 py-2 text-sm font-medium text-center inline-flex items-center text-white bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none"
+      className="px-3 py-2 text-sm font-medium text-center inline-flex items-center text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none"
     >
       {checked ? (
         <>

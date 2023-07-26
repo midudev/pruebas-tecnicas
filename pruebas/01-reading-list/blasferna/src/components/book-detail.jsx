@@ -1,4 +1,4 @@
-import AddButton from "@/components/add-button";
+import AddRmButton from "@/components/add-rm-button";
 import Image from "next/image";
 
 export default function BookDetail({ book, seeMore = false }) {
@@ -20,13 +20,13 @@ export default function BookDetail({ book, seeMore = false }) {
         <div className="text-md text-gray-400">{book.pages} páginas</div>
 
         <div className="mb-6 mt-6 ">
-          <p className="max-h-[70px] overflow-hidden text-gray-300">
+          <p className="max-h-[70px] overflow-hidden text-gray-50">
             {book.synopsis}
           </p>
         </div>
 
         <div className="flex items-center">
-          <AddButton isbn={book.ISBN}></AddButton>
+          <AddRmButton isbn={book.ISBN}></AddRmButton>
           {seeMore && (
             <a
               href={`/books/${book.ISBN}`}
@@ -56,7 +56,6 @@ export default function BookDetail({ book, seeMore = false }) {
           <div className="text-[15px]">{book.ISBN}</div>
         </div>
       </div>
-      <div></div>
     </>
   );
 }

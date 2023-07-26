@@ -108,7 +108,7 @@ export function NoResultState() {
   if (!searchQuery && !genreFilter) return null;
 
   return (
-    <section className="h-[calc(100vh-170px)] flex flex-col items-center justify-center">
+    <section className="mt-20 md:mt-0 md:h-[calc(100vh-170px)] flex flex-col items-center justify-center">
       <div className="text-center">
         <NoResultIcon></NoResultIcon>
         <h3 className="mt-2 text-xl font-semibold text-white">
@@ -122,7 +122,7 @@ export function NoResultState() {
           <button
             type="button"
             onClick={onClickHandler}
-            className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="inline-flex items-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
           >
             Limpiar filtros
           </button>
@@ -134,7 +134,7 @@ export function NoResultState() {
 
 export function EmptyState({ title, message, linkText, href }) {
   return (
-    <section className="h-[calc(100vh-170px)] flex flex-col items-center justify-center">
+    <section className="mt-20 md:mt-0 md:h-[calc(100vh-170px)] flex flex-col items-center justify-center">
       <div className="text-center">
         <EmptyFileIcon></EmptyFileIcon>
         <h3 className="mt-2 text-xl font-semibold text-white">{title}</h3>
@@ -144,7 +144,7 @@ export function EmptyState({ title, message, linkText, href }) {
         <div className="mt-6">
           <Link
             href={href}
-            className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="inline-flex items-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
           >
             {linkText}
           </Link>
