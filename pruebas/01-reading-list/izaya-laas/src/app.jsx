@@ -11,7 +11,7 @@ export function App() {
       <div className="mx-auto max-w-[1366px]">
         <Header />
         <main
-          className={`flex h-screen flex-col-reverse justify-end bg-white font-tilt text-black sm:relative sm:grid sm:grid-cols-[200px_1fr] sm:grid-rows-[1fr] sm:justify-start`}
+          className={`flex h-screen flex-col-reverse justify-between bg-white font-tilt text-black sm:relative sm:grid sm:grid-cols-[200px_1fr] sm:grid-rows-[1fr] sm:justify-start`}
         >
           <Aside />
           <article className="w-full overflow-y-scroll p-4">

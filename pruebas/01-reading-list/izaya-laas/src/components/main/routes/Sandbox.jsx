@@ -35,14 +35,12 @@ const Sandbox = () => {
 
   const handleAddToMyReadingList = (e) => {
     const bookId = e.dataTransfer.getData('bookId');
-    console.log([...myReadingListISBN.value]);
     myReadingListISBN.value = [bookId, ...myReadingListISBN.value];
-    console.log([...myReadingListISBN.value]);
   };
 
   return (
     <>
-      <div className="grid w-full grid-flow-row grid-cols-2 gap-x-2 lg:gap-x-20">
+      <div className="grid w-full grid-flow-row grid-cols-2 gap-x-2 lg:gap-x-10 xl:gap-x-20">
         <GridList title="Free Books" handleDrop={handleDeleteToMyReadingList}>
           {freeBooks.length === 0 ? (
             <HasNotBeenFound
