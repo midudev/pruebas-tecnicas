@@ -6,13 +6,13 @@ import Card from './components/Card'
 
 
 function App() {
-  const { books, addRead, filterByGenre, filterByText, filterByPages } = useBooks()
+  const { books, addRead, filterByGenre, filterByText, filterByPages, nPages } = useBooks()
 
   return (
     <>
       <main className='col-span-4 xl:col-span-3 bg-gray-200 p-4'>
         <section className='my-4'>
-          <Form filterByGenre={filterByGenre} filterByText={filterByText} filterByPages={filterByPages} />
+          <Form filterByGenre={filterByGenre} filterByText={filterByText} filterByPages={filterByPages} nPages={nPages}/>
         </section>
         <section>
           <h1 className='py-4'>{books.length} Libros Disponibles</h1>
