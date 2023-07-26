@@ -14,7 +14,12 @@ const dispatchStateActions = ({ setReadList, setFilters, setSortReadListByPriori
   const storedFilters = localStorage.getItem('filters')
   if (storedFilters !== null) {
     const filters = JSON.parse(storedFilters) as BookFilters
-    setFilters(filters)
+    const { genre, pages, name } = filters
+    setFilters({
+      genre: genre ?? '',
+      pages: pages ?? 0,
+      name: name ?? ''
+    })
   }
 
   const storedReadList = localStorage.getItem('readList')

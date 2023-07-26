@@ -1,9 +1,10 @@
 import './Filters.css'
 import { FilterTypes } from '../types.d'
-import { Button } from './Button'
-import { Range } from './Range'
-import { Select } from './Select'
+import { Button } from './Form/Button'
+import { Range } from './Form/Range'
+import { Select } from './Form/Select'
 import { useFilters } from '../hooks/useFilters'
+import { Input } from './Form/Input'
 
 export function Filters () {
   const {
@@ -11,12 +12,21 @@ export function Filters () {
     genre,
     pages,
     maxPages,
+    name,
     handleOnChangeFilter,
     handleResetFilters
   } = useFilters()
 
   return (
     <form className='filters'>
+      <Input
+        name={FilterTypes.NAME}
+        type='text'
+        value={name}
+        onChange={handleOnChangeFilter}
+        placeholder='Buscar por título'
+        label='Título'
+      />
       <Select
         options={genres}
         name={FilterTypes.GENRE}

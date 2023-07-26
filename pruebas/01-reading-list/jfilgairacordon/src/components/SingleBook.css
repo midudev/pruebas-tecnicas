@@ -6,6 +6,7 @@ li.book{
   transition: border-color 150ms linear;
   position: relative;
   overflow: hidden;
+  filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.3));
 }
 
 li.book:hover{

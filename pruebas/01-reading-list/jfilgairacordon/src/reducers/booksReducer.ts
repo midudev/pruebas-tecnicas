@@ -4,11 +4,7 @@ import { type Action, type State } from '../types'
 /** Sincroniza el estado en el localstorage y despacha el evento para
  * sincronizar entre pestañas.
  */
-const updateLocalStorage = (state: State) => {
-  localStorage.setItem('readList', JSON.stringify(state.readList))
-  localStorage.setItem('filters', JSON.stringify(state.filters))
-  localStorage.setItem('sortReadListByPriority', JSON.stringify(state.sortReadListByPriority))
-
+const updateLocalStorage = () => {
   window.dispatchEvent(new Event(LOCAL_STORAGE_EVENT))
 }
 
@@ -36,7 +32,7 @@ export function booksReducer (state: State, action: Action) {
       readList: [...state.readList, action.payload]
     }
 
-    updateLocalStorage(newState)
+    localStorage.setItem('readList', JSON.stringify(newState.readList))
     return newState
   }
 
@@ -46,7 +42,7 @@ export function booksReducer (state: State, action: Action) {
       readList: state.readList.filter(book => book.title !== action.payload.title)
     }
 
-    updateLocalStorage(newState)
+    localStorage.setItem('readList', JSON.stringify(newState.readList))
     return newState
   }
 
@@ -64,12 +60,11 @@ export function booksReducer (state: State, action: Action) {
       })
     }
 
-    updateLocalStorage(newState)
+    localStorage.setItem('readList', JSON.stringify(newState.readList))
     return newState
   }
 
   if (type === 'SET_FILTERS') {
-    // Comprobamos si los filtros són lo mismo que los que ya tenemos
     const { payload } = action
     const areEqual = Object.keys(payload).every(key => (payload as any)[key] === (state.filters as any)[key])
     if (areEqual) return state
@@ -79,7 +74,7 @@ export function booksReducer (state: State, action: Action) {
       filters: action.payload
     }
 
-    updateLocalStorage(newState)
+    localStorage.setItem('filters', JSON.stringify(newState.filters))
     return newState
   }
 
@@ -91,7 +86,8 @@ export function booksReducer (state: State, action: Action) {
       sortReadListByPriority: action.payload
     }
 
-    updateLocalStorage(newState)
+    localStorage.setItem('sortReadListByPriority', JSON.stringify(newState.sortReadListByPriority))
+    updateLocalStorage()
     return newState
   }
 

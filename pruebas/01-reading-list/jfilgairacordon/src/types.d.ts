@@ -22,6 +22,7 @@ export interface Author {
 export interface BookFilters {
   genre: string
   pages: number
+  name: string
 }
 
 export interface State {
@@ -59,5 +60,6 @@ export interface BooksContextType {
 
 export enum FilterTypes {
   GENRE = 'genre',
-  PAGES = 'pages'
+  PAGES = 'pages',
+  NAME = 'name'
 }

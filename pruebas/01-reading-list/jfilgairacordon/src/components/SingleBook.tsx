@@ -1,6 +1,6 @@
 import './SingleBook.css'
 import { type Book } from '../types'
-import { Button } from './Button'
+import { Button } from './Form/Button'
 import React from 'react'
 
 type Props = | {

@@ -1,0 +1,24 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  gap: 4px;
+  position: relative;
+}
+
+.input-container input{
+  background-color: black;
+  border-radius: 8px;
+  height: 38px;
+  padding: 0 16px;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  border: 2px solid transparent;
+  margin: 0;
+  transition: all 150ms linear;
+}
+
+.input-container input:focus, .input-container input:hover{
+  border-color: #09f;
+}

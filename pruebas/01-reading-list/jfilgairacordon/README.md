@@ -33,6 +33,6 @@ No ha dado tiempo a todo, pero se ha intentado. 😀😀 La próxima prueba a ve
 
 - [😎] Añade un nuevo filtro para filtrar los libros por número de páginas.
 
-- [ ] Permitir la reorganización de los libros en la lista de lectura por prioridad.
+- [😎] Permitir la reorganización de los libros en la lista de lectura por prioridad.
 
 - [ ] Haz que tu diseño sea responsive.

@@ -5,6 +5,7 @@ export const BOOKS_INITIAL_STATE: State = {
   readList: [],
   loading: true,
   filters: {
+    name: '',
     genre: '',
     pages: 0
   },
@@ -12,14 +13,7 @@ export const BOOKS_INITIAL_STATE: State = {
 }
 
 export const INITIAL_CONTEXT: BooksContextType = {
-  books: [],
-  readList: [],
-  loading: false,
-  filters: {
-    genre: '',
-    pages: 0
-  },
-  sortReadListByPriority: false,
+  ...BOOKS_INITIAL_STATE,
   setBooks: () => {},
   setReadList: () => {},
   addBook: () => {},

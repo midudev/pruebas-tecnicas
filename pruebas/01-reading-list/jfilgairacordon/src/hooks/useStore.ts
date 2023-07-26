@@ -29,9 +29,14 @@ export function useStore () {
         genreMatch = book.genre.toLowerCase().includes(genre.toLowerCase())
       }
 
+      let nameMatch = true
+      if (filters.name !== '') {
+        nameMatch = book.title.toLowerCase().includes(filters.name.toLowerCase())
+      }
+
       const pagesMatch = book.pages >= pages
       const notInReadList = !readList.some(readBook => readBook.ISBN === book.ISBN)
-      return genreMatch && pagesMatch && notInReadList
+      return genreMatch && pagesMatch && notInReadList && nameMatch
     })
   }
 

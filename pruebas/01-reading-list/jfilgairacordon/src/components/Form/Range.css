@@ -18,6 +18,24 @@
   transition: border-color 150ms linear;
 }
 
+.range-container input[type='range']::-webkit-slider-thumb {
+  background: #09f;
+  width: 18px;
+  -webkit-appearance: none;
+  height: 18px;
+  border-radius: 20px;
+  transition: all 150ms linear;
+  cursor: grab;
+}
+
+.range-container input[type='range']::-webkit-slider-thumb:hover {
+  filter: drop-shadow(0 0 0.5rem #09f);
+}
+
+.range-container input[type='range']::-webkit-slider-thumb:focus-within {
+  cursor: grabbing;
+}
+
 .range-container .control-row{
   display: flex;
   align-items: center;

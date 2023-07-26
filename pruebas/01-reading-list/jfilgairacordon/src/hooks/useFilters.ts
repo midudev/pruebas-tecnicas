@@ -4,7 +4,7 @@ import { useBooks } from './useBooks'
 
 export function useFilters () {
   const { books, filters, setFilters } = useBooks()
-  const { genre, pages } = filters
+  const { genre, pages, name } = filters
 
   const handleOnChangeFilter = (event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
     if (event.target.name === FilterTypes.GENRE) {
@@ -20,11 +20,19 @@ export function useFilters () {
         pages: Number(event.target.value)
       })
     }
+
+    if (event.target.name === FilterTypes.NAME) {
+      setFilters({
+        ...filters,
+        name: event.target.value
+      })
+    }
   }
   const handleResetFilters = (event: React.MouseEvent<HTMLButtonElement>) => {
     setFilters({
       genre: '',
-      pages: 0
+      pages: 0,
+      name: ''
     })
     event.preventDefault()
   }
@@ -33,6 +41,7 @@ export function useFilters () {
   const genres = useMemo(() => [...new Set(books.map(book => book.genre))], [books])
 
   return {
+    name,
     genre,
     pages,
     maxPages,

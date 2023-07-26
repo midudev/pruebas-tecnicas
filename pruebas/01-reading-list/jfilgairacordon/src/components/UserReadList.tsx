@@ -1,6 +1,6 @@
 import { useBooks } from '../hooks/useBooks'
 import { type Book } from '../types'
-import { Checkbox } from './Checkbox'
+import { Checkbox } from './Form/Checkbox'
 import { PriorityBadgeActive, PriorityBadgeInactive, UserReadListIcon } from './Icons'
 import { SingleBook } from './SingleBook'
 import './UserReadList.css'
@@ -34,12 +34,10 @@ export function UserReadList () {
 
   const handleSetSortReadListByPriority = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { checked } = event.target
-    console.log(checked)
     setSortReadListByPriority(checked)
   }
 
   const readListToUse = sortReadListByPriority ? readList.sort(sortReadList) : readList
-  console.log(readListToUse, sortReadListByPriority)
 
   return (
     <aside className='read-list'>
