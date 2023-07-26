@@ -3,8 +3,9 @@
     <h1>{{ catalogueCount }} libros en catálogo </h1>
 
     <div class="Catalogue-Tags">
-      <button class="Catalogue-Tags-Button" v-for="tag in genres" :key="tag" @click="onSelectedGenre(tag)">
-        {{ tag }}
+      <button class="Catalogue-Tags-Button" @click="onSelectedGenre('Todos')" :class="{ 'selected': 'Todos' === selectedGenre }">Todos</button>
+      <button class="Catalogue-Tags-Button" v-for="tag in genres" :key="tag" :class="{ 'selected': tag === selectedGenre }" @click="onSelectedGenre(tag)">
+        {{ tag }} ({{ numBooksFiltered(tag) }})
       </button>
     </div>
 
@@ -29,15 +30,15 @@ const store = useStore()
 const { books } = useBooks()
 
 /* Data to be used in selector/filters */
-const genres = [...new Set([...books.value.map(book => book.genre), "Todos"])];
-let selectedGenre = ref('')
+const genres = [...new Set(books.value.map(book => book.genre))];
+let selectedGenre = ref('Todos')
 
 const onSelectedGenre = (genreValue) => {
   selectedGenre.value = genreValue
 }
 
 const filteredCatalogue = computed(() => {
-  if (selectedGenre.value !== '' && selectedGenre.value !== "Todos")
+  if (selectedGenre.value !== "Todos")
     return store.catalogue.filter(book => book.genre === selectedGenre.value)
 
   return store.catalogue
@@ -45,6 +46,10 @@ const filteredCatalogue = computed(() => {
 
 const resetFilters = () => {
   selectedGenre.value = ''
+}
+
+const numBooksFiltered = (genre) => {
+  return store.catalogue.filter(e => e.genre === genre).length
 }
 
 /* Counters of differents Lists */
@@ -58,7 +63,6 @@ const catalogueCount = computed(() => store.catalogue.length)
   flex-direction: column;
   align-items: center;
   padding: 0.5em;
-  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -70,14 +74,12 @@ h1 {
 .Catalogue-List {
   display: grid;
   grid-template-columns: repeat(5, auto);
-  grid-gap: 2em;
   margin-top: 1.35em;
 }
 
 .Catalogue-Tags {
   padding-top: 15px;
   padding-bottom: 10px;
-  /* background-color: blue; */
 }
 
 .Catalogue-Tags-Button {
@@ -92,8 +94,13 @@ h1 {
 .Catalogue-Tags-Button:hover {
   background-color: var(--primary-color);
   border: 1px solid transparent;
-  /* font-weight: bold; */
   color: white;
+}
+
+.Catalogue-Tags-Button.selected {
+  background-color: var(--primary-color); /* Added selected background color */
+  color: white; /* Added selected font color */
+  border:1px solid transparent;
 }
 
 .BookCard-Grid {
