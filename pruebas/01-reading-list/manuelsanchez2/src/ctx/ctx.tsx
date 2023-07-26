@@ -10,9 +10,9 @@ import {
 } from '@builder.io/qwik'
 import { fetchBooks } from '~/api/fetchBooks'
 import { type Book } from '~/types/types'
+import { DEFAULT_GENRE } from '~/constants/constants'
 
 import debugFactory from 'debug'
-import { DEFAULT_GENRE } from '~/constants/constants'
 
 const debug = debugFactory('ctx/BookStore')
 
@@ -30,6 +30,8 @@ interface BookStore {
 }
 
 const STORE_ID = 'books-reading-list'
+const FILTERS_ID = 'filters'
+
 const BookContext = createContextId<BookStore>(STORE_ID)
 
 export const useProvideGlobalState = () => {
@@ -42,9 +44,9 @@ export const useProvideGlobalState = () => {
     isReadingListSorted: false,
   })
 
-  // Solo se ejecuta una vez, al cargar la página
-  // Nos traemos todos los libros y vamos a guardarlos en el estado de dos variables
-  // books y booksWithUserPreferences (la original no la vamos a tocar)
+  // It is only once executed when the app is loaded
+  // We fetch the books from the API and create also booksWithUserPreferences,
+  // which is the one we will use to store the user preferences
   useTask$(async () => {
     try {
       const fetchedBooks = await fetchBooks()
@@ -55,8 +57,8 @@ export const useProvideGlobalState = () => {
     }
   })
 
-  // Aquí recuperamos la información del localStorage
-  // sobre preferencias del usuario y la mergeamos con los libros
+  // Get books with our preferences from local storage
+  // + update other tabs when reading list will change
   useVisibleTask$(() => {
     const getBooksFromLocalStorage = () => {
       try {
@@ -68,7 +70,6 @@ export const useProvideGlobalState = () => {
           debug('There are some books in the local storage')
         } else {
           booksWithUserPreferences.value = books.value
-          console.log(booksWithUserPreferences.value)
           debug('There are no books in the local storage')
         }
       } catch (error) {
@@ -86,15 +87,41 @@ export const useProvideGlobalState = () => {
     }
   })
 
-  // Se ejecuta cada vez que se modifica el estado de los libros
-  // y actualiza el localStorage
+  // Get filter preferences from local storage
+  // + update other tabs when filters will change
+  useVisibleTask$(() => {
+    const getStoredFilters = () => {
+      const storedFilters = localStorage.getItem(FILTERS_ID)
+
+      if (storedFilters) {
+        const parsedFilters = JSON.parse(storedFilters)
+        filters.genre = parsedFilters.genre
+        filters.title = parsedFilters.title
+        filters.numberOfPages = parsedFilters.numberOfPages
+        filters.isReadingListSorted = parsedFilters.isReadingListSorted
+      }
+    }
+
+    getStoredFilters()
+
+    window.addEventListener('storage', getStoredFilters)
+
+    return () => {
+      window.removeEventListener('storage', getStoredFilters)
+    }
+  })
+
+  // Update local storage when reading list or filters will change
   useVisibleTask$(({ track }) => {
     track(booksWithUserPreferences)
+    track(filters)
 
     localStorage.setItem(
       STORE_ID,
       JSON.stringify(booksWithUserPreferences.value)
     )
+
+    localStorage.setItem(FILTERS_ID, JSON.stringify(filters))
   })
 
   const store = useStore({

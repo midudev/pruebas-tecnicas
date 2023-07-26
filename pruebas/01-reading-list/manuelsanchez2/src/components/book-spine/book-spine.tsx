@@ -2,7 +2,7 @@ import { $, component$ } from '@builder.io/qwik'
 import { useGlobalState } from '~/ctx/ctx'
 import { priorityTransformer } from '~/functions/functions'
 import { css } from '~/styled-system/css'
-import { type StoredBook } from '~/types/types'
+import { type Book } from '~/types/types'
 import {
   bookSpineInnerStyles,
   bookSpineStyles,
@@ -10,7 +10,7 @@ import {
   buttonCloseSpineStyles,
 } from './styles'
 
-export const BookSpine = component$(({ book }: { book: StoredBook }) => {
+export const BookSpine = component$(({ book }: { book: Book }) => {
   const { title } = book
   const { booksWithUserPreferences } = useGlobalState()
 

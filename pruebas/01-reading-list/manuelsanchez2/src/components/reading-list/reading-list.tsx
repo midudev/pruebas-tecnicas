@@ -1,6 +1,6 @@
 import { component$, useComputed$ } from '@builder.io/qwik'
 import { useGlobalState } from '~/ctx/ctx'
-import { type Book, type StoredBook } from '~/types/types'
+import { type Book } from '~/types/types'
 import { BookSpine } from '../book-spine/book-spine'
 import { downloadFromLocalStorage } from '~/functions/utils'
 import { STORE_ID } from '~/constants/constants'
@@ -14,9 +14,10 @@ import {
   sortButtonStyles,
 } from './styles'
 import { IconDownload, IconPrioritySort } from '../icons/icons'
+import { css } from '~/styled-system/css'
 
-export const ReadingList = component$(({ filters }: { filters: any }) => {
-  const { booksWithUserPreferences } = useGlobalState()
+export const ReadingList = component$(() => {
+  const { filters, booksWithUserPreferences } = useGlobalState()
 
   const readingList = useComputed$(() => {
     let readingList: Book[]
@@ -51,6 +52,10 @@ export const ReadingList = component$(({ filters }: { filters: any }) => {
             onClick$={() =>
               (filters.isReadingListSorted = !filters.isReadingListSorted)
             }
+            style={{
+              backgroundColor:
+                filters.isReadingListSorted === false ? 'white' : '#d1d1d1',
+            }}
           >
             <IconPrioritySort />
             <span>
@@ -68,10 +73,10 @@ export const ReadingList = component$(({ filters }: { filters: any }) => {
           </button>
         </header>
       )}
-      <div>
+      <div class={css({ width: '100%' })}>
         {booksSorted.value.length > 0 ? (
           <ul class={readingListULStyles}>
-            {booksSorted.value.map((book: StoredBook) => (
+            {booksSorted.value.map((book: Book) => (
               <li key={book.id}>
                 <BookSpine book={book} />
               </li>

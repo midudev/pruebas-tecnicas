@@ -5,7 +5,7 @@ export const BooksListULStyles = css({
   flexWrap: 'wrap',
   justifyContent: 'center',
   alignItems: 'center',
-  margin: '0 auto',
+  margin: '0 auto 50px',
   gap: '3rem',
   minWidth: '100%',
   maxWidth: 'var(--max-width-outer)',
@@ -13,7 +13,7 @@ export const BooksListULStyles = css({
   lg: {
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    margin: '0',
+    margin: '0 0 100px',
     gap: '3.5rem',
     width: 'var(--max-width-outer)',
   },

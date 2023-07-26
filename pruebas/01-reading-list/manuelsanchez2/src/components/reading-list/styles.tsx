@@ -71,6 +71,12 @@ export const sortButtonStyles = css({
   borderRadius: '0.25rem',
   cursor: 'pointer',
   mb: '0.5rem',
+  '&:hover': {
+    backgroundColor: '#d1d1d1',
+  },
+  '&:focus': {
+    backgroundColor: '#d1d1d1',
+  },
 })
 
 export const downloadButtonStyles = css({
@@ -83,4 +89,10 @@ export const downloadButtonStyles = css({
   borderRadius: '0.25rem',
   cursor: 'pointer',
   mb: '2.5rem',
+  '&:hover': {
+    backgroundColor: '#d1d1d1',
+  },
+  '&:focus': {
+    backgroundColor: '#d1d1d1',
+  },
 })

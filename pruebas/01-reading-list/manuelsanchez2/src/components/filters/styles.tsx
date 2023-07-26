@@ -46,22 +46,30 @@ export const overlayStyles = css({
   zIndex: 1,
 })
 
-export const filterOpenButtonStyles = css({
+export const filterButtonsStyles = css({
   display: 'flex',
-  alignItems: 'center',
+  flexDirection: 'column',
   gap: '0.5rem',
   position: 'fixed',
   right: '1rem',
   bottom: '1rem',
+})
+
+export const filterOpenButtonStyles = css({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '0.5rem',
   border: '1px solid black',
   padding: '0.5rem',
-  borderRadius: '0.5rem',
+  borderRadius: '0.25rem',
   zIndex: 10,
   backgroundColor: 'white',
-
-  md: {
-    bottom: 'auto',
-    top: '1rem',
+  cursor: 'pointer',
+  '&:hover': {
+    backgroundColor: '#d1d1d1',
+  },
+  '&:focus': {
+    backgroundColor: '#d1d1d1',
   },
 })
 
@@ -78,4 +86,10 @@ export const filterCloseButtonStyles = css({
   height: '2rem',
   textAlign: 'center',
   color: 'black',
+})
+
+export const formGroupStyles = css({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '1rem',
 })

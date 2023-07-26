@@ -36,3 +36,20 @@ export const InnerWrapperStyles = css({
     mb: '0',
   },
 })
+
+export const SubHeaderStyles = css({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '0.5rem',
+  textAlign: 'right',
+})
+
+export const FooterStyles = css({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: '1rem',
+  padding: '1rem 1rem 3rem',
+  textAlign: 'center',
+})

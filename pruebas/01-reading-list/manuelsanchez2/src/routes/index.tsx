@@ -5,41 +5,21 @@ import { Filters } from '~/components/filters/filters'
 import { Logo } from '~/components/logo/logo'
 import { ReadingList } from '~/components/reading-list/reading-list'
 import { useGlobalState } from '~/ctx/ctx'
-import { InnerWrapperStyles, OuterWrapperStyles } from './styles'
-import { filterBooksByGenre, filterBooksByTitle } from '~/functions/functions'
-import { DEFAULT_GENRE } from '~/constants/constants'
+import {
+  FooterStyles,
+  InnerWrapperStyles,
+  OuterWrapperStyles,
+  SubHeaderStyles,
+} from './styles'
 import { css } from '~/styled-system/css'
 import { timeline, stagger, type TimelineDefinition } from 'motion'
 
 export default component$(() => {
-  const { books, booksWithUserPreferences, filters } = useGlobalState()
+  const { booksWithUserPreferences } = useGlobalState()
 
   const readingList = useComputed$(() =>
     booksWithUserPreferences.value.filter((book) => book.isInReadingList)
   )
-
-  // Here we could filter the books by other settings like genre, number of pages
-  const booksFiltered = useComputed$(() => {
-    if (booksWithUserPreferences.value.length === 0) return []
-    // Filtro por género
-    let booksFiltered =
-      filters.genre === DEFAULT_GENRE
-        ? booksWithUserPreferences.value
-        : filterBooksByGenre(booksWithUserPreferences.value, filters.genre)
-
-    // Filtro por título
-    booksFiltered =
-      filters.title === ''
-        ? booksFiltered
-        : filterBooksByTitle(booksWithUserPreferences.value, filters.title)
-
-    // Filtro por número de páginas
-    booksFiltered = booksFiltered.filter(
-      (book) => book.pages <= filters.numberOfPages
-    )
-
-    return booksFiltered
-  })
 
   useVisibleTask$(() => {
     const sectionBooks = document.querySelector(
@@ -48,8 +28,6 @@ export default component$(() => {
     const sectionReading = document.querySelector(
       '[data-section="reading"]'
     ) as HTMLElement
-
-    if (!sectionBooks || !sectionReading) return
 
     setTimeout(() => {
       const books = sectionBooks.querySelectorAll('li')
@@ -88,27 +66,21 @@ export default component$(() => {
             opacity: 0,
           }}
         >
-          <div class={InnerWrapperStyles}>
+          <header class={InnerWrapperStyles}>
             <Logo />
-            <div
-              class={css({
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.5rem',
-                textAlign: 'right',
-              })}
-            >
+            <div class={SubHeaderStyles}>
               <span>
                 <strong>Libros en la lista de lectura:</strong>{' '}
                 {readingList.value.length}
               </span>
               <span>
-                <strong>Número total de libros:</strong> {books.value.length}
+                <strong>Número total de libros:</strong>{' '}
+                {booksWithUserPreferences.value.length}
               </span>
             </div>
-          </div>
+          </header>
 
-          <ReadingList filters={filters} />
+          <ReadingList />
         </section>
 
         <section
@@ -122,20 +94,68 @@ export default component$(() => {
             opacity: 0,
           }}
         >
-          <BooksList booksFiltered={booksFiltered} />
+          <BooksList />
         </section>
       </div>
 
-      <Filters filters={filters} books={books} />
+      <footer class={FooterStyles}>
+        <p>
+          App hecha con 💜 por{' '}
+          <a
+            class={css({
+              color: 'blue',
+            })}
+            target="_blank"
+            rel="nofollow noopener"
+            title="Web de manuelsanchezweb"
+            href="https://www.manuelsanchezweb.com/"
+          >
+            manuelsanchezweb
+          </a>{' '}
+        </p>
+      </footer>
+
+      <Filters />
     </>
   )
 })
 
 export const head: DocumentHead = {
-  title: 'Lista de lectura',
+  title: '🤓 Lista de lectura',
   meta: [
     {
       name: 'description',
+      content:
+        'Gestiona tu lista de lectura con Qwik. Añade filtros, ordena y busca.',
+    },
+    {
+      name: 'keywords',
+      content: 'lista de lectura, libros',
+    },
+    {
+      name: 'author',
+      content: 'manuelsanchezweb',
+    },
+    {
+      name: 'og:image',
+      content:
+        'https://pruebas-tecnicas-lista-lectura-manuelsanchez2.vercel.app/public/thumbnail.png',
+    },
+    {
+      name: 'twitter:image',
+      content:
+        'https://pruebas-tecnicas-lista-lectura-manuelsanchez2.vercel.app/public/thumbnail.png',
+    },
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    },
+    {
+      name: 'twitter:title',
+      content: '🤓 Lista de lectura',
+    },
+    {
+      name: 'twitter:description',
       content:
         'Gestiona tu lista de lectura con Qwik. Añade filtros, ordena y busca.',
     },
