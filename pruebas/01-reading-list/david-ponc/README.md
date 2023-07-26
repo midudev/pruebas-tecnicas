@@ -1,4 +1,17 @@
-# Reading list application
+<div align="center">
+  <a href="https://reading-list.davidponc.dev/">
+  <img width="64" src="https://reading-list.davidponc.dev/favicon.svg" />
+  </a>
+  <p><h3><strong>Reading list application</strong></h3></p>
+  <br /><br />
+</div>
+
+### Technologies
+
+- [Vite](https://vitejs.dev/)
+- [Svelte](https://svelte.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Playwright](https://playwright.dev/)
 
 ### Usage
 
