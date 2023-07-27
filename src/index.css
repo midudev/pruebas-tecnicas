@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two&family=Pontano+Sans:wght@300&display=swap');
+
+h1,h2,h3{
+  font-family: 'Lobster Two', cursive;
+}
+
+p,select,div,input{
+  font-family: 'Pontano Sans', sans-serif;
+}
+body {
+  margin: 0;
+  
+    background: url('../public/OLD_PAPER_TEXTURE.jpg') no-repeat center/cover;
+   
+ 
+}
+
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
