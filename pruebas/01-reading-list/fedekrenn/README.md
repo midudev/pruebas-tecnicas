@@ -1,10 +1,10 @@
 # Reading List App
 
-Este es un proyecto de una aplicación de lista de lectura desarrollado en React + vite. Pertenece a una prueba técnica propuesta por (Midudev)[https://github.com/midudev].
+Este es un proyecto de una aplicación de lista de lectura desarrollado en React + vite. Pertenece a una prueba técnica propuesta por [Midudev](https://github.com/midudev).
 
 ## Deploy 
 
-Podés correr la aplicación desde el siguiente (Link)[https://reading-list-psi.vercel.app/] para ver una demo ya deployada o clonar el repositorio y correrlo localmente.
+Podés correr la aplicación desde el siguiente https://reading-list-psi.vercel.app/ para ver una demo ya deployada o clonar el repositorio y correrlo localmente.
 
 ## Descripción
 
@@ -49,7 +49,14 @@ Para correr dicho test debes ejecutar el siguiente comando:
 pnpm test
 ```
 
+<br>
 
+## 🙋‍♂️ Hola, Soy Federico Krenn
+:nerd_face: Desarrollador web Fullstack
+<br>
+👨‍🎓 Realizando la Tecnicatura en Desarrollo Web en ISPC y Tecnicatura en Software Libre en la UNL
+<br>
+📫 Conectemos en Linkedin: https://www.linkedin.com/in/fkrenn/
 
 
 
