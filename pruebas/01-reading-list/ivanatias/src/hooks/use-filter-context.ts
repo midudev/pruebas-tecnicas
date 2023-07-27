@@ -10,6 +10,16 @@ interface FiltersState {
   genre: string
 }
 
+type ApplyFilterParams =
+  | {
+      prop: 'minPages'
+      value: number
+    }
+  | {
+      prop: 'genre'
+      value: string
+    }
+
 export function useFiltersContext(storageKey: string) {
   const { minPages } = useBooks()
 
@@ -41,20 +51,10 @@ export function useFiltersContext(storageKey: string) {
     [filters]
   )
 
-  const filterByPages = (minPages: number) => {
+  const applyFilter = ({ prop, value }: ApplyFilterParams) => {
     const newFilters = {
       ...filters,
-      minPages
-    }
-
-    window.localStorage.setItem(storageKey, JSON.stringify(newFilters))
-    setFilters(newFilters)
-  }
-
-  const filterByGenre = (genre: string) => {
-    const newFilters = {
-      ...filters,
-      genre
+      [prop]: value
     }
 
     window.localStorage.setItem(storageKey, JSON.stringify(newFilters))
@@ -64,7 +64,6 @@ export function useFiltersContext(storageKey: string) {
   return {
     filters,
     filterBooks,
-    filterByPages,
-    filterByGenre
+    applyFilter
   }
 }

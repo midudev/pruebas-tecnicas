@@ -14,14 +14,14 @@ export default function Filters() {
   const pageFilterId = useId()
   const genreFilterId = useId()
   const { maxPages, minPages } = useBooks()
-  const { filters, filterByGenre, filterByPages } = useFilters()
+  const { filters, applyFilter } = useFilters()
 
   const handleChangePages = (e: React.ChangeEvent<HTMLInputElement>) => {
-    filterByPages(Number(e.target.value))
+    applyFilter({ prop: 'minPages', value: Number(e.target.value) })
   }
 
   const handleChangeGenre = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    filterByGenre(e.target.value)
+    applyFilter({ prop: 'genre', value: e.target.value })
   }
 
   return (
