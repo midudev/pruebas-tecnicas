@@ -1,4 +1,4 @@
-import { s as server_default } from './chunks/astro.e69f02c8.mjs';
+import { s as server_default } from './chunks/astro.4d3a9342.mjs';
 import React, { createElement } from 'react';
 import ReactDOM from 'react-dom/server';
 import 'html-escaper';

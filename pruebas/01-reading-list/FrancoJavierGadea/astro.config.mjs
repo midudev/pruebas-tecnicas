@@ -9,11 +9,11 @@ export default defineConfig({
 
     output: 'server',
     
-    adapter: node({
-      mode: 'standalone',
-    }),
+    // adapter: node({
+    //   mode: 'standalone',
+    // }),
 
-    // adapter: netlify(),
+    adapter: netlify(),
 
     integrations: [react()],
 
