@@ -1,11 +1,21 @@
 import { useContext } from 'react'
 import { FiltersContext } from '../context/filters.jsx'
 
+import { useReadingList } from "../hooks/useReadingList"
+
 export function useFilters() {
-    const {filters, setFilters} = useContext(FiltersContext)    
+    const {readingList} = useReadingList()
+    const {filters, setFilters} = useContext(FiltersContext)      
 
     const filterLibrary = (library) => {
-      const pageFiltered = library.filter((item) => {
+      
+      const availableFiltered = filters.onlyAvailable ? library.filter((item) => {          
+        return !readingList.some((book) => book.id === item.id)
+      }) : library
+      
+      //console.log(availableFiltered)
+
+      const pageFiltered = availableFiltered.filter((item) => {
         return (          
           (filters.type === 'all' || item.type === filters.type) &&         
           (filters.genre === 'all' || item.genre === filters.genre) &&
@@ -15,7 +25,7 @@ export function useFilters() {
           (filters.search === '' || item.title.toLowerCase().includes(filters.search.toLowerCase()))
         )
       })
-      filters.totalFilterd = pageFiltered.length
+      filters.totalFilterd = pageFiltered.length //> 0 ? pageFiltered.length : 1
       filters.itemsFileterd = pageFiltered
       return pageFiltered.slice((filters.page - 1) * filters.pageSize, filters.page * filters.pageSize)
     }

@@ -1,8 +1,8 @@
 import { useMappedLibrary } from "./useMappedLibrary"
 
-export function useLibraryStat(){
+export function useLibraryStat(library){
     const {library: mappedLibrary} = useMappedLibrary()
-
+    
     const resultKey=[]
     const resultGenre=[]
     const resultAuthor=[]

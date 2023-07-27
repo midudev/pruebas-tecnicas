@@ -6,11 +6,11 @@ import { useReadingList } from '../hooks/useReadingList.jsx';
 import { useSearch } from '../hooks/useSearch.jsx';
 
 export function Filters () {
-    const { filters, setFilters } = useFilters()
-    const { itemAuthor, itemGenre, itemType } = useLibraryStat()
+    const { filters, setFilters } = useFilters()    
     const { readingList } = useReadingList()
     const { search, error } = useSearch(filters, setFilters)
-
+    const { itemAuthor, itemGenre, itemType } = useLibraryStat()
+    
     const today = new Date();
     const genres = itemGenre.type    
     const authors = itemAuthor.type    
@@ -22,6 +22,7 @@ export function Filters () {
     const yearFilterId = useId()    
     const pageSizeFilterid = useId()
     const totalSizeFilterid = useId()
+    const onlyAvailableChkboxId = useId()
 
     const lisItems = filters.itemsFileterd.map(item => item)
     const itemsAvailable = lisItems.filter(item => !readingList.some((element) => element.id === item.id))
@@ -79,15 +80,27 @@ export function Filters () {
             page: 1
         }))        
     }
+
+    const handleOnlyAvailable = () => {        
+        setFilters(prevState => ({
+            ...prevState,
+            onlyAvailable: !filters.onlyAvailable,
+            page: 1
+        }))
+    }    
     
     return(
         <>
             <section className='pt-5 grid grid-cols-2 gap-5 align-middle text-left'>
-                <div className="grid mt-2">
+                <div className="mt-2 inline-flex gap-5">
                     <div>
                         <span className ="bg-green-200 text-green-800 text-xl font-medium mr-2 px-2.5 py-0.5 pb-1 rounded-full dark:bg-green-900 dark:text-green-300">Disponibles : {totalItemesAvailable}</span>
                     </div>
-                </div>
+                    <div className="block items-center">
+                        <input id={onlyAvailableChkboxId} type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" onChange={handleOnlyAvailable} checked={filters.onlyAvailable}/>
+                        <label htmlFor={onlyAvailableChkboxId} className="ml-2 font-medium text-gray-900 dark:text-gray-300">Solo Disponibles</label>
+                    </div>
+                </div>                
                 <div className="grid">                    
                     <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                     <div className="relative">

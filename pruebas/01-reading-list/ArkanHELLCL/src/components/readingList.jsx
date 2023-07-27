@@ -20,9 +20,9 @@ export function ReadingList() {
             <label className="text-white bg-cyan-500 block w-8 h-8 justify-center transition-all cursor-pointer fixed top-20 right-6 py-1 px-1 rounded-full hover:scale-125 z-20" htmlFor={realingListChkboxId}>
                 <ReadingBookIcon />
                 <div className={`${readingList.length ? 'inline-flex' : 'hidden'} absolute items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900`}>{readingList.length}</div>
-            </label>
+            </label>            
             <input id={realingListChkboxId} type="checkbox" className="hidden peer/listReading" />
-            <aside className="block top-32 w-52 -mr-44 p-8 pl-2 h-full fixed right-0 peer-checked/listReading:mr-0 peer-checked/listReading:p-8 dark:bg-gray-700 bg-gray-300 transition-all text-center dark:bg-opacity-90 bg-opacity-90 hover:mr-0 hover:p-8 z-10 overflow-auto rounded-lg shadow-lg">
+            <aside className="block top-32 w-52 -mr-44 p-8 pl-2 h-full fixed right-0 peer-checked/listReading:mr-0 peer-checked/listReading:p-8 dark:bg-gray-700 bg-gray-300 transition-all text-center dark:bg-opacity-90 bg-opacity-90 hover:mr-0 hover:p-8 z-20 overflow-auto rounded-lg shadow-lg">
                 <ul>                    
                     {readingList.map((item) => (
                         <li key={item.id} className="first:m-auto -mt-36">

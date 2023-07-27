@@ -15,7 +15,8 @@ export function FiltersProvider({ children }) {
         itemsFileterd:[],
         totalPages:0,
         error:null,
-        search:''
+        search:'',
+        onlyAvailable:false
     })
     return (
         <FiltersContext.Provider value={{
