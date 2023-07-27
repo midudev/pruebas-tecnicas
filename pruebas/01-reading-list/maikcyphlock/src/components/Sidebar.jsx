@@ -29,7 +29,7 @@ const SidebarBlock = () => {
   }
 
   return (
-    <div className={`fixed top-0 left-0 h-full transition-all ease-in-out duration-300  w-96 bg-gray-800 text-white p-4 ${isVisible ? '' : '-left-96'} border-r border-gray-500`} style={{ maxHeight: '100vh', overflowY: 'auto' }} >
+    <div className={`fixed top-0  h-full transition-all ease-in-out duration-300  w-96 bg-gray-800 text-white p-4 ${isVisible ? 'left-0' : '-left-96'} border-r border-gray-500`} style={{ maxHeight: '100vh', overflowY: 'auto' }} >
       <h1 className="text-2xl font-bold mb-8">Reading list</h1>
       <div className="space-y-2 ">
        <BookRender/>
