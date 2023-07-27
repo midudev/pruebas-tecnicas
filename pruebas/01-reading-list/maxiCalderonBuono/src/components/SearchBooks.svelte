@@ -108,7 +108,7 @@
 		{/if}
 	</div>
 
-	<dl class="absolute w-full top-11 mt-2 text-black z-10">
+	<dl class="absolute w-full top-11 mt-2 text-black z-20">
 		{#each filteredTitles as option, i}
 			<a
 				href={`/search/${option.slug.toLocaleLowerCase()}`}
