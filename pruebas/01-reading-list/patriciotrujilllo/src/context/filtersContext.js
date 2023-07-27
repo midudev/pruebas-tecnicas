@@ -5,7 +5,7 @@ export const FilterContext = createContext()
 export const FilterProvider = ({children}) =>{
     const [filters,setFilters] = useState({
         genre : 'all',
-        pages : 2000,
+        pages : [0,2000],
         title : ''
     })
 
