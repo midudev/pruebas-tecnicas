@@ -1,15 +1,25 @@
+import { useState } from "react";
 import jsonData from "../../books.json";
-import { BookCardContainer } from "./components/BookCardContainer";
+import { BookCardGallery } from "./components/BookCardGallery";
+import { BooksFilter } from "./components/BooksFilter";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 const library = jsonData["library"];
 
 const App = () => {
+  const [filteredBooks, setFilteredBooks] = useState([]);
   return (
     <div style={{ width: "100%" }}>
       <Header />
-      {/*  <BookFilter/> */}
-      <BookCardContainer booksData={library} />
+      <BooksFilter
+        library={library}
+        setFilteredBooks={(books) => {
+          setFilteredBooks(books);
+        }}
+      />
+      <div style={{ minHeight: "90vh", boxShadow: "inset 0 0 5px " }}>
+        <BookCardGallery booksData={filteredBooks} />
+      </div>
 
       <Footer />
     </div>
