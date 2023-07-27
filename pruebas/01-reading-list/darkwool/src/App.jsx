@@ -1,23 +1,121 @@
-function App() {
-  return (
-    <section className="app_container">
-      <header>
-        <h1 className="header_title">Tu Libreria</h1>
-        <hr className="header_separator" />
+import data from "../../books.json";
+import { useState } from "react";
+import { useLocalStorage } from "./hooks/useLocalStorage";
+import { Header } from "./components/Header";
+import { Tabs } from "./components/Tabs";
+import { BooksList } from "./components/BooksList";
+import { BooksFilters } from "./components/BooksFilters";
 
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam magna sem,
-          aliquam vel erat et, eleifend dapibus sem. Aliquam vehicula lectus eu urna
-          mattis, vel imperdiet arcu dignissim. Cras a suscipit felis. Integer et
-          sollicitudin nunc. Curabitur imperdiet justo egestas tortor consequat, non
-          tristique nisl dignissim. Fusce laoreet rutrum tellus vehicula tristique.
-          Maecenas tempus pretium quam, ac tempus libero egestas et. Ut in pharetra eros.
-          Proin vestibulum semper hendrerit. Proin finibus diam ut molestie sollicitudin.
-          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
-          turpis egestas. Maecenas ac nibh vel tortor molestie posuere. Nam sagittis
-          vestibulum libero, eu tincidunt nulla finibus vel. Nam nec gravida nisi.
-        </p>
-      </header>
+function App() {
+  const [availableBooks, setAvailableBooks] = useLocalStorage(
+    "availableBooks",
+    data.library,
+  );
+  const [readingList, setReadingList] = useLocalStorage("readingList", []);
+  const [genre, setGenre] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [pagesNumber, setPagesNumber] = useState(null);
+
+  const filters = data.library.reduce(
+    (result, curr) => {
+      const book = curr.book;
+
+      result.genres.push(book.genre);
+      book.pages > result.pages.max
+        ? (result.pages.max = book.pages)
+        : (result.pages.min = book.pages);
+      return result;
+    },
+    { genres: [], pages: { min: +Infinity, max: -Infinity } },
+  );
+  filters.genres = ["Todos", ...new Set(filters.genres)];
+
+  const removeBook = (isbn, list) => {
+    let bookIndex = null;
+    const filteredList = list.filter((el, index) => {
+      if (el.book["ISBN"] === isbn) {
+        bookIndex = index;
+        return false;
+      }
+
+      return true;
+    });
+
+    return [bookIndex, filteredList];
+  };
+
+  const handleAddToReadingList = (isbn) => {
+    const [bookIndex, filteredList] = removeBook(isbn, availableBooks);
+    setAvailableBooks(filteredList);
+    setReadingList([availableBooks[bookIndex], ...readingList]);
+  };
+
+  const handleRemoveFromReadingList = (isbn) => {
+    const [bookIndex, filteredList] = removeBook(isbn, readingList);
+    setReadingList(filteredList);
+    setAvailableBooks([readingList[bookIndex], ...availableBooks]);
+  };
+
+  function filterBooks(list) {
+    let filteredList = list;
+
+    if (searchTerm) {
+      filteredList = filteredList.filter((el) => {
+        return new RegExp(searchTerm, "i").test(el.book.title);
+      });
+    }
+    if (genre) {
+      filteredList = filteredList.filter((el) => {
+        return el.book.genre === genre;
+      });
+    }
+    if (pagesNumber) {
+      filteredList = filteredList.filter((el) => el.book.pages <= pagesNumber);
+    }
+
+    return filteredList;
+  }
+
+  const handleSearchChange = (value) => setSearchTerm(value);
+  const handleFilterPages = (value) => setPagesNumber(value);
+  const handleGenreChange = (e) => {
+    const selectedOption = e.target.value === "Todos" ? "" : e.target.value;
+    setGenre(selectedOption);
+  };
+
+  const tabsData = [
+    {
+      name: `Libros disponibles (${availableBooks.length})`,
+      content: (
+        <BooksList
+          data={filterBooks(availableBooks)}
+          onFavoriteClick={handleAddToReadingList}
+        />
+      ),
+    },
+    {
+      name: `Lista de lectura (${readingList.length})`,
+      content: (
+        <BooksList
+          data={filterBooks(readingList)}
+          isReadingList={true}
+          onFavoriteClick={handleRemoveFromReadingList}
+        />
+      ),
+    },
+  ];
+
+  return (
+    <section className="container max-w-7xl">
+      <Header />
+      <BooksFilters
+        onSearchChange={handleSearchChange}
+        onGenreChange={handleGenreChange}
+        onFilterPages={handleFilterPages}
+        genres={filters.genres}
+        pages={filters.pages}
+      />
+      <Tabs data={tabsData} />
     </section>
   );
 }
