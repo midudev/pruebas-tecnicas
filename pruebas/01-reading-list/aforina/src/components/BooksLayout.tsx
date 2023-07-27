@@ -5,14 +5,7 @@ import { useSearch } from 'wouter/use-location'
 import Grid from './dnd/Grid'
 
 export const BooksLayout = () => {
-  const {
-    availableBooks,
-    listedBooks,
-    addCompleteList,
-    order,
-    category,
-    pages
-  } = useBooks()
+  const { availableBooks, addCompleteList, order, category, pages } = useBooks()
   const { listedIds } = useListedBooks()
 
   const search = useSearch()
@@ -27,7 +20,6 @@ export const BooksLayout = () => {
         useListedBooks.persist.rehydrate()
       }
     })
-    //aqui
 
     const completeList = availableBooks.filter(({ book }) =>
       listedIds.includes(book.ISBN)

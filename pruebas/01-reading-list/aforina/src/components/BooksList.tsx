@@ -24,8 +24,7 @@ import { useBooks } from '../store/useBooks'
 import { BookProps } from './Book'
 
 export const BooksList: FC = () => {
-  const { listedBooks } = useBooks()
-  const [items, setItems] = useState(listedBooks)
+  const { listedBooks, addCompleteList } = useBooks()
   const [activeId, setActiveId] = useState<string | null>(null)
 
   const sensors = useSensors(
@@ -40,28 +39,30 @@ export const BooksList: FC = () => {
     setActiveId(event.active.id.toString())
   }, [])
 
-  const handleDragEnd = useCallback((event: DragEndEvent) => {
-    const { active, over } = event
+  const handleDragEnd = useCallback(
+    (event: DragEndEvent) => {
+      const { active, over } = event
 
-    if (active.id !== over?.id) {
-      setItems(items => {
-        const map = items.map(book => book.book.ISBN)
+      if (active.id !== over?.id) {
+        const map = listedBooks.map(book => book.book.ISBN)
         const oldIndex = map.indexOf(active.id.toString())
         const newIndex = map.indexOf(over!.id.toString())
 
-        return arrayMove(items, oldIndex, newIndex)
-      })
-    }
+        const items = arrayMove(listedBooks, oldIndex, newIndex)
+        addCompleteList(items)
+      }
 
-    setActiveId(null)
-  }, [])
+      setActiveId(null)
+    },
+    [listedBooks]
+  )
 
   const handleDragCancel = useCallback(() => {
     setActiveId(null)
   }, [])
 
   const getBookActive = () => {
-    const book = items.find(d => d.book.ISBN === activeId)
+    const book = listedBooks.find(d => d.book.ISBN === activeId)
     return book ? book.book : ({} as BookProps)
   }
 
@@ -73,9 +74,12 @@ export const BooksList: FC = () => {
       onDragEnd={handleDragEnd}
       onDragCancel={handleDragCancel}
     >
-      <SortableContext items={items} strategy={rectSortingStrategy}>
+      <SortableContext
+        items={listedBooks.map(book => book.book.ISBN)}
+        strategy={rectSortingStrategy}
+      >
         <Grid>
-          {items.map(book => (
+          {listedBooks.map(book => (
             <SortableItem key={book.book.ISBN} book={book.book} />
           ))}
         </Grid>
