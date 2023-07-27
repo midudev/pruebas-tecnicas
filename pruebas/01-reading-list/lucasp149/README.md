@@ -1,11 +1,25 @@
 
 
-## BookStore
+# BookStore
 
-technologies
-Next.js
-React.js
-Tailwind
+## Technologies
 
-mail: lucasp149@gmail.com
-url: 
+
+### Next.js
+
+
+### React.js
+
+
+### Tailwind
+
+.
+.
+.
+
+
+
+
+✍ mail: lucasp149@gmail.com
+
+🌐 url: https://bookstorelucasp149.vercel.app/
