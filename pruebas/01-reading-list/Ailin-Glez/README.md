@@ -2,7 +2,7 @@
 
 Prueba técnica que busca probar las habilidades en el manejo de interacciones con el usuario, gestión del estado, filtrado de datos y la estructuración del código.
 
-[Live Demo](https://www.google.com)
+[Live Demo](https://reading-list-ailin-glez.netlify.app/)
 
 Para ejecutar el proyecto
 
