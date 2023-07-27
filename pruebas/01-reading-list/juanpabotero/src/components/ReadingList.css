@@ -26,7 +26,7 @@
 
 .reading-list-button {
   align-items: center;
-  background: rgb(234, 178, 8);
+  background: rgb(163 230 53);
   border-radius: 4px 0 0 4px;
   color: black;
   cursor: pointer;
@@ -49,7 +49,7 @@
 
 .reading-list-count {
   align-items: center;
-  background: rgb(234 179 8);
+  background: rgb(163 230 53);
   border-radius: 0 4px 4px 0;
   color: black;
   display: flex;

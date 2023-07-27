@@ -1,6 +1,6 @@
 import { useReadingList } from '../hooks/useReadingList';
 import { AddBookIcon, BookAddedIcon } from './Icons';
-import './Books.css'
+import './Books.css';
 
 export function Books({ books }) {
   const { addToReadingList, removeFromReadingList, readingList } =
@@ -24,8 +24,8 @@ export function Books({ books }) {
               className={`absolute top-0 right-0 rounded-full p-1 border bg-gray-900 
               hover:scale-110 transition-all duration-200 ${
                 isBookInReadingList
-                  ? 'text-yellow-500 border-yellow-600'
-                  : 'text-blue-500 border-blue-600'
+                  ? 'text-lime-400 border-lime-600'
+                  : 'text-yellow-400 border-yellow-600'
               } add-book-button`}
               onClick={() => {
                 isBookInReadingList
@@ -40,9 +40,7 @@ export function Books({ books }) {
               src={book.cover}
               alt={`Portada de ${book.title}`}
             />
-            <h2 className="text-lg font-bold text-white mb-1">
-              {book.title}
-            </h2>
+            <h2 className="text-lg font-bold text-white mb-1">{book.title}</h2>
             <p className="text-gray-200">{book.author.name}</p>
             <p className="text-gray-400 text-sm">{book.genre}</p>
           </article>
