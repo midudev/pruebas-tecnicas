@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import data from '../services/books.json'
+import { notifyAdded, notifyRemoved } from '../logic/notifications'
 
 const localStorage = window.localStorage
 const crypto = window.crypto
@@ -32,6 +33,7 @@ export function useBooks () {
     updateAvailable = [...updateAvailable]
     setAvailable(updateAvailable)
     localStorage.setItem('available', JSON.stringify(updateAvailable))
+    notifyAdded()
   }
 
   function handleRemoveClick (book) {
@@ -39,6 +41,7 @@ export function useBooks () {
     const updateList = myList.filter((el) => el.title !== book.title)
     setMyList(updateList)
     localStorage.setItem('myList', JSON.stringify(updateList))
+    notifyRemoved()
   }
 
   useEffect(() => {

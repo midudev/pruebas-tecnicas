@@ -1,4 +1,8 @@
+import { Flex, Heading, Text, Button, useColorModeValue } from '@chakra-ui/react'
+
 export function Filter ({ available, filter, setFilter, crypto }) {
+  const color = useColorModeValue('black', 'white')
+
   let genres = new Set()
 
   available.forEach((el) => {
@@ -19,13 +23,57 @@ export function Filter ({ available, filter, setFilter, crypto }) {
   }
 
   return (
-    <>
-      <h1>Filter by Genre</h1>
-      {filter === '' ? available.length + ' books available' : available.filter((el) => el.book.genre === filter).length + ' books available'}
+    <Flex
+      flexDir='column'
+      pt='20'
+      ml='120px'
+    >
+      <Heading
+        as='h3'
+        size='xs'
+        pl='2'
+      >
+        FILTER
+      </Heading>
+      <Text
+        fontSize='sm'
+        pl='2'
+        mb='20px'
+      >
+        {filter === ''
+          ? available.length + ' books available'
+          : available.filter((el) => el.book.genre === filter).length + ' books available'}
+      </Text>
       {genres.map((el) =>
-        <button key={crypto.randomUUID()} onClick={() => handleFilterClick(el)}>{el}</button>
+        <Button
+          aria-label={el}
+          display='flex'
+          justifyContent='flex-start'
+          size='sm'
+          variant='ghost'
+          colorScheme='orange'
+          color={color}
+          isActive={filter === el}
+          pl='2'
+          mb='8px'
+          key={crypto.randomUUID()}
+          onClick={() => handleFilterClick(el)}
+        >
+          {el}
+        </Button>
       )}
-      <button onClick={handleResetClick}>Clean filter</button>
-    </>
+      <Button
+        aria-label='Clean filter'
+        display='flex'
+        justifyContent='flex-start'
+        size='sm'
+        mt='20px'
+        colorScheme='orange'
+        variant='outline'
+        onClick={handleResetClick}
+      >
+        Clean filter
+      </Button>
+    </Flex>
   )
 }

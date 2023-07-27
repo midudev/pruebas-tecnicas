@@ -13,13 +13,17 @@
     "vite": "^4.4.5"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.1.0",
     "@chakra-ui/react": "^2.8.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@vitejs/plugin-react": "4.0.3",
     "framer-motion": "^10.13.1",
+    "localforage": "^1.10.0",
+    "match-sorter": "^6.3.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-hot-toast": "^2.4.1"
   },
   "eslintConfig": {
     "extends": "./node_modules/standard/eslintrc.json"
