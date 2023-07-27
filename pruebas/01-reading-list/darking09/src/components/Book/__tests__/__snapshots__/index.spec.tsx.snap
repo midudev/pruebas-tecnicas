@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Book should render 1`] = `
+<div>
+  <div
+    class="relative pb-3/2"
+  >
+    <div>
+      cover
+    </div>
+  </div>
+</div>
+`;

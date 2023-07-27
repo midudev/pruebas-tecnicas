@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  next-docker:
+    build: .
+    image: nodejs_t1_rl
+    container_name: test_one_read_line
+    env_file: .env.local
+    volumes:
+      - .:/home/node/app
+      - /home/node/app/node_modules
+    expose:
+      - '3000'
+    ports:
+      - '3000:3000'
+    command: npm run dev
+volumes:
+  dbdata:

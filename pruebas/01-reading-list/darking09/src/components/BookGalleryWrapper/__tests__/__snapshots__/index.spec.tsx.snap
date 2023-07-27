@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BookGalleryWrapper should render 1`] = `
+<div>
+  <div
+    class="cursor-pointer"
+  >
+    <div>
+      children
+    </div>
+  </div>
+</div>
+`;

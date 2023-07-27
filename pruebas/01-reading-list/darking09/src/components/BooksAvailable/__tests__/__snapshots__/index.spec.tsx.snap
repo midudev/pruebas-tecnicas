@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BooksAvailable should render 1`] = `
+<div>
+  <div
+    class="grid grid-rows-2 pt-2"
+  >
+    <h1
+      class="row-span-1 text-4xl"
+    >
+      1  Libro disponible: 
+    </h1>
+    <h2
+      class="text-2xl"
+    >
+      1  Libro en la lista de lectura
+    </h2>
+  </div>
+</div>
+`;
