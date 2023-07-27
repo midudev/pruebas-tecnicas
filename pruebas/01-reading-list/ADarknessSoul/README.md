@@ -2,6 +2,10 @@
 
 WhatAbook es una aplicación dedicada crear tus propias listas de lectura con el catalogo de libros que provee nuestro repertorio en línea. Lleva un seguimiento de tus libros favoritos con un simple click y disfruta de una experiencia agradable para que tus lecturas siempre sean interesantes.
 
+## Link hacia el demo de la página: 🔗
+
+https://whatabookapp.netlify.app/
+
 # Descripción técnica
 
 ## ¿Qué hace? ❓
