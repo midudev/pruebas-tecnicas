@@ -7,33 +7,56 @@
 }
 
 .container{
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 3fr 1fr;
-    grid-template-rows: 0.5fr 0.2fr 0.3fr 3.6fr;
+    grid-template-rows: 0.3fr 0.2fr 0.3fr auto  auto;
     grid-template-areas: 
                         'header header'
                         'book-available to-read'
                         'filters-container to-read'
+                        'book-container to-read'
                         'book-container to-read';
     gap: 1rem;
     background: rgb(34, 33, 33);
 }
 .header{
     text-align: center;
-    padding: 3rem;
+    padding: 2rem;
     grid-area: header;
 }
-.container .header h1{
-    font-size: 4rem;
+.header h1{
+    font-size: 3rem;
 }
 .book-available{
     grid-area: book-available;
+    display: flex;
+    justify-content:space-around;
 }
 .filters-container{
     grid-area: filters-container;
+    display: flex;
+    flex-wrap: wrap;
 }
+.input-seach{
+    flex-basis: 85%;
+}
+.selector-genre{
+    flex-basis: 40%;
+    color: black;
+}
+.selector-genre select option{
+    color: black;
+}
+.range-values{
+    flex-basis: 40%;
+}
+.range{
+    flex-basis: 40%;
+    padding-left: 2rem;
+}
+
 
 .book-container{
     padding-top: 1.5rem;
@@ -81,13 +104,20 @@ img{
 }
 
 
-/* @media screen and (max-width:763px){
-    .filters{
-        grid-column: 1/-1;
+@media screen and (max-width:770px){
+    .container{
+        width: 100%;
         margin: 0 auto;
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        grid-template-rows: 0.3fr 0.1fr 0.2fr 3.6fr  auto;
+        grid-template-areas: 
+                            'header header'
+                            'book-available book-available'
+                            'filters-container filters-container'
+                            'book-container book-container'
+                            'to-read to-read';
+        gap: 1rem;
+        background: rgb(34, 33, 33);
     }
-    .book-container{
-        grid-column: 1/-1;
-        grid-row: 3/-1;
-    }
-} */
+}
