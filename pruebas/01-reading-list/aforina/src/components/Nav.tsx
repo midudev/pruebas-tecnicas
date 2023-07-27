@@ -6,8 +6,11 @@ export const Nav = () => {
   const { listedIds } = useListedBooks()
 
   return (
-    <nav className='w-full h-[120px] bg-customLight grid grid-cols-[1fr_auto_1fr]  items-center justify-center text-center border-b-1 border-black'>
-      <h1 className='font-extrabold col-start-2 whitespace-nowrap'>
+    <nav className='w-full h-[120px] bg-customLight flex flex-col gap-y-4 md:grid md:grid-cols-[1fr_auto_1fr] items-center justify-center text-center border-b-1 border-black'>
+      <h1
+        style={{ fontSize: 'clamp(1rem, 2.5vw, 2rem)' }}
+        className='font-extrabold col-start-2 whitespace-nowrap'
+      >
         Rent your favourites{' '}
         <span className='inline-block bg-customPurple rotate-6 hover:rotate-4 text-white py-2 px-4 border-3 transition duration-200 border-black drop-shadow-[4px_5px_0px_rgba(0,0,0,1)]'>
           books
