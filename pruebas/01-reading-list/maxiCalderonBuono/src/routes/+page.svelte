@@ -175,7 +175,7 @@
 		{/if}
 		{#if show === 'library'}
 			<div
-				class="grid items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
+				class="grid items-center grid-cols-[auto-fit, minmax(250px, 1fr)] gap-x-4 gap-y-8"
 				in:fly={{ y: 200, duration: 500 }}
 			>
 				{#each $initialDataStore.renderlist as { book }}
