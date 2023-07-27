@@ -1,8 +1,26 @@
-# React + Vite
+# Reading List
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Live: https://readinglist-git-main-nico-bt.vercel.app/
 
-Currently, two official plugins are available:
+## Usando React + Vite - Para correrlo localmente
+Ir a carpeta nico-bt y correr:
+- nmp install
+- npm run dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Funcionalidades Requeridas
+
+- ✅ Visualización de libros disponibles.
+- ✅ Creación de lista de lectura.
+- ✅ Filtrado de libros por género.
+- ✅ Sincronización de estados número libros disponibles
+- ✅ Persistencia de datos en localStorage
+- ✅ Sincronización entre pestañas
+- ✅ Despliegue
+- ✅❌ Test - a mejorar, hecho uno sólo para cumplir consigna
+
+## Funcionalidades Adicionales
+
+- ❌ Implementa una funcionalidad de búsqueda en la lista de libros disponibles
+- ✅ Filtrar por número de páginas
+- ❌ Permitir la reorganización de los libros en la lista de lectura por prioridad
+- ✅ Diseño responsive. A mejorar: la interfaz puede hacerse más linda
