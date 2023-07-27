@@ -1,6 +1,6 @@
 export const MoonIcon = () => {
     return ( 
-        <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+        <svg aria-label="theme-dark-icon" version="1.0" xmlns="http://www.w3.org/2000/svg"
         width="512pt" height="512pt" viewBox="0 0 512 512"
         preserveAspectRatio="xMidYMid meet">
             <g transform="translate(0,512) scale(0.1,-0.1)"

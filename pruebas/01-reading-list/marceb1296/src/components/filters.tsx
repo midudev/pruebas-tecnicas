@@ -41,8 +41,8 @@ export const Filters = ({handleFilters, filterValues, filterInputValues}: IFilte
                 
                 { /* Todo: add filter validators*/}
                 
-                <label className="with-color filter-input">
-                    Paginas: {filterValues.pages}
+                <label className="filter-input">
+                    <span className="with-color dp-block">Paginas:</span> {filterValues.pages}
                     <input onChange={handleChange} name="pages" value={filterValues.pages} type="range" min={0} max={filterInputValues.pages} />
                 </label>
                 { /*
@@ -52,8 +52,8 @@ export const Filters = ({handleFilters, filterValues, filterInputValues}: IFilte
                     <input onChange={handleChange} name="year-max" value={filterValues.year.max || ""} type="number" placeholder={` Año Maximo ${filterInputValues.year.max}`} />
                 </label>
                 */}
-                <label className="with-color filter-input">
-                    Genero:
+                <label className="filter-input">
+                    <span className="with-color dp-block">Genero:</span>
                     <select name="genre" onChange={handleChange} value={filterValues.genre}>
                         {
                             filterInputValues.genre.map((el, index: number) =>

@@ -6,12 +6,17 @@ const initialState: IBookList = JSON.parse(localStorage.getItem("book_list") ?? 
     "isOpen": false,
     "list": []
 }`);
-console.log(initialState)
 
 const bookListSlice = createSlice({
     name: 'bookList',
     initialState,
     reducers: {
+        setBookList(state, action: PayloadAction<string | null>) {
+            if (action.payload) {
+                state = JSON.parse(action.payload)
+                return state
+            }
+        },
         openBookList(state) {
             state.isOpen = !state.isOpen
             localStorage.setItem("book_list", JSON.stringify(state))
@@ -28,5 +33,5 @@ const bookListSlice = createSlice({
     },
 })
 
-export const { addBookList, removeBookList, openBookList } = bookListSlice.actions;
+export const { addBookList, removeBookList, openBookList, setBookList } = bookListSlice.actions;
 export const { reducer: bookListReducer } = bookListSlice;

@@ -10,11 +10,9 @@ export const App = () => {
     
     const theme = useAppSelector(store => store.themeReducer);
     
-    const isMobile = window.matchMedia("(min-width: 30em)").matches;
-    
     return(
-        <div className={theme}>
-            <Header isMobile={isMobile} />
+        <div aria-label="main-book" className={theme}>
+            <Header />
             <Main />
         </div>
     )

@@ -20,10 +20,10 @@ export const NavSide = ({books}: INavSideProps) => {
         }} className="books">
             { books.length > 0
                 ? books.map(({ book }) =>
-                    <div key={`list-${book.ISBN}`} className="book-container">
+                    <div aria-label="book-list-box" key={`list-${book.ISBN}`} className="book-container">
                         <img src={book.cover} alt={`cover ${book.title}`} loading="lazy" />
                         <div className="book-info">
-                            <label className="with-color full dp-block">
+                            <label aria-label="book-list-box-title" className="with-color full dp-block">
                                 {book.title}
                             </label>
                             <button onClick={() => dispatch(removeBookList(book.ISBN))}>
