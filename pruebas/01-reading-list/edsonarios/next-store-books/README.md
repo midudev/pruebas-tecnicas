@@ -28,3 +28,4 @@ pnpm run build
 
 - ✅ Implementar una funcionalidad de búsqueda en la lista de libros disponibles.
 - ✅ Añade un nuevo filtro para filtrar los libros por número de páginas.
+- ✅ Permitir la reorganización de los libros en la lista de lectura por prioridad.
