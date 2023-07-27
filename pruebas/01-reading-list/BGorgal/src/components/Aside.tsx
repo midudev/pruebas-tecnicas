@@ -1,4 +1,4 @@
-import user from '../img/user.webp'
+import user from '../../public/img/user.webp'
 import { useBooksStore } from '../store/books'
 import { BookListRead } from './Book/BookListRead'
 import Filters from './Filters'
