@@ -28,7 +28,7 @@ const Badges: React.FC = () => {
   }
 
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2 w-full overflow-x-auto py-2">
 
       {badges.map(({label, value}) => (
         <button
