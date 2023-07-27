@@ -1,5 +1,8 @@
+import { useState } from 'react'
+
 import { IBookCard } from '../../interfaces/IBooks'
-import { Heart } from '../ui'
+
+import { Arrow, Heart } from '../ui'
 
 interface Props {
   book: IBookCard
@@ -9,26 +12,35 @@ interface Props {
 }
 
 const CardBook = ({ book, left, MoveBook, isDragging }: Props) => {
+  const [viewMoreInfo, setViewMoreInfo] = useState(false)
+
   const moveBook = () => {
     MoveBook({ book, left })
+  }
+
+  const handleInfoExtra = (
+    ev: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    ev.stopPropagation()
+    setViewMoreInfo((prev) => !prev)
   }
 
   let stylesDrag = ''
   switch (isDragging) {
     case true:
-      stylesDrag = 'bg-[#f1f1f1a3]'
+      stylesDrag = 'bg-[#1c1b1b79]'
       break
     case false:
-      stylesDrag = 'bg-[#87878789]'
+      stylesDrag = 'bg-[#87878745] border-[1px] border-gray-500 '
   }
 
   return (
     <section
       draggable
       id="Card"
-      className={`relative rounded-[14px] w-full object-cover py-5 m-auto hover:scale-105 transition-transform duration-200 ${stylesDrag}`}
+      className={`flex flex-col justify-center items-center border-opacity-20 relative rounded-[14px] w-full object-cover py-5 m-auto hover:scale-105 transition-transform duration-200 ${stylesDrag}`}
     >
-      <h2 className="p-3 font-semibold">{book.title}</h2>
+      <h2 className="w-full p-3 font-semibold text-start">{book.title}</h2>
       <img
         loading="lazy"
         className="w-full h-[300px] m-auto"
@@ -36,8 +48,29 @@ const CardBook = ({ book, left, MoveBook, isDragging }: Props) => {
         src={book.cover}
       />
       <h3>{book.genre}</h3>
-      <h4 className="absolute bottom-0 right-2">{book.pages}</h4>
-      <h4>{book.year}</h4>
+      <h4 className="absolute bottom-0 right-2">
+        <img src="/book.svg" title="número de páginas" />
+        {book.pages}
+      </h4>
+
+      {viewMoreInfo && (
+        <ul className="px-3">
+          <li>{book.year}</li>
+          <li>{book.author.name}</li>
+          <li className="text-xs">{book.synopsis}</li>
+        </ul>
+      )}
+
+      <button
+        onClick={(ev) => handleInfoExtra(ev)}
+        className={`p-2 transition-transform duration-300  ${
+          viewMoreInfo
+            ? '-rotate-90  sm:hover:-rotate-45'
+            : 'rotate-90  sm:hover:rotate-45'
+        }  `}
+      >
+        <Arrow />
+      </button>
 
       <button
         className={`absolute top-3 right-5 transition-colors duration-500 ${

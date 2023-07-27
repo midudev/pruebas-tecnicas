@@ -28,15 +28,15 @@ const PrincipalForm = ({
   }
 
   return (
-    <section className="flex flex-wrap justify-center items-center m-auto gap-5 w-full my-10  border-[1px] rounded-2xl py-5 text-gray-200">
-      <form className="flex max-lg:flex-col flex-wrap items-center gap-5 w-full max-w-[1000px] justify-between px-20 max-sm:px-0">
-        <span className="flex flex-col">
+    <section className="flex flex-wrap justify-center items-center m-auto gap-5 w-full my-10  border-[1px] border-gray-500 rounded-2xl py-5 text-gray-300">
+      <form className="flex max-lg:flex-col flex-wrap items-center gap-5 w-full max-w-[1000px] justify-between px-20 max-sm:px-0 ">
+        <span className="flex flex-col ">
           <label htmlFor="genre">Selecciona el género literario</label>
           <select
             id="genre"
             value={genre}
             onChange={(ev) => setGenre(ev.target.value)}
-            className="text-black"
+            className="text-gray-200 bg-gray-800 focus:bg-gray-900"
           >
             <option value="">Todos</option>
             {GENRES.map((genre) => (
@@ -62,7 +62,7 @@ const PrincipalForm = ({
           <label htmlFor="keyword">Busca por título</label>
           <input
             id="keyword"
-            className="text-gray-900"
+            className="text-gray-200 bg-gray-800 focus:bg-gray-900"
             type="text"
             onChange={(ev) => {
               setKeyword(ev.target.value)

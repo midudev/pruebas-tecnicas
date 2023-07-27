@@ -105,8 +105,8 @@ const ListOfBook = ({
                   return (
                     <Draggable
                       isDragDisabled={isFilter}
-                      key={book.book.title}
-                      draggableId={book.book.title}
+                      key={book.book.ISBN}
+                      draggableId={book.book.ISBN}
                       index={index}
                     >
                       {(provided2, snapshot) => (
@@ -117,7 +117,7 @@ const ListOfBook = ({
                           {...provided2.draggableProps}
                         >
                           <CardBook
-                            key={book.book.title}
+                            key={book.book.ISBN}
                             book={book.book}
                             left={left}
                             MoveBook={MoveBook}
