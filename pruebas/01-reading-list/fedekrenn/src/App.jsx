@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import getBooks from './utils/getBooks'
-// CSS
-import './App.css'
+import { FadeLoader } from 'react-spinners'
 import Dialog from './component/Dialog'
+import './App.css'
 
 const GENRES_LIST = [
   'Todos',
@@ -19,6 +19,8 @@ function App () {
   const [pages, setPages] = useState(0)
   const [genre, setGenre] = useState('Todos')
 
+  const [loading, setLoading] = useState(true)
+
   const dialog = useRef(null)
   const baseBooks = useRef([])
 
@@ -30,6 +32,7 @@ function App () {
         !readingList.some(item => item.book.ISBN === book.book.ISBN)
       ))
       setBooks(filteredBooks)
+      setLoading(false)
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -138,10 +141,9 @@ function App () {
             />
           </label>
         </div>
-        {books.length === 0 && readingList.length > 0
-          ? (
-            <h2>Todos los libros están en la lista de lectura</h2>
-            )
+        {books.length === 0 && !loading && (<h2>Todos los libros están en la lista de lectura</h2>)}
+        {loading
+          ? (<FadeLoader color='#fff' cssOverride={{ display: 'block', margin: '20px auto' }} />)
           : (
             <ul>
               {books.map((book) => {

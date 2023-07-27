@@ -13,6 +13,7 @@ specifiers:
   jsdom: ^22.1.0
   react: ^18.2.0
   react-dom: ^18.2.0
+  react-spinners: ^0.13.8
   react-toastify: ^9.1.3
   standard: ^17.1.0
   vite: ^4.4.0
@@ -22,6 +23,7 @@ dependencies:
   '@testing-library/jest-dom': 5.17.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-spinners: 0.13.8_biqbaboplfbrettd7655fr4n2y
   react-toastify: 9.1.3_biqbaboplfbrettd7655fr4n2y
 
 devDependencies:
@@ -2489,6 +2491,16 @@ packages:
 
   /react-is/18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
+
+  /react-spinners/0.13.8_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-3e+k56lUkPj0vb5NDXPVFAOkPC//XyhKPJjvcGjyMNPWsBKpplfeyialP74G7H7+It7KzhtET+MvGqbKgAqpZA==}
+    peerDependencies:
+      react: ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
 
   /react-toastify/9.1.3_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-fPfb8ghtn/XMxw3LkxQBk3IyagNpF/LIKjOBflbexr2AWxAH1MJgvnESwEwBn9liLFXgTKWgBSdZpw9m4OTHTg==}
