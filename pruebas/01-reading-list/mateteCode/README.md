@@ -16,3 +16,7 @@ El objetivo de esta aplicación fue la de obtener una lista de películas dispon
 - React
 - JavaScript
 - Css
+
+## Deploy
+
+La aplicación funcional se encuentra alojada en https://prueba-01-books-list.netlify.app/
