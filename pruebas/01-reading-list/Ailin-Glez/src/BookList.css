@@ -1,0 +1,52 @@
+.book-list-container {
+  padding: 10px 8px;
+}
+
+.filters {
+  text-align: left;
+  display: flex;
+  align-items: center;
+  margin: 3.8rem 2.2rem 1.8rem;
+}
+
+.filter-btn {
+  min-width: 6.3rem;
+  border-radius: 8px;
+  border: none;
+  padding: 0.8rem 1rem;
+  font-size: 0.8em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--green-light);
+  color: var(--light-color);
+  cursor: pointer;
+  margin: 5px;
+  transition: all ease 0.2s;
+}
+
+.filter-btn.selected {
+  background-color: var(--green-dark);
+  border: 1px solid var(--light-color);
+}
+
+.filter-btn:hover {
+  background: var(--light-color);
+  color: var(--green-dark);
+}
+
+.book-count {
+  margin-left: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.all-books {
+  width: 65rem;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 0.8rem 2rem;
+}

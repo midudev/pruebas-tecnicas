@@ -1,0 +1,112 @@
+.book-container {
+  width: 12.5rem;
+  box-shadow: 4px 5px 10px 0px rgba(0, 0, 0, 0.3);
+  height: 25rem;
+  background-color: var(--light-color);
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.flip-card-back {
+  padding: 0.8rem;
+  font-size: 0.8rem;
+  transform: rotateY(180deg);
+  color: var(--green-dark);
+}
+
+.flip-card-back > span {
+  margin-top: 2rem;
+  padding: 0.6rem 0.4rem;
+  background-color: var(--green-dark);
+  color: var(--light-color);
+}
+
+.synopsis {
+  min-height: 7rem;
+  font-weight: bold;
+}
+
+.selected {
+  position: relative;
+}
+
+.cover-color {
+  z-index: 1;
+  width: 200px;
+  height: 280px;
+  position: absolute;
+  background-color: rgba(1, 118, 120, 0.85);
+  cursor: not-allowed;
+  transition: all ease 1s;
+}
+
+.cover-color > p {
+  padding: 0.5rem;
+  display: flex;
+  color: var(--light-color);
+  background-color: var(--green-dark);
+  justify-content: center;
+  font-size: small;
+}
+
+.bookmark {
+  top: 15px;
+  right: 2px;
+  position: absolute;
+}
+
+.img-container {
+  width: 12.5rem;
+  height: 17.5rem;
+  overflow: hidden;
+}
+
+.img-container > img {
+  width: 100%;
+}
+
+.book-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2px;
+  padding: 5px 10px;
+  color: var(--green);
+}
+
+.logo {
+  width: 18px;
+}
+
+.author {
+  margin: 0;
+  display: flex;
+  gap: 8px;
+}
+
+.genre {
+  font-weight: bold;
+}
+
+.back-title {
+  font-size: 1.4rem;
+  margin-bottom: 3rem;
+}
