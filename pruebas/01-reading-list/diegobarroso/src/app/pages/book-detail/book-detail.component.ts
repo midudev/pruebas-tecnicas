@@ -30,6 +30,7 @@ export class BookDetailComponent implements OnInit, OnDestroy{
         if (this.id) this.getBook(this.id);
         else this.router.navigate(['']);
       });
+    this.bookService.updateBookListToReadNumber();
     this.bookService.getBookDetail()
       .subscribe(book => {
         this.book = book;
