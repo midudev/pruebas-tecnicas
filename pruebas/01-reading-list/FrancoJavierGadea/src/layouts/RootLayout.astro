@@ -7,6 +7,7 @@ import ReadingList from "../components/react/ReadingList/ReadingList.jsx";
 
 import { ViewTransitions } from 'astro:transitions';
 import "../assets/transitions/custom-slide.css";
+import ImportantCss from "../assets/importantCss.astro";
 
 const { title, searchPlaceholder = '' } = Astro.props;
 ---
@@ -35,6 +36,8 @@ const { title, searchPlaceholder = '' } = Astro.props;
 		<meta name="twitter:image" content="/libros.webp" />
 
 		<title>{title}</title>
+
+		<ImportantCss />
 
 		<ViewTransitions fallback="animate" />
 	</head>
