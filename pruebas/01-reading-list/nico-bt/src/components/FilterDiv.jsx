@@ -27,8 +27,18 @@ export default function FilterDiv({ filter, setFilter, allGenres, maxPages, minP
     <div className="filters-container">
       <div className="filters-btns-container">
         <span>Sort by page count: </span>
-        <button onClick={handleClickLowest}>Lowest</button>
-        <button onClick={handleClickHighest}>Highest</button>
+        <button
+          onClick={handleClickLowest}
+          className={filter.sortByPages === "lowest" ? "filter-active" : ""}
+        >
+          Lowest
+        </button>
+        <button
+          onClick={handleClickHighest}
+          className={filter.sortByPages === "highest" ? "filter-active" : ""}
+        >
+          Highest
+        </button>
       </div>
 
       <div>

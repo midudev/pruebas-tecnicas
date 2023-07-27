@@ -171,6 +171,25 @@ button {
   align-items: center;
 }
 
+.filters-btns-container button {
+  font-size: 1rem;
+  line-height: 1.6;
+  padding: 6px 14px;
+  cursor: pointer;
+  border: none;
+  border-radius: 32px;
+  background-color: rgba(237, 237, 237, 0.75);
+  color: rgb(98, 98, 98);
+}
+
+.filters-btns-container .filter-active {
+  font-weight: bolder;
+  font-size: 1.1rem;
+  border: none;
+  background: black;
+  color: #fff;
+}
+
 .filters-container select {
   font-size: 1rem;
   text-transform: capitalize;
