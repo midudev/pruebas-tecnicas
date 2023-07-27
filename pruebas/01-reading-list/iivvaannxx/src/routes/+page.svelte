@@ -13,7 +13,6 @@
     BookList,
     BookListMenu,
 
-    DEFAULT_LISTS,
     initializeBookListFeature
 
   } from '$features/booklist'
