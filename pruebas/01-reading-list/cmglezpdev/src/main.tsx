@@ -1,24 +1,11 @@
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
 
-import { AppProvider } from './context/AppContext';
-import { Home, ReadingList } from './pages';
-import './styles/index.css';
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Home />,
-  },
-  {
-    path: '/reading',
-    element: <ReadingList />
-  }
-]);
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-    <AppProvider>
-      <RouterProvider router={router} />
-    </AppProvider>
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
 )

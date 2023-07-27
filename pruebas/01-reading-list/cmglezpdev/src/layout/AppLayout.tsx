@@ -16,8 +16,8 @@ export const AppLayout:FC<Props> = ({ children }) => {
                         <h1>BookStore</h1>
                     </div>
                     <ul className='nav-options'>
-                        <li><Link to="/">Available Books</Link></li>
-                        <li><Link to="/reading">Reading Books</Link></li>
+                        <li><Link to="/" data-testid='available-books-link'>Available Books</Link></li>
+                        <li><Link to="/reading" data-testid='reading-books-link'>Reading Books</Link></li>
                     </ul>
                     <input type="checkbox" name="show-hidden-menu" id="checkbox-menu" />
 

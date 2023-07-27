@@ -35,6 +35,12 @@
     font-size: 15px;
 }
 
+.info__genre {
+    font-size: 13px;
+    font-weight: 300;
+    margin-top: 5px;
+}
+
 .book__mark {
     position: absolute;
     z-index: 2;

@@ -29,7 +29,8 @@ export const FilterGenresMenu:FC<Props> = ({ open, books, filters, toggleSelect}
                         className={`option_filter ${selected && 'option-selected'}`} 
                         onClick={() => toggleSelect(genre)}
                     >
-                            <span>{ `${genre} (${countGenre(genre)})` }</span>
+                            <span className='filter__genre'>{ genre }</span>
+                            <span className='filter__count'> ({countGenre(genre)})</span>
                     </div>
                 ))
             }

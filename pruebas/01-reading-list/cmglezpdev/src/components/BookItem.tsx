@@ -15,8 +15,8 @@ export const BookItem:FC<Props> = ({ book, addBook, removeBook }) => {
     const { addForReading, removeFromReading } = useContext(AppContext);
    
     return (
-        <article className='library__book'>
-            <div className='book__mark' onClick={() => addBook ? addForReading(book) : removeFromReading(book)}>
+        <article className='library__book' data-testid={`book-${book.ISBN}`}>
+            <div className='book__mark' onClick={() => addBook ? addForReading(book) : removeFromReading(book)} data-testid='toggle-button'>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" 
                      className="mark__icon mark__icon--save"
                      style={{ opacity: addBook ? 1 : 0 }} 
@@ -35,8 +35,9 @@ export const BookItem:FC<Props> = ({ book, addBook, removeBook }) => {
             
             <div className='book__info'>
                 <h3 className='info__title'>{ book.title }</h3>
-                <span className='info__author'>{ book.author.name }</span>
+                <p className='info__author'>{ book.author.name }</p>
+                <p className='info__genre'>{ book.genre }</p>
             </div> 
-        </article>    
+        </article>
     )
 }

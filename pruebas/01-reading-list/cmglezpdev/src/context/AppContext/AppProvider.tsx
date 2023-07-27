@@ -2,7 +2,7 @@ import { FC, useEffect, useReducer, useRef } from 'react';
 import { AppContext } from './AppContext';
 import { appReducer } from './AppReducer';
 import { Book } from '../../types';
-import BOOKS_JSON from '../../../../books.json';
+import BOOKS_JSON from '../../../data/books.json';
 
 interface IAppProvider {
     children: React.ReactNode;
