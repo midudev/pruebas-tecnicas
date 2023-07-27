@@ -9,13 +9,18 @@ interface ChildProps{
 const CategoryDropdown = ({currentCategory, categories, setCategory}: ChildProps) => {
     const [open, setOpen] = useState<boolean>(false)
     const ref = useRef<HTMLDivElement>(null)
-
+        
     useEffect(() => {
-        document.body.addEventListener('click', (e) => {
+        const handleOutsideClick = (e: MouseEvent) => {
             if(!ref.current?.contains(e.target as Node)){
                 setOpen(false)
             }
-        })
+        }
+        document.body.addEventListener('click', handleOutsideClick)
+        
+        return () => {
+            document.body.removeEventListener('click', handleOutsideClick)
+        }
     }, [])
 
     return (
