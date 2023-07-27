@@ -61,13 +61,14 @@ describe('<BookDashboard />', () => {
     fireEvent.click(booksAvailable[0])
     numberReadingBooks++
 
-    const readingBooks = screen.getAllByLabelText(/^Remover .* de la lista de lectura/i)
+    const readingBooks = screen.getAllByLabelText(labelButton[reading])
 
     expect(screen.getAllByLabelText(labelButton[available])).toHaveLength(
       booksAvailable.length - numberReadingBooks
     )
     expect(readingBooks).toHaveLength(numberReadingBooks)
     expect(localStorage.getItem(nameStorage.listOfReading)).not.toBeNull()
+
     expect(
       screen.getByText(`Libros disponibles ${booksAvailable.length - numberReadingBooks}`)
     ).toBeDefined()
