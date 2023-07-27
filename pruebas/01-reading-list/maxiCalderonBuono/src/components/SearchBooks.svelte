@@ -48,7 +48,7 @@
 	export let placeholder: string;
 
 	function submitSearch() {
-		if (searchValue) {
+		if (filteredTitles.includes(searchValue)) {
 			goto('/search/' + searchValue.toLowerCase());
 		}
 	}
