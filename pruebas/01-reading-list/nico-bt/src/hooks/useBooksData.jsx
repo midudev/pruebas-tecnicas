@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import data from "../../../books.json"
+import data from "../books.json"
 
 export default function useBooksData() {
   const [books, setBooks] = useState([])
