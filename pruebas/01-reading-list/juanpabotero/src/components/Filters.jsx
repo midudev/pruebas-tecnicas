@@ -1,6 +1,5 @@
 import { useId } from 'react';
 import { useFilters } from '../hooks/useFilters.js';
-// import './Filters.css';
 
 export function Filters() {
   const { filters, setFilters } = useFilters();
@@ -23,11 +22,11 @@ export function Filters() {
   };
 
   return (
-    <section className="flex flex-col sm:flex-row gap-6 sm:gap-12 items-center text-white">
-      <div className="flex gap-4">
-        <label htmlFor={genreFilterId}>Género</label>
+    <section className="flex flex-col sm:flex-row gap-4 sm:gap-12 text-white">
+      <div className="flex flex-col gap-2">
+        <label htmlFor={genreFilterId}>Filtrar por género:</label>
         <select
-          className="text-black"
+          className="text-gray-100 bg-gray-600 p-1 rounded-md"
           id={genreFilterId}
           onChange={handleChangeGenre}
         >
@@ -39,10 +38,10 @@ export function Filters() {
         </select>
       </div>
 
-      <div className="flex gap-4">
-        <label htmlFor={authorFilterId}>Autor</label>
+      <div className="flex flex-col gap-2">
+        <label htmlFor={authorFilterId}>Filtrar por autor:</label>
         <select
-          className="text-black"
+          className="text-gray-100 bg-gray-600 p-1 rounded-md"
           id={authorFilterId}
           onChange={handleChangeAuthor}
         >

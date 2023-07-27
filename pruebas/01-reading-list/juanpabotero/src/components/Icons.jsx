@@ -18,7 +18,6 @@ export function ReadingListIcon() {
 export function AddBookIcon() {
   return (
     <svg
-      className="w-7 h-7"
       xmlns="http://www.w3.org/2000/svg"
       width="32"
       height="32"
@@ -35,7 +34,6 @@ export function AddBookIcon() {
 export function BookAddedIcon() {
   return (
     <svg
-      className="w-7 h-7"
       xmlns="http://www.w3.org/2000/svg"
       width="32"
       height="32"

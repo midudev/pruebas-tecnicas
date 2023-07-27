@@ -10,9 +10,13 @@
   position: fixed;
   right: 0px;
   top: 0px;
-  width: 250px;
+  width: 320px;
 }
 .reading-list ul {
+  display: grid;
+  column-gap: 12px;
+  row-gap: 24px;
+  grid-template-columns: 1fr 1fr;
   margin-top: 40px;
 }
 .reading-list h3 {
@@ -61,8 +65,8 @@
 }
 
 .remove-button-item svg {
-  height: 24px;
-  width: 24px;
+  height: 18px;
+  width: 18px;
 }
 
 .reading-list-button:hover {

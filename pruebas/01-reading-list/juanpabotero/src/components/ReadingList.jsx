@@ -7,9 +7,9 @@ import { useReadingList } from '../hooks/useReadingList';
 
 function Book({ cover, title, removeFromReadingList }) {
   return (
-    <li className="border-b-[1px] border-b-white pb-4 mb-5 grid gap-2 justify-items-center relative">
-      <img className="w-28 aspect-auto" src={cover} alt={title} />
-      <p className="text-white text-center">{title}</p>
+    <li className="grid gap-2 justify-items-center content-start relative">
+      <img className="h-36 aspect-auto" src={cover} alt={title} />
+      <p className="text-gray-100 text-sm text-center">{title}</p>
       <button
         className="remove-button-item bg-gray-900 text-red-600 p-[2px] rounded-full absolute 
         -top-2 right-1 border border-red-700"
@@ -35,7 +35,7 @@ export function ReadingList() {
       <div className="reading-list-count">{readingList.length}</div>
 
       <aside className="reading-list">
-        <h3 className='text-white'>Lista de lectura</h3>
+        <h3 className='text-gray-100 font-bold'>Lista de lectura</h3>
         <ul>
           {readingList.map((book) => (
             <Book

@@ -1,5 +1,6 @@
 import { useReadingList } from '../hooks/useReadingList';
 import { AddBookIcon, BookAddedIcon } from './Icons';
+import './Books.css'
 
 export function Books({ books }) {
   const { addToReadingList, removeFromReadingList, readingList } =
@@ -10,21 +11,22 @@ export function Books({ books }) {
   };
 
   return (
-    <section className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <section className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
       {books.map(({ book }) => {
         const isBookInReadingList = checkBookInReadingList(book);
 
         return (
           <article
             key={book.id}
-            className="grid relative justify-center content-start rounded p-4 m-4 max-w-[256px]"
+            className="grid relative content-start p-4 max-w-[188px] sm:max-w-[208px]"
           >
             <button
-              className={`absolute top-0 right-0 rounded-full p-1 border bg-gray-900 ${
+              className={`absolute top-0 right-0 rounded-full p-1 border bg-gray-900 
+              hover:scale-110 transition-all duration-200 ${
                 isBookInReadingList
                   ? 'text-yellow-500 border-yellow-600'
                   : 'text-blue-500 border-blue-600'
-              }`}
+              } add-book-button`}
               onClick={() => {
                 isBookInReadingList
                   ? removeFromReadingList(book)
@@ -34,7 +36,7 @@ export function Books({ books }) {
               {isBookInReadingList ? <BookAddedIcon /> : <AddBookIcon />}
             </button>
             <img
-              className="h-72 aspect-auto mb-5 justify-self-center"
+              className="h-56 sm:h-64 aspect-auto mb-5"
               src={book.cover}
               alt={`Portada de ${book.title}`}
             />
