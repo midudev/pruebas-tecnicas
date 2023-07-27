@@ -1,6 +1,9 @@
 import { useId,} from 'react'
 import { useFilters } from '../hook/useFilters'
 import { useListBook } from '../hook/useListBook'
+import 'rc-slider/assets/index.css';
+import Slider, { Range } from 'rc-slider';
+import Form from 'react-bootstrap/Form'
 
 export const Filters = ({bookNoFiltered}) =>{
     const idGenero = useId()
@@ -21,10 +24,10 @@ export const Filters = ({bookNoFiltered}) =>{
             genre: e.target.value
         }))
     }
-    const handleChangePages = (e) =>{
+    const handleChangePages = ([pagMin,pagMax]) =>{
         setFilters(prevState=>({
             ...prevState,
-            pages: e.target.value
+            pages: [pagMin,pagMax]
         }))
     }
     const handleChangeSeach = (e) =>{
@@ -35,33 +38,41 @@ export const Filters = ({bookNoFiltered}) =>{
     }
 
     return (
-        <header className='filters'>
+        <>
+        <div data-testid='class-container-h4' className='book-available'>
+                <h4>{amountGeneralList} libros disponibles</h4>
+                <h4>{AmountInListToRead} libros en lista lectura: </h4>
+        </div>
+        <div className='filters-container'>
             
-            <div>
-                <label htmlFor={idSeacher}></label>
-                <input id={idSeacher} type="text" onChange={handleChangeSeach}/>
+            <Form className='input-seach'>
+                
+                    <Form.Label htmlFor={idSeacher}></Form.Label>
+                    <Form.Control size='lg' id={idSeacher} type="text" onChange={handleChangeSeach}/>
+                
+            </Form>
+
+            <div className="range-values">
+            
+                <span>{filters.pages[0]}</span>
+                <span>{filters.pages[1]}</span>
             </div>
 
-            <div>
-                <label htmlFor={idRange}>Paginado: {filters.pages}</label>
-                <input id={idRange} type="range" min='0' max='2000' onChange={handleChangePages} value={filters.pages}/>
-            </div>
+            <Slider range min={0} max={2000} onChange={handleChangePages} value={filters.pages}/>
             
-            <div>
-                <label htmlFor={idGenero}>Genero</label>
-                <select id={idGenero} onChange={handleChange}>
+            
+            <div className='selector-genre'>
+                <label htmlFor={idGenero}></label>
+                <Form.Select id={idGenero} onChange={handleChange}>
                 <option value='all'>Todas</option>
                 <option value='Fantasía'>Fantasía</option>
                 <option value='Ciencia ficción'>Ciencia ficción</option>
                 <option value='Zombies'>Zombis</option>
                 <option value='Terror'>Terror</option>
-                </select>
+                </Form.Select>
             </div>
             
-            <div data-testid='class-container-h4'>
-                <h4>{amountGeneralList} libros disponibles</h4>
-                <h4>{AmountInListToRead} libros en lista lectura: </h4>
-            </div>
-        </header>
+        </div>
+        </>
     )
 }
