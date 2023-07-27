@@ -1,15 +1,13 @@
-import useBooks from '../hooks/useBooks'
 import { IBookCard } from '../../interfaces/IBooks'
+import { Heart } from '../ui'
 
 interface Props {
   book: IBookCard
   left: boolean
-  isFilter: boolean
+  MoveBook: ({ book, left }: { book: IBookCard; left: boolean }) => void
 }
 
-const CardBook = ({ book, left, isFilter = false }: Props) => {
-  const { MoveBook } = useBooks()
-
+const CardBook = ({ book, left, MoveBook }: Props) => {
   const moveBook = () => {
     MoveBook({ book, left })
   }
@@ -18,21 +16,31 @@ const CardBook = ({ book, left, isFilter = false }: Props) => {
     <section
       draggable
       id="Card"
-      className={`cursor-pointer rounded-[14px] bg-[#87878789] w-full object-cover py-5 m-auto ${
-        isFilter ? 'cursor-default' : 'cursor-grab'
-      }`}
-      onClick={(ev) => {
-        ev.stopPropagation()
-        moveBook()
-      }}
+      className={`relative rounded-[14px] bg-[#87878789] w-full object-cover py-5 m-auto`}
     >
-      <h2>{book.title}</h2>
+      <h2 className="p-3 font-semibold">{book.title}</h2>
       <img
         className="w-full h-[300px] m-auto"
         draggable={false}
         src={book.cover}
       />
       <h3>{book.genre}</h3>
+      <h4 className="absolute bottom-0 right-2">{book.pages}</h4>
+      <h4>{book.year}</h4>
+
+      <button
+        className={`absolute top-3 right-5 transition-colors duration-500 ${
+          left
+            ? 'text-white hover:text-red-500'
+            : 'text-red-500 hover:text-white'
+        }`}
+        onClick={(ev) => {
+          ev.stopPropagation()
+          moveBook()
+        }}
+      >
+        <Heart />
+      </button>
     </section>
   )
 }

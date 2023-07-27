@@ -1,33 +1,58 @@
+import { useEffect, useState } from 'react'
+
+import { IBook } from '../../interfaces/IBooks'
+
+import useBooks from '../hooks/useBooks'
+
+import CardBook from './CardBook'
+
 import {
   DragDropContext,
   Draggable,
   DropResult,
   Droppable,
 } from 'react-beautiful-dnd'
-import { IBook } from '../../interfaces/IBooks'
-import CardBook from './CardBook'
-import useBooks from '../hooks/useBooks'
-import { useEffect, useState } from 'react'
 
 interface Props {
   library: IBook[]
   title: string
   left: boolean
   genre?: string
+  numberOfPages?: number
 }
 
-const ListOfBook = ({ library, title, left = false, genre = '' }: Props) => {
-  const { reorderBooks, reorderReading } = useBooks()
+const ListOfBook = ({
+  library,
+  title,
+  left = false,
+  genre = '',
+  numberOfPages = 0,
+}: Props) => {
+  const { reorderBooks, reorderReading, MoveBook } = useBooks()
 
   const [books, setBooks] = useState<IBook[]>([])
 
+  const isFilter = genre !== '' || numberOfPages > 0
+
   useEffect(() => {
+    if (!numberOfPages) {
+      setBooks(
+        genre !== ''
+          ? library.filter((book) => book.book.genre === genre)
+          : library
+      )
+      return
+    }
+
     setBooks(
       genre !== ''
-        ? library.filter((book) => book.book.genre === genre)
-        : library
+        ? library.filter(
+            (book) =>
+              book.book.genre === genre && book.book.pages <= numberOfPages
+          )
+        : library.filter((book) => book.book.pages <= numberOfPages)
     )
-  }, [library, genre])
+  }, [library, genre, numberOfPages])
 
   const Move = (ev: DropResult) => {
     const { source, destination } = ev
@@ -40,7 +65,6 @@ const ListOfBook = ({ library, title, left = false, genre = '' }: Props) => {
       destination.droppableId === source.droppableId
     )
       return
-    console.log(ev)
 
     if (ev.type === 'istrue') {
       reorderBooks(books, source.index, destination.index)
@@ -76,7 +100,7 @@ const ListOfBook = ({ library, title, left = false, genre = '' }: Props) => {
                 {books.map((book, index) => {
                   return (
                     <Draggable
-                      isDragDisabled={genre !== ''}
+                      isDragDisabled={isFilter}
                       key={book.book.title}
                       draggableId={book.book.title}
                       index={index}
@@ -92,7 +116,7 @@ const ListOfBook = ({ library, title, left = false, genre = '' }: Props) => {
                             key={book.book.title}
                             book={book.book}
                             left={left}
-                            isFilter={genre !== ''}
+                            MoveBook={MoveBook}
                           />
                         </div>
                       )}

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { library } from '../../../books.json'
+
 import { IBook } from '../interfaces/IBooks'
+
+import { library } from '../../../books.json'
 
 export interface IContextBook {
   books: IBook[]

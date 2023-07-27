@@ -1,6 +1,8 @@
-import { useContext } from 'react'
-import ContextBook, { IContextBook } from '../../context/BookContext'
+import { useCallback, useContext } from 'react'
+
 import { IBook, IBookCard } from '../../interfaces/IBooks'
+
+import ContextBook, { IContextBook } from '../../context/BookContext'
 
 interface PropsMove {
   book: IBookCard
@@ -18,13 +20,15 @@ const useBooks = () => {
     replaceReadingList,
   } = useContext(ContextBook) as IContextBook
 
-  const AddFav = ({ book }: IBook) => {
-    saveReadingList({ book })
-    deleteBook({ book })
-  }
+  const AddFav = useCallback(
+    ({ book }: IBook) => {
+      saveReadingList({ book })
+      deleteBook({ book })
+    },
+    [deleteBook, saveReadingList]
+  )
 
   const deleteFav = ({ book }: IBook) => {
-    console.log('entra')
     saveBook({ book })
     deleteReadingList({ book })
   }
@@ -37,13 +41,16 @@ const useBooks = () => {
     }
   }
 
-  const filterByGenre = (genre: string) => {
-    replaceBooks(
-      books.filter((book) => {
-        return book.book.genre === genre
-      })
-    )
-  }
+  const filterByGenre = useCallback(
+    (genre: string) => {
+      replaceBooks(
+        books.filter((book) => {
+          return book.book.genre === genre
+        })
+      )
+    },
+    [books, replaceBooks]
+  )
 
   const reorderBooks = (
     booksAux: IBook[],
