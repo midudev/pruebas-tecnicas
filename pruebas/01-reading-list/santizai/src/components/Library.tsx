@@ -63,18 +63,26 @@ const Library = (props: Props) => {
     };
 
     return (
-        <div>
-            <div>
-                <h2>{library.length} libros disponibles</h2>
-                <h2>
-                    {booksReadList.length > 0 &&
-                        `${booksReadList.length} en la lista de lectura`}
-                </h2>
-                <button onClick={() => handleReadList(!viewReadList)}>
-                    handle list
-                </button>
+        <div className="w-full pt-5">
+            <div className="w-full flex justify-center">
+                <div className="w-3/4 flex flex-col items-start gap-3">
+                    <span className="text-3xl">
+                        {library.length} libros disponibles
+                    </span>
+                    <span className="text-lg">
+                        {booksReadList.length > 0
+                            ? `${booksReadList.length} en la lista de lectura`
+                            : "Sin libros en la lista de lectura"}
+                    </span>
+                    <button
+                        className="btn"
+                        onClick={() => handleReadList(!viewReadList)}
+                    >
+                        Lista de lectura
+                    </button>
+                </div>
             </div>
-            <div>
+            <div className="mt-5">
                 <UnreadBooks
                     unread={library}
                     moveToReadList={moveToReadList}

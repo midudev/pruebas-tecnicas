@@ -38,27 +38,32 @@ const UnreadBooks = (props: Props) => {
     return (
         <div className="w-full flex flex-col justify-center items-center">
             <div className="w-3/4 text-start">
-                <h2>Filtros</h2>
                 <div className="flex gap-5">
-                    <div className="flex gap-2">
-                        <input
-                            type="range"
-                            min="0"
-                            max="1500"
-                            step="50"
-                            onChange={(e) =>
-                                filterForPages(Number(e.target.value))
-                            }
-                        />
-                        <span>{pages}</span>
+                    <div className="flex flex-col">
+                        <h3>Filtrar por páginas</h3>
+                        <div className="flex gap-2">
+                            <input
+                                type="range"
+                                min="0"
+                                max="1500"
+                                step="50"
+                                onChange={(e) =>
+                                    filterForPages(Number(e.target.value))
+                                }
+                            />
+                            <span>{pages}</span>
+                        </div>
                     </div>
-                    <DropdownMenu
-                        options={genres}
-                        filter={filterForGenre}
-                    />
+                    <div className="flex flex-col">
+                        <h3>Filtrar por género</h3>
+                        <DropdownMenu
+                            options={genres}
+                            filter={filterForGenre}
+                        />
+                    </div>
                 </div>
             </div>
-            <div className="w-3/4 flex flex-wrap gap-3">
+            <div className="w-3/4 flex flex-wrap gap-3 pt-10">
                 {filteredBooks.map((book: Library) => {
                     return (
                         <div
@@ -68,7 +73,7 @@ const UnreadBooks = (props: Props) => {
                         >
                             <img
                                 src={book.book.cover}
-                                className="w-full h-full"
+                                className="w-full h-full rounded-sm border border-1"
                             />
                         </div>
                     );

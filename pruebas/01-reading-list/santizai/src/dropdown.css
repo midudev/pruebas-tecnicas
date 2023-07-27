@@ -2,16 +2,12 @@
     position: relative;
 }
 
-.btn {
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
+.btndrop {
+    border-radius: 5px 5px 0px 0px;
 }
 
 .dropdown-menu {
+    width: 100px;
     opacity: 0;
     visibility: hidden;
     position: absolute;
@@ -19,6 +15,7 @@
     left: 0;
     border-radius: 0px 0px 5px 5px;
     background-color: #f1f1f1;
+    color: #777;
     box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
     transition: opacity 0.3s, visibility 0.3s;
 }

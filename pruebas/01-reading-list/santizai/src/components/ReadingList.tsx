@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "./../readingList.css";
 import type { Library } from "../types/interfaces";
+import "./../readingList.css";
 
 interface Props {
     visible: boolean;
@@ -28,7 +28,7 @@ const ReadingList = (props: Props) => {
                     x
                 </button>
             </div>
-            <h2>Reading List</h2>
+            <h2>Lista de lectura</h2>
             <div className="flex flex-wrap justify-center gap-3 p-2">
                 {props.books.map((book: Library) => {
                     return (
@@ -41,7 +41,7 @@ const ReadingList = (props: Props) => {
                         >
                             <img
                                 src={book.book.cover}
-                                className="w-full h-full"
+                                className="w-full h-full rounded-sm border border-1"
                             />
                         </div>
                     );

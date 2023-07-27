@@ -30,10 +30,10 @@ const DropdownMenu = (props: Props) => {
     return (
         <div className="dropdown-container">
             <button
-                className="btn"
+                className={`btn ${isOpen && "btndrop"}`}
                 onClick={toggleMenu}
             >
-                {genre === "" ? "Select an genre" : genre}
+                {genre === "" ? "Género" : genre}
             </button>
             <div className={`dropdown-menu ${isOpen ? "open" : ""}`}>
                 <ul>
