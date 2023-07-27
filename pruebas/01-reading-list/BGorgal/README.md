@@ -1,8 +1,8 @@
-#  Lista de lectura (Prueba Tecnica Midudev)
+#  Lista de lectura (Prueba Técnica Midudev)
 
 ![Imagen del menu principal](./public/img/ImagenPrincipal.png)
 
-### DESCRIPCIÓN
+### Descripción
 
 Implementar una pequeña aplicación web de lista de libros en la que podamos añadir y eliminar libros a la lista de lectura y filtrarlos por género, paginas y que se nos perma buscar a nuestra elección.
 
