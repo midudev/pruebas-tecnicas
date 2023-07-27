@@ -2,32 +2,36 @@ import { styled } from 'styled-components'
 import { useBooksContext } from '../context/BooksContext'
 
 export default function FilterBook () {
-  const { books, genre, setGenre, filteredUniqueGenre } = useBooksContext()
+  const { books, setGenre, filteredUniqueGenre } = useBooksContext()
 
   return (
     <Filter>
       <div className='filter'>
-      <label htmlFor='filter' >Selecciona una categoría:</label>
-        <select
-          id='filter'
-          autoComplete='off'
-          onChange={(e) => { setGenre(e.target.value) }}
+        <fieldset
+          className='category'
+          onChange={(e) => { setGenre((e.target as HTMLInputElement).value) }}
         >
-          <option>Todos</option>
+          <legend>Selecciona una categoría:</legend>
           {
-            filteredUniqueGenre.map(genres => (
-              <option
-                key={genres}
-              >
-                {genres}
-              </option>
+            filteredUniqueGenre.map((genre, index) => (
+              <label key={genre}>
+                <input
+                  type='radio'
+                  defaultChecked={index === 0}
+                  name='genre'
+                  value={genre}
+                  className='radio'
+                />
+                <div className='name'>
+                  {genre}
+                </div>
+              </label>
             ))
           }
-        </select>
-        <p>Hay {books.length} libros con categoría {genre}</p>
+        </fieldset>
       </div>
       <div>
-        <span>{books.length} libro{books.length <= 1 ? '' : 's'} disponibles</span>
+        <span>Hay {books.length} libro{books.length <= 1 ? '' : 's'} disponible{books.length <= 1 ? '' : 's'}.</span>
       </div>
     </Filter>
   )
@@ -37,19 +41,40 @@ const Filter = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: white;
   height: auto;
-  /* border: 1px solid white; */
-  padding: 1rem;
-  
-  .filter {
+  margin-bottom: 4rem;
+
+  .category {
     display: flex;
-    flex-direction: column;
-    max-width: fit-content;
-    padding: 0 1rem 2rem 0;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 1rem 0;
+    border-style: none;
   }
 
-  select {
-    padding: .5rem 2rem;
+  legend, span {
+    font-size: larger;
+    font-weight: 500;
   }
+
+  .radio {
+    display: none;
+  }
+
+  .name {
+    padding: .8rem 1.5rem;
+    border-radius: 5rem;
+    cursor: pointer;
+    transition: background-color .3s ease;
+  }
+
+  .radio:checked + .name {
+    background-color: #e36065;
+    color: #fff;
+  }
+
+  .name:hover {
+    color: #e36065;
+  }
+
 `

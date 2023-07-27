@@ -32,7 +32,7 @@ export function BooksProvider ({ children }: React.PropsWithChildren) {
   const [genre, setGenre] = useState<string>('Todos')
 
   const genreMapped = books.map(el => el.genre)
-  const filteredUniqueGenre = [...new Set(genreMapped)]
+  const filteredUniqueGenre = ['Todos', ...new Set(genreMapped)]
 
   const addReadingList = (book: Book) => {
     const addBook = books.filter(bookReadingList => bookReadingList.ISBN !== book.ISBN)
