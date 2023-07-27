@@ -63,3 +63,7 @@
   transition: opacity 100ms linear,
     transform 300ms cubic-bezier(0.25, 1, 0.5, 1);
 }
+
+.hide {
+  display: none;
+}

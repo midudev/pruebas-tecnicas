@@ -41,6 +41,7 @@ export default function BookList() {
         {list.map(({ book, id }) => (
           <BookCard
             key={book.title}
+            id={id}
             cover={book.cover}
             // eslint-disable-next-line @dspot/no-complex-logic-in-view-attributes
             isAdded={booksAdded.includes(id)}

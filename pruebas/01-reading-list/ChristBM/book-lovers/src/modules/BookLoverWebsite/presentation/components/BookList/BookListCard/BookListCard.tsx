@@ -1,8 +1,9 @@
 'use client';
 
 /* eslint-disable @next/next/no-img-element */
+import Link from 'next/link';
 import classNames from 'classnames';
-import { BsFillBookmarkPlusFill, BsFillBookmarkHeartFill } from 'react-icons/bs';
+import { BsFillBookmarkPlusFill, BsFillBookmarkHeartFill, BsBoxArrowUpRight } from 'react-icons/bs';
 
 import Text from '@commonComponents/Text/Text';
 
@@ -10,6 +11,7 @@ import { BookListCardProps } from './Interfaces';
 import styles from './BookListCard.module.css';
 
 export default function BookListCard({
+  id,
   cover,
   addBtnText = 'Add to list',
   isAdded = false,
@@ -46,6 +48,12 @@ export default function BookListCard({
 
         <Text tag="p" text={addBtnText} paragraphStyle="labelLarge" />
       </button>
+
+      <Link href={`/book/${id}`} className={styles.details_link}>
+        <BsBoxArrowUpRight size={20} />
+
+        <Text tag="p" text="Details" paragraphStyle="labelMedium" />
+      </Link>
     </li>
   );
 }

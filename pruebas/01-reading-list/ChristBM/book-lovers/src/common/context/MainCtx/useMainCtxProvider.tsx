@@ -148,11 +148,13 @@ export default function useMainCtxProvider() {
           booksAddedCopy.splice(idIdx, 1, states.booksAdded[idIdx - 1]);
           booksAddedCopy.splice(idIdx - 1, 1, id);
           dispatch({ type: 'SET_BOOKS', payload: booksAddedCopy });
+          setValue(APP_KEY, { booksAdded: booksAddedCopy });
         }
       } else if (idIdx < states.booksAdded.length - 1) {
         booksAddedCopy.splice(idIdx, 1, states.booksAdded[idIdx + 1]);
         booksAddedCopy.splice(idIdx + 1, 1, id);
         dispatch({ type: 'SET_BOOKS', payload: booksAddedCopy });
+        setValue(APP_KEY, { booksAdded: booksAddedCopy });
       }
     }
   };

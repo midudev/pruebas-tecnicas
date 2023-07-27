@@ -33,7 +33,7 @@ Note:
 
 [x] Allow reorganization of books in the reading list by priority.
 
-[ ] Create a page to view book details.
+[x] Create a page to view book details.
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).

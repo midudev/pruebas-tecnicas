@@ -8,13 +8,24 @@ import useMobileMenu from './useMobileMenu.vm';
 import styles from './MobileMenu.module.css';
 
 export default function MobileMenu() {
-  const { openAside, showAlert, toggleOpenAside } = useMobileMenu();
+  const {
+    showMenu,
+    openAside,
+    showAlert,
+    toggleOpenAside,
+  } = useMobileMenu();
 
   return (
     <button
       type="button"
       onClick={toggleOpenAside}
-      className={classNames(styles.button, { [styles.btn_alert]: showAlert })}
+      className={
+        classNames(
+          styles.button,
+          { [styles.btn_alert]: showAlert },
+          { [styles.hide]: !showMenu },
+        )
+      }
     >
       <VscMenu
         size={25}
