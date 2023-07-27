@@ -5,15 +5,8 @@ import { BookList } from '../domain/BookList'
 import { Book } from '../domain/Book'
 
 export const Sidebar = () => {
-  const {
-    availableBooks,
-    listedBooks,
-    setOrder,
-    category,
-    setCategory,
-    pages,
-    setPages
-  } = useBooks()
+  const { availableBooks, setOrder, category, setCategory, pages, setPages } =
+    useBooks()
   const [categories, setCategories] = useState<string[]>([])
   const [filterText, setFilterText] = useState<string>('')
   const [, setLocation] = useLocation()
