@@ -6,24 +6,34 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@types/lodash": "4.14.196",
     "@types/node": "20.4.2",
     "@types/react": "18.2.15",
+    "@types/react-beautiful-dnd": "13.1.4",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.14",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.10",
+    "lodash": "4.17.21",
     "next": "13.4.10",
     "postcss": "8.4.26",
     "react": "18.2.0",
+    "react-beautiful-dnd": "13.1.1",
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6",
-    "zustand": "^4.3.9"
+    "zustand": "4.3.9"
   },
   "devDependencies": {
-    "ts-standard": "^12.0.2"
+    "@testing-library/react": "14.0.0",
+    "@vitejs/plugin-react": "4.0.3",
+    "happy-dom": "10.5.2",
+    "ts-standard": "12.0.2",
+    "vitest": "0.33.0"
   }
 }
