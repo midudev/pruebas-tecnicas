@@ -2,20 +2,25 @@
 import { filterCat } from "../helpers/filterCat"
 import { removeBook } from "../helpers/removeBook";
 import AddList from "./icon/AddList";
+import NoBooks from "./NoBooks";
 
 const ListsBooks = ({ data, category, setMyList, myList, setData }) => {
   //console.log('data: ', listBooks);
   const newFilter = filterCat(data, category);
 
+  //console.log('data: ', data);
   const addList = (book) => {
-    console.log('book: ',book);
+    //console.log('book: ',book);
     setMyList([...myList, book])
     setData(removeBook(data, book))
   }
 
+  
+
   return (
     <section className='flex flex-wrap gap-5 justify-center w-[80%]'>
       {
+        newFilter.length === 0 ? <NoBooks/> :
         newFilter.map(item => (
           <div
             key={item.book.ISBN}

@@ -31,6 +31,9 @@ html {
   cursor: pointer;
   font-weight: 500;
 }
+.side-bar ul li:first-child {
+  font-weight: 400;
+}
 .side-bar ul li:hover {
   background-color: #FFC93B;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
