@@ -5,11 +5,8 @@ import { openBookList } from "../reducer/bookListSlice";
 import { SunIcon, MoonIcon, BookIcon } from "../svg";
 import "../css/header.scss";
 
-interface IHeaderProps {
-    isMobile: boolean
-}
 
-export const Header = ({isMobile}: IHeaderProps) => {
+export const Header = () => {
     
     const bookList = useAppSelector(store => store.bookListReducer);
     const theme = useAppSelector(store => store.themeReducer);

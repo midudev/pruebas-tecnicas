@@ -15,7 +15,6 @@ export const useFilters = (books: TUseFilterProps) => {
     
     /**
      * Todo
-     * - create debounce fn
      * add missing filters: author
      */
     

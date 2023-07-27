@@ -29,8 +29,8 @@ describe('Books', () => {
             </Provider>
         )
         
-        const getButtons = screen.getAllByLabelText("book-box")
-        const firstBox = getButtons[0];
+        const getBoxes = screen.getAllByLabelText("book-box")
+        const firstBox = getBoxes[0];
 
         const btn = within(firstBox).getByText("Leer mas tarde")
         
