@@ -12,13 +12,13 @@ const useLocalStorage = (key, defaultValue) => {
     }
   }, []);
 
-  // I need to check if localstorage is equal to states. If not it updates the state. I need this for persistence between tabs.
+  {// I need to check if localstorage is equal to states. If not it updates the state. I need this for persistence between tabs.
   useEffect(() => {
     const equalStates = () => {
       const item =
         (localStorage.getItem(key) && localStorage.getItem(key) != "undefined")
           ? JSON.parse(localStorage.getItem(key))
-          : JSON.parse(String(defaultValue));
+          : value;
 
       if (value != item) {
         setValue(item);
@@ -26,7 +26,7 @@ const useLocalStorage = (key, defaultValue) => {
     };
 
     window.addEventListener("storage", equalStates);
-  }, []);
+  }, []);}
 
   useEffect(() => {
     localStorage.setItem(key, JSON.stringify(value));
