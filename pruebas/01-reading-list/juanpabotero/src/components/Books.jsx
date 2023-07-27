@@ -17,11 +17,14 @@ export function Books({ books }) {
         return (
           <article
             key={book.id}
-            className="grid relative justify-center justify-items-center content-start rounded p-4 m-4 max-w-[256px]"
+            className="grid relative justify-center content-start rounded p-4 m-4 max-w-[256px]"
           >
             <button
-              className="absolute top-0 right-0 rounded-full bg-gray-900 text-yellow-500 p-1 
-              border border-yellow-500"
+              className={`absolute top-0 right-0 rounded-full p-1 border bg-gray-900 ${
+                isBookInReadingList
+                  ? 'text-yellow-500 border-yellow-600'
+                  : 'text-blue-500 border-blue-600'
+              }`}
               onClick={() => {
                 isBookInReadingList
                   ? removeFromReadingList(book)
@@ -31,14 +34,15 @@ export function Books({ books }) {
               {isBookInReadingList ? <BookAddedIcon /> : <AddBookIcon />}
             </button>
             <img
-              className="h-72 aspect-auto mb-5"
+              className="h-72 aspect-auto mb-5 justify-self-center"
               src={book.cover}
               alt={`Portada de ${book.title}`}
             />
-            <h2 className="text-xl font-bold text-center text-white mb-1">
+            <h2 className="text-lg font-bold text-white mb-1">
               {book.title}
             </h2>
-            <p className="text-center text-gray-300">{book.author.name}</p>
+            <p className="text-gray-200">{book.author.name}</p>
+            <p className="text-gray-400 text-sm">{book.genre}</p>
           </article>
         );
       })}

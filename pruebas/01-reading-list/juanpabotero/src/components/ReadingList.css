@@ -4,6 +4,7 @@
   background: #131313;
   display: none;
   justify-content: center;
+  justify-items: center;
   overflow-y: scroll;
   padding: 32px;
   position: fixed;
@@ -13,6 +14,10 @@
 }
 .reading-list ul {
   margin-top: 40px;
+}
+.reading-list h3 {
+  margin-top: 20px;
+  font-size: 20px;
 }
 
 .reading-list-button {
@@ -26,7 +31,7 @@
   justify-content: center;
   padding: 4px;
   position: fixed;
-  right: 36px;
+  right: 42px;
   top: 14px;
   transition: all 0.3s ease;
   width: 32px;
@@ -49,15 +54,15 @@
   justify-content: center;
   padding: 4px;
   position: fixed;
-  right: 12px;
+  right: 18px;
   top: 14px;
   width: 24px;
   z-index: 9999;
 }
 
 .remove-button-item svg {
-  width: 24px;
   height: 24px;
+  width: 24px;
 }
 
 .reading-list-button:hover {
@@ -68,4 +73,9 @@
   height: 100%;
   display: grid;
   z-index: 9998;
+}
+
+.clear-list-button svg {
+  height: 24px;
+  width: 24px;
 }

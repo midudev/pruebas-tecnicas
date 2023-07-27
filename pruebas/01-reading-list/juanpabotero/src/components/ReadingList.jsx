@@ -2,7 +2,7 @@
 import './ReadingList.css';
 
 import { useId } from 'react';
-import { ReadingListIcon, RemoveBookIcon } from './Icons.jsx';
+import { ReadingListIcon, RemoveBookIcon, TrashIcon } from './Icons.jsx';
 import { useReadingList } from '../hooks/useReadingList';
 
 function Book({ cover, title, removeFromReadingList }) {
@@ -11,11 +11,11 @@ function Book({ cover, title, removeFromReadingList }) {
       <img className="w-28 aspect-auto" src={cover} alt={title} />
       <p className="text-white text-center">{title}</p>
       <button
-        className="remove-button-item bg-gray-50 text-red-600 p-[2px] rounded-full absolute 
-        -top-2 right-1 border border-black"
+        className="remove-button-item bg-gray-900 text-red-600 p-[2px] rounded-full absolute 
+        -top-2 right-1 border border-red-700"
         onClick={removeFromReadingList}
       >
-        <RemoveBookIcon  />
+        <RemoveBookIcon />
       </button>
     </li>
   );
@@ -35,6 +35,7 @@ export function ReadingList() {
       <div className="reading-list-count">{readingList.length}</div>
 
       <aside className="reading-list">
+        <h3 className='text-white'>Lista de lectura</h3>
         <ul>
           {readingList.map((book) => (
             <Book
@@ -46,10 +47,10 @@ export function ReadingList() {
         </ul>
 
         <button
-          className="justify-self-center mt-6 text-white bg-red-800 py-1 px-2 rounded"
+          className="clear-list-button flex gap-1 justify-center justify-self-center items-center mt-4 text-white bg-red-800 p-2 rounded-full"
           onClick={clearReadingList}
         >
-          Limpiar lista
+          <TrashIcon />
         </button>
       </aside>
     </>
