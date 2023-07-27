@@ -12,11 +12,15 @@ h2 {
 .cover-img {
   height: 200px;
   width: 150px;
+  filter: brightness(0.8);
   object-fit: cover;
+  border-radius: .3em;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
 }
 
 .cover-img:hover {
   transform: scale(1.05);
+  filter: brightness(1.2);
   transition: transform 0.5s ease-in-out;
   cursor: pointer;
 }
