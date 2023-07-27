@@ -104,7 +104,11 @@ const getRelatedBooks = (book) => {
 }
 
 const getByISBN = (isbn) => {
-  return DATA.library.find((obj) => obj.book.ISBN === isbn).book;
+  try {
+    return DATA.library.find((obj) => obj.book.ISBN === isbn).book;    
+  } catch (error) {
+    return null;
+  }
 };
 
 const getByTitle = (title) => {

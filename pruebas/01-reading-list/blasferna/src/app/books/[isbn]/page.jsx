@@ -1,5 +1,5 @@
 "use client";
-
+import { notFound } from 'next/navigation';
 import { useEffect } from "react";
 import BookDetail from "@/components/book-detail";
 import OtherBooks from "@/components/other-books";
@@ -15,6 +15,10 @@ export default function BookInfoPage({ params }) {
       document.getElementById("wrapper").style.backgroundColor = "";
     };
   }, []);
+
+  if (book == null) {
+    notFound();
+  }
 
   return (
     <>
