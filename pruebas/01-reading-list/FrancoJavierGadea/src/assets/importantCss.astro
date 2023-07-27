@@ -120,4 +120,127 @@ padding-left: 0px;
     }
 }
 
+
+
+.Books-filters {
+
+display: flex;
+align-items: end;
+flex-wrap: wrap;
+gap: 15px;
+
+padding: 15px 20px;
+}
+
+.Books-filters input[type=range] {
+margin: 6px 0;
+}
+.Books-filters input[type=range]::-webkit-slider-runnable-track {
+background-color: #005494;
+}
+.Books-filters input[type=range]::-moz-range-track {
+background-color: #005494;
+}
+
+.Books-filters .form-label {
+color: #fff;
+}
+
+
+#Accordion-filters {
+
+--bs-accordion-border-width: 0;
+--bs-accordion-body-padding-x: 0;
+--bs-accordion-body-padding-y: 0;
+--bs-accordion-active-bg: transparent;
+--bs-accordion-btn-focus-border-color: transparent;
+--bs-accordion-btn-focus-box-shadow: initial;
+--bs-accordion-inner-border-radius: 0;
+--bs-accordion-border-radius: 0;
+--bs-accordion-btn-padding-x: 0; 
+--bs-accordion-btn-padding-y: 0;
+--bs-accordion-bg: transparent;
+
+--bs-accordion-active-color: var(--bs-accordion-btn-color);
+}
+
+#Accordion-filters .accordion-header {
+border-bottom: 2px solid #F3B61F;
+}
+
+#Accordion-filters .title {
+
+color: #F3B61F;
+}
+
+#Accordion-filters .accordion-button::after {
+margin: 0;
+}
+
+.Reading-list header {
+    border-bottom: 2px solid #F3B61F;
+}
+
+.Reading-list-title {
+    color: #F3B61F;
+}
+
+.Reading-list-content {
+    padding-right: 10px;
+    margin-bottom: 10px;
+    height: 77svh;
+    max-height: 77svh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    --sb-track-color: #232e33;
+    --sb-thumb-color: #6baf8d;
+    --sb-size: 7px;
+
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+}
+
+.Reading-list-content::-webkit-scrollbar {
+    width: var(--sb-size);
+}
+
+.Reading-list-content::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 0;
+}
+
+.Reading-list-content::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 0;
+}
+
+
+.Reading-list-total strong {
+    color: white;
+    padding-right: 10px;
+}
+
+.Reading-list {
+    position: relative;
+}
+.Reading-list-content {
+    position: relative;
+    z-index: 1500;
+}
+
+.Reading-list .books-img {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    z-index: 1400;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: #ffffff70;
+}
+
+
 </style>
