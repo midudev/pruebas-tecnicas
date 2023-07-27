@@ -34,7 +34,7 @@ function App() {
       newReadingList = [...readingList, {book: book}]
     }
     setReadingList(newReadingList) 
-
+    setModal(false)
   }
 
   useEffect(() => {
@@ -63,7 +63,7 @@ function App() {
 
   return (
     <>
-      <section className={`flex flex-col h-screen lg:flex-row ${modal ? 'blur-lg' : ''}`}>
+      <section className={`flex flex-col h-screen lg:flex-row ${modal ? 'blur-lg lg:blur-sm' : ''}`}>
         <section className="flex flex-col w-full px-5 py-5 lg:m-10">
           <h1 className='font-bold text-4xl pb-2 text-center md:text-left' data-testid="totalbooks">{`${filteredBooks.library.length} libros disponibles`}</h1>
           <h2 className='font-bold text-xl mb-5 text-neutral-300 text-center md:text-left' data-testid="totalreadinglist">{`${readingList.length} en la lista de lectura`}</h2>
@@ -78,9 +78,7 @@ function App() {
           <ReadingList readingList={readingList} toggleModal={toggleModal} />
         )}
       </section>
-      <section onClick={() => toggleModal(false)} className={`fixed ${!modal ? 'hidden' : ''} inset-0 bg-neutral-900 bg-opacity-90 overflow-y-auto h-full w-full`} data-testid="modal">
-        <Modal readingList={readingList} selectedBook={selectedBook} removeOrAddToReadingList={removeOrAddToReadingList} />
-      </section>
+      <Modal modal={modal} setModal={setModal} readingList={readingList} selectedBook={selectedBook} removeOrAddToReadingList={removeOrAddToReadingList} />
     </>
   )
 }

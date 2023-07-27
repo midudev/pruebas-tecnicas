@@ -13,7 +13,7 @@ export default function ReadingList({toggleModal, readingList} : ChildProps) {
             {readingList.length > 0 ? (
             <section className='flex flex-wrap -mx-2 -mb-6'>
                 {readingList.map((item, index) => (
-                    <section onClick={() => toggleModal(item.book)} key={index} className='w-1/3 xl:w-1/3 px-2 mb-6' data-testid="readinglist-item">
+                    <section onClick={(e) => {e.stopPropagation(); toggleModal(item.book);}} key={index} className='w-1/3 xl:w-1/3 px-2 mb-6' data-testid="readinglist-item">
                         <img src={item.book.cover} alt={item.book.title} className='rounded-md shadow-sm shadow-neutral-950/50 cursor-pointer h-full'/>
                     </section>
                 ))}
