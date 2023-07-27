@@ -2,7 +2,7 @@
 
 # Prueba técnica 01 - Desarrollo de una Aplicación de Lista de Libros
 
-Proyecto de pruebas técnicas para desarrolladores frontend y backend creado por [midudev](https://github.com/midudev).
+Proyecto de [pruebas técnicas](https://pruebastecnicas.com) para desarrolladores frontend y backend creado por [midudev](https://github.com/midudev).
 
 El objetivo de esta prueba es diseñar e implementar una pequeña aplicación web de lista de libros utilizando las herramientas de tu elección.
 
@@ -31,7 +31,62 @@ El objetivo de esta prueba es diseñar e implementar una pequeña aplicación we
 - [ ] Permitir la reorganización de los libros en la lista de lectura por prioridad.
 - [x] Haz que tu diseño sea responsive.
 
+## Comandos del proyecto
+
+### Instalación
+
+- Instalar dependencias
+
+```bash
+  cd pruebas/01-reading-list/martiks38
+  pnpm install
+```
+
+- Ejecutar proyecto
+
+```bash
+  pnpm dev
+```
+
+- Build
+
+```bash
+  pnpm build
+```
+
+- Ejecutar lint
+
+  ```bash
+    pnpm run lint
+  ```
+
+- Comandos de ejecución de tests
+
+  - Ejecución de todos los tests
+
+    ```bash
+      pnpm run test
+    ```
+
+  - Ejecución del test coverage
+
+    ```bash
+      pnpm run test:coverage
+    ```
+
+  - Ejecución de la interfaz gráfica de tests
+
+    ```bash
+      pnpm run test:ui
+    ```
+
+  - Ejecución de test determinados por patrón
+
+    ```bash
+      pnpm run test:pattern <pattern>
+    ```
+
 ## Tecnologías usadas
 
 La página web está desarrollada con el framework [Next.js](https://nextjs.org) y utilizó CSS Modules para estilizar.
-Para probar y validar el funcionamiento de la aplicación, utilizó la librería Vitest.
+Para probar y validar el funcionamiento de la aplicación, utilizó la librería [Vitest](https://vitest.dev) junto a [Testing Library](https://testing-library.com).
