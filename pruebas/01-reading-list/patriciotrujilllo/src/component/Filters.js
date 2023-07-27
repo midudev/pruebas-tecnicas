@@ -52,15 +52,6 @@ export const Filters = ({bookNoFiltered}) =>{
                 
             </Form>
 
-            <div className="range-values">
-            
-                <span>{filters.pages[0]}</span>
-                <span>{filters.pages[1]}</span>
-            </div>
-
-            <Slider range min={0} max={2000} onChange={handleChangePages} value={filters.pages}/>
-            
-            
             <div className='selector-genre'>
                 <label htmlFor={idGenero}></label>
                 <Form.Select id={idGenero} onChange={handleChange}>
@@ -71,6 +62,18 @@ export const Filters = ({bookNoFiltered}) =>{
                 <option value='Terror'>Terror</option>
                 </Form.Select>
             </div>
+            
+            <div className='range'>
+                <div className="range-values">
+                
+                    <span>{filters.pages[0]}</span>
+                    <span>{filters.pages[1]}</span>
+                </div>
+
+                <Slider range min={0} max={2000} onChange={handleChangePages} value={filters.pages}/>
+            </div>
+            
+            
             
         </div>
         </>
