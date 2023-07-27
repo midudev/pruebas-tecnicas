@@ -21,4 +21,5 @@ El objetivo de esta prueba es diseñar e implementar una pequeña aplicación we
 # 04. Desafíos adicionales
 
 - ✅ Nuevo filtro para filtrar los libros por número de páginas
-- ✅ Permitir la reorganización de los libros en la lista de lectura por prioridad.
+- ✅ Implementa una funcionalidad de búsqueda en la lista de libros disponibles
+- ✅ Permitir la reorganización de los libros en la lista de lectura por prioridad

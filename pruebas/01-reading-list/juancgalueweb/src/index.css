@@ -77,7 +77,7 @@ body {
 .books-heading {
   display: flex;
   justify-content: start;
-  gap: 40px;
+  gap: 30px;
   align-items: center;
   font-size: 0.9rem;
   font-weight: 400;
@@ -187,4 +187,8 @@ body {
 .rate span {
   margin-right: 10px;
   font-size: 1rem;
+}
+
+.search-input {
+  width: 300px;
 }

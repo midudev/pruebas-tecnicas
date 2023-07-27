@@ -2,8 +2,10 @@ import { Select } from 'antd'
 import { useEffect } from 'react'
 import { shallow } from 'zustand/shallow'
 import { useBooksStore } from '../stores/books'
+import { useSearchBooks } from '../stores/searchBooks'
 
 export const GenreSelect = () => {
+  const search = useSearchBooks((state) => state.search)
   const [
     books,
     categories,
@@ -36,6 +38,7 @@ export const GenreSelect = () => {
 
   return (
     <Select
+      disabled={search !== '' && true}
       defaultValue={selectedCategory}
       style={{ width: 150, textAlign: 'left' }}
       onChange={handleChange}

@@ -1,10 +1,14 @@
 import { Card, Drawer, Rate, Switch } from 'antd'
 import { shallow } from 'zustand/shallow'
 import { useBooksStore } from '../stores/books'
+import { useSearchBooks } from '../stores/searchBooks'
 import { CloseIcon } from './Icons/CloseIcon'
 
 export const ReadingList = ({ open, onClose }) => {
   const { Meta } = Card
+  const addAgainBookToSearchedBooks = useSearchBooks(
+    (state) => state.addAgainBookToSearchedBooks
+  )
   const [
     readingList,
     removeFromReadingList,
@@ -62,7 +66,10 @@ export const ReadingList = ({ open, onClose }) => {
                     src={book.cover}
                   />
                 }
-                onClick={() => removeFromReadingList(book.ISBN)}
+                onClick={() => {
+                  removeFromReadingList(book.ISBN)
+                  addAgainBookToSearchedBooks(book.ISBN)
+                }}
               >
                 <Meta title={book.title} description={book.author.name} />
               </Card>

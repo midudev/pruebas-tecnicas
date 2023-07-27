@@ -2,21 +2,30 @@ import { Card, message } from 'antd'
 import { useEffect } from 'react'
 import { shallow } from 'zustand/shallow'
 import { useBooksStore } from '../stores/books'
+import { useSearchBooks } from '../stores/searchBooks'
 import { GenreSelect } from './GenreSelect'
 import { AddIcon } from './Icons/AddIcon'
 import { PageFilter } from './PageFilter'
+import { SearchInput } from './SearchInput'
 import { Stats } from './Stats'
 
 export const Books = () => {
   const [messageApi, contextHolder] = message.useMessage()
   const { Meta } = Card
+  const search = useSearchBooks((state) => state.search)
+  const searchedBooks = useSearchBooks((state) => state.searchedBooks)
+  const removeBookFromSearchedBooks = useSearchBooks(
+    (state) => state.removeBookFromSearchedBooks
+  )
   const [
     setBooks,
     setReadingList,
     copyBooks,
     selectedCategory,
     minPage,
-    sliderValue
+    sliderValue,
+    booksFilter,
+    readingList
   ] = useBooksStore(
     (state) => [
       state.setBooks,
@@ -24,7 +33,9 @@ export const Books = () => {
       state.copyBooks,
       state.selectedCategory,
       state.minPage,
-      state.sliderValue
+      state.sliderValue,
+      state.booksFilter,
+      state.readingList
     ],
     shallow
   )
@@ -32,6 +43,10 @@ export const Books = () => {
   const dataFromLocalStorage = JSON.parse(
     localStorage.getItem('reading-list-midudev-test')
   )
+
+  useEffect(() => {
+    booksFilter(selectedCategory, sliderValue)
+  }, [selectedCategory, sliderValue, readingList])
 
   useEffect(() => {
     const getBooks = async () => {
@@ -49,6 +64,7 @@ export const Books = () => {
         <div className='books-heading'>
           <GenreSelect />
           <PageFilter />
+          <SearchInput />
         </div>
         <Stats />
         {selectedCategory !== 'Todos' && copyBooks?.length === 0 && (
@@ -62,7 +78,7 @@ export const Books = () => {
           </div>
         )}
         <div className='books-cards'>
-          {copyBooks?.map((book) => {
+          {(search === '' ? copyBooks : searchedBooks)?.map((book) => {
             return (
               <Card
                 className='book-card'
@@ -77,6 +93,7 @@ export const Books = () => {
                 }
                 onClick={() => {
                   setReadingList(book.ISBN)
+                  removeBookFromSearchedBooks(book.ISBN)
                   messageApi.open({
                     type: 'success',
                     content: `${book.title} fue agregado a la lista de lectura`
