@@ -25,7 +25,7 @@ import { BookProps } from './Book'
 
 export const BooksList: FC = () => {
   const { listedBooks, addCompleteList } = useBooks()
-  const { listedIds, addNewList } = useListedBooks()
+  const { addNewList } = useListedBooks()
   const [activeId, setActiveId] = useState<string | null>(null)
 
   const sensors = useSensors(
