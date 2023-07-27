@@ -11,7 +11,9 @@ const KEY_FRAMES = {
 }
 
 
-export function customSlide({duration = '300ms'} = {}){
+export function customSlide({duration = 300} = {}){
+
+	const defaultDelay = 300;
 
     return {
 
@@ -21,7 +23,8 @@ export function customSlide({duration = '300ms'} = {}){
 			old: [
 				{
 					name: KEY_FRAMES.MOVE_TO_RIGHT,
-					duration: duration ?? '300ms',
+					duration: `${duration}ms`,
+					delay: `${defaultDelay}ms`,
 					easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
 					fillMode: 'both',
 				},
@@ -30,9 +33,9 @@ export function customSlide({duration = '300ms'} = {}){
 			new: [
 				{
 					name: KEY_FRAMES.MOVE_FROM_LEFT,
-					duration: duration ?? '300ms',
+					duration: `${duration}ms`,
 					easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
-                    delay: duration ?? '300ms',
+                    delay: `${defaultDelay + duration}ms`,
 					fillMode: 'both',
 				},
 			],
@@ -44,8 +47,9 @@ export function customSlide({duration = '300ms'} = {}){
 			old: [
 				{
 					name: KEY_FRAMES.MOVE_TO_LEFT,
-					duration: duration ?? '300ms',
+					duration: `${duration}ms`,
 					easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+					delay: `${defaultDelay}ms`,
 					fillMode: 'both',
 				},
 			],
@@ -53,9 +57,9 @@ export function customSlide({duration = '300ms'} = {}){
 			new: [
 				{
 					name: KEY_FRAMES.MOVE_FROM_RIGHT,
-					duration: duration ?? '300ms',
+					duration: `${duration}ms`,
 					easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
-                    delay: duration ?? '300ms',
+                    delay: `${defaultDelay + duration}ms`,
 					fillMode: 'both',
 				},
 			],
