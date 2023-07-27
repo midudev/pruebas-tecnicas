@@ -14,10 +14,8 @@ import { searchBooks } from "../../utils/filter/useFilter";
 import Spinner from "../spinner/Spinner";
 
 function ListOfBooks({ keyword }: { keyword: string }) {
-  const storeBooks = searchBooks(
-    useSelector((state: RootState) => state.books.booksList).library,
-    keyword
-  );
+  const selectBookList=useSelector((state: RootState) => state.books.booksList).library
+  const storeBooks = searchBooks({array:selectBookList,keyword});
   const storeWishList = useSelector((state: RootState) => state.books.wishList);
   const dispatch = useAppDispatch();
 
