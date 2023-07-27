@@ -1,20 +1,20 @@
 import { createContext, useContext, useEffect, useState } from "react"
-import useBooksData from "../hooks/useBooksData"
 
 export const UserContext = createContext()
 
 export const UserContextProvider = ({ children }) => {
-  const [user, setUser] = useState()
   const [userList, setUserList] = useState([])
   const [availableBooks, setAvailableBooks] = useState()
 
   // Tracking data in local storage
   //-----------------------------------------------------------------
+
   const bookListInLocalStorage = localStorage.getItem("userList")
+  const [updatingLocalStorageFromOtherTab, setUpdatingLocalStorageFromOtherTab] = useState(false) //Flag to avoid infinite loop
 
   // Retrieve books from localStorage
   useEffect(() => {
-    if (bookListInLocalStorage) {
+    if (bookListInLocalStorage && !updatingLocalStorageFromOtherTab) {
       setUserList(JSON.parse(bookListInLocalStorage))
     }
   }, [])
@@ -23,6 +23,22 @@ export const UserContextProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("userList", JSON.stringify(userList))
   }, [userList])
+
+  // Event 'storage', sync storage between tabs
+  useEffect(() => {
+    window.addEventListener("storage", handleStorageChange)
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange)
+    }
+  }, [])
+
+  function handleStorageChange(event) {
+    const newUserListInOtherTab = JSON.parse(event.newValue)
+    setUpdatingLocalStorageFromOtherTab(true)
+    setUserList(newUserListInOtherTab)
+    setUpdatingLocalStorageFromOtherTab(false)
+  }
 
   // Actions
   //-----------------------------------------------------------------
