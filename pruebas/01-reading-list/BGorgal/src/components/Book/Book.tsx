@@ -9,7 +9,7 @@ interface Props {
   isReadList?: boolean
 }
 
-const variants = {
+ const variants = {
   imgReadList: 'lg:max-h-[25rem]',
 }
 

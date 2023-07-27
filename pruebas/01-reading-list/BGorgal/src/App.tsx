@@ -5,11 +5,12 @@ import ModalBookInfo from './components/ModalBookInfo/ModalBookInfo'
 import { useBooksStore } from './store/books'
 import { twMerge } from 'tailwind-merge'
 import Aside from './components/Aside'
+import useStorageChange from './hooks/useStorageChange'
 
 function App() {
+  useStorageChange()
   const listOfBooks = useBooksStore(state => state.listOfBooks)
   const isModalOpen = useBooksStore(state => state.isModalOpen)
-
 
   const variants = {
     modalOpen: isModalOpen && ' transition-all duration-500',
