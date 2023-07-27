@@ -19,6 +19,7 @@ npm test .
 ## Estructura del sitio.
 ### Contenedor y componentes.
 [![](https://i.ibb.co/dM2L0Wk/aplic.png)](http://https://i.ibb.co/dM2L0Wk/aplic.png)
+
 El contenedor se encuentra en /src y los componentes en /src/components
 
 Contenedor | Responsabilidades
@@ -61,7 +62,7 @@ qBookList:          |Cantidad de libros encontrados. |TotalsBar.vue
 qBookListAvailable: |Cantidad de libros encontrados que no están en la lista de lectura. |TotalsBar.vue
 qReadingList:       |Cantidad de libros que están en la lista de lectura. |TotalsBar.vue
 maxPages:           |Cantidad máxima de páginas. |FiltersBar.vue
-minPages:           |Cantidad mínima de páginas. FiltersBar.vue
+minPages:           |Cantidad mínima de páginas. |FiltersBar.vue
 
 &emsp;
 
