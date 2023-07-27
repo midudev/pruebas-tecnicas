@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext, useMemo, useState } from 'react'
+import { useContext, useMemo, useState } from 'react'
 
 import ContextBook, { IContextBook } from './context/BookContext'
 
@@ -7,12 +7,14 @@ import ListOfBook from './components/Book/ListOfBook'
 import debounce from 'just-debounce-it'
 
 import './App.css'
+import PrincipalForm from './components/PrincipalForm'
 
 function App() {
-  const [genre, setGenre] = useState('')
-  const [numberOfPages, setNumberOfPages] = useState(0)
-
   const { books, readingList } = useContext(ContextBook) as IContextBook
+
+  const [genre, setGenre] = useState('')
+  const [keyword, setKeyword] = useState('')
+  const [numberOfPages, setNumberOfPages] = useState(0)
 
   const max = useMemo(
     () => books.reduce((max, book) => Math.max(max, book.book.pages), 0),
@@ -20,43 +22,28 @@ function App() {
   )
   const GENRES = Array.from(new Set(books.map((book) => book.book.genre)))
 
-  const handleInputPages = (ev: ChangeEvent<HTMLInputElement>) => {
-    const x = debounce(() => setNumberOfPages(Number(ev.target.value)), 500)
+  const handleInputPages = (value: string) => {
+    const x = debounce(() => setNumberOfPages(Number(value)), 500)
     x()
     return () => x.cancel()
   }
 
   return (
     <>
-      <h1 className="text-3xl p-10 font-bold">Organiza tu lectura</h1>
+      <header className="">
+        <h1 className="text-3xl p-10 font-bold">Organiza tu lectura</h1>
+      </header>
 
-      <form className="flex flex-col w-[300px] m-auto">
-        <label htmlFor="genre">Selecciona el género literario</label>
-        <select
-          id="genre"
-          defaultValue=""
-          onChange={(ev) => setGenre(ev.target.value)}
-          className="bg-black"
-        >
-          <option value="">Todos</option>
-          {GENRES.map((genre) => (
-            <option key={genre} value={genre}>
-              {genre}
-            </option>
-          ))}
-        </select>
-
-        <span className="flex flex-col">
-          <label>Filtra por el número de páginas</label>
-          <input
-            onChange={(ev) => handleInputPages(ev)}
-            type="range"
-            min={0}
-            max={max}
-          />
-          {numberOfPages === 0 ? '-' : `Menos de: ${numberOfPages} páginas`}
-        </span>
-      </form>
+      <PrincipalForm
+        genre={genre}
+        GENRES={GENRES}
+        handleInputPages={handleInputPages}
+        max={max}
+        numberOfPages={numberOfPages}
+        setGenre={setGenre}
+        keyword={keyword}
+        setKeyword={setKeyword}
+      />
 
       <main className="flex flex-wrap w-full m-auto justify-center py-5">
         <ListOfBook
@@ -65,6 +52,7 @@ function App() {
           left={true}
           genre={genre}
           numberOfPages={numberOfPages}
+          keyword={keyword}
         />
         <ListOfBook
           library={readingList}

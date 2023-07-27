@@ -19,6 +19,7 @@ interface Props {
   left: boolean
   genre?: string
   numberOfPages?: number
+  keyword?: string
 }
 
 const ListOfBook = ({
@@ -27,32 +28,33 @@ const ListOfBook = ({
   left = false,
   genre = '',
   numberOfPages = 0,
+  keyword = '',
 }: Props) => {
   const { reorderBooks, reorderReading, MoveBook } = useBooks()
 
   const [books, setBooks] = useState<IBook[]>([])
 
-  const isFilter = genre !== '' || numberOfPages > 0
+  const isFilter = genre !== '' || numberOfPages > 0 || keyword !== ''
 
   useEffect(() => {
-    if (!numberOfPages) {
-      setBooks(
-        genre !== ''
-          ? library.filter((book) => book.book.genre === genre)
-          : library
-      )
-      return
-    }
+    const filteredBooks = library.filter((book) => {
+      if (numberOfPages && book.book.pages > numberOfPages) {
+        return false
+      }
+      if (genre && book.book.genre !== genre) {
+        return false
+      }
+      if (
+        keyword &&
+        !book.book.title.toUpperCase().includes(keyword.toUpperCase())
+      ) {
+        return false
+      }
+      return true
+    })
 
-    setBooks(
-      genre !== ''
-        ? library.filter(
-            (book) =>
-              book.book.genre === genre && book.book.pages <= numberOfPages
-          )
-        : library.filter((book) => book.book.pages <= numberOfPages)
-    )
-  }, [library, genre, numberOfPages])
+    setBooks(filteredBooks)
+  }, [library, genre, numberOfPages, keyword])
 
   const Move = (ev: DropResult) => {
     const { source, destination } = ev
@@ -77,7 +79,9 @@ const ListOfBook = ({
     <>
       <div
         className={`flex flex-col max-sm:w-full gap-y-4 h-fit min-w-[300px] ${
-          left ? 'w-1/2 ' : 'w-1/4 bg-slate-400 rounded-[14px]'
+          left
+            ? 'w-1/2 '
+            : 'w-1/4 bg-gradient-to-br from-indigo-500 rounded-[14px]'
         }`}
       >
         <h2 className="font-semibold">
@@ -105,7 +109,7 @@ const ListOfBook = ({
                       draggableId={book.book.title}
                       index={index}
                     >
-                      {(provided2) => (
+                      {(provided2, snapshot) => (
                         <div
                           className="w-[250px]"
                           ref={provided2.innerRef}
@@ -117,6 +121,7 @@ const ListOfBook = ({
                             book={book.book}
                             left={left}
                             MoveBook={MoveBook}
+                            isDragging={snapshot.isDragging}
                           />
                         </div>
                       )}
