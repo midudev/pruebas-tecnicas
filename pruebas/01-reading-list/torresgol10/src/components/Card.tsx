@@ -26,7 +26,7 @@ export default function Card({ book, addRead }: Props) {
 
                 {book.author?.otherBooks.length > 0 && (
                     <>
-                        <p className='pt-4 pb-1'>+ Sobre el autor</p>
+                        <p className='pt-4 pb-1'>+ Títulos del autor</p>
                         <ul className='overflow-x-auto h-8 border-y border-white'>
                             {book.author.otherBooks.map((name, index) => (
                                 <li key={index}>{name}</li>

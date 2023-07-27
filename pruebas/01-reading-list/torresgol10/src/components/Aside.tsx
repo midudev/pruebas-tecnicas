@@ -6,7 +6,7 @@ export default function Aside() {
     return (
         <aside className='h-full col-span-4 xl:col-span-1 px-4 pb-4 bg-black'>
             <div className="sticky top-0 ">
-                <h2 className='text-xl text-white font-bold my-4'>{booksRead.length} Libros leidos</h2>
+                <h2 className='text-xl text-white font-bold my-4'>{booksRead.length} Libros leídos</h2>
                 <section className='grid gap-2' style={{ gridTemplateColumns: "repeat(2, minmax(150px,1fr))" }}>
                     {booksRead.map(({ book }) => (
                         <article key={book.ISBN} className='group relative overflow-hidden rounded'>
