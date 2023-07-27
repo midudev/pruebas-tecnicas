@@ -9,7 +9,6 @@ export const Layout = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* align-items: center; */
   height: 750px;
   gap: 10px;
 
@@ -23,8 +22,4 @@ export const H1 = styled.h1`
   color: #ef9517;
   color: #6D31FA;
   color: #fff;
-  /* border: 1px solid #6D31FA; */
-  /* -webkit-text-stroke: #6D31FA;
-  -webkit-text-stroke: 1.1px #6D31FA; */
-
 `

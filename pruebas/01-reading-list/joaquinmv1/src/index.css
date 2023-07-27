@@ -18,3 +18,8 @@ button {
   cursor: pointer;
 }
 
+.dropzone.dragover{
+  opacity: 0.75;
+  background-color: #675dea;
+  transition: background-color 0.3s ease;
+}

@@ -1,17 +1,23 @@
-import { ReadingLIstView } from ".";
+import { ReadingListView } from ".";
 import { useBooks } from "../../hooks";
 import { Book } from "../../models/types";
 
 export interface ReadingProps {
-  handleDrop: (e: React.DragEvent<HTMLDivElement>, target: string) => void;
+  handleDrop: (e: React.DragEvent<HTMLElement>, target: string) => void;
   handleDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
-  handleDragStart: (e: React.DragEvent<HTMLLIElement>, book: Book) => void;
+  handleDragStart: (e: React.DragEvent<HTMLElement>, book: Book, index:number) => void;
+  handleDragEnter: (e: React.DragEvent<HTMLElement>, index: number) => void;
+  handleDragLeave: (e: React.DragEvent<HTMLElement>) => void;
+  handleDragEnd: (e: React.DragEvent<HTMLElement>) => void;
 }
 
 export const ReadingList = ({
   handleDrop,
   handleDragOver,
-  handleDragStart
+  handleDragStart,
+  handleDragEnter,
+  handleDragLeave,
+  handleDragEnd
 }: ReadingProps) => {
   const { readingList, setReadingList, setAvailableBooks, availableBooks } = useBooks();
 
@@ -41,13 +47,16 @@ export const ReadingList = ({
   };
 
   return (
-    <ReadingLIstView
+    <ReadingListView
       readingList={readingList}
       clearReadingList={clearReadingList}
       deleteBook={deleteBook}
       handleDragStart={handleDragStart}
       handleDragOver={handleDragOver}
       handleDrop={handleDrop}
+      handleDragEnter={handleDragEnter}
+      handleDragLeave={handleDragLeave}
+      handleDragEnd={handleDragEnd}
     />
   )
 };

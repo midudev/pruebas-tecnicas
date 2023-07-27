@@ -1,10 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ReadingList } from "..";
 import { BooksList } from "../../components";
-import { sendMessage } from "../../helpers/sendMessage";
 import { useBooks, useChannel } from "../../hooks";
 import { Book } from "../../models/types";
 import { Layout } from "../../pages";
+import { addDragOverClass, removeDragOverClass, sendMessage } from "../../helpers";
 
 interface BooksProps {
   newBooks: Array<Book>;
@@ -13,6 +13,9 @@ interface BooksProps {
 const target = 'available';
 
 export const Books = ({ newBooks }: BooksProps) => {
+  const [dragItemIndex, setDragItemIndex] = useState<number>(0);
+  const [dragOverItemIndex, setDragOverItemIndex] = useState<number>(0);
+
   const { readingList, setAvailableBooks, setReadingList, availableBooks } = useBooks();
   const channel = useChannel();
 
@@ -22,7 +25,7 @@ export const Books = ({ newBooks }: BooksProps) => {
     const condition = isBookInReadingList ? readingList : [...readingList, book];
 
     setAvailableBooks(updatedAvailableBooks);
-    sendMessage(updatedAvailableBooks, 'AVAILABLE_BOOKS_UPDATE', channel)
+    sendMessage(updatedAvailableBooks, 'AVAILABLE_BOOKS_UPDATE', channel);
 
     setReadingList(condition);
     sendMessage(condition, 'READING_LIST_UPDATE', channel);
@@ -36,14 +39,21 @@ export const Books = ({ newBooks }: BooksProps) => {
       setAvailableBooks(updateAvailable);
       sendMessage(updateAvailable, 'AVAILABLE_BOOKS_UPDATE', channel);
     } else {
+      setReadingList((prevBooks: Book[]) => {
+        const dragItem = prevBooks[dragItemIndex];
+        prevBooks.splice(dragItemIndex, 1)[0];
+        prevBooks.splice(dragOverItemIndex, 0, dragItem);
+        
+        const updateBooksInReading = prevBooks?.filter(b => b.book.ISBN !== book.book.ISBN);
+        sendMessage(updateBooksInReading, 'READING_LIST_UPDATE', channel);
+        return updateBooksInReading;
+      }
+      );
+
       const updatedAvailableBooks = [...availableBooks, book];
-      const updateBooksInReading = readingList?.filter(b => b.book.ISBN !== book.book.ISBN);
 
       setAvailableBooks(updatedAvailableBooks);
       sendMessage(updatedAvailableBooks, 'AVAILABLE_BOOKS_UPDATE', channel);
-
-      setReadingList(updateBooksInReading);
-      sendMessage(updateBooksInReading, 'READING_LIST_UPDATE', channel);
     }
   };
 
@@ -52,8 +62,9 @@ export const Books = ({ newBooks }: BooksProps) => {
     isAvailableList ? moveBookToAvailableList(book) : moveBookToReadingList(book);
   };
 
-  const handleDragStart = (e: React.DragEvent<HTMLLIElement>, book: Book): void => {
+  const handleDragStart = (e: React.DragEvent<HTMLElement>, book: Book, index: number): void => {
     e.dataTransfer.setData("book", JSON.stringify(book));
+    setDragItemIndex(index);
   };
 
   const handleDragOver = (e: React.DragEvent<HTMLElement>): void => {
@@ -64,7 +75,24 @@ export const Books = ({ newBooks }: BooksProps) => {
     const data = e.dataTransfer.getData("book");
     const book = JSON.parse(data) as Book;
     moveBook(book, target);
+
+    removeDragOverClass(e, "dropzone", "dragover");
   };
+
+  const handleDragEnter = (e: React.DragEvent<HTMLElement>, index: number): void => {
+    setDragOverItemIndex(index);
+    addDragOverClass(e, "dropzone", "dragover");
+  }
+
+  const handleDragLeave = (e: React.DragEvent<HTMLElement>): void => {
+    setDragOverItemIndex(0);
+    removeDragOverClass(e, "dropzone", "dragover");
+  }
+
+  const handleDragEnd = () => {
+    setDragItemIndex(0);
+    setDragOverItemIndex(0);
+  }
 
   useEffect(() => {
     window.localStorage.setItem('reading', JSON.stringify(readingList));
@@ -84,6 +112,9 @@ export const Books = ({ newBooks }: BooksProps) => {
           handleDrop={handleDropBook}
           handleDragOver={handleDragOver}
           handleDragStart={handleDragStart}
+          handleDragEnter={handleDragEnter}
+          handleDragLeave={handleDragLeave}
+          handleDragEnd={handleDragEnd}
         />
       </Layout>
     </>

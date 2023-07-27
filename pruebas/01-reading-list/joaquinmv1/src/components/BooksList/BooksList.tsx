@@ -4,7 +4,7 @@ import { Book } from '../../models/types';
 
 interface BooksProps {
   availableBooks: Array<Book>;
-  handleDragStart: (e: React.DragEvent<HTMLLIElement>, book: Book) => void;
+  handleDragStart: (e: React.DragEvent<HTMLElement>, book: Book, index: number) => void;
   handleDrop: (e: React.DragEvent<HTMLElement>, target: string) => void;
   handleDragOver: (e: React.DragEvent<HTMLElement>) => void;
 }
@@ -18,12 +18,13 @@ export const BooksList = ({ availableBooks, handleDragStart, handleDragOver, han
           onDragOver={handleDragOver}
           onDrop={(e: React.DragEvent<HTMLElement>) => handleDrop(e, 'reading')}
         >
-          {availableBooks.length > 0 ? availableBooks.map((book) => {
+          {availableBooks.length > 0 ? availableBooks.map((book, i) => {
               return (
                 <BookItem
                   key={book.book.ISBN}
                   book={book}
-                  onDragStart={(e) => handleDragStart(e, book)}
+                  index={i}
+                  onDragStart={handleDragStart}
                 />
               );
             })

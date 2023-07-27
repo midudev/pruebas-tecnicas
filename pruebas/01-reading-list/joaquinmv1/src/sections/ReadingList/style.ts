@@ -66,9 +66,7 @@ export const List = styled.li`
 
  button {
   display: block;
-  /* padding: 1rem; */
   padding: 0.5rem;
-  /* height: 50px; */
   border: none;
   font-weight: bold;
   background-color: #695EFF;
