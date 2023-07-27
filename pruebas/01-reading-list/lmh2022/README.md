@@ -2,7 +2,7 @@
 
 Proyecto realizado para participar de la prueba #1 propuesta por @midudev en https://pruebastecnicas.com/
 
-Se encuentra desplegado en:
+Se encuentra desplegado en: https://pruebas-tecnicas-bfia.vercel.app/
 
 Consiste en una lista de libros disponibles.
 Los mismos se pueden filtrar por cantidad de páginas de cada libro y por género.
