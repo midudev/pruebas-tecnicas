@@ -20,6 +20,7 @@ li {
 img {
   height: 100%;
   max-width: 100%;
+  transition: all ease 0.3s;
 }
 
 button {
@@ -141,6 +142,11 @@ button {
   max-height: 320px;
   grid-row: 1/-1;
   grid-column: 1/-1;
+}
+
+.booklist-container li:hover img {
+  transform: scale(1.05);
+  box-shadow: 2px 2px 8px whitesmoke;
 }
 
 .booklist-container li:hover .booklist-btns {
