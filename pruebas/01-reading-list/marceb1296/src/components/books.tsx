@@ -20,8 +20,11 @@ export const Books = ({ books }: Books) => {
                     <div aria-label="book-box" key={book.ISBN} className={bookList.includes(book.ISBN) ? "book-container added" : "book-container"}>
                         <img src={book.cover} alt={`cover ${book.title}`} loading="lazy"/>
                         <div className="book-info">
-                            <label className="with-color dp-block">
+                            <label className="with-color full dp-block">
                                 {book.title}
+                            </label>
+                            <label className="with-color dp-block">
+                                {book.author.name}
                             </label>
                             <label className="with-color dp-block">
                                 {book.synopsis}

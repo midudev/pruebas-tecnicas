@@ -1,3 +1,4 @@
 export enum EReducerAction {
-    THEME ="theme"
+    THEME = "theme",
+    BOOK_LIST = "book_list"
 }
