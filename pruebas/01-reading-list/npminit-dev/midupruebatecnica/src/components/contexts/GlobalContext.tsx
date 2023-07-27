@@ -5,6 +5,7 @@ import { InterestBook } from '../../types/interestbook';
 import { ColorMode, GlobalContextType, RlAction } from "../../types/globalcontext";
 import * as ls from "local-storage";
 import { message } from "antd";
+import InterestList from "../readlist/InterestList";
 
 const defValues: GlobalContextType = {
   bookList: [],
@@ -67,8 +68,9 @@ export const RlReducer: Reducer<InterestBook[], RlAction> = (state: InterestBook
  
   switch(action.type) {
     case 'set': 
-      ls.set('readList', action.payload || [])
-      return action.payload as InterestBook[] || []
+      let newState = filterValidReadList(action.payload || [])
+      ls.set('readList', newState || [])
+      return newState
 
     case 'add': 
       if(!state.some(interest => interest.ISBN === action.payload.ISBN )) {
@@ -123,5 +125,21 @@ export const RlReducer: Reducer<InterestBook[], RlAction> = (state: InterestBook
     }
   }
 }
+
+const filterValidReadList = (interests: InterestBook[]): InterestBook[] => {
+  try {
+    if(!interests.length) return []
+    let newRl: InterestBook[];
+    newRl = interests.filter(interest => {
+      if(getBooksArray(data).some(book => book.ISBN === interest.ISBN) 
+        && typeof(interest.read) === 'boolean' ) return interest
+    })
+    return newRl
+  } catch (err) {
+    return []
+  }
+}
+
+
 
 

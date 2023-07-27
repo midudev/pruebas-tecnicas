@@ -4,6 +4,8 @@ import { GlobalContext } from "../contexts/GlobalContext";
 import  { Typography } from "antd";
 import { Book } from "../../types/books";
 import '../../styles/global-variables.css'
+import bookdata from '../../files/books'
+import { getBooksArray } from "../contexts/GlobalContext";
 const { Text } = Typography
 
 
@@ -14,11 +16,11 @@ type props = {
 
 export default function GenreFilter({ setGenre, genre }: props): JSX.Element {
 
-  const { bookList, colorMode } = useContext(GlobalContext);
+  const { colorMode } = useContext(GlobalContext);
   const [ genres, setGenres ] = useState<string[]>([])
 
   useEffect(() => {
-    setGenres(getGenres(bookList))
+    setGenres(getGenres(getBooksArray(bookdata)))
   }, [])
 
   return (

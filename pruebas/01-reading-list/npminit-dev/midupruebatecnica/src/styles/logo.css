@@ -1,7 +1,7 @@
 #logo_container {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 10px;
   display: grid;
   grid-template-columns: 40% 20% 40%;
   width: 145px;

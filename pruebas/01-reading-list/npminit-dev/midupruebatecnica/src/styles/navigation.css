@@ -1,10 +1,27 @@
+.NavbarContainer {
+  position: fixed;
+  z-index: 1000;
+  height: 46px;
+  width: 100vw;
+}
+
+.NavbarBackground {
+  height: 45px;
+  width: 100vw;
+  color: transparent;
+}
+
 #content {
   padding: 10px 2px;
-  min-height: 100vh;
+  min-height: calc(100vh - 46px);
 }
 
 #content.light {
   background-color: rgb(242, 242, 242);
+}
+
+.NavbarContainer > ul.dark > li.ant-menu-item-active {
+  color: var(--dark-font-4) !important;
 }
 
 div > ul.ant-menu.light {
@@ -35,12 +52,12 @@ body > div > div.dark > .ant-menu.ant-menu-sub.ant-menu-vertical {
 
 #rc-menu-uuid-97774-1-MenuMobile-popup > li:hover {
   background-color: var(--dark-background-3);
-  color: var(--dark-font-2);
+  color: var(--dark-font-2) !important;
 }
 
 div.dark > #rc-menu-uuid-51993-1-MenuMobile-popup > li:hover {
   background-color: var(--dark-background-2);
-  color: white;
+  color: white !important;
 }
 
 #rc-menu-uuid-51993-1-MenuMobile-popup > li.ant-menu-item.ant-menu-item-selected.dark {
@@ -56,6 +73,25 @@ div.dark > #rc-menu-uuid-51993-1-MenuMobile-popup > li:hover {
   color: white var(--dark-font-1) !important;
   background-color: var(--dark-background-3) !important;
 }
+
+.FloatBackTop {
+  left: 2% !important;
+}
+
+.FloatBackTop.light {
+  box-shadow: 0 0 7px #333 !important;
+}
+
+.FloatBackTop.dark {
+  background-color: var(--dark-background-3) !important;
+  color: var(--dark-font-1);
+  box-shadow: 0 0 7px var(--dark-font-1) !important;
+}
+
+.FloatBackTop.dark:hover > span > div > div > div > span > svg {
+  color: var(--dark-font-1) !important;
+}
+
 
 
 

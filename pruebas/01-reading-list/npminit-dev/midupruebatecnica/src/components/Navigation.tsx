@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { SectionSelected } from '../types/navigation';
-import { Menu } from "antd";
+import { FloatButton, Menu } from "antd";
 import BookList from "./booklist/BookList";
 import ReadList from "./readlist/ReadList";
 import About from "./about/About";
@@ -44,7 +44,7 @@ export default function Navigation(): JSX.Element {
     {
       key: 'readlist',
       label: 'Read list',
-      className: `${colorMode}`
+      className: `${colorMode}`,
     },
     {
       key: 'about',
@@ -74,19 +74,28 @@ export default function Navigation(): JSX.Element {
 
   return ( 
     <div>
-      <Menu 
-        items={ wWidth > 473 ? items : itemsMobile }
-        mode="horizontal"
-        defaultSelectedKeys={['booklist']}
-        triggerSubMenuAction={wWidth > 473 ? 'hover' : 'click'}
-        onSelect={handleSelect}
-        selectedKeys={[itemSelected]}
-        className={`${colorMode}`}
-        rootClassName={`${colorMode}`}
+      <div className="NavbarContainer">
+        <Menu 
+          items={ wWidth > 473 ? items : itemsMobile }
+          mode="horizontal"
+          defaultSelectedKeys={['booklist']}
+          triggerSubMenuAction={wWidth > 473 ? 'hover' : 'click'}
+          onSelect={handleSelect}
+          selectedKeys={[itemSelected]}
+          className={`${colorMode}`}
+          rootClassName={`${colorMode}`}
+        >
+        </Menu> 
+        { wWidth >= 398 ? <ThemeSwitcher></ThemeSwitcher> : <></> }
+        <Logo></Logo>
+      </div>
+      <div className="NavbarBackground"></div>
+      <FloatButton.BackTop
+        className={`FloatBackTop ${colorMode}`}
+        rootClassName={`FloatBackTopRoot ${colorMode}`}
+        tooltip={<div className={`FloatBackToolTip ${colorMode}`}>Back to top</div>}
       >
-      </Menu> 
-      { wWidth >= 398 ? <ThemeSwitcher></ThemeSwitcher> : <></> }
-      <Logo></Logo>
+      </FloatButton.BackTop>
       <main id="content" className={`${colorMode}`}>
       { 
         itemSelected === 'booklist' 
