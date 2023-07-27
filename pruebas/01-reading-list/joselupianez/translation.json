@@ -1,0 +1,36 @@
+{
+    "en": {
+        "translation": {
+            "title": "Library",
+            "readingList": "Reading list",
+            "available": "books available",
+            "reading": "in the reading list",
+            "filterByPages": "Filter by pages",
+            "filterByGenre": "Filter by genre",
+            "year": "Year",
+            "pages": "Pages",
+            "genre": "Genre",
+            "synopsis": "Synopsis",
+            "addToReadingList": "Add to reading list",
+            "removeFromReadingList": "Remove from reading list",
+            "otherBooks": "Other books from this author"
+        }
+    },
+    "es": {
+        "translation": {
+            "title": "Libreria",
+            "readingList": "Lista de lectura",
+            "available": "libros disponibles",
+            "reading": "en la lista de lectura",
+            "filterByPages": "Filtrar por páginas",
+            "filterByGenre": "Filtrar por género",
+            "year": "Año",
+            "pages": "Páginas",
+            "genre": "Género",
+            "synopsis": "Sinopsis",
+            "addToReadingList": "Añadir a la lista de lectura",
+            "removeFromReadingList": "Eliminar de la lista de lectura",
+            "otherBooks": "Otros libros de este autor"
+        }
+    }
+}

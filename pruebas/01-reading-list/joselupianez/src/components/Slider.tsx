@@ -1,4 +1,5 @@
 import ReactSlider from "react-slider"
+import { useTranslation } from "react-i18next"
 
 interface ChildProps{
     pages: number[];
@@ -6,9 +7,11 @@ interface ChildProps{
 }
 
 const Slider = ({pages, setPages}: ChildProps) => {
+    const { t } = useTranslation()
+
     return (
         <section className="w-full font-semibold">
-            <h6 className='font-bold text-sm pb-2'>Filtrar por páginas</h6>
+            <h6 className='font-bold text-sm pb-2'>{t('filterByPages')}</h6>
             <ReactSlider 
                 min={pages[0]}
                 max={pages[1]}

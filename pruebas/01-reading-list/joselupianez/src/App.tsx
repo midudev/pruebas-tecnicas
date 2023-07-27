@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
 import { library } from '../../books.json'
 import { Library, Book, BookItem } from './types'
+import Header from './components/Header'
 import BookList from './components/BookList'
 import Slider from './components/Slider'
 import Modal from './components/Modal'
 import CategoryDropdown from './components/CategoryDropdown'
 import ReadingList from './components/ReadingList'
+import { useTranslation } from 'react-i18next'
 
 function App() {
   const categoryList = library.map((book) => book.book.genre)
@@ -18,6 +20,7 @@ function App() {
   const [pages, setPages] = useState<number[]>([minBookPages, maxBookPages])
   const categories = ["Todas", ...new Set(categoryList)]
   const [category, setCategory] = useState<string>(categories[0])
+  const { t } = useTranslation()
 
   function toggleModal(book: Book | false) {
     if(book){
@@ -63,20 +66,24 @@ function App() {
 
   return (
     <>
-      <section className={`flex flex-col h-screen lg:flex-row ${modal ? 'blur-lg lg:blur-sm' : ''}`}>
-        <section className="flex flex-col w-full px-5 py-5 lg:m-10">
-          <h1 className='font-bold text-4xl pb-2 text-center md:text-left' data-testid="totalbooks">{`${filteredBooks.library.length} libros disponibles`}</h1>
-          <h2 className='font-bold text-xl mb-5 text-neutral-300 text-center md:text-left' data-testid="totalreadinglist">{`${readingList.length} en la lista de lectura`}</h2>
-          <section className='flex flex-col md:flex-row gap-4 mb-4 items-center bg-neutral-900 p-10 rounded-md'>
-            <Slider pages={[minBookPages, maxBookPages]} setPages={setPages} />
-            <CategoryDropdown currentCategory={category} categories={categories} setCategory={setCategory} />
-          </section>
-
-          <BookList library={filteredBooks} toggleModal={toggleModal} />
+      <section className={modal ? 'blur-lg lg:blur-sm' : ''}>
+        <Header />
+        <section className='container mx-auto mt-10 px-5'>
+            <section className='flex flex-col lg:flex-row'>
+              <section className='w-full'>
+                <h1 className='text-blue-600 font-bold text-4xl pb-2 text-center md:text-left' data-testid="totalbooks">{`${filteredBooks.library.length} ${t("available")}`}</h1>
+                <h2 className='font-bold text-xl mb-5 text-neutral-300 text-center md:text-left' data-testid="totalreadinglist">{`${readingList.length} ${t("reading")}`}</h2>
+                <section className='flex flex-col md:flex-row gap-4 mb-4 items-center bg-neutral-900 p-10 rounded-md'>
+                  <Slider pages={[minBookPages, maxBookPages]} setPages={setPages} />
+                  <CategoryDropdown currentCategory={category} categories={categories} setCategory={setCategory} />
+                </section>
+                <BookList library={filteredBooks} toggleModal={toggleModal} />
+              </section>
+              {readingList.length > 0 && (
+                <ReadingList readingList={readingList} toggleModal={toggleModal} />
+              )}
+            </section>
         </section>
-        {readingList.length > 0 && (
-          <ReadingList readingList={readingList} toggleModal={toggleModal} />
-        )}
       </section>
       <Modal modal={modal} setModal={setModal} readingList={readingList} selectedBook={selectedBook} removeOrAddToReadingList={removeOrAddToReadingList} />
     </>

@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react"
+import { useTranslation } from "react-i18next"
 
 interface ChildProps{
     categories: string[];
@@ -7,6 +8,7 @@ interface ChildProps{
 }
 
 const CategoryDropdown = ({currentCategory, categories, setCategory}: ChildProps) => {
+    const { t } = useTranslation()
     const [open, setOpen] = useState<boolean>(false)
     const ref = useRef<HTMLDivElement>(null)
         
@@ -25,7 +27,7 @@ const CategoryDropdown = ({currentCategory, categories, setCategory}: ChildProps
 
     return (
         <section className="w-full font-semibold" ref={ref}>
-            <h6 className='font-bold text-sm pb-2'>Filtrar por género</h6>
+            <h6 className='font-bold text-sm pb-2'>{t('filterByGenre')}</h6>
             <div className="relative text-left">
                 <div>
                     <button type="button" onClick={() => setOpen(val => !val)} className="flex w-full justify-between rounded-md bg-neutral-800 border border-neutral-700 px-3 py-2 text-sm font-semibold text-white">

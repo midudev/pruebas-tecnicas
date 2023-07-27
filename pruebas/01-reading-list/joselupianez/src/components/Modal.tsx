@@ -1,5 +1,6 @@
 import { useRef, useEffect } from "react"
 import { Book, BookItem } from "../types"
+import { useTranslation } from "react-i18next"
 
 interface ChildProps {
     modal: boolean;
@@ -10,6 +11,7 @@ interface ChildProps {
 }
 
 export default function Modal({modal, setModal, removeOrAddToReadingList, readingList, selectedBook}: ChildProps) {
+    const { t } = useTranslation()
     const bookInList = readingList.filter(item => item.book.title === selectedBook.title).length > 0
     const ref = useRef<HTMLDivElement>(null)
     
@@ -39,27 +41,27 @@ export default function Modal({modal, setModal, removeOrAddToReadingList, readin
                         <img src={selectedBook.cover} alt={selectedBook.title} className='h-64 w-52 object-fit rounded-md mb-4'/>
                         <h3 className='font-bold pb-4 text-center text-xl'>{selectedBook.title}</h3>
                         <span className='uppercase text-xs opacity-70 font-bold'>{selectedBook.author.name}</span>
-                        {selectedBook.author.otherBooks.length > 0 && (<span className="text-xs text-center">Otros libros: {selectedBook.author.otherBooks.join(", ")}</span>)}
+                        {selectedBook.author.otherBooks.length > 0 && (<span className="text-xs text-center">{t('otherBooks')}: {selectedBook.author.otherBooks.join(", ")}</span>)}
                         <section className="flex flex-row gap-2 lg:gap-10 w-full m-5 justify-center text-center">
                             <section className="flex flex-col w-full md:w-1/3 uppercase border border-neutral-700 rounded-md">
-                                <span className="text-sm h-1/2 p-3 flex items-center justify-center">Páginas</span>
+                                <span className="text-sm h-1/2 p-3 flex items-center justify-center">{t('pages')}</span>
                                 <span className="text-sm h-1/2 font-bold p-3 bg-neutral-800 rounded-b-md flex items-center justify-center">{selectedBook.pages}</span>
                             </section>
                             <section className="flex flex-col w-full md:w-1/3 uppercase border border-neutral-700 rounded-md">
-                                <span className="text-sm h-1/2 p-3 flex items-center justify-center">Género</span>
+                                <span className="text-sm h-1/2 p-3 flex items-center justify-center">{t('genre')}</span>
                                 <span className="text-sm h-1/2 font-bold p-3 bg-neutral-800 rounded-b-md flex items-center justify-center">{selectedBook.genre}</span>
                             </section>
                             <section className="flex flex-col w-full md:w-1/3 uppercase border border-neutral-700 rounded-md">
-                                <span className="text-sm h-1/2 p-3 flex items-center justify-center">Año</span>
+                                <span className="text-sm h-1/2 p-3 flex items-center justify-center">{t('year')}</span>
                                 <span className="text-sm h-1/2 font-bold p-3 bg-neutral-800 rounded-b-md flex items-center justify-center">{selectedBook.year}</span>
                             </section>
                         </section>
-                        <h3 className='font-bold pb-4 text-xl'>Sinopsis</h3>
+                        <h3 className='font-bold pb-4 text-xl'>{t('synopsis')}</h3>
                         <p className="pb-10 text-center">{selectedBook.synopsis}</p>
                         {bookInList ? (
-                            <button onClick={() => removeOrAddToReadingList(selectedBook, false)} className="bg-red-700 hover:bg-red-600 transition w-full lg:w-1/2 rounded-md p-2 font-bold" data-testid="removebook">Remover de lista de lectura</button>
+                            <button onClick={() => removeOrAddToReadingList(selectedBook, false)} className="bg-red-700 hover:bg-red-600 transition w-full lg:w-1/2 rounded-md p-2 font-bold" data-testid="removebook">{t('removeFromReadingList')}</button>
                         ) : (
-                            <button onClick={() => removeOrAddToReadingList(selectedBook, true)} data-testid="addbook" className="bg-blue-700 hover:bg-blue-600 w-full lg:w-1/2 rounded-md p-2 font-bold">Agregar a lista de lectura</button>
+                            <button onClick={() => removeOrAddToReadingList(selectedBook, true)} data-testid="addbook" className="bg-blue-700 hover:bg-blue-600 w-full lg:w-1/2 rounded-md p-2 font-bold">{t('addToReadingList')}</button>
                         )}
                     </section>
                 </section>
