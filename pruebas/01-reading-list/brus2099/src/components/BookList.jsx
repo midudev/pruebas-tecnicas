@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from 'react';
-import Book from '../Book/Book';
-import { FilterContext } from '../../context/FilterContext';
+import Book from './Book';
+import { DataContext } from '../context/DataContext';
 
 const BookList = () => {
 
-  const { booklist, selectedGenre, setDisplayedBooks } = useContext(FilterContext);
+  const { booklist, selectedGenre, setDisplayedBooks } = useContext(DataContext);
 
   const displayedBooks = booklist.filter(({ book }) => selectedGenre === 'Todos' || selectedGenre === book.genre);
 

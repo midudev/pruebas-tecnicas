@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { FilterContext } from '../../context/FilterContext';
-import Book from '../Book/Book';
+import { DataContext } from '../context/DataContext';
+import Book from './Book';
 
 const LectureList = () => {
 
-  const { lectureList } = useContext(FilterContext);
+  const { lectureList } = useContext(DataContext);
 
   return (
     <div style={{ border: '5px solid #f55' }}>

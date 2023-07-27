@@ -1,9 +1,9 @@
 import React, {useContext, useEffect} from 'react';
-import { FilterContext } from '../../context/FilterContext';
+import { DataContext } from '../context/DataContext';
 
 const Filter = () => {
 
-  const { genres, setSelectedGenre } = useContext( FilterContext );
+  const { genres, setSelectedGenre } = useContext( DataContext );
 
   const updateGenre = (e) => {
     setSelectedGenre(e.target.value);

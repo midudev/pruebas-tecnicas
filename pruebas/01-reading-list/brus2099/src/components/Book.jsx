@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { FilterContext } from '../../context/FilterContext';
+import { DataContext } from '../context/DataContext';
 
 const Book = ({ entireBook, title, author, isbn, cover }) => {
 
-  const { lectureList, setLectureList, booklist, setBooklist } = useContext(FilterContext);
+  const { lectureList, setLectureList, booklist, setBooklist } = useContext(DataContext);
 
   const lectureListChange = () => {
     const formatedBook = { book: entireBook };

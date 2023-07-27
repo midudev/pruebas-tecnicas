@@ -1,5 +1,5 @@
 import React from 'react';
-import LectureList from '../LectureList/LectureList';
+import LectureList from './LectureList';
 
 
 const Header = () => {

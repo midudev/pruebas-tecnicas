@@ -1,18 +1,18 @@
 import './App.css'
-import BookList from './components/BookList/BookList'
-import Filter from './components/Filter/Filter'
-import Header from './components/Header/Header'
-import Status from './components/Status/Status'
-import { FilterProvider } from './context/FilterContext'
+import BookList from './components/BookList'
+import Filter from './components/Filter'
+import Header from './components/Header'
+import Status from './components/Status'
+import { DataProvider } from './context/DataContext'
 
 function App() {
   return (
-    <FilterProvider>
+    <DataProvider>
         <Header />
         <Status />
         <Filter />
         <BookList />
-    </FilterProvider>
+    </DataProvider>
   )
 }
 

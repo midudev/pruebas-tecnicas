@@ -2,9 +2,9 @@ import { createContext } from "react";
 import { useState, useEffect } from "react";
 import { library } from "../assets/books.json";
 
-export const FilterContext = createContext();
+export const DataContext = createContext();
 
-export const FilterProvider = ({ children }) => {
+export const DataProvider = ({ children }) => {
 
   const [books, setBooks] = useState([]);
   const [booklist, setBooklist] = useState([]);
@@ -29,17 +29,14 @@ export const FilterProvider = ({ children }) => {
   });
 
   return (
-    <FilterContext.Provider value={{
+    <DataContext.Provider value={{
       booklist, setBooklist,
-      displayedBooks,
-      setDisplayedBooks,
-      lectureList,
-      setLectureList,
-      selectedGenre,
-      setSelectedGenre,
+      displayedBooks, setDisplayedBooks,
+      lectureList, setLectureList,
+      selectedGenre, setSelectedGenre,
       genres,
     }}>
       {children}
-    </FilterContext.Provider>
+    </DataContext.Provider>
   );
 };

@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import { FilterContext } from '../../context/FilterContext';
+import { DataContext } from '../context/DataContext';
 
 const Status = () => {
 
-  const { booklist, displayedBooks } = useContext( FilterContext );
+  const { booklist, displayedBooks } = useContext( DataContext );
 
   return(
     <div style={{ border: '5px solid #55ff96' }}>
