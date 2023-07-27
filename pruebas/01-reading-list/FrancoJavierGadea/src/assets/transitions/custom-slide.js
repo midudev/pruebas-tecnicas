@@ -7,7 +7,9 @@ const KEY_FRAMES = {
     MOVE_TO_LEFT: 'Slide-To-Left',
     MOVE_TO_RIGHT: 'Slide-To-Right',
     MOVE_FROM_LEFT: 'Slide-From-Left',
-    MOVE_FROM_RIGHT: 'Slide-From-Right'
+    MOVE_FROM_RIGHT: 'Slide-From-Right',
+	FADE_IN: 'Fade-In',
+	FADE_OUT: 'Fade-Out'
 }
 
 
@@ -32,7 +34,7 @@ export function customSlide({duration = 300} = {}){
 
 			new: [
 				{
-					name: 'astroFadeIn',
+					name: KEY_FRAMES.FADE_IN,
 					duration: '100ms',
 					easing: 'cubic-bezier(0, 0, 0.2, 1)',
 					fillMode: 'both',
@@ -62,7 +64,7 @@ export function customSlide({duration = 300} = {}){
 
 			new: [
 				{
-					name: 'astroFadeIn',
+					name: KEY_FRAMES.FADE_IN,
 					duration: '100ms',
 					easing: 'cubic-bezier(0, 0, 0.2, 1)',
 					fillMode: 'both',

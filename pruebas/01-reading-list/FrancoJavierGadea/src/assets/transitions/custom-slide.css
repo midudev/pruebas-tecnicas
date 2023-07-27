@@ -1,4 +1,17 @@
 
+@keyframes Fade-In {
+	from {
+		opacity: 0;
+	}
+}
+
+@keyframes Fade-Out {
+	to {
+		opacity: 0;
+	}
+}
+
+
 @keyframes Slide-From-Left {
     from {
         transform: translateX(-120%);
