@@ -1,8 +1,8 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import data from '.././books.json';
-import Selector from './Selector';
-import RangeControl from './RangeControl';
+import data from '../../books.json';
+import Selector from '../Controls/Selector';
+import RangeControl from '../Controls/RangeControl';
 import './AvailableBooks.css';
 
 
@@ -46,8 +46,7 @@ function AvailableBooks({alreadyRead}) {
 
       <div className="availablebooks" >
         {filteredBooks.map(e=><div id={e.book.ISBN} draggable onDragStart={handleDragStart} key={e.book.ISBN} className="book" style={{backgroundImage: "url("+e.book.cover+")"}} >
-        {e.book.ISBN} 
-          </div>)}
+       </div>)}
       </div>
 
     </>

@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
-import AvailableBooks from './components/AvailableBooks';
-import ReadBooks from './components/ReadBooks';
+import AvailableBooks from './components/AvailableBooks/AvailableBooks';
+import ReadBooks from './components/ReadBooks/ReadBooks';
 import { useState } from 'react';
 
 function App() {

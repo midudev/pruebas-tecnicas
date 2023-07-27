@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import './ReadBooks.css';
-import data from '.././books.json';
+import data from '../../books.json';
 
 
 
@@ -43,8 +43,8 @@ console.log("filtered read books", filteredBooks)
         <>
           <div className="books" onDragOver={handleDragOver} onDrop={handleOnDrop}>
             
-        {filteredBooks.map(e=><div id={e.book.ISBN} key={e.book.ISBN} className="book" style={{backgroundImage: "url("+e.book.cover+")"}} >
-            <img src={require('./close-button.png')} className="close-button" onClick={handleClick} />
+        {filteredBooks.map(e=><div id={e.book.ISBN} key={e.book.ISBN} className="read-book" style={{backgroundImage: "url("+e.book.cover+")"}} >
+            <img src={require('../../images/close-button.png')} alt="X" className="close-button" onClick={handleClick} />
     </div>)}
       </div>         
             
