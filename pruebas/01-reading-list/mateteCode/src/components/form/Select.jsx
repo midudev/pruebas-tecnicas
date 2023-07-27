@@ -9,8 +9,6 @@ const Select = ({
     onChange(data[e.target.value]);
   };
 
-  console.log("Select render");
-
   return (
     <label className={`${className}`}>
       <span className={`${className}__label`}>{label}</span>

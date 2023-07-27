@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import {
+  getBooks,
   getBooksToRead,
   getBooksAvailable,
   getBooksData,
@@ -12,6 +13,7 @@ import BooksList from "./components/BooksList";
 
 function App() {
   const {
+    books,
     booksAvailable,
     booksToRead,
     genres,
@@ -23,15 +25,7 @@ function App() {
     state,
   } = useAppContext();
 
-  console.log(state);
-
   const handleStorage = () => {
-    getBooksAvailable()
-      .then((resp) => {
-        dispatch({ type: "SET_BOOKS_AVAILABLE", value: resp });
-      })
-      .catch((err) => console.log(err.message));
-
     const resp = getBooksToRead();
     if (resp) {
       dispatch({ type: "SET_BOOKS_TO_READ", value: resp });
@@ -39,23 +33,41 @@ function App() {
   };
 
   useEffect(() => {
-    handleStorage();
-    getBooksData()
-      .then(({ genres, maxPage }) => {
+    getBooks()
+      .then((resp) => {
+        dispatch({ type: "SET_BOOKS", value: resp });
+        const { genres, maxPage } = getBooksData(resp);
         dispatch({ type: "SET_GENRES", value: genres });
         dispatch({ type: "SET_PAGES", value: { min: 0, max: maxPage } });
+        dispatch({ type: "SET_BOOKS_TO_READ", value: getBooksToRead() });
+        dispatch({
+          type: "SET_BOOKS_AVAILABLE",
+          value: getBooksAvailable(resp),
+        });
         dispatch({ type: "SET_LOADING", value: false });
       })
       .catch((err) => console.log(err.message));
-
     window.addEventListener("storage", handleStorage);
     return () => window.removeEventListener("storage", handleStorage);
   }, []);
 
   useEffect(() => {
+    if (!loading && books) {
+      dispatch({
+        type: "SET_BOOKS_AVAILABLE",
+        value: getBooksAvailable(books, filter),
+      });
+    }
+  }, [filter]);
+
+  useEffect(() => {
     if (booksToRead && !loading) {
       saveBooksToRead(booksToRead);
     }
+    dispatch({
+      type: "SET_BOOKS_AVAILABLE",
+      value: getBooksAvailable(books, filter),
+    });
   }, [booksToRead]);
 
   if (loading)
@@ -98,7 +110,7 @@ function App() {
             />
           </form>
 
-          <BooksList list={booksAvailable} filter={filter} />
+          <BooksList list={booksAvailable} />
         </main>
         {booksToRead.length > 0 && (
           <aside className="aside">

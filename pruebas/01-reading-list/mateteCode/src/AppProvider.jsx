@@ -7,6 +7,7 @@ const useAppContext = () => {
 
 const initialState = {
   loading: true,
+  books: [],
   booksAvailable: [],
   booksToRead: [],
   genres: [],
@@ -23,24 +24,35 @@ const reducer = (state, action) => {
     case "RESET_STATE": {
       return initialState;
     }
+
     case "SET_LOADING": {
       return {
         ...state,
         loading: action.value,
       };
     }
+
+    case "SET_BOOKS": {
+      return {
+        ...state,
+        books: action.value,
+      };
+    }
+
     case "SET_BOOKS_AVAILABLE": {
       return {
         ...state,
         booksAvailable: action.value,
       };
     }
+
     case "SET_BOOKS_TO_READ": {
       return {
         ...state,
         booksToRead: action.value,
       };
     }
+
     case "SET_GENRES": {
       return {
         ...state,
@@ -71,6 +83,7 @@ const reducer = (state, action) => {
         booksToRead: [...state.booksToRead, action.value],
       };
     }
+
     case "REMOVE_BOOK_TO_READ": {
       return {
         ...state,
@@ -92,6 +105,7 @@ const AppProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         loading: state.loading,
+        books: state.books,
         booksAvailable: state.booksAvailable,
         booksToRead: state.booksToRead,
         genres: state.genres,
