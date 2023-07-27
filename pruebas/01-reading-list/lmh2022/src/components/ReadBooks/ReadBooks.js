@@ -29,9 +29,6 @@ function ReadBooks({ alreadyRead = [], setAlreadyRead }) {
     setFilteredBooks(books.filter((f) => alreadyRead.includes(f.book.ISBN)));
     console.log("already read books", alreadyRead);
     localStorage.setItem("alreadyRead", JSON.stringify(alreadyRead));
-    onstorage = () => {
-      setAlreadyRead(JSON.parse(localStorage.getItem("alreadyRead")));
-    };
   }, [alreadyRead]);
 
   useEffect(() => {
@@ -45,6 +42,8 @@ function ReadBooks({ alreadyRead = [], setAlreadyRead }) {
         onDragOver={handleDragOver}
         onDrop={handleOnDrop}
       >
+        {" "}
+        <span id="read-amount"> Hay {alreadyRead.length} libros leídos.</span>
         {filteredBooks.map((e) => (
           <div
             id={e.book.ISBN}

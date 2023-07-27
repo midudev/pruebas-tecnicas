@@ -5,7 +5,7 @@ import Selector from "../Controls/Selector";
 import RangeControl from "../Controls/RangeControl";
 import "./AvailableBooks.css";
 
-function AvailableBooks({ alreadyRead }) {
+function AvailableBooks({ alreadyRead, setAlreadyRead }) {
   const [selected, setSelected] = useState(
     localStorage.getItem("genre") ? localStorage.getItem("genre") : ""
   ); //nullish coalescing me daba error de sintaxis
@@ -31,6 +31,7 @@ function AvailableBooks({ alreadyRead }) {
     onstorage = () => {
       setSelected(localStorage.getItem("genre"));
       setPages(localStorage.getItem("pages"));
+      setAlreadyRead(JSON.parse(localStorage.getItem("alreadyRead")));
     };
   }, [selected, pages, alreadyRead]);
 
@@ -40,16 +41,17 @@ function AvailableBooks({ alreadyRead }) {
 
   return (
     <>
-      Hay {filteredBooks.length} libros Disponibles <br />
       <div id="controls">
-        Seleccionar género
-        <Selector
-          field="genre"
-          record="book"
-          object={books}
-          setSelected={setSelected}
-          selected={selected}
-        />
+        <span>
+          Seleccionar género&nbsp;&nbsp;
+          <Selector
+            field="genre"
+            record="book"
+            object={books}
+            setSelected={setSelected}
+            selected={selected}
+          />
+        </span>
         <span style={{ whiteSpace: "nowrap" }}>
           Cantidad de Páginas {pages}{" "}
           <RangeControl
@@ -62,6 +64,13 @@ function AvailableBooks({ alreadyRead }) {
         </span>
       </div>
       <div className="availablebooks">
+        <span id="available-amounts">
+          {" "}
+          Libros Disponibles en total: {books.length - alreadyRead.length} y
+          seleccionados: {filteredBooks.length}
+        </span>
+        <br />
+        <br />
         {filteredBooks.map((e) => (
           <div
             id={e.book.ISBN}

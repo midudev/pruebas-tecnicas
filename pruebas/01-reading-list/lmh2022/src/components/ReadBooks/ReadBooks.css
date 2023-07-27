@@ -9,7 +9,6 @@
   background-image: url(../../images/Bookshelf.jpg);
   background-size: contain;
   border: solid blue 1px;
-  color: red;
   overflow-y: auto;
 }
 
@@ -32,4 +31,10 @@
 
 .close-button:hover {
   cursor: pointer;
+}
+
+#read-amount {
+  margin-left: 3%;
+  font-size: 3vh;
+  color: white;
 }
