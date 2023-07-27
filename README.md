@@ -1,69 +1,25 @@
-# Librería Vue Vuetify Pinia Jest.
+# Pruebas Técnicas de Programación
 
-## Setup
-```
-# Instalar dependencias.
-npm install
+Pruebas técnicas de programación para desarrolladores frontend y backend.
 
-#Ejecutar proyecto.
-npm run dev
+## Lista de pruebas técnicas
 
-# Compilar para producción.
-npm run build
+- [01 - Reading List (FrontEnd - Nivel: Junior)](./pruebas/01-reading-list/README.md)
 
-# Ejecutar test.
-npm test .
-```
-&emsp;
+## ¿Cómo participar?
 
-##Estructura del sitio.
-### Contenedor y componentes.
-[![](https://i.ibb.co/dM2L0Wk/aplic.png)](http://https://i.ibb.co/dM2L0Wk/aplic.png)
-El contenedor se encuentra en /src y los componentes en /src/components
+1. Haz un fork de este repositorio
+2. Crea una carpeta con **tu nombre de usuario de GitHub** dentro de la carpeta `pruebas/[nombre-de-la-prueba]`, por ejemplo: `pruebas/01-reading-list/midudev`.
+3. Siempre **sólo modifica los ficheros y carpetas dentro de tu carpeta**, de otra manera, tu pull request será rechazada. Nunca formatees o modifiques el código de otros participantes.
 
-Contenedor | Responsabilidades
--------------  | ------------- |
-App.vue    | Importar y renderizar los componentes, Inicializar store, Escuchar los cambios en localStorage y enviar los nuevos valores.  
+- Recurso: [Cómo crear una Pull Request a un proyecto](https://www.youtube.com/watch?v=BPns9r76vSI)
 
-Componente      | Responsabilidades    
--------------   | ------------- |
-FiltersBar.vue  | Modificar los filtros en el store  
-TotalsBar.vue   | Mostrar totales de libros desde el store 
-BookList.vue    | Mostrar la lista de libros encontrados según filtro actual,. Cambiar el estado del libro 
-ReadingList.vue | Mostrar los libros que se encuentran en la lista de lectura. Cambiar el estado del libro. 
-Footer.vue      | Mostrar el Footer..
+## Sígueme en las redes sociales
 
-&emsp;
-
-## Manejo del Estado
-Para el manejo de estado se utilizó Pinia. Para la persistencia se usó el plugin pinia-plugin-persistedstate.  El estado se encuentra en... \src\store\library.js
-
-### State
-State Element  | Contiene 
--------------  | ------------- |
-books:         | Array con todos los libros.
-genres:        | Array de géneros. 
-filters:       | Objecto con los tres filtros (titulo, género y paginas).
-
-### Actions
-Action | Recibe | Utilizado por
-------------- | ------------- | ------------- |
-initialize              | Carga los datos en el estado por primera vez. |App.vue
-updateFromLocalStorage  | Actualiza el estado con las novedades enviades desde el event istener. |App.vue
-changeBookState         | Cambia el estado de un libro (dentro o fuera de la lista de lectura) .|BookList.vue y ReadingList.vue
-
-### Getters
-Getter  |  Devuelve   | Utilizado por
-------------- | ------------- | ------------- |
-bookList:           |Array de libros encontrados. |BookList.vue
-readingList:        |Array con la lista de lectura. |ReadingList.vue
-qBookList:          |Cantidad de libros encontrados. |TotalsBar.vue
-qBookListAvailable: |Cantidad de libros encontrados que no están en la lista de lectura. |TotalsBar.vue
-qReadingList:       |Cantidad de libros que están en la lista de lectura. |TotalsBar.vue
-maxPages:           |Cantidad máxima de páginas. |FiltersBar.vue
-minPages:           |Cantidad mínima de páginas. FiltersBar.vue
-
-&emsp;
-
-##Testing.
-El testing fue realizado con JEST sobre el store testeando todos los getters y actions. Se encuentra en \test\library.test.js
+- [Twitter](https://twitter.com/midudev)
+- [Instagram](https://instagram.com/midu.dev)
+- [Twitch](https://twitch.tv/midudev)
+- [YouTube](https://youtube.com/midudev)
+- [TikTok](https://tiktok.com/@midudev)
+- [LinkedIn](https://linkedin.com/in/midudev)
+- [Web](https://midu.dev)
