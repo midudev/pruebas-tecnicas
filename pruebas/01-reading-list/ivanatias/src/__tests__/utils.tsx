@@ -62,12 +62,8 @@ export const TEST_STORAGE_FILTERS_KEY = 'testFilters'
 export const minPages = getPagesNumberLimit(MOCK_BOOKS, 'min')
 export const maxPages = getPagesNumberLimit(MOCK_BOOKS, 'max')
 
-export const resetFiltersStorage = () => {
-  window.localStorage.removeItem(TEST_STORAGE_FILTERS_KEY)
-}
-
-export const resetReadingListStorage = () => {
-  window.localStorage.removeItem(TEST_STORAGE_READING_LIST_KEY)
+export const resetStorage = (key: string) => {
+  window.localStorage.removeItem(key)
 }
 
 export const getFromReadingListTestStorage = () => {

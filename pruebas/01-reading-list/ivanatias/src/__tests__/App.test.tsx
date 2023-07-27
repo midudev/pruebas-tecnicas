@@ -7,8 +7,9 @@ import {
   MOCK_BOOKS,
   getFromReadingListTestStorage,
   maxPages as pages,
-  resetFiltersStorage,
-  resetReadingListStorage
+  resetStorage,
+  TEST_STORAGE_READING_LIST_KEY,
+  TEST_STORAGE_FILTERS_KEY
 } from '@/__tests__/utils'
 
 const setup = () => {
@@ -23,8 +24,8 @@ const setup = () => {
 describe('GIVEN <App />', () => {
   afterEach(() => {
     cleanup()
-    resetFiltersStorage()
-    resetReadingListStorage()
+    resetStorage(TEST_STORAGE_FILTERS_KEY)
+    resetStorage(TEST_STORAGE_READING_LIST_KEY)
   })
 
   it('SHOULD render the books list properly', () => {
