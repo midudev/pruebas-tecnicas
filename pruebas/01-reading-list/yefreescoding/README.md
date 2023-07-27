@@ -32,4 +32,4 @@
 
 No quería quedarme fuera de la prueba asi que he hecho lo que he podido, he llegado un poco tarde y me han faltado cosas fundamentales para la funcionalidad de la app, asi que entiendo que no pase la prueba.
 
-Pero he aprendido muchísimo y he de reconocer que esta prueba ha sido de lo mejor que he hecho en el ultimo mes. Espero tener mas tiempo y conocimientos para completar la siguiente al 100%.
+Pero he aprendido muchísimo y he de reconocer que esta prueba ha sido de lo mejor que he hecho en el ultimo mes. Espero tener mas tiempo y conocimientos para completar la siguiente al 100%!
