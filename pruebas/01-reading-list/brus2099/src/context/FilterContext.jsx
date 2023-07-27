@@ -30,8 +30,7 @@ export const FilterProvider = ({ children }) => {
 
   return (
     <FilterContext.Provider value={{
-      booklist,
-      setBooklist,
+      booklist, setBooklist,
       displayedBooks,
       setDisplayedBooks,
       lectureList,
