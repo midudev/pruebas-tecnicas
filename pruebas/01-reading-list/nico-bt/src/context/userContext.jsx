@@ -5,22 +5,25 @@ export const UserContext = createContext()
 export const UserContextProvider = ({ children }) => {
   const [userList, setUserList] = useState([])
   const [availableBooks, setAvailableBooks] = useState()
+  const [dontChangeLocalStorage, setDontChangeLocalStorage] = useState(false) //flag for storage event and sync tabs to avoid infinite loop
 
   // Tracking data in local storage
   //-----------------------------------------------------------------
 
-  const bookListInLocalStorage = localStorage.getItem("userList")
-  const [updatingLocalStorageFromOtherTab, setUpdatingLocalStorageFromOtherTab] = useState(false) //Flag to avoid infinite loop
-
   // Retrieve books from localStorage
   useEffect(() => {
-    if (bookListInLocalStorage && !updatingLocalStorageFromOtherTab) {
+    const bookListInLocalStorage = localStorage.getItem("userList")
+    if (bookListInLocalStorage) {
       setUserList(JSON.parse(bookListInLocalStorage))
     }
   }, [])
 
   // Sync bookList with localStorage when changin state
   useEffect(() => {
+    if (dontChangeLocalStorage) {
+      return
+    }
+
     localStorage.setItem("userList", JSON.stringify(userList))
   }, [userList])
 
@@ -35,9 +38,11 @@ export const UserContextProvider = ({ children }) => {
 
   function handleStorageChange(event) {
     const newUserListInOtherTab = JSON.parse(event.newValue)
-    setUpdatingLocalStorageFromOtherTab(true)
+    setDontChangeLocalStorage(true)
     setUserList(newUserListInOtherTab)
-    setUpdatingLocalStorageFromOtherTab(false)
+    setTimeout(() => {
+      setDontChangeLocalStorage(false)
+    }, 222)
   }
 
   // Actions
