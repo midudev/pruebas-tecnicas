@@ -1,0 +1,84 @@
+#root {
+  margin: 0;
+  padding: 0;
+  display: flex;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+.section-books{
+  background-color: gray;
+}
+.books-avalible{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  justify-content: space-between;
+  align-items: center;
+  background-color: gray;
+}
+.all-books{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 16px;
+}
+
+.card{
+  width: 40vw;
+  height: 280px;
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  color:aliceblue;
+  box-shadow: 2px 2px 5px black;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
+img{
+  width: 100%;
+  height: 100%;
+}
+p{
+  margin: 0;
+  text-align: justify;
+  
+}
+strong{
+  text-decoration: underline;
+}
+.portada{
+  width: 50%;
+  height: 100%;
+}
+.description{
+  width: 50%;
+  padding: 10px;
+}
+.add-list{
+  width: 90px;
+  height: auto;
+  color: aliceblue;
+  border-radius: 20px;
+  background-color: gray;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  font-size: 14px;
+}
+.button-add-list{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
