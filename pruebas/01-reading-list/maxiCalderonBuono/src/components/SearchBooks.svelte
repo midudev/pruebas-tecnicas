@@ -4,7 +4,6 @@
 	import libraryData from '../lib/data/books.json';
 	import type { Library } from '../types';
 	import Icon from '@iconify/svelte';
-	import { error } from '@sveltejs/kit';
 
 	interface searchResults {
 		title: string;
@@ -47,15 +46,25 @@
 	export let action: string;
 	export let placeholder: string;
 
+	let highlighted: number = -1;
+
 	function submitSearch() {
-		if (filteredTitles.includes(searchValue.trim().toLocaleLowerCase())) {
-			goto('/search/' + searchValue.toLowerCase());
-		}else{
-			searchValue = ""
+		if (filteredTitles.length > 0) {
+			const selectedTitle = filteredTitles[highlighted];
+			searchValue = selectedTitle?.slug.toLowerCase();
+			goto('/search/' + searchValue);
+		} else if (searchValue) {
+			const trimmedSearchValue = searchValue.trim().toLowerCase();
+			const foundTitle = filteredTitles.find((title) => title.slug === trimmedSearchValue);
+			if (foundTitle) {
+				goto('/search/' + searchValue.toLowerCase());
+			} else {
+				searchValue = '';
+			}
+		} else {
+			searchValue = '';
 		}
 	}
-
-	let highlighted: number = -1;
 
 	const navigateList = (e: KeyboardEvent) => {
 		if (e.key === 'ArrowDown' && highlighted < filteredTitles.length - 1) {
@@ -63,6 +72,7 @@
 		} else if (e.key === 'ArrowUp' && highlighted !== null) {
 			highlighted === 0 ? (highlighted = filteredTitles.length - 1) : (highlighted -= 1);
 		} else if (e.key === 'Enter') {
+			console.log(filteredTitles[highlighted].slug.toLowerCase());
 			searchValue = filteredTitles[highlighted].slug.toLowerCase();
 		} else if (!searchValue) {
 			highlighted = -1;
