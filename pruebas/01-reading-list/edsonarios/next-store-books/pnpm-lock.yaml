@@ -6,7 +6,7 @@ settings:
 
 dependencies:
   '@types/lodash':
-    specifier: ^4.14.196
+    specifier: 4.14.196
     version: 4.14.196
   '@types/node':
     specifier: 20.4.2
@@ -15,7 +15,7 @@ dependencies:
     specifier: 18.2.15
     version: 18.2.15
   '@types/react-beautiful-dnd':
-    specifier: ^13.1.4
+    specifier: 13.1.4
     version: 13.1.4
   '@types/react-dom':
     specifier: 18.2.7
@@ -42,7 +42,7 @@ dependencies:
     specifier: 18.2.0
     version: 18.2.0
   react-beautiful-dnd:
-    specifier: ^13.1.1
+    specifier: 13.1.1
     version: 13.1.1(react-dom@18.2.0)(react@18.2.0)
   react-dom:
     specifier: 18.2.0
