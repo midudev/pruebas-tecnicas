@@ -35,7 +35,7 @@ export default function BookList({ filteredBooks }) {
       </section>
 
       <BookDetailsDialog
-        open={openBookDetailsDialog.open}
+        open={openBookDetailsDialog.open || false}
         setOpen={setOpenBookDetailsDialog}
         book={openBookDetailsDialog.book}
         handleClickAddToList={handleClickAddToList}
