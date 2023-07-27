@@ -1,0 +1,20 @@
+.viewList{
+    display: grid;
+    align-items: start;
+    
+}
+.oc{
+   display: none;
+}
+
+
+
+
+@media only screen and (min-width:600px){
+   .viewList{
+    grid-template-columns: 1fr 1fr;
+    gap:10px
+   } 
+
+ 
+}
