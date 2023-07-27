@@ -171,11 +171,12 @@ export function BookDashboard() {
               tag={SECTIONS_ID.readingList.id}
             />
           )}
-          <h2 className={bookDashboardStyles.bookListSection__title}>
+          <h2
+            className={bookDashboardStyles.bookListSection__title}
+            suppressHydrationWarning={true}
+          >
             Libros disponibles&nbsp;
-            <span suppressHydrationWarning={true}>
-              {lists.listBooksAvailable.length !== 0 ? lists.listBooksAvailable.length : ''}
-            </span>
+            {lists.listBooksAvailable.length !== 0 ? lists.listBooksAvailable.length : ''}
           </h2>
           <form className={bookFinderAvailableStyles.searchContainer}>
             <label
@@ -209,11 +210,12 @@ export function BookDashboard() {
           className={bookDashboardStyles.bookListSection}
           id={SECTIONS_ID.readingList.id.slice(1)}
         >
-          <h2 className={bookDashboardStyles.bookListSection__title}>
+          <h2
+            className={bookDashboardStyles.bookListSection__title}
+            suppressHydrationWarning={true}
+          >
             Lista de lectura&nbsp;
-            <span suppressHydrationWarning={true}>
-              {lists.readingList.length !== 0 ? lists.readingList.length : ''}
-            </span>
+            {lists.readingList.length !== 0 ? lists.readingList.length : ''}
           </h2>
           {lists.readingList.length !== 0 ? (
             <BookList books={lists.readingList} listType='reading' />
