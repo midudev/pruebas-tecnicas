@@ -2,6 +2,20 @@
 
 Este proyecto, denominado "Midureads", es una propuesta de solución para la prueba técnica [01-reading-list](https://github.com/midudev/pruebas-tecnicas/tree/main/pruebas/01-reading-list) del proyecto [Pruebas técnicas de Programación](https://pruebastecnicas.com/) de [midudev](https://github.com/midudev).
 
+## Requisitos completados
+- ✅ Visualización de libros disponibles
+- ✅ Creación de lista de lectura
+- ✅ Filtrado de libros por género
+- ✅ Sincronización de estado
+- ✅ Persistencia de datos
+- ✅ Sincronización entre pestañas
+- ✅ Despliegue
+- ✅ Test
+- ✅ Búsqueda de libros y autores
+- ✅ Filtrado de libros por número de páginas
+- ✅ Reorganización de los libros en la lista de lectura
+- ✅ Diseño responsive
+
 ## Tecnologías, frameworks y librerías utilizadas
 
 La aplicación ha sido construida utilizando las siguientes tecnologías, frameworks y librerías:
@@ -68,11 +82,11 @@ flowchart TD
 
 Para iniciar el proyecto y levantar el servidor de desarrollo que ofrece Vite, sigue los siguientes pasos:
 
-### Requisitos previos
+**1. Requisitos previos**
 
 Asegúrate de tener instalado Node.js en tu sistema. Puedes descargar la última versión de Node.js desde el sitio [web oficial](https://nodejs.org/).
 
-**1. Pasos para la instalación**
+**2. Pasos para la instalación**
 
 Abre una terminal o línea de comandos en el directorio raíz del proyecto, donde se encuentra el archivo package.json. Ejecuta el siguiente comando para instalar todas las dependencias necesarias:
 
@@ -82,7 +96,7 @@ npm install
 
 Este comando leerá las dependencias definidas en el archivo package.json y descargará e instalará todas las bibliotecas y paquetes necesarios.
 
-**2. Pasos para ejecutar el servidor de desarrollo**
+**3. Pasos para ejecutar el servidor de desarrollo**
 
 Una vez que todas las dependencias se hayan instalado correctamente, puedes iniciar el servidor de desarrollo usando el siguiente comando:
 
