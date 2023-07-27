@@ -9,6 +9,7 @@ export const Sidebar = () => {
     availableBooks,
     listedBooks,
     setOrder,
+    category,
     setCategory,
     pages,
     setPages
@@ -33,12 +34,6 @@ export const Sidebar = () => {
 
     const auxCategories: string[] = []
     availableBooks.map(book => {
-      if (!auxCategories.includes(book.book.genre)) {
-        auxCategories.push(book.book.genre)
-      }
-    })
-
-    listedBooks.map(book => {
       if (!auxCategories.includes(book.book.genre)) {
         auxCategories.push(book.book.genre)
       }
@@ -143,7 +138,9 @@ export const Sidebar = () => {
           <select
             className='p-2 w-full border-1 border-black rounded-sm'
             onChange={e => setCategory(e.target.value)}
+            value={category}
           >
+            <option value=''>Select All</option>
             {categories.map((category, index) => (
               <option key={index}>{category}</option>
             ))}
