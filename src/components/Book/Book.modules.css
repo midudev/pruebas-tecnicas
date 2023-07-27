@@ -1,0 +1,46 @@
+.card{
+    width: 300px;
+    height: 400px;
+    padding: 40px ;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url('../../../public/book1.png') no-repeat center/cover;
+    position: relative;
+    
+    
+}
+
+.divImgBook{
+    position: relative;
+    
+    
+    
+
+}
+
+.imgBook{
+    width: auto;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    align-self: center;
+    border: 10px solid transparent; 
+    border-image: linear-gradient(135deg, #F2E1AE,#F2ECD8,#F2BA52,#BF9F63,#BF7F30) 1;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3), inset 0 5px 15px rgba(0, 0, 0, 0.3);
+    
+}
+
+button{
+    background-color: transparent;
+    border: none;
+}
+
+
+
+
+
+
