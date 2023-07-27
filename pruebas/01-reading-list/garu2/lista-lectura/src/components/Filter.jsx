@@ -1,6 +1,6 @@
 import { useState } from "react";
 //import { filterCat } from "../helpers/filterCat"  
-import { filterTitle } from "../helpers/filterTitle";
+//import { filterTitle } from "../helpers/filterTitle";
 import { getTitles } from "../helpers/getTitles";
 
 const Filter = ({ data, setCategory, category, setData }) => {
