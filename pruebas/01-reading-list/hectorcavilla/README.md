@@ -41,4 +41,4 @@ URL: [http://localhost:3000](http://localhost:3000)
 
 ## Desplegado en Vercel
 
-[Ver Aplicación Libros](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) en acción.
+[Ver Aplicación Libros](https://pruebas-tecnicas-tau.vercel.app/) en acción.
