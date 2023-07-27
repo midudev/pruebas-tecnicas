@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import BookList from './components/BookList'
 import Sidebar from './components/Sidebar'
-import Navbar from './components/navbar'
+import Navbar from './components/Navbar'
 import { useBooksActions } from './hooks/useBooks'
 import SidebarProvider from './hooks/useSidebar.jsx'
 
