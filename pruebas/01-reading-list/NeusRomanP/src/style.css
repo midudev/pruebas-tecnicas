@@ -1,0 +1,277 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+#app{
+  width: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #c5c5c5;
+  color: black;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+
+.gap-10{
+  gap: 10px;
+}
+
+/*HEADER*/
+
+.top-header{
+  text-align: center;
+  border-bottom: 2px solid white;
+  border-image: linear-gradient(to left, transparent 0%, white 10% 90%, transparent 100%) 1;
+}
+
+.top-header .main-title{
+  margin-bottom: 0;
+}
+
+.top-header .logo{
+  display: inline-block;
+  max-width: 90%;
+  width: 400px;
+}
+
+/*Aside scrollbar*/
+.scroll::-webkit-scrollbar {
+  width: 5px;
+  height: 20px;
+}
+
+/* Track */
+.scroll::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 5px 0;
+}
+ 
+/* Handle */
+.scroll::-webkit-scrollbar-thumb {
+  background: #111;
+  box-shadow: inset 0 0 2px #DDD;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+.scroll::-webkit-scrollbar-thumb:hover {
+  background: #000;
+  box-shadow: inset 0 0 2px #DDD;
+}
+
+.aside{
+  width: 320px;
+  height: calc(100vh - 100px);
+  position: sticky;
+  top: 20px;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 0px 20px 20px 20px;
+}
+
+.aside h2{
+  text-align: center;
+  margin-block-end: 0;
+}
+
+.main{
+  flex: 1 1;
+}
+
+.books-wrapper{
+  display: flex;
+  gap: 20px;
+  padding: 40px 20px;
+  
+}
+
+.available-books{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-content: center;
+  gap: 10px;
+}
+
+.reading-books{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  gap: 10px;
+}
+
+.reading-books-scroll{
+  height: calc(100vh - 200px);
+  padding: 10px 5px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.book{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1000px) {
+  .available-books {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 800px) {
+
+  .available-books{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .books-wrapper{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .aside{
+    width: 90%;
+    position: static;
+    margin: auto;
+    padding: 0px 20px 20px 20px;
+    height: fit-content;
+  }
+
+  .reading-books{
+    display: inline-flex;
+  }
+
+  .reading-books-scroll{
+    width: calc(100% - 40px);
+    height: fit-content;
+    padding: 10px 0;
+    margin: auto;
+    overflow-y: visible;
+    overflow-x: scroll;
+  }
+
+  .reading-books .book{
+    width: 120px;
+    aspect-ratio: 2/3;
+  }
+}
+
+@media (max-width: 560px) {
+  .available-books {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+
+/*FORM*/
+.search-title-input{
+  width: 200px;
+  max-width: 90%;
+}
+
+.pages-num-input{
+  appearance: none;
+  height: 5px;
+  background: #111;
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px white;
+}
+
+.pages-num-input::-webkit-slider-thumb{
+  appearance: none;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: radial-gradient(black, white);
+}
+
+.main .header{
+  text-align: center;
+}
+
+.main .header input{
+  margin: auto;
+  font-size: 1.1rem;
+  padding: 5px;
+}
+
+.main .header select{
+  font-size: 1.1rem;
+  padding: 5px;
+}
+
+.main .header .genre-label{
+  font-size: 1.1rem;
+}
+
+.main .header h3{
+  margin-block-start: 0;
+}
+
+.main .header h2{
+  margin-block-end: 0;
+}
