@@ -32,6 +32,12 @@ export function customSlide({duration = 300} = {}){
 
 			new: [
 				{
+					name: 'astroFadeIn',
+					duration: '100ms',
+					easing: 'cubic-bezier(0, 0, 0.2, 1)',
+					fillMode: 'both',
+				},
+				{
 					name: KEY_FRAMES.MOVE_FROM_LEFT,
 					duration: `${duration}ms`,
 					easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
@@ -55,6 +61,12 @@ export function customSlide({duration = 300} = {}){
 			],
 
 			new: [
+				{
+					name: 'astroFadeIn',
+					duration: '100ms',
+					easing: 'cubic-bezier(0, 0, 0.2, 1)',
+					fillMode: 'both',
+				},
 				{
 					name: KEY_FRAMES.MOVE_FROM_RIGHT,
 					duration: `${duration}ms`,
