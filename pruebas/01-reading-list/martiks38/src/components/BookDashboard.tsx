@@ -11,6 +11,7 @@ import homeStyles from '@/assets/styles/Layout/Home.module.css'
 import bookDashboardStyles from '@/assets/styles/Book/BookDashboard.module.css'
 import bookFinderAvailableStyles from '@/assets/styles/Book/BookFinderAvailable.module.css'
 import { filterBook } from '@/helpers/filterBook'
+import { BookDataList } from '@/assets/values'
 
 const initialViews = {
   tabs: { bookListAvailable: true, readingList: true, filters: true },
@@ -20,6 +21,13 @@ const initialViews = {
 export function BookDashboard() {
   const [filterWord, setFilterWord] = useState('')
   const [seeLists, setSeeLists] = useState<typeof initialViews>(initialViews)
+  const [lists, setLists] = useState<{
+    listBooksAvailable: BookDataList
+    readingList: BookDataList
+  }>({
+    listBooksAvailable: [],
+    readingList: []
+  })
   const { range, currentGenre } = useFilters()
   const { listBooksAvailable, readingList } = useBookList()
   const searchId = useId()
@@ -88,20 +96,24 @@ export function BookDashboard() {
     setTimeoutId.current = window.setTimeout(() => setFilterWord(value.trim() || ''), 400)
   }
 
-  const currentListBooksAvailable = listBooksAvailable.filter(({ genre, pages, title }) =>
-    filterBook({
-      currentGenre,
-      genre,
-      maxNumberPages: range.currentNumberPages,
-      pages,
-      title,
-      word: filterWord
-    })
-  )
+  useEffect(() => {
+    const currentListBooksAvailable = listBooksAvailable.filter(({ genre, pages, title }) =>
+      filterBook({
+        currentGenre,
+        genre,
+        maxNumberPages: range.currentNumberPages,
+        pages,
+        title,
+        word: filterWord
+      })
+    )
 
-  const currentReadingList = readingList.filter(({ genre, pages }) =>
-    filterBook({ currentGenre, genre, maxNumberPages: range.currentNumberPages, pages })
-  )
+    const currentReadingList = readingList.filter(({ genre, pages }) =>
+      filterBook({ currentGenre, genre, maxNumberPages: range.currentNumberPages, pages })
+    )
+
+    setLists({ listBooksAvailable: currentListBooksAvailable, readingList: currentReadingList })
+  }, [currentGenre, filterWord, listBooksAvailable, range, readingList])
 
   return (
     <article className={homeStyles.homeMain__bookDashboard}>
@@ -142,7 +154,9 @@ export function BookDashboard() {
         <section className={bookDashboardStyles.bookListSection}>
           <h2 className={bookDashboardStyles.bookListSection__title}>
             Libros disponibles&nbsp;
-            {currentListBooksAvailable.length !== 0 ? currentListBooksAvailable.length : ''}
+            <span suppressHydrationWarning={true}>
+              {lists.listBooksAvailable.length !== 0 ? lists.listBooksAvailable.length : ''}
+            </span>
           </h2>
           <form className={bookFinderAvailableStyles.searchContainer}>
             <label
@@ -160,8 +174,8 @@ export function BookDashboard() {
               onChange={changeFilterWord}
             />
           </form>
-          {currentListBooksAvailable.length !== 0 ? (
-            <BookList books={currentListBooksAvailable} listType='available' />
+          {lists.listBooksAvailable.length !== 0 ? (
+            <BookList books={lists.listBooksAvailable} listType='available' />
           ) : (
             <p className={bookFinderAvailableStyles.searchContainer__message}>
               {filterWord
@@ -175,10 +189,12 @@ export function BookDashboard() {
         <section className={bookDashboardStyles.bookListSection}>
           <h2 className={bookDashboardStyles.bookListSection__title}>
             Lista de lectura&nbsp;
-            {currentReadingList.length !== 0 ? currentReadingList.length : ''}
+            <span suppressHydrationWarning={true}>
+              {lists.readingList.length !== 0 ? lists.readingList.length : ''}
+            </span>
           </h2>
-          {currentReadingList.length !== 0 ? (
-            <BookList books={currentReadingList} listType='reading' />
+          {lists.readingList.length !== 0 ? (
+            <BookList books={lists.readingList} listType='reading' />
           ) : (
             <>
               <p className={bookFinderAvailableStyles.searchContainer__message}>

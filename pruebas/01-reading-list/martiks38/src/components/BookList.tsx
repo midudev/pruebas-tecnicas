@@ -35,7 +35,7 @@ export function BookList({ books, listType }: BookListProps) {
     <ul className={bookListStyles.bookList}>
       {books.map(({ cover, ISBN, title }) => {
         return (
-          <li key={ISBN}>
+          <li key={ISBN} suppressHydrationWarning>
             <figure className={bookListStyles.bookList__item}>
               <div className={bookListStyles.bookList__item__imageContainer}>
                 <Image src={cover} alt={title} width={145} height={217} />
