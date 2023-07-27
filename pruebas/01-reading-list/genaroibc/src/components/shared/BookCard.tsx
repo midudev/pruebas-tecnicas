@@ -20,17 +20,28 @@ export const BookCard = component$(
   }: Book) => {
     const isDragging = useSignal(false)
 
-    useVisibleTask$(() => {
+    useVisibleTask$(({ track, cleanup }) => {
+      track(() => isInReadingList)
+
       if (isInReadingList) return
 
       const el = document.getElementById(ISBN)
       if (!el) return
 
-      el.addEventListener("dragstart", (event: DragEvent) => {
+      const onDragStart = (event: DragEvent) => {
         event.dataTransfer?.setData("text/plain", ISBN)
         isDragging.value = true
+      }
+
+      const onDragEnd = () => (isDragging.value = false)
+
+      el.addEventListener("dragstart", onDragStart)
+      el.addEventListener("dragend", onDragEnd)
+
+      cleanup(() => {
+        el.removeEventListener("dragstart", onDragStart)
+        el.removeEventListener("dragend", onDragEnd)
       })
-      el.addEventListener("dragend", () => (isDragging.value = false))
     })
 
     return (
