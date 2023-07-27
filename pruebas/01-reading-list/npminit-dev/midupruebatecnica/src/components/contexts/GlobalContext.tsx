@@ -39,7 +39,6 @@ export default function GlobalContextProvider({ children }: any): JSX.Element {
 
   ls.on('readList', (newvalue: InterestBook[], old: InterestBook[]) => {
     newvalue !== old && dispatchRl({ type: 'set', payload: newvalue })
-    console.log('lschange')
   })
 
   globalThis.onresize = () => setWWidth(globalThis.innerWidth)
