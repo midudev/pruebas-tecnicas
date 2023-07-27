@@ -13,10 +13,10 @@ type Action = {
 };
 
 const setLocalStorage = (key: string, value: any) =>
-  window.localStorage.setItem(key, JSON.stringify(value));
+  window?.localStorage?.setItem(key, JSON.stringify(value));
 
 const getLocalStorage = (key: string) =>
-  JSON.parse(window.localStorage.getItem(key) ?? "");
+  JSON.parse(window?.localStorage?.getItem(key) ?? "");
 
 const useStore = create<State & Action>((set) => ({
   readingList: getLocalStorage("readingList") ?? [],
