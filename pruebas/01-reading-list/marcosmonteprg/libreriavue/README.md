@@ -65,5 +65,5 @@ minPages:           |Cantidad mínima de páginas. FiltersBar.vue
 
 &emsp;
 
-## Testing.
+## Testing
 El testing fue realizado con JEST sobre el store testeando todos los getters y actions. Se encuentra en \test\library.test.js
