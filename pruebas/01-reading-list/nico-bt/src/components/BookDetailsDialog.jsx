@@ -51,7 +51,7 @@ export default function BookDetailsDialog({ open, setOpen, book, handleClickAddT
       <DialogContent style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
         <div>
           <DialogContentText sx={styleDialogText}>{book?.synopsis}</DialogContentText>
-          <DialogContentText sx={styleDialogText}>Author: {book?.author.name}</DialogContentText>
+          <DialogContentText sx={styleDialogText}>Author: {book?.author?.name}</DialogContentText>
           <DialogContentText sx={styleDialogText}>Genre: {book?.genre}</DialogContentText>
           <DialogContentText sx={styleDialogText}>Year: {book?.year}</DialogContentText>
         </div>
