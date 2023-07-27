@@ -27,3 +27,4 @@ pnpm run build
 ## Extra Tasks:
 
 - ✅ Implementar una funcionalidad de búsqueda en la lista de libros disponibles.
+- ✅ Añade un nuevo filtro para filtrar los libros por número de páginas.

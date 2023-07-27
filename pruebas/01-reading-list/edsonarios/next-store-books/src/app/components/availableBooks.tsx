@@ -17,7 +17,7 @@ export const AvailableBooks = ({ books }: { books: Library[] }) => {
         <div className='flex flex-wrap justify-center'>
             {books.map((item, index) => (
                 <div key={index} className='m-4 cursor-pointer' onClick={() => selectBook(item)}>
-                    <h2>{item.book.title}</h2>
+                    <h2>{item.book.title}  Paginas: {item.book.pages}</h2>
                     <img
                         className='w-64 h-96 rounded-xl'
                         src={item.book.cover} alt={item.book.title}
