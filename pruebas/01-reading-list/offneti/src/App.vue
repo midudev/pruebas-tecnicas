@@ -90,7 +90,7 @@ function deleteFromReadingList(title) {
         <article>
           <div id="main_grid">
             <div v-for="(book, index) in books" :key="book.book.title" class="book_item">
-              <img class="have_hover" :src="book.book.cover" alt="Book" style="width: 200px; height: 300px;"
+              <img class="have_hover" :src="book.book.cover" alt="Book" style="width: 180px; height: 280px;"
                 @click="showBookPopup(book.book)" />
             </div>
           </div>
@@ -214,8 +214,12 @@ footer {
 }
 
 .have_hover:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
   cursor: pointer;
+}
+
+.have_hover {
+  transition: transform .2s ease-in-out;
 }
 
 #logo:hover {
@@ -275,7 +279,6 @@ section {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-gap: 10px;
-
 }
 
 #aside_grid {
@@ -308,18 +311,18 @@ aside {
   height: 822px;
   width: 440px;
   overflow: auto;
-  scale : 0.9;
+  scale: 1;
 }
 
 
 main {
   position: fixed;
-  margin-left: 40px;
+  margin-left: 80px;
   top: 114px;
   background-image: linear-gradient(to right, #2c463a, #42b883, #445e48);
   border-radius: 40px;
   padding: 1%;
-  scale : 0.9;
+  scale: 1;
 }
 
 
@@ -336,7 +339,8 @@ header {
 
 article {
   height: 35vw;
-  overflow: auto;
+  overflow-y: auto;
+  position: sticky;
 }
 
 #navbar_title {
