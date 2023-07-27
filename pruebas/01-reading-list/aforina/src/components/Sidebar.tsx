@@ -43,6 +43,10 @@ export const Sidebar = () => {
     }
   })
 
+  useEffect(() => {
+    setPages(value)
+  }, [value])
+
   const handleDeleteClick = () => {
     setOrder('')
     if (newestRef.current) {
@@ -150,7 +154,6 @@ export const Sidebar = () => {
               value={value}
               onChange={({ target: { value: radius } }) => {
                 onChange(parseInt(radius))
-                setPages(parseInt(radius))
               }}
               className='w-[80%] custom-slider'
             />
@@ -160,7 +163,6 @@ export const Sidebar = () => {
                   const auxPages = pages - 1
                   if (auxPages >= 0) {
                     onChange(auxPages)
-                    setPages(auxPages)
                   }
                 }}
                 className='w-[16px] bg-transparent border-1 border-black rounded-sm'
@@ -173,7 +175,6 @@ export const Sidebar = () => {
                   const auxPages = value + 1
                   if (auxPages <= maxPages) {
                     onChange(auxPages)
-                    setPages(auxPages)
                   }
                 }}
                 className='w-[16px] bg-transparent border-1 border-black rounded-sm'
