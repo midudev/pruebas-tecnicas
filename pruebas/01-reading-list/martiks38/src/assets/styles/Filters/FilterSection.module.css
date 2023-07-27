@@ -1,6 +1,6 @@
 .filterSection {
   display: flex;
-  flex-wrap: wrap-reverse;
+  flex-wrap: wrap;
   gap: 1.5rem 3rem;
   padding: 1em var(--padding-content);
   height: max-content;
@@ -41,13 +41,14 @@
 
 .filterSection__checkGenre {
   /* Hide input:radio without compromising accessibility */
-  clip-path: circle(0);
+  width: 0;
 }
 
 .filterSection__labelGenre {
   padding: 0.2em 0.6em 0.2em 0;
   margin-right: 0.6em;
   color: rgb(255 255 255 / 0.75);
+  text-wrap: nowrap;
 }
 
 .filterSection__checkGenre:checked + .filterSection__labelGenre {
