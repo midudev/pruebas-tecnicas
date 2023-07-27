@@ -21,7 +21,7 @@ export default function Context({ children }) {
   // create the selected books state
   const [librosSeleccionados, setLibrosSeleccionados] = useLocalStorage(
     "seleccionados",
-    "[a]"
+    "[]"
   );
 
   // loads all available books to librosDisponibles on initial load. It could be done from fetch too.
@@ -38,9 +38,6 @@ export default function Context({ children }) {
           !librosSeleccionados?.includes(books.library[i].book.ISBN)
         ) {
           temp.push(books.library[i].book.ISBN);
-          console.log(
-            "for book: " + books.library[i].book.ISBN + "set temp as " + temp
-          );
         }
 
         if (!avGenres.includes(books.library[i].book.genre)) {
@@ -52,7 +49,6 @@ export default function Context({ children }) {
       setLibrosDisponibles(temp);
 
       setGenres(avGenres);
-
 
       setFilteredBooks(temp);
       
