@@ -24,12 +24,22 @@ function useReadingListReducer () {
         type: READINGLIST_ACTION_TYPES.RENDER_READING_LIST,
         payload: readingList
     });
+
+    const moveForwardItem = readingList => dispatch({
+        type: READINGLIST_ACTION_TYPES.MOVE_FORWARD_ITEM,
+        payload: readingList
+    });
     
-    return {state, addToReadingList, removeFromReadingList, clearReadingList, renderReadingList}
+    const moveBackwardItem = readingList => dispatch({
+        type: READINGLIST_ACTION_TYPES.MOVE_BACKWARD_ITEM,
+        payload: readingList
+    });
+    
+    return {state, addToReadingList, removeFromReadingList, clearReadingList, renderReadingList, moveForwardItem, moveBackwardItem}
 }
 
 export function ReadingListProvider({ children }) {    
-    const { state, addToReadingList, removeFromReadingList, clearReadingList, renderReadingList } = useReadingListReducer()
+    const { state, addToReadingList, removeFromReadingList, clearReadingList, renderReadingList, moveForwardItem, moveBackwardItem } = useReadingListReducer()
 
     return (
         <ReadingListContext.Provider value={{
@@ -37,7 +47,9 @@ export function ReadingListProvider({ children }) {
             addToReadingList,
             removeFromReadingList,
             clearReadingList,
-            renderReadingList
+            renderReadingList,
+            moveForwardItem,
+            moveBackwardItem
         }}>
         {children}
         </ReadingListContext.Provider>

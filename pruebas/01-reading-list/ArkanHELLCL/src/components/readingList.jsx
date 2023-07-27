@@ -1,6 +1,6 @@
 import { useId } from "react";
 import { useReadingList } from "../hooks/useReadingList"
-import { ReadingBookIcon, ClearReadingListIcon, DelIcon } from "./icons.jsx";
+import { ReadingBookIcon, ClearReadingListIcon, DelIcon, DownIcon, UpIcon } from "./icons.jsx";
 
 function storageEvent(renderReadingList){
     window.addEventListener('storage', (event) => {
@@ -12,7 +12,7 @@ function storageEvent(renderReadingList){
 
 export function ReadingList() {
     const realingListChkboxId = useId();    
-    const { removeFromReadingList, clearReadingList, renderReadingList, readingList } = useReadingList()    
+    const { removeFromReadingList, clearReadingList, renderReadingList, readingList, moveForwardItem, moveBackwardItem } = useReadingList()    
     storageEvent(renderReadingList)
         
     return (
@@ -21,13 +21,19 @@ export function ReadingList() {
                 <ReadingBookIcon />
                 <div className={`${readingList.length ? 'inline-flex' : 'hidden'} absolute items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900`}>{readingList.length}</div>
             </label>            
-            <input id={realingListChkboxId} type="checkbox" className="hidden peer/listReading" />
+            <input id={realingListChkboxId} type="checkbox" className="hidden peer/listReading" />            
             <aside className="block top-32 w-52 -mr-44 p-8 pl-2 h-full fixed right-0 peer-checked/listReading:mr-0 peer-checked/listReading:p-8 dark:bg-gray-700 bg-gray-300 transition-all text-center dark:bg-opacity-90 bg-opacity-90 hover:mr-0 hover:p-8 z-20 overflow-auto rounded-lg shadow-lg">
                 <ul>                    
                     {readingList.map((item) => (
-                        <li key={item.id} className="first:m-auto -mt-36">
-                            <button className="hover:scale-125 absolute right-8 transition-all text-red-600 p-1" onClick={() => removeFromReadingList(item)}>
+                        <li key={item.id} className="first:m-auto -mt-28 transition-all duration-500 relative">
+                            <button className="hover:scale-125 absolute right-0 transition-all text-red-600 p-1" onClick={() => removeFromReadingList(item)}>
                                 <DelIcon />
+                            </button>
+                            <button className="hover:scale-125 absolute top-0 right-0 -mr-8 transition-all text-green-600 p-1" onClick={() => moveBackwardItem(item)}>
+                                <UpIcon />
+                            </button>
+                            <button className="hover:scale-125 absolute top-6 right-0 -mr-8 transition-all text-green-600 p-1" onClick={() => moveForwardItem(item)}>
+                                <DownIcon />
                             </button>
                             <img
                                 className="w-36 h-52 rounded-lg"
