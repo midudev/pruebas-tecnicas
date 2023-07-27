@@ -5,7 +5,7 @@ interface Item {
 }
 
 export async function getBooks() {
-  return fetch(`http://localhost:3000/api/books`)
+  return fetch(`/api/books`)
     .then((res) => {
       if (!res.ok) {
         throw new Error(res.statusText)
