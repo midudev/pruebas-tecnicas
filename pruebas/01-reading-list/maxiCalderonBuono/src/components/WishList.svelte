@@ -78,15 +78,16 @@
 		</article>
 	{/if}
 	<div
-		class={`grid items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 outline-none ${
+		class={`grid items-center grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8 outline-none ${
 			!dragDisabled ? 'outline-dashed outline-white outline-[3px]' : ''
 		}`}
 		use:dndzone={{ items, dragDisabled, dropTargetStyle }}
 		on:consider={handleConsider}
 		on:finalize={handleFinalize}
 		in:fly={{ y: 100, duration: 500 }}
+		
 	>
-		{#each items as item}
+		{#each items as item(item.id)}
 			<BookCard
 				onDragStyles={item.id === itemSelected ? true : false}
 				{isDragabble}
