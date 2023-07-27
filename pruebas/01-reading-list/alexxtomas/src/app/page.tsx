@@ -10,9 +10,10 @@ import { useFetch } from '@/hooks/useFetch'
 import { getBooks } from '@/services/books'
 import type { Book } from '@/types'
 import { getGenres } from '@/utils/functions'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
-  const booksFromLocalStorage: Book[] | null = JSON.parse(localStorage.getItem('books') as string)
+  const [booksFromLocalStorage, setBooksFromLocalStorage] = useState<Book[] | null>(null)
 
   const {
     data: booksFromApi,
@@ -42,6 +43,10 @@ export default function Home() {
       }
     })
   ]
+
+  useEffect(() => {
+    setBooksFromLocalStorage(JSON.parse(localStorage.getItem('books') as string))
+  }, [])
 
   if (error) {
     return <Error />

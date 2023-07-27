@@ -1,5 +1,5 @@
 import type { Book } from '@/types'
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 
 export interface FiltersContext {
   rangeFilter: number | null
@@ -21,9 +21,13 @@ interface Props {
 export default function FiltersProvider({ children }: Props) {
   const [rangeFilter, setRangeFilter] = useState<number | null>(null)
   const [selectFilter, setSelectFilter] = useState<string | null>(null)
-  const [readingList, setReadingList] = useState<Book[]>(
-    () => JSON.parse(localStorage.getItem('readingList') as string) || []
-  )
+  const [readingList, setReadingList] = useState<Book[]>([])
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setReadingList(JSON.parse(localStorage.getItem('readingList') as string) || [])
+    }
+  }, [])
 
   const updateRangeFilter = (range: number | null) => {
     setRangeFilter(range)

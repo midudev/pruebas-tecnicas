@@ -16,7 +16,7 @@ export function useFetch({ fetch, active, localStorageKey }: Params) {
       fetch()
         .then((data) => {
           setData(data)
-          if (localStorageKey) {
+          if (localStorageKey && typeof window !== 'undefined') {
             localStorage.setItem(localStorageKey, JSON.stringify(data))
           }
         })
