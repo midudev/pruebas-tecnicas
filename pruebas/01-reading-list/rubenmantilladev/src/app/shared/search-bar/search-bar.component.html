@@ -1,0 +1,6 @@
+<div class="search-container">
+  <form id="formSearch" [formGroup]="searchForm" (submit)="searching()">
+    <input id="search" formControlName="inputSearch" name="search" placeholder="Title, author, isbn..." type="text" />
+    <button type="submit" (click)="searching()" >Search</button>
+  </form>
+</div>

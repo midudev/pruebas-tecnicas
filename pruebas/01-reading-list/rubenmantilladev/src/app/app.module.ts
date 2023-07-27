@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { BookComponent } from './shared/book/book.component';
-import { ListBooksComponent } from './components/list-books/list-books.component';
+import { BooksListComponent } from './components/books-list/books-list.component';
+import { SharedModule } from './shared/shared.module';
+import { PagesModule } from './pages/pages.module';
+
 
 @NgModule({
-  declarations: [AppComponent, BookComponent, ListBooksComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  declarations: [AppComponent, BooksListComponent, ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule, PagesModule],
   providers: [],
   bootstrap: [AppComponent],
 })

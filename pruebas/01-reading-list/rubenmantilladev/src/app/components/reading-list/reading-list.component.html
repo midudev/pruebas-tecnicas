@@ -1,0 +1,18 @@
+<aside>
+  <h2>READING LIST</h2>
+  <ul>
+    <li *ngFor="let book of readingBooks">
+      <a
+
+      >
+        <img class="cover" src="{{ book.cover }}" alt="{{ book.title }}" title="{{ book.title }}">
+      </a>
+      <button (click)="removeBookFavorite(book.ISBN)">
+        <img src="../../../assets/icons/remove-favorite.svg" alt="">
+      </button>
+    </li>
+  </ul>
+  <ng-container *ngIf="readingBooks.length === 0">
+    <p class="empty">No hay libros en tu lista de lectura</p>
+  </ng-container>
+</aside>

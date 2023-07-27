@@ -1,1 +1,7 @@
-<router-outlet></router-outlet>
+<app-navbar [ngClass]="{ 'fixed-navbar': isNavbarFixed }"></app-navbar>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<app-footer></app-footer>
+
+<!-- https://www.todostuslibros.com/editorial/sello-editorial -->

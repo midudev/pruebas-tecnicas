@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BookComponent } from './shared/book/book.component';
+import { BooksListComponent } from './components/books-list/books-list.component';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 
 const routes: Routes = [
-  { path: '' , redirectTo: 'home', pathMatch: 'full'},
-  { path: 'home', component: BookComponent }
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: BooksListComponent },
+  { path: 'search', component: SearchPageComponent },
+  { path: 'book/:id', component: BooksListComponent },
+  { path: '**', redirectTo: 'home' },
 ];
 
 @NgModule({

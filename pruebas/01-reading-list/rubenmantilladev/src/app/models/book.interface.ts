@@ -1,3 +1,7 @@
+export interface LibraryBooks {
+  library: [{book: Book}]
+}
+
 export interface Book {
   title: string;
   pages: number;
@@ -12,7 +16,6 @@ export interface Book {
   };
 }
 
-export interface BookData {
-  book: Book;
+export interface BookFavorite extends Book {
+  favorite: boolean;
 }
-

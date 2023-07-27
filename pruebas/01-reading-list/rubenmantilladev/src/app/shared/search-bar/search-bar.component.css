@@ -1,0 +1,34 @@
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  border: 1px solid var(--bg-dark);
+  width: 280px;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.search-container form input {
+  padding-left: 2ch;
+  width: 190px;
+}
+
+.search-container form button {
+  width: 90px;
+  background: var(--btn-bg);
+  color: var(--color);
+  cursor: pointer;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.search-container form button:hover {
+  background: var(--btn-bg-hover);
+}
+
+.search-container form input,
+.search-container form button {
+  height: 2.5rem;
+  border: none;
+  outline: none;
+}
