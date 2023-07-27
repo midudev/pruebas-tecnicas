@@ -21,7 +21,8 @@
     width: 2vh;
     height: 2vh;
     position: relative;
-    right: 0px;
+    top: -4%;
+    left: 92%;
 }
 
 .close-button:hover {

@@ -6,13 +6,14 @@ import { useState } from 'react';
 
 function App() {
 
-  const [alreadyRead, setAlreadyRead] = useState(localStorage.getItem("alreadyRead")? localStorage.getItem("alreadyRead"):[])
+  const [alreadyRead, setAlreadyRead] = useState(localStorage.getItem("alreadyRead") ? JSON.parse(localStorage.getItem("alreadyRead")) : [])
 
-  
+  console.log(alreadyRead)
+
   return (
     <>
-    <AvailableBooks alreadyRead={alreadyRead}/>
-    <ReadBooks alreadyRead={alreadyRead} setAlreadyRead={setAlreadyRead}/>
+      <AvailableBooks alreadyRead={alreadyRead} />
+      <ReadBooks alreadyRead={alreadyRead} setAlreadyRead={setAlreadyRead} />
 
     </>
   );

@@ -28,15 +28,17 @@ function ReadBooks({alreadyRead=[], setAlreadyRead}) {
 
 useEffect(()=>{  
  
-  setFilteredBooks(books.filter(f=>alreadyRead.includes(f.book.ISBN))||[])
-  console.log("filteredBooks:",filteredBooks)
-  
-   localStorage.setItem("alreadyRead", alreadyRead)
-console.log("filtered read books", filteredBooks)
+  setFilteredBooks(books.filter(f=>alreadyRead.includes(f.book.ISBN)))
+  console.log("already read books", alreadyRead) 
+   localStorage.setItem("alreadyRead", JSON.stringify(alreadyRead))
+
 
 }, [alreadyRead])
 
+useEffect(()=>{
 
+  console.log("filtered read books", filteredBooks)
+}, [filteredBooks])
 
 
     return (
