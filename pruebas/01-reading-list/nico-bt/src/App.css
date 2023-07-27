@@ -40,15 +40,17 @@ button {
   z-index: 20;
 }
 .readingList-container ul {
-  margin: 8px;
+  margin: 4px;
   gap: 1rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  height: 150px;
+  min-height: 150px;
 }
 
 .readingList-container li {
   position: relative;
+  width: 102px;
 }
 .readingList-container h2 {
   margin: 0.5rem;

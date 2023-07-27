@@ -31,7 +31,7 @@ function App() {
     <main>
       <UserList minimizeList={minimizeList} setMinimizeList={setMinimizeList} />
 
-      <section style={{ marginTop: !minimizeList && userList.length > 0 ? 216 : 60 }}>
+      <section style={{ marginTop: !minimizeList && userList.length > 0 ? 230 : 60 }}>
         <FilterDiv
           filter={filter}
           setFilter={setFilter}
