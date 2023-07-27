@@ -7,14 +7,14 @@ import styles from './styles/BookShelf.module.css'
 
 export const BookShelf: React.FC = () => {
   return (
-    <div className={styles.BookShelf}>
+    <section className={styles.BookShelf}>
         <PendingBooks />
         <ShelfTable />
-        <div className={styles.ShelfDown}>
+        <section className={styles.ShelfDown}>
           <TitlesContainerCount />
           <FiltersSection />
           <BooksAvailable />
-        </div>
-    </div>
+        </section>
+    </section>
   )
 }

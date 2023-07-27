@@ -13,7 +13,7 @@ export const TitlesContainerCount: React.FC = () => {
     : booksAvailable.filter((book) => book.genre === filtersBooks.genre).length
 
   return (
-    <div className={styles.TitlesContainerCount}>
+    <article className={styles.TitlesContainerCount}>
       <TitleContent
         title='Books Available'
         count={booksAvailable.length}
@@ -24,6 +24,6 @@ export const TitlesContainerCount: React.FC = () => {
         count={countBooksByGenre}
         isTitleGenre={true}
       />
-    </div>
+    </article>
   )
 }

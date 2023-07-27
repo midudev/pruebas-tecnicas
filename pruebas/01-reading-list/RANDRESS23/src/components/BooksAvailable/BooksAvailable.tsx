@@ -8,7 +8,7 @@ export const BooksAvailable: React.FC = () => {
   useSyncStorage()
 
   return (
-    <div className={styles.BooksAvailable}>
+    <section className={styles.BooksAvailable}>
       {
         booksFiltered.map((book) => {
           const { title, author, cover, ISBN } = book
@@ -24,6 +24,6 @@ export const BooksAvailable: React.FC = () => {
           )
         })
       }
-    </div>
+    </section>
   )
 }

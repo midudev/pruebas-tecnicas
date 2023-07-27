@@ -5,12 +5,12 @@ import { CarouselBooks } from '../CarouselBooks'
 
 export const PendingBooks: React.FC = () => {
   return (
-    <div className={styles.ShelfSectionPendingBooks}>
-      <div className={styles.ShelfPendingBooks}>
+    <section className={styles.ShelfSectionPendingBooks}>
+      <article className={styles.ShelfPendingBooks}>
         <TitlesContainer />
         <BookSign />
-      </div>
+      </article>
       <CarouselBooks />
-    </div>
+    </section>
   )
 }

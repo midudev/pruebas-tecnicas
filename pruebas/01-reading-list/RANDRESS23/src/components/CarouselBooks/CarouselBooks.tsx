@@ -9,12 +9,12 @@ export const CarouselBooks: React.FC = () => {
   const { booksToRead, handleRemoveBookToRead } = useDebounceFilters()
 
   return (
-    <div
+    <section
       ref={boxRef}
       className={styles.CarouselBooks}
       style={booksToRead.length > 0 ? { cursor: 'grab' } : { cursor: 'default' }}
     >
-      <motion.div
+      <motion.article
         drag='x'
         dragConstraints={boxRef}
         className={styles.BooksContainer}
@@ -33,7 +33,7 @@ export const CarouselBooks: React.FC = () => {
             )
           })
         }
-      </motion.div>
-    </div>
+      </motion.article>
+    </section>
   )
 }

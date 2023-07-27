@@ -3,8 +3,10 @@ body {
 }
 
 .Library {
+  position: relative;
   padding: 60px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }

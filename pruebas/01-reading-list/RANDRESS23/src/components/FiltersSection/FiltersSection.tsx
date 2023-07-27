@@ -3,10 +3,10 @@ import styles from './styles/FiltersSection.module.css'
 
 export const FiltersSection: React.FC = () => {
   return (
-    <div className={styles.FiltersSection}>
+    <section className={styles.FiltersSection}>
       <InputSearch />
       <SelectGenre />
       <InputRange />
-    </div>
+    </section>
   )
 }
