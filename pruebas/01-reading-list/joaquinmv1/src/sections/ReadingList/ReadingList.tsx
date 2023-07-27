@@ -19,7 +19,7 @@ export const ReadingList = ({
   handleDragLeave,
 }: ReadingProps) => {
   const { readingList, setReadingList, setAvailableBooks, availableBooks } = useBooks();
-  const channel = useChannel()
+  const channel = useChannel();
 
   const clearReadingList = (): void => {
     const newAvailabreBooks = [...availableBooks, ...readingList];

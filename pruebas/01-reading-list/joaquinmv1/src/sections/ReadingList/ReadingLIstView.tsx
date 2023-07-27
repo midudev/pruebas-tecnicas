@@ -41,7 +41,7 @@ export const ReadingListView = ({
           ) : (
             <section>
               <ContainerClearButton>
-                <MainButton title='Clear Books' callback={clearReadingList} />
+                <MainButton title='Borrar Libros' callback={clearReadingList} />
                 <p>Reorganiza tu lista a tu eleccion!</p>
               </ContainerClearButton>
               <UlReading onDrop={(e) => handleDrop(e, 'reading')}>

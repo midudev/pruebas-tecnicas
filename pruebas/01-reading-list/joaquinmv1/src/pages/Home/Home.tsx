@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useBooks } from "../../hooks";
 import { Book } from "../../models/types";
 import { Books, Search } from "../../sections";
-import { H1, Main } from "./";
+import { Main } from "./";
 
 export const Home = () => {
   const [currentCategory, setCurrentCategory] = useState<string>('');
@@ -36,7 +36,6 @@ export const Home = () => {
   return (
     <>
       <Main>
-        <H1>Midudev Challenge 1 - Reading List</H1>
         <Search
           handleChangeCategory={handleChangeCategory}
           handleChangeInput={handleChangeInput}

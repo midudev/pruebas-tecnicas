@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 export const Main = styled.main`
-  margin-block: 1rem;
+  /* margin-block: 1rem; */
 `
 
 export const Layout = styled.div`
@@ -19,7 +19,5 @@ export const Layout = styled.div`
 
 export const H1 = styled.h1`
   text-align: center;
-  color: #ef9517;
-  color: #6D31FA;
   color: #fff;
 `

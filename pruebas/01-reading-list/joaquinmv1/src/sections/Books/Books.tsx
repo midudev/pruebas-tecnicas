@@ -39,8 +39,8 @@ export const Books = ({ newBooks }: BooksProps) => {
     } else {
       setReadingList((prevBooks) => {
         const draggedBook = prevBooks[dragItemIndex];
-        prevBooks[dragItemIndex] = prevBooks[dragOverItemIndex]
-        prevBooks[dragOverItemIndex] = draggedBook
+        prevBooks[dragItemIndex] = prevBooks[dragOverItemIndex];
+        prevBooks[dragOverItemIndex] = draggedBook;
 
         const updateBooksInReading = prevBooks?.filter(b => b.book.ISBN !== book.book.ISBN);
         sendMessage(updateBooksInReading, 'READING_LIST_UPDATE', channel);
