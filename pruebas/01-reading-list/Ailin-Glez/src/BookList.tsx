@@ -37,8 +37,12 @@ function BookList({ readingList, onBookSelection }: Props) {
   }, []);
 
   useEffect(() => {
-    const filteredOnReadingList = readingList.filter((r) => r.genre === filter).length;
-    setBookCount(filteredBooks.length - filteredOnReadingList);
+    if (filter !== "All") {
+      const filteredOnReadingList = readingList.filter((r) => r.genre === filter).length;
+      setBookCount(filteredBooks.length - filteredOnReadingList);
+    } else {
+      setBookCount(DATA.library.length - readingList.length);
+    }
   }, [readingList, filteredBooks, filter]);
 
   return (
