@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import getBooks from './utils/getBooks'
 // CSS
 import './App.css'
+import Dialog from './component/Dialog'
 
 const GENRES_LIST = [
   'Todos',
@@ -72,19 +73,6 @@ function App () {
     alert('Libro añadido a la lista de lectura')
   }
 
-  const removeBookFromReadingList = (book) => {
-    const newReadingList = readingList.filter(item => item.book.ISBN !== book.book.ISBN)
-    setReadingList(newReadingList)
-
-    const filteredBooks = baseBooks.current.filter(book => (
-      !newReadingList.some(item => item.book.ISBN === book.book.ISBN)
-    ))
-    setBooks(filteredBooks)
-    setGenre('Todos')
-
-    alert('Libro eliminado de la lista de lectura')
-  }
-
   const handleFilter = (b) => {
     let filteredBooks = [...b]
 
@@ -117,7 +105,7 @@ function App () {
 
   return (
     <>
-      <section className='books-container'>
+      <section className='books-container' data-testid='books-container'>
         <h1>Listado de libros disponibles</h1>
         <h2>{books.length} libros disponibles</h2>
         <button className='open-modal-btn' onClick={openModal}>
@@ -167,33 +155,15 @@ function App () {
             )}
       </section>
       <section>
-        <dialog id='readingList' ref={dialog}>
-          {readingList.length > 0
-            ? (
-              <>
-                <h2>Lista de lectura</h2>
-                <ul>
-                  {readingList.map((book) => {
-                    const { ISBN, cover, title } = book.book
-                    return (
-                      <li key={ISBN}>
-                        <img
-                          className='cover-img'
-                          src={cover}
-                          alt={title}
-                          onClick={() => removeBookFromReadingList(book)}
-                        />
-                      </li>
-                    )
-                  })}
-                </ul>
-              </>
-              )
-            : (
-              <p>No hay libros en la lista de lectura</p>
-              )}
-          <button onClick={closeModal}>Cerrar</button>
-        </dialog>
+        <Dialog
+          readingList={readingList}
+          dialog={dialog}
+          closeModal={closeModal}
+          setReadingList={setReadingList}
+          baseBooks={baseBooks}
+          setBooks={setBooks}
+          setGenre={setGenre}
+        />
       </section>
     </>
   )
