@@ -2,8 +2,7 @@
   <v-app>   
     <FiltersBar/>
     <TotalsBar />
-    <v-main>    
-       <h1 v-if="name==='xs'">{{name}}</h1>  
+    <v-main>         
       <v-row>   
          <v-col cols="0" sm="1" md="1"></v-col> 
          <v-col cols="6" sm="6" md="6"><BookList /> </v-col> 
