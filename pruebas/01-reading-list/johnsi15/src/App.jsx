@@ -1,15 +1,23 @@
+import { useRef } from 'react'
 import ListBooks from './components/BookList'
 import ReadingList from './components/ReadingList'
 import { useBook } from './hooks/useBook'
 import styles from './App.module.css'
 
 function App () {
-  const { books, readingList, genres, genre, filterByGenre } = useBook()
+  const { books, readingList, genres, genre, pages, filterByGenre, filterByPages } = useBook()
+  const minPages = useRef(Math.min(...books.map(b => b.pages))) // use ref to avoid rerender and keep the initial value
+  const maxPages = useRef(Math.max(...books.map(b => b.pages)))
 
-  const handleFilter = (event) => {
-    // console.log('handleFilter -> ' + event.target.value)
+  const handleFilterGenre = (event) => {
+    // console.log('handleFilterGenre -> ' + event.target.value)
     const genre = event.target.value
     filterByGenre(genre)
+  }
+
+  const handleFilterPages = (event) => {
+    const pages = Number(event.target.value)
+    filterByPages(pages)
   }
 
   return (
@@ -24,12 +32,18 @@ function App () {
           </div>
         </header>
 
-        <div className={styles.genres}>
-          <label htmlFor="genre">Filtrar por género</label>
-          <select id='genre' value={genre} onChange={handleFilter}>
-            <option value="All">Todas</option>
-            {genres.map(genre => (<option key={genre} value={genre}>{genre}</option>))}
-          </select>
+        <div className={styles.filters}>
+          <div className={styles.genres}>
+            <label htmlFor="genre">Filtrar por género</label>
+            <select id='genre' value={genre} onChange={handleFilterGenre}>
+              <option value="All">Todas</option>
+              {genres.map(genre => (<option key={genre} value={genre}>{genre}</option>))}
+            </select>
+          </div>
+          <div className={styles.pages}>
+            <label htmlFor="pages">Filtrar por número de páginas</label>
+            <input type="range" id="pages" value={pages} min={minPages.current} max={maxPages.current} onChange={handleFilterPages} step='1' />
+          </div>
         </div>
         <ListBooks books={books}/>
 

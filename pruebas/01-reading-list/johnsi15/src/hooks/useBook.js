@@ -16,6 +16,7 @@ export function useBook () {
   const removeBook = useBookStore(state => state.removeBook)
 
   const [genre, setGenres] = useState('All')
+  const [pages, setPages] = useState(Math.max(...booksStore.map(b => b.pages)))
   const [books, setBooks] = useState(getBooksLocalStorage().booksLocal || booksStore)
   const [readingList, setReadingList] = useState(getBooksLocalStorage().booksListLocal || readingListStore)
 
@@ -27,16 +28,18 @@ export function useBook () {
       booksLocal = booksStore
     }
 
+    const newBooksLocal = booksLocal.filter(book => book.pages <= pages)
+
     if (genre !== 'All') {
-      const filteredBooks = booksLocal.filter(book => book.genre === genre)
+      const filteredBooks = newBooksLocal.filter(book => book.genre === genre)
       setBooks(filteredBooks)
     } else {
-      setBooks(booksLocal)
+      setBooks(newBooksLocal)
     }
 
     setReadingList(booksListLocal)
     // setBooks(booksLocal)
-  }, [booksStore, readingListStore, genre])
+  }, [booksStore, readingListStore, genre, pages])
 
   useEffect(() => {
     // Create a function to handle changes to localStorage
@@ -65,6 +68,10 @@ export function useBook () {
     setGenres(genre)
   }
 
+  const filterByPages = (pages) => {
+    setPages(pages)
+  }
+
   const handleAddBook = (book) => {
     addBook(book)
     window.localStorage.setItem('readingList', JSON.stringify([...readingList, book]))
@@ -82,7 +89,9 @@ export function useBook () {
     readingList,
     genres,
     genre,
+    pages,
     filterByGenre,
+    filterByPages,
     handleAddBook,
     handleRemoveBook
   }
