@@ -2,6 +2,8 @@
 
 React Book Library es un proyecto frontend desarrollado con React.js. Se trata de una librería virtual donde puedes buscar y seleccionar tus libros favoritos, agregándolos a tu lista personal.
 
+![image](https://github.com/WilerMS/pruebas-tecnicas/assets/70902862/afcfdd18-6969-4a48-8b72-db735a74fd59)
+
 
 
 ## Requisitos previos
