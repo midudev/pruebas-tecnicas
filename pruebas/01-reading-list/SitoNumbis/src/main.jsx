@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 // app
 import App from "./App.jsx";
 
-// contexts
+// providers
 import { LanguageProvider } from "./contexts/LanguageProvider";
 import { LibraryProvider } from "./contexts/LibraryProvider";
 import { FiltersProvider } from "./contexts/FiltersProvider";

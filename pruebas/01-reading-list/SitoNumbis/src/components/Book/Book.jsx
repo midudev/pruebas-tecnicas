@@ -65,7 +65,7 @@ function Book({ title, pages, genre, cover, year, ISBN, author }) {
       <LazyImage
         className="w-full h-full object-cover object-center shadow-[black] shadow-md transition"
         src={cover}
-        alt={`${title}-${languageState.texts.book.cover}`}
+        alt={`${languageState.texts.book.cover} ${title}`}
       />
       <Tippy
         delay={300}

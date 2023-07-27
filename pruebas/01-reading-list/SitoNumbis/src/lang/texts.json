@@ -31,7 +31,8 @@
       "otherBooks": "Otros libros",
       "add": "Agregar",
       "remove": "Remover",
-      "seeCover": "Ver cover"
+      "seeCover": "Ver cover",
+      "cover":"Cover de"
     },
     "ariaLabels": {
       "filterBy": "Filtrar por",
