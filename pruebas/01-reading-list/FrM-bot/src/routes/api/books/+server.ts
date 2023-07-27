@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit'
 import books from '$lib/data/books.json'
-import type { RequestHandler } from './$types'
+import type { Library } from '$lib/types/book.js'
 
 export async function GET<RequestHandler>({ request }) {
   const url = new URL(request?.url)
@@ -9,9 +9,17 @@ export async function GET<RequestHandler>({ request }) {
 
   let listOfBooks = [...books.library]
 
-  if (filters.maxPages || filters.minPages) {
+  if (filters?.q) {
+    // console.log(filters)
+    const text = filters.q.toLocaleLowerCase()
+    listOfBooks = listOfBooks.filter(({ book }) => book.title.toLocaleLowerCase().includes(text))
+  }
+
+  if (filters?.maxPages) {
     listOfBooks = listOfBooks.filter(
-      ({ book }) => book.pages >= Number(filters.minPages || 0) && book.pages <= Number(filters.maxPages)
+      ({ book }) =>
+        book.pages >= Number(filters?.minPages ?? 0) &&
+        book.pages <= Number(filters?.maxPages ?? 1000)
     )
   }
 

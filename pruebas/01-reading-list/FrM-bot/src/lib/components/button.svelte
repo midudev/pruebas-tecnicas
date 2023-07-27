@@ -31,6 +31,6 @@
   </button>
 {:else}
   <button class={classButton} {...props} on:click>
-    <slot><!-- optional fallback --></slot>
+    <slot />
   </button>
 {/if}

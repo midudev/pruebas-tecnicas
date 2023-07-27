@@ -3,9 +3,10 @@ import { APIPaths, baseUrl } from './urls'
 
 interface Props {
   queries: {
-    minPages: number
-    maxPages: number
-    genre: string
+    minPages?: number
+    maxPages?: number
+    genre?: string
+    q?: string
   }
 }
 
@@ -15,7 +16,7 @@ export async function getBooks({ queries }: Props) {
 
   Object.entries(queries).forEach(([key, value]) => {
     if (value) {
-        params.append(key, String(value))
+      params.append(key, String(value))
     }
   })
 
@@ -23,11 +24,11 @@ export async function getBooks({ queries }: Props) {
   try {
     const res = await fetch(url)
     if (!res.ok) {
-        throw Error('Fetch error')
+      throw Error('Fetch error')
     }
     const { data }: { data: Library[] } = await res.json()
     return {
-        books: data
+      books: data
     }
   } catch (error) {
     console.error(error)

@@ -4,7 +4,7 @@
 
   const variants = {
     gradient:
-      'border-2 py-[.2em] px-[.6em] rounded-md shadow-xl shadow-black/40 border-transparent [background:linear-gradient(to_right,rgb(var(--dark-v1)),rgb(var(--dark-v1)))_padding-box,linear-gradient(to_right,rgb(var(--dark-v1)),rgb(var(--primary)))_border-box]',
+      'border-2 py-[.2em] px-[.6em] grid place-content-center rounded-md shadow-lg shadow-black/40 border-transparent [background:linear-gradient(to_right,rgb(var(--dark-v1)),rgb(var(--dark-v1)))_padding-box,linear-gradient(to_right,rgb(var(--secondary)),rgb(var(--primary)))_border-box]',
     default: '',
     text: 'hover:[text-shadow:white_2px_-2px] hover:text-white/30 duration-200',
     rounded: 'px-6 py-1 rounded-full grid place-content-center hover:bg-dark-v2 duration-200'

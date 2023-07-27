@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { SvelteHTMLElements } from 'svelte/elements'
 	import { classNamesJoin } from '$lib/utils/classNamesJoin'
 
 	const variants = {
@@ -10,7 +9,7 @@
 	}
 
     export let variant: keyof typeof variants = 'default'
-	export let tag: 'div' | 'h1' | 'h2' | 'h3' | 'label' | 'span' = 'div'
+	export let tag: 'div' | 'h1' | 'h2' | 'h3' | 'label' | 'span' | 'article' = 'div'
 	let className = ''
 
 	export { className as class }

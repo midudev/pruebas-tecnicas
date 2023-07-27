@@ -1,7 +1,6 @@
 <script lang="ts">
   import ButtonBookmark from './buttonBookmark.svelte'
   import type { Bookmark } from '$lib/store/bookmark'
-
   import Card from './card.svelte'
   import Link from './link.svelte'
   import { LocalRotes } from '$lib/utils/routes'
@@ -10,11 +9,11 @@
 </script>
 
 <!-- <Link href='/' variant='gradient'> -->
-<Card class="[--opacity:0] relative hover:[--opacity:1]">
+<Card tag='article' class="[--opacity:0] relative hover:[--opacity:1] max-w-[230px]">
   <ButtonBookmark {book} />
-  <picture class="rounded relative grid overflow-hidden">
+  <picture class="rounded relative grid overflow-hidden h-full">
     <img
-      class="sm:h-80 h-72 aspect-[4/2] w-full flex object-cover duration-200"
+      class="aspect-[4/2] sm:h-[350px] xs:h-[280px] h-[300px] flex object-cover duration-200"
       src={book.cover}
       alt={book.title}
       loading="lazy"

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import ButtonBookmark from '$lib/components/buttonBookmark.svelte'
   import Card from '$lib/components/card.svelte'
   import type { PageData } from './$types'
   import Button from '$lib/components/button.svelte'
@@ -75,8 +74,6 @@
 </h2>
 
 <form
-  method="POST"
-  action="?/filter"
   on:submit|preventDefault={handlerApplyFilters}
   class="flex gap-2 flex-wrap my-4 bg-gradient-to-r from-dark-v1 to-transparent rounded border-l border-primary p-2"
 >
@@ -150,7 +147,9 @@
   </div>
 </form>
 
-<div class="grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-2">
+<section
+  class="grid xs:grid-cols-[repeat(auto-fit,minmax(190px,1fr))] sm:grid-cols-[repeat(auto-fit,minmax(210px,1fr))] grid-cols-[repeat(auto-fit,minmax(170px,1fr))] gap-4 my-4"
+>
   {#each books as { book }}
     <BookCard
       book={{
@@ -163,4 +162,4 @@
       }}
     />
   {/each}
-</div>
+</section>
