@@ -5,7 +5,7 @@
         "title": "El Señor de los Anillos",
         "pages": 1200,
         "genre": "Fantasía",
-        "cover": "./public/img/ElSeñordelosAnillos.webp",
+        "cover": "public/61439040.jpg",
         "synopsis": "Una aventura épica en un mundo de fantasía llamado la Tierra Media.",
         "year": 1954,
         "ISBN": "978-0618640157",
