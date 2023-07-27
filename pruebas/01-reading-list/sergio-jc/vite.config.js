@@ -17,5 +17,8 @@ export default defineConfig({
       '@utils': '/src/utils',
       '@': '/src'
     }
+  },
+  test: {
+    environment: 'happy-dom'
   }
 })
