@@ -1,0 +1,16 @@
+.BookDetsList.dark {
+
+}
+
+.BookDetsListRoot.dark {
+
+}
+
+.BookDetsPropName.dark {
+  color: var(--dark-font-1);
+}
+
+.BookDetsPropValue.dark {
+  color: var(--dark-font-1);
+}
+

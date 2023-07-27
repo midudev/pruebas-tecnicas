@@ -1,0 +1,55 @@
+#logo_container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: 40% 20% 40%;
+  width: 145px;
+  height: 46px;
+}
+
+#logo_firstword {
+  align-self: center;
+  justify-self: end;
+}
+
+#logo_secondword {
+  align-self: center;
+  justify-self: start;
+}
+
+#logo_icon_container {
+
+}
+
+#logo_icon {
+  position: relative;
+  height: 110%;
+  width: 110%;
+  right: 5%;
+  color: #5d5d5d;
+  border-radius: 50%;
+  top: 0;
+}
+
+#logo_firstword, #logo_secondword {
+  display: flex;
+  font-family: "josefin-sans", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  text-align: center;
+  font-size: 17px;
+  color: #404040;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* dark */
+
+#logo_icon.dark {
+  color: var(--dark-font-3);
+}
+
+#logo_firstword.dark, #logo_secondword.dark {
+  color: var(--dark-font-1)
+}

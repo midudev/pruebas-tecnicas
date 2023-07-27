@@ -1,0 +1,61 @@
+#content {
+  padding: 10px 2px;
+  min-height: 100vh;
+}
+
+#content.light {
+  background-color: rgb(242, 242, 242);
+}
+
+div > ul.ant-menu.light {
+  background-color: #edf3ff;
+}
+
+div > div > ul.dark,
+li.ant-menu-overflow-item.ant-menu-item.ant-menu-item-selected.ant-menu-item-only-child.dark > span,
+ul > li.ant-menu-overflow-item.ant-menu-item.ant-menu-item-selected.ant-menu-item-only-child.dark > span::after
+
+{
+  background-color: var(--dark-background-2);
+  color: var(--dark-font-4);
+}
+
+#root > div > div > ul > li.dark ,
+li.dark.ant-menu-overflow-item.ant-menu-submenu.ant-menu-submenu-horizontal.Menu_Mobile_Header.dark.ant-menu-submenu-selected > div > span.ant-menu-title-content,
+li.dark.ant-menu-overflow-item.ant-menu-submenu.ant-menu-submenu-horizontal.Menu_Mobile_Header.dark.ant-menu-submenu-selected > div > span.anticon.anticon-bars.ant-menu-item-icon > svg
+{
+  color: var(--dark-font-1);
+  
+}
+
+body > div > div.dark > .ant-menu.ant-menu-sub.ant-menu-vertical {
+  background-color: var(--dark-background-4) !important;
+  color: var(--dark-font-2);
+}
+
+#rc-menu-uuid-97774-1-MenuMobile-popup > li:hover {
+  background-color: var(--dark-background-3);
+  color: var(--dark-font-2);
+}
+
+div.dark > #rc-menu-uuid-51993-1-MenuMobile-popup > li:hover {
+  background-color: var(--dark-background-2);
+  color: white;
+}
+
+#rc-menu-uuid-51993-1-MenuMobile-popup > li.ant-menu-item.ant-menu-item-selected.dark {
+  background-color: rgb(209, 209, 209);
+  color: var(--dark-pending-2);
+}
+
+#content.dark {
+  background: linear-gradient(90deg, var(--dark-background-3), var(--dark-background-4), var(--dark-background-3));
+}
+
+.Menu_Mobile_Item.dark > ul > li:hover {
+  color: white var(--dark-font-1) !important;
+  background-color: var(--dark-background-3) !important;
+}
+
+
+

@@ -1,0 +1,24 @@
+#SBs-container {
+  float: left;
+}
+
+.AlphabeticalSort {
+  
+}
+
+.AgeSorting {
+
+}
+
+button.dark.ant-switch-checked, button.dark.ant-switch-inner {
+  background-color: var(--dark-background-3) !important;
+} 
+
+button.dark.ant-switch-checked:hover, button.dark.ant-switch-inner:hover {
+  background-color: var(--dark-background-4) !important;
+}
+
+button.dark {
+  box-shadow: 0px 0px 4px var(--dark-font-1);
+}
+

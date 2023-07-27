@@ -1,0 +1,1 @@
+export type SectionSelected = 'booklist' | 'readlist' |'about'
