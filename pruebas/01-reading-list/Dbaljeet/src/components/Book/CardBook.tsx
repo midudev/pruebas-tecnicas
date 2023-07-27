@@ -38,7 +38,7 @@ const CardBook = ({ book, left, MoveBook, isDragging }: Props) => {
     <section
       draggable
       id="Card"
-      className={`flex flex-col justify-center items-center border-opacity-20 relative rounded-[14px] w-full object-cover py-5 m-auto hover:scale-105 transition-transform duration-200 ${stylesDrag}`}
+      className={`sm:[&>#viewInfo]:hover:animate-pulse flex flex-col justify-center items-center border-opacity-20 relative rounded-[14px] w-full object-cover py-5 m-auto hover:scale-105 transition-transform duration-200  ${stylesDrag}`}
     >
       <h2 className="w-full p-3 font-semibold text-start">{book.title}</h2>
       <img
@@ -46,6 +46,7 @@ const CardBook = ({ book, left, MoveBook, isDragging }: Props) => {
         className="w-full h-[300px] m-auto"
         draggable={false}
         src={book.cover}
+        alt={book.title}
       />
       <h3>{book.genre}</h3>
       <h4 className="absolute bottom-0 right-2">
@@ -62,6 +63,9 @@ const CardBook = ({ book, left, MoveBook, isDragging }: Props) => {
       )}
 
       <button
+        id="viewInfo"
+        data-testid="viewInfo"
+        name={viewMoreInfo ? 'Ocultar' : 'Ver más'}
         onClick={(ev) => handleInfoExtra(ev)}
         className={`p-2 transition-transform duration-300  ${
           viewMoreInfo
@@ -73,10 +77,10 @@ const CardBook = ({ book, left, MoveBook, isDragging }: Props) => {
       </button>
 
       <button
-        className={`absolute top-3 right-5 transition-colors duration-500 ${
+        className={` bg-opacity-5 absolute top-0 right-0 p-3 rounded-tr-[14px] transition-colors duration-500 ${
           left
-            ? 'text-white hover:text-red-500'
-            : 'text-red-500 hover:text-white'
+            ? 'text-white hover:text-red-700'
+            : 'text-red-700 hover:text-white'
         }`}
         title={`${
           left

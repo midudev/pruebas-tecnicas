@@ -48,8 +48,9 @@ const PrincipalForm = ({
         </span>
 
         <span className="flex flex-col">
-          <label>Filtra por el número de páginas</label>
+          <label htmlFor="numberOfPages">Filtra por el número de páginas</label>
           <input
+            id="numberOfPages"
             onChange={(ev) => handleInputPages(ev.target.value)}
             type="range"
             min={0}
@@ -76,7 +77,7 @@ const PrincipalForm = ({
 
       <button
         onClick={() => resetValues()}
-        className="text-gray-300 hover:text-white duration-500 transition-colors mt-5"
+        className="text-gray-400 hover:text-white duration-500 transition-colors mt-5 w-[30px] h-[30px]"
         title="Elimina los filtros"
       >
         <Dump />
