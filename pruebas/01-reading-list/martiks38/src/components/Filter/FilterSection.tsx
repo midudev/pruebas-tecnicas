@@ -1,4 +1,4 @@
-import { Fragment, useId } from 'react'
+import { Fragment, useEffect, useId } from 'react'
 import { useFilters } from '@/hooks/useFilters'
 
 import { genres } from '@/assets/values'
@@ -39,7 +39,7 @@ export function FilterSection() {
                 value={genre}
                 className={filterStyles.filterSection__checkGenre}
                 checked={genre === currentGenre}
-                onChange={changeCurrentGenre}
+                onChange={(ev) => changeCurrentGenre(ev)}
               />
               <label
                 htmlFor={`${filterID}-${genre}`}
