@@ -133,7 +133,7 @@
 	/>
 
 	<section class="my-10 mx-auto max-w-5xl w-full">
-		<header class="flex gap-3 items-center mb-10 justify-between mx-5 lg:mx-0">
+		<header class="flex flex-col md:flex-row gap-3 items-center mb-10 justify-between mx-5 lg:mx-0">
 			<h1 class="font-bold text-xl lg:text-5xl flex gap-3 items-center">
 				{show === 'library' ? ' Nuestra librería' : 'Lista de lectura'}<Icon
 					icon="ion:book-outline"
@@ -161,8 +161,11 @@
 				>
 			</RadioGroup>
 		</header>
-		{#if $initialDataStore.renderlist.length === 0}
-			<article class="flex flex-col items-center justify-center gap-5 mx-5 lg:mx-0">
+		{#if $initialDataStore.renderlist.length === 0 && show === 'library'}
+			<article
+				class="flex flex-col items-center justify-center gap-5 mx-5 lg:mx-0"
+				in:fly={{ y: 200, duration: 500 }}
+			>
 				<img class="w-[600px]" src="/images/library.png" alt="Imagen de wishlist" />
 				<p class="font-bold text-3xl text-center">No hay libros para mostrar</p>
 
@@ -175,7 +178,7 @@
 		{/if}
 		{#if show === 'library'}
 			<div
-				class="grid items-center grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8"
+				class="grid items-center grid-cols-1 mx-14 md:mx-0 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8"
 				in:fly={{ y: 200, duration: 500 }}
 			>
 				{#each $initialDataStore.renderlist as { book }}
