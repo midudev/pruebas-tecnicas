@@ -50,8 +50,9 @@ and open http://localhost:3000 🌺.
 - [Typescript](https://www.typescriptlang.org/) - Strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.
 - [UnoCSS](https://unocss.dev/) - Instant On-demand Atomic CSS Engine.
 - [Zustand](https://zustand-demo.pmnd.rs/) - To control the state and local storage of the application.
-- [Wouter](https://www.npmjs.com/package/wouter)- Tiny router for modern React and Preact apps that relies on Hooks.
+- [Wouter](https://www.npmjs.com/package/wouter) - Tiny router for modern React and Preact apps that relies on Hooks.
+- [Vitest](https://vitest.dev/) - Blazing Fast Unit Test Framework.
 
 ## Deployment
 
-Vercel: librafory.vercel.app/
+Vercel: https://librafory.vercel.app/

@@ -1,31 +1,31 @@
 @font-face {
   font-family: 'subjectivity';
   font-weight: 400;
-  src: url('./font/subjectivity/Subjectivity-Regular.woff2') format('woff2');
+  src: url('/font/subjectivity/Subjectivity-Regular.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'subjectivity';
   font-weight: 500;
-  src: url('./font/subjectivity/Subjectivity-Medium.woff2') format('woff2');
+  src: url('/font/subjectivity/Subjectivity-Medium.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'subjectivity';
   font-weight: 700;
-  src: url('./font/subjectivity/Subjectivity-Bold.woff2') format('woff2');
+  src: url('/font/subjectivity/Subjectivity-Bold.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'subjectivity';
   font-weight: 800;
-  src: url('./font/subjectivity/Subjectivity-ExtraBold.woff2') format('woff2');
+  src: url('/font/subjectivity/Subjectivity-ExtraBold.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'subjectivity';
   font-weight: 900;
-  src: url('./font/subjectivity/Subjectivity-Black.woff2') format('woff2');
+  src: url('/font/subjectivity/Subjectivity-Black.woff2') format('woff2');
 }
 
 label,

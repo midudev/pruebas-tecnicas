@@ -20,11 +20,12 @@ import Grid from './dnd/Grid'
 import SortableItem from './dnd/SortableItem'
 import Item from './dnd/Item'
 
-import { useBooks } from '../store/useBooks'
+import { useBooks, useListedBooks } from '../store/useBooks'
 import { BookProps } from './Book'
 
 export const BooksList: FC = () => {
   const { listedBooks, addCompleteList } = useBooks()
+  const { listedIds, addNewList } = useListedBooks()
   const [activeId, setActiveId] = useState<string | null>(null)
 
   const sensors = useSensors(
@@ -49,6 +50,10 @@ export const BooksList: FC = () => {
         const newIndex = map.indexOf(over!.id.toString())
 
         const items = arrayMove(listedBooks, oldIndex, newIndex)
+
+        const test = items.map(({ book }) => book.ISBN)
+
+        addNewList(test)
         addCompleteList(items)
       }
 
