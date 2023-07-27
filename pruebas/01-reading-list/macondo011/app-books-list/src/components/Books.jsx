@@ -24,7 +24,7 @@ import { useReadingList } from '../hooks/useReadingList'
       verificamos si ya está en la readingList 
       utilizando el método some. Si el libro ya 
       está en la lista de lectura, no se renderizará 
-      en la vista de Books, evitando así que aparezca duplicado. */ }
+      en la vista de Books, evitando así que aparezca duplicado. */}
           {books.map((book) => (
             !readingList.some((item) => item.book.ISBN === book.book.ISBN) && (
               <li key={book.book.ISBN} onClick={() => addToReadingList(book)}>

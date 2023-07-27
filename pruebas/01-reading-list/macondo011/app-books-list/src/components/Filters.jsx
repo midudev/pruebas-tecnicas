@@ -8,7 +8,6 @@ export function Filters() {
   // se destructura el hook useLibraryFilters
   const { filters, setFilters } = useLibraryFilters()
 
-  //
   const minPagesFilterId = useId()
   const genreFilterId = useId()
 
