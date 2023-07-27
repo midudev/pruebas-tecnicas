@@ -8,7 +8,6 @@ import {
   removeFavorite,
   setIsModal,
   saveLocalStorage,
-  getLocalStorage,
 } from "../store/slices/WhatABook/";
 import { Modal } from "./Modal";
 import { useEffect } from "react";
