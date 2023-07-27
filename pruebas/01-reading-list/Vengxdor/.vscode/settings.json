@@ -1,3 +1,13 @@
 {
-   "liveServer.settings.port": 5501
+   "liveServer.settings.port": 5501,
+   "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/Thumbs.db": true,
+      ".vscode": true
+   },
+   "explorerExclude.backup": {}
 }
