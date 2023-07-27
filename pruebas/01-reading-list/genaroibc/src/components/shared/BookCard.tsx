@@ -23,10 +23,13 @@ export const BookCard = component$(
     useVisibleTask$(({ track, cleanup }) => {
       track(() => isInReadingList)
 
-      if (isInReadingList) return
+      if (isInReadingList) {
+        isDragging.value = false
+        return
+      }
 
-      const el = document.getElementById(ISBN)
-      if (!el) return
+      const $bookCard = document.getElementById(ISBN)
+      if (!$bookCard) return
 
       const onDragStart = (event: DragEvent) => {
         event.dataTransfer?.setData("text/plain", ISBN)
@@ -35,12 +38,12 @@ export const BookCard = component$(
 
       const onDragEnd = () => (isDragging.value = false)
 
-      el.addEventListener("dragstart", onDragStart)
-      el.addEventListener("dragend", onDragEnd)
+      $bookCard.addEventListener("dragstart", onDragStart)
+      $bookCard.addEventListener("dragend", onDragEnd)
 
       cleanup(() => {
-        el.removeEventListener("dragstart", onDragStart)
-        el.removeEventListener("dragend", onDragEnd)
+        $bookCard.removeEventListener("dragstart", onDragStart)
+        $bookCard.removeEventListener("dragend", onDragEnd)
       })
     })
 
