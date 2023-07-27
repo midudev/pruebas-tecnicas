@@ -9,11 +9,18 @@
     "start": "next start"
   },
   "dependencies": {
+    "@next/font": "^13.4.10",
     "@t3-oss/env-nextjs": "^0.3.1",
+    "clsx": "^2.0.0",
+    "framer-motion": "^10.12.22",
     "next": "^13.4.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "zod": "^3.21.4"
+    "react-select": "^5.7.4",
+    "swiper": "^10.0.4",
+    "tailwind-merge": "^1.13.2",
+    "zod": "^3.21.4",
+    "zustand": "^4.3.9"
   },
   "devDependencies": {
     "@types/eslint": "^8.37.0",
