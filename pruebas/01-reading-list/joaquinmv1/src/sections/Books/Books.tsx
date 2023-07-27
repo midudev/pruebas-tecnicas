@@ -15,18 +15,16 @@ const target = 'available';
 export const Books = ({ newBooks }: BooksProps) => {
   const [dragItemIndex, setDragItemIndex] = useState<number>(0);
   const [dragOverItemIndex, setDragOverItemIndex] = useState<number>(0);
-
   const { readingList, setAvailableBooks, setReadingList, availableBooks } = useBooks();
   const channel = useChannel();
 
   const moveBookToAvailableList = (book: Book): void => {
-    const isBookInReadingList = readingList.some(e => e.book.title === book.book.title);
     const updatedAvailableBooks = availableBooks.filter(b => b.book.ISBN !== book.book.ISBN);
-    const condition = isBookInReadingList ? readingList : [...readingList, book];
-
     setAvailableBooks(updatedAvailableBooks);
     sendMessage(updatedAvailableBooks, 'AVAILABLE_BOOKS_UPDATE', channel);
 
+    const isBookInReadingList = readingList.some(e => e.book.title === book.book.title);
+    const condition = isBookInReadingList ? readingList : [...readingList, book];
     setReadingList(condition);
     sendMessage(condition, 'READING_LIST_UPDATE', channel);
   };
@@ -39,19 +37,17 @@ export const Books = ({ newBooks }: BooksProps) => {
       setAvailableBooks(updateAvailable);
       sendMessage(updateAvailable, 'AVAILABLE_BOOKS_UPDATE', channel);
     } else {
-      setReadingList((prevBooks: Book[]) => {
-        const dragItem = prevBooks[dragItemIndex];
-        prevBooks.splice(dragItemIndex, 1)[0];
-        prevBooks.splice(dragOverItemIndex, 0, dragItem);
-        
+      setReadingList((prevBooks) => {
+        const draggedBook = prevBooks[dragItemIndex];
+        prevBooks[dragItemIndex] = prevBooks[dragOverItemIndex]
+        prevBooks[dragOverItemIndex] = draggedBook
+
         const updateBooksInReading = prevBooks?.filter(b => b.book.ISBN !== book.book.ISBN);
         sendMessage(updateBooksInReading, 'READING_LIST_UPDATE', channel);
         return updateBooksInReading;
-      }
-      );
+      });
 
       const updatedAvailableBooks = [...availableBooks, book];
-
       setAvailableBooks(updatedAvailableBooks);
       sendMessage(updatedAvailableBooks, 'AVAILABLE_BOOKS_UPDATE', channel);
     }
@@ -74,8 +70,8 @@ export const Books = ({ newBooks }: BooksProps) => {
   const handleDropBook = (e: React.DragEvent<HTMLElement>, target: string): void => {
     const data = e.dataTransfer.getData("book");
     const book = JSON.parse(data) as Book;
-    moveBook(book, target);
 
+    moveBook(book, target);
     removeDragOverClass(e, "dropzone", "dragover");
   };
 
@@ -89,15 +85,11 @@ export const Books = ({ newBooks }: BooksProps) => {
     removeDragOverClass(e, "dropzone", "dragover");
   }
 
-  const handleDragEnd = () => {
-    setDragItemIndex(0);
-    setDragOverItemIndex(0);
-  }
-
   useEffect(() => {
     window.localStorage.setItem('reading', JSON.stringify(readingList));
     window.localStorage.setItem('available', JSON.stringify(availableBooks));
   }, [readingList, availableBooks]);
+
 
   return (
     <>
@@ -114,7 +106,6 @@ export const Books = ({ newBooks }: BooksProps) => {
           handleDragStart={handleDragStart}
           handleDragEnter={handleDragEnter}
           handleDragLeave={handleDragLeave}
-          handleDragEnd={handleDragEnd}
         />
       </Layout>
     </>

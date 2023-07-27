@@ -3,4 +3,4 @@ export const removeDragOverClass = (e: React.DragEvent<HTMLElement>, classname: 
   if (targetElement.classList.contains(classname)) {
     targetElement.classList.remove(remove);
   }
-}
+};

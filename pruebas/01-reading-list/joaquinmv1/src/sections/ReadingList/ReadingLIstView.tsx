@@ -11,7 +11,6 @@ interface Props {
   handleDragStart: (e: React.DragEvent<HTMLLIElement>, book: Book, index: number) => void;
   handleDragEnter: (e: React.DragEvent<HTMLElement>, index: number) => void;
   handleDragLeave: (e: React.DragEvent<HTMLElement>) => void;
-  handleDragEnd: (e: React.DragEvent<HTMLElement>) => void;
 }
 
 export const ReadingListView = ({
@@ -23,7 +22,6 @@ export const ReadingListView = ({
   handleDrop,
   handleDragEnter,
   handleDragLeave,
-  handleDragEnd
 }: Props) => {
   return (
     <>
@@ -44,6 +42,7 @@ export const ReadingListView = ({
             <section>
               <ContainerClearButton>
                 <MainButton title='Clear Books' callback={clearReadingList} />
+                <p>Reorganiza tu lista a tu eleccion!</p>
               </ContainerClearButton>
               <UlReading onDrop={(e) => handleDrop(e, 'reading')}>
                 {readingList?.map((book, i) => (
@@ -52,7 +51,6 @@ export const ReadingListView = ({
                     draggable
                     onDragStart={(e) => handleDragStart(e, book, i)}
                     onDragEnter={(e) => handleDragEnter(e, i)}
-                    onDragEnd={handleDragEnd}
                   >
                     <img src={book.book.cover} alt={`${book.book.title} in Reading List`} />
                     <InfoBook>

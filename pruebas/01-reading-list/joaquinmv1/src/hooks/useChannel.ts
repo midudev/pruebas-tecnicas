@@ -39,7 +39,6 @@ export const useChannel = (): BroadcastChannel | null => {
       }
     };
 
-    // Limpiar suscripción existente antes de suscribirse nuevamente
     channel.removeEventListener('message', messageListener);
     channel.addEventListener('message', messageListener);
 

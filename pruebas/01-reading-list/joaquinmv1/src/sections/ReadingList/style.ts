@@ -20,6 +20,10 @@ export const ContainerReadingList = styled.div`
   span {
     color: #695EFF;
   }
+
+  @media screen and (max-width: 850px){
+    display: none;
+  }
 `
 
 export const SectionReading = styled.section`
@@ -42,6 +46,8 @@ export const SectionReading = styled.section`
     background-color: #c2c2c2;
     border-radius: 4px; 
   }
+
+
 `
 
 export const UlReading = styled.ul`
@@ -51,10 +57,14 @@ export const UlReading = styled.ul`
   text-align: center;
   flex-wrap: wrap;
   gap: 10px;
+
+  @media screen and (max-width: 850px){
+    display: none;
+  }
   `
 export const List = styled.li`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   color: #fff;
   width: 100%;
@@ -95,6 +105,14 @@ export const List = styled.li`
 export const ContainerClearButton = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: .2rem 0;
+  gap: 10px;
+
+  p{
+    font-weight: bold;
+  }
 `
 
 export const InfoBook = styled.div`

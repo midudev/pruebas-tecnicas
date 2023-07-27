@@ -22,6 +22,11 @@ export const SectionBooks = styled.section`
   span {
     color: #695EFF;
   }
+
+  
+  @media screen and (max-width: 850px){
+    width: 50%;
+  }
 `
 
 export const UlList = styled.ul`

@@ -3,4 +3,4 @@ export const addDragOverClass = (e: React.DragEvent<HTMLElement>, classname: str
   if (targetElement.classList.contains(classname)) {
     targetElement.classList.add(add);
   }
-}
+};

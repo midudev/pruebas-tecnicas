@@ -6,7 +6,6 @@ export interface Book {
     cover: string;
     synopsis: string;
     year: number;
-    position: number;
     ISBN: string;
     author: {
       name: string;

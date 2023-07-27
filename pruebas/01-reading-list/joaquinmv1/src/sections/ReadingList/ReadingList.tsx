@@ -1,5 +1,6 @@
 import { ReadingListView } from ".";
-import { useBooks } from "../../hooks";
+import { sendMessage } from "../../helpers";
+import { useBooks, useChannel } from "../../hooks";
 import { Book } from "../../models/types";
 
 export interface ReadingProps {
@@ -8,7 +9,6 @@ export interface ReadingProps {
   handleDragStart: (e: React.DragEvent<HTMLElement>, book: Book, index:number) => void;
   handleDragEnter: (e: React.DragEvent<HTMLElement>, index: number) => void;
   handleDragLeave: (e: React.DragEvent<HTMLElement>) => void;
-  handleDragEnd: (e: React.DragEvent<HTMLElement>) => void;
 }
 
 export const ReadingList = ({
@@ -17,9 +17,9 @@ export const ReadingList = ({
   handleDragStart,
   handleDragEnter,
   handleDragLeave,
-  handleDragEnd
 }: ReadingProps) => {
   const { readingList, setReadingList, setAvailableBooks, availableBooks } = useBooks();
+  const channel = useChannel()
 
   const clearReadingList = (): void => {
     const newAvailabreBooks = [...availableBooks, ...readingList];
@@ -27,6 +27,9 @@ export const ReadingList = ({
 
     setAvailableBooks(newAvailabreBooks);
     setReadingList(clearList);
+
+    sendMessage(newAvailabreBooks, 'AVAILABLE_BOOKS_UPDATE', channel);
+    sendMessage(clearList, 'READING_LIST_UPDATE', channel);
 
     window.localStorage.setItem('reading', JSON.stringify(clearList));
     window.localStorage.setItem('available', JSON.stringify(newAvailabreBooks));
@@ -39,10 +42,12 @@ export const ReadingList = ({
     if (!isBookInAvailableList) {
       const updatedAvailableBooks = [...availableBooks, book];
       setAvailableBooks(updatedAvailableBooks);
+      sendMessage(updatedAvailableBooks, 'AVAILABLE_BOOKS_UPDATE', channel);
       window.localStorage.setItem('available', JSON.stringify(updatedAvailableBooks));
     }
 
     setReadingList(updatedReadingList);
+    sendMessage(updatedReadingList, 'READING_LIST_UPDATE', channel);
     window.localStorage.setItem('reading', JSON.stringify(updatedReadingList));
   };
 
@@ -56,7 +61,6 @@ export const ReadingList = ({
       handleDrop={handleDrop}
       handleDragEnter={handleDragEnter}
       handleDragLeave={handleDragLeave}
-      handleDragEnd={handleDragEnd}
     />
   )
 };
