@@ -1,15 +1,15 @@
-import { useState, useEffect, useContext, Dispatch, SetStateAction } from 'react';
-import { GlobalContext } from '../../contexts/GlobalContext'
+import { useContext, Dispatch, SetStateAction } from 'react';
+import { GlobalContext } from '../contexts/GlobalContext'
 import Book from './Book'
-import { Col, Row, Space, message } from 'antd'
+import { Col, Row, Space } from 'antd'
 import BookAmount from './BookAmounts';
 import SearchBar from './SearchBar';
 import Filters from './Filters';
 import LazyLoad from 'react-lazy-load';
-import '../../styles/booklist/booklist.css'
 import { SectionSelected } from '../../types/navigation';
 import SortBooks from './SortBooks';
 import '../../styles/global-variables.css'
+import '../../styles/booklist/booklist.css'
 
 export type props = { 
   setItemSelected: Dispatch<SetStateAction<SectionSelected>> 
@@ -36,22 +36,21 @@ export default function BookList( { setItemSelected }: props ): JSX.Element {
       <Row justify={"space-around"} align={"middle"} className='BL_row'>
       { bookList &&
         bookList.map((book, i) => (
-          <Col span={
+          <Col className='BookListCol' span={
             wWidth > 1600 ? 4 :
             wWidth < 1600 && wWidth >= 1275 ? 5 : 
             wWidth < 1275 && wWidth >= 822 ? 7 : 
             wWidth < 822 && wWidth > 412 ? 10 : 20
-          } key={i} style={{ margin: '10px 0'}}>
+          } key={i}>
             <LazyLoad
-              key={i}
-              onContentVisible={() => console.log("loaded")}>
+              key={i}>
               <Book
                 setItemSelected={setItemSelected}
                 bookData={book}
                 selectable={
                   readList?.some((interest) => interest.ISBN === book.ISBN)
-                    ? false
-                    : true
+                  ? false
+                  : true
                 }
               ></Book>
             </LazyLoad>

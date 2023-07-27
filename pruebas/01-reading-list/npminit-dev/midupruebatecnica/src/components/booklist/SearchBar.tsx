@@ -1,8 +1,8 @@
 import Search from 'antd/es/input/Search'
-import { FieldValues, FormProps, Mode, SubmitHandler, useForm } from 'react-hook-form'
-import { FormEvent, useContext, useRef } from 'react'
+import { FieldValues, Mode, useForm } from 'react-hook-form'
+import { FormEvent, useContext } from 'react'
 import { Book } from '../../types/books'
-import { GlobalContext } from '../../contexts/GlobalContext'
+import { GlobalContext } from '../contexts/GlobalContext'
 import '../../styles/global-variables.css'
 import '../../styles/booklist/searchbar.css'
 
@@ -13,14 +13,10 @@ export default function SearchBar(): JSX.Element {
   const { register, setValue, handleSubmit, formState: { isDirty, isValid }} = useForm(
     { 
       defaultValues: formDefValues,  
-      mode: formMode
+      mode: 'all'
     });
     
-  const search = (data: any) => {
-    console.log(data)
-    console.log('handle Submit')
-    setBookList(bookList => setNewBookList(bookList ?? [], data.toSearch))
-  }
+  const search = (data: any) => setBookList(bookList => setNewBookList(bookList ?? [], data.toSearch))
 
   return (
     <form onSubmit={e => e.preventDefault()}>
@@ -32,7 +28,7 @@ export default function SearchBar(): JSX.Element {
         className={`${colorMode} SearchBar-input`}
         status={!isValid && isDirty ? 'error' : ''}
         onInput={(e: FormEvent<HTMLInputElement>) => setValue('toSearch', e.currentTarget.value)}
-        onSearch={(value, e) => {
+        onSearch={(value) => {
           setValue('toSearch', value.trim())
           handleSubmit(search)();
         }}
@@ -62,8 +58,6 @@ export const setNewBookList = (bookList: Book[], searchTarget: string): Book[] =
 }
 
 const formDefValues: FieldValues = { toSearch: "" }
-
-const formMode: Mode = 'all'
 
 const utilRegexp = (searchTarget: string) => {
   return {

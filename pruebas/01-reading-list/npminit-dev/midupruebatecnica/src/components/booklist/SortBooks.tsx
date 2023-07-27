@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import { GlobalContext } from "../../contexts/GlobalContext";
+import { useContext } from "react";
+import { GlobalContext } from "../contexts/GlobalContext";
 import { Space, Switch } from "antd";
 import { Book } from "../../types/books";
 import data from '../../files/books'
-import { getBooksArray } from "../../contexts/GlobalContext";
+import { getBooksArray } from "../contexts/GlobalContext";
 import '../../styles/booklist/sortbooks.css'
 import '../../styles/booklist/sortbooks.css'
 

@@ -8,8 +8,8 @@ import { MenuItemType, SubMenuType } from "antd/es/menu/hooks/useItems";
 import Logo from "./Logo";
 import '../styles/navigation.css'
 import '../styles/global-variables.css'
-import { GlobalContext } from "../contexts/GlobalContext";
-import { BarsOutlined, BgColorsOutlined, CaretRightOutlined, EllipsisOutlined, MinusOutlined } from "@ant-design/icons";
+import { GlobalContext } from "./contexts/GlobalContext";
+import { BarsOutlined, BgColorsOutlined, EllipsisOutlined } from "@ant-design/icons";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 
@@ -34,7 +34,6 @@ export default function Navigation(): JSX.Element {
   }, [itemSelected])
 
   const handleSelect = (e: any) => e.key !== 'theme' && setItemSelected(e.key);
-  
   
   const items: MenuItemType[] = [
     {
@@ -68,7 +67,8 @@ export default function Navigation(): JSX.Element {
         onClick: () => setColorMode(color => color === 'dark' ? 'light' : 'dark')
       }],
       style: {left: '-10px'},
-      className: `Menu_Mobile_Header ${colorMode}`
+      className: `Menu_Mobile_Header ${colorMode}`,
+      popupClassName: `Menu_Mobile_Item ${colorMode}`
     }
   ]
 

@@ -1,5 +1,6 @@
 #content {
   padding: 10px 2px;
+  min-height: 100vh;
 }
 
 #content.light {
@@ -51,7 +52,10 @@ div.dark > #rc-menu-uuid-51993-1-MenuMobile-popup > li:hover {
   background: linear-gradient(90deg, var(--dark-background-3), var(--dark-background-4), var(--dark-background-3));
 }
 
-#content {
-  min-height: 100vh;
+.Menu_Mobile_Item.dark > ul > li:hover {
+  color: white var(--dark-font-1) !important;
+  background-color: var(--dark-background-3) !important;
 }
+
+
 

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { GlobalContext } from "../../contexts/GlobalContext"
+import { GlobalContext } from "../contexts/GlobalContext"
 import { Dropdown, MenuProps, Modal } from "antd"
 import { DeleteOutlined, ReadFilled } from "@ant-design/icons"
 import { IoMdCheckmarkCircle } from 'react-icons/io'
@@ -81,7 +81,7 @@ export default function ReadListActions(): JSX.Element {
   }
 
   return (
-    <div className='ReadList-container' style={{ float: wWidth < 310 ? 'left' : 'right'}}>
+    <div className='RLActions-container'>
       <Dropdown.Button 
         size={ wWidth < 310 ? 'small' : 'middle' }
         disabled={readList?.length ? false : true}

@@ -2,9 +2,8 @@ import { Col, Divider, List, Row } from "antd";
 import Typography from "antd/es/typography";
 import '../../styles/booklist/bookdetails.css'
 import '../../styles/global-variables.css'
-import { GlobalContext } from "../../contexts/GlobalContext";
+import { GlobalContext } from "../contexts/GlobalContext";
 import { useContext } from "react";
-
 const { Text } = Typography
 
 type props = {

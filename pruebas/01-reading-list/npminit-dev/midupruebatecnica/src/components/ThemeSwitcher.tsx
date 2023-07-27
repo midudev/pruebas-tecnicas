@@ -1,7 +1,6 @@
 import { useContext } from 'react';
-import { GlobalContext } from '../contexts/GlobalContext';
-import { BsSunFill, BsMoonStarsFill, BsFillSunFill } from 'react-icons/bs'
-import { FaSun } from 'react-icons/fa'
+import { GlobalContext } from './contexts/GlobalContext';
+import { BsMoonStarsFill, BsFillSunFill } from 'react-icons/bs'
 import { Switch } from 'antd';
 import '../styles/global-variables.css'
 import '../styles/themeswitcher.css'

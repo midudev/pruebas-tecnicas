@@ -1,4 +1,4 @@
-import { Col, Divider, Row, Space } from "antd";
+import { Col, Row } from "antd";
 import { useContext } from 'react'
 import ReadListActions from "./ReadListActions";
 import ReadListSorting from './ReadListSorting';
@@ -7,7 +7,7 @@ import '../../styles/global-variables.css'
 import InterestList from "./InterestList";
 import { Dispatch, SetStateAction } from 'react';
 import { SectionSelected } from '../../types/navigation';
-import { GlobalContext } from "../../contexts/GlobalContext";
+import { GlobalContext } from "../contexts/GlobalContext";
 
 type props = {
   setItemSelected: Dispatch<SetStateAction<SectionSelected>>

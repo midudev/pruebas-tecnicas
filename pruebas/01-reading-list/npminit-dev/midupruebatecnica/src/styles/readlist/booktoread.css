@@ -1,6 +1,7 @@
 .BookToRead-container {
   transition-duration: .2s;
   border-radius: 23px 10px 10px 23px;
+  margin: 5px 0
 }
 
 .BookToRead-pending {
@@ -16,4 +17,9 @@
 .BookToRead-container.dark > .ant-col:nth-child(4) > span.ant-typography
 {
   color: var(--dark-font-1);
+}
+
+.Btr_Image {
+  border-radius: 50%; 
+  justify-self: center
 }

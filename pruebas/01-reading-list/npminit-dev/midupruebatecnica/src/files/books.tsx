@@ -26,7 +26,7 @@ export default {
         "year": 1996,
         "ISBN": "978-0553103540",
         "author": {
-          "name": "George R. R. Martin",
+          "name": "George R. Martin",
           "otherBooks": [
             "Choque de Reyes",
             "Tormenta de Espadas",
@@ -185,7 +185,7 @@ export default {
         "title": "Hora del asesino",
         "pages": 150,
         "cover": "https://i.ibb.co/XV3RBtW/Hour-Of-The-Assasin.webp",
-        "genre": "Accion",
+        "genre": "Acción",
         "synopsis": "Para salvarse a sí mismo y a las personas que ama, Nick debe detener a los hombres que gobiernan Washington antes de que lo entierren junto con sus secretos.",
         "year": 2012,
         "ISBN": "209-4716403672",
@@ -247,7 +247,7 @@ export default {
         "genre": "Ciencia ficción",
         "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1657781256i/61439040.jpg",
         "synopsis": "Una inquietante visión de un futuro distópico y totalitario.",
-        "year": 1949,
+        "year": 2011,
         "ISBN": "978-0451524935",
         "author": {
           "name": "George Orwell",
@@ -305,7 +305,7 @@ export default {
         "title": "Bandera Negra",
         "pages": 456,
         "cover": "https://i.ibb.co/Ch1hSJq/Black-Flag.webp",
-        "genre": "Accion",
+        "genre": "Acción",
         "synopsis": "A medida que las amenazas se acercan por todos lados, Jake se enfrenta a una elección familiar: retroceder o pasar a la ofensiva.",
         "year": 1989,
         "ISBN": "398-9294473812",

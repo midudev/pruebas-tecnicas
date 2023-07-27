@@ -1,6 +1,6 @@
-import { Col, Divider, Row, Space, Statistic } from "antd";
+import { Col, Row, Space, Statistic } from "antd";
 import { useContext } from "react";
-import { GlobalContext } from "../../contexts/GlobalContext";
+import { GlobalContext } from "../contexts/GlobalContext";
 import '../../styles/booklist/bookamount.css'
 import '../../styles/global-variables.css'
 
@@ -15,11 +15,11 @@ export default function BookAmount(): JSX.Element {
           <Statistic 
             title="Availables" 
             value={
-              bookList?.filter((book) => {
+              bookList.filter((book) => {
                 return !readList?.some(interest => interest.ISBN === book.ISBN)
-              }).length || 0
+              }).length
             } 
-            suffix={ ` / ${(bookList?.length || 0)}` } 
+            suffix={ ` / ${(bookList.length)}` } 
             className={`${colorMode} Availables`}
           />
         </Col>

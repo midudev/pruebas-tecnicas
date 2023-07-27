@@ -15,9 +15,13 @@ export interface GlobalContextType {
   setColorMode: Dispatch<SetStateAction<ColorMode>>
 }
 
-export interface RlAction {
-  type: string,
-  payload: any
-}
+export type RlAction =
+  | { type: "add"; payload: InterestBook }
+  | { type: "set"; payload: InterestBook[] }
+  | { type: "remove", payload: InterestBook }
+  | { type: "switchReadStatus", payload: { ISBN: string } }
+  | { type: "setAllRead" | "setAllUnread" }
+  | { type: "readFirst" | "unreadFirst" }
+  | { type: "clearRead" }
 
 export type ColorMode = 'light' | 'dark'

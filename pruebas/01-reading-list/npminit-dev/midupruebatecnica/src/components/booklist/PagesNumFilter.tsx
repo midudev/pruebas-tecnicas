@@ -1,6 +1,6 @@
-import { Button, Col, Divider, InputNumber, Row, Slider, Space } from "antd";
-import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react";
-import { GlobalContext } from "../../contexts/GlobalContext";
+import { Col, InputNumber, Row, Space } from "antd";
+import { Dispatch, SetStateAction, useContext } from "react";
+import { GlobalContext } from "../contexts/GlobalContext";
 import { Typography } from 'antd'
 import '../../styles/booklist/pagesnumfilter.css'
 import '../../styles/global-variables.css'

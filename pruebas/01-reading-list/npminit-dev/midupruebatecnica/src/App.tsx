@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import Navigation from "./components/Navigation"
-import GlobalContextProvider, { GlobalContext } from "./contexts/GlobalContext"
+import GlobalContextProvider, { GlobalContext } from "./components/contexts/GlobalContext"
 import './styles/global-variables.css'
 
 function App() {

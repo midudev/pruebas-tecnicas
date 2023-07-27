@@ -1,6 +1,3 @@
-.dark.ActionItem.dark {
-
-}
 
 .RLActionsDropdown-main.dark > button[disabled] {
   border: none !important;
@@ -41,4 +38,14 @@
 
 .RLSortSegmented.dark > div > .ant-segmented-item-selected.ant-segmented-item-disabled {
   background-color: grey;
+}
+
+.RLActions-container {
+  float: right
+}
+
+@media only screen AND (max-width: 310px) {
+  .RLActions-container {
+    float: left;
+  }
 }

@@ -1,8 +1,8 @@
-import React, { useState, useEffect, createContext, useReducer, Reducer, Dispatch } from "react";
-import { Book, Library } from "../types/books.tsx";
-import data from '../files/books.tsx'
-import { InterestBook } from "../types/interestbook.tsx";
-import { ColorMode, GlobalContextType, RlAction } from "../types/globalcontext.tsx";
+import  { useState, useEffect, createContext, useReducer, Reducer } from "react";
+import { Book, Library } from "../../types/books";
+import data from '../../files/books'
+import { InterestBook } from '../../types/interestbook';
+import { ColorMode, GlobalContextType, RlAction } from "../../types/globalcontext";
 import * as ls from "local-storage";
 import { message } from "antd";
 
@@ -13,7 +13,7 @@ const defValues: GlobalContextType = {
   dispatchRl: (): null => null,
   resetBookList: (): null => null,
   messageApi: null,
-  wWidth: innerWidth,
+  wWidth: globalThis.innerWidth,
   colorMode: 'dark',
   setColorMode: (): null => null
 }
@@ -24,7 +24,7 @@ export const GlobalContext = createContext<GlobalContextType>(defValues)
 
 export default function GlobalContextProvider({ children }: any): JSX.Element {
 
-  const [ wWidth, setWWidth ] = useState<number>(window.innerWidth)
+  const [ wWidth, setWWidth ] = useState<number>(globalThis.innerWidth)
   const [ bookList, setBookList ] = useState<Book[]>(getBooksArray(data));
   const [ colorMode, setColorMode ] = useState<ColorMode>('dark')
   const [ readList, dispatchRl ] = useReducer(RlReducer, [])
@@ -39,9 +39,10 @@ export default function GlobalContextProvider({ children }: any): JSX.Element {
 
   ls.on('readList', (newvalue: InterestBook[], old: InterestBook[]) => {
     newvalue !== old && dispatchRl({ type: 'set', payload: newvalue })
+    console.log('lschange')
   })
 
-  onresize = () => setWWidth(innerWidth)
+  globalThis.onresize = () => setWWidth(globalThis.innerWidth)
 
   return (
     <GlobalContext.Provider 
@@ -62,29 +63,32 @@ export default function GlobalContextProvider({ children }: any): JSX.Element {
   )
 }
 
-const RlReducer: Reducer<InterestBook[], RlAction> = (state: InterestBook[], action: RlAction): InterestBook[] => {
+
+export const RlReducer: Reducer<InterestBook[], RlAction> = (state: InterestBook[], action: RlAction): InterestBook[] => {
+ 
   switch(action.type) {
     case 'set': 
-      ls.set('readList', action.payload)
-      return action.payload
+      ls.set('readList', action.payload || [])
+      return action.payload as InterestBook[] || []
 
     case 'add': 
       if(!state.some(interest => interest.ISBN === action.payload.ISBN )) {
         ls.set('readList', [...state, action.payload])
         return [...state, action.payload]
-      }
+      } else return state
 
     case 'remove': {
-      let newState = state.filter(interest => interest.ISBN !== action.payload.ISBN )
+      let newState = state.filter(interest => interest.ISBN !== action.payload.ISBN)
       ls.set('readList', newState)
       return newState
     }
 
     case 'switchReadStatus': {
-      let newState = state.map(interest => 
-        interest.ISBN === action.payload.ISBN ? { ...interest, read: !interest.read } : interest)
-      ls.set('readList', newState)
-      return newState
+      let newState: InterestBook[]; 
+      newState = state.map(interest => 
+          interest.ISBN === action.payload.ISBN ? { ...interest, read: !interest.read } : interest)
+        ls.set('readList', newState)
+        return newState
     }
 
     case 'setAllRead': 
@@ -99,8 +103,11 @@ const RlReducer: Reducer<InterestBook[], RlAction> = (state: InterestBook[], act
     case 'readFirst': {
       let newState = [...state]
       action.type === 'readFirst' ? 
-      newState = state.toSorted((a, b) => a.read < b.read ? 1 : a.read > b.read ? -1 : 0) :
-      newState = state.toSorted((a, b) => a.read < b.read ? -1 : a.read > b.read ? 1 : 0)
+      newState.sort((a: InterestBook, b: InterestBook) => 
+        a.read < b.read ? 1 : a.read > b.read ? -1 : 0) :
+      action.type === 'unreadFirst' ? 
+      newState.sort((a: InterestBook, b: InterestBook) => 
+        a.read < b.read ? -1 : a.read > b.read ? 1 : 0) : null
       ls.set('readList', newState)
       return newState
     }
@@ -112,8 +119,8 @@ const RlReducer: Reducer<InterestBook[], RlAction> = (state: InterestBook[], act
     }
 
     default: {
-      ls.set('readList', state)
-      return state
+      ls.set('readList', state || [])
+      return state || []
     }
   }
 }

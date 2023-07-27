@@ -1,3 +1,7 @@
+.RLSortSegmented {
+  margin-bottom: 0 !important;
+}
+
 .RLSortSegmented.dark {
   background-color: var(--dark-background-4);
   box-shadow: 0 0 3px var(--dark-font-1);
@@ -15,22 +19,8 @@
   color: var(--dark-font-1) !important;
 }
 
-.RLSortSegmented.dark > .ant-segmented-group > .ant-segmented-item-selected {
-
-}
-
-.ant-segmented-disabled.RLSortSegmented.dark {
-
-}
-
-.ant-segmented-disabled.RLSortSegmented.dark > div > label > div.ant-segmented-item-label {
-
-}
-
-.RLActionsDropdown-root.dark {
-
-}
-
-.dark.RLSortSegmented-root {
-
+@media only screen AND (max-width: 310px) {
+  .RLSortSegmented {
+    margin-bottom: 7px !important;
+  }
 }

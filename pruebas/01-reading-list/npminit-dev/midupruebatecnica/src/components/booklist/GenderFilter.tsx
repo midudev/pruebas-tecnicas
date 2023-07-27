@@ -1,6 +1,6 @@
-import { Col, Row, Select, Space } from "antd";
+import { Col, Row, Select } from "antd";
 import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react";
-import { GlobalContext } from "../../contexts/GlobalContext";
+import { GlobalContext } from "../contexts/GlobalContext";
 import  { Typography } from "antd";
 import { Book } from "../../types/books";
 import '../../styles/global-variables.css'
@@ -29,7 +29,6 @@ export default function GenreFilter({ setGenre, genre }: props): JSX.Element {
         </Col>
         <Col span={14}>
           <Select
-            showSearch
             className={`${colorMode} GenderFilter-select`}
             style={{
               width: 200,

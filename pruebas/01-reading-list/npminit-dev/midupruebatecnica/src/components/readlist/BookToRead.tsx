@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { GlobalContext } from "../../contexts/GlobalContext";
+import { GlobalContext } from "../contexts/GlobalContext";
 import { Book } from "../../types/books";
 import { Col, Row, Image, Button, Space, Switch, Popconfirm } from "antd";
 import booksdata from '../../files/books'
-import { getBooksArray } from "../../contexts/GlobalContext";
+import { getBooksArray } from "../contexts/GlobalContext";
 import { CheckCircleFilled, DeleteFilled, ReadFilled } from "@ant-design/icons";
 import { Typography } from 'antd'
 const { Text } = Typography
@@ -18,35 +18,34 @@ interface props {
 export default function BookToRead({ ISBN, read }: props): JSX.Element {
 
   const { dispatchRl, colorMode, wWidth } = useContext(GlobalContext)
-  const [ data, setData ] = useState<Book>()
+  const [ bookData, setbookData ] = useState<Book>()
 
   useEffect(() => {
-    setData(getBooksArray(booksdata).find(book => book.ISBN === ISBN))
+    setbookData(getBooksArray(booksdata).find(book => book.ISBN === ISBN))
   }, [ISBN, read])
 
   return (
     <div>
       <Row className={`BookToRead-container ${colorMode} ${read ? 'BookToRead-read' : 'BookToRead-pending'}`}
         align={'middle'} 
-        justify={'space-between'}
-        style={{ margin: '5px 0' }}>
+        justify={'space-between'}>
         <Col span={2}>
           <Image 
-            src={ data?.cover }
+            className="Btr_Image"
+            src={ bookData?.cover }
             preview={true}
             width='50px'
             height='50px'
-            style={{ borderRadius: '50%', justifySelf: 'center'}}
           ></Image>
         </Col>
         <Col span={wWidth >= 718 ? 7 : 10}>
-          <Text strong style={{ marginLeft: wWidth <= 705 ? '10px' : 'left' }}> { data?.title } </Text>
+          <Text strong style={{ marginLeft: wWidth <= 705 ? '10px' : 'left' }}> { bookData?.title } </Text>
         </Col>
         <Col span={wWidth <= 544 ? 0 : 7}>
-          <Text type="secondary" italic> { data?.author.name } </Text>
+          <Text type="secondary" italic> { bookData?.author.name } </Text>
         </Col>
         <Col span={ wWidth < 718 ? 0 : 5}>
-          <Text type='secondary'> { data?.genre } </Text>
+          <Text type='secondary'> { bookData?.genre } </Text>
         </Col>
         <Col span={wWidth >= 718 ? 3 : 5 }>
           <Row align={'middle'} justify={'center'}>

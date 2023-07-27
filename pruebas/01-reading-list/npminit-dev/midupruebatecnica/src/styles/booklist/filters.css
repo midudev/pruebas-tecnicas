@@ -6,6 +6,18 @@ div.dark > div > div.ant-collapse-expand-icon {
   color: var(--dark-font-1);
 }
 
+.FilterHeader {
+  transition-duration: .2s;
+}
+
+.FilterHeader.dark:hover {
+  background-color: var(--dark-background-4);
+}
+
+.FilterHeader.light:hover {
+  background-color: var(--dark-font-3);
+}
+
 .FilterHeader.light > div > span.ant-collapse-header-text:hover {
   text-decoration: underline #333333;
 }

@@ -1,9 +1,9 @@
 import { Typography } from "antd"
-import { GiBookmarklet, GiBookshelf } from 'react-icons/gi'
+import { GiBookmarklet } from 'react-icons/gi'
 import '../styles/logo.css'
 const { Text } = Typography 
 import '../styles/global-variables.css'
-import { GlobalContext } from "../contexts/GlobalContext"
+import { GlobalContext } from "./contexts/GlobalContext"
 import { useContext } from "react"
 
 export default function Logo(): JSX.Element {
