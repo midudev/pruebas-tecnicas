@@ -1,5 +1,6 @@
-import { Card, Drawer, Rate, Switch } from 'antd'
+import { Badge, Card, Drawer, Rate, Switch } from 'antd'
 import { shallow } from 'zustand/shallow'
+import { ribbonColor } from '../services/ribbonColor'
 import { useBooksStore } from '../stores/books'
 import { useSearchBooks } from '../stores/searchBooks'
 import { CloseIcon } from './Icons/CloseIcon'
@@ -56,23 +57,25 @@ export const ReadingList = ({ open, onClose }) => {
         {readingList?.map((book) => {
           return (
             <div key={book.ISBN} className='reading-card-rate'>
-              <Card
-                title={<CloseIcon />}
-                className='book-card'
-                hoverable
-                cover={
-                  <img
-                    alt={`Imagel del libro ${book.title}`}
-                    src={book.cover}
-                  />
-                }
-                onClick={() => {
-                  removeFromReadingList(book.ISBN)
-                  addAgainBookToSearchedBooks(book.ISBN)
-                }}
-              >
-                <Meta title={book.title} description={book.author.name} />
-              </Card>
+              <Badge.Ribbon text={book?.genre} color={ribbonColor(book?.genre)}>
+                <Card
+                  title={<CloseIcon />}
+                  className='book-card'
+                  hoverable
+                  cover={
+                    <img
+                      alt={`Imagel del libro ${book.title}`}
+                      src={book.cover}
+                    />
+                  }
+                  onClick={() => {
+                    removeFromReadingList(book.ISBN)
+                    addAgainBookToSearchedBooks(book.ISBN)
+                  }}
+                >
+                  <Meta title={book.title} description={book.author.name} />
+                </Card>
+              </Badge.Ribbon>
               <div className='rate'>
                 <span>Prioridad</span>
                 <Rate

@@ -42,6 +42,10 @@ export const useSearchBooks = create((set, get) => ({
         selectedCategory !== 'Todos' &&
         selectedCategory !== bookRemovedFromReadingList.genre
       ) {
+        const filteredSearchedBooks = searchedBooks.filter(
+          (book) => book.genre === selectedCategory
+        )
+        set({ searchedBooks: filteredSearchedBooks })
         return
       }
       set({ searchedBooks: [...searchedBooks, bookRemovedFromReadingList] })

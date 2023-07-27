@@ -88,7 +88,6 @@ export const useBooksStore = create(
             )
           })
         }
-
         // Obtener la lista de libros que no están en readingList
         let filteredBooks = getBooksNotInReadingList(books, readingList)
 

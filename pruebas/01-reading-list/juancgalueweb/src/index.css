@@ -113,7 +113,8 @@ body {
 .add-icon,
 .remove-icon {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
+  gap: 5px;
   align-items: center;
 }
 

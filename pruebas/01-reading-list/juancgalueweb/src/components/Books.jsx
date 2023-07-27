@@ -1,10 +1,12 @@
-import { Card, message } from 'antd'
+import { Badge, Card, message } from 'antd'
 import { useEffect } from 'react'
 import { shallow } from 'zustand/shallow'
+import { ribbonColor } from '../services/ribbonColor'
 import { useBooksStore } from '../stores/books'
 import { useSearchBooks } from '../stores/searchBooks'
 import { GenreSelect } from './GenreSelect'
 import { AddIcon } from './Icons/AddIcon'
+import { MoreInfo } from './MoreInfo'
 import { PageFilter } from './PageFilter'
 import { SearchInput } from './SearchInput'
 import { Stats } from './Stats'
@@ -80,28 +82,40 @@ export const Books = () => {
         <div className='books-cards'>
           {(search === '' ? copyBooks : searchedBooks)?.map((book) => {
             return (
-              <Card
-                className='book-card'
+              <Badge.Ribbon
                 key={book.ISBN}
-                title={<AddIcon />}
-                hoverable
-                cover={
-                  <img
-                    alt={`Imagel del libro ${book?.title}`}
-                    src={book?.cover}
-                  />
-                }
-                onClick={() => {
-                  setReadingList(book.ISBN)
-                  removeBookFromSearchedBooks(book.ISBN)
-                  messageApi.open({
-                    type: 'success',
-                    content: `${book.title} fue agregado a la lista de lectura`
-                  })
-                }}
+                text={book?.genre}
+                color={ribbonColor(book?.genre)}
               >
-                <Meta title={book?.title} description={book?.author?.name} />
-              </Card>
+                <Card
+                  className='book-card'
+                  title={<AddIcon />}
+                  hoverable
+                  cover={
+                    <img
+                      alt={`Imagel del libro ${book?.title}`}
+                      src={book?.cover}
+                    />
+                  }
+                  actions={[
+                    <MoreInfo
+                      synopsis={book?.synopsis}
+                      year={book?.year}
+                      key={book?.ISBN}
+                    />
+                  ]}
+                  onClick={() => {
+                    setReadingList(book.ISBN)
+                    removeBookFromSearchedBooks(book.ISBN)
+                    messageApi.open({
+                      type: 'success',
+                      content: `${book.title} fue agregado a la lista de lectura`
+                    })
+                  }}
+                >
+                  <Meta title={book?.title} description={book?.author?.name} />
+                </Card>
+              </Badge.Ribbon>
             )
           })}
         </div>
