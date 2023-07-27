@@ -10,7 +10,7 @@ export default function BooksHeader({ title, subtitle }: Props) {
   return (
     <header className='flex flex-col '>
       <h2 className='text-3xl'>{title}</h2>
-      <h3 className='text-xl'>${readingList.length} en la lista de lectura</h3>
+      <h3 className='text-xl'>{readingList.length} en la lista de lectura</h3>
     </header>
   )
 }
