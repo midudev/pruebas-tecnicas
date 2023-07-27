@@ -1,0 +1,57 @@
+@font-face {
+  font-family: 'subjectivity';
+  font-weight: 400;
+  src: url('font/subjectivity/Subjectivity-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'subjectivity';
+  font-weight: 500;
+  src: url('font/subjectivity/Subjectivity-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'subjectivity';
+  font-weight: 700;
+  src: url('font/subjectivity/Subjectivity-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'subjectivity';
+  font-weight: 800;
+  src: url('font/subjectivity/Subjectivity-ExtraBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'subjectivity';
+  font-weight: 900;
+  src: url('font/subjectivity/Subjectivity-Black.woff2') format('woff2');
+}
+
+label,
+button {
+  display: block;
+}
+
+datalist {
+  position: absolute;
+  max-height: 20em;
+  border: 0 none;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+datalist option {
+  font-size: 0.8em;
+  padding: 0.3em 1em;
+  background-color: red;
+  cursor: pointer;
+}
+
+.custom-slider {
+  background-color: red;
+}
+
+input[type='radio']:checked {
+  color: red; /* Cambia el color aquí según tus preferencias */
+}

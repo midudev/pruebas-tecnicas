@@ -1,0 +1,45 @@
+{
+  "name": "reading-list",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "test": "vitest --watch",
+    "test-preview": "vitest-preview",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@dnd-kit/core": "^6.0.8",
+    "@dnd-kit/sortable": "^7.0.2",
+    "@dnd-kit/utilities": "^3.2.1",
+    "@testing-library/user-event": "^14.4.3",
+    "@unocss/reset": "^0.53.5",
+    "framer-motion": "^10.13.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "wouter": "^2.11.0",
+    "zustand": "^4.3.9"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^14.0.0",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "@typescript-eslint/parser": "^5.61.0",
+    "@unocss/preset-icons": "^0.53.5",
+    "@vitejs/plugin-react-swc": "^3.3.2",
+    "eslint": "^8.44.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.1",
+    "jsdom": "^22.1.0",
+    "typescript": "^5.0.2",
+    "unocss": "^0.53.5",
+    "vite": "^4.4.0",
+    "vitest": "^0.33.0",
+    "vitest-preview": "^0.0.1"
+  }
+}
