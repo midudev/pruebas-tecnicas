@@ -14,14 +14,16 @@ export default function FiltersProvider({children}: {children: ReactNode}){
     updateBooks(getBooks().filter(f=> {
       const gender = filters.gender ? f.genre.toLowerCase() == filters.gender : true
       const pages = filters.pages ? f.pages >= filters.pages : true
+      const title = filters.title ? (f.title == filters.title || f.title.toLowerCase().includes(filters.title.toLowerCase())) : true
 
-      return gender && pages
+      return gender && pages && title
     }))
   }, [filters])
   
   return (
     <>
       <FiltersContext.Provider value={{
+        filters,
         updateFilters(updatedFilters) {
           setFilters(f=> ({...f, ...updatedFilters}))
         },

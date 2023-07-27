@@ -4,12 +4,14 @@ import styles from './books.module.scss'
 import Book from './BookCard'
 import BooksCounter from './BooksCounter'
 import { useBooks } from '@/hooks/useBooks'
+import SearcherBooks from '../searcher/SearcherBooks'
 
 export default function Books(){
   const { books } = useBooks()
 
   return (  
     <div className={styles.content}>
+      <SearcherBooks />
       <BooksCounter text='Libros disponibles: {}' books={books.map(b=> b.ISBN)} />
 
       <ul className={styles.books}>

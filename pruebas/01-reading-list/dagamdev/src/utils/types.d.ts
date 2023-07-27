@@ -15,6 +15,7 @@ export interface Book {
 }
 
 export interface Filters {
-  gender?: string
+  title?: string
   pages?: number
+  gender?: string
 }
