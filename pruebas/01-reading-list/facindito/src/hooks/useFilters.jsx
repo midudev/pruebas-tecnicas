@@ -1,9 +1,6 @@
 import { useFiltersContext } from '../context/filtersContext'
-const defaultFilters = {
-  gender: 'Todas',
-  pages: 0,
-  title: ''
-}
+import { DEFAULT_FILTERS } from '../utils/constants'
+
 export default function useFilters () {
   const { filters, setFilters } = useFiltersContext()
 
@@ -20,8 +17,8 @@ export default function useFilters () {
   }
 
   const resetFilters = () => {
-    window.localStorage.setItem('filters', JSON.stringify(defaultFilters))
-    setFilters(defaultFilters)
+    window.localStorage.setItem('filters', JSON.stringify(DEFAULT_FILTERS))
+    setFilters(DEFAULT_FILTERS)
   }
 
   return { filters, setFilters, getFilteredBooks, resetFilters }

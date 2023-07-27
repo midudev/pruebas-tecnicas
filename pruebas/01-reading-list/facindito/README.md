@@ -1,8 +1,30 @@
-# React + Vite
+# My Book List
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## Enlaces
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[My Book List]('https://my-book-list-prueba-1.surge.sh/')
+
+## Descripción
+
+Aplicación web simple e intuitiva para ver un catálogo de libros y poder guardar los libros que les interesan en una lista de lectura.
+Filtrar por categoría, número de páginas o buscar por nombre del título.
+
+## Capturas
+
+<img src='public/img/screen-1.png' alt='Home Page' />
+<img src='public/img/screen-2.png' alt='Card Book'/>
+<img src='public/img/screen-3.png' alt='Wishlist Page'/>
+
+## Tecnologías
+
+- React
+- Tailwind
+- React Router Dom
+
+### Commandos
+
+- Clona el repositorio
+- `npm install`
+- visita `http://localhost/5173`
