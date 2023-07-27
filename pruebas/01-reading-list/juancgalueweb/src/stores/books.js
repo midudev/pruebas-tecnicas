@@ -105,8 +105,14 @@ export const useBooksStore = create(
       setSelectedCategory: (value) => set({ selectedCategory: value }),
       setSliderValue: (value) => set({ sliderValue: value }),
       modifyReadingListWithPriorities: (rate, bookId) => {
-        const { readingList } = get()
+        const { readingList, books } = get()
         const updatedReadingList = readingList.map((book) => {
+          if (book.ISBN === bookId) {
+            return { ...book, priority: rate }
+          }
+          return book
+        })
+        const modifiedOriginalBooks = books.map((book) => {
           if (book.ISBN === bookId) {
             return { ...book, priority: rate }
           }
@@ -114,6 +120,7 @@ export const useBooksStore = create(
         })
         set({ readingList: updatedReadingList })
         set({ copyReadingList: updatedReadingList })
+        set({ books: modifiedOriginalBooks })
       },
       sortReadingListByPriority: (checked) => {
         const { readingList, copyReadingList } = get()
