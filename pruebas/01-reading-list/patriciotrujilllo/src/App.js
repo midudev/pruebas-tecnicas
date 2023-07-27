@@ -5,8 +5,8 @@ import { Header } from './component/Header'
 import { useFilters } from './hook/useFilters'
 import './styles.css'
 import { ReadingProvider } from './context/readinglistContext.js'
-import { BookToRead } from './component/BookToRead'
 import { Filters } from './component/Filters'
+import {BookToRead} from './component/BookToRead'
 
 function App() {
 
@@ -26,8 +26,8 @@ function App() {
       <div className='container'>
         <Header />
         <Filters bookNoFiltered={books}/>
-        <BookToRead />
         <Books books={filteredbooks}/>
+        <BookToRead/>
       </div>
       
     </ReadingProvider>
