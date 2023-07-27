@@ -4,10 +4,19 @@ import { ref } from 'vue';
 
 const selectedType = ref('all');
 const books = ref(booksData['library']);
-const readingList = ref([]);
-const selectedBook = ref(null);
+const readingList = ref<Book[]>([]);
+const selectedBook = ref<Book | null>(null);
 const alreadyInReadingList = ref(false);
-const books_avaliables = ref();
+const books_avaliables = ref<boolean>();
+interface Book {
+  cover: string;
+  title: string;
+  author: {
+    name: string;
+  };
+  genre: string;
+  year: number;
+}
 
 function getFilteredBooks() {
   if (selectedType.value === 'all') {
@@ -28,11 +37,11 @@ function countBooksAvailable() {
   return numBooks > 0 ? numBooks : 0;
 }
 
-function showBookPopup(book) {
+function showBookPopup(book: Book | null) {
   selectedBook.value = book;
 }
 
-function addToReadingList(cover, title) {
+function addToReadingList(cover: string, title: string) {
   //check if book is already in reading list
   for (let i = 0; i < readingList.value.length; i++) {
     if (readingList.value[i].title === title) {
@@ -40,11 +49,19 @@ function addToReadingList(cover, title) {
       return
     }
   }
-  readingList.value.push({ cover, title });
+  const newBook: Book = {
+    cover,
+    title,
+    author: { name: '' },
+    genre: '',
+    year: 0
+  };
+  // Add the new book to the reading list
+  readingList.value.push(newBook);
   books_avaliables.value = true;
 }
 
-function deleteFromReadingList(title) {
+function deleteFromReadingList(title: string) {
   for (let i = 0; i < readingList.value.length; i++) {
     if (readingList.value[i].title === title) {
       readingList.value.splice(i, 1);
@@ -82,14 +99,14 @@ function deleteFromReadingList(title) {
               <h4 id="selectedType" for="filtrar_genero">Search by genre</h4>
               <select id="select_gender" v-model="selectedType" @change="getFilteredBooks">
                 <option value="all">All</option>
-                <option v-for="genre in getGenres()" :key="genre" :value="genre">{{ genre }}</option>
+                <option v-for="genre in getGenres()" :value="genre">{{ genre }}</option>
               </select>
             </div>
           </div>
         </section>
         <article>
           <div id="main_grid">
-            <div v-for="(book, index) in books" :key="book.book.title" class="book_item">
+            <div v-for="book in books" :key="book.book.title" class="book_item">
               <img class="have_hover" :src="book.book.cover" alt="Book" style="width: 180px; height: 280px;"
                 @click="showBookPopup(book.book)" />
             </div>
@@ -99,7 +116,7 @@ function deleteFromReadingList(title) {
       <aside>
         <h2>Reading list</h2>
         <div id="aside_grid">
-          <div v-show="readingList.length" v-for="(book, index) in readingList" :key="book.title" class="book_item">
+          <div v-show="readingList.length" v-for="book in readingList" :key="book.title" class="book_item">
             <img @click="deleteFromReadingList(book.title)" class="have_hover" :src="book.cover" alt="Book"
               style="width: 100px; height: 140px;" />
           </div>
