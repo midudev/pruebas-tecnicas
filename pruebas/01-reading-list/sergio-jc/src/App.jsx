@@ -12,7 +12,7 @@ function App () {
       <h1 className='pt-12'>
         <p className='text-6xl font-bold tracking-tight'>My reading list</p>
         <p className='text-xl font-bold underline decoration-solid decoration-pink-300'>
-          There are <span>{getLocalStorageBooks()?.length - (readingList?.length ?? 0)}</span> books you
+          There are <span>{getLocalStorageBooks()?.length ?? 0 - (readingList?.length ?? 0)}</span> books you
           haven't read yet!
         </p>
       </h1>
