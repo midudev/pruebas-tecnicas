@@ -23,17 +23,13 @@
 	}
 </script>
 
-<div class="flex justify-center w-5/6 md:max-w-2xl items-center h-full">
-	<div class="flex items-center flex-nowrap overflow-x-hidden w-[800px] h-[150px]">
-		{#each uniqueFilters as filter}
-			<div>
-				<Tab
-					{filter}
-					on:selectedfilter={handleInternalState}
-					{availables}
-					active={activeFilter === filter}
-				/>
-			</div>
-		{/each}
-	</div>
+<div class="flex items-center">
+	{#each uniqueFilters as filter}
+		<Tab
+			{filter}
+			on:selectedfilter={handleInternalState}
+			{availables}
+			active={activeFilter === filter}
+		/>
+	{/each}
 </div>

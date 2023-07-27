@@ -9,7 +9,7 @@
 </script>
 
 <section
-	class="flex flex-col lg:flex-row items-center my-10 justify-evenly w-full max-w-6xl mx-auto gap-10"
+	class="flex flex-col lg:flex-row items-center my-10 justify-evenly w-full md:max-w-6xl mx-auto gap-10"
 >
 	<Filters {library} on:selectedfilter {availables} {savedFilter} />
 	<Range {library} on:change />
