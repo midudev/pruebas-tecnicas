@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+##Aplicación de Lista de Libros
+**Intalación:**
+```place
+npm install
+```
+**Introducción:**
+Aplicación web que permita a los usuarios ver los libros disponibles y crear una lista de lectura. Permite filtrar los libros por titulo, genero y rango de paginas.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Funcionalidad:**
 
-## Available Scripts
+- **Visualización de Libros Disponibles:** La aplicación muestra una lista de libros disponibles que el usuario pueda revisar(libros que estan en un Book.json).
 
-In the project directory, you can run:
+- **Lista de Lectura:** El usuario es capaz de crear una lista de lectura a partir de los libros disponibles. Los libros que No estan disponibles se muestran con una opacidad. Para mover un libro de la lista de lectura a la lista de disponibles se puede volver a selecionar el libro agregado o presionar el X para quitarlo.
 
-### `npm start`
+- **Filtrado de Libros**: Los usuarios pueden filtrar la lista de libros disponibles por titulo, género o rnago de paginas, y se muestra un contador con el número de libros disponibles y el número de libros en la lista de lectura. Ademas del número de libros disponibles en el género seleccionado(no disponible para titulo y rango).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Sincronización de Estado:** Existe sincronización del estado global que refleja el número de libros en la lista de lectura y el número de libros todavía disponibles. Si un libro se mueve de la lista de disponibles a la lista de lectura, el recuento de ambos se actualiza en consecuencia.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Persistencia de Datos:** La aplicación permite la persistencia datos de la lista de lectura en el almacenamiento local del navegador(localStorage). Al recargar la página, la lista de lectura se mantiene.
 
-### `npm test`
+- **Sincronización entre pestañas:** Si el usuario abre la aplicación en dos pestañas diferentes, los cambios realizados en una pestaña se ven reflejados en la otra.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Test:** Se hicieron pruebas E2E con cypress.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Despliegue:**[Pagina Web](https://pruebas-tecnicas-jade.vercel.app/)
