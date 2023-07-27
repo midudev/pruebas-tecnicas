@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import { persist, devtools } from 'zustand/middleware'
+import { persist } from 'zustand/middleware'
 import { BookMapped, books } from '../utils/mapLibrary'
 import { findBookAndFilter } from '../utils/findBookAndFilter'
 import { FilterValue, IFilters } from '../types'
