@@ -32,7 +32,7 @@ test("renders content", async () => {
     expect(titleFirtsBookBeforeClick).not.toBe(titleFirtsBookAfterClick);
   
     // Comprobamos que se ha añadido a la lista de leidos
-    app.getByText("1 Libros leidos"); 
+    app.getByText("1 Libros leídos"); 
     const titleBookListRead = screen.getAllByRole("article").filter(el => el.closest("aside"))[0].querySelector("h2")?.textContent;
 
     // Comparamos que el titulo del primer libro de la lista de leidos es el mismo que el del primer libro de la lista de pendientes antes del click
