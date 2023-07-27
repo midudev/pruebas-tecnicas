@@ -12,10 +12,25 @@ import bookDashboardStyles from '@/assets/styles/Book/BookDashboard.module.css'
 import bookFinderAvailableStyles from '@/assets/styles/Book/BookFinderAvailable.module.css'
 import { filterBook } from '@/helpers/filterBook'
 import { BookDataList } from '@/assets/values'
+import { GoToSection } from './GoToSection'
+import { SECTIONS_ID } from '@/assets/constants'
 
-const initialViews = {
+const initialViews: {
+  tabs: {
+    bookListAvailable: boolean
+    readingList: boolean
+    filters: boolean
+  }
+  mode: 'mobile' | 'desktop'
+} = {
   tabs: { bookListAvailable: true, readingList: true, filters: true },
   mode: 'desktop'
+}
+
+const menuItems = {
+  bookListAvailable: 'Ver libros disponibles',
+  readingList: 'Ver lista de lectura',
+  filters: 'Filtros'
 }
 
 export function BookDashboard() {
@@ -116,42 +131,46 @@ export function BookDashboard() {
   }, [currentGenre, filterWord, listBooksAvailable, range, readingList])
 
   return (
-    <article className={homeStyles.homeMain__bookDashboard}>
+    <article
+      id={SECTIONS_ID.contentMain.id.slice(1)}
+      className={homeStyles.homeMain__bookDashboard}
+    >
+      {seeLists.mode !== 'mobile' && (
+        <GoToSection
+          message={SECTIONS_ID.listBookAvailable.message}
+          tag={SECTIONS_ID.listBookAvailable.id}
+        />
+      )}
       <menu className={bookDashboardStyles.bookListMenu}>
-        <li>
-          <button
-            className={`${bookDashboardStyles.bookListMenu__item} ${
-              seeLists.tabs.bookListAvailable ? bookDashboardStyles.active : ''
-            }`}
-            onClick={() => changeList('bookListAvailable')}
-          >
-            Ver libros disponibles
-          </button>
-        </li>
-        <li>
-          <button
-            className={`${bookDashboardStyles.bookListMenu__item} ${
-              seeLists.tabs.readingList ? bookDashboardStyles.active : ''
-            }`}
-            onClick={() => changeList('readingList')}
-          >
-            Ver lista de lectura
-          </button>
-        </li>
-        <li>
-          <button
-            className={`${bookDashboardStyles.bookListMenu__item} ${
-              seeLists.tabs.filters ? bookDashboardStyles.active : ''
-            }`}
-            onClick={() => changeList('filters')}
-          >
-            Filtros
-          </button>
-        </li>
+        {Object.entries(menuItems).map((item) => {
+          const [key, message] = item
+
+          return (
+            <li key={key}>
+              <button
+                className={`${bookDashboardStyles.bookListMenu__item} ${
+                  seeLists.tabs[key as keyof typeof menuItems] ? bookDashboardStyles.active : ''
+                }`}
+                onClick={() => changeList(key as keyof typeof menuItems)}
+              >
+                {message}
+              </button>
+            </li>
+          )
+        })}
       </menu>
       {seeLists.tabs.filters && <FilterSection />}
       {seeLists.tabs.bookListAvailable && (
-        <section className={bookDashboardStyles.bookListSection}>
+        <section
+          id={SECTIONS_ID.listBookAvailable.id.slice(1)}
+          className={bookDashboardStyles.bookListSection}
+        >
+          {seeLists.mode !== 'mobile' && (
+            <GoToSection
+              message={SECTIONS_ID.readingList.message}
+              tag={SECTIONS_ID.readingList.id}
+            />
+          )}
           <h2 className={bookDashboardStyles.bookListSection__title}>
             Libros disponibles&nbsp;
             <span suppressHydrationWarning={true}>
@@ -186,7 +205,10 @@ export function BookDashboard() {
         </section>
       )}
       {seeLists.tabs.readingList && (
-        <section className={bookDashboardStyles.bookListSection}>
+        <section
+          className={bookDashboardStyles.bookListSection}
+          id={SECTIONS_ID.readingList.id.slice(1)}
+        >
           <h2 className={bookDashboardStyles.bookListSection__title}>
             Lista de lectura&nbsp;
             <span suppressHydrationWarning={true}>

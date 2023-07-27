@@ -9,6 +9,7 @@
   grid-template-rows: auto auto min-content 1fr;
   column-gap: 1.5rem;
   place-content: center;
+  position: relative;
 }
 
 .suggestSection__info__button {

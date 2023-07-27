@@ -25,6 +25,10 @@
   transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.actionButton:focus {
+  outline-color: var(--color-primary-triad);
+}
+
 @media (hover: hover) {
   .actionButton:hover {
     color: #222;
@@ -37,6 +41,18 @@
 }
 
 @media (hover: none) {
+  .actionButton {
+    color: #222;
+    border-color: #167eab;
+    transition: none;
+  }
+  .actionButton::before {
+    width: 100%;
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
   .actionButton {
     color: #222;
     border-color: #167eab;

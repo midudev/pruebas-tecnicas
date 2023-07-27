@@ -4,9 +4,11 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { useBookList } from '@/hooks/useBookList'
 
+import { GoToSection } from './GoToSection'
+
 import { toast } from 'react-toastify'
 
-import { nameStorage } from '@/assets/constants'
+import { SECTIONS_ID, nameStorage } from '@/assets/constants'
 import { books } from '@/assets/values'
 import suggestBookStyles from '@/assets/styles/Book/SuggestBook.module.css'
 import buttonStyle from '@/assets/styles/Book/Button.module.css'
@@ -54,6 +56,7 @@ export function SuggestBook() {
     <section
       className={`${homeStyles.homeMain__suggestSection} ${suggestBookStyles.suggestSection}`}
     >
+      <GoToSection message={SECTIONS_ID.contentMain.message} tag={SECTIONS_ID.contentMain.id} />
       <h4 className={suggestBookStyles.suggestSection__title}>{suggestion.title}</h4>
       <h5 className={suggestBookStyles.suggestSection__subtitle}>{suggestion.author.name}</h5>
       <p className={suggestBookStyles.suggestSection__synopsis}>{suggestion.synopsis}</p>

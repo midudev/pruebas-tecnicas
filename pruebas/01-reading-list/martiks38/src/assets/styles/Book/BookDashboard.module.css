@@ -1,4 +1,5 @@
 .bookListSection {
+  position: relative;
   padding: 1rem var(--padding-content);
   border-top: solid 1px var(--border-section-color);
 }
