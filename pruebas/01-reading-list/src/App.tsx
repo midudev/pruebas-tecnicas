@@ -58,6 +58,37 @@ function App() {
     );
   };
 
+  // Function to update readList state
+  const updateReadListState = (newReadList: BookWithReadList[]) => {
+    setReadList(newReadList);
+  };
+
+  useEffect(() => {
+    const handleStorageEvent = (e: StorageEvent) => {
+      if (e.key === "readList" && e.newValue !== JSON.stringify(readList)) {
+        const newReadList = parseLocalStorageData<BookWithReadList[]>(
+          "readList",
+          []
+        );
+        updateReadListState(newReadList);
+      }
+    };
+
+    window.addEventListener("storage", handleStorageEvent);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageEvent);
+    };
+  }, []);
+
+  useEffect(() => {
+    setBooks(booksData.library.map((item) => ({ ...item.book })));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("readList", JSON.stringify(readList));
+  }, [readList]);
+
   return (
     <div className="App">
       <header>
