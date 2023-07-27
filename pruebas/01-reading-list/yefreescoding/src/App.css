@@ -1,0 +1,50 @@
+.wrapper {
+  width: min(100% - 1rem, 90em);
+  margin: 0 auto;
+}
+
+.book-shelter {
+  --col-size: 15em;
+  gap: 3rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (width < 46em) {
+  .book-shelter {
+    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.card {
+  position: relative;
+  background: #f9f6f6cc;
+  backdrop-filter: blur(6px);
+  border-radius: 0.5rem;
+  display: flex;
+}
+
+.card[data-readingList='true'] {
+  /* position: relative; */
+  /* top: 50%; */
+}
+
+.card .image {
+  position: relative;
+  inset: 10px 10px auto auto;
+  transition: all 0.5s;
+  box-shadow: 12px 17px 51px #00000080;
+  aspect-ratio: 9/14;
+  width: 20em;
+  cursor: pointer;
+}
+
+.card .image:hover {
+  transform: scale(1.02);
+}
+
+.card .image:active {
+  transform: scale(0.95) rotateZ(1.7deg);
+}
