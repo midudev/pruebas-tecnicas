@@ -14,15 +14,15 @@
 
 - [x] **Sincronización entre pestañas**: Si el usuario abre la aplicación en dos pestañas diferentes, los cambios realizados en una pestaña deben reflejarse en la otra. Sin necesidad de usar Backend.
 
-- [] **Despliegue**: La aplicación debe estar desplegada en algún servicio de hosting gratuito (Netlify, Vercel, Firebase, etc) y debe ser accesible a través de una URL pública. Indica la URL en el README.
+- [ ] **Despliegue**: La aplicación debe estar desplegada en algún servicio de hosting gratuito (Netlify, Vercel, Firebase, etc) y debe ser accesible a través de una URL pública. Indica la URL en el README.
 
-- [] **Test**: La aplicación debe tener AL MENOS un test. Haz el test que consideres más importante para tu aplicación.
+- [ ] **Test**: La aplicación debe tener AL MENOS un test. Haz el test que consideres más importante para tu aplicación.
 
 ## Desafíos adicionales
 
-- [] Implementar una funcionalidad de búsqueda en la lista de libros disponibles.
+- [ ] Implementar una funcionalidad de búsqueda en la lista de libros disponibles.
 - [x] Añade un nuevo filtro para filtrar los libros por número de páginas.
-- [] Permitir la reorganización de los libros en la lista de lectura por prioridad.
+- [ ] Permitir la reorganización de los libros en la lista de lectura por prioridad.
 - [x] Haz que tu diseño sea responsive.
 
 ## Instrucciones para desarrollo/contribución
