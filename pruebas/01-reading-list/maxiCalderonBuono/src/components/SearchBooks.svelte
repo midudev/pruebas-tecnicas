@@ -48,7 +48,7 @@
 	export let placeholder: string;
 
 	function submitSearch() {
-		if (filteredTitles.includes(searchValue.trim(.toLocaleLowerCase()))) {
+		if (filteredTitles.includes(searchValue.trim().toLocaleLowerCase())) {
 			goto('/search/' + searchValue.toLowerCase());
 		}else{
 			searchValue = ""
