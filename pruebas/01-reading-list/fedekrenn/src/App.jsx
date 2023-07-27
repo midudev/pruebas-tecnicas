@@ -111,27 +111,33 @@ function App () {
         <button className='open-modal-btn' onClick={openModal}>
           Abrir lista de lectura (<span>{readingList.length}</span>)
         </button>
-        <label htmlFor='select-genre'>Filtrar por género:</label>
-        <select
-          name='select-genre'
-          id='select-genre'
-          value={genre}
-          onChange={(e) => setGenre(e.target.value)}
-        >
-          {GENRES_LIST.map((genre) => (
-            <option key={genre} value={genre}>
-              {genre}
-            </option>
-          ))}
-        </select>
-        <label htmlFor='page-lenght'>Cantidad de páginas: {pages}</label>
-        <input
-          type='range'
-          name='page-lenght'
-          min='0' max='1200'
-          value={pages}
-          onChange={(e) => setPages(e.target.value)}
-        />
+        <div className='filter-container'>
+          <label htmlFor='select-genre'>
+            <p>Filtrar por género:</p>
+            <select
+              name='select-genre'
+              id='select-genre'
+              value={genre}
+              onChange={(e) => setGenre(e.target.value)}
+            >
+              {GENRES_LIST.map((genre) => (
+                <option key={genre} value={genre}>
+                  {genre}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label htmlFor='page-lenght'>
+            <p>Cantidad de páginas: {pages}</p>
+            <input
+              type='range'
+              name='page-lenght'
+              min='0' max='1200'
+              value={pages}
+              onChange={(e) => setPages(e.target.value)}
+            />
+          </label>
+        </div>
         {books.length === 0 && readingList.length > 0
           ? (
             <h2>Todos los libros están en la lista de lectura</h2>

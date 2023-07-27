@@ -1,6 +1,10 @@
 # Reading List App
 
-Este es un proyecto de una aplicación de lista de lectura desarrollado en React + vite. Pertenece a una prueba técnica propuesta por Midudev.
+Este es un proyecto de una aplicación de lista de lectura desarrollado en React + vite. Pertenece a una prueba técnica propuesta por (Midudev)[https://github.com/midudev].
+
+## Deploy 
+
+Podés correr la aplicación desde el siguiente (Link)[https://reading-list-psi.vercel.app/] para ver una demo ya deployada o clonar el repositorio y correrlo localmente.
 
 ## Descripción
 

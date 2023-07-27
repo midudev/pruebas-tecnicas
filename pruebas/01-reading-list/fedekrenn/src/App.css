@@ -39,6 +39,25 @@ span {
   font-weight: bold;
 }
 
+.filter-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+
+.filter-container p {
+  margin-bottom: 1em;
+}
+
+select#select-genre {
+  margin: 0
+}
+
+input[type="range"] {
+  margin: 0;
+}
+
 #readingList {
   min-width: 50%;
   max-width: 85%;
@@ -57,4 +76,9 @@ span {
 #readingList button {
   display: block;
   margin: 0 auto;
+}
+
+dialog p {
+  text-align: center;
+  margin: 3em 0;
 }
