@@ -1,18 +1,26 @@
 import ReadingList from './components/ReadingList'
 import Books from './components/Books'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import booksData from '../../books.json'
 import { Book, Library } from './interfaces/Book'
-// import { useLocalStorage } from './hooks/useLocalStorage'
+import { useLocalStorage } from './hooks/useLocalStorage'
 
 const App = () => {
-  const [bookList, setBookList] = useState<Library>()
+  const [bookList, setBookList] = useLocalStorage<Library>('books', {
+    library: [],
+  })
 
   useEffect(() => {
+    if (bookList.library.length > 0) {
+      return
+    }
     setBookList(booksData)
   }, [])
 
-  const [readingList, setReadingList] = useState<Book[]>([])
+  const [readingList, setReadingList] = useLocalStorage<Book[]>(
+    'readingList',
+    []
+  )
 
   // LOGIC TO ADD BOOK TO READING LIST AND REMOVE BOOK FROM LIBRARY
   const addToReadingList = (book: Book) => {
@@ -26,10 +34,10 @@ const App = () => {
       const updatedLibrary = bookList.library.filter(
         b => b.book.ISBN !== book.ISBN
       )
-      setBookList(prevBookList => ({
-        ...prevBookList,
+      setBookList({
+        ...bookList,
         library: updatedLibrary,
-      }))
+      })
     }
   }
 
@@ -48,10 +56,10 @@ const App = () => {
       )
       if (!isBookInLibrary) {
         const updatedLibrary = [...bookList.library, { book }]
-        setBookList(prevBookList => ({
-          ...prevBookList,
+        setBookList({
+          ...bookList,
           library: updatedLibrary,
-        }))
+        })
       }
     }
   }
