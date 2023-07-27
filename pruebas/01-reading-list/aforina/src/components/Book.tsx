@@ -60,7 +60,7 @@ export const Book = ({
         </div>
         {isListed ? (
           <span className='bg-[#F4ADB1] whitespace-nowrap text-white py-1 px-3 border-1 border-black rounded-sm'>
-            Added💖
+            Added 💖
           </span>
         ) : (
           <button

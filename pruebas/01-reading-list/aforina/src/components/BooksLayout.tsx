@@ -34,7 +34,7 @@ export const BooksLayout = () => {
         .filter(({ book }) =>
           book.title.toLowerCase().includes(queryString.toLowerCase().trim())
         )
-        .filter(({ book }) => book.pages < (pages || Infinity))
+        .filter(({ book }) => book.pages <= (pages || Infinity))
         .filter(({ book }) => book.genre === category || category === '')
         .sort((a, b) => {
           if (order === 'Newest') {

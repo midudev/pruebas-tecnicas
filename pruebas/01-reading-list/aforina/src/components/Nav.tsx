@@ -16,14 +16,19 @@ export const Nav = () => {
       {match ? (
         <Link
           href='/wishlist'
-          className='bg-customBlue w-fit ml-12 justify-self-center hover:bg-[#97DFFF] text-sm font-semibold py-2 px-6 rounded-md border-1 border-black drop-shadow-[2px_3px_0px_rgba(0,0,0,1)]'
+          className='bg-customBlue w-[120px] ml-12 justify-self-center hover:bg-[#97DFFF] text-sm font-semibold py-2 px-6 rounded-md border-1 border-black drop-shadow-[2px_3px_0px_rgba(0,0,0,1)]'
         >
-          Library ({listedIds.length})
+          Library
+          {listedIds.length > 0 && (
+            <div className='flex absolute right-[-10px] top-4 items-center justify-center text-[16px] pt-1 bg-customPink w-8 h-8 rounded-full text-white border-1 border-black drop-shadow-[0px_1px_0px_rgba(0,0,0,1)]'>
+              {listedIds.length}
+            </div>
+          )}
         </Link>
       ) : (
         <Link
           href='/'
-          className='bg-customBlue w-fit ml-12 justify-self-center hover:bg-[#97DFFF] text-sm font-semibold py-2 px-6 rounded-md border-1 border-black drop-shadow-[2px_3px_0px_rgba(0,0,0,1)]'
+          className='bg-customBlue w-[120px] ml-12 justify-self-center hover:bg-[#97DFFF] text-sm font-semibold py-2 px-6 rounded-md border-1 border-black drop-shadow-[2px_3px_0px_rgba(0,0,0,1)]'
         >
           Book List
         </Link>

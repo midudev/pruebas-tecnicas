@@ -157,9 +157,11 @@ export const Sidebar = () => {
             <div className='flex items-center gap-x-1 w-[70px]'>
               <button
                 onClick={() => {
-                  onChange(prev => prev--)
-                  let auxPages = pages - 1
-                  setPages(auxPages)
+                  const auxPages = pages - 1
+                  if (auxPages >= 0) {
+                    onChange(auxPages)
+                    setPages(auxPages)
+                  }
                 }}
                 className='w-[16px] bg-transparent border-1 border-black rounded-sm'
               >
@@ -168,9 +170,11 @@ export const Sidebar = () => {
               <div className='buble'>{value}</div>
               <button
                 onClick={() => {
-                  onChange(prev => prev++)
-                  let auxPages = pages + 1
-                  setPages(auxPages)
+                  const auxPages = value + 1
+                  if (auxPages <= maxPages) {
+                    onChange(auxPages)
+                    setPages(auxPages)
+                  }
                 }}
                 className='w-[16px] bg-transparent border-1 border-black rounded-sm'
               >
