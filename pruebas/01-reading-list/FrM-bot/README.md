@@ -10,7 +10,7 @@
 
 - Tailwind
 
-### Link: [https://frm-bot.vercel.app](https://frm-bot.vercel.app)
+### Link: [https://bookie-library.vercel.app/](https://bookie-library.vercel.app/)
 
 ## Comandos
 
