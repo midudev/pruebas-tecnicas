@@ -12,6 +12,7 @@ const emits = defineEmits(["update:genero"]);
       Genero:
       <MenuButton
         class="inline-flex w-full justify-center rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+        id="filter-button"
       >
         {{ genero ? genero : "Todos" }}
         <Icon
@@ -40,13 +41,9 @@ const emits = defineEmits(["update:genero"]);
                 active ? 'bg-slate-500 text-white' : 'text-gray-900',
                 'group flex w-full items-center rounded-md px-2 py-2 text-sm',
               ]"
+              :id="item"
               @click="$emit('update:genero', item)"
             >
-              <!-- <EditIcon
-                :active="active"
-                class="mr-2 h-5 w-5 text-slate-400"
-                aria-hidden="true"
-              /> -->
               {{ item }}
             </button>
           </MenuItem>
@@ -57,12 +54,8 @@ const emits = defineEmits(["update:genero"]);
                 'group flex w-full items-center rounded-md px-2 py-2 text-sm',
               ]"
               @click="$emit('update:genero', null)"
+              id="todos"
             >
-              <!-- <EditIcon
-                :active="active"
-                class="mr-2 h-5 w-5 text-slate-400"
-                aria-hidden="true"
-              /> -->
               Todos
             </button>
           </MenuItem>
