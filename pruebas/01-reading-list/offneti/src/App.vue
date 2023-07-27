@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import booksData from '../../books.json';
+import booksData from '../books.json';
 import { ref } from 'vue';
 
 const selectedType = ref('all');
