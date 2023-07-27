@@ -1,0 +1,31 @@
+{
+  "name": "libreriavue",
+  "version": "0.0.0", 
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "jest "
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.22.9",
+    "@mdi/font": "7.0.96",
+    "@vue/vue3-jest": "^29.2.4",
+    "babel-jest": "^29.6.1",
+    "jest-environment-jsdom": "^29.6.1",
+    "pinia": "^2.0.23",
+    "pinia-plugin-persistedstate": "^3.1.0",
+    "roboto-fontface": "*",
+    "vue": "^3.2.0",
+    "vuetify": "^3.0.0",
+    "webfontloader": "^1.0.0"
+  },
+  "devDependencies": {
+    "@pinia/testing": "^0.1.2",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vue/test-utils": "^2.4.0",
+    "jest": "^29.6.1",
+    "vite": "^4.2.0",
+    "vite-plugin-vuetify": "^1.0.0"
+  }
+}
