@@ -84,7 +84,7 @@
 
 </script>
 
-<div class='flex gap-4 justify-between mb-4'>
+<div class='flex gap-4 justify-between mb-8'>
 
   <label class={ labelClasses }>
 
@@ -128,7 +128,7 @@
 
   <div
 
-    class='absolute progress bg-blue-400 h-2 rounded-lg'
+    class='absolute progress bg-primary-400 h-2 rounded-lg'
 
     style:--percentLeft='{ percentLeft }%'
     style:--percentRight='{ percentRight }%'
@@ -192,7 +192,7 @@
     height: 1rem;
 
     border-radius: 50%;
-    background: theme('colors.blue.500');
+    background: theme('colors.primary.500');
 
     appearance: none;
     -webkit-appearance: none;

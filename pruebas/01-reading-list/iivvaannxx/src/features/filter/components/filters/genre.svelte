@@ -1,8 +1,9 @@
 <script lang='ts' context='module'>
 
-  import { genres } from '$features/library'
+  import { TagIcon } from '$lib/icons'
   import { ToggleBadge, ToggleAccordion } from '$lib'
 
+  import { genres } from '$features/library'
   import {
 
     addGenreToFilter,
@@ -10,7 +11,7 @@
     setFilterEnabled,
     filters
 
-  } from '../store'
+  } from '../../store'
 
 </script>
 
@@ -34,9 +35,19 @@
 
 </script>
 
-<ToggleAccordion label='Género' toggled={ enabled } onToggle={ toggleGenreFilter }>
+<ToggleAccordion
 
-  <ul class='mt-2 p-4 flex flex-wrap justify-around gap-4'>
+  label='Género'
+  toggled={ enabled }
+  onToggle={ toggleGenreFilter }
+  slotClass=''
+>
+
+  <svelte:fragment slot='icon'>
+    <TagIcon class='mr-4' />
+  </svelte:fragment>
+
+  <ul class='mt-4 p-4 flex flex-wrap gap-4'>
 
     {#each $genres as genre}
 

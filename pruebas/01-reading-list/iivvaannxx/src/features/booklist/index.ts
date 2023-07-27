@@ -1,5 +1,13 @@
 export { default as BookList } from './components/list.svelte'
-export { DEFAULT_LISTS } from './feature'
+export { default as BookListMenu } from './components/menu.svelte'
+export {
+
+  DEFAULT_LISTS,
+  LISTS_ICONS,
+
+  initialize as initializeBookListFeature
+
+} from './feature'
 
 export {
 
@@ -10,7 +18,6 @@ export {
   setCurrentList,
 
   createList,
-  renameList,
   deleteList,
 
   addBook,

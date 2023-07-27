@@ -1,6 +1,8 @@
 <script lang='ts' context='module'>
 
   import { slide } from 'svelte/transition'
+  import { cubicInOut } from 'svelte/easing'
+
   import Toggle from './toggle.svelte'
 
 </script>
@@ -12,7 +14,7 @@
   export let toggled = false
 
   /** @brief The classes applied to the slot wrapper. */
-  export let slotClass: string | undefined
+  export let slotClass: string
   export let onToggle = (_: boolean) => { }
 
 </script>
@@ -21,14 +23,18 @@
 
   <div class='flex justify-between items-center w-full select-none'>
 
-    <span>{ label }</span>
+    <div class='inline-flex items-center'>
+      <slot name='icon' />
+      <span>{ label }</span>
+    </div>
+
     <Toggle bind:toggled { onToggle } />
 
   </div>
 
   {#if toggled}
 
-    <div class={ slotClass } transition:slide>
+    <div class={ slotClass } transition:slide={ { duration: 400, easing: cubicInOut } }>
       <slot />
     </div>
 

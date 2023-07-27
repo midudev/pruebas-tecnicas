@@ -1,3 +1,3 @@
-<div class='grid grid-flow-row gap-4 grid-cols-library'>
+<section class='grid grid-flow-row gap-8 grid-cols-library justify-items-center p-8'>
   <slot />
-</div>
+</section>

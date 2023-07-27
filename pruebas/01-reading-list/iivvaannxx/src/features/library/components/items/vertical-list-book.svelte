@@ -1,55 +1,47 @@
 <script lang='ts' context='module'>
 
-  import PrimaryButton from '$lib/buttons/primary.svelte'
-  import SecondaryButton from '$lib/buttons/secondary.svelte'
-
+  import { PrimaryButton } from '$lib'
   import { addBook, currentListName } from '$features/booklist'
-  import { BookmarkIcon, InfoIcon } from '$lib/icons'
 
 </script>
 
 <script lang='ts'>
 
+  /** @brief The exposed data of the book. */
   export let bookData: Book
 
 </script>
 
-<article class='flex space-x-8 p-4'>
+<li class='p-4'>
 
-  <img class='w-44 aspect-cover rounded-xl' src={ bookData.cover } alt={ bookData.title } />
+  <article class='flex space-x-8 p-4'>
 
-  <div class='flex-grow flex flex-col px-4 gap-2'>
+    <img class='w-44 flex-shrink-0 h-64 rounded-xl' src={ bookData.cover } alt={ bookData.title } />
 
-    <h4 class='text-orange-400 font-bold text-2xl'>{ bookData.title }</h4>
-    <h6 class='uppercase text-base font-light mb-4'>{ bookData.author.name }</h6>
+    <div class='flex-grow flex flex-col px-4 gap-2'>
 
-    <p class='text-base'>{ bookData.synopsis }</p>
-    <p class='text-base'>Genre(s): <span class='capitalize'>{ bookData.genre }</span></p>
+      <h4 class='text-primary-500 font-bold text-2xl'>{ bookData.title }</h4>
+      <h6 class='uppercase text-base font-normal mb-4'>{ bookData.author.name }</h6>
 
-  </div>
+      <p class='text-base font-light'>{ bookData.synopsis }</p>
+      <div class='flex flex-grow'></div>
 
-  <div class='w-60 bg-gray-300 rounded-lg p-4 flex flex-col items-center justify-center gap-8'>
+      <p class='text-base font-semibold text-primary-400 py-2'>
+        <span class='block'>Género: <span class='capitalize text-sm text-black font-light'>{ bookData.genre }</span></span>
+        <span class='block'>Año: <span class='capitalize text-sm text-black font-light'>{ bookData.year }</span></span>
+        <span class='block'>ISBN: <span class='capitalize text-sm text-black font-light'>{ bookData.ISBN }</span></span>
+      </p>
 
-    <PrimaryButton onClick={ () => { addBook($currentListName, bookData) } } extraClasses='w-3/4 h-12'>
+    </div>
 
-      <span class='mr-4'>
-        <BookmarkIcon />
-      </span>
+    <div class='w-[12rem] max-w-[15rem] min-w-[10rem] flex items-center'>
 
-      <span class='text-lg flex-grow text-center uppercase'>Añadir</span>
+      <PrimaryButton onClick={ () => { addBook($currentListName, bookData) } } extraClasses='w-3/4 h-12'>
+        <span class='text-lg flex-grow text-center uppercase'>Añadir</span>
+      </PrimaryButton>
 
-    </PrimaryButton>
+    </div>
 
-    <SecondaryButton extraClasses='w-3/4 h-12'>
+  </article>
 
-      <span class='mr-4'>
-        <InfoIcon />
-      </span>
-
-      <span class='text-base flex-grow text-center uppercase'>Detalles</span>
-
-    </SecondaryButton>
-
-  </div>
-
-</article>
+</li>

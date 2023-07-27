@@ -2,9 +2,11 @@
 
   import debounce from 'just-debounce-it'
 
-  import { pageLimits } from '$features/library'
+  import { PagesIcon } from '$lib/icons'
   import { MinMaxSlider, ToggleAccordion } from '$lib'
-  import { setPagesFilter, setFilterEnabled, filters } from '../store'
+
+  import { pageLimits } from '$features/library'
+  import { setPagesFilter, setFilterEnabled, filters } from '../../store'
 
 </script>
 
@@ -30,8 +32,13 @@
   label='Por Páginas'
   toggled={ enabled }
   onToggle={ togglePagesFilter }
-  slotClass='px-6 py-2 mt-4'
+  slotClass='px-6 py-2 mt-8'
 >
+
+  <svelte:fragment slot='icon'>
+    <PagesIcon class='mr-4' />
+  </svelte:fragment>
+
   <MinMaxSlider
 
     min={ $pageLimits[0] }

@@ -4,7 +4,7 @@ import { library } from '$features/library'
 import { setIsSearching } from './store'
 
 /** @brief The minimum number of characters required to start searching. */
-export const MIN_SEARCH_CHARACTERS = 3
+export const MIN_SEARCH_CHARACTERS = 2
 
 /** @brief The options used to configure the fuse instance. */
 const fuseOptions = {

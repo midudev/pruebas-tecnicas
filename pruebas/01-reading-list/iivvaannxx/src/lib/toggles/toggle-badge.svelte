@@ -14,8 +14,8 @@
   export let onToggle: ToggleEventHandler = (_) => {}
 
   $: conditionalClasses = toggled
-    ? 'bg-blue-500 text-white'
-    : 'bg-blue-100 text-blue-800 hover:bg-blue-300'
+    ? 'bg-primary-500 text-white'
+    : 'bg-primary-100 text-primary-800 hover:bg-primary-300'
 
 </script>
 

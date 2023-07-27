@@ -14,6 +14,11 @@ module.exports = {
 
   theme: {
 
+    fontFamily: {
+
+      sans: ['Poppins', 'Verdana', 'Arial', 'ui-sans-serif', 'sans-serif']
+    },
+
     extend: {
 
       colors: {
@@ -32,6 +37,11 @@ module.exports = {
           900: '#842018',
           950: '#480c07'
         }
+      },
+
+      margin: {
+
+        scrollbar: 'calc(-1 * (100vw - 100%))'
       },
 
       inset: {
@@ -99,7 +109,7 @@ module.exports = {
       gridTemplateColumns: {
 
         main: 'auto 1fr auto',
-        library: 'repeat(auto-fill, minmax(15rem, 1fr))'
+        library: 'repeat(auto-fill, minmax(20rem, 1fr))'
       },
 
       gridTemplateRows: {

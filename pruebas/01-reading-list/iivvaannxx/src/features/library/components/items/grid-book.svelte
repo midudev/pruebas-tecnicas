@@ -1,28 +1,33 @@
 <script lang='ts' context='module'>
 
+  import { PrimaryButton } from '$lib'
+  import { addBook, currentListName } from '$features/booklist'
+
 </script>
 
 <script lang='ts'>
 
+  /** @brief The exposed data of the book. */
   export let bookData: Book
 
 </script>
 
-<li class='relative flex flex-col w-28 aspect-cover shadow-sm rounded-xl group'
->
+<article class='relative flex flex-col w-80 aspect-cover rounded-xl items-center'>
 
-  <img class='w-full h-full rounded-xl' src={ bookData.cover } alt={ bookData.title } />
+  <div class='w-full h-full relative group duration-300'>
 
-  <!-- <div class='absolute h-full w-full'>
-    <div class='h-full w-full bg-black rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-40'></div>
+    <img class='w-full h-full rounded-xl transition duration-300 group-hover:cursor-pointer group-hover:grayscale group-hover:brightness-75' src={ bookData.cover } alt={ bookData.title } />
+
+    <div class='flex opacity-0 w-[12rem] max-w-[15rem] min-w-[10rem] absolute transition duration-300 top-1/2 left-1/2 justify-center items-center group-hover:opacity-100 -translate-y-1/2 -translate-x-1/2'>
+
+      <PrimaryButton onClick={ () => { addBook($currentListName, bookData) } } extraClasses='w-3/4 h-12'>
+        <span class='text-lg flex-grow text-center uppercase'>Añadir</span>
+      </PrimaryButton>
+    </div>
+
   </div>
 
-  <div class='absolute flex items-center justify-center h-full w-full'>
+  <h4 class='text-primary-500 font-bold text-lg text-center mt-6 truncate'>{ bookData.title }</h4>
+  <h6 class='uppercase text-base font-normal text-center mt-1'>{ bookData.author.name }</h6>
 
-    <button class='w-10 h-10 rounded-full flex items-center justify-center  transition-all duration-300 bg-white opacity-0 group-hover:opacity-100 hover:bg-black hover:text-white'>
-      <InfoIcon />
-    </button>
-
-  </div> -->
-
-</li>
+</article>
