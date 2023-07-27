@@ -1,0 +1,48 @@
+{
+  "name": "01-reading-list",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite ",
+    "build": "tsc && vite build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "test": "vitest -w",
+    "coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "2.1.0",
+    "@chakra-ui/react": "2.7.1",
+    "@emotion/react": "11.11.1",
+    "@emotion/styled": "11.11.0",
+    "framer-motion": "10.12.22",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "4.10.1",
+    "react-router-dom": "6.14.2"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^14.0.0",
+    "@types/react": "18.2.14",
+    "@types/react-dom": "18.2.6",
+    "@typescript-eslint/eslint-plugin": "5.62.0",
+    "@typescript-eslint/parser": "5.61.0",
+    "@vitejs/plugin-react-swc": "3.3.2",
+    "eslint": "8.45.0",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-config-standard-with-typescript": "36.1.0",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-n": "16.0.1",
+    "eslint-plugin-promise": "6.1.1",
+    "eslint-plugin-react": "7.32.2",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "eslint-plugin-react-refresh": "0.4.1",
+    "jsdom": "^22.1.0",
+    "prettier": "3.0.0",
+    "typescript": "5.1.6",
+    "vite": "4.4.0",
+    "vitest": "0.33.0"
+  }
+}
