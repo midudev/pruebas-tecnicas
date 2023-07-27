@@ -4,7 +4,7 @@
      An app for users to keep see all books that are available and create a list of books they are currently reading.
     <br />
     <br />
-    <a href="https://reading-list.railway.app/">View</a>
+    <a href="https://jlreadinglist.netlify.app/">View</a>
     ·
     <a href="https://github.com/joselupianez/pruebas-tecnicas/issues">Report Bug</a>
     ·
