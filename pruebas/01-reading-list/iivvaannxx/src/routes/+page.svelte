@@ -2,6 +2,7 @@
 
   import '../app.css'
 
+  import { fade } from 'svelte/transition'
   import { GithubIcon } from '$lib/icons'
 
   import { Library } from '$features/library'
@@ -64,12 +65,12 @@
 
   </aside>
 
-  <section class='col-start-2 overflow-y-auto p-6'>
+  <section class='col-start-2 overflow-y-auto p-6' in:fade>
     <Library />
   </section>
 
   <aside class='sticky top-header w-sidebar h-sidebar col-start-3 border-l-2'>
-    <BookList name={ DEFAULT_LISTS.TO_READ } />
+    <BookList />
   </aside>
 
 </main>

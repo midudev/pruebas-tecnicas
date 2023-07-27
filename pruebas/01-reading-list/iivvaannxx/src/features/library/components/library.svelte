@@ -41,7 +41,10 @@
   // First pass: Search. Second pass: Filter. Third pass: Remove those in read list.
   $: books = $showSearchResults ? $searchResults : $library
   $: filteredBooks = filter(books as BookArray, $filters)
-  $: finalBooks = filteredBooks.filter(book => !($currentList.books.includes(book)))
+  $: finalBooks = filteredBooks.filter(book => {
+
+    return !($currentList.books).some(({ ISBN }) => ISBN === book.ISBN)
+  })
 
   function setGridLayout () {
 
