@@ -13,7 +13,7 @@ export default {
       boxShadow: {
         book: "-24px 12px 30px 0px rgba(0,0,0,0.19)",
         book2:
-          "rgba(0, 0, 0, 0.2) -5px 5px 2px 1px, rgba(0, 0, 0, 0.15) -8px 8px 2px 1px, rgba(0, 0, 0, 0.1) -10px 10px 2px 1px, rgba(0, 0, 0, 0.05) -12px 12px, rgba(0, 0, 0, 0.05) -14px 14px;",
+          "rgba(0, 0, 0, 0.2) -5px 5px 2px 1px, rgba(0, 0, 0, 0.15) -8px 8px 2px 1px, rgba(0, 0, 0, 0.1) -10px 10px 2px 1px, rgba(0, 0, 0, 0.05) -12px 12px, rgba(0, 0, 0, 0.05) -14px 14px",
       },
       colors: {
         primary: {
