@@ -14,6 +14,8 @@ const {page} = Astro.params;
 
 const currentPage = Number(page);
 
+if(!currentPage) return Astro.redirect('/404');
+
 if(currentPage < 1) return Astro.redirect('/404');
 
 
@@ -29,9 +31,6 @@ const result = getBooksBy(queries);
 
 const total = Math.ceil(result.length / BOOKS_PER_PAGE);
 
-
-if(currentPage > total) return Astro.redirect('/404');
-
 const start = (currentPage - 1) * BOOKS_PER_PAGE;
 
 const end = start + BOOKS_PER_PAGE;
@@ -45,16 +44,20 @@ const books = result.slice(start, end);
 
         <BooksFilters client:load path="/Libros/1" pages={queries.pages} genre={queries.genre} total={result.length} show={show} />
     
-        <div class="Books-container" transition:animate={customSlide()}>
-            {
-                books.map(({book}) => {
-        
-                    return <BookCard book={book} />
-                })
-            }
-        </div>
-        
-        <BooksPagination path="/Libros" queryParams={queries} current={currentPage} total={total} />
+        {
+            result.length !== 0 &&
+    
+            <div class="Books-container" transition:animate={customSlide()}>
+                {
+                    books.map(({book}) => {
+            
+                        return <BookCard book={book} />
+                    })
+                }
+            </div>
+            
+            <BooksPagination path="/Libros" queryParams={queries} current={currentPage} total={total} />
+        }
 
     </div>
     

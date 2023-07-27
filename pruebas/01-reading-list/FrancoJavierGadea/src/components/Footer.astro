@@ -35,7 +35,6 @@ const CONTACT = {
 
 <script>
     // Hide nav when footer appears in the viewport
-    console.log('hide nav script');
 
     class AstroFooter extends HTMLElement {
 
@@ -54,8 +53,6 @@ const CONTACT = {
                     const navHeight = $nav.getBoundingClientRect().height;
                     
                     $nav.style.top = `-${navHeight}px`;
-
-                    console.log('hide nav');
                 }
                 else {
 
