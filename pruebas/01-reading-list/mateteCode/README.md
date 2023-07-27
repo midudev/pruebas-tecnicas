@@ -1,8 +1,18 @@
-# React + Vite
+# Aplicación Web de Lista de libros para lectura
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+El objetivo de esta aplicación fue la de obtener una lista de películas disponibles que permita seleccionar los preferidos para hacer un seguimiento persistente de libros de lectura.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Visualización de la portada de todos los libros disponibles y la la lista de lectura.
+
+- Agregar y remover libros de la lista de lectura.
+- Filtrado de libros por género y número de páginas.
+- Persistencia de datos usando LocalStorage, con sincronización instantanea entre pestañas.
+
+## Tecnologías
+
+- Vite
+- React
+- JavaScript
+- Css
