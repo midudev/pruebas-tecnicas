@@ -6,6 +6,7 @@ import { AnimatedTextWord } from "./animated-words";
 import Link from "next/link";
 import { Sparkle } from "lucide-react";
 import { righteous } from "../fonts";
+import Image from "next/image";
 
 export const Hero: React.FC = () => {
   return (
@@ -36,13 +37,14 @@ export const Hero: React.FC = () => {
           >
             Empezar
           </Link>
-         
         </div>
       </div>
-      <img
+      <Image
         className="max-w-[1000px] w-full"
         src="https://res.cloudinary.com/dlekwh1wn/image/upload/v1689366315/prueba1_v09qme.svg"
-        alt=""
+        alt="hero image"
+        width={1000}
+        height={1000}
       />
     </section>
   );

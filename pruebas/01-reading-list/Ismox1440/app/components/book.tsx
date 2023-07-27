@@ -8,6 +8,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import HoverCardBook from "./hover-card";
+import Image from "next/image";
 
 const Book = ({ book }: { book: Book }) => {
   const setBook = useStore((state) => state);
@@ -22,10 +23,12 @@ const Book = ({ book }: { book: Book }) => {
           onClick={handleClick}
           className="cursor-pointer rounded border transition-all h-fit w-[120px] hover:shadow-xl hover:-translate-y-1"
         >
-          <img
+          <Image
             className="w-full max-h-[170px] rounded"
+            width={118}
+            height={170}
             src={book.cover}
-            alt=""
+            alt={book.title}
           />
         </article>
       </HoverCardTrigger>

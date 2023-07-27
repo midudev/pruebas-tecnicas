@@ -1,10 +1,10 @@
 "use client";
-import { Badge } from "@/components/ui/badge";
 import { Calendar, FileText, Sparkles, X } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import useStore from "../store";
 import { Book } from "@/models/book";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const ReadingListBook = ({
   book,
@@ -28,7 +28,13 @@ const ReadingListBook = ({
       >
         <X size={16} />
       </button>
-      <img className="rounded max-w-[70px]" src={book.cover} alt="" />
+      <Image
+        width={70}
+        height={70}
+        className="rounded max-w-[70px]"
+        src={book.cover}
+        alt={book.title}
+      />
       <div className="flex flex-col justify-between ">
         <div>
           <h4>{book.title}</h4>

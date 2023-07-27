@@ -20,8 +20,8 @@ const LibrarySection = ({ library }: { library: library }) => {
   });
   return (
     <section className="flex flex-wrap gap-x-6 gap-y-2">
-      {filteredLibrary.map((item, index) => (
-        <Book book={item.book} />
+      {filteredLibrary.map((item) => (
+        <Book book={item.book} key={item.book.ISBN} />
       ))}
     </section>
   );
