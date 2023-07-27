@@ -1,10 +1,10 @@
 #  Lista de lectura (Prueba Técnica Midudev)
 
-![Imagen del menu principal](./public/img/ImagenPrincipal.png)
+![Imagen del menu principal](public/img/ImagenPrincipal.png)
 
 ### Descripción
 
-Implementar una pequeña aplicación web de lista de libros en la que podamos añadir y eliminar libros a la lista de lectura y filtrarlos por género, paginas y que se nos perma buscar a nuestra elección.
+Implementar una pequeña aplicación web de lista de libros en la que podamos añadir y eliminar libros de la lista de lectura que nos permita buscar y filtrarlos por género, páginas los distintos libros.
 
 ------------
 
