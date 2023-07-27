@@ -1,12 +1,15 @@
 import { useEffect, type FC, useState } from 'react'
 import { getImageAverageColor, removeTildes } from 'utils/utils'
 import { genresIcons } from '@icons/genres'
+import classNames from 'classnames'
 
 interface Props {
-  genre: string
+  genre: string,
+  onClick: (genre: string) => void,
+  isActive: boolean
 }
 
-const Genre: FC<Props> = ({ genre }) => {
+const Genre: FC<Props> = ({ genre, onClick = () => { }, isActive }) => {
   const [bgColor, setBgColor] = useState('#000')
 
   const genreIcon = genresIcons.get(removeTildes(genre.toLowerCase()))
@@ -21,7 +24,15 @@ const Genre: FC<Props> = ({ genre }) => {
   }, [])
 
   return (
-    <div className='w-[70px] cursor-pointer transition hover:scale-105 flex flex-col justify-center items-center' key={genre} title={genre}>
+    <div 
+      className={classNames(
+        'w-[70px] hover:opacity-100 cursor-pointer transition hover:scale-105 flex flex-col justify-center items-center',
+        isActive ? 'opacity-100 scale-105': 'opacity-70'
+      )}
+      onClick={() => onClick(genre)}
+      key={genre} 
+      title={genre}
+    >
       <figure
         className="w-[40px] h-[60px] flex flex-col items-end rounded-r-md rounded-l-lg"
         style={{ background: bgColor }}

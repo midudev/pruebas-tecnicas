@@ -2,7 +2,7 @@ import { useBooks } from '@hooks/useBooks'
 import { BookImage } from './Book'
 
 const Aside = () => {
-  const { books, favoriteBooks, deleteFavoriteBook } = useBooks()
+  const { favoriteBooks, deleteFavoriteBook } = useBooks()
 
   return (
     <aside className="absolute top-0 left-full h-full w-[22%] bg-[#efe6db] lg:static flex flex-col p-2">

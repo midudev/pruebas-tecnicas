@@ -1,12 +1,17 @@
 import { SearchIcon } from 'icons'
-import { useState, type FormEvent, type ChangeEvent } from 'react'
+import { useState, type FormEvent, type ChangeEvent, FC } from 'react'
 
-export const Search = () => {
+interface Props {
+  onSearch: (text: string) => void
+}
+
+export const Search: FC<Props> = ({ onSearch = () => { } }) => {
   const [text, setText] = useState('')
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     console.log({ text })
+    onSearch(text)
   }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

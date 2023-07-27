@@ -6,9 +6,11 @@ import ReadingListToggler from '@components/ReadingListToggler'
 import { Search } from '@components/Search'
 import ToggleDarkMode from '@components/ToggleDarkMode'
 import { useBooks } from '@hooks/useBooks'
+import { useFiltersContext } from 'contexts/filters'
 
 export default function App () {
-  const { books, favoriteBooks } = useBooks()
+  const { books } = useBooks()
+  const { setQuery } = useFiltersContext()
 
   return (
     <div
@@ -19,7 +21,7 @@ export default function App () {
         <section className="h-full w-full lg:w-[78%] flex flex-col">
           <header className="relative w-full h-[225px] flex flex-col">
             <div className="flex items-center">
-              <Search />
+              <Search onSearch={setQuery} />
               <div className="w-1/4 h-full flex items-center justify-end pr-8 gap-5">
                 <LanguageSelector />
                 <ToggleDarkMode height={40} width={40} color='#1C274C' />
