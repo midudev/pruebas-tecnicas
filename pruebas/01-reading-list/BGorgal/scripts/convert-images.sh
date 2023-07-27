@@ -3,7 +3,7 @@
 shopt -s nullglob globstar
 
 # Comprobar si hay archivos .jpg
-jpg_files=(./src/img/**/*.jpg)
+jpg_files=(./public/img/**/*.jpg)
 if [[ ${#jpg_files[@]} -eq 0 ]]; then
   echo "No se encontraron archivos .jpg para convertir."
 else
@@ -28,7 +28,7 @@ else
 fi
 
 # Reducción del 70% para los archivos .webp
-webp_files=(./src/img/**/*.webp)
+webp_files=(./public/img/**/*.webp)
 for file in "${webp_files[@]}"; do
   output_file="${file%.webp}.webp"
   cwebp -q 70 "$file" -o "$output_file"

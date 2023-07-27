@@ -9,7 +9,7 @@ interface Props {
   isReadList?: boolean
 }
 
- const variants = {
+const variants = {
   imgReadList: 'lg:max-h-[25rem]',
 }
 
@@ -17,8 +17,6 @@ const Book = ({ book, isReadList }: Props) => {
   const getBookInfo = useBooksStore(state => state.getBookInfo)
   const bookSelected = useBooksStore(state => state.bookSelected)
   const isModalOpen = useBooksStore(state => state.isModalOpen)
-
-
 
   const handleClick = () => {
     getBookInfo(book.bookId)
@@ -32,7 +30,9 @@ const Book = ({ book, isReadList }: Props) => {
       className='relative sm:w-full '
       layoutId={book.bookId}
     >
-     {!noButtonAdd && <ButtonAdd bookId={book.bookId} isReadList={isReadList} />}
+      {!noButtonAdd &&  (
+        <ButtonAdd bookId={book.bookId} isReadList={isReadList} />
+      )}
       <img
         className={twMerge(
           'aspect-book w-full rounded-sm ',
