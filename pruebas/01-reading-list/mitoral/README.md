@@ -2,6 +2,8 @@
 
 Este proyecto, denominado "Midureads", es una propuesta de solución para la prueba técnica [01-reading-list](https://github.com/midudev/pruebas-tecnicas/tree/main/pruebas/01-reading-list) del proyecto [Pruebas técnicas de Programación](https://pruebastecnicas.com/) de [midudev](https://github.com/midudev).
 
+🔗 URL: https://midureads.netlify.app/
+
 ## Requisitos completados
 - ✅ Visualización de libros disponibles
 - ✅ Creación de lista de lectura
