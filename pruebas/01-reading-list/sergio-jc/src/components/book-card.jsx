@@ -23,7 +23,7 @@ export function BookCard ({ cover, title, author, bookId, isAdded }) {
 
   useEffect(() => { setIsAdded(isAdded) }, [isAdded])
   return (
-    <article className='rounded-xl overflow-hidden bg-white shadow-sm aspect-[6/11]'>
+    <article role='article' aria-label='book card' className='rounded-xl overflow-hidden bg-white shadow-sm aspect-[6/11]'>
       <div className='aspect-[2/3] bg-gray-200 w-full overflow-hidden'>
         <img src={cover} alt={title} className='w-full h-full object-cover' />
       </div>
@@ -38,7 +38,7 @@ export function BookCard ({ cover, title, author, bookId, isAdded }) {
           {isAddedToReadingList
             ? (
               <button
-                aria-label='add to reading list'
+                aria-label='remove to reading list'
                 onClick={handleRemove(bookId)}
                 className='p-0'
               >

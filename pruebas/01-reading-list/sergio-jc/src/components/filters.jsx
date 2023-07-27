@@ -8,7 +8,7 @@ export function Filters () {
   const genres = useMemo(() => getGenres(), [])
 
   return (
-    <div className='bg-white p-4 w-80 shadow-sm rounded-lg'>
+    <div className='bg-white p-4 w-80 shadow-sm rounded-lg' role='region' aria-label='filters'>
       <div className='flex justify-between items-center'>
         <h3 className='text-2xl font-semibold'>Filters</h3>
         {books?.length > 0 && <Chip value={`${books?.length} books`} />}
@@ -23,7 +23,7 @@ export function Filters () {
           onChange={(evt) => { filterBooksByGenre({ genre: evt.target.value }) }}
           defaultValue='all'
         >
-          <option selected value='all'>Todos los generos</option>
+          <option value='all'>Todos los generos</option>
           {genres?.map((genre) => (
             <option key={genre} value={genre}>{genre}</option>
           ))}

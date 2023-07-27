@@ -28,7 +28,7 @@ export function ReadingList () {
   const { readingList } = useReadingList()
 
   return (
-    <div className='bg-white p-4 w-80 shadow-sm rounded-lg'>
+    <div className='bg-white p-4 w-80 shadow-sm rounded-lg' role='region' aria-label='reading list'>
       <div className='flex justify-between items-center'>
         <h3 className='text-2xl font-semibold'>Reading list</h3>
         {readingList?.length > 0 && <Chip value={readingList?.length} />}
