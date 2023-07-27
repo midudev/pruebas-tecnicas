@@ -11,6 +11,12 @@
 	<main>
 		<slot />
 	</main>
+	<footer>
+		Desarrollado con ❤️ por <a
+			href="https://maxicalderon.dev"
+			class="text-lime-200 font-bold underline">Maxi Calderón</a
+		>
+	</footer>
 </div>
 
 <style>

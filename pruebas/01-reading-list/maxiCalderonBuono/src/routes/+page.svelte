@@ -153,11 +153,16 @@
 					value={'library'}>Librería</RadioItem
 				>
 				<RadioItem
-					class={`${show === 'list' ? 'bg-lime-300' : ''}`}
+					class={`${show === 'list' ? 'bg-lime-300' : ''} relative`}
 					bind:group={show}
 					name="show"
 					on:change={() => (show = 'list')}
-					value={'list'}>Mi lista</RadioItem
+					value={'list'}
+				>
+					<span class="badge-icon bg-pink-300 absolute -top-4 -right-3 z-10 p-3 text-lg"
+						>{$initialDataStore.wishlist.length}</span
+					>
+					Mi lista</RadioItem
 				>
 			</RadioGroup>
 		</header>
