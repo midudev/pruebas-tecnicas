@@ -45,6 +45,16 @@ export function useBooks () {
   }
 
   useEffect(() => {
+    window.addEventListener('storage', () => {
+      const localStorageData = localStorage.getItem('myList')
+      const storedData = JSON.parse(localStorageData)
+      if (storedData) {
+        setMyList(storedData)
+      }
+    })
+  }, [])
+
+  useEffect(() => {
     const localStorageData = localStorage.getItem('myList')
     const storedData = JSON.parse(localStorageData)
     if (storedData) {
