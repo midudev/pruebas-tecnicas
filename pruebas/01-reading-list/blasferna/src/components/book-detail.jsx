@@ -1,7 +1,10 @@
+"use client";
+
 import AddRmButton from "@/components/add-rm-button";
 import Image from "next/image";
+import { getAverageColor } from "@/lib/utils";
 
-export default function BookDetail({ book, seeMore = false }) {
+export default function BookDetail({ book, seeMore = false, onLoadImageColor=()=>{} }) {
   return (
     <>
       <div className="flex justify-center lg:flex-none lg:justify-start">
@@ -10,6 +13,10 @@ export default function BookDetail({ book, seeMore = false }) {
             src={book.cover}
             className="object-cover"
             fill={true}
+            onLoad={(e)=>{
+              const color = getAverageColor(e.target);
+              onLoadImageColor(color);
+            }}
             alt={book.title}
           ></Image>
         </div>
