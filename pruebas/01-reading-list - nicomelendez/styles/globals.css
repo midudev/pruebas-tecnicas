@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Paytone+One&display=swap");
+
+/* Utiliza la fuente en tu estilo */
+body {
+  font-family: "Paytone One", sans-serif;
+}
+
+.after\:border-b::after {
+  content: var(--tw-content);
+  border-color: white;
+  border-bottom-width: 1px;
+}
+
+.custom-loader {
+  width: 50px;
+  height: 24px;
+  background: radial-gradient(circle closest-side, #000000 90%, #0000) 0% 50%,
+    radial-gradient(circle closest-side, #000000 90%, #0000) 50% 50%,
+    radial-gradient(circle closest-side, #000000 90%, #0000) 100% 50%;
+  background-size: calc(100% / 3) 12px;
+  background-repeat: no-repeat;
+  animation: d3 1s infinite linear;
+}
+
+@keyframes d3 {
+  20% {
+    background-position: 0% 0%, 50% 50%, 100% 50%;
+  }
+  40% {
+    background-position: 0% 100%, 50% 0%, 100% 50%;
+  }
+  60% {
+    background-position: 0% 50%, 50% 100%, 100% 0%;
+  }
+  80% {
+    background-position: 0% 50%, 50% 50%, 100% 100%;
+  }
+}
