@@ -18,7 +18,7 @@ Este proyecto fue realizado en base al challenge propuesto por Midudev en: [Prue
 
 ✅ Sincronización entre pestañas
 
--- Test
+✅ Test
 
 ✅ Despliegue
 
