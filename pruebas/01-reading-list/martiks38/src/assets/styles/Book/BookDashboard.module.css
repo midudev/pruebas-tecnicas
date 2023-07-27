@@ -27,10 +27,6 @@
   border-bottom-width: 0;
 }
 
-.bookListMenu > li:not(:last-child) {
-  flex-basis: 50%;
-}
-
 .bookListMenu__item {
   padding: 0.4em 2em;
   height: 100%;
@@ -55,6 +51,10 @@
 @media (min-width: 24.375rem) {
   .bookListMenu {
     flex-direction: row;
+  }
+
+  .bookListMenu > li:not(:last-child) {
+    flex-basis: 50%;
   }
 }
 
