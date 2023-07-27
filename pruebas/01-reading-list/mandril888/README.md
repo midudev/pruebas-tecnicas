@@ -1,34 +1,32 @@
-# mandril888
+# Catálogo de libros con lista de lectura
 
-## Project setup
-```
-npm install
-```
+## Web:
+https://booklist-midudev.netlify.app/
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Tecnologías utilizadas
 
-### Compiles and minifies for production
-```
-npm run build
-```
+- Vue 3 - Composition API
+- TailwindCSS + Flowbite
+- Eslint Prittier
+- VueUse
+- Pinia
+- Vue Router
+- Unit testing con Jest + Testing Library
+- E2E con Cypress
 
-### Run your unit tests
-```
-npm run test:unit
-```
 
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
+## Funcionalidades Obligatorias
 
-### Lints and fixes files
-```
-npm run lint
-```
+- ✅ Lista de libros disponibles con simulación de fetch.
+- ✅ Lista para añadir libros para leer.
+- ✅ Filtrado de libros por género.
+- ✅ Sincronización de estados de número libros disponibles y de lectura.
+- ✅ Persistencia de datos en localStorage y entre pestañas.
+- ✅ Testing básico.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Funcionalidades Adicionales
+
+- ✅ Diseño responsive
+- ❌ Implementa una funcionalidad de búsqueda en la lista de libros disponibles
+- ❌ Filtrar por número de páginas
+- ❌ Permitir la reorganización de los libros en la lista de lectura por prioridad
