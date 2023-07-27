@@ -107,8 +107,9 @@ export const ContainerClearButton = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: .2rem 0;
-  gap: 10px;
+  margin: .3rem 0;
+  gap: 5px;
+  font-size: .9rem;
 
   p{
     font-weight: bold;

@@ -43,6 +43,7 @@ export const ReadingListView = ({
               <ContainerClearButton>
                 <MainButton title='Borrar Libros' callback={clearReadingList} />
                 <p>Reorganiza tu lista a tu eleccion!</p>
+                <p>Si un libro de la lista no le interesa lo puede arrastrar hacia afuera</p>
               </ContainerClearButton>
               <UlReading onDrop={(e) => handleDrop(e, 'reading')}>
                 {readingList?.map((book, i) => (
