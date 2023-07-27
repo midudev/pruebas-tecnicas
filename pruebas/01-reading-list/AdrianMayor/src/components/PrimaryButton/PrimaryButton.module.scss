@@ -1,0 +1,12 @@
+@use "@TUStyles/colors";
+
+.primaryButton_container {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding: 1rem 2.5rem;
+	background-color: colors.$primary-button-color;
+	border: none;
+	text-decoration: none;
+	cursor: pointer;
+}

@@ -1,0 +1,50 @@
+.aboutPageLayout_container {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.aboutPageLayout_container_section {
+	display: flex;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 3rem;
+}
+
+.social_link {
+	display: flex;
+	gap: 5rem;
+
+	@media (max-width: 860px) {
+		flex-direction: column;
+	}
+}
+
+.gitHub_icon {
+	position: relative;
+	width: 9rem;
+	height: 9rem;
+	& > a {
+		position: absolute;
+		background: no-repeat url("../../../public/assets/github-icon.svg");
+		background-size: contain;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.linkedin_icon {
+	position: relative;
+	width: 9rem;
+	height: 9rem;
+	& > a {
+		position: absolute;
+		background: no-repeat url("../../../public/assets/linkedin-icon.svg");
+		background-size: contain;
+		width: 100%;
+		height: 100%;
+	}
+}

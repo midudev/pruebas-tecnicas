@@ -1,0 +1,35 @@
+.listCard_container {
+	position: relative;
+	width: 7rem;
+	height: 11rem;
+	transition: transform 0.1s ease-in-out;
+	box-shadow: 0px 1px 11px 0px #00000082;
+
+	&:hover {
+		transform: scale(1.02);
+		transition: transform 0.1s ease-in-out;
+	}
+
+	&:hover > .listCard_button_image_container {
+		pointer-events: initial;
+		opacity: 1;
+		transition: opacity 0.1s ease-in-out;
+	}
+}
+
+.listCard_button_image_container {
+	cursor: pointer;
+	background: no-repeat url("../../../public/assets/close.svg");
+	background-size: contain;
+	position: absolute;
+	width: 2rem;
+	height: 2rem;
+	top: -14px;
+	right: -14px;
+	z-index: 1;
+	cursor: pointer;
+	opacity: 0;
+	pointer-events: 0;
+	transition: opacity 0.1s ease-in-out;
+	border-radius: 50%;
+}

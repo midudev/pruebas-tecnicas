@@ -1,0 +1,13 @@
+@use "@TUStyles/colors";
+
+.cardButton {
+	width: 100%;
+	border: 1px solid colors.$primary-text-color;
+	padding: 1rem 1.5rem;
+	cursor: pointer;
+
+	&.cardButton_remove {
+		padding: 1rem 0.5rem;
+		background-color: colors.$secondary-button-color;
+	}
+}

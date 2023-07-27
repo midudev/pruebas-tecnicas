@@ -1,0 +1,44 @@
+@use "colors";
+
+/* Scrollbar width and color */
+::-webkit-scrollbar {
+	width: 4px;
+	height: 4px;
+	background-color: colors.$lateral-panel-color; /* Scrollbar background color */
+}
+
+/* Scrollbar thumb color */
+::-webkit-scrollbar-thumb {
+	background-color: colors.$primary-button-color; /* Scrollbar thumb color */
+	border-radius: 5px; /* Border radius for the scrollbar thumb */
+}
+
+/* Style for the bottom edge (when reached the end) */
+::-webkit-scrollbar-thumb:vertical:active {
+	background-color: #a9401e; /* Scrollbar thumb color when active */
+}
+
+/* Style for the bottom edge (when reached the end) */
+::-webkit-scrollbar-thumb:vertical:hover {
+	background-color: #a9401e; /* Scrollbar thumb color on hover */
+}
+
+/* Style for the scrollbar when scrolling horizontally */
+::-webkit-scrollbar-thumb:horizontal {
+	background-color: #c96234; /* Scrollbar thumb color when scrolling horizontally */
+}
+
+/* Style for the bottom edge (when reached the end) */
+::-webkit-scrollbar-thumb:horizontal:active {
+	background-color: #a9401e; /* Scrollbar thumb color when active */
+}
+
+/* Style for the bottom edge (when reached the end) */
+::-webkit-scrollbar-thumb:horizontal:hover {
+	background-color: #a9401e; /* Scrollbar thumb color on hover */
+}
+
+/* Styles for the increment and decrement buttons (arrows) */
+::-webkit-scrollbar-button {
+	display: none; /* To hide the increment and decrement buttons */
+}

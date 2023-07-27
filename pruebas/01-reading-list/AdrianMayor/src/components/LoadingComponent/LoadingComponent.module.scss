@@ -1,0 +1,17 @@
+.loading_container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+
+	&_main {
+		align-content: center;
+	}
+
+	& > div {
+		width: 5rem;
+		height: 5rem;
+		background: no-repeat url("../../../public/assets/Animation\ -\ 1689800009982\ \(1\).gif");
+		background-size: contain;
+	}
+}

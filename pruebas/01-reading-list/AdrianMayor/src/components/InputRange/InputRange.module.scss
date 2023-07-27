@@ -1,0 +1,75 @@
+@use "@TUStyles/colors";
+// If fonts are imported, background in class '.inputText_label_ellipse' stop working
+//@use "@TUStyles/fonts";
+
+.inputRange_container {
+	width: 100%;
+	margin-bottom: 5rem;
+
+	@media (max-width: 1280px) {
+		margin-bottom: 1.5rem;
+	}
+}
+
+.inputRange_label_container {
+	display: flex;
+	align-self: flex-start;
+	align-items: center;
+	gap: 1rem;
+	margin-bottom: 0.5rem;
+
+	.inputRange_label_ellipse {
+		width: 0.375rem;
+		height: 0.375rem;
+		background: url("../../../public/assets/Ellipse.svg");
+	}
+
+	.inputRange_label {
+		text-transform: capitalize;
+	}
+}
+
+.inputRange_input_container {
+	position: relative;
+
+	.inputRange_input_range_value {
+		position: absolute;
+		top: 1.6rem;
+		left: 50%;
+		transform: translateX(-50%);
+		display: block;
+		text-align: center;
+		width: 30px;
+
+		font-weight: 700;
+		color: colors.$primary-button-color;
+		font-family: "Montserrat", sans-serif;
+		font-size: 0.875rem;
+	}
+}
+
+input.inputRange_input[type="range"] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+
+	height: 1px;
+	width: 100%;
+	background: colors.$tertiary-text-color;
+	cursor: pointer;
+
+	position: relative;
+	&::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+
+		height: 0.75rem;
+		width: 0.6rem;
+		background: colors.$primary-button-color;
+		box-shadow: 1px 1px 1px #000000;
+	}
+
+	&::-webkit-slider-thumb:active {
+		box-shadow: none;
+	}
+}

@@ -1,0 +1,74 @@
+@use "@TUStyles/colors";
+
+.main_bookPage_container {
+	height: 100%;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(275px, 450px) minmax(0, 2fr) minmax(273px, 0.8fr));
+	gap: 1.5rem;
+	overflow: hidden;
+
+	@media (max-width: 1090px) {
+		grid-template-columns: repeat(auto-fit, minmax(275px, 0fr) minmax(330px, 1fr) minmax(219px, 0fr));
+	}
+
+	@media (max-width: 860px) {
+		grid-template-columns: 1fr;
+		gap: 0;
+	}
+}
+
+.formLayout_container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-items: flex-start;
+	gap: 2.5rem;
+	background-color: colors.$lateral-panel-color;
+	margin-bottom: 3rem;
+	overflow: auto;
+	padding: 3rem 6rem 2rem 6rem;
+
+	@media (max-width: 1320px) {
+		padding: 2rem 3rem 2rem 3rem;
+		margin-bottom: 1rem;
+	}
+
+	@media (max-width: 1280px) {
+		padding: 1rem 3rem 1rem 3rem;
+		gap: 1rem;
+	}
+
+	@media (max-width: 860px) {
+		display: initial;
+		gap: 0;
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.sectionLayout_container,
+.asideLayout_container {
+	height: 100%;
+	display: grid;
+	margin-bottom: 1rem;
+	grid-template-rows: 2rem 1fr;
+	overflow: auto;
+	padding-top: 1rem;
+	background-color: inherit;
+
+	@media (max-width: 860px) {
+		padding: 0;
+		gap: 2rem;
+		margin: 0;
+	}
+
+	&_aside {
+		margin-right: 1rem;
+	}
+}
+
+@media (max-width: 860px) {
+	.asideLayout_container {
+		height: 0;
+	}
+}
