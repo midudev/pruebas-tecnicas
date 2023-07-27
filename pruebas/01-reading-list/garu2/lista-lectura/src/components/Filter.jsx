@@ -1,6 +1,4 @@
 import { useState } from "react";
-//import { filterCat } from "../helpers/filterCat"  
-//import { filterTitle } from "../helpers/filterTitle";
 import { getTitles } from "../helpers/getTitles";
 
 const Filter = ({ data, setCategory, category, setData }) => {
@@ -8,19 +6,12 @@ const Filter = ({ data, setCategory, category, setData }) => {
   const titles = getTitles(data);
 
   const handlerCat = (value) => {
-    value===""?setCategory(value):setCategory(`c-${value}`)
-    //console.log('val: ', value);
-    //setCategory(`c-${value}`)
-    //const newData = filterCat(data, value);
-    //setData(newData)
+    value === "" ? setCategory(value) : setCategory(`c-${value}`)
   }
 
   const handlerSearch = (e) => {
     e.preventDefault();
     setCategory(`s-${search}`)
-    //console.log('search: ', search);
-    //console.log('res: ', filterTitle(data, search));
-    //setData(filterTitle(data, search))
     setSearch("")
   }
 

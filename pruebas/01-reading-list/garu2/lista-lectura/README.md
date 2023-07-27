@@ -1,8 +1,10 @@
-# React + Vite
+# 📚 Lista de Lectura - ReactJs
+![image](https://res.cloudinary.com/dqd5x0s7w/image/upload/v1690473066/github/image_7_-min_kyplvw.png)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀DEMO
+[Deploy](https://lista-lectura-react.vercel.app/)
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ⚙Tecnologies
+* [React 18](https://reactjs.org/)
+* [Vercel](https://vercel.com/)
+* [Tailwindcss](https://tailwindcss.com/docs/installation)

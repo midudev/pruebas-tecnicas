@@ -4,7 +4,6 @@ export const filterCat = (data, value) => {
   const type = value.split("-")[0]
 
   if(value === '') return data;
-  //console.log('value: ', value.split("-"));
 
   if (type === 'c') {
     filterData = data.filter(item => {
@@ -14,8 +13,6 @@ export const filterCat = (data, value) => {
     const lowerValue = newValue.toLowerCase();
     filterData = data.filter(item =>  item.book.title.includes(lowerValue) || item.book.title===newValue) 
   }
-
-
 
   return filterData;
 }

@@ -23,10 +23,10 @@ const ReadList = ({ myList, setMyList, setData, data }) => {
               />
               <div
                 className='text-[#f4b002] absolute top-1 right-1 cursor-pointer hover:text-[#ef4444]'
-                onClick={()=>removeRead(item)}
+                onClick={() => removeRead(item)}
                 title="Eliminar Libro"
               >
-                <Delete/>
+                <Delete />
               </div>
             </div>
           ))

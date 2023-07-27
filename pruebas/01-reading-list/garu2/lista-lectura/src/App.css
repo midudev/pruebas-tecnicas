@@ -43,3 +43,14 @@ ul li.current-cat {
   background-color: #FFC93B;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 }
+
+p.author {
+  display: flex;
+  justify-content: center;
+  margin:20px 0;
+  gap: 7px;
+}
+p.author a {
+  text-decoration: none;
+  font-weight: 700;
+}
