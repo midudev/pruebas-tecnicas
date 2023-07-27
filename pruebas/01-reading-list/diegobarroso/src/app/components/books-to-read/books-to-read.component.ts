@@ -1,5 +1,5 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Book } from 'src/app/interfaces/book';
 import { BooksService } from 'src/app/services/books.service';
 
@@ -8,12 +8,7 @@ import { BooksService } from 'src/app/services/books.service';
   templateUrl: './books-to-read.component.html',
 })
 export class BookToReadComponent {
-  books: Book[] = [];
-  
-  ngOnInit(): void {
-    this.bookService.getBookList()
-      .subscribe(books => this.books = books.filter (b => b.inListToRead));
-  }
+  @Input() books: Book[] = [];
   bookService = inject(BooksService);
 
   drop(event: CdkDragDrop<Book[]>) {

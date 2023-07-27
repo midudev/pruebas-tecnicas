@@ -8,6 +8,8 @@ import { BooksService } from 'src/app/services/books.service';
 })
 export class BooksComponent implements OnInit {
   books: Book[] = [];
+  bookList: Book[] = [];
+  booksToRead: Book[] = [];
   bookService = inject(BooksService);
 
   @HostListener('window:storage', ['$event'])
@@ -19,7 +21,21 @@ export class BooksComponent implements OnInit {
 
   ngOnInit(): void {
     this.bookService.getBooks()
-    .subscribe(books => this.books = books);
+    .subscribe(books => {
+      this.books = books;
+      this.filterBooks();
+    });
+
+    this.bookService.getBookList()
+    .subscribe(() => {
+      this.books = JSON.parse(localStorage.getItem('books')!);
+      this.filterBooks();
+    });
+  }
+
+  filterBooks() {
+    this.bookList = this.books.filter (b => !b.inListToRead);
+    this.booksToRead = this.books.filter (b => b.inListToRead);
   }
 }
 

@@ -19,7 +19,9 @@ export class BookDetailComponent implements OnInit, OnDestroy{
   @HostListener('window:storage', ['$event'])
   handleStorageChange(event: StorageEvent) {
     const booksFromLocastorage = JSON.parse(localStorage.getItem('books')!);
-    this.book = booksFromLocastorage.find((b: Book) => b.ISBN === this.id)
+    this.bookService.updateBooks(booksFromLocastorage);
+    this.book = booksFromLocastorage.find((b: Book) => b.ISBN === this.id);
+    this.bookService.updateBookListToReadNumber();
   }
   ngOnInit(): void {
     this.route.paramMap

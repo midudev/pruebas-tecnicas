@@ -9,7 +9,8 @@ const routes: Routes = [
     component: BooksComponent
   },
   { path: ':id',
-    component: BookDetailComponent
+    component: BookDetailComponent,
+    title: 'Book Details'
   },
   {
     path: '**',

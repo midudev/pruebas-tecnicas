@@ -1,5 +1,5 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { Book } from 'src/app/interfaces/book';
 import { BooksService } from 'src/app/services/books.service';
 
@@ -8,7 +8,7 @@ import { BooksService } from 'src/app/services/books.service';
   templateUrl: './book-list.component.html',
 })
 export class BookListComponent implements OnInit{
-  books: Book[] = [];
+  @Input() books: Book[] = [];
   genres: string[] = [];
   genre: string = '';
   minPages = 0;
@@ -20,11 +20,7 @@ export class BookListComponent implements OnInit{
   bookService = inject(BooksService);
   
   ngOnInit(): void {
-    this.bookService.getBookList()
-      .subscribe(books => {
-        this.books = books.filter (b => !b.inListToRead);
-        this.setPageRange();
-      });
+    this.setPageRange();
 
     this.bookService.getGenres()
       .subscribe(genres => this.genres = genres);

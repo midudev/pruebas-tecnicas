@@ -101,7 +101,7 @@ describe('BooksService', () => {
   });
 
   it('should get the book list', (done) => {
-    service.getBookList().subscribe((books) => {
+    service.getBooks().subscribe((books) => {
       expect(books).toEqual(books);
       done();
     });

@@ -10,12 +10,12 @@ export class BooksService {
 
   private books: Book[] = [];
   private bookDetail!: Book;
-  private booksSubject = new BehaviorSubject<Book[]>([]);
+  private booksSubject = new BehaviorSubject<boolean>(false);
   private bookDetailSubject = new BehaviorSubject<Book | null>(null);
   private booksToReadNumberSubject = new BehaviorSubject<number>(0);
   private genresSubject = new BehaviorSubject<string[]>([]);
 
-  getBookList(): Observable<Book[]> {
+  getBookList(): Observable<boolean> {
     return this.booksSubject.asObservable();
   }
   getBookDetail(): Observable<Book | null> {
@@ -41,8 +41,12 @@ export class BooksService {
   
   getBooks(): Observable<Book[]> {
     let bookList: Book[] = [];
-    if (localStorage.getItem('books') !== 'null') {
-      bookList = JSON.parse(localStorage.getItem('books')!);
+    const booksFromLocalStorage = localStorage.getItem('books');
+    if (booksFromLocalStorage && booksFromLocalStorage !== 'null') {
+      const parsedBooks = JSON.parse(booksFromLocalStorage!);
+      if (Array.isArray(parsedBooks) && parsedBooks.length > 0) {
+        bookList = parsedBooks;
+      }
     } else {
       bookList = books.library.map((item) => {
         return {...item.book, inListToRead: false}
@@ -73,7 +77,7 @@ export class BooksService {
   updateBooks(books: Book[]) {
     localStorage.setItem('books', JSON.stringify(books));
     this.books = books;
-    this.booksSubject.next(this.books);
+    this.booksSubject.next(true);
   }
   updateBookDetail(book: Book | undefined) {
     if (book) {
