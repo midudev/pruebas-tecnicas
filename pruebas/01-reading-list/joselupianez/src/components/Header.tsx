@@ -20,7 +20,7 @@ const Header = () => {
                             {t("title")}
                         </span>
                     </section>
-                    <select defaultValue={i18n.language.split("-")[0]} onChange={onChangeLanguage} className="bg-neutral-800 border border-neutral-700 px-3 py-2 rounded-md font-bold">
+                    <select defaultValue={i18n.language?.split("-")[0] || 'es'} onChange={onChangeLanguage} className="bg-neutral-800 border border-neutral-700 px-3 py-2 rounded-md font-bold">
                         {LANGUAGES.map(({ code, label }) => (
                             <option key={code} value={code} className="px-4 py-2 text-sm hover:bg-neutral-700">
                                 {label}
