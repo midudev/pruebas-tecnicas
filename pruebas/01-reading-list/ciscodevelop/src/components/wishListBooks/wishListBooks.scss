@@ -1,0 +1,128 @@
+.wishlistbooks {
+  display: flex;
+
+  z-index: -1;
+  position: relative;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.204);
+  padding: 30px 0;
+  border-radius: 10px;
+  margin-bottom: 50px;
+  position: relative;
+  background: #000000;
+  .btn-remove-all {   
+  
+    font-size: 16px;
+    letter-spacing: .02rem;
+    font-weight: 600;
+    padding: 7px 10px;
+    color: #e21010;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+  }
+  .btn-close {
+    background: #ff0000a7;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: -7px;
+    top: -15px;
+    border-radius: 10px;
+    padding: 13px;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    &:hover {
+      transform: scale(1.2);
+      background: #ff0000;
+    }
+  }
+  .mySwiper {
+    width: 250px;
+    height: 350px;
+    margin: 50px auto;
+
+    .swiper-slide {
+      .dialog-remove-book {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 250px;
+        border-radius: 10px;
+        padding: 10px;
+        .container-dialog {
+          header {
+            color: #ffffffeb;
+            margin-bottom: 10px;
+            h6 {
+              color: #b7b5b5eb;
+            }
+          }
+          .body-dialog {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+            button {
+              padding: 7px 10px;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      .title {
+        line-height: 1em;
+        padding: 0px;
+      }
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 18px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #fff;
+      padding: 10px;
+      gap: 20px;
+      background-color: black;
+      &:nth-child(1n) {
+        background-color: rgb(170, 5, 176);
+      }
+      &:nth-child(2n) {
+        background-color: rgb(0, 140, 255);
+      }
+      &:nth-child(3n) {
+        background-color: rgb(10, 184, 111);
+      }
+      &:nth-child(4n) {
+        background-color: rgb(211, 122, 7);
+      }
+      &:nth-child(5n) {
+        background-color: rgb(118, 163, 12);
+      }
+      &:nth-child(6n) {
+        background-color: rgb(180, 10, 47);
+      }
+      &:nth-child(7n) {
+        background-color: rgb(35, 99, 19);
+      }
+      &:nth-child(8n) {
+        background-color: rgb(0, 68, 255);
+      }
+      &:nth-child(9n) {
+        background-color: rgb(218, 12, 218);
+      }
+      &:nth-child(10n) {
+        background-color: rgb(54, 94, 77);
+      }
+    }
+    h6 {
+      padding: 10px;
+    }
+  }
+}
