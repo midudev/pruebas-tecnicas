@@ -10,7 +10,8 @@ import { useFiltersContext } from 'contexts/filters'
 
 export default function App () {
   const { books } = useBooks()
-  const { setQuery } = useFiltersContext()
+  const { genresFilter, setQuery } = useFiltersContext()
+  const formatter = new Intl.ListFormat('es', { style: 'long', type: 'conjunction' })
 
   return (
     <div
@@ -32,8 +33,9 @@ export default function App () {
           </header>
           <main className="relative w-full h-[calc(100%_-_180px)] p-5 lg:pt-[0px] lg:pb-6 lg:px-6 overflow-auto ">
             <div className="ml-1 mb-[20px]">
-              <h2 className="font-bold text-xl text-[#4b3832]">
-                Libros disponibles
+              <h2 className="font-bold text-xl text-[#4b3832] truncate">
+                {!genresFilter.length && 'Libros disponibles'}
+                {!!genresFilter.length && `Libros de ${formatter.format(genresFilter).toLowerCase()} disponibles`}
               </h2>
             </div>
             <div className="w-full gap-[10px] pb-10 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-auto lg:gap-[30px]">

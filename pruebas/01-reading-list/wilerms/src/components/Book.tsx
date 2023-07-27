@@ -68,18 +68,15 @@ const Book: FC<Props> = ({
 }) => {
   const { addFavoriteBook } = useBooks()
 
-  const handleClickAddButton = () => {
-    addFavoriteBook(ISBN)
-  }
-
   return (
     <article
       key={ISBN}
       className={cn(
         'transition',
-        isFavorite ? '' : 'hover:scale-105 group cursor-pointer'
+        isFavorite ? '' : 'hover:scale-105 group cursor-pointer',
+        className
       )}
-      onClick={handleClickAddButton}
+      onClick={() => addFavoriteBook(ISBN)}
     >
       <BookImage
         cover={cover}
