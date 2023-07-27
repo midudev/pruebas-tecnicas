@@ -1,6 +1,12 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
+const URL = import.meta.env.PROD
+  ? 'https://pruebas-tecnicas-01-reading-list-juancgalueweb.vercel.app/'
+  : 'http://localhost:5173/'
+
+const fileName = 'books.json'
+
 export const useBooksStore = create(
   persist(
     (set, get) => ({
@@ -15,7 +21,7 @@ export const useBooksStore = create(
       sliderValue: null,
       setBooks: async () => {
         try {
-          const response = await fetch('./src/data/books.json')
+          const response = await fetch(`${URL}/${fileName}`)
           if (!response.ok) throw new Error('Fallo al cargar la data')
           const jsonData = await response.json()
           const { library } = jsonData

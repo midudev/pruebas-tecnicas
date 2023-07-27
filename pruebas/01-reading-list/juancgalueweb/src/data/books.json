@@ -11,10 +11,7 @@
         "ISBN": "978-0618640157",
         "author": {
           "name": "J.R.R. Tolkien",
-          "otherBooks": [
-            "El Hobbit",
-            "El Silmarillion"
-          ]
+          "otherBooks": ["El Hobbit", "El Silmarillion"]
         }
       }
     },
@@ -67,9 +64,7 @@
         "ISBN": "978-0451524935",
         "author": {
           "name": "George Orwell",
-          "otherBooks": [
-            "Rebelión en la granja"
-          ]
+          "otherBooks": ["Rebelión en la granja"]
         }
       }
     },
@@ -99,10 +94,7 @@
         "ISBN": "978-0441172719",
         "author": {
           "name": "Frank Herbert",
-          "otherBooks": [
-            "El mesías de Dune",
-            "Hijos de Dune"
-          ]
+          "otherBooks": ["El mesías de Dune", "Hijos de Dune"]
         }
       }
     },
@@ -135,10 +127,7 @@
         "ISBN": "978-0441569595",
         "author": {
           "name": "William Gibson",
-          "otherBooks": [
-            "Conde Cero",
-            "Mona Lisa Acelerada"
-          ]
+          "otherBooks": ["Conde Cero", "Mona Lisa Acelerada"]
         }
       }
     },
@@ -153,10 +142,7 @@
         "ISBN": "978-1451673319",
         "author": {
           "name": "Ray Bradbury",
-          "otherBooks": [
-            "Crónicas marcianas",
-            "El hombre ilustrado"
-          ]
+          "otherBooks": ["Crónicas marcianas", "El hombre ilustrado"]
         }
       }
     },
@@ -171,10 +157,7 @@
         "ISBN": "978-0307743657",
         "author": {
           "name": "Stephen King",
-          "otherBooks": [
-            "Carrie",
-            "It"
-          ]
+          "otherBooks": ["Carrie", "It"]
         }
       }
     },
@@ -207,10 +190,7 @@
         "ISBN": "978-0486282114",
         "author": {
           "name": "Mary Shelley",
-          "otherBooks": [
-            "El último hombre",
-            "Valperga"
-          ]
+          "otherBooks": ["El último hombre", "Valperga"]
         }
       }
     },
@@ -225,10 +205,7 @@
         "ISBN": "978-1542461690",
         "author": {
           "name": "H.P. Lovecraft",
-          "otherBooks": [
-            "El horror de Dunwich",
-            "En las montañas de la locura"
-          ]
+          "otherBooks": ["El horror de Dunwich", "En las montañas de la locura"]
         }
       }
     }
