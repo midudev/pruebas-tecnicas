@@ -5,6 +5,7 @@ import { getAllBooks } from '../services/bookService'
 interface State {
   availableBooks: Book[]
   readedBooks: Book[]
+  filteredBooks: Book[]
 }
 
 export const useBookStore = defineStore({
@@ -13,15 +14,17 @@ export const useBookStore = defineStore({
   state: (): State => ({
     availableBooks: [],
     readedBooks: [],
+    filteredBooks: [],
   }),
 
   actions: {
     getBooks() {
-      this.availableBooks = getAllBooks()
-      
-      return this.availableBooks
+      const books = getAllBooks()
+      this.availableBooks = books
+      this.filteredBooks = books
+      // return this.availableBooks
     },
-    
+
     handleAddbooks({ book, action }: { book: Book, action: Action }) {
       if (action === Action.ADD_TO_READED) {
         this.readedBooks = this.readedBooks.concat(book)
@@ -32,20 +35,22 @@ export const useBookStore = defineStore({
         this.availableBooks = this.availableBooks.concat(book)
         this.readedBooks = this.readedBooks.filter(actualBook => actualBook.ISBN !== book.ISBN)
       }
+
+      this.filteredBooks = this.availableBooks
     },
 
     filterByGenre({ genre }: { genre: Genre }) {
       if (genre === "Todos") {
-        return this.availableBooks
+        this.filteredBooks = this.availableBooks
+      } else {
+        // Retorno un array de todos los documentos con el genero seleccionado
+        this.filteredBooks = this.availableBooks.filter(book => book.genre === genre)
       }
-    
-      // Retorno un array de todos los documentos con el genero seleccionado
-      return this.availableBooks.filter(book => book.genre === genre)
     },
-    
+
     filterBooks({ genre, pages }: { genre: Genre, pages: number }) {
-      const filtered = this.filterByGenre({ genre })
-      return filtered.filter(book => book.pages >= pages)
+      this.filterByGenre({ genre })
+      this.filteredBooks = this.filteredBooks.filter(book => book.pages >= pages)
     },
   }
 })
