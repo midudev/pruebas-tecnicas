@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import { computed, Ref, ref, watchEffect, onMounted } from 'vue';
-import { Book, Genre, Action } from './types.d';
+import { Action, Book, Genre } from './types.d';
 import { initialFilters } from './contants';
 import { useBookStore } from './store/bookStore';
+import ListOfBooks from './components/listOfBooks.vue';
 
 const filteredBooks: Ref<Book[]> = ref([])
 const numOfAvailables = computed(() => filteredBooks.value.length) // Cantidad de libros disponibles del genero seleccionado
@@ -46,21 +47,11 @@ onMounted(() => {
           </label>
         </form>
       </header>
-      <ul class="books__container">
-        <li v-for="book in filteredBooks" :key="book.ISBN">
-          <img class="books__img" @click="bookStore.handleAddbooks({ book, action: Action.ADD_TO_READED })" :src="book.cover"
-            :alt="book.title">
-        </li>
-      </ul>
+      <ListOfBooks class="books__container" :books="filteredBooks" :action="Action.ADD_TO_READED" />
     </section>
     <aside :class="{ 'books__read': bookStore.readedBooks.length > 0 }">
       <h2>lista de leidos</h2>
-      <ul class="booksread__container">
-        <li v-for="book in bookStore.readedBooks" :key="book.ISBN">
-          <img class="books__img books__img--readed"
-            @click="bookStore.handleAddbooks({ book, action: Action.ADD_TO_AVAILABLE })" :src="book.cover" :alt="book.title">
-        </li>
-      </ul>
+      <ListOfBooks class="booksread__container" :books="bookStore.readedBooks" :action="Action.ADD_TO_AVAILABLE" />
     </aside>
   </main>
 </template>
