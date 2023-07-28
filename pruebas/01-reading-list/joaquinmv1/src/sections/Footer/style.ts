@@ -9,4 +9,8 @@ export const FooterContainer = styled.footer`
   justify-content: center;
   align-items: center;
   font-weight: bold;
+
+  @media screen and (max-width: 1550px){
+    display: none;
+  } 
 `
