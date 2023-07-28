@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { BookISBNType, type Book as BookType } from '../../../types';
 
-interface BooksState {
+export interface BooksState {
   selectedBooks: BookISBNType[],
   filterObject: FilterObject,
   booksList: BookType[],
@@ -43,28 +43,43 @@ export const booksSlice = createSlice({
   reducers: {
     setBooksList: (state, action) => {
       state.booksList = action.payload;
+      localStorage.setItem('booksList',JSON.stringify(state.booksList))
+    },
+    setSelectedBooks: (state, action) => {
+      state.selectedBooks = action.payload;
+      localStorage.setItem('selectedBooks',JSON.stringify(state.selectedBooks))
     },
     addSelectedBooks: (state, action) => {
       state.selectedBooks = [...state.selectedBooks, action.payload];
       handleUpdatingBooksList(state)
       handlefilterBooks(state)
+      localStorage.setItem('selectedBooks',JSON.stringify(state.selectedBooks))
+      localStorage.setItem('availableList',JSON.stringify(state.availableList))
+      localStorage.setItem('readingList',JSON.stringify(state.readingList))
     },
     removeSelectedBooks: (state, action) => {
       state.selectedBooks = state.selectedBooks.filter((ISBN) => ISBN !== action.payload);
       handleUpdatingBooksList(state)
       handlefilterBooks(state)
-
+      localStorage.setItem('selectedBooks',JSON.stringify(state.selectedBooks))
+      localStorage.setItem('availableList',JSON.stringify(state.availableList))
+      localStorage.setItem('readingList',JSON.stringify(state.readingList))
     },
     filterBooks: (state, action) => {
       state.filterObject.genre = action.payload;
       updateAvailableListfromSelectedBooks(state)
       handlefilterBooks(state)
+      localStorage.setItem('availableList',JSON.stringify(state.availableList))
     },
     setAvailableList: (state, action) => {
       state.availableList = action.payload;
+      localStorage.setItem('availableList',JSON.stringify(state.availableList))
+
     },
     setReadingList: (state, action) => {
       state.readingList = action.payload;
+      localStorage.setItem('readingList',JSON.stringify(state.readingList))
+
     },
   },
 });
@@ -75,6 +90,7 @@ export const {
   removeSelectedBooks,
   filterBooks,
   setBooksList,
+  setSelectedBooks,
   setAvailableList,
   setReadingList,
 } = booksSlice.actions;

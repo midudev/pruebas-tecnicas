@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect } from 'react';
 import './App.css';
 import { BookISBNType, type Book as BookType } from './types';
-import { getAllBooks } from './store/slices/books/thunks.ts';
+import { getAllBooks, initBooks } from './store/slices/books/thunks.ts';
 import { useAppDispatch, useAppSelector } from './hooks';
 import { RootState } from './store/store.ts';
 import { Book } from './components/Book.tsx';
@@ -17,6 +17,8 @@ function App(): JSX.Element {
     (state: RootState) => state.books
   );
 
+
+
   const handleAddBooksToReadingList = (id: BookISBNType) => {
     dispatch(addSelectedBooks(id));
   }
@@ -31,7 +33,8 @@ function App(): JSX.Element {
 
 
   useEffect(() => {
-    dispatch(getAllBooks());
+    dispatch(initBooks());
+
   }, []);
 
 
