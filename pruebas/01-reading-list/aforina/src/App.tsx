@@ -10,7 +10,7 @@ function App () {
   return (
     <div className="font-['subjectivity'] flex flex-col justify-center text-5xl">
       <Nav />
-      <main className='flex flex-1 min-h-screen flex-col items-center md:items-start md:flex-row gap-x-4 gap-y-8 h-[calc(100%-120px)] w-full max-w-sm md:max-w-7xl mx-auto pt-20 mb-20'>
+      <main className='flex flex-1 flex-col items-center md:items-start md:flex-row gap-x-4 gap-y-8 min-h-[calc(100vh-120px-80px)] w-full max-w-sm md:max-w-7xl mx-auto pt-20 pb-20'>
         <Sidebar />
         <div className='flex gap-x-12 w-full px-4'>
           <Route path='/'>
