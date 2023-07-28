@@ -6,8 +6,8 @@ const BASE_URL = 'src/assets/books.json';
 
 export const initBooks = (): AppThunk => async (dispatch) => {
   try {
-    const response = await fetch(BASE_URL); // Replace this with your API call
-    const { library } = await response.json(); // Replace this with your API call
+    const response = await fetch(BASE_URL); 
+    const { library } = await response.json(); 
     const booksArray: Book[] = []
     library.forEach(({ book }: { book: Book }) => {
       booksArray.push(book)
@@ -22,22 +22,6 @@ export const initBooks = (): AppThunk => async (dispatch) => {
     dispatch(setAvailableList(availableList));
     dispatch(setReadingList(readingList));
 
-  } catch (error) {
-    console.log('ThunkError: ', error);
-  }
-};
-
-
-export const getAllBooks = (): AppThunk => async (dispatch) => {
-  try {
-    const response = await fetch(BASE_URL); // Replace this with your API call
-    const { library } = await response.json(); // Replace this with your API call
-    const booksArray: Book[] = []
-    library.forEach(({ book }: { book: Book }) => {
-      booksArray.push(book)
-    })
-    dispatch(setBooksList(booksArray));
-    dispatch(setAvailableList(booksArray));
   } catch (error) {
     console.log('ThunkError: ', error);
   }
