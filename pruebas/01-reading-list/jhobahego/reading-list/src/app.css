@@ -1,8 +1,9 @@
-.main{
+.main {
   padding: 2em 3em;
   display: grid;
   place-content: center;
 }
+
 .container {
   display: grid;
   grid-template-areas: "books readedbooks";
@@ -47,15 +48,10 @@
   gap: .4em;
 }
 
-.books__img {
-  max-width: 150px;
-  border-radius: 8px;
-  margin-bottom: .6em;
-}
-
 aside {
   display: none;
 }
+
 .books__read {
   display: block;
   grid-area: readedbooks;
@@ -79,27 +75,6 @@ aside {
   list-style: none;
 }
 
-.books__img--readed {
-  width: 120px;
-}
-
-/* Animaciones */
-.books__img {
-  opacity: 1;
-  /* Opacidad inicial del 100% */
-  transition: opacity 0.5s ease;
-  /* Transición de opacidad con duración de 0.5 segundos y curva de aceleración "ease" */
-  transition: transform 0.3s ease;
-}
-
-.books__img:hover {
-  opacity: 0.7;
-  /* Al pasar el mouse, la opacidad se reduce a 70% */
-  transform: scale(1.1);
-  /* Aumenta el tamaño de la imagen al pasar el mouse por encima */
-}
-
-
 @media (width < 950px) {
   .form {
     flex-direction: column;
@@ -109,7 +84,7 @@ aside {
   .form__select select {
     min-width: 160px;
   }
-  
+
   .books__read {
     max-width: 180px;
     min-width: 0;
@@ -125,10 +100,6 @@ aside {
 
   .books__container {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  }
-
-  .books__img {
-    width: 135px;
   }
 
   .form__range,
@@ -166,22 +137,12 @@ aside {
     grid-template-columns: minmax(165px, 1fr);
     margin: 0 auto;
   }
-  
+
   .books {
     margin: 0 0;
   }
 
-  .books__img {
-    width: 160px;
-    max-width: 200px;
-  }
-
   .books__read {
     margin: 0 auto;
-  }
-
-  .books__img--readed {
-    width: 140px;
-    margin-bottom: .6em;
   }
 }

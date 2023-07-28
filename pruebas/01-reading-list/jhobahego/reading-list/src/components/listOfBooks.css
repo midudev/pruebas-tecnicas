@@ -1,0 +1,43 @@
+.books__img {
+  max-width: 150px;
+  border-radius: 8px;
+  margin-bottom: .6em;
+}
+
+.books__img--readed {
+  width: 120px;
+}
+
+/* Animaciones */
+.books__img {
+  opacity: 1;
+  /* Opacidad inicial del 100% */
+  transition: opacity 0.5s ease;
+  /* Transición de opacidad con duración de 0.5 segundos y curva de aceleración "ease" */
+  transition: transform 0.3s ease;
+}
+
+.books__img:hover {
+  opacity: 0.7;
+  /* Al pasar el mouse, la opacidad se reduce a 70% */
+  transform: scale(1.1);
+  /* Aumenta el tamaño de la imagen al pasar el mouse por encima */
+}
+
+@media (width < 720px) {
+  .books__img {
+    width: 135px;
+  }
+}
+
+@media (width < 450px) {
+  .books__img {
+    width: 160px;
+    max-width: 200px;
+  }
+
+  .books__img--readed {
+    width: 140px;
+    margin-bottom: .6em;
+  }
+}
