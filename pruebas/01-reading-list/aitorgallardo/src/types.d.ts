@@ -1,13 +1,12 @@
 
 export interface Book {
-    n:number,
     title: string
     pages: number
     genre: string
     cover: string
     synopsis: string
     year: number
-    ISBN: string
+    ISBN: BookISBNType
     author: Author
 }
 
@@ -16,7 +15,5 @@ export interface Author {
     otherBooks: string[]
 }
 
-export interface Props {
-    book: Book;
-}
+export type BookISBNType = string;
 

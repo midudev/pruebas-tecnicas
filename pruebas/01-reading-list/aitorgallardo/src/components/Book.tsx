@@ -1,11 +1,13 @@
-import { type Book as BookType } from '../types';
+import { BookISBNType, type Book as BookType } from '../types';
 
-type Props = BookType;
+interface Props extends BookType {
+    handleOnClick:((id: BookISBNType) => void)
+} 
 
-export const Book: React.FC<Props> = ({ title,pages,genere,cover,synopsis,year,ISBN,author }) => {
+export const Book: React.FC<Props> = ({ title,pages,genere,cover,synopsis,year,ISBN,author,handleOnClick }) => {
     return (
         <>
-        <img className='w-full h-full object-cover' src={cover} alt="" />
+        <img onClick={()=>handleOnClick(ISBN)} className='w-full h-full object-cover' src={cover} alt="" />
         </>
     )
 }
