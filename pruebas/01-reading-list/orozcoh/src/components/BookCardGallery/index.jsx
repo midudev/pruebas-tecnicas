@@ -1,7 +1,10 @@
 import PropTypes from "prop-types";
 import { BookCard } from "../BookCard";
+import { useSelector } from "react-redux";
 
 export const BookCardGallery = ({ booksData }) => {
+  const userBooks = useSelector((state) => state.user.bookmarks);
+  console.log("USER BOOKS FROM STORE: ", userBooks);
   return (
     <div
       style={{
@@ -13,7 +16,15 @@ export const BookCardGallery = ({ booksData }) => {
       }}
     >
       {booksData.map((book, index) => {
-        return <BookCard key={"book-" + index} bookData={book} />;
+        if (userBooks.includes(book)) console.log("Should have start");
+        else console.log("should not have star");
+        return (
+          <BookCard
+            key={"book-" + index}
+            bookData={book}
+            isFav={userBooks.includes(book)}
+          />
+        );
       })}
     </div>
   );

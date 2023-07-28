@@ -1,24 +1,25 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import Form from "react-bootstrap/Form";
 
 const MAX_PAGES = 1000;
 
-/* const filter = () => {
-
-
-} */
-
 export const BooksFilter = ({ library, setFilteredBooks }) => {
+  const userBooks = useSelector((state) => state.user.bookmarks);
+
   const [pagesFilter, setPagesFilter] = useState(1);
   const [genreFilter, setGenreFilter] = useState("all");
   const [moreLessFilter, setMoreLessFilter] = useState("more");
+  const [includeUserBooks, setIncludeUserBooks] = useState(true);
+  const [searchMyList, setSearchMyList] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const [tempInclude, setTempInclude] = useState(true);
+
   const [filteredBooks, setFilteredBookss] = useState(library);
 
-  //console.log("library: ", library);
   useEffect(() => {
-    console.log("genre.....");
-
     const booksList = library.map((book) => book["book"]);
     let filtered = booksList.filter((book) =>
       genreFilter === "all" ? true : book["genre"] === genreFilter
@@ -28,9 +29,24 @@ export const BooksFilter = ({ library, setFilteredBooks }) => {
         ? book["pages"] > pagesFilter
         : book["pages"] < pagesFilter
     );
+    filtered = includeUserBooks
+      ? filtered
+      : filtered.filter((book) =>
+          searchMyList ? userBooks.includes(book) : !userBooks.includes(book)
+        );
+    filtered = filtered.filter((book) =>
+      book["title"].toLowerCase().includes(searchTerm.toLowerCase())
+    );
     setFilteredBookss(filtered);
     setFilteredBooks(filtered);
-  }, [genreFilter, moreLessFilter]);
+  }, [
+    genreFilter,
+    moreLessFilter,
+    includeUserBooks,
+    userBooks,
+    searchMyList,
+    searchTerm,
+  ]);
 
   useEffect(() => {
     console.log("pagesEffect.....");
@@ -47,15 +63,24 @@ export const BooksFilter = ({ library, setFilteredBooks }) => {
           ? book["pages"] > pagesFilter
           : book["pages"] < pagesFilter
       );
+      filtered = includeUserBooks
+        ? filtered
+        : filtered.filter((book) =>
+            searchMyList ? userBooks.includes(book) : !userBooks.includes(book)
+          );
+      filtered = filtered.filter((book) =>
+        book["title"].toLowerCase().includes(searchTerm.toLowerCase())
+      );
       setFilteredBookss(filtered);
       setFilteredBooks(filtered);
     }, 200);
   }, [pagesFilter]);
 
+  console.log("input: ", searchTerm);
   return (
     <div
       style={{
-        padding: "10px",
+        padding: "15px 10px 20px 10px",
         boxShadow: "inset 0 0 5px ",
       }}
     >
@@ -65,10 +90,14 @@ export const BooksFilter = ({ library, setFilteredBooks }) => {
           flexWrap: "wrap",
           flexDirection: "row",
           justifyContent: "space-evenly",
+          border: "1px solid black",
+          borderRadius: "10px",
+          backgroundColor: "#F2EE9D",
+          padding: "3px",
         }}
       >
         <span>
-          <b>Libros disponibles en CyberLib: </b>
+          <b>Libros disponibles: </b>
           {library.length}
         </span>
         <br />
@@ -76,11 +105,11 @@ export const BooksFilter = ({ library, setFilteredBooks }) => {
           <b>Libros encontrados: </b>
           {filteredBooks.length}
         </span>
-        <br />
+        {/*         <br />
         <span>
           <b>Libros en mi lista: </b>
-          {0}
-        </span>
+          {userBooks.length}
+        </span> */}
       </div>
 
       <div
@@ -92,27 +121,69 @@ export const BooksFilter = ({ library, setFilteredBooks }) => {
           flexWrap: "wrap",
         }}
       >
-        <div
-          className="input-group mb-3"
-          style={{
-            padding: "0 5px 8px 0",
-            width: "350px",
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-          }}
-        >
-          <span className="input-group-text" id="inputGroup-sizing-default">
-            Buscar:
-          </span>
-          <input
-            type="text"
-            className="form-control"
-            aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-default"
-          />
+        <div>
+          <div
+            style={{
+              height: "100%",
+              paddingLeft: "5px",
+              display: "flex",
+              justifyContent: "flex-end",
+            }}
+          >
+            <Form.Check // prettier-ignore
+              type="switch"
+              id="custom-switch"
+              label="Buscar en mi lista"
+              checked={searchMyList}
+              onChange={() => {
+                if (!searchMyList) {
+                  console.log("IN...");
+                  setTempInclude(includeUserBooks);
+                  setIncludeUserBooks(false);
+                } else {
+                  console.log("OUT..");
+                  setIncludeUserBooks(tempInclude);
+                }
+                setSearchMyList(!searchMyList);
+              }}
+            />
+          </div>
+          <div
+            className="input-group "
+            style={{
+              padding: "0 5px 0px 0",
+              width: "350px",
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
+            <span className="input-group-text" id="inputGroup-sizing-default">
+              Buscar:
+            </span>
+            <input
+              type="text"
+              className="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+              placeholder="Nombre del libro"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+          <div style={{ height: "100%", paddingLeft: "5px" }}>
+            <Form.Check // prettier-ignore
+              type="switch"
+              id="custom-switch"
+              label="Incluir libros de mi lista"
+              checked={includeUserBooks}
+              onChange={() => setIncludeUserBooks(!includeUserBooks)}
+              disabled={searchMyList}
+            />
+          </div>
         </div>
-        <div style={{ display: "flex", flexWrap: "wrap" }}>
+
+        <div style={{ display: "flex", flexWrap: "wrap", paddingTop: "10px" }}>
           <div
             style={{
               padding: "0 5px",
@@ -120,7 +191,7 @@ export const BooksFilter = ({ library, setFilteredBooks }) => {
               flexDirection: "column",
             }}
           >
-            <div style={{ width: "165px" }}>
+            <div style={{ width: "250px" }}>
               <span>Género:</span>
               <Form.Select
                 value={genreFilter}
@@ -144,7 +215,7 @@ export const BooksFilter = ({ library, setFilteredBooks }) => {
               alignItems: "center",
             }}
           >
-            <div style={{ width: "165px" }}>
+            <div style={{ width: "250px" }}>
               <span>Páginas:</span>
               <Form.Select
                 value={moreLessFilter}
@@ -162,21 +233,6 @@ export const BooksFilter = ({ library, setFilteredBooks }) => {
               max={MAX_PAGES}
               value={pagesFilter}
               onChange={(e) => setPagesFilter(e.target.value)}
-            />
-          </div>
-        </div>
-        <div
-          style={{
-            padding: "0 5px",
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <div style={{ height: "100%" }}>
-            <Form.Check // prettier-ignore
-              type="switch"
-              id="custom-switch"
-              label="Incluir libros de mi lista"
             />
           </div>
         </div>

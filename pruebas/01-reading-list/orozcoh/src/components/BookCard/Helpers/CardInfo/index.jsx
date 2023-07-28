@@ -112,13 +112,6 @@ export const CardClickInfo = ({ bookData, setShowClickInfo }) => {
             {`ISBN ${bookData["ISBN"]}`}
           </span>
         </div>
-        <button
-          onClick={() => {
-            console.log("click");
-          }}
-        >
-          button
-        </button>
       </div>
     </div>
   );
