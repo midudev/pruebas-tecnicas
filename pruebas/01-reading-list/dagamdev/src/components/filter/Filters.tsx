@@ -21,7 +21,7 @@ export default function Filters(){
       <h3>Filtros</h3>
 
       <ul>
-        {FILTERS.map(f=> <FilterCard title={f.title}>
+        {FILTERS.map(f=> <FilterCard key={f.title} title={f.title}>
           {<f.component />}
         </FilterCard>)}
       </ul>
