@@ -6,12 +6,8 @@ const BASE_URL = 'src/assets/books.json';
 
 export const initBooks = (): AppThunk => async (dispatch) => {
   try {
-    const response = await fetch(BASE_URL); 
-    const { library } = await response.json(); 
-    const booksArray: Book[] = []
-    library.forEach(({ book }: { book: Book }) => {
-      booksArray.push(book)
-    })
+
+    const booksArray = await getAllBooks();
 
     const selectedBooks = JSON.parse(localStorage.getItem('selectedBooks') || '[]')
     const availableList =  selectedBooks.length > 0 ? JSON.parse(localStorage.getItem('availableList') || '[]') : booksArray
@@ -24,5 +20,17 @@ export const initBooks = (): AppThunk => async (dispatch) => {
 
   } catch (error) {
     console.log('ThunkError: ', error);
+  }
+};
+
+export const getAllBooks =  async ():Promise<Book[]> => {
+  try {
+    const response = await fetch(BASE_URL); 
+    const { library } = await response.json(); 
+    const booksArray: Book[] = library.map(({ book }: { book: Book }) => book);
+    return booksArray;
+  } catch (error) {
+    console.log('ThunkError: ', error);
+    return [];
   }
 };
