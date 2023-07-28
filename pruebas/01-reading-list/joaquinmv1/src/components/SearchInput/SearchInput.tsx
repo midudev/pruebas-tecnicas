@@ -15,7 +15,7 @@ export const SearchInput = ({ handleChangeInput, searchValue }: InputProps) => {
       <ContainerInput onSubmit={handleSubmit}>
         <InputText
           type="text"
-          placeholder="Search..."
+          placeholder="Frankenstein, Juegos de tronos"
           value={searchValue}
           onChange={handleChangeInput}
         />
