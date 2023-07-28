@@ -6,12 +6,7 @@ import useBooks from '../hooks/useBooks'
 
 import CardBook from './CardBook'
 
-import {
-  DragDropContext,
-  Draggable,
-  DropResult,
-  Droppable,
-} from 'react-beautiful-dnd'
+import { Draggable, Droppable } from 'react-beautiful-dnd'
 
 interface Props {
   library: IBook[]
@@ -30,7 +25,7 @@ const ListOfBook = ({
   numberOfPages = 0,
   keyword = '',
 }: Props) => {
-  const { reorderBooks, reorderReading, MoveBook } = useBooks()
+  const { MoveBook } = useBooks()
 
   const [books, setBooks] = useState<IBook[]>([])
 
@@ -56,25 +51,6 @@ const ListOfBook = ({
     setBooks(filteredBooks)
   }, [library, genre, numberOfPages, keyword])
 
-  const Move = (ev: DropResult) => {
-    const { source, destination } = ev
-
-    if (!destination) return
-    if (!ev.type) return
-
-    if (
-      destination.index === source.index &&
-      destination.droppableId === source.droppableId
-    )
-      return
-
-    if (ev.type === 'istrue') {
-      reorderBooks(books, source.index, destination.index)
-    } else {
-      reorderReading(books, source.index, destination.index)
-    }
-  }
-
   return (
     <>
       <div
@@ -89,50 +65,46 @@ const ListOfBook = ({
           {left ? `- Total sin filtros: (${library.length})` : ''}
         </h2>
 
-        <DragDropContext onDragEnd={(ev) => Move(ev)}>
-          <Droppable droppableId={title} type={`is${left}`}>
-            {(provided) => (
-              <section
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-                className={`w-full ${
-                  left
-                    ? 'grid grid-cols-grid-auto justify-items-center'
-                    : 'flex flex-col'
-                } items-center justify-center gap-y-5 py-3`}
-              >
-                {books.map((book, index) => {
-                  return (
-                    <Draggable
-                      isDragDisabled={isFilter}
-                      key={book.book.ISBN}
-                      draggableId={book.book.ISBN}
-                      index={index}
+        <Droppable droppableId={title} type="group">
+          {(provided) => (
+            <section
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+              className={`w-full ${
+                left
+                  ? 'grid grid-cols-grid-auto justify-items-center'
+                  : 'flex flex-col'
+              } items-center justify-center gap-y-5 py-3`}
+            >
+              {books.map((book, index) => (
+                <Draggable
+                  isDragDisabled={isFilter}
+                  key={book.book.ISBN}
+                  draggableId={book.book.ISBN}
+                  index={index}
+                >
+                  {(provided, snapshot) => (
+                    <div
+                      className="w-[250px]"
+                      {...provided.dragHandleProps}
+                      {...provided.draggableProps}
+                      ref={provided.innerRef}
                     >
-                      {(provided2, snapshot) => (
-                        <div
-                          className="w-[250px]"
-                          ref={provided2.innerRef}
-                          {...provided2.dragHandleProps}
-                          {...provided2.draggableProps}
-                        >
-                          <CardBook
-                            key={book.book.ISBN}
-                            book={book.book}
-                            left={left}
-                            MoveBook={MoveBook}
-                            isDragging={snapshot.isDragging}
-                          />
-                        </div>
-                      )}
-                    </Draggable>
-                  )
-                })}
-                {provided.placeholder}
-              </section>
-            )}
-          </Droppable>
-        </DragDropContext>
+                      <CardBook
+                        key={book.book.ISBN}
+                        book={book.book}
+                        left={left}
+                        MoveBook={MoveBook}
+                        isDragging={snapshot.isDragging}
+                      />
+                    </div>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+            </section>
+          )}
+        </Droppable>
       </div>
     </>
   )

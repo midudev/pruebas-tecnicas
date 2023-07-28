@@ -38,7 +38,7 @@ const CardBook = ({ book, left, MoveBook, isDragging }: Props) => {
     <section
       draggable
       id="Card"
-      className={`sm:[&>#viewInfo]:hover:animate-pulse flex flex-col justify-center items-center border-opacity-20 relative rounded-[14px] w-full object-cover py-5 m-auto hover:scale-105 transition-transform duration-200  ${stylesDrag}`}
+      className={`sm:[&>.viewInfo]:hover:animate-pulse flex flex-col justify-center items-center border-opacity-20 relative rounded-[14px] w-full object-cover py-5 m-auto hover:scale-105 transition-transform duration-200  ${stylesDrag}`}
     >
       <h2 className="w-full p-3 font-semibold text-start">{book.title}</h2>
       <img
@@ -63,11 +63,10 @@ const CardBook = ({ book, left, MoveBook, isDragging }: Props) => {
       )}
 
       <button
-        id="viewInfo"
         data-testid="viewInfo"
-        name={viewMoreInfo ? 'Ocultar' : 'Ver más'}
+        name={viewMoreInfo ? 'Ocultar' : 'VerMás'}
         onClick={(ev) => handleInfoExtra(ev)}
-        className={`p-2 transition-transform duration-300  ${
+        className={`viewInfo p-2 transition-transform duration-300  ${
           viewMoreInfo
             ? '-rotate-90  sm:hover:-rotate-45'
             : 'rotate-90  sm:hover:rotate-45'

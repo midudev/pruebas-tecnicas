@@ -9,6 +9,12 @@ interface PropsMove {
   left: boolean
 }
 
+interface PropsMoveBookDragDrop {
+  sourceIndex: number
+  droppableIndex: number
+  left: boolean
+}
+
 const useBooks = () => {
   const {
     saveReadingList,
@@ -16,6 +22,7 @@ const useBooks = () => {
     deleteReadingList,
     saveBook,
     books,
+    readingList,
     replaceBooks,
     replaceReadingList,
   } = useContext(ContextBook) as IContextBook
@@ -38,6 +45,26 @@ const useBooks = () => {
       deleteFav({ book })
     } else {
       AddFav({ book })
+    }
+  }
+
+  const MoveBookDragDrop = ({
+    sourceIndex,
+    droppableIndex,
+    left,
+  }: PropsMoveBookDragDrop) => {
+    const booksAux = [...books]
+    const readingListAux = [...readingList]
+    if (left) {
+      const [deleted] = booksAux.splice(sourceIndex, 1)
+      readingListAux.splice(droppableIndex, 0, deleted)
+      replaceBooks(booksAux)
+      replaceReadingList(readingListAux)
+    } else {
+      const [deleted] = readingListAux.splice(sourceIndex, 1)
+      booksAux.splice(droppableIndex, 0, deleted)
+      replaceReadingList(readingListAux)
+      replaceBooks(booksAux)
     }
   }
 
@@ -81,6 +108,7 @@ const useBooks = () => {
     filterByGenre,
     reorderBooks,
     reorderReading,
+    MoveBookDragDrop,
   }
 }
 export default useBooks
