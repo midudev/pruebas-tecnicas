@@ -15,6 +15,7 @@ a {
   --bg-dark: #221d21;
   --btn-bg: #f77014;
   --btn-bg-hover: #e33c08;
+  --color-disabled: #c4c4c4;
 }
 
 .fixed-navbar {

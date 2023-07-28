@@ -13,10 +13,12 @@ export class ReadingListComponent implements OnInit {
   private readingBookListService = inject(ReadingBookListService);
 
   readingBooks: BookFavorite[] = [];
+  readingBooksInverted: BookFavorite[] = [];
 
   ngOnInit(): void {
     this.readingBookListService.$favoriteChanges().subscribe(newFavorites => {
       this.readingBooks = newFavorites;
+      this.readingBooksInverted = this.readingBooks.slice().reverse();
     });
   }
 

@@ -1,6 +1,7 @@
 <div class="title-page">
   <hr />
-  <app-search-bar></app-search-bar>
+  <app-search-bar [ngClass]="{ 'scale': isSearchPage() }" (searcher)="searching($event)" ></app-search-bar>
   <hr />
 </div>
-<app-one-book [books]="books"></app-one-book>
+
+<app-one-book [books]="searchResults"></app-one-book>

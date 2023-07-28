@@ -43,7 +43,7 @@ h2 {
   margin: 0;
   text-align: center;
   color: var(--color-title);
-  padding: 1rem 0;
+  padding: 2rem 0;
 }
 
 button {
@@ -75,4 +75,6 @@ p.empty {
   width: 100%;
   text-align: center;
   padding-top: 2rem;
+  font-style: italic;
+  color: var(--color-disabled);
 }

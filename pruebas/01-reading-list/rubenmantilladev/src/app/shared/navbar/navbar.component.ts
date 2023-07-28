@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ReadingBookListService } from './../../services/reading-book-list.service';
 import { Component, OnInit, inject } from '@angular/core';
 
@@ -11,6 +12,7 @@ export class NavbarComponent implements OnInit {
   hideList = false;
   lengthList = 0;
 
+  private router = inject(Router)
   readingBookListService = inject(ReadingBookListService)
 
   ngOnInit() {
@@ -21,6 +23,14 @@ export class NavbarComponent implements OnInit {
 
   menu(){
     this.hideList = !this.hideList;
+  }
+
+  isPageHomeActive(){
+    return this.router.isActive('/home', true);
+  }
+
+  toHome() {
+    this.router.navigate(['/home']);
   }
 
 }

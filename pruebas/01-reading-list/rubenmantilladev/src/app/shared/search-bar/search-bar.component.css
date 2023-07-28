@@ -3,10 +3,10 @@ form {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  border: 1px solid var(--bg-dark);
   width: 280px;
   border-radius: 99px;
   overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .search-container form input {
@@ -32,3 +32,4 @@ form {
   border: none;
   outline: none;
 }
+

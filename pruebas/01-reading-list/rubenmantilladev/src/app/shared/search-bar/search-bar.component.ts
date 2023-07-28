@@ -8,9 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./search-bar.component.css'],
 })
 export class SearchBarComponent {
-  @Output() searcher = new EventEmitter<string>()
+  @Output() searcher = new EventEmitter<string>();
 
-  private router = inject(Router)
+  private router = inject(Router);
 
   searchForm: FormGroup = new FormGroup({
     inputSearch: new FormControl('', Validators.required),
@@ -22,12 +22,11 @@ export class SearchBarComponent {
 
   searching() {
     if (this.searchForm.valid) {
-      this.searcher.emit(this.searchForm.value.inputSearch);
+      this.searcher.emit(this.search?.value);
     }
     if (this.router.url !== '/search') {
       this.router.navigate(['/search']);
     }
-
   }
 
 }

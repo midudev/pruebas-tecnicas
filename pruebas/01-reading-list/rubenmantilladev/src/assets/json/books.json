@@ -412,7 +412,7 @@
         "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1389917952i/56899.jpg",
         "synopsis": "Felipe Montero, un joven escritor, acepta un trabajo para transcribir las memorias de la enigmática mujer llamada Aura.",
         "year": 1962,
-        "ISBN": "978-84-375-0260-6",
+        "ISBN": "978-84-375-0210-6",
         "author": {
           "name": "Carlos Fuentes",
           "otherBooks": ["La región más transparente", "La muerte de Artemio Cruz"]
@@ -427,10 +427,265 @@
         "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1170423850i/53447.jpg",
         "synopsis": "El túnel cuenta la obsesiva historia de amor de María y el pintor Juan Pablo Castel.",
         "year": 1948,
-        "ISBN": "978-84-375-0260-6",
+        "ISBN": "978-84-372-0260-6",
         "author": {
           "name": "Ernesto Sabato",
           "otherBooks": ["Sobre héroes y tumbas", "Abaddón el exterminador"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Clean Code: A Handbook of Agile Software Craftsmanship",
+        "pages": 464,
+        "genre": "Tecnología",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/41jEbK-jG%2BL._SX376_BO1,204,203,200_.jpg",
+        "synopsis": "Clean Code es un libro sobre la importancia de escribir código limpio y de calidad en el desarrollo de software.",
+        "year": 2008,
+        "ISBN": "978-0132350884",
+        "author": {
+          "name": "Robert C. Martin",
+          "otherBooks": ["The Clean Coder", "Clean Architecture"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Superintelligence: Paths, Dangers, Strategies",
+        "pages": 390,
+        "genre": "Ciencia",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1452397757i/23022840.jpg",
+        "synopsis": "Superintelligence explora el potencial y los riesgos de la inteligencia artificial y su impacto en la humanidad.",
+        "year": 2014,
+        "ISBN": "978-0199678112",
+        "author": {
+          "name": "Nick Bostrom",
+          "otherBooks": ["Human Compatible", "Global Catastrophic Risks"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Cryptography Engineering: Design Principles and Practical Applications",
+        "pages": 384,
+        "genre": "Seguridad",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1417983329i/16387641.jpg",
+        "synopsis": "Cryptography Engineering es un libro que aborda los principios de diseño y aplicaciones prácticas de la criptografía.",
+        "year": 2010,
+        "ISBN": "978-0470474242",
+        "author": {
+          "name": "Niels Ferguson",
+          "otherBooks": ["Practical Cryptography", "The Web Application Hacker's Handbook"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Eloquent JavaScript: A Modern Introduction to Programming",
+        "pages": 472,
+        "genre": "Tecnología",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1406741001i/22843271.jpg",
+        "synopsis": "Eloquent JavaScript es una introducción moderna a la programación y el desarrollo web utilizando JavaScript.",
+        "year": 2011,
+        "ISBN": "978-1593275846",
+        "author": {
+          "name": "Marijn Haverbeke",
+          "otherBooks": ["You Don't Know JS", "JavaScript: The Good Parts"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "The Pragmatic Programmer: Your Journey to Mastery",
+        "pages": 352,
+        "genre": "Tecnología",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/41as+WafrFL._SX384_BO1,204,203,200_.jpg",
+        "synopsis": "The Pragmatic Programmer es un libro clásico sobre el desarrollo de software, lleno de consejos prácticos para mejorar la programación y la eficiencia en el desarrollo.",
+        "year": 1999,
+        "ISBN": "978-0201616224",
+        "author": {
+          "name": "Andrew Hunt y David Thomas",
+          "otherBooks": ["Pragmatic Thinking and Learning", "Programming Ruby"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Design Patterns: Elements of Reusable Object-Oriented Software",
+        "pages": 395,
+        "genre": "Tecnología",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1385991469i/18447273.jpg",
+        "synopsis": "Design Patterns es un libro clásico que presenta patrones de diseño comunes en la programación orientada a objetos, útiles para crear software más flexible y reutilizable.",
+        "year": 1994,
+        "ISBN": "978-0201633610",
+        "author": {
+          "name": "Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides",
+          "otherBooks": ["Refactoring: Improving the Design of Existing Code", "Clean Architecture"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Python Crash Course: A Hands-On, Project-Based Introduction to Programming",
+        "pages": 544,
+        "genre": "Tecnología",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1449482668i/28115737.jpg",
+        "synopsis": "Python Crash Course es un libro para principiantes que ofrece una introducción práctica a la programación utilizando el lenguaje de programación Python.",
+        "year": 2015,
+        "ISBN": "978-1593276034",
+        "author": {
+          "name": "Eric Matthes",
+          "otherBooks": ["Python for Data Analysis", "Fluent Python"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "The Phoenix Project: A Novel about IT, DevOps, and Helping Your Business Win",
+        "pages": 376,
+        "genre": "Tecnología",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1430743420i/25478858.jpg",
+        "synopsis": "The Phoenix Project es una novela que explora los desafíos comunes en el mundo de TI y cómo la metodología DevOps puede ayudar a las empresas a tener éxito.",
+        "year": 2013,
+        "ISBN": "978-0988262591",
+        "author": {
+          "name": "Gene Kim, Kevin Behr, y George Spafford",
+          "otherBooks": ["The DevOps Handbook", "Continuous Delivery"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Machine Learning Yearning",
+        "pages": 224,
+        "genre": "Tecnología",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1480798569i/30741739.jpg",
+        "synopsis": "Machine Learning Yearning es una guía práctica escrita por el ex director de investigación de Baidu AI Group, Andrew Ng, que ofrece consejos y estrategias para aplicar con éxito el aprendizaje automático en proyectos reales.",
+        "year": 2018,
+        "ISBN": "978-1494770815",
+        "author": {
+          "name": "Andrew Ng",
+          "otherBooks": ["Deep Learning", "AI: A Modern Approach"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "It",
+        "pages": 1138,
+        "genre": "Terror",
+        "cover": "https://imagessl7.casadellibro.com/a/l/t7/47/9788466345347.jpg",
+        "synopsis": "It es una novela de terror que sigue a un grupo de niños que se enfrentan a una entidad malévola que toma la forma de sus peores temores.",
+        "year": 1986,
+        "ISBN": "978-0451169518",
+        "author": {
+          "name": "Stephen King",
+          "otherBooks": ["The Shining", "Pet Sematary"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Drácula",
+        "pages": 488,
+        "genre": "Terror",
+        "cover": "https://imagessl5.casadellibro.com/a/l/t7/25/9788496912625.jpg",
+        "synopsis": "Drácula cuenta la historia del conde Drácula, un vampiro que busca extender su maldición en la Inglaterra victoriana.",
+        "year": 1897,
+        "ISBN": "978-0486411095",
+        "author": {
+          "name": "Bram Stoker",
+          "otherBooks": ["Frankenstein", "The Strange Case of Dr. Jekyll and Mr. Hyde"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "El resplandor",
+        "pages": 688,
+        "genre": "Terror",
+        "cover": "https://imagessl5.casadellibro.com/a/l/t7/75/9788466345675.jpg",
+        "synopsis": "El resplandor sigue la historia de un hombre que se convierte en el cuidador de un hotel aislado y se enfrenta a fuerzas sobrenaturales que lo llevan a la locura.",
+        "year": 1977,
+        "ISBN": "978-0450040182",
+        "author": {
+          "name": "Stephen King",
+          "otherBooks": ["Misery", "Carrie"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Cementerio de animales",
+        "pages": 416,
+        "genre": "Terror",
+        "cover": "https://imagessl3.casadellibro.com/a/l/t7/33/9788466357333.jpg",
+        "synopsis": "Cementerio de animales sigue la aterradora historia de un cementerio misterioso capaz de devolver la vida a los muertos, pero a un precio escalofriante.",
+        "year": 1983,
+        "ISBN": "978-0450053854",
+        "author": {
+          "name": "Stephen King",
+          "otherBooks": ["The Dark Half", "Needful Things"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "El retrato de Dorian Gray",
+        "pages": 176,
+        "genre": "Terror",
+        "cover": "https://imagessl9.casadellibro.com/a/l/t7/39/9788467033939.jpg",
+        "synopsis": "El retrato de Dorian Gray es una novela que explora la corrupción moral y el lado oscuro de la naturaleza humana a través de la historia de un retrato misterioso.",
+        "year": 1890,
+        "ISBN": "978-0141442464",
+        "author": {
+          "name": "Oscar Wilde",
+          "otherBooks": ["The Canterville Ghost", "The Picture of Dorian Gray and Other Writings"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "El exorcista",
+        "pages": 400,
+        "genre": "Terror",
+        "cover": "https://imagessl3.casadellibro.com/a/l/t7/03/9788413145303.jpg",
+        "synopsis": "El exorcista cuenta la aterradora historia de una niña poseída por una entidad demoníaca y los esfuerzos para liberarla de su control malévolo.",
+        "year": 1971,
+        "ISBN": "978-0062094369",
+        "author": {
+          "name": "William Peter Blatty",
+          "otherBooks": ["Legion", "The Ninth Configuration"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "El cuervo",
+        "pages": 96,
+        "genre": "Terror",
+        "cover": "https://imagessl9.casadellibro.com/a/l/t7/49/9788477028949.jpg",
+        "synopsis": "El cuervo es un poema narrativo sobre un hombre afligido por la pérdida de su amada y visitado por un cuervo misterioso.",
+        "year": 1845,
+        "ISBN": "978-8494552309",
+        "author": {
+          "name": "Edgar Allan Poe",
+          "otherBooks": ["Historias extraordinarias", "Los asesinatos de la Rue Morgue"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "El misterio de Salem's Lot",
+        "pages": 672,
+        "genre": "Terror",
+        "cover": "https://imagessl9.casadellibro.com/a/l/t7/49/9788466363549.jpg",
+        "synopsis": "El misterio de Salem's Lot sigue la historia de un escritor que regresa a su ciudad natal para descubrir que hay fuerzas siniestras y vampiros que acechan a sus habitantes.",
+        "year": 1975,
+        "ISBN": "978-8497592751",
+        "author": {
+          "name": "Stephen King",
+          "otherBooks": ["The Stand", "Pet Sematary"]
         }
       }
     }
