@@ -1,4 +1,5 @@
 import { useStore } from "../../store/store";
+import { textColorAnimationClass } from "../../utils/tailwind";
 
 const GenderFilter = () => {
   const { genres, currentGenre, changeCurrentGenre, changePage } = useStore();
@@ -12,7 +13,7 @@ const GenderFilter = () => {
     <div>
       <label
         htmlFor="genre"
-        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        className={`block mb-2 text-sm font-medium ${textColorAnimationClass}`}
       >
         Filtrar por Género
       </label>

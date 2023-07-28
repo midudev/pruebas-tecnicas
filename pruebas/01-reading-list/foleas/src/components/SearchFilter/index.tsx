@@ -1,4 +1,5 @@
 import { useStore } from "../../store/store";
+import { textColorAnimationClass } from "../../utils/tailwind";
 
 const SearchFilter = () => {
   const { search, changeSearch } = useStore();
@@ -7,7 +8,7 @@ const SearchFilter = () => {
     <div className="w-60">
       <label
         htmlFor="search"
-        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        className={`block mb-2 text-sm font-medium ${textColorAnimationClass}`}
       >
         Filtrar por búsqueda
       </label>

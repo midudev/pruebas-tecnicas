@@ -1,4 +1,5 @@
 import { useStore } from "../../store/store";
+import { textColorAnimationClass } from "../../utils/tailwind";
 
 const PageFilter = () => {
   const { page, changePage, perPage, filteredBooks } = useStore();
@@ -7,7 +8,7 @@ const PageFilter = () => {
     <div>
       <label
         htmlFor="paginator"
-        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        className={`block mb-2 text-sm font-medium text-gray-900 dark:text-white ${textColorAnimationClass}`}
       >
         Filtrar por páginas
       </label>

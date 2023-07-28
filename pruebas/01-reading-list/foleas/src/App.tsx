@@ -7,6 +7,7 @@ import { UseGetData } from "./hooks/useGetData";
 import SearchFilter from "./components/SearchFilter";
 import { Book } from "./types";
 import ColorThemeSwitch from "./components/ColorThemeSwitch";
+import { textColorAnimationClass } from "./utils/tailwind";
 
 function App() {
   const {
@@ -38,7 +39,7 @@ function App() {
   }, [currentGenre, search, books, selectedBooks]);
 
   return (
-    <main className="p-5 box-border flex flex-wrap w-screen h-screen overflow-hidden gap-5">
+    <main className="p-5 box-border flex flex-wrap w-screen h-screen overflow-hidden gap-5 transition-bg-color duration-300 ease-in-out dark:bg-slate-900">
       <ColorThemeSwitch />
 
       {loading ? (
@@ -55,12 +56,14 @@ function App() {
       ) : (
         <>
           <div className="box-border p-10 pt-0 available-books-wrapper w-4/5 overflow-y-auto max-h-full">
-            <h1 className="text-3xl font-bold mb-5">{`${
-              books.length - selectedBooks.length
-            } libros disponibles`}</h1>
+            <h1
+              className={`text-3xl font-bold mb-5 ${textColorAnimationClass}`}
+            >{`${books.length - selectedBooks.length} libros disponibles`}</h1>
 
             {selectedBooks.length > 0 && (
-              <h3 className="text-1xl font-bold mb-5">{`${selectedBooks.length} en la lista de lectura`}</h3>
+              <h3
+                className={`text-1xl font-bold mb-5 ${textColorAnimationClass}`}
+              >{`${selectedBooks.length} en la lista de lectura`}</h3>
             )}
 
             <div className="filters-wrapper mb-5 flex gap-10 align-center">
@@ -96,7 +99,11 @@ function App() {
           >
             {selectedBooks.length > 0 && (
               <div className="box-border p-5 h-full lecture-books">
-                <h2 className="text-3xl font-bold mb-5">Lista de Lectura</h2>
+                <h2
+                  className={`text-3xl font-bold mb-5 ${textColorAnimationClass}`}
+                >
+                  Lista de Lectura
+                </h2>
                 <div className="grid grid-cols-2 gap-10 pb-4">
                   {selectedBooks.map((v, i) => {
                     const selectedBook = books.find(
