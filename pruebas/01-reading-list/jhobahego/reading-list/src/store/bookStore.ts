@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { Book, Action, Genre } from '../types.d'
 import { getAllBooks } from '../services/bookService'
+import { notify } from '@kyvg/vue3-notification'
 
 interface State {
   availableBooks: Book[]
@@ -26,24 +27,36 @@ export const useBookStore = defineStore({
     },
 
     handleAddbooks({ book, action }: { book: Book, action: Action }) {
-      if (action === Action.ADD_TO_READED) {
+      const addToReaded = action === Action.ADD_TO_READED
+
+      if (addToReaded) {
         this.readedBooks = this.readedBooks.concat(book)
         this.availableBooks = this.availableBooks.filter(actualBook => actualBook.ISBN !== book.ISBN)
       }
 
-      if (action === Action.ADD_TO_AVAILABLE) {
+      if (!addToReaded) {
         this.availableBooks = this.availableBooks.concat(book)
         this.readedBooks = this.readedBooks.filter(actualBook => actualBook.ISBN !== book.ISBN)
       }
 
       this.filteredBooks = this.availableBooks
+
+      const actionDescription = addToReaded ? 'agregado' : 'removido'
+
+      const message = `Libro ${book.title} ${actionDescription} existosamente`
+
+      const typeOfNotification = addToReaded ? 'success' : 'error'
+      notify({
+        title: `Libro ${actionDescription}`,
+        text: message,
+        type: typeOfNotification
+      })
     },
 
     filterByGenre({ genre }: { genre: Genre }) {
       if (genre === "Todos") {
         this.filteredBooks = this.availableBooks
       } else {
-        // Retorno un array de todos los documentos con el genero seleccionado
         this.filteredBooks = this.availableBooks.filter(book => book.genre === genre)
       }
     },
