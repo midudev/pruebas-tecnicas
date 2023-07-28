@@ -1,0 +1,22 @@
+#Dark {
+  background-color: #242424;
+  color: rgba(255, 255, 255, 0.87);
+  color-scheme: light dark;
+}
+
+#Light {
+  background-color: #f2f4f6;
+  color: #0d3f67;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}
+
+.main_section {
+  margin-top: 10px;
+}

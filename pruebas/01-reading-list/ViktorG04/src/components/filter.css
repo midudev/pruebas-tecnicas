@@ -1,0 +1,40 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.label-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.label-input label {
+  font-size: 1.2rem;
+}
+
+.label-input input {
+  width: 25vh;
+  margin-bottom: 10px;
+}
+
+.label-input select {
+  width: 15vh;
+  font-size: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .form {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .label-input label {
+    font-size: 1.5rem;
+  }
+
+  .label-input select {
+    width: 20vh;
+  }
+}
