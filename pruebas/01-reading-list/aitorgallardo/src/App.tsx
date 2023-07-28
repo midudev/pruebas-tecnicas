@@ -25,22 +25,31 @@ function App(): JSX.Element {
   const handleRemoveBooksFromReadingList = (id: BookISBNType) => {
     dispatch(removeSelectedBooks(id));
   }
-    const handleFilter = (event: ChangeEvent<HTMLSelectElement>)=>{
-      const genre = event.target.value;
-      dispatch(filterBooks(genre));
-      
+  const handleFilter = (event: ChangeEvent<HTMLSelectElement>) => {
+    const genre = event.target.value;
+    dispatch(filterBooks(genre));
+
   }
 
 
   useEffect(() => {
     dispatch(initBooks());
 
+    // This is a listener for the local storage event in order to update the state 
+    // for shared tabs
+    window.addEventListener('storage',() => {
+      dispatch(initBooks());
+    });
+
+    return () => {
+      window.removeEventListener('storage', ()=>{});
+    }
   }, []);
 
 
   return (
     <>
-   
+
 
       <div className='flex gap-5 min-h-screen'>
 
