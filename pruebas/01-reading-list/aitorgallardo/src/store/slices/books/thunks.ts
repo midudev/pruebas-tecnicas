@@ -14,7 +14,7 @@ export const initBooks = (): AppThunk => async (dispatch) => {
     })
 
     const selectedBooks = JSON.parse(localStorage.getItem('selectedBooks') || '[]')
-    const availableList = JSON.parse(localStorage.getItem('availableList') || '[]').length > 0 ? JSON.parse(localStorage.getItem('availableList') || '[]') : booksArray
+    const availableList =  selectedBooks.length > 0 ? JSON.parse(localStorage.getItem('availableList') || '[]') : booksArray
     const readingList = JSON.parse(localStorage.getItem('readingList') || '[]')
 
     dispatch(setBooksList(booksArray));
