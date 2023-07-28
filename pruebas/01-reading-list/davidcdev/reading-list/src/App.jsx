@@ -9,8 +9,10 @@ export function App () {
   const {
     available,
     myList,
-    filter,
-    setFilter,
+    filterByGenre,
+    setFilterByGenre,
+    filterByPages,
+    setFilterByPages,
     handleAddClick,
     handleRemoveClick,
     crypto
@@ -32,15 +34,18 @@ export function App () {
       <GridItem area='nav'>
         <Filter
           available={available}
-          filter={filter}
-          setFilter={setFilter}
+          filterByGenre={filterByGenre}
+          setFilterByGenre={setFilterByGenre}
+          filterByPages={filterByPages}
+          setFilterByPages={setFilterByPages}
           crypto={crypto}
         />
       </GridItem>
       <GridItem pl='2' area='available'>
         <AvailableBooks
           available={available}
-          filter={filter}
+          filterByGenre={filterByGenre}
+          filterByPages={filterByPages}
           handleAddClick={handleAddClick}
           crypto={crypto}
         />

@@ -8,7 +8,8 @@ const crypto = window.crypto
 export function useBooks () {
   const [available, setAvailable] = useState([])
   const [myList, setMyList] = useState([])
-  const [filter, setFilter] = useState('')
+  const [filterByGenre, setFilterByGenre] = useState('')
+  const [filterByPages, setFilterByPages] = useState([])
 
   useEffect(() => {
     if (myList.length === 0) {
@@ -24,7 +25,6 @@ export function useBooks () {
   }, [myList])
 
   function handleAddClick (book) {
-    console.log('add ' + book.title + '  to my list')
     const toRead = [...myList, book]
     setMyList(toRead)
     localStorage.setItem('myList', JSON.stringify(toRead))
@@ -37,7 +37,6 @@ export function useBooks () {
   }
 
   function handleRemoveClick (book) {
-    console.log('remove ' + book.title + '  from my list')
     const updateList = myList.filter((el) => el.title !== book.title)
     setMyList(updateList)
     localStorage.setItem('myList', JSON.stringify(updateList))
@@ -62,13 +61,13 @@ export function useBooks () {
     }
   }, [])
 
-  console.log(myList)
-
   return {
     available,
     myList,
-    filter,
-    setFilter,
+    filterByGenre,
+    setFilterByGenre,
+    filterByPages,
+    setFilterByPages,
     handleAddClick,
     handleRemoveClick,
     localStorage,

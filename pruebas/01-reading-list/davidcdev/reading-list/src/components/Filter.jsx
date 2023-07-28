@@ -1,6 +1,6 @@
-import { Flex, Heading, Text, Button, useColorModeValue } from '@chakra-ui/react'
+import { Flex, Heading, Text, Button, useColorModeValue, RangeSlider, RangeSliderTrack, RangeSliderFilledTrack, RangeSliderThumb } from '@chakra-ui/react'
 
-export function Filter ({ available, filter, setFilter, crypto }) {
+export function Filter ({ available, filterByGenre, setFilterByGenre, filterByPages, setFilterByPages, crypto }) {
   const color = useColorModeValue('black', 'white')
 
   let genres = new Set()
@@ -13,13 +13,31 @@ export function Filter ({ available, filter, setFilter, crypto }) {
 
   function handleFilterClick (genre) {
     const newFilter = genre
-    setFilter(newFilter)
-    console.log(filter)
+    setFilterByGenre(newFilter)
   }
 
-  function handleResetClick () {
-    setFilter('')
-    console.log('filter was cleaned')
+  function handleResetGenres () {
+    setFilterByGenre('')
+  }
+
+  function handleResetPages () {
+    setFilterByPages([])
+  }
+
+  let numberOfPages = new Set()
+
+  available.forEach((el) => {
+    numberOfPages.add(el.book.pages)
+  })
+
+  numberOfPages = Array.from(numberOfPages).sort((a, b) => a - b)
+
+  const min = numberOfPages[0]
+  const max = numberOfPages[numberOfPages.length - 1]
+
+  function handlePagesChange (pages) {
+    const newPagesRange = pages
+    setFilterByPages(newPagesRange)
   }
 
   return (
@@ -32,18 +50,11 @@ export function Filter ({ available, filter, setFilter, crypto }) {
         as='h3'
         size='xs'
         pl='2'
-      >
-        FILTER
-      </Heading>
-      <Text
-        fontSize='sm'
-        pl='2'
         mb='20px'
       >
-        {filter === ''
-          ? available.length + ' books available'
-          : available.filter((el) => el.book.genre === filter).length + ' books available'}
-      </Text>
+        FILTER BY GENRE
+      </Heading>
+
       {genres.map((el) =>
         <Button
           aria-label={el}
@@ -51,9 +62,9 @@ export function Filter ({ available, filter, setFilter, crypto }) {
           justifyContent='flex-start'
           size='sm'
           variant='ghost'
-          colorScheme='orange'
+          colorScheme='black'
           color={color}
-          isActive={filter === el}
+          isActive={filterByGenre === el}
           pl='2'
           mb='8px'
           key={crypto.randomUUID()}
@@ -68,9 +79,40 @@ export function Filter ({ available, filter, setFilter, crypto }) {
         justifyContent='flex-start'
         size='sm'
         mt='20px'
-        colorScheme='orange'
+        mb='60px'
+        colorScheme='black'
         variant='outline'
-        onClick={handleResetClick}
+        onClick={handleResetGenres}
+      >
+        Clean filter
+      </Button>
+      <Heading
+        as='h3'
+        size='xs'
+        pl='2'
+        mb='20px'
+      >
+        FILTER BY RANGE OF PAGES
+      </Heading>
+
+      <RangeSlider aria-label={['min', 'max']} defaultValue={[0, 240]} min={min} max={max} onChange={(e) => handlePagesChange(e)}>
+        <RangeSliderTrack bg='red.100'>
+          <RangeSliderFilledTrack bg='tomato' />
+        </RangeSliderTrack>
+        <RangeSliderThumb boxSize={6} index={0} />
+        <RangeSliderThumb boxSize={6} index={1} />
+      </RangeSlider>
+      <Text fontSize='sm' pl='2' mb='20px'>{filterByPages[0]} - {filterByPages[1]} pages</Text>
+      <Button
+        aria-label='Clean filter'
+        display='flex'
+        justifyContent='flex-start'
+        size='sm'
+        mt='20px'
+        mb='60px'
+        colorScheme='black'
+        variant='outline'
+        onClick={handleResetPages}
       >
         Clean filter
       </Button>

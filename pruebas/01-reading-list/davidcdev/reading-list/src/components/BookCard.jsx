@@ -29,7 +29,6 @@ export function AvailableBookCard ({ el, handleAddClick, crypto }) {
         <Button
           aria-label='Add to my list'
           onClick={() => handleAddClick(el.book)}
-          colorScheme='orange'
           size='lg'
         >
           Add to my list
