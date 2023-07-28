@@ -13,7 +13,7 @@ export default function SearchBar(): JSX.Element {
   const { register, setValue, handleSubmit, formState: { isDirty, isValid }} = useForm(
     { 
       defaultValues: formDefValues,  
-      mode: 'all'
+      mode: 'onChange'
     });
     
   const search = (data: any) => setBookList(bookList => setNewBookList(bookList ?? [], data.toSearch))
@@ -34,7 +34,7 @@ export default function SearchBar(): JSX.Element {
         }}
         { ...register('toSearch', {
           required: true,
-          pattern: /^(\w|-|:| |[-ñÑ]){1,50}$/im,
+          pattern: /^(\w|-|:| |[-ñÑáéíóúÁÉÍÓÚ]){1,50}$/im,
           validate: (value) => value.trim().length !== 0,
         }) }
       />
@@ -61,10 +61,10 @@ const formDefValues: FieldValues = { toSearch: "" }
 
 const utilRegexp = (searchTarget: string) => {
   return {
-    crit1: new RegExp(`(${searchTarget})(\w|-|:| |[nÑ])*`, ''),
-    crit2: new RegExp(`(${searchTarget})(\w|-|:| |[nÑ])*`, 'i'),
-    crit3: new RegExp(`(\w|[ñÑ]|-|:| )*?(${searchTarget})(\w|[ñÑ]|-|:| )*?`, ''),
-    crit4: new RegExp(`(\w|[ñÑ]|-|:| )*?(${searchTarget})(\w|[ñÑ]|-|:| )*?`, 'i'),
+    crit1: new RegExp(`(${searchTarget})(\w|-|:| |[nÑáéíóúÁÉÍÓÚ])*`, ''),
+    crit2: new RegExp(`(${searchTarget})(\w|-|:| |[nÑáéíóúÁÉÍÓÚ])*`, 'i'),
+    crit3: new RegExp(`(\w|[ñÑáéíóúÁÉÍÓÚ]|-|:| )*?(${searchTarget})(\w|[ñÑáéíóúÁÉÍÓÚ]|-|:| )*?`, ''),
+    crit4: new RegExp(`(\w|[ñÑáéíóúÁÉÍÓÚ]|-|:| )*?(${searchTarget})(\w|[ñÑáéíóúÁÉÍÓÚ]|-|:| )*?`, 'i'),
   }
 }
 
