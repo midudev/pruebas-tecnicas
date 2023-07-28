@@ -4,6 +4,7 @@ specifiers:
   '@kyvg/vue3-notification': ^2.9.1
   '@vitejs/plugin-vue': ^4.2.3
   pinia: ^2.1.4
+  pinia-plugin-persistedstate: ^3.2.0
   typescript: ^5.0.2
   vite: ^4.4.0
   vue: ^3.3.4
@@ -12,6 +13,7 @@ specifiers:
 dependencies:
   '@kyvg/vue3-notification': 2.9.1_vue@3.3.4
   pinia: 2.1.4_typescript@5.1.6+vue@3.3.4
+  pinia-plugin-persistedstate: 3.2.0_pinia@2.1.4
   vue: 3.3.4
 
 devDependencies:
@@ -482,6 +484,14 @@ packages:
 
   /picocolors/1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
+
+  /pinia-plugin-persistedstate/3.2.0_pinia@2.1.4:
+    resolution: {integrity: sha512-tZbNGf2vjAQcIm7alK40sE51Qu/m9oWr+rEgNm/2AWr1huFxj72CjvpQcIQzMknDBJEkQznCLAGtJTIcLKrKdw==}
+    peerDependencies:
+      pinia: ^2.0.0
+    dependencies:
+      pinia: 2.1.4_typescript@5.1.6+vue@3.3.4
+    dev: false
 
   /pinia/2.1.4_typescript@5.1.6+vue@3.3.4:
     resolution: {integrity: sha512-vYlnDu+Y/FXxv1ABo1vhjC+IbqvzUdiUC3sfDRrRyY2CQSrqqaa+iiHmqtARFxJVqWQMCJfXx1PBvFs9aJVLXQ==}

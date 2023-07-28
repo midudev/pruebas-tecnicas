@@ -11,6 +11,7 @@
   "dependencies": {
     "@kyvg/vue3-notification": "^2.9.1",
     "pinia": "^2.1.4",
+    "pinia-plugin-persistedstate": "^3.2.0",
     "vue": "^3.3.4"
   },
   "devDependencies": {
