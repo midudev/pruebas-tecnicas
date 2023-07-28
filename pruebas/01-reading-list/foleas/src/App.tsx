@@ -6,6 +6,7 @@ import GenreFilter from "./components/GenreFilter";
 import { UseGetData } from "./hooks/useGetData";
 import SearchFilter from "./components/SearchFilter";
 import { Book } from "./types";
+import ColorThemeSwitch from "./components/ColorThemeSwitch";
 
 function App() {
   const {
@@ -38,6 +39,8 @@ function App() {
 
   return (
     <main className="p-5 box-border flex flex-wrap w-screen h-screen overflow-hidden gap-5">
+      <ColorThemeSwitch />
+
       {loading ? (
         <div className="flex flex-wrap justify-center self-center w-screen">
           <div
