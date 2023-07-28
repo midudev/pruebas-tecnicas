@@ -1,4 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, {
+  MutableRefObject,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 
 import { IBook } from '../interfaces/IBooks'
 
@@ -13,6 +19,8 @@ export interface IContextBook {
   deleteReadingList: (book: IBook) => void
   replaceBooks: (books: IBook[]) => void
   replaceReadingList: (books: IBook[]) => void
+  isDragAndDrop: MutableRefObject<boolean>
+  toReadingList: MutableRefObject<boolean>
 }
 
 interface Props {
@@ -25,16 +33,32 @@ export const BookContextProvider = ({ children }: Props) => {
   const [books, setbooks] = useState<IBook[]>([])
   const [readingList, setReadingList] = useState<IBook[]>([])
 
-  const handleStorageChange = (ev: StorageEvent) => {
+  const isDragAndDrop = useRef(false)
+  const toReadingList = useRef(false)
+
+  const handleStorageChange = useCallback((ev: StorageEvent) => {
     if (!ev.newValue) return
     if (ev.key === 'readingList') setReadingList(JSON.parse(ev.newValue))
     if (ev.key === 'books') setbooks(JSON.parse(ev.newValue))
-  }
+  }, [])
 
   useEffect(() => {
     if (books.length === 0 && readingList.length === 0) return
+    if (!isDragAndDrop.current) {
+      localStorage.setItem('readingList', JSON.stringify(readingList))
+      localStorage.setItem('books', JSON.stringify(books))
+      return
+    }
+    if (!toReadingList.current) {
+      localStorage.setItem('readingList', JSON.stringify(readingList))
+      localStorage.setItem('books', JSON.stringify(books))
+      isDragAndDrop.current = false
+      return
+    }
     localStorage.setItem('books', JSON.stringify(books))
     localStorage.setItem('readingList', JSON.stringify(readingList))
+    toReadingList.current = false
+    isDragAndDrop.current = false
   }, [books, readingList])
 
   const getInitialData = () => {
@@ -110,6 +134,8 @@ export const BookContextProvider = ({ children }: Props) => {
         deleteReadingList,
         replaceBooks,
         replaceReadingList,
+        toReadingList,
+        isDragAndDrop,
       }}
     >
       {children}

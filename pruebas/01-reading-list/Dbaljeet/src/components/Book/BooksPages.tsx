@@ -13,7 +13,9 @@ interface Props {
 }
 
 const BookPages = ({ genre, keyword, numberOfPages }: Props) => {
-  const { books, readingList } = useContext(ContextBook) as IContextBook
+  const { books, readingList, isDragAndDrop, toReadingList } = useContext(
+    ContextBook
+  ) as IContextBook
   const { reorderBooks, reorderReading, MoveBookDragDrop } = useBooks()
 
   const Move = (ev: DropResult) => {
@@ -30,6 +32,8 @@ const BookPages = ({ genre, keyword, numberOfPages }: Props) => {
     if (ev.source.droppableId === TYPES_GROUPS[0]) {
       //libros disponibles
       if (destination.droppableId !== source.droppableId) {
+        isDragAndDrop.current = true
+        toReadingList.current = true
         MoveBookDragDrop({
           sourceIndex: source.index,
           droppableIndex: destination.index,
@@ -38,6 +42,7 @@ const BookPages = ({ genre, keyword, numberOfPages }: Props) => {
       } else reorderBooks(books, source.index, destination.index)
     } else {
       if (destination.droppableId !== source.droppableId) {
+        isDragAndDrop.current = true
         MoveBookDragDrop({
           sourceIndex: source.index,
           droppableIndex: destination.index,
