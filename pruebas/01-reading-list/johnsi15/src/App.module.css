@@ -1,6 +1,8 @@
 .main {
   display: flex;
-  gap: 30px;
+  gap: 0 30px;
+  flex-flow: wrap;
+  justify-content: center;
 }
 
 .main .booksCounter {
@@ -79,6 +81,15 @@
 
   .main {
     flex-direction: column;
+  }
+
+  .main .booksCounter {
+    text-align: center;
+  }
+
+  .genres select,
+  .genres input {
+    width: 150px;
   }
 
   .listBooks {

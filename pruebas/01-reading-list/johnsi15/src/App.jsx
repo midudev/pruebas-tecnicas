@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import ListBooks from './components/BookList'
 import ReadingList from './components/ReadingList'
+import Footer from './components/Footer'
 import { useBook } from './hooks/useBook'
 import styles from './App.module.css'
 
@@ -50,6 +51,7 @@ function App () {
       </section>
       <ReadingList books={readingList} />
 
+      <Footer />
     </main>
   )
 }
