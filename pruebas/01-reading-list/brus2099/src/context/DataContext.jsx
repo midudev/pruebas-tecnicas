@@ -14,19 +14,18 @@ export const DataProvider = ({ children }) => {
 
   const updateTabs = new BroadcastChannel('update-tabs'); // this is a very importamnt line of code, don't forget to close the channel when you don't need it anymore
 
-  const updateTabsWithLocalStorage = (origin) => {
-    updateTabs.postMessage('update now!!');
-    updateTabs.postMessage(origin);
-    
+  const updateTabsWithBroadcastChannel = () => {
+    updateTabs.postMessage('update');
   };
 
   useEffect(() => {
     updateTabs.addEventListener('message', (event) => {
-      console.log(event.data);
-      setBooklist(createArrayOfBooks(parseItemFromLocalStorageToArray('booklist')));
-      setLecturelist(createArrayOfBooks(parseItemFromLocalStorageToArray('lecturelist')));
+      if (event.data === 'update') {
+        setBooklist(createArrayOfBooks(parseItemFromLocalStorageToArray('booklist')));
+        setLecturelist(createArrayOfBooks(parseItemFromLocalStorageToArray('lecturelist')));
+      }
     });
-  }, []);
+  }, [booklist, lecturelist]);
 
   // parseItemFromLocalStorageToArray, addElementToLocalStorageItem and removeElementFromLocalStorageItem are used to manage localStorage items abtracting them as arrays
   const parseItemFromLocalStorageToArray = (item) => {
@@ -95,16 +94,15 @@ export const DataProvider = ({ children }) => {
 
   return (
     <DataContext.Provider value={{
-      books,
+      books, genres,
       booklist, setBooklist,
       displayedBooks, setDisplayedBooks,
       lecturelist, setLecturelist,
       selectedGenre, setSelectedGenre,
-      genres,
       parseItemFromLocalStorageToArray,
       addElementToLocalStorageItem,
       removeElementFromLocalStorageItem,
-      updateTabsWithLocalStorage,
+      updateTabsWithBroadcastChannel,
     }}>
       {children}
     </DataContext.Provider>

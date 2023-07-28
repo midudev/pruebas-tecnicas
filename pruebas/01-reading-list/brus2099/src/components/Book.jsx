@@ -5,7 +5,7 @@ const Book = ({ entireBook, title, author, isbn, cover }) => {
 
   const { lecturelist, setLecturelist, booklist, setBooklist,
     addElementToLocalStorageItem, removeElementFromLocalStorageItem,
-    updateTabsWithLocalStorage } = useContext(DataContext);
+    updateTabsWithBroadcastChannel } = useContext(DataContext);
 
   const lectureListChange = () => {
     const formatedBook = { book: entireBook };
@@ -13,7 +13,7 @@ const Book = ({ entireBook, title, author, isbn, cover }) => {
     setBooklist(booklist.filter(({ book }) => book.ISBN !== isbn));
     removeElementFromLocalStorageItem(isbn, 'booklist');
     addElementToLocalStorageItem(isbn, 'lecturelist');
-    updateTabsWithLocalStorage('booklist origin');
+    updateTabsWithBroadcastChannel();
   };
 
   const bookListChange = () => {
@@ -22,7 +22,7 @@ const Book = ({ entireBook, title, author, isbn, cover }) => {
     setLecturelist(lecturelist.filter(({ book }) => book.ISBN !== isbn));
     removeElementFromLocalStorageItem(isbn, 'lecturelist');
     addElementToLocalStorageItem(isbn, 'booklist');
-    updateTabsWithLocalStorage('lecturelist origin');
+    updateTabsWithBroadcastChannel();
   };
 
   return (
