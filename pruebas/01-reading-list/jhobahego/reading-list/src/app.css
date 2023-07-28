@@ -14,31 +14,6 @@
   grid-area: books;
 }
 
-.books__header {
-  margin: 1em 0;
-}
-
-.form {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: .8em 2em;
-  font: inherit;
-  gap: 2em;
-}
-
-.form__range,
-.form__select {
-  display: flex;
-  align-items: center;
-  gap: 1em;
-}
-
-.form__select {
-  justify-content: space-between;
-}
-
 .books__container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -76,15 +51,6 @@ aside {
 }
 
 @media (width < 950px) {
-  .form {
-    flex-direction: column;
-    gap: .6em;
-  }
-
-  .form__select select {
-    min-width: 160px;
-  }
-
   .books__read {
     max-width: 180px;
     min-width: 0;
@@ -100,24 +66,6 @@ aside {
 
   .books__container {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  }
-
-  .form__range,
-  .form__select {
-    flex-direction: column;
-    gap: .4em;
-  }
-
-  .form__range {
-    margin-top: .6em;
-  }
-
-  .form__select select {
-    min-width: 0;
-  }
-
-  h1 {
-    font-size: 26px;
   }
 
   h2 {
