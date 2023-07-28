@@ -1,0 +1,29 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1em;
+}
+
+.navbar__logo {
+  margin-left: 12px;
+}
+
+.navbar__list {
+  list-style: none;
+}
+
+.navbar__link {
+  text-decoration: none;
+}
+
+.navbar__icon {
+  width: 2em;
+  height: 2em;
+  margin-top: 6px;
+  transition: fill 0.3s ease;
+}
+
+.navbar__icon:hover {
+  fill: #c2c2f2;
+}

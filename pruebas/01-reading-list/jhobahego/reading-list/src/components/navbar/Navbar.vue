@@ -15,3 +15,7 @@
     </ul>
   </nav>
 </template>
+
+<style scoped>
+@import url(navbar.css);
+</style>
