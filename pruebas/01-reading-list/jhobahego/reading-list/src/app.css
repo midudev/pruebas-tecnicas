@@ -14,15 +14,6 @@
   grid-area: books;
 }
 
-.books__container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  justify-items: center;
-  list-style: none;
-  margin-bottom: .4em;
-  gap: .4em;
-}
-
 aside {
   display: none;
 }
@@ -43,13 +34,6 @@ aside {
   text-align: center;
 }
 
-.booksread__container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  justify-items: center;
-  list-style: none;
-}
-
 @media (width < 950px) {
   .books__read {
     max-width: 180px;
@@ -62,10 +46,6 @@ aside {
   .container {
     gap: .4em;
     padding: 2em 1em;
-  }
-
-  .books__container {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 
   h2 {

@@ -1,3 +1,19 @@
+.books__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  justify-items: center;
+  list-style: none;
+  margin-bottom: .4em;
+  gap: .4em;
+}
+
+.booksread__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  justify-items: center;
+  list-style: none;
+}
+
 .books__img {
   max-width: 150px;
   border-radius: 8px;
@@ -25,8 +41,16 @@
 }
 
 @media (width < 720px) {
+  .books__container {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+  
   .books__img {
     width: 135px;
+  }
+
+  .books__img--readed {
+    width: 120px;
   }
 }
 

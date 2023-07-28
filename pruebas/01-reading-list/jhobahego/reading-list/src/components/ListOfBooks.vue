@@ -8,10 +8,14 @@ const props = defineProps<{
   books: Book[]
   action: Action
 }>()
+
+const listClass = props.action === Action.ADD_TO_AVAILABLE 
+  ? 'booksread__container' 
+  : 'books__container'
 </script>
 
 <template>
-  <ul>
+  <ul :class="listClass">
     <li v-for="book in props.books" :key="book.ISBN">
       <img class="books__img" :class="{ 'books__img--readed': action === Action.ADD_TO_AVAILABLE }"
         @click="bookStore.handleAddbooks({ book, action })" :src="book.cover" :alt="book.title">
