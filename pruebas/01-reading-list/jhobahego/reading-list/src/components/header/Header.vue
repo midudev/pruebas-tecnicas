@@ -15,7 +15,7 @@ defineProps<{
 
 const emits = defineEmits<{
   (e: 'onChangePages', value: number): void
-  (e: 'onChangeGenre', value: string): void
+  (e: 'onChangeGenre', value: Genre): void
 }>()
 </script>
 
