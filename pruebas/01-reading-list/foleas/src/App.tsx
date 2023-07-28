@@ -5,6 +5,7 @@ import PageFilter from "./components/PageFilter";
 import GenreFilter from "./components/GenreFilter";
 import { UseGetData } from "./hooks/useGetData";
 import SearchFilter from "./components/SearchFilter";
+import { Book } from "./types";
 
 function App() {
   const {
@@ -19,7 +20,7 @@ function App() {
     setSelectedBooks,
   } = useStore();
 
-  const { loading } = UseGetData("./books.json");
+  console.log("selectedBooks", selectedBooks);
 
   useEffect(() => {
     setFilteredBooks(
@@ -94,26 +95,27 @@ function App() {
               <div className="box-border p-5 h-full lecture-books">
                 <h2 className="text-3xl font-bold mb-5">Lista de Lectura</h2>
                 <div className="grid grid-cols-2 gap-10 pb-4">
-                  {books
-                    ?.filter(({ book: { ISBN } }) =>
-                      selectedBooks.includes(ISBN)
-                    )
-                    .map(({ book: { title, cover, ISBN } }, i) => {
-                      return (
-                        <BookCard
-                          key={ISBN}
-                          index={i}
-                          title={title}
-                          imageUrl={cover}
-                          withRemoveBnt={true}
-                          onClickHandler={() => {
-                            setSelectedBooks(
-                              selectedBooks.filter((v) => v !== ISBN)
-                            );
-                          }}
-                        />
-                      );
-                    })}
+                  {selectedBooks.map((v, i) => {
+                    const selectedBook = books.find(
+                      ({ book: { ISBN } }) => ISBN === v
+                    ) as Book;
+                    if (!selectedBook) return false;
+                    const { ISBN, title, cover } = selectedBook.book;
+                    return (
+                      <BookCard
+                        key={ISBN}
+                        index={i}
+                        title={title}
+                        imageUrl={cover}
+                        withRemoveBnt={true}
+                        onClickHandler={() => {
+                          setSelectedBooks(
+                            selectedBooks.filter((v) => v !== ISBN)
+                          );
+                        }}
+                      />
+                    );
+                  })}
                 </div>
               </div>
             )}
