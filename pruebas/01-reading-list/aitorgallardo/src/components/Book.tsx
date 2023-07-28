@@ -6,7 +6,7 @@ interface Props extends BookType {
     isReading?: boolean
 }
 
-export const Book: React.FC<Props> = ({ title, pages, genere, cover, synopsis, year, ISBN, author, handleOnClick, isAvailable=false, isReading=false }) => {
+export const Book: React.FC<Props> = ({  cover, ISBN, handleOnClick, isAvailable=false, isReading=false }) => {
     return (
         <div className='relative group'>
             {isReading && <button className='opacity-0 absolute top-0 right-0 px-3 py-2 bg-slate-800 group-hover:opacity-100 transition-opacity text-white' onClick={() => handleOnClick(ISBN)} >X</button>}
