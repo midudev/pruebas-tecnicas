@@ -26,7 +26,7 @@ export const Book = ({add= true, title, id, cover, book, modifiers}) => {
 
   return (
     <li className={styles.book}>
-        <img className={styles.img} src={cover}/>
+        <img className={styles.img} src={cover} alt={title}/>
         <p className={styles.tittle}>{title}</p>
         {add ? 
         <button onClick={click} alt="agregar a lista de lectura" className={`${styles.button} ${styles.add}`}><img className={styles.icon}src={plus}/></button> 

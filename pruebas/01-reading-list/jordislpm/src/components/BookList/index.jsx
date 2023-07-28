@@ -10,6 +10,7 @@ const BookList = () => {
 
 const [store, dispatch] = useContext(BooksAvailable)
 const [filtersBooks, setFiltersBooks]= useState([])
+const [filters, setFilters]=useContext(FiltersContext)  
 
 const {listBooks, listRead} = store;
 const modifiers = {
@@ -18,11 +19,13 @@ const modifiers = {
 
 const {books}=useFilter()
 
-
 return (
 
     <section className={styles.section}>
         <h1 className={styles.title}>Lista de libros disponibles</h1>
+        {filters.search != "" && books.length < 1 
+        ? <h1 className={`${styles.title} ${styles.notFound}`}>El libro que buscas no esta disponible, busca otro por favor</h1> 
+        : ""}
         <ul className={styles.booklist}>
         {books && books.map((element)=>{
             return(

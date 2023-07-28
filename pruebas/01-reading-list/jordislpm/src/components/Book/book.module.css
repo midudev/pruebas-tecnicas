@@ -7,7 +7,7 @@ align-items: center;
 gap: 0.5rem;
 border-radius: 8px;
 overflow: hidden;
-max-width: 200px;
+max-width: 20rem;
 height: max-content; 
 padding: 0.4rem 0.1rem 0.4rem 0.1rem;
 }
@@ -63,30 +63,35 @@ padding: 0.4rem 0.1rem 0.4rem 0.1rem;
 .add:hover::before {
     content: "Agregar a la lista de lectura";
     display: flex;
-    justify-content: center;
-    align-items: center;
     min-width: max-content;
-    height: 20px;
+    font-size: 1.2rem;
     background: var(--primary-blue);
     position: absolute;
-    top: -95%;
-    left: -220%;
-    padding: 5px;
+    top: -105%;
+    left: -330%;
+    padding: 0px 3px 0px 3px;
     border-radius: 5px;
   }
 
   .remove:hover::before {
     content: "Eliminar de la lista de lectura";
-    font-size: 10px;
+    font-size: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
     min-width: max-content;
-    height: 20px;
     background: var(--primary-red);
     position: absolute;
-    top: -95%;
-    left: -170%;
-    padding: 5px;
+    top: -110%;
+    left: -270%;
+    padding: 2px;
+    /* padding: 0px 2px 0px 2px; */
     border-radius: 5px;
   }
+
+
+  @media only screen and (max-width: 900px) {
+
+  
+    
+}

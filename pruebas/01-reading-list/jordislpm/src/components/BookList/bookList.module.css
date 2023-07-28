@@ -19,3 +19,7 @@
     font-size: 2rem;
     color: var(--secundary-blue)
 }
+
+.notFound{
+    color: var(--primary-red);
+}

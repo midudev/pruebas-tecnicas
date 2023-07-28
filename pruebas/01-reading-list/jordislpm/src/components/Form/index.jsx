@@ -5,6 +5,7 @@ import { FiltersContext } from "../../context/contextFilters";
 import useFilter from "../../Hooks/useFilter";
 import useSearchBook from "../../Hooks/useSearchBook";
 import find from "../../../public/icons/find.svg"
+import Search from "../Search";
 
 
 const Form = () => {
@@ -15,13 +16,8 @@ const Form = () => {
     const [filters]=useContext(FiltersContext)
     const {setFilters} =useFilter()
     const [newSearch, setNewSearch]= useState("")
-    const [search, setSearch , error]= useSearchBook()
+    const {setSearch}= useSearchBook()
 
-    
-
-    const handleChange = (e)=>{
-        setNewSearch(e.target.value)
-    }
     
     const onChangeSelect= (e)=>{
 let genre = e.target.value
@@ -34,31 +30,13 @@ setFilters({...filters, genre:genre})
         setFilters({...filters, minPages:pages})
     }
 
-    const handleSubmit = (e) =>{
-    e.preventDefault()
-    setSearch(newSearch)
-    setFilters({...filters, search:newSearch})
-    }
-
-
-    useEffect(()=>{
-        if(newSearch == ""){
-            setSearch("")
-        }
-    },[newSearch])
-
   return (
     < div className={styles.options}>
-        <form onSubmit={handleSubmit} className={styles.form}>
-            <input onChange={handleChange} value={newSearch} name="search" className={styles.searchInput} type="text" placeholder="Busca libros disponibles"/>
-            <button type="submit" className={styles.searchButton}>
-                <img src={find}></img>
-            </button>
-        </form>
+        <Search/>
         <div className={styles.filters}>
             <div className={styles.genreFilter}>
                 <label className={styles.label}>Filtar por genero</label>
-            <select onChange={onChangeSelect}>
+                <select className={styles.select} onChange={onChangeSelect}>
                     {genres && genres.map((genre)=>{
                         return<option key={genre}>{genre}</option>
                     })}
