@@ -65,5 +65,9 @@ export const useBookStore = defineStore({
       this.filterByGenre({ genre })
       this.filteredBooks = this.filteredBooks.filter(book => book.pages >= pages)
     },
+  },
+  persist: {
+    storage: localStorage,
+    paths: ['availableBooks', 'readedBooks'],
   }
 })

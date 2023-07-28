@@ -8,7 +8,9 @@ import Header from './components/header/Header.vue';
 const bookStore = useBookStore()
 
 onMounted(() => {
-  bookStore.getBooks()
+  if (bookStore.availableBooks.length === 0) {
+    bookStore.getBooks()
+  }
 })
 </script>
 
