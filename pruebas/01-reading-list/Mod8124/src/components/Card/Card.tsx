@@ -2,8 +2,6 @@ import { FC } from 'react';
 import { ICard } from '../../interfaces/interfaces';
 import { BsFillBookmarkFill, BsBookmark } from 'react-icons/bs';
 import { useBooksStore } from '../../store/store';
-import { CardSkeleton } from './CardSkeleton';
-import { useToggle } from '../../hooks/useToggle';
 
 export const Card: FC<ICard> = ({ book, lecture }) => {
   const booksStore = useBooksStore();

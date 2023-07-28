@@ -10,8 +10,6 @@ export interface IbooksSlice {
 const storedBooks = localStorage.getItem('books');
 const books = storedBooks !== null ? JSON.parse(storedBooks) : ListBooks.library;
 
-export const booksSlice: StateCreator<IbooksSlice & IlecturesSlice, [], [], IbooksSlice> = (
-  set,
-) => ({
+export const booksSlice: StateCreator<IbooksSlice & IlecturesSlice, [], [], IbooksSlice> = () => ({
   books,
 });
