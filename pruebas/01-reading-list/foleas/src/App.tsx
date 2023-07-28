@@ -20,8 +20,6 @@ function App() {
     setSelectedBooks,
   } = useStore();
 
-  console.log("selectedBooks", selectedBooks);
-
   useEffect(() => {
     setFilteredBooks(
       books
