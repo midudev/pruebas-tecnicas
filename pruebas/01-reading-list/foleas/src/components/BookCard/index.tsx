@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { durationVariants } from "../../tailwind-utils";
+import { durationVariants } from "../../utils/tailwind";
+
 interface BookCardProps {
   index: number;
   title: string;

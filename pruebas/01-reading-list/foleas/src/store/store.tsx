@@ -1,26 +1,6 @@
 import { create } from "zustand";
 import { Store } from "./storeTypes";
-
-// const getLocalStorage = (key: string) =>
-//   JSON.parse(window.localStorage.getItem(key) || "") as
-//     | string
-//     | number
-//     | Array<string>;
-
-const getLocalStorage = (key: string) => {
-  const localStorage = window.localStorage.getItem(key);
-  if (localStorage !== null) {
-    const localStorageJson = JSON.parse(localStorage) as
-      | string
-      | number
-      | Array<string>;
-    return localStorageJson;
-  }
-  return false;
-};
-
-const setLocalStorage = (key: string, value: string | number | Array<string>) =>
-  window.localStorage.setItem(key, JSON.stringify(value));
+import { getLocalStorage, setLocalStorage } from "../utils/localStorage";
 
 export const useStore = create<Store>((set) => ({
   perPage: 4,
