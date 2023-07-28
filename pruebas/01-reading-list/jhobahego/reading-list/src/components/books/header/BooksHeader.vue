@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import { Ref, ref, watchEffect, computed } from 'vue'
-import { Genre } from '../../types.d';
-import { initialFilters } from '../../contants'
-import { useBookStore } from '../../store/bookStore';
+import { Genre } from '../../../types.d';
+import { initialFilters } from '../../../contants'
+import { useBookStore } from '../../../store/bookStore';
+
+const bookStore = useBookStore()
 
 const numOfAvailables = computed(() => bookStore.filteredBooks.length) // Cantidad de libros disponibles del genero seleccionado
 const numOfReaded = computed(() => bookStore.readedBooks.length)
@@ -12,7 +14,6 @@ const pagesSelected = ref(0)
 
 const keywords = ref(initialFilters)
 
-const bookStore = useBookStore()
 
 watchEffect(() => {
   const genre = genreSelected.value
@@ -42,5 +43,5 @@ watchEffect(() => {
 </template>
 
 <style scoped>
-@import url(header.css);
+@import url(booksHeader.css);
 </style>

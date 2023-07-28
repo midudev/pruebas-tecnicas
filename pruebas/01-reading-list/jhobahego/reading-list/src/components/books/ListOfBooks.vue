@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { Action, Book } from '../types.d';
-import { useBookStore } from '../store/bookStore';
+import { Action, Book } from '../../types.d';
+import { useBookStore } from '../../store/bookStore';
 
 const bookStore = useBookStore()
 

@@ -2,8 +2,8 @@
 import { onMounted } from 'vue';
 import { Action } from './types.d';
 import { useBookStore } from './store/bookStore';
-import ListOfBooks from './components/ListOfBooks.vue';
-import Header from './components/header/Header.vue';
+import ListOfBooks from './components/books/ListOfBooks.vue';
+import BookHeader from './components/books/header/BooksHeader.vue';
 
 const bookStore = useBookStore()
 
@@ -34,14 +34,14 @@ onMounted(() => {
   </header>
   <main :class="{ 'container': bookStore.readedBooks.length > 0 }">
     <section :class="{ 'section': bookStore.readedBooks.length == 0, 'books': bookStore.readedBooks.length > 0 }">
-      <Header />
+      <BookHeader />
       <ListOfBooks :books="bookStore.filteredBooks" :action="Action.ADD_TO_READED" />
     </section>
     <aside :class="{ 'books__read': bookStore.readedBooks.length > 0 }">
       <h2>lista de leidos</h2>
       <ListOfBooks :books="bookStore.readedBooks" :action="Action.ADD_TO_AVAILABLE" />
     </aside>
-    <notifications />
+    <notifications style="margin-top: 4.6em;" />
   </main>
 </template>
 
