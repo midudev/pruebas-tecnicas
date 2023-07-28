@@ -69,10 +69,11 @@ function App() {
               {books
                 ?.filter(({ book: { ISBN } }) => filteredBooks.includes(ISBN))
                 .slice(perPage * (page - 1), perPage * page)
-                .map(({ book: { title, cover, ISBN } }) => {
+                .map(({ book: { title, cover, ISBN } }, i) => {
                   return (
                     <BookCard
                       key={ISBN}
+                      index={i}
                       title={title}
                       imageUrl={cover}
                       onClickHandler={() =>
@@ -97,10 +98,11 @@ function App() {
                     ?.filter(({ book: { ISBN } }) =>
                       selectedBooks.includes(ISBN)
                     )
-                    .map(({ book: { title, cover, ISBN } }) => {
+                    .map(({ book: { title, cover, ISBN } }, i) => {
                       return (
                         <BookCard
                           key={ISBN}
+                          index={i}
                           title={title}
                           imageUrl={cover}
                           withRemoveBnt={true}
