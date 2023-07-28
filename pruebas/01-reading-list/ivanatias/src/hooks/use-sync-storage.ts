@@ -9,7 +9,7 @@ export function useSyncStorage<SyncValueType>(
     const handleStorageChange = (event: StorageEvent) => {
       if (event.key === storageKey) {
         const newStorageValue = JSON.parse(
-          event.newValue ?? String(storageDefaultValue)
+          event.newValue ?? JSON.stringify(storageDefaultValue)
         ) as SyncValueType
 
         syncCallback(newStorageValue)
