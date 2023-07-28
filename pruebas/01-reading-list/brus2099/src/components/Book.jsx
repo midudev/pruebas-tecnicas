@@ -3,18 +3,26 @@ import { DataContext } from '../context/DataContext';
 
 const Book = ({ entireBook, title, author, isbn, cover }) => {
 
-  const { lectureList, setLectureList, booklist, setBooklist } = useContext(DataContext);
+  const { lecturelist, setLecturelist, booklist, setBooklist,
+    addElementToLocalStorageItem, removeElementFromLocalStorageItem,
+    updateTabsWithLocalStorage } = useContext(DataContext);
 
   const lectureListChange = () => {
     const formatedBook = { book: entireBook };
-    setLectureList([...lectureList, formatedBook]);
+    setLecturelist([formatedBook, ...lecturelist,]);
     setBooklist(booklist.filter(({ book }) => book.ISBN !== isbn));
+    removeElementFromLocalStorageItem(isbn, 'booklist');
+    addElementToLocalStorageItem(isbn, 'lecturelist');
+    updateTabsWithLocalStorage('booklist origin');
   };
 
   const bookListChange = () => {
     const formatedBook = { book: entireBook };
-    setBooklist([...booklist, formatedBook]);
-    setLectureList(lectureList.filter(({ book }) => book.ISBN !== isbn));
+    setBooklist([formatedBook, ...booklist,]);
+    setLecturelist(lecturelist.filter(({ book }) => book.ISBN !== isbn));
+    removeElementFromLocalStorageItem(isbn, 'lecturelist');
+    addElementToLocalStorageItem(isbn, 'booklist');
+    updateTabsWithLocalStorage('lecturelist origin');
   };
 
   return (
@@ -29,7 +37,7 @@ const Book = ({ entireBook, title, author, isbn, cover }) => {
       <p>Title: {title}</p>
       <p>Author: {author}</p>
       {
-        lectureList.find(({ book }) => book.ISBN === isbn) ? (
+        lecturelist.find(({ book }) => book.ISBN === isbn) ? (
           <button onClick={bookListChange}>Cambiar a lista de libros</button>
         ) : (
           <button onClick={lectureListChange}>Cambiar a lista de lectura</button>

@@ -4,22 +4,22 @@ import Book from './Book';
 
 const LectureList = () => {
 
-  const { lectureList } = useContext(DataContext);
+  const { lecturelist } = useContext(DataContext);
 
   return (
     <div style={{ border: '5px solid #f55' }}>
       <h2>Lecture List</h2>
-      <p>Libros en lista: <b>{lectureList.length}</b></p>
+      <p>Libros en lista: <b>{lecturelist.length}</b></p>
       {
-        lectureList.length > 0 ? (
-          lectureList.map(({ book }) => {
+        lecturelist.length > 0 ? (
+          lecturelist.map(({ book }) => {
             return <Book
-            key={book.ISBN}
-            entireBook={book}
-            title={book.title}
-            isbn={book.ISBN}
-            author={book.author.name}
-            cover={book.cover} />
+              key={book.ISBN}
+              entireBook={book}
+              title={book.title}
+              isbn={book.ISBN}
+              author={book.author.name}
+              cover={book.cover} />
           })
         ) : (
           <p>No hay libros 😢</p>
