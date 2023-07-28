@@ -2,7 +2,7 @@ import { AppThunk } from '../..';
 import { Book } from '../../../types';
 import { setAvailableList, setBooksList, setReadingList, setSelectedBooks } from './booksSlice'
 
-const BASE_URL = 'src/assets/books.json';
+const BASE_URL = '/books.json';
 
 export const initBooks = (): AppThunk => async (dispatch) => {
   try {
