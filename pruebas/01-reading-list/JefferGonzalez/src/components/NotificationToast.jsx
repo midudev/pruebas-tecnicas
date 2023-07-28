@@ -13,7 +13,7 @@ function NotificationToast ({ message = '', type = '', show, setShow }) {
         bg={type || 'warning'}
         show={show}
         onClose={() => setShow(false)}
-        delay={1000}
+        delay={1500}
         autohide>
         <Toast.Header>
           <img

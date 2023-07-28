@@ -1,7 +1,6 @@
 import { create } from 'zustand'
 
 export const useStore = create((set) => ({
-  tourCompleted: false,
   books: [],
   readingList: [],
   genres: [],
@@ -11,7 +10,6 @@ export const useStore = create((set) => ({
   showNotification: false,
   notificationMessage: '',
   notificationType: '',
-  setTourCompleted: (tourCompleted) => set({ tourCompleted }),
   setBooks: (books) => set({ books }),
   addBook: (book) => set((state) => ({ books: [...state.books, book] })),
   removeBook: (ISBN) => set((state) => ({ books: state.books.filter(({ book }) => book.ISBN !== ISBN) })),

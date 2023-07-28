@@ -8,6 +8,7 @@ function Book ({ book, handleDoubleClick, draggableProvided }) {
   return (
     <Card
       id={book.ISBN === '978-0618640157' ? 'first-book' : book.ISBN}
+      data-testid={book.ISBN}
       ref={draggableProvided.innerRef}
       onMouseEnter={() => setShowInfo(false)}
       onMouseLeave={() => setShowInfo(true)}

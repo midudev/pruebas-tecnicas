@@ -12,6 +12,7 @@ function DroppableGrid ({ children, id, droppableProvided, droppableSnapshot }) 
   return (
     <article
       id={id}
+      data-testid={id}
       ref={droppableProvided.innerRef}
       style={IS_ARRAY ? style : {}}
       className={(IS_ARRAY || children !== IS_EMPTY) && droppableSnapshot.isDraggingOver ? 'border-3 border-black-50 dotted' : ''}

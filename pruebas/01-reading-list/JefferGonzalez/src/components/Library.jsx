@@ -101,21 +101,32 @@ function Library ({ books, originalBooks, isReadingList = false }) {
       : <Droppable droppableId='available'>
         {(droppableProvided, droppableSnapshot) => (
           <DroppableGrid
+            id='available'
             droppableProvided={droppableProvided}
             droppableSnapshot={droppableSnapshot}
           >
             {
-              books.map(({ book }, index) => (
-                <Draggable key={book.ISBN} draggableId={book.ISBN} index={index}>
-                  {(draggableProvided, _) => (
-                    <Book
-                      book={book}
-                      handleDoubleClick={({ target }) => handleDoubleClick(target, book.ISBN)}
-                      draggableProvided={draggableProvided}
-                    />
-                  )}
-                </Draggable>
-              ))
+              books.length !== IS_EMPTY
+                ? books.map(({ book }, index) => (
+                  <Draggable key={book.ISBN} draggableId={book.ISBN} index={index}>
+                    {(draggableProvided, _) => (
+                      <Book
+                        book={book}
+                        handleDoubleClick={({ target }) => handleDoubleClick(target, book.ISBN)}
+                        draggableProvided={draggableProvided}
+                      />
+                    )}
+                  </Draggable>
+                ))
+                : <div style={{ height: '100%' }} className={droppableSnapshot.isDraggingOver ? '' : 'border-3 border-black dotted'}>
+                  <h5
+                    className='text-center mt-2'
+                    style={droppableSnapshot.isDraggingOver ? { display: 'none' } : {}}
+                  >
+                    No hay libros disponibles
+                  </h5>
+                </div>
+
             }
           </DroppableGrid>
         )}

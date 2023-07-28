@@ -241,7 +241,7 @@ function App () {
                     <Form.Control
                       id='search'
                       type='text'
-                      placeholder='Buscar...'
+                      placeholder='Buscar... 🔎'
                       onChange={handleSearch}
                     />
                   </Form.FloatingLabel>
@@ -253,6 +253,7 @@ function App () {
                   </Form.Label>
                   <Form.Range
                     id='pages'
+                    data-testid='pages'
                     min={0}
                     value={pages}
                     max={maxPages}
@@ -261,7 +262,7 @@ function App () {
                 </Col>
                 <Col>
                   <Form.Label>Filtrar por género:</Form.Label>
-                  <Form.Select id='genre' onChange={handleGenreFilter} value={genre}>
+                  <Form.Select id='genre' role='combobox' onChange={handleGenreFilter} value={genre}>
                     <option value=''>Todos</option>
                     {[...genres].map((genre) => (
                       <option key={genre} value={genre}>
@@ -281,6 +282,7 @@ function App () {
                 Lista de lectura
                 <span
                   id='reading-list-count'
+                  role='count'
                   className='badge bg-primary'
                   style={{ marginLeft: '10px' }}
                 >
