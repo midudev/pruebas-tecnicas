@@ -348,6 +348,9 @@ header h1 {
     flex: auto;
     margin-top: 2rem;
   }
+  .book-list__books .books__book .book-action__remove {
+    display: block;
+  }
 }
 /* #endregion */
 </style>
