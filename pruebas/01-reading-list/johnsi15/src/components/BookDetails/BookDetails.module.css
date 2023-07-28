@@ -16,7 +16,7 @@
 .title {
   color: var(--color-quaternary);
   font-size: 1.7rem;
-  line-height: 2.1rem;
+  line-height: 2rem;
   font-weight: 700;
   margin: 0;
 }
@@ -24,7 +24,7 @@
 .bookDetails p {
   margin: 0;
   font-size: 1rem;
-  line-height: 1.4rem;
+  line-height: 1.3rem;
 }
 
 .bookDetails button {
