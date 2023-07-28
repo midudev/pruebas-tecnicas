@@ -5,8 +5,14 @@ import SearchSection from "./components/searchSection/SearchSection";
 function App() {
   return (
     <>
-      <SearchSection />
-      <BookList></BookList>
+      <header>
+        <h1>RENT A BOOK</h1>
+        <p>SAVED 0</p>
+      </header>
+      <main className="mainSection">
+        <SearchSection />
+        <BookList></BookList>
+      </main>
     </>
   );
 }

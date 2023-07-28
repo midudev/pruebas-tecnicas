@@ -1,19 +1,22 @@
 import BookUi from "./Book.ui";
-import { UseBookList } from "../../hooks/UseBooksList";
+import { useContext } from "react";
+import { BookContext } from "../../context/BookContext";
+import { Book } from "../../types";
 
 function BookList() {
-  const { filteredBooks } = UseBookList();
+  const { filteredBooks } = useContext(BookContext);
 
   return (
     <>
-      <h2>List of Books</h2>
-      <ul>
-        {filteredBooks.map((book) => (
-          <li key={book.book.ISBN}>
-            <BookUi book={book.book} />
-          </li>
-        ))}
-      </ul>
+      <section className="booksListContainer">
+        <ul>
+          {filteredBooks.map((book: Book) => (
+            <li key={book.book.ISBN}>
+              <BookUi book={book.book} />
+            </li>
+          ))}
+        </ul>
+      </section>
     </>
   );
 }

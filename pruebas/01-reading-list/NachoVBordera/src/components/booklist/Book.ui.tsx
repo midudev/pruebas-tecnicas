@@ -3,9 +3,13 @@ import { Book } from "../../types";
 function BookUi({ book }: Book) {
   return (
     <>
-      <p>{book.title}</p>
-      <p>{book.author.name}</p>
-      <p>{book.synopsis}</p>
+      <section className="bookUi">
+        <img src={book.cover} alt="" />
+
+        <p>{book.title}</p>
+        <p>{book.author.name}</p>
+        <p>{book.synopsis}</p>
+      </section>
     </>
   );
 }

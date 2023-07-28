@@ -1,0 +1,108 @@
+@font-face {
+  font-family: "Basteleur";
+  src: url("../public/fonts/Basteleur/Basteleur-Moonlight.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Basteleur";
+  src: url("../public/fonts/Basteleur/Basteleur-Bold.ttf") format("truetype");
+  font-style: bold;
+  font-weight: bold;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.mainSection {
+  display: grid;
+  grid-template-columns: auto 80%;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  border-top: 5px solid black;
+  border-right: 5px solid black;
+  border-left: 5px solid black;
+}
+
+header > h1 {
+  border-right: 5px solid black;
+  background-color: #d9d9d9;
+  font-family: Basteleur;
+  font-weight: bold;
+  font-size: 4.2rem;
+  padding: 0 2rem;
+}
+
+.booksListContainer {
+  background-color: #e4cdcd;
+  border: 5px solid black;
+  min-height: 87.7vh;
+}
+.booksListContainer > ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 20rem);
+  gap: 25px;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.booksListContainer > ul > li {
+  width: min-content;
+  margin: 0 auto;
+}
+
+.bookUi {
+  padding: 10px;
+  border: 5px solid rgba(0, 0, 0, 0.788);
+
+  box-shadow: 10px 10px 0 0px;
+  background-color: white;
+  width: 15rem;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bookUi > img {
+  border: 4px solid black;
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.bookUi > p {
+  text-align: center;
+}
+
+.bookUi > p:nth-child(2) {
+  font-weight: bold;
+  width: 100%;
+  border-bottom: 2px solid black;
+}
+
+.bookUi > p:nth-child(3) {
+  margin-bottom: 20px;
+  margin-top: 0;
+  background-color: rgba(128, 128, 128, 0.603);
+  width: 100%;
+  padding: 4px;
+}
+
+.searchSection {
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 15rem;
+}
