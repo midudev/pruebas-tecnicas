@@ -20,6 +20,8 @@ function App() {
     setSelectedBooks,
   } = useStore();
 
+  const { loading } = UseGetData("./books.json");
+
   useEffect(() => {
     setFilteredBooks(
       books
