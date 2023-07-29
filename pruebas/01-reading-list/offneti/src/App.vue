@@ -78,13 +78,7 @@ function deleteFromReadingList(title: string) {
 
 <template>
   <header>
-    <h4 id="navbar_title">Book repository</h4>
-    <img
-      id="logo"
-      src="https://static.vecteezy.com/system/resources/previews/009/902/691/original/stack-of-colored-books-3d-render-png.png"
-      alt="Book"
-      style="width: 70px; height: 70px; margin-left: 5px; margin-top: 10px"
-    />
+    <h4 class="header_title">Book repository</h4>
   </header>
   <div class="container">
     <main>
@@ -102,11 +96,7 @@ function deleteFromReadingList(title: string) {
         </div>
         <div id="filters">
           <h4 id="selectedType" for="filtrar_genero">Search by genre</h4>
-          <select
-            id="select_gender"
-            v-model="selectedType"
-            @change="getFilteredBooks"
-          >
+          <select id="select_gender" v-model="selectedType" @change="getFilteredBooks">
             <option value="all">All</option>
             <option v-for="genre in getGenres()" :value="genre">
               {{ genre }}
@@ -116,35 +106,20 @@ function deleteFromReadingList(title: string) {
       </div>
       <div id="main_grid">
         <div v-for="book in books" :key="book.book.title" class="book_item">
-          <img
-            class="have_hover"
-            :src="book.book.cover"
-            alt="Book"
-            style="width: 180px; height: 280px"
-            @click="showBookPopup(book.book)"
-          />
+          <img class="have_hover" :src="book.book.cover" alt="Book" style="width: 180px; height: 280px"
+            @click="showBookPopup(book.book)" />
         </div>
       </div>
     </main>
-    <aside hidden>
-      <h2>Reading list</h2>
+    <aside>
+      <h2 class="aside_title">Reading list</h2>
       <div id="aside_grid">
-        <div
-          v-show="readingList.length"
-          v-for="book in readingList"
-          :key="book.title"
-          class="book_item"
-        >
-          <img
-            @click="deleteFromReadingList(book.title)"
-            class="have_hover"
-            :src="book.cover"
-            alt="Book"
-            style="width: 100px; height: 140px"
-          />
+        <div v-show="readingList.length" v-for="book in readingList" :key="book.title" class="book_item">
+          <img @click="deleteFromReadingList(book.title)" class="have_hover" :src="book.cover" alt="Book"
+            style="width: 100px; height: 140px" />
         </div>
       </div>
-      <div v-show="!readingList.length">
+      <div class="aside_text" v-show="!readingList.length">
         <h4>You are not reading any book :(</h4>
       </div>
     </aside>
@@ -152,27 +127,19 @@ function deleteFromReadingList(title: string) {
   <div v-if="selectedBook" class="modal">
     <div id="modal-backdrop"></div>
     <div class="modal-content">
-      <div>
+      <div class="modal_photo">
         <span class="close" @click="selectedBook = null">&times;</span>
-        <img
-          :src="selectedBook.cover"
-          alt="Book"
-          style="width: 200px; height: 280px"
-        />
+        <img :src="selectedBook.cover" alt="Book" style="width: 200px; height: 280px" />
       </div>
       <div id="book_info">
         <h2 style="margin: 20px">{{ selectedBook.title }}</h2>
         <h4 style="margin: 20px">Author: {{ selectedBook.author.name }}</h4>
         <h4 style="margin: 20px">Genre: {{ selectedBook.genre }}</h4>
         <h4 style="margin: 20px">Year: {{ selectedBook.year }}</h4>
-        <button
-          @click="
-            addToReadingList(selectedBook.cover, selectedBook.title),
-              (selectedBook = null)
-          "
-          id="add_book"
-          style="margin: 20px"
-        >
+        <button @click="
+          addToReadingList(selectedBook.cover, selectedBook.title),
+          (selectedBook = null)
+          " id="add_book" style="margin: 20px">
           Add to reading list
         </button>
       </div>
@@ -182,9 +149,7 @@ function deleteFromReadingList(title: string) {
     <div id="modal-backdrop"></div>
     <div class="modal-content-error">
       <div id="error">
-        <span class="close_error" @click="alreadyInReadingList = false"
-          >&times;</span
-        >
+        <span class="close_error" @click="alreadyInReadingList = false">&times;</span>
         <h4 style="margin: 20px">Already on list</h4>
       </div>
     </div>
@@ -200,11 +165,18 @@ function deleteFromReadingList(title: string) {
 body {
   height: 100vh;
 }
+
+.header_title {
+  margin-left: 30px;
+}
+
 .container {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
+  overflow: hidden;
 }
+
 footer {
   width: 100%;
   height: 2.5rem;
@@ -340,8 +312,7 @@ footer {
   grid-gap: 5px;
 }
 
-.book_item {
-}
+.book_item {}
 
 h1,
 h2,
@@ -352,35 +323,110 @@ p {
 }
 
 aside {
-  margin-right: 80px;
-  margin-top: 6%;
   background-image: linear-gradient(to right, #3f6b56, #4a9c77, #445e48);
   border-radius: 40px;
-  top: 0;
-  right: 0;
-  position: fixed;
+  margin-top: 2.5rem;
   padding: 1%;
-  height: 822px;
-  width: 440px;
+  height: 80vh;
+  width: 22vw;
   overflow: auto;
-  scale: 1;
+  margin-left: 2.5rem;
 }
 
 main {
   background-image: linear-gradient(to right, #2c463a, #42b883, #445e48);
   margin-top: 2.5rem;
+  margin-left: 2.5rem;
   border-radius: 40px;
   padding: 1%;
   height: 80vh;
   width: 60vw;
   overflow: auto;
 }
+
 @media screen and (max-width: 1000px) {
   main {
-    width: 90vw;
+    width: 95vw;
   }
 }
-@media screen and (max-width: 550px) {
+
+@media screen and (max-width: 1150px) {
+  footer {
+    font-size: 12px;
+  }
+
+  .aside_title {
+    text-align: center;
+  }
+
+  .aside_text {
+    text-align: center;
+  }
+
+  .header_title {
+    margin-left: 0;
+  }
+
+
+  #book_info {
+    display: block;
+    text-align: center;
+  }
+
+  #navbar_title {
+    margin: 0;
+  }
+
+  .modal_photo {
+    display: block;
+    text-align: center;
+    width: 90vw;
+  }
+
+  .modal-content {
+    display: block;
+    width: 90vw;
+  }
+
+  #aside_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+
+
+  .container {
+    flex-direction: column;
+  }
+
+  aside {
+    margin-left: 0;
+    margin-right: 0;
+    width: 95vw;
+    height: 40vh;
+  }
+
+  main {
+    margin-top: 1rem;
+    height: 83vh;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .filters_container {
+    display: grid;
+    margin-bottom: 2vh;
+    place-content: center;
+  }
+
+  header {
+    display: flex;
+    justify-content: center;
+  }
+
+  #info {
+    font-size: 12px;
+    text-align: center;
+  }
 }
 
 header {
@@ -397,5 +443,6 @@ article {
 
 #navbar_title {
   margin-left: 30px;
+  text-align: center;
 }
 </style>
