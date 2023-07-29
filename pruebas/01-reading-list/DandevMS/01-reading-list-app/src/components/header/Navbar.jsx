@@ -5,21 +5,34 @@ import Sidebar from "../Sidebar/Sidebar";
 
 function Navbar() {
   const [toggleSidebar, setToggleSidebar] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+  
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleScroll = () => {
+  setShow(window.pageYOffset > 140);
+  };
+
 
 
   const HandleToggleSidebar = () => {
     setToggleSidebar(!toggleSidebar);
   };
 
-  const [darkMode, setDarkMode] = useState(false);
-
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
     // Aquí puedes agregar lógica adicional para cambiar el tema de tu aplicación
-  }
+  };
 
   return (
-    <nav className={`fixed flex justify-between bg-white w-full h-15 z-10 `}>
+    <nav
+      className={` flex justify-between bg-white w-full h-15 z-10 ${show ? 'fixed' : 'flex'} `}
+    >
       <div className="logo-icon ml-10 flex justify-center items-center ">
         <div className="bg-[#F7F5F6] p-3">
           <img src={Logo} alt="" className="w-16" />
@@ -67,6 +80,7 @@ function Navbar() {
         <Sidebar
           toggleSidebar={toggleSidebar}
           HandleToggleSidebar={HandleToggleSidebar}
+          type="readingList"
         />
       )}
     </nav>

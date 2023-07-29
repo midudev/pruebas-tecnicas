@@ -5,21 +5,18 @@ import Sidebar from "../../components/Sidebar/Sidebar"
 import { BooksProvider } from "../../context/BooksContextProvider"
 
 
-
 function Home() {
   return (
     <>
     <BooksProvider>
       <Navbar />
       <Sidebar />
-      <main className="container mx-auto bg-[#F7F5F6]">
-        <Jumbotron />
-        <ListBooks />
-      </main>
+        <main className="container mx-auto bg-[#F7F5F6]">
+          <Jumbotron />
+          <ListBooks />
+        </main>
     </BooksProvider>
-      
     </>
-    
   )
 }
 

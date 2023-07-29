@@ -5,7 +5,6 @@ function App() {
   return (
     <>
         <Route path="/" component={Home} />
-
     </>
   )
 }
