@@ -8,7 +8,8 @@ export function useFilters() {
     return books.filter(({ book }) => {
       return (
         (filters.genre === 'all' || book.genre === filters.genre) &&
-        (filters.author === 'all' || book.author.name === filters.author)
+        (filters.author === 'all' || book.author.name === filters.author) &&
+        (filters.search === '' || book.title.toLowerCase().trim().includes(filters.search))
       );
     });
   };

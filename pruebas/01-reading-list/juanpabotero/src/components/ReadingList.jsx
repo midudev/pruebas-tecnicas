@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import './ReadingList.css';
 
 import { useId } from 'react';
@@ -28,15 +27,29 @@ export function ReadingList() {
 
   return (
     <>
-      <label className="reading-list-button" htmlFor={itemCheckboxId}>
+      <label
+        className="reading-list-button items-center bg-lime-400 rounded-s cursor-pointer flex h-8 
+        justify-center p-1 fixed right-[46px] top-4 transition-all duration-300 w-8 z-50 hover:scale-110"
+        htmlFor={itemCheckboxId}
+      >
         <ReadingListIcon />
       </label>
       <input id={itemCheckboxId} type="checkbox" hidden />
-      <div className="reading-list-count">{readingList.length}</div>
+      <div
+        className="items-center bg-lime-400 rounded-e flex font-bold h-8 justify-center p-1 
+        fixed right-[20px] top-4 w-6 z-50"
+      >
+        {readingList.length}
+      </div>
 
-      <aside className="reading-list">
-        <h3 className='text-gray-100 font-bold'>Lista de lectura</h3>
-        <ul>
+      <aside
+        className="reading-list content-start bg-gray-950 hidden h-full justify-items-center
+        overflow-y-scroll p-8 fixed right-0 top-0 w-80 z-40"
+      >
+        <h3 className="text-gray-100 font-bold text-xl mt-5">
+          Lista de lectura
+        </h3>
+        <ul className="grid gap-x-3 gap-y-6 grid-cols-2 mt-10">
           {readingList.map((book) => (
             <Book
               key={book.id}

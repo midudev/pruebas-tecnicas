@@ -1,82 +1,10 @@
-.reading-list {
-  align-content: start;
-  align-items: start;
-  background: #131313;
-  display: none;
-  justify-content: center;
-  justify-items: center;
-  overflow-y: scroll;
-  padding: 32px;
-  position: fixed;
-  right: 0px;
-  top: 0px;
-  width: 320px;
-}
-.reading-list ul {
-  display: grid;
-  column-gap: 12px;
-  row-gap: 24px;
-  grid-template-columns: 1fr 1fr;
-  margin-top: 40px;
-}
-.reading-list h3 {
-  margin-top: 20px;
-  font-size: 20px;
-}
-
-.reading-list-button {
-  align-items: center;
-  background: rgb(163 230 53);
-  border-radius: 4px 0 0 4px;
-  color: black;
-  cursor: pointer;
-  display: flex;
-  height: 32px;
-  justify-content: center;
-  padding: 4px;
-  position: fixed;
-  right: 42px;
-  top: 14px;
-  transition: all 0.3s ease;
-  width: 32px;
-  z-index: 9999;
-}
-
-.reading-list-button svg {
-  color: black;
-
-}
-
-.reading-list-count {
-  align-items: center;
-  background: rgb(163 230 53);
-  border-radius: 0 4px 4px 0;
-  color: black;
-  display: flex;
-  font-weight: bold;
-  height: 32px;
-  justify-content: center;
-  padding: 4px;
-  position: fixed;
-  right: 18px;
-  top: 14px;
-  width: 24px;
-  z-index: 9999;
-}
-
 .remove-button-item svg {
   height: 18px;
   width: 18px;
 }
 
-.reading-list-button:hover {
-  scale: 1.1;
-}
-
 .reading-list-button ~ input:checked ~ .reading-list {
-  height: 100%;
   display: grid;
-  z-index: 9998;
 }
 
 .clear-list-button svg {

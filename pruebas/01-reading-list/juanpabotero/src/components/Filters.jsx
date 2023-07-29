@@ -6,6 +6,7 @@ export function Filters() {
 
   const genreFilterId = useId();
   const authorFilterId = useId();
+  const searchFilterId = useId();
 
   const handleChangeGenre = (event) => {
     setFilters((prevState) => ({
@@ -21,14 +22,21 @@ export function Filters() {
     }));
   };
 
+  const handleChangeSearch = (event) => {
+    setFilters((prevState) => ({
+      ...prevState,
+      search: event.target.value.toLowerCase().trim(),
+    }));
+  };
+
   return (
     <section className="flex flex-col sm:flex-row gap-4 sm:gap-12 text-white">
       <div className="flex flex-col gap-2">
         <label htmlFor={genreFilterId}>Filtrar por género:</label>
         <select
-          className="text-gray-100 bg-gray-600 p-1 rounded-md"
           id={genreFilterId}
           onChange={handleChangeGenre}
+          className="text-gray-100 bg-gray-600 p-1 rounded-md outline-none focus:ring-1 focus:ring-gray-400"
         >
           <option value="all">Todos</option>
           <option value="Ciencia ficción">Ciencia ficción</option>
@@ -41,9 +49,9 @@ export function Filters() {
       <div className="flex flex-col gap-2">
         <label htmlFor={authorFilterId}>Filtrar por autor:</label>
         <select
-          className="text-gray-100 bg-gray-600 p-1 rounded-md"
           id={authorFilterId}
           onChange={handleChangeAuthor}
+          className="text-gray-100 bg-gray-600 p-1 rounded-md outline-none focus:ring-1 focus:ring-gray-400"
         >
           <option value="all">Todos</option>
           <option value="Bram Stoker">Bram Stoker</option>
@@ -60,6 +68,17 @@ export function Filters() {
           <option value="Stephen King">Stephen King</option>
           <option value="William Gibson">William Gibson</option>
         </select>
+      </div>
+
+      <div className="flex flex-col gap-2 sm:max-w-xs w-full">
+        <label htmlFor={searchFilterId}>Buscar por título:</label>
+        <input
+          type="text"
+          id={searchFilterId}
+          placeholder='Dune...'
+          onChange={handleChangeSearch}
+          className="text-gray-100 bg-gray-600 p-1 rounded-md outline-none focus:ring-1 focus:ring-gray-400"
+        />
       </div>
     </section>
   );

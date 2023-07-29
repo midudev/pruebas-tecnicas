@@ -6,6 +6,7 @@ export function FiltersProvider({ children }) {
   const [filters, setFilters] = useState({
     genre: 'all',
     author: 'all',
+    search: '',
   });
 
   return (
