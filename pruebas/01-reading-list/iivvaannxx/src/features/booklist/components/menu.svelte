@@ -1,25 +1,22 @@
 <script lang='ts' context='module'>
 
-  import ListSwitcher from './switcher.svelte'
-  import ListSwitcherWithActions from './switcher-with-actions.svelte'
+  import DefaultList from './default-list.svelte'
+  import CustomList from './custom-list.svelte'
 
-  import { PrimaryButton } from '$lib'
+  import { PrimaryButton } from '$lib/components'
   import { BookmarksIcon } from '$lib/icons'
 
-  import { LISTS_ICONS, defaultListNames } from '../feature'
-  import { customListNames, createCustomList, customListsIndices } from '../store'
+  import { LISTS_ICONS } from '../lib/constants'
+  import { createCustomList } from '../state/actions'
 
-</script>
+  import {
 
-<script lang='ts'>
+    defaultLists,
+    customLists,
 
-  $: listNames = [...$customListNames]
-  $: listNames.sort()
+    canCreateMoreCustomLists
 
-  function handleCreateList () {
-
-    createCustomList([])
-  }
+  } from '../state/store'
 
 </script>
 
@@ -29,37 +26,38 @@
 
   <div class='flex flex-col w-full gap-2 py-2'>
 
-    {#each defaultListNames as defaultList}
+    {#each $defaultLists as defaultList}
 
-      <ListSwitcher name={ defaultList }>
+      <DefaultList name={ defaultList }>
 
         <svelte:fragment slot='icon'>
           <svelte:component this={ LISTS_ICONS[defaultList] } />
         </svelte:fragment>
 
-      </ListSwitcher>
+      </DefaultList>
 
     {/each}
 
     <hr class='mx-6 my-4' />
 
-    {#each listNames as listName}
+    {#each $customLists as customList}
 
-      <ListSwitcherWithActions name={ listName }>
+      <CustomList name={ customList }>
 
         <svelte:fragment slot='icon'>
           <BookmarksIcon />
         </svelte:fragment>
 
-      </ListSwitcherWithActions>
+      </CustomList>
 
     {/each}
 
     <PrimaryButton
 
-      disabled={ $customListsIndices.length === 0 }
+      disabled={ !($canCreateMoreCustomLists) }
       extraClasses='mt-4'
-      onClick={ handleCreateList }
+
+      onClick={ () => { createCustomList([]) } }
     >
 
       <span class='uppercase text-center w-full font-bold'>

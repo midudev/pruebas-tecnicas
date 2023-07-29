@@ -1,17 +1,13 @@
 <script lang='ts' context='module'>
 
-  import { setCurrentList } from '../store'
+  import { setCurrentList } from '../state/actions'
 
 </script>
 
 <script lang='ts'>
 
+  /** @brief The name of the list. */
   export let name: string
-
-  function handleClick () {
-
-    setCurrentList(name)
-  }
 
 </script>
 
@@ -19,7 +15,7 @@
 
   type='button'
 
-  on:click={ handleClick }
+  on:click={ () => { setCurrentList(name) } }
   class='relative inline-flex w-full items-center px-2 py-2 bg-white-200 hover:bg-gray-100 text-gray-800 text-base font-medium rounded-md'
 >
   <slot name='icon' />

@@ -1,18 +1,11 @@
 <script lang='ts' context='module'>
 
   import { BookmarksIcon } from '$lib/icons'
-  import { DeleteButton, SecondaryButton } from '$lib'
+  import { DeleteButton, SecondaryButton } from '$lib/components'
 
-  import { LISTS_ICONS } from '../feature'
-  import {
-
-    removeBook,
-
-    currentListName,
-    currentList,
-    clearList
-
-  } from '../store'
+  import { LISTS_ICONS } from '../lib/constants'
+  import { clearList, removeBook } from '../state/actions'
+  import { currentListName, currentList } from '../state/store'
 
 </script>
 
@@ -20,7 +13,7 @@
 
   $: books = $currentList.books
   $: totalBooks = (books.length === 1)
-    ? '1 Libro'
+    ? '1 libro'
     : `${books.length} libros`
 
   // The icon of the current list.

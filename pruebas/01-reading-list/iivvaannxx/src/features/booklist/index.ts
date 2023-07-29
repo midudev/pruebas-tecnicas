@@ -1,26 +1,25 @@
-export { default as BookList } from './components/list.svelte'
-export { default as BookListMenu } from './components/menu.svelte'
-export {
-
-  DEFAULT_LISTS,
-  LISTS_ICONS,
-
-  initialize as initializeBookListFeature
-
-} from './feature'
-
 export {
 
   lists,
-
   currentList,
-  currentListName,
+  currentListName
+
+} from './state/store'
+
+export {
+
   setCurrentList,
 
   createList,
   deleteList,
+  renameList,
 
   addBook,
   removeBook
 
-} from './store'
+} from './state/actions'
+
+export { default as BookList } from './components/current-list.svelte'
+export { default as BookListMenu } from './components/menu.svelte'
+
+export { default as initializeBookListFeature } from './lib/initialize'
