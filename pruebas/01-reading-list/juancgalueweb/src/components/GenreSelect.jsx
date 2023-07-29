@@ -38,6 +38,7 @@ export const GenreSelect = () => {
 
   return (
     <Select
+      value={selectedCategory}
       disabled={search !== '' && true}
       defaultValue={selectedCategory}
       style={{ width: 150, textAlign: 'left' }}

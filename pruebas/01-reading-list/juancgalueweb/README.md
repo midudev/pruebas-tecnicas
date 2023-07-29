@@ -14,7 +14,7 @@ El objetivo de esta prueba es diseñar e implementar una pequeña aplicación we
 - ✅ Filtrado de libros por género.
 - ✅ Sincronización de estados
 - ✅ Persistencia de datos
-- ❌ Sincronización entre pestañas
+- ✅ Sincronización entre pestañas
 - ✅ Despliegue
 - ✅ Test
 
