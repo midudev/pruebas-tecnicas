@@ -12,39 +12,37 @@ export const BookContext = React.createContext<any | null>(
   getAllbooksUseCase()
 );
 
-// ... (El resto del código es el mismo)
-
 export const BookProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [filter, setFilter] = React.useState("");
-  const [genere, setGenere] = React.useState("");
-  const [pages, setPages] = React.useState("");
+  const [filter, setFilter] = React.useState<string>("");
+  const [genere, setGenere] = React.useState<string>("");
+  const [pages, setPages] = React.useState<number>(0);
   const [filteredBooks, setFilteredBooks] = React.useState<Book[]>([]);
 
-  const filterBooks = () => {
-    const books = getAllbooksUseCase();
+  const filterBooks = (books: Book[]) => {
     let filtered = [...books];
 
-    if (filter) {
-      filtered = filtered.filter((book) =>
-        book.book.title.toLowerCase().includes(filter.toLowerCase())
-      );
-    }
+    filtered = filter
+      ? filtered.filter((book) =>
+          book.book.title.toLowerCase().includes(filter.toLowerCase())
+        )
+      : filtered;
 
-    if (genere) {
-      filtered = filtered.filter((book) => book.book.genre === genere);
-    }
+    filtered = genere
+      ? filtered.filter((book) => book.book.genre === genere)
+      : filtered;
 
-    if (pages) {
-      filtered = filtered.filter((book) => book.book.pages >= +pages);
-    }
+    filtered = pages
+      ? filtered.filter((book) => book.book.pages >= pages)
+      : filtered;
 
     setFilteredBooks(filtered);
   };
 
   React.useEffect(() => {
-    filterBooks();
+    const books = getAllbooksUseCase();
+    filterBooks(books);
   }, [filter, genere, pages]);
 
   return (
