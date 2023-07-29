@@ -6,9 +6,10 @@ import React, {
   useState,
 } from 'react'
 
-import { IBook } from '../interfaces/IBooks'
-
 import { library } from '../../../books.json'
+import { ConstantsOfBooks } from '../utils/BooksConstants'
+
+import { IBook } from '../interfaces/IBooks'
 
 export interface IContextBook {
   books: IBook[]
@@ -21,6 +22,8 @@ export interface IContextBook {
   replaceReadingList: (books: IBook[]) => void
   isDragAndDrop: MutableRefObject<boolean>
   toReadingList: MutableRefObject<boolean>
+  viewListOfBooks: string
+  setViewListOfBooks: React.Dispatch<React.SetStateAction<string>>
 }
 
 interface Props {
@@ -33,37 +36,61 @@ export const BookContextProvider = ({ children }: Props) => {
   const [books, setbooks] = useState<IBook[]>([])
   const [readingList, setReadingList] = useState<IBook[]>([])
 
+  const [viewListOfBooks, setViewListOfBooks] = useState(
+    ConstantsOfBooks.OPTIONS_VIEW_LIST[0]
+  )
+
   const isDragAndDrop = useRef(false)
   const toReadingList = useRef(false)
 
   const handleStorageChange = useCallback((ev: StorageEvent) => {
     if (!ev.newValue) return
-    if (ev.key === 'readingList') setReadingList(JSON.parse(ev.newValue))
-    if (ev.key === 'books') setbooks(JSON.parse(ev.newValue))
+    if (ev.key === ConstantsOfBooks.STORAGE_NAMES[1])
+      setReadingList(JSON.parse(ev.newValue))
+    if (ev.key === ConstantsOfBooks.STORAGE_NAMES[0])
+      setbooks(JSON.parse(ev.newValue))
   }, [])
 
   useEffect(() => {
     if (books.length === 0 && readingList.length === 0) return
     if (!isDragAndDrop.current) {
-      localStorage.setItem('readingList', JSON.stringify(readingList))
-      localStorage.setItem('books', JSON.stringify(books))
+      localStorage.setItem(
+        ConstantsOfBooks.STORAGE_NAMES[1],
+        JSON.stringify(readingList)
+      )
+      localStorage.setItem(
+        ConstantsOfBooks.STORAGE_NAMES[0],
+        JSON.stringify(books)
+      )
       return
     }
     if (!toReadingList.current) {
-      localStorage.setItem('readingList', JSON.stringify(readingList))
-      localStorage.setItem('books', JSON.stringify(books))
+      localStorage.setItem(
+        ConstantsOfBooks.STORAGE_NAMES[1],
+        JSON.stringify(readingList)
+      )
+      localStorage.setItem(
+        ConstantsOfBooks.STORAGE_NAMES[0],
+        JSON.stringify(books)
+      )
       isDragAndDrop.current = false
       return
     }
-    localStorage.setItem('books', JSON.stringify(books))
-    localStorage.setItem('readingList', JSON.stringify(readingList))
+    localStorage.setItem(
+      ConstantsOfBooks.STORAGE_NAMES[0],
+      JSON.stringify(books)
+    )
+    localStorage.setItem(
+      ConstantsOfBooks.STORAGE_NAMES[1],
+      JSON.stringify(readingList)
+    )
     toReadingList.current = false
     isDragAndDrop.current = false
   }, [books, readingList])
 
   const getInitialData = () => {
-    const reading = localStorage.getItem('readingList')
-    const books = localStorage.getItem('books')
+    const reading = localStorage.getItem(ConstantsOfBooks.STORAGE_NAMES[1])
+    const books = localStorage.getItem(ConstantsOfBooks.STORAGE_NAMES[0])
 
     if (!reading || !books) {
       setReadingList([])
@@ -136,6 +163,8 @@ export const BookContextProvider = ({ children }: Props) => {
         replaceReadingList,
         toReadingList,
         isDragAndDrop,
+        viewListOfBooks,
+        setViewListOfBooks,
       }}
     >
       {children}

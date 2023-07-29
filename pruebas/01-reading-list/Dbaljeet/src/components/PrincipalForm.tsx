@@ -1,4 +1,9 @@
+import { useContext, useEffect } from 'react'
+
+import BookContext, { IContextBook } from '../context/BookContext'
+
 import { Dump } from './ui/Dump'
+import { ConstantsOfBooks } from '../utils/BooksConstants'
 
 interface Props {
   genre: string
@@ -21,11 +26,20 @@ const PrincipalForm = ({
   keyword,
   setKeyword,
 }: Props) => {
+  const { viewListOfBooks } = useContext(BookContext) as IContextBook
+
+  const disabledInputs =
+    viewListOfBooks === ConstantsOfBooks.OPTIONS_VIEW_LIST[2]
+
   const resetValues = () => {
     setGenre('')
     handleInputPages('')
     setKeyword('')
   }
+
+  useEffect(() => {
+    if (disabledInputs) resetValues()
+  }, [disabledInputs])
 
   return (
     <section className="flex flex-wrap justify-center items-center m-auto gap-5 w-full my-10  border-[1px] border-gray-500 rounded-2xl py-5 text-gray-300">
@@ -35,6 +49,7 @@ const PrincipalForm = ({
           <select
             id="genre"
             value={genre}
+            disabled={disabledInputs}
             onChange={(ev) => setGenre(ev.target.value)}
             className="text-gray-200 bg-gray-800 focus:bg-gray-900"
           >
@@ -55,6 +70,7 @@ const PrincipalForm = ({
             type="range"
             min={0}
             max={max}
+            disabled={disabledInputs}
           />
           {numberOfPages === 0 ? '-' : `Menos de: ${numberOfPages} páginas`}
         </span>
@@ -65,6 +81,7 @@ const PrincipalForm = ({
             id="keyword"
             className="text-gray-200 bg-gray-800 focus:bg-gray-900"
             type="text"
+            disabled={disabledInputs}
             onChange={(ev) => {
               setKeyword(ev.target.value)
             }}

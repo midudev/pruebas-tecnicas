@@ -1,10 +1,13 @@
 import { useContext } from 'react'
-import { DragDropContext, DropResult } from 'react-beautiful-dnd'
+
 import ContextBook, { IContextBook } from '../../context/BookContext'
+
 import useBooks from '../hooks/useBooks'
 import ListOfBook from './ListOfBook'
 
-const TYPES_GROUPS = ['Libros disponibles', 'Libros añadidos']
+import { ConstantsOfBooks } from '../../utils/BooksConstants'
+
+import { DragDropContext, DropResult } from 'react-beautiful-dnd'
 
 interface Props {
   genre: string
@@ -13,9 +16,8 @@ interface Props {
 }
 
 const BookPages = ({ genre, keyword, numberOfPages }: Props) => {
-  const { books, readingList, isDragAndDrop, toReadingList } = useContext(
-    ContextBook
-  ) as IContextBook
+  const { books, readingList, isDragAndDrop, toReadingList, viewListOfBooks } =
+    useContext(ContextBook) as IContextBook
   const { reorderBooks, reorderReading, MoveBookDragDrop } = useBooks()
 
   const Move = (ev: DropResult) => {
@@ -29,7 +31,7 @@ const BookPages = ({ genre, keyword, numberOfPages }: Props) => {
     )
       return
 
-    if (ev.source.droppableId === TYPES_GROUPS[0]) {
+    if (ev.source.droppableId === ConstantsOfBooks.TYPES_GROUPS[0]) {
       //libros disponibles
       if (destination.droppableId !== source.droppableId) {
         isDragAndDrop.current = true
@@ -54,20 +56,25 @@ const BookPages = ({ genre, keyword, numberOfPages }: Props) => {
 
   return (
     <DragDropContext onDragEnd={(ev) => Move(ev)}>
-      <main className="flex flex-wrap w-full m-auto justify-center py-5">
-        <ListOfBook
-          library={books}
-          title="Libros disponibles"
-          left={true}
-          genre={genre}
-          numberOfPages={numberOfPages}
-          keyword={keyword}
-        />
-        <ListOfBook
-          library={readingList}
-          title="Libros añadidos"
-          left={false}
-        />
+      <main className="flex flex-wrap w-full m-auto justify-center py-5 gap-5">
+        {viewListOfBooks !== ConstantsOfBooks.OPTIONS_VIEW_LIST[2] && (
+          <ListOfBook
+            library={books}
+            title="Libros disponibles"
+            left={true}
+            genre={genre}
+            numberOfPages={numberOfPages}
+            keyword={keyword}
+          />
+        )}
+
+        {viewListOfBooks !== ConstantsOfBooks.OPTIONS_VIEW_LIST[1] && (
+          <ListOfBook
+            library={readingList}
+            title="Libros añadidos"
+            left={false}
+          />
+        )}
       </main>
     </DragDropContext>
   )

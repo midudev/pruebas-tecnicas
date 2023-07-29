@@ -9,6 +9,8 @@ import debounce from 'just-debounce-it'
 
 import './App.css'
 
+import FormViewListOfBooks from './components/FormViewListOfBooks'
+
 function App() {
   const [genre, setGenre] = useState('')
   const [keyword, setKeyword] = useState('')
@@ -21,7 +23,10 @@ function App() {
     [books]
   )
 
-  const GENRES = Array.from(new Set(books.map((book) => book.book.genre)))
+  const GENRES = useMemo(
+    () => Array.from(new Set(books.map((book) => book.book.genre))),
+    [books]
+  )
 
   const handleInputPages = (value: string) => {
     const x = debounce(() => setNumberOfPages(Number(value)), 500)
@@ -45,6 +50,8 @@ function App() {
         keyword={keyword}
         setKeyword={setKeyword}
       />
+
+      <FormViewListOfBooks />
 
       <BookPages
         genre={genre}

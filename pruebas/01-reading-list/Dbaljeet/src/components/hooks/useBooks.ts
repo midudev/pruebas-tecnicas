@@ -101,6 +101,11 @@ const useBooks = () => {
     replaceReadingList(result)
   }
 
+  //to see the result in the custom hook test
+  const getBooks = () => {
+    return books
+  }
+
   return {
     AddFav,
     deleteFav,
@@ -109,6 +114,7 @@ const useBooks = () => {
     reorderBooks,
     reorderReading,
     MoveBookDragDrop,
+    getBooks,
   }
 }
 export default useBooks

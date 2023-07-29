@@ -54,13 +54,13 @@ const ListOfBook = ({
   return (
     <>
       <div
-        className={`flex flex-col max-sm:w-full gap-y-4 h-fit min-w-[300px] ${
+        className={`flex flex-col max-sm:w-full gap-y-4 h-fit min-w-[300px] max-lg:w-full ${
           left
-            ? 'w-1/2 '
-            : 'w-1/4 bg-gradient-to-br from-indigo-500 rounded-[14px]'
+            ? 'w-[60%]'
+            : 'w-[30%] max-lg:w-full bg-gradient-to-br from-indigo-500 rounded-[14px]'
         }`}
       >
-        <h2 className="font-semibold">
+        <h2 className="font-semibold px-5">
           {title} {`(${books.length})`}{' '}
           {left ? `- Total sin filtros: (${library.length})` : ''}
         </h2>
@@ -73,8 +73,8 @@ const ListOfBook = ({
               className={`w-full ${
                 left
                   ? 'grid grid-cols-grid-auto justify-items-center'
-                  : 'flex flex-col'
-              } items-center justify-center gap-y-5 py-3`}
+                  : 'max-lg:grid max-lg:grid-cols-grid-auto max-lg:justify-items-center flex flex-col'
+              } items-center justify-center gap-5 gap-y-5 py-3`}
             >
               {books.map((book, index) => (
                 <Draggable

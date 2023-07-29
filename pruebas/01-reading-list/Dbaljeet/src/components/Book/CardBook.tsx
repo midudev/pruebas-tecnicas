@@ -64,12 +64,12 @@ const CardBook = ({ book, left, MoveBook, isDragging }: Props) => {
 
       <button
         data-testid="viewInfo"
-        name={viewMoreInfo ? 'Ocultar' : 'VerMás'}
+        name={viewMoreInfo ? 'Ocultar' : 'Ver'}
         onClick={(ev) => handleInfoExtra(ev)}
-        className={`viewInfo p-2 transition-transform duration-300  ${
+        className={`viewInfo p-2 transition-transform [&>svg]:duration-300  ${
           viewMoreInfo
-            ? '-rotate-90  sm:hover:-rotate-45'
-            : 'rotate-90  sm:hover:rotate-45'
+            ? '[&>svg]:-rotate-90  [&>svg]:sm:hover:-rotate-45'
+            : '[&>svg]:rotate-90  [&>svg]:sm:hover:rotate-45'
         }  `}
       >
         <Arrow />
