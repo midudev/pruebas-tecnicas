@@ -28,7 +28,7 @@ onMounted(() => {
       <h2>lista de leidos</h2>
       <ListOfBooks :books="bookStore.readedBooks" :action="Action.ADD_TO_AVAILABLE" />
     </aside>
-    <notifications style="margin-top: 4.6em;" />
+    <notifications class="notification" />
   </main>
 </template>
 
