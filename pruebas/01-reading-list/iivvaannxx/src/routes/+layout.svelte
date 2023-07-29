@@ -1,6 +1,8 @@
 <script lang='ts' context='module'>
 
   import '../app.css'
+  import 'toastify-js/src/toastify.css'
+
   import debounce from 'just-debounce-it'
 
   import { GithubIcon } from '$lib/icons'

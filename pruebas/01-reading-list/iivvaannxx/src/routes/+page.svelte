@@ -30,5 +30,5 @@
 </section>
 
 <aside class='sticky top-header w-sidebar h-sidebar col-start-3 border-l-2'>
-  <!--   <BookList />
- --></aside>
+  <BookList />
+</aside>
