@@ -3,10 +3,11 @@
   import debounce from 'just-debounce-it'
 
   import { PagesIcon } from '$lib/icons'
-  import { MinMaxSlider, ToggleAccordion } from '$lib'
+  import { MinMaxSlider, ToggleAccordion } from '$lib/components'
 
   import { pageLimits } from '$features/library'
-  import { setPagesFilter, setFilterEnabled, filters } from '../../store'
+  import { filters } from '../../state/store'
+  import { setPagesFilter, setFilterEnabled } from '../../state/actions'
 
 </script>
 

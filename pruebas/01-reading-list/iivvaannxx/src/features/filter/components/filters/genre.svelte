@@ -1,17 +1,17 @@
 <script lang='ts' context='module'>
 
   import { TagIcon } from '$lib/icons'
-  import { ToggleBadge, ToggleAccordion } from '$lib'
+  import { ToggleBadge, ToggleAccordion } from '$lib/components'
 
   import { genres } from '$features/library'
+  import { filters } from '../../state/store'
   import {
 
     addGenreToFilter,
     removeGenreFromFilter,
-    setFilterEnabled,
-    filters
+    setFilterEnabled
 
-  } from '../../store'
+  } from '../../state/actions'
 
 </script>
 

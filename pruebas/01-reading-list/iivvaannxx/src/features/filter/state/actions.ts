@@ -1,41 +1,7 @@
-import { map, action } from 'nanostores'
+import { action } from 'nanostores'
+import { filters } from './store'
 
-import type { Filter, FilterMap } from './types'
-import {
-
-  filterByGenre, shouldBypassGenreFilter,
-  filterByPages, shouldBypassPagesFilter
-
-} from './feature'
-
-/** @brief The filters that can be applied to the book list. */
-export const filters = map<FilterMap>({
-
-  genre: {
-
-    enabled: false,
-    data: {
-
-      genres: [] as string[]
-    },
-
-    filter: filterByGenre,
-    shouldBypass: shouldBypassGenreFilter
-  },
-
-  pages: {
-
-    enabled: true,
-    data: {
-
-      min: -Infinity,
-      max: +Infinity
-    },
-
-    filter: filterByPages,
-    shouldBypass: shouldBypassPagesFilter
-  }
-})
+import type { Filter } from '../lib/types'
 
 /** @brief adds the given genre to the the genre filter. */
 export const addGenreToFilter = action(filters, 'addGenre', (filters, genre: string) => {
