@@ -10,7 +10,7 @@ Gran parte del código esta comentado para aclarar posibles dudas
 
 ## Mejoras
 
-- [ ] Añadir la posibilidad de ordenar los libros en ambos listado por los distintos datos (Fecha de publicación, páginas, etc)
+- [x] Añadir la posibilidad de ordenar los libros en ambos listado por los distintos datos (Fecha de publicación, páginas, etc)
 - [ ] Mejorar el responsive de la aplicación añadiendo botones en móvil para el desplazamiento entre las diferentes secciones
-- [ ] Recortar imágenes de los libros para que todas tengan el mismo tamaño y optimizados para web
+- [x] Recortar imágenes de los libros para que todas tengan el mismo tamaño y optimizados para web
 - [ ] Añadir más tests (Servicios, Hooks, Componentes)
