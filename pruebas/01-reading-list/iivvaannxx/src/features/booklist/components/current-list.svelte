@@ -58,7 +58,7 @@
 
       <p class='text-center text-gray-500 mt-4'>
         <span class='block'>No has añadido ningún libro.</span>
-        <span class='block'>¿A que estas esperando?</span>
+        <span class='block'>¿A qué estas esperando?</span>
       </p>
 
     </div>
