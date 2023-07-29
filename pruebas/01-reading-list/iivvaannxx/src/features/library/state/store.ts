@@ -10,15 +10,21 @@ export const library = atom<BookArray>(Books.library.map(current => current.book
 export const currentLayout = atom<Layout>('grid')
 
 /** @brief The genres that are present in the library. */
-export const genres = computed(library, books => {
+export const genres = computed(library,
 
-  const genres = books.map(current => current.genre)
-  return Array.from(new Set(genres))
-})
+  (books) => {
+
+    const genres = books.map(current => current.genre)
+    return Array.from(new Set(genres))
+  }
+)
 
 /** @brief The minimum and maximum number of pages in the library. */
-export const pageLimits = computed(library, books => {
+export const pageLimits = computed(library,
 
-  const pages = books.map(current => current.pages)
-  return [Math.min(...pages), Math.max(...pages)]
-})
+  (books) => {
+
+    const pages = books.map(current => current.pages)
+    return [Math.min(...pages), Math.max(...pages)]
+  }
+)
