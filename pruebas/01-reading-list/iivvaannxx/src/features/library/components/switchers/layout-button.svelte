@@ -2,8 +2,8 @@
 
   import { PrimaryButton, SecondaryButton } from '$lib/components'
 
-  import LayoutGridIcon from '../../layouts/grid/icon.svelte'
-  import LayoutListIcon from '../../layouts/list/icon.svelte'
+  import LayoutGridIcon from '../layouts/grid/icon.svelte'
+  import LayoutListIcon from '../layouts/list/icon.svelte'
 
   import { currentLayout } from '../../state/store'
   import { setCurrentLayout } from '../../state/actions'

@@ -1,7 +1,7 @@
 <script lang='ts' context='module'>
 
-  import GridLayoutItem from '../../layouts/grid/item.svelte'
-  import ListLayoutItem from '../../layouts/list/item.svelte'
+  import GridLayoutItem from '../layouts/grid/item.svelte'
+  import ListLayoutItem from '../layouts/list/item.svelte'
 
   import type { Layout } from '../../lib/types'
 
