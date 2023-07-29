@@ -5,4 +5,4 @@ export {
   genres,
   pageLimits
 
-} from './store'
+} from './state/store'

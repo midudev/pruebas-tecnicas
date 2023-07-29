@@ -1,6 +1,6 @@
 <script lang='ts' context='module'>
 
-  import { PrimaryButton } from '$lib'
+  import { PrimaryButton } from '$lib/components'
   import { addBook, currentListName } from '$features/booklist'
 
 </script>

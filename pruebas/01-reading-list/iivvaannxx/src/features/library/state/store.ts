@@ -1,8 +1,7 @@
-import Books from './assets/books.json'
-import { action, atom, computed } from 'nanostores'
+import Books from '../assets/books.json'
+import { atom, computed } from 'nanostores'
 
-/** @brief Defines the allowed layouts for the library. */
-export type Layout = 'grid' | 'vertical-list'
+import type { Layout } from '../lib/types'
 
 /** @brief The information about the entire book library. */
 export const library = atom<BookArray>(Books.library.map(current => current.book))
@@ -22,10 +21,4 @@ export const pageLimits = computed(library, books => {
 
   const pages = books.map(current => current.pages)
   return [Math.min(...pages), Math.max(...pages)]
-})
-
-/** @brief Sets the current layout of the library. */
-export const setCurrentLayout = action(currentLayout, 'setCurrentLayout', (store, layout: Layout) => {
-
-  store.set(layout)
 })

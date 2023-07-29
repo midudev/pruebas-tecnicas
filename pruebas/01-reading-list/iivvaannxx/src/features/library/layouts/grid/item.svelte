@@ -1,6 +1,6 @@
 <script lang='ts' context='module'>
 
-  import { PrimaryButton } from '$lib'
+  import { PrimaryButton } from '$lib/components'
   import { addBook, currentListName } from '$features/booklist'
 
 </script>
@@ -23,6 +23,7 @@
       <PrimaryButton onClick={ () => { addBook($currentListName, bookData) } } extraClasses='w-3/4 h-12'>
         <span class='text-lg flex-grow text-center uppercase'>Añadir</span>
       </PrimaryButton>
+
     </div>
 
   </div>
