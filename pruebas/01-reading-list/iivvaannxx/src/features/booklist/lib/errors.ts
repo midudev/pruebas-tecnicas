@@ -28,6 +28,11 @@ export function canNotDeleteDefaultList () {
   return new Error("You can't delete a default list.")
 }
 
+export function noMoreCustomLists (maxLists: number) {
+
+  return new Error(`You can't create more than ${maxLists} custom lists.`)
+}
+
 /** @brief Returns an error indicating that there's a book with the given ISBN in the given list. */
 export function alreadyPresentBook (list: string, isbn: string) {
 

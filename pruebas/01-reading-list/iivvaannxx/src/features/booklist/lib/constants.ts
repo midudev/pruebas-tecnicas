@@ -31,3 +31,6 @@ export const ENCODE_DECODE_HANDLERS = {
   encode: JSON.stringify,
   decode: JSON.parse
 }
+
+/** @brief The default name for custom lists. */
+export const CUSTOM_LIST_DEFAULT_NAME = 'Mi Lista #'

@@ -1,8 +1,9 @@
 import { action } from 'nanostores'
-import * as errors from '../lib/errors'
-
 import { throwIf, throwIfNot } from '$lib/utils'
+
+import * as errors from '../lib/errors'
 import { MAX_CUSTOM_LISTS } from '../lib/constants'
+import { getListKey } from '../lib/utils'
 
 import {
 
@@ -14,13 +15,14 @@ import {
 
 import {
 
-  tryGetList,
-  getListKey,
   getList,
+  tryGetList,
   existsList,
-  hasBook
 
-} from '../lib/utils'
+  hasBook,
+  uniqueCustomListName
+
+} from './helpers'
 
 /** @brief Sets the current list to the one with the given name. */
 export const setCurrentList = action(currentListName, 'setCurrentList',
@@ -48,16 +50,12 @@ export const clearList = action(lists, 'clearList',
 export const createCustomList = action(lists, 'createCustomList',
   (listsStore, initialBooks: BookArray) => {
 
-    const index = customListsCount.get()
-    const name = `Mi Lista ${index}`
+    // Check if we can create a new custom list.
+    const canCreate = customListsCount.get() < MAX_CUSTOM_LISTS
+    throwIfNot(canCreate, errors.noMoreCustomLists(MAX_CUSTOM_LISTS))
 
-    // Throw if we've reached the maximum number of custom lists.
-    if (customListsCount.get() >= MAX_CUSTOM_LISTS) {
-
-      throw new Error(`You can't create more than ${MAX_CUSTOM_LISTS} custom lists.`)
-    }
-
-    throwIf(existsList(name), errors.existentList(name))
+    // Generate a unique name for the list and create it.
+    const name = uniqueCustomListName()
     listsStore.setKey(getListKey(name), {
 
       displayName: name.trim(),

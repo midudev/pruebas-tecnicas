@@ -45,7 +45,7 @@
       <CustomList name={ customList }>
 
         <svelte:fragment slot='icon'>
-          <BookmarksIcon />
+          <BookmarksIcon class='scale-125' />
         </svelte:fragment>
 
       </CustomList>

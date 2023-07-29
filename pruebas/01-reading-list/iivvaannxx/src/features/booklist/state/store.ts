@@ -1,6 +1,7 @@
 import { computed } from 'nanostores'
 import { persistentMap, persistentAtom } from '@nanostores/persistent'
 
+import { getListKey } from '../lib/utils'
 import {
 
   DEFAULT_LISTS,
@@ -28,8 +29,8 @@ export const lists = persistentMap<Record<string, BookList>>('list:', {}, ENCODE
 export const currentListName = persistentAtom('currentList', DEFAULT_LISTS.TO_READ)
 
 /** @brief The currently displayed list. */
-export const currentList = computed(currentListName,
-  (listName) => lists.get()[listName])
+export const currentList = computed([currentListName, lists],
+  (listName, currentLists) => currentLists[getListKey(listName)])
 
 /** @brief All the defined lists in the application. */
 export const defaultLists = computed(lists,

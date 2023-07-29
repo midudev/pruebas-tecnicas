@@ -11,6 +11,8 @@
 
 <script lang='ts'>
 
+  $: console.log($currentList)
+
   $: books = $currentList.books
   $: totalBooks = (books.length === 1)
     ? '1 libro'
