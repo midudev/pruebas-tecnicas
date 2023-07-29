@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import ListBooks from './components/BookList'
 import ReadingList from './components/ReadingList'
 import Footer from './components/Footer'
@@ -7,6 +7,7 @@ import styles from './App.module.css'
 
 function App () {
   const { books, readingList, genres, genre, pages, filterByGenre, filterByPages } = useBook()
+  const [activeMenu, setActiveMenu] = useState(false)
   const minPages = useRef(Math.min(...books.map(b => b.pages))) // use ref to avoid rerender and keep the initial value
   const maxPages = useRef(Math.max(...books.map(b => b.pages)))
 
@@ -22,14 +23,22 @@ function App () {
   }
 
   return (
+   <>
     <main className={styles.main}>
+      {readingList.length > 0 && (
+        <button className={styles.seeList} onClick={() => setActiveMenu(!activeMenu)}>
+          {!activeMenu ? 'Ver lista de lectura' : 'Ocultar lista de lectura'}
+        </button>
+      )}
 
       <section className={styles.listBooks}>
         <header className='header'>
           <h1 className={styles.title}>El viaje de tus lecturas</h1>
           <div className={styles.booksCounter}>
             <p><strong>{books.length}</strong> Libros disponibles</p>
-            {readingList.length > 0 && <p><strong>{readingList.length}</strong> en la lista de lectura</p>}
+            {readingList.length > 0 && (<p>
+              <strong>{readingList.length}</strong> en la lista de lectura</p>
+            )}
           </div>
         </header>
 
@@ -49,10 +58,11 @@ function App () {
         <ListBooks books={books}/>
 
       </section>
-      <ReadingList books={readingList} />
+      <ReadingList books={readingList} activeMenu={activeMenu} />
 
-      <Footer />
     </main>
+    <Footer />
+   </>
   )
 }
 

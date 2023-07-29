@@ -49,3 +49,16 @@
   height: 30px;
   width: 30px;
 }
+
+@media screen and (max-width: 768px) {
+  .readingList {
+    position: fixed;
+    top: 0;
+    left: -500px;
+    transition: left ease-in-out .2s;
+  }
+
+  .readingList.active {
+    left: 0;
+  }
+}

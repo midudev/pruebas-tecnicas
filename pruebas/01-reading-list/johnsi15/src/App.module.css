@@ -74,6 +74,16 @@
   padding: 50px 0;
 }
 
+.seeList {
+  display: none;
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1600px) {
+  .listBooks {
+    max-width: 780px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .title {
     font-size: 3.5rem;
@@ -85,6 +95,24 @@
 
   .main .booksCounter {
     text-align: center;
+  }
+
+  .main .booksCounter {
+    align-items: flex-start;
+  }
+
+  .seeList {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: rgb(6 6 22 / 75%);
+    padding: 10px 8px;
+    border: none;
+    width: 100px;
+    font-size: 0.9rem;
+    line-height: 1.1rem;
+    z-index: 5;
   }
 
   .genres select,

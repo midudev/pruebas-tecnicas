@@ -5,7 +5,7 @@ import styles from './ReadingList.module.css'
 
 const transition = { type: 'spring', stiffness: 500, damping: 50, mass: 1 }
 
-export default function ReadingList ({ books }) {
+export default function ReadingList ({ books, activeMenu }) {
   const { handleRemoveBook } = useBook()
   const [isPresent, safeToRemove] = usePresence()
 
@@ -35,7 +35,7 @@ export default function ReadingList ({ books }) {
   }
 
   return (
-    <div className={styles.readingList}>
+    <div className={`${styles.readingList} ${activeMenu ? styles.active : ''}`}>
       <h3 className={styles.title}>Lista de lectura</h3>
 
       <AnimatePresence>

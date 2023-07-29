@@ -8,6 +8,7 @@
   position: relative;
   height: 460px;
   max-width: 320px;
+  min-width: 320px;
 }
 
 .book .cover {
