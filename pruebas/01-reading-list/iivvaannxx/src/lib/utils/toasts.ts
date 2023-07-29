@@ -1,6 +1,5 @@
 import Toastify from 'toastify-js'
 
-// deno-lint-ignore no-explicit-any
 let currentToast: any
 
 /** @brief Closes the currently displayed toast. */
