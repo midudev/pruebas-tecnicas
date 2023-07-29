@@ -1,4 +1,4 @@
-import Books from '../assets/books.json'
+import Books from '../assets/data/books.json'
 import { atom, computed } from 'nanostores'
 
 import type { Layout } from '../lib/types'
