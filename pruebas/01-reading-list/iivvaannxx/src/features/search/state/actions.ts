@@ -1,6 +1,6 @@
 import { action } from 'nanostores'
 
-import { search } from '../library/utils'
+import { search } from '../lib/utils'
 import { isSearching, searchQuery } from './store'
 
 /** @brief Performs a search with the given query. */

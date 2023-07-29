@@ -1,5 +1,5 @@
 import { atom, computed } from 'nanostores'
-import { MIN_SEARCH_CHARACTERS } from '../library/constants'
+import { MIN_SEARCH_CHARACTERS } from '../lib/constants'
 
 /** @brief The query used to search the library. */
 export const searchQuery = atom('')
