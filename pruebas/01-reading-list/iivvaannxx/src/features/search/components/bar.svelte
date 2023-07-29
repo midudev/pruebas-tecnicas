@@ -1,18 +1,13 @@
 <script lang='ts' context='module'>
 
-  import debounce from 'just-debounce-it'
-
   import { SearchIcon } from '$lib/icons'
-  import { setSearchQuery } from '../store'
 
 </script>
 
 <script lang='ts'>
 
   let query: string = ''
-
-  // Debounce the input event to avoid making too many requests.
-  const onInput = debounce(() => { setSearchQuery(query) }, 200)
+  export let onInput = (query: string) => {}
 
 </script>
 
@@ -37,7 +32,7 @@
     placeholder='Buscar libro...'
 
     bind:value={ query }
-    on:input={ onInput }
+    on:input={ () => { onInput(query) } }
 
     class='block w-full p-3 pl-12 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50'
   />
