@@ -3,6 +3,7 @@ const preferredRules = {
 
   '@typescript-eslint/explicit-function-return-type': 'off',
   '@typescript-eslint/brace-style': 'off',
+  '@typescript-eslint/restrict-plus-operands': ['error', { skipCompoundAssignments: false }],
 
   'padded-blocks': 'off',
   'padding-line-between-statements': [
