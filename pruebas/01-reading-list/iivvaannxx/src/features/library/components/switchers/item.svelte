@@ -21,6 +21,4 @@
 
 </script>
 
-<svelte:component this={ itemMap[type] } { bookData }>
-  <slot />
-</svelte:component>
+<svelte:component this={ itemMap[type] } { bookData } />
