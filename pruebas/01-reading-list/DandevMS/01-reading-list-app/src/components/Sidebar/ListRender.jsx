@@ -15,11 +15,6 @@ function ListRender() {
     }
   }, []); //eslint-disable-line
 
-
-
-
-
-
   return (
     <div className="grid grid-cols-2 gap-3 mt-4">
       {
