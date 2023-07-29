@@ -1,7 +1,25 @@
 <script lang='ts' context='module'>
 
-  import { EditIcon, TrashIcon } from '$lib/icons'
-  import { renameList, deleteList, setCurrentList } from '../state/actions'
+  import { tick } from 'svelte'
+
+  import {
+
+    EditIcon,
+    TrashIcon,
+    BookmarksIcon
+
+  } from '$lib/icons'
+
+  import {
+
+    renameList,
+    deleteList,
+    setCurrentList
+
+  } from '../state/actions'
+
+  import { toast } from '$lib/utils'
+  import { MAX_CUSTOM_LIST_NAME_LENGTH, MIN_CUSTOM_LIST_NAME_LENGTH } from '../lib/constants'
 
 </script>
 
@@ -14,50 +32,74 @@
 
   let editing = false
 
-  function handleEdit () {
+  async function handleEdit () {
+
+    editing = true
+    await tick()
 
     originalName = nameInput.value
     nameInput.focus()
-
-    editing = true
+    nameInput.select()
   }
 
-  $: {
+  async function setNewName () {
 
-    const callback = (editing)
-      ? () => { nameInput?.focus() }
-      : () => { nameInput?.blur() }
+    try {
 
-    callback()
+      renameList(originalName, nameInput.value)
+
+    } catch (error: any) {
+
+      toast.error(error, 2500)
+      name = originalName
+
+    } finally {
+
+      nameInput.blur()
+    }
   }
-
 </script>
 
 <div class='w-full flex justify-between gap-4'>
 
-  <button
+  {#if editing}
 
-    type='button'
+    <div class = 'flex items-center text-base font-medium rounded-md px-2'>
 
-    on:click={ () => { setCurrentList(name) } }
-    class='relative inline-flex flex-grow items-center px-2 py-2 bg-white-200 hover:bg-gray-100 text-gray-800 text-base font-medium rounded-md'
-  >
-    <slot name='icon' />
+      <BookmarksIcon class='mr-4 flex-shrink-0' />
+      <input
 
-    <input
+        minlength={ MIN_CUSTOM_LIST_NAME_LENGTH }
+        maxlength={ MAX_CUSTOM_LIST_NAME_LENGTH }
 
-      type='text'
-      class='ml-4 w-full'
-      disabled = { !(editing) }
+        type='text'
+        class='w-full flex-grow px-1 py-2 select-none'
+        disabled = { !(editing) }
 
-      on:change = { () => { renameList(originalName, nameInput.value) } }
-      on:blur = { () => { editing = false } }
+        on:change = { setNewName }
+        on:blur = { () => { editing = false } }
 
-      bind:this={ nameInput }
-      bind:value={ name }
-    />
+        bind:this={ nameInput }
+        bind:value={ name }
+      />
 
-  </button>
+    </div>
+
+  {:else}
+
+    <button
+
+      type='button'
+
+      on:click={ () => { setCurrentList(name) } }
+      class='relative inline-flex flex-grow items-center px-2 py-2 bg-white-200 hover:bg-gray-100 text-base font-medium rounded-md'
+    >
+      <BookmarksIcon class='mr-4' />
+      <span class='select-none'>{ name }</span>
+
+    </button>
+
+  {/if}
 
   <div class='flex gap-4'>
 

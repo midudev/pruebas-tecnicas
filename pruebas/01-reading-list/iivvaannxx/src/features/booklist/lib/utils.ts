@@ -1,5 +1,12 @@
 import kebabCase from 'just-kebab-case'
-import { CUSTOM_LIST_DEFAULT_NAME } from './constants'
+import {
+
+  MIN_CUSTOM_LIST_NAME_LENGTH,
+  MAX_CUSTOM_LIST_NAME_LENGTH,
+
+  CUSTOM_LIST_DEFAULT_NAME
+
+} from './constants'
 
 /** @brief Gets the key name for a list with the given name. */
 export function getListKey (name: string) {
@@ -11,4 +18,14 @@ export function getListKey (name: string) {
 export function customListName (index: number) {
 
   return `${CUSTOM_LIST_DEFAULT_NAME}${index}`
+}
+
+/** @brief Checks if the given name is valid for a custom list. */
+export function isValidCustomName (name: string) {
+
+  const regex = /^[a-zA-Z0-9-]+$/
+
+  return regex.test(name) &&
+    name.length > MIN_CUSTOM_LIST_NAME_LENGTH &&
+    name.length <= MAX_CUSTOM_LIST_NAME_LENGTH
 }

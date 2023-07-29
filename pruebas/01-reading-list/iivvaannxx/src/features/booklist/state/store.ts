@@ -39,6 +39,7 @@ export const defaultLists = computed(lists,
     return Object.values(allLists)
       .filter(list => !(list.metadata.isCustom))
       .map(list => list.displayName)
+      .sort((a, b) => a.localeCompare(b))
   }
 )
 
@@ -49,6 +50,7 @@ export const customLists = computed(lists,
     return Object.values(allLists)
       .filter(list => list.metadata.isCustom)
       .map(list => list.displayName)
+      .sort((a, b) => a.localeCompare(b))
   }
 )
 

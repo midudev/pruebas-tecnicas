@@ -2,10 +2,9 @@
 
   import DefaultList from './default-list.svelte'
   import CustomList from './custom-list.svelte'
+  import NoListsBookImage from '../assets/images/no-lists-book.webp'
 
   import { PrimaryButton } from '$lib/components'
-  import { BookmarksIcon } from '$lib/icons'
-
   import { LISTS_ICONS } from '../lib/constants'
   import { createCustomList } from '../state/actions'
 
@@ -40,17 +39,22 @@
 
     <hr class='mx-6 my-4' />
 
-    {#each $customLists as customList}
+    {#if $customLists.length === 0}
 
-      <CustomList name={ customList }>
+      <img class='self-center' src={ NoListsBookImage } width='200' alt='Not found'>
 
-        <svelte:fragment slot='icon'>
-          <BookmarksIcon class='scale-125' />
-        </svelte:fragment>
+      <p class='text-center text-gray-500 mt-4'>
+        <span class='block'>No tienes niguna lista personalizada.</span>
+        <span class='block'>¡Crea una!</span>
+      </p>
 
-      </CustomList>
+    {:else}
 
-    {/each}
+      {#each $customLists as customList(customList)}
+        <CustomList name={ customList } />
+      {/each}
+
+    {/if}
 
     <PrimaryButton
 
@@ -61,7 +65,7 @@
     >
 
       <span class='uppercase text-center w-full font-bold'>
-        Crear Lista
+        { $canCreateMoreCustomLists ? 'Crear lista' : 'No puedes crear más listas' }
       </span>
 
     </PrimaryButton>

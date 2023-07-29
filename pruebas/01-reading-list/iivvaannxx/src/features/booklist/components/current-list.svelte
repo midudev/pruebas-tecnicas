@@ -7,11 +7,11 @@
   import { clearList, removeBook } from '../state/actions'
   import { currentListName, currentList } from '../state/store'
 
+  import EmptyListBook from '../assets/images/empty-list-book.webp'
+
 </script>
 
 <script lang='ts'>
-
-  $: console.log($currentList)
 
   $: books = $currentList.books
   $: totalBooks = (books.length === 1)
@@ -35,7 +35,7 @@
 
   <header class='w-full flex flex-col px-10 items-center gap-4'>
 
-    <h3 class='text-2xl font-semibold text-primary-500 text-center inline-flex'>
+    <h3 class='text-2xl font-semibold text-primary-500 text-center inline-flex whitespace-nowrap'>
       <svelte:component class='mr-4' this={ icon } />
       { $currentListName }
     </h3>
@@ -50,30 +50,45 @@
 
   <hr class='mx-6 my-4' />
 
-  <ul class='w-full flex-grow relative'>
+  {#if books.length === 0}
 
-    {#each books as book (book.ISBN)}
+    <div class='w-full flex  flex-col flex-grow'>
 
-      <li class='relative flex flex-col w-80 aspect-cover rounded-xl items-center scale-90'>
+      <img class='self-center' src={ EmptyListBook } width='200' alt='Lista vacía'>
 
-        <div class='w-full h-full relative group duration-300'>
+      <p class='text-center text-gray-500 mt-4'>
+        <span class='block'>No has añadido ningún libro.</span>
+        <span class='block'>¿A que estas esperando?</span>
+      </p>
 
-          <img class='w-full h-full rounded-xl transition duration-300 group-hover:cursor-pointer group-hover:grayscale group-hover:brightness-75' src={ book.cover } alt={ book.title } />
+    </div>
 
-          <div class='flex opacity-0 w-[12rem] max-w-[15rem] min-w-[10rem] absolute transition duration-300 top-1/2 left-1/2 justify-center items-center group-hover:opacity-100 -translate-y-1/2 -translate-x-1/2'>
+  {:else}
 
-            <DeleteButton onClick={ () => { console.log(book); removeBook($currentListName, book.ISBN) } }>
-              <span class='text-lg flex-grow text-center uppercase'>Eliminar</span>
-            </DeleteButton>
+    <ul class='w-full flex-grow relative'>
+
+      {#each books as book (book.ISBN)}
+
+        <li class='relative flex flex-col w-80 aspect-cover rounded-xl items-center scale-90'>
+
+          <div class='w-full h-full relative group duration-300'>
+
+            <img class='w-full h-full rounded-xl transition duration-300 group-hover:cursor-pointer group-hover:grayscale group-hover:brightness-75' src={ book.cover } alt={ book.title } />
+
+            <div class='flex opacity-0 w-[12rem] max-w-[15rem] min-w-[10rem] absolute transition duration-300 top-1/2 left-1/2 justify-center items-center group-hover:opacity-100 -translate-y-1/2 -translate-x-1/2'>
+
+              <DeleteButton onClick={ () => { removeBook($currentListName, book.ISBN) } } />
+
+            </div>
 
           </div>
 
-        </div>
+        </li>
 
-      </li>
+      {/each}
 
-    {/each}
+    </ul>
 
-  </ul>
+  {/if}
 
 </article>

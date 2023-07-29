@@ -25,6 +25,12 @@ export const LISTS_ICONS = {
 /** @brief The maximum number of custom lists. */
 export const MAX_CUSTOM_LISTS = 5
 
+/** @brief The minimum characters for a custom list name. */
+export const MIN_CUSTOM_LIST_NAME_LENGTH = 3
+
+/** @brief The maximum characters for a custom list name. */
+export const MAX_CUSTOM_LIST_NAME_LENGTH = 10
+
 /** @brief The methods used to serialize and deserialize the data. */
 export const ENCODE_DECODE_HANDLERS = {
 
@@ -33,4 +39,4 @@ export const ENCODE_DECODE_HANDLERS = {
 }
 
 /** @brief The default name for custom lists. */
-export const CUSTOM_LIST_DEFAULT_NAME = 'Mi Lista #'
+export const CUSTOM_LIST_DEFAULT_NAME = 'Mi Lista '

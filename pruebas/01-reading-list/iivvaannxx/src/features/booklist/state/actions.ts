@@ -1,9 +1,11 @@
 import { action } from 'nanostores'
-import { throwIf, throwIfNot } from '$lib/utils'
 
 import * as errors from '../lib/errors'
-import { MAX_CUSTOM_LISTS } from '../lib/constants'
-import { getListKey } from '../lib/utils'
+import { getListKey, isValidCustomName } from '../lib/utils'
+import { DEFAULT_LISTS, MAX_CUSTOM_LISTS } from '../lib/constants'
+
+import { bindActionHooks } from './hooks'
+import { throwIf, throwIfNot } from '$lib/utils'
 
 import {
 
@@ -18,8 +20,8 @@ import {
   getList,
   tryGetList,
   existsList,
-
   hasBook,
+
   uniqueCustomListName
 
 } from './helpers'
@@ -52,7 +54,7 @@ export const createCustomList = action(lists, 'createCustomList',
 
     // Check if we can create a new custom list.
     const canCreate = customListsCount.get() < MAX_CUSTOM_LISTS
-    throwIfNot(canCreate, errors.noMoreCustomLists(MAX_CUSTOM_LISTS))
+    throwIfNot(canCreate, errors.noMoreCustomLists())
 
     // Generate a unique name for the list and create it.
     const name = uniqueCustomListName()
@@ -95,6 +97,10 @@ export const renameList = action(lists, 'renameList',
     throwIf(existsList(newName), errors.existentList(newName))
     throwIfNot(existsList(oldName), errors.nonExistentList(oldName))
 
+    // Also ensure that the new name is valid.
+    const trimmedName = newName.trim()
+    throwIfNot(isValidCustomName(trimmedName), errors.invalidCustomName(trimmedName))
+
     const currentList = getList(oldName)
     currentListName.set(newName)
 
@@ -114,6 +120,12 @@ export const deleteList = action(lists, 'deleteList',
     const list = tryGetList(name)
     throwIfNot(list.metadata.isCustom, errors.canNotDeleteDefaultList())
 
+    if (currentListName.get() === name) {
+
+      // If we are deleting the current list, set it to a default one.
+      currentListName.set(DEFAULT_LISTS.FAVORITES)
+    }
+
     listsStore.setKey(getListKey(name), undefined as any) // We need to cast undefined as any because some error with the persistentmMap typings.
   }
 )
@@ -123,7 +135,7 @@ export const addBook = action(lists, 'addBook',
   (listsStore, listName: string, book: Book) => {
 
     throwIfNot(existsList(listName), errors.nonExistentList(listName))
-    throwIf(hasBook(listName, book.ISBN), errors.alreadyPresentBook(listName, book.ISBN))
+    throwIf(hasBook(listName, book.ISBN), errors.listHasBook(listName, book.ISBN))
 
     // Add the book to the list.
     const list = getList(listName)
@@ -140,7 +152,7 @@ export const removeBook = action(lists, 'removeBook',
   (listsStore, listName: string, isbn: string) => {
 
     throwIfNot(existsList(listName), errors.nonExistentList(listName))
-    throwIfNot(hasBook(listName, isbn), errors.alreadyPresentBook(listName, isbn))
+    throwIfNot(hasBook(listName, isbn), errors.listDoesNotHaveBook(listName, isbn))
 
     // Remove the book from the list.
     const list = getList(listName)
@@ -151,3 +163,6 @@ export const removeBook = action(lists, 'removeBook',
     })
   }
 )
+
+// Bind the action hooks to the store.
+bindActionHooks()
