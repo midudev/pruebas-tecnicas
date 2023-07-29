@@ -15,7 +15,7 @@
 </script>
 
 <button
-	class={`relative rounded-full p-2 hover:bg-lime-200 hover:scale-[103%] active:scale-[98%] mx-5 ${
+	class={`relative rounded-[40px] p-2 hover:bg-lime-200 hover:scale-[103%]  active:scale-[98%] ${
 		active ? 'bg-lime-200' : 'bg-slate-200'
 	}`}
 	on:click={selectedFilter}
@@ -25,7 +25,7 @@
 			>{availables}</span
 		>
 	{/if}
-	<span class="font-bold text-lg text-black">
+	<span class="font-bold text-lg text-black whitespace-nowrap">
 		{filter}
 	</span>
 </button>

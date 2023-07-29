@@ -123,7 +123,15 @@
 
 <Header />
 
-<section class="flex flex-col items-star">
+<section class="mx-auto max-w-5xl w-full">
+	<!-- <Selectors
+		{library}
+		on:selectedfilter={handleCategory}
+		on:change={handlePage}
+		savedFilter={$initialDataStore.filter}
+		availables={$initialDataStore.renderlist.length}
+	/> -->
+
 	<Selectors
 		{library}
 		on:selectedfilter={handleCategory}
@@ -134,7 +142,7 @@
 
 	<section class="my-10 mx-auto max-w-5xl w-full">
 		<header class="flex flex-col md:flex-row gap-3 items-center mb-10 justify-between mx-5 lg:mx-0">
-			<h1 class="font-bold text-xl lg:text-5xl flex gap-3 items-center">
+			<h1 class="font-bold text-3xl lg:text-5xl flex gap-3 items-center mb-5 md:mb-0">
 				{show === 'library' ? ' Nuestra librería' : 'Lista de lectura'}<Icon
 					icon="ion:book-outline"
 				/>
@@ -183,7 +191,7 @@
 		{/if}
 		{#if show === 'library'}
 			<div
-				class="grid items-center grid-cols-1 mx-14 md:mx-0 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8"
+				class="grid items-center grid-cols-1 mx-14 md:mx-10 lg:mx-0 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8"
 				in:fly={{ y: 200, duration: 500 }}
 			>
 				{#each $initialDataStore.renderlist as { book }}

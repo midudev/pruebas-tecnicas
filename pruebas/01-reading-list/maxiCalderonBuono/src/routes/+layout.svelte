@@ -7,29 +7,12 @@
 	import './styles.css';
 </script>
 
-<div class="app">
-	<main>
-		<slot />
-	</main>
-	<footer>
-		Desarrollado con ❤️ por <a
-			href="https://maxicalderon.dev"
-			class="text-lime-200 font-bold underline">Maxi Calderón</a
-		>
-	</footer>
-</div>
-
-<style>
-	.app {
-		display: grid;
-		place-items: center;
-	}
-
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		width: 100%;
-		box-sizing: border-box;
-	}
-</style>
+<main class="w-full">
+	<slot />
+</main>
+<footer class="mx-auto w-full text-center">
+	Desarrollado con ❤️ por <a
+		href="https://maxicalderon.dev"
+		class="text-lime-200 font-bold underline">Maxi Calderón</a
+	>
+</footer>

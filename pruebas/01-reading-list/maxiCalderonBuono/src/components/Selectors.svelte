@@ -8,9 +8,14 @@
 	export let savedFilter: string;
 </script>
 
-<section
-	class="flex flex-col lg:flex-row items-center my-10 justify-evenly w-full md:max-w-6xl mx-auto gap-10"
->
-	<Filters {library} on:selectedfilter {availables} {savedFilter} />
-	<Range {library} on:change />
+<section class="w-full mt-10 my-10 overflow-x-hidden box-border">
+	<div class="w-full px-5 flex flex-col items-center lg:flex-row lg:items-start">
+		<div
+			class="w-full overflow-x-scroll hide-scrollbar relative flex items-center sm:justify-center lg:justify-start h-20 mb-10 mx-5 lg:mx-0 gap-10"
+		>
+			<Filters {library} on:selectedfilter {availables} {savedFilter} />
+		</div>
+
+		<Range {library} on:change />
+	</div>
 </section>

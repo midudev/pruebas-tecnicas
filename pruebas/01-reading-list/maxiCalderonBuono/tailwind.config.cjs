@@ -30,5 +30,5 @@ module.exports = {
         }},
     },
 	},
-	plugins: [...require('@skeletonlabs/skeleton/tailwind/skeleton.cjs')(), 'tailwind-scrollbar'],
+	plugins: [...require('@skeletonlabs/skeleton/tailwind/skeleton.cjs')()],
 }

@@ -23,13 +23,11 @@
 	}
 </script>
 
-<div class="flex items-center">
-	{#each uniqueFilters as filter}
-		<Tab
-			{filter}
-			on:selectedfilter={handleInternalState}
-			{availables}
-			active={activeFilter === filter}
-		/>
-	{/each}
-</div>
+{#each uniqueFilters as filter}
+	<Tab
+		{filter}
+		on:selectedfilter={handleInternalState}
+		{availables}
+		active={activeFilter === filter}
+	/>
+{/each}

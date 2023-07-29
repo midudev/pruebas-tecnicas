@@ -21,7 +21,7 @@
 	max={maxPage}
 	min={minPage}
 	step={1}
-	class="w-5/6 lg:w-1/3"
+	class="w-5/6 md:w-2/3 lg:w-2/5 mx-auto"
 >
 	<div class="flex justify-between items-center">
 		<div class="font-bold text-xl">Pages:</div>

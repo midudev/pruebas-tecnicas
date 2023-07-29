@@ -78,7 +78,7 @@
 		</article>
 	{/if}
 	<div
-		class={`grid items-center grid-cols-1 mx-14 md:mx-0 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8 outline-none ${
+		class={`grid items-center grid-cols-1 mx-14 md:mx-10 lg:mx-0 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8 outline-none ${
 			!dragDisabled ? 'outline-dashed outline-white outline-[3px]' : ''
 		}`}
 		use:dndzone={{ items, dragDisabled, dropTargetStyle }}

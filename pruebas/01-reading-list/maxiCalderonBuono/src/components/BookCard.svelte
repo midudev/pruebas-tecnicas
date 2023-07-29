@@ -20,9 +20,9 @@
 	export let onDragStyles: boolean = false;
 </script>
 
-<div class="flex flex-col overflow-hidden" use:longpress on:long>
+<div class="flex flex-col overflow-hidden max-w-[250px] md:w-full mx-auto" use:longpress on:long>
 	<button
-		class={`relative overflow-hidden group rounded-2xl ${
+		class={`relative overflow-hidden group rounded-2xl  ${
 			onDragStyles ? 'animate-shake opacity-70' : 'opacity-100'
 		}`}
 		on:click={goToDetail}
@@ -55,7 +55,7 @@
 			</div>
 		</div>
 		<img
-			class={`w-full group-hover:scale-125 transition-all ease-in-out delay-75 h-[350px] object-cover`}
+			class={`w-full group-hover:scale-125 transition-all ease-in-out delay-75 h-[330px] object-cover`}
 			src={book.cover}
 			alt="Cover for {book.title}"
 		/>
