@@ -23,7 +23,7 @@ export function customListName (index: number) {
 /** @brief Checks if the given name is valid for a custom list. */
 export function isValidCustomName (name: string) {
 
-  const regex = /^[a-zA-Z0-9-]+$/
+  const regex = /^[\w\s.-ñáéíóúÁÉÍÓÚ]+$/
 
   return regex.test(name) &&
     name.length > MIN_CUSTOM_LIST_NAME_LENGTH &&
