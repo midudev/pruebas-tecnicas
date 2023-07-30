@@ -18,7 +18,7 @@ interface BookContextData {
 const BookSavedContext = React.createContext<BookContextData | undefined>(
   undefined
 );
-const items = JSON.parse(localStorage.getItem("savedBooks")) ?? [];
+const items = JSON.parse(localStorage.getItem("savedBooks") as string) ?? [];
 
 const BookSavedProvider: React.FC<BookProviderProps> = ({ children }) => {
   const [books, setBooks] = React.useState<BookData[]>(items);
