@@ -66,22 +66,7 @@ export const getImageAverageColor = (imageUrl: string): Promise<string> => {
 }
 
 export function removeTildes (text: string) {
-  const tildes = {
-    á: 'a',
-    é: 'e',
-    í: 'i',
-    ó: 'o',
-    ú: 'u',
-    Á: 'A',
-    É: 'E',
-    Í: 'I',
-    Ó: 'O',
-    Ú: 'U',
-    ü: 'u',
-    Ü: 'U',
-    ñ: 'n',
-    Ñ: 'N'
-  }
+  const tildes = { á: 'a', é: 'e', í: 'i', ó: 'o', ú: 'u', Á: 'A', É: 'E', Í: 'I', Ó: 'O', Ú: 'U', ü: 'u', Ü: 'U', ñ: 'n', Ñ: 'N'}
 
   return text.replace(/[áéíóúÁÉÍÓÚüÜñÑ]/g, function (letter) {
     /* @ts-expect-error */
