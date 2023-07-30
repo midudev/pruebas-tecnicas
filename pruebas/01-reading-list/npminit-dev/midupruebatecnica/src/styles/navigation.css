@@ -11,6 +11,14 @@
   color: transparent;
 }
 
+.selected {
+  display: block
+}
+
+.unselected {
+  display: none;
+}
+
 #content {
   padding: 10px 2px;
   min-height: calc(100vh - 46px);

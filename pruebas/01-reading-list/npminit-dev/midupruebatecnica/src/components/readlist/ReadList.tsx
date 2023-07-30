@@ -1,5 +1,5 @@
 import { Col, Row } from "antd";
-import { useContext } from 'react'
+import { useContext, useEffect, useRef } from 'react';
 import ReadListActions from "./ReadListActions";
 import ReadListSorting from './ReadListSorting';
 import '../../styles/readlist/readlist.css'
@@ -9,8 +9,9 @@ import { Dispatch, SetStateAction } from 'react';
 import { SectionSelected } from '../../types/navigation';
 import { GlobalContext } from "../contexts/GlobalContext";
 
+
 type props = {
-  setItemSelected: Dispatch<SetStateAction<SectionSelected>>
+  setItemSelected: Dispatch<SetStateAction<SectionSelected>>,
 }
 
 export default function ReadList({ setItemSelected }: props): JSX.Element {
@@ -35,3 +36,4 @@ export default function ReadList({ setItemSelected }: props): JSX.Element {
     </section>
   );
 }
+

@@ -1,13 +1,17 @@
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { useContext } from "react";
+import { useContext, Dispatch, SetStateAction } from 'react';
 import { DragDropContext, DragUpdate, Draggable, Droppable } from "react-beautiful-dnd";
 import { GlobalContext } from "../contexts/GlobalContext";
 import { Col } from "antd";
 import { Typography } from 'antd'
 import BookToRead from "./BookToRead";
 import '../../styles/readlist/interestlist.css'
-import { props } from "../booklist/BookList";
+import { SectionSelected } from "../../types/navigation";
 const { Text } = Typography
+
+type props = {
+  setItemSelected: Dispatch<SetStateAction<SectionSelected>>
+}
 
 export default function InterestList({ setItemSelected }: props): JSX.Element {
 

@@ -24,6 +24,10 @@ export default function BookToRead({ ISBN, read }: props): JSX.Element {
     setbookData(getBooksArray(booksdata).find(book => book.ISBN === ISBN))
   }, [ISBN, read])
 
+  useEffect(() => {
+    console.log('loaded data')
+  }, [ISBN, read])
+
   return (
     <div>
       <Row className={`BookToRead-container ${colorMode} ${read ? 'BookToRead-read' : 'BookToRead-pending'}`}
