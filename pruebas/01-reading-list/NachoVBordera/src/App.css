@@ -25,7 +25,7 @@
 
 header {
   display: flex;
-  justify-content: space-between;
+
   text-align: center;
   align-items: center;
   border-top: 5px solid black;
@@ -34,14 +34,96 @@ header {
 }
 
 header > h1 {
-  border-right: 5px solid black;
   background-color: #d9d9d9;
+  width: 60%;
+  border-right: 5px solid black;
   font-family: Basteleur;
   font-weight: bold;
-  font-size: 4.2rem;
+  font-size: 5rem;
+
+  padding: 0 2rem;
+}
+.savedUi {
+  margin: 0 auto;
+  width: max-content;
+  height: 100%;
+  display: flex;
+  font-weight: bolder;
+  font-size: 3rem;
   padding: 0 2rem;
 }
 
+.savedUi > span:nth-child(1) {
+  background-color: #dd7dff;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid black;
+  box-shadow: 4px 4px 0 0;
+}
+
+.savedUi > span:nth-child(2) {
+  background-color: #fff700;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid black;
+  box-shadow: 4px 4px 0 0;
+  transform: rotate(12deg);
+  z-index: 1;
+}
+
+.savedUi > span:nth-child(3) {
+  background-color: #00ff75;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid black;
+  box-shadow: 4px 4px 0 0;
+}
+
+.savedUi > span:nth-child(4) {
+  background-color: #ff5e5e;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid black;
+  box-shadow: 4px 4px 0 0;
+  transform: rotate(12deg);
+}
+
+.savedUi > span:nth-child(5) {
+  background-color: #dd7dff;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid black;
+  box-shadow: 4px 4px 0 0;
+  transform: rotate(-12deg);
+}
+
+.savedUiNumber {
+  background-color: #00ff75;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid black;
+  box-shadow: 4px 4px 0 0;
+  margin-left: 3rem;
+  transform: rotate(12deg);
+}
 .booksListContainer {
   background-color: #e4cdcd;
   border: 5px solid black;
@@ -203,6 +285,7 @@ header > h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: visible;
 }
 
 .SabedBooks > ul {
@@ -234,7 +317,7 @@ header > h1 {
   height: 2rem;
 }
 
-.SabedBooks > ul > li > span {
+.SabedBooks > ul > li > button {
   user-select: none;
   display: flex;
   justify-content: center;

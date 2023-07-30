@@ -19,11 +19,11 @@ function SavedBooksList() {
     "#39DBFF",
     "#FFB443",
   ];
+  console.log(localStorage);
 
   return (
     <>
       <section className="SabedBooks">
-        <h2>saved</h2>
         <ul>
           {books?.map((book: BookData, i) => (
             <li
@@ -33,7 +33,14 @@ function SavedBooksList() {
               key={book.ISBN}
             >
               <p>{book.title}</p>
-              <span onClick={() => removeBook(book.ISBN)}>X</span>
+              <button
+                style={{
+                  backgroundColor: randomColors[i - 1],
+                }}
+                onClick={() => removeBook(book.ISBN)}
+              >
+                X
+              </button>
             </li>
           ))}
         </ul>

@@ -4,7 +4,8 @@ import { BookContext } from "../../context/BookContext";
 function SearchSection() {
   const { filter, setFilter, genere, setGenere, setPages } =
     React.useContext(BookContext);
-  const handlerClickReset = () => {
+  const handlerClickReset = (e: any) => {
+    e.preventDefault();
     setFilter("");
     setPages(0);
     setGenere("");
@@ -58,7 +59,7 @@ function SearchSection() {
             </select>
           </li>
           <li>
-            <button onClick={() => handlerClickReset()}>RESET</button>
+            <button onClick={(e) => handlerClickReset(e)}>RESET</button>
           </li>
         </ul>
       </form>

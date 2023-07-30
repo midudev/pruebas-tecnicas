@@ -18,18 +18,23 @@ interface BookContextData {
 const BookSavedContext = React.createContext<BookContextData | undefined>(
   undefined
 );
+const items = JSON.parse(localStorage.getItem("savedBooks")) ?? [];
 
 const BookSavedProvider: React.FC<BookProviderProps> = ({ children }) => {
-  const [books, setBooks] = React.useState<BookData[]>([]);
+  const [books, setBooks] = React.useState<BookData[]>(items);
 
   const addBook = (book: BookData) => {
     if (!books.some((existingBook) => existingBook.ISBN === book.ISBN)) {
       setBooks((prevBooks) => [...prevBooks, book]);
+      localStorage.setItem("savedBooks", JSON.stringify([...books, book]));
     }
   };
 
   const removeBook = (ISBN: string) => {
     setBooks((prevBooks) => prevBooks.filter((book) => book.ISBN !== ISBN));
+    localStorage.length === 1
+      ? localStorage.setItem("savedBooks", JSON.stringify([]))
+      : localStorage.setItem("savedBooks", JSON.stringify(books));
   };
 
   return (
