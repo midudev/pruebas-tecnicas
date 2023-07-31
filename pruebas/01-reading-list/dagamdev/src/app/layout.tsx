@@ -9,7 +9,11 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Books list',
-  description: 'Aplicacion que lista los libros, puedes seleccionar los libros que leeras.',
+  description: 'Aplicación que lista los libros, puedes seleccionar los libros que leerás, filtrar y ordenar.',
+  themeColor: '#1c2435',
+  openGraph: {
+    images: '/screenshot.png'
+  }
 }
 
 export default function RootLayout({
