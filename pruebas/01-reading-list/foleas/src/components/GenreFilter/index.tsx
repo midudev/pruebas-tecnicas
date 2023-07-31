@@ -10,7 +10,7 @@ const GenderFilter = () => {
   };
 
   return (
-    <div>
+    <div className="flex-1 md:flex-auto">
       <label
         htmlFor="genre"
         className={`block mb-2 text-sm font-medium ${textColorAnimationClass}`}

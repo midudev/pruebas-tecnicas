@@ -5,7 +5,7 @@ const SearchFilter = () => {
   const { search, changeSearch } = useStore();
 
   return (
-    <div className="w-60">
+    <div className="w-full lg:w-60">
       <label
         htmlFor="search"
         className={`block mb-2 text-sm font-medium ${textColorAnimationClass}`}

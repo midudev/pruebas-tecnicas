@@ -36,6 +36,7 @@ const ColorThemeSwitch = () => {
           type="checkbox"
           className="sr-only peer"
           value={isDark}
+          checked={isDark ? true : false}
           onChange={({ target }) => toggleDarkMode(target.checked)}
         />
 

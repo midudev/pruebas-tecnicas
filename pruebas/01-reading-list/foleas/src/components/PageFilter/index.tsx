@@ -5,7 +5,7 @@ const PageFilter = () => {
   const { page, changePage, perPage, filteredBooks } = useStore();
 
   return (
-    <div>
+    <div className="flex-1 md:flex-auto">
       <label
         htmlFor="paginator"
         className={`block mb-2 text-sm font-medium text-gray-900 dark:text-white ${textColorAnimationClass}`}

@@ -67,7 +67,7 @@ function App() {
               >{`${selectedBooks.length} en la lista de lectura`}</h3>
             )}
 
-            <div className="filters-wrapper mb-5 flex gap-10 align-center">
+            <div className="filters-wrapper mb-5 flex flex-wrap gap-5 lg:gap-10 align-center">
               <PageFilter />
               <GenreFilter />
               <SearchFilter />
