@@ -6,16 +6,22 @@
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
   --foreground: #000000;
-  --background-start: 214, 219, 220;
-  --background-end: #fff;
+  --background-start: #d6dbdc;
+  --background-end: #82a7d8;
 
-  --callout-rgb: 238, 240, 241;
-  --callout-border-rgb: 172, 175, 176;
-  --card-rgb: 180, 185, 188;
-  --card-border-rgb: 131, 134, 135;
+  --callout: #eef0f1;
+  --callout-border: #acafb0;
+  --card: #b4b9bc;
+  --card-border: #838687;
+
+  --accent: #1655dd;
+  --header-shadow: 0 3px 10px #747474;
+  --border: #555555;
+  --text: #b4b4b4;
+  --button-shadow: -2px 3px 6px #202020;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground: #f0f0f0;
     --background-start: #1c2435;
@@ -32,7 +38,7 @@
     --text: #b4b4b4;
     --button-shadow: -2px 3px 6px #202020;
   }
-}
+} */
 
 * {
   margin: 0;
