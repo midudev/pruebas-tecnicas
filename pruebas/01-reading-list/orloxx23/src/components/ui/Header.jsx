@@ -20,6 +20,7 @@ export default function Header() {
     sortBooks,
     setPages,
     maxPages,
+    minPages,
   } = useContext(BooksContext);
 
   // Obtener función del contexto CoreContext
@@ -89,7 +90,7 @@ export default function Header() {
             <div className="hidden md:flex gap-4">
               <SearchBar onChange={filterBooksByQuery} />
               <SortOptions onChange={sortBooks} />
-              <FilterPages onChange={setPages} maxPages={maxPages} />
+              <FilterPages onChange={setPages} minPages={minPages} maxPages={maxPages} />
             </div>
           </div>
         </div>
@@ -99,7 +100,7 @@ export default function Header() {
       <MobileHeaderOptions
         active={optionsOpen}
         functions={{ filterBooksByQuery, sortBooks, setPages }}
-        params={{ maxPages }}
+        params={{ minPages, maxPages }}
       />
     </header>
   );
@@ -145,7 +146,7 @@ function MobileHeaderOptions({ active, functions, params }) {
       >
         <SearchBar onChange={functions.filterBooksByQuery} />
         <SortOptions onChange={functions.sortBooks} />
-        <FilterPages onChange={functions.setPages} maxPages={params.maxPages} />
+        <FilterPages onChange={functions.setPages} minPages={params.minPages} maxPages={params.maxPages} />
       </div>
     </>
   );
@@ -193,11 +194,12 @@ function SortOptions({ onChange }) {
 /**
  * Componente FilterPages
  * @param {function} onChange - Función para manejar el cambio en el filtro de número de páginas.
+ * @param {number} minPages - Número mínimo de páginas.
  * @param {number} maxPages - Número máximo de páginas.
  * @returns {JSX.Element} - Elemento JSX que representa el filtro por número de páginas en el encabezado.
  */
-function FilterPages({ onChange, maxPages }) {
-  const [pages, setPages] = React.useState(0);
+function FilterPages({ onChange, minPages, maxPages }) {
+  const [pages, setPages] = React.useState(maxPages || 0);
 
   useEffect(() => {
     onChange(pages);
@@ -208,7 +210,7 @@ function FilterPages({ onChange, maxPages }) {
       <input
         className="border-none outline-none appearance-none w-full h-2 bg-darkText rounded-lg cursor-ew-resize"
         type="range"
-        min={0}
+        min={minPages}
         max={maxPages}
         value={pages}
         onChange={(e) => {
@@ -218,6 +220,7 @@ function FilterPages({ onChange, maxPages }) {
       <input
         type="number"
         className="w-full text-center bg-darkText text-text rounded-lg border-none outline-none "
+        min={minPages}
         max={maxPages}
         value={pages}
         onChange={(e) => setPages(e.target.value)}

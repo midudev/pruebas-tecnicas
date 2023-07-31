@@ -19,6 +19,7 @@ export const BooksProvider = ({ children }) => {
 
   // Cálculo del número máximo de páginas
   const maxPages = Math.max(...myBooks.library.map((item) => item.book.pages));
+  const minPages = Math.min(...myBooks.library.map((item) => item.book.pages));
 
   // Efecto de montaje: inicializar lista de libros
   useEffect(() => {
@@ -159,6 +160,7 @@ export const BooksProvider = ({ children }) => {
         query,
         setPages,
         maxPages,
+        minPages,
       }}
     >
       {children}

@@ -8,7 +8,7 @@ export default function Document() {
   return (
     <Html lang="es">
       <Head />
-      <body className="bg-background">
+      <body className="bg-background text-white">
         <Main />
         <NextScript />
       </body>
