@@ -7,6 +7,7 @@ import { ListService } from 'src/app/shared/services/list.service';
   selector: 'app-reading-list',
   template: `
     <h2>Mi lista de lectura</h2>
+    <p>Libros en mi lista: {{quantity()}}</p>
     <div *ngFor="let book of list()">
       <h1>{{ book.title }}</h1>
       <button (click)="remove(book)">Quitar</button>
@@ -22,6 +23,7 @@ export class ReadingListComponent {
   bookService = inject(BookService);
   listService = inject(ListService);
   list = computed(() => this.listService.list());
+  quantity = computed(() => this.listService.quantity());
 
   remove(item: Book) {
     this.listService.remove$.next(item);

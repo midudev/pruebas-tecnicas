@@ -6,9 +6,9 @@ import { ListService } from 'src/app/shared/services/list.service';
 @Component({
   selector: 'app-book',
   template: `
-    <article [ngStyle]="style">
+    <article *ngFor="let book of books">
       <h1>Libro: {{book.title}}</h1>
-      <button (click)="add()">Añadir</button>
+      <button (click)="add(book)">Añadir</button>
     </article>
   `,
   styles: [
@@ -23,13 +23,10 @@ import { ListService } from 'src/app/shared/services/list.service';
 export class BookComponent {
   bookService = inject(BookService);
   listService = inject(ListService);
-  @Input() book!: Book;
-  style = {
-    'background': '#f00',
-  }
+  @Input() books!: Book[];
 
-  add() {
-    this.listService.add$.next(this.book);
-    this.bookService.remove$.next(this.book.title)
+  add(book: Book) {
+    this.listService.add$.next(book);
+    this.bookService.remove$.next(book.title);
   }
 }

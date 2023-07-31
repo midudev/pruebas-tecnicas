@@ -4,9 +4,9 @@ import { BookService } from 'src/app/shared/services/book.service';
 @Component({
   selector: 'app-books',
   template: `
-    <div>
-      <app-book *ngFor="let book of books()" [book]="book"></app-book>
-    </div>
+    <h2>Libros disponibles {{bookService.quantity()}}</h2>
+    <app-filter [control]="bookService.filterControl" [genreFilter]="bookService.genreControl"></app-filter>
+    <app-book [books]="bookService.booksByGenre()"></app-book>
   `,
   styles: [
     `
@@ -20,5 +20,4 @@ import { BookService } from 'src/app/shared/services/book.service';
 })
 export class BooksComponent{
   bookService = inject(BookService);
-  books = computed(() => this.bookService.books());
 }
