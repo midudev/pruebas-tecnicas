@@ -41,9 +41,7 @@ function App() {
   }, [currentGenre, search, books, selectedBooks]);
 
   return (
-    <main className="p-5 box-border flex flex-wrap w-screen h-screen overflow-hidden gap-5 transition-bg-color duration-300 ease-in-out dark:bg-slate-900">
-      <ColorThemeSwitch />
-
+    <main className="p-5 box-border md:flex flex-wrap w-screen min-h-screen md:h-screen overflow-hidden gap-5 transition-bg-color duration-300 ease-in-out dark:bg-slate-900">
       {loading ? (
         <div className="flex flex-wrap justify-center self-center w-screen">
           <div
@@ -57,7 +55,8 @@ function App() {
         </div>
       ) : (
         <>
-          <div className="box-border p-10 pt-0 available-books-wrapper w-4/5 overflow-y-auto max-h-full">
+          <div className="relative box-border p-10 pt-0 available-books-wrapper md:w-8/12 xl:w-9/12 overflow-y-auto max-h-full">
+            <ColorThemeSwitch />
             <h1
               className={`text-3xl font-bold mb-5 ${textColorAnimationClass}`}
             >{`${books.length - selectedBooks.length} libros disponibles`}</h1>
@@ -107,7 +106,7 @@ function App() {
                 >
                   Lista de Lectura
                 </h2>
-                <div className="grid grid-cols-2 gap-10 pb-4">
+                <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-2 gap-10 pb-4">
                   {selectedBooks.map((v, i) => {
                     const selectedBook = books.find(
                       ({ book: { ISBN } }) => ISBN === v
