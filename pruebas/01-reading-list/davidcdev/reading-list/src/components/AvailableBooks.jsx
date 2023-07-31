@@ -11,14 +11,14 @@ export function AvailableBooks ({ available, filterByGenre, filterByPages, handl
         mb='60px'
       >
         {filterByGenre === '' && filterByPages.length === 0
-          ? available.length + ' books available'
+          ? available.length + ' results'
           : filterByGenre !== '' && filterByPages.length === 0
-            ? available.filter((el) => el.book.genre === filterByGenre).length + ' books available'
+            ? available.filter((el) => el.book.genre === filterByGenre).length + ' results'
             : filterByGenre === '' && filterByPages.length === 2
-              ? available.filter((el) => el.book.pages >= filterByPages[0] && el.book.pages <= filterByPages[1]).length + ' books available'
+              ? available.filter((el) => el.book.pages >= filterByPages[0] && el.book.pages <= filterByPages[1]).length + ' results'
               : filterByGenre !== '' && filterByPages.length === 2
-                ? available.filter((el) => el.book.genre === filterByGenre && el.book.pages >= filterByPages[0] && el.book.pages <= filterByPages[1]).length + ' books available'
-                : available.length + ' books available'}
+                ? available.filter((el) => el.book.genre === filterByGenre && el.book.pages >= filterByPages[0] && el.book.pages <= filterByPages[1]).length + ' results'
+                : available.length + ' results'}
 
       </Text>
       <HStack mb='60px' wrap='wrap' spacing='6'>
