@@ -3,16 +3,19 @@ import Books from '@/components/book/BooksList'
 import Filters from '@/components/filter/Filters'
 import BooksProvider from '@/providers/BooksProvider'
 import FiltersProvider from '@/providers/FiltersProvider'
+import OrganizeProvider from '@/providers/Organize.provider'
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <BooksProvider>
-        <FiltersProvider>
-          <Filters />
-          <Books />
-        </FiltersProvider>
-      </BooksProvider>
+      <FiltersProvider>
+        <OrganizeProvider>
+          <BooksProvider>
+            <Filters />
+            <Books />
+          </BooksProvider>
+        </OrganizeProvider>
+      </FiltersProvider>
     </main>
   )
 }
