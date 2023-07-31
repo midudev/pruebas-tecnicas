@@ -13,7 +13,7 @@ const BookList = () => {
   }, [selectedGenre, booklist]);
 
   return (
-    <div style={{ border: '5px solid #ffff55' }}>
+    <div>
       <h2>Book List</h2>
       {
         booklist.length > 0 ? (

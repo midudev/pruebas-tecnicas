@@ -14,7 +14,7 @@ const Filter = () => {
   }, []);
 
   return (
-    <div style={{ border: '5px solid #9055ff' }}>
+    <div>
       <h2>Filter</h2>
       <p>Genero</p>
       <select name="genere" onChange={ updateGenre }>

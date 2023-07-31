@@ -84,6 +84,7 @@ export const DataProvider = ({ children }) => {
     setLecturelist(createArrayOfBooks(parseItemFromLocalStorageToArray('lecturelist')));
   }, []);
 
+  // this const will be converted to an object of filters to be used in a more complex filter system
   const genres = [];
   genres.push('Todos');
   books.forEach(({ book }) => {

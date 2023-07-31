@@ -1,14 +1,29 @@
 import React, { useContext } from 'react';
 import { DataContext } from '../context/DataContext';
 import Book from './Book';
+import styled from 'styled-components';
 
 const LectureList = () => {
 
   const { lecturelist } = useContext(DataContext);
 
+  const WraperLectureList = styled.div`
+  background-color: #ddf;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 1.2rem;
+    `;
+
   return (
-    <div style={{ border: '5px solid #f55' }}>
-      <h2>Lecture List</h2>
+    <div>
+      {
+        true ? (
+          <WraperLectureList>🔖</WraperLectureList>
+        ) : (
+          null
+        )
+      }
+      {/* <h2>Lecture List</h2>
       <p>Libros en lista: <b>{lecturelist.length}</b></p>
       {
         lecturelist.length > 0 ? (
@@ -24,7 +39,7 @@ const LectureList = () => {
         ) : (
           <p>No hay libros 😢</p>
         )
-      }
+      } */}
     </div>
   );
 };

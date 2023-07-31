@@ -26,7 +26,7 @@ const Book = ({ entireBook, title, author, isbn, cover }) => {
   };
 
   return (
-    <div style={{ border: '5px solid #b5b5b5' }}>
+    <div>
       <h3>Book</h3>
       <img src={cover} alt={title}
         style={{
