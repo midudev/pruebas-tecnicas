@@ -6,5 +6,6 @@ export const GENDERS: readonly string[] = [
 ]
 
 export const LOCAL_KEYS = {
-  READING_BOOKS: 'reading_books'
+  READING_BOOKS: 'reading_books',
+  PRIORITY_BOOKS: 'priority_books'
 } as const
