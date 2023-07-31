@@ -26,9 +26,9 @@ const ColorThemeSwitch = () => {
   const switcherClass = "relative w-11 h-6 rounded-full";
 
   const switcherClassLight =
-    "peer-focus:ring-slate-300 bg-gray-200 peer-checked:bg-slate-600";
+    "peer-focus:ring-slate-800 bg-gray-200 peer-checked:bg-slate-600";
   const switcherClassDark =
-    "dark:peer-focus:ring-slate-800 dark:bg-gray-700 dark:border-slate-600";
+    "dark:peer-focus:ring-gray-300 dark:bg-gray-700 dark:border-slate-600";
   return (
     <div>
       <label className="relative inline-flex items-center mr-5 cursor-pointer">

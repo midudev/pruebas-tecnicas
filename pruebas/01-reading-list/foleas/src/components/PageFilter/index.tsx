@@ -20,7 +20,7 @@ const PageFilter = () => {
         max={Math.ceil(filteredBooks.length / perPage)}
         value={page}
         onChange={({ target }) => changePage(parseInt(target.value))}
-        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+        className="transition duration-300 w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
       />
     </div>
   );

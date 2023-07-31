@@ -97,7 +97,7 @@ function App() {
           <div
             className={`lecture-books-wrapper flex-1 overflow-y-auto max-h-full ${
               selectedBooks.length &&
-              "border-black border bg-gray-300 rounded-md"
+              "transition duration-300 border-black border bg-gray-300 dark:border-white dark:bg-gray-800 rounded-md"
             }`}
           >
             {selectedBooks.length > 0 && (
