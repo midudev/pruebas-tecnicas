@@ -3,6 +3,11 @@
   margin: 0 auto;
   padding: 20px;
 
+  & header{
+    display: flex;
+    justify-content: space-between;
+  }
+
   & > strong{
     margin: 20px;
   }
@@ -19,43 +24,54 @@
 .book{
   width: 160px;
   position: relative;
-  border-radius: 8px;  
+  border-radius: 10px;  
   
   --Book-check: #fad815;
+  --Book-icon: #d6d6d6;
+  --Btn-color: #535353;
   
   &:hover &-image{
     box-shadow: -6px 6px 20px #111111;
   }
 
-  &:hover &-mark{
-    opacity: 0.9;
-    
-    &.inList{
-      opacity: 1;
-      height: 40px;
-    }
+  &:hover &-options{
+    opacity: 1;
+  }
+
+  &:hover &-option{
+    border-color: #111111;
+    background-color: var(--Btn-color);
+  }
+
+  &-options{
+    top: 0;
+    right: 0;
+    z-index: 4;
+    opacity: 60%;
+    padding: 3px;
+    position: absolute;
   }
   
-  &-mark{
-    top: 0;
-    right: 8px;
-    width: 20px;
-    height: 20px;
+  &-option{
+    margin: 5px;
     cursor: pointer;
-    opacity: 0;
-    z-index: 4;
-    position: absolute;
-    transition: height 0.4s, opacity 0.4s;
+    border: 1px solid transparent;
+    padding: 4px;
+    display: flex;
+    overflow: hidden;
+    transition: opacity 0.3s, box-shadow 0.3s, border-color 0.3s, background-color 0.3s;
+    border-radius: 4px;
     
-    &-icon{
-      height: 100%;
-      clip-path: polygon(0% 0%, 0% 100%, 50% calc(100% - 10px), 100% 100%, 100% 0%);
-      transition: background-color 0.3s;
-      background-color: #d6d6d6;
-      
-      .inList &{
-        background-color: var(--Book-check);
-      }
+    &:hover{
+      box-shadow: var(--button-shadow);
+    }
+
+    &.active{
+      color: var(--Book-check);
+      width: auto;
+      padding: 4px;
+      border-color: transparent;
+      background-color: transparent;
     }
 
     &.inList{
@@ -93,5 +109,80 @@
   
   &-info{
     padding: 10px 6px 10px 0;
+  }
+}
+
+.organize{
+  position: relative;
+
+  --Btn-color: #535353;
+  
+  &-toggle{
+    cursor: pointer;
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+
+    & span{
+      color: var(--text);
+    }
+    
+    & svg{
+      transform: rotate(180deg);
+      transition: transform 0.3s ease;
+    }
+    
+    &.open svg{
+      transform: rotate(270deg);
+
+    }
+  }
+
+  &-options{
+    width: 100%;
+    height: 0;
+    z-index: 10;
+    padding-left: 20px;
+    overflow: hidden;
+    position: absolute;
+    box-shadow: var(--button-shadow);
+    transition: height 0.4s, padding 0.3s;
+    background-color: var(--background-start);
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+
+    &.open{
+      padding: 2px 0 0 20px;
+
+      &::after{
+        top: 6px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        content: '';
+        position: absolute;
+        background-color: var(--border);
+      }
+    }
+  }
+
+  &-option{
+    color: var(--text);
+    cursor: pointer;
+    margin: 6px;
+    padding: 4px 4px 4px 10px;
+    border-radius: 4px;
+
+    &::first-letter{
+      text-transform: uppercase;
+    }
+    
+    &:hover{
+      background-color: var(--Btn-color);
+    }
+
+    &.selected{
+      color: var(--foreground);
+    }
   }
 }
