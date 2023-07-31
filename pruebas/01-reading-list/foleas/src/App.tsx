@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useStore } from "./store/store";
 import BookCard from "./components/BookCard";
 import PageFilter from "./components/PageFilter";
@@ -23,6 +23,8 @@ function App() {
   } = useStore();
 
   const { loading } = UseGetData("./books.json");
+
+  const [lastBookClicked, setLastBookClicked] = useState<string>("");
 
   useEffect(() => {
     setFilteredBooks(
@@ -80,12 +82,13 @@ function App() {
                   return (
                     <BookCard
                       key={ISBN}
-                      index={i}
+                      index={lastBookClicked === ISBN ? 0 : i}
                       title={title}
                       imageUrl={cover}
-                      onClickHandler={() =>
-                        setSelectedBooks([...selectedBooks, ISBN])
-                      }
+                      onClickHandler={() => {
+                        setLastBookClicked(ISBN);
+                        setSelectedBooks([...selectedBooks, ISBN]);
+                      }}
                     />
                   );
                 })}
@@ -114,11 +117,12 @@ function App() {
                     return (
                       <BookCard
                         key={ISBN}
-                        index={i}
+                        index={lastBookClicked === ISBN ? 0 : i}
                         title={title}
                         imageUrl={cover}
                         withRemoveBnt={true}
                         onClickHandler={() => {
+                          setLastBookClicked(ISBN);
                           setSelectedBooks(
                             selectedBooks.filter((v) => v !== ISBN)
                           );
