@@ -23,7 +23,6 @@ export default function SearcherBooks(){
       if(thisRef.current){
         if(e.target instanceof Node && !thisRef.current.contains(e.target)){
           setOpenSuggestions(false)
-          console.log('close')
         }
       }
     }
@@ -50,17 +49,6 @@ export default function SearcherBooks(){
       else if(openSuggestions) setOpenSuggestions(false)
     }
   }, [searchQuery])
-
-  // const querySuggestions = useMemo(()=> {
-  //   console.log('querySuggestions')
-  //   const isElement = books.some(s=> s.title == searchQuery)
-  //   const filteredBooks = (searchQuery.trim() && !isElement) ? books.filter(f=> f.title.toLowerCase().includes(searchQuery.toLowerCase())) : []
-    
-  //   if(filteredBooks.length) setOpenSuggestions(true)
-  //   else if(openSuggestions) setOpenSuggestions(false)
-  //   return filteredBooks.map(({title, ISBN})=> ({title, ISBN}))
-  
-  // }, [books, searchQuery])
   
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()

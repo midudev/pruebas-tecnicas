@@ -5,6 +5,7 @@
   z-index: 100;
   position: sticky;
   box-shadow: var(--header-shadow);
+  border-radius: 6px;
   margin-bottom: 20px;
 
   &_container{
@@ -25,6 +26,7 @@
 
     &-icon{
       left: 0;
+      color: var(--foreground);
       width: 40px;
       height: 100%;
       border: none;
@@ -39,6 +41,7 @@
     
     &-input{
       width: 100%;
+      color: var(--foreground);
       display: flex;
       border: none;
       outline: none;
@@ -68,6 +71,7 @@
     .open &{
       border: 1px solid var(--border);
       height: 320px;
+      box-shadow: var(--header-shadow);
       padding-top: 46px;
       padding-bottom: 10px;
     }
