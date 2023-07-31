@@ -1,3 +1,5 @@
+import { LOCAL_KEYS } from "./config"
+
 interface Author {
   name: string
   otherBooks: string[]
@@ -19,3 +21,7 @@ export interface Filters {
   pages?: number
   gender?: string
 }
+
+export type Organize = 'pages' | 'priority' | 'alphabetical'
+
+export type LocalKeys = typeof LOCAL_KEYS[keyof typeof LOCAL_KEYS]
