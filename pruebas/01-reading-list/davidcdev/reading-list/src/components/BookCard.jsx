@@ -6,7 +6,7 @@ export function AvailableBookCard ({ el, handleAddClick, crypto }) {
       w='xs'
       align='center'
       variant='unstyled'
-      mb='20px'
+      mb='60px'
       key={crypto.randomUUID()}
     >
       <CardBody
@@ -44,7 +44,7 @@ export function MyListBookCard ({ el, handleRemoveClick, crypto }) {
       w='xs'
       align='center'
       variant='unstyled'
-      mb='20px'
+      mb='60px'
       key={crypto.randomUUID()}
     >
       <CardBody

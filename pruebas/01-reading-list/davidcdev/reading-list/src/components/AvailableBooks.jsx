@@ -4,7 +4,7 @@ import { Flex, HStack, Heading, Text } from '@chakra-ui/react'
 
 export function AvailableBooks ({ available, filterByGenre, filterByPages, handleAddClick, crypto }) {
   return (
-    <Flex flexDir='column' p='80px'>
+    <Flex flexDir='column' py='72px' px='80px'>
       <Heading as='h2' size='lg' pl='14' mb='20px'>Available books</Heading>
       <Text
         pl='14'
