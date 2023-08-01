@@ -1,3 +1,2 @@
 [build]
-  command = "next build"
-  publish = "MY-APP/out"
+  publish = "pruebas/01-reading-list/manup94/my-app"
