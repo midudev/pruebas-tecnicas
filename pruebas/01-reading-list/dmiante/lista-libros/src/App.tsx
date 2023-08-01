@@ -3,13 +3,15 @@ import Listbook from './components/Listbook'
 import { useBooksContext } from './context/BooksContext'
 import ReadingList from './components/ReadingList'
 import FilterBook from './components/FilterBook'
+import SearchBar from './components/SearchBar'
 
 function App () {
-  const { readingList } = useBooksContext()
+  const { readingList, search, onChangeSearch, handleSubmit } = useBooksContext()
   return (
     <>
       <Container>
         <Header>
+          <SearchBar search={search} onChangeSearch={onChangeSearch} handleSubmit={handleSubmit} />
           <h1 className='headline'>Libroverso</h1>
         </Header>
         {

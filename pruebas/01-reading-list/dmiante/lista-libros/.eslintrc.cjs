@@ -12,10 +12,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: [
-      './tsconfig.json',
-      './playwright.config.ts'
-    ]
+    project: ['./tsconfig.json']
   },
   plugins: [
     'react'
