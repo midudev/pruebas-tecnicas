@@ -1,15 +1,8 @@
-"use client";
-import { CacheProvider } from "@chakra-ui/next-js";
-import { ChakraProvider } from "@chakra-ui/react";
-import GlobalState, { dataDefault } from "@/lib/globalContext";
 import { useState } from "react";
 import type { BookType, LibraryType } from "@/types/data";
-import { ColorModeScript } from "@chakra-ui/react";
-import { extendTheme } from "@chakra-ui/react";
+import { dataDefault } from "@/lib/globalContext";
 
-export const theme = extendTheme({});
-
-export default function Providers({ children }: { children: React.ReactNode }) {
+const useMainState = () => {
   const [globalState, setGlobalState] = useState(dataDefault);
 
   const addRead = (book: BookType) => {
@@ -95,25 +88,13 @@ export default function Providers({ children }: { children: React.ReactNode }) {
       isFilter: [true, genre],
     });
   };
+  return {
+    data: globalState,
+    addLibrary,
+    addRead,
+    setGlobalState,
+    filter,
+  };
+};
 
-  return (
-    <>
-      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-      <CacheProvider>
-        <ChakraProvider theme={theme}>
-          <GlobalState.Provider
-            value={{
-              data: globalState,
-              addLibrary,
-              addRead,
-              setGlobalState,
-              filter,
-            }}
-          >
-            {children}
-          </GlobalState.Provider>
-        </ChakraProvider>
-      </CacheProvider>
-    </>
-  );
-}
+export default useMainState;
