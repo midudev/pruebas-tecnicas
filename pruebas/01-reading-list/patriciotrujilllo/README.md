@@ -1,4 +1,4 @@
-##_Aplicación de Lista de Libros
+#Aplicación de Lista de Libros
 **Intalación:**
 ```place
 npm install
