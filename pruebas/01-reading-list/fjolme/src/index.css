@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+article button {
+  position: absolute;
+  opacity: 0.0;
+  top: 0rem;
+  right: 0.5rem;
+  transition-duration: 150ms;
+}
+
+article:hover button {
+  opacity: 1;
+  top: 0.5rem;
+}
