@@ -1,0 +1,783 @@
+.editorialBg {
+  position: fixed;
+  inset: 0;
+  background-image: url(/editorial-bg.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: brightness(.7);
+}
+
+.header {
+  padding: 0 1rem;
+  position: fixed;
+  width: 100%;
+  height: 8rem;
+  display: flex;
+  z-index: 100;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.nav ul {
+  display: flex;
+  gap: 3rem;
+}
+
+.logo {
+  font-weight: 400;
+  font-size: 2rem;
+  font-family: var(--font-jost);
+  color: var(--font-color-white);
+  text-transform: uppercase;
+  max-width: max-content;
+  background-color: unset;
+  border: unset;
+}
+
+@media (min-width: 1361px) {
+  .logo {
+    font-size: 3rem;
+  }
+}
+
+.main {
+  height: 100vh;
+  min-height: 50rem;
+  display: grid;
+  grid-template-columns: 100% 100%;
+  position: relative;
+  overflow-x: hidden;
+  padding: 8rem 1rem;
+}
+
+@media (min-width: 1361px) {
+  .main {
+    grid-template-columns: 100% 50%;
+  }
+}
+
+.explore {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: max-content max-content 10rem;
+  padding: 2rem 2rem 1rem 2rem;
+  column-gap: 2rem;
+  border-top: 3px rgb(255 255 255 / 1) solid;
+}
+
+.pathIsLists .explore {
+  display: none;
+}
+
+@media (min-width: 1361px) {
+  .explore {
+    grid-template-rows: max-content;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 5rem 1rem 5rem;
+  }
+}
+
+.explore::before {
+  content: '';
+  display: block;
+  position: absolute;
+  background-color: rgb(255 255 255 / 1);
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+}
+
+.divisorLine {
+  display: block;
+  height: 1px;
+  background-color: rgb(255 255 255 / .2);
+}
+.divisorLine.withinList {
+  margin: 0 3rem;
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+@media (min-width: 1361px) {
+  .mainContent {
+    flex-direction: row;
+  }
+}
+
+.mainContent .editorialInfo {
+  margin: 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  left: 0;
+  pointer-events: auto;
+  opacity: 1;
+
+  transition: opacity .3s ease;
+}
+
+@media (min-width: 1361px) {
+  .mainContent .editorialInfo {
+    display: block;
+    width: 45%;
+    margin: 10rem 5rem;
+  }
+}
+
+.mainContent.thereIsSelectedBook .editorialInfo {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.mainContent .editorialInfo h1 {
+  font-size: 4rem;
+}
+
+@media (min-width: 778px) {
+  .mainContent .editorialInfo h1 {
+    font-size: 9rem;
+  }
+}
+
+.mainContent .editorialInfo p {
+}
+
+.mainContent .imagePositionTarget {
+  height: 5rem;
+}
+
+@media (min-width: 1361px) {
+  .mainContent .imagePositionTarget {
+    flex: 1.5;
+    width: 30rem;
+    opacity: 0;
+  }
+}
+
+.mainContent .bookContent {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  transition: opacity .3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mainContent.thereIsSelectedBook .bookContent {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.mainContent .bookContent h3 {
+  font-size: 2.6rem;
+}
+
+.mainContent .bookContent .isbn {
+  font-size: 1.4rem;
+  color: rgb(255 255 255 / .4);
+}
+
+.mainContent .bookContent .author {
+  margin-top: 2rem;
+}
+
+.mainContent .bookContent .listBtns {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.actionListButton {
+  border-radius: 900px;
+  aspect-ratio: 1;
+  display: flex;
+  place-items: center;
+  color: var(--font-color-white);
+  background-color: rgb(0 0 0 / .1);
+  border: 1px rgb(255 255 255 / .2) solid;
+  cursor: pointer;
+  backdrop-filter: blur(20px);
+
+  transition: background-color .3s ease;
+}
+
+.mainContent .actionListButton {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mainContent.thereIsSelectedBook .actionListButton {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.actionListButton.small svg {
+  width: 18px;
+  height: 18px;
+}
+
+.actionListButton:hover {
+  background-color: rgb(255 255 255 / .1);
+}
+
+.mainContent .actionListButton.isAlready {
+  background-color: rgb(0 0 0 / .01);
+  position: relative;
+}
+
+.mainContent .actionListButton.isAlready svg {
+  opacity: .2;
+}
+
+.actionListButton.isAlready::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: green;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+}
+
+.mainContent .bookContent .synopsis {
+  color: var(--font-color-white);
+}
+
+.mainContent .bookContent p {
+  color: rgb(255 255 255 / .6);
+  font-size: 1.6rem;
+}
+
+.mainContent .bookContent p span {
+  color: var(--font-color-white);
+  font-weight: 400;
+}
+
+.booklistContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  overflow-x: scroll; 
+}
+
+@media (min-width: 1361px) {
+  .booklistContainer {
+    overflow: unset;
+  }
+}
+
+.filters {
+  grid-row: 2/3;
+  padding: 3rem 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+@media (min-width: 1361px) {
+  .filters {
+    flex-direction: row;
+    grid-row: unset;
+    grid-column: 2/3;
+    padding: 3rem 0;
+    width: 100%;
+  }
+}
+
+.filters form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+@media (min-width: 1361px) {
+  .filters form {
+    flex-direction: row;
+    align-items: center;
+    width: max-content;
+  }
+}
+
+.filters .select {
+  width: 100%;
+  border: 1px solid rgb(255 255 255 / .2);
+  background-color: rgb(255 255 255 / .05);
+  backdrop-filter: blur(10px);
+  border-radius: 5px;
+  padding: .38rem 2rem;
+  color: rgb(255 255 255 / .8);
+}
+
+@media (min-width: 1361px) {
+  .filters .select {
+    width: unset;
+  }
+}
+
+.filters .select option {
+  background-color: rgb(100 100 100 / 1);
+  color: rgb(255 255 255 / .8);
+}
+
+.filters .range {
+  color: rgb(255 255 255 / .8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  background-color: rgb(255 255 255 / .05);
+  border: 1px solid rgb(255 255 255 / .2);
+  border-radius: 5px;
+  padding: .8rem 2rem;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+@media (min-width: 1361px) {
+  .filters .range {
+    width: 20rem;
+  }
+}
+
+.filters .rangeRepresentation {
+  background-color: rgb(255 255 255 / .15);
+  height: 100%;
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.filters .range span {
+  line-height: 1;
+}
+
+.filters .range input {
+  -webkit-appearance: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.filters .range input[type="range"]::-webkit-slider-runnable-track {
+  height: 100%;
+}
+
+.filters .range input[type="range"]::-moz-range-track {
+  height: 100%;
+}
+
+.filters .range input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: rgb(255 255 255 / .5);
+  position: relative;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  border-radius: 1px;
+  width: 3px;
+  height: 60%;
+  transition: background-color .3s ease;
+}
+
+.filters .range input[type="range"]:active::-webkit-slider-thumb {
+  background-color: rgb(255 255 255 / 1);
+}
+
+.filters .range input[type="range"]::-moz-range-thumb {
+  -webkit-appearance: none;
+  background-color: rgb(255 255 255 / .5);
+  position: relative;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  border-radius: 1px;
+  width: 2px;
+  height: 60%;
+  transition: background-color .3s ease;
+}
+
+.filters .range input[type="range"]:active::-moz-range-thumb {
+  background-color: rgb(255 255 255 / 1);
+}
+
+.filters .booksInfoQuantities {
+  display: flex;
+  gap: 1rem;
+}
+
+.filters .booksInfoQuantities p {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  gap: .5rem;
+  opacity: .6;
+}
+
+.filters .booksInfoQuantities p:first-of-type {
+  opacity: 1;
+}
+
+.filters .booksInfoQuantities p span {
+  min-width: 2ch;
+  text-align: right;
+}
+
+.booklistContainer * {
+  user-select: none;
+}
+
+.booklist {
+  display: grid;
+  grid-template-rows: 5rem;
+  grid-auto-columns: 5rem;
+  grid-auto-flow: column;
+}
+
+@media (min-width: 1361px) {
+  .booklist {
+    grid-template-rows: unset;
+    grid-template-columns: repeat(6, 11vh);
+    column-gap: 1rem;
+    overflow: unset;
+  }
+}
+
+.book {
+  width: 100%;
+  pointer-events: none;
+}
+
+.book button {
+  background: unset;
+  border: unset;
+  padding: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+.book img {
+  pointer-events: auto;
+  width: 100%;
+  transform-origin: left top;
+  position: relative;
+  left: 0;
+  top: 0;
+  box-shadow: 0 0 20px 10px rgb(0 0 0 / .2);
+  border-radius: 3px;
+  cursor: pointer;
+  filter: brightness(.8);
+
+  transition: scale .4s ease,
+  box-shadow .4s ease,
+  filter .4s ease,
+  left .4s ease,
+  top .4s ease,
+  transform .4s ease,
+  border-radius .4s ease,
+  opacity .3s ease;
+}
+
+
+.book:hover img {
+  filter: brightness(1.15);
+  box-shadow: 0 0 20px 20px rgb(0 0 0 / .2);
+  z-index: 100;
+}
+
+@media (min-width: 1361px) {
+  .book:hover img {
+    transform: translate(-1rem, -3rem);
+    scale: 1.25;
+  }
+}
+
+.book img[data-selected="true"] {
+  border-radius: 0;
+  filter: brightness(1.15);
+  box-shadow: 0 0 20px 20px rgb(0 0 0 / .2);
+  z-index: 999;
+}
+
+.book img[data-selected="true"]:hover {
+  transform: unset;
+  filter: unset;
+  box-shadow: 0 0 20px 20px rgb(0 0 0 / .2);
+}
+
+.pathIsLists .book[data-book-in-list="true"] img {
+  opacity: .1;
+  pointer-events: none;
+}
+
+.booklist.pathIsLists .book {
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+.booklist.pathIsLists .book:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+
+.userLists {
+  position: relative;
+  flex-direction: column;
+  height: 100%;
+  border-top: 3px rgb(255 255 255 / 1) solid;
+  padding: 2rem 2rem 1rem 2rem;
+  gap: 3rem;
+  margin-right: 1rem;
+  overflow: hidden;
+}
+
+.pathIsLists.userLists {
+  display: flex;
+}
+
+@media (min-width: 1361px) {
+  .userLists {
+    padding: 10rem 5rem;
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.userLists::after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background-color: rgb(255 255 255 / 1);
+}
+
+.listContainer {
+  flex: 1;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  border: 1px rgb(255 255 255 / .6) dashed;
+  border-radius: 5px;
+  gap: 1rem;
+  backdrop-filter: blur(3px);
+
+  transition: backdrop-filter .3s ease, border .3s ease;
+}
+
+@media (min-width: 1361px) {
+  .listContainer {
+    height: 100%;
+  }
+}
+
+.listContainer * {
+  user-select: none;
+}
+
+.listContainer.listDragging {
+  backdrop-filter: blur(15px);
+  border: 2px rgb(255 255 255 / 1) dashed;
+}
+
+.listContainer.white {
+  background-image: linear-gradient(to bottom, rgb(255 255 255 / .2) 0%, transparent 100%);
+}
+
+.listContainer.green {
+  background-image: linear-gradient(to bottom, rgb(18 92 21 / .2) 0%, transparent 100%);
+}
+
+.listHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 3rem 0 3rem;
+}
+
+.listHeader h3 span {
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-left: 1rem;
+  opacity: .5;
+}
+
+.list {
+  --sb-track-color: rgb(255 255 255 / .1);
+  --sb-thumb-color: rgb(255 255 255 / .4);
+  --sb-size: 7px;
+  --sb-border-radius: 5px;
+
+  scrollbar-gutter: stable;
+  list-style: none;
+  margin: 0 1rem 3rem 0;
+  padding: 2rem 1.3rem 0 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+
+  scrollbar-color: var(--sb-thumb-color) 
+  var(--sb-track-color);
+}
+
+.list::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.list::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: var(--sb-border-radius);
+}
+
+.list::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: var(--sb-border-radius);
+}
+
+.listPlaceholder {
+  text-align: center;
+  opacity: .6;
+}
+
+@media (min-width: 1361px) {
+  .listPlaceholder {
+    margin-top: 3rem;
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.listPlaceholder span {
+  display: none;
+}
+
+@media (min-width: 1361px) {
+  .listPlaceholder span {
+    font-size: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+}
+
+.listBook {
+  display: flex;
+  gap: 1rem;
+  cursor: grab;
+}
+
+.listBook img {
+  width: 6rem;
+  aspect-ratio: 1/1.6;
+  object-fit: cover;
+}
+
+.savedBookDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.savedBookHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.savedBookHeader h3 {
+  font-size: 1.6rem;
+}
+
+.savedBookActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.savedBookAction {
+  background-color: rgb(0 0 0 / .3);
+  border: 1px rgb(255 255 255 / .2) solid;
+  padding: .5rem;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  display: flex;
+  place-items: center;
+  color: var(--color-white);
+  cursor: pointer;
+  backdrop-filter: blur(20px);
+
+  transition: background-color .3s ease;
+}
+
+.savedBookAction:hover {
+  background-color: rgb(255 255 255 / .1);
+}
+
+.savedBookAction svg {
+  width: 18px;
+  height: 18px;
+}
+
+.savedBookDetails p {
+  color: rgb(255 255 255 / .6);
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+@media(min-width: 1361px) {
+  .savedBookDetails p {
+    flex-direction: row;
+  }
+}
+
+.savedBookDetails p span {
+  color: var(--font-color-white);
+  font-weight: 400;
+}
+
+@media(min-width: 1361px) {
+
+}
