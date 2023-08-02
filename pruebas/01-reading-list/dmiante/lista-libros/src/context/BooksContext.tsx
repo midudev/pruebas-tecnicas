@@ -14,6 +14,9 @@ interface BookTypeContext {
   search: string
   onChangeSearch: (e: React.ChangeEvent<HTMLInputElement>) => void
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void
+  page: number
+  setPage: (page: number) => void
+  onChangeRange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const BookContext = createContext<BookTypeContext>({
@@ -26,7 +29,10 @@ const BookContext = createContext<BookTypeContext>({
   filteredUniqueGenre: [],
   search: '',
   onChangeSearch: () => '',
-  handleSubmit: () => ''
+  handleSubmit: () => '',
+  page: 0,
+  setPage: () => {},
+  onChangeRange: () => 0
 })
 
 export function BooksProvider ({ children }: React.PropsWithChildren) {
@@ -37,6 +43,7 @@ export function BooksProvider ({ children }: React.PropsWithChildren) {
   const [readingList, setReadingList] = useLocalStorage<Book[]>('ReadingList', [])
   const [genre, setGenre] = useState<string>('Todos')
   const [search, setSearch] = useState<string>('')
+  const [page, setPage] = useState<number>(0)
 
   // filtered unique genre
   const genreMapped = books.map(el => el.genre)
@@ -65,17 +72,22 @@ export function BooksProvider ({ children }: React.PropsWithChildren) {
     if (search !== '') {
       searchMatch = book.title.toLowerCase().includes(search.toLowerCase())
     }
-    return genreMatch && searchMatch
+    const pageMatch = book.pages >= page
+    return genreMatch && searchMatch && pageMatch
   })
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
   }
 
-  function onChangeSearch (e: React.ChangeEvent<HTMLInputElement>) {
+  const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value
     if (newValue.startsWith(' ')) return
     setSearch(newValue)
+  }
+
+  const onChangeRange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPage(Number(e.target.value))
   }
 
   return (
@@ -90,7 +102,10 @@ export function BooksProvider ({ children }: React.PropsWithChildren) {
         filteredUniqueGenre,
         handleSubmit,
         search,
-        onChangeSearch
+        onChangeSearch,
+        page,
+        setPage,
+        onChangeRange
       }}
     >
       {children}
