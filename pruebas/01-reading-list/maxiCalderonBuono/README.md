@@ -1,42 +1,72 @@
-#READSTACK
+# READSTACK
 
-[DEMO](https://readstack.vercel.app/)
+This is my first project using Svelte + SvelteKit as the solution for the new [@midudev's](https://github.com/midudev) project, ["Pruebas Técnicas"](https://pruebastecnicas.com/)
 
-# create-svelte
+![view](https://i.postimg.cc/qqFVfbtD/Readstack.png)
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+## [SEE FINAL RESULT](https://readstack.vercel.app/)
 
-## Creating a project
+### Mandatory objectives:
 
-If you're seeing this, you've probably already done this step. Congrats!
+- ✅ Show a list of available books.
+- ✅ Add books to the reading list.
+- ✅ Filter books by genre.
+- ✅ Data persistence.
+- ✅ Synchronization across tabs.
+- ✅ Deployment.
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+### Extra objectives:
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+- ✅ Implement search functionality.
+- ✅ Filter by number of pages.
+- ✅ Allow users to reorder books.
+- ✅ Responsive design.
 
-## Developing
+# STACK
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+- ✅ TypeScript.
+- ✅ SveltKit.
+- ✅ SkeletonUI + TailwindCSS.
+- ✅ Playwright.
 
-```bash
-npm run dev
+# MAIN FEATURES
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+## SEO:
 
-## Building
+- :star: Open Graph
+- :star: Robots
+- :star: Canonical
 
-To create a production version of your app:
+![SEO](https://i.postimg.cc/Y050zTGN/open-graph.png)
 
-```bash
-npm run build
-```
+## Search bar:
 
-You can preview the production build with `npm run preview`.
+- :star: Input validation
+- :star: Autosuggests
+- :star: Keyword and mouse navigation
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+![search](https://i.postimg.cc/3RdCWnfH/Search-bar.png)
+
+## Drag and Drop:
+
+- :star: A fancy and fun way to reorder books on the reading list..
+
+![drag$drop](https://i.postimg.cc/cHhCySBx/drag-and-drop.png)
+
+## Tab Synchronization
+
+- :star: By using the Web Storage API
+
+![Tabs sync](https://github.com/midudev/pruebas-tecnicas/assets/77062697/5d01c015-d79f-4c2c-8d9c-c785f8e06295)
+
+## Transitions and animations
+
+- :star: Svelte built-in animations
+
+![transitions](https://github.com/midudev/pruebas-tecnicas/assets/77062697/16288a75-7cb3-4063-b95d-215031376ee0)
+
+# FORK AND SHARE!
+
+- 1- Fork this repo: [Readstack](https://github.com/maxiCalderonBuono/pruebas-tecnicas/tree/main/pruebas/01-reading-list/maxiCalderonBuono)
+- 2- Clone it to your computer.
+- 3- Run `npm install` and happy coding!
