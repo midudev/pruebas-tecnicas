@@ -30,4 +30,4 @@ Para una editorial, sus libros son, como los arboles a los parques. Es por eso q
 
 ### Mejor entra tú mismo
 
-[Lazpe Editorial](https://markdownlivepreview.com/).
+[Lazpe Editorial](https://lazpe-editorial.vercel.app/).
