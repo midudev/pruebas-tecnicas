@@ -26,7 +26,7 @@ Para una editorial, sus libros son, como los arboles a los parques. Es por eso q
 
 ## Captura de pantalla *(no hace justicia)*
 
-![Captura de pantalla del Lazpe Editorial.](/public/screenshot.png "Captura de pantalla del Lazpe Editorial.")
+![Captura de pantalla del Lazpe Editorial.](public/screenshot.png "Captura de pantalla del Lazpe Editorial.")
 
 ### Mejor entra tú mismo
 
