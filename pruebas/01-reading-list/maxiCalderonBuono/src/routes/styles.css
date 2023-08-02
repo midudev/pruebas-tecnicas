@@ -2,9 +2,3 @@
 	--theme-font-family-base: 'MonaSans', sans-serif;
 	--theme-font-family-heading: 'Luma', sans-serif;
 }
-
-main {
-	margin: 0px;
-	padding: 0px;
-	box-sizing: border-box;
-}

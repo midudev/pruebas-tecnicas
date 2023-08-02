@@ -7,7 +7,6 @@ test('app display books cover images', async ({ page }) => {
 	await page.goto(LOCALHOST_URL);
 
 	const images = await page.$$eval('img', (elements) => {
-		// The map function should return the value to be included in the array
 		return elements.map((element) => element.src);
 	});
 
