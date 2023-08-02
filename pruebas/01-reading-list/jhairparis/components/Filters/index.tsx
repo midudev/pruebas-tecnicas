@@ -1,21 +1,10 @@
 import { useGlobalState } from "@/lib/globalContext";
-import {
-  HStack,
-  Text,
-  Menu,
-  MenuButton,
-  MenuList,
-  Button,
-  MenuItem,
-  IconButton,
-  Tooltip,
-} from "@chakra-ui/react";
-import { ChevronDownIcon } from "@chakra-ui/icons";
+import { HStack, IconButton, Tooltip } from "@chakra-ui/react";
 import { AiOutlineRollback } from "react-icons/ai";
 import { useEffect, useState } from "react";
-import { CloseButton } from "@chakra-ui/react";
 import { filterAvailable, filterData } from "@/types/context";
 import FilterSlider from "./FilterSlider";
+import FilterGenre from "./FilterGenre";
 
 const Filters = () => {
   const { data, filter, setFromJson } = useGlobalState();
@@ -43,28 +32,18 @@ const Filters = () => {
         max={data.max}
         state={page}
         setState={setPage}
+        disabled={data.isFilter[0] === filterAvailable.genre}
       />
-      {typeof genre === "string" ? (
-        <>
-          <Text>{genre || data.isFilter[1]?.genre}</Text>
-          <CloseButton onClick={() => setGenre(-99)} />
-        </>
-      ) : (
-        <Menu>
-          <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-            Genero
-          </MenuButton>
-          <MenuList>
-            {Object.keys(data.genre).map((v) => (
-              <MenuItem key={v} onClick={() => setGenre(v)}>
-                {v}
-              </MenuItem>
-            ))}
-          </MenuList>
-        </Menu>
-      )}
+      <FilterGenre
+        genres={data.genre}
+        state={genre || data.isFilter[1]!.genre}
+        setState={setGenre}
+        disabled={data.isFilter[0] === filterAvailable.page}
+      />
       <Tooltip hasArrow label="Volver a cargar los datos">
         <IconButton
+          colorScheme="blue"
+          variant="ghost"
           aria-label="Volver a cargar los datos"
           icon={<AiOutlineRollback />}
           onClick={() => setFromJson()}

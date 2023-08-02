@@ -14,7 +14,7 @@ export default function Home() {
   const { setGlobalState, data, setFromJson } = useGlobalState();
 
   useEffect(() => {
-    const saved = ReadStorage(true);
+    if (!ReadStorage(true)) setFromJson();
 
     const handleStorageChange = (event: StorageEvent) => {
       if (event.key === StorageKey && event.newValue) {
@@ -25,16 +25,9 @@ export default function Home() {
 
     window.addEventListener("storage", handleStorageChange);
 
-    if (saved) {
-      setGlobalState(saved);
-    } else {
-      setFromJson();
-    }
-
     return () => {
       window.removeEventListener("storage", handleStorageChange);
     };
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

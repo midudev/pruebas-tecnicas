@@ -20,13 +20,22 @@ type FilterSliderProps = {
   max: number;
   state: filterData["page"];
   setState: (val: filterData["page"]) => void;
+  disabled: boolean;
 };
 
-const FilterSlider = ({ min, max, state, setState }: FilterSliderProps) => {
+const FilterSlider = ({
+  min,
+  max,
+  state,
+  setState,
+  disabled,
+}: FilterSliderProps) => {
   return (
     <Popover>
       <PopoverTrigger>
-        <Button># Paginas</Button>
+        <Button colorScheme="blue" variant="ghost" isDisabled={disabled}>
+          # Paginas
+        </Button>
       </PopoverTrigger>
       <PopoverContent>
         <PopoverArrow />

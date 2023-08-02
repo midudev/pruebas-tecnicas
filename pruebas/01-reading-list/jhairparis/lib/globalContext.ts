@@ -1,11 +1,13 @@
+"use client";
 import {
   filterAvailable,
   type GlobalStateType,
   type StateType,
 } from "@/types/context";
 import { createContext, useContext } from "react";
+import { ReadStorage } from "./Storage";
 
-export const dataDefault: StateType = {
+export const dataDefault: StateType = ReadStorage(true) || {
   library: [],
   read: [],
   total: 0,

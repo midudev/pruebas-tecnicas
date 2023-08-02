@@ -8,6 +8,8 @@ type ReadStorageType = (
 ) => StateType | undefined;
 
 export const ReadStorage: ReadStorageType = (init = false, newValue) => {
+  if (typeof window === "undefined") return undefined;
+
   let res;
 
   if (init) {

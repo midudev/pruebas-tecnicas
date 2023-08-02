@@ -60,9 +60,9 @@ const useMainState = () => {
     const copy = JSON.stringify(origin);
 
     let filtered: LibraryType[] | null = null;
-    // TODO: fix
-    // if (globalState.isFilter[0] && globalState.isFilter[1] != "")
-    // filtered = origin.filter((b) => b.book.genre === globalState.isFilter[1]);
+    // TODO: fix for other filters
+    if (globalState.isFilter[0] === filterAvailable.genre)
+      filtered = origin.filter((b) => b.book.genre === globalState.isFilter[1].genre);
 
     if (filtered != null) {
       setGlobalState({
@@ -96,7 +96,6 @@ const useMainState = () => {
       return;
     }
 
-    
     if (type === filterAvailable.genre && data.genre) {
       const copy = JSON.stringify(globalState.library);
 
