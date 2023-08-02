@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import getBooks from './utils/getBooks'
 import { FadeLoader } from 'react-spinners'
 import Dialog from './component/Dialog'
@@ -13,11 +13,11 @@ const GENRES_LIST = [
 ]
 
 function App () {
-  const [books, setBooks] = useState(JSON.parse(localStorage.getItem('books')) || [])
+  const [books, setBooks] = useState([])
   const [readingList, setReadingList] = useState(JSON.parse(localStorage.getItem('readingList')) || [])
 
-  const [pages, setPages] = useState(0)
-  const [genre, setGenre] = useState('Todos')
+  const [pagesFilter, setPagesFilter] = useState(0)
+  const [genreFilter, setGenreFilter] = useState(GENRES_LIST[0])
 
   const [loading, setLoading] = useState(true)
 
@@ -54,10 +54,27 @@ function App () {
     }
   }, [])
 
-  useEffect(() => {
-    handleFilter(baseBooks.current)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [genre, pages])
+  const filteredBooks = useMemo(() => {
+    const result = books.filter(({ book }) => {
+      if (genreFilter !== GENRES_LIST[0] && book.genre !== genreFilter) {
+        return false
+      }
+
+      if (book.pages < pagesFilter) {
+        return false
+      }
+
+      return true
+    })
+
+    if (result.length === 0 && genreFilter !== GENRES_LIST[0]) {
+      setGenreFilter(GENRES_LIST[0])
+      setPagesFilter(0)
+      alert('No hay libros que coincidan con los filtros seleccionados')
+    }
+
+    return result
+  }, [genreFilter, books, pagesFilter])
 
   useEffect(() => {
     localStorage.setItem('books', JSON.stringify(books))
@@ -74,28 +91,6 @@ function App () {
     setReadingList([...readingList, book])
 
     alert('Libro añadido a la lista de lectura')
-  }
-
-  const handleFilter = (b) => {
-    let filteredBooks = [...b]
-
-    if (genre !== 'Todos') {
-      filteredBooks = filteredBooks.filter(book => book.book.genre === genre)
-    }
-
-    filteredBooks = filteredBooks.filter(book => book.book.pages >= pages)
-
-    filteredBooks = filteredBooks.filter(book => (
-      !readingList.some(item => item.book.ISBN === book.book.ISBN)
-    ))
-
-    if (filteredBooks.length === 0 && genre !== 'Todos') {
-      setPages(0)
-      setGenre('Todos')
-      alert('No hay libros disponibles con los filtros seleccionados')
-    } else {
-      setBooks(filteredBooks)
-    }
   }
 
   const openModal = () => {
@@ -120,8 +115,8 @@ function App () {
             <select
               name='select-genre'
               id='select-genre'
-              value={genre}
-              onChange={(e) => setGenre(e.target.value)}
+              value={genreFilter}
+              onChange={(e) => setGenreFilter(e.target.value)}
             >
               {GENRES_LIST.map((genre) => (
                 <option key={genre} value={genre}>
@@ -131,22 +126,22 @@ function App () {
             </select>
           </label>
           <label htmlFor='page-lenght'>
-            <p>Cantidad de páginas: {pages}</p>
+            <p>Filtrar por cantidad mínima de páginas: {pagesFilter}</p>
             <input
               type='range'
               name='page-lenght'
               min='0' max='1200'
-              value={pages}
-              onChange={(e) => setPages(e.target.value)}
+              value={pagesFilter}
+              onChange={(e) => setPagesFilter(e.target.value)}
             />
           </label>
         </div>
         {books.length === 0 && !loading && (<h2>Todos los libros están en la lista de lectura</h2>)}
         {loading
-          ? (<FadeLoader color='#fff' cssOverride={{ display: 'block', margin: '20px auto' }} />)
+          ? <FadeLoader color='#fff' cssOverride={{ display: 'block', margin: '20px auto' }} />
           : (
             <ul>
-              {books.map((book) => {
+              {filteredBooks?.map((book) => {
                 const { ISBN, cover, title } = book.book
                 return (
                   <li key={ISBN}>
@@ -170,7 +165,7 @@ function App () {
           setReadingList={setReadingList}
           baseBooks={baseBooks}
           setBooks={setBooks}
-          setGenre={setGenre}
+          setGenreFilter={setGenreFilter}
         />
       </section>
     </>
