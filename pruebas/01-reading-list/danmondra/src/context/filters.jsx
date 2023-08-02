@@ -7,6 +7,8 @@ export function FiltersProvider({ children }) {
   const { books } = useBooks()
 
   const [filters, setFilters] = useState(() => {
+    const maxPagesTolerance = 10
+
     const bookWithMorePages = books.reduce((maxPages, book) => {
       return book.pages > maxPages ? book.pages : maxPages
     }, -Infinity)
@@ -14,7 +16,7 @@ export function FiltersProvider({ children }) {
     return {
       genre: '',
       maxPages: bookWithMorePages,
-      bookWithMorePages
+      bookWithMorePages: bookWithMorePages + maxPagesTolerance
     }
   })
 

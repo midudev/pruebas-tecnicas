@@ -50,7 +50,7 @@ export function Filters() {
           <span
             className={styles.rangeRepresentation}
             style={{
-              width: `${((getWidthOfRangeInput() / (filters.bookWithMorePages + 90)) * filters.maxPages) + 13}px`
+              width: `${((getWidthOfRangeInput() / (filters.bookWithMorePages + 90)) * filters.maxPages) + 10}px`
             }}
           />
           <span>Páginas máx.</span>

@@ -95,9 +95,9 @@ export function Booklist({ selectedBook, setSelectedBook }) {
         opacity
       }}
     >
-      {filteredBooks.map((book, index) => (
+      {filteredBooks.map((book) => (
         <li
-          key={index}
+          key={book.ISBN}
           className={styles.book}
           data-book-in-list={booksInLists.includes(book.ISBN)}
         >

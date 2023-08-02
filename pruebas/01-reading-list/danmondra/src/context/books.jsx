@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import books from '../data/books.json'
+import books from '../mocks/newBooks.json'
 
 export const BooksContext = createContext()
 
