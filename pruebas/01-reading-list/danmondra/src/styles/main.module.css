@@ -1,7 +1,7 @@
 .editorialBg {
   position: fixed;
   inset: 0;
-  background-image: url(/editorial-bg.png);
+  background-image: url(/editorial-bg.webp);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

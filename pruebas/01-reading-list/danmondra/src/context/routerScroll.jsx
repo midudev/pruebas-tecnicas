@@ -1,7 +1,6 @@
 import { createContext, useEffect, useRef, useState } from 'react'
 import { $ } from '../utils'
 const DEFAULT_SCROLL = 0
-const DEFAULT_TARGET = '/'
 
 export const RouterScrollContext = createContext()
 
@@ -11,8 +10,6 @@ export function RouterScrollProvider({ children }) {
   const isFirstRender = useRef(true)
 
   useEffect(() => {
-    window.history.pushState({}, '', currentPath || DEFAULT_TARGET)
-
     const $elementToScroll = $('#elementToScroll')
     const $elementTarget = $(`#${currentPath}`)
     const offsetLeft = $elementTarget?.offsetLeft
@@ -22,7 +19,6 @@ export function RouterScrollProvider({ children }) {
       left: offsetLeft || DEFAULT_SCROLL,
       behavior: isFirstRender.current ? 'instant' : 'smooth'
     })
-    if (isFirstRender.current) isFirstRender.current = false
   }, [currentPath])
 
   const handleCurrentPath = (path) => {
