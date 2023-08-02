@@ -1,4 +1,4 @@
-import BooktopiaLogo from '@/assets/booktopia-logo.avif';
+import BooklandiaLogo from '@/assets/booklandia-logo.avif';
 import { useEffect, useState } from 'react';
 
 export default function Header() {
@@ -27,8 +27,8 @@ export default function Header() {
       }`}
     >
       <img
-        src={BooktopiaLogo}
-        alt="Booktopia logo"
+        src={BooklandiaLogo}
+        alt="Booklandia logo"
         className={`transition-all duration-300 ${scrolled ? 'w-14' : 'w-32'}`}
       />
       <h1
@@ -36,7 +36,7 @@ export default function Header() {
           scrolled ? 'text-3xl leading-5 text-white' : 'text-5xl leading-10'
         }`}
       >
-        Booktopia
+        Booklandia
       </h1>
     </header>
   );
