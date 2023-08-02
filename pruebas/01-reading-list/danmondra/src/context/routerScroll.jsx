@@ -1,4 +1,4 @@
-import { createContext, useEffect, useRef, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { $ } from '../utils'
 const DEFAULT_SCROLL = 0
 
@@ -7,7 +7,6 @@ export const RouterScrollContext = createContext()
 export function RouterScrollProvider({ children }) {
   const currentPathName = window.location.pathname.slice(1)
   const [currentPath, setCurrentPath] = useState(currentPathName)
-  const isFirstRender = useRef(true)
 
   useEffect(() => {
     const $elementToScroll = $('#elementToScroll')
@@ -17,7 +16,7 @@ export function RouterScrollProvider({ children }) {
     $elementToScroll.scrollTo({
       top: 0,
       left: offsetLeft || DEFAULT_SCROLL,
-      behavior: isFirstRender.current ? 'instant' : 'smooth'
+      behavior: 'smooth'
     })
   }, [currentPath])
 
