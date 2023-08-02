@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import { delayVariants } from "../../utils/tailwind";
-
 interface BookCardProps {
   index: number;
   title: string;
@@ -19,16 +17,15 @@ const BookCard = ({
   const [animationClass, setAnimationClass] = useState<string>(
     "opacity-0 translate-y-2"
   );
-  // const [finalIndex, setFinalIndex] = useState<number>(index + 1);
+
+  const delay = `delay-[${(index + 1) * 150}ms]`;
 
   useEffect(() => {
     setAnimationClass("opacity-1 translate-y-0");
   }, []);
   return (
     <article
-      className={`cursor-pointer ${animationClass} relative transition ease-in-out duration-300 ${
-        delayVariants[index + 1]
-      }`}
+      className={`cursor-pointer ${animationClass} relative transition ease-in-out duration-300 ${delay}`}
       onClick={onClickHandler}
     >
       {withRemoveBnt && (
