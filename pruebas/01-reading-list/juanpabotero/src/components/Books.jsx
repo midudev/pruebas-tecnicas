@@ -1,6 +1,6 @@
 import { useReadingList } from '../hooks/useReadingList';
 import { AddBookIcon, BookAddedIcon } from './Icons';
-import './Books.css';
+import '../styles/Books.css';
 
 export function Books({ books }) {
   const { addToReadingList, removeFromReadingList, readingList } =
@@ -37,9 +37,13 @@ export function Books({ books }) {
               src={book.cover}
               alt={`Portada de ${book.title}`}
             />
-            <div className="book-synopsis absolute top-0 left-0 m-4 h-56 sm:h-64 bg-gray-950/90 
-            rounded-md place-content-center hidden transition-all duration-500 z-10 hover:grid">
-              <p className='text-sm sm:text-base px-4 py-2 text-gray-50 overflow-hidden'>{book.synopsis}</p>
+            <div
+              className="book-synopsis absolute top-0 left-0 m-4 h-56 sm:h-64 bg-gray-950/90 
+            rounded-md place-content-center hidden transition-all duration-500 z-10 hover:grid"
+            >
+              <p className="text-sm sm:text-base px-4 py-2 text-gray-50 overflow-hidden">
+                {book.synopsis}
+              </p>
             </div>
             <h2 className="text-lg font-bold text-white mb-1">{book.title}</h2>
             <p className="text-gray-400">{book.author.name}</p>

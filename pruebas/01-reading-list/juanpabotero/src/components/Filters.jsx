@@ -1,7 +1,7 @@
 import { useId } from 'react';
 import { useFilters } from '../hooks/useFilters.js';
 import { SearchIcon } from './Icons.jsx';
-import './Filters.css';
+import '../styles/Filters.css';
 
 export function Filters() {
   const { filters, setFilters } = useFilters();

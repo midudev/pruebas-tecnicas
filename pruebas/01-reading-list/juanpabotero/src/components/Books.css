@@ -1,8 +1,0 @@
-.add-book-button svg {
-  height: 22px;
-  width: 22px;
-}
-
-.book-cover:hover ~ .book-synopsis {
-  display: grid;
-}

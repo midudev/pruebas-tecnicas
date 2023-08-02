@@ -1,0 +1,21 @@
+.add-book-button svg {
+  height: 22px;
+  width: 22px;
+}
+
+.book-cover:hover ~ .book-synopsis {
+  display: grid;
+}
+
+.book-synopsis {
+  animation: book-cover 0.3s ease-in-out;
+}
+
+@keyframes book-cover {
+  0% {
+    transform: rotateY(90deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}

@@ -1,7 +1,12 @@
-import './ReadingList.css';
+import '../styles/ReadingList.css';
 
 import { useId } from 'react';
-import { ReadingListIcon, RemoveBookIcon, TrashIcon } from './Icons.jsx';
+import {
+  ReadingListIcon,
+  RemoveBookIcon,
+  SadFaceIcon,
+  TrashIcon,
+} from './Icons.jsx';
 import { useReadingList } from '../hooks/useReadingList';
 
 function Book({ cover, title, removeFromReadingList }) {
@@ -49,22 +54,35 @@ export function ReadingList() {
         <h3 className="text-gray-100 font-bold text-xl mt-5">
           Lista de lectura
         </h3>
-        <ul className="grid gap-x-3 gap-y-6 grid-cols-2 mt-10">
-          {readingList.map((book) => (
-            <Book
-              key={book.id}
-              removeFromReadingList={() => removeFromReadingList(book)}
-              {...book}
-            />
-          ))}
-        </ul>
+        {readingList.length === 0 && (
+          <div className="grid gap-2 justify-items-center text-gray-100 mt-10">
+            <SadFaceIcon />
+            <p className="text-center">
+              Aún no tienes libros en tu lista. Prueba agregando uno!
+            </p>
+          </div>
+        )}
+        {readingList.length > 0 && (
+          <ul className="grid gap-x-3 gap-y-6 grid-cols-2 mt-10">
+            {readingList.map((book) => (
+              <Book
+                key={book.id}
+                removeFromReadingList={() => removeFromReadingList(book)}
+                {...book}
+              />
+            ))}
+          </ul>
+        )}
 
-        <button
-          className="clear-list-button flex gap-1 justify-center justify-self-center items-center mt-5 text-white bg-red-800 p-2 rounded-full"
-          onClick={clearReadingList}
-        >
-          <TrashIcon />
-        </button>
+        {readingList.length > 0 && (
+          <button
+            className="clear-list-button flex gap-1 justify-center justify-self-center items-center mt-6 
+          text-white bg-red-800 p-2 rounded-full"
+            onClick={clearReadingList}
+          >
+            <TrashIcon />
+          </button>
+        )}
       </aside>
     </>
   );
