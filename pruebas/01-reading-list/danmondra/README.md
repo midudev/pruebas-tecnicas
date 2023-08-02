@@ -1,6 +1,6 @@
 # Lazpe Editorial
 
-Para una editorial, sus libros son, como los arboles a los parques. Es por eso que me tomé este proyecto en serio para desarrollar una web disfrutable, basandome en la suposición de que la editorial realmente existe, y por lo tanto, que presente de una forma no *aburrida* o *convencional* aquello que para ella es más valioso que nada, sus libros.
+Para una editorial, sus libros son, como los árboles a los parques. Es por eso que me tomé este proyecto en serio para desarrollar una web que se disfrute, basándome en la suposición de que la editorial realmente existe, y, por lo tanto, que presente de una forma no *aburrida* o *convencional* aquello que para ella es más valioso que nada, sus libros.
 
 
 ### Objetivos obligatorios:
@@ -17,10 +17,10 @@ Para una editorial, sus libros son, como los arboles a los parques. Es por eso q
 
 * ✅ Crear animaciones al seleccionar los libros
 * ✅ Experiencia pensada para que el usuario disfrute la interacción
-* ✅ Diseño minímalista apegandose a los fundamentales de la distribución del espacio
+* ✅ Diseño minimalista apegándose a los fundamentales de la distribución del espacio
 * ✅ Lista extra para guardar libros ya leídos
 * ✅ Usar la misma lista de libros tanto para obtener detalles del libro, como para guardarlo en cualquier lista
-* ✅ Administrar libros con Drag and Drop
+* ✅ Administrar libros con *drag and drop*
 * 🛠 Permitir al usuario crear sus propias listas.
 
 
@@ -28,6 +28,6 @@ Para una editorial, sus libros son, como los arboles a los parques. Es por eso q
 
 ![Captura de pantalla del Lazpe Editorial.](public/screenshot.png "Captura de pantalla del Lazpe Editorial.")
 
-### Mejor entra tú mismo
+### Mejor entra tú mism@
 
 [Lazpe Editorial](https://lazpe-editorial.vercel.app/).
