@@ -12,6 +12,7 @@ export function Booklist({ selectedBook, setSelectedBook }) {
   const { books, booksInLists } = useBooks()
   const { filters, filteredBooks } = useFilters()
   const [gridRows, setGridRows] = useState('')
+  const [opacity, setOpacity] = useState('0')
 
   const pathIsLists = currentPath === NAVIGATION_PATHS.LISTS
 
@@ -30,6 +31,10 @@ export function Booklist({ selectedBook, setSelectedBook }) {
       calculateGrid()
     })
     calculateGrid()
+
+    setTimeout(() => {
+      setOpacity('1')
+    }, 200)
   }, [])
 
   useEffect(() => {
@@ -85,7 +90,10 @@ export function Booklist({ selectedBook, setSelectedBook }) {
       className={`${styles.booklist} ${pathIsLists ? styles.pathIsLists : ''} booklist`}
       onClick={handleClick}
       onDragStart={handleDragStart}
-      style={window.innerWidth >= 1360 ? { gridTemplateRows: gridRows } : {}}
+      style={{
+        gridTemplateRows: window.innerWidth >= 1360 ? gridRows : '5rem',
+        opacity
+      }}
     >
       {filteredBooks.map((book, index) => (
         <li
