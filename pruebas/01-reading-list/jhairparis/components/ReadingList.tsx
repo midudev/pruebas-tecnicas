@@ -1,42 +1,49 @@
 import { useGlobalState } from "@/lib/globalContext";
 import Book from "./Book";
 import {
-  Button,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
   DrawerContent,
   DrawerOverlay,
-  useDisclosure,
   DrawerHeader,
 } from "@chakra-ui/react";
+import type { BookType } from "@/types/data";
 
-const ReadingList = ({ isOpen, onClose, btnRef }: any) => {
+type ReadingListProps = {
+  isDrawerOpen: boolean;
+  onDrawerClose: () => void;
+  openModal: (b: BookType) => void;
+};
+
+const ReadingList = ({
+  isDrawerOpen,
+  onDrawerClose,
+  openModal,
+}: ReadingListProps) => {
   const { data, addLibrary } = useGlobalState();
 
   return (
-    <>
-      <Drawer
-        isOpen={isOpen}
-        placement="right"
-        onClose={onClose}
-        finalFocusRef={btnRef}
-      >
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader>Lista de lectura</DrawerHeader>
+    <Drawer isOpen={isDrawerOpen} placement="right" onClose={onDrawerClose}>
+      <DrawerOverlay />
+      <DrawerContent>
+        <DrawerCloseButton />
+        <DrawerHeader>Lista de lectura</DrawerHeader>
 
-          <DrawerBody>
-            <div className="grid grid-cols-1 gap-4">
-              {data.read.map((book) => (
-                <Book key={book.ISBN} book={book} click={addLibrary} />
-              ))}
-            </div>
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
-    </>
+        <DrawerBody>
+          <div className="grid grid-cols-1 gap-4">
+            {data.read.map((book) => (
+              <Book
+                key={book.ISBN}
+                book={book}
+                click={addLibrary}
+                openModal={openModal}
+              />
+            ))}
+          </div>
+        </DrawerBody>
+      </DrawerContent>
+    </Drawer>
   );
 };
 

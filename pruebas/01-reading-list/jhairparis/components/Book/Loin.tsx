@@ -1,11 +1,15 @@
-import { Variants, motion } from "framer-motion";
+import { IconButton } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import { GrAdd } from "react-icons/gr";
+import type { Variants } from "framer-motion";
+import type { BookType } from "@/types/data";
 
 type LoinProps = {
-  author: string;
-  year: number;
+  book: BookType;
+  openModal: (b: BookType) => void;
 };
 
-const Loin = ({ author, year }: LoinProps) => {
+const Loin = ({ book, openModal }: LoinProps) => {
   const vDiv: Variants = {
     initial: {
       display: "block",
@@ -18,28 +22,35 @@ const Loin = ({ author, year }: LoinProps) => {
     },
     hover: {},
   };
-  const vH2: Variants = {
+  const varinats: Variants = {
     initial: {
+      display: "block",
       width: "calc(var(--h) - 10%)",
       height: "40px",
       originX: 0,
       originY: 0,
       originZ: 0,
       rotate: "90deg",
-      x: "32px",
+      x: "39px",
     },
     hover: {},
   };
 
   return (
     <motion.div variants={vDiv}>
-      <motion.h2
-        variants={vH2}
+      <motion.span
+        variants={varinats}
         className="text-base pr-2.5 text-right text-black"
       >
-        <span className="font-normal text-sm pr-5">{author}</span>
-        <span className="font-sans font-semibold">{year}</span>
-      </motion.h2>
+        <IconButton
+          aria-label="More about book"
+          icon={<GrAdd />}
+          colorScheme="blue"
+          onClick={() => openModal(book)}
+        />
+        <span className="font-normal text-sm pr-5">{book.author.name}</span>
+        <span className="font-sans font-semibold">{book.year}</span>
+      </motion.span>
     </motion.div>
   );
 };

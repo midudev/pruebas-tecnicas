@@ -1,11 +1,12 @@
 import { useState } from "react";
-import type { BookType, LibraryType } from "@/types/data";
 import { dataDefault } from "@/lib/globalContext";
+import type { LibraryType } from "@/types/data";
+import { filterAvailable, type fnState } from "@/types/context";
 
 const useMainState = () => {
   const [globalState, setGlobalState] = useState(dataDefault);
 
-  const addRead = (book: BookType) => {
+  const addRead: fnState["addLibrary"] = (book) => {
     let count = 0;
     const libraryUpdate = globalState.library.filter((b) => {
       if (b.book.genre === book.genre) count++;
@@ -31,7 +32,7 @@ const useMainState = () => {
     });
   };
 
-  const addLibrary = (book: BookType) => {
+  const addLibrary: fnState["addRead"] = (book) => {
     const readUpdate = globalState.read.filter((b) => b.ISBN !== book.ISBN);
 
     if (globalState.genre[book.genre] === undefined) {
@@ -68,25 +69,29 @@ const useMainState = () => {
     });
   };
 
-  const filter = (genre: string | null) => {
-    if (genre === null) {
+  const filter: fnState["filter"] = (type, data) => {
+    if (type === filterAvailable.genre && data.genre) {
+      if (data.genre === -99) {
+        setGlobalState({
+          ...globalState,
+          library: JSON.parse(globalState.origin),
+          isFilter: [false, ""],
+        });
+        return;
+      }
+
+      const copy = JSON.stringify(globalState.library);
+
+      const filtered = globalState.library.filter(
+        (b) => b.book.genre === data.genre
+      );
       setGlobalState({
         ...globalState,
-        library: JSON.parse(globalState.origin),
-        isFilter: [false, ""],
+        library: filtered,
+        origin: copy,
+        isFilter: [true, data.genre],
       });
-      return;
     }
-
-    const copy = JSON.stringify(globalState.library);
-
-    const filtered = globalState.library.filter((b) => b.book.genre === genre);
-    setGlobalState({
-      ...globalState,
-      library: filtered,
-      origin: copy,
-      isFilter: [true, genre],
-    });
   };
   return {
     data: globalState,

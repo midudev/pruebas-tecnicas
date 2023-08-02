@@ -1,12 +1,15 @@
 "use client";
 import Library from "@/components/Library";
 import ReadingList from "@/components/ReadingList";
-import { Heading, useDisclosure, HStack } from "@chakra-ui/react";
+import { Heading, useDisclosure, HStack, Divider } from "@chakra-ui/react";
 import { useGlobalState } from "@/lib/globalContext";
 import read from "@/lib/readJson";
 import { ReadStorage, StorageKey, WriteStorage } from "@/lib/Storage";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import ReadListIcon from "@/components/ReadListIcon";
+import AboutBookModal from "@/components/AboutBookModal";
+import useAboutBookModal from "@/hooks/useAboutBookModal";
+import Filters from "@/components/Filters";
 
 export default function Home() {
   const { setGlobalState, data } = useGlobalState();
@@ -49,17 +52,28 @@ export default function Home() {
     WriteStorage(data);
   }, [data]);
 
-  const btnRef = useRef<any>();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isModalOpen, onModalClose, book, onModalOpen } = useAboutBookModal();
 
   return (
     <main className="p-10">
       <HStack spacing={"24px"} mb={"24px"}>
         <Heading>Digital library</Heading>
-        <ReadListIcon btnRef={btnRef} onOpen={onOpen} />
+        <ReadListIcon onOpen={onOpen} />
       </HStack>
-      <Library />
-      <ReadingList btnRef={btnRef} isOpen={isOpen} onClose={onClose} />
+      <Filters />
+      <Divider />
+      <Library openModal={onModalOpen} />
+      <ReadingList
+        isDrawerOpen={isOpen}
+        onDrawerClose={onClose}
+        openModal={onModalOpen}
+      />
+      <AboutBookModal
+        isModalOpen={isModalOpen}
+        onModalClose={onModalClose}
+        book={book}
+      />
     </main>
   );
 }

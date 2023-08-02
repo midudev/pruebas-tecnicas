@@ -7,62 +7,69 @@ import {
   MenuList,
   Button,
   MenuItem,
-  Box,
+  IconButton,
+  Tooltip,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import { AiOutlineRollback } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import { CloseButton } from "@chakra-ui/react";
+import { filterAvailable, filterData } from "@/types/context";
+import read from "@/lib/readJson";
 
-type s = string | undefined | null;
 const Filters = () => {
-  const { data, filter } = useGlobalState();
-  const [value, setValue] = useState<s>(undefined);
+  const { data, filter, setGlobalState } = useGlobalState();
+  const [value, setValue] = useState<filterData["genre"]>(undefined);
+
+  const Rollback = () => {
+    const { main, genre, copy } = read();
+    setGlobalState({
+      library: main.library,
+      read: [],
+      total: main.library.length,
+      nRead: 0,
+      genre,
+      origin: copy,
+      isFilter: [false, ""],
+    });
+  };
 
   useEffect(() => {
     if (value) {
-      filter(value);
-    } else if (value === null) {
-      filter(null);
+      filter(filterAvailable.genre, { genre: value });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
   return (
-    <div className="flex flex-row gap-2">
-      <div>
-        <HStack spacing="24px">
-          {value || (data.isFilter[0] && data.isFilter[1] != "") ? (
-            <>
-              <Text>{value || data.isFilter[1]}</Text>
-              <CloseButton onClick={() => setValue(null)} />
-            </>
-          ) : (
-            <Menu id="menu">
-              <MenuButton
-                as={Button}
-                rightIcon={<ChevronDownIcon />}
-                id="menu-button"
-              >
-                Genero
-              </MenuButton>
-              <MenuList>
-                {Object.keys(data.genre).map((v) => (
-                  <MenuItem key={v} onClick={() => setValue(v)}>
-                    {v}
-                  </MenuItem>
-                ))}
-              </MenuList>
-            </Menu>
-          )}
-          <div>
-            <Text fontSize="md">
-              {data.total - data.nRead} libros disponibles
-            </Text>
-            <Text fontSize="sm">{data.nRead} en lista de lectura</Text>
-          </div>
-        </HStack>
-      </div>
-    </div>
+    <HStack spacing="24px" mb="2">
+      {typeof value === "string" ? (
+        <>
+          <Text>{value || data.isFilter[1]}</Text>
+          <CloseButton onClick={() => setValue(-99)} />
+        </>
+      ) : (
+        <Menu>
+          <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+            Genero
+          </MenuButton>
+          <MenuList>
+            {Object.keys(data.genre).map((v) => (
+              <MenuItem key={v} onClick={() => setValue(v)}>
+                {v}
+              </MenuItem>
+            ))}
+          </MenuList>
+        </Menu>
+      )}
+      <Tooltip hasArrow label="Volver a cargar los datos">
+        <IconButton
+          aria-label="Volver a cargar los datos"
+          icon={<AiOutlineRollback />}
+          onClick={() => Rollback()}
+        />
+      </Tooltip>
+    </HStack>
   );
 };
 

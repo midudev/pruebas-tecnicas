@@ -1,18 +1,17 @@
-import { Variants, motion } from "framer-motion";
-import "@/styles/book.css";
-import { BookType } from "@/types/data";
+import { motion } from "framer-motion";
 import Loin from "./Loin";
 import Cover from "./Cover";
+import "@/styles/book.css";
+import type { Variants } from "framer-motion";
+import type { BookType } from "@/types/data";
 
 interface BookProps {
   book: BookType;
   click: (b: BookType) => void;
+  openModal: (b: BookType) => void;
 }
 
-const classNameFront =
-  "after:content-[''] after:absolute after:top-[1px] after:bottom-[1px] after:left-[1px] after:w-[1px]";
-
-const Book = ({ book, click }: BookProps) => {
+const Book = ({ book, click, openModal }: BookProps) => {
   const bookVariant: Variants = {
     initial: {
       position: "relative",
@@ -28,25 +27,7 @@ const Book = ({ book, click }: BookProps) => {
     },
   };
 
-  const frontVariant: Variants = {
-    initial: {
-      display: "block",
-      position: "absolute",
-      transformStyle: "preserve-3d",
-      originX: 0,
-      originY: "50%",
-      z: "20px",
-      zIndex: "10",
-      transition: {
-        type: "spring",
-        bounce: 0,
-        duration: 0.5,
-      },
-    },
-    hover: {
-      rotateY: "35deg",
-    },
-  };
+  const openDrawer = () => click(book);
 
   return (
     <motion.div
@@ -54,12 +35,9 @@ const Book = ({ book, click }: BookProps) => {
       initial="initial"
       whileHover="hover"
       id={book.ISBN}
-      onClick={(e) => click(book)}
     >
-      <motion.div variants={frontVariant} className={classNameFront}>
-        <Cover img={book.cover} />
-      </motion.div>
-      <Loin author={book.author.name} year={book.year} />
+      <Cover img={book.cover} openDrawer={openDrawer} />
+      <Loin book={book} openModal={openModal} />
     </motion.div>
   );
 };

@@ -4,6 +4,17 @@ export interface GenreType {
   [key: string]: string;
 }
 
+export enum filterAvailable {
+  genre,
+  page,
+  text,
+}
+
+export type filterData = {
+  genre?: string | -99;
+  page?: number;
+};
+
 export type StateType = {
   library: LibraryType[];
   read: BookType[];
@@ -14,10 +25,13 @@ export type StateType = {
   isFilter: [boolean, string];
 };
 
-export interface GlobalStateType {
-  data: StateType;
+export type fnState = {
   addLibrary: (book: BookType) => void;
   addRead: (book: BookType) => void;
   setGlobalState: (state: StateType) => void;
-  filter: (genre: string | null) => void;
+  filter: (type: filterAvailable, filterData: filterData) => void;
+};
+
+export interface GlobalStateType extends fnState {
+  data: StateType;
 }
