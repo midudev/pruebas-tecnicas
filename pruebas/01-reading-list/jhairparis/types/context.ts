@@ -5,14 +5,16 @@ export interface GenreType {
 }
 
 export enum filterAvailable {
+  NOT,
   genre,
   page,
   text,
 }
 
+// value -99 is for clean
 export type filterData = {
   genre?: string | -99;
-  page?: number;
+  page?: [number, number] | -99;
 };
 
 export type StateType = {
@@ -21,13 +23,16 @@ export type StateType = {
   total: number;
   nRead: number;
   genre: GenreType;
+  min: number;
+  max: number;
   origin: string;
-  isFilter: [boolean, string];
+  isFilter: [filterAvailable, filterData];
 };
 
 export type fnState = {
   addLibrary: (book: BookType) => void;
   addRead: (book: BookType) => void;
+  setFromJson: () => void;
   setGlobalState: (state: StateType) => void;
   filter: (type: filterAvailable, filterData: filterData) => void;
 };

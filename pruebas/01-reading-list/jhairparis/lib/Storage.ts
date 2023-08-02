@@ -24,6 +24,8 @@ export const ReadStorage: ReadStorageType = (init = false, newValue) => {
     read: res.read,
     total: res.total,
     nRead: res.nRead,
+    min: res.min,
+    max: res.max,
     genre: res.genre,
     origin: res.origin,
     isFilter: res.isFilter,

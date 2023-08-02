@@ -15,38 +15,39 @@ import { AiOutlineRollback } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import { CloseButton } from "@chakra-ui/react";
 import { filterAvailable, filterData } from "@/types/context";
-import read from "@/lib/readJson";
+import FilterSlider from "./FilterSlider";
 
 const Filters = () => {
-  const { data, filter, setGlobalState } = useGlobalState();
-  const [value, setValue] = useState<filterData["genre"]>(undefined);
-
-  const Rollback = () => {
-    const { main, genre, copy } = read();
-    setGlobalState({
-      library: main.library,
-      read: [],
-      total: main.library.length,
-      nRead: 0,
-      genre,
-      origin: copy,
-      isFilter: [false, ""],
-    });
-  };
+  const { data, filter, setFromJson } = useGlobalState();
+  const [genre, setGenre] = useState<filterData["genre"]>(undefined);
+  const [page, setPage] = useState<filterData["page"]>(undefined);
 
   useEffect(() => {
-    if (value) {
-      filter(filterAvailable.genre, { genre: value });
+    if (genre) {
+      filter(filterAvailable.genre, { genre: genre });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value]);
+  }, [genre]);
+
+  useEffect(() => {
+    if (page) {
+      filter(filterAvailable.page, { page: page });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page]);
 
   return (
     <HStack spacing="24px" mb="2">
-      {typeof value === "string" ? (
+      <FilterSlider
+        min={0}
+        max={data.max}
+        state={page}
+        setState={setPage}
+      />
+      {typeof genre === "string" ? (
         <>
-          <Text>{value || data.isFilter[1]}</Text>
-          <CloseButton onClick={() => setValue(-99)} />
+          <Text>{genre || data.isFilter[1]?.genre}</Text>
+          <CloseButton onClick={() => setGenre(-99)} />
         </>
       ) : (
         <Menu>
@@ -55,7 +56,7 @@ const Filters = () => {
           </MenuButton>
           <MenuList>
             {Object.keys(data.genre).map((v) => (
-              <MenuItem key={v} onClick={() => setValue(v)}>
+              <MenuItem key={v} onClick={() => setGenre(v)}>
                 {v}
               </MenuItem>
             ))}
@@ -66,7 +67,7 @@ const Filters = () => {
         <IconButton
           aria-label="Volver a cargar los datos"
           icon={<AiOutlineRollback />}
-          onClick={() => Rollback()}
+          onClick={() => setFromJson()}
         />
       </Tooltip>
     </HStack>

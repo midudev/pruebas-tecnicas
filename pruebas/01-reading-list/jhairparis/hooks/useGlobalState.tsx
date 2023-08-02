@@ -2,9 +2,25 @@ import { useState } from "react";
 import { dataDefault } from "@/lib/globalContext";
 import type { LibraryType } from "@/types/data";
 import { filterAvailable, type fnState } from "@/types/context";
+import read from "@/lib/readJson";
 
 const useMainState = () => {
   const [globalState, setGlobalState] = useState(dataDefault);
+
+  const setFromJson: fnState["setFromJson"] = () => {
+    const { main, genre, copy, nPages } = read();
+    setGlobalState({
+      library: main.library,
+      read: [],
+      total: main.library.length,
+      nRead: 0,
+      genre,
+      min: nPages[0],
+      max: nPages[1],
+      origin: copy,
+      isFilter: [filterAvailable.NOT, {}],
+    });
+  };
 
   const addRead: fnState["addLibrary"] = (book) => {
     let count = 0;
@@ -44,8 +60,9 @@ const useMainState = () => {
     const copy = JSON.stringify(origin);
 
     let filtered: LibraryType[] | null = null;
-    if (globalState.isFilter[0] && globalState.isFilter[1] != "")
-      filtered = origin.filter((b) => b.book.genre === globalState.isFilter[1]);
+    // TODO: fix
+    // if (globalState.isFilter[0] && globalState.isFilter[1] != "")
+    // filtered = origin.filter((b) => b.book.genre === globalState.isFilter[1]);
 
     if (filtered != null) {
       setGlobalState({
@@ -70,16 +87,17 @@ const useMainState = () => {
   };
 
   const filter: fnState["filter"] = (type, data) => {
-    if (type === filterAvailable.genre && data.genre) {
-      if (data.genre === -99) {
-        setGlobalState({
-          ...globalState,
-          library: JSON.parse(globalState.origin),
-          isFilter: [false, ""],
-        });
-        return;
-      }
+    if (data.genre === -99 || data.page === -99) {
+      setGlobalState({
+        ...globalState,
+        library: JSON.parse(globalState.origin),
+        isFilter: [filterAvailable.NOT, {}],
+      });
+      return;
+    }
 
+    
+    if (type === filterAvailable.genre && data.genre) {
       const copy = JSON.stringify(globalState.library);
 
       const filtered = globalState.library.filter(
@@ -89,14 +107,29 @@ const useMainState = () => {
         ...globalState,
         library: filtered,
         origin: copy,
-        isFilter: [true, data.genre],
+        isFilter: [filterAvailable.genre, data],
+      });
+    } else if (type === filterAvailable.page && data.page) {
+      const min_max = data.page;
+
+      const filtered = JSON.parse(globalState.origin).filter(
+        ({ book }: LibraryType) =>
+          book.pages >= min_max[0] && book.pages <= min_max[1]
+      );
+
+      setGlobalState({
+        ...globalState,
+        library: filtered,
+        isFilter: [filterAvailable.page, data],
       });
     }
   };
+
   return {
     data: globalState,
     addLibrary,
     addRead,
+    setFromJson,
     setGlobalState,
     filter,
   };

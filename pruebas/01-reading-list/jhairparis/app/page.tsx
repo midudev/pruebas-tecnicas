@@ -3,7 +3,6 @@ import Library from "@/components/Library";
 import ReadingList from "@/components/ReadingList";
 import { Heading, useDisclosure, HStack, Divider } from "@chakra-ui/react";
 import { useGlobalState } from "@/lib/globalContext";
-import read from "@/lib/readJson";
 import { ReadStorage, StorageKey, WriteStorage } from "@/lib/Storage";
 import { useEffect } from "react";
 import ReadListIcon from "@/components/ReadListIcon";
@@ -12,7 +11,7 @@ import useAboutBookModal from "@/hooks/useAboutBookModal";
 import Filters from "@/components/Filters";
 
 export default function Home() {
-  const { setGlobalState, data } = useGlobalState();
+  const { setGlobalState, data, setFromJson } = useGlobalState();
 
   useEffect(() => {
     const saved = ReadStorage(true);
@@ -29,16 +28,7 @@ export default function Home() {
     if (saved) {
       setGlobalState(saved);
     } else {
-      const { main, genre, copy } = read();
-      setGlobalState({
-        library: main.library,
-        read: [],
-        total: main.library.length,
-        nRead: 0,
-        genre,
-        origin: copy,
-        isFilter: [false, ""],
-      });
+      setFromJson();
     }
 
     return () => {
