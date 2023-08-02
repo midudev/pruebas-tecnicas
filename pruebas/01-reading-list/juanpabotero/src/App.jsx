@@ -1,23 +1,15 @@
 import './App.css';
-import { library as initialBooks } from "./mocks/books.json";
+import { library as initialBooks } from './mocks/books.json';
 import { Books } from './components/Books';
 import { Header } from './components/Header';
 import { ReadingList } from './components/ReadingList';
 import { ReadingListProvider } from './context/reading-list';
 import { useFilters } from './hooks/useFilters';
 
-window.addEventListener('storage', (event) => {
-  console.log('storage event', event);
-  if (event.key === 'readingList') {
-    console.log('readingList changed');
-  }
-});
-
 function App() {
+  const { filterBooks } = useFilters();
 
-  const { filterBooks } = useFilters()
-
-  const filteredBooks = filterBooks(initialBooks)
+  const filteredBooks = filterBooks(initialBooks);
 
   return (
     <ReadingListProvider>

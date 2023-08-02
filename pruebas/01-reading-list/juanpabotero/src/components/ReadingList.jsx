@@ -11,7 +11,7 @@ function Book({ cover, title, removeFromReadingList }) {
       <p className="text-gray-100 text-sm text-center">{title}</p>
       <button
         className="remove-button-item bg-gray-900 text-red-600 p-[2px] rounded-full absolute 
-        -top-2 right-1 border border-red-700"
+        -top-2 right-1 "
         onClick={removeFromReadingList}
       >
         <RemoveBookIcon />
@@ -60,7 +60,7 @@ export function ReadingList() {
         </ul>
 
         <button
-          className="clear-list-button flex gap-1 justify-center justify-self-center items-center mt-4 text-white bg-red-800 p-2 rounded-full"
+          className="clear-list-button flex gap-1 justify-center justify-self-center items-center mt-5 text-white bg-red-800 p-2 rounded-full"
           onClick={clearReadingList}
         >
           <TrashIcon />

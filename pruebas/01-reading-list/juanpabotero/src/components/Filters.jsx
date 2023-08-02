@@ -1,5 +1,7 @@
 import { useId } from 'react';
 import { useFilters } from '../hooks/useFilters.js';
+import { SearchIcon } from './Icons.jsx';
+import './Filters.css';
 
 export function Filters() {
   const { filters, setFilters } = useFilters();
@@ -36,7 +38,7 @@ export function Filters() {
         <select
           id={genreFilterId}
           onChange={handleChangeGenre}
-          className="text-gray-100 bg-gray-600 p-1 rounded-md outline-none focus:ring-1 focus:ring-gray-400"
+          className="text-gray-100 bg-gray-600 p-2 rounded-md outline-none focus:ring-1 focus:ring-gray-400"
         >
           <option value="all">Todos</option>
           <option value="Ciencia ficción">Ciencia ficción</option>
@@ -51,7 +53,7 @@ export function Filters() {
         <select
           id={authorFilterId}
           onChange={handleChangeAuthor}
-          className="text-gray-100 bg-gray-600 p-1 rounded-md outline-none focus:ring-1 focus:ring-gray-400"
+          className="text-gray-100 bg-gray-600 p-2 rounded-md outline-none focus:ring-1 focus:ring-gray-400"
         >
           <option value="all">Todos</option>
           <option value="Bram Stoker">Bram Stoker</option>
@@ -70,15 +72,18 @@ export function Filters() {
         </select>
       </div>
 
-      <div className="flex flex-col gap-2 sm:max-w-xs w-full">
+      <div className="flex flex-col gap-2 sm:max-w-xs w-full relative">
         <label htmlFor={searchFilterId}>Buscar por título:</label>
         <input
           type="text"
           id={searchFilterId}
-          placeholder='Dune...'
+          placeholder="Dune..."
           onChange={handleChangeSearch}
-          className="text-gray-100 bg-gray-600 p-1 rounded-md outline-none focus:ring-1 focus:ring-gray-400"
+          className="text-gray-100 bg-gray-600 p-2 rounded-md outline-none focus:ring-1 focus:ring-gray-400"
         />
+        <div className='search-icon-container absolute top-10 right-1'>
+          <SearchIcon />
+        </div>
       </div>
     </section>
   );
