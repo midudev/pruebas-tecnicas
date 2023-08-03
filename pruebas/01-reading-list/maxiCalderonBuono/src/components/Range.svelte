@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { RangeSlider } from '@skeletonlabs/skeleton';
-	import { getRangeOfPages } from '$lib/data/const';
 	import type { LibraryElement } from '../types';
 	import { createEventDispatcher } from 'svelte';
+	import { getRangeOfPages } from '$lib/utils/filters';
 
 	const dispatch = createEventDispatcher();
 

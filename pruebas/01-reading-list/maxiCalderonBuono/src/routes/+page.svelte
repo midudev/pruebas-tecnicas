@@ -1,5 +1,5 @@
 <script lang="ts">
-	import libraryData from '../lib/data/books.json';
+	import libraryData from '../lib/services/books.json';
 	import type { Library, LibraryElement } from '../types';
 	import { localStorageStore } from '@skeletonlabs/skeleton';
 	import { filterByPages, filterByCategory } from '$lib/helpers/filters';
@@ -11,9 +11,11 @@
 	import Selectors from '../components/Selectors.svelte';
 	import Icon from '@iconify/svelte';
 	import { afterUpdate } from 'svelte';
-	import { getRangeOfPages } from '$lib/data/const';
+
 	import { RadioGroup, RadioItem } from '@skeletonlabs/skeleton';
 	import { fly } from 'svelte/transition';
+	import { NO_FILTER_APPLIED } from '$lib/const/filters';
+	import { getRangeOfPages } from '$lib/utils/filters';
 
 	let { library }: Library = libraryData;
 
@@ -31,7 +33,7 @@
 		books: library,
 		wishlist: [],
 		renderlist: library,
-		filter: 'All',
+		filter: NO_FILTER_APPLIED,
 		pages: maxPage
 	});
 
@@ -46,7 +48,7 @@
 	}
 
 	const updateFilteredBooks = () => {
-		if ($initialDataStore.filter === 'All' && $initialDataStore.pages === maxPage) {
+		if ($initialDataStore.filter === NO_FILTER_APPLIED && $initialDataStore.pages === maxPage) {
 			$initialDataStore.renderlist = $initialDataStore.books;
 		} else {
 			$initialDataStore.renderlist = $initialDataStore.books.filter(
@@ -138,12 +140,10 @@
 		availables={$initialDataStore.renderlist.length}
 	/>
 
-	<section class="my-10 mx-auto max-w-5xl w-full h-full">
+	<section class="my-10 mx-auto max-w-5xl w-full">
 		<header class="flex flex-col md:flex-row gap-3 items-center mb-10 justify-between mx-5 lg:mx-0">
-			<h1 class="font-bold text-3xl lg:text-5xl flex gap-3 items-center mb-5 md:mb-0">
-				{show === 'library' ? 'Our books' : 'Wishlist'}<Icon
-					icon="ion:book-outline"
-				/>
+			<h1 class="font-bold text-3xl lg:text-4xl flex gap-3 items-center mb-5 md:mb-0">
+				{show === 'library' ? 'Our books' : 'Wishlist'}<Icon icon="ion:book-outline" />
 			</h1>
 			<RadioGroup
 				active="bg-lime-300"
@@ -172,13 +172,16 @@
 				>
 			</RadioGroup>
 		</header>
+
 		{#if $initialDataStore.renderlist.length === 0 && show === 'library'}
 			<article
-				class="flex flex-col items-center justify-center gap-5 mx-5 lg:mx-0 h-full"
+				class="flex flex-col items-center justify-center gap-5 mx-5 lg:mx-0"
 				in:fly={{ y: 200, duration: 500 }}
 			>
-				<img class="w-[600px]" src="/images/library.png" alt="no books to display" />
-				<p class="font-bold text-3xl text-center">We don't have any books ready to showcase. Stay tuned!</p>
+				<img class="w-[500px]" src="/images/library.png" alt="no books to display" />
+				<p class="font-bold text-3xl text-center">
+					We don't have any books ready to showcase. Stay tuned!
+				</p>
 
 				<a
 					class="w-full text-[10px] text-center"

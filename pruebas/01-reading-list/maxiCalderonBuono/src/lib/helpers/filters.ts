@@ -1,3 +1,4 @@
+import { NO_FILTER_APPLIED } from '$lib/const/filters';
 import type { Book } from '../../types';
 
 export function filterByPages(item: Book, value: number) {
@@ -5,9 +6,5 @@ export function filterByPages(item: Book, value: number) {
 }
 
 export function filterByCategory(item: Book, selectedGenre: string) {
-	if (selectedGenre === 'All') {
-		return item;
-	} else {
-		return item.genre === selectedGenre;
-	}
+	return selectedGenre === NO_FILTER_APPLIED ? item : item.genre === selectedGenre;
 }

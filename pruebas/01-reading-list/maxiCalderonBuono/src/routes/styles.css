@@ -1,5 +1,10 @@
 :root {
 	--theme-font-family-base: 'MonaSans', sans-serif;
 	--theme-font-family-heading: 'Luma', sans-serif;
-	
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
 }

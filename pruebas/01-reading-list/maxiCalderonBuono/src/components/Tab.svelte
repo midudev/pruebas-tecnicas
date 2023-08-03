@@ -15,7 +15,7 @@
 </script>
 
 <button
-	class={`relative rounded-[40px] p-2 hover:bg-lime-200 hover:scale-[103%]  active:scale-[98%] ${
+	class={`relative rounded-[40px] p-2 hover:bg-lime-200 hover:scale-[103%]  active:scale-[98%] flex-grow ${
 		active ? 'bg-lime-200' : 'bg-slate-200'
 	}`}
 	on:click={selectedFilter}

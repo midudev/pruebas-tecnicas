@@ -9,9 +9,9 @@
 </script>
 
 <section class="w-full mt-10 my-10 overflow-x-hidden box-border">
-	<div class="w-full px-5 flex flex-col items-center lg:flex-row lg:items-start">
+	<div class="w-full px-5 flex flex-col items-center lg:flex-row lg:items-start gap-4">
 		<div
-			class="w-full overflow-x-scroll hide-scrollbar relative flex items-center sm:justify-center lg:justify-start h-20 mb-10 mx-5 lg:mx-0 gap-10"
+			class="w-full overflow-x-scroll hide-scrollbar relative flex items-center sm:justify-center lg:justify-start h-20 mb-10 mx-5 pr-5 lg:mx-0 gap-10"
 		>
 			<Filters {library} on:selectedfilter {availables} {savedFilter} />
 		</div>

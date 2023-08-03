@@ -64,11 +64,13 @@
 	});
 </script>
 
-<section class="my-20 mx-auto max-w-5xl w-full" in:fly={{ y: 200, duration: 500 }} h-full>
+<section class="my-20 mx-auto max-w-5xl w-full" in:fly={{ y: 200, duration: 500 }}>
 	{#if wishlist.length === 0}
-		<article class="flex flex-col items-center justify-center gap-5 mx-5 lg:mx-0 h-full">
+		<article class="flex flex-col items-center justify-center gap-5 mx-5 lg:mx-0">
 			<img class="w-[500px]" src="/images/wishlist.png" alt="wishlist" />
-			<p class="font-bold text-2xl text-center">Your bookshelf is eagerly waiting for new additions!</p>
+			<p class="font-bold text-2xl text-center">
+				Your bookshelf is eagerly waiting for new additions!
+			</p>
 
 			<a
 				class="w-full text-[10px] text-center"

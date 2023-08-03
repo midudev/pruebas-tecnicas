@@ -55,7 +55,7 @@
 			</div>
 		</div>
 		<img
-			class={`w-full group-hover:scale-125 transition-all ease-in-out delay-75 h-[330px] object-cover`}
+			class={`aspect-[9/14] group-hover:scale-125 transition-all ease-in-out delay-75 object-cover`}
 			src={book.cover}
 			alt="Cover for {book.title}"
 		/>

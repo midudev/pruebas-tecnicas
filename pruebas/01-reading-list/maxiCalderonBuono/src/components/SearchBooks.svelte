@@ -1,22 +1,30 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { fly } from 'svelte/transition';
-	import libraryData from '../lib/data/books.json';
-	import type { Library } from '../types';
 	import Icon from '@iconify/svelte';
+	import api from '$lib/services/api';
 
 	interface searchResults {
 		title: string;
 		desc: string;
 		slug: string;
 	}
-	let { library }: Library = libraryData;
 
-	let titles: searchResults[] = library.map(({ book }) => ({
-		title: book.title,
-		desc: book.synopsis,
-		slug: book.title
-	}));
+	let titles: searchResults[];
+
+	api.books
+		.list()
+		.then((data) =>
+			data.map((book) => {
+				return {
+					title: book.title,
+					desc: book.synopsis,
+					slug: book.title
+				};
+			})
+		)
+		.then((results) => (titles = results))
+		.catch((err) => console.error('Error al leer los datos', err));
 
 	let searchValue: string;
 
@@ -95,9 +103,7 @@
 	autocomplete="off"
 	on:submit|preventDefault={submitSearch}
 >
-	<label class="font-bold text-2xl hidden" aria-label="Search bar" for={id}
-		>{label}</label
-	>
+	<label class="font-bold text-2xl hidden" aria-label="Search bar" for={id}>{label}</label>
 
 	<div class="flex h-12">
 		<input

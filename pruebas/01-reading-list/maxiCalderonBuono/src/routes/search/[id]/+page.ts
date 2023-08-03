@@ -1,17 +1,17 @@
+import api from '$lib/services/api.js';
 import { error } from '@sveltejs/kit';
-import type { Library } from '../../../types';
-import libraryData from '../../../lib/data/books.json';
-const { library }: Library = libraryData;
+import type { Book } from '../../../types.js';
 
 /** @type {import('./$types').PageLoad} */
 export function load({ params }) {
-	const bookFound = library.find(({ book }) => book.title.toLowerCase() === params.id);
+	let bookFound: Book | undefined;
 
-	if (bookFound) {
-		const { book } = bookFound;
+	api.books
+		.list()
+		.then((data) => data.find((book) => book.title.toLowerCase() === params.id))
+		.then((result) => (bookFound = result));
 
-		return book;
-	}
+	if (bookFound) return bookFound;
 
 	throw error(404, 'Not found');
 }
