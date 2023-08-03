@@ -11,7 +11,7 @@
 	export let availables: number;
 	export let savedFilter: string;
 
-	let uniqueFilters = getUniqueGenres('Todos', library);
+	let uniqueFilters = getUniqueGenres('All', library);
 	let activeFilter: string = savedFilter;
 
 	function handleInternalState(e: CustomEvent<{ filter: string }>) {

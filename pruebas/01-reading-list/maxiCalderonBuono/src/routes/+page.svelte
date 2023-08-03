@@ -31,7 +31,7 @@
 		books: library,
 		wishlist: [],
 		renderlist: library,
-		filter: 'Todos',
+		filter: 'All',
 		pages: maxPage
 	});
 
@@ -46,7 +46,7 @@
 	}
 
 	const updateFilteredBooks = () => {
-		if ($initialDataStore.filter === 'Todos' && $initialDataStore.pages === maxPage) {
+		if ($initialDataStore.filter === 'All' && $initialDataStore.pages === maxPage) {
 			$initialDataStore.renderlist = $initialDataStore.books;
 		} else {
 			$initialDataStore.renderlist = $initialDataStore.books.filter(

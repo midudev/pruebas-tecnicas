@@ -5,7 +5,7 @@ export function filterByPages(item: Book, value: number) {
 }
 
 export function filterByCategory(item: Book, selectedGenre: string) {
-	if (selectedGenre === 'Todos') {
+	if (selectedGenre === 'All') {
 		return item;
 	} else {
 		return item.genre === selectedGenre;

@@ -22,7 +22,7 @@
 
 		<a href="/" class="btn variant-filled font-bold rounded-lg p-2 mt-3 hover:bg-indigo-300"
 			><Icon icon="ep:back" />
-			<span>Vovler</span>
+			<span>Go back</span>
 		</a>
 	</div>
 </section>
