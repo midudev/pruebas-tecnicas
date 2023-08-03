@@ -174,7 +174,7 @@
 		</header>
 		{#if $initialDataStore.renderlist.length === 0 && show === 'library'}
 			<article
-				class="flex flex-col items-center justify-center gap-5 mx-5 lg:mx-0"
+				class="flex flex-col items-center justify-center gap-5 mx-5 lg:mx-0 h-full"
 				in:fly={{ y: 200, duration: 500 }}
 			>
 				<img class="w-[600px]" src="/images/library.png" alt="no books to display" />
