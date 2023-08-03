@@ -8,6 +8,7 @@ import SearchFilter from "./components/SearchFilter";
 import { Book } from "./types";
 import ColorThemeSwitch from "./components/ColorThemeSwitch";
 import { textColorAnimationClass } from "./utils/tailwind";
+import Paginator from "./components/Paginator";
 
 function App() {
   const {
@@ -69,6 +70,7 @@ function App() {
 
             <div className="filters-wrapper mb-5 flex flex-wrap gap-5 lg:gap-10 align-center">
               <PageFilter />
+              <Paginator />
               <GenreFilter />
               <SearchFilter />
             </div>
