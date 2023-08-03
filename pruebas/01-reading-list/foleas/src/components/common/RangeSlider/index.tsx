@@ -24,7 +24,7 @@ const RangeSlider = <T extends number | readonly number[]>(
         return (
           <div
             {...props}
-            className={`${orientationClass} aspect-square rounded-full bg-indigo-500 text-xs text-white flex items-center justify-center cursor-grab`}
+            className={`${orientationClass} aspect-square rounded-full border dark:bg-gray-700 dark:border-gray-600 bg-gray-200 bg-gray-300 text-xs text-white flex items-center justify-center cursor-grab`}
           >
             {state.valueNow}
           </div>
@@ -41,12 +41,12 @@ const RangeSlider = <T extends number | readonly number[]>(
 
         if (isMulti) {
           isFirst || isLast
-            ? (trackClasses += "bg-gray-200 ")
-            : (trackClasses += "bg-indigo-500 ");
+            ? (trackClasses += "bg-gray-700 dark:bg-gray-200 ")
+            : (trackClasses += "dark:bg-gray-700 bg-gray-200 ");
         } else {
           isLast
-            ? (trackClasses += "bg-gray-200 ")
-            : (trackClasses += "bg-indigo-500 ");
+            ? (trackClasses += "bg-gray-700 dark:bg-gray-200 ")
+            : (trackClasses += "dark:bg-gray-700 bg-gray-200 ");
         }
 
         trackClasses += isVertical
@@ -56,7 +56,7 @@ const RangeSlider = <T extends number | readonly number[]>(
         return <div {...props} className={trackClasses}></div>;
       }}
       renderMark={(props) => {
-        let markClasses = "w-1 h-1 rounded-full bg-indigo-500 ";
+        let markClasses = "w-1 h-1 rounded-full dark:bg-gray-700 bg-gray-200 ";
         markClasses += isVertical
           ? "left-1/2 -translate-x-1/2"
           : `top-1/2 -translate-y-1/2 translate-x-1/2`;
