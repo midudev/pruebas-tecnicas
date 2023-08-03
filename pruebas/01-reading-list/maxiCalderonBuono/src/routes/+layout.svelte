@@ -7,7 +7,7 @@
 	import './styles.css';
 </script>
 
-<main class="w-full">
+<main class="w-full h-full">
 	<slot />
 </main>
 <footer class="mx-auto w-full text-center mb-10">
