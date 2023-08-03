@@ -138,7 +138,7 @@
 		availables={$initialDataStore.renderlist.length}
 	/>
 
-	<section class="my-10 mx-auto max-w-5xl w-full">
+	<section class="my-10 mx-auto max-w-5xl w-full h-full">
 		<header class="flex flex-col md:flex-row gap-3 items-center mb-10 justify-between mx-5 lg:mx-0">
 			<h1 class="font-bold text-3xl lg:text-5xl flex gap-3 items-center mb-5 md:mb-0">
 				{show === 'library' ? 'Our books' : 'Wishlist'}<Icon

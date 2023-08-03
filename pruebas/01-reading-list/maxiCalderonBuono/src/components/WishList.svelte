@@ -64,7 +64,7 @@
 	});
 </script>
 
-<section class="my-20 mx-auto max-w-5xl w-full" in:fly={{ y: 200, duration: 500 }}>
+<section class="my-20 mx-auto max-w-5xl w-full" in:fly={{ y: 200, duration: 500 }} h-full>
 	{#if wishlist.length === 0}
 		<article class="flex flex-col items-center justify-center gap-5 mx-5 lg:mx-0 h-full">
 			<img class="w-[500px]" src="/images/wishlist.png" alt="wishlist" />
