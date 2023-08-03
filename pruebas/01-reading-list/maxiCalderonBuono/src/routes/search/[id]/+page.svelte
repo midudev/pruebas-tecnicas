@@ -3,6 +3,8 @@
 	import { fly } from 'svelte/transition';
 
 	export let data;
+
+	console.log(data);
 </script>
 
 <section
