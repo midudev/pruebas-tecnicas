@@ -1,25 +1,43 @@
+import { useState } from 'react'
 import '@/components/Book/Book.css'
 import AddSquareIcon from '@/components/Icons/AddSquareIcon'
 
-const Book = ({ data, onAddBookToReadingListClick }) => {
+const Book = ({ data, onAddBookToReadingListClick, fadingOut = false }) => {
+  const [isFadingOut, setIsFadingOut] = useState(fadingOut)
+
+  const fadeOut = (cb) => {
+    setIsFadingOut(true)
+    cb()
+  }
+
+  const handleAddBookToReadingListClick = () => {
+    fadeOut(() => {
+      setTimeout(() => {
+        onAddBookToReadingListClick()
+        setIsFadingOut(false)
+      }, 300)
+    })
+  }
+
   return (
-    <div className='grid-item'>
-      <div className='item-inner'>
-        <div className='book'>
+    <article className={`grid__item book ${isFadingOut ? 'fading-out' : ''}`}>
+      <div className='grid__item-inner'>
+        <figure>
           <img
             className='book__image'
             src={data.cover}
             alt={`Imagen de la portada del libro: ${data.title}`}
           />
-          <div className='book__content' onClick={onAddBookToReadingListClick}>
-            <span className='book__icon'>
-              <AddSquareIcon />
-            </span>
-            <span className='book__text'>Añadir a la lista de lectura</span>
-          </div>
-        </div>
+          <figcaption>{data.title}</figcaption>
+        </figure>
+        <button className='book__content' onClick={handleAddBookToReadingListClick}>
+          <span className='book__content-icon'>
+            <AddSquareIcon />
+          </span>
+          <span className='book__content-text'>Añadir a la lista de lectura</span>
+        </button>
       </div>
-    </div>
+    </article>
   )
 }
 

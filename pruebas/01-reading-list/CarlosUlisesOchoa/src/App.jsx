@@ -14,10 +14,10 @@ function App() {
   return (
     <>
       <main>
-        <div className='books'>
-          <h1 className='books__title text-3xl font-bold mb-2'>Books</h1>
-          <BookList className='books__list' onAddBookToReadingListClick={handleAddBook} />
-        </div>
+        <section className='books'>
+          <h1 className='books__title'>Libros</h1>
+          <BookList onAddBookToReadingListClick={handleAddBook} />
+        </section>
         <ReadingList />
       </main>
     </>

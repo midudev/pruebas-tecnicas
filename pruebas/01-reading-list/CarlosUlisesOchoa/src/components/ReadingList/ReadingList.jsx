@@ -20,7 +20,7 @@ const ReadingList = () => {
     <div className='reading-list-card'>
       <div className='card-container'>
         <div className='card-header'>
-          <h5 className='card-title'>My Reading List</h5>
+          <h5 className='card-title'>Mi lista de lectura</h5>
         </div>
         {readingListState && readingListState.length > 0 ? (
           <div className='card-content'>
@@ -28,7 +28,7 @@ const ReadingList = () => {
               role='list'
               className='list divide-y divide-gray-200 dark:divide-gray-700'>
               {readingListState.map((book) => (
-                <li key={book.title} className='list-item'>
+                <li key={book.ISBN} className='list-item'>
                   <div className='list-item-content'>
                     <div className='list-item-image-container'>
                       <img

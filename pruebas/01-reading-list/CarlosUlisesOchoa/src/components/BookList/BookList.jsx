@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { v4 as uuidv4 } from 'uuid'
 import Book from '@/components/Book/Book'
 import '@/components/BookList/BookList.css'
 import { useReadingListStore } from '@/store/useReadingListStore'
@@ -18,17 +17,16 @@ const BookList = ({ onAddBookToReadingListClick }) => {
   }, [bookList, readingList])
 
   return (
-    <div className='books'>
-      <div className='grid-container'>
-        {availableBooksState.map((book) => (
+    <ul className='books__container'>
+      {availableBooksState.map((book) => (
+        <li key={book.ISBN}>
           <Book
-            key={uuidv4()}
             data={book}
             onAddBookToReadingListClick={() => onAddBookToReadingListClick(book)}
           />
-        ))}
-      </div>
-    </div>
+        </li>
+      ))}
+    </ul>
   )
 }
 

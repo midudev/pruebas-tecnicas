@@ -6,7 +6,7 @@ export const useReadingListStore = create(
   persist(
     {
       key: 'readingList',
-      default: [],
+      getStorage: () => localStorage,
     },
     (set) => ({
       readingList: [],
