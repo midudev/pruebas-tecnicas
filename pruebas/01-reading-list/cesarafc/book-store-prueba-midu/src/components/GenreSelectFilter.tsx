@@ -1,19 +1,22 @@
-import * as React from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
-export default function GenreSelectFilter() {
-  const [genre, setGenre] = React.useState('');
+type GenreProps = {
+  genre: string
+  onGenreChange: (newGenre: string) => void,
+}
+
+export default function GenreSelectFilter({genre, onGenreChange}: GenreProps) {
 
   const handleChange = (event: SelectChangeEvent) => {
-    setGenre(event.target.value);
+    onGenreChange(event.target.value);
   };
 
   return (
     <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="demo-select-small-label">Genre</InputLabel>
+      <InputLabel id="demo-select-small-label">Género</InputLabel>
       <Select
         labelId="demo-select-small-label"
         id="demo-select-small"
@@ -22,7 +25,7 @@ export default function GenreSelectFilter() {
         onChange={handleChange}
       >
         <MenuItem value="">
-          <em>None</em>
+          <em>---</em>
         </MenuItem>
         <MenuItem value='Fantasía'>Fantasía</MenuItem>
         <MenuItem value='Ciencia ficción'>Ciencia ficción</MenuItem>

@@ -10,11 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@dnd-kit/core": "^6.0.8",
+    "@dnd-kit/sortable": "^7.0.2",
+    "@dnd-kit/utilities": "^3.2.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "shared-zustand": "^2.0.0",
     "zustand": "^4.3.9"
   },
   "devDependencies": {

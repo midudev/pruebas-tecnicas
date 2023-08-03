@@ -1,7 +1,11 @@
 import { Button, Container, Drawer, Typography } from "@mui/material";
-import React, { useState } from "react"
+import React, { ReactNode, useState } from "react"
 
-function ReadList() {
+type ReadListProps = {
+  children: ReactNode,
+}
+
+function ReadList({children}: ReadListProps) {
 
     const [toggleDrawer, setToggleDrawer] = useState(false);
 
@@ -18,7 +22,7 @@ function ReadList() {
             }}
           >
             <Typography variant="h4">Lista de lectura</Typography>
-            
+            {children}
           </Container>
         </Drawer>
         </React.Fragment>
