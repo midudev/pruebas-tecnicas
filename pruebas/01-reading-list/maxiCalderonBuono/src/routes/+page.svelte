@@ -104,8 +104,6 @@
 
 <svelte:head>
 	<title>ReadStack</title>
-	<meta name="description" content="Svelte demo app" />
-	<link rel="icon" href="/favicon.ico" />
 </svelte:head>
 
 <!-- <svelte:window
@@ -143,7 +141,7 @@
 	<section class="my-10 mx-auto max-w-5xl w-full">
 		<header class="flex flex-col md:flex-row gap-3 items-center mb-10 justify-between mx-5 lg:mx-0">
 			<h1 class="font-bold text-3xl lg:text-5xl flex gap-3 items-center mb-5 md:mb-0">
-				{show === 'library' ? ' Nuestra librería' : 'Lista de lectura'}<Icon
+				{show === 'library' ? 'Our books' : 'Wishlist'}<Icon
 					icon="ion:book-outline"
 				/>
 			</h1>
@@ -158,7 +156,7 @@
 					bind:group={show}
 					name="show"
 					on:change={() => (show = 'library')}
-					value={'library'}>Librería</RadioItem
+					value={'library'}>Library</RadioItem
 				>
 				<RadioItem
 					class={`${show === 'list' ? 'bg-lime-300' : ''} relative`}
@@ -170,7 +168,7 @@
 					<span class="badge-icon bg-pink-300 absolute -top-4 -right-3 z-10 p-3 text-lg"
 						>{$initialDataStore.wishlist.length}</span
 					>
-					Mi lista</RadioItem
+					Wishlist</RadioItem
 				>
 			</RadioGroup>
 		</header>
@@ -179,8 +177,8 @@
 				class="flex flex-col items-center justify-center gap-5 mx-5 lg:mx-0"
 				in:fly={{ y: 200, duration: 500 }}
 			>
-				<img class="w-[600px]" src="/images/library.png" alt="Imagen de wishlist" />
-				<p class="font-bold text-3xl text-center">No hay libros para mostrar</p>
+				<img class="w-[600px]" src="/images/library.png" alt="no books to display" />
+				<p class="font-bold text-3xl text-center">We don't have any books ready to showcase. Stay tuned!</p>
 
 				<a
 					class="w-full text-[10px] text-center"
@@ -197,7 +195,7 @@
 				{#each $initialDataStore.renderlist as { book }}
 					{#key book.ISBN}
 						<BookCard
-							cta="Agregar a lista de lectura"
+							cta="Add to wishlist"
 							{book}
 							on:update={() => addToWishlist(book.ISBN)}
 							on:navigate={() => goToDetail(book.title)}

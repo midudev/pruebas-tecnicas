@@ -95,7 +95,7 @@
 	autocomplete="off"
 	on:submit|preventDefault={submitSearch}
 >
-	<label class="font-bold text-2xl hidden" aria-label="Buscador de libros por título" for={id}
+	<label class="font-bold text-2xl hidden" aria-label="Search bar" for={id}
 		>{label}</label
 	>
 

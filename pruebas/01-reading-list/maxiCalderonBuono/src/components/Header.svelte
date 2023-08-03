@@ -17,10 +17,10 @@
 
 	<div class="flex gap-5 flex-1 justify-end items-center">
 		<SearchBooks
-			label="Busca tu libro favorito"
+			label="Search for your favourite title"
 			id="search-form"
-			action="Buscar"
-			placeholder="Busca el título de tu libro..."
+			action="Search"
+			placeholder="Start typing to search..."
 		/>
 
 		<Avatar />

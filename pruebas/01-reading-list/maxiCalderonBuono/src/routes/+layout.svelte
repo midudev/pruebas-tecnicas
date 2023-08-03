@@ -11,7 +11,7 @@
 	<slot />
 </main>
 <footer class="mx-auto w-full text-center">
-	Desarrollado con ❤️ por <a
+	Made with ❤️ by <a
 		href="https://maxicalderon.dev"
 		class="text-lime-200 font-bold underline">Maxi Calderón</a
 	>
