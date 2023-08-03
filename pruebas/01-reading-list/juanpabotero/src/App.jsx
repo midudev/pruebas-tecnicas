@@ -1,10 +1,9 @@
-import './App.css';
-import { library as initialBooks } from './mocks/books.json';
 import { Books } from './components/Books';
 import { Header } from './components/Header';
 import { ReadingList } from './components/ReadingList';
 import { ReadingListProvider } from './context/reading-list';
 import { useFilters } from './hooks/useFilters';
+import { library as initialBooks } from './mocks/books.json';
 
 function App() {
   const { filterBooks } = useFilters();

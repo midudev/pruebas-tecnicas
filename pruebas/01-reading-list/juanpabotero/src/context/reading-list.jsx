@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-import { useReducer, createContext } from 'react';
+import { createContext, useReducer } from 'react';
 import {
-  readingListReducer,
   readingListInitialState,
+  readingListReducer,
 } from '../reducers/reading-list.js';
 
 export const ReadingListContext = createContext();

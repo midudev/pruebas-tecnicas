@@ -1,13 +1,12 @@
-import '../styles/ReadingList.css';
-
 import { useId } from 'react';
+import { useReadingList } from '../hooks/useReadingList';
 import {
   ReadingListIcon,
   RemoveBookIcon,
   SadFaceIcon,
   TrashIcon,
 } from './Icons.jsx';
-import { useReadingList } from '../hooks/useReadingList';
+import '../styles/ReadingList.css';
 
 function Book({ cover, title, removeFromReadingList }) {
   return (
