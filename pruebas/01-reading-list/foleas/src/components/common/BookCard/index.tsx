@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
 import { textColorAnimationClass } from "../../../utils/tailwind";
-import {
-  SquareMinusRegular,
-  SquareMinusSolid,
-} from "../../../assets/icons/icons";
+import { SquareMinusSolid } from "../../../assets/icons/icons";
 interface BookCardProps {
   index: number;
   title: string;
