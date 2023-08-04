@@ -72,7 +72,9 @@ function App() {
       ) : (
         <>
           <div className="relative box-border available-books-wrapper md:w-8/12 xl:w-9/12 overflow-y-auto max-h-full">
-            <header className={`p-10 pt-5 pb-5 bg-gray-100 ${stickyTop}`}>
+            <header
+              className={`p-10 pt-5 pb-5 border-r border-l bg-gray-100 ${stickyTop}`}
+            >
               <ColorThemeSwitch />
               <h1
                 className={`text-3xl font-bold mb-5 ${textColorAnimationClass}`}
