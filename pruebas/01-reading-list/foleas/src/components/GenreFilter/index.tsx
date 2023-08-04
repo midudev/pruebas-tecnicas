@@ -2,11 +2,10 @@ import { useStore } from "../../store/store";
 import { textColorAnimationClass } from "../../utils/tailwind";
 
 const GenderFilter = () => {
-  const { genres, currentGenre, changeCurrentGenre, changePage } = useStore();
+  const { genres, currentGenre, changeCurrentGenre } = useStore();
 
   const selectChangeHandler = (value: string) => {
     changeCurrentGenre(value);
-    changePage(1);
   };
 
   return (

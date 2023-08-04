@@ -1,10 +1,20 @@
+import { V } from "vitest/dist/types-198fd1d9.js";
 import { Book } from "../types";
+
+export interface Pages {
+  min: number;
+  max: number;
+}
 
 // STORE
 export type Store = {
   perPage: number;
+  maxPage: number;
+  setMaxPage: (value: number) => void;
   page: number;
   changePage: (value: number) => void;
+  pagesRange: Pages | null;
+  setPagesRange: (value: Pages) => void;
   search: string;
   changeSearch: (value: string) => void;
   genres: Array<string>;

@@ -1,10 +1,16 @@
+import { useEffect } from "react";
 import { useStore } from "../../store/store";
 import { textColorAnimationClass } from "../../utils/tailwind";
 import RangeSlider from "../common/RangeSlider";
 
 const Paginator = () => {
-  const { page, changePage, perPage, filteredBooks } = useStore();
-  const max = Math.ceil(filteredBooks.length / perPage);
+  const { page, changePage, maxPage } = useStore();
+
+  useEffect(() => {
+    if (maxPage > 0) {
+      if (page > maxPage && page > 1) changePage(maxPage);
+    }
+  }, [page, changePage, maxPage]);
 
   return (
     <div className="flex-1 md:flex-auto overflow-hidden">
@@ -14,13 +20,13 @@ const Paginator = () => {
       >
         Paginador - Página: {page}
       </label>
-      <div className="h-[46px] flex items-center">
+      <div className="h-[46px] flex items-center [:has(.disabled)]:cursor-not-allowed">
         <RangeSlider
           className="w-80 h-6"
-          defaultValue={page}
-          disabled={max === 1}
+          value={page}
+          disabled={maxPage === 1}
           min={1}
-          max={max}
+          max={maxPage}
           marks={true}
           onChange={(value) => changePage(value)}
         />
