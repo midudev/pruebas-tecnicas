@@ -1,4 +1,4 @@
-.reading-list-card {
+.reading__list {
   position: fixed;
   right: 10px;
   top: 10px;
@@ -8,21 +8,21 @@
 
 /* Tablet */
 /* @media screen and (min-width: 480px) {
-  .reading-list-card {
+  .reading__list {
     
   }
 } */
 
 /* Small screens, laptops */
 /* @media screen and (min-width: 768px) {
-  .reading-list-card {
+  .reading__list {
     
   }
 } */
 
 /* Large screens */
 @media screen and (min-width: 1025px) {
-  .reading-list-card {
+  .reading__list {
     width: 350px;
   }
 }

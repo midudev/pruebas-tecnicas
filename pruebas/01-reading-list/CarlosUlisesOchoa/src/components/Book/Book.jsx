@@ -20,23 +20,18 @@ const Book = ({ data, onAddBookToReadingListClick, fadingOut = false }) => {
   }
 
   return (
-    <article className={`grid__item book ${isFadingOut ? 'fading-out' : ''}`}>
-      <div className='grid__item-inner'>
-        <figure>
-          <img
-            className='book__image'
-            src={data.cover}
-            alt={`Imagen de la portada del libro: ${data.title}`}
-          />
-          <figcaption>{data.title}</figcaption>
-        </figure>
-        <button className='book__content' onClick={handleAddBookToReadingListClick}>
-          <span className='book__content-icon'>
-            <AddSquareIcon />
-          </span>
-          <span className='book__content-text'>Añadir a la lista de lectura</span>
-        </button>
-      </div>
+    <article className={`book ${isFadingOut ? 'book--fading-out' : ''}`}>
+      <img
+        className='book__image'
+        src={data.cover}
+        alt={`Imagen de la portada del libro: ${data.title}`}
+      />
+      <button className='book__options' onClick={handleAddBookToReadingListClick}>
+        <span className='book__options-icon'>
+          <AddSquareIcon />
+        </span>
+        <span className='book__options-text'>Añadir a la lista de lectura</span>
+      </button>
     </article>
   )
 }

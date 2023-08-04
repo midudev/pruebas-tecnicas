@@ -12,16 +12,16 @@ export const useBooksStore = create(
     },
     (set) => ({
       books: DEFAULT_DATA,
-      removeBookFromList: (book) => {
-        set((state) => ({
-          books: state.books.filter((item) => item.ISBN !== book.ISBN),
-        }))
-      },
-      clearList: () => {
-        set(() => ({
-          books: [],
-        }))
-      },
+      // removeBookFromList: (book) => {
+      //   set((state) => ({
+      //     books: state.books.filter((item) => item.ISBN !== book.ISBN),
+      //   }))
+      // },
+      // clearList: () => {
+      //   set(() => ({
+      //     books: [],
+      //   }))
+      // },
     })
   )
 )

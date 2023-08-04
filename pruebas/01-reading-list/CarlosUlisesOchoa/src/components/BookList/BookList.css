@@ -9,12 +9,8 @@
   padding: 10px;
 }
 
-.book {
-  animation: fadein 0.3s linear forwards;
-}
-
-.book.fading-out {
-  animation: fadeout 0.3s linear forwards;
+.books__element {
+  display: grid;
 }
 
 /* Tablet */
@@ -37,41 +33,5 @@
   .books__container {
     max-width: 800px;
     grid-template-columns: repeat(4, auto);
-  }
-}
-
-@-webkit-keyframes fadein {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fadein {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes fadeout {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes fadeout {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
   }
 }

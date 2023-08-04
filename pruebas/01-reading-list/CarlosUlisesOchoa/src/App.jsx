@@ -12,15 +12,13 @@ function App() {
   }
 
   return (
-    <>
-      <main>
-        <section className='books'>
-          <h1 className='books__title'>Libros</h1>
-          <BookList onAddBookToReadingListClick={handleAddBook} />
-        </section>
-        <ReadingList />
-      </main>
-    </>
+    <main>
+      <section className='books'>
+        <h1 className='books__title'>Libros</h1>
+        <BookList onAddBookToReadingListClick={handleAddBook} />
+      </section>
+      <ReadingList />
+    </main>
   )
 }
 

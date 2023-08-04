@@ -1,4 +1,4 @@
-// useReadingListStore.js
+// src/store/useReadingListStore.js
 import { create } from 'zustand'
 import persist from '@/utils/persist'
 
@@ -12,13 +12,11 @@ export const useReadingListStore = create(
       readingList: [],
       addBookToReadingList: (book) => {
         set((state) => {
-          const readingList = state.readingList
+          const readingList = [...state.readingList]
           const existingBook = readingList.find((item) => item.ISBN === book.ISBN)
-
-          // If the book already exists in the reading list, don't add it again
           if (!existingBook) {
             return {
-              readingList: [...state.readingList, book],
+              readingList: [...readingList, book],
             }
           } else {
             return state

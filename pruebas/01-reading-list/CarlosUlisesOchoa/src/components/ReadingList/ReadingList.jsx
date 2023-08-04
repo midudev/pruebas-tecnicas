@@ -17,7 +17,7 @@ const ReadingList = () => {
   }, [readingList])
 
   return (
-    <div className='reading-list-card'>
+    <section className='reading__list'>
       <div className='card-container'>
         <div className='card-header'>
           <h5 className='card-title'>Mi lista de lectura</h5>
@@ -57,7 +57,7 @@ const ReadingList = () => {
           </div>
         )}
       </div>
-    </div>
+    </section>
   )
 }
 
