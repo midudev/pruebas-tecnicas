@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useBooks } from '../hooks/useBooks.jsx'
 import { useFilters } from '../hooks/useFilters.jsx'
 import styles from '../styles/main.module.css'
@@ -7,13 +6,8 @@ import { BookIcon, FiltersIcon, SavedBooksIcon } from './Icons.jsx'
 export function Filters() {
   const { books, booksInLists } = useBooks()
   const { filters, filteredBooks, setFilters } = useFilters()
-
-  const [allGenres] = useState(() => {
-    const allGenres = books.map(({ genre }) => genre)
-    const uniqueGenres = new Set([...allGenres])
-
-    return [...uniqueGenres]
-  })
+  const { genre, maxPages, defaultFilters } = filters
+  const { allGenres, bookWithMorePages } = defaultFilters
 
   const handleChangeRange = (e) => {
     if (e.target.valueAsNumber < 0) {
@@ -26,9 +20,10 @@ export function Filters() {
     setFilters(state => ({ ...state, genre: e.target.value }))
   }
 
-  const getWidthOfRangeInput = () => {
+  const getWidthOfTheRangeValue = () => {
+    // TODO --- Refactor this
     const offsetWidth = document.querySelector('.range')?.offsetWidth || 200
-    return offsetWidth
+    return (offsetWidth / (bookWithMorePages + 90)) * filters.maxPages + 10
   }
 
   return (
@@ -38,10 +33,11 @@ export function Filters() {
           <select
             name='genre'
             className={styles.select}
+            value={genre}
             onChange={handleChangeSelect}
           >
             <option value=''>Todos los géneros</option>
-            {allGenres.map((genre) => (
+            {allGenres?.map((genre) => (
               <option key={genre} value={genre}>{genre}</option>
             ))}
           </select>
@@ -50,17 +46,17 @@ export function Filters() {
           <span
             className={styles.rangeRepresentation}
             style={{
-              width: `${((getWidthOfRangeInput() / (filters.bookWithMorePages + 90)) * filters.maxPages) + 10}px`
+              width: `${getWidthOfTheRangeValue()}px`
             }}
           />
           <span>Páginas máx.</span>
-          <span className={styles.rangeValue}>{filters.maxPages}</span>
+          <span className={styles.rangeValue}>{maxPages}</span>
           <input
             type='range'
             min='-50'
-            max={filters.bookWithMorePages}
+            max={bookWithMorePages}
             step='10'
-            value={filters.maxPages}
+            value={maxPages}
             onChange={handleChangeRange}
           />
         </label>
