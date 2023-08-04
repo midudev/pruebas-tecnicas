@@ -7,7 +7,7 @@ import { UseGetData } from "./hooks/useGetData";
 import SearchFilter from "./components/SearchFilter";
 import { Book } from "./types";
 import ColorThemeSwitch from "./components/ColorThemeSwitch";
-import { textColorAnimationClass } from "./utils/tailwind";
+import { stickyTop, textColorAnimationClass } from "./utils/tailwind";
 import Paginator from "./components/Paginator";
 import { getMaxPage } from "./utils/books";
 
@@ -57,7 +57,7 @@ function App() {
   }, [loading, filteredBooks, perPage]);
 
   return (
-    <main className="p-5 box-border md:flex flex-wrap w-screen min-h-screen md:h-screen overflow-hidden gap-5 transition-bg-color duration-300 ease-in-out dark:bg-slate-900">
+    <main className="box-border md:flex flex-wrap w-screen min-h-screen md:h-screen overflow-hidden gap-5 transition-bg-color duration-300 ease-in-out bg-white dark:bg-slate-900">
       {loading ? (
         <div className="flex flex-wrap justify-center self-center w-screen">
           <div
@@ -71,26 +71,28 @@ function App() {
         </div>
       ) : (
         <>
-          <div className="relative box-border p-10 pt-0 available-books-wrapper md:w-8/12 xl:w-9/12 overflow-y-auto max-h-full">
-            <ColorThemeSwitch />
-            <h1
-              className={`text-3xl font-bold mb-5 ${textColorAnimationClass}`}
-            >{`${books.length - selectedBooks.length} libros disponibles`}</h1>
+          <div className="relative box-border available-books-wrapper md:w-8/12 xl:w-9/12 overflow-y-auto max-h-full">
+            <header className={`p-10 pt-5 pb-5 bg-gray-100 ${stickyTop}`}>
+              <ColorThemeSwitch />
+              <h1
+                className={`text-3xl font-bold mb-5 ${textColorAnimationClass}`}
+              >{`${
+                books.length - selectedBooks.length
+              } libros disponibles`}</h1>
+              {selectedBooks.length > 0 && (
+                <h3
+                  className={`text-1xl font-bold mb-5 ${textColorAnimationClass}`}
+                >{`${selectedBooks.length} en la lista de lectura`}</h3>
+              )}
+              <div className="filters-wrapper mb-5 flex flex-wrap gap-5 lg:gap-10 align-center">
+                <PageRangeFilter />
+                <Paginator />
+                <GenreFilter />
+                <SearchFilter />
+              </div>
+            </header>
 
-            {selectedBooks.length > 0 && (
-              <h3
-                className={`text-1xl font-bold mb-5 ${textColorAnimationClass}`}
-              >{`${selectedBooks.length} en la lista de lectura`}</h3>
-            )}
-
-            <div className="filters-wrapper mb-5 flex flex-wrap gap-5 lg:gap-10 align-center">
-              <PageRangeFilter />
-              <Paginator />
-              <GenreFilter />
-              <SearchFilter />
-            </div>
-
-            <div className="grid grid-cols-4 gap-10">
+            <div className="grid p-10 grid-cols-4 gap-10">
               {books
                 ?.filter(({ book: { ISBN } }) => filteredBooks.includes(ISBN))
                 .slice(perPage * (page - 1), perPage * page)
@@ -114,45 +116,47 @@ function App() {
                 })}
             </div>
           </div>
-          <div
-            className={`lecture-books-wrapper flex-1 overflow-y-auto max-h-full ${
-              selectedBooks.length &&
-              "transition duration-300 border-black border bg-gray-300 dark:border-white dark:bg-gray-800 rounded-md"
-            }`}
-          >
-            {selectedBooks.length > 0 && (
-              <div className="box-border p-5 h-full lecture-books">
-                <h2
-                  className={`text-3xl font-bold mb-5 ${textColorAnimationClass}`}
-                >
+          <div className={`lecture-books-wrapper p-5 pl-0 flex-1 max-h-full`}>
+            <div
+              className={`lecture-books-inner overflow-y-auto h-full ${
+                selectedBooks.length &&
+                "transition duration-300 border-black border bg-gray-300 dark:border-white dark:bg-gray-800 rounded-md"
+              }`}
+            >
+              <div className={`list-title rounded-md p-5 mb-5 ${stickyTop}`}>
+                <h2 className={`text-3xl font-bold ${textColorAnimationClass}`}>
                   Lista de Lectura
                 </h2>
-                <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-2 gap-10 pb-4">
-                  {selectedBooks.map((v, i) => {
-                    const selectedBook = books.find(
-                      ({ book: { ISBN } }) => ISBN === v
-                    ) as Book;
-                    if (!selectedBook) return false;
-                    const { ISBN, title, cover } = selectedBook.book;
-                    return (
-                      <BookCard
-                        key={ISBN}
-                        index={lastBookClicked === ISBN ? 0 : i}
-                        title={title}
-                        imageUrl={cover}
-                        withRemoveBnt={true}
-                        onClickHandler={() => {
-                          setLastBookClicked(ISBN);
-                          setSelectedBooks(
-                            selectedBooks.filter((v) => v !== ISBN)
-                          );
-                        }}
-                      />
-                    );
-                  })}
-                </div>
               </div>
-            )}
+              {selectedBooks.length > 0 && (
+                <div className="box-border pb-5 h-full lecture-books">
+                  <div className="pl-5 pr-5 grid grid-cols-4 sm:grid-cols-6 md:grid-cols-2 gap-10 pb-4">
+                    {selectedBooks.map((v, i) => {
+                      const selectedBook = books.find(
+                        ({ book: { ISBN } }) => ISBN === v
+                      ) as Book;
+                      if (!selectedBook) return false;
+                      const { ISBN, title, cover } = selectedBook.book;
+                      return (
+                        <BookCard
+                          key={ISBN}
+                          index={lastBookClicked === ISBN ? 0 : i}
+                          title={title}
+                          imageUrl={cover}
+                          withRemoveBnt={true}
+                          onClickHandler={() => {
+                            setLastBookClicked(ISBN);
+                            setSelectedBooks(
+                              selectedBooks.filter((v) => v !== ISBN)
+                            );
+                          }}
+                        />
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </>
       )}

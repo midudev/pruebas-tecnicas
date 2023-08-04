@@ -30,7 +30,7 @@ const ColorThemeSwitch = () => {
   const switcherClassDark =
     "dark:peer-focus:ring-gray-300 dark:bg-gray-700 dark:border-slate-600";
   return (
-    <div className="absolute top-1 right-0">
+    <div className="absolute top-5 right-5">
       <label className="relative inline-flex items-center mr-5 cursor-pointer">
         <input
           type="checkbox"
