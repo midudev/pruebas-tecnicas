@@ -68,12 +68,14 @@
 }
 
 .item__image-container {
-  flex-shrink: 0;
+  height: 4.5rem;
 }
 
 .item__image {
-  width: 2.75rem;
-  height: 2.75rem;
+  object-fit: fill;
+  aspect-ratio: 6/7;
+  width: 100%;
+  height: 100%;
 }
 
 .item__detail {
