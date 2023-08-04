@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useStore } from "./store/store";
 import BookCard from "./components/BookCard";
-import PageFilter from "./components/PageFilter";
+import PageRangeFilter from "./components/PageRangeFilter";
 import GenreFilter from "./components/GenreFilter";
 import { UseGetData } from "./hooks/useGetData";
 import SearchFilter from "./components/SearchFilter";
@@ -9,10 +9,13 @@ import { Book } from "./types";
 import ColorThemeSwitch from "./components/ColorThemeSwitch";
 import { textColorAnimationClass } from "./utils/tailwind";
 import Paginator from "./components/Paginator";
+import { getMaxPage } from "./utils/books";
 
 function App() {
   const {
     page,
+    pagesRange,
+    setMaxPage,
     perPage,
     books,
     search,
@@ -28,18 +31,30 @@ function App() {
   const [lastBookClicked, setLastBookClicked] = useState<string>("");
 
   useEffect(() => {
-    setFilteredBooks(
-      books
-        ?.filter(({ book: { genre } }) =>
-          currentGenre !== "" ? genre === currentGenre : true
-        )
-        .filter(({ book: { title } }) =>
-          title.toLowerCase().includes(search.toLowerCase())
-        )
-        .filter(({ book: { ISBN } }) => !selectedBooks.includes(ISBN))
-        .map(({ book: { ISBN } }) => ISBN)
-    );
-  }, [currentGenre, search, books, selectedBooks]);
+    if (!loading) {
+      setFilteredBooks(
+        books
+          ?.filter(({ book: { genre } }) =>
+            currentGenre !== "" ? genre === currentGenre : true
+          )
+          .filter(({ book: { title } }) =>
+            title.toLowerCase().includes(search.toLowerCase())
+          )
+          .filter(
+            ({ book: { pages } }) =>
+              pagesRange && pages >= pagesRange.min && pages <= pagesRange.max
+          )
+          .filter(({ book: { ISBN } }) => !selectedBooks.includes(ISBN))
+          .map(({ book: { ISBN } }) => ISBN)
+      );
+    }
+  }, [loading, currentGenre, search, books, selectedBooks, pagesRange]);
+
+  useEffect(() => {
+    if (!loading) {
+      setMaxPage(getMaxPage(filteredBooks.length, perPage));
+    }
+  }, [loading, filteredBooks, perPage]);
 
   return (
     <main className="p-5 box-border md:flex flex-wrap w-screen min-h-screen md:h-screen overflow-hidden gap-5 transition-bg-color duration-300 ease-in-out dark:bg-slate-900">
@@ -69,7 +84,7 @@ function App() {
             )}
 
             <div className="filters-wrapper mb-5 flex flex-wrap gap-5 lg:gap-10 align-center">
-              <PageFilter />
+              <PageRangeFilter />
               <Paginator />
               <GenreFilter />
               <SearchFilter />
@@ -79,12 +94,16 @@ function App() {
               {books
                 ?.filter(({ book: { ISBN } }) => filteredBooks.includes(ISBN))
                 .slice(perPage * (page - 1), perPage * page)
-                .map(({ book: { title, cover, ISBN } }, i) => {
+                .map(({ book }, i) => {
+                  const { title, year, pages, genre, cover, ISBN } = book;
                   return (
                     <BookCard
                       key={ISBN}
                       index={lastBookClicked === ISBN ? 0 : i}
                       title={title}
+                      year={year}
+                      pages={pages}
+                      genre={genre}
                       imageUrl={cover}
                       onClickHandler={() => {
                         setLastBookClicked(ISBN);
