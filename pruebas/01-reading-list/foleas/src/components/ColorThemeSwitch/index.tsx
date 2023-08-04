@@ -6,6 +6,7 @@ import { ReactComponent as Moon } from "../../assets/moon-regular.svg";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { ReactComponent as Sun } from "../../assets/sun-regular.svg";
+import { MoonRegular, SunRegular } from "../../assets/icons/icons";
 
 const ColorThemeSwitch = () => {
   const { theme, setTheme } = UseColorTheme();
@@ -43,16 +44,20 @@ const ColorThemeSwitch = () => {
         <div
           className={`${switcherClass} ${switcherClassPeer} ${switcherClassAfter} ${switcherClassLight} ${switcherClassDark}`}
         >
-          <Moon
+          <div
             className={`${iconClass} fill-gray-200 ${
               isDark ? "opacity-1" : "opacity-0"
             }  top-[1px] left-1`}
-          />
-          <Sun
+          >
+            <MoonRegular />
+          </div>
+          <div
             className={`${iconClass} fill-gray-700 ${
               isDark ? "opacity-0" : "opacity-1"
             } top-1 right-1`}
-          />
+          >
+            <SunRegular />
+          </div>
         </div>
       </label>
     </div>
