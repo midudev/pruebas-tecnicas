@@ -2,13 +2,37 @@ import { create } from "zustand";
 import { Store } from "./storeTypes";
 import { getLocalStorage, setLocalStorage } from "../utils/localStorage";
 
+const getLocaStoragePages = () => {
+  if (getLocalStorage("minPageRange") && getLocalStorage("maxPageRange")) {
+    return {
+      min: getLocalStorage("minPageRange") as number,
+      max: getLocalStorage("maxPageRange") as number,
+    };
+  } else {
+    return null;
+  }
+};
+
 export const useStore = create<Store>((set) => ({
   perPage: 4,
+  maxPage: 0,
+  setMaxPage: (maxPage) =>
+    set(() => {
+      setLocalStorage("maxPage", maxPage);
+      return { maxPage };
+    }),
   page: (getLocalStorage("page") as number) || 1,
   changePage: (newPage) =>
     set(() => {
       setLocalStorage("page", newPage);
       return { page: newPage };
+    }),
+  pagesRange: getLocaStoragePages(),
+  setPagesRange: (pagesRange) =>
+    set(() => {
+      setLocalStorage("minPageRange", pagesRange.min);
+      setLocalStorage("maxPageRange", pagesRange.max);
+      return { pagesRange };
     }),
   search: (getLocalStorage("search") as string) || "",
   changeSearch: (newSearch) =>
