@@ -10,6 +10,7 @@ import ColorThemeSwitch from "./components/ColorThemeSwitch";
 import { stickyTop, textColorAnimationClass } from "./utils/tailwind";
 import Paginator from "./components/Paginator";
 import { getMaxPage } from "./utils/books";
+import PerPageFilter from "./components/PerPageFilter";
 
 function App() {
   const {
@@ -89,6 +90,7 @@ function App() {
               <div className="filters-wrapper mb-5 flex flex-wrap gap-5 lg:gap-10 align-center">
                 <PageRangeFilter />
                 <Paginator />
+                <PerPageFilter />
                 <GenreFilter />
                 <SearchFilter />
               </div>

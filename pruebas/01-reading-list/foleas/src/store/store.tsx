@@ -15,6 +15,11 @@ const getLocaStoragePages = () => {
 
 export const useStore = create<Store>((set) => ({
   perPage: 4,
+  setPerPage: (perPage) =>
+    set(() => {
+      setLocalStorage("perPage", perPage);
+      return { perPage };
+    }),
   maxPage: 0,
   setMaxPage: (maxPage) =>
     set(() => {

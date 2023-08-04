@@ -9,6 +9,7 @@ export interface Pages {
 // STORE
 export type Store = {
   perPage: number;
+  setPerPage: (value: number) => void;
   maxPage: number;
   setMaxPage: (value: number) => void;
   page: number;
