@@ -47,6 +47,12 @@ This is my first project using Svelte + SvelteKit as the solution for the new [@
 
 ![search](https://i.postimg.cc/3RdCWnfH/Search-bar.png)
 
+## URL Filtering:
+
+- :star: Keeps track of the filters applied by attaching them to the URL for easy sharing.
+
+![urlfiltering](https://i.postimg.cc/FsTDLvcd/url-filtering.png)
+
 ## Drag and Drop:
 
 - :star: A fancy and fun way to reorder books on the reading list..
