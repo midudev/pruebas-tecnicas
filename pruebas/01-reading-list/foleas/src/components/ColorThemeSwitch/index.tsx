@@ -1,11 +1,5 @@
 import { useState } from "react";
 import { UseColorTheme } from "../../hooks/useColorTheme";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { ReactComponent as Moon } from "../../assets/moon-regular.svg";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { ReactComponent as Sun } from "../../assets/sun-regular.svg";
 import { MoonRegular, SunRegular } from "../../assets/icons/icons";
 
 const ColorThemeSwitch = () => {
