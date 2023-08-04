@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useStore } from "./store/store";
-import BookCard from "./components/BookCard";
+import BookCard from "./components/common/BookCard";
 import PageRangeFilter from "./components/PageRangeFilter";
 import GenreFilter from "./components/GenreFilter";
 import { UseGetData } from "./hooks/useGetData";
@@ -151,6 +151,7 @@ function App() {
                           index={lastBookClicked === ISBN ? 0 : i}
                           title={title}
                           imageUrl={cover}
+                          showInfo={false}
                           withRemoveBnt={true}
                           onClickHandler={() => {
                             setLastBookClicked(ISBN);
