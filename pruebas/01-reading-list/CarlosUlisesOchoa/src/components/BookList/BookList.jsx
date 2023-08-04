@@ -5,6 +5,8 @@ import { useReadingListStore } from '@/store/useReadingListStore'
 import { useBooksStore } from '@/store/useBooksStore'
 
 const BookList = ({ onAddBookToReadingListClick }) => {
+  useEffect(() => console.log('[R]-------> BookList component rendered!'), []) // tetemp
+
   const bookList = useBooksStore((state) => state.books)
   const readingList = useReadingListStore((state) => state.readingList)
   const [availableBooksState, setAvailableBooksState] = useState([])
@@ -14,7 +16,7 @@ const BookList = ({ onAddBookToReadingListClick }) => {
       return !readingList.find((readingBook) => readingBook.ISBN === book.ISBN)
     })
     setAvailableBooksState(availableBooks)
-  }, [readingList])
+  }, [readingList, bookList])
 
   return (
     <ul className='books__container'>

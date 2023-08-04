@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import '@/components/Book/Book.css'
 import AddSquareIcon from '@/components/Icons/AddSquareIcon'
 
 const Book = ({ data, onAddBookToReadingListClick, fadingOut = false }) => {
+  useEffect(() => console.log(`[R]-------> Book '${data.title}' rendered!`), []) // tetemp
+
   const [isFadingOut, setIsFadingOut] = useState(fadingOut)
 
   const fadeOut = (cb) => {

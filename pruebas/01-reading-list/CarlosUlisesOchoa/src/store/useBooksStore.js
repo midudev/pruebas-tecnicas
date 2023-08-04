@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import persist from '@/utils/persist'
 import { books } from '@/const/books'
 
-const DEFAULT_DATA = books
+const DEFAULT_DATA = JSON.parse(localStorage.getItem('books')) || books || []
 
 export const useBooksStore = create(
   persist(
@@ -12,16 +12,11 @@ export const useBooksStore = create(
     },
     (set) => ({
       books: DEFAULT_DATA,
-      // removeBookFromList: (book) => {
-      //   set((state) => ({
-      //     books: state.books.filter((item) => item.ISBN !== book.ISBN),
-      //   }))
-      // },
-      // clearList: () => {
-      //   set(() => ({
-      //     books: [],
-      //   }))
-      // },
+      // Add a function to update the books array and persist it to localStorage
+      setBooks: (newBooks) => {
+        set({ books: newBooks })
+        localStorage.setItem('books', JSON.stringify(newBooks))
+      },
     })
   )
 )

@@ -6,28 +6,13 @@
   max-width: 350px;
 }
 
-/* Tablet */
-/* @media screen and (min-width: 480px) {
-  .reading__list {
-    
-  }
-} */
-
-/* Small screens, laptops */
-/* @media screen and (min-width: 768px) {
-  .reading__list {
-    
-  }
-} */
-
-/* Large screens */
 @media screen and (min-width: 1025px) {
   .reading__list {
     width: 350px;
   }
 }
 
-.card-container {
+.card {
   width: 100%;
   max-width: 24rem;
   padding: 1.5rem;
@@ -37,14 +22,14 @@
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
-.card-header {
+.card__header {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
 }
 
-.card-title {
+.card__title {
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1;
@@ -56,43 +41,47 @@
   padding: 0;
 }
 
-.list-item {
+.list > * + * {
+  border-top: 1px solid #edf2f7; /* equivalent to divide-gray-200 */
+}
+
+.list__item {
   list-style-type: none;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
 
-.list-item-remove-button {
+.item__remove-button {
   color: #475569;
   cursor: pointer;
   transition: color 0.2s ease-in-out;
 }
 
-.list-item-remove-button:hover {
+.item__remove-button:hover {
   color: #1a202c;
 }
 
-.list-item-content {
+.item__content {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.list-item-image-container {
+.item__image-container {
   flex-shrink: 0;
 }
 
-.list-item-image {
+.item__image {
   width: 2.75rem;
   height: 2.75rem;
 }
 
-.list-item-detail {
+.item__detail {
   flex-grow: 1;
   min-width: 0; /* This is to enable truncation */
 }
 
-.list-item-name {
+.item__title {
   font-size: 0.875rem;
   font-weight: 500;
   color: #1a202c;
@@ -101,7 +90,7 @@
   text-overflow: ellipsis; /* This is to enable truncation */
 }
 
-.list-item-email {
+.item__email {
   font-size: 0.875rem;
   color: #718096;
   white-space: nowrap;
@@ -110,32 +99,29 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .card-container {
+  .card {
     background-color: #212b3e;
     border-color: #4a5568;
   }
-
-  .card-title {
+  .card__title {
     color: white;
   }
-
-  .list-item-remove-button {
+  .item__remove-button {
     color: #4a586e;
   }
-
-  .list-item-remove-button:hover {
+  .item__remove-button:hover {
     color: #5c6c85;
   }
-
-  .list-item-name {
+  .item__title {
     color: white;
   }
-
-  .list-item-email {
+  .item__email {
     color: #a0aec0;
   }
-
   .list {
     border-color: #4a5568;
+  }
+  .list > * + * {
+    border-top: 1px solid #4a5568; /* equivalent to divide-gray-700 */
   }
 }
