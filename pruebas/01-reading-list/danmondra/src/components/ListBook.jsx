@@ -46,7 +46,7 @@ export function ListBook({ book, listId }) {
       <img src={cover} alt='editorial' draggable='false' />
       <div className={styles.savedBookDetails}>
         <header className={styles.savedBookHeader}>
-          <h3 className={styles.savedBookTitle}>{title}</h3>
+          <h3 className={styles.savedBookTitle} title={title}>{title}</h3>
           <div className={styles.savedBookActions}>
             <ActionListButton
               size='small'
