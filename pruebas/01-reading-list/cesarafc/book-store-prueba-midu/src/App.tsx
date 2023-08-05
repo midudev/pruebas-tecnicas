@@ -1,12 +1,15 @@
 import { useState } from "react";
 import BookFilter from "./components/BookFilter";
 import ReadList from "./components/ReadList";
-import SingleBook from "./components/SingleBook";
 import { useBooksStore } from "./store/books";
-import { Container, Box, Typography, Button } from '@mui/material';
+import { Container, Box, Typography } from '@mui/material';
 import { Library } from "./types/bookType";
 import BookInList from "./components/BookInList";
-
+import './index.css';
+import BookCart from "./components/BookCart";
+import { SortableContext, arrayMove, rectSortingStrategy } from "@dnd-kit/sortable";
+import { DndContext, DragEndEvent, closestCenter } from "@dnd-kit/core";
+import { Toaster } from 'react-hot-toast';
 
 type filterParams = {
   books: Library[],
@@ -16,10 +19,12 @@ type filterParams = {
 
 function App() {
 
-  const {booksStore, cartStore} = useBooksStore(state => state);  
+  const {booksStore, cartStore, updateIndex} = useBooksStore(state => state);  
+  // const booksinList = cartStore.map( item =>  item);
 
   const [genre, setGenre] = useState('');
   const [pages, setPages] = useState(0);
+
 
   const filterBooks = ({books, pagestoFilter, genre}: filterParams) => {
 
@@ -48,41 +53,54 @@ function App() {
     setPages(0)
   }
 
+  const handleDragEnd = ({active, over}: DragEndEvent) => {
+    if (active.id !== over?.id) {
+      const oldIndex = cartStore.findIndex((book) => book.ISBN === active.id);
+      const newIndex = cartStore.findIndex((book) => book.ISBN === over?.id);
+      const newArray = arrayMove(cartStore, oldIndex, newIndex);
+      updateIndex(newArray);
+    }
+  }
+
 
   const filteredBooks = filterBooks({books: booksStore, genre, pagestoFilter: pages})
 
   return (
-    <Container disableGutters>
-      <h1>Libros disponibles: {booksStore.length - cartStore.length}</h1>
-      <h4>Libros en lista de lectura: {cartStore.length}</h4>
+    <Container
+      sx={{ width: "100vw", height: "100vh", backgroundColor: "#f3f7fa" }}
+      maxWidth="xl"
+    >
+      <BookFilter
+        resetFilters={resetFilters}
+        genre={genre}
+        pages={pages}
+        onGenreChange={onGenreChange}
+        onPagesChange={onPagesChange}
+      />
 
-    <BookFilter genre={genre} pages={pages} onGenreChange={onGenreChange} onPagesChange={onPagesChange} />
-    <Typography variant="caption" >Results: {filteredBooks.length}</Typography>
-    <Button variant="outlined" onClick={resetFilters}>Reset</Button>
+      <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+        <ReadList listLenght={cartStore.length}>
+          <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, paddingY: 2 }}>
+            <SortableContext
+              items={cartStore.map((i) => i.ISBN)}
+              strategy={rectSortingStrategy}
+            >
+              {cartStore.map((book) => (
+                <BookCart key={book.ISBN} book={book} />
+              ))}
+            </SortableContext>
+          </Box>
+        </ReadList>
+      </DndContext>
 
-      <ReadList>
-        {
-          cartStore.map( ({book}) => (
-            <SingleBook key={book.ISBN} book={book}/>
-          ) )
-        }
-      </ReadList>
-
-      <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, padding: 2 }}>
+      <Typography variant="caption">Results: {filteredBooks.length}</Typography>
+      <Box component="section" className="books-library">
         {filteredBooks.map(({ book }) => (
-          <SingleBook key={book.ISBN} book={book} />
+          <BookInList key={book.ISBN} book={book} />
         ))}
       </Box>
 
-
-        <Box sx={{display: 'flex', flexWrap: "wrap", padding: 2}}>
-        {
-        booksStore.slice(0,3).map( ({book}) => (
-          <BookInList key={book.ISBN} book={book} />
-          ))
-        }
-        </Box>
-
+      <Toaster />
     </Container>
   );
 }

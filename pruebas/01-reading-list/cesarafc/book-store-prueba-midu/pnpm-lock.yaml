@@ -6,6 +6,7 @@ specifiers:
   '@dnd-kit/utilities': ^3.2.1
   '@emotion/react': ^11.11.1
   '@emotion/styled': ^11.11.0
+  '@mui/icons-material': ^5.14.3
   '@mui/material': ^5.14.2
   '@types/react': ^18.2.15
   '@types/react-dom': ^18.2.7
@@ -17,6 +18,7 @@ specifiers:
   eslint-plugin-react-refresh: ^0.4.3
   react: ^18.2.0
   react-dom: ^18.2.0
+  react-hot-toast: ^2.4.1
   shared-zustand: ^2.0.0
   typescript: ^5.0.2
   vite: ^4.4.5
@@ -28,9 +30,11 @@ dependencies:
   '@dnd-kit/utilities': 3.2.1_react@18.2.0
   '@emotion/react': 11.11.1_e74vmjybjy5dsfplslbsgtbvvi
   '@emotion/styled': 11.11.0_vllhnkhzkiawoi6sot3eqtu3ye
+  '@mui/icons-material': 5.14.3_jyyd6smjuazqcifljjpvx64cue
   '@mui/material': 5.14.2_gvgarb3nukwlxqrompwb7afdde
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-hot-toast: 2.4.1_biqbaboplfbrettd7655fr4n2y
   shared-zustand: 2.0.0
   zustand: 4.3.9_react@18.2.0
 
@@ -754,6 +758,23 @@ packages:
 
   /@mui/core-downloads-tracker/5.14.2:
     resolution: {integrity: sha512-x+c/MgDL1t/IIy5lDbMlrDouFG5DYZbl3DP4dbbuhlpPFBnE9glYwmJEee/orVHQpOPwLxCAIWQs+2DKSaBVWQ==}
+    dev: false
+
+  /@mui/icons-material/5.14.3_jyyd6smjuazqcifljjpvx64cue:
+    resolution: {integrity: sha512-XkxWPhageu1OPUm2LWjo5XqeQ0t2xfGe8EiLkRW9oz2LHMMZmijvCxulhgquUVTF1DnoSh+3KoDLSsoAFtVNVw==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      '@mui/material': ^5.0.0
+      '@types/react': ^17.0.0 || ^18.0.0
+      react: ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.22.6
+      '@mui/material': 5.14.2_gvgarb3nukwlxqrompwb7afdde
+      '@types/react': 18.2.17
+      react: 18.2.0
     dev: false
 
   /@mui/material/5.14.2_gvgarb3nukwlxqrompwb7afdde:
@@ -1603,6 +1624,12 @@ packages:
       slash: 3.0.0
     dev: true
 
+  /goober/2.1.13:
+    resolution: {integrity: sha512-jFj3BQeleOoy7t93E9rZ2de+ScC4lQICLwiAQmKMg9F6roKGaLSHoCDYKkWlSafg138jejvq/mTdvmnwDQgqoQ==}
+    peerDependencies:
+      csstype: ^3.0.10
+    dev: false
+
   /graphemer/1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
     dev: true
@@ -1935,6 +1962,20 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-hot-toast/2.4.1_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-j8z+cQbWIM5LY37pR6uZR6D4LfseplqnuAO4co4u8917hBUvXlEqyP1ZzqVLcqoyUesZZv/ImreoCeHVDpE5pQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      goober: 2.1.13
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    transitivePeerDependencies:
+      - csstype
     dev: false
 
   /react-is/16.13.1:

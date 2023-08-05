@@ -7,9 +7,10 @@ import { persist, subscribeWithSelector } from 'zustand/middleware'
 
 type BookStore = {
     booksStore: Library[]
-    cartStore: Library[]
+    cartStore: Book[]
     addToList: (newBook: Book) => void
     removeFromList: (isbn: string) => void
+    updateIndex: (newArray: Book[]) => void
 }
 
 export const useBooksStore = create(
@@ -25,11 +26,11 @@ export const useBooksStore = create(
         set( (state) => {
         
           let isBookInList = state.cartStore.find(
-            (book) => book.book.ISBN === newBook.ISBN
+            (book) => book.ISBN === newBook.ISBN
           );
 
         return !isBookInList ? {
-          cartStore: [...state.cartStore, { book: newBook }]
+          cartStore: [...state.cartStore, newBook ]
         } : {
           cartStore: [...state.cartStore]
         }
@@ -38,9 +39,15 @@ export const useBooksStore = create(
 
       removeFromList: (isbn) => {
         set((state) => (
-          {cartStore: state.cartStore.filter(({book}) => book.ISBN !== isbn ) }
+          {cartStore: state.cartStore.filter((book) => book.ISBN !== isbn ) }
         ))
       },
+
+      updateIndex: (newArray) => {
+        set(() => (
+          {cartStore: newArray}
+        ))
+      }
 
     }),
     { name: "booksAppStore",

@@ -15,13 +15,13 @@ export default function GenreSelectFilter({genre, onGenreChange}: GenreProps) {
   };
 
   return (
-    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="demo-select-small-label">Género</InputLabel>
+    <FormControl sx={{ m: 1, width: 180, minWidth: 120 }} size="small">
+      <InputLabel id="demo-select-small-label">Filtrar por género</InputLabel>
       <Select
         labelId="demo-select-small-label"
         id="demo-select-small"
         value={genre}
-        label="Genero"
+        label="Filtrar por género"
         onChange={handleChange}
       >
         <MenuItem value="">

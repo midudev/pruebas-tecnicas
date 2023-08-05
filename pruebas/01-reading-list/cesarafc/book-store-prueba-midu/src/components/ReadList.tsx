@@ -1,32 +1,35 @@
-import { Button, Container, Drawer, Typography } from "@mui/material";
-import React, { ReactNode, useState } from "react"
+import { Box, Button, Container, Drawer, Typography } from "@mui/material";
+import React, { ReactNode, useState } from "react";
 
 type ReadListProps = {
   children: ReactNode,
+  listLenght: number
 }
 
-function ReadList({children}: ReadListProps) {
+function ReadList({children, listLenght}: ReadListProps) {
 
     const [toggleDrawer, setToggleDrawer] = useState(false);
 
   return (
-    <div>
+    <Box>
         <React.Fragment key={'right'}>
-        <Button variant="contained" onClick={() => setToggleDrawer(true)}>Open</Button>
+          {/* Cambiar a icono?  */}
+        <Button sx={{marginY: 2}} variant="outlined" onClick={() => setToggleDrawer(true)}>Lista de lectura ({listLenght})</Button>
         <Drawer anchor={"right"} open={toggleDrawer} onClose={() => setToggleDrawer(false)}>
           <Container
             sx={{
               minHeight: "100vh",
-              minWidth: 500,
-              padding: 4
+              width: 500,
+              padding: 4,
             }}
-          >
+          > 
+
             <Typography variant="h4">Lista de lectura</Typography>
             {children}
           </Container>
         </Drawer>
         </React.Fragment>
-    </div>
+    </Box>
   );
 }
 

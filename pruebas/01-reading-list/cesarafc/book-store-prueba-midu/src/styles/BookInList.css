@@ -1,0 +1,19 @@
+.book-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 320px;
+    width: 212px;
+    position: absolute;
+    opacity: 0;
+    top: 24px;
+    transition: 0.3s;
+}
+.book-in-list {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.book-card:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+}

@@ -17,3 +17,8 @@ interface Author {
     name: string
     otherBooks: string[]
 }
+
+interface BookList extends Book {
+    priority: string
+}
+
