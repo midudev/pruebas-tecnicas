@@ -1,21 +1,12 @@
 import { createContext, useEffect, useState } from 'react'
-import mockedBooks from '../mocks/newBooks.json'
+import { getBooks } from '../services/books'
 
 export const BooksContext = createContext()
-
-async function getBooks() {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(mockedBooks)
-    }, 900)
-  })
-}
 
 export const BooksProvider = ({ children }) => {
   const [books, setBooks] = useState([])
 
   useEffect(() => {
-    // TODO --- Try with IIFE
     const initBooks = async () => {
       const prueba = await getBooks()
 
@@ -40,10 +31,6 @@ export const BooksProvider = ({ children }) => {
 
     initBooks()
   }, [])
-
-  // get all genres here
-  //
-  // get book with more pages here
 
   return (
     <BooksContext.Provider

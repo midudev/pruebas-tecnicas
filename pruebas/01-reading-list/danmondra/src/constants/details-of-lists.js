@@ -21,6 +21,3 @@ export const DETAILS_OF_LISTS = [
     color: 'green'
   }
 ]
-
-export const findListDetails = (listId) =>
-  DETAILS_OF_LISTS.find(({ id }) => id === listId)

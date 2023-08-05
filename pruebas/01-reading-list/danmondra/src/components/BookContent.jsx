@@ -2,7 +2,7 @@ import { shallow } from 'zustand/shallow'
 import { useUserLists } from '../store/userLists'
 import { ActionListButton } from './ActionListButton'
 import styles from '../styles/main.module.css'
-import { findListDetails } from '../constants/details-of-lists'
+import { findListDetails } from '../utils/lists'
 
 export function BookContent({ book }) {
   const { lists, addBook, deleteBook } = useUserLists(state => (
@@ -53,7 +53,7 @@ export function BookContent({ book }) {
               action={() => handleClick(list.id)}
               nameList={list.title.toLowerCase()}
               Icon={findListDetails(list.id).Icon}
-              variant={isBookAlreadyInAList(list.id) && 'isAlready'}
+              variant={isBookAlreadyInAList(list.id) ? 'isAlready' : ''}
             />
           ))}
         </div>

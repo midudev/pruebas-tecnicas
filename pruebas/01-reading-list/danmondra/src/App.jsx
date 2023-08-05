@@ -1,11 +1,11 @@
 import { RouterScrollProvider } from './context/routerScroll.jsx'
 import { BooksProvider } from './context/books.jsx'
+import { FiltersProvider } from './context/filters.jsx'
 import { Header } from './components/Header.jsx'
 import { Explore } from './components/Explore.jsx'
 import { UserLists } from './components/UserLists.jsx'
-import styles from './styles/main.module.css'
 import { Toaster } from 'sonner'
-import { FiltersProvider } from './context/filters.jsx'
+import styles from './styles/main.module.css'
 
 function App() {
   return (

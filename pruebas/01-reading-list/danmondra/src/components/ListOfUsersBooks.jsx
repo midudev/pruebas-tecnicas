@@ -1,10 +1,10 @@
-import { useBooks } from '../hooks/useBooks'
-import { ListBook } from './ListBook'
-import styles from '../styles/main.module.css'
-import { useUserLists } from '../store/userLists'
-import { findListDetails } from '../constants/details-of-lists'
 import { shallow } from 'zustand/shallow'
+import { useBooks } from '../hooks/useBooks'
+import { useUserLists } from '../store/userLists'
+import { ListBook } from './ListBook'
 import { DropIcon } from './Icons'
+import { findListDetails } from '../utils/lists'
+import styles from '../styles/main.module.css'
 
 export function ListOfUsersBooks({
   list,
@@ -85,9 +85,12 @@ export function ListOfUsersBooks({
   return (
     <div
       className={`
-      ${styles.listContainer}
-      ${(draggingInfo?.listDragEnter === list.id && draggingInfo?.listDragOrigin !== list.id) && styles.listDragging}
-      ${styles[color]}
+        ${styles.listContainer}
+        ${(draggingInfo?.listDragEnter ===
+          list.id && draggingInfo?.listDragOrigin !==
+          list.id) && styles.listDragging
+        }
+        ${styles[color]}
       `}
       onDrop={handleDrop}
       onDragStart={handleDragStart}

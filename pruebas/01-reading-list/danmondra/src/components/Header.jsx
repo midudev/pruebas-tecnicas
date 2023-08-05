@@ -9,7 +9,7 @@ export const NAVIGATION_PATHS = {
 
 export function Header() {
   const { currentPath } = useRouterScroll()
-  const selectedIfIsPath = (path) =>
+  const linkIsSelected = (path) =>
     path === currentPath ? 'selected' : false
 
   return (
@@ -22,7 +22,7 @@ export function Header() {
           <li>
             <Link
               targetId={NAVIGATION_PATHS.HOME}
-              className={`linknav ${selectedIfIsPath(NAVIGATION_PATHS.HOME)}`}
+              className={`linknav ${linkIsSelected(NAVIGATION_PATHS.HOME)}`}
             >
               Explorar
             </Link>
@@ -30,7 +30,7 @@ export function Header() {
           <li>
             <Link
               targetId={NAVIGATION_PATHS.LISTS}
-              className={`linknav ${selectedIfIsPath(NAVIGATION_PATHS.LISTS)}`}
+              className={`linknav ${linkIsSelected(NAVIGATION_PATHS.LISTS)}`}
             >
               Mis listas
             </Link>

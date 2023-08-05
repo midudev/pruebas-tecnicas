@@ -19,8 +19,7 @@ export function FiltersProvider({ children }) {
     if (!books.length) return
 
     const getMaxPosiblePages = () => {
-      // TODO --- Move this to constants
-      const pageInputTolerance = 10
+      const PAGE_MAX_INPUT_TOLERANCE = 10
 
       const bookWithMorePages = books.reduce((maxPages, book) => {
         return book.pages > maxPages
@@ -28,7 +27,7 @@ export function FiltersProvider({ children }) {
           : maxPages
       }, -Infinity)
 
-      return bookWithMorePages + pageInputTolerance
+      return bookWithMorePages + PAGE_MAX_INPUT_TOLERANCE
     }
 
     const getUniqueGenres = () => {
@@ -51,11 +50,10 @@ export function FiltersProvider({ children }) {
   }, [books])
 
   const filterBooks = (books) => {
-    return books.filter(book => {
-      return (!filters.genre ||
+    return books.filter(book => (!filters.genre ||
         book.genre === filters.genre) &&
         book.pages <= filters.maxPages
-    })
+    )
   }
 
   const filteredBooks = filterBooks(books)

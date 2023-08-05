@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { toast } from 'sonner'
 import { ACTIONS_MSGS, BookNotification } from '../components/BookNotification.jsx'
-import { DETAILS_OF_LISTS, findListDetails } from '../constants/details-of-lists.js'
+import { DETAILS_OF_LISTS, findListDetails } from '../utils/lists.js'
 import { DeleteIcon } from '../components/Icons.jsx'
 
 export const useUserLists = create(persist((set, get) => ({

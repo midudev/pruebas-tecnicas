@@ -1,9 +1,11 @@
+import { useRef } from 'react'
 import { useBooks } from '../hooks/useBooks.jsx'
 import { useFilters } from '../hooks/useFilters.jsx'
+import { InfoOfBookQuantities } from './InfoOfBookQuantities.jsx'
 import styles from '../styles/main.module.css'
-import { BookIcon, FiltersIcon, SavedBooksIcon } from './Icons.jsx'
 
 export function Filters() {
+  const rangeInput = useRef(null)
   const { books, booksInLists } = useBooks()
   const { filters, filteredBooks, setFilters } = useFilters()
   const { genre, maxPages, defaultFilters } = filters
@@ -21,8 +23,10 @@ export function Filters() {
   }
 
   const getWidthOfTheRangeValue = () => {
-    // TODO --- Refactor this
-    const offsetWidth = document.querySelector('.range')?.offsetWidth || 200
+    // The magic numbers here are aleatory after a try-error attempts
+    // Helps to show the correct width in the range representation
+
+    const offsetWidth = rangeInput.current?.offsetWidth
     return (offsetWidth / (bookWithMorePages + 90)) * filters.maxPages + 10
   }
 
@@ -42,7 +46,7 @@ export function Filters() {
             ))}
           </select>
         </label>
-        <label className={`${styles.range} range`}>
+        <label className={`${styles.range} range`} ref={rangeInput}>
           <span
             className={styles.rangeRepresentation}
             style={{
@@ -62,20 +66,11 @@ export function Filters() {
         </label>
       </form>
 
-      <div className={styles.booksInfoQuantities}>
-        <p title='Libros filtrados'>
-          <span>{filteredBooks.length}</span>
-          <FiltersIcon />
-        </p>
-        <p title='Todos los libros'>
-          <span>{books.length}</span>
-          <BookIcon />
-        </p>
-        <p title='Libros en las listas'>
-          <span>{booksInLists.length}</span>
-          <SavedBooksIcon />
-        </p>
-      </div>
+      <InfoOfBookQuantities
+        allBooks={books.length}
+        filteredBooks={filteredBooks.length}
+        booksInLists={booksInLists.length}
+      />
     </div>
   )
 }

@@ -1,9 +1,9 @@
 import { useState } from 'react'
+import { Filters } from './Filters.jsx'
 import { EditorialInfo } from './EditorialInfo.jsx'
 import { BookContent } from './BookContent.jsx'
 import { BooklistGrid } from './BooklistGrid.jsx'
 import styles from '../styles/main.module.css'
-import { Filters } from './Filters.jsx'
 
 export function Explore() {
   const [selectedBook, setSelectedBook] = useState({})

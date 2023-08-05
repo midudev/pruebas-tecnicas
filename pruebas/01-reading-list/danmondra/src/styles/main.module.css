@@ -429,12 +429,12 @@
   background-color: rgb(255 255 255 / 1);
 }
 
-.filters .booksInfoQuantities {
+.filters .infoOfBookQuantities {
   display: flex;
   gap: 1rem;
 }
 
-.filters .booksInfoQuantities p {
+.filters .infoOfBookQuantities p {
   display: flex;
   align-items: center;
   font-size: 1.4rem;
@@ -442,11 +442,11 @@
   opacity: .6;
 }
 
-.filters .booksInfoQuantities p:first-of-type {
+.filters .infoOfBookQuantities p:first-of-type {
   opacity: 1;
 }
 
-.filters .booksInfoQuantities p span {
+.filters .infoOfBookQuantities p span {
   min-width: 2ch;
   text-align: right;
 }

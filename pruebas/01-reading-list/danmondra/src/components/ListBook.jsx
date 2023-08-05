@@ -2,9 +2,11 @@ import { shallow } from 'zustand/shallow'
 import { useUserLists } from '../store/userLists'
 import { DeleteIcon } from './Icons'
 import { ActionListButton } from './ActionListButton'
+import { findListDetails } from '../utils/lists'
+import { LISTS_IDS } from '../constants/details-of-lists'
 import styles from '../styles/main.module.css'
-import { findListDetails, LISTS_IDS } from '../constants/details-of-lists'
 
+// Delete when lists could be created by the user
 const LIST_TARGET_ACCORDING_TO_LIST = {
   [LISTS_IDS.BOOKS_TO_BE_READ]: LISTS_IDS.BOOKS_READ,
   [LISTS_IDS.BOOKS_READ]: LISTS_IDS.BOOKS_TO_BE_READ
