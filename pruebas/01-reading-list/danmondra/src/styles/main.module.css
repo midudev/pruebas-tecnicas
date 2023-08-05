@@ -460,8 +460,9 @@
   grid-template-rows: 5rem;
   grid-auto-columns: 5rem;
   grid-auto-flow: column;
+  opacity: 0;
 
-  transition: opacity .3s ease;
+  transition: opacity .3s ease .2s;
 }
 
 @media (min-width: 1361px) {
@@ -540,14 +541,14 @@
   pointer-events: none;
 }
 
-.booklist.pathIsLists .book {
+.booklist.pathIsLists .book img {
   cursor: move;
   cursor: grab;
   cursor: -moz-grab;
   cursor: -webkit-grab;
 }
 
-.booklist.pathIsLists .book:active {
+.booklist.pathIsLists .book:active img {
   cursor: grabbing;
   cursor: -moz-grabbing;
   cursor: -webkit-grabbing;
@@ -730,6 +731,7 @@
 
 .savedBookHeader h3 {
   font-size: 1.6rem;
+  overflow-wrap: anywhere;
 }
 
 .savedBookActions {

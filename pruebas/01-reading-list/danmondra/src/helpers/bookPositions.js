@@ -8,6 +8,7 @@ export function returnBookToOriginalPosition({ transitions = false } = {}) {
       $selectedBook?.classList.remove('disableTransitions')
     }, 100)
   }
+
   // If there is a selected book, then removing
   // to the target position and disable transition
   // when it back

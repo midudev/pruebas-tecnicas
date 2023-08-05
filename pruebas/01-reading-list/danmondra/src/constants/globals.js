@@ -1,0 +1,1 @@
+export const DESKTOP_LARGE_DEVICE_SIZE = 1360

@@ -1,67 +1,45 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useRouterScroll } from '../hooks/useRouterScroll'
 import { useBooks } from '../hooks/useBooks.jsx'
 import { useFilters } from '../hooks/useFilters'
+import { useBooklistGridStyles } from '../hooks/useBooklistGridStyles'
 import { returnBookToOriginalPosition, takeBookToTargetElement } from '../helpers/bookPositions'
 import { $ } from '../utils'
-import { NAVIGATION_PATHS } from './Header'
 import styles from '../styles/main.module.css'
+import { DESKTOP_LARGE_DEVICE_SIZE } from '../constants/globals'
+import { NAVIGATION_PATHS } from './Header'
 
-export function Booklist({ selectedBook, setSelectedBook }) {
+export function BooklistGrid({ selectedBook, setSelectedBook }) {
   const { currentPath } = useRouterScroll()
   const { books, booksInLists } = useBooks()
   const { filters, filteredBooks } = useFilters()
-  const [gridRows, setGridRows] = useState('')
-  const [opacity, setOpacity] = useState('0')
+  const { elementToApply, rows, opacity } = useBooklistGridStyles({ books })
 
   const pathIsLists = currentPath === NAVIGATION_PATHS.LISTS
 
+  const resetBook = ({ transitions = false } = {}) => {
+    returnBookToOriginalPosition({ transitions })
+    setSelectedBook({})
+  }
+
   useEffect(() => {
-    const calculateGrid = () => {
-      const columns = 6
-      const rows = Math.ceil(books.length / columns)
-      const containerHeight = document.querySelector('.booklist')?.offsetHeight
-
-      setGridRows(`repeat(${rows}, ${containerHeight / columns}px)`)
-    }
-
-    window.addEventListener('resize', () => {
-      returnBookToOriginalPosition()
-      setSelectedBook({})
-      calculateGrid()
-    })
-    calculateGrid()
-
-    setTimeout(() => {
-      setOpacity('1')
-    }, 200)
+    window.addEventListener('resize', resetBook)
   }, [])
 
   useEffect(() => {
-    if (selectedBook?.title && pathIsLists) {
-      returnBookToOriginalPosition({ transitions: true })
-      setSelectedBook({})
-    }
-  }, [currentPath])
-
-  useEffect(() => {
     if (selectedBook?.title) {
-      console.log('prueba')
-      returnBookToOriginalPosition()
-      setSelectedBook({})
+      resetBook({ transitions: pathIsLists })
     }
-  }, [filters])
+  }, [currentPath, filters])
 
-  const handleClick = ({ target }) => {
-    const targetIsAlreadySelected = target.dataset?.selected === 'true'
-    if (targetIsAlreadySelected) {
-      returnBookToOriginalPosition({ transitions: true })
-      return setSelectedBook({})
-    }
-    if (pathIsLists || target.nodeName !== 'IMG') return
+  const handleClickInLists = () => {
+    // TODO --- Think in what to do when the book is clicked in lists
+  }
 
-    if (window.innerWidth >= 1361) {
+  const handleClickInExplore = (clickedBook, target) => {
+    if (window.innerWidth >= DESKTOP_LARGE_DEVICE_SIZE) {
       returnBookToOriginalPosition()
+
       const $imagePositionTarget = $('#imagePositionTarget')
       takeBookToTargetElement({
         $bookToTake: target,
@@ -69,11 +47,26 @@ export function Booklist({ selectedBook, setSelectedBook }) {
       })
     }
 
-    const { isbn } = target.dataset
-    const clickedBook = books.find((book) =>
-      book.ISBN === isbn)
     setSelectedBook(clickedBook)
     target.dataset.selected = true
+  }
+
+  const handleClick = ({ target }) => {
+    const { isbn, selected } = target?.dataset
+    const clickedBook = books.find((book) =>
+      book.ISBN === isbn)
+
+    if (!isbn || !clickedBook || target.nodeName !== 'IMG') return
+
+    if (selected === 'true') {
+      return resetBook({ transitions: true })
+    }
+
+    if (pathIsLists) {
+      return handleClickInLists()
+    } else {
+      return handleClickInExplore(clickedBook, target)
+    }
   }
 
   const handleDragStart = (e) => {
@@ -90,8 +83,9 @@ export function Booklist({ selectedBook, setSelectedBook }) {
       className={`${styles.booklist} ${pathIsLists ? styles.pathIsLists : ''} booklist`}
       onClick={handleClick}
       onDragStart={handleDragStart}
+      ref={elementToApply}
       style={{
-        gridTemplateRows: window.innerWidth >= 1360 ? gridRows : '5rem',
+        gridTemplateRows: rows,
         opacity
       }}
     >

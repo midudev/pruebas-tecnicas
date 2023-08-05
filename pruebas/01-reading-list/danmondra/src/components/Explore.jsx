@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { EditorialInfo } from './EditorialInfo.jsx'
 import { BookContent } from './BookContent.jsx'
-import { Booklist } from './Booklist.jsx'
+import { BooklistGrid } from './BooklistGrid.jsx'
 import styles from '../styles/main.module.css'
 import { Filters } from './Filters.jsx'
 
@@ -24,7 +24,7 @@ export function Explore() {
         />
       </section>
       <section className={styles.booklistContainer}>
-        <Booklist
+        <BooklistGrid
           selectedBook={selectedBook}
           setSelectedBook={setSelectedBook}
         />
