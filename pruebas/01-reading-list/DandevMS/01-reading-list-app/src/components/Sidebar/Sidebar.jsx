@@ -1,9 +1,6 @@
 import ListRender from "./ListRender";
 
-
 const Sidebar = ({toggleSidebar, HandleToggleSidebar}) => {
-
-
   return (
     <>
         <div className={`container fixed right-0 top-0 z-40 h-screen w-full overflow-y-auto bg-white p-4 sm:max-w-[600px] sm:p-6 ${
