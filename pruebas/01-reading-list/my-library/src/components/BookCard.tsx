@@ -19,9 +19,14 @@ const BookCard: React.FC<BookCardProps> = ({
   isFavorite,
   toggleFavorite,
 }) => {
+  const titleFontSize = book.title.length > 30 ? "text-lg" : "text-2xl";
   return (
-    <div className="mb-4 p-4 border rounded-lg shadow-md h-full flex text-black flex-col">
-      <h2 className="text-lg font-semibold mb-1 truncate">{book.title}</h2>
+    <div className="mb-4 m-auto p-4 border w-[20em] rounded-lg shadow-md h-full flex text-black flex-col">
+      <h2
+        className={`py-[1em] text-white m-auto font-semibold mb-1 truncate ${titleFontSize}`}
+      >
+        {book.title}
+      </h2>
       <div className="aspect-w-2 aspect-h-3 mb-2">
         <img
           src={book.cover}
@@ -29,22 +34,22 @@ const BookCard: React.FC<BookCardProps> = ({
           className="object-cover w-full h-[29em] rounded-md"
         />
       </div>
-      <p className="text-gray-600 overflow-hidden overflow-ellipsis h-12">
+      <p className="text-gray-400 overflow-hidden overflow-ellipsis h-12">
         {book.synopsis}
       </p>
-      <p className="mt-2 text-sm">
+      <p className="mt-2 text-sm text-white">
         <strong>Autor:</strong> {book.author.name}
       </p>
-      <p className="text-sm">
+      <p className="text-sm ">
         <strong>Género:</strong> {book.genre}
       </p>
       <button
         onClick={toggleFavorite}
         className={`mt-auto ${
           isFavorite
-            ? " bg-gradient-to-r  from-orange-300 via-red-500 to-purple-600 animate-gradient-x"
-            : "bg-black"
-        } hover:bg-opacity-75 text-white text-xs px-2 py-1 rounded-md`}
+            ? "bg-gradient-to-tl from-red-500 to-red-700 "
+            : " bg-gradient-to-tl from-blue-700 to-cyan-500"
+        } mr-3 focus:outline-none active:outline-none inline-block px-7 py-4 font-bold text-center uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-sm ease-soft-in tracking-normal shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white`}
       >
         {isFavorite ? "Eliminar" : "Empezar lectura"}
       </button>

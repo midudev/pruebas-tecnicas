@@ -17,6 +17,18 @@
   -webkit-text-size-adjust: 100%;
 }
 
+html {
+  background: linear-gradient(90deg, #000000, #000000);
+  user-select: none;
+}
+
+butto input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  pointer-events: none;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -49,12 +61,13 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #ffaa64;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }
 
 @media (prefers-color-scheme: light) {
