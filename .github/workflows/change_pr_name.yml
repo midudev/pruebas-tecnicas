@@ -1,0 +1,31 @@
+name: "Update Title of Pull Request"
+on:
+  pull_request:
+    types:
+      - opened
+    paths:
+      - "pruebas/**"
+
+jobs:
+  update_pr:
+    runs-on: ubuntu-latest
+    steps:
+    - id: files
+      uses: tj-actions/changed-files@v37.5.0
+    - name: Get User Name
+      id: get
+      run: |
+        PR_USERNAME=$(echo "${{ github.event.pull_request.user.login }}")
+        FILES="${{ steps.files.outputs.all }}"
+        TEST_NAME=$(echo ${FILES[0]} | cut -d'-' -f1 | sed "s#pruebas/##")
+
+        echo "::set-output user_name=comment::$PR_USERNAME"
+        echo "::set-output test_name=comment::$TEST_NAME"
+    - uses: tzkhan/pr-update-action@v2
+      env:
+        USER: ${{ steps.get.outputs.user_name }}
+        TEST: ${{ steps.get.outputs.test_name }}
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        title-update-action: "replace"
+        title-template: "Solución a Prueba ${{ env.TEST }} por @${{ env.USER }}"
