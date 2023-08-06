@@ -29,7 +29,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           X
         </button>
       </div>
-      <div className="p-4 text-black ">{favoriteContent}</div>
+      <div className="p-4 text-white ">{favoriteContent}</div>
     </div>
   );
 };
