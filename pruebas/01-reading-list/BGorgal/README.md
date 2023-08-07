@@ -1,4 +1,4 @@
-#  Lista de lectura (Prueba Técnica Midudev)
+# Lista de lectura (Prueba Técnica Midudev)
 
 ![Imagen del menu principal](public/img/ImagenPrincipal.png)
 
@@ -6,7 +6,7 @@
 
 Implementar una pequeña aplicación web de lista de libros en la que podamos añadir y eliminar libros de la lista de lectura que nos permita buscar y filtrarlos por género, páginas los distintos libros.
 
-------------
+---
 
 #### Fucnionalidades
 
@@ -14,7 +14,8 @@ Implementar una pequeña aplicación web de lista de libros en la que podamos a�
 - Detalle con mas información del libro al seleccionarlo.
 - Filtros por busqueda, por número de páginas y por génro.
 - Entorno de almacenaje local de la información y persistencia entre pestañas.
-------------
+
+---
 
 #### Tecnologias
 
@@ -23,6 +24,3 @@ Implementar una pequeña aplicación web de lista de libros en la que podamos a�
 - Framer Motion
 - tailwind
 - vitest
-
-
-

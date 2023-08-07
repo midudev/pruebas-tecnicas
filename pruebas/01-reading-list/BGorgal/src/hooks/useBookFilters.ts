@@ -22,7 +22,6 @@ const useBooksFilters = () => {
   const clearFilters = () => {
     setSearchValue('')
     setPagesState(maxPages)
-
     resetFilters()
     setFilteredBooks()
   }

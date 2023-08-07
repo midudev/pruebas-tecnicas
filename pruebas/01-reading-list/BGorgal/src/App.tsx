@@ -1,7 +1,7 @@
 import './App.css'
 import BookList from './components/Book/BookList'
 import Header from './components/Header'
-import ModalBookInfo from './components/ModalBookInfo/ModalBookInfo'
+import ModalBookInfo from './components/ModalBookInfo'
 import { useBooksStore } from './store/books'
 import { twMerge } from 'tailwind-merge'
 import Aside from './components/Aside'

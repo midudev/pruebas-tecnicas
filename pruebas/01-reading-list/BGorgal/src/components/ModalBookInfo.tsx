@@ -1,5 +1,5 @@
-import { useBooksStore } from '../../store/books'
-import Book from '../Book/Book'
+import { useBooksStore } from '../store/books'
+import Book from './Book/Book'
 import { motion } from 'framer-motion'
 
 const variants = {
@@ -17,7 +17,7 @@ const ModalBookInfo = () => {
   return (
     <motion.div
       onClick={toggleModal}
-      className=' fixed inset-0 z-50 bg-slate-900 bg-opacity-50 grid max-h-full w-full place-content-center drop-shadow-2xl'
+      className=' fixed inset-0 z-50 grid max-h-full w-full place-content-center bg-slate-900 bg-opacity-50 drop-shadow-2xl'
     >
       <div className='flex flex-col  items-center rounded-lg border border-gray-200 bg-white  dark:border-gray-600 dark:bg-gray-800  md:max-w-xl md:flex-row'>
         <div className='z-50 m-4  [&>article>img]:h-[18rem] [&>article]:w-[12rem]  '>

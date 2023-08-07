@@ -1,13 +1,17 @@
-import FiltersIcon from './icons/FiltersIcon'
 import Search from './Search'
 import Range from './Range'
 import CategoryFilter from './CategoryFilter'
 import useBooksFilters from '../hooks/useBookFilters'
-
+import { FiltersIcon } from './Icons'
 
 const Filters = () => {
-  const { clearFilters, pagesState, onPagesStateChange, searchValue, onInputChange } =
-    useBooksFilters()
+  const {
+    clearFilters,
+    pagesState,
+    onPagesStateChange,
+    searchValue,
+    onInputChange,
+  } = useBooksFilters()
 
   return (
     <section className='m-auto w-[95%]'>

@@ -1,5 +1,5 @@
-import data from '../mocks/books.json'
 import { Book, Author, LibraryItem, dataBooks } from '../types'
+import { getBooks } from './getBooks'
 
 export interface BookMapped {
   title: Book['title']
@@ -13,7 +13,8 @@ export interface BookMapped {
   otherBooks: Author['otherBooks']
 }
 
-function mapLibrary(data: dataBooks): BookMapped[] {
+export async function mapLibrary(): Promise<BookMapped[]> {
+  const data: dataBooks = await getBooks() as dataBooks
   const { library } = data
   return library.map((item: LibraryItem) => {
     const { book } = item
@@ -33,4 +34,4 @@ function mapLibrary(data: dataBooks): BookMapped[] {
   })
 }
 
-export const books = mapLibrary(data)
+

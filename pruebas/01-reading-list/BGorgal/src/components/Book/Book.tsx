@@ -22,15 +22,15 @@ const Book = ({ book, isReadList }: Props) => {
     getBookInfo(book.bookId)
   }
 
-  const noButtonAdd = book === bookSelected && isModalOpen
+  const noButtonAdd = book.bookId === bookSelected?.bookId && isModalOpen
 
   return (
     <motion.article
       onClick={handleClick}
-      className='relative sm:w-full '
+      className='relative sm:w-full'
       layoutId={book.bookId}
     >
-      {!noButtonAdd &&  (
+      {!noButtonAdd && (
         <ButtonAdd bookId={book.bookId} isReadList={isReadList} />
       )}
       <img

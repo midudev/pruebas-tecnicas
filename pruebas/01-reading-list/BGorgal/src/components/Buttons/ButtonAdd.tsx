@@ -1,13 +1,12 @@
 import { useBooksStore } from '../../store/books'
 
 import { motion } from 'framer-motion'
-import IconRemove from '../icons/RemoveListIcon'
-import IconAdd from '../icons/AddListIcon'
+
+import { IconAdd, IconRemove } from '../Icons'
 
 interface Props {
   bookId: string
   isReadList?: boolean
-  
 }
 
 const ButtonAdd = ({ bookId, isReadList }: Props) => {

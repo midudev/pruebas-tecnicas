@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 
 import { persist } from 'zustand/middleware'
-import { BookMapped, books } from '../utils/mapLibrary'
+import { BookMapped, mapLibrary } from '../utils/mapLibrary'
 import { findBookAndFilter } from '../utils/findBookAndFilter'
 import { FilterValue, IFilters } from '../types'
 import filterBooks from '../utils/filterBooks'
@@ -29,6 +29,7 @@ interface State {
   resetFilters: () => void
   toggleModal: () => void
 }
+const books = await mapLibrary()
 
 const genres = [...new Set(books.map(book => book.genre))]
 const minPages = Math.min(...books.map(book => book.numPages))

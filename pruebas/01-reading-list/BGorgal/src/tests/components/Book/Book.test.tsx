@@ -1,5 +1,6 @@
-import Book from '../../components/Book/Book'
-import { render, screen } from '../../utils/test-utils'
+import Book from '../../../components/Book/Book'
+
+import { render, screen } from '../../../utils/test-utils'
 
 describe('App', () => {
   const book = {
@@ -18,18 +19,29 @@ describe('App', () => {
       'Harry Potter y el cáliz de fuego',
     ],
   }
-
-  const cssImgReadList= 'lg:max-h-[25rem]'
+  const cssImgReadList = 'lg:max-h-[25rem]'
 
   it('should be render book propertly in list', () => {
     render(<Book book={book} />)
-    const imagen = screen.getByAltText('Harry Potter y la piedra filosofal')
-    expect(imagen).toBeDefined()
+    const image = screen.getByAltText(book.title)
+    expect(image).toBeDefined()
   })
 
-  it('should be render book propertly in ReadList', () => {
+  it('should be render de icon add in the list', () => {
+    render(<Book book={book} />)
+    const image = screen.getByTestId('icon-add')
+    expect(image).toBeDefined()
+  })
+
+  it('should be render book propertly in readList', () => {
     render(<Book book={book} isReadList />)
     const image = screen.getByRole('img')
     expect(image.className).toContain(cssImgReadList)
+  })
+
+  it('should be render de icon remove in the readlist', () => {
+    render(<Book book={book} isReadList />)
+    const image = screen.getByTestId('icon-remove')
+    expect(image).toBeDefined()
   })
 })
