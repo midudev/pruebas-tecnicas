@@ -82,7 +82,7 @@ const App: React.FC = () => {
 
   return (
     <div className="relative md:m-12">
-      <h2 className="text-5xl font-bold text-center">Libros</h2>
+      <h2 className="text-5xl mt-[2em] font-bold text-center">Libros</h2>
       <div className="right-20 fixed top-[2em] flex">
         <button
           className="flex flex-col h-12 w-12 border-2 border-white rounded justify-center fixed items-center top-3 group bg-opacity-60 backdrop-blur-md"
@@ -131,6 +131,9 @@ const App: React.FC = () => {
           </div>
 
           <div className="flex flex-col w-[20em] m-auto px-[2em] space-y-2 p-2 ">
+            <label htmlFor="" className="text-center">
+              Número de páginas:
+            </label>
             <input
               type="range"
               className="w-full"
@@ -160,7 +163,7 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        <h1 className="text-5xl font-bold mb-4 text-black flex justify-center">
+        <h1 className="text-5xl  font-bold mb-4 text-black flex justify-center">
           Libros
         </h1>
         <div className="mt-[1.3em] text-2xl">{noBooksMessage}</div>
