@@ -1,16 +1,38 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
-  favoriteContent: React.ReactNode;
+  fetchMoreContent: () => void; // Nueva prop para cargar más contenido
+  favoriteContent: React.ReactNode[];
 }
 
 const Sidebar: React.FC<SidebarProps> = ({
   isOpen,
   onClose,
+  fetchMoreContent,
   favoriteContent,
 }) => {
+  const contentRef = useRef<HTMLDivElement | null>(null);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleScroll = () => {
+    if (
+      contentRef.current &&
+      contentRef.current.scrollHeight - contentRef.current.scrollTop ===
+        contentRef.current.clientHeight
+    ) {
+      fetchMoreContent();
+    }
+  };
+
+  useEffect(() => {
+    if (contentRef.current) {
+      contentRef.current.addEventListener("scroll", handleScroll);
+      return () => {};
+    }
+  }, [handleScroll]);
+
   return (
     <div
       className={`fixed inset-y-0 left-0 z-50 w-full md:w-[45vw] border-r-white rounded-t-lg border-r-4 text-white bg-black shadow-lg transform transition-transform ${
@@ -29,7 +51,13 @@ const Sidebar: React.FC<SidebarProps> = ({
           X
         </button>
       </div>
-      <div className="p-4 text-white ">{favoriteContent}</div>
+      <div
+        ref={contentRef}
+        className="p-4 text-white"
+        style={{ maxHeight: "calc(100vh - 150px)", overflowY: "auto" }}
+      >
+        {favoriteContent}
+      </div>
     </div>
   );
 };

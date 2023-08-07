@@ -3,20 +3,16 @@ import booksData from "../../books.json";
 import BookCard from "./components/BookCard";
 import { LibraryItem } from "./types";
 import Sidebar from "./components/SideBar";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 type PageInputValues = {
-  [key: number]: number | undefined;
+  [key: string]: number | undefined;
 };
-
 const App: React.FC = () => {
   const storedFavorites = localStorage.getItem("favorites");
   const initialFavorites = storedFavorites ? JSON.parse(storedFavorites) : [];
 
   const storedPageInputValues = localStorage.getItem("pageInputValues");
-  const initialPageInputValues = storedPageInputValues
+  const initialPageInputValues: PageInputValues = storedPageInputValues
     ? JSON.parse(storedPageInputValues)
     : {};
 
@@ -25,11 +21,9 @@ const App: React.FC = () => {
   const [genreFilter, setGenreFilter] = useState<string | null>(null);
   const [pageFilter, setPageFilter] = useState<number | null>(null);
   const initialPageFilter = 150;
-  // Cargar el estado pageInputValues desde el almacenamiento local
   const [pageInputValues, setPageInputValues] = useState<PageInputValues>(
     initialPageInputValues
   );
-
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
     localStorage.setItem("pageInputValues", JSON.stringify(pageInputValues));
@@ -47,7 +41,28 @@ const App: React.FC = () => {
       prevFavorites.filter((item) => item !== title)
     );
   };
+  const handlePageChange = (
+    title: string,
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const newPage =
+      event.target.value.trim() === ""
+        ? undefined
+        : parseInt(event.target.value, 10);
+    const book = booksData.library.find(
+      (item: LibraryItem) => item.book.title === title
+    );
 
+    if (
+      book &&
+      (newPage === undefined || (newPage >= 0 && newPage <= book.book.pages))
+    ) {
+      setPageInputValues((prevValues) => ({
+        ...prevValues,
+        [title]: newPage,
+      }));
+    }
+  };
   const filteredBooks = useMemo(() => {
     const filtered = booksData.library.filter((item: LibraryItem) => {
       const passesGenreFilter = !genreFilter || item.book.genre === genreFilter;
@@ -67,6 +82,7 @@ const App: React.FC = () => {
 
   return (
     <div className="relative md:m-12">
+      <h2 className="text-5xl font-bold text-center">Libros</h2>
       <div className="right-20 fixed top-[2em] flex">
         <button
           className="flex flex-col h-12 w-12 border-2 border-white rounded justify-center fixed items-center top-3 group bg-opacity-60 backdrop-blur-md"
@@ -159,80 +175,50 @@ const App: React.FC = () => {
           ))}
         </div>
       </div>
-
       <Sidebar
         isOpen={sidebarOpen}
         onClose={() => setSidebarOpen(!sidebarOpen)}
-        favoriteContent={
-          <Slider
-            infinite
-            slidesToShow={4}
-            slidesToScroll={2}
-            vertical
-            verticalSwiping
-            arrows={false}
-          >
-            {favorites.map((title, index) => {
-              const book = booksData.library.find(
-                (item: LibraryItem) => item.book.title === title
-              );
+        favoriteContent={[...new Set(favorites)].map((title, index) => {
+          const book = booksData.library.find(
+            (item: LibraryItem) => item.book.title === title
+          );
 
-              const maxPages = book ? book.book.pages : 0;
-
-              return (
-                <li
-                  key={index}
-                  className="mb-2 flex flex-col md:flex-row justify-between items-center md:items-baseline"
+          return (
+            <li
+              key={index}
+              className="mb-2 flex flex-col md:flex-row justify-between items-center md:items-baseline"
+            >
+              <div className="flex gap-3 my-4  justify-evenly md:flex-row items-center w-full">
+                <img
+                  src={book?.book.cover}
+                  alt={title}
+                  className="object-cover rounded-md h-[5em] w-[5em]"
+                />
+                <div className="truncate w-full md:w-40 md:mr-2 mb-2 md:mb-0">
+                  <span>{title}</span>
+                </div>
+                <input
+                  type="number"
+                  min={0}
+                  max={book?.book.pages}
+                  placeholder="Página"
+                  className="border rounded-md px-2 py-1"
+                  value={pageInputValues[title] || ""}
+                  onChange={(e) => handlePageChange(title, e)}
+                />
+                <button
+                  onClick={() => removeFavorite(title)}
+                  className="text-black bg-white hover:bg-gradient-to-tl from-red-500 to-red-700  hover:text-white px-3 py-1 rounded-md"
                 >
-                  <div className="flex gap-3 my-4 flex-col justify-evenly md:flex-row items-center w-full">
-                    <img
-                      src={book?.book.cover}
-                      alt={title}
-                      className="object-cover rounded-md h-[5em] w-[5em]"
-                    />
-                    <div className="truncate w-full md:w-40 md:mr-2 mb-2 md:mb-0">
-                      <span>{title}</span>
-                    </div>
-                    <input
-                      type="number"
-                      className="border outline-none decoration-none text-black bg-white rounded-md px-2 py-1 md:w-20 mr-2"
-                      placeholder="Página"
-                      max={maxPages}
-                      value={
-                        pageInputValues[index] !== undefined
-                          ? pageInputValues[index]
-                          : ""
-                      }
-                      onChange={(e) => {
-                        const newValue =
-                          e.target.value === ""
-                            ? undefined
-                            : parseInt(e.target.value);
-                        if (
-                          newValue === undefined ||
-                          (!isNaN(newValue) && newValue <= maxPages)
-                        ) {
-                          setPageInputValues((prevValues) => ({
-                            ...prevValues,
-                            [index]:
-                              newValue !== undefined ? newValue : undefined,
-                          }));
-                        }
-                      }}
-                    />
-
-                    <button
-                      onClick={() => removeFavorite(title)}
-                      className="text-black bg-white hover:bg-gradient-to-tl from-red-500 to-red-700  hover:text-white px-3 py-1 rounded-md"
-                    >
-                      X
-                    </button>
-                  </div>
-                </li>
-              );
-            })}
-          </Slider>
-        }
+                  X
+                </button>
+              </div>
+            </li>
+          );
+        })}
+        fetchMoreContent={function (): void {
+          throw new Error("Function not implemented.");
+        }}
       />
     </div>
   );

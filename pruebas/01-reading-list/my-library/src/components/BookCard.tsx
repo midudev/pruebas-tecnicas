@@ -21,7 +21,7 @@ const BookCard: React.FC<BookCardProps> = ({
 }) => {
   const titleFontSize = book.title.length > 30 ? "text-lg" : "text-2xl";
   return (
-    <div className="mb-4 m-auto p-4 border w-[20em] rounded-lg shadow-md h-full flex text-black flex-col">
+    <div className="mb-4 m-auto p-4 border rounded-lg shadow-md h-full flex text-black flex-col">
       <h2
         className={`py-[1em] text-white m-auto font-semibold mb-1 truncate ${titleFontSize}`}
       >
