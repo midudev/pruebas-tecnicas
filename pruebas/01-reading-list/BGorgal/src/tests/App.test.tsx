@@ -1,5 +1,5 @@
 import App from '../App'
-import { render, screen, userEvent, waitFor } from '../utils/test-utils'
+import { render, screen } from '../utils/test-utils'
 
 describe('App', () => {
   it('should render the header propertly', () => {
