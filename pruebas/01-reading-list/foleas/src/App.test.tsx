@@ -57,32 +57,34 @@ describe("Fetching Data", () => {
     book.getByText(title);
     book.getByText(genre);
   });
-});
 
-it("Should show 4 per page", async () => {
-  const perPage = 4;
-  const page = 1;
-  mockedFetch.mockResolvedValue({
-    json: () => booksFixturePagination,
+  it("Should show 4 per page", async () => {
+    const perPage = 4;
+    const page = 1;
+    mockedFetch.mockResolvedValue({
+      json: () => booksFixturePagination,
+    });
+    const booksList = await getData(endpoint);
+
+    booksList
+      .slice(perPage * (page - 1), perPage * page)
+      .forEach(({ book }) => {
+        const { ISBN, title, year, pages, genre, cover } = book;
+        render(
+          <BookCard
+            key={ISBN}
+            index={0}
+            title={title}
+            year={year}
+            pages={pages}
+            genre={genre}
+            imageUrl={cover}
+          />
+        );
+      });
+
+    const allBooks = screen.getAllByRole("article");
+    // console.log("allBooks", allBooks);
+    expect(allBooks).toHaveLength(4);
   });
-  const booksList = await getData(endpoint);
-
-  booksList.slice(perPage * (page - 1), perPage * page).forEach(({ book }) => {
-    const { ISBN, title, year, pages, genre, cover } = book;
-    render(
-      <BookCard
-        key={ISBN}
-        index={0}
-        title={title}
-        year={year}
-        pages={pages}
-        genre={genre}
-        imageUrl={cover}
-      />
-    );
-  });
-
-  const allBooks = screen.getAllByRole("article");
-  // console.log("allBooks", allBooks);
-  expect(allBooks).toHaveLength(4);
 });
