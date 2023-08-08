@@ -3,8 +3,8 @@ import { BookList } from './components/BookList'
 import { Filters } from './components/Filters'
 import { Footer } from './components/Footer'
 import { ReadingList } from './components/ReadingList'
-import { storage } from './functions/booksData'
 import { useBookStore } from './store/bookStore'
+import { storage } from './utils/storage'
 
 function App () {
   const { updateBooks, updateReadingList } = useBookStore()

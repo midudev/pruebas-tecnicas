@@ -1,15 +1,11 @@
 import { Book } from './Book'
 import { useBookStore } from '../store/bookStore'
+import { matchFilters } from '../utils/booksData'
 
 export function BookList () {
   const { books, genre, pages } = useBookStore()
 
-  const filteredBooks = books.filter(book => {
-    const genreMatch = genre === '' || genre === book.genre
-    const pagesMatch = pages === '' || book.pages >= Number(pages)
-
-    return genreMatch && pagesMatch
-  })
+  const filteredBooks = matchFilters(books, genre, pages)
 
   const numBooks = books.length
   return (

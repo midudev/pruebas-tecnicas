@@ -1,10 +1,9 @@
+import { genreOfBooks, pagesOfBooks } from '../utils/booksData'
 import { useBookStore } from '../store/bookStore'
 import { Button } from './Button'
-import { booksData } from '../functions/booksData'
 
 export function Filters () {
   const { genre, pages, selectGenre, selectPages } = useBookStore()
-  const { genreOfBooks, pagesOfBooks } = booksData()
 
   const onChangeSelectPages = (option: string) => {
     selectPages(option === pages ? '' : option)

@@ -1,6 +1,7 @@
 import { create } from 'zustand'
-import { booksData } from '../functions/booksData'
+import { formattedBooks } from '../utils/booksData'
 import { BookType } from '../types/types'
+import { getBooksFromLocalStorage, getReadingListFromLocalStorage, saveToLocalStorage } from '../utils/storage'
 
 interface BookStore {
   books: BookType[]
@@ -14,7 +15,6 @@ interface BookStore {
   updateBooks: (books: BookType[]) => void
   updateReadingList: (books: BookType[]) => void
 }
-const { formattedBooks, saveToLocalStorage, getBooksFromLocalStorage, getReadingListFromLocalStorage } = booksData()
 
 export const useBookStore = create<BookStore>((set, get) => ({
   books: getBooksFromLocalStorage.length === 0 ? formattedBooks : getBooksFromLocalStorage,
