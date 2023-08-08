@@ -1,8 +1,15 @@
 import { describe, expect, it, vi, afterEach, beforeEach } from "vitest";
 import { getData } from "./services/getData";
-import { booksFixtureDefault } from "./fixture/booksFixture";
-import { render } from "@testing-library/react";
+import {
+  booksFixtureDefault,
+  booksFixturePagination,
+} from "./fixture/booksFixture";
+import { render, screen, cleanup } from "@testing-library/react";
 import BookCard from "./components/common/BookCard";
+// import Paginator from "./components/Paginator";
+
+// import matchers from "@testing-library/jest-dom";
+// expect.extend(matchers);
 
 // SIMULATE FETCH THAT I WANT
 const mockedFetch = vi.fn();
@@ -18,6 +25,7 @@ describe("Fetching Data", () => {
     });
   });
   afterEach(() => {
+    cleanup();
     // vi.restoreAllMocks();
   });
 
@@ -45,13 +53,36 @@ describe("Fetching Data", () => {
       />
     );
 
-    const image = book.getByAltText(title);
-    expect(image).toBeTruthy();
-
-    const titleElem = book.getByText(title);
-    expect(titleElem?.textContent).toBeTruthy();
-
-    const genreElem = book.getByText(genre);
-    expect(genreElem?.textContent).toBeTruthy();
+    book.getByAltText(title);
+    book.getByText(title);
+    book.getByText(genre);
   });
+});
+
+it("Should show 4 per page", async () => {
+  const perPage = 4;
+  const page = 1;
+  mockedFetch.mockResolvedValue({
+    json: () => booksFixturePagination,
+  });
+  const booksList = await getData(endpoint);
+
+  booksList.slice(perPage * (page - 1), perPage * page).forEach(({ book }) => {
+    const { ISBN, title, year, pages, genre, cover } = book;
+    render(
+      <BookCard
+        key={ISBN}
+        index={0}
+        title={title}
+        year={year}
+        pages={pages}
+        genre={genre}
+        imageUrl={cover}
+      />
+    );
+  });
+
+  const allBooks = screen.getAllByRole("article");
+  // console.log("allBooks", allBooks);
+  expect(allBooks).toHaveLength(4);
 });
