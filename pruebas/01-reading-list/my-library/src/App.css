@@ -40,3 +40,8 @@
 .read-the-docs {
   color: #888;
 }
+@media (max-width: 393px) {
+  .hide-atropos {
+    display: none;
+  }
+}

@@ -205,7 +205,7 @@ const App: React.FC = () => {
                   min={0}
                   max={book?.book.pages}
                   placeholder="Página"
-                  className="border min-w-[5em] rounded-md px-2 py-1"
+                  className="border rounded-md px-2 py-1"
                   value={pageInputValues[title] || ""}
                   onChange={(e) => handlePageChange(title, e)}
                 />

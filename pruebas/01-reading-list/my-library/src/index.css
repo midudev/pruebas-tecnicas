@@ -16,7 +16,23 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+.desktop {
+  display: none;
+}
 
+.mobile {
+  display: block;
+}
+
+@media (min-width: 689px) {
+  .desktop {
+    display: block;
+  }
+
+  .mobile {
+    display: none;
+  }
+}
 html {
   background: linear-gradient(90deg, #000000, #000000);
   user-select: none;
