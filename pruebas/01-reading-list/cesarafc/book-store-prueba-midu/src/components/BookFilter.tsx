@@ -2,16 +2,19 @@ import { Box, IconButton, Slider, Typography } from "@mui/material";
 import GenreSelectFilter from "./GenreSelectFilter";
 import FilterAltOffIcon from '@mui/icons-material/FilterAltOff';
 import { useBooksStore } from "../store/books";
+import SearchAppBar from "./SearchInput";
 
 type BookFilterProps = {
   genre: string,
   pages: number,
+  search: string,
   onGenreChange: (newGenre: string) => void,
   onPagesChange: (newPages: number) => void,
+  onSearchChange: (term: string) => void,
   resetFilters: () => void,
 }
 
-function BookFilter({genre, pages, onGenreChange, onPagesChange, resetFilters }: BookFilterProps) {
+function BookFilter({genre, pages, search, onGenreChange, onPagesChange, onSearchChange, resetFilters }: BookFilterProps) {
 
   const {booksStore, cartStore} = useBooksStore(state => state);
 
@@ -40,6 +43,7 @@ function BookFilter({genre, pages, onGenreChange, onPagesChange, resetFilters }:
           ({booksStore.length - cartStore.length})
         </Typography>
       </Typography>
+      <SearchAppBar search={search} onSearchChange={onSearchChange} />
       <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
         <Box width={250} sx={{ display: "flex", flexDirection: 'column', alignItems: "center" }}>
           <Typography>Filtro por paginas: </Typography>

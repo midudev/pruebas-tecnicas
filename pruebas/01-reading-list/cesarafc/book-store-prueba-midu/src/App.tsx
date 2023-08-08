@@ -3,43 +3,46 @@ import BookFilter from "./components/BookFilter";
 import ReadList from "./components/ReadList";
 import { useBooksStore } from "./store/books";
 import { Container, Box, Typography } from '@mui/material';
-import { Library } from "./types/bookType";
+// import { Library } from "./types/bookType";
 import BookInList from "./components/BookInList";
 import './index.css';
 import BookCart from "./components/BookCart";
 import { SortableContext, arrayMove, rectSortingStrategy } from "@dnd-kit/sortable";
 import { DndContext, DragEndEvent, closestCenter } from "@dnd-kit/core";
 import { Toaster } from 'react-hot-toast';
+import useDebounce from "./hooks/useDebounce";
 
-type filterParams = {
-  books: Library[],
-  pagestoFilter?: number,
-  genre?: string,
-} 
+// type filterParams = {
+//   books: Library[],
+//   pagestoFilter?: number,
+//   genre?: string,
+// } 
 
 function App() {
 
-  const {booksStore, cartStore, updateIndex} = useBooksStore(state => state);  
-  // const booksinList = cartStore.map( item =>  item);
+  const {booksStore, cartStore, updateIndex} = useBooksStore(state => state); 
 
   const [genre, setGenre] = useState('');
   const [pages, setPages] = useState(0);
+  const [search, setSearch] = useState('');
 
+  const debouncedSearch = useDebounce<string>(search, 500);
 
-  const filterBooks = ({books, pagestoFilter, genre}: filterParams) => {
+  // const filterBooks = ({books, pagestoFilter, genre}: filterParams) => {
+  //   if (pagestoFilter && genre) {
+  //     return books.filter(({book}) => book.genre === genre && book.pages >= pagestoFilter );
+  //   }
+  //   if(pagestoFilter) {
+  //     return books.filter( ({book}) => book.pages >= pagestoFilter)
+  //   }
+  //   if(genre) {
+  //     return books.filter( ({book}) => book.genre === genre )
+  //   }
+  //   return books
+  // }
 
-    if (pagestoFilter && genre) {
-      return books.filter(({book}) => book.genre === genre && book.pages >= pagestoFilter);
-    }
-
-    if(pagestoFilter) {
-      return books.filter( ({book}) => book.pages >= pagestoFilter)
-    }
-    if(genre) {
-      return books.filter( ({book}) => book.genre === genre )
-    }
-
-    return books
+  const onSearchChange = (term: string) => {
+    setSearch(term)
   }
 
   const onGenreChange = (newGenre: string) => {
@@ -51,6 +54,7 @@ function App() {
   const resetFilters = () => {
     setGenre('')
     setPages(0)
+    setSearch('')
   }
 
   const handleDragEnd = ({active, over}: DragEndEvent) => {
@@ -62,8 +66,16 @@ function App() {
     }
   }
 
-
-  const filteredBooks = filterBooks({books: booksStore, genre, pagestoFilter: pages})
+    const filteredBooks = booksStore.filter( ({book}) => {
+      const todoText = book.title.toLowerCase();
+      const searchText = debouncedSearch.toLowerCase();
+      
+      const titleMatch = debouncedSearch ? todoText.includes(searchText) : true;
+      const genreMatch = genre ? book.genre === genre : true;
+      const pagesMatch = pages ? book.pages >= pages : true;
+      
+      return titleMatch && genreMatch && pagesMatch;
+  });
 
   return (
     <Container
@@ -71,9 +83,11 @@ function App() {
       maxWidth="xl"
     >
       <BookFilter
-        resetFilters={resetFilters}
         genre={genre}
         pages={pages}
+        search={search}
+        onSearchChange={onSearchChange}
+        resetFilters={resetFilters}
         onGenreChange={onGenreChange}
         onPagesChange={onPagesChange}
       />
