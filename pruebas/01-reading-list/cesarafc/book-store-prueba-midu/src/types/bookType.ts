@@ -18,7 +18,7 @@ interface Author {
     otherBooks: string[]
 }
 
-interface BookList extends Book {
-    priority: string
-}
+// interface BookList extends Book {
+//     priority: string
+// }
 

@@ -1,27 +1,36 @@
-# React + TypeScript + Vite
+# My Books App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to My Books App! This app allows you to manage and organize your reading list with ease.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- View Available Books: Browse through a list of available books that you can review.
+- Create Reading List: Build your own reading list from the available books. Easily move books between the reading list and available books pressing a button.
+- Genre Filtering: Filter the list of available books by genre. Track the count of available books, reading list books, and available books.
+- Search Functionality: Search for specific books in the list of available books.
+- Page Filtering: Filter available books by the number of pages.
+- Priority Reordering: Reorganize books in the reading list based on priority using drag-and-drop (Dnd-kit).
+- Responsive Design: The app features a responsive grid layout for optimal viewing across different devices.
+- State Synchronization: Global state is synchronized to reflect the number of books in the reading list and the number of books still available.
+- Data Persistence: The reading list data is persisted in the local storage of your browser. The reading list will be retained even after you reload the page.
+- Tab Synchronization: Changes made in one tab of the app will automatically sync to other open tabs without needing a backend server.
+- Deployment: The app is deployed on GitHub Pages and can be accessed through a public URL.
 
-## Expanding the ESLint configuration
+## App URL
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+You can access the app at: [My Books App](https://cesarafc.github.io/pruebas-tecnicas/)
 
-- Configure the top-level `parserOptions` property like this:
+## Technologies Used
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- React
+- TypeScript
+- Zustand
+- Material-UI
+- Dnd-kit (Drag and Drop)
+- Broadcast Channel API
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Getting Started
+
+1. Clone this repository.
+2. Install dependencies using `pnpm install`.
+3. Run the app locally with `pnpm run dev`.

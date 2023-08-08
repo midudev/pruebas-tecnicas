@@ -20,7 +20,7 @@ function SingleBook({book}: SingleBookProps) {
   }
 
   const isInList = () => {
-    return cartStore.find( (bookList) => bookList.book.ISBN === book.ISBN);
+    return cartStore.find( (bookList) => bookList.ISBN === book.ISBN);
   }
 
 

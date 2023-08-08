@@ -11,6 +11,7 @@ import { SortableContext, arrayMove, rectSortingStrategy } from "@dnd-kit/sortab
 import { DndContext, DragEndEvent, closestCenter } from "@dnd-kit/core";
 import { Toaster } from 'react-hot-toast';
 import useDebounce from "./hooks/useDebounce";
+import { toFilter } from "./helpers/onFilter";
 
 // type filterParams = {
 //   books: Library[],
@@ -66,16 +67,19 @@ function App() {
     }
   }
 
-    const filteredBooks = booksStore.filter( ({book}) => {
-      const todoText = book.title.toLowerCase();
-      const searchText = debouncedSearch.toLowerCase();
+  //   const filteredBooks = booksStore.filter(
+  //      ({book}) => {
+  //     const todoText = book.title.toLowerCase();
+  //     const searchText = debouncedSearch.toLowerCase();
       
-      const titleMatch = debouncedSearch ? todoText.includes(searchText) : true;
-      const genreMatch = genre ? book.genre === genre : true;
-      const pagesMatch = pages ? book.pages >= pages : true;
+  //     const titleMatch = debouncedSearch ? todoText.includes(searchText) : true;
+  //     const genreMatch = genre ? book.genre === genre : true;
+  //     const pagesMatch = pages ? book.pages >= pages : true;
       
-      return titleMatch && genreMatch && pagesMatch;
-  });
+  //     return titleMatch && genreMatch && pagesMatch;
+  // });
+    const filteredBooks = booksStore.filter( ({book}) => toFilter(book, debouncedSearch, genre, pages));
+    const lectureList = cartStore.filter((book) => toFilter(book, debouncedSearch, genre, pages));
 
   return (
     <Container
@@ -107,7 +111,7 @@ function App() {
         </ReadList>
       </DndContext>
 
-      <Typography variant="caption">Results: {filteredBooks.length}</Typography>
+      <Typography variant="caption">Resultados: {filteredBooks.length}. |  En lista de lectura: {lectureList.length} </Typography>
       <Box component="section" className="books-library">
         {filteredBooks.map(({ book }) => (
           <BookInList key={book.ISBN} book={book} />

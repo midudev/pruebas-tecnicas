@@ -2,7 +2,7 @@ import { Box, Container, Typography } from '@mui/material';
 import { useBooksStore } from './store/books';
 import { Book } from './types/bookType';
 import { DndContext, closestCenter, DragEndEvent } from "@dnd-kit/core";
-import {SortableContext, verticalListSortingStrategy, arrayMove, useSortable} from '@dnd-kit/sortable';
+import {SortableContext, verticalListSortingStrategy, useSortable} from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
 
@@ -41,12 +41,13 @@ function SingleCard ({book}: SingleProps) {
 
 function SecondApp() {
     const booksStore = useBooksStore(state => state.booksStore);  
-    const books = booksStore.map((item, index) => {
+    const books = booksStore.map((item) => {
       // return {...item.book, id: index}
       return item.book
     });
 
     const handleDragEnd = (e: DragEndEvent) => {
+      console.log(e)
         // console.log(e.active)
     }
 

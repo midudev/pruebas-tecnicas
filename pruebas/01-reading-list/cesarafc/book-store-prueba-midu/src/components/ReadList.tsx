@@ -24,7 +24,7 @@ function ReadList({children, listLenght}: ReadListProps) {
             }}
           > 
 
-            <Typography variant="h4">Lista de lectura</Typography>
+            <Typography variant="h4">Lista de lectura ({listLenght})</Typography>
             {children}
           </Container>
         </Drawer>
