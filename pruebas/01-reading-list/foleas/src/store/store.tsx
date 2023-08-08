@@ -67,4 +67,6 @@ export const useStore = create<Store>((set) => ({
       setLocalStorage("selectedBooks", selectedBooks);
       return { selectedBooks };
     }),
+  lastBookClicked: "",
+  setLastBookClicked: (lastBookClicked) => set(() => ({ lastBookClicked })),
 }));

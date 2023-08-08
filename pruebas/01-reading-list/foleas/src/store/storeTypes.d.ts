@@ -28,4 +28,6 @@ export type Store = {
   setFilteredBooks: (filteredBooks: Array<string>) => void;
   selectedBooks: Array<string>;
   setSelectedBooks: (selectedBooks: Array<string>) => void;
+  lastBookClicked: string;
+  setLastBookClicked: (lastBookClicked: string) => void;
 };

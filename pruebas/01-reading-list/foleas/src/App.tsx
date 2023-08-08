@@ -5,12 +5,12 @@ import PageRangeFilter from "./components/PageRangeFilter";
 import GenreFilter from "./components/GenreFilter";
 import { UseGetData } from "./hooks/useGetData";
 import SearchFilter from "./components/SearchFilter";
-import { Book } from "./types";
 import ColorThemeSwitch from "./components/ColorThemeSwitch";
 import { stickyTop, textColorAnimationClass } from "./utils/tailwind";
 import Paginator from "./components/Paginator";
 import { getMaxPage } from "./utils/books";
 import PerPageFilter from "./components/PerPageFilter";
+import SelectedBooksSidebar from "./components/SelectedBooksSidebar";
 
 function App() {
   const {
@@ -25,11 +25,11 @@ function App() {
     setFilteredBooks,
     selectedBooks,
     setSelectedBooks,
+    lastBookClicked,
+    setLastBookClicked,
   } = useStore();
 
   const { loading } = UseGetData("./books.json");
-
-  const [lastBookClicked, setLastBookClicked] = useState<string>("");
 
   useEffect(() => {
     if (!loading) {
@@ -120,53 +120,7 @@ function App() {
                 })}
             </div>
           </div>
-          <div className={`lecture-books-wrapper p-5 pl-0 flex-1 max-h-full`}>
-            {selectedBooks.length > 0 && (
-              <div
-                className={`lecture-books-inner overflow-y-auto h-full ${
-                  selectedBooks.length &&
-                  "transition duration-300 border-black border bg-gray-300 dark:border-white dark:bg-gray-800 rounded-md"
-                }`}
-              >
-                <div
-                  className={`list-title rounded-md p-5 mb-5 bg-gray-300 ${stickyTop}`}
-                >
-                  <h2
-                    className={`text-3xl font-bold ${textColorAnimationClass}`}
-                  >
-                    Lista de Lectura
-                  </h2>
-                </div>
-                <div className="box-border pb-5 h-full lecture-books">
-                  <div className="pl-5 pr-5 grid grid-cols-4 sm:grid-cols-6 md:grid-cols-2 gap-10 pb-4">
-                    {selectedBooks.map((v, i) => {
-                      const selectedBook = books.find(
-                        ({ book: { ISBN } }) => ISBN === v
-                      ) as Book;
-                      if (!selectedBook) return false;
-                      const { ISBN, title, cover } = selectedBook.book;
-                      return (
-                        <BookCard
-                          key={ISBN}
-                          index={lastBookClicked === ISBN ? 0 : i}
-                          title={title}
-                          imageUrl={cover}
-                          showInfo={false}
-                          withRemoveBnt={true}
-                          onClickHandler={() => {
-                            setLastBookClicked(ISBN);
-                            setSelectedBooks(
-                              selectedBooks.filter((v) => v !== ISBN)
-                            );
-                          }}
-                        />
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
+          <SelectedBooksSidebar />
         </>
       )}
     </main>
