@@ -6,7 +6,6 @@ export interface Props {
 }
 
 export function Book ({ book }: Props) {
-  // const { title, pages, genre, cover, synopsis, year, isbn, author } = book
   const { title, cover, author, reading } = book
   const { addBookToReadingList, RemoveBookToReadingList } = useBookStore()
   const handleClick = () => {

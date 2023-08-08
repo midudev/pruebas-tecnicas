@@ -14,7 +14,7 @@ export function BookList () {
   const numBooks = books.length
   return (
     <div className='rounded-xl p-4'>
-      <p className='text-brown-1 text-xl font-medium mb-2'>Libros disponibles ({numBooks})</p>
+      <h2 className='text-brown-1 text-xl font-medium mb-2'>Libros disponibles ({numBooks})</h2>
       {
         filteredBooks.length <= 0
           ? (<p className='text-brown-1 text-2xl font-medium p-8'>No hay libros disponibles con los filtros aplicados</p>)

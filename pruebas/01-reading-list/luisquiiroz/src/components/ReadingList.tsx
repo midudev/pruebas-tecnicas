@@ -8,14 +8,14 @@ export function ReadingList () {
   const numReadingList = readingList.length
   return (
     <div className='bg-brown-1/50 p-4 rounded-xl'>
-      <p className='mb-2 text-brown-1 font-medium'>Lista de lectura ({readingList.length})</p>
+      <h2 className='mb-2 text-brown-1 font-medium'>Lista de lectura ({readingList.length})</h2>
       {
         numReadingList <= 0
           ? (
-            <div>
+            <figure>
               <img className='opacity-50 rounded-xl max-w-xs w-full' src='/6719432.webp' alt='imagen lectura de libros' />
-              <p className='text-brown-1 text-center pt-4 '>Comienza a añadir libros</p>
-            </div>
+              <figcaption className='text-brown-1 text-center pt-4 '>Comienza a añadir libros</figcaption>
+            </figure>
             )
           : (
             <div className='grid grid-cols-2 gap-3'>

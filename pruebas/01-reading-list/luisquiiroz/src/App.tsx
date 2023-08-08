@@ -33,29 +33,24 @@ function App () {
     }
   }
   return (
-    <>
-      <div className='p-1 md:p-4 lg:p-8'>
-        <p className='text-brown-1 p-4 text-3xl mt-2'>Biblioteca</p>
-        <div className='md:flex gap-4'>
-          <div className='md:w-2/12'>
-            <Filters />
-          </div>
-          <div className='md:w-7/12'>
-            <BookList />
-          </div>
-          <div className='md:w-3/12'>
-            <ReadingList />
-          </div>
+    <div className='p-1 md:p-4 lg:p-8'>
+      <header>
+        <h1 className='text-brown-1 p-4 text-3xl mt-2'>Biblioteca</h1>
+      </header>
+      <main className='md:flex gap-4'>
+        <div className='md:w-2/12'>
+          <Filters />
         </div>
-        <Footer />
-      </div>
-    </>
+        <article className='md:w-7/12'>
+          <BookList />
+        </article>
+        <aside className='md:w-3/12'>
+          <ReadingList />
+        </aside>
+      </main>
+      <Footer />
+    </div>
   )
 }
 
 export default App
-// color
-// size
-// font
-// margin
-// padding

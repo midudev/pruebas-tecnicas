@@ -16,9 +16,9 @@ export function Filters () {
 
   return (
     <div className='p-4 max-w-lg mx-auto bg-brown-2 rounded'>
-      <p className='text-brown-1 font-medium pt-2'>Filtros</p>
+      <h2 className='text-brown-1 font-medium pt-2'>Filtros</h2>
       <div>
-        <p className='text-brown-1 pt-2'>Por páginas</p>
+        <h3 className='text-brown-1 pt-2'>Por páginas</h3>
         <div className='grid grid-cols-3 md:grid-cols-2 gap-2 py-2 px-1 '>
           {
           pagesOfBooks.map(value => (
@@ -28,7 +28,7 @@ export function Filters () {
         </div>
       </div>
       <div>
-        <p className='text-brown-1 mt-4'>Por género</p>
+        <h3 className='text-brown-1 mt-4'>Por género</h3>
         <div className='py-2 px-1'>
           {
           genreOfBooks.map(value => (
