@@ -1,5 +1,5 @@
 import React from 'react'
-import { Book } from '../Book'
+import Book from '../Book'
 import styles from "./readList.module.css"
 import useFilter from '../../Hooks/useFilter'
 

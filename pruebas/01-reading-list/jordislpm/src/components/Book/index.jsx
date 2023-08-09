@@ -6,7 +6,7 @@ import remove from "../../../public/icons/remove.svg"
 
 
 
-export const Book = ({add= true, title, id, cover, book, modifiers}) => {
+const Book = ({add= true, title, id, cover, book, modifiers}) => {
 
   const [store, dispatch] = useContext(BooksAvailable)
   const {listBooks, listRead} = store;
@@ -37,3 +37,5 @@ export const Book = ({add= true, title, id, cover, book, modifiers}) => {
     </li>
   )
 }
+
+export default Book
