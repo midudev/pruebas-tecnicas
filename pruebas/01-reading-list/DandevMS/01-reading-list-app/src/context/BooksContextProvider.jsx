@@ -3,72 +3,81 @@ import data from "../data/books.json";
 
 export const BooksContext = createContext({});
 
-export const BooksProvider = ({ children }) => {
-	//eslint-disable-line
-	const [books, setBooks] = useState(data.library);
-	const [genres, setGenres] = useState([]); //eslint-disable-line
-	const [readingList, setReadingList] = useState([]);
-	const [avaliableBooks, setAvailableBooks] = useState([]);
-	const [avaliableBooksReading, setAvailableBooksReading] = useState([]);
+export const BooksProvider = ({ children }) => { //eslint-disable-line
+  // estado para almacenar los libros
+  const [books, setBooks] = useState(data.library);
 
-	// Obtener los generos de los libros
-	useEffect(() => {
-		const uniqueGenres = [
-			...new Set(data.library.map((book) => book.book.genre)),
-		];
-		setGenres(uniqueGenres);
-	}, []);
+  // estado para almacenar la lista de libros para leer
+  const [readingList, setReadingList] = useState([]);
 
-	// Filtrar libros por género
-	const filterBooksByGenre = (genre) => {
-		const filteredBooks = data.library.filter(
-			(book) => book.book.genre === genre || genre === "todos",
-		);
-		setBooks(filteredBooks);
-	};
+  // estado para almacenar la categoria selecionada
+  const [selectedGenre, setSelectedGenre] = useState("all");
 
-	// Eliminar un libro de la lista de lectura y actualizar el localStorage
-	const removeBook = (book) => {
-		setReadingList((prevReadingList) =>
-			prevReadingList.filter((b) => b !== book),
-		);
+  const [avaliableBooks, setAvailableBooks] = useState([]);
+  const [avaliableBooksReading, setAvailableBooksReading] = useState([]);
 
-		// obtener la data actualizada del localStorage
-		const updateReadingList = readingList.filter((b) => b !== book);
+    // funcionar para agrergar un libro a la lista de lectura
+    const addToRedingList = (isbn) => {
+      // obtener el libro seleccionado
+      const bookAdd = books.find((book) => book.book.ISBN === isbn);
+  
+      // almacenar el libro en el estado
+      setReadingList((prevReadingList) => [...prevReadingList, bookAdd]);
+  
+      // almacenar el libro en el localStorage
+      localStorage.setItem(
+        "readingList",
+        JSON.stringify([...readingList, bookAdd])
+      );
+  
+    }
 
-		localStorage.setItem("readingList", JSON.stringify(updateReadingList));
 
-		// eliminamos completamente el libro de la lista de libros
-		localStorage.removeItem(book);
-	};
+// Eliminar un libro de la lista de lectura y actualizar el localStorage
+const removeBook = (isbn) => {
+  // obtener el libro seleccionado
+ const deleteBook = readingList.find((book) => book.book.ISBN === isbn);
 
-	/**
-	 * @description obtener la cantidad de libros disponibles
-	 */
-	useEffect(() => {
-		setAvailableBooks(books.length);
-	}, [books]);
+ // actualizar el estado de la lista de libros
+ setBooks(prevBooks => [...prevBooks, deleteBook])
 
-	/**
-	 * @description obtener la cantidad de libros en la lista de lectura
-	 */
+ // actualizar el estado de la lista de lectura
+ setReadingList(prevReadingList => prevReadingList.filter((book) => book.book.ISBN !== isbn))
 
-	useEffect(() => {
-		setAvailableBooksReading(readingList.length);
-	}, [readingList]);
+};
 
-	const contextValue = {
-		books,
-		setBooks,
-		readingList,
-		setReadingList,
-		genres,
-		setGenres,
-		filterBooksByGenre,
-		removeBook,
-		avaliableBooks,
-		avaliableBooksReading,
-	};
+// efecto para actualizar el localStorage 
+useEffect(() => {
+  const storedReadingList = localStorage.getItem("readingList");
+  if (storedReadingList) {
+    setReadingList(JSON.parse(storedReadingList));
+  }
+}, []);
+
+
+
+  // obtener la cantidad de libros disponibles
+  useEffect(() => {
+    setAvailableBooks(books.length);
+  }, [books]);
+
+
+  // obtener la cantidad de libros disponibles para leer
+  useEffect(() => {
+    setAvailableBooksReading(readingList.length);
+  }, [readingList])
+
+
+  const contextValue = {
+    books,
+    addToRedingList,
+    readingList,
+    removeBook,
+    avaliableBooks,
+    avaliableBooksReading,
+    selectedGenre,
+    setSelectedGenre,
+  }
 
 	return (
 		<BooksContext.Provider value={contextValue}>
