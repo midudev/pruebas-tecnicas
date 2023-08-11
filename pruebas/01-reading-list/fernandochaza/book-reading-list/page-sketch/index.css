@@ -3,11 +3,18 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
-  background-color: #222222;
+  /* background-color: #222222; */
   color: white;
 }
 
+body {
+  background: #222222;
+  background-image: radial-gradient(rgb(59, 55, 55) 1px, transparent 0);
+  background-size: 48px 48px;
+}
+
 header {
+  background-color: #222222;
   display: flex;
   justify-content: space-between;
   max-width: 1200px;
@@ -26,6 +33,7 @@ nav {
 }
 
 nav button {
+  background-color: #222222;
   border: none;
   cursor: pointer;
   font-size: 1.2rem;
@@ -39,8 +47,8 @@ nav button {
 }
 
 header h1 {
-  padding-left: .5rem;
-  font-size: 1.6rem;
+  padding-left: .3rem;
+  font-size: 1.4rem;
 }
 
 main {
@@ -51,7 +59,7 @@ main {
   flex-direction: column;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 576px) {
   main {
     display: grid;
     grid-template-columns: 240px auto;
@@ -60,16 +68,43 @@ main {
 }
 
 .search {
+  width: 100%;
   border: 1px solid white;
-  width: 240px;
   margin: 0 auto 1rem auto;
   padding: 1rem 2rem;
   border-radius: 16px;
 }
 
+  @media screen and (min-width: 576px) {
+    .search {
+      width: 240px;
+      margin: 0 auto;
+    }
+}
+
 form {
   display: flex;
   flex-direction: column;
+}
+
+form input[type=text] {
+  border: none;
+  outline: none;
+  background-color: black;
+  border-radius: 4px;
+  box-shadow: 0 0 2px white;
+  height: 40px;
+  margin-top: 6px;
+  padding-left: 1rem;
+}
+
+form > label,
+form .pages-filter,
+form button {
+  margin-top: 1rem;
+}
+
+.pages-filter label {
   line-height: 2rem;
 }
 
@@ -78,21 +113,29 @@ form > label {
   flex-direction: column;
 }
 
-.pages-filter{
+.pages-filter {
 display: flex;
 flex-direction: column;
 }
 
+.pages-filter input {
+  margin-right: .5rem;
+}
+
+.pages-filter:first-child {
+  margin-top: 6px;
+}
+
 form button {
+  background-color: #222222;
   border: 1px solid white;
   border-radius: 4px;
-  max-width: 120px;
   padding: .5rem;
 }
 
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 20px;
 }
 
@@ -104,13 +147,14 @@ form button {
 
 .book-card img {
   width: 100%;
+  height: 100%;
   border-radius: 8px;
   z-index: 0;
   object-fit: cover;
-  position: ;
 }
 
 .add-book-btn {
+  background-color: #222222;
   width: 40px;
   border: none;
   border-radius: 8px;
