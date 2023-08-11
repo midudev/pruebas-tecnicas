@@ -29,6 +29,7 @@
   --secondary: #004599;
   --secondary-light: #67DCF8;
   background-color: var(--bg);
+  scrollbar-gutter: stable both-edges;
 }
 
 .read-book-container:hover::before {
