@@ -28,21 +28,32 @@
 
   <body>
     <header>
-      <img class="logo" src="../src/assets/book-open-svgrepo-com.svg" alt="Logo" />
-      <h1>My Reading List</h1>
-      <div></div>
+      <section class="title">
+        <img class="logo" src="../src/assets/book-open-svgrepo-com.svg" alt="Logo" />
+        <h1>MY READING LIST</h1>
+      </section>
+      <nav>
+        <button>
+          <!-- <img src="../src/assets/bookmark-fill-1227-svgrepo-com.svg" alt="" /> -->
+          SEARCH
+        </button>
+        <button>
+          <!-- <img src="../src/assets/bookmark-fill-1227-svgrepo-com.svg" alt="" /> -->
+          MY LIST
+        </button>
+      </nav>
     </header>
     <main>
       <aside class="search">
         <form>
-          <label for="bok-name"
-            >Book name: <input id="book-name" type="text" placeholder="Search a book..."
+          <label for="book-name"
+            >Book name <input id="book-name" type="text" placeholder="Search a book..."
           /></label>
-          <label for="bok-name"
-            >Author: <input id="book-author" type="text" placeholder="Search an author..."
+          <label for="book-author"
+            >Author <input id="book-author" type="text" placeholder="Search an author..."
           /></label>
           <div class="pages-filter">
-            Max. Pages:
+            Max. Pages
             <label><input name="book-pages" type="radio" value="100" /> 100</label>
             <label><input name="book-pages" type="radio" value="200" /> 200</label>
             <label><input name="book-pages" type="radio" value="300" /> 300</label>
@@ -52,48 +63,59 @@
         </form>
       </aside>
       <section class="cards-container">
-        <h2 class="cards-title">Click to add your favorite books</h2>
         <div class="book-card">
           <img
             src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg"
             alt=""
           />
-          <button class="add-book-btn"><img src="../src/assets/bookmark-fill-1227-svgrepo-com.svg" alt=""></button>
+          <button class="add-book-btn">
+            <img src="../src/assets/bookmark-fill-1227-svgrepo-com.svg" alt="" />
+          </button>
         </div>
         <div class="book-card">
           <img
             src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg"
             alt=""
           />
-          <button class="add-book-btn"><img src="../src/assets/bookmark-fill-1227-svgrepo-com.svg" alt=""></button>
+          <button class="add-book-btn">
+            <img src="../src/assets/bookmark-fill-1227-svgrepo-com.svg" alt="" />
+          </button>
         </div>
         <div class="book-card">
           <img
             src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg"
             alt=""
           />
-          <button class="add-book-btn"><img src="../src/assets/bookmark-fill-1227-svgrepo-com.svg" alt=""></button>
+          <button class="add-book-btn">
+            <img src="../src/assets/bookmark-fill-1227-svgrepo-com.svg" alt="" />
+          </button>
         </div>
         <div class="book-card">
           <img
             src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg"
             alt=""
           />
-          <button class="add-book-btn"><img src="../src/assets/bookmark-fill-1227-svgrepo-com.svg" alt=""></button>
+          <button class="add-book-btn">
+            <img src="../src/assets/bookmark-fill-1227-svgrepo-com.svg" alt="" />
+          </button>
         </div>
         <div class="book-card">
           <img
             src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg"
             alt=""
           />
-          <button class="add-book-btn"><img src="../src/assets/bookmark-fill-1227-svgrepo-com.svg" alt=""></button>
+          <button class="add-book-btn">
+            <img src="../src/assets/bookmark-fill-1227-svgrepo-com.svg" alt="" />
+          </button>
         </div>
         <div class="book-card">
           <img
             src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg"
             alt=""
           />
-          <button class="add-book-btn"><img src="../src/assets/bookmark-fill-1227-svgrepo-com.svg" alt=""></button>
+          <button class="add-book-btn">
+            <img src="../src/assets/bookmark-fill-1227-svgrepo-com.svg" alt="" />
+          </button>
         </div>
       </section>
       <section class="selected-books"></section>
