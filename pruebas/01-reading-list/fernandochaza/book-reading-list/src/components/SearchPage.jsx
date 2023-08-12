@@ -1,7 +1,12 @@
-import { StyledMain } from './RootLayoutStyles';
+import { StyledMain } from './RootLayoutStyles'
+import SearchForm from './SearchForm'
 
 const SearchPage = () => {
-  return <StyledMain>SearchView</StyledMain>;
-};
+  return (
+    <StyledMain>
+      <SearchForm />
+    </StyledMain>
+  )
+}
 
-export default SearchPage;
+export default SearchPage
