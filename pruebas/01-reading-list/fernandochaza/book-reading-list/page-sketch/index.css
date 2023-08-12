@@ -140,28 +140,36 @@ form button {
 }
 
 .book-card {
-  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid white;
+  border-top: 1px solid white;
+  padding-bottom: 1rem;
   border-radius: 8px;
   position: relative;
 }
 
 .book-card img {
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  margin: 1rem auto;
   border-radius: 8px;
-  z-index: 0;
-  object-fit: cover;
 }
 
-.add-book-btn {
-  background-color: #222222;
-  width: 40px;
-  border: none;
-  border-radius: 8px;
-  padding: 4px;
-  cursor: pointer;
-  z-index: 1;
-  position: absolute;
-  right: 20px;
-  top: 20px;
+@media screen and (min-width: 576px) {
+  .book-card img {
+    width: 90%;
+  }
+}
+
+.book-title {
+  text-align: center;
+}
+
+.book-author {
+  text-align: center;
+  margin-bottom: .5rem;
+}
+
+.book-info {
+  margin-bottom: .5rem;
 }
