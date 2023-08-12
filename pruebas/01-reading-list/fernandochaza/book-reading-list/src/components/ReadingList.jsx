@@ -1,5 +1,7 @@
+import { StyledMain } from './RootLayoutStyles'
+
 const ReadingList = () => {
-  return <h1>Reading List View</h1>
+  return <StyledMain>Reading List View</StyledMain>
 }
 
 export default ReadingList
