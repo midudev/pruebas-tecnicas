@@ -6,7 +6,7 @@ const breakpointXl = '1200px'
 const white = '#ffffff'
 const light = '#dee4e7'
 const dark = '#37474f'
-const black = '#111111'
+const black = '#000000'
 
 const accent1Color = '#E30022'
 const accent2Color = '#2a75b3'
