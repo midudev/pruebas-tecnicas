@@ -3,8 +3,7 @@ import { Outlet } from 'react-router-dom'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 
-import glow from '../../assets/glow.png'
-import { StyledMainContainer, StyledImg } from '../RootLayoutStyles'
+import { StyledMainContainer } from './styles'
 
 const RootPage = () => {
   return (
@@ -14,7 +13,6 @@ const RootPage = () => {
         <Outlet />
         <Footer />
       </StyledMainContainer>
-      <StyledImg src={glow} />
     </>
   )
 }
