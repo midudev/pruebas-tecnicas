@@ -8,7 +8,7 @@ const light = '#dee4e7'
 const dark = '#37474f'
 const black = '#000000'
 
-const accent1Color = '#E30022'
+const accent1Color = '#80388c'
 const accent2Color = '#2a75b3'
 
 const darkTheme = {
