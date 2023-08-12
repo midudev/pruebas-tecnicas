@@ -4,10 +4,11 @@ const StyledHeader = styled.header`
   background-color: ${(props) => props.theme.mainBg};
   display: flex;
   flex-direction: column;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
 
-  @media screen  and (min-width: 576px) {
+  @media screen and (min-width: 576px) {
     flex-direction: row;
     justify-content: space-between;
   }
@@ -20,40 +21,33 @@ const StyledTitleContainer = styled.section`
 
 const StyledLogo = styled.img`
   padding: 1rem;
-  fill: white;
   border-radius: 8px;
 `
 
 const StyledTitle = styled.h1`
-  padding-left: .3rem;
-  margin: 0 auto;
-  font-size: 1.4rem;
+  padding-left: 0.3rem;
+  font-size: 1.3rem;
   letter-spacing: 1px;
 `
 
 const StyledNav = styled.nav`
   display: flex;
-  column-gap: 20px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0 auto .5rem auto;
+  justify-content: space-around;
 
-  @media screen  and (min-width: 576px) {
+  @media screen and (min-width: 576px) {
     margin: auto 1rem auto 0;
+    width: auto;
+    column-gap: 20px;
     padding: 0;
   }
 `
 
-const StyledButton = styled.button`
-  background-color: ${(props) => props.theme.mainBg};
-  color: ${(props) => props.theme.mainTxt};
-  border: 1px solid ${(props) => props.theme.mainTxt};
-  padding: .5rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 400;
-
-  @media screen  and (min-width: 576px) {
-  }
-`
-
-export { StyledHeader, StyledTitleContainer, StyledLogo, StyledTitle, StyledNav, StyledButton }
+export {
+  StyledHeader,
+  StyledTitleContainer,
+  StyledLogo,
+  StyledTitle,
+  StyledNav
+}

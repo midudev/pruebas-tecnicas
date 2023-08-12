@@ -1,5 +1,12 @@
-import { StyledHeader, StyledTitle, StyledLogo, StyledTitleContainer, StyledNav, StyledButton } from './styles'
+import {
+  StyledHeader,
+  StyledTitle,
+  StyledLogo,
+  StyledTitleContainer,
+  StyledNav
+} from './styles'
 import openBookSvg from '../../assets/book-open.svg'
+import ColoredButton from '../ColoredButton'
 
 const Header = () => {
   return (
@@ -10,11 +17,12 @@ const Header = () => {
           src={openBookSvg}
           alt='Logo image of an open book'
         />
-        <StyledTitle>MY READING LIST</StyledTitle>
+        <StyledTitle>BOOKS ORGANIZER</StyledTitle>
       </StyledTitleContainer>
       <StyledNav>
-        <StyledButton>SEARCH</StyledButton>
-        <StyledButton>MY LIST</StyledButton>
+        <ColoredButton>Search</ColoredButton>
+        <ColoredButton>My Reading List</ColoredButton>
+        <ColoredButton>Completed Books</ColoredButton>
       </StyledNav>
     </StyledHeader>
   )
