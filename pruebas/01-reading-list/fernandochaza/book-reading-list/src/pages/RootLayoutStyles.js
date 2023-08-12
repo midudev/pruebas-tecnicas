@@ -1,28 +1,19 @@
 import styled from 'styled-components'
 
-const StyledMainContainer = styled.div`
-  height: 100vh;
-  color: ${(props) => props.theme.mainTxt};
-`
-
 const StyledMain = styled.main`
   margin: 0 auto;
   padding: 1rem;
-  max-width: 900px;
+  max-width: 1200px;
+  height: calc(100% - 104px);
   display: flex;
   flex-direction: column;
+
+  @media screen and (min-width: ${(props) => props.theme.breakpointSm}) {
+    display: grid;
+    grid-template-columns: 240px auto;
+    column-gap: 20px;
+    height: calc(100% - 64px);
+  }
 `
 
-const StyledImg = styled.img`
-  background: ${(props) => props.theme.mainBg};
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  max-width: 100vw;
-  height: 100%;
-  z-index: -1;
-`
-
-export { StyledMainContainer, StyledMain, StyledImg }
+export { StyledMain }
