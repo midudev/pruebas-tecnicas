@@ -4,8 +4,8 @@ const StyledMainContainer = styled.div`
   height: 100vh;
   background: ${(props) => props.theme.mainBg};
   color: ${(props) => props.theme.mainTxt};
-  background-image: radial-gradient(${(props) => props.theme.secondaryTxt} 1px, transparent 0);
-  background-size: 48px 48px;
+  /* background-image: radial-gradient(${(props) => props.theme.secondaryTxt} 1px, transparent 0);
+  background-size: 48px 48px; */
 `
 
 const StyledMain = styled.main`

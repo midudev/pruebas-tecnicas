@@ -34,7 +34,6 @@ const StyledTitle = styled.h1`
 const StyledNav = styled.nav`
   display: flex;
   column-gap: 20px;
-  padding: 0 0 1rem 0;
   margin: 0 auto;
 
   @media screen  and (min-width: 576px) {
