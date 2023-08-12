@@ -1,15 +1,15 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import ErrorPage from './components/ErrorPage'
-import ReadingList from './components/ReadingList'
-import RootLayout from './components/RootLayout'
-import SearchPage from './components/SearchPage'
+import RootPage from './pages/RootPage'
+import ErrorPage from './pages/ErrorPage'
+import ReadingList from './pages/ReadingList'
+import SearchPage from './pages/SearchPage'
 
 function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <RootLayout />,
+      element: <RootPage />,
       errorElement: <ErrorPage />,
       children: [
         {

@@ -1,4 +1,4 @@
-import { StyledMain } from './RootLayoutStyles'
+import { StyledMain } from '../RootLayoutStyles'
 
 const ReadingList = () => {
   return <StyledMain>Reading List View</StyledMain>

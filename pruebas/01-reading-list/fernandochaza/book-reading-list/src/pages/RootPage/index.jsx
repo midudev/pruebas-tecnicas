@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom'
 
-import Header from './Header'
+import Header from '../../components/Header'
 
-import { StyledMainContainer } from './RootLayoutStyles'
+import { StyledMainContainer } from '../RootLayoutStyles'
 
-const RootLayout = () => {
+const RootPage = () => {
   return (
     <StyledMainContainer>
       <Header />
@@ -14,4 +14,4 @@ const RootLayout = () => {
   )
 }
 
-export default RootLayout
+export default RootPage

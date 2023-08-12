@@ -1,5 +1,5 @@
-import { StyledMain } from './RootLayoutStyles'
-import SearchForm from './SearchForm'
+import { StyledMain } from '../RootLayoutStyles'
+import SearchForm from '../../components/SearchForm'
 
 const SearchPage = () => {
   return (
