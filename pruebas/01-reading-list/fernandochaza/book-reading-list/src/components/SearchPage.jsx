@@ -1,5 +1,7 @@
+import { StyledMain } from './RootLayoutStyles';
+
 const SearchPage = () => {
-  return <h1>SearchView</h1>;
+  return <StyledMain>SearchView</StyledMain>;
 };
 
 export default SearchPage;
