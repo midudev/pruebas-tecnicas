@@ -6,10 +6,11 @@ import { getReadingListFromStorage, getReadingListFromStorageEvent } from '../st
 import { Book } from '../types/types'
 
 export function useBooks () {
+  const [books, setBooks] = useState<Book[]>([])
   const [readingList, setReadingList] = useState<Book[]>([])
   const [selectedGenres, setSelectedGenders] = useState<string[]>([])
   const [onlyAvailablesBooks, setOnlyAvailablesBooks] = useState(false)
-  const books = getAllBooks()
+
   const genres = getAllGenres(books)
   const filteredBooks = filterBooksByGenres(books, selectedGenres)
   const filteredBooksWrapper = filteredBooks.map(book => {
@@ -20,9 +21,15 @@ export function useBooks () {
   })
 
   useEffect(() => {
-    // initialize reading list with books saved in storage
-    const readingList = getReadingListFromStorage(books)
-    setReadingList(readingList)
+    // get all books
+    getAllBooks().then(books => {
+      // initialize all books
+      setBooks(books)
+
+      // initialize reading list with books saved in storage
+      const readingList = getReadingListFromStorage(books)
+      setReadingList(readingList)
+    })
 
     // handler to detect if the reading list has been modified in the context of another document
     const handleStorage = (event: StorageEvent) => {

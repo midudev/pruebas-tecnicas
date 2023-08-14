@@ -1,8 +1,10 @@
 import { library } from '../data/books.json'
 import { Book } from '../types/types'
 
-export const getAllBooks = () => {
-  return library.map(item => item.book)
+export const getAllBooks = async () => {
+  return Promise.resolve(
+    library.map(item => item.book)
+  )
 }
 
 export const isInBooks = (books: Book[], book: Book) => {

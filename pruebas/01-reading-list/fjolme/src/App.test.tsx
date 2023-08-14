@@ -1,5 +1,5 @@
-import { cleanup, fireEvent, getByRole, queryAllByRole, render, screen } from '@testing-library/react'
-import { afterEach, describe, expect, it, vi } from 'vitest'
+import { cleanup, fireEvent, getByRole, queryAllByRole, render, screen, waitFor } from '@testing-library/react'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import App from './App'
 import { library as libraryTest } from './test/books.json'
 
@@ -10,8 +10,10 @@ vi.mock('./services/books', async (importOriginal) => {
   const mod = await importOriginal()
   return {
     ...(mod as object),
-    getAllBooks: vi.fn(() => {
-      return libraryTest.map(item => item.book)
+    getAllBooks: vi.fn(async () => {
+      return Promise.resolve(
+        libraryTest.map(item => item.book)
+      )
     })
   }
 })
@@ -39,39 +41,48 @@ function queryAllBooksInReadingList () {
 }
 
 describe('App', () => {
-  it('13 books are visible', () => {
+  beforeEach(() => {
     render(<App />)
-    expect(queryAllBooks()).toHaveLength(13)
   })
 
-  it('0 books are in reading list', () => {
-    render(<App />)
-    expect(queryAllBooksInReadingList()).toHaveLength(0)
+  it('13 books are visible', async () => {
+    await waitFor(() => {
+      expect(queryAllBooks()).toHaveLength(13)
+    })
   })
 
-  it('5 books are visible when filter by `ciencia ficción`', () => {
-    render(<App />)
-    const main = screen.getByRole('main')
-    const filterButton = getByRole(main, 'button', { name: /ciencia ficción/i })
-    fireEvent.click(filterButton)
-    expect(queryAllBooks()).toHaveLength(5)
+  it('0 books are in reading list', async () => {
+    await waitFor(() => {
+      expect(queryAllBooksInReadingList()).toHaveLength(0)
+    })
+  })
+
+  it('5 books are visible when filter by `ciencia ficción`', async () => {
+    await waitFor(() => {
+      const main = screen.getByRole('main')
+      const filterByButton = getByRole(main, 'button', { name: /ciencia ficción/i })
+      fireEvent.click(filterByButton)
+      expect(queryAllBooks()).toHaveLength(5)
+    })
   })
 
   it('should add to reading list', () => {
-    render(<App />)
-    const firstAddButton = getByRole(queryAllBooks()[0], 'button')
-    fireEvent.click(firstAddButton)
-    expect(queryAllBooksInReadingList()).toHaveLength(1)
+    waitFor(() => {
+      const someAddButton = getByRole(queryAllBooks()[0], 'button')
+      fireEvent.click(someAddButton)
+      expect(queryAllBooksInReadingList()).toHaveLength(1)
+    })
   })
 
-  it('should remove from reading list', () => {
-    render(<App />)
-    const firstAddButton = getByRole(queryAllBooks()[0], 'button')
-    fireEvent.click(firstAddButton)
-    expect(queryAllBooksInReadingList()).toHaveLength(1)
+  it('should remove from reading list', async () => {
+    await waitFor(() => {
+      const someAddButton = getByRole(queryAllBooks()[0], 'button')
+      fireEvent.click(someAddButton)
+      expect(queryAllBooksInReadingList()).toHaveLength(1)
 
-    const removeButton = getByRole(queryAllBooksInReadingList()[0], 'button')
-    fireEvent.click(removeButton)
-    expect(queryAllBooksInReadingList()).toHaveLength(0)
+      const removeButton = getByRole(queryAllBooksInReadingList()[0], 'button')
+      fireEvent.click(removeButton)
+      expect(queryAllBooksInReadingList()).toHaveLength(0)
+    })
   })
 })
