@@ -7,11 +7,11 @@ interface Props {
 export const BooksTabUnselected = ({ text, count, onClick }: Props) => {
   return (
     <button
-      className='flex hover:cursor-pointer hover:bg-neutral-700 bg-transparent rounded-full py-1'
+      className='flex hover:cursor-pointer hover:bg-neutral-700 bg-neutral-700 rounded-full py-1 w-[105px]'
       onClick={onClick}
     >
       <span className='px-2'>{text}</span>
-      <span className='pr-2'>{count}</span>
+      <span className='pr-2 grow text-right'>{count}</span>
     </button>
   )
 }
