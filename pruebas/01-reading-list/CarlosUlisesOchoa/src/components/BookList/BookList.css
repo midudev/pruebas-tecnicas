@@ -13,6 +13,17 @@
   display: grid;
 }
 
+.books__filters__pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.books__filters__pages > * {
+  display: inline-block;
+}
+
 /* Tablet */
 @media screen and (min-width: 480px) {
   .books__container {

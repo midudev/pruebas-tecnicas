@@ -1,4 +1,5 @@
 .reading__list {
+  display: none;
   position: fixed;
   right: 10px;
   top: 10px;
@@ -98,6 +99,14 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; /* This is to enable truncation */
+}
+
+/* Large screens */
+/* tetemp */
+@media screen and (min-width: 1450px) {
+  .reading__list {
+    display: block;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
