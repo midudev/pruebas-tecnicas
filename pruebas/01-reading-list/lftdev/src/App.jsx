@@ -6,11 +6,13 @@ import PagesFilter from './components/PagesFilter'
 import useBooksList from './hooks/useBooksList'
 import useReadingList from './hooks/useReadingList'
 import { useEffect, useState } from 'react'
+import { BOOK_ICON, CLOSE_MARK } from './components/SVGIcon'
 
 export default function App () {
   // useState hooks
   const [genreFilter, setGenreFilter] = useState('Todos')
   const [pagesFilter, setPagesFilter] = useState(50)
+  const [openReadingList, setOpenReadingLIst] = useState(false)
   // Custom hooks
   const [
     availableBooks,
@@ -38,12 +40,12 @@ export default function App () {
   return (
     <>
       <h3 className='text-2xl font-bold text-blue-500'>{readingList.length > 0 ? 'Con' : 'Sin'} libros en la lista de lectura</h3>
-      <div className='grid [grid-template-columns:2fr_1fr] border border-white rounded-md pt-10 px-12'>
+      <div className='border border-white rounded-md pt-10 px-12'>
         <main className='flex flex-col gap-5'>
           <div className='flex flex-col gap-4'>
-            <h1 className='text-4xl font-bold'>{availableBooks.length} libros disponibles</h1>
+            <h1 className='text-xl font-bold'>{availableBooks.length} libros disponibles</h1>
             {readingList.length > 0 && <p className='text-lg'>{readingList.length} en la lista de lectura</p>}
-            <form role='search' className='flex gap-32'>
+            <form role='search' className='flex flex-col gap-4'>
               <label className='text-lg' htmlFor='pages-filter'>
                 <div>Filtrar por páginas</div>
                 <PagesFilter
@@ -66,7 +68,7 @@ export default function App () {
           </div>
           {availableBooks.length > 0 &&
             <BooksList
-              className='grid grid-cols-4 place-items-start gap-4'
+              className='grid grid-cols-2 place-items-center gap-4 sm:'
               list={availableBooks}
               onItemClick={book => {
                 addToReadingList(book)
@@ -75,20 +77,29 @@ export default function App () {
               filters={{ genreFilter, pagesFilter }}
             />}
         </main>
-        {readingList.length > 0 && (
-          <aside className='sticky top-0 max-h-screen overflow-y-auto bg-[#040412] rounded-lg p-8' role='region'>
+        <button
+          title='Open reading list' type='button'
+          className='fixed bottom-16 right-16 p-5 rounded-full bg-blue-500 flex justify-center items-center z-20'
+          onClick={() => setOpenReadingLIst(!openReadingList)}
+        >
+          {openReadingList ? CLOSE_MARK(32, 32, 'fill-white') : BOOK_ICON(32, 32, 'fill-white')}
+        </button>
+        {openReadingList && (
+          <section className='fixed w-screen h-screen top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-y-auto bg-[#040412] rounded-lg p-8'>
             <h2 className='text-3xl font-bold'>Lista de lectura</h2>
-            <BooksList
-              className='grid grid-cols-2 place-items-start gap-4'
-              list={readingList}
-              removableItems
-              onRemoveRequest={index => {
-                const book = readingList[index]
-                addToAvailables(book)
-                removeFromReadingList(book)
-              }}
-            />
-          </aside>
+            {readingList.length > 0
+              ? <BooksList
+                  className='grid grid-cols-2 place-items-center gap-4'
+                  list={readingList}
+                  removableItems
+                  onRemoveRequest={index => {
+                    const book = readingList[index]
+                    addToAvailables(book)
+                    removeFromReadingList(book)
+                  }}
+                />
+              : <p>No has añadido libros a la lista de lectura aún.</p>}
+          </section>
         )}
       </div>
     </>
