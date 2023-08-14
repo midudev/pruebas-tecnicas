@@ -73,7 +73,6 @@ export function useBooks () {
   return {
     filteredBooksWrapper,
     readingList,
-    filteredBooks,
     genres,
     selectedGenres,
     onlyAvailablesBooks,
