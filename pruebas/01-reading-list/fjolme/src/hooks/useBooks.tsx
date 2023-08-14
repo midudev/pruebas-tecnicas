@@ -9,7 +9,6 @@ export function useBooks () {
   const [books, setBooks] = useState<Book[]>([])
   const [readingList, setReadingList] = useState<Book[]>([])
   const [selectedGenres, setSelectedGenders] = useState<string[]>([])
-  const [onlyAvailablesBooks, setOnlyAvailablesBooks] = useState(false)
 
   const genres = getAllGenres(books)
   const filteredBooks = filterBooksByGenres(books, selectedGenres)
@@ -66,19 +65,13 @@ export function useBooks () {
     })
   }
 
-  const toggleOnlyAvailableBooks = () => {
-    setOnlyAvailablesBooks((value) => !value)
-  }
-
   return {
     filteredBooksWrapper,
     readingList,
     genres,
     selectedGenres,
-    onlyAvailablesBooks,
     addToReadingList,
     removeFromReadingList,
-    toggleGenre,
-    toggleOnlyAvailableBooks
+    toggleGenre
   }
 }

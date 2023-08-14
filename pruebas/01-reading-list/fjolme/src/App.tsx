@@ -1,6 +1,5 @@
+import { BooksContainer } from './components/BooksContainer'
 import { BooksFilter } from './components/BooksFilter'
-import { BooksList } from './components/BooksList'
-import { BooksTabs } from './components/BooksTabs'
 import { ReadingList } from './components/ReadingList'
 import { ReadingListMessage } from './components/ReadingListMessage'
 import { useBooks } from './hooks/useBooks'
@@ -11,11 +10,9 @@ function App () {
     readingList,
     genres,
     selectedGenres,
-    onlyAvailablesBooks,
     addToReadingList,
     removeFromReadingList,
-    toggleGenre,
-    toggleOnlyAvailableBooks
+    toggleGenre
   } = useBooks()
 
   return (
@@ -32,14 +29,8 @@ function App () {
             toggleGenre={toggleGenre}
           />
         </header>
-        <BooksTabs
-            booksWrapper={filteredBooksWrapper}
-            onlyAvailablesBooks={onlyAvailablesBooks}
-            toggleOnlyAvailableBooks={toggleOnlyAvailableBooks}
-          />
-        <BooksList
+        <BooksContainer
           booksWrapper={filteredBooksWrapper}
-          onlyAvailablesBooks={onlyAvailablesBooks}
           addToReadingList={addToReadingList}
           removeFromReadingList={removeFromReadingList}
         />
