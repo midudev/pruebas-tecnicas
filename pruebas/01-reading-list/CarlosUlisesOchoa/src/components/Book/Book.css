@@ -1,16 +1,17 @@
 :root {
   --dark-color: #111;
+  --aspect-ratio: 9/14;
 }
 
-/* book style start */
 .book {
-  max-height: 17.125rem; /* 274px/16 */
   cursor: pointer;
+  display: flex;
   position: relative;
   overflow: hidden;
   background-color: var(--dark-color);
-  width: 100%;
-  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .book {
@@ -31,15 +32,12 @@
 }
 
 .book__image {
-  object-fit: fill;
-  aspect-ratio: 9/14;
-  width: 100%;
-  height: 100%;
+  object-fit: contain;
+  aspect-ratio: var(--aspect-ratio, 9/14);
   opacity: 1;
   transition:
     filter 0.3s ease-in-out,
     opacity 0.3s ease-in-out;
-  filter: none;
 }
 
 .book__options {
@@ -53,13 +51,11 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  color: white;
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
 }
 
 .book__options-icon {
-  color: white;
   padding-bottom: 8px;
 }
 
@@ -93,30 +89,12 @@
   }
 } */
 
-@-webkit-keyframes fadein {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 @keyframes fadein {
   0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
-  }
-}
-
-@-webkit-keyframes fadeout {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
   }
 }
 

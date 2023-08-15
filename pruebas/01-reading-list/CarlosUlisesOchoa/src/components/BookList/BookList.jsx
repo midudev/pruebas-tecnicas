@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
-import { Range } from 'react-range'
+import { Range, getTrackBackground } from 'react-range'
 import Book from '@/components/Book/Book'
 import '@/components/BookList/BookList.css'
 import { useReadingListStore } from '@/store/useReadingListStore'
@@ -79,38 +79,76 @@ const BookList = ({ onAddBookToReadingListClick }) => {
           </select>
         </div>
         <div className='books__filters__pages'>
-          {/* input field for page range filter */}
-          <span className='mr-2'>Filter by pages range (1 - {maxPagesFilter})</span>
-          <Range
-            min={1}
-            max={maxNumberOfPagesValue}
-            step={1}
-            values={maxPagesFilter}
-            onChange={handleMaxPagesFilterChange}
-            renderTrack={({ props, children }) => (
-              <div
-                {...props}
-                style={{
-                  ...props.style,
-                  height: '3px',
-                  width: '30%',
-                  backgroundColor: '#ccc',
-                }}>
-                {children}
-              </div>
-            )}
-            renderThumb={({ props }) => (
-              <div
-                {...props}
-                style={{
-                  ...props.style,
-                  height: '21px',
-                  width: '21px',
-                  backgroundColor: '#fff',
-                }}
-              />
-            )}
-          />
+          <span className='mr-2 label'>
+            Filter by pages range (1 - {maxPagesFilter[0]})
+          </span>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
+              // margin: '2em',
+              maxWidth: '12rem',
+              width: '100%',
+            }}>
+            <Range
+              min={1}
+              max={maxNumberOfPagesValue}
+              step={1}
+              values={maxPagesFilter}
+              onChange={handleMaxPagesFilterChange}
+              renderTrack={({ props, children }) => (
+                <div
+                  onMouseDown={props.onMouseDown}
+                  onTouchStart={props.onTouchStart}
+                  style={{
+                    ...props.style,
+                    height: '36px',
+                    display: 'flex',
+                    width: '100%',
+                  }}>
+                  <div
+                    ref={props.ref}
+                    style={{
+                      height: '5px',
+                      width: '100%',
+                      borderRadius: '4px',
+                      background: getTrackBackground({
+                        values: maxPagesFilter,
+                        colors: ['#548BF4', '#ccc'],
+                        min: 1,
+                        max: maxNumberOfPagesValue,
+                      }),
+                      alignSelf: 'center',
+                    }}>
+                    {children}
+                  </div>
+                </div>
+              )}
+              renderThumb={({ props, isDragged }) => (
+                <div
+                  {...props}
+                  style={{
+                    ...props.style,
+                    height: '1.5em',
+                    width: '1.5em',
+                    borderRadius: '4px',
+                    backgroundColor: '#FFF',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <div
+                    style={{
+                      height: '0.75em',
+                      width: '0.25em',
+                      backgroundColor: isDragged ? '#548BF4' : '#ccc',
+                    }}
+                  />
+                </div>
+              )}
+            />
+          </div>
         </div>
       </section>
       <ul className='books__container'>
