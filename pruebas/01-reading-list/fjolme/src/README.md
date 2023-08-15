@@ -6,7 +6,7 @@ El repositorio de las pruebas técnicas lo puedes encontrar en este [repositorio
 
 ## Objetivos
 
-Con esta prueba pretendo poner en prácticas los conocimientos que voy adquiriendo en el desarrollo de aplicaciones web con la librería [React](https://react.dev/).
+Con esta prueba pretendo poner en práctica los conocimientos que voy adquiriendo en el desarrollo de aplicaciones web con la librería [React](https://react.dev/).
 
 ## Breve descripción de la prueba
 
@@ -15,8 +15,8 @@ Desarrollar una aplicación web que permita:
 - Mostrar un listado de libros
 - Filtrar por el género del libro
 - Añadir libros a una lista de lectura
-- Persistir la lista de libros en el almacenamiento local
-- Sincronizar la lista de libros cuando tengamos varias pestañas abiertas
+- Persistir la lista de lectura en el almacenamiento local
+- Sincronizar la lista de lectura cuando tengamos varias pestañas abiertas
   
 La aplicación se debe desplegar en algún servicio de hosting.
 
@@ -40,6 +40,6 @@ Por otro lado el test `App.test.tsx` usa su propio fichero de libros `/test/book
 
 ## Uso
 
-- Instala el proyecto con el el comando `npm install`
-- Ejecuta los test con el comando `npm run test`
-- Arranca la aplicación en modo desarrollo con el comando `npm run dev`
+- Instalar el proyecto con el el comando `npm install`
+- Ejecutar los test con el comando `npm run test`
+- Arrancar la aplicación en modo desarrollo con el comando `npm run dev`
