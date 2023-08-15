@@ -66,11 +66,11 @@ const BookList = ({ onAddBookToReadingListClick }) => {
     <>
       <section className='books__filters'>
         <div className='books__filters__genre'>
-          <span className='mr-2'>Filter by genre</span>
+          <span className='mr-2'>Filtrar por género</span>
           <select
             className='books__filter'
             onChange={(e) => setGenreFilter(e.target.value)}>
-            <option value=''>All</option>
+            <option value=''>Todos</option>
             {genres.map((genre) => (
               <option key={genre} value={genre}>
                 {genre}
@@ -80,7 +80,7 @@ const BookList = ({ onAddBookToReadingListClick }) => {
         </div>
         <div className='books__filters__pages'>
           <span className='mr-2 label'>
-            Filter by pages range (1 - {maxPagesFilter[0]})
+            Filtrar por número de páginas (1 - {maxPagesFilter[0]})
           </span>
           <div
             style={{
