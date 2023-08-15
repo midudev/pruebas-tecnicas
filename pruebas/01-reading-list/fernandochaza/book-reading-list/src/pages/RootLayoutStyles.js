@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const StyledMain = styled.main`
   margin: 0 auto;
   padding: 1rem;
-  max-width: 1200px;
+  max-width: 1100px;
   height: calc(100% - 104px);
   display: flex;
   flex-direction: column;

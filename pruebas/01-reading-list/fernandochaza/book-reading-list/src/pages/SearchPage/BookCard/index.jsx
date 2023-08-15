@@ -1,13 +1,18 @@
+import propTypes from 'prop-types'
 import { StyledCardContainer, StyledBookCover, BookTitle } from './styles'
 
-const BookCard = () => {
-
+const BookCard = ({ imagePath, title }) => {
   return (
     <StyledCardContainer>
-      <StyledBookCover src='https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg'/>
-      <BookTitle>The lord of the Rings</BookTitle>
+      <StyledBookCover src={imagePath} width={128} height={189} />
+      <BookTitle>{title}</BookTitle>
     </StyledCardContainer>
   )
+}
+
+BookCard.propTypes = {
+  imagePath: propTypes.string.isRequired,
+  title: propTypes.string.isRequired
 }
 
 export default BookCard

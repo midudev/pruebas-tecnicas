@@ -8,6 +8,8 @@ const StyledCardContainer = styled.div`
   padding-bottom: 1rem;
   border-radius: 8px;
   position: relative;
+  align-self: start;
+  height: 100%;
 
   @media screen and (min-width: 576px) {
   }
@@ -15,11 +17,13 @@ const StyledCardContainer = styled.div`
 
 const StyledBookCover = styled.img`
   width: 50%;
+  max-height: 300px;
   margin: 1rem auto;
   border-radius: 8px;
 
   @media screen and (min-width: 576px) {
-    width: 90%;
+    width: 80%;
+    height: auto;
   }
 `
 
