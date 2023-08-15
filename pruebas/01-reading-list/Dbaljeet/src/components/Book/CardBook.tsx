@@ -28,17 +28,17 @@ const CardBook = ({ book, left, MoveBook, isDragging }: Props) => {
   let stylesDrag = ''
   switch (isDragging) {
     case true:
-      stylesDrag = 'bg-[#1c1b1b79]'
+      stylesDrag = 'bg-[#1c1b1b79] shadow-[#5d5a5f52] shadow-xl'
       break
     case false:
-      stylesDrag = 'bg-[#87878745] border-[1px] border-gray-500 '
+      stylesDrag = `${left ? 'bg-[#58b0fd2f]' : 'bg-[#87878745]'}`
   }
 
   return (
     <section
       draggable
       id="Card"
-      className={`sm:[&>.viewInfo]:hover:animate-pulse flex flex-col justify-center items-center border-opacity-20 relative rounded-[14px] w-full object-cover py-5 m-auto hover:scale-105 transition-transform duration-200  ${stylesDrag}`}
+      className={`sm:[&>.viewInfo]:hover:animate-pulse flex flex-col justify-center items-center border-opacity-20 relative rounded-[11px] w-full object-cover py-5 m-auto hover:scale-105 transition-all duration-200 ${stylesDrag}`}
     >
       <h2 className="w-full p-3 font-semibold text-start">{book.title}</h2>
       <img
@@ -49,8 +49,8 @@ const CardBook = ({ book, left, MoveBook, isDragging }: Props) => {
         alt={book.title}
       />
       <h3>{book.genre}</h3>
-      <h4 className="absolute bottom-0 right-2">
-        <img src="/book.svg" title="número de páginas" />
+      <h4 className="absolute bottom-0 right-2 flex flex-col items-end">
+        <img width={24} height={24} src="/book.svg" title="número de páginas" />
         {book.pages}
       </h4>
 

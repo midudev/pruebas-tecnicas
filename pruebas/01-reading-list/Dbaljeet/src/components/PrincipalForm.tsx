@@ -42,7 +42,7 @@ const PrincipalForm = ({
   }, [disabledInputs])
 
   return (
-    <section className="flex flex-wrap justify-center items-center m-auto gap-5 w-full my-10  border-[1px] border-gray-500 rounded-2xl py-5 text-gray-300">
+    <section className="flex flex-wrap justify-center items-center m-auto gap-5 w-full my-10  border-2 border-opacity-30 border-gray-500 rounded-2xl py-5 text-gray-300">
       <form className="flex max-lg:flex-col flex-wrap items-center gap-5 w-full max-w-[1000px] justify-between px-20 max-sm:px-0 ">
         <span className="flex flex-col ">
           <label htmlFor="genre">Selecciona el género literario</label>
