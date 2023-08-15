@@ -1,0 +1,10 @@
+.containerBooks {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    place-content: center;
+    gap: 14px;
+}
+
+.img {
+    filter: grayscale(1) blur(3px);
+}
