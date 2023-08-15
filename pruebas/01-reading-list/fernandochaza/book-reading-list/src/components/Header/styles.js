@@ -5,7 +5,7 @@ const StyledHeader = styled.header`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
 
   @media screen and (min-width: 576px) {
@@ -37,7 +37,7 @@ const StyledNav = styled.nav`
   justify-content: space-around;
 
   @media screen and (min-width: 576px) {
-    margin: auto 1rem auto 0;
+    margin: auto 2.5rem auto 0;
     width: auto;
     column-gap: 20px;
     padding: 0;
