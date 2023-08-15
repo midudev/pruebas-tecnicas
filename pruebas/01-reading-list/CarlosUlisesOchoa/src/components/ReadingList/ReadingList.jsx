@@ -3,7 +3,7 @@ import TrashIcon from '@/components/Icons/TrashIcon'
 import './ReadingList.css'
 import { useReadingListStore } from '@/store/useReadingListStore'
 const ReadingList = () => {
-  useEffect(() => console.log('[R]-------> ReadingList component rendered!'), []) // tetemp
+  // useEffect(() => console.log('[R]-------> ReadingList component rendered!'), []) // tetemp
   const removeBookFromReadingList = useReadingListStore(
     (state) => state.removeBookFromReadingList
   )

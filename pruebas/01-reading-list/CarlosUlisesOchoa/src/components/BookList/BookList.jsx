@@ -6,7 +6,7 @@ import { useReadingListStore } from '@/store/useReadingListStore'
 import { useBooksStore } from '@/store/useBooksStore'
 
 const BookList = ({ onAddBookToReadingListClick }) => {
-  useEffect(() => console.log('[R]-------> BookList component rendered!'), []) // tetemp
+  // useEffect(() => console.log('[R]-------> BookList component rendered!'), []) // tetemp
 
   const booksArray = useBooksStore((state) => state.books)
   const readingListBooksArray = useReadingListStore((state) => state.readingList)
