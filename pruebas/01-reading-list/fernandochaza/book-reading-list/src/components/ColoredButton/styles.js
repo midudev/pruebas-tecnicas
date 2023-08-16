@@ -8,7 +8,7 @@ const StyledButtonContainer = styled.div`
 `
 
 const StyledButton = styled.button`
-  background-color: ${(props) => props.theme.black};
+  background-color: ${(props) => props.theme.contrastBg};
   color: ${(props) => props.theme.mainTxt};
   border: 1px solid transparent;
   padding: 0.3rem;
