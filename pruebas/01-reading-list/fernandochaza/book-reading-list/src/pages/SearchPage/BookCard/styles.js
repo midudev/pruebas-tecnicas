@@ -16,14 +16,13 @@ const StyledCardContainer = styled.div`
 `
 
 const StyledBookCover = styled.img`
-  width: 50%;
-  max-height: 300px;
+  width: 128px;
+  height: 189px;
   margin: 1rem auto;
   border-radius: 8px;
 
   @media screen and (min-width: 576px) {
-    width: 80%;
-    height: auto;
+
   }
 `
 
@@ -31,4 +30,8 @@ const BookTitle = styled.h3`
   text-align: center;
 `
 
-export { StyledCardContainer, StyledBookCover, BookTitle }
+const StyledText = styled.p`
+  text-align: center;
+`
+
+export { StyledCardContainer, StyledBookCover, BookTitle, StyledText }

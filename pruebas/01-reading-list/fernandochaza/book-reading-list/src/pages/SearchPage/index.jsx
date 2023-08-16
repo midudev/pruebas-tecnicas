@@ -14,9 +14,15 @@ const SearchPage = () => {
     <StyledMain>
       <SearchForm />
       <CardsContainer>
-        {booksData && booksData.map((book) =>
-          <BookCard key={book.id} imagePath={book.volumeInfo?.imageLinks?.thumbnail || notAvailable} title={book.volumeInfo.title}/>
-        )}
+        {booksData &&
+          booksData.map((book) => (
+            <BookCard
+              key={book.id}
+              imagePath={book.volumeInfo?.imageLinks?.thumbnail || notAvailable}
+              title={book.volumeInfo.title}
+              author={book?.volumeInfo?.authors?.[0] || 'Undefined'}
+            />
+          ))}
       </CardsContainer>
     </StyledMain>
   )

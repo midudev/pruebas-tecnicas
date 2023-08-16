@@ -17,7 +17,7 @@ const Header = () => {
           src={openBookSvg}
           alt='Logo image of an open book'
         />
-        <StyledTitle>BOOKS ORGANIZER</StyledTitle>
+        <StyledTitle>READING PLANNER</StyledTitle>
       </StyledTitleContainer>
       <StyledNav>
         <ColoredButton>Search</ColoredButton>
