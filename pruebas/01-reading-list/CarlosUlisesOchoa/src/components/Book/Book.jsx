@@ -23,17 +23,31 @@ const Book = ({ data, onAddBookToReadingListClick, fadingOut = false }) => {
 
   return (
     <article className={`book ${isFadingOut ? 'book--fading-out' : ''}`}>
-      <img
-        className='book__image'
-        src={data.cover}
-        alt={`Imagen de la portada del libro: ${data.title}`}
-      />
-      <button className='book__options' onClick={handleAddBookToReadingListClick}>
-        <span className='book__options-icon'>
-          <AddSquareIcon />
-        </span>
-        <span className='book__options-text'>Añadir a la lista de lectura</span>
-      </button>
+      <div className='book__cover'>
+        <img
+          className='book__cover-img'
+          src={data.cover}
+          alt={`Imagen de la portada del libro: ${data.title}`}
+        />
+        <div className='book__options'>
+          <button
+            className='book__options-button--add-to-reading-list'
+            onClick={handleAddBookToReadingListClick}>
+            <span className='book__options-icon--add-to-reading-list'>
+              <AddSquareIcon />
+            </span>
+            <span className='book__options-text--add-to-reading-list'>
+              Añadir a la lista de lectura
+            </span>
+          </button>
+        </div>
+      </div>
+      <div className='book__details'>
+        <h2 className='book__details-title'>{data.title}</h2>
+        <p className='book__details-author'>{data.author.name}</p>
+        <p className='book__details-genre'>{data.genre}</p>
+        <p className='book__details-pages'>{data.pages} páginas</p>
+      </div>
     </article>
   )
 }
