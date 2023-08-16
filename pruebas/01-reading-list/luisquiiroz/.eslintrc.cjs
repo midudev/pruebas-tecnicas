@@ -20,5 +20,8 @@ module.exports = {
     '@typescript-eslint/promise-function-async': 'off',
     '@typescript-eslint/no-floating-promises': 'off',
     'react/react-in-jsx-scope': 'off'
+  },
+  "jest": {
+    testEnviroment: "node"
   }
 }

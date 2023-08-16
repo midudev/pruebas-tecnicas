@@ -21,13 +21,13 @@ function App () {
 
   const handleStorageChange = (event: StorageEvent) => {
     if (event.key === storage.books && event.newValue !== null) {
-      // Actualiza el estado de Redux cuando se detecte un cambio en localStorage
+      // Actualiza el estado de Zustand cuando se detecte un cambio en localStorage
       const books = JSON.parse(event.newValue)
       updateBooks(books)
     }
 
     if (event.key === storage.readingList && event.newValue !== null) {
-      // Actualiza el estado de Redux cuando se detecte un cambio en localStorage
+      // Actualiza el estado de Zustand cuando se detecte un cambio en localStorage
       const readinList = JSON.parse(event.newValue)
       updateReadingList(readinList)
     }
