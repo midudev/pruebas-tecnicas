@@ -45,8 +45,10 @@ const Book = ({ data, onAddBookToReadingListClick, fadingOut = false }) => {
       <div className='book__details'>
         <h2 className='book__details-title'>{data.title}</h2>
         <p className='book__details-author'>{data.author.name}</p>
-        <p className='book__details-genre'>{data.genre}</p>
-        <p className='book__details-pages'>{data.pages} páginas</p>
+        <div className='book__details-meta'>
+          <span className='book__details-genre'>{data.genre}</span>
+          <span className='book__details-pages'>{data.pages} pág.</span>
+        </div>
       </div>
     </article>
   )

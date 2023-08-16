@@ -47,6 +47,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  padding: 1rem;
 }
 .book__options-icon--add-to-reading-list {
   width: 1.5rem;
@@ -64,6 +65,12 @@
   font-weight: 400;
   padding: 0.25rem 0.75rem 0.5rem 0.75rem;
 }
+
+.book__details-meta {
+  display: flex;
+  justify-content: space-between; /* Align content to the right */
+}
+
 .book__details-title {
   font-size: 1rem;
   font-weight: 700;
@@ -75,6 +82,11 @@
 
 .book__details-author {
   text-decoration: underline;
+  margin-bottom: 0.5rem;
+}
+
+.book__details-genre {
+  font-style: italic;
 }
 
 .book__details-pages {
