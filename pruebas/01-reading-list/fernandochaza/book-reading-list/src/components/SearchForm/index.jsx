@@ -12,17 +12,22 @@ import {
   StyledRadioInput,
   StyledRadioLabel,
   StyledTextInput,
-  StyledTextLabel
+  StyledTextLabel,
+  StyledFiltersButton
 } from './styles'
+import { useTheme } from 'styled-components'
 
 import { fetchBooks } from '../../Utils/fetchBooks'
+import ArrowIcon from './ArrowIcon'
 
 const SearchForm = () => {
   const bookNameRef = useRef('')
   const authorRef = useRef('')
+  const theme = useTheme()
 
   const [selectedPages, setSelectedPages] = useState(null)
   const [disableSubmit, setDisableSubmit] = useState(true)
+  const [displayAdvancedFilters, setDisplayAdvancedFilters] = useState(true)
   const [, setBooksCards] = useAtom(books)
 
   const handleOptionChange = useCallback((e) => {
@@ -39,18 +44,18 @@ const SearchForm = () => {
   }, [selectedPages])
 
   const handleOnSubmit = async (e) => {
-    console.log('handleOnSubmit')
     e.preventDefault()
     const bookQuery = bookNameRef.current.value
-    console.log('bookQuery', bookQuery) 
     const authorQuery = authorRef.current.value
-
-    console.log(bookQuery)
 
     const booksData = await fetchBooks(bookQuery, authorQuery)
 
     setBooksCards(booksData)
   }
+
+  const handleCollapseFilters = useCallback(() => {
+    setDisplayAdvancedFilters((prev) => !prev)
+  }, [])
 
   return (
     <StyledAside>
@@ -65,7 +70,7 @@ const SearchForm = () => {
             placeholder='Search a book...'
           />
         </StyledTextLabel>
-        <StyledTextLabel>
+        <StyledTextLabel $display={displayAdvancedFilters}>
           Author
           <StyledTextInput
             ref={authorRef}
@@ -74,9 +79,9 @@ const SearchForm = () => {
             placeholder='Search an author...'
           />
         </StyledTextLabel>
-        <PagesFilterContainer>
+        <PagesFilterContainer $display={displayAdvancedFilters}>
           <StyledFilterTitle>Max Pages</StyledFilterTitle>
-          <StyledRadioLabel>
+          <StyledRadioLabel hidden={true}>
             <StyledRadioInput
               onChange={handleOptionChange}
               name='book-pages'
@@ -117,6 +122,9 @@ const SearchForm = () => {
           Search my books
         </ColoredButton>
       </StyledForm>
+      <StyledFiltersButton onClick={handleCollapseFilters}>
+        <ArrowIcon strokeColor={theme.mainTxt} rotate={!displayAdvancedFilters}/>
+      </StyledFiltersButton>
     </StyledAside>
   )
 }
