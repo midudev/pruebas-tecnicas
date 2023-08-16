@@ -1,27 +1,154 @@
-import { useReadingListStore } from '@/store/useReadingListStore'
-import '@/styles/App.css'
+import { useState, useEffect } from 'react'
+import { useLocalStorage } from '@/hooks/useLocalStorage'
+import { Header } from '@/components/Header'
+import { Tabs } from '@/components/Tabs'
 import BookList from '@/components/BookList/BookList'
-import ReadingList from '@/components/ReadingList/ReadingList'
-import { useEffect } from 'react'
+import { books } from '@/const/books'
+import { BooksFilters } from '@/components/BooksFilters/BooksFilters'
+import '@/styles/App.css'
 
 function App() {
-  // useEffect(() => console.log('[R]-------> App component rendered!'), []) // tetemp
+  const filters = books.reduce(
+    (result, curr) => {
+      const book = curr
 
-  // Use the hook here at the top level of your component
-  const addBookToReadingList = useReadingListStore((state) => state.addBookToReadingList)
+      result.genres.push(book.genre)
+      book.pages > result.pages.max
+        ? (result.pages.max = book.pages)
+        : (result.pages.min = book.pages)
+      return result
+    },
+    { genres: [], pages: { min: +Infinity, max: -Infinity } }
+  )
+  filters.genres = ['Todos', ...new Set(filters.genres)]
 
-  const handleAddBook = (book) => {
-    addBookToReadingList(book)
+  const [availableBooks, setAvailableBooks] = useLocalStorage('availableBooks', books)
+  const [readingList, setReadingList] = useLocalStorage('readingList', [])
+  const [genre, setGenre] = useState('')
+  const [searchTerm, setSearchTerm] = useState('')
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('')
+  const [maxPagesNumber, setMaxPagesNumber] = useState(filters.pages.max)
+  const [debouncedMaxPagesNumber, setDebouncedMaxPagesNumber] = useState(
+    filters.pages.max
+  )
+
+  useEffect(() => {
+    //
+  }, [])
+
+  const removeBook = (isbn, list) => {
+    let bookIndex = null
+    const filteredList = list.filter((el, index) => {
+      if (el.ISBN === isbn) {
+        bookIndex = index
+        return false
+      }
+      return true
+    })
+    return [bookIndex, filteredList]
   }
 
+  const handleAddToReadingList = (book) => {
+    console.log(book) // tetemp
+    const [bookIndex, filteredList] = removeBook(book.ISBN, availableBooks)
+    console.log(bookIndex) // tetemp
+    setAvailableBooks(filteredList)
+    setReadingList([availableBooks[bookIndex], ...readingList])
+  }
+
+  const handleRemoveFromReadingList = (book) => {
+    const [bookIndex, filteredList] = removeBook(book, readingList)
+    setReadingList(filteredList)
+    setAvailableBooks([readingList[bookIndex], ...availableBooks])
+  }
+
+  const handleClearReadingListButton = () => {
+    setReadingList([])
+    setAvailableBooks(books)
+  }
+
+  function filterBooks(booksArray) {
+    const filteredList = booksArray.filter((book) => {
+      // tetemp not available yet
+      // console.log(readingList) // tetemp
+      // const notInReadingList = !readingList.find(
+      //   (readingBook) => readingBook.ISBN === book.ISBN
+      // )
+      const matchesSearchTerm = new RegExp(debouncedSearchTerm, 'i').test(book.title)
+      const matchesGenre = genre ? book.genre === genre : true
+      const matchesPageRange = book.pages <= debouncedMaxPagesNumber // condition to filter by page range
+      // return notInReadingList && matchesGenre && matchesPageRange && matchesSearchTerm
+      return matchesGenre && matchesPageRange && matchesSearchTerm
+    })
+
+    return filteredList
+  }
+
+  const handleSearchChange = (value) => setSearchTerm(value)
+
+  const handleFilterPages = (value) => setMaxPagesNumber(value)
+
+  useEffect(() => {
+    const delayInputTimeoutId = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm)
+    }, 500)
+    return () => clearTimeout(delayInputTimeoutId)
+  }, [searchTerm, 500])
+
+  useEffect(() => {
+    const delayInputTimeoutId = setTimeout(() => {
+      setDebouncedMaxPagesNumber(maxPagesNumber)
+    }, 500)
+    return () => clearTimeout(delayInputTimeoutId)
+  }, [maxPagesNumber, 500])
+
+  const handleGenreChange = (e) => {
+    const selectedOption = e.target.value === 'Todos' ? '' : e.target.value
+    setGenre(selectedOption)
+  }
+
+  const tabsData = [
+    {
+      name: `Libros disponibles`,
+      content: (
+        <BookList
+          booksArray={filterBooks(availableBooks)}
+          onAddBookToReadingListClick={handleAddToReadingList}
+        />
+      ),
+    },
+    {
+      name: `Lista de lectura (${readingList.length})`,
+      content: (
+        <>
+          <p className='mb-2'>Esto aún no funciona del todo 🥲</p>
+          <p>
+            Pulsa{' '}
+            <a onClick={handleClearReadingListButton} className='text-red-600'>
+              aquí
+            </a>{' '}
+            para quitar los libros de la lista de lectura
+          </p>
+        </>
+      ),
+      // content: (
+      //   <BookList booksArray={books} onAddBookToReadingListClick={handleAddBook} />
+      // ),
+    },
+  ]
+
   return (
-    <main>
-      <section className='books'>
-        <h1 className='books__title'>Libros</h1>
-        <BookList onAddBookToReadingListClick={handleAddBook} />
-      </section>
-      <ReadingList />
-    </main>
+    <section className='container'>
+      <Header />
+      <BooksFilters
+        onSearchChange={handleSearchChange}
+        onGenreChange={handleGenreChange}
+        onFilterPages={handleFilterPages}
+        genres={filters.genres}
+        pages={filters.pages}
+      />
+      <Tabs data={tabsData} />
+    </section>
   )
 }
 

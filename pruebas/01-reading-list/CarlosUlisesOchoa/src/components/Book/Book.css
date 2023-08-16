@@ -78,6 +78,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: center;
+  padding: 1px;
 }
 
 .book__details-author {
@@ -85,9 +87,9 @@
   margin-bottom: 0.5rem;
 }
 
-.book__details-genre {
-  font-style: italic;
-}
+/* .book__details-genre {
+  
+} */
 
 .book__details-pages {
   font-style: italic;

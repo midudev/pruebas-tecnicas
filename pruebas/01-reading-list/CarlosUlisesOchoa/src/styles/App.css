@@ -1,13 +1,8 @@
 #root {
-  max-width: 1280px;
+  max-width: 1024px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
 }
 
-.books__title {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
+.d-none {
+  display: none;
 }

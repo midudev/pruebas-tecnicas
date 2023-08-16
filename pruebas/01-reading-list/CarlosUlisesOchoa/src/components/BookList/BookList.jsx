@@ -1,166 +1,26 @@
-import { useEffect, useState, useRef } from 'react'
-import { Range, getTrackBackground } from 'react-range'
 import Book from '@/components/Book/Book'
 import '@/components/BookList/BookList.css'
-import { useReadingListStore } from '@/store/useReadingListStore'
-import { useBooksStore } from '@/store/useBooksStore'
 
-const BookList = ({ onAddBookToReadingListClick }) => {
+const BookList = ({ booksArray, onAddBookToReadingListClick }) => {
   // useEffect(() => console.log('[R]-------> BookList component rendered!'), []) // tetemp
-
-  const booksArray = useBooksStore((state) => state.books)
-  const readingListBooksArray = useReadingListStore((state) => state.readingList)
-  const [availableBooks, setAvailableBooks] = useState([])
-  const [genres, setGenres] = useState([]) // ['Fantasy', 'Horror', 'Science Fiction', etc...
-  const [genreFilter, setGenreFilter] = useState('')
-  const [maxPagesFilter, setMaxPagesFilter] = useState([1]) // maximum page filter
-  const [debouncedMaxPagesFilter, setDebouncedMaxPagesFilter] = useState([1])
-  const [maxNumberOfPagesValue, setMaxNumberOfPagesValue] = useState(2)
-  const firstRender = useRef(true)
-
-  useEffect(() => {
-    // get all the genres without duplicates
-    const genresArray = [...new Set(booksArray.map((book) => book.genre))]
-    // get the maximum number of pages
-    const maxPages = Math.max(...booksArray.map((book) => book.pages))
-    // console.log(maxPages) // tetemp
-    setMaxNumberOfPagesValue(maxPages)
-    // Only set maxPagesFilter on the first render
-    if (firstRender.current) {
-      setMaxPagesFilter([maxPages])
-      firstRender.current = false
-    }
-    if (maxPagesFilter[0] > maxPages) {
-      setMaxPagesFilter([maxPages])
-    }
-    setGenres(genresArray)
-  }, [booksArray])
-
-  useEffect(() => {
-    const delayInputTimeoutId = setTimeout(() => {
-      setDebouncedMaxPagesFilter(maxPagesFilter)
-      // console.log(debouncedMaxPagesFilter) // tetemp
-    }, 500)
-    return () => clearTimeout(delayInputTimeoutId)
-  }, [maxPagesFilter, 500])
-
-  useEffect(() => {
-    const availableBooksArray = booksArray.filter((book) => {
-      const notInReadingList = !readingListBooksArray.find(
-        (readingBook) => readingBook.ISBN === book.ISBN
-      )
-      const matchesGenre = genreFilter ? book.genre === genreFilter : true
-      const matchesPageRange = book.pages <= debouncedMaxPagesFilter[0] // condition to filter by page range
-      return notInReadingList && matchesGenre && matchesPageRange
-    })
-    setAvailableBooks(availableBooksArray)
-    // console.log(genreFilter) // tetemp
-    // console.log(debouncedMaxPagesFilter) // tetemp
-  }, [readingListBooksArray, genreFilter, debouncedMaxPagesFilter])
-
-  function handleMaxPagesFilterChange(e) {
-    setMaxPagesFilter(e)
-  }
 
   return (
     <>
-      <section className='books__filters'>
-        <div className='books__filters__genre'>
-          <span className='mr-2'>Filtrar por género</span>
-          <select
-            className='books__filter'
-            onChange={(e) => setGenreFilter(e.target.value)}>
-            <option value=''>Todos</option>
-            {genres.map((genre) => (
-              <option key={genre} value={genre}>
-                {genre}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className='books__filters__pages'>
-          <span className='mr-2 label'>
-            Filtrar por número de páginas (1 - {maxPagesFilter[0]})
-          </span>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              flexWrap: 'wrap',
-              // margin: '2em',
-              maxWidth: '12rem',
-              width: '100%',
-            }}>
-            <Range
-              min={1}
-              max={maxNumberOfPagesValue}
-              step={1}
-              values={maxPagesFilter}
-              onChange={handleMaxPagesFilterChange}
-              renderTrack={({ props, children }) => (
-                <div
-                  onMouseDown={props.onMouseDown}
-                  onTouchStart={props.onTouchStart}
-                  style={{
-                    ...props.style,
-                    height: '36px',
-                    display: 'flex',
-                    width: '100%',
-                  }}>
-                  <div
-                    ref={props.ref}
-                    style={{
-                      height: '5px',
-                      width: '100%',
-                      borderRadius: '4px',
-                      background: getTrackBackground({
-                        values: maxPagesFilter,
-                        colors: ['#548BF4', '#ccc'],
-                        min: 1,
-                        max: maxNumberOfPagesValue,
-                      }),
-                      alignSelf: 'center',
-                    }}>
-                    {children}
-                  </div>
-                </div>
-              )}
-              renderThumb={({ props, isDragged }) => (
-                <div
-                  {...props}
-                  style={{
-                    ...props.style,
-                    height: '1.5em',
-                    width: '1.5em',
-                    borderRadius: '4px',
-                    backgroundColor: '#FFF',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}>
-                  <div
-                    style={{
-                      height: '0.75em',
-                      width: '0.25em',
-                      backgroundColor: isDragged ? '#548BF4' : '#ccc',
-                    }}
-                  />
-                </div>
-              )}
-            />
-          </div>
-        </div>
-      </section>
-      <ul className='books__container'>
-        {availableBooks.map((book) => (
-          <li className='books__element' key={book.ISBN}>
-            <Book
-              data={book}
-              onAddBookToReadingListClick={() => onAddBookToReadingListClick(book)}
-            />
-          </li>
-        ))}
-      </ul>
+      {booksArray.length === 0 && (
+        <p>No se han encontrado libros que coincidan con tus criterios de búsqueda.</p>
+      )}
+      {booksArray.length > 0 && (
+        <ul className='books__container'>
+          {booksArray.map((book) => (
+            <li className='books__element' key={book.ISBN}>
+              <Book
+                data={book}
+                onAddBookToReadingListClick={() => onAddBookToReadingListClick(book)}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   )
 }
