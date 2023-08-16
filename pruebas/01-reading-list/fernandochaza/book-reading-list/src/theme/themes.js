@@ -20,10 +20,11 @@ const darkTheme = {
 
   accent1Color,
   accent2Color,
-
+  
   mainBg: '#111111',
   accentBg: '#333333',
   secondaryBg: '#37474f',
+  contrastBg: '#000000',
 
   mainBorder: '#dee4e7',
   secondaryBorder: '#ffffff',
@@ -53,6 +54,7 @@ const lightTheme = {
   mainBg: '#fafafa',
   accentBg: '#dee4e7',
   secondaryBg: '#ffffff',
+  contrastBg: '#ffffff',
 
   mainBorder: '#37474f',
   secondaryBorder: '#ffffff',

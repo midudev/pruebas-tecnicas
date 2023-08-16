@@ -2,12 +2,15 @@ import styled from 'styled-components'
 
 const StyledAside = styled.aside`
   width: 100%;
+  max-width: 400px;
   margin: 0 auto 1rem auto;
   padding: 1rem 2rem;
+  padding-bottom: 1.5rem;
   border-radius: 16px;
   transition: all 1s ease;
   background-color: ${(props) => props.theme.mainBg};
   box-shadow: 0 0 20px -8px ${(props) => props.theme.accent1Color};
+  position: relative;
 
   @media screen and (min-width: 576px) {
     width: 240px;
@@ -31,15 +34,18 @@ const StyledForm = styled.form`
 const StyledTextLabel = styled.label`
   display: flex;
   flex-direction: column;
+  height: ${(props) => (props.$display ? 0 : '80px')};
+  overflow: hidden;
+  transition: height 0.5s ease;
 `
 
 const StyledTextInput = styled.input`
-  border: none;
+  border: 1px solid ${(props) => props.theme.accentBg};
   outline: none;
-  background-color: ${(props) => props.theme.black};
+  background-color: ${(props) => props.theme.contrastBg};
   color: ${(props) => props.theme.mainTxt};
   border-radius: 4px;
-  box-shadow: 0 0 2px ${(props) => props.theme.mainTxt};
+  box-shadow: 0 1px 2px ${(props) => props.theme.accentBg};
   height: 40px;
   margin-top: 6px;
   margin-bottom: 1rem;
@@ -50,12 +56,16 @@ const PagesFilterContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  margin-bottom: ${(props) => (props.$display ? 0 : '1rem')};
+  height: ${(props) => (props.$display ? 0 : '64px')};
+  overflow: hidden;
+  transition: height 0.5s ease;
 
   @media screen and (min-width: 576px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     row-gap: 12px;
+    height: ${(props) => (props.$display ? 0 : '120px')};
 
     :not(:first-child) {
       place-items: center;
@@ -64,11 +74,10 @@ const PagesFilterContainer = styled.div`
 `
 
 const StyledFilterTitle = styled.p`
-
-@media screen and (min-width: 576px) {
-  grid-row: 1;
-  grid-column: 1/3;
-}
+  @media screen and (min-width: 576px) {
+    grid-row: 1;
+    grid-column: 1/3;
+  }
 `
 
 const StyledRadioLabel = styled.label`
@@ -77,8 +86,10 @@ const StyledRadioLabel = styled.label`
   line-height: 1.5;
 `
 
-const StyledRadioInput = styled.input`
+const StyledRadioInput = styled.input``
 
+const StyledFiltersButton = styled.button`
+  border: none;
 `
 
 export {
@@ -90,5 +101,6 @@ export {
   StyledFilterTitle,
   StyledRadioLabel,
   StyledTextLabel,
-  StyledRadioInput
+  StyledRadioInput,
+  StyledFiltersButton
 }

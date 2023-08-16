@@ -6,7 +6,6 @@ export async function fetchBooks(titleQuery, authorQuery) {
     authorQuery === '' ? '*' : encodeURIComponent(authorQuery)
 
   const url = `https://www.googleapis.com/books/v1/volumes?q=+intitle:${encodedTitle}+inauthor:${encodedAuthor}&key=${key}`
-  console.log(url)
   
   const response = await fetch(url)
   const data = await response.json()

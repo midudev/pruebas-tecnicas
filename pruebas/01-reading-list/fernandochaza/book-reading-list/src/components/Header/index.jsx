@@ -1,21 +1,23 @@
+import ColoredButton from '../ColoredButton'
+import Logo from './LogoIcon'
+
+import { useTheme } from 'styled-components'
+
 import {
   StyledHeader,
   StyledTitle,
-  StyledLogo,
   StyledTitleContainer,
   StyledNav
 } from './styles'
-import openBookSvg from '../../assets/book-open.svg'
-import ColoredButton from '../ColoredButton'
 
 const Header = () => {
+  const theme = useTheme()
   return (
     <StyledHeader>
       <StyledTitleContainer>
-        <StyledLogo
-          className='logo'
-          src={openBookSvg}
+        <Logo
           alt='Logo image of an open book'
+          strokeColor={theme.mainTxt}
         />
         <StyledTitle>READING PLANNER</StyledTitle>
       </StyledTitleContainer>

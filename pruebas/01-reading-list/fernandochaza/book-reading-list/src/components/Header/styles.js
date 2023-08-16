@@ -19,11 +19,6 @@ const StyledTitleContainer = styled.section`
   align-items: center;
 `
 
-const StyledLogo = styled.img`
-  padding: 1rem;
-  border-radius: 8px;
-`
-
 const StyledTitle = styled.h1`
   padding-left: 0.3rem;
   font-size: 1.3rem;
@@ -48,7 +43,6 @@ const StyledNav = styled.nav`
 export {
   StyledHeader,
   StyledTitleContainer,
-  StyledLogo,
   StyledTitle,
   StyledNav
 }
