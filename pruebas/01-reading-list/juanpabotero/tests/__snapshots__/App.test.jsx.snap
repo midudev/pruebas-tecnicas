@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`App > Debe hacer match con el snapshot 1`] = `
+<span
+  class="font-normal text-gray-50 mt-4"
+>
+  3
+   resultado(s)
+</span>
+`;

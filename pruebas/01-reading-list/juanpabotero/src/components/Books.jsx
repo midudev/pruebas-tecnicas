@@ -24,6 +24,7 @@ export function Books({ books }) {
               className={`add-book-button absolute top-2 right-2 rounded-full p-1 bg-gray-900 
               hover:scale-110 transition-all duration-200 z-20
               ${isBookInReadingList ? 'text-lime-400' : 'text-yellow-400'}`}
+              aria-label="addBookButton"
               onClick={() => {
                 isBookInReadingList
                   ? removeFromReadingList(book)

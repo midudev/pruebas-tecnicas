@@ -7,7 +7,9 @@ export function Header({ initialBooks, filteredBooks }) {
         Librería
       </h1>
       <h2 className="text-lg text-gray-300 flex gap-2 mb-8">
-        <span className="font-normal">{initialBooks.length}</span>
+        <span className="font-normal" aria-label="initialBooksCount">
+          {initialBooks.length}
+        </span>
         libros disponibles
       </h2>
       <Filters />
