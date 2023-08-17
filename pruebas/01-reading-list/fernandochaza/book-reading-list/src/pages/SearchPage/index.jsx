@@ -19,8 +19,9 @@ const SearchPage = () => {
             <BookCard
               key={book.id}
               imagePath={book.volumeInfo?.imageLinks?.thumbnail || notAvailable}
-              title={book.volumeInfo.title}
-              author={book?.volumeInfo?.authors?.[0] || 'Undefined'}
+              title={book.volumeInfo?.title}
+              author={book.volumeInfo?.authors?.[0] || 'Not Found'}
+              bookId={book.id}
             />
           ))}
       </CardsContainer>
