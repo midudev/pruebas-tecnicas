@@ -19,7 +19,7 @@ const Header = () => {
           alt='Logo image of an open book'
           strokeColor={theme.mainTxt}
         />
-        <StyledTitle>READING PLANNER</StyledTitle>
+        <StyledTitle>READINGS PLANNER</StyledTitle>
       </StyledTitleContainer>
       <StyledNav>
         <ColoredButton>Search</ColoredButton>

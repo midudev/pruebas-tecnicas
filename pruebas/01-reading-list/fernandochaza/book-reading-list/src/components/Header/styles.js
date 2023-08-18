@@ -22,6 +22,7 @@ const StyledTitleContainer = styled.section`
 const StyledTitle = styled.h1`
   padding-left: 0.3rem;
   font-size: 1.3rem;
+  font-weight: 500;
   letter-spacing: 1px;
 `
 
