@@ -1,22 +1,45 @@
+import { useState } from 'react';
 import { Books } from './components/Books';
 import { Header } from './components/Header';
-import { ReadingList } from './components/ReadingList';
-import { ReadingListProvider } from './context/reading-list';
+import { Tabs } from './components/Tabs';
 import { useFilters } from './hooks/useFilters';
+import { useReadingList } from './hooks/useReadingList';
 import { library as initialBooks } from './mocks/books.json';
 
 function App() {
   const { filterBooks } = useFilters();
+  const [isReadingListActive, setIsReadingListActive] = useState(false);
+  const { readingList, clearReadingList } = useReadingList();
 
   const filteredBooks = filterBooks(initialBooks);
+  const filteredBooksMapped = filteredBooks.map(({ book }) => book);
 
   return (
-    <ReadingListProvider>
-      <div className="max-w-5xl mx-auto px-2">
-        <Header initialBooks={initialBooks} filteredBooks={filteredBooks} />
-        <ReadingList />
-        <main className="grid place-content-center">
-          <Books books={filteredBooks} />
+    <>
+      <div className="max-w-5xl mx-auto px-4">
+        <Header />
+        <Tabs
+          {...{
+            isReadingListActive,
+            setIsReadingListActive,
+            readingList,
+            clearReadingList,
+            filteredBooksMapped
+          }}
+        />
+        <main className="grid mb-8">
+          <div className={`${isReadingListActive ? 'hidden' : ''}`}>
+            <Books
+              books={filteredBooksMapped}
+              isReadingListActive={isReadingListActive}
+            />
+          </div>
+          <div className={`${isReadingListActive ? '' : 'hidden'}`}>
+            <Books
+              books={readingList}
+              isReadingListActive={isReadingListActive}
+            />
+          </div>
         </main>
       </div>
       <div
@@ -27,7 +50,7 @@ function App() {
         className="fixed -z-10 h-[134px] w-[134px] lg:w-[300px] lg:h-[300px] rounded-full 
         bg-amber-600 blur-[150px] lg:blur-[350px] opacity-50 right-0 bottom-0"
       ></div>
-    </ReadingListProvider>
+    </>
   );
 }
 
