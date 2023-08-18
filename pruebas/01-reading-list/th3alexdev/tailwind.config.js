@@ -12,8 +12,9 @@ export default {
       colors: {
         'card-background': '#252429',
         'text': '#FFF',
-        'background': '#EDEDED',
-        'primary': '#17171D',
+        'background': '#17171D',
+        'primary': '#4B7FF2',
+        'secondary': '#FFD440'
       }
     },
   },
