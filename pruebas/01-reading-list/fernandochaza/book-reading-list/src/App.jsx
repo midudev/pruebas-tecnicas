@@ -4,6 +4,7 @@ import RootPage from './pages/RootPage'
 import ErrorPage from './pages/ErrorPage'
 import ReadingList from './pages/ReadingList'
 import SearchPage from './pages/SearchPage'
+import HomePage from './pages/HomePage'
 
 function App() {
   const router = createBrowserRouter([
@@ -14,6 +15,10 @@ function App() {
       children: [
         {
           index: true,
+          element: <HomePage />
+        },
+        {
+          path: '/search',
           element: <SearchPage />
         },
         {

@@ -1,9 +1,11 @@
-import { StyledMain } from '../RootLayoutStyles'
-import SearchForm from '../../components/SearchForm'
-import BookCard from './BookCard'
-import CardsContainer from './CardsContainer'
 import { useAtomValue } from 'jotai'
 import { books } from '../../context/atoms'
+
+import SearchForm from '../../components/SearchForm'
+import BookCard from '../../components/BookCard'
+import CardsContainer from './CardsContainer'
+
+import { StyledMain } from '../RootLayoutStyles'
 
 import notAvailable from '../../assets/cover-not-available.webp'
 

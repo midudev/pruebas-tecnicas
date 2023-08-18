@@ -7,15 +7,20 @@ const StyledAside = styled.aside`
   padding: 1rem 2rem;
   padding-bottom: 1.5rem;
   border-radius: 16px;
-  transition: all 1s ease;
+  transition: box-shadow 0.5s ease-in-out, height 0.5s ease;
   background-color: ${(props) => props.theme.mainBg};
   box-shadow: 0 0 20px -8px ${(props) => props.theme.accent1Color};
   position: relative;
 
   @media screen and (min-width: 576px) {
     width: 240px;
+    height: ${(props) => (props.$displayFilters ? '200px' : '420px')};
     margin: 0 auto;
-    box-shadow: 0 0 40px -8px ${(props) => props.theme.accent1Color};
+    box-shadow: 0 0 16px -4px ${(props) => props.theme.accent1Color};
+
+    &:hover {
+      box-shadow: 0 0 24px -4px ${(props) => props.theme.accent1Color};
+    }
   }
 `
 
@@ -34,7 +39,7 @@ const StyledForm = styled.form`
 const StyledTextLabel = styled.label`
   display: flex;
   flex-direction: column;
-  height: ${(props) => (props.$display ? 0 : '80px')};
+  height: ${(props) => (props.$displayFilters ? 0 : '80px')};
   overflow: hidden;
   transition: height 0.5s ease;
 `
@@ -56,20 +61,20 @@ const PagesFilterContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: ${(props) => (props.$display ? 0 : '1rem')};
-  height: ${(props) => (props.$display ? 0 : '64px')};
+  margin-bottom: ${(props) => (props.$displayFilters ? 0 : '1rem')};
+  height: ${(props) => (props.$displayFilters ? 0 : '64px')};
   overflow: hidden;
-  transition: height 0.5s ease;
+  transition: height .5s ease;
 
   @media screen and (min-width: 576px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     row-gap: 12px;
-    height: ${(props) => (props.$display ? 0 : '120px')};
+    height: ${(props) => (props.$displayFilters ? 0 : '120px')};
 
     :not(:first-child) {
       place-items: center;
-    }
+    } 
   }
 `
 

@@ -19,6 +19,7 @@ import { useTheme } from 'styled-components'
 
 import { fetchBooks } from '../../Utils/fetchBooks'
 import ArrowIcon from './ArrowIcon'
+import { useNavigate } from 'react-router-dom'
 
 const SearchForm = () => {
   const bookNameRef = useRef('')
@@ -29,6 +30,8 @@ const SearchForm = () => {
   const [disableSubmit, setDisableSubmit] = useState(true)
   const [displayAdvancedFilters, setDisplayAdvancedFilters] = useState(true)
   const [, setBooksCards] = useAtom(books)
+
+  const navigate = useNavigate()
 
   const handleOptionChange = useCallback((e) => {
     setSelectedPages(e.target.value)
@@ -51,6 +54,7 @@ const SearchForm = () => {
     const booksData = await fetchBooks(bookQuery, authorQuery)
 
     setBooksCards(booksData)
+    navigate('/search')
   }
 
   const handleCollapseFilters = useCallback(() => {
@@ -58,7 +62,7 @@ const SearchForm = () => {
   }, [])
 
   return (
-    <StyledAside>
+    <StyledAside $displayFilters={displayAdvancedFilters}>
       <StyledFormTitle>Search</StyledFormTitle>
       <StyledForm onSubmit={handleOnSubmit}>
         <StyledTextLabel>
@@ -66,11 +70,12 @@ const SearchForm = () => {
           <StyledTextInput
             ref={bookNameRef}
             onChange={handleDisableSubmit}
+            aria-label=''
             type='text'
             placeholder='Search a book...'
           />
         </StyledTextLabel>
-        <StyledTextLabel $display={displayAdvancedFilters}>
+        <StyledTextLabel $displayFilters={displayAdvancedFilters}>
           Author
           <StyledTextInput
             ref={authorRef}
@@ -79,7 +84,7 @@ const SearchForm = () => {
             placeholder='Search an author...'
           />
         </StyledTextLabel>
-        <PagesFilterContainer $display={displayAdvancedFilters}>
+        <PagesFilterContainer $displayFilters={displayAdvancedFilters}>
           <StyledFilterTitle>Max Pages</StyledFilterTitle>
           <StyledRadioLabel hidden={true}>
             <StyledRadioInput
@@ -123,7 +128,10 @@ const SearchForm = () => {
         </ColoredButton>
       </StyledForm>
       <StyledFiltersButton onClick={handleCollapseFilters}>
-        <ArrowIcon strokeColor={theme.mainTxt} rotate={!displayAdvancedFilters}/>
+        <ArrowIcon
+          strokeColor={theme.mainTxt}
+          rotate={!displayAdvancedFilters}
+        />
       </StyledFiltersButton>
     </StyledAside>
   )
