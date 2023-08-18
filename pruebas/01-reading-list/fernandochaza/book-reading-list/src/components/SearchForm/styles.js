@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import AnimatedInput from './AnimatedInput'
 
 const StyledAside = styled.aside`
   width: 100%;
@@ -9,14 +10,13 @@ const StyledAside = styled.aside`
   border-radius: 16px;
   transition: box-shadow 0.5s ease-in-out, height 0.5s ease;
   background-color: ${(props) => props.theme.mainBg};
-  box-shadow: 0 0 20px -8px ${(props) => props.theme.accent1Color};
+  box-shadow: 0 0 16px -4px ${(props) => props.theme.secondaryTxt};
   position: relative;
 
   @media screen and (min-width: 576px) {
-    width: 240px;
-    height: ${(props) => (props.$displayFilters ? '200px' : '420px')};
+    height: ${(props) => (props.$displayFilters ? '180px' : '320px')};
     margin: 0 auto;
-    box-shadow: 0 0 16px -4px ${(props) => props.theme.accent1Color};
+    box-shadow: 0 0 16px -4px ${(props) => props.theme.secondaryTxt};
 
     &:hover {
       box-shadow: 0 0 24px -4px ${(props) => props.theme.accent1Color};
@@ -24,37 +24,32 @@ const StyledAside = styled.aside`
   }
 `
 
-const StyledFormTitle = styled.h2`
-  text-align: center;
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-`
-
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
 `
 
-const StyledTextLabel = styled.label`
-  display: flex;
-  flex-direction: column;
-  height: ${(props) => (props.$displayFilters ? 0 : '80px')};
-  overflow: hidden;
-  transition: height 0.5s ease;
-`
+const StyledAuthorInput = styled(AnimatedInput)`
+  height: ${(props) => (props.$displayFilters ? '0' : '48px')};
+  margin: ${(props) =>
+    props.$displayFilters ? '.25rem 0' : '.75rem 0 1rem 0'};
+  transition: all 0.5s ease;
 
-const StyledTextInput = styled.input`
-  border: 1px solid ${(props) => props.theme.accentBg};
-  outline: none;
-  background-color: ${(props) => props.theme.contrastBg};
-  color: ${(props) => props.theme.mainTxt};
-  border-radius: 4px;
-  box-shadow: 0 1px 2px ${(props) => props.theme.accentBg};
-  height: 40px;
-  margin-top: 6px;
-  margin-bottom: 1rem;
-  padding-left: 1rem;
+  & label {
+    color: ${(props) => (props.$displayFilters ? 'transparent' : '')};
+    height: ${(props) => (props.$displayFilters ? '0' : '16px')};
+    display: ${(props) => (props.$displayFilters ? 'none' : '')};
+  }
+
+  & label::before {
+    height: ${(props) => (props.$displayFilters ? '0' : '16px')};
+    content: ${(props) => (props.$displayFilters ? 'none' : '')};
+    transition: all 0.2s ease-out;
+  }
+
+  & > input {
+    padding: ${(props) => (props.$displayFilters ? '0' : '')};
+  }
 `
 
 const PagesFilterContainer = styled.div`
@@ -64,18 +59,7 @@ const PagesFilterContainer = styled.div`
   margin-bottom: ${(props) => (props.$displayFilters ? 0 : '1rem')};
   height: ${(props) => (props.$displayFilters ? 0 : '64px')};
   overflow: hidden;
-  transition: height .5s ease;
-
-  @media screen and (min-width: 576px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 12px;
-    height: ${(props) => (props.$displayFilters ? 0 : '120px')};
-
-    :not(:first-child) {
-      place-items: center;
-    } 
-  }
+  transition: height 0.5s ease;
 `
 
 const StyledFilterTitle = styled.p`
@@ -99,13 +83,11 @@ const StyledFiltersButton = styled.button`
 
 export {
   StyledAside,
-  StyledFormTitle,
   StyledForm,
-  StyledTextInput,
+  StyledAuthorInput,
   PagesFilterContainer,
   StyledFilterTitle,
   StyledRadioLabel,
-  StyledTextLabel,
   StyledRadioInput,
   StyledFiltersButton
 }

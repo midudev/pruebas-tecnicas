@@ -6,13 +6,11 @@ import ColoredButton from '../ColoredButton'
 import {
   PagesFilterContainer,
   StyledAside,
+  StyledAuthorInput,
   StyledFilterTitle,
   StyledForm,
-  StyledFormTitle,
   StyledRadioInput,
   StyledRadioLabel,
-  StyledTextInput,
-  StyledTextLabel,
   StyledFiltersButton
 } from './styles'
 import { useTheme } from 'styled-components'
@@ -20,6 +18,7 @@ import { useTheme } from 'styled-components'
 import { fetchBooks } from '../../Utils/fetchBooks'
 import ArrowIcon from './ArrowIcon'
 import { useNavigate } from 'react-router-dom'
+import AnimatedInput from './AnimatedInput'
 
 const SearchForm = () => {
   const bookNameRef = useRef('')
@@ -63,27 +62,23 @@ const SearchForm = () => {
 
   return (
     <StyledAside $displayFilters={displayAdvancedFilters}>
-      <StyledFormTitle>Search</StyledFormTitle>
       <StyledForm onSubmit={handleOnSubmit}>
-        <StyledTextLabel>
-          Book name
-          <StyledTextInput
-            ref={bookNameRef}
-            onChange={handleDisableSubmit}
-            aria-label=''
-            type='text'
-            placeholder='Search a book...'
-          />
-        </StyledTextLabel>
-        <StyledTextLabel $displayFilters={displayAdvancedFilters}>
-          Author
-          <StyledTextInput
-            ref={authorRef}
-            onChange={handleDisableSubmit}
-            type='text'
-            placeholder='Search an author...'
-          />
-        </StyledTextLabel>
+        <AnimatedInput
+          className='book-title'
+          inputId='book-title'
+          labelText='Book Title'
+          placeholder=''
+          ref={bookNameRef}
+          onChange={handleDisableSubmit}
+        />
+        <StyledAuthorInput
+          $displayFilters={displayAdvancedFilters}
+          inputId='book-author'
+          labelText='Book Author'
+          placeholder=''
+          ref={authorRef}
+          onChange={handleDisableSubmit}
+        />
         <PagesFilterContainer $displayFilters={displayAdvancedFilters}>
           <StyledFilterTitle>Max Pages</StyledFilterTitle>
           <StyledRadioLabel hidden={true}>
