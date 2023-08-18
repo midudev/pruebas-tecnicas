@@ -9,7 +9,6 @@ const StyledMain = styled.main`
   flex-direction: column;
 
   @media screen and (min-width: ${(props) => props.theme.breakpointSm}) {
-
     column-gap: 20px;
     height: calc(100% - 64px);
   }

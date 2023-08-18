@@ -3,16 +3,16 @@ import { Outlet } from 'react-router-dom'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 
-import { StyledMainContainer } from './styles'
+import { StyledPageContainer } from './styles'
 
 const RootPage = () => {
   return (
     <>
-      <StyledMainContainer>
+      <StyledPageContainer>
         <Header />
         <Outlet />
         <Footer />
-      </StyledMainContainer>
+      </StyledPageContainer>
     </>
   )
 }

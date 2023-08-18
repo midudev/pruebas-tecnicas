@@ -9,21 +9,26 @@ import {
   StyledTitleContainer,
   StyledNav
 } from './styles'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   const theme = useTheme()
   return (
     <StyledHeader>
       <StyledTitleContainer>
-        <Logo
-          alt='Logo image of an open book'
-          strokeColor={theme.mainTxt}
-        />
+        <Link to='/'>
+          <Logo alt='Logo image of an open book' strokeColor={theme.mainTxt} />
+        </Link>
         <StyledTitle>READINGS PLANNER</StyledTitle>
       </StyledTitleContainer>
       <StyledNav>
-        <ColoredButton>Search</ColoredButton>
-        <ColoredButton>My Reading List</ColoredButton>
+        <Link to='/'>
+          <ColoredButton>Search</ColoredButton>
+        </Link>
+
+        <Link to='/my-list'>
+          <ColoredButton>My Reading List</ColoredButton>
+        </Link>
         <ColoredButton>Completed Books</ColoredButton>
       </StyledNav>
     </StyledHeader>
