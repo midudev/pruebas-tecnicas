@@ -1,10 +1,12 @@
 import bestSellerBooks from '../../../data/bestSellerBooks.json'
 import BookCard from '../../../components/BookCard'
 import CardsContainer from '../../SearchPage/CardsContainer'
+import { StyledMessage } from './styles'
 
 const SuggestedBooks = () => {
   return (
     <CardsContainer>
+      <StyledMessage>Check out some of our <strong>Best Sellers!</strong></StyledMessage>
       {bestSellerBooks.bestSellers.map((book) => (
         <BookCard
           key={book.id}
