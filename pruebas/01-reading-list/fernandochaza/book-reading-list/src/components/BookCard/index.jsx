@@ -3,8 +3,8 @@ import propTypes from 'prop-types'
 
 import AddIcon from './AddIcon'
 
-import { updateReadingList } from '../../../Utils/updateReadingList'
-import { getUserReadingList } from '../../../Utils/getUserReadingList'
+import { updateReadingList } from '../../Utils/updateReadingList'
+import { getUserReadingList } from '../../Utils/getUserReadingList'
 
 import {
   StyledCardContainer,
