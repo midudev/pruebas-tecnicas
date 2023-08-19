@@ -75,7 +75,9 @@ const StyledRadioLabel = styled.label`
   line-height: 1.5;
 `
 
-const StyledRadioInput = styled.input``
+const StyledRadioInput = styled.input`
+accent-color: ${(props) => props.theme.accent1Color};
+`
 
 const StyledFiltersButton = styled.button`
   border: none;
