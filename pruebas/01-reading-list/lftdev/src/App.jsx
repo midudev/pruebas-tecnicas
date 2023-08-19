@@ -39,7 +39,7 @@ export default function App () {
     return () => window.removeEventListener('storage', handleStorageChange)
   }, [])
   return (
-    <Layout className='max-w-6xl border border-white rounded-md bg-[rgba(0,0,0,.5)] m-8 p-12 max-h-screen overflow-hidden' title='App lista de lectura'>
+    <Layout className='max-w-6xl border border-white rounded-md bg-[rgba(0,0,0,.5)] m-8 p-12' title='App lista de lectura'>
       <main className='flex flex-col gap-5'>
         <div className='flex flex-col gap-4'>
           <h3 className='text-4xl'>
@@ -49,7 +49,7 @@ export default function App () {
             <p className='text-xl font-bold'>
               {readingList.length} en la lista de lectura.
             </p>}
-          <form role='search' className='flex flex-col gap-4'>
+          <form role='search' className='flex flex-col gap-4 md:flex-row md:justify-between'>
             <label className='text-lg' htmlFor='pages-filter'>
               <div>Filtrar por páginas</div>
               <PagesFilter
@@ -70,16 +70,18 @@ export default function App () {
             </label>
           </form>
         </div>
-        {availableBooks.length > 0 &&
-          <BooksList
-            className='grid grid-cols-2 place-items-center gap-4 lg:grid-cols-4 max-h-screen overflow-y-auto'
-            list={availableBooks}
-            onItemClick={book => {
-              addToReadingList(book)
-              removeFromAvailables(book)
-            }}
-            filters={{ genreFilter, pagesFilter }}
-          />}
+        <div className='overflow-y-auto relative'>
+          {availableBooks.length > 0 &&
+            <BooksList
+              className='grid grid-cols-2 place-items-center gap-4 lg:grid-cols-4 max-h-screen'
+              list={availableBooks}
+              onItemClick={book => {
+                addToReadingList(book)
+                removeFromAvailables(book)
+              }}
+              filters={{ genreFilter, pagesFilter }}
+            />}
+        </div>
       </main>
       <button
         title='Open reading list' type='button'

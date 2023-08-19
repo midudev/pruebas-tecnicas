@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 html, body {
-  @apply text-white h-full lg:text-lg;
+  @apply text-white lg:text-lg;
 }
 body {
   background: url(/images/background.jpg) center center no-repeat;
