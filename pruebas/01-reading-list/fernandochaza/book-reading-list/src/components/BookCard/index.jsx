@@ -1,6 +1,7 @@
 import propTypes from 'prop-types'
 
 import AddIcon from './AddIcon'
+import CompletedIcon from './CompletedIcon'
 
 import {
   StyledCardContainer,
@@ -10,9 +11,11 @@ import {
 } from './styles'
 
 import { useAddToReadingList } from '../../hooks/useAddToReadingList'
+import { useAddToCompletedBooks } from '../../hooks/useAddToCompletedBooks'
 
 const BookCard = ({ imagePath, title, author, bookData }) => {
   const { isInReadingList, handleAddBook } = useAddToReadingList(bookData)
+  const { isCompleted, handleCompletedBook } = useAddToCompletedBooks(bookData)
 
   return (
     <StyledCardContainer>
@@ -23,6 +26,10 @@ const BookCard = ({ imagePath, title, author, bookData }) => {
         onClick={() => handleAddBook(bookData)}
         isInReadingList={isInReadingList}
       />
+      <CompletedIcon
+        isCompleted={isCompleted}
+        onClick={() => handleCompletedBook(bookData)}
+      ></CompletedIcon>
     </StyledCardContainer>
   )
 }

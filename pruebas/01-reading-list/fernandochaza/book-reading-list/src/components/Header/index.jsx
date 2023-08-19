@@ -25,11 +25,12 @@ const Header = () => {
         <Link to='/'>
           <ColoredButton>Search</ColoredButton>
         </Link>
-
         <Link to='/my-list'>
           <ColoredButton>My Reading List</ColoredButton>
         </Link>
-        <ColoredButton>Completed Books</ColoredButton>
+        <Link to='/completed-books'>
+          <ColoredButton>Completed Books</ColoredButton>
+        </Link>
       </StyledNav>
     </StyledHeader>
   )
