@@ -3,9 +3,14 @@
 @tailwind components;
 @tailwind utilities;
 html, body {
-  @apply bg-black text-white h-full;
+  @apply text-white h-full lg:text-lg;
+}
+body {
+  background: url(/images/background.jpg) center center no-repeat;
 }
 :root {
-  @apply p-4;
   font-family: 'Indie Flower';
+}
+#root:first-child {
+  @apply grid place-items-center;
 }
