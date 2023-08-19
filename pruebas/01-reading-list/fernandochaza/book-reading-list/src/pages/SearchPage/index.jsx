@@ -19,6 +19,7 @@ const SearchPage = () => {
         {booksData &&
           booksData.map((book) => (
             <BookCard
+              bookData={book}
               key={book.id}
               imagePath={book.volumeInfo?.imageLinks?.thumbnail || notAvailable}
               title={book.volumeInfo?.title}
