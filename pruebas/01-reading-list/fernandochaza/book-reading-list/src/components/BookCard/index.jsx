@@ -1,10 +1,6 @@
-import { useCallback, useEffect, useState } from 'react'
 import propTypes from 'prop-types'
 
 import AddIcon from './AddIcon'
-
-import { updateReadingList } from '../../Utils/updateReadingList'
-import { getUserReadingList } from '../../Utils/getUserReadingList'
 
 import {
   StyledCardContainer,
@@ -13,19 +9,10 @@ import {
   StyledText
 } from './styles'
 
-const BookCard = ({ imagePath, title, author, bookId }) => {
-  const [isInReadingList, setIsInReadingList] = useState()
+import { useAddToReadingList } from '../../hooks/useAddToReadingList'
 
-  useEffect(() => {
-    const readingList = getUserReadingList()
-    const currentBookStatus = readingList.includes(bookId)
-    setIsInReadingList(currentBookStatus)
-  }, [bookId])
-
-  const handleAddBook = useCallback((bookId) => {
-    updateReadingList(bookId)
-    setIsInReadingList((prev) => !prev)
-  }, [])
+const BookCard = ({ imagePath, title, author, bookData }) => {
+  const { isInReadingList, handleAddBook } = useAddToReadingList(bookData)
 
   return (
     <StyledCardContainer>
@@ -33,7 +20,7 @@ const BookCard = ({ imagePath, title, author, bookId }) => {
       <BookTitle>{title}</BookTitle>
       <StyledText>({author})</StyledText>
       <AddIcon
-        onClick={() => handleAddBook(bookId)}
+        onClick={() => handleAddBook(bookData)}
         isInReadingList={isInReadingList}
       />
     </StyledCardContainer>
@@ -44,7 +31,7 @@ BookCard.propTypes = {
   imagePath: propTypes.string.isRequired,
   title: propTypes.string.isRequired,
   author: propTypes.string.isRequired,
-  bookId: propTypes.string.isRequired
+  bookData: propTypes.object
 }
 
 export default BookCard
