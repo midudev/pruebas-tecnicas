@@ -1,8 +1,8 @@
- export interface BookProps {
-    book: BooksState
- }
+export interface Books {
+   book: BooksState
+}
 
- interface BooksState {
+ export interface BooksState {
     title: string
     pages: number
     genre: string

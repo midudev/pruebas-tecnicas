@@ -1,23 +1,10 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+import { Books } from '../../types/book'
 
 
-interface BooksState {
-    title: string
-    pages: number
-    genre: string
-    cover: string
-    synopsis: string
-    year: string
-    ISBN: string
-    author: AuthorType
-}
 
-interface AuthorType {
-    name: string
-    otherBooks: string[]
-}
 
-const initialState: BooksState[] = []
+const initialState: Books[] = []
 
 export const bookSlice = createSlice({
     name: 'books',
@@ -25,16 +12,18 @@ export const bookSlice = createSlice({
         books: initialState
     },
     reducers:{
-        prueba: (state, action: PayloadAction<BooksState>) => {
-            console.log(state)
-            console.log(action)
+        getBooks: (state, action: PayloadAction<Books>) => {
+           const existingBook = state.books.find(item => item.book.title === action.payload.book.title)
+           if(!existingBook){
+            state.books.push(action.payload)
+           }
         }
     }
 
 })
 
 
-export const {prueba} = bookSlice.actions
+export const {getBooks} = bookSlice.actions
 export default bookSlice.reducer
 
 
