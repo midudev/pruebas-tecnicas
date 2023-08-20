@@ -9,7 +9,8 @@ const initialState: Books[] = []
 export const bookSlice = createSlice({
     name: 'books',
     initialState: {
-        books: initialState
+        books: initialState,
+        filterByGenre: '',
     },
     reducers:{
         getBooks: (state, action: PayloadAction<Books>) => {
@@ -17,13 +18,18 @@ export const bookSlice = createSlice({
            if(!existingBook){
             state.books.push(action.payload)
            }
+        },
+
+        filterByGenre:(state, action)=>{
+            state.filterByGenre = action.payload.toLowerCase()
+           
         }
     }
 
 })
 
 
-export const {getBooks} = bookSlice.actions
+export const {getBooks,filterByGenre} = bookSlice.actions
 export default bookSlice.reducer
 
 
