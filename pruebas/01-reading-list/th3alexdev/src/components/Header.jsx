@@ -2,8 +2,9 @@ import { useContext, useRef } from "react";
 import { FiltersContext } from "../context/contextFiltersProvider";
 import { SearchIcon, CloseIcon } from "./Icons";
 import { SavedBooksIconRegular, SavedBooksIconSolid } from "./Icons";
+import FlipCounter from "./FlipCounter";
 
-export default function Header({showSidebar, toggleSidebar}) {
+export default function Header({ showSidebar, toggleSidebar }) {
   const searchInputRef = useRef();
   const { filters, setFilters } = useContext(FiltersContext);
 
@@ -47,18 +48,21 @@ export default function Header({showSidebar, toggleSidebar}) {
             </button>
           </div>
         </form>
-        <div className="absolute right-9 top-1/2 translate-y-[-50%]">
-          <span className="absolute right-[-0.10rem] top-[-1.5px] z-50 p-1 px-1.5 leading-3 bg-red-500 rounded-full font-semibold">
-            0
-          </span>
-          <button className="relative rotate-[30deg] p-2 z-50" onClick={toggleSidebar}>
+        <button
+          className="absolute right-9 top-1/2 translate-y-[-50%]"
+          onClick={toggleSidebar}
+        >
+          <FlipCounter />
+          <span className="block relative rotate-[30deg] p-2 z-10">
             <span className="relative z-50">
-              {
-                showSidebar ? <SavedBooksIconSolid /> : <SavedBooksIconRegular />
-              }
+              {showSidebar ? (
+                <SavedBooksIconSolid />
+              ) : (
+                <SavedBooksIconRegular />
+              )}
             </span>
-          </button>
-        </div>
+          </span>
+        </button>
       </header>
     </>
   );
