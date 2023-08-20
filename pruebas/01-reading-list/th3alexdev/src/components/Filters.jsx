@@ -1,7 +1,8 @@
-import { useContext, useState, useRef } from "react";
+import { useContext, useRef } from "react";
 import { FiltersContext } from "../context/contextFiltersProvider";
-import Brand from "./Brand";
 import { FilterIcon } from "./Icons";
+import { useFilters } from "../hooks/useFilters";
+import Brand from "./Brand";
 
 export default function Filters() {
   const numOfPagesInput = useRef();
@@ -12,32 +13,10 @@ export default function Filters() {
   const { maxPosiblePages, sortByPages, pages } = filters;
   const { minPages, maxPages } = pages;
 
-  const handleChangeRange = (e) => {
-    setFilters({
-      ...filters,
-      sortByPages: true,
-      pages: { maxPages: e.target.value },
-    });
-    numOfPagesInput.current.value = e.target.value;
-  };
-
-  const handleSetRange = (e) => {
-    setFilters({
-      ...filters,
-      sortByPages: true,
-      pages: { maxPages: e.target.value },
-    });
-    numOfPagesRange.current.value = e.target.value;
-  };
-
-  const removeRange = () => {
-    setFilters({
-      ...filters,
-      sortByPages: false,
-      pages: { maxPages: maxPosiblePages },
-    });
-    numOfPagesRange.current.value = maxPosiblePages;
-  };
+  const [handleChangeRange, handleSetRange, removeRange] = useFilters({
+    numOfPagesInput,
+    numOfPagesRange,
+  });
 
   return (
     <section className="relative px-4 flex flex-nowrap flex-col gap-8 pt-8">
@@ -45,9 +24,9 @@ export default function Filters() {
         <Brand />
         <div>
           <form onSubmit={(e) => e.preventDefault}>
-            <label className="w-4/5 font-semibold text-lg leading-6 mb-2 line-clamp-2">
-              Por cantidad de páginas
-            </label>
+            <h3 className="w-4/5 font-semibold text-lg leading-6 mb-2 line-clamp-2">
+              <label className="cursor-auto">Por cantidad de páginas</label>
+            </h3>
             <input
               aria-valuemin={minPages}
               aria-valuemax={maxPosiblePages}
@@ -55,7 +34,7 @@ export default function Filters() {
               min={minPages}
               max={maxPosiblePages}
               step="1"
-              className={`overflow-hidden p-0 whitespace-nowrap w-full h-max mb-4`}
+              className="p-0 whitespace-nowrap w-full h-max mb-4"
               onChange={(e) => handleChangeRange(e)}
               ref={numOfPagesRange}
             />
@@ -79,7 +58,9 @@ export default function Filters() {
               />
 
               <button
-                className={`${sortByPages ? "pointer-events-auto" : "pointer-events-none"}`}
+                className={`${
+                  sortByPages ? "pointer-events-auto" : "pointer-events-none"
+                }`}
                 onClick={() => removeRange()}
                 title="Quitar filtro"
                 aria-label="Quitar filtro"
