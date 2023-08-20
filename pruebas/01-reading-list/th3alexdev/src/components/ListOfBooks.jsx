@@ -23,7 +23,7 @@ export default function ListOfBooks() {
                   className="relative py-4 px-3 flex flex-nowrap flex-col items-center rounded-md hover:bg-card-hover group"
                   key={ISBN}
                 >
-                  <button className="absolute bg-[#64748b66]  rounded-full right-6 top-5 opacity-0 group-hover:opacity-100 hover:bg-slate-700 transition-colors">
+                  <button className="absolute bg-[#64748b66]  rounded-full right-6 top-6 opacity-0 group-hover:opacity-100 hover:bg-slate-700 transition-colors">
                     <span className="p-2 opacity-70 hover:opacity-100 block">
                       <AddBookIcon />
                     </span>
