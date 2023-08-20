@@ -10,7 +10,7 @@ const StyledMain = styled.main`
 
   @media screen and (min-width: ${(props) => props.theme.breakpointSm}) {
     column-gap: 20px;
-    height: calc(100% - 64px);
+    min-height: calc(100vh - 68px);
   }
 `
 

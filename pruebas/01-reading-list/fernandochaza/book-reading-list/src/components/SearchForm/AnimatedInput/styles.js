@@ -54,6 +54,7 @@ const StyledInput = styled.input`
     top: -8px;
     font-size: 0.9rem;
     padding: 0 8px;
+    color: ${(props) => props.theme.mainTxt};
 
     &::after {
       content: '';

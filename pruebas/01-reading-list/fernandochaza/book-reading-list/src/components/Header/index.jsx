@@ -22,7 +22,7 @@ const Header = () => {
         <StyledTitle>READINGS PLANNER</StyledTitle>
       </StyledTitleContainer>
       <StyledNav>
-        <Link to='/'>
+        <Link to='/search'>
           <ColoredButton>Search</ColoredButton>
         </Link>
         <Link to='/my-list'>
