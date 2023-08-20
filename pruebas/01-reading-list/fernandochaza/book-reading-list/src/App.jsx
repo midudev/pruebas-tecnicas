@@ -5,6 +5,7 @@ import ErrorPage from './pages/ErrorPage'
 import ReadingList from './pages/ReadingList'
 import SearchPage from './pages/SearchPage'
 import HomePage from './pages/HomePage'
+import CompletedBooks from './pages/CompletedBooks'
 
 function App() {
   const router = createBrowserRouter([
@@ -24,6 +25,10 @@ function App() {
         {
           path: '/my-list',
           element: <ReadingList />
+        },
+        {
+          path: '/completed-books',
+          element: <CompletedBooks />
         }
       ]
     }

@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 
-const StyledAddIcon = styled.svg`
+const StyledBookIcon = styled.svg`
   position: absolute;
   right: 8px;
   top: 10px;
 `
 
-const StyledCheck = styled.svg`
+const StyledAddIcon = styled.svg`
   position: absolute;
-  top: 0;
+  top: 2px;
   right: 6px;
 `
 
@@ -17,4 +17,4 @@ const StyledAddButton = styled.button`
   cursor: pointer;
 `
 
-export { StyledAddIcon, StyledCheck, StyledAddButton }
+export { StyledBookIcon, StyledAddIcon, StyledAddButton }

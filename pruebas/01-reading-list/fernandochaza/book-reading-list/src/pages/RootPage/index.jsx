@@ -1,8 +1,7 @@
-import { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 
 import { useSetAtom } from 'jotai'
-import { userReadingList } from '../../context/atoms'
+import { userCompletedBooks, userReadingList } from '../../context/atoms'
 
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
@@ -10,14 +9,17 @@ import Footer from '../../components/Footer'
 import { StyledPageContainer } from './styles'
 
 import { getUserReadingList } from '../../Utils/getUserReadingList'
+import { getUserCompletedBooks } from '../../Utils/getUserCompletedBooks'
 
 const RootPage = () => {
   const setReadingList = useSetAtom(userReadingList)
+  const setCompletedBooks = useSetAtom(userCompletedBooks)
 
-  useEffect(() => {
-    const currentData = getUserReadingList()
-    setReadingList(currentData)
-  }, [setReadingList])
+  const currentReadingList = getUserReadingList()
+  setReadingList(currentReadingList)
+
+  const currentCompletedBooks = getUserCompletedBooks()
+  setCompletedBooks(currentCompletedBooks)
 
   return (
     <>
