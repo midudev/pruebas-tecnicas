@@ -3,9 +3,9 @@ export function CloseIcon() {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
-      height="20"
+      height="36"
       viewBox="0 -960 960 960"
-      width="20"
+      width="36"
     >
       <path d="m289-199-89-90 190-191-190-191 89-91 191 191 191-191 89 91-190 191 190 191-89 90-191-191-191 191Z" />
     </svg>
