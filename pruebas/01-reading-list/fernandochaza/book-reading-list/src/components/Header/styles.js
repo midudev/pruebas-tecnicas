@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 
 const StyledHeader = styled.header`
+  color: ${(props) => props.theme.mainTxt};
   background-color: ${(props) => props.theme.mainBg};
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
+  transition: background-color .25s ease, color .25s ease;
 
   @media screen and (min-width: 576px) {
     flex-direction: row;
@@ -31,9 +33,10 @@ const StyledNav = styled.nav`
   width: 100%;
   margin: 0 auto .5rem auto;
   justify-content: space-around;
+  align-items: center;
 
   @media screen and (min-width: 576px) {
-    margin: auto 2.5rem auto 0;
+    margin: auto 2rem auto 0;
     width: auto;
     column-gap: 20px;
     padding: 0;

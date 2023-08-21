@@ -15,6 +15,8 @@ const StyledAddIcon = styled.svg`
 const StyledAddButton = styled.button`
   border: none;
   cursor: pointer;
+  color: ${(props) => props.theme.mainBg};
+  transition: color .25s ease;
 `
 
 export { StyledBookIcon, StyledAddIcon, StyledAddButton }

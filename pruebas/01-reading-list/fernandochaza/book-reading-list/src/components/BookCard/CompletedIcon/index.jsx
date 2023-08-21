@@ -21,7 +21,7 @@ const CompletedIcon = ({ onClick, isCompleted }) => {
               width='28.80'
               height='28.80'
               rx='14.4'
-              fill={theme.mainBg}
+              fill='currentColor'
               strokeWidth='0'
             ></rect>
           </g>

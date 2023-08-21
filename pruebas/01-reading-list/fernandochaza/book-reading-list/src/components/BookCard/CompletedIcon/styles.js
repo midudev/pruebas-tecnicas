@@ -2,7 +2,10 @@ import styled from 'styled-components'
 
 const StyledAddButton = styled.button`
   border: none;
-  cursor: pointer;;
+  cursor: pointer;
+  color: ${(props) => props.theme.mainBg};
+
+  transition: color .25s ease;
 `
 
 const StyledCheckIcon = styled.svg`

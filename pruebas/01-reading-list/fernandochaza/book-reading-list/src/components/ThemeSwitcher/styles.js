@@ -4,14 +4,14 @@ const StyledContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 64px;
+  min-width: 64px;
   height: 30px;
   background-color: ${(props) => props.theme.accentBg};
   border-radius: 25px;
   padding: 2px;
   padding-left: 4px;
 
-  @media screen and (max-width: 385px) {
+  @media screen and (max-width: 340px) {
     margin-top: 1rem;
   }
 `

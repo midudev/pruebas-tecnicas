@@ -8,7 +8,7 @@ const AddIcon = ({ onClick, isInReadingList }) => {
     <StyledAddButton onClick={onClick}>
       <StyledBookIcon
         viewBox='0 0 24 24'
-        fill={theme.mainBg}
+        fill='currentColor'
         xmlns='http://www.w3.org/2000/svg'
         width='40'
         height='40'
@@ -57,8 +57,8 @@ const AddIcon = ({ onClick, isInReadingList }) => {
           height='20px'
           viewBox='-3.2 -3.2 38.40 38.40'
           version='1.1'
-          fill={theme.mainBg}
-        >
+          fill='currentColor'
+          >
           <g id='SVGRepo_bgCarrier' strokeWidth='0'>
             <rect
               x='-3.2'
@@ -66,7 +66,7 @@ const AddIcon = ({ onClick, isInReadingList }) => {
               width='38.40'
               height='38.40'
               rx='19.2'
-              fill={theme.mainBg}
+              fill='currentColor'
               strokeWidth='0'
             ></rect>
           </g>
@@ -109,8 +109,8 @@ const AddIcon = ({ onClick, isInReadingList }) => {
           height='20px'
           viewBox='-3.2 -3.2 38.40 38.40'
           version='1.1'
-          fill={theme.mainBg}
-        >
+          fill='currentColor'
+          >
           <g id='SVGRepo_bgCarrier' strokeWidth='0'>
             <rect
               x='-3.2'
@@ -118,7 +118,7 @@ const AddIcon = ({ onClick, isInReadingList }) => {
               width='38.40'
               height='38.40'
               rx='19.2'
-              fill={theme.mainBg}
+              fill='currentColor'
               strokeWidth='0'
             ></rect>
           </g>

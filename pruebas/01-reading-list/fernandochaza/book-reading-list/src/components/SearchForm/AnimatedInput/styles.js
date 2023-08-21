@@ -9,7 +9,7 @@ const StyledInputContainer = styled.div`
   border-radius: 8px;
   box-shadow: 0 0 3px ${(props) => props.theme.secondaryTxt};
   background-color: ${(props) => props.theme.contrastBg};
-  transition: background-color 0.75s ease;
+  transition: background-color 0.25s ease;
 
   &:focus-within {
     box-shadow: 0 0 4px 0 ${(props) => props.theme.accent1Color};
@@ -25,7 +25,7 @@ const StyledInput = styled.input`
   font-size: 1rem;
   background-color: ${(props) => props.theme.contrastBg};
   color: ${(props) => props.theme.mainTxt};
-  transition: background-color 0.75s ease, color 0.75s ease;
+  transition: background-color 0.25s ease, color 0.25s ease;
 
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
@@ -33,7 +33,7 @@ const StyledInput = styled.input`
   &:-webkit-autofill:active {
     -webkit-background-clip: text;
     -webkit-text-fill-color: ${(props) => props.theme.contrastBg};
-    transition: background-color 5000s ease-in-out 0s;
+    transition: background-color .25s ease;
     box-shadow: inset 0 0 20px 20px ${(props) => props.theme.contrastBg};
   }
 
@@ -49,7 +49,7 @@ const StyledInput = styled.input`
 
   &:not(:placeholder-shown) + label,
   &:focus + label {
-    transition: all 0.2s ease-in;
+    transition: all 0.25s ease;
     content: '';
     top: -8px;
     font-size: 0.9rem;
@@ -91,6 +91,7 @@ const StyledLabel = styled.label`
     top: -2px;
     width: 100%;
     z-index: -1;
+    transition: background-color .25s ease;
   }
 `
 
