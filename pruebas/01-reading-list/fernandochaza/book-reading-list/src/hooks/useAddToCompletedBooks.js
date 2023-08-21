@@ -1,6 +1,9 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useAtom } from 'jotai'
 import { userCompletedBooks, userReadingList } from '../context/atoms'
+
+import { toast } from 'sonner'
+
 import { updateCompletedBooks } from '../Utils/updateCompletedBooks'
 import { updateReadingList } from '../Utils/updateReadingList'
 
@@ -16,6 +19,7 @@ export function useAddToCompletedBooks(bookData) {
 
   const handleCompletedBook = useCallback(
     (bookData) => {
+      const { title } = bookData.volumeInfo
       const isBookCompleted = completedBooks.some(
         (book) => book.id === bookData.id
       )
@@ -24,6 +28,7 @@ export function useAddToCompletedBooks(bookData) {
       )
       if (!isBookCompleted) {
         setCompletedBooks((prev) => [...prev, bookData])
+        toast.success(`Good job! ${title} was added to your read titles!`)
 
         if (isInReadingList) {
           setReadingList((books) =>

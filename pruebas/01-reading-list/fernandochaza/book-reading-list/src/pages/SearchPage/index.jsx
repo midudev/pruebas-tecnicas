@@ -6,6 +6,7 @@ import BookCard from '../../components/BookCard'
 import CardsContainer from './CardsContainer'
 
 import { StyledMain } from '../RootLayoutStyles'
+import { StyledText, StyledNoResults, StyledNotFoundSection } from './styles'
 
 import notAvailable from '../../assets/cover-not-available.webp'
 
@@ -14,10 +15,14 @@ const SearchPage = () => {
 
   return (
     <StyledMain>
+      <StyledText>
+        <strong>Search</strong> a <em>title</em> or an <em>author</em> to look
+        for your favorite Books
+      </StyledText>
       <SearchForm />
-      <CardsContainer>
-        {booksData &&
-          booksData.map((book) => (
+      {booksData ? (
+        <CardsContainer>
+          {booksData.map((book) => (
             <BookCard
               bookData={book}
               key={book.id}
@@ -27,7 +32,16 @@ const SearchPage = () => {
               bookId={book.id}
             />
           ))}
-      </CardsContainer>
+        </CardsContainer>
+      ) : (
+        <StyledNotFoundSection>
+          <StyledNoResults>OOPS!</StyledNoResults>
+          <StyledNoResults>
+            Looks like we didn&apos;t find matching results...
+          </StyledNoResults>
+          <StyledNoResults>Please, try again.</StyledNoResults>
+        </StyledNotFoundSection>
+      )}
     </StyledMain>
   )
 }

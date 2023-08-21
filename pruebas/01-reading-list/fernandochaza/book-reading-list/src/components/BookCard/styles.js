@@ -4,12 +4,13 @@ const StyledCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   box-shadow: 0 0 8px 0 ${(props) => props.theme.secondaryTxt};
+  background-color: ${(props) => props.theme.mainBg};
   padding-bottom: 1rem;
   border-radius: 8px;
   position: relative;
   align-self: start;
   height: 100%;
-  transition: transform 0.25s ease-in-out, box-shadow .25s ease-in-out;
+  transition: transform 0.25s ease-in-out, box-shadow .25s ease, background-color .25s ease;
 
   @media screen and (min-width: 576px) {
     &:hover {
