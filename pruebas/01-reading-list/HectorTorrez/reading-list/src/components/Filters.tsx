@@ -1,12 +1,16 @@
 import {useEffect, useState} from 'react'
 import { useAppDispatch, useAppSelector } from "../hooks/store"
-import { filterByGenre } from '../store/books/slice'
+import { filterByGenre, filterByPages } from '../store/books/slice'
 
-export const Filters = () => {
+    type maxPagesProps = {
+        maxPages: number
+    }
+
+export const Filters = ({maxPages}: maxPagesProps) => {
     const book = useAppSelector(state => state.books.books)
     const [selectFilter, setSelectFilter] = useState('')
     const [allGenres, setAllGenres] = useState<string[]>([])
-    // const[filterPages, setFilterPages] = useState(0) 
+    const[filterPages, setFilterPages] = useState(0) 
     const dispatch = useAppDispatch()
     useEffect(()=> {
         dispatch(filterByGenre(selectFilter))
@@ -19,11 +23,23 @@ export const Filters = () => {
             setAllGenres(uniqueGenre)
         }
     },[book])
-        
+
+    useEffect(()=>{
+        dispatch(filterByPages(filterPages))
+    },[filterPages, allGenres])
+
+
+    //i need to fix this filter
+    const handleChangeFilter = (data: number) => {
+        setFilterPages(data)
+    }
+    
+    
+
 
   return (
     <section className='my-5 px-4'>
-        <form>
+        <form className='flex flex-col md:flex-row items-center gap-y-10 md:gap-x-4'>
             <select className='rounded bg-gray-50 ring-1 ring-gray-300 outline-none w-56' onChange={(e)=> setSelectFilter(e.target.value)} >
                 <option className='cursor-pointer select-none p-2 hover:bg-gray-200' value="">Genre</option>
                 {
@@ -32,14 +48,18 @@ export const Filters = () => {
                     })
                 }
             </select>
-            <label>
+            <label className='flex flex-col items-center gap-x-3 font-bold  '>
                 Filter by number of pages
                 <input
                     type='range'
                     min='0'
-                    max='1000'
+                    max={maxPages}
+                    value={filterPages}
+                    step='10'
+                    onChange={(e)=>handleChangeFilter(e.target.valueAsNumber)}
+                    className=' bg-gray-300 h-3 rounded-lg'
                 />
-
+                {maxPages}
             </label>
         </form>
     </section>

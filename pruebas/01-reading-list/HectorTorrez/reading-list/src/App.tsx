@@ -11,6 +11,7 @@ function App() {
     const disptach = useAppDispatch()
      const booksStore = useAppSelector((state) => state.books.books)
      const filterByGenre = useAppSelector((state) => state.books.filterByGenre)
+     const filterByPages = useAppSelector((state) => state.books.fitlerByPages)
 
  
     useEffect(()=>{
@@ -21,19 +22,28 @@ function App() {
  
     const data = booksStore.filter(item => {
         const byGenre = item.book.genre.toLowerCase().includes(filterByGenre)
-        return byGenre
+        const byPages = item.book.pages >= filterByPages
+        return byGenre && byPages
     })
+
+    const maxPages = data.reduce((maxPages, book)=>{
+        return book.book.pages > maxPages ? book.book.pages : maxPages
+    }, -Infinity)
+
 
  return (
   <>
-  <Filters/>
-  <section className="grid md:w-1/2 grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
-   {
-    data.map(item => {
-        return <Book key={crypto.randomUUID()} book={item.book}/>
-    })
-   }
-   </section>
+  <Filters maxPages={maxPages}/>
+  
+        <section className="grid md:w-1/2 grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+        {
+            data.map(item => {
+                return <Book key={crypto.randomUUID()} book={item.book}/>
+            })
+        }
+        </section>
+
+    
   </>
  )
 }
