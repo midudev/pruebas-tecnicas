@@ -11,8 +11,11 @@ import {
 } from './styles'
 import { Link } from 'react-router-dom'
 
+import ThemeSwitcher from '../ThemeSwitcher'
+
 const Header = () => {
   const theme = useTheme()
+
   return (
     <StyledHeader>
       <StyledTitleContainer>
@@ -29,8 +32,9 @@ const Header = () => {
           <ColoredButton>My Reading List</ColoredButton>
         </Link>
         <Link to='/completed-books'>
-          <ColoredButton>Completed Books</ColoredButton>
+          <ColoredButton>Read Titles</ColoredButton>
         </Link>
+        <ThemeSwitcher />
       </StyledNav>
     </StyledHeader>
   )

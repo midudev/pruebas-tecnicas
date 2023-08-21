@@ -39,6 +39,10 @@ const StyledNav = styled.nav`
     padding: 0;
     align-items: center;
   }
+
+  @media screen and (max-width: 387px) {
+    flex-wrap: wrap;
+  }
 `
 
 export {
