@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 
 import { useSetAtom } from 'jotai'
@@ -16,13 +15,11 @@ const RootPage = () => {
   const setReadingList = useSetAtom(userReadingList)
   const setCompletedBooks = useSetAtom(userCompletedBooks)
 
-  useEffect(() => {
-    const currentReadingList = getUserReadingList()
-    setReadingList(currentReadingList)
+  const currentReadingList = getUserReadingList()
+  setReadingList(currentReadingList)
 
-    const currentCompletedBooks = getUserCompletedBooks()
-    setCompletedBooks(currentCompletedBooks)
-  }, [setCompletedBooks, setReadingList])
+  const currentCompletedBooks = getUserCompletedBooks()
+  setCompletedBooks(currentCompletedBooks)
 
   return (
     <>
