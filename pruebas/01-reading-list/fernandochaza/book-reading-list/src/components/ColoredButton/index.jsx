@@ -1,10 +1,10 @@
 import propTypes from 'prop-types'
 import { StyledButtonContainer, StyledButton } from './styles'
 
-const ColoredButton = ({ children, type, disabled }) => {
+const ColoredButton = ({ children, type }) => {
   return (
     <StyledButtonContainer>
-      <StyledButton type={type} disabled={disabled}>{children}</StyledButton>
+      <StyledButton type={type} >{children}</StyledButton>
     </StyledButtonContainer>
   )
 }

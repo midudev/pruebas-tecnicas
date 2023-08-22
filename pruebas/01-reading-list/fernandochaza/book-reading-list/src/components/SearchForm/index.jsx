@@ -1,64 +1,83 @@
-import { useCallback, useRef, useState } from 'react'
-import { useAtom } from 'jotai'
-import { books } from '../../context/atoms'
+import { memo, useCallback, useRef, useState } from 'react'
+import { createSearchParams, useNavigate } from 'react-router-dom'
+import { useAtom, useAtomValue, useSetAtom } from 'jotai'
+import {
+  authorQuery,
+  books,
+  categoryFilter,
+  loading,
+  titleQuery
+} from '../../context/atoms'
 
 import ColoredButton from '../ColoredButton'
+import ArrowIcon from './ArrowIcon'
+import AnimatedInput from './AnimatedInput'
+import GenreSelect from './GenreSelect'
+
+import { useTheme } from 'styled-components'
 import {
-  PagesFilterContainer,
   StyledAside,
   StyledAuthorInput,
-  StyledFilterTitle,
   StyledForm,
-  StyledRadioInput,
-  StyledRadioLabel,
   StyledFiltersButton
 } from './styles'
-import { useTheme } from 'styled-components'
 
 import { fetchBooks } from '../../Utils/fetchBooks'
-import ArrowIcon from './ArrowIcon'
-import { useNavigate } from 'react-router-dom'
-import AnimatedInput from './AnimatedInput'
+import { getSearchParams } from '../../Utils/getSearchParams'
+import { toast } from 'sonner'
 
-const SearchForm = () => {
-  const bookNameRef = useRef('')
-  const authorRef = useRef('')
+const SearchForm = memo(() => {
+  console.log('RENDER FORM')
   const theme = useTheme()
 
-  const [selectedPages, setSelectedPages] = useState(null)
-  const [disableSubmit, setDisableSubmit] = useState(true)
+  const bookNameRef = useRef('')
+  const authorRef = useRef('')
+
   const [displayAdvancedFilters, setDisplayAdvancedFilters] = useState(true)
-  const [, setBooksCards] = useAtom(books)
+
+  const setBooksCards = useSetAtom(books)
+  const selectedGenre = useAtomValue(categoryFilter)
+  const [currentTitle, setCurrentTitle] = useAtom(titleQuery)
+  const [currentAuthor, setCurrentAuthor] = useAtom(authorQuery)
+  const [, setIsLoading] = useAtom(loading)
 
   const navigate = useNavigate()
 
-  const handleOptionChange = useCallback((e) => {
-    setSelectedPages(e.target.value)
-    setDisableSubmit(false)
-  }, [])
+  const handleOnSubmit = useCallback(
+    async (e) => {
+      e.preventDefault()
+      const bookQuery = bookNameRef.current.value
+      const authorQuery = authorRef.current.value
 
-  const handleDisableSubmit = useCallback(() => {
-    setDisableSubmit(
-      bookNameRef.current.value === '' &&
-        authorRef.current.value === '' &&
-        !selectedPages
-    )
-  }, [selectedPages])
+      if (bookQuery === '' && authorQuery === '') {
+        toast.error('Please, insert a Title or an Author')
+        return
+      }
 
-  const handleOnSubmit = async (e) => {
-    e.preventDefault()
-    const bookQuery = bookNameRef.current.value
-    const authorQuery = authorRef.current.value
+      setIsLoading(true)
+      const genre = selectedGenre
 
-    const booksData = await fetchBooks(bookQuery, authorQuery)
+      const booksData = await fetchBooks(bookQuery, authorQuery, genre)
+      setBooksCards(booksData)
 
-    setBooksCards(booksData)
-    navigate('/search')
-  }
+      const params = getSearchParams(bookQuery, authorQuery, genre)
+      navigate({
+        pathname: '/search',
+        search: `?${createSearchParams(params)}`
+      })
+      setIsLoading(false)
+    },
+    [navigate, setBooksCards, selectedGenre, setIsLoading]
+  )
 
   const handleCollapseFilters = useCallback(() => {
     setDisplayAdvancedFilters((prev) => !prev)
   }, [])
+
+  const handleInput = () => {
+    setCurrentTitle(bookNameRef.current.value)
+    setCurrentAuthor(authorRef.current.value)
+  }
 
   return (
     <StyledAside $displayFilters={displayAdvancedFilters}>
@@ -69,7 +88,8 @@ const SearchForm = () => {
           labelText='Book Title'
           placeholder=''
           ref={bookNameRef}
-          onChange={handleDisableSubmit}
+          onInput={handleInput}
+          value={currentTitle}
         />
         <StyledAuthorInput
           $displayFilters={displayAdvancedFilters}
@@ -77,50 +97,11 @@ const SearchForm = () => {
           labelText='Book Author'
           placeholder=''
           ref={authorRef}
-          onChange={handleDisableSubmit}
+          onInput={handleInput}
+          value={currentAuthor}
         />
-        <PagesFilterContainer $displayFilters={displayAdvancedFilters}>
-          <StyledFilterTitle>Max Pages</StyledFilterTitle>
-          <StyledRadioLabel hidden={true}>
-            <StyledRadioInput
-              onChange={handleOptionChange}
-              name='book-pages'
-              type='radio'
-              value='200'
-            />{' '}
-            200
-          </StyledRadioLabel>
-          <StyledRadioLabel>
-            <StyledRadioInput
-              onChange={handleOptionChange}
-              name='book-pages'
-              type='radio'
-              value='500'
-            />{' '}
-            500
-          </StyledRadioLabel>
-          <StyledRadioLabel>
-            <StyledRadioInput
-              onChange={handleOptionChange}
-              name='book-pages'
-              type='radio'
-              value='1000'
-            />{' '}
-            1000
-          </StyledRadioLabel>
-          <StyledRadioLabel>
-            <StyledRadioInput
-              onChange={handleOptionChange}
-              name='book-pages'
-              type='radio'
-              value='2000'
-            />{' '}
-            2000
-          </StyledRadioLabel>
-        </PagesFilterContainer>
-        <ColoredButton type='submit' disabled={disableSubmit}>
-          Search my books
-        </ColoredButton>
+        <GenreSelect />
+        <ColoredButton type='submit'>Search my books</ColoredButton>
       </StyledForm>
       <StyledFiltersButton onClick={handleCollapseFilters}>
         <ArrowIcon
@@ -130,6 +111,8 @@ const SearchForm = () => {
       </StyledFiltersButton>
     </StyledAside>
   )
-}
+})
+
+SearchForm.displayName = 'SearchForm'
 
 export default SearchForm

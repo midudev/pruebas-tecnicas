@@ -1,5 +1,5 @@
 import { useAtomValue } from 'jotai'
-import { userCompletedBooks } from '../../context/atoms'
+import { loading, userCompletedBooks } from '../../context/atoms'
 
 import BookCard from '../../components/BookCard'
 import CardsContainer from '../SearchPage/CardsContainer'
@@ -11,10 +11,13 @@ import notAvailable from '../../assets/cover-not-available.webp'
 
 const CompletedBooks = () => {
   const completedBooksData = useAtomValue(userCompletedBooks)
+  const isLoading = useAtomValue(loading)
 
   return (
     <StyledMain>
-      {completedBooksData.length > 0 ? (
+      {isLoading ? (
+        <></>
+      ) : completedBooksData.length > 0 ? (
         <>
           <StyledText>
             These are the books you have completed. Good Job!

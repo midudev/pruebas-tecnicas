@@ -4,7 +4,7 @@ import propTypes from 'prop-types'
 import { StyledInput, StyledInputContainer, StyledLabel } from './styles'
 
 const AnimatedInput = forwardRef(
-  ({ onChange, inputId, labelText, placeholder, className }, ref) => {
+  ({ inputId, labelText, placeholder, className, value, onInput }, ref) => {
     return (
       <StyledInputContainer className={className}>
         <StyledInput
@@ -13,7 +13,8 @@ const AnimatedInput = forwardRef(
           id={inputId}
           type='text'
           placeholder={placeholder}
-          onChange={onChange}
+          onInput={onInput}
+          value={value}
         />
         <StyledLabel htmlFor={inputId}>{labelText}</StyledLabel>
       </StyledInputContainer>
@@ -28,7 +29,8 @@ AnimatedInput.propTypes = {
   labelText: propTypes.string.isRequired,
   placeholder: propTypes.string.isRequired,
   className: propTypes.string.isRequired,
-  onChange: propTypes.func
+  value: propTypes.string,
+  onInput: propTypes.func
 }
 
 export default AnimatedInput

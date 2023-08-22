@@ -1,5 +1,5 @@
 import { useAtomValue } from 'jotai'
-import { books } from '../../context/atoms'
+import { books, loading } from '../../context/atoms'
 
 import SearchForm from '../../components/SearchForm'
 import BookCard from '../../components/BookCard'
@@ -12,9 +12,11 @@ import notAvailable from '../../assets/cover-not-available.webp'
 
 const SearchPage = () => {
   const booksData = useAtomValue(books)
+  const isLoading = useAtomValue(loading)
 
   return (
     <StyledMain>
+      {isLoading && <h1>LOADING</h1>}
       <StyledText>
         <strong>Search</strong> a <em>title</em> or an <em>author</em> to look
         for your favorite Books
