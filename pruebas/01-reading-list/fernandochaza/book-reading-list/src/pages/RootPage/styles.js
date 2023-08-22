@@ -5,6 +5,8 @@ const StyledPageContainer = styled.div`
   color: ${(props) => props.theme.mainTxt};
   height: auto;
   min-height: 100vh;
+
+  transition: background 0.25s ease, color 0.25s ease;
 `
 
 export { StyledPageContainer }

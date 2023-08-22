@@ -15,7 +15,7 @@ const StyledAddIcon = styled.svg`
 const StyledAddButton = styled.button`
   border: none;
   cursor: pointer;
-  color: ${(props) => props.theme.mainBg};
+  color: ${(props) => props.theme.contrastBg};
   transition: color .25s ease;
 `
 
