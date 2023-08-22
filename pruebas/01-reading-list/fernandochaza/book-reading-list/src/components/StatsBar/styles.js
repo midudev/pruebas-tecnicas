@@ -4,7 +4,7 @@ const StyledStatsSection = styled.section`
   display: flex;
   justify-content: space-evenly;
   max-width: 700px;
-  margin: 0.5rem auto;
+  margin: 2rem auto 0.5rem auto;
   padding: 0.25rem 0.75rem;
   border-radius: 16px;
   background-color: ${(props) => props.theme.mainBg};
@@ -15,7 +15,11 @@ const StyledStatsSection = styled.section`
   }
 
   @media screen and (max-width: ${(props) => props.theme.breakpointSm}) {
-    max-width: 100%;
+    max-width: 60%;
+    flex-direction: column;
+    align-items: center;
+    padding: .75rem .5rem;
+    row-gap: 1rem;
   }
 `
 
@@ -26,11 +30,7 @@ const StyledSectionField = styled.div`
 
 const StyledSectionFieldTitle = styled.p`
   font-size: 1rem;
-  padding-left: .5rem;
+  padding-left: 0.5rem;
 `
 
-export {
-  StyledStatsSection,
-  StyledSectionField,
-  StyledSectionFieldTitle
-}
+export { StyledStatsSection, StyledSectionField, StyledSectionFieldTitle }
