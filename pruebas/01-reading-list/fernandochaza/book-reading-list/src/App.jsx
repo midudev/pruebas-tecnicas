@@ -1,6 +1,11 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { useAtom, useAtomValue, useSetAtom } from 'jotai'
-import { loading, themeAtom, userCompletedBooks, userReadingList } from './context/atoms'
+import {
+  loading,
+  themeAtom,
+  userCompletedBooks,
+  userReadingList
+} from './context/atoms'
 
 import { Toaster } from 'sonner'
 
@@ -16,6 +21,7 @@ import CompletedBooks from './pages/CompletedBooks'
 import { getUserReadingList } from './Utils/getUserReadingList'
 import { getUserCompletedBooks } from './Utils/getUserCompletedBooks'
 import { useEffect } from 'react'
+import { darkTheme } from './theme/themes'
 
 function App() {
   const currentTheme = useAtomValue(themeAtom)
@@ -62,7 +68,12 @@ function App() {
   return (
     <ThemeProvider theme={currentTheme}>
       <RouterProvider router={router} />
-      <Toaster position='top-center' theme='dark' richColors />
+      <Toaster
+        position='top-center'
+        theme={currentTheme === darkTheme ? 'dark' : 'light'}
+        richColors
+        closeButton
+      />
     </ThemeProvider>
   )
 }
