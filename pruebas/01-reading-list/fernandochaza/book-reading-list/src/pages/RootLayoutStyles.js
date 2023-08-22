@@ -8,6 +8,7 @@ const StyledMain = styled.main`
   max-width: 1100px;
   height: calc(100% - 104px);
   display: flex;
+  justify-content: center;
   flex-direction: column;
   transition: background-color .25s ease,  .25s ease;
 

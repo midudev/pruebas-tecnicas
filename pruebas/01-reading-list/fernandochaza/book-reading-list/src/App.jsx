@@ -1,4 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { useAtom, useAtomValue, useSetAtom } from 'jotai'
+import { loading, themeAtom, userCompletedBooks, userReadingList } from './context/atoms'
+
 import { Toaster } from 'sonner'
 
 import { ThemeProvider } from 'styled-components'
@@ -9,11 +12,26 @@ import ReadingList from './pages/ReadingList'
 import SearchPage from './pages/SearchPage'
 import HomePage from './pages/HomePage'
 import CompletedBooks from './pages/CompletedBooks'
-import { useAtomValue } from 'jotai'
-import { themeAtom } from './context/atoms'
+
+import { getUserReadingList } from './Utils/getUserReadingList'
+import { getUserCompletedBooks } from './Utils/getUserCompletedBooks'
+import { useEffect } from 'react'
 
 function App() {
   const currentTheme = useAtomValue(themeAtom)
+  const setReadingList = useSetAtom(userReadingList)
+  const setCompletedBooks = useSetAtom(userCompletedBooks)
+  const [, setIsLoading] = useAtom(loading)
+
+  useEffect(() => {
+    setIsLoading(true)
+    const currentReadingList = getUserReadingList()
+    setReadingList(currentReadingList)
+
+    const currentCompletedBooks = getUserCompletedBooks()
+    setCompletedBooks(currentCompletedBooks)
+    setIsLoading(false)
+  }, [setReadingList, setCompletedBooks, setIsLoading])
 
   const router = createBrowserRouter([
     {

@@ -4,7 +4,7 @@ const StyledCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   box-shadow: 0 0 8px 0 ${(props) => props.theme.secondaryTxt};
-  background-color: ${(props) => props.theme.mainBg};
+  background-color: ${(props) => props.theme.contrastBg};
   padding-bottom: 1rem;
   border-radius: 8px;
   position: relative;
@@ -25,6 +25,8 @@ const StyledBookCover = styled.img`
   height: 189px;
   margin: 1rem auto;
   border-radius: 8px;
+  border: 1px solid ${(props) => props.theme.accentBg};
+  transition: border .25s ease;
 `
 
 const BookTitle = styled.h3`

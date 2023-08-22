@@ -1,5 +1,5 @@
 import { useAtomValue } from 'jotai'
-import { userReadingList } from '../../context/atoms'
+import { loading, userReadingList } from '../../context/atoms'
 
 import BookCard from '../../components/BookCard'
 import CardsContainer from '../SearchPage/CardsContainer'
@@ -12,10 +12,13 @@ import SuggestedBooks from '../HomePage/SuggestedBooks'
 
 const ReadingList = () => {
   const booksData = useAtomValue(userReadingList)
+  const isLoading = useAtomValue(loading)
 
   return (
     <StyledMain>
-      {booksData.length > 0 ? (
+      {isLoading ? (
+        <></>
+      ) : booksData.length > 0 ? (
         <>
           <StyledText>These are the books you have left to read.</StyledText>
           <CardsContainer>
