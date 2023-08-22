@@ -27,7 +27,6 @@ import { getSearchParams } from '../../Utils/getSearchParams'
 import { toast } from 'sonner'
 
 const SearchForm = memo(() => {
-  console.log('RENDER FORM')
   const theme = useTheme()
 
   const bookNameRef = useRef('')
@@ -54,10 +53,9 @@ const SearchForm = memo(() => {
         return
       }
 
-      setIsLoading(true)
       const genre = selectedGenre
-
       const booksData = await fetchBooks(bookQuery, authorQuery, genre)
+
       setBooksCards(booksData)
 
       const params = getSearchParams(bookQuery, authorQuery, genre)

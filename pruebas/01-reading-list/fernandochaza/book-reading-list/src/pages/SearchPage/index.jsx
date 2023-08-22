@@ -14,9 +14,10 @@ const SearchPage = () => {
   const booksData = useAtomValue(books)
   const isLoading = useAtomValue(loading)
 
+  if (isLoading) return ''
+
   return (
     <StyledMain>
-      {isLoading && <h1>LOADING</h1>}
       <StyledText>
         <strong>Search</strong> a <em>title</em> or an <em>author</em> to look
         for your favorite Books
