@@ -44,6 +44,18 @@ const StyledSpan = styled.span`
     border-radius: 50%;
     transition: transform 0.3s ease;
   }
+
+  @media screen and (max-width: 636px) {
+    &::before {
+      top: 1px;
+    }
+  }
+
+  @media screen and (max-width: 341px) {
+    &::before {
+      top: 2px;
+    }
+  }
 `
 
 const StyledInput = styled.input`

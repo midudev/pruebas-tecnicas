@@ -4,7 +4,7 @@ const StyledMain = styled.main`
   color: ${(props) => props.theme.mainTxt};
   background-color: ${(props) => props.theme.mainBg};
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 1rem;
   max-width: 1100px;
   height: calc(100% - 104px);
   display: flex;

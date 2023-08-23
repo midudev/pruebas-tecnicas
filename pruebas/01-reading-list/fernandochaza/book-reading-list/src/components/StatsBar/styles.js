@@ -5,6 +5,8 @@ const StyledContainer = styled.div`
   padding: 2rem;
 
   transition: background-color 0.25s ease;
+  @media screen and (max-width: ${(props) => props.theme.breakpointSm}) {
+  }
 `
 
 const StyledStatsSection = styled.section`
@@ -27,7 +29,12 @@ const StyledStatsSection = styled.section`
     flex-direction: column;
     align-items: center;
     padding: 0.75rem 0.5rem;
+    margin: 7rem auto 0 auto;
     row-gap: 1rem;
+  }
+
+  @media screen and (max-width: 341px) {
+    margin: 9rem auto 0 auto;
   }
 `
 
