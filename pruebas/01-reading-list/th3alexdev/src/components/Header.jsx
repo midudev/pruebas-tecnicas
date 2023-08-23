@@ -1,11 +1,16 @@
 import { useContext, useRef } from "react";
 import { FiltersContext } from "../context/contextFiltersProvider";
 import { SearchIcon, CloseIcon } from "./Icons";
-import { SavedBooksIconRegular, SavedBooksIconSolid } from "./Icons";
+import { SavedBooksIcon } from "./Icons";
 import FlipCounter from "./FlipCounter";
+import { UserListContext } from "../context/contextUserListProvider";
 
 export default function Header({ showSidebar, toggleSidebar }) {
+
+  const { savedBooks } = useContext(UserListContext);
+
   const searchInputRef = useRef();
+
   const { filters, setFilters } = useContext(FiltersContext);
 
   const { sortByTitle } = filters;
@@ -17,7 +22,7 @@ export default function Header({ showSidebar, toggleSidebar }) {
 
   return (
     <>
-      <header className="absolute right-0 w-4/5 flex flex-col items-center py-6 z-50">
+      <header className="fixed right-0 w-4/5 flex flex-col items-center py-6 z-50 bg-background">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -52,14 +57,10 @@ export default function Header({ showSidebar, toggleSidebar }) {
           className="absolute right-9 top-1/2 translate-y-[-50%]"
           onClick={toggleSidebar}
         >
-          <FlipCounter />
+          <FlipCounter total={savedBooks.length}/>
           <span className="block relative rotate-[30deg] p-2 z-10">
             <span className="relative z-50">
-              {showSidebar ? (
-                <SavedBooksIconSolid />
-              ) : (
-                <SavedBooksIconRegular />
-              )}
+                <SavedBooksIcon />
             </span>
           </span>
         </button>
