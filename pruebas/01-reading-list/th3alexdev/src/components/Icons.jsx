@@ -54,7 +54,7 @@ export function AddBookIcon() {
   );
 }
 
-export function SavedBooksIconRegular() {
+export function SavedBooksIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -68,16 +68,16 @@ export function SavedBooksIconRegular() {
   );
 }
 
-export function SavedBooksIconSolid() {
+export function DeleteBookIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
-      height="28"
+      height="24"
       viewBox="0 -960 960 960"
-      width="28"
+      width="24"
     >
-      <path d="m634-448 86 77v60H510v241l-30 30-30-30v-241H240v-60l80-77v-333h-50v-60h414v60h-50v333Z" />
+      <path d="M272-96q-50.938 0-85.969-35.031Q151-166.062 151-217v-489h-1.5q-24.5 0-42.5-18t-18-42.5q0-24.5 18-42.5t42.5-18H339v-.5q0-24.5 18-42.5t42.5-18h160q24.5 0 42.5 18t18 42.5v.5h191.5q24.5 0 42.5 18t18 42.5q0 24.5-18 42.5t-42.5 18H810v489q0 50.938-35.031 85.969Q739.938-96 689-96H272Zm417-610H272v489h417v-489ZM347-284.5h98v-355h-98v355Zm169 0h98v-355h-98v355ZM272-706v489-489Z" />
     </svg>
   );
 }
