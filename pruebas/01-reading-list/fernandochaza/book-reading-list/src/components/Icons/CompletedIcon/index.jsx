@@ -1,10 +1,16 @@
 import { useTheme } from 'styled-components'
+import { StyledSvg } from './styles'
 
 const CompletedIcon = () => {
   const theme = useTheme()
 
   return (
-    <svg width='40px' height='40px' viewBox='-2.4 -2.4 28.80 28.80' fill='none'>
+    <StyledSvg
+      width='40px'
+      height='40px'
+      viewBox='-2.4 -2.4 28.80 28.80'
+      fill='none'
+    >
       <g id='SVGRepo_bgCarrier' strokeWidth='0'>
         <rect
           x='-2.4'
@@ -12,7 +18,7 @@ const CompletedIcon = () => {
           width='28.80'
           height='28.80'
           rx='14.4'
-          fill={theme.mainBg}
+          fill='currentColor'
           strokeWidth='0'
         ></rect>
       </g>
@@ -34,7 +40,7 @@ const CompletedIcon = () => {
           fill={theme.mainTxt}
         ></path>{' '}
       </g>
-    </svg>
+    </StyledSvg>
   )
 }
 

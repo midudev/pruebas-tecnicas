@@ -1,12 +1,13 @@
 import { useTheme } from 'styled-components'
+import { StyledSvg } from './styles'
 
 const BookIcon = () => {
   const theme = useTheme()
 
   return (
-    <svg
+    <StyledSvg
       viewBox='0 0 24 24'
-      fill={theme.mainBg}
+      fill='currentColor'
       xmlns='http://www.w3.org/2000/svg'
       width='30'
       height='30'
@@ -48,7 +49,7 @@ const BookIcon = () => {
           strokeLinecap='round'
         ></path>{' '}
       </g>
-    </svg>
+    </StyledSvg>
   )
 }
 

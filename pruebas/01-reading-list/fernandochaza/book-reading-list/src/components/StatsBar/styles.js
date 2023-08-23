@@ -9,6 +9,7 @@ const StyledStatsSection = styled.section`
   border-radius: 16px;
   background-color: ${(props) => props.theme.mainBg};
   box-shadow: 0 0 8px 0 ${(props) => props.theme.accent1Color};
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
 
   @media screen and (max-width: ${(props) => props.theme.breakpointMd}) {
     max-width: 75%;
@@ -18,7 +19,7 @@ const StyledStatsSection = styled.section`
     max-width: 60%;
     flex-direction: column;
     align-items: center;
-    padding: .75rem .5rem;
+    padding: 0.75rem 0.5rem;
     row-gap: 1rem;
   }
 `
