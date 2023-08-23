@@ -4,7 +4,8 @@ import { userCompletedBooks, userReadingList } from '../../context/atoms'
 import {
   StyledStatsSection,
   StyledSectionField,
-  StyledSectionFieldTitle
+  StyledSectionFieldTitle,
+  StyledContainer
 } from './styles'
 import BookIcon from '../Icons/BookIcon'
 import CompletedIcon from '../Icons/CompletedIcon'
@@ -17,20 +18,22 @@ const StatsBar = () => {
   const booksCompleted = completedBooks.length
 
   return (
-    <StyledStatsSection>
-      <StyledSectionField>
-        <BookIcon></BookIcon>
-        <StyledSectionFieldTitle>
-          <strong>{booksInReadingList}</strong> Books in Reding List
-        </StyledSectionFieldTitle>
-      </StyledSectionField>
-      <StyledSectionField>
-        <CompletedIcon></CompletedIcon>
-        <StyledSectionFieldTitle>
-          <strong>{booksCompleted}</strong> Books Completed
-        </StyledSectionFieldTitle>
-      </StyledSectionField>
-    </StyledStatsSection>
+    <StyledContainer>
+      <StyledStatsSection>
+        <StyledSectionField>
+          <BookIcon></BookIcon>
+          <StyledSectionFieldTitle>
+            <strong>{booksInReadingList}</strong> Books in Reding List
+          </StyledSectionFieldTitle>
+        </StyledSectionField>
+        <StyledSectionField>
+          <CompletedIcon></CompletedIcon>
+          <StyledSectionFieldTitle>
+            <strong>{booksCompleted}</strong> Books Completed
+          </StyledSectionFieldTitle>
+        </StyledSectionField>
+      </StyledStatsSection>
+    </StyledContainer>
   )
 }
 

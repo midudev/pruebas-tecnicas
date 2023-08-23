@@ -1,5 +1,19 @@
 import styled from 'styled-components'
 
+const StyledContainer = styled.div`
+  width: 100%;
+  height: 67px;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: ${(props) => props.theme.mainBg};
+  box-shadow: ${(props) =>
+    props.$scroll === true ? `0 3px 3px -4px ${props.theme.mainTxt}` : ''};
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+`
+
 const StyledHeader = styled.header`
   color: ${(props) => props.theme.mainTxt};
   background-color: ${(props) => props.theme.mainBg};
@@ -8,7 +22,14 @@ const StyledHeader = styled.header`
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
-  transition: background-color .25s ease, color .25s ease;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  transition: background-color 0.25s ease, color 0.25s ease,
+    box-shadow 0.25s ease;
 
   @media screen and (min-width: 576px) {
     flex-direction: row;
@@ -31,7 +52,7 @@ const StyledTitle = styled.h1`
 const StyledNav = styled.nav`
   display: flex;
   width: 100%;
-  margin: 0 auto .5rem auto;
+  margin: 0 auto 0.5rem auto;
   justify-content: space-around;
   align-items: center;
 
@@ -52,5 +73,6 @@ export {
   StyledHeader,
   StyledTitleContainer,
   StyledTitle,
-  StyledNav
+  StyledNav,
+  StyledContainer
 }

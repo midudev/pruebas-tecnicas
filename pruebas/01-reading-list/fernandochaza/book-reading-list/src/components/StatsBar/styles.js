@@ -1,10 +1,17 @@
 import styled from 'styled-components'
 
+const StyledContainer = styled.div`
+  background-color: ${(props) => props.theme.mainBg};
+  padding: 2rem;
+
+  transition: background-color 0.25s ease;
+`
+
 const StyledStatsSection = styled.section`
   display: flex;
   justify-content: space-evenly;
   max-width: 700px;
-  margin: 2rem auto 0.5rem auto;
+  margin: 4rem auto 0 auto;
   padding: 0.25rem 0.75rem;
   border-radius: 16px;
   background-color: ${(props) => props.theme.mainBg};
@@ -34,4 +41,9 @@ const StyledSectionFieldTitle = styled.p`
   padding-left: 0.5rem;
 `
 
-export { StyledStatsSection, StyledSectionField, StyledSectionFieldTitle }
+export {
+  StyledStatsSection,
+  StyledSectionField,
+  StyledSectionFieldTitle,
+  StyledContainer
+}

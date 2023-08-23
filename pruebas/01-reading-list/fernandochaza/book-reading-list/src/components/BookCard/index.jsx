@@ -18,7 +18,6 @@ const BookCard = ({ imagePath, title, author, bookData }) => {
   const { isCompleted, handleCompletedBook } = useAddToCompletedBooks(bookData)
 
   const secureImagePath = imagePath.replace('http://', 'https://')
-  console.log(secureImagePath)
 
   return (
     <StyledCardContainer>
