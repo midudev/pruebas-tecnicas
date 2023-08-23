@@ -1,14 +1,25 @@
 
-import { Books } from "../types/book"
+import { useAppDispatch } from "../hooks/store"
+import { bookInList } from "../store/books/slice"
+import { addToReading } from "../store/readingList/slice"
+import { Books, BooksState,  } from "../types/book"
 
 
 
   export const Book = (props: Books) => {
-      const {title, pages, genre, cover, synopsis, year, ISBN, author} = props.book
+      const {title, pages, genre, cover, year, ISBN, author, synopsis} = props.book
+
+      const dispatch = useAppDispatch()
+
+    const addReadingList = (book: BooksState) => {
+      dispatch(bookInList(book.title))
+      dispatch(addToReading(book))
+    }
+
   return (
     
     <section className="relative mx-auto w-full">
-      <a href="#" className="relative inline-block w-full transform transition-transform duration-300 ease-in-out hover:-translate-y-2">
+      <section  className="relative inline-block w-full transform transition-transform duration-300 ease-in-out hover:-translate-y-2">
         <div className="rounded-lg bg-white p-4 shadow">
           <div className="relative flex h-52 justify-center overflow-hidden rounded-lg">
             <div className="w-full transform transition-transform duration-500 ease-in-out hover:scale-110">
@@ -53,16 +64,24 @@ import { Books } from "../types/book"
                 ISBN {ISBN}
               </p>
               
-            </div>
+            </div>  
           </div>
           <div className="mt-8">
-            <div className="flex justify-between">
-              <button><i className="fa fa-sms mx-1 rounded-md bg-[#0174E1] py-1 px-3 text-2xl text-white">Add</i></button>
-              <button><i className="fa fa-phone rounded-md bg-[#64b4ff] py-1 px-3 text-2xl text-white">Description</i></button>
+            <div className="flex justify-center">
+              <button onClick={() => addReadingList({
+                title, 
+                pages,
+                genre,
+                cover,
+                year, 
+                ISBN, 
+                author, 
+                synopsis
+              })}><i className="fa fa-sms mx-1 rounded-md bg-[#0174E1] py-1 px-3 text-2xl text-white">Agregar</i></button>
             </div>
           </div>
         </div>
-      </a>
+      </section>
     </section>
 
   )

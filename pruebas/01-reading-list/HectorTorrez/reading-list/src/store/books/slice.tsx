@@ -21,20 +21,27 @@ export const bookSlice = createSlice({
            }
         },
 
+        addToListAgain:(state, action) => {
+            state.books.push(action.payload)
+        },
+
         filterByGenre:(state, action)=>{
             state.filterByGenre = action.payload.toLowerCase()
            
         },
         filterByPages:(state, action)=> {
-           
             state.fitlerByPages = action.payload
+        },
+
+        bookInList:(state, action) => {
+            state.books = state.books.filter(item => item.book.title !== action.payload)
         }
     }
 
 })
 
 
-export const {getBooks,filterByGenre,filterByPages} = bookSlice.actions
+export const {getBooks,filterByGenre,filterByPages, bookInList, addToListAgain} = bookSlice.actions
 export default bookSlice.reducer
 
 

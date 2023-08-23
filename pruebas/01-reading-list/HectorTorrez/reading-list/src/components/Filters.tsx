@@ -41,7 +41,7 @@ export const Filters = ({maxPages}: maxPagesProps) => {
     <section className='my-5 px-4'>
         <form className='flex flex-col md:flex-row items-center gap-y-10 md:gap-x-4'>
             <select className='rounded bg-gray-50 ring-1 ring-gray-300 outline-none w-56' onChange={(e)=> setSelectFilter(e.target.value)} >
-                <option className='cursor-pointer select-none p-2 hover:bg-gray-200' value="">Genre</option>
+                <option className='cursor-pointer select-none p-2 hover:bg-gray-200' value="">Género</option>
                 {
                     allGenres.map(item => {
                         return <option className='cursor-pointer select-none p-2 hover:bg-gray-200' key={item} value={item}>{item}</option>
@@ -49,7 +49,7 @@ export const Filters = ({maxPages}: maxPagesProps) => {
                 }
             </select>
             <label className='flex flex-col items-center gap-x-3 font-bold  '>
-                Filter by number of pages
+                    Filtrar por número de páginas
                 <input
                     type='range'
                     min='0'
