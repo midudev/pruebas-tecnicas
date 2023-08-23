@@ -95,14 +95,36 @@ export function Filter ({ available, filterByGenre, setFilterByGenre, filterByPa
         FILTER BY RANGE OF PAGES
       </Heading>
 
-      <RangeSlider aria-label={['min', 'max']} defaultValue={[0, 240]} min={min} max={max} onChange={(e) => handlePagesChange(e)}>
-        <RangeSliderTrack bg='red.100'>
-          <RangeSliderFilledTrack bg='tomato' />
+      <RangeSlider
+        aria-label={['min', 'max']}
+        defaultValue={[0, 240]}
+        min={min}
+        max={max}
+        onChange={(e) => handlePagesChange(e)}
+      >
+        <RangeSliderTrack
+          bg='red.100'
+        >
+          <RangeSliderFilledTrack
+            bg='tomato'
+          />
         </RangeSliderTrack>
-        <RangeSliderThumb boxSize={6} index={0} />
-        <RangeSliderThumb boxSize={6} index={1} />
+        <RangeSliderThumb
+          boxSize={6}
+          index={0}
+        />
+        <RangeSliderThumb
+          boxSize={6}
+          index={1}
+        />
       </RangeSlider>
-      <Text fontSize='sm' pl='2' mb='20px'>{filterByPages[0]} - {filterByPages[1]} pages</Text>
+      <Text
+        fontSize='sm'
+        pl='2'
+        mb='20px'
+      >
+        {filterByPages[0]} - {filterByPages[1]} pages
+      </Text>
       <Button
         aria-label='Clean filter'
         display='flex'

@@ -20,9 +20,20 @@ export function AvailableBookCard ({ el, handleAddClick, crypto }) {
           h='280px'
           w='200px'
         />
-        <Stack mt='6' spacing='3'>
-          <Heading as='h3' size='md' noOfLines='1'>{el.book.title}</Heading>
-          <Text>{el.book.author.name}</Text>
+        <Stack
+          mt='6'
+          spacing='3'
+        >
+          <Heading
+            as='h3'
+            size='md'
+            noOfLines='1'
+          >
+            {el.book.title}
+          </Heading>
+          <Text>
+            {el.book.author.name}
+          </Text>
         </Stack>
       </CardBody>
       <CardFooter>
@@ -58,9 +69,20 @@ export function MyListBookCard ({ el, handleRemoveClick, crypto }) {
           h='280px'
           w='200px'
         />
-        <Stack mt='6' spacing='3'>
-          <Heading as='h3' size='md' noOfLines='1'>{el.title}</Heading>
-          <Text>{el.author.name}</Text>
+        <Stack
+          mt='6'
+          spacing='3'
+        >
+          <Heading
+            as='h3'
+            size='md'
+            noOfLines='1'
+          >
+            {el.title}
+          </Heading>
+          <Text>
+            {el.author.name}
+          </Text>
         </Stack>
       </CardBody>
       <CardFooter>
