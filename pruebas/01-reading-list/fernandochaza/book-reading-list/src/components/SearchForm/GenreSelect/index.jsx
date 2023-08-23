@@ -24,6 +24,7 @@ const GenreSelect = () => {
         ref={selectRef}
         onChange={onChange}
         defaultValue={defaultOption}
+        aria-label={defaultOption}
       >
         <option value={defaultOption} disabled>
           Select a category

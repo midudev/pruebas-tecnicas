@@ -17,9 +17,17 @@ const BookCard = ({ imagePath, title, author, bookData }) => {
   const { isInReadingList, handleAddBook } = useAddToReadingList(bookData)
   const { isCompleted, handleCompletedBook } = useAddToCompletedBooks(bookData)
 
+  const secureImagePath = imagePath.replace('http://', 'https://')
+  console.log(secureImagePath)
+
   return (
     <StyledCardContainer>
-      <StyledBookCover src={imagePath} width={128} height={189} />
+      <StyledBookCover
+        src={secureImagePath}
+        alt={`Cover image of the book ${title}, from ${author}`}
+        width={128}
+        height={189}
+      />
       <BookTitle>{title}</BookTitle>
       <StyledText>({author})</StyledText>
       <AddIcon

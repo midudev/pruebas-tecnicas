@@ -29,8 +29,11 @@ const StyledBookCover = styled.img`
   transition: border .25s ease;
 `
 
-const BookTitle = styled.h3`
+const BookTitle = styled.h2`
   text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0 12px;
 `
 
 const StyledText = styled.p`

@@ -5,7 +5,10 @@ import { useTheme } from 'styled-components'
 const AddIcon = ({ onClick, isInReadingList }) => {
   const theme = useTheme()
   return (
-    <StyledAddButton onClick={onClick}>
+    <StyledAddButton
+      onClick={onClick}
+      aria-label='Add or remove book from reading list'
+    >
       <StyledBookIcon
         viewBox='0 0 24 24'
         fill='currentColor'
@@ -58,7 +61,7 @@ const AddIcon = ({ onClick, isInReadingList }) => {
           viewBox='-3.2 -3.2 38.40 38.40'
           version='1.1'
           fill='currentColor'
-          >
+        >
           <g id='SVGRepo_bgCarrier' strokeWidth='0'>
             <rect
               x='-3.2'
@@ -110,7 +113,7 @@ const AddIcon = ({ onClick, isInReadingList }) => {
           viewBox='-3.2 -3.2 38.40 38.40'
           version='1.1'
           fill='currentColor'
-          >
+        >
           <g id='SVGRepo_bgCarrier' strokeWidth='0'>
             <rect
               x='-3.2'

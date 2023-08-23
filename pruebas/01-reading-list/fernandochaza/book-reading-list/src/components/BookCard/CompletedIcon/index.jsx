@@ -6,7 +6,10 @@ import { useTheme } from 'styled-components'
 const CompletedIcon = ({ onClick, isCompleted }) => {
   const theme = useTheme()
   return (
-    <StyledAddButton onClick={onClick}>
+    <StyledAddButton
+      onClick={onClick}
+      aria-label='Add book to completed books list'
+    >
       <StyledCheckIcon>
         <svg
           width='40px'
