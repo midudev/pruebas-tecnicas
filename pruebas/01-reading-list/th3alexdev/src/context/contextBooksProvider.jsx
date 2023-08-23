@@ -1,11 +1,13 @@
 import { useState, useEffect, createContext } from "react";
 import { getBooks } from "../services/getBooks";
+import { ERROR_MESSAGES } from "../constants/errorMessages"
 
 export const BooksContext = createContext();
 
 export function BooksProvider({ children }) {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const initBooks = async () => {
@@ -32,9 +34,9 @@ export function BooksProvider({ children }) {
         });
         setBooks(mappedBooks);
       } catch (e) {
-        console.error("murió: ", e);
-        console.log('no cargó xd')
-        
+        console.error("Hubo un error: ", e);
+        setError(ERROR_MESSAGES.FETCH_ERROR);
+
       } finally {
         setLoading(false);
       }
@@ -44,6 +46,6 @@ export function BooksProvider({ children }) {
   }, []);
 
   return (
-    <BooksContext.Provider value={{ books, loading }}>{children}</BooksContext.Provider>
+    <BooksContext.Provider value={{ books, loading, setLoading, error, setError }}>{children}</BooksContext.Provider>
   );
 }
