@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  background-color: #17171D;
+  background-color: #18191d;
   color: #FFF;
   color-scheme: dark;
   font-family: 'General Sans', sans-serif;
@@ -11,7 +11,15 @@
 
 * {
   scrollbar-gutter: stable;
-  /* outline: 1px solid #ffffff33; */
+  outline: 1px solid #ffffff55;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+img {
+  -webkit-user-drag: none;
 }
 
 @layer components {
@@ -41,4 +49,8 @@ input[type=number] {
 
 ::-webkit-scrollbar-track {
   background-color: #1a1920;
+}
+
+.text-balance {
+  text-wrap: balance;
 }
