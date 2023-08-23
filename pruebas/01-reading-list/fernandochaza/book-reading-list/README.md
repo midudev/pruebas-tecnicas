@@ -18,8 +18,7 @@ This is a React web application that allows users to search their favorite books
 
 Check out the live demo of the application:
 
-- Production: [Readings Organizer](https://)
-- Development: [Dev Readings Organizer](https://)
+- Production: [Readings Organizer](https://readings-organizer.vercel.app/)
 
 ## Getting Started
 
