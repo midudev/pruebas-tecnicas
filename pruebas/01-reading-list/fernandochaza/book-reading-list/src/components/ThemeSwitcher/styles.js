@@ -40,7 +40,7 @@ const StyledSpan = styled.span`
     top: 2px;
     width: 22px;
     height: 22px;
-    background-color: ${(props) => props.theme.mainTxt};
+    background-color: ${(props) => props.theme.accent1Color};
     border-radius: 50%;
     transition: transform 0.3s ease;
   }
