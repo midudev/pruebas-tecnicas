@@ -24,7 +24,7 @@ export default function Filters() {
         <Brand />
         <div>
           <form onSubmit={(e) => e.preventDefault}>
-            <h3 className="w-4/5 font-semibold text-lg leading-6 mb-2 line-clamp-2">
+            <h3 className="w-4/5 font-semibold text-lg leading-6 mb-2 line-clamp-2 text-balance">
               <label className="cursor-auto">Por cantidad de páginas</label>
             </h3>
             <input
