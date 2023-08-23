@@ -6,8 +6,8 @@ const CompletedIcon = () => {
 
   return (
     <StyledSvg
-      width='40px'
-      height='40px'
+      width='32px'
+      height='32px'
       viewBox='-2.4 -2.4 28.80 28.80'
       fill='none'
     >

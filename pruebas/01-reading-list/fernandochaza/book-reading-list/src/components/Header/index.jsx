@@ -1,6 +1,6 @@
 import propTypes from 'prop-types'
 import ColoredButton from '../ColoredButton'
-import Logo from './LogoIcon'
+import LogoIcon from './LogoIcon'
 
 import { useTheme } from 'styled-components'
 
@@ -22,8 +22,8 @@ const Header = ({ scroll }) => {
     <StyledContainer $scroll={scroll}>
       <StyledHeader>
         <StyledTitleContainer>
-          <Link to='/'>
-            <Logo
+          <Link to='/' aria-label='Link to Home Page'>
+            <LogoIcon
               alt='Logo image of an open book'
               strokeColor={theme.mainTxt}
             />

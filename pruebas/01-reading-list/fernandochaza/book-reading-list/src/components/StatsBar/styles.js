@@ -27,8 +27,8 @@ const StyledStatsSection = styled.section`
   @media screen and (max-width: ${(props) => props.theme.breakpointSm}) {
     max-width: 60%;
     flex-direction: column;
-    align-items: center;
-    padding: 0.75rem 0.5rem;
+    align-items: left;
+    padding: 0.75rem 1rem;
     margin: 7rem auto 0 auto;
     row-gap: 1rem;
   }

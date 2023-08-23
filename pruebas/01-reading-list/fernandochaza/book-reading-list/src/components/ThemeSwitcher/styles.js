@@ -68,7 +68,9 @@ const StyledInput = styled.input`
 
 const StyledMoonIcon = styled.svg``
 
-const StyledSunIcon = styled.svg``
+const StyledSunIcon = styled.svg`
+  margin-left: 1px;
+`
 
 export {
   StyledLabel,

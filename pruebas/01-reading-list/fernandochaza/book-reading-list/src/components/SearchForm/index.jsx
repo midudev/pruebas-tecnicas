@@ -99,9 +99,14 @@ const SearchForm = memo(() => {
           value={currentAuthor}
         />
         <GenreSelect />
-        <ColoredButton type='submit'>Search my books</ColoredButton>
+        <ColoredButton type='submit' ariaLabel='Search books'>
+          Search my books
+        </ColoredButton>
       </StyledForm>
-      <StyledFiltersButton onClick={handleCollapseFilters}>
+      <StyledFiltersButton
+        onClick={handleCollapseFilters}
+        aria-label='Display all filters'
+      >
         <ArrowIcon
           strokeColor={theme.mainTxt}
           rotate={!displayAdvancedFilters}
