@@ -1,15 +1,16 @@
-import { createContext, useState, useContext, useEffect } from 'react';
-import { BooksContext } from './contextBooksProvider';
+import { createContext, useState, useContext, useEffect } from "react";
+import { BooksContext } from "./contextBooksProvider";
+import { ERROR_MESSAGES } from "../constants/errorMessages";
 
 export const FiltersContext = createContext();
 
 export default function FiltersProvider({ children }) {
-  const { books } = useContext(BooksContext);
+  const { books, error, setError } = useContext(BooksContext);
 
   const [filters, setFilters] = useState({
-    sortByTitle: '',
+    sortByTitle: "",
     sortByPages: false,
-    genre: '',
+    genre: "",
     genres: [],
     maxPosiblePages: 0,
     pages: {
@@ -46,12 +47,12 @@ export default function FiltersProvider({ children }) {
     }));
   }, [books]);
 
-  const { sortByTitle, genre, pages } = filters;
+  const { sortByTitle, genre, pages, sortByPages } = filters;
 
   const filter = books?.filter((book) => {
     if (
       (!genre || book.genre === genre) &&
-      (book.title?.toLowerCase().includes(sortByTitle)) &&
+      book.title?.toLowerCase().includes(sortByTitle) &&
       book.pages <= pages.maxPages
     )
       return true;
@@ -60,6 +61,16 @@ export default function FiltersProvider({ children }) {
   });
 
   const filteredBooks = filter;
+
+  useEffect(() => {
+    if (error === ERROR_MESSAGES.FETCH_ERROR) return;
+
+    if ((sortByTitle || genre || sortByPages) && !filteredBooks.length) {
+      setError(ERROR_MESSAGES.NOT_FOUND);
+    } else {
+      setError(null);
+    }
+  }, [filteredBooks, error]);
 
   return (
     <FiltersContext.Provider value={{ filters, setFilters, filteredBooks }}>
