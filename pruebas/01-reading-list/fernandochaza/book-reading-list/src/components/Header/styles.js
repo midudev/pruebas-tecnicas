@@ -12,6 +12,14 @@ const StyledContainer = styled.div`
   box-shadow: ${(props) =>
     props.$scroll === true ? `0 3px 3px -4px ${props.theme.mainTxt}` : ''};
   transition: background-color 0.25s ease, box-shadow 0.25s ease;
+
+  @media screen and (max-width: 635px) {
+    height: 71px;
+  }
+
+  @media screen and (max-width: 576px) {
+    height: 108px;
+  }
 `
 
 const StyledHeader = styled.header`
