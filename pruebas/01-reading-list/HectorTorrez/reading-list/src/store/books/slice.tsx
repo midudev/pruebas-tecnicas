@@ -20,7 +20,9 @@ export const bookSlice = createSlice({
     initialState: {
         books: initialState,
         filterByGenre: '',
-        fitlerByPages: 0
+        fitlerByPages: 0,
+        filterByName: '',
+       
     },
     reducers:{
         addToListAgain:(state, action) => {
@@ -35,6 +37,10 @@ export const bookSlice = createSlice({
             state.fitlerByPages = action.payload
         },
 
+        filterByName:(state, action) => {
+            state.filterByName = action.payload
+        },
+
         bookInList:(state, action) => {
             state.books = state.books.filter(item => item.book.title !== action.payload)
         }
@@ -43,7 +49,7 @@ export const bookSlice = createSlice({
 })
 
 
-export const {filterByGenre,filterByPages, bookInList, addToListAgain} = bookSlice.actions
+export const {filterByGenre,filterByPages, bookInList, addToListAgain, filterByName} = bookSlice.actions
 export default bookSlice.reducer
 
 

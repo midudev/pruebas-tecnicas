@@ -29,19 +29,15 @@ import { Books, BooksState,  } from "../types/book"
             </div>
     
             <div className="absolute bottom-0 left-5 mb-3 flex">
-              <p className="flex items-center font-medium text-white shadow-sm">
-                <i className="fa fa-camera mr-2 text-xl text-white"></i>
-                Pagesz {pages}
+              <p className="flex items-center font-medium text-white bg-[#1f93ff] px-2 py-1 text-xs rounded-sm  shadow-sm">
+  
+                Pages {pages}
               </p>
             </div>
-            <div className="absolute bottom-0 right-5 mb-3 flex">
-              <p className="flex items-center font-medium text-gray-800">
-                <i className="fa fa-heart mr-2 text-2xl text-white"></i>
-              </p>
-            </div>
+
   
             <span className="absolute top-0 right-2 z-10 mt-3 ml-3 inline-flex select-none rounded-sm bg-[#1f93ff] px-2 py-1 text-xs font-semibold text-white"> {genre} </span>
-            <span className="absolute top-0 left-0 z-10 mt-3 ml-3 inline-flex select-none rounded-lg bg-transparent px-3 py-2 text-lg font-medium text-white"> <i className="fa fa-star"></i> </span>
+           
           </div>
   
           <div className="mt-4">
@@ -59,8 +55,7 @@ import { Books, BooksState,  } from "../types/book"
             <div className="mt-4 flex space-x-3 overflow-hidden rounded-lg px-1 py-1">
              
   
-              <p className="flex items-center font-medium text-gray-800">
-                <i className="fa fa-bath mr-2 text-blue-900"></i>
+              <p className="flex  font-medium text-gray-800">
                 ISBN {ISBN}
               </p>
               

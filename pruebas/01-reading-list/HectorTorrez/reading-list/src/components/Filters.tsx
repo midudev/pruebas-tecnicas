@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
 import { useAppDispatch, useAppSelector } from "../hooks/store"
-import { filterByGenre, filterByPages } from '../store/books/slice'
+import { filterByGenre, filterByName, filterByPages } from '../store/books/slice'
+import { Search } from './Icons'
 
     type maxPagesProps = {
         maxPages: number
@@ -11,6 +12,9 @@ export const Filters = ({maxPages}: maxPagesProps) => {
     const [selectFilter, setSelectFilter] = useState('')
     const [allGenres, setAllGenres] = useState<string[]>([])
     const[filterPages, setFilterPages] = useState(0) 
+    const[filerByName, setFilterByName] = useState('')
+
+
     const dispatch = useAppDispatch()
     useEffect(()=> {
         dispatch(filterByGenre(selectFilter))
@@ -26,7 +30,8 @@ export const Filters = ({maxPages}: maxPagesProps) => {
 
     useEffect(()=>{
         dispatch(filterByPages(filterPages))
-    },[filterPages, allGenres])
+        dispatch(filterByName(filerByName.toLowerCase()))
+    },[filterPages, allGenres,filerByName])
 
 
     //i need to fix this filter
@@ -59,8 +64,20 @@ export const Filters = ({maxPages}: maxPagesProps) => {
                     onChange={(e)=>handleChangeFilter(e.target.valueAsNumber)}
                     className=' bg-gray-300 h-3 rounded-lg'
                 />
-                {maxPages}
+                {filterPages}
             </label>
+            
+            <div className='relative flex items-center'>
+            <input type="text" 
+                placeholder='Buscador'
+                onChange={(e)=> setFilterByName(e.target.value)}
+                className='peer cursor-pointer relative z-10 h-12 w-12 rounded-full border border-black bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-black focus:pl-16 focus:pr-4'
+            />
+            <div className='absolute flex items-center inset-y-0 my-auto h-8 w-12  border-r border-transparent stroke-gray-500 px-3.5 peer-focus:border-black peer-focus:stroke-lime-500'>
+            <Search/>
+
+            </div>
+            </div>
         </form>
     </section>
   )
