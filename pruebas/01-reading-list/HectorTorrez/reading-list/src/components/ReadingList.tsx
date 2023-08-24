@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux"
 import { BooksState } from "../types/book"
 import { deleteToReading } from "../store/readingList/slice"
 import { addToListAgain } from "../store/books/slice"
+import { Delete } from "./Icons"
 
 
 export const ReadingList = (props: BooksState) => {
@@ -16,8 +17,8 @@ export const ReadingList = (props: BooksState) => {
   }
   
   return ( 
-    <section className="flex h-52">
-      <div className="flex h-52  overflow-hidden rounded-lg">
+    <section className="flex h-52 relative">
+      <div className="flex h-52  overflow-hidden rounded-lg mr-2">
         <img src={cover} alt="" />
       </div>
     
@@ -29,11 +30,12 @@ export const ReadingList = (props: BooksState) => {
 
       </div>
       <button 
+      className="absolute top-0 right-5 text-red-500"
         onClick={()=> handleDelete({
           title, pages, genre, cover, year, ISBN, author, synopsis
         })}
       >
-        Delete
+        <Delete/>
       </button>
     </section>
   )
