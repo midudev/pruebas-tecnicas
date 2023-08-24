@@ -48,7 +48,7 @@ export const Filters = ({maxPages}: maxPagesProps) => {
                     })
                 }
             </select>
-            <label className='flex flex-col items-center gap-x-3 font-bold  '>
+            <label className='flex flex-col md:flex-row items-center gap-x-3 font-bold  '>
                     Filtrar por número de páginas
                 <input
                     type='range'
