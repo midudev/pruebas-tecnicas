@@ -1,10 +1,19 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import { Books } from '../../types/book'
+import libraryBoooks from '../../../../../books.json'
 
 
 
 
-const initialState: Books[] = []
+const initialState: Books[] = (()=>{
+    const data = localStorage.getItem('books')
+    if(data){
+        return JSON.parse(data).books.books
+    }
+    return libraryBoooks.library
+})()
+
+
 
 export const bookSlice = createSlice({
     name: 'books',
@@ -14,13 +23,6 @@ export const bookSlice = createSlice({
         fitlerByPages: 0
     },
     reducers:{
-        getBooks: (state, action: PayloadAction<Books>) => {
-           const existingBook = state.books.find(item => item.book.title === action.payload.book.title)
-           if(!existingBook){
-            state.books.push(action.payload)
-           }
-        },
-
         addToListAgain:(state, action) => {
             state.books.push(action.payload)
         },
@@ -41,7 +43,7 @@ export const bookSlice = createSlice({
 })
 
 
-export const {getBooks,filterByGenre,filterByPages, bookInList, addToListAgain} = bookSlice.actions
+export const {filterByGenre,filterByPages, bookInList, addToListAgain} = bookSlice.actions
 export default bookSlice.reducer
 
 
