@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 
-import { StyledPageContainer } from './styles'
+import { StyledPageContainer, StyledMain } from './styles'
 import StatsBar from '../../components/StatsBar'
 import FeedbackWidget from '../../components/FeedbackWidget'
 
@@ -23,7 +23,7 @@ const RootPage = () => {
           setScroll(true)
         } else {
           setScroll(false)
-        } 
+        }
         ticking = false
       })
 
@@ -32,15 +32,15 @@ const RootPage = () => {
   })
 
   return (
-    <>
-      <StyledPageContainer>
-        <Header scroll={scroll} />
-        <StatsBar />
-        <FeedbackWidget />
+    <StyledPageContainer>
+      <Header scroll={scroll} />
+      <StatsBar />
+      <FeedbackWidget />
+      <StyledMain>
         <Outlet />
-        <Footer />
-      </StyledPageContainer>
-    </>
+      </StyledMain>
+      <Footer />
+    </StyledPageContainer>
   )
 }
 

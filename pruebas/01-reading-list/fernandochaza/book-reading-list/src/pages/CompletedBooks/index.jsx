@@ -4,7 +4,6 @@ import { loading, userCompletedBooks } from '../../context/atoms'
 import BookCard from '../../components/BookCard'
 import CardsContainer from '../SearchPage/CardsContainer'
 
-import { StyledMain } from '../RootLayoutStyles'
 import { StyledText } from './styles'
 
 import notAvailable from '../../assets/cover-not-available.webp'
@@ -14,7 +13,7 @@ const CompletedBooks = () => {
   const isLoading = useAtomValue(loading)
 
   return (
-    <StyledMain>
+    <>
       {isLoading ? (
         <></>
       ) : completedBooksData.length > 0 ? (
@@ -43,7 +42,7 @@ const CompletedBooks = () => {
           </StyledText>
         </>
       )}
-    </StyledMain>
+    </>
   )
 }
 

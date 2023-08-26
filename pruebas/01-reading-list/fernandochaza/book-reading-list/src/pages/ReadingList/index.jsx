@@ -4,7 +4,6 @@ import { loading, userReadingList } from '../../context/atoms'
 import BookCard from '../../components/BookCard'
 import CardsContainer from '../SearchPage/CardsContainer'
 
-import { StyledMain } from '../RootLayoutStyles'
 import { StyledText } from './styles'
 
 import notAvailable from '../../assets/cover-not-available.webp'
@@ -15,7 +14,7 @@ const ReadingList = () => {
   const isLoading = useAtomValue(loading)
 
   return (
-    <StyledMain>
+    <>
       {isLoading ? (
         <></>
       ) : booksData.length > 0 ? (
@@ -46,7 +45,7 @@ const ReadingList = () => {
           <SuggestedBooks></SuggestedBooks>
         </>
       )}
-    </StyledMain>
+    </>
   )
 }
 

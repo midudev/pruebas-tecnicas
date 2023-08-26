@@ -5,7 +5,6 @@ import SearchForm from '../../components/SearchForm'
 import BookCard from '../../components/BookCard'
 import CardsContainer from './CardsContainer'
 
-import { StyledMain } from '../RootLayoutStyles'
 import { StyledText, StyledNoResults, StyledNotFoundSection } from './styles'
 
 import notAvailable from '../../assets/cover-not-available.webp'
@@ -17,7 +16,7 @@ const SearchPage = () => {
   if (isLoading) return ''
 
   return (
-    <StyledMain>
+    <>
       <StyledText>
         <strong>Search</strong> a <em>title</em> or an <em>author</em> to look
         for your favorite Books
@@ -45,7 +44,7 @@ const SearchPage = () => {
           <StyledNoResults>Please, try again.</StyledNoResults>
         </StyledNotFoundSection>
       )}
-    </StyledMain>
+    </>
   )
 }
 
