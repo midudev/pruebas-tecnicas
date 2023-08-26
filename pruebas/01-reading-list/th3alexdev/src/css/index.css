@@ -38,6 +38,10 @@ input[type=number] {
     -moz-appearance:textfield; /* Firefox */
 }
 
+aside::-webkit-scrollbar {
+  width: 8px;
+}
+
 ::-webkit-scrollbar {
   width: 16px;
   height: 100vh;
