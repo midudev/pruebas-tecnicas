@@ -1,11 +1,13 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { BooksContext } from "./contextBooksProvider";
 import { ERROR_MESSAGES } from "../constants/errorMessages";
+import { ReadListContext } from "./contextUserListProvider";
 
 export const FiltersContext = createContext();
 
 export default function FiltersProvider({ children }) {
   const { books, error, setError } = useContext(BooksContext);
+  const { savedBooks } = useContext(ReadListContext); 
 
   const [filters, setFilters] = useState({
     sortByTitle: "",
@@ -53,7 +55,8 @@ export default function FiltersProvider({ children }) {
     if (
       (!genre || book.genre === genre) &&
       book.title?.toLowerCase().includes(sortByTitle) &&
-      book.pages <= pages.maxPages
+      book.pages <= pages.maxPages &&
+      !savedBooks.includes(book)
     )
       return true;
 
