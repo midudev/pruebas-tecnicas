@@ -6,6 +6,7 @@ import Footer from '../../components/Footer'
 
 import { StyledPageContainer } from './styles'
 import StatsBar from '../../components/StatsBar'
+import FeedbackWidget from '../../components/FeedbackWidget'
 
 const RootPage = () => {
   const [scroll, setScroll] = useState(false)
@@ -35,6 +36,7 @@ const RootPage = () => {
       <StyledPageContainer>
         <Header scroll={scroll} />
         <StatsBar />
+        <FeedbackWidget />
         <Outlet />
         <Footer />
       </StyledPageContainer>

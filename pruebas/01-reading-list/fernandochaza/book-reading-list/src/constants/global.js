@@ -1,4 +1,5 @@
-export const BOOKS_DATABASE = './src/data/books.json'
+export const FEEDBACK_MESSAGE =
+  'Thank you for stopping by! I would love to get your feedback ❤️'
 export const GENRES = [
   'Biography',
   'Business',
