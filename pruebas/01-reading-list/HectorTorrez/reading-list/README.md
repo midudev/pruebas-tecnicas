@@ -1,3 +1,3 @@
 ### ReadingList
 
-Url del sitio web: https://midulibritos.vercel.app
+Url del sitio web: https://readinglist-ht.netlify.app/
