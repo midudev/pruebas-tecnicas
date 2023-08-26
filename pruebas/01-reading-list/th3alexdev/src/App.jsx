@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import ListOfBooks from "./components/ListOfBooks";
 import Filters from "./components/Filters";
 import FiltersProvider from "./context/contextFiltersProvider";
-import UserListProvider from "./context/contextUserListProvider";
+import ReadListProvider from "./context/contextUserListProvider";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import { useSidebar } from "./hooks/useSidebar";
@@ -17,16 +17,16 @@ export default function App() {
 
   return (
     <>
-      <FiltersProvider>
-        <UserListProvider>
+      <ReadListProvider>
+        <FiltersProvider>
           <Header showSidebar={showSidebar} toggleSidebar={toggleSidebar} />
-          <main className="relative grid grid-cols-[20%,1fr]">
+          <main className="relative grid sm:grid-cols-[20%,1fr]">
             <Sidebar showSidebar={showSidebar} toggleSidebar={toggleSidebar} />
             <Filters />
             <ListOfBooks />
           </main>
-        </UserListProvider>
-      </FiltersProvider>
+        </FiltersProvider>
+      </ReadListProvider>
     </>
   );
 }
