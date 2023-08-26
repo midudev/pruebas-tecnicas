@@ -4,24 +4,24 @@ import { BooksContext } from "../context/contextBooksProvider";
 import Loader from "./Loader";
 import { AddBookIcon } from "./Icons";
 import ErrorMessage from "./ErrorMessage";
-import { UserListContext } from "../context/contextUserListProvider";
+import { ReadListContext } from "../context/contextUserListProvider";
 
 export default function ListOfBooks() {
   const { filters, filteredBooks } = useContext(FiltersContext);
   const { loading, error } = useContext(BooksContext);
-  const { addBook, removeBook } = useContext(UserListContext)
+  const { addBook, removeBook } = useContext(ReadListContext)
 
   const { sortByPages } = filters;
 
   return (
     <>
-      <article className="py-24">
+      <article className="py-4 sm:py-24 w-screen">
         {loading ? (
           <Loader />
         ) : error ? (
           <ErrorMessage error={error} />
         ) : (
-          <ul className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-x-4 gap-y-5 px-2">
+          <ul className="grid 3xs:gap-x-4 3xs:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] sm:gap-x-4 gap-y-5 px-2">
             {filteredBooks?.map((book) => (
               <li
                 className="relative py-4 px-3 flex flex-nowrap flex-col items-center rounded-md hover:bg-card-hover group"
