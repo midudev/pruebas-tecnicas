@@ -19,12 +19,14 @@ export default function Filters() {
   });
 
   return (
-    <section className="relative px-4 flex flex-nowrap flex-col gap-8 pt-8">
-      <div className="fixed flex flex-col gap-8">
+    <section className="relative w-full flex flex-nowrap flex-col gap-8 pt-24 sm:pt-6">
+      <div className="w-full sm:w-max relative px-4 sm:fixed flex flex-col gap-8">
+        <div className="hidden sm:block">
         <Brand />
+        </div>
         <div>
           <form onSubmit={(e) => e.preventDefault}>
-            <h3 className="w-4/5 font-semibold text-lg leading-6 mb-2 line-clamp-2 text-balance">
+            <h3 className="sm:w-4/5 font-semibold text-lg leading-6 mb-2 line-clamp-2 sm:text-balance">
               <label className="cursor-auto">Por cantidad de páginas</label>
             </h3>
             <input
@@ -72,9 +74,9 @@ export default function Filters() {
         </div>
         <div>
           <h3 className="font-semibold text-lg mb-2">Por género</h3>
-          <ul className="flex flex-nowrap flex-col gap-[0.3rem]">
+          <ul className="flex flex-wrap sm:flex-nowrap sm:flex-col gap-[0.3rem]">
             {filters.genres.map((genre) => (
-              <li key={genre}>
+              <li key={genre} className="whitespace-nowrap">
                 <button
                   data-value={genre}
                   onClick={(e) =>
