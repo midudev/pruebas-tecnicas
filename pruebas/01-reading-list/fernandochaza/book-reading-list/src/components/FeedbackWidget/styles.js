@@ -10,12 +10,13 @@ const StyledContainer = styled.div`
   transition: transform 0.3s ease-in-out;
 
   @media screen and (min-width: ${(props) => props.theme.breakpointLg}) {
-    bottom: 3rem;
-    right: 3rem;
+    bottom: 2.5rem;
+    right: 2.5rem;
   }
 
   &::before,
   &::after {
+    display: ${(props) => props.$display ? 'inline' : 'none'};
     --scale: 0;
     position: absolute;
     content: '';
@@ -31,7 +32,7 @@ const StyledContainer = styled.div`
     padding: 0.5rem;
     width: max-content;
     max-width: 188px;
-    height: 60px;
+    height: auto;
     border-radius: 12px;
     text-align: center;
     line-height: 1.3rem;

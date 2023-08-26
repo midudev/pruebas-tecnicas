@@ -1,5 +1,7 @@
-export const FEEDBACK_MESSAGE =
-  'Thank you for stopping by! I would love to get your feedback ❤️'
+export const FEEDBACK_MESSAGES = {
+  lg: 'Thank you for stopping by! I would love to get your feedback ❤️'
+}
+
 export const GENRES = [
   'Biography',
   'Business',
