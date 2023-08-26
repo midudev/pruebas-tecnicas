@@ -25,10 +25,10 @@ export const ReadingList = (props: BooksState) => {
 
       <div className=" flex flex-col h-52 justify-evenly">
         <p className="font-bold text-xl">
-          Titulo: <span className="font-normal text-lg">{title}</span>
+          Título: <span className="font-normal text-lg">{title}</span>
         </p>
         <p className="font-bold text-xl">
-          Genero: <span className="font-normal text-lg">{genre}</span>
+          Género: <span className="font-normal text-lg">{genre}</span>
         </p>
         <p className="font-bold text-xl">
           Autor: <span className="font-normal text-lg">{author.name}</span>
