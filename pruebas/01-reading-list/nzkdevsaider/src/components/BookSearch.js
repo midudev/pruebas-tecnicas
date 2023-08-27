@@ -1,9 +1,9 @@
 "use client";
-import { Input } from "@myreading/components/ui/Input";
+import { Input } from "@myreading/components/ui/input";
 import { Card } from "@myreading/components/ui/card";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Slider } from "@myreading/components/ui/Slider";
+import { Slider } from "@myreading/components/ui/slider";
 import {
   Select,
   SelectContent,
