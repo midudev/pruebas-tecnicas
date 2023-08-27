@@ -3,9 +3,6 @@
     "baseUrl": ".",
     "paths": {
       "@myreading/*": ["./src/*"],
-      "@myreading/styles/*": ["./src/styles/*"],
-      "@myreading/components/*": ["./src/components/*"],
-      "@myreading/db/*": ["./src/db/*"],
     }
   }
 }
