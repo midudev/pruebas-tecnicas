@@ -1,14 +1,13 @@
 import propTypes from 'prop-types'
+import { StyledLink, StyledSvg } from '../styles'
 
-import { StyledWhatsappSvg, StyledButtonContainer } from './styles'
-
-const WhatsappButton = ({ onClick }) => {
+const WhatsappIconLink = ({ href, target }) => {
   return (
-    <StyledButtonContainer onClick={onClick}>
-      <StyledWhatsappSvg
+    <StyledLink href={href} target={target}>
+      <StyledSvg
         xmlns='http://www.w3.org/2000/svg'
-        width='40'
-        height='40'
+        width='36'
+        height='36'
         aria-label='WhatsApp'
         viewBox='0 0 512 512'
       >
@@ -23,13 +22,14 @@ const WhatsappButton = ({ onClick }) => {
           fill='#fff'
           d='M308 273c-3-2-6-3-9 1l-12 16c-3 2-5 3-9 1-15-8-36-17-54-47-1-4 1-6 3-8l9-14c2-2 1-4 0-6l-12-29c-3-8-6-7-9-7h-8c-2 0-6 1-10 5-22 22-13 53 3 73 3 4 23 40 66 59 32 14 39 12 48 10 11-1 22-10 27-19 1-3 6-16 2-18'
         />
-      </StyledWhatsappSvg>
-    </StyledButtonContainer>
+      </StyledSvg>
+    </StyledLink>
   )
 }
 
-WhatsappButton.propTypes = {
-  onClick: propTypes.func
+WhatsappIconLink.propTypes = {
+  href: propTypes.string.isRequired,
+  target: propTypes.string.isRequired
 }
 
-export default WhatsappButton
+export default WhatsappIconLink

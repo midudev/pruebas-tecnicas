@@ -1,34 +1,33 @@
-import { useState } from 'react'
-
 import {
   StyledModalBackground,
   StyledModalContainer,
-  StyledPrompt
+  StyledHeader,
+  StyledFooter,
+  StyledFooterMessage,
+  StyledContainer
 } from './styles'
-import WhatsappButton from './WhatsappButton'
-import EmailButton from './EmailButton'
+
+import WhatsappIconLink from './Icons/WhatsappLink'
+import ContactForm from './ContactForm'
+import DiscordIconLink from './Icons/DiscordLink'
+import LinkedInIconLink from './Icons/LinkedInLink'
+
+import { WHATSAPP_URL, DISCORD_URL, LINKEDIN_URL } from '../../constants/global'
 
 const FeedbackModal = () => {
-  const [selectedForm, setSelectedForm] = useState()
-
-  const handleSelectedForm = (selectedForm) => {
-    setSelectedForm(selectedForm)
-  }
-
   return (
     <StyledModalBackground>
       <StyledModalContainer>
-        <StyledPrompt>I appreciate you take the time for this!</StyledPrompt>
-        <StyledPrompt>Please, select a contact method</StyledPrompt>
-        <div>
-          <WhatsappButton
-            onClick={() => handleSelectedForm('Whatsapp')}
-          ></WhatsappButton>
-          <EmailButton
-            value='Email'
-            onClick={() => handleSelectedForm('Email')}
-          ></EmailButton>
-        </div>
+        <StyledHeader>Your feedback is greatly appreciated!</StyledHeader>
+        <ContactForm />
+        <StyledFooter>
+          <StyledContainer>
+            <StyledFooterMessage>Contact me directly on:</StyledFooterMessage>
+            <WhatsappIconLink href={WHATSAPP_URL} target='_blank' />
+            <DiscordIconLink href={DISCORD_URL} target='_blank' />
+            <LinkedInIconLink href={LINKEDIN_URL} target='_blank' />
+          </StyledContainer>
+        </StyledFooter>
       </StyledModalContainer>
     </StyledModalBackground>
   )
