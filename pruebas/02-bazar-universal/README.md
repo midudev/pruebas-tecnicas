@@ -1,5 +1,11 @@
 # 02 - Desarrollo Full Stack de Bazar
 
+<small>
+Info:
+- [¿Cómo puedo participar?](https://github.com/midudev/pruebas-tecnicas#c%C3%B3mo-participar)
+- Basada en la prueba real usada en **Mercado Libre.**
+</small>
+
 Debes crear una aplicación que consta de **3 componentes principales**:
 
 - Una caja de búsqueda
@@ -7,10 +13,6 @@ Debes crear una aplicación que consta de **3 componentes principales**:
 - Descripción del detalle del producto
 
 La aplicación debe constar de servidor y cliente. El servidor debe exponer un API RESTful y el cliente consumirlo.
-
-- [¿Cómo puedo participar?](https://github.com/midudev/pruebas-tecnicas#c%C3%B3mo-participar)
-
-- Basada en la prueba real usada en **Mercado Libre.**
 
 ## Contexto
 
