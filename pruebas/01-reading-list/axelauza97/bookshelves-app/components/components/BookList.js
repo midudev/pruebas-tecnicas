@@ -10,13 +10,13 @@ function BookList(props) {
       {/*Disponibles*/}
       {props.type !== "wish" &&
         props.books != null &&
-        props.books != undefined &&
+        props.books !== undefined &&
         props.books.map(
           (bookE, i) =>
             bookE.book.visible && (
               <div
                 key={i}
-                className={`${bookE.book.wish ? classes.darken : ""}`}
+                className={`${bookE.book.wish ? classes.darken : null}`}
                 onClick={() => clickHandler(bookE.book)}
               >
                 <Image
@@ -26,12 +26,14 @@ function BookList(props) {
                   src={bookE.book.cover}
                   alt={bookE.book.title}
                 />
+                <h1 className={classes.title}>{bookE.book.title}</h1>
+                <p className={classes.synopsis}>{bookE.book.synopsis}</p>
               </div>
             )
         )}
       {props.type === "wish" &&
         props.books != null &&
-        props.books != undefined &&
+        props.books !== undefined &&
         props.books.map(
           (bookE, i) =>
             bookE.book.visible &&
@@ -48,6 +50,8 @@ function BookList(props) {
                   src={bookE.book.cover}
                   alt={bookE.book.title}
                 />
+                <h1 className={classes.title}>{bookE.book.title}</h1>
+                <p className={classes.synopsis}>{bookE.book.synopsis}</p>
               </div>
             )
         )}

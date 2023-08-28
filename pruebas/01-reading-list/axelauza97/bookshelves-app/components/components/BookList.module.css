@@ -17,14 +17,25 @@
 
 .darken:after {
   position: absolute;
-  height: 1rem;
-  width: 1rem;
+  /*height: 1rem;
+  width: 1rem;*/
   top: -0.5rem;
   bottom: 0rem;
-  left: 7rem;
+  left: 8rem;
   right: 0rem;
   content: "\274c";
   color: #fff;
+}
+
+.title {
+  font-size: 1rem;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+  padding: 0.25rem;
+}
+
+.synopsis {
+  font-size: 0.75rem;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
 @media screen and (min-width: 700px) {

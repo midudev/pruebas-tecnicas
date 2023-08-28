@@ -3,9 +3,11 @@ import classes from "@/styles/Home.module.css";
 import BookList from "@/components/components/BookList";
 import books from "public/books.json";
 import { useEffect, useState } from "react";
-
+let genre = null;
+let pages = null;
 export default function Home(props) {
-  const [genre, setGenre] = useState(null);
+  //const [genre, setGenre] = useState(null);
+  const [qtyPages, setQtyPages] = useState(0);
   const [bookFiltered, setbookFiltered] = useState(null);
   const [selectedValue, setSelectedValue] = useState("");
 
@@ -25,14 +27,32 @@ export default function Home(props) {
         return book;
       });
     }
+    props.setBooks(modifiedBooks);
+  }, []);
+  useEffect(() => {
     const uniqueGenre = new Set();
     uniqueGenre.add("Todos");
 
-    props.setBooks(modifiedBooks);
-    modifiedBooks.map((book) => {
+    props.booksD.map((book) => {
       uniqueGenre.add(book.book.genre);
     });
-    setGenre(uniqueGenre);
+    genre = uniqueGenre;
+  }, []);
+  useEffect(() => {
+    const max = Math.max(
+      ...props.booksD.map((book) => {
+        return book.book.pages;
+      })
+    );
+    const min = Math.min(
+      ...props.booksD.map((book) => {
+        return book.book.pages;
+      })
+    );
+    pages = {
+      max: max,
+      min: min,
+    };
   }, []);
 
   const moveList = (book) => {
@@ -59,6 +79,7 @@ export default function Home(props) {
   };
   const handleValueChange = (event) => {
     let genreSelected = event.target.value;
+    setQtyPages(0);
     setSelectedValue(genreSelected);
     let modifiedBooks;
     if (genreSelected === "Todos") {
@@ -68,7 +89,7 @@ export default function Home(props) {
       });
     } else {
       modifiedBooks = props.books.map((book) => {
-        if (book.book.genre !== genreSelected) {
+        if (!book.book.wish && book.book.genre !== genreSelected) {
           book.book.visible = false;
         } else {
           book.book.visible = true;
@@ -77,6 +98,17 @@ export default function Home(props) {
       });
     }
     props.setBooks(modifiedBooks);
+  };
+
+  const handleQtyChange = (value) => {
+    setSelectedValue("Todos");
+    props.books.map((book) => {
+      if (!book.book.wish && book.book.pages < value) {
+        book.book.visible = false;
+      } else {
+        book.book.visible = true;
+      }
+    });
   };
 
   return (
@@ -115,13 +147,32 @@ export default function Home(props) {
             </h4>
           </div>
           <section className={classes.filtros}>
-            <div className={classes.filtro}></div>
+            <div className={classes.filtro}>
+              <span className="">{`Máximo: ${qtyPages}`}</span>
+              <input
+                type="range"
+                max={pages != null ? pages.max : 0}
+                min={pages != null ? pages.min : 0}
+                step="1"
+                value={qtyPages}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setQtyPages(value);
+                  handleQtyChange(value);
+                }}
+              />
+            </div>
             <div className={classes.filtro}>
               <div>
                 <h4>Filtrar por genero</h4>
               </div>
+
               <div>
-                <select value={selectedValue} onChange={handleValueChange}>
+                <select
+                  value={selectedValue}
+                  onChange={handleValueChange}
+                  className={classes.genreSelect}
+                >
                   {genre !== null &&
                     Array.from(genre).map((option, index) => (
                       <option key={index} value={option}>
