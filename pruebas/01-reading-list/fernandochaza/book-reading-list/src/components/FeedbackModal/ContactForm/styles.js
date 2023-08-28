@@ -5,7 +5,7 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   width: 75%;
-  height: 406px;
+  height: 425px;
 `
 
 const StyledInput = styled.input`

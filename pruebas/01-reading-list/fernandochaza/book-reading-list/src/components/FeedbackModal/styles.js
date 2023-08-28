@@ -48,7 +48,7 @@ const StyledSuccessContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 75%;
-  height: 445px;
+  height: 464px;
   justify-content: center;
   align-items: center;
 `
