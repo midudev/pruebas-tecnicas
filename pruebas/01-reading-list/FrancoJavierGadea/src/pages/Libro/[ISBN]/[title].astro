@@ -1,0 +1,161 @@
+---
+import RootLayout from '../../../layouts/RootLayout.astro';
+import {getBooksByISBN} from '../../../data/books.js';
+import SaveBookButton from '../../../components/react/SaveBookButton2/SaveBookButton2.jsx';
+import ShareBook from '../../../components/ShareBook.astro';
+
+const { ISBN, title } = Astro.params;
+
+const result = getBooksByISBN(ISBN);
+
+if(result.length === 0) return Astro.redirect('/404');
+
+const book = result[0].book;
+
+
+const linkToGenre = new URL(`/Libros/1`, Astro.url.origin);
+
+linkToGenre.searchParams.set('genre', book.genre);
+---
+
+<RootLayout title={title}>
+
+    <div class="Book-container container">
+
+        <div class="row">
+
+            <section class="col-md-12 col-lg-5">
+
+                <div class="portada">
+
+                    <img src={book.cover} alt={`Portada de ${book.title}`}>
+    
+                    <SaveBookButton client:load book={book} />
+                </div>
+
+            </section>
+            
+            <section class="col-md-12 col-lg-7">
+
+                <h1 class="title text-center mt-4 text-lg-start mt-lg-0">{title}</h1>
+
+                <div class="description">
+                    <h5 class="description-title pb-2 mb-2">Descripcion</h5>
+                    {
+                        book.synopsis.split('\n').map(text => {
+
+                            return <p>{text}</p>
+                        }) 
+                    }
+                </div>
+
+                <div class="details">
+
+                    <h5 class="details-title pb-2 mb-2">Detalles</h5>
+
+                    <div class="details-content">
+
+                        <div class="details-item">
+                            <span>Genero: </span>
+                            <strong>
+                                <a href={linkToGenre}>{book.genre}</a> 
+                            </strong>
+                        </div>
+    
+                        {
+                            book.author && <div class="details-item">   
+                                <span>Autor: </span>
+                                <strong>{book.author?.name}</strong>
+                            </div>
+                        }
+    
+                        <div class="details-item">
+                            <span>Cantidad de paginas: </span>
+                            <strong>{book.pages}</strong>
+                        </div>
+
+                        <div class="details-item">
+                            <span>ISBN:</span>
+                            <strong>{book.ISBN}</strong>
+                        </div>
+
+                        <div class="details-item">
+                            <span>Año de publicacion:</span>
+                            <strong>{book.year}</strong>
+                        </div>
+                    </div>
+
+                </div>
+
+                <ShareBook link={Astro.url.href} message={`Estoy leyendo ${book.title} 😀`} />
+            </section>
+        </div>
+
+    </div>
+    
+</RootLayout>
+
+<style>
+	.Book-container {
+        padding: 30px ;
+    }
+
+    .portada {
+        margin: auto;
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+        gap: 20px;
+        padding-top: 10px;
+    }
+    .portada img {
+        width: 100%;
+        max-width: 250px;
+        max-height: 350px;
+        border-radius: 10px;
+    }
+
+    .title {
+        font-size: clamp(20px, 10vw, 40px);
+        text-wrap: balance;
+        color: white;
+    }
+
+    .details {
+        margin-top: 40px;
+    }
+    .details a {
+        text-decoration: none;
+    }
+    .details .details-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-gap: 12px;
+        grid-auto-rows: auto;
+        
+    }
+    .details .details-title {
+        color: #F3B61F;
+        border-bottom: 2px solid #0064E2;
+    }
+
+    .details-item strong {
+        color: white;
+    }
+
+    .description {
+        
+        margin-top: 50px;
+    }
+    .description p {
+        text-wrap: balance;
+        color: white;
+    }
+
+    .description .description-title {
+        color: #F3B61F;
+        border-bottom: 2px solid #0064E2;
+    }
+</style>

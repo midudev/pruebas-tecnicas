@@ -1,0 +1,165 @@
+---
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import CustomOffcanvas from "../components/react/CustomOffcanvas/CustomOffcanvas.jsx"
+import Footer from "../components/Footer.astro";
+import ReadingList from "../components/react/ReadingList/ReadingList.jsx";
+
+import { ViewTransitions } from 'astro:transitions';
+import "../assets/transitions/custom-slide.css";
+import ImportantCss from "../assets/importantCss.astro";
+
+const { title, searchPlaceholder = '' } = Astro.props;
+---
+
+<!DOCTYPE html>
+
+<html lang="es" data-bs-theme="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description">
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="Libros - Midudev prueba tecnica 1">
+		<meta property="og:url" content="https://libros1812.netlify.app/">
+		<meta property="og:description" content="Desarrollo de la prueba tecnica nº 1 de Midudev hecha con Astro y React">
+		<meta property="og:image" content="/libros.webp">
+		<meta property="og:image:width" content="1200">
+		<meta property="og:image:height" content="630">
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Libros - Midudev prueba tecnica 1" />
+		<meta name="twitter:description" content="Desarrollo de la prueba tecnica nº 1 de Midudev hecha con Astro y React" />
+		<meta name="twitter:image" content="/libros.webp" />
+
+		<title>{title}</title>
+
+		<!-- <ImportantCss /> -->
+
+		<ViewTransitions fallback="animate" />
+	</head>
+	<body>
+
+		<nav class="navbar p-3" id="Main-nav">
+			<div class="container-fluid gap-4 p-0">
+
+				<a class="navbar-brand order-1" href="/Libros/1">
+				
+					<img src="/logo-1.png" alt="">
+				</a>
+
+				<form class="navbar-search d-flex order-3 order-sm-2 flex-grow-1 flex-sm-grow-0" role="search"
+
+					action="/search"
+				>
+					<input class="form-control me-2" type="search" name="search" placeholder={searchPlaceholder}>
+
+					<button class="btn btn-success" type="submit">Buscar</button>
+				</form>
+
+				<div class="d-block d-lg-none order-2 order-sm-3">
+
+					<CustomOffcanvas client:load />
+				</div>
+			</div>
+		</nav>
+
+		<div class="container-fluid">
+
+			<div class="row">
+	
+				<main class="px-3 col-md-12 col-lg-8">
+
+					<div class="px-2">
+
+						<slot />
+
+					</div>
+	
+					
+				</main>
+				
+				<section class="Reading-list-container d-none d-lg-block col-4">
+					
+					<ReadingList client:only />
+				</section>
+				
+			</div>
+			
+		</div>
+		
+		<Footer />
+	</body>
+</html>
+
+<script>
+	
+	window.navigation.addEventListener("navigate", (event) => {
+
+		/* Importante para las view transitions */
+		//document.documentElement.scrollTop = 0;
+		//console.log('navigate')
+	});
+
+</script>
+
+<style is:global>
+
+	:root {
+
+		--main-nav-height: 80px;
+		--bs-body-bg: #1C3144 !important;
+
+		/* Importante para las view transitions */
+		scroll-behavior: auto !important;
+	}
+
+	body {
+		background-image: radial-gradient(#ffffff29 0.7px, transparent 0.1px);
+    	background-size: 10px 10px
+	}
+
+	#Main-nav {
+		box-sizing: border-box;
+		z-index: 3000;
+		background-color: #11427D;
+		min-height: var(--main-nav-height);
+
+		position: sticky;
+		top: 0;
+
+		transition: top 0.2s;
+	}
+	#Main-nav .navbar-brand img {
+		max-width: 170px;
+	}
+	#Main-nav .navbar-search {
+		flex-basis: 245px;
+		margin-left: auto;
+	}
+
+	@media (min-width: 768px) {
+
+		#Main-nav .navbar-search {
+			flex-basis: 345px;
+			margin-left: auto;
+		}
+	}
+
+	main {
+		min-height: calc(100vh - var(--main-nav-height));
+
+		display: flex;
+		flex-direction: column;
+	}
+
+	.Reading-list-container {
+        position: sticky;
+        top: var(--main-nav-height);
+        height: fit-content;
+        padding-left: 0px;
+    }
+</style>

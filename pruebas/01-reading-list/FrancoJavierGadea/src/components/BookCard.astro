@@ -1,0 +1,51 @@
+---
+import SaveBookButton from "../components/react/SaveBookButton/SaveBookButton.jsx";
+const { book } = Astro.props;
+
+---
+
+
+
+<div class="book-card">
+    
+    <a href={`/Libro/${book.ISBN}/${book.title}`}>
+    
+        <img src={book.cover} alt={`Portada del libro ${book.title}`} title={book.title} />
+    
+    </a>
+
+    <div class="controls pt-1 ps-2">
+        <span>{book.title}</span>
+        <SaveBookButton client:load book={book} />
+    </div>
+</div>
+
+<style>
+
+    .book-card {
+        position: relative;
+    }
+    
+    img {
+        width: 150px;
+        height: 200px;
+        border-radius: 5px;
+        
+        box-shadow: 0 1px 8px #62626266;  
+        transition: scale .2s ease-out;
+    }
+    a:hover img {
+        scale: 1.05;
+    }
+
+    .controls {
+        max-width: 150px;
+        display: flex;
+        align-items: flex-start;
+    }
+    .controls span {
+        margin-right: auto;
+    }
+
+    
+</style>

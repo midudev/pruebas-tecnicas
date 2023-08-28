@@ -1,0 +1,101 @@
+---
+
+const CONTACT = {
+    name: 'Fraco Javier Alvarez',
+    linkedin: 'https://www.linkedin.com/in/franco-javier-alvarez/',
+    github: 'https://github.com/midudev/pruebas-tecnicas/pull/75'
+}
+---
+
+<astro-footer>
+    <footer id="Main-footer">
+
+        <div class="footer-content">
+
+            <p class="p-0 m-0">
+                Hecho con <i class="bi bi-suit-heart-fill" style={{color: '#f00'}} /> por:
+                <strong>
+                    <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer"
+                    
+                        style={{color: '#F3B61F'}}
+                    >
+                        {CONTACT.name}
+                    </a>
+                </strong>
+            </p>
+
+            <a href={CONTACT.github} target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-github" />
+                <span class="">Github</span>
+            </a>
+        </div>
+
+    </footer>
+</astro-footer>
+
+<script>
+    // Hide nav when footer appears in the viewport
+
+    class AstroFooter extends HTMLElement {
+
+        constructor(){
+
+            super();
+
+            const $footer = this.querySelector('footer');
+
+            const $nav = document.getElementById('Main-nav');
+
+            const observer = new IntersectionObserver(([e]) => {
+
+                if(e.isIntersecting){
+                    
+                    const navHeight = $nav.getBoundingClientRect().height;
+                    
+                    $nav.style.top = `-${navHeight}px`;
+                }
+                else {
+
+                    $nav.style.top = '0px';
+                };
+
+            }, {root: null, threshold: 0});
+
+            observer.observe($footer);
+        }
+    }
+
+    customElements.define('astro-footer', AstroFooter);
+
+</script>
+
+<style>
+
+    footer {
+        box-sizing: border-box;
+        margin-top: auto;
+        padding-top: 15px;
+        padding-bottom: 10px;
+        background-color: #11427D;
+
+        height: var(--main-nav-height);
+		max-height: var(--main-nav-height);
+    }
+    footer .footer-content {
+        width: fit-content;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 7px;
+    }
+
+    footer a {
+        text-decoration: none;
+        color: white;
+    }
+    footer a:hover {
+        color: #b5b5b5;
+    }
+
+</style>

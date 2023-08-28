@@ -1,0 +1,15 @@
+
+#Custom-offcanvas {
+
+    --bs-offcanvas-zindex: 3100;
+    --bs-offcanvas-width: 100%;
+    height: 100lvh;
+}
+
+@media (min-width: 768px) {
+
+    #Custom-offcanvas {
+
+        --bs-offcanvas-width: 400px;
+    }
+}

@@ -1,0 +1,87 @@
+---
+import RootLayout from "../layouts/RootLayout.astro";
+
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
+
+import SadFaceImage from "../assets/SadFaceImage.jsx";
+import { customSlide } from "../assets/transitions/custom-slide";
+
+
+---
+
+<RootLayout title="Pagina no encontrada">
+
+    <div class="not-found-message" transition:animate={customSlide()}>
+    
+        <h1>PAGINA NO ENCONTRADA</h1>
+        
+        <SadFaceImage className="sad-face-image" />
+
+        <h2 class="title-404">404</h2>
+
+        <go-back-button class="mt-5">
+
+            <button class="btn btn-primary btn-lg">Regresar</button>
+
+        </go-back-button>
+    </div>
+
+</RootLayout>
+
+<script>
+
+    class GoBackButton extends HTMLElement {
+
+        constructor(){
+            super();
+
+            this.querySelector('button').addEventListener('click', () => {
+
+                window.history.back();
+            });
+        }
+    }
+
+    customElements.define('go-back-button', GoBackButton);
+
+</script>
+
+
+<style>
+
+    .not-found-message {
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        padding-top: 50px;
+        padding-bottom: 100px;
+        position: relative;
+    }
+
+    .not-found-message h1, .not-found-message h2  {
+        text-align: center;
+    }
+
+    .title-404 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        opacity: 0.4;
+        font-size: clamp(80px, 50vw, 250px);
+        z-index: 10;
+        height: fit-content;
+    }
+
+    .sad-face-image {
+        width: 100%;
+        max-width: 300px;
+        color: #F3B61F;
+        z-index: 100;
+    }
+</style>

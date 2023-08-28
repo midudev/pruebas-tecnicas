@@ -1,0 +1,108 @@
+---
+import SaveBookButton from "../components/react/SaveBookButton/SaveBookButton.jsx";
+const { book } = Astro.props;
+
+const linkToGenre = new URL(`/Libros/1`, Astro.url.origin);
+
+linkToGenre.searchParams.set('genre', book.genre);
+---
+
+<div class="finded-book-card">
+    
+    <a class="portada me-3 align-self-center d-none d-sm-block" href={`/Libro/${book.ISBN}/${book.title}`}>
+    
+        <img src={book.cover} alt={`Portada del libro ${book.title}`} title={book.title} />
+    </a>
+
+    <div class="book-info flex-grow-1 d-flex flex-column">
+
+        <div class="title d-flex mb-2 mb-sm-0">
+
+            <a href={`/Libro/${book.ISBN}/${book.title}`}>
+        
+                <h4>{book.title}</h4>
+            </a>
+
+            <div class="ms-auto">
+
+                <SaveBookButton client:load book={book} />
+            </div>
+        </div>
+
+        <div class="description d-flex gap-3 mb-2 mb-sm-0">
+
+            <a class="portada d-block d-sm-none" href={`/Libro/${book.ISBN}/${book.title}`}>
+    
+                <img src={book.cover} alt={`Portada del libro ${book.title}`} title={book.title} />
+            </a>
+
+            <p>{ `${book.synopsis.split(' ').slice(0, 20).join(' ')}...` }</p>
+
+        </div>
+
+        <div class="details mt-auto d-flex flex-wrap column-gap-3 row-gap-1">
+
+            <div class="details-item">
+                <span>Genero: </span>
+                <strong>
+                    <a href={linkToGenre}>{book.genre}</a> 
+                </strong>
+            </div>
+
+            {
+                book.author && <div class="details-item">   
+                    <span>Autor: </span>
+                    <strong>{book.author?.name}</strong>
+                </div>
+            }
+
+            <!-- <div class="flex-grow-1">
+                <span>Cantidad de paginas: </span>
+                <strong>{book.pages}</strong>
+            </div> -->
+        </div>
+
+    </div>
+ 
+</div>
+
+<style>
+
+    .finded-book-card {
+        display: flex;
+        padding: 10px;
+
+        background-color: #005494;
+        border-radius: 10px;
+    }
+    .finded-book-card a {
+        text-decoration: none;
+    }
+    
+    .portada img {
+        width: 80px;
+        aspect-ratio: 0.7;
+        
+        border-radius: 2px;
+        
+        box-shadow: 0 1px 8px #62626266;  
+        transition: scale .2s ease-out;
+    }
+    .portada a:hover img {
+        scale: 1.05;
+    }
+
+    .title a {
+        color: #F3B61F;
+    }
+
+    .description p {
+        text-wrap: balance;
+        max-width: 75ch;
+        color: white;
+    }
+
+    .details .details-item strong {
+        color: white;
+    }
+</style>

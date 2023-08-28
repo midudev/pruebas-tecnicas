@@ -1,0 +1,64 @@
+.Reading-list header {
+    border-bottom: 2px solid #F3B61F;
+}
+
+.Reading-list-title {
+    color: #F3B61F;
+}
+
+.Reading-list-content {
+    padding-right: 10px;
+    margin-bottom: 10px;
+    height: 77svh;
+    max-height: 77svh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    --sb-track-color: #232e33;
+    --sb-thumb-color: #6baf8d;
+    --sb-size: 7px;
+
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+}
+
+.Reading-list-content::-webkit-scrollbar {
+    width: var(--sb-size);
+}
+
+.Reading-list-content::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 0;
+}
+
+.Reading-list-content::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 0;
+}
+
+
+.Reading-list-total strong {
+    color: white;
+    padding-right: 10px;
+}
+
+.Reading-list {
+    position: relative;
+}
+.Reading-list-content {
+    position: relative;
+    z-index: 1500;
+}
+
+.Reading-list .books-img {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    z-index: 1400;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: #ffffff70;
+}

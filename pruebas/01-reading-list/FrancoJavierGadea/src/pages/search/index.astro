@@ -1,0 +1,52 @@
+---
+import RootLayout from "../../layouts/RootLayout.astro";
+import FindedBookCard from "../../components/FindedBookCard.astro";
+import {searchBooks} from "../../data/books.js"
+import BooksFilters from "../../components/react/BooksFilters/BooksFilters";
+
+// Open Filters ?
+const show = Astro.url.searchParams.get('show');
+
+const search = Astro.url.searchParams.get('search');
+
+const filters = {
+    genre: Astro.url.searchParams.get('genre'),
+    pages: Astro.url.searchParams.get('pages')
+}
+
+const result = searchBooks(search, filters);
+---
+
+<RootLayout title="Resultados de la busqueda" searchPlaceholder={search}>
+
+    <div transition:animate="slide">
+
+        <BooksFilters client:load path="/search" pages={filters.pages} genre={filters.genre} queryParams={{search}} total={result.length} show={show}/>
+    
+        <div class="Books-container">
+            {
+                result.map(({book}) => {
+        
+                    return <FindedBookCard book={book} />
+                })
+            }
+        </div>
+
+    </div>
+
+
+</RootLayout>
+
+
+<style>
+
+.Books-container {
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0;
+    align-items: stretch;
+}
+
+</style>

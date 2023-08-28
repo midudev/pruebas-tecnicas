@@ -1,0 +1,55 @@
+
+.Books-filters {
+
+    display: flex;
+    align-items: end;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    padding: 15px 20px;
+}
+
+.Books-filters input[type=range] {
+    margin: 6px 0;
+}
+.Books-filters input[type=range]::-webkit-slider-runnable-track {
+    background-color: #005494;
+}
+.Books-filters input[type=range]::-moz-range-track {
+    background-color: #005494;
+}
+
+.Books-filters .form-label {
+    color: #fff;
+}
+
+
+#Accordion-filters {
+
+    --bs-accordion-border-width: 0;
+    --bs-accordion-body-padding-x: 0;
+    --bs-accordion-body-padding-y: 0;
+    --bs-accordion-active-bg: transparent;
+    --bs-accordion-btn-focus-border-color: transparent;
+    --bs-accordion-btn-focus-box-shadow: initial;
+    --bs-accordion-inner-border-radius: 0;
+    --bs-accordion-border-radius: 0;
+    --bs-accordion-btn-padding-x: 0; 
+    --bs-accordion-btn-padding-y: 0;
+    --bs-accordion-bg: transparent;
+
+    --bs-accordion-active-color: var(--bs-accordion-btn-color);
+}
+
+#Accordion-filters .accordion-header {
+    border-bottom: 2px solid #F3B61F;
+}
+
+#Accordion-filters .title {
+
+    color: #F3B61F;
+}
+
+#Accordion-filters .accordion-button::after {
+    margin: 0;
+}
