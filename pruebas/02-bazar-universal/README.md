@@ -1,10 +1,14 @@
 # 02 - Desarrollo Full Stack de Bazar
 
 <small>
-Info:
+
+  Info:
 - [¿Cómo puedo participar?](https://github.com/midudev/pruebas-tecnicas#c%C3%B3mo-participar)
 - Basada en la prueba real usada en **Mercado Libre.**
+  
 </small>
+
+![Bazar Online](https://github.com/midudev/pruebas-tecnicas/assets/1561955/d5f5872c-246d-464e-b09a-1278ab5bfbb3)
 
 Debes crear una aplicación que consta de **3 componentes principales**:
 
