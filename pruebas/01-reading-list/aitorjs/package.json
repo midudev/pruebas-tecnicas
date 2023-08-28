@@ -1,0 +1,39 @@
+{
+  "name": "books-library",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint1": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "ts-standard",
+    "preview": "vite preview",
+    "test": "npx playwright test"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "zustand": "4.3.9"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.36.1",
+    "@types/react": "18.2.14",
+    "@types/react-dom": "18.2.6",
+    "@typescript-eslint/eslint-plugin": "5.62.0",
+    "@typescript-eslint/parser": "5.61.0",
+    "@vitejs/plugin-react-swc": "3.3.2",
+    "autoprefixer": "10.4.14",
+    "postcss": "8.4.26",
+    "tailwindcss": "3.3.3",
+    "ts-standard": "12.0.2",
+    "typescript": "5.1.6",
+    "vite": "4.3.0"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "extends": "./node_modules/ts-standard/eslintrc.json"
+  }
+}
