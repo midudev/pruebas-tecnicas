@@ -5,6 +5,7 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   width: 75%;
+  height: 406px;
 `
 
 const StyledInput = styled.input`
@@ -19,7 +20,7 @@ const StyledInput = styled.input`
 `
 
 const StyledTextArea = styled.textarea`
-  min-height: 180px;
+  min-height: 120px;
   width: 100%;
   resize: none;
   border-radius: 8px;
@@ -37,6 +38,11 @@ const StyledContactInfo = styled.p`
 const StyledColoredButton = styled(ColoredButton)`
   width: 50%;
   margin-bottom: 1rem;
+
+  @media screen and (max-width: ${(props) => props.theme.breakpointSm}) {
+    width: 100%;
+  }
+
 `
 
 export {

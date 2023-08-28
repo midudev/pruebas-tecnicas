@@ -17,7 +17,6 @@ const StyledModalBackground = styled.div`
   @media screen and (max-width: ${(props) => props.theme.breakpointSm}) {
     padding: 0;
   }
-
 `
 
 const StyledModalContainer = styled.div`
@@ -26,7 +25,7 @@ const StyledModalContainer = styled.div`
   align-items: center;
   max-width: 700px;
   min-width: 500px;
-  height: max-content;
+  height: auto;
   border-radius: 12px;
   border: 1px solid ${(props) => props.theme.mainBorder};
   backdrop-filter: blur(10px);
@@ -37,13 +36,12 @@ const StyledModalContainer = styled.div`
     min-width: 100%;
     max-height: 100vh;
   }
-
 `
 
 const StyledHeader = styled.h3`
   color: ${(props) => props.theme.mainTxt};
   font-size: 1.2rem;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
 `
 
 const StyledFooter = styled.footer`
@@ -57,6 +55,10 @@ const StyledContainer = styled.div`
   grid-template-columns: 50% repeat(3, 1fr);
   align-items: center;
   margin: 0 auto;
+
+  @media screen and (max-width: ${(props) => props.theme.breakpointSm}) {
+    width: 90%;
+  }
 `
 
 const StyledFooterMessage = styled.p`
@@ -66,11 +68,39 @@ const StyledFooterMessage = styled.p`
   grid-row: 1;
 `
 
+const StyledSuccessContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  height: 445px;
+  justify-content: center;
+  align-items: center;
+`
+
+const StyledSuccessMessage = styled.p`
+  font-size: 1.1rem;
+  margin: 2rem 0;
+  text-align: center;
+`
+
+const StyledCloseButton = styled.button`
+  border: none;
+  color: ${(props) => props.theme.mainTxt};
+  cursor: pointer;
+  background: none;
+  font-size: 1.5rem;
+  align-self: flex-end;
+  padding-right: 0.5rem;
+`
+
 export {
   StyledModalBackground,
   StyledModalContainer,
   StyledHeader,
   StyledFooter,
   StyledFooterMessage,
-  StyledContainer
+  StyledContainer,
+  StyledCloseButton,
+  StyledSuccessContainer,
+  StyledSuccessMessage
 }

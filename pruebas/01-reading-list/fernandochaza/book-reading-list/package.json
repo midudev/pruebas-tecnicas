@@ -12,6 +12,7 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.11.0",
     "jotai": "^2.3.1",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
