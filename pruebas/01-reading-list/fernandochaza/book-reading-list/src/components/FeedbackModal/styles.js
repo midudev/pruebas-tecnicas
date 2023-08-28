@@ -48,9 +48,13 @@ const StyledSuccessContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 75%;
-  height: 464px;
+  height: 445px;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 445px) {
+    height: 464px;
+  }
 `
 
 const StyledSuccessMessage = styled.p`

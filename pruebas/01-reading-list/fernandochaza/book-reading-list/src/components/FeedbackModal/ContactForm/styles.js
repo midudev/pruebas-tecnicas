@@ -5,7 +5,11 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   width: 75%;
-  height: 425px;
+  height: 406px;
+
+  @media screen and (max-width: 445px) {
+    height: 425px;
+  }
 `
 
 const StyledInput = styled.input`
@@ -42,7 +46,6 @@ const StyledColoredButton = styled(ColoredButton)`
   @media screen and (max-width: ${(props) => props.theme.breakpointSm}) {
     width: 100%;
   }
-
 `
 
 export {
