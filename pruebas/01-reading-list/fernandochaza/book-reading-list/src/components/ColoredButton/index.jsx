@@ -1,9 +1,9 @@
 import propTypes from 'prop-types'
 import { StyledButtonContainer, StyledButton } from './styles'
 
-const ColoredButton = ({ children, type, ariaLabel }) => {
+const ColoredButton = ({ children, type, ariaLabel, className }) => {
   return (
-    <StyledButtonContainer>
+    <StyledButtonContainer className={className}>
       <StyledButton type={type} aria-label={ariaLabel}>
         {children}
       </StyledButton>
@@ -17,5 +17,6 @@ ColoredButton.propTypes = {
   children: propTypes.string.isRequired,
   type: propTypes.string,
   disabled: propTypes.bool,
-  ariaLabel: propTypes.string
+  ariaLabel: propTypes.string,
+  className: propTypes.string
 }

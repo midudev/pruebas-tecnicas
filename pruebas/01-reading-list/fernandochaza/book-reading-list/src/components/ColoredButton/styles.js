@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 const StyledButtonContainer = styled.div`
+width: 100%;
   height: max-content;
   background-image: linear-gradient(90deg, #842cd7, #21f5f1);
   border-radius: 4px;
