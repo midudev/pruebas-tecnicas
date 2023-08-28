@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+li{
+  list-style: none;
+}
+
+body {
+  background-color: #000000;
+  opacity: 1;
+  background-image:  radial-gradient(#64748b 1.1500000000000001px, transparent 1.1500000000000001px), radial-gradient(#64748b 1.1500000000000001px, #001219 1.1500000000000001px);
+  background-size: 46px 46px;
+  background-position: 0 0,23px 23px;
+}
+
