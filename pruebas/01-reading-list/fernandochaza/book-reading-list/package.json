@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
+    "@formkit/auto-animate": "^0.7.0",
     "jotai": "^2.3.1",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",

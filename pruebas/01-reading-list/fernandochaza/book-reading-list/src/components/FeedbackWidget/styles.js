@@ -6,6 +6,7 @@ const StyledContainer = styled.div`
   right: 1rem;
   z-index: 1;
   color: ${(props) => props.theme.accent1Color};
+  cursor: pointer;
 
   transition: transform 0.3s ease-in-out;
 
