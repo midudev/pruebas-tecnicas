@@ -7,6 +7,12 @@ const StyledButtonContainer = styled.div`
   border-radius: 4px;
   padding: 1px;
 
+  transition: box-shadow 0.15s ease;
+
+  &:active {
+    box-shadow: 0 0 6px 2px ${(props) => props.theme.accent1Color};
+  }
+
   &:hover button {
     background-color: transparent;
     color: ${(props) => props.theme.mainBg};
