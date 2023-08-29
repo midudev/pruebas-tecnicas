@@ -4,8 +4,8 @@ import { StyledButtonContainer, StyledButton } from './styles'
 const ColoredButton = ({ children, type, ariaLabel, className }) => {
   return (
     <StyledButtonContainer className={className}>
-      <StyledButton type={type} aria-label={ariaLabel}>
-        {children}
+      <StyledButton type={type} aria-label={ariaLabel} data-label={children}>
+        <span>{children}</span>
       </StyledButton>
     </StyledButtonContainer>
   )
