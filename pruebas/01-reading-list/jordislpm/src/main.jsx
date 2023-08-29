@@ -8,11 +8,9 @@ import FiltersProvider from './context/contextFilters.jsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
     <ContextBook>
       <FiltersProvider>
         <App/>
       </FiltersProvider>
     </ContextBook>
-  </React.StrictMode>,
 )
