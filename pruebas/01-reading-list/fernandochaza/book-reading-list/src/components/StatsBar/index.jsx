@@ -23,7 +23,7 @@ const StatsBar = () => {
         <StyledSectionField>
           <BookIcon></BookIcon>
           <StyledSectionFieldTitle>
-            <strong>{booksInReadingList}</strong> Books in Reding List
+            <strong>{booksInReadingList}</strong> Books in Reading List
           </StyledSectionFieldTitle>
         </StyledSectionField>
         <StyledSectionField>
