@@ -15,7 +15,7 @@ export default function ListOfBooks() {
 
   return (
     <>
-      <article className="py-4 sm:py-24 w-screen">
+      <article className="py-4 sm:py-24 col-start-2 col-end-3">
         {loading ? (
           <Loader />
         ) : error ? (
