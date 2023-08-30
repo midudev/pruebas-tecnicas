@@ -24,18 +24,19 @@ export default function Header({ showSidebar, toggleSidebar }) {
 
   return (
     <>
-      <header className="fixed right-0 w-full md:w-4/5 z-50 bg-background">
-        <div className="relative flex sm:flex-col px-2 md:px-0 py-6 justify-center items-center">
-          <div
-            className={`absolute sm:relative w-full max-w-sm ${showSearch ? "z-50" : ""}`}
-          >
+      <header className="fixed md:mx-auto md:max-w-[1440px] md:w-full z-50 bg-background">
+        <div className="w-full grid sm:grid-cols-[20%,1fr] justify-between items-center">
+          <div className="pl-4">
+            <Brand />
+          </div>
+
+          <div className={`w-full flex items-center justify-center py-6`}>
             <form
               onSubmit={(e) => {
                 e.preventDefault();
               }}
-              className={`sm:absolute z-50 ${
-                showSearch ? "md:flex" : "hidden sm:block"
-              }`}
+              // className={`sm:absolute z-50 ${
+              className={` ${showSearch ? "md:flex" : "hidden sm:block"}`}
               onBlur={() => setShowSearch(!showSearch)}
             >
               <div className="relative px-2 py-6 sm:px-0 sm:py-0 bg-background">
@@ -63,14 +64,9 @@ export default function Header({ showSidebar, toggleSidebar }) {
                 </button>
               </div>
             </form>
-          </div>
 
-          <div className="w-full flex justify-between items-center px-2 h-10">
-            <div className="md:hidden">
-              <Brand />
-            </div>
             <div className="flex gap-3">
-              <button
+              {/* <button
                 className={`relative sm:hidden md:absolute md:right-9 md:top-1/2 md:translate-y-[-50%] ${
                   showSearch ? "" : "sm:hidden"
                 }`}
@@ -79,10 +75,10 @@ export default function Header({ showSidebar, toggleSidebar }) {
                 <span className="block">
                   <SearchIcon />
                 </span>
-              </button>
+              </button> */}
 
               <button
-                className="relative md:absolute md:right-9 md:top-1/2 md:translate-y-[-50%]"
+                className="absolute md:right-9 md:top-1/2 md:translate-y-[-50%]"
                 onClick={toggleSidebar}
               >
                 <FlipCounter total={savedBooks.length} />
