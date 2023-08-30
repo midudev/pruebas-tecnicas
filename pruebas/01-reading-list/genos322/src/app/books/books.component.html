@@ -1,0 +1,39 @@
+<section class="flex flex-wrap gap-x-96">
+    <div>
+        <p class="text-3xl !font-indieFlower text-green-50">Filtrar por páginas</p>
+        <mat-slider class="!w-[250px]" min="0" max="1500" step="5" showTickMarks discrete>
+            <input matSliderThumb [(ngModel)]="sliderValue" #slider (input)="onSliderValueChange()">
+        </mat-slider>
+    </div>
+    <div>
+        <p class="text-3xl !font-indieFlower text-cyan-50">Filtrar por género</p>
+        <mat-form-field>
+            <mat-label>Selecciona un género</mat-label>
+            <mat-select [(value)]="selected">
+                <mat-option value="ninguno">None</mat-option>
+                <mat-option value="Terror">Terror</mat-option>
+                <mat-option value="Ciencia ficción">Ciencia Ficción</mat-option>
+                <mat-option value="Fantasía">Fantasía</mat-option>
+                <mat-option value="Zombies">Zombies</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</section>
+<div class="flex flex-wrap gap-10 mt-6">
+    <ng-container *ngIf="selected === 'ninguno'">
+        <ng-container *ngFor="let data of jsonData;">
+            <ng-container *ngIf="data.book.pages >= sliderValue">
+                <div>
+                    <img [src]="data.book.cover" alt="" class="max-h-96 w-auto rounded-lg shadow-lg shadow-green-300">
+                </div>              
+            </ng-container>
+        </ng-container>
+    </ng-container>
+    <ng-container *ngFor="let data of jsonData;">
+        <ng-container *ngIf="data.book.pages >= sliderValue && data.book.genre == selected">
+            <div>
+                <img [src]="data.book.cover" alt="" class="max-h-96 w-auto rounded-lg shadow-lg shadow-green-300">
+            </div>              
+        </ng-container>
+    </ng-container>
+</div>
