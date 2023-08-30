@@ -13,9 +13,11 @@ export default {
         'card-background': '#252429',
         'text': '#FFF',
         'background': '#18191d',
+        'background-snd': '#5a5b63',
         'primary': '#009687',
         'secondary': '#FFD440',
-        'sidebar': '#282e33'
+        'sidebar': '#282e33',
+        'links': '#71a1ff'
       },
       screens: {
         'xs': '300px',
