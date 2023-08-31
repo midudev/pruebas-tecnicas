@@ -24,19 +24,20 @@ export default function Header({ showSidebar, toggleSidebar }) {
 
   return (
     <>
-      <header className="fixed md:mx-auto md:max-w-[1440px] md:w-full z-50 bg-background">
+      <header className="fixed w-full md:w-screen md:mx-auto md:max-w-[1440px] z-50 bg-background">
         <div className="w-full grid sm:grid-cols-[20%,1fr] justify-between items-center">
-          <div className="pl-4">
+          <div className="pl-4 hidden sm:block">
             <Brand />
           </div>
 
-          <div className={`w-full flex items-center justify-center py-6`}>
+          <div className="w-screen flex items-center justify-end py-6 px-4 md:px-0">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
               }}
-              // className={`sm:absolute z-50 ${
-              className={` ${showSearch ? "md:flex" : "hidden sm:block"}`}
+              className={`absolute w-full px-3 left-0 ${
+                showSearch ? "md:flex z-50" : "hidden sm:block"
+              }`}
               onBlur={() => setShowSearch(!showSearch)}
             >
               <div className="relative px-2 py-6 sm:px-0 sm:py-0 bg-background">
@@ -66,7 +67,7 @@ export default function Header({ showSidebar, toggleSidebar }) {
             </form>
 
             <div className="flex gap-3">
-              {/* <button
+              <button
                 className={`relative sm:hidden md:absolute md:right-9 md:top-1/2 md:translate-y-[-50%] ${
                   showSearch ? "" : "sm:hidden"
                 }`}
@@ -75,10 +76,10 @@ export default function Header({ showSidebar, toggleSidebar }) {
                 <span className="block">
                   <SearchIcon />
                 </span>
-              </button> */}
+              </button>
 
               <button
-                className="absolute md:right-9 md:top-1/2 md:translate-y-[-50%]"
+                className="relative md:right-9 md:top-1/2 md:translate-y-[-50%]"
                 onClick={toggleSidebar}
               >
                 <FlipCounter total={savedBooks.length} />
