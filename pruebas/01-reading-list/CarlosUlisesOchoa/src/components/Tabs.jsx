@@ -6,7 +6,7 @@ export function Tabs({ data, selectedTabIndex = 0 }) {
 
   const tabsHeadings = data.map((tab, index) => {
     let tabStyles =
-      'pb-2 font-heading font-bold cursor-pointer transition duration-300 border-b-2 leading-tight sm:text-xl'
+      'pb-2 font-heading font-bold cursor-pointer transition duration-300 border-b-2 leading-tight text-[0.85rem] sm:text-xl'
     tabStyles +=
       selectedTab === index
         ? ' text-gray-300 border-slate-500'

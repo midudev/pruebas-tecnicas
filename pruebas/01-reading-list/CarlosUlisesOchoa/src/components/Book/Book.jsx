@@ -1,8 +1,14 @@
 import { useEffect, useState } from 'react'
 import '@/components/Book/Book.css'
 import AddSquareIcon from '@/components/Icons/AddSquareIcon'
+import RemoveSquareIcon from '../Icons/RemoveSquareIcon'
 
-const Book = ({ data, onAddBookToReadingListClick, fadingOut = false }) => {
+const Book = ({
+  data,
+  isOnReadingList = false,
+  onBookButtonClick,
+  fadingOut = false,
+}) => {
   // useEffect(() => console.log(`[R]-------> Book '${data.title}' rendered!`), []) // tetemp
 
   const [isFadingOut, setIsFadingOut] = useState(fadingOut)
@@ -12,10 +18,10 @@ const Book = ({ data, onAddBookToReadingListClick, fadingOut = false }) => {
     cb()
   }
 
-  const handleAddBookToReadingListClick = () => {
+  const handleBookButtonClick = () => {
     fadeOut(() => {
       setTimeout(() => {
-        onAddBookToReadingListClick()
+        onBookButtonClick()
         setIsFadingOut(false)
       }, 300)
     })
@@ -32,12 +38,14 @@ const Book = ({ data, onAddBookToReadingListClick, fadingOut = false }) => {
         <div className='book__options'>
           <button
             className='book__options-button--add-to-reading-list'
-            onClick={handleAddBookToReadingListClick}>
+            onClick={handleBookButtonClick}>
             <span className='book__options-icon--add-to-reading-list'>
-              <AddSquareIcon />
+              {isOnReadingList ? <RemoveSquareIcon /> : <AddSquareIcon />}
             </span>
             <span className='book__options-text--add-to-reading-list'>
-              Añadir a la lista de lectura
+              {isOnReadingList
+                ? 'Remover de la lista de lectura'
+                : 'Añadir a la lista de lectura'}
             </span>
           </button>
         </div>

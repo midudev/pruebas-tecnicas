@@ -11,12 +11,15 @@
 .book--fading-out {
   animation: fadeout 0.3s linear forwards;
 }
-.book__cover:hover .book__options {
-  opacity: 1;
-}
-.book__cover:hover .book__cover-img {
-  opacity: 0.25;
-  filter: blur(2px);
+/* media query that applies to all devices that got a pointer */
+@media (hover: hover) {
+  .book__cover:hover .book__options {
+    opacity: 1;
+  }
+  .book__cover:hover .book__cover-img {
+    opacity: 0.25;
+    filter: blur(2px);
+  }
 }
 
 .book__cover {
@@ -50,8 +53,8 @@
   padding: 1rem;
 }
 .book__options-icon--add-to-reading-list {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 24px;
+  height: 24px;
   fill: #fff;
   margin-bottom: 1.25rem;
   transition: fill 0.2s ease-in-out;

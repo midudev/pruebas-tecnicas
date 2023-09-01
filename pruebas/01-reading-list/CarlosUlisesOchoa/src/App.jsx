@@ -32,9 +32,9 @@ function App() {
     filters.pages.max
   )
 
-  useEffect(() => {
-    //
-  }, [])
+  // useEffect(() => {
+  //   //
+  // }, [])
 
   const removeBook = (isbn, list) => {
     let bookIndex = null
@@ -49,35 +49,22 @@ function App() {
   }
 
   const handleAddToReadingList = (book) => {
-    console.log(book) // tetemp
     const [bookIndex, filteredList] = removeBook(book.ISBN, availableBooks)
-    console.log(bookIndex) // tetemp
     setAvailableBooks(filteredList)
     setReadingList([availableBooks[bookIndex], ...readingList])
   }
 
   const handleRemoveFromReadingList = (book) => {
-    const [bookIndex, filteredList] = removeBook(book, readingList)
+    const [bookIndex, filteredList] = removeBook(book.ISBN, readingList)
     setReadingList(filteredList)
     setAvailableBooks([readingList[bookIndex], ...availableBooks])
   }
 
-  const handleClearReadingListButton = () => {
-    setReadingList([])
-    setAvailableBooks(books)
-  }
-
   function filterBooks(booksArray) {
     const filteredList = booksArray.filter((book) => {
-      // tetemp not available yet
-      // console.log(readingList) // tetemp
-      // const notInReadingList = !readingList.find(
-      //   (readingBook) => readingBook.ISBN === book.ISBN
-      // )
       const matchesSearchTerm = new RegExp(debouncedSearchTerm, 'i').test(book.title)
       const matchesGenre = genre ? book.genre === genre : true
-      const matchesPageRange = book.pages <= debouncedMaxPagesNumber // condition to filter by page range
-      // return notInReadingList && matchesGenre && matchesPageRange && matchesSearchTerm
+      const matchesPageRange = book.pages <= debouncedMaxPagesNumber
       return matchesGenre && matchesPageRange && matchesSearchTerm
     })
 
@@ -113,27 +100,19 @@ function App() {
       content: (
         <BookList
           booksArray={filterBooks(availableBooks)}
-          onAddBookToReadingListClick={handleAddToReadingList}
+          onBookButtonClick={handleAddToReadingList}
         />
       ),
     },
     {
       name: `Lista de lectura (${readingList.length})`,
       content: (
-        <>
-          <p className='mb-2'>Esto aún no funciona del todo 🥲</p>
-          <p>
-            Pulsa{' '}
-            <a onClick={handleClearReadingListButton} className='text-red-600'>
-              aquí
-            </a>{' '}
-            para quitar los libros de la lista de lectura
-          </p>
-        </>
+        <BookList
+          readingList
+          booksArray={filterBooks(readingList)}
+          onBookButtonClick={handleRemoveFromReadingList}
+        />
       ),
-      // content: (
-      //   <BookList booksArray={books} onAddBookToReadingListClick={handleAddBook} />
-      // ),
     },
   ]
 

@@ -1,7 +1,7 @@
 import Book from '@/components/Book/Book'
 import '@/components/BookList/BookList.css'
 
-const BookList = ({ booksArray, onAddBookToReadingListClick }) => {
+const BookList = ({ booksArray, readingList = false, onBookButtonClick }) => {
   // useEffect(() => console.log('[R]-------> BookList component rendered!'), []) // tetemp
 
   return (
@@ -15,7 +15,8 @@ const BookList = ({ booksArray, onAddBookToReadingListClick }) => {
             <li className='books__element' key={book.ISBN}>
               <Book
                 data={book}
-                onAddBookToReadingListClick={() => onAddBookToReadingListClick(book)}
+                isOnReadingList={readingList}
+                onBookButtonClick={() => onBookButtonClick(book)}
               />
             </li>
           ))}

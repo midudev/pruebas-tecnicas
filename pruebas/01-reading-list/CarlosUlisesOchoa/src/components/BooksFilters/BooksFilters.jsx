@@ -12,7 +12,7 @@ export function BooksFilters({
 }) {
   return (
     <div className='flex gap-x-10 gap-y-6 justify-between mb-8 flex-col md:flex-row md:items-center'>
-      <div className='flex flex-col md:w-80'>
+      <div className='flex flex-col md:w-80 md:mt-4'>
         <SearchBar
           placeholder='Buscar por título'
           onSubmit={(e) => {
@@ -30,14 +30,14 @@ export function BooksFilters({
             label='Filtrar por género:'
             options={genres}
             defaultValue='todos'
-            className='text-white font-medium text-sm mb-1'
+            className='text-white font-medium text-sm mb-4 sm:mb-4x'
             onChange={onGenreChange}
           />
         </div>
         <div className='flex flex-col'>
           <Range
             label='Número de páginas'
-            className='text-white font-medium text-sm mb-1'
+            className='text-white font-medium text-sm mb-4 sm:mb-4x'
             inputClassName='accent-slate-500'
             min={pages.min}
             max={pages.max}

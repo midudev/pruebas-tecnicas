@@ -19,10 +19,11 @@
   box-sizing: inherit;
 }
 
+html,
 body {
   margin: 0;
   padding: 0;
-  min-height: 100vh;
+  height: 100%;
 }
 
 @media (prefers-color-scheme: dark) {

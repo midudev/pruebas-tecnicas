@@ -1,5 +1,6 @@
 #root {
-  max-width: 1024px;
+  min-height: 100%;
+  max-width: 850px;
   margin: 0 auto;
 }
 
