@@ -1,18 +1,19 @@
 import { component$ } from '@builder.io/qwik';
 import { ResultItem } from '../result-item/result-item';
+import { type Product } from '~/interfaces/products-response.interface';
 
-export const ResultList = component$(() => {
+interface Props {
+  products: Product[];
+}
+
+export const ResultList = component$<Props>(({ products }) => {
   return (
     <ul>
-      <li>
-        <ResultItem />
-      </li>
-      <li>
-        <ResultItem />
-      </li>
-      <li>
-        <ResultItem />
-      </li>
+      {products.map((product) => (
+        <li key={product.id}>
+          <ResultItem product={product} />
+        </li>
+      ))}
     </ul>
   );
 });

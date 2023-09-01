@@ -1,7 +1,35 @@
 import { component$ } from '@builder.io/qwik';
-import { type DocumentHead } from '@builder.io/qwik-city';
+import { routeLoader$, type DocumentHead } from '@builder.io/qwik-city';
+import { type ErrorResponse } from '~/interfaces/error-response.interface';
+import type { Product } from '~/interfaces/products-response.interface';
+
+export const useProductLoader = routeLoader$(async ({ params, fail }) => {
+  const { id } = params;
+  const url = `http://localhost:5173/api/items/${id}`;
+
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    const { statusCode, message } = (await response.json()) as ErrorResponse;
+    return fail(statusCode, { message });
+  }
+
+  const data = (await response.json()) as Product;
+  return data;
+});
 
 export default component$(() => {
+  const product: any = useProductLoader();
+  // console.log(product.value);
+
+  if (product.value.message) {
+    return (
+      <div>
+        <h3>{product.value.message}</h3>
+      </div>
+    );
+  }
+
   return (
     <div>
       <figure>

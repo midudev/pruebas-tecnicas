@@ -10,8 +10,7 @@ export default component$(() => {
         <CarIcon width={60} height={60} />
         <h1 class="text-2xl font-bold">Bazar Online</h1>
       </section>
-      <SearchBox />
-      <button class="btn btn-primary btn-sm">Search</button>
+      <SearchBox showSearchButton={true} />
     </main>
   );
 });
@@ -37,7 +36,7 @@ export const head: DocumentHead = {
     },
     {
       name: 'og:image', // es la imagen que se va a mostrar en las redes sociales cuando se comparta el link
-      content: 'https://picsum.photos/1200/630',
+      content: '/images/shop.jpg',
     },
   ],
 };
