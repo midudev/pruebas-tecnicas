@@ -28,7 +28,7 @@ export default {
         '6xs': '570px',
         '7xs': '585px',
         'sm': '640px',
-        '2sm': '640px',
+        '2sm': '715px',
         'md': '768px',
         'lg': '1024px',
         'xl': '1280px',
