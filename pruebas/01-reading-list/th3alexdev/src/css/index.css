@@ -9,13 +9,17 @@
   font-family: 'General Sans', sans-serif;
 }
 
-* {
+/* * {
+  outline: 1px solid #ffffff55
+} */
+
+html {
   scrollbar-gutter: stable;
-  outline: 1px solid #ffffff55;
 }
 
 body {
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 img {
