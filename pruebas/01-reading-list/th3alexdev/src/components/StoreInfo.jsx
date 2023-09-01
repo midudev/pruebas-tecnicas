@@ -3,11 +3,11 @@ import { ExternalLink } from "./Icons";
 
 export default function StoreInfo() {
   return (
-      <div className="fixed bottom-4 w-full max-w-[235px] min-h-[110px] outline-1 outline-background-snd outline-double px-4 py-3 flex justify-between flex-col rounded-md">
+      <div className="hidden md:flex md:fixed bottom-4 w-screen max-w-[18%] xl:max-w-[235px] min-h-[110px] outline-1 outline-background-snd outline-double px-2 lg:px-4 py-3 justify-between flex-col rounded-md">
         <header className="flex justify-between items-center">
-          <div className="">
-            <span className="text-sm opacity-70">Desarrollador</span>
-            <h2 className="text-base leading-4 font-medium">Alexander Pérez</h2>
+          <div>
+            <span className="text-xs lg:text-sm opacity-70">Desarrollador</span>
+            <h2 className="text-xs lg:text-base leading-4 font-medium">Alexander Pérez</h2>
           </div>
           <img
             src="https://avatars.githubusercontent.com/u/55007470?v=4"
@@ -24,7 +24,7 @@ export default function StoreInfo() {
             <span>
               <ExternalLink />
             </span>
-            <span className="text-base">Visitar Perfil</span>
+            <span className="text-sm lg:text-base">Visitar Perfil</span>
           </a>
         </footer>
       </div>

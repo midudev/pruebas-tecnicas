@@ -15,13 +15,13 @@ export default function ListOfBooks() {
 
   return (
     <>
-      <article className="py-4 sm:py-24 col-start-2 col-end-3">
+      <article className="py-8 px-5 md:px-0 md:py-24 col-start-2 col-end-3">
         {loading ? (
           <Loader />
         ) : error ? (
           <ErrorMessage error={error} />
         ) : (
-          <ul className="grid 3xs:gap-x-4 3xs:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] sm:gap-x-4 gap-y-5 px-2">
+          <ul className="grid xs:gap-x-4 xs:grid-cols-[repeat(auto-fill,minmax(150px,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(180px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] sm:gap-x-4 gap-y-5 px-2">
             {filteredBooks?.map((book) => (
               <li
                 className="relative py-4 px-3 flex flex-nowrap flex-col items-center rounded-md hover:bg-card-hover group"
