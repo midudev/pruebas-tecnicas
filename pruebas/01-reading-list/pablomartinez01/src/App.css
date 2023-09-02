@@ -1,0 +1,51 @@
+.app {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* width */
+.app::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+.app::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+ 
+/* Handle */
+.app::-webkit-scrollbar-thumb {
+  background: rgb(255, 58, 58); 
+
+}
+
+/* Handle on hover */
+.app::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
+}
+
+.hide-window {
+  width: 0;
+  height: 0;
+}
+
+.hide-window > * {
+  display: none;
+}
+
+
+.bold {
+  font-weight: bolder;
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,70 @@
+.read-list-window {
+  background-color: rgba(0, 0, 0, 0.961);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  width: 0;
+  height: 0;
+  border-radius: 10px;
+  transition: all .2s ease;
+}
+
+.read-list-window > div {
+  height: 100%;
+}
+
+.scroll{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 100%;
+  height: 92%;
+}
+
+/* width */
+.scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+.scroll::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+ 
+/* Handle */
+.scroll::-webkit-scrollbar-thumb {
+  background: rgb(255, 58, 58); 
+
+}
+
+/* Handle on hover */
+.scroll::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
+}
+
+.show-read-list-window {
+  width: 90%;
+  height: 90%;
+}
+
+.read-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.read-list-header {
+  display: fixed;
+  background-color: #ff4545;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.read-list-header > h1 {
+  margin: 0px 16px;
+}
+
