@@ -1,5 +1,7 @@
-export default function Home () {
+export default function Home() {
   return (
-    <h1>Simple Shop 🛒</h1>
-  )
+    <div>
+      <h1 className='text-lg font-bold w-40 mx-auto'>Simple Shop 🛒</h1>
+    </div>
+  );
 }

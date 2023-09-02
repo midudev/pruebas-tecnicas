@@ -1,22 +1,36 @@
-import './globals.css'
-import type { Metadata } from 'next'
-import { Noto_Sans, Noto_Sans_Mono } from 'next/font/google'
+// These styles apply to every route in the application
+import "./globals.css"
 
-const notoSans = Noto_Sans({ subsets: ['latin'], weight: '300', variable: '--font-noto' })
-const notoMono = Noto_Sans_Mono({ subsets: ['latin'], variable: '--font-noto-mono' })
+import type { Metadata } from "next"
+import { Noto_Sans, Noto_Sans_Mono } from "next/font/google"
 
+const notoSans = Noto_Sans({
+  subsets: ["latin"],
+  weight: "300",
+  variable: "--font-noto"
+})
+const notoMono = Noto_Sans_Mono({
+  subsets: ["latin"],
+  variable: "--font-noto-mono"
+})
+
+// This is automatically injected into the html 'head' tag
 export const metadata: Metadata = {
-  title: 'Simple Shop',
-  description: 'Simple Shop. The best place to find and buy everything you need',
-  applicationName: 'Simple Shop',
-  keywords: ['Market', 'Online Store', 'Smartphone', 'Laptop', 'Tech Products'],
-  authors: [{ name: 'Fernando Chazarreta', url: 'https://github.com/fernandochaza' }],
-  creator: 'Fernando Chazarreta',
+  title: "Simple Shop",
+  description:
+    "Simple Shop. The best place to find and buy everything you need",
+  applicationName: "Simple Shop",
+  keywords: ["Market", "Online Store", "Smartphone", "Laptop", "Tech Products"],
+  authors: [
+    { name: "Fernando Chazarreta", url: "https://github.com/fernandochaza" }
+  ],
+  creator: "Fernando Chazarreta",
   openGraph: {
-    title: 'Simple Shop',
-    description: 'Simple Shop. The best place to find and buy everything you need',
+    title: "Simple Shop",
+    description:
+      "Simple Shop. The best place to find and buy everything you need",
     //   url: 'https://nextjs.org',
-    siteName: 'Simple Shop',
+    siteName: "Simple Shop",
     //   images: [
     //     {
     //       url: 'https://nextjs.org/og.png',
@@ -30,19 +44,21 @@ export const metadata: Metadata = {
     //       alt: 'My custom alt',
     //     },
     //   ],
-    locale: 'en_US',
-    type: 'website'
+    locale: "en_US",
+    type: "website"
   }
 }
 
-export default function RootLayout ({
+export default function RootLayout({
   children
 }: {
   children: React.ReactNode
 }) {
   return (
     <html lang="en">
-      <body className={`${notoSans.variable} ${notoMono.variable} font-sans`}>{children}</body>
+      <body className={`${notoSans.variable} ${notoMono.variable} font-sans`}>
+        {children}
+      </body>
     </html>
   )
 }
