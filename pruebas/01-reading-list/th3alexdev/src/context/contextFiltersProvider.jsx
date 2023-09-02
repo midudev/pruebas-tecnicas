@@ -7,7 +7,8 @@ export const FiltersContext = createContext();
 
 export default function FiltersProvider({ children }) {
   const { books, error, setError } = useContext(BooksContext);
-  const { savedBooks } = useContext(ReadListContext); 
+  const { savedBooks, loadSavedBooks } = useContext(ReadListContext);
+  const [filteredBooks, setFilteredBooks] = useState([]);
 
   const [filters, setFilters] = useState({
     sortByTitle: "",
@@ -47,33 +48,39 @@ export default function FiltersProvider({ children }) {
         maxPages: getBookWithMorePages(),
       },
     }));
-  }, [books]);
+
+  }, [books, loadSavedBooks]);
 
   const { sortByTitle, genre, pages, sortByPages } = filters;
 
-  const filter = books?.filter((book) => {
-    if (
-      (!genre || book.genre === genre) &&
-      book.title?.toLowerCase().includes(sortByTitle) &&
-      book.pages <= pages.maxPages &&
-      !savedBooks.includes(book)
-    )
-      return true;
-
-    return false;
-  });
-
-  const filteredBooks = filter;
-
   useEffect(() => {
     if (error === ERROR_MESSAGES.FETCH_ERROR) return;
+
+    const filter = books?.filter((book) => {
+      if (
+        (!genre || book.genre === genre) &&
+        book.title?.toLowerCase().includes(sortByTitle) &&
+        book.pages <= pages.maxPages &&
+        !savedBooks.includes(book)
+      )
+        return true;
+
+      return false;
+    });
+
+    setFilteredBooks(filter)
 
     if ((sortByTitle || genre || sortByPages) && !filteredBooks.length) {
       setError(ERROR_MESSAGES.NOT_FOUND);
     } else {
       setError(null);
     }
-  }, [filteredBooks, error]);
+  }, [
+    books,
+    savedBooks,
+    filters,
+    error,
+  ]);
 
   return (
     <FiltersContext.Provider value={{ filters, setFilters, filteredBooks }}>
