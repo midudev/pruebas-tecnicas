@@ -1,0 +1,20 @@
+{
+  "semi": true,
+  "tabWidth": 2,
+  "filepath": "",
+  "useTabs": false,
+  "overrides": [],
+  "printWidth": 100,
+  "endOfLine": "lf",
+  "cursorOffset": -1,
+  "singleQuote": true,
+  "insertPragma": false,
+  "trailingComma": "all",
+  "jsxSingleQuote": false,
+  "arrowParens": "always",
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "quoteProps": "as-needed",
+  "htmlWhitespaceSensitivity": "css",
+  "embeddedLanguageFormatting": "auto"
+}

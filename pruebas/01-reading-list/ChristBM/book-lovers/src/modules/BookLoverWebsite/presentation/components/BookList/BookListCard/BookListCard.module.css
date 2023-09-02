@@ -1,0 +1,81 @@
+.container {
+  width: max-content;
+  height: max-content;
+  margin: 0;
+  position: relative;
+  user-select: none;
+}
+
+.bookmark {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  right: 5px;
+  z-index: 1;
+}
+
+.show__bookmark {
+  visibility: visible;
+}
+
+.card {
+  display: flex;
+  width: max-content;
+  height: max-content;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.obscure_card {
+  opacity: 0.5;
+}
+
+.cover_container {
+  width: 180px;
+  height: 285px;
+  object-fit: contain;
+}
+
+.cover {
+  width: 180px;
+  height: 285px;
+}
+
+.add_btn {
+  display: none;
+  width: 100%;
+  height: 50px;
+  margin: 0;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: rgba(30, 29, 29, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.card:hover ~ .btn_hover , .card:focus ~ .btn_hover, .btn_hover:hover {
+  display: flex;
+}
+
+.hide_btn {
+  visibility: hidden;
+}
+
+.details_link {
+  display: flex;
+  width: 100px;
+  height: max-content;
+  padding-block-start: 5px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  justify-content: center;
+  align-items: baseline;
+  gap: 5px;
+  background-color: rgba(30, 29, 29, 0.5);
+  backdrop-filter: blur(3px);
+}

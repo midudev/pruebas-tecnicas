@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.separator {
+  display: block;
+  width: 50%;
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.filters_header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.filters_container {
+  display: flex;
+  width: 100%;
+  padding-inline: 15px;
+  padding-block-end: 40px;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}

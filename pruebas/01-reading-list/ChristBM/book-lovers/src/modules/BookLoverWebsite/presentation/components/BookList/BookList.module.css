@@ -1,0 +1,45 @@
+.list {
+  display: flex;
+  height: 1000px;
+  flex-flow: row wrap;
+  margin-block-end: 50px;
+  justify-content: center;
+  gap: 20px;
+}
+
+.end_text, .spinner {
+  display: block;
+  width: 100%;
+  padding-block-start: 50px;
+  text-align: center;
+}
+
+.spinner {
+  padding: 5px;
+}
+
+@media screen and (min-width: 768px) {
+  .list {
+    gap: 30px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .list {
+    width: 1000px;
+    gap: 40px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .list {
+    gap: 40px;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .list {
+    width: 1200px;
+    gap: 60px;
+  }
+}
