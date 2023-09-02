@@ -22,6 +22,12 @@ export default function ReadListProvider({ children }) {
     );
   };
 
+  const loadSavedBooks = () => {
+    const savedBooksFromLocalStorage =
+      JSON.parse(localStorage.getItem("savedBooks")) || [];
+    setSavedBooks(savedBooksFromLocalStorage);
+  };
+
   useEffect(() => {
     localStorage.setItem("savedBooks", JSON.stringify(savedBooks));
   }, [savedBooks]);
@@ -47,6 +53,7 @@ export default function ReadListProvider({ children }) {
         savedBooks,
         addBook,
         removeBook,
+        loadSavedBooks
       }}
     >
       {children}
