@@ -1,0 +1,21 @@
+.is-reading-list {
+  translate: 100%;
+}
+
+.reading-list-overflow {
+  overflow: auto;
+}
+
+.last-article-margin:last-child {
+  margin-bottom: 1rem;
+}
+
+.active {
+  animation: fade 3000ms linear infinite alternate-reverse;
+}
+
+@keyframes fade {
+  50% {
+    color: rgb(243, 163, 163);
+  }
+}

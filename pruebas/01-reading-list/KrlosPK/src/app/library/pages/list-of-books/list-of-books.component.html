@@ -1,0 +1,47 @@
+<div class="flex gap-3">
+  <library-reading-list
+    (onRemoveFromReadingList)="handleRemove($event)"
+    [readingList]="readingList"
+  />
+
+  <div class="w-full">
+    <library-filters
+      [books]="books"
+      (filterBooksByPages)="handleFilterByPages($event)"
+      (filterBooksByCategory)="handleFilterByCategory($event)"
+      (clearAllFilters)="handleClearFilters()"
+    />
+
+    <header>
+      <h1 class="mt-6 mb-4 text-2xl font-bold md:text-4xl">
+        <span class="text-red-600">{{ books.length }}</span>
+        <span *ngIf="books.length > 1"> Libros disponibles </span>
+        <span *ngIf="books.length === 1"> Libro disponible </span>
+      </h1>
+    </header>
+
+    <section
+      class="grid gap-4 grid-cols-auto-fit place-items-center md:place-items-start"
+    >
+      <article
+        (click)="addToReadingList(item.book.ISBN)"
+        [ngClass]="{
+          'is-on-reading-list': isOnReadingList(item.book.ISBN),
+          'is-on-reading-list-hover': !isOnReadingList(item.book.ISBN)
+        }"
+        [title]="item.book.title"
+        *ngFor="let item of books"
+        class="relative transition-opacity last-article-margin"
+      >
+        <span *ngIf="isOnReadingList(item.book.ISBN)" class="gg-eye"></span>
+        <img
+          [alt]="item.book.title"
+          [src]="item.book.cover"
+          class="object-contain"
+          height="250"
+          width="150"
+        />
+      </article>
+    </section>
+  </div>
+</div>

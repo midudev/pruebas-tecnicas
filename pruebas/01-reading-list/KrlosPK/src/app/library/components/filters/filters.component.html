@@ -1,0 +1,54 @@
+<nav class="flex flex-col gap-3 mt-16 md:mt-4">
+  <form
+    (change)="filterByPages(pages.value)"
+    [formGroup]="filterByPagesForm"
+    class="flex flex-col"
+  >
+    <label for="pages" class="">Filtrar por páginas</label>
+
+    <div class="flex items-center gap-2">
+      <input
+        [max]="minMaxPages[1] + 13"
+        [min]="minMaxPages[0]"
+        #pages
+        class="w-full h-2 max-w-xs bg-gray-700 rounded-lg appearance-none cursor-pointer"
+        formControlName="pages"
+        id="pages"
+        name="pages"
+        step="15"
+        type="range"
+      />
+      <p>{{ pages.value }}</p>
+    </div>
+  </form>
+
+  <form
+    (change)="filterByCategory(category.value)"
+    [formGroup]="filterByCategoryForm"
+    class="flex flex-col"
+  >
+    <label class="mb-2" for="category">Filtrar por género</label>
+
+    <select
+      #category
+      class="border text-sm w-full rounded-lg block p-2.5 bg-gray-700 border-gray-600 max-w-xs placeholder-gray-400 text-white cursor-pointer"
+      formControlName="category"
+      id="category"
+      name="category"
+    >
+      <option selected>Todos</option>
+
+      <option *ngFor="let genre of genres" [value]="genre">
+        {{ genre }}
+      </option>
+    </select>
+  </form>
+
+  <button
+    (click)="clearFilters()"
+    class="px-4 py-2 bg-purple-600 rounded-lg w-fit"
+    type="button"
+  >
+    Limpiar filtros
+  </button>
+</nav>
