@@ -1,0 +1,20 @@
+{
+  "home": {
+    "title": "Editoriales Javascript",
+    "resetApp": "Reiniciar App",
+    "resetFilter": "Reiniciar Filtro",
+    "availableBooks": "Libros Disponibles : ",
+    "readingBooks": "Libros de Lectura : ",
+    "addBook": "Añadir",
+    "genre": "Género",
+    "allBooks": "Todos",
+    "searchBook": "Buscar Libro",
+    "writeBookName": "Escribe el nombre del libro",
+    "numberPages": "Número de Páginas",
+    "priority": {
+      "low": "Baja",
+      "medium": "Media",
+      "high": "Alta"
+    }
+  }
+}
