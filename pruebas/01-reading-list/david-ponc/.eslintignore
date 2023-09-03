@@ -1,0 +1,9 @@
+node_modules
+dist
+/build
+/package
+.env
+.env.*
+!.env.example
+
+pnpm-lock.yaml

@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	button {
+		@apply text-left;
+	}
+
+	@font-face {
+		font-family: 'Inter var';
+		font-weight: 100 900;
+		font-display: swap;
+		font-style: normal;
+		font-named-instance: 'Regular';
+		src: url('/fonts/inter-roman.var.woff2') format('woff2');
+	}
+	@font-face {
+		font-family: 'Inter var';
+		font-weight: 100 900;
+		font-display: swap;
+		font-style: italic;
+		font-named-instance: 'Italic';
+		src: url('/fonts/inter-italic.var.woff2') format('woff2');
+	}
+
+	* {
+		@apply outline-none;
+	}
+
+	:focus {
+		@apply ring-4 ring-sky-400/30 transition-shadow duration-200;
+	}
+
+	:is(html, body, #app) {
+		@apply min-h-full w-full;
+	}
+
+	body {
+		@apply bg-slate-950 text-slate-50;
+	}
+}
