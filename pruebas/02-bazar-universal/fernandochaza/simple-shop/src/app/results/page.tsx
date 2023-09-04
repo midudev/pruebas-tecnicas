@@ -8,13 +8,15 @@ const ResultsPage = ({ searchParams }: { searchParams: { query: string } }) => {
     product.title.toLowerCase().includes(query)
   )
   return (
-    <>
-      <h1>Search results for "{query}"</h1>
+    <div className="p-4">
+      <h1 className="font-sans text-lg ">Search results for "{query}"</h1>
       <h2>These are the results</h2>
-      {results.map((product) => {
-        return <ProductCard key={product.id} product={product} />
-      })}
-    </>
+      <section className="flex flex-col gap-y-8 mt-8">
+        {results.map((product) => {
+          return <ProductCard key={product.id} product={product} />
+        })}
+      </section>
+    </div>
   )
 }
 

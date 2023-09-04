@@ -10,8 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-noto)"],
-        mono: ["var(--font-noto-mono)"]
+        sans: ["var(--font-nunito)"],
+        mono: ["var(--font-fira-mono)"]
       }
     }
   },

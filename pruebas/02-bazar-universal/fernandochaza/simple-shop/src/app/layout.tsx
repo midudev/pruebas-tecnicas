@@ -1,19 +1,18 @@
 import { Suspense } from "react"
 
 import type { Metadata } from "next"
-import { Noto_Sans, Noto_Sans_Mono } from "next/font/google"
+import { Nunito_Sans, Fira_Code } from "next/font/google"
 
 // These styles apply to every route in the application
 import "./globals.css"
 
-const notoSans = Noto_Sans({
+const nunitoSans = Nunito_Sans({
   subsets: ["latin"],
-  weight: ["300", "700"],
-  variable: "--font-noto"
+  variable: "--font-nunito"
 })
-const notoMono = Noto_Sans_Mono({
+const firaMono = Fira_Code({
   subsets: ["latin"],
-  variable: "--font-noto-mono"
+  variable: "--font-fira-mono"
 })
 
 // This is automatically injected into the html 'head' tag
@@ -58,7 +57,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${notoSans.variable} ${notoMono.variable} font-sans`}>
+      <body className={`${nunitoSans.variable} ${firaMono.variable} font-sans`}>
         {children}
       </body>
     </html>
