@@ -1,9 +1,10 @@
 :root {
   --dark-color: #111;
+  --light-color: #f0f5ff;
   --aspect-ratio: 9/14;
 }
 .book {
-  background-color: var(--dark-color);
+  background-color: var(--light-color);
 }
 .book {
   animation: fadein 0.3s linear forwards;
@@ -16,9 +17,21 @@
   .book__cover:hover .book__options {
     opacity: 1;
   }
-  .book__cover:hover .book__cover-img {
-    opacity: 0.25;
-    filter: blur(2px);
+  .book__cover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 255, 0);
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .book__cover:hover::before {
+    background-color: rgba(20, 33, 45, 0.5);
+    backdrop-filter: blur(2px);
+    transition: background-color 0.3s ease-in-out;
   }
 }
 
@@ -40,6 +53,7 @@
   transition: opacity 0.2s ease-in-out;
 }
 .book__options-button--add-to-reading-list {
+  color: white;
   position: absolute;
   top: 0;
   right: 0;
@@ -55,13 +69,15 @@
 .book__options-icon--add-to-reading-list {
   width: 24px;
   height: 24px;
-  fill: #fff;
+  fill: #000;
   margin-bottom: 1.25rem;
   transition: fill 0.2s ease-in-out;
 }
 .book__options-text--add-to-reading-list {
   text-transform: uppercase;
   font-size: 0.75rem;
+  font-weight: 400;
+  color: white;
 }
 .book__details {
   font-size: 0.75rem;
@@ -90,10 +106,6 @@
   margin-bottom: 0.5rem;
 }
 
-/* .book__details-genre {
-  
-} */
-
 .book__details-pages {
   font-style: italic;
 }
@@ -118,6 +130,24 @@
     height: 274px;
   }
 } */
+
+@media (prefers-color-scheme: dark) {
+  .book {
+    background-color: var(--dark-color);
+  }
+  .book__options-icon--add-to-reading-list {
+    fill: #fff;
+  }
+  .book__options-text--add-to-reading-list,
+  .book__options-button--add-to-reading-list {
+    color: #fff;
+  }
+  @media (hover: hover) {
+    .book__cover:hover::before {
+      background-color: rgba(0, 0, 0, 0.75);
+    }
+  }
+}
 
 @keyframes fadein {
   0% {

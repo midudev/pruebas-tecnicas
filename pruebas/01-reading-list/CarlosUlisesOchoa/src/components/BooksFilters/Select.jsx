@@ -15,7 +15,7 @@ export function Select({ label, options, defaultValue, className = '', onChange 
         name={id}
         id={id}
         defaultValue={defaultValue}
-        className='w-full bg-zinc-800 py-2 px-3 rounded-md text-white transition-colors duration-150 hover:bg-zinc-700'
+        className='w-full bg-[#f0f5ff] dark:bg-zinc-800 text-inherit dark:text-inherit py-2 px-3 rounded-md'
         onChange={onChange}>
         {options.map((opt, i) => (
           <option value={opt} key={i}>

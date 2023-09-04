@@ -23,7 +23,7 @@ export function Range({
         min={min}
         max={max}
         step={step}
-        className={`${inputClassName} bg-zinc-800 py-2 px-3 rounded-md text-white transition-colors duration-150 hover:bg-zinc-700`}
+        className={`${inputClassName} py-2 px-3 rounded-md`}
         name={id}
         id={id}
         value={qty}
@@ -34,7 +34,7 @@ export function Range({
         }}
       />
 
-      <span className='block text-gray-400 text-sm italic'>
+      <span className='block text-inherit dark:text-inherit text-sm italic'>
         {qty && `Máximo: ${qty} páginas`}
       </span>
     </>

@@ -30,15 +30,15 @@ export function BooksFilters({
             label='Filtrar por género:'
             options={genres}
             defaultValue='todos'
-            className='text-white font-medium text-sm mb-4 sm:mb-4x'
+            className='font-medium text-sm mb-4'
             onChange={onGenreChange}
           />
         </div>
         <div className='flex flex-col'>
           <Range
             label='Número de páginas'
-            className='text-white font-medium text-sm mb-4 sm:mb-4x'
-            inputClassName='accent-slate-500'
+            className='font-medium text-sm mb-4'
+            inputClassName='bg-[#f0f5ff] accent-gray-500'
             min={pages.min}
             max={pages.max}
             onChange={onFilterPages}

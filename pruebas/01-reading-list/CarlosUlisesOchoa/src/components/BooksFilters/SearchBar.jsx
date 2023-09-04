@@ -12,7 +12,7 @@ export function SearchBar({ onSubmit, onChange, placeholder, className = '' }) {
         name={id}
         id={id}
         placeholder={placeholder}
-        className={`text-white w-full pr-12 ${className} bg-zinc-800 py-2 px-3 rounded-md text-white transition-colors duration-150 hover:bg-zinc-700`}
+        className={`text-inherit dark:text-inherit w-full pr-12 bg-[#f0f5ff] dark:bg-zinc-800 py-2 px-3 rounded-md transition-colors duration-150 ${className}`}
         onChange={onChange}
       />
 
@@ -20,7 +20,7 @@ export function SearchBar({ onSubmit, onChange, placeholder, className = '' }) {
         type='button'
         className='block absolute right-0 mr-3'
         aria-label='Buscar libro por título'>
-        <SearchIcon className='w-6 h-6 stroke-white' />
+        <SearchIcon className='w-6 h-6 stroke-black dark:stroke-white' />
       </button>
     </form>
   )

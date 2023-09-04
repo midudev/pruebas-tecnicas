@@ -51,9 +51,11 @@ const Book = ({
         </div>
       </div>
       <div className='book__details'>
-        <h2 className='book__details-title'>{data.title}</h2>
-        <p className='book__details-author'>{data.author.name}</p>
-        <div className='book__details-meta'>
+        <h2 className='book__details-title text-gray-700 dark:text-white dark:text-opacity-90'>
+          {data.title}
+        </h2>
+        <p className='book__details-author text-gray-600'>{data.author.name}</p>
+        <div className='book__details-meta text-gray-500'>
           <span className='book__details-genre'>{data.genre}</span>
           <span className='book__details-pages'>{data.pages} pág.</span>
         </div>

@@ -9,8 +9,8 @@ export function Tabs({ data, selectedTabIndex = 0 }) {
       'pb-2 font-heading font-bold cursor-pointer transition duration-300 border-b-2 leading-tight text-[0.85rem] sm:text-xl'
     tabStyles +=
       selectedTab === index
-        ? ' text-gray-300 border-slate-500'
-        : ' text-gray-600 border-transparent hover:text-gray-400'
+        ? ' text-gray-900 dark:text-gray-300 border-gray-900 dark:border-slate-500'
+        : ' text-[#929191] dark:text-gray-600 dark:border-transparent hover:text-gray-600 dark:hover:text-gray-400'
 
     return (
       <li key={index} className={tabStyles} onPointerDown={() => setSelectedTab(index)}>
@@ -22,7 +22,9 @@ export function Tabs({ data, selectedTabIndex = 0 }) {
   return (
     <div className='w-full'>
       <nav>
-        <ul className='flex gap-x-16 border-b border-slate-800 mb-7'>{tabsHeadings}</ul>
+        <ul className='flex gap-x-16 border-b border-[#f0f5ff] dark:border-slate-800 mb-7'>
+          {tabsHeadings}
+        </ul>
       </nav>
       <div className='text-sm text-gray-400 mb-10'>{data[selectedTab].content}</div>
     </div>
