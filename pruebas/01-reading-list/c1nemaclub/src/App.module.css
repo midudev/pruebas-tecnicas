@@ -1,0 +1,58 @@
+.App {
+  width: 100%;
+  background: var(--dark-color);
+  min-height: 100vh;
+  height: 100%;
+}
+
+h1,
+h2,
+p,
+span {
+  font-family: var(--font);
+}
+
+header {
+  background: var(--accent-color);
+  margin-bottom: 20px;
+  padding: 1em 4em;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+header h1 {
+  color: var(--light-color);
+  font-size: 2.2rem;
+  font-weight: 800;
+}
+
+main {
+  margin: auto;
+  width: 80%;
+  padding: 2em 0;
+}
+
+.genre-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  max-width: fit-content;
+  margin-bottom: 10px;
+}
+
+.genre {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--light-color);
+}
+
+h2 {
+  font-weight: 600;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+}

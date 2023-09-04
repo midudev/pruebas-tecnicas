@@ -1,0 +1,28 @@
+.book {
+  width: 200px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.image-container {
+  width: 100%;
+  height: 100%;
+  max-width: 200px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.image-container .icon {
+  display: none;
+}
+
+.image-container img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: 0.2s ease-in-out;
+}
+
+.image-container img:hover {
+  transform: scale(1.2);
+}
