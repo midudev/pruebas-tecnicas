@@ -1,6 +1,10 @@
 # Pruebas Técnicas de Programación
 
-Pruebas técnicas de programación para desarrolladores frontend y backend.
+Solucion a prueba tecnica. 
+
+Deploy: 
+([Reading List](https://pruebas-tecnicas-gold.vercel.app))
+
 
 ## Lista de pruebas técnicas
 
