@@ -8,7 +8,7 @@ interface Props {
 
 export const ResultList = component$<Props>(({ products }) => {
   return (
-    <ul class="grid gap-4">
+    <ul class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {products.map((product) => (
         <li key={product.id} class="cursor-pointer">
           <ResultItem product={product} />
