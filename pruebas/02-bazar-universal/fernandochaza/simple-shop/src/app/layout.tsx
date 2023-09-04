@@ -1,8 +1,10 @@
-// These styles apply to every route in the application
-import "./globals.css"
+import { Suspense } from "react"
 
 import type { Metadata } from "next"
 import { Noto_Sans, Noto_Sans_Mono } from "next/font/google"
+
+// These styles apply to every route in the application
+import "./globals.css"
 
 const notoSans = Noto_Sans({
   subsets: ["latin"],

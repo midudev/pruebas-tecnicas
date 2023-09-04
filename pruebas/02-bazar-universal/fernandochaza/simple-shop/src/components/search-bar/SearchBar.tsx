@@ -2,6 +2,7 @@
 
 import { useForm, SubmitHandler } from "react-hook-form"
 import SearchIcon from "@/icons/SearchIcon"
+import { useRouter } from "next/navigation"
 
 type FormValues = {
   searchInput: string
@@ -14,8 +15,11 @@ const SearchBar = (): JSX.Element => {
     formState: { errors }
   } = useForm<FormValues>()
 
+  const route = useRouter()
+
   const handleSearch: SubmitHandler<FormValues> = (data) => {
-    console.log(data)
+    const query = data.searchInput.toLowerCase()
+    route.push(`/results?query=${query}`)
   }
 
   return (
