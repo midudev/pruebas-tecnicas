@@ -6,7 +6,7 @@ import { Noto_Sans, Noto_Sans_Mono } from "next/font/google"
 
 const notoSans = Noto_Sans({
   subsets: ["latin"],
-  weight: "300",
+  weight: ["300", "700"],
   variable: "--font-noto"
 })
 const notoMono = Noto_Sans_Mono({
