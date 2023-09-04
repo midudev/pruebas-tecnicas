@@ -5,12 +5,12 @@ import { SearchBox } from '~/components/search-box/search-box';
 export default component$(() => {
   return (
     <>
-      <header class="p-4 flex gap-4 justify-center items-center">
-        <CarIcon width={35} height={35} />
+      <header class="p-4 flex gap-4  items-center">
+        <CarIcon width={40} height={40} />
         <SearchBox />
       </header>
 
-      <main>
+      <main class="px-4">
         <Slot />
       </main>
     </>

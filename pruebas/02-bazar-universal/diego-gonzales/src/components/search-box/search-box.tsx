@@ -17,7 +17,7 @@ export const SearchBox = component$<Props>(({ showSearchButton = false }) => {
   });
 
   return (
-    <form onSubmit$={() => handleSubmit()} preventdefault:submit>
+    <form class="w-full" onSubmit$={() => handleSubmit()} preventdefault:submit>
       <input
         type="text"
         placeholder="laptops, smartphones, etc."

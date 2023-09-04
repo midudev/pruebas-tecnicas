@@ -20,12 +20,16 @@ export default component$(() => {
   const results = useResultsLoader();
 
   return (
-    <div>
-      <section>
+    <div class="">
+      <section class="mb-5">
         <ResultInfo />
       </section>
       <section>
-        <ResultList products={results.value} />
+        {results.value.length > 0 ? (
+          <ResultList products={results.value} />
+        ) : (
+          <p>No results found</p>
+        )}
       </section>
     </div>
   );
