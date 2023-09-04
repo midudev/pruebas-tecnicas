@@ -9,7 +9,7 @@ import { ReadListContext } from "../context/contextUserListProvider";
 export default function ListOfBooks() {
   const { filters, filteredBooks } = useContext(FiltersContext);
   const { loading, error } = useContext(BooksContext);
-  const { addBook, removeBook } = useContext(ReadListContext)
+  const { addBook } = useContext(ReadListContext)
 
   const { sortByPages } = filters;
 
@@ -18,7 +18,7 @@ export default function ListOfBooks() {
       <article className="py-8 px-5 md:px-0 md:py-24 col-start-2 col-end-3">
         {loading ? (
           <Loader />
-        ) : error ? (
+        ) : error && error.message ? (
           <ErrorMessage error={error} />
         ) : (
           <ul className="grid xs:gap-x-4 xs:grid-cols-[repeat(auto-fill,minmax(150px,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(180px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] sm:gap-x-4 gap-y-5 px-2">
@@ -27,6 +27,7 @@ export default function ListOfBooks() {
                 className="relative py-4 px-3 flex flex-nowrap flex-col items-center rounded-md hover:bg-card-hover group"
                 key={book.ISBN}
                 data-bookisbn={book.ISBN}
+                data-testid="book-list-item"
               >
                 <button
                   onClick={() => addBook(book)}
@@ -48,7 +49,7 @@ export default function ListOfBooks() {
                   >
                     {book.title}
                   </h1>
-                  <p className="text-sm opacity-60 mb-2">{book.author.name}</p>
+                  <p className="text-sm opacity-60 mb-2">{book.author?.name}</p>
                   <div className="flex justify-between">
                     <p className="text-base opacity-60">{book.year}</p>
                     <p
