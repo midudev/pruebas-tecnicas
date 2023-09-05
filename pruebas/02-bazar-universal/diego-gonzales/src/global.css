@@ -6,6 +6,35 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Nunito';
+  src:
+    url('/fonts/Nunito-Regular.woff2') format('woff2'),
+    url('/fonts/Nunito-Regular.woff') format('woff'),
+    url('/fonts/Nunito-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src:
+    url('/fonts/Nunito-Bold.woff2') format('woff2'),
+    url('/fonts/Nunito-Bold.woff') format('woff'),
+    url('/fonts/Nunito-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src:
+    url('/fonts/Nunito-Italic.woff2') format('woff2'),
+    url('/fonts/Nunito-Italic.woff') format('woff'),
+    url('/fonts/Nunito-Italic.ttf') format('truetype');
+  font-style: italic;
+  font-display: swap;
+}
+
 /**
  * WHAT IS THIS FILE?
  *
@@ -18,24 +47,14 @@ html {
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;
-  font-family:
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    "Helvetica Neue",
-    Arial,
-    "Noto Sans",
-    sans-serif,
-    "Apple Color Emoji",
-    "Segoe UI Emoji",
-    "Segoe UI Symbol",
-    "Noto Color Emoji";
 }
 
 body {
   padding: 0;
   line-height: inherit;
+}
+
+:root {
+  font-family: 'Nunito', sans-serif;
+  /* font-size: 16px; */
 }

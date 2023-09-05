@@ -27,7 +27,7 @@ export default component$(() => {
         {results.value.length > 0 ? (
           <ResultList products={results.value} />
         ) : (
-          <p>No results found</p>
+          <p class="text-center">No results found</p>
         )}
       </section>
     </div>
