@@ -17,11 +17,12 @@ const ProductCard = ({ product }: { product: IProduct }) => {
           src={product.images[0]}
           alt={`Image of ${product.title}`}
           fill={true}
+          sizes="(max-width: 576px) 100vw, (max-width: 1200px) 50vw, 33vw"
           priority
         />
       </div>
       <p className="place-self-center line-clamp-4 overflow-hidden max-h-24">{description}</p>
-      <button className="absolute right-4 bottom-4 rounded-full w-12 h-12 flex flex-col place-items-center place-content-center shadow-[3px_3px_3px_#b0b2b3,-3px_-3px_3px_#ffffff]">
+      <button className="absolute right-4 bottom-4 rounded-full w-12 h-12 flex flex-col place-items-center place-content-center shadow-[3px_3px_3px_#b0b2b3,-3px_-3px_3px_#ffffff] active:border active:shadow-none transition-shadow duration-50">
         <AddToCartIcon />
       </button>
     </article>

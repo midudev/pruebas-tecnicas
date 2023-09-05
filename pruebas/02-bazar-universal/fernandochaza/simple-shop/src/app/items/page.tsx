@@ -9,10 +9,9 @@ const ResultsPage = ({ searchParams }: { searchParams: { search: string } }) => 
     product.title.toLowerCase().includes(search)
   )
   return (
-    <div className="p-4 mb-24">
+    <main className="min-h-full p-4 mb-24 inset-0 bg-[radial-gradient(#dde0e2_1px,transparent_2px)] [background-size:28px_28px]">
       <h1 className="font-sans text-lg ">Search results for "{search}"</h1>
-      <h2>These are the results</h2>
-      <section className="flex flex-col gap-y-8 mt-8">
+      <section className="bg-transparent flex flex-col gap-y-8 mt-8 pb-24">
         {results.map((product) => {
           return <ProductCard key={product.id} product={product} />
         })}
@@ -20,7 +19,7 @@ const ResultsPage = ({ searchParams }: { searchParams: { search: string } }) => 
       <div className="fixed inset-x-5 bottom-4 h-16">
         <SearchBar />
       </div>
-    </div>
+    </main>
   )
 }
 

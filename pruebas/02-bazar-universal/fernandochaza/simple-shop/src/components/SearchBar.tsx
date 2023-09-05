@@ -41,13 +41,13 @@ const SearchBar = (): JSX.Element => {
           {...register("searchInput", { required: true })}
           type="search"
           id="search-input"
-          className="block w-full p-4 pl-10 rounded-xl shadow-[10px_10px_20px_#888a8b,-10px_-10px_20px_#ffffff] text-base outline-none text-gray-900 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
+          className="block w-full p-4 pl-10 rounded-xl shadow-[5px_5px_10px_#bcbebe,-5px_-5px_10px_#ffffff] text-base outline-none text-gray-900 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
           placeholder="What are you looking for?"
           required
         />
         <button
           type="submit"
-          className="text-white shadow-lg shadow-blue-300/30 absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 "
+          className="text-white shadow-lg absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 "
         >
           Search
         </button>
