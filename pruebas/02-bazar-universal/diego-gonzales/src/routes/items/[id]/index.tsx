@@ -4,23 +4,25 @@ import { getRating } from '~/helpers/getRating';
 import { type ErrorResponse } from '~/interfaces/error-response.interface';
 import type { Product } from '~/interfaces/products-response.interface';
 
-export const useProductLoader = routeLoader$(async ({ params, fail }) => {
-  const { id } = params;
-  const url = `http://localhost:5173/api/items/${id}`;
+export const useProductLoader = routeLoader$(
+  async ({ params, fail, url: { origin } }) => {
+    const { id } = params;
+    const url = `${origin}/api/items/${id}`;
 
-  const response = await fetch(url);
+    const response = await fetch(url);
 
-  if (!response.ok) {
-    const { statusCode, message } = (await response.json()) as ErrorResponse;
-    return fail(statusCode, { message });
+    if (!response.ok) {
+      const { statusCode, message } = (await response.json()) as ErrorResponse;
+      return fail(statusCode, { message });
+    }
+
+    const data = (await response.json()) as Product;
+    return data;
   }
-
-  const data = (await response.json()) as Product;
-  return data;
-});
+);
 
 export default component$(() => {
-  const product: any = useProductLoader();
+  const product: any = useProductLoader(); // here we typecast to any because there is a Qwik bug (https://github.com/BuilderIO/qwik/pull/3977)
 
   if (product.value.message) {
     return (
@@ -60,7 +62,7 @@ export default component$(() => {
 
         <section class="text-center">
           <h3 class="text-2xl font-bold">{product.value.title}</h3>
-          <div class="flex items-center gap-4">
+          <div class="flex justify-center items-center gap-4">
             <p class="flex flex-col">
               <span class="font-bold">{product.value.price}$</span>
               <span class="text-xs">{product.value.stock} disponibles</span>

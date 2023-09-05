@@ -4,16 +4,18 @@ import { ResultInfo } from '~/components/result-info/result-info';
 import { ResultList } from '~/components/result-list/result-list';
 import { type Product } from '~/interfaces/products-response.interface';
 
-export const useResultsLoader = routeLoader$(async ({ query }) => {
-  const searchQuery = query.get('search');
-  let url = `http://localhost:5173/api/items`;
+export const useResultsLoader = routeLoader$(
+  async ({ query, url: { origin } }) => {
+    const searchQuery = query.get('search');
+    let url = `${origin}/api/items`;
 
-  if (searchQuery) url += `?q=${searchQuery}`;
+    if (searchQuery) url += `?q=${searchQuery}`;
 
-  const response = await fetch(url);
-  const data = (await response.json()) as Product[];
-  return data;
-});
+    const response = await fetch(url);
+    const data = (await response.json()) as Product[];
+    return data;
+  }
+);
 
 export default component$(() => {
   const results = useResultsLoader();
