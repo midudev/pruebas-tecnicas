@@ -14,6 +14,7 @@ export function BooksFilters({
     <div className='flex gap-x-10 gap-y-6 justify-between mb-8 flex-col md:flex-row md:items-center'>
       <div className='flex flex-col md:w-80 md:mt-4'>
         <SearchBar
+          className=''
           placeholder='Buscar por título'
           onSubmit={(e) => {
             e.preventDefault()
@@ -30,7 +31,7 @@ export function BooksFilters({
             label='Filtrar por género:'
             options={genres}
             defaultValue='todos'
-            className='font-medium text-sm mb-4'
+            className=''
             onChange={onGenreChange}
           />
         </div>
