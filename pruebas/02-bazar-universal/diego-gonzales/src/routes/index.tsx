@@ -20,7 +20,7 @@ export const head: DocumentHead = {
   meta: [
     {
       name: 'description',
-      content: 'Bazar Online home page',
+      content: 'Bazar online home page',
     },
     {
       name: 'keywords',

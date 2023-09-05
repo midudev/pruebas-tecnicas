@@ -83,16 +83,32 @@ export default component$(() => {
   );
 });
 
-export const head: DocumentHead = {
-  title: 'Product',
-  meta: [
-    {
-      name: 'description',
-      content: 'Bazar Online product page',
-    },
-    {
-      name: 'keywords',
-      content: 'bazar, online, shopping, ecommerce, store, products, buy, sell',
-    },
-  ],
+export const head: DocumentHead = ({ resolveValue }) => {
+  const product: any = resolveValue(useProductLoader);
+  let title = '';
+  const keywords: string[] = [];
+
+  if (product.message) {
+    title = product.message;
+  } else {
+    title = `${product.title} product`;
+    keywords.push(product.title, product.category, product.brand);
+  }
+
+  return {
+    title,
+    meta: [
+      {
+        name: 'description',
+        content: product.description || `Bazar online ${title} page}`,
+      },
+      {
+        name: 'keywords',
+        content:
+          'bazar, online, shopping, ecommerce, store, products, buy, sell'.concat(
+            keywords.join(', ')
+          ),
+      },
+    ],
+  };
 };

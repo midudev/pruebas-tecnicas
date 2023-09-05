@@ -37,11 +37,11 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: 'Search results',
+  title: 'Product List',
   meta: [
     {
       name: 'description',
-      content: 'Bazar Online search results page',
+      content: 'Bazar online product list page',
     },
     {
       name: 'keywords',
