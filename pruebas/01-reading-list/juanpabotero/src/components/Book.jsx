@@ -4,9 +4,9 @@ export function Book({ books }) {
   const { id } = useParams();
   const book = books.find((book) => String(book.id) === id);
   return (
-    <article className="flex flex-col gap-4 items-center border rounded-lg shadow md:flex-row md:max-w-2xl  border-gray-700 bg-gray-800 mx-auto p-4">
+    <article className="flex flex-col gap-5 items-center border rounded-lg shadow md:flex-row md:max-w-2xl border-gray-700 bg-gray-800 mx-auto p-4">
       <img
-        className="object-contain w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none"
+        className="object-contain w-full rounded h-96 md:h-auto md:w-48"
         src={book.cover}
         alt={book.title}
       />
@@ -31,9 +31,13 @@ export function Book({ books }) {
           <span className="font-bold">Más libros de {book.author.name}:</span>
         </p>
         <p className="text-gray-400">
-          {book.author.otherBooks.map((otherBook) => (
-            <span key={book.id}>{otherBook}, </span>
-          ))}
+          {book.author.otherBooks.length === 0 ? (
+            <span key={book.id}>No hay más libros disponibles del autor</span>
+          ) : (
+            book.author.otherBooks.map((otherBook, index) => {
+              return <span key={index}>{otherBook}, </span>;
+            })
+          )}
         </p>
       </div>
     </article>
