@@ -12,12 +12,12 @@ export const ResultItem = component$<Props>(({ product }) => {
 
   return (
     <article
-      class="grid gap-4 grid-cols-[96px_1fr] justify-center items-center p-2 bg-neutral text-neutral-content shadow-xl"
+      class="grid gap-4 grid-cols-[96px_1fr] md:grid-cols-1 justify-center items-center p-2 md:p-4 bg-neutral text-neutral-content shadow-xl"
       onClick$={() => navigate(`/items/${product.id}`)}
     >
-      <figure>
+      <figure class="md:flex md:justify-center">
         <img
-          class="rounded-full object-cover w-24 h-24"
+          class="rounded-full object-cover w-24 h-24 md:w-32 md:h-32"
           src={product.thumbnail}
           alt={product.title}
           width={100}
