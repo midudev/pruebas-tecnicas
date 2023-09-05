@@ -11,16 +11,16 @@ export function Tabs({
       justify-start gap-8 mb-10"
     >
       <button
-        className={`font-bold text-white pb-1 ${
-          isReadingListActive ? '' : 'border-b'
+        className={`font-bold text-white pb-1 border-b ${
+          isReadingListActive ? 'border-b-transparent' : ''
         }`}
         onClick={() => setIsReadingListActive(false)}
       >
         Libros disponibles ({filteredBooksMapped.length})
       </button>
       <button
-        className={`font-bold text-white pb-1 ${
-          isReadingListActive ? 'border-b' : ''
+        className={`font-bold text-white pb-1 border-b ${
+          isReadingListActive ? '' : 'border-b-transparent'
         }`}
         onClick={() => setIsReadingListActive(true)}
       >

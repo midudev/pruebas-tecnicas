@@ -6,6 +6,7 @@ import {
   SadFaceIcon
 } from './Icons';
 import '../styles/Books.css';
+import { Link } from 'react-router-dom';
 
 export function Books({ books, isReadingListActive }) {
   const { addToReadingList, removeFromReadingList, readingList } =
@@ -38,19 +39,18 @@ export function Books({ books, isReadingListActive }) {
           return (
             <article
               key={book.id}
-              className="grid relative content-start max-w-[160px] sm:max-w-[178px]"
+              className="grid relative content-start max-w-[160px] sm:max-w-[178px]
+              border rounded-lg shadow bg-gray-800 border-gray-700"
             >
               <button
                 className={`add-book-button absolute -top-2 -right-1 rounded-full p-1 bg-gray-900 
               hover:scale-110 transition-all duration-200 z-20
               ${
-                isReadingListActive ? (
-                  'text-red-600'
-                ) : isBookInReadingList ? (
-                  'text-lime-400'
-                ) : (
-                  'text-yellow-400'
-                )
+                isReadingListActive
+                  ? 'text-red-600'
+                  : isBookInReadingList
+                  ? 'text-lime-400'
+                  : 'text-yellow-400'
               }`}
                 aria-label="addBookButton"
                 onClick={() => {
@@ -67,24 +67,22 @@ export function Books({ books, isReadingListActive }) {
                   <AddBookIcon />
                 )}
               </button>
-              <img
-                className="book-cover h-56 sm:h-64 aspect-auto mb-2 rounded-md"
-                src={book.cover}
-                alt={`Portada de ${book.title}`}
-              />
-              <div
-                className="book-synopsis absolute top-0 left-0 h-56 sm:h-64 bg-gray-950/90 
-                rounded-md place-content-center hidden transition-all duration-500 z-10 hover:grid"
-              >
-                <p className="text-sm sm:text-base px-4 py-2 text-gray-50 overflow-hidden">
-                  {book.synopsis}
-                </p>
+              <Link to={`/book/${book.id}`}>
+                <img
+                  className="book-cover h-56 sm:h-64 w-full aspect-auto mb-2 rounded-md"
+                  src={book.cover}
+                  alt={`Portada de ${book.title}`}
+                />
+              </Link>
+              <div className="p-2 sm:p-3">
+                <Link to={`/book/${book.id}`}>
+                  <h2 className="text-lg font-bold text-white mb-1">
+                    {book.title}
+                  </h2>
+                </Link>
+                <p className="text-gray-400">{book.author.name}</p>
+                <p className="text-gray-400 text-sm">{book.genre}</p>
               </div>
-              <h2 className="text-lg font-bold text-white mb-1">
-                {book.title}
-              </h2>
-              <p className="text-gray-400">{book.author.name}</p>
-              <p className="text-gray-400 text-sm">{book.genre}</p>
             </article>
           );
         })}
