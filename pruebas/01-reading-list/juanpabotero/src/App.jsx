@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { Home } from './Home';
 import { Book } from './components/Book';
-import { Header } from './components/Header';
 import { useFilters } from './hooks/useFilters';
 import { library as initialBooks } from './mocks/books.json';
 
@@ -15,8 +14,7 @@ function App() {
     <div className="max-w-5xl mx-auto pt-20 pb-14 px-4">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="header" element={<Header />} />
-        <Route path="book/:id" element={<Book books={filteredBooksMapped} />} />
+        <Route path="/book/:id" element={<Book books={filteredBooksMapped} />} />
       </Routes>
       <div
         className="fixed -z-10 h-[134px] w-[134px] lg:w-[300px] lg:h-[300px] rounded-full 
