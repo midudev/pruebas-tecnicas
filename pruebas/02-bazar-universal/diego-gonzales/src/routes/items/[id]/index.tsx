@@ -1,4 +1,4 @@
-import { component$ } from '@builder.io/qwik';
+import { $, component$, useSignal } from '@builder.io/qwik';
 import { routeLoader$, type DocumentHead } from '@builder.io/qwik-city';
 import { getRating } from '~/helpers/getRating';
 import { type ErrorResponse } from '~/interfaces/error-response.interface';
@@ -32,6 +32,13 @@ export default component$(() => {
     );
   }
 
+  const imageSelectedUrl = useSignal<string>(product.value.thumbnail);
+
+  const handleImageClick = $((image: string) => {
+    imageSelectedUrl.value = image;
+    window['my_modal'].showModal();
+  });
+
   return (
     <div class="h-[calc(100vh-80px)] relative">
       <div class="grid gap-5 justify-center items-center justify-items-center">
@@ -46,14 +53,15 @@ export default component$(() => {
           <ul class="grid gap-2">
             {product.value.images
               .slice(0, 3)
-              .map((image: string, index: number) => (
+              .map((imgUrl: string, index: number) => (
                 <li key={index}>
                   <img
-                    class="rounded-full object-cover w-16 h-16"
-                    src={image}
+                    class="rounded-full object-cover w-16 h-16 cursor-pointer"
+                    src={imgUrl}
                     alt={`Image ${index + 1} for ${product.title}`}
                     width={64}
                     height={64}
+                    onClick$={() => handleImageClick(imgUrl)}
                   />
                 </li>
               ))}
@@ -79,6 +87,26 @@ export default component$(() => {
       <div class="absolute bottom-4 md:static md:mt-10 w-full text-center">
         <button class="btn btn-primary w-full max-w-md">Buy</button>
       </div>
+
+      <dialog id="my_modal" class="modal">
+        <div class="modal-box">
+          <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+              ✕
+            </button>
+          </form>
+          <img
+            class="w-full"
+            src={imageSelectedUrl.value}
+            alt={`${product.value.title} image`}
+            width={200}
+            height={200}
+          />
+        </div>
+        <form method="dialog" class="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
     </div>
   );
 });
