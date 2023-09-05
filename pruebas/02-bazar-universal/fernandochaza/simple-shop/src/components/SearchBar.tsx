@@ -19,7 +19,7 @@ const SearchBar = (): JSX.Element => {
 
   const handleSearch: SubmitHandler<FormValues> = (data) => {
     const query = data.searchInput.toLowerCase()
-    route.push(`/results?query=${query}`)
+    route.push(`/items?search=${query}`)
   }
 
   return (
