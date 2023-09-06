@@ -48,7 +48,7 @@ export const ResultInfo = component$<Props>(({ products }) => {
           const badgeClass = CATEGORIES_BADGE_CLASSES[categoryKey];
 
           return count > 0 ? (
-            <span key={category} class={`badge ${badgeClass}`}>
+            <span key={category} class={`badge ${badgeClass} scale-up-center`}>
               {categoryKey}: {count}
             </span>
           ) : null;

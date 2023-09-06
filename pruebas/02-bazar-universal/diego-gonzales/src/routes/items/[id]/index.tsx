@@ -44,7 +44,7 @@ export default component$(() => {
       <div class="grid gap-5 justify-center items-center justify-items-center">
         <section class="grid gap-4 grid-cols-[3fr_1fr] justify-center items-center justify-items-center">
           <img
-            class="rounded-full object-cover w-48 h-48"
+            class="rounded-full object-cover w-48 h-48 scale-up-center"
             src={product.value.thumbnail}
             alt="Product"
             width={200}
@@ -56,7 +56,7 @@ export default component$(() => {
               .map((imgUrl: string, index: number) => (
                 <li key={index}>
                   <img
-                    class="rounded-full object-cover w-16 h-16 cursor-pointer"
+                    class="rounded-full object-cover w-16 h-16 cursor-pointer scale-up-center"
                     src={imgUrl}
                     alt={`Image ${index + 1} for ${product.title}`}
                     width={64}
@@ -72,7 +72,7 @@ export default component$(() => {
           <h3 class="text-2xl font-bold">{product.value.title}</h3>
           <div class="flex justify-center items-center gap-4">
             <p class="flex flex-col">
-              <span class="font-bold">{product.value.price}$</span>
+              <span class="font-bold ">{product.value.price}$</span>
               <span class="text-xs">{product.value.stock} disponibles</span>
             </p>
             <p>{getRating({ rating: product.value.rating })}</p>
