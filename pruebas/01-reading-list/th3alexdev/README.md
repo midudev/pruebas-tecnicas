@@ -40,7 +40,7 @@ React - JavaScript - Tailwind CSS - Vitejs
 # Instalación 💻
 Para correr este proyecto localmente en tu pc, necesitarás Node.js y npm instalados en tu computadora. Una vez los tengas, puedes ejecutar los siguientes comandos.
 ```
-  npm i th3-smart-type
+  npm i la-bukstore
   npm run dev
 ```
 
