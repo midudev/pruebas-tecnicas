@@ -25,7 +25,7 @@ const SearchBar = (): JSX.Element => {
   return (
     <form
       onSubmit={handleSubmit(handleSearch)}
-      className="mx-auto mb-12 w-full max-w-sm"
+      className="mx-auto mb-12 w-full max-w-sm px-2"
     >
       <label
         htmlFor="search-input"

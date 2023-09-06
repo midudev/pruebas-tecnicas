@@ -1,7 +1,7 @@
 export {}
 
 declare global {
-  interface IProduct {
+  interface Product {
     id: number
     title: string
     description: string
