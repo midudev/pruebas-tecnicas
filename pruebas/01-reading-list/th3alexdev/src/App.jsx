@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import SlideSidebar from "./components/SlideSidebar";
 import StoreInfo from "./components/StoreInfo";
 import { useSidebar } from "./hooks/useSidebar";
+import './css/index.css'
 
 export default function App() {
   const [showSidebar, toggleSidebar] = useSidebar();
