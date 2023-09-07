@@ -44,11 +44,12 @@ export default component$(() => {
       <div class="grid gap-5 justify-center items-center justify-items-center">
         <section class="grid gap-4 grid-cols-[3fr_1fr] justify-center items-center justify-items-center">
           <img
-            class="rounded-full object-cover w-48 h-48 scale-up-center"
+            class="rounded-full object-cover w-48 h-48"
             src={product.value.thumbnail}
             alt="Product"
             width={200}
             height={200}
+            style={{ 'view-transition-name': `product-${product.value.id}` }}
           />
           <ul class="grid gap-2">
             {product.value.images
@@ -56,7 +57,7 @@ export default component$(() => {
               .map((imgUrl: string, index: number) => (
                 <li key={index}>
                   <img
-                    class="rounded-full object-cover w-16 h-16 cursor-pointer scale-up-center"
+                    class="rounded-full object-cover w-16 h-16 cursor-pointer"
                     src={imgUrl}
                     alt={`Image ${index + 1} for ${product.title}`}
                     width={64}
@@ -69,13 +70,33 @@ export default component$(() => {
         </section>
 
         <section class="text-center">
-          <h3 class="text-2xl font-bold">{product.value.title}</h3>
+          <h3
+            class="text-2xl font-bold"
+            style={{
+              'view-transition-name': `product-title-${product.value.id}`,
+            }}
+          >
+            {product.value.title}
+          </h3>
           <div class="flex justify-center items-center gap-4">
             <p class="flex flex-col">
-              <span class="font-bold ">{product.value.price}$</span>
+              <span
+                class="font-bold"
+                style={{
+                  'view-transition-name': `product-price-${product.value.id}`,
+                }}
+              >
+                {product.value.price}$
+              </span>
               <span class="text-xs">{product.value.stock} disponibles</span>
             </p>
-            <p>{getRating({ rating: product.value.rating })}</p>
+            <p
+              style={{
+                'view-transition-name': `product-rating-${product.value.id}`,
+              }}
+            >
+              {getRating({ rating: product.value.rating })}
+            </p>
           </div>
         </section>
 
