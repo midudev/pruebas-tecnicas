@@ -36,7 +36,7 @@ export default component$(() => {
 
   const handleImageClick = $((image: string) => {
     imageSelectedUrl.value = image;
-    window['my_modal'].showModal();
+    (window as any)['my_modal'].showModal();
   });
 
   return (
