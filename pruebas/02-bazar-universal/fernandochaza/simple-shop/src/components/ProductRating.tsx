@@ -32,7 +32,7 @@ const ProductRating = ({ rating, className }: RatingProps) => {
   const hasHalfStar = rating % 1 !== 0
   const emptyStars = hasHalfStar ? 5 - filledStars - 1 : 5 - filledStars
   return (
-    <div className={`text-yellow-500 w-28 flex h-8 gap-1 px-2 rounded-lg shadow-[2px_2px_2px_#b0b2b3,-2px_-2px_2px_#f1f1f1] ${className}`}>
+    <div className={`text-yellow-500 w-3/4 flex mx-auto h-7 gap-1 px-2 rounded-lg shadow-[2px_2px_2px_#b0b2b3,-2px_-2px_2px_#f1f1f1] ${className}`}>
       {[...Array(filledStars)].map((_, index) => (
         <FilledStar key={index} />
       ))}

@@ -1,5 +1,3 @@
-import { Suspense } from "react"
-
 import type { Metadata } from "next"
 import { Nunito_Sans, Fira_Code } from "next/font/google"
 
