@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .filter-pill {
+    @apply px-1 text-base opacity-60 hover:opacity-100 transition-opacity flex items-center gap-1;
+  }
+}
+
 :root {
   background-color: #18191d;
   color: #FFF;
@@ -24,12 +30,6 @@ body {
 
 img {
   -webkit-user-drag: none;
-}
-
-@layer components {
-  .filter-pill {
-    @apply px-1 text-base opacity-60 hover:opacity-100 transition-opacity flex items-center gap-1;
-  }
 }
 
 input::-webkit-outer-spin-button,
