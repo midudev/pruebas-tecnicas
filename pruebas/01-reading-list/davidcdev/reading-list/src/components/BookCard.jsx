@@ -14,10 +14,11 @@ export function AvailableBookCard ({ el, handleAddClick, crypto }) {
         mb='12px'
       >
         <Image
+          loading='lazy'
           src={el.book.cover}
           alt={el.book.title + ' cover'}
-          h='280px'
-          w='200px'
+          htmlHeight='280px'
+          htmlWidth='200px'
         />
         <Stack
           mt='6'
@@ -62,10 +63,11 @@ export function MyListBookCard ({ el, handleRemoveClick, crypto }) {
         mb='12px'
       >
         <Image
+          loading='lazy'
           src={el.cover}
           alt={el.title + ' cover'}
-          h='280px'
-          w='200px'
+          htmlHeight='280px'
+          htmlWidth='200px'
         />
         <Stack
           mt='6'
