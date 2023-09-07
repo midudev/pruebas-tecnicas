@@ -14,7 +14,6 @@ export function AvailableBookCard ({ el, handleAddClick, crypto }) {
         mb='12px'
       >
         <Image
-          loading='lazy'
           src={el.book.cover}
           alt={el.book.title + ' cover'}
           h='280px'
@@ -63,7 +62,6 @@ export function MyListBookCard ({ el, handleRemoveClick, crypto }) {
         mb='12px'
       >
         <Image
-          loading='lazy'
           src={el.cover}
           alt={el.title + ' cover'}
           h='280px'

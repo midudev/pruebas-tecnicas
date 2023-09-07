@@ -12,16 +12,19 @@ export function useBooks () {
   const [filterByPages, setFilterByPages] = useState([])
 
   useEffect(() => {
-    if (myList.length === 0) {
-      const availableBooks = data.library
-      setAvailable(availableBooks)
-    } else {
-      const availableBooks = data.library.filter((el) => {
-        const isInMyList = myList.some((book) => book.title === el.book.title)
-        return !isInMyList
-      })
-      setAvailable(availableBooks)
+    const getBooks = async () => {
+      if (myList.length === 0) {
+        const availableBooks = await data.library
+        setAvailable(availableBooks)
+      } else {
+        const availableBooks = await data.library.filter((el) => {
+          const isInMyList = myList.some((book) => book.title === el.book.title)
+          return !isInMyList
+        })
+        setAvailable(availableBooks)
+      }
     }
+    getBooks()
   }, [myList])
 
   function handleAddClick (book) {
