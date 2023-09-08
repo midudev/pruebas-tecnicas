@@ -1,6 +1,6 @@
 {
-  "name": "th3alexdev",
-  "private": true,
+  "name": "la-bukstore",
+  "private": false,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
