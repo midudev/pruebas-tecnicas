@@ -1,8 +1,8 @@
 "use client"
 
+import { useRouter } from "next/navigation"
 import { useForm, SubmitHandler } from "react-hook-form"
 import SearchIcon from "../icons/SearchIcon"
-import { useRouter } from "next/navigation"
 
 type FormValues = {
   searchInput: string

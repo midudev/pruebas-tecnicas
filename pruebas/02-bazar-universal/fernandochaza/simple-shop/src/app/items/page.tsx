@@ -1,16 +1,8 @@
-import ProductCard from "@/components/ProductCard"
-import SearchBar from "@/components/SearchBar"
-import DynamicSearchBar from "@/components/DynamicSearchBar"
 import PageWrapper from "@/components/PageWrapper"
 import ItemsSection from "@/components/ItemsSection"
-import { fetchItems } from "@/utils/fetchItems"
-import { useEffect, useState } from "react"
+import DynamicSearchBar from "@/components/DynamicSearchBar"
 
-const ResultsPage = async ({
-  searchParams
-}: {
-  searchParams: { query: string }
-}) => {
+const ResultsPage = ({ searchParams }: { searchParams: { query: string } }) => {
   const { query } = searchParams
 
   return (

@@ -1,5 +1,3 @@
-import React from "react"
-
 const Tooltip = ({
   children,
   message = "I am a tooltip"

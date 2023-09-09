@@ -2,8 +2,11 @@
 
 import React, { useEffect, useRef, useState } from "react"
 import autoAnimate from "@formkit/auto-animate"
-import { fetchItems } from "@/utils/fetchItems"
 import ProductCard from "./ProductCard"
+
+import { fetchItems } from "@/utils/fetchItems"
+
+import { Product } from "@/types/global"
 
 const ItemsSection = ({
   className,
@@ -13,12 +16,11 @@ const ItemsSection = ({
   query: string
 }) => {
   const parent = useRef(null)
-  
+  const [results, setResults] = useState<Array<Product>>([])
+
   useEffect(() => {
     parent.current && autoAnimate(parent.current)
   }, [parent])
-
-  const [results, setResults] = useState<Array<Product>>([])
 
   useEffect(() => {
     const fetchData = async () => {

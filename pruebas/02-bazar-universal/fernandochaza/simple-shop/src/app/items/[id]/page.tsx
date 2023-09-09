@@ -1,6 +1,10 @@
+import Image from "next/image"
+
+import { Product } from "@/types/global"
+
 import ProductRating from "@/components/ProductRating"
 import AddToCartIcon from "@/icons/AddToCartIcon"
-import Image from "next/image"
+
 import Data from "../../../data/products.json"
 
 const ProductPage = ({ params }: { params: { id: string } }) => {

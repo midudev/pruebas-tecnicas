@@ -1,8 +1,10 @@
-import AddToCartIcon from "@/icons/AddToCartIcon"
 import Image from "next/image"
-import ProductRating from "./ProductRating"
-import Tooltip from "./Tooltip"
 import Link from "next/link"
+
+import ProductRating from "./ProductRating"
+import AddToCartIcon from "@/icons/AddToCartIcon"
+
+import { Product } from "@/types/global"
 
 const ProductCard = ({ product }: { product: Product }) => {
   const { title, description, price, rating, id } = product
