@@ -12,6 +12,6 @@ declare global {
     brand: string
     category: string
     thumbnail: string
-    images: string[]
+    images: Array<string>
   }
 }
