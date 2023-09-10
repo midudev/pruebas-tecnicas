@@ -9,7 +9,14 @@ const TITLE_VARIANTS = {
   default: (nameList) => `${ADD_TO_SPECIFIC_LIST} "${nameList}"`
 }
 
-export function ActionListButton({ size = '', Icon, nameList = '', action, variant = '', extraClassNames = '' }) {
+export function ActionListButton({
+  Icon,
+  action,
+  variant = '',
+  size = '',
+  nameList = '',
+  extraClassNames = ''
+}) {
   const classNames = [styles[size], styles[variant], styles[extraClassNames]]
     .filter(Boolean)
     .join(' ')

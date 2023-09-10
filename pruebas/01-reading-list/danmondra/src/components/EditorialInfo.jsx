@@ -2,7 +2,10 @@ import styles from '../styles/main.module.css'
 
 export function EditorialInfo() {
   return (
-    <div className={styles.editorialInfo}>
+    <div
+      className={styles.editorialInfo}
+      data-testid='editorialInfo'
+    >
       <h1 className={styles.title}>
         Somos LAZPE Editorial
       </h1>

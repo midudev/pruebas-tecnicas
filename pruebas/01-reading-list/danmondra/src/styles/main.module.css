@@ -476,7 +476,6 @@
 
 .book {
   width: 100%;
-  pointer-events: none;
 }
 
 .book button {
@@ -484,7 +483,6 @@
   border: unset;
   padding: 0;
   margin: 0;
-  pointer-events: none;
 }
 
 .book img {
@@ -523,14 +521,14 @@
   }
 }
 
-.book img[data-selected="true"] {
+.book [data-selected="true"] img {
   border-radius: 0;
   filter: brightness(1.15);
   box-shadow: 0 0 20px 20px rgb(0 0 0 / .2);
   z-index: 999;
 }
 
-.book img[data-selected="true"]:hover {
+.book [data-selected="true"]:hover img {
   transform: unset;
   filter: unset;
   box-shadow: 0 0 20px 20px rgb(0 0 0 / .2);

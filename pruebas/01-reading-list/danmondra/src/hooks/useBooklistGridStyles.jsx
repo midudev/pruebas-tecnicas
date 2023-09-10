@@ -13,7 +13,12 @@ export function useBooklistGridStyles({ books }) {
     if (window.innerWidth < DESKTOP_LARGE_DEVICE_SIZE) return '5rem'
     const columns = 6
     const rows = Math.ceil(books.length / columns)
-    const containerHeight = elementToApply?.current?.offsetHeight
+
+    // TODO --- This works but isn't the best way, beacuse the "elementToApply"
+    // is created before this will be executed, instead, we should
+    // use "useCallback" to listen when the elementToApply exists
+    // research as callback-ref.
+    const containerHeight = elementToApply.current.offsetHeight
 
     return `repeat(${rows}, ${containerHeight / columns}px)`
   }

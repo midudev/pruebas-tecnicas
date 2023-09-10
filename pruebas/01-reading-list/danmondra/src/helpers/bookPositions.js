@@ -1,22 +1,24 @@
-import { $ } from '../utils'
+import { $, $child } from '../utils'
 
 export function returnBookToOriginalPosition({ transitions = false } = {}) {
   const $selectedBook = $('[data-selected="true"]')
+  const $coverBookIMG = $child($selectedBook, 'img')
+
   if (!transitions) {
-    $selectedBook?.classList.add('disableTransitions')
+    $coverBookIMG?.classList.add('disableTransitions')
     setTimeout(() => {
-      $selectedBook?.classList.remove('disableTransitions')
+      $coverBookIMG?.classList.remove('disableTransitions')
     }, 100)
   }
 
   // If there is a selected book, then removing
   // to the target position and disable transition
   // when it back
-  $selectedBook?.removeAttribute('style')
+  $coverBookIMG?.removeAttribute('style')
   delete $selectedBook?.dataset.selected
 }
 
-export function takeBookToTargetElement({ $bookToTake, $elementTarget }) {
+export function takeBookToTargetElement({ $bookElementToTake, $elementTarget }) {
   const {
     offsetLeft: targetLeft,
     offsetTop: targetTop,
@@ -26,14 +28,14 @@ export function takeBookToTargetElement({ $bookToTake, $elementTarget }) {
     offsetLeft,
     offsetTop,
     offsetWidth
-  } = $bookToTake
+  } = $bookElementToTake
 
   const calculations = {
     left: targetLeft - offsetLeft,
     top: -(offsetTop - targetTop),
     scale: targetWidth / offsetWidth
   }
-  $bookToTake.style.left = `${calculations.left}px`
-  $bookToTake.style.top = `${calculations.top}px`
-  $bookToTake.style.scale = calculations.scale
+  $bookElementToTake.style.left = `${calculations.left}px`
+  $bookElementToTake.style.top = `${calculations.top}px`
+  $bookElementToTake.style.scale = calculations.scale
 }

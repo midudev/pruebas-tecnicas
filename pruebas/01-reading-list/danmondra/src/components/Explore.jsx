@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { Filters } from './Filters.jsx'
-import { EditorialInfo } from './EditorialInfo.jsx'
+
+import styles from '../styles/main.module.css'
 import { BookContent } from './BookContent.jsx'
 import { BooklistGrid } from './BooklistGrid.jsx'
-import styles from '../styles/main.module.css'
+import { EditorialInfo } from './EditorialInfo.jsx'
+import { Filters } from './Filters.jsx'
 
 export function Explore() {
   const [selectedBook, setSelectedBook] = useState({})
@@ -17,6 +18,7 @@ export function Explore() {
       <Filters />
       <section
         className={`${styles.mainContent} ${classIfThereIsSelectedBook}`}
+        data-testid='presentationSection'
       >
         <EditorialInfo />
         <BookContent

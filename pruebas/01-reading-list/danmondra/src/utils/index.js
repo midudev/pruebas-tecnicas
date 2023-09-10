@@ -6,6 +6,14 @@ export const $ = (selector) => {
   }
 }
 
+export const $child = ($parent, selector) => {
+  try {
+    return $parent.querySelector(selector)
+  } catch (e) {
+    return null
+  }
+}
+
 export const moveClassToAnotherElement = (className, $targetElement, selector = '') => {
   const $selectedElement = $(`${selector} .${className}`)
 
