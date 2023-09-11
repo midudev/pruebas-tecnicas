@@ -1,13 +1,13 @@
-import PageWrapper from "@/components/PageWrapper"
-import ItemsSection from "@/components/ItemsSection"
-import DynamicSearchBar from "@/components/DynamicSearchBar"
+import PageWrapper from "@/components/generic/PageWrapper"
+import ItemsSection from "@/components/products/ItemsSection"
+import DynamicSearchBar from "@/components/search/DynamicSearchBar"
 
 const ResultsPage = ({ searchParams }: { searchParams: { query: string } }) => {
   const { query } = searchParams
 
   return (
     <PageWrapper>
-      <main className="min-h-full p-4 mb-24 inset-0 bg-[radial-gradient(#dde0e2_1px,transparent_2px)] [background-size:28px_28px]">
+      <main className="min-h-full p-2 mb-24 inset-0 bg-[radial-gradient(#dde0e2_1px,transparent_2px)] [background-size:28px_28px]">
         <h1 className="font-sans text-lg ">Search results for "{query}"</h1>
         <ItemsSection
           query={query}

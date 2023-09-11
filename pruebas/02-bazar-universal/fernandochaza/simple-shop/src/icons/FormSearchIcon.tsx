@@ -1,11 +1,6 @@
-const SearchIcon = () => {
+const FormSearchIcon = () => {
   return (
-    <svg
-      aria-hidden="true"
-      fill="none"
-      viewBox="0 0 20 20"
-      width="20"
-    >
+    <svg aria-hidden="true" fill="none" viewBox="0 0 20 20" width="20">
       <path
         stroke="currentColor"
         strokeLinecap="round"
@@ -17,4 +12,4 @@ const SearchIcon = () => {
   )
 }
 
-export default SearchIcon
+export default FormSearchIcon

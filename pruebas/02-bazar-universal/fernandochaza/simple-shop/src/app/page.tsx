@@ -1,5 +1,5 @@
-import PageWrapper from "@/components/PageWrapper"
-import SearchBar from "../components/SearchBar"
+import PageWrapper from "@/components/generic/PageWrapper"
+import SearchBar from "../components/search/SearchBar"
 
 export default function Home() {
   return (

@@ -4,7 +4,7 @@ import Link from "next/link"
 import ProductRating from "./ProductRating"
 import AddToCartIcon from "@/icons/AddToCartIcon"
 
-import { Product } from "@/types/global"
+import { type Product } from "@/lib/types"
 
 const ProductCard = ({ product }: { product: Product }) => {
   const { title, description, price, rating, id } = product
@@ -12,8 +12,8 @@ const ProductCard = ({ product }: { product: Product }) => {
   const capitalizedTitle = title[0].toUpperCase() + title.slice(1, -1)
 
   return (
-    <Link href={`/items/${id}`} >
-      <article className="bg-slate-50 grid grid-cols-2 auto-rows-min gap-y-2 gap-x-2 relative w-[316px] h-fit mx-auto px-4 py-4 shadow-[5px_5px_20px_#b0b2b3,-5px_-5px_20px_#ffffff] rounded-3xl">
+    <Link href={`/items/${id}`} className="w-fit mx-auto">
+      <article className="bg-slate-50 grid grid-cols-2 auto-rows-min gap-y-2 gap-x-2 relative w-100 max-w-[348px] h-fit mx-auto px-4 py-4 shadow-[5px_5px_20px_#b0b2b3,-5px_-5px_20px_#ffffff] rounded-3xl">
         <h2 className="col-span-full pl-4 text-lg font-extrabold w-60 line-clamp-2 overflow-hidden">
           {capitalizedTitle}
         </h2>

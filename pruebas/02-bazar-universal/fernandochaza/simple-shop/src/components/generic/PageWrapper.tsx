@@ -3,6 +3,9 @@
 import React from "react"
 import { motion } from "framer-motion"
 
+/**
+ * Wraps a page to provide page transition animations.
+ */
 const PageWrapper = ({
   children,
   className
