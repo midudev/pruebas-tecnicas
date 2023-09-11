@@ -3,7 +3,7 @@ import { ACTIONS_MSGS } from './BookNotification'
 
 const { IS_ALREADY_IN_LIST, ADD_TO_SPECIFIC_LIST, DELETE_FROM_LIST } = ACTIONS_MSGS
 
-const TITLE_VARIANTS = {
+export const TITLE_VARIANTS = {
   delete: (nameList) => `${DELETE_FROM_LIST} ${nameList}`,
   isAlready: (nameList) => `${IS_ALREADY_IN_LIST} "${nameList}"`,
   default: (nameList) => `${ADD_TO_SPECIFIC_LIST} "${nameList}"`
