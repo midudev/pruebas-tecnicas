@@ -1,4 +1,4 @@
-import { cleanup, getByText, render, waitFor } from '@testing-library/react'
+import { cleanup, getByText, render, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, describe, expect, it } from 'vitest'
 
@@ -21,32 +21,41 @@ describe('<BooklistGrid />', () => {
 
   it('should show the info of the book in the content book section when is clicked', async () => {
     const user = userEvent.setup()
-    const { getByTestId, getAllByRole } = render(<App />)
+    const { getByTestId, findAllByRole } = render(<App />)
 
     const bookPositionToTest = 0
     const bookToTest = library[bookPositionToTest].book
 
-    let firstBookElement
-    let bookPresentationSection
+    const bookPresentationSection = getByTestId('presentationSection')
+    const firstBookElement = await findAllByRole('button', { name: /abrir libro/i })
 
-    await waitFor(() => {
-      firstBookElement = getAllByRole('button', { name: /abrir libro/i })[bookPositionToTest]
-      bookPresentationSection = getByTestId('presentationSection')
-    })
+    await user.click(firstBookElement[0])
 
-    await user.click(firstBookElement)
+    await within(bookPresentationSection).findByText(bookToTest.title)
+    await within(bookPresentationSection).findByText(bookToTest.synopsis)
+    await within(bookPresentationSection).findByText(bookToTest.author.name)
+    await within(bookPresentationSection).findByText(bookToTest.pages)
+    await within(bookPresentationSection).findByText(bookToTest.genre)
+  })
 
-    await waitFor(() => {
-      getByText(bookPresentationSection, bookToTest.title)
-      getByText(bookPresentationSection, bookToTest.synopsis)
-      getByText(bookPresentationSection, bookToTest.author.name)
-      getByText(bookPresentationSection, bookToTest.pages)
-      getByText(bookPresentationSection, bookToTest.genre)
-    })
+  it('should hide the selected book info when is clicked again', async () => {
+    const user = userEvent.setup()
+    const { getByTestId, findAllByRole } = render(<App />)
+
+    const bookPositionToTest = 0
+    const bookToTest = library[bookPositionToTest].book
+
+    const bookPresentationSection = getByTestId('presentationSection')
+    const firstBookElement = await findAllByRole('button', { name: /abrir libro/i })
+
+    await user.click(firstBookElement[0])
+    await user.click(firstBookElement[0])
+    expect(() => getByText(bookPresentationSection, bookToTest.title)).toThrow()
   })
 })
 
 describe('<EditorialInfo />', () => {
+  const bookPositionToTest = 0
   let user
   let component
   let firstBookElement
@@ -55,28 +64,24 @@ describe('<EditorialInfo />', () => {
   it('should hide the editorial info when a book is clicked', async () => {
     user = userEvent.setup()
     component = render(<App />)
-    const { getByTestId, getAllByRole } = component
+    const { getByTestId, findAllByRole } = component
 
-    const bookPositionToTest = 0
+    editorialInfo = getByTestId('editorialInfo')
+    expect(editorialInfo).toHaveStyle({ opacity: '1' })
 
-    await waitFor(() => {
-      firstBookElement = getAllByRole('button', { name: /abrir libro/i })[bookPositionToTest]
-      editorialInfo = getByTestId('editorialInfo')
-      expect(editorialInfo).toHaveStyle({ opacity: '1' })
-    })
-
-    await user.click(firstBookElement)
+    firstBookElement = await findAllByRole('button', { name: /abrir libro/i })
+    await user.click(firstBookElement[bookPositionToTest])
 
     await waitFor(() => {
-      expect(editorialInfo).toHaveStyle({ opacity: '0' })
+      expect(editorialInfo).not.toBeVisible()
     })
   })
 
   it('should show the editorial info when a book already selected is clicked', async () => {
-    await user.click(firstBookElement)
+    await user.click(firstBookElement[bookPositionToTest])
 
     await waitFor(() => {
-      expect(editorialInfo).toHaveStyle({ opacity: '1' })
+      expect(editorialInfo).toBeVisible()
     })
   })
 })
