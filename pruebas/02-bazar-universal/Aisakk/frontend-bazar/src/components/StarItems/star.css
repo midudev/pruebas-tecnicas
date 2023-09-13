@@ -1,0 +1,9 @@
+.star-container{
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+.widget-svg{
+    height:15px !important;
+    width:15px !important;
+    display: flex;
+}
