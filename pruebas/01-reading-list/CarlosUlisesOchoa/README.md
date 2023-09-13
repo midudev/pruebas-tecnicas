@@ -44,7 +44,12 @@ Desarrollado con una variedad de tecnologías modernas para proporcionar la mejo
 
 ### Capturas de pantalla
 
-![image](https://github.com/CarlosUlisesOchoa/code-challenge-reading-list/assets/26280134/45a450ba-c078-4e89-99f2-dbb308189920)
+Tema oscuro:
+![image](https://github.com/CarlosUlisesOchoa/code-challenge-reading-list/assets/26280134/5c0e1e4b-7eef-46bc-927f-20932290d52b)
+
+Tema claro:
+![image](https://github.com/CarlosUlisesOchoa/code-challenge-reading-list/assets/26280134/e844fec4-18e3-4c32-9c6e-157d22340429)
+
 
 ### Características implementadas
 
