@@ -16,7 +16,7 @@ function SearchBar({classNameDirection}){
     const navigate = useNavigate()
     function handleClick(e){
         e.preventDefault()
-        navigate(`items/?search=${product}`) 
+        navigate(`items?q=${product}`) 
     }
     function Back(){
         navigate("/")

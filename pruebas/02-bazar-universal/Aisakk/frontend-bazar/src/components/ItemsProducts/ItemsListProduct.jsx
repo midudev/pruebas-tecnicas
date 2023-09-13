@@ -11,13 +11,13 @@ function ItemsListProduct(){
     const location = useLocation();
     const navigate = useNavigate()
     const searchParams = new URLSearchParams(location.search);
-    const searchTerm = searchParams.get("search");
+    const searchTerm = searchParams.get("q");
   
     useEffect(()=>{
-        fetch('http://localhost:3000/api/search')
+        fetch(`http://localhost:3000/api/items?q=${searchTerm}`)
         .then(res => res.json())
         .then(data =>{
-            setProducts(data.products)
+            setProducts(data)
         }).finally(
             setIsLoading(false)
         )
@@ -27,13 +27,15 @@ function ItemsListProduct(){
             <SearchBar classNameDirection={'row'}/>
             {isLoading 
             ? <Loading /> 
-            : (products.map((item) => (
-                <ProductItem
-                  key={item.id}
-                  item={item}
-                  navigate={navigate}
-                />
-              )))}
+            : (products.data && products.data.length !== 0 
+                ? <p className="text-center">{products.data}</p>
+                : (products.map((item) => (
+                    <ProductItem
+                      key={item.id}
+                      item={item}
+                      navigate={navigate}
+                    />
+                  )))) }
     
            
         </main>

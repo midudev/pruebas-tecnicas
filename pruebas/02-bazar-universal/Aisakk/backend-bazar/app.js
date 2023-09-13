@@ -6,13 +6,20 @@ const fs = require('fs');
 
 app.use(cors())
 
-app.get('/api/search', (req, res) => {
+app.get('/api/items', (req, res) => {
  fs.readFile('./products.json', function(error, data){
     if (error) {
       console.error('Error al leer el archivo:', error);
       return;
     }
-    return res.send(JSON.parse(data))
+    const allProducts = JSON.parse(data)
+    const productEncontrado = allProducts.products.filter(item => item.category == req.query.q)
+    if(productEncontrado.length !== 0){
+      res.send(productEncontrado)
+    }else{
+      res.json({data: "Producto no encontado"})
+    }
+
  })
 })
 app.get('/api/items/:id', (req,res)=>{
