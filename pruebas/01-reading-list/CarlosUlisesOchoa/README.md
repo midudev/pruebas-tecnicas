@@ -3,6 +3,8 @@
 <br/>
 
 <div align="center">
+   Consulta los detalles de este coding challenge <a href="https://github.com/midudev/pruebas-tecnicas/blob/main/pruebas/01-reading-list/README.md" target="_blank">haciendo clic aquí</a>
+   <br/><br/>
    Alojado en <a href="https://vercel.com/" target="_blank">Vercel</a>.
 </div>
 
