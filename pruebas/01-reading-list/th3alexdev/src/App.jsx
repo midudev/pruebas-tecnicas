@@ -29,10 +29,10 @@ export default function App() {
               />
             </Header>
             <section className="w-full relative md:grid sm:grid-cols-[20%,1fr]">
-              <aside className="md:fixed md:w-1/5 md:max-w-[280px] flex flex-col h-max gap-8 pt-24 items-center">
+              <div className="md:fixed md:w-1/5 md:max-w-[280px] flex flex-col h-max gap-8 pt-24 items-center">
                 <Filters />
                 <StoreInfo />
-              </aside>
+              </div>
               <ListOfBooks />
             </section>
           </main>
