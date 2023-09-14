@@ -1,8 +1,7 @@
-import { useContext, useRef } from "react";
+import { useContext, useRef, useEffect } from "react";
 import { FiltersContext } from "../context/contextFiltersProvider";
 import { FilterIcon } from "./Icons";
 import { useFilters } from "../hooks/useFilters";
-import Brand from "./Brand";
 
 export default function Filters() {
   const numOfPagesInput = useRef();
@@ -17,6 +16,10 @@ export default function Filters() {
     numOfPagesInput,
     numOfPagesRange,
   });
+
+  useEffect(() => {
+    numOfPagesRange.current.value = maxPosiblePages
+  }, [maxPosiblePages]);
 
   return (
     <div className="w-full xl:w-screen xl:max-w-[255px] relative px-4 flex flex-col 4xs:flex-row gap-8 md:flex-col">
@@ -59,7 +62,7 @@ export default function Filters() {
               className={`${
                 sortByPages ? "pointer-events-auto" : "pointer-events-none"
               }`}
-              onClick={() => removeRange()}
+              onClick={(e) => removeRange(e)}
               title="Quitar filtro"
               aria-label="Quitar filtro"
             >
