@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reading List</title>
+    <!-- <link rel="stylesheet" href="/src/scss/styles.scss"> -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Library</h1>
+    </header>
+    <main id="app">
+      <aside class="sidebar">
+        <div class="sidebar__container">
+          <h3>Filtrar por</h3>
+          <h4>Género</h4>
+          <ul id="gendersFilter"></ul>
+        </div>
+      </aside>
+      <section class="book-section">
+        <div class="book-section__counters">
+          <h2 class="book-section__title" id="booksAvailable"></h2>
+          <h2 class="book-section__title" id="addedBooks"></h2>
+        </div>
+        <div id="booksContainer">
+          <!-- <ul class="book-list" id="listBooks"></ul> -->
+        </div>
+      </section>
+      <template id="booksTemplate">
+        <li class="book">
+          <section class="book__image">
+            <img src loading="lazy" id="bookImage">
+          </section>
+          <section class="book__info">
+            <h3 class="book__title" id="bookTitle"></h3>
+            <button class="button" id="addBook"></button>
+          </section>
+        </li>
+      </template>
+      <template id="gendersTemplate">
+        <li class="genders__item">
+          <a href="#" class="genders__link" id="genre"></a>
+        </li>
+      </template>
+    </main>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
