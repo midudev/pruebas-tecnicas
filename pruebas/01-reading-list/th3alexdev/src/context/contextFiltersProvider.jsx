@@ -49,7 +49,7 @@ export default function FiltersProvider({ children }) {
       },
     }));
 
-  }, [books, loadSavedBooks]);
+  }, [books]);
 
   const { sortByTitle, genre, pages, sortByPages } = filters;
 
@@ -70,11 +70,12 @@ export default function FiltersProvider({ children }) {
 
     setFilteredBooks(filter)
 
-    if ((sortByTitle || genre || sortByPages) && !filteredBooks.length) {
+    if (!filter.length) {
       setError(ERROR_MESSAGES.NOT_FOUND);
     } else {
       setError(null);
     }
+
   }, [
     books,
     savedBooks,
