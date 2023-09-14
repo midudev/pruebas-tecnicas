@@ -4,7 +4,7 @@ import { FiltersContext } from "../context/contextFiltersProvider";
 export const useFilters = ({ numOfPagesInput, numOfPagesRange }) => {
   const { filters, setFilters } = useContext(FiltersContext);
 
- const { maxPosiblePages } = filters
+  const { maxPosiblePages, pages } = filters;
 
   const handleChangeRange = (e) => {
     setFilters({
@@ -24,13 +24,14 @@ export const useFilters = ({ numOfPagesInput, numOfPagesRange }) => {
     numOfPagesRange.current.value = e.target.value;
   };
 
-  const removeRange = () => {
+  const removeRange = (e) => {
     setFilters({
       ...filters,
       sortByPages: false,
       pages: { maxPages: maxPosiblePages },
     });
     numOfPagesRange.current.value = maxPosiblePages;
+    e.preventDefault();
   };
 
   return [handleChangeRange, handleSetRange, removeRange];
