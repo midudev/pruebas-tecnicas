@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react"
 import { Product } from "@/lib/types"
-import { fetchProductsByString } from "@/utils/fetchProductsByString"
+import { fetchProductsByCategory } from "@/utils/fetchProductsByCategory"
 
-export function useFetchProductsByString(query: string) {
+export function useFetchProductsByCategory(category: string) {
   const [results, setResults] = useState<Product[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
 
   useEffect(() => {
     setIsLoading(true)
-    fetchProductsByString(query)
+    fetchProductsByCategory(category)
       .then((products) => {
         setResults(products)
         setIsLoading(false)
@@ -18,7 +18,7 @@ export function useFetchProductsByString(query: string) {
         setError(error)
         setIsLoading(false)
       })
-  }, [query])
+  }, [category])
 
   return { results, isLoading, error }
 }

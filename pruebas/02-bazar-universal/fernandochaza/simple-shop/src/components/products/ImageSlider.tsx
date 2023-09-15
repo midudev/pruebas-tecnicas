@@ -1,6 +1,7 @@
+import Link from "next/link"
+
 import NextChevron from "@/icons/NextChevron"
 import PreviousChevron from "@/icons/PreviousChevron"
-import Link from "next/link"
 
 type ImageSliderProps = {
   imageURLS: string[]
@@ -20,24 +21,28 @@ const ImageSlider = ({
       style={{
         backgroundImage: `url(${imageURLS[imgIndex] || imageURLS[0]})`
       }}
-      className={className}
+      className={`group ${className}`}
     >
-      <Link
-        href={`?imgIndex=${
-          imgIndex <= 0 || imgIndex > lastIndex ? lastIndex : imgIndex - 1
-        }`}
-        className="absolute w-12 top-1/2 left-2 -translate-y-1/2 bg-white bg-opacity-20 rounded-full"
-      >
-        <PreviousChevron />
-      </Link>
-      <Link
-        href={`?imgIndex=${
-          imgIndex >= lastIndex || imgIndex < 0 ? 0 : imgIndex + 1
-        }`}
-        className="absolute w-12 top-1/2 right-2 -translate-y-1/2 bg-white bg-opacity-20 rounded-full"
-      >
-        <NextChevron />
-      </Link>
+      {imageURLS.length > 1 && (
+        <>
+          <Link
+            href={`?imgIndex=${
+              imgIndex <= 0 || imgIndex > lastIndex ? lastIndex : imgIndex - 1
+            }`}
+            className="lg:hidden group-hover:block absolute w-12 top-1/2 left-1 -translate-y-1/2 bg-white bg-opacity-30 rounded-full shadow-[1px_1px_1px_#b0b2b3]"
+          >
+            <PreviousChevron />
+          </Link>
+          <Link
+            href={`?imgIndex=${
+              imgIndex >= lastIndex || imgIndex < 0 ? 0 : imgIndex + 1
+            }`}
+            className="lg:hidden group-hover:block absolute w-12 top-1/2 right-1 -translate-y-1/2 bg-white bg-opacity-30 rounded-full shadow-[1px_1px_1px_#b0b2b3]"
+          >
+            <NextChevron />
+          </Link>
+        </>
+      )}
     </div>
   )
 }

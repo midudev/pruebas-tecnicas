@@ -1,10 +1,14 @@
-import PageWrapper from "@/components/generic/PageWrapper"
+import AnimatedPageWrapper from "@/components/generic/AnimatedPageWrapper"
 import SearchBar from "../components/search/SearchBar"
+import MainContainer from "@/components/generic/MainContainer"
 
+/**
+ * Renders the landing page view. Which consists of a Title, subtitle and a search bar.
+ */
 export default function Home() {
   return (
-    <PageWrapper>
-      <main className="inset-0 bg-[radial-gradient(#dde0e2_1px,transparent_2px)] [background-size:28px_28px] h-screen min-h-fit flex flex-col place-content-center bg-slate-100">
+    <AnimatedPageWrapper>
+      <MainContainer>
         <h1 className="bg-clip-text text-transparent bg-gradient-to-b from-slate-900 to-slate-600 text-4xl font-extrabold text-center">
           SIMPLE SHOP
         </h1>
@@ -12,7 +16,7 @@ export default function Home() {
           Online Store
         </p>
         <SearchBar />
-      </main>
-    </PageWrapper>
+      </MainContainer>
+    </AnimatedPageWrapper>
   )
 }

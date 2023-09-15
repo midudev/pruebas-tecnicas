@@ -55,7 +55,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${nunitoSans.variable} ${firaMono.variable} font-sans h-screen`}>
+      <body
+        className={`${nunitoSans.variable} ${firaMono.variable} font-sans h-screen`}
+      >
         {children}
       </body>
     </html>

@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 /**
  * Wraps a page to provide page transition animations.
  */
-const PageWrapper = ({
+const AnimatedPageWrapper = ({
   children,
   className
 }: {
@@ -15,7 +15,7 @@ const PageWrapper = ({
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 0 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 20 }}
       className={className}
@@ -25,4 +25,4 @@ const PageWrapper = ({
   )
 }
 
-export default PageWrapper
+export default AnimatedPageWrapper

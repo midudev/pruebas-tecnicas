@@ -23,7 +23,7 @@ const DynamicSearchBar = () => {
       {!show ? (
         <ToggleSearchIcon
           onClick={toggleBar}
-          className="w-12 fixed right-8 mx-auto bottom-8 bg-slate-50 rounded-full p-2 shadow-[4px_4px_6px_#b0b2b3,-7px_-7px_10px_#eeeeee] active:border active:shadow-none transition-shadow duration-50"
+          className="w-12 fixed right-6 mx-auto bottom-6 bg-slate-50 rounded-full p-2 shadow-[4px_4px_6px_#b0b2b3,-7px_-7px_10px_#eeeeee] active:border active:shadow-none transition-shadow duration-50"
         />
       ) : (
         <div className="fixed flex flex-col inset-x-0 bottom-2">

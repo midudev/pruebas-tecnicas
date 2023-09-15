@@ -1,21 +1,39 @@
-import PageWrapper from "@/components/generic/PageWrapper"
-import ItemsSection from "@/components/products/ItemsSection"
+import AnimatedPageWrapper from "@/components/generic/AnimatedPageWrapper"
+import MainContainer from "@/components/generic/MainContainer"
+import Header from "@/components/header/Header"
+import CategorySection from "@/components/products/CategorySection"
+import ResultsSection from "@/components/products/ResultsSection"
 import DynamicSearchBar from "@/components/search/DynamicSearchBar"
 
-const ResultsPage = ({ searchParams }: { searchParams: { query: string } }) => {
-  const { query } = searchParams
+/**
+ * Renders the results page view. Which consists of a Header, a the results and a  dynamic SearchBar.
+ */
+const ResultsPage = ({
+  searchParams
+}: {
+  searchParams: { query: string; category: string }
+}) => {
+  const { query, category } = searchParams
 
   return (
-    <PageWrapper>
-      <main className="min-h-full p-2 mb-24 inset-0 bg-[radial-gradient(#dde0e2_1px,transparent_2px)] [background-size:28px_28px]">
-        <h1 className="font-sans text-lg ">Search results for "{query}"</h1>
-        <ItemsSection
-          query={query}
-          className="bg-transparent flex flex-col gap-y-8 mt-8 pb-24"
-        />
+    <AnimatedPageWrapper>
+      <Header />
+      <MainContainer className="place-content-start">
+        {category ? (
+          <CategorySection
+            category={category}
+            className="bg-transparent flex flex-col gap-y-8 mt-4 pb-24"
+          />
+        ) : (
+          <ResultsSection
+            query={query}
+            className="bg-transparent flex flex-col gap-y-8 mt-4 pb-24"
+          />
+        )}
+
         <DynamicSearchBar />
-      </main>
-    </PageWrapper>
+      </MainContainer>
+    </AnimatedPageWrapper>
   )
 }
 
