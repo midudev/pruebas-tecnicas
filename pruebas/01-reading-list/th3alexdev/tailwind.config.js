@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['"Monteserrat"', 'sans-serif']
+        'general': ['"General Sans"', 'sans-serif'],
       },
       colors: {
         'card-background': '#252429',

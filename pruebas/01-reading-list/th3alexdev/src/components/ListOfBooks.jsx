@@ -40,7 +40,7 @@ export default function ListOfBooks() {
                 <img
                   src={book.cover}
                   alt={`Cubierta de ${book.title}`}
-                  className="w-[95%] mb-4 aspect-[9/14] object-cover rounded-sm pointer-events-none"
+                  className="w-[95%] mb-4 aspect-[9/14] object-cover rounded-sm pointer-events-none text"
                 />
                 <div className="w-[95%]">
                   <h1

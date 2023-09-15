@@ -25,7 +25,7 @@ export default function Filters() {
     <div className="w-full xl:w-screen xl:max-w-[255px] relative px-4 flex flex-col 4xs:flex-row gap-8 md:flex-col">
       <div className="basis-1/2">
         <form onSubmit={(e) => e.preventDefault}>
-          <h3 className="font-semibold text-lg leading-6 mb-2 line-clamp-2 sm:text-balance">
+          <h3 className="font-medium text-lg leading-6 mb-2 line-clamp-2 sm:text-balance">
             <label className="cursor-auto">Por cantidad de páginas</label>
           </h3>
           <input
@@ -72,7 +72,7 @@ export default function Filters() {
         </form>
       </div>
       <div className="basis-1/2">
-        <h3 className="font-semibold text-lg mb-2">Por género</h3>
+        <h3 className="font-medium text-lg mb-2">Por género</h3>
         <ul className="flex flex-wrap md:flex-nowrap md:flex-col gap-[0.3rem]">
           {filters.genres.map((genre) => (
             <li key={genre} className="whitespace-nowrap">
