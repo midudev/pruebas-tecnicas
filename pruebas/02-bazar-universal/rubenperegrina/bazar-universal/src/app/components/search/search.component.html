@@ -1,0 +1,7 @@
+<h1>Bazar Online</h1>
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput id="product" type="text" formControlName="product" placeholder="laptops, smartphones...">
+    </mat-form-field>
+    <button mat-raised-button>Buscar</button>
+  </form>
