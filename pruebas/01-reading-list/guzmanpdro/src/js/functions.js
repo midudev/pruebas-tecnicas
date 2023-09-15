@@ -1,7 +1,7 @@
 import { UI } from './classes/UI'
 import { $addedBooks, $booksAvailable } from './selectors'
 import { ReadingList } from './classes/ReadingList'
-import { SECTION_TITLE_ACTION } from './utlis'
+import { SECTION_TITLE_ACTION, animateCSS } from './utlis'
 
 const readingList = new ReadingList()
 const ui = new UI()
@@ -10,13 +10,17 @@ function printBooks (data) {
   ui.renderBooks(data)
 }
 
-function clickHandler (isbn, isOnBooksAvailable) {
+function clickHandler (isbn, isOnBooksAvailable, event) {
+  const elementToAnimate = event.target.parentNode.parentNode
+  const animationName = 'bounceOut'
+
   if (isOnBooksAvailable) {
     const book = readingList.booksAvailable.find(elem => elem.ISBN === isbn)
     readingList.addBook(book)
     $booksAvailable.textContent = `Libros disponibles (${readingList.booksAvailable.length})`
     $addedBooks.textContent = `Lista de lectura (${readingList.addedBooks.length})`
-    ui.renderBooks(readingList.booksAvailable)
+    animateCSS(elementToAnimate, animationName)
+    setTimeout(() => ui.renderBooks(readingList.booksAvailable), 750)
     return
   }
 
@@ -24,7 +28,8 @@ function clickHandler (isbn, isOnBooksAvailable) {
   readingList.removeBook(book)
   $booksAvailable.textContent = `Libros disponibles (${readingList.booksAvailable.length})`
   $addedBooks.textContent = `Lista de lectura (${readingList.addedBooks.length})`
-  ui.renderBooks(readingList.addedBooks)
+  animateCSS(elementToAnimate, animationName)
+  setTimeout(() => ui.renderBooks(readingList.addedBooks), 750)
 }
 
 function renderAddedBooks () {

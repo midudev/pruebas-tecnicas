@@ -32,7 +32,7 @@ class UI {
       $bookImage.src = cover
       $bookTitle.textContent = title
       $bookButton.setAttribute('data-isbn', ISBN)
-      $bookButton.addEventListener('click', () => clickHandler(ISBN, this.isOnBooksAvailable))
+      $bookButton.addEventListener('click', (event) => clickHandler(ISBN, this.isOnBooksAvailable, event))
 
       this.isOnBooksAvailable ? $bookButton.textContent = 'Agregar' : $bookButton.textContent = 'Eliminar'
 
