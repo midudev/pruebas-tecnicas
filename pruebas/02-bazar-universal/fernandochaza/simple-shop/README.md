@@ -3,7 +3,9 @@
 Welcome! 👋  
 <br>
 This is a Next JS web application that simulates an e-commerce find and buy experience.  
-<br>
+
+*** IMPORTANT: The app is optimized for mobile device screens ***
+
 I made it to practice my Frontend dev skills and to gain proficiency in the following technologies:
 
 ## Built with
