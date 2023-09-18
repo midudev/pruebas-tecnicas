@@ -4,7 +4,7 @@ type ButtonProps = ComponentPropsWithoutRef<"button">
 
 const DownChevronIcon = ({ ...props }: ButtonProps) => {
   return (
-    <button {...props}>
+    <button {...props} aria-label="Hide search bar">
       <svg fill="none" viewBox="0 0 24 24">
         <path
           stroke="currentColor"

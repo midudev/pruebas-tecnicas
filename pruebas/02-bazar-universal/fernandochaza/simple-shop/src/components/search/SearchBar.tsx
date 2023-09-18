@@ -12,8 +12,8 @@ type FormValues = {
 const SearchBar = (): JSX.Element => {
   const {
     register,
-    handleSubmit,
-    formState: { errors }
+    handleSubmit
+    // formState: { errors }
   } = useForm<FormValues>()
 
   const route = useRouter()
