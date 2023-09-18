@@ -10,7 +10,7 @@ const MainContainer = ({
 }) => {
   return (
     <main
-      className={`inset-0 h-screen min-h-fit flex flex-col place-content-center bg-slate-50 ${className}`}
+      className={`inset-0 h-[calc(100vh-57px)] min-h-fit flex flex-col place-content-center bg-slate-50 ${className}`}
     >
       {children}
     </main>
