@@ -23,9 +23,9 @@ const ProductCard = ({ product }: { product: Product }) => {
     <Link href={`/items/${id}`} className="w-fit mx-auto z-0">
       <article className="bg-slate-50 grid grid-cols-2 auto-rows-min gap-y-2 gap-x-2 relative w-100 max-w-[348px] h-fit mx-auto px-4 py-4 shadow-[5px_5px_20px_#b0b2b3,-5px_-5px_20px_#ffffff] rounded-3xl">
         <div>
-          <h3 className="col-span-full pl-4 text-lg font-extrabold w-60 line-clamp-2 overflow-hidden">
+          <h2 className="col-span-full pl-4 text-lg font-extrabold w-60 line-clamp-2 overflow-hidden">
             {capitalizedTitle}
-          </h3>
+          </h2>
           <p className="pl-4 text-sm my-1">{brand}</p>
         </div>
         <div className="w-[132px] h-[132px] relative mx-auto row-start-2">

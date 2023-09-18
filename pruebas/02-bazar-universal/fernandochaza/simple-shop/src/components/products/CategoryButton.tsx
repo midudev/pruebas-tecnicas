@@ -21,6 +21,7 @@ const CategoryButton = ({
 
   return (
     <div
+      aria-label="View products by this category"
       onClick={handleOnClick}
       className={`cursor-pointer row-start-1 col-start-2 text-sm border w-fit rounded-full px-2 h-fit ml-auto mt-auto mb-1 text-blue-600 ${className}`}
     >
