@@ -1,6 +1,6 @@
 const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "https://simple-shop-nine.vercel.app/"
+    ? "https://simple-shop-nine.vercel.app"
     : "http://localhost:3000"
 
 export async function fetchProductsByCategory(category: string) {
