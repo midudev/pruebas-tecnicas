@@ -1,34 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Simple Shop
 
-## Getting Started
+Welcome! 👋  
+<br>
+This is a Next JS web application that simulates an e-commerce find and buy experience.  
+<br>
+I made it to practice my Frontend dev skills and to gain proficiency in the following technologies:
 
-First, run the development server:
+## Built with
+
+- [React](https://reactjs.org/)
+- [Next.JS 13](https://nextjs.org/docs/app) - Using the brand new App Router paradigm
+- [Typescript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React Hook Form](https://react-hook-form.com/)
+- [Auto Animate](https://auto-animate.formkit.com/) - For subtle animations
+- [Vercel](https://vercel.com/)
+
+## Live Demo
+
+Check out and test the live demo of the application:
+
+- Production: [Simple Shop](https://simple-shop-nine.vercel.app/)
+
+<br> 
+** Please, feel free to reach out to me if you have any suggestions **
+
+## Let's talk!
+
+* Email: fernandochaza@gmail.com
+* Phone: +5492974607698
+* Whatsapp Me: [Click to chat](https://wa.me/5492974607698) 
+* My discord: [Go to Discord](https://discord.com/users/413889897909321729)
+* LinkedIn profile: https://www.linkedin.com/in/fernandochazarreta/
+
+## Want to run it locally?
+
+Follow these steps:
+<br>
+
+1. Clone the repository.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+git clone https://github.com/fernandochaza/pruebas-tecnicas.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<br>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. Access the project folder.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- The project files are in a subdirectory. You will need to access it before installing the dependencies.
+- The directory is: `02-bazar-universal/fernandochaza/simple-shop` 
 
-## Learn More
+<br>
 
-To learn more about Next.js, take a look at the following resources:
+3. Install dependencies.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Once you're in 'simple-shop' directory, run:
+```bash
+npm install
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<br>
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+4. Start the development server.
+```bash
+npm run dev
+```
