@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { Product } from "@/lib/types"
 import { fetchProductsByString } from "@/utils/fetchProductsByString"
+import { type Product } from "@/lib/types"
 
 export function useFetchProductsByString(query: string) {
   const [results, setResults] = useState<Product[]>([])

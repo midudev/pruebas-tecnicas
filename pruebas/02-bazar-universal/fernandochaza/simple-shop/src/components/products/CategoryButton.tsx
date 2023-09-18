@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { MouseEvent } from "react"
+import { type MouseEvent } from "react"
 
 /**
  * Displays a category button that redirects to the category page.

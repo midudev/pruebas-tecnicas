@@ -1,7 +1,8 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { useForm, SubmitHandler } from "react-hook-form"
+import { useForm } from "react-hook-form"
+import { type SubmitHandler } from "react-hook-form"
 import FormSearchIcon from "../../icons/FormSearchIcon"
 
 type FormValues = {
@@ -47,6 +48,7 @@ const SearchBar = (): JSX.Element => {
         />
         <button
           type="submit"
+          aria-label="Search"
           className="text-white shadow-lg absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 "
         >
           Search

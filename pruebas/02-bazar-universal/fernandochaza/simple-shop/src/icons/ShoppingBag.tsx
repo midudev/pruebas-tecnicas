@@ -18,7 +18,7 @@ const ShoppingBag = ({ className, ...props }: { className?: string }) => {
       <g filter="url(#c)">
         <path
           fill="#000"
-          fill-opacity=".2"
+          fillOpacity=".2"
           d="M20.363 10.182c0 2.008-.71 3.722-2.13 5.142-1.42 1.42-3.134 2.13-5.142 2.13-2.009 0-3.723-.71-5.143-2.13s-2.13-3.134-2.13-5.142h2.909c0 1.205.426 2.233 1.278 3.085.852.852 1.88 1.279 3.086 1.279 1.205 0 2.233-.427 3.085-1.279.852-.852 1.278-1.88 1.278-3.085h2.91Zm0 0a1.454 1.454 0 1 1-2.908 0 1.454 1.454 0 0 1 2.908 0Zm-11.636 0a1.451 1.451 0 0 1-1.17 1.426 1.446 1.446 0 0 1-1.093-.217 1.455 1.455 0 1 1 2.263-1.21Z"
         />
       </g>
@@ -36,7 +36,7 @@ const ShoppingBag = ({ className, ...props }: { className?: string }) => {
           gradientUnits="userSpaceOnUse"
         >
           <stop />
-          <stop offset="1" stop-color="#7a7c7f" />
+          <stop offset="1" stopColor="#7a7c7f" />
         </linearGradient>
         <linearGradient
           id="b"
@@ -46,8 +46,8 @@ const ShoppingBag = ({ className, ...props }: { className?: string }) => {
           y2="32"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#7a7c7f" />
-          <stop offset="1" stop-color="#15191e" />
+          <stop stopColor="#7a7c7f" />
+          <stop offset="1" stopColor="#15191e" />
         </linearGradient>
         <filter
           id="c"
@@ -55,10 +55,10 @@ const ShoppingBag = ({ className, ...props }: { className?: string }) => {
           height="10.727"
           x="4.818"
           y="7.727"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
           filterUnits="userSpaceOnUse"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
           <feGaussianBlur
             result="effect1_foregroundBlur_103_1420"

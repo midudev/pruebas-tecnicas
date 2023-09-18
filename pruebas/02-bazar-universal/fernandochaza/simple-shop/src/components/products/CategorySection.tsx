@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react"
 import autoAnimate from "@formkit/auto-animate"
 import ProductCard from "./ProductCard"
 
-import { type Product } from "@/lib/types"
 import { useFetchProductsByCategory } from "@/hooks/useFetchProductByCategory"
 
 /**
@@ -23,19 +22,19 @@ const CategorySection = ({
   const resultsLength = results.length
 
   useEffect(() => {
-    parent.current && autoAnimate(parent.current)
+    if (parent.current !== null) autoAnimate(parent.current)
   }, [parent])
 
   return (
     <>
       <p className="font-sans text-lg ml-2 mt-2">
-        {resultsLength} {resultsLength == 1 ? "product" : "products"} found in "
-        {category}"
+        {resultsLength} {resultsLength === 1 ? "product" : "products"} found in
+        &quot;{category}&quot;
       </p>
       <section ref={parent} className={className}>
         {isLoading ? (
           <p className="text-2xl font-bold text-center">Loading...</p>
-        ) : resultsLength == 0 ? (
+        ) : resultsLength === 0 ? (
           <p className="text-2xl font-bold text-center">No results found</p>
         ) : (
           results.map((product) => (

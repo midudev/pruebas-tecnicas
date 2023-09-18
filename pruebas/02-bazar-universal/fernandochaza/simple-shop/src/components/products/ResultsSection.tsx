@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react"
 import autoAnimate from "@formkit/auto-animate"
 import ProductCard from "./ProductCard"
 
-import { type Product } from "@/lib/types"
 import { useFetchProductsByString } from "@/hooks/useFetchProductsByString"
 
 /**
@@ -23,7 +22,7 @@ const ResultsSection = ({
   const resultsLength = results.length
 
   useEffect(() => {
-    parent.current && autoAnimate(parent.current)
+    if (parent.current !== null) autoAnimate(parent.current)
   }, [parent])
 
   return (
@@ -35,9 +34,9 @@ const ResultsSection = ({
       ) : (
         <>
           <p className="font-sans text-lg ml-2 mt-2">
-            {resultsLength} {resultsLength == 1 ? "result" : "results"} found
+            {resultsLength} {resultsLength === 1 ? "result" : "results"} found
             for
-            <i>"{query}"</i>
+            <i>&quot;{query}&quot;</i>
           </p>
           {results.map((product) => (
             <ProductCard key={product.id} product={product} />

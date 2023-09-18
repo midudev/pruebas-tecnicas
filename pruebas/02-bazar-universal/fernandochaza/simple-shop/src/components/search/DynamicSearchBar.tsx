@@ -1,13 +1,12 @@
 "use client"
 
-import { ButtonHTMLAttributes, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import SearchBar from "./SearchBar"
 import ToggleSearchIcon from "@/icons/ToggleSearchIcon"
 import DownChevronIcon from "@/icons/DownChevronIcon"
 
 import autoAnimate from "@formkit/auto-animate"
-
 
 /**
  * A search bar that can be toggled on and off.
@@ -17,10 +16,12 @@ const DynamicSearchBar = () => {
   const parent = useRef(null)
 
   useEffect(() => {
-    parent.current && autoAnimate(parent.current)
+    if (parent.current !== null) autoAnimate(parent.current)
   }, [parent])
 
-  const toggleBar = () => setShow(!show)
+  const toggleBar = () => {
+    setShow((prev) => !prev)
+  }
 
   return (
     <div ref={parent}>

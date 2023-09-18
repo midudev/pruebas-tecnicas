@@ -19,6 +19,10 @@ const ProductCard = ({ product }: { product: Product }) => {
     minimumFractionDigits: 0
   })
 
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+  }
+
   return (
     <Link href={`/items/${id}`} className="w-fit mx-auto z-0">
       <article className="bg-slate-50 grid grid-cols-2 auto-rows-min gap-y-2 gap-x-2 relative w-100 max-w-[348px] h-fit mx-auto px-4 py-4 shadow-[5px_5px_20px_#b0b2b3,-5px_-5px_20px_#ffffff] rounded-3xl">
@@ -49,11 +53,9 @@ const ProductCard = ({ product }: { product: Product }) => {
           className="row-start-3 place-self-center my-2"
         />
         {/* */}
-        <CategoryButton
-          category={capitalizedCategory}
-        />
+        <CategoryButton category={capitalizedCategory} />
         <button
-          onClick={(e) => e.preventDefault()}
+          onClick={handleClick}
           className="z-10 absolute right-4 bottom-4 rounded-full w-12 h-12 flex flex-col place-items-center place-content-center shadow-[3px_3px_3px_#b0b2b3,-3px_-3px_3px_#ffffff] active:border active:shadow-none transition-shadow duration-50"
         >
           <AddToCartIcon />

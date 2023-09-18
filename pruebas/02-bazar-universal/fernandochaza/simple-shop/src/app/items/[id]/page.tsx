@@ -17,15 +17,14 @@ const ProductPage = async ({
   searchParams
 }: {
   params: { id: string }
-  searchParams: {
-    [key: string]: string | string[] | undefined
-  }
+  searchParams: { imgIndex?: string }
 }) => {
   const id = Number(params.id)
-  const imgIndex = Number(searchParams.imgIndex) || 0
+  const isImgIndex = searchParams.imgIndex !== undefined
+  const imgIndex = isImgIndex ? Number(searchParams.imgIndex) : 0
 
   const product: Product = await fetchProductById(id)
-  if (!product) return <p>Product not found</p>
+  if (product === null) return <p>Product not found</p>
 
   const { title, description, price, rating, stock, images, brand, category } =
     product

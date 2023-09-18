@@ -1,11 +1,8 @@
-const baseUrl =
-  process.env.NODE_ENV === "production"
-    ? "https://simple-shop-nine.vercel.app"
-    : "http://localhost:3000"
+import { BASE_URL } from "@/constants/global"
 
-export async function fetchProductById(id: Number) {
+export async function fetchProductById(id: number) {
   try {
-    const response = await fetch(`${baseUrl}/api/items/${id}`, {
+    const response = await fetch(`${BASE_URL}/api/items/${id}`, {
       cache: "force-cache"
     })
     const data = await response.json()

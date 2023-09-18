@@ -16,10 +16,12 @@ const ImageSlider = ({
   lastIndex,
   className
 }: ImageSliderProps) => {
+  const isImgIndex = imgIndex !== undefined
+  const imgUrl = isImgIndex ? imageURLS[imgIndex] : imageURLS[0]
   return (
     <div
       style={{
-        backgroundImage: `url(${imageURLS[imgIndex] || imageURLS[0]})`
+        backgroundImage: `url(${imgUrl})`
       }}
       className={`group ${className}`}
     >
