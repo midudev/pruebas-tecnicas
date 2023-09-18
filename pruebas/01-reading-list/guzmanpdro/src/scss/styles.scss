@@ -67,7 +67,43 @@ header {
   width: 200px;
   height: fit-content;
   margin-right: 4rem;
-  padding: 0 1.6rem;
+
+  h3, h4 {
+    margin: 0 0 .8rem;
+  }
+
+  h4 {
+    color: var(--text-active-color)
+  }
+}
+
+.genders {
+  margin: 0;
+  padding: .8rem;
+  list-style-type: none;
+  background-color: #191919;
+
+  &__control {
+    margin-bottom: .8rem;
+
+    input {
+      display: none;
+    }
+
+    &--checked {
+      border-right: 3px solid var(--button-color);
+    }
+  }
+
+  &__label {
+    font-weight: 700;
+    color: var(--dark-theme-text-color);
+
+    &:hover {
+      color: var(--text-hover-color);
+      cursor: pointer;
+    }
+  }
 }
 
 .book-section {
