@@ -547,6 +547,24 @@
         "https://i.dummyjson.com/data/products/30/3.jpg",
         "https://i.dummyjson.com/data/products/30/thumbnail.jpg"
       ]
+    },
+    {
+      "id": 31,
+      "title": "Nintendo Switch™ with Neon Blue and Neon Red Joy‑Con™",
+      "description": "Get the gaming system that lets you play the games you want, wherever you are, however you like.",
+      "price": 299,
+      "discountPercentage": 2,
+      "rating": 4.9,
+      "stock": 54,
+      "brand": "Nintendo",
+      "category": "gaming",
+      "thumbnail": "https://images.unsplash.com/photo-1585857188900-86a7c2c5f811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fG5pbnRlbmRvJTIwc3dpdGNofGVufDB8fDB8fHww&w=1000&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1612036781124-847f8939b154?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmludGVuZG8lMjBzd2l0Y2h8ZW58MHx8MHx8fDA=&w=1000&q=80",
+        "https://images.unsplash.com/photo-1550921464-9f7a27f99edc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG5pbnRlbmRvJTIwc3dpdGNoJTIwbGl0ZXxlbnwwfHwwfHx8MA==&w=1000&q=80",
+        "https://images.unsplash.com/photo-1615750206996-69edef655324?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fG5pbnRlbmRvJTIwc3dpdGNofGVufDB8fDB8fHww&w=1000&q=80",
+        "https://images.unsplash.com/photo-1585857188823-77658a70979a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG5pbnRlbmRvJTIwc3dpdGNofGVufDB8fDB8fHww&w=1000&q=80"
+      ]
     }
   ],
   "total": 100,

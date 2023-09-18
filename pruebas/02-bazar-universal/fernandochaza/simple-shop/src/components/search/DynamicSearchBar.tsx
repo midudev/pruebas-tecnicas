@@ -8,6 +8,10 @@ import DownChevronIcon from "@/icons/DownChevronIcon"
 
 import autoAnimate from "@formkit/auto-animate"
 
+
+/**
+ * A search bar that can be toggled on and off.
+ */
 const DynamicSearchBar = () => {
   const [show, setShow] = useState(false)
   const parent = useRef(null)

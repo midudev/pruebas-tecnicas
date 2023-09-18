@@ -27,23 +27,24 @@ const ResultsSection = ({
   }, [parent])
 
   return (
-    <>
-      <p className="font-sans text-lg ml-2 mt-2">
-        {resultsLength} {resultsLength == 1 ? "result" : "results"} found for
-        <i>"{query}"</i>
-      </p>
-      <section ref={parent} className={className}>
-        {isLoading ? (
-          <p className="text-2xl font-bold text-center">Loading...</p>
-        ) : resultsLength === 0 ? (
-          <p className="text-2xl font-bold text-center">No results found</p>
-        ) : (
-          results.map((product) => (
+    <section ref={parent} className={className}>
+      {isLoading ? (
+        <p className="text-2xl font-bold text-center">Loading...</p>
+      ) : resultsLength === 0 ? (
+        <p className="text-2xl font-bold text-center">No results found</p>
+      ) : (
+        <>
+          <p className="font-sans text-lg ml-2 mt-2">
+            {resultsLength} {resultsLength == 1 ? "result" : "results"} found
+            for
+            <i>"{query}"</i>
+          </p>
+          {results.map((product) => (
             <ProductCard key={product.id} product={product} />
-          ))
-        )}
-      </section>
-    </>
+          ))}
+        </>
+      )}
+    </section>
   )
 }
 

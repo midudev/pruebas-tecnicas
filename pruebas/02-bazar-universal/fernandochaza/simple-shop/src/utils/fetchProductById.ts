@@ -1,8 +1,11 @@
-import { NextResponse } from "next/server"
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://www."
+    : "http://localhost:3000"
 
 export async function fetchProductById(id: Number) {
   try {
-    const response = await fetch(`http://localhost:3000/api/items/${id}`, {
+    const response = await fetch(`${baseUrl}/api/items/${id}`, {
       cache: "force-cache"
     })
     const data = await response.json()
