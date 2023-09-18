@@ -9,20 +9,29 @@ import { useLocalStore } from './useLocalStore'
 export const useBook = () => {
   const { books, setBooks, favorites, setFavorites, setMaxPages, maxPages } = useBookStore()
   const { genreFilter, pageFilter, updatePageFilter, titleFilter } = useFilter()
-  const { setToLocalStorage } = useLocalStore()
+  const { setToLocalStorage, getFromLocalStorage } = useLocalStore()
   const [loading, setLoading] = useState(true)
 
   const getBooks = useCallback(async () => {
-    const data = await bookService()
-    setBooks(data)
+    setLoading(true)
 
-    const maxPages = data.reduce((acumulator, { pages }) => {
-      if (acumulator > pages) return acumulator
-      return pages
-    }, 0)
+    try {
+      const data = await bookService()
+      setBooks(data)
+      updateFromLocalStorage()
 
-    updatePageFilter({ page: maxPages })
-    setMaxPages(maxPages)
+      const maxPages = data.reduce((acumulator, { pages }) => {
+        if (acumulator > pages) return acumulator
+        return pages
+      }, 0)
+
+      updatePageFilter({ page: maxPages })
+      setMaxPages(maxPages)
+    } catch (error) {
+      console.error(error)
+    } finally {
+      setLoading(false)
+    }
   }, [setBooks, setMaxPages, updatePageFilter])
 
   const addFavorite = ({ newFavorite }: { newFavorite: Book }) => {
@@ -46,6 +55,11 @@ export const useBook = () => {
     },
     [favorites, updateFavorites]
   )
+
+  const updateFromLocalStorage = useCallback(() => {
+    const favorites = getFromLocalStorage()
+    updateFavorites({ updatedFavorites: favorites })
+  }, [getFromLocalStorage, updateFavorites])
 
   const availablesBooks = useMemo(() => {
     return books.filter(availableBook => {
@@ -75,6 +89,6 @@ export const useBook = () => {
     maxPages,
     updateFavorites,
     loading,
-    setLoading
+    updateFromLocalStorage
   }
 }

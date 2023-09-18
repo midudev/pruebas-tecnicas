@@ -12,7 +12,7 @@ export const Image: React.FC<Props> = ({ alt, src, className }) => {
 
   return (
 		<div className={className}>
-			{loading ? <ImgSkeletonScreen /> : <img alt={alt} src={src} className="object-cover w-full h-full" />}
+			{loading ? <ImgSkeletonScreen /> : <img alt={alt} src={src} loading='lazy' className="object-cover w-full h-full" />}
 		</div>
   )
 }

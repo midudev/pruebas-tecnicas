@@ -12,7 +12,7 @@ export const BookList: React.FC<Props> = ({ books }) => {
   }
 
   return (
-		<ul className="grid grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] gap-5 w-full overflow-hidden overflow-y-auto">
+		<ul className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5 w-full overflow-hidden overflow-y-auto scrollbar-gutter-stable">
 			{books.map(book => <BookItem key={book.title} book={book} />)}
 		</ul>
   )
