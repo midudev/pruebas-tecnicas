@@ -18,7 +18,7 @@ const ResultsPage = ({
   return (
     <AnimatedPageWrapper>
       <Header />
-      <MainContainer className="place-content-start">
+      <MainContainer className="place-content-start min-h-[calc(100vh-57px)]">
         {category ? (
           <CategorySection
             category={category}

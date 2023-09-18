@@ -8,7 +8,7 @@ import MainContainer from "@/components/generic/MainContainer"
 export default function Home() {
   return (
     <AnimatedPageWrapper>
-      <MainContainer>
+      <MainContainer className="h-screen">
         <h1 className="bg-clip-text text-transparent bg-gradient-to-b from-slate-900 to-slate-600 text-4xl font-extrabold text-center">
           SIMPLE SHOP
         </h1>

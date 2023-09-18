@@ -88,7 +88,7 @@ const ProductPage = async ({
         </button>
         <button
           disabled={stock > 0}
-          className="bg-lime-500 font-bold mt-4 p-2 rounded-full shadow-[3px_3px_6px_#b0b2b3,-3px_-3px_6px_#ffffff] disabled:active:shadow-none"
+          className="bg-lime-500 font-bold my-4 p-2 rounded-full shadow-[3px_3px_6px_#b0b2b3,-3px_-3px_6px_#ffffff] disabled:active:shadow-none"
         >
           Buy Now
         </button>
