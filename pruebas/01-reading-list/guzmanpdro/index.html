@@ -16,7 +16,7 @@
         <div class="sidebar__container">
           <h3>Filtrar por</h3>
           <h4>Género</h4>
-          <ul id="gendersFilter"></ul>
+          <div id="gendersFilter" class="genders"></div>
         </div>
       </aside>
       <section class="book-section">
@@ -24,9 +24,7 @@
           <h2 class="book-section__title" id="booksAvailable"></h2>
           <h2 class="book-section__title" id="addedBooks"></h2>
         </div>
-        <div id="booksContainer">
-          <!-- <ul class="book-list" id="listBooks"></ul> -->
-        </div>
+        <div id="booksContainer"></div>
       </section>
       <template id="booksTemplate">
         <li class="book">
@@ -40,9 +38,10 @@
         </li>
       </template>
       <template id="gendersTemplate">
-        <li class="genders__item">
-          <a href="#" class="genders__link" id="genre"></a>
-        </li>
+        <div class="genders__control">
+          <label class="genders__label" id="genre"></label>
+          <input type="radio" name="genreOption" id="" value="">
+        </div>
       </template>
     </main>
     <script type="module" src="/main.js"></script>
