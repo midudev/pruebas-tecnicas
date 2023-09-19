@@ -36,11 +36,18 @@ class App {
   }
 
   fillGenders (genders) {
-    removeDuplicatesGenders(genders).forEach(genre => {
-      const $genreClone = $gendersTemplate.content.cloneNode(true)
-      const $genreLink = $genreClone.querySelector('#genre')
+    const listOfGenders = removeDuplicatesGenders(genders)
+    listOfGenders.unshift('All')
 
-      $genreLink.textContent = genre
+    listOfGenders.forEach((genre, index) => {
+      const $genreClone = $gendersTemplate.content.cloneNode(true)
+      const $genre = $genreClone.querySelector('#genre')
+      const $genreOption = $genreClone.querySelector('input[name="genreOption"]')
+
+      $genre.textContent = genre
+      $genre.setAttribute('for', `genreOption-${index + 1}`)
+      $genreOption.id = `genreOption-${index + 1}`
+      $genreOption.value = `${genre}`
       $fragment.appendChild($genreClone)
     })
   }
