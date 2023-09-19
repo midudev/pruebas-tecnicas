@@ -42,16 +42,9 @@ class UI {
     clearHTMl($booksContainer)
     $listBooks.appendChild($fragment)
     $booksContainer.appendChild($listBooks)
-
-    if (!data.length) {
-      this.renderEmptyLibrary()
-    }
   }
 
-  renderEmptyLibrary () {
-    const textTitle = this.isOnBooksAvailable ? 'Lo has agregado todo' : '!Qué vacío está esto!'
-    const textDesc = this.isOnBooksAvailable ? 'No hay libros disponibles por añadir' : 'Prueba agregando alguno de los libros disponibles'
-
+  renderEmptyLibrary (title, desc) {
     const $emptyLibrary = document.createElement('div')
     $emptyLibrary.classList.add('empty-library')
 
@@ -66,11 +59,11 @@ class UI {
 
     const $emptyLibraryTitle = document.createElement('h2')
     $emptyLibraryTitle.classList.add('empty-library__title')
-    $emptyLibraryTitle.textContent = textTitle
+    $emptyLibraryTitle.textContent = title
 
     const $emptyLibraryDesc = document.createElement('p')
     $emptyLibraryDesc.classList.add('empty-library__text')
-    $emptyLibraryDesc.textContent = textDesc
+    $emptyLibraryDesc.textContent = desc
 
     $infoContainer.append($emptyLibraryTitle, $emptyLibraryDesc)
 

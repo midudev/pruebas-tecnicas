@@ -20,7 +20,12 @@ function clickHandler (isbn, isOnBooksAvailable, event) {
     $booksAvailable.textContent = `Libros disponibles (${readingList.booksAvailable.length})`
     $addedBooks.textContent = `Lista de lectura (${readingList.addedBooks.length})`
     animateCSS(elementToAnimate, animationName)
-    setTimeout(() => ui.renderBooks(readingList.booksAvailable), 750)
+    setTimeout(() => {
+      ui.renderBooks(readingList.booksAvailable)
+      if (!readingList.booksAvailable.length) {
+        ui.renderEmptyLibrary('Lo has agregado todo', 'No hay libros disponibles por añadir')
+      }
+    }, 750)
     return
   }
 
@@ -29,7 +34,12 @@ function clickHandler (isbn, isOnBooksAvailable, event) {
   $booksAvailable.textContent = `Libros disponibles (${readingList.booksAvailable.length})`
   $addedBooks.textContent = `Lista de lectura (${readingList.addedBooks.length})`
   animateCSS(elementToAnimate, animationName)
-  setTimeout(() => ui.renderBooks(readingList.addedBooks), 750)
+  setTimeout(() => {
+    ui.renderBooks(readingList.addedBooks)
+    if (!readingList.addedBooks.length) {
+      ui.renderEmptyLibrary('!Qué vacío está esto!', 'Prueba agregando alguno de los libros disponibles')
+    }
+  }, 750)
 }
 
 function renderAddedBooks () {
@@ -37,6 +47,9 @@ function renderAddedBooks () {
   $addedBooks.classList.add(SECTION_TITLE_ACTION.ACTIVE)
   ui.isOnBooksAvailable = false
   ui.renderBooks(readingList.addedBooks)
+  if (!readingList.addedBooks.length) {
+    ui.renderEmptyLibrary('!Qué vacío está esto!', 'Prueba agregando alguno de los libros disponibles')
+  }
 }
 
 function backToBooksAvailable () {
@@ -44,6 +57,9 @@ function backToBooksAvailable () {
   $addedBooks.classList.remove(SECTION_TITLE_ACTION.ACTIVE)
   ui.isOnBooksAvailable = true
   ui.renderBooks(readingList.booksAvailable)
+  if (!readingList.booksAvailable.length) {
+    ui.renderEmptyLibrary('Lo has agregado todo', 'No hay libros disponibles por añadir')
+  }
 }
 
 export {
