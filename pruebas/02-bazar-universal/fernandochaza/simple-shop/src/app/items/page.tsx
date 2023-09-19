@@ -14,8 +14,6 @@ const ResultsPage = ({
   searchParams: { query: string; category: string }
 }) => {
   const { query, category } = searchParams
-  console.log("query", query)
-  console.log("category", category)
 
   return (
     <AnimatedPageWrapper>
