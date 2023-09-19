@@ -11,6 +11,10 @@ I made it to practice my Web Developer skills and to gain proficiency in the use
 ### Performance
 ![Website performance metrics](docs/screenshots/performance.png)
 
+### Clean Code. Solid Architecture
+✔ No ESLint warnings or errors  
+✔ Maintainable and Scalable project and components architecture
+
 ### Views
 ![Screenshots of mobile views](docs/screenshots/3views.png)
 

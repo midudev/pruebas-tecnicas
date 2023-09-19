@@ -30,19 +30,13 @@ export const metadata: Metadata = {
       "Simple Shop. The best place to find and buy everything you need",
     url: "https://simple-shop-nine.vercel.app/",
     siteName: "Simple Shop",
-    // images: [
-    //   {
-    //     url: 'https://nextjs.org/og.png',
-    //     width: 800,
-    //     height: 600,
-    //   },
-    //   {
-    //     url: 'https://nextjs.org/og-alt.png',
-    //     width: 1800,
-    //     height: 1600,
-    //     alt: 'My custom alt',
-    //   },
-    // ],
+    images: [
+      {
+        url: "https://github.com/fernandochaza/pruebas-tecnicas/blob/main/pruebas/02-bazar-universal/fernandochaza/simple-shop/docs/screenshots/landing-800x600.PNG?raw=true",
+        width: 800,
+        height: 600
+      }
+    ],
     locale: "en_US",
     type: "website"
   }
