@@ -28,21 +28,21 @@ export const metadata: Metadata = {
     title: "Simple Shop",
     description:
       "Simple Shop. The best place to find and buy everything you need",
-    //   url: 'https://nextjs.org',
+    url: "https://simple-shop-nine.vercel.app/",
     siteName: "Simple Shop",
-    //   images: [
-    //     {
-    //       url: 'https://nextjs.org/og.png',
-    //       width: 800,
-    //       height: 600,
-    //     },
-    //     {
-    //       url: 'https://nextjs.org/og-alt.png',
-    //       width: 1800,
-    //       height: 1600,
-    //       alt: 'My custom alt',
-    //     },
-    //   ],
+    // images: [
+    //   {
+    //     url: 'https://nextjs.org/og.png',
+    //     width: 800,
+    //     height: 600,
+    //   },
+    //   {
+    //     url: 'https://nextjs.org/og-alt.png',
+    //     width: 1800,
+    //     height: 1600,
+    //     alt: 'My custom alt',
+    //   },
+    // ],
     locale: "en_US",
     type: "website"
   }
@@ -63,6 +63,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-// TODO: Add favicon and icons to the root app route and Next.js will automatically generate the header links to them
-// https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#image-files-ico-jpg-png
