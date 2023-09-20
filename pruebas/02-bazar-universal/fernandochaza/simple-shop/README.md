@@ -68,6 +68,8 @@ I made it to practice my Web Developer skills and to gain proficiency in the use
 &nbsp;&nbsp; &#9744; Add media queries  
 &nbsp;&nbsp; &#9744; Add skeletons on loading  
 &nbsp;&nbsp; &#9744; Improve error handling and error displaying  
+&nbsp;&nbsp; &#9744; Add more products to the database
+&nbsp;&nbsp; &#9744; Dark/Light Mode
 <br>
 
 </details>
