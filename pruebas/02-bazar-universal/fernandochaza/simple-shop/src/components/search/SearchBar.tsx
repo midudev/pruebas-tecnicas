@@ -43,7 +43,7 @@ const SearchBar = (): JSX.Element => {
           type="search"
           id="search-input"
           className="block w-full p-4 pl-10 rounded-xl shadow-[5px_5px_10px_#bcbebe,-5px_-5px_10px_#ffffff] text-base outline-none text-gray-900 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
-          placeholder="What are you looking for?"
+          placeholder='Try "samsung" or "nintendo"'
           required
         />
         <button

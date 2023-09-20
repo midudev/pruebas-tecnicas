@@ -27,10 +27,12 @@ const ProductCard = ({ product }: { product: Product }) => {
     <Link href={`/items/${id}`} className="w-fit mx-auto z-0">
       <article className="bg-slate-50 grid grid-cols-2 auto-rows-min gap-y-2 gap-x-2 relative w-100 max-w-[348px] h-fit mx-auto px-4 py-4 shadow-[5px_5px_20px_#b0b2b3,-5px_-5px_20px_#ffffff] rounded-3xl">
         <div>
-          <h2 className="col-span-full pl-4 text-lg font-extrabold w-60 line-clamp-2 overflow-hidden">
+          <h2 className="min-h-[2rem] col-span-full pl-4 text-lg font-extrabold w-60 line-clamp-2 overflow-hidden">
             {capitalizedTitle}
           </h2>
-          <p className="pl-4 text-sm my-1">{brand}</p>
+          <p className="min-h-[2rem] flex flex-col pl-4 text-sm justify-center">
+            {brand}
+          </p>
         </div>
         <div className="w-[132px] h-[132px] relative mx-auto row-start-2">
           <Image
@@ -52,8 +54,10 @@ const ProductCard = ({ product }: { product: Product }) => {
           rating={rating}
           className="row-start-3 place-self-center my-2"
         />
-        {/* */}
-        <CategoryButton category={capitalizedCategory} />
+        <CategoryButton
+          className="row-start-1 col-start-2 text-sm border w-fit rounded-full px-2 h-fit ml-auto mt-auto mb-1"
+          category={capitalizedCategory}
+        />
         <button
           aria-label="Add to cart"
           onClick={handleClick}
