@@ -61,13 +61,13 @@ Tema claro:
 - [x] Búsqueda por texto en título
 - [x] Persistencia de datos en el navegador
 - [x] Diseño adaptativo (Responsive design)
+- [x] Añadir tests
 
 ### Características por implementar
 
 - [ ] Sincronización de estado global
 - [ ] Ordenación de la lista de lectura por prioridad
 - [ ] Sincronización entre pestañas
-- [ ] Añadir tests
 
 ## Requisitos
 
@@ -89,7 +89,7 @@ $ cd reading-list\pruebas\01-reading-list\CarlosUlisesOchoa
 $ pnpm install
 
 # Ejecutar en modo desarrollo
-$ npm run dev
+$ pnpm run dev
 
 # Listo ahora podrás ver el proyecto accediendo a http://localhost:5173/
 ```
