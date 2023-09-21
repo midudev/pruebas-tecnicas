@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 import ProductRating from "./ProductRating"
-import AddToCartIcon from "@/icons/AddToCartIcon"
+import CartPlus from "@/icons/CartPlus"
 
 import { type Product } from "@/lib/types"
 import CategoryButton from "./CategoryButton"
@@ -63,7 +63,7 @@ const ProductCard = ({ product }: { product: Product }) => {
           onClick={handleClick}
           className="z-10 absolute right-4 bottom-4 rounded-full w-12 h-12 flex flex-col place-items-center place-content-center shadow-[3px_3px_3px_#b0b2b3,-3px_-3px_3px_#ffffff] active:border active:shadow-none transition-shadow duration-50"
         >
-          <AddToCartIcon />
+          <CartPlus className="w-7" />
         </button>
       </article>
     </Link>

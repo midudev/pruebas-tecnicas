@@ -1,6 +1,8 @@
-const FormSearchIcon = () => {
+import { type SVGProps } from "react"
+
+const SearchIcon = (props: SVGProps<SVGSVGElement>) => {
   return (
-    <svg aria-hidden="true" fill="none" viewBox="0 0 20 20" width="20">
+    <svg aria-hidden="true" fill="none" viewBox="0 0 20 20" {...props}>
       <path
         stroke="currentColor"
         strokeLinecap="round"
@@ -12,4 +14,4 @@ const FormSearchIcon = () => {
   )
 }
 
-export default FormSearchIcon
+export default SearchIcon

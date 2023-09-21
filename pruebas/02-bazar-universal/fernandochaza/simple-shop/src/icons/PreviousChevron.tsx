@@ -1,4 +1,6 @@
-const PreviousChevron = ({ ...props }) => {
+import { type SVGProps } from "react"
+
+const PreviousChevron = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       {...props}

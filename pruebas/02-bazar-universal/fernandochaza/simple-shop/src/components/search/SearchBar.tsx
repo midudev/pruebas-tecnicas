@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
 import { type SubmitHandler } from "react-hook-form"
-import FormSearchIcon from "../../icons/FormSearchIcon"
+import SearchIcon from "../../icons/Search"
 
 type FormValues = {
   searchInput: string
@@ -36,7 +36,7 @@ const SearchBar = (): JSX.Element => {
       </label>
       <div className="relative">
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-300">
-          <FormSearchIcon />
+          <SearchIcon className="w-4" />
         </div>
         <input
           {...register("searchInput", { required: true })}

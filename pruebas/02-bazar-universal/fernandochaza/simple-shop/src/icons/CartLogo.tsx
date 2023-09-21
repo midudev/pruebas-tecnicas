@@ -1,10 +1,11 @@
-const CartIcon = ({ className, ...props }: { className?: string }) => {
+import { type SVGProps } from "react"
+
+const CartLogo = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      fill="none"
+      fill="currentColor"
       viewBox="0 0 24 24"
-      className={className}
       {...props}
     >
       <g fill="#292D32">
@@ -19,4 +20,4 @@ const CartIcon = ({ className, ...props }: { className?: string }) => {
   )
 }
 
-export default CartIcon
+export default CartLogo

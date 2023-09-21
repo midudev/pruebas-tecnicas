@@ -1,6 +1,8 @@
 import AnimatedPageWrapper from "@/components/generic/AnimatedPageWrapper"
 import SearchBar from "../components/search/SearchBar"
 import MainContainer from "@/components/generic/MainContainer"
+import Header from "@/components/header/Header"
+import GiftHeroImage from "@/images/GiftHero"
 
 /**
  * Renders the landing page view. Which consists of a Title, subtitle and a search bar.
@@ -8,13 +10,12 @@ import MainContainer from "@/components/generic/MainContainer"
 export default function Home() {
   return (
     <AnimatedPageWrapper>
-      <MainContainer className="h-screen">
-        <h1 className="bg-clip-text text-transparent bg-gradient-to-b from-slate-900 to-slate-600 text-4xl font-extrabold text-center">
-          SIMPLE SHOP
-        </h1>
-        <p className="bg-white rounded-xl max-w-fit bg-opacity-70 mb-12 mt-4 mx-auto py-1 px-4 shadow-[5px_5px_10px_#b0b2b3,-5px_-5px_10px_#ffffff]">
+      <Header />
+      <MainContainer className="h-[calc(100vh-57px)] place-content-start">
+        <h2 className="bg-white rounded-xl max-w-fit bg-opacity-70 my-8 mx-auto py-1 px-4 shadow-[5px_5px_10px_#b0b2b3,-5px_-5px_10px_#ffffff]">
           Online Store
-        </p>
+        </h2>
+        <GiftHeroImage className="w-10/12 mx-auto my-10" />
         <SearchBar />
       </MainContainer>
     </AnimatedPageWrapper>
