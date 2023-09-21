@@ -1,0 +1,68 @@
+.loading {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	min-height: 100vh;
+	background-color: #1e2429;
+	color: white;
+	align-content: space-around;
+	justify-content: center;
+}
+
+.main {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	min-height: 100vh;
+	background-color: #1e2429;
+}
+
+.leftSection {
+	display: flex;
+	flex-wrap: wrap;
+	width: 60%;
+	height: 100%;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-content: center;
+}
+
+.rightSection {
+	display: flex;
+	flex-wrap: wrap;
+	width: 40%;
+	height: 100%;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-content: center;
+}
+
+.booksList {
+	width: 100%;
+}
+
+.readingList {
+	width: 100%;
+}
+
+.imgBooksList {
+	object-fit: contain;
+	width: 30% !important;
+	position: relative !important;
+	height: unset !important;
+	padding-right: 20px;
+	padding-top: 10px;
+}
+
+.selected {
+	opacity: 40%;
+}
+
+.imgReadingList {
+	object-fit: contain;
+	width: 25% !important;
+	position: relative !important;
+	height: unset !important;
+	padding-right: 20px;
+	padding-top: 10px;
+}
