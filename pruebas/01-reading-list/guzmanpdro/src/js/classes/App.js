@@ -12,7 +12,8 @@ import {
   renderAddedBooks,
   backToBooksAvailable,
   printBooks,
-  filterBooks
+  filterBooks,
+  onGenreChange
 } from '../functions'
 
 class App {
@@ -38,7 +39,7 @@ class App {
 
   fillGenders (genders) {
     const listOfGenders = removeDuplicatesGenders(genders)
-    listOfGenders.unshift('All')
+    listOfGenders.unshift('Todos')
 
     listOfGenders.forEach((genre, index) => {
       const $genreClone = $gendersTemplate.content.cloneNode(true)
@@ -49,6 +50,12 @@ class App {
       $genre.setAttribute('for', `genreOption-${index + 1}`)
       $genreOption.id = `genreOption-${index + 1}`
       $genreOption.value = `${genre}`
+      $genreOption.addEventListener('change', (event) => onGenreChange(event))
+
+      if ($genreOption.value === 'Todos') {
+        $genreOption.setAttribute('checked', '')
+      }
+
       $fragment.appendChild($genreClone)
     })
   }
