@@ -11,7 +11,8 @@ import { removeDuplicatesGenders, SECTION_TITLE_ACTION } from '../utlis'
 import {
   renderAddedBooks,
   backToBooksAvailable,
-  printBooks
+  printBooks,
+  filterBooks
 } from '../functions'
 
 class App {
@@ -25,7 +26,7 @@ class App {
 
     $gendersFilter.appendChild($fragment)
 
-    printBooks(availableBooks)
+    printBooks(filterBooks(availableBooks))
 
     $booksAvailable.textContent = `Libros disponibles (${availableBooks.length})`
     $addedBooks.textContent = `Lista de lectura (${addedBooks.length})`
