@@ -44,7 +44,7 @@ class App {
     listOfGenders.forEach((genre, index) => {
       const $genreClone = $gendersTemplate.content.cloneNode(true)
       const $genre = $genreClone.querySelector('#genre')
-      const $genreOption = $genreClone.querySelector('input[name="genreOption"]')
+      const $genreOption = $genreClone.querySelector('input[name="genre"]')
 
       $genre.textContent = genre
       $genre.setAttribute('for', `genreOption-${index + 1}`)
