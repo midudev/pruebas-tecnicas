@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import '@/components/Book/Book.css'
 import AddSquareIcon from '@/components/Icons/AddSquareIcon'
-import RemoveSquareIcon from '../Icons/RemoveSquareIcon'
+import RemoveSquareIcon from '@/components/Icons/RemoveSquareIcon'
 
 const Book = ({
   data,
