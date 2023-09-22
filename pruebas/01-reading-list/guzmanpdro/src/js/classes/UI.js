@@ -14,6 +14,8 @@ import { clickHandler } from '../functions'
 class UI {
   constructor () {
     this.isOnBooksAvailable = true
+    this.checkedGenre = 'Todos'
+    this.booksContainer = document.querySelector('#booksContainer')
   }
 
   renderBooks (data) {
