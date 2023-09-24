@@ -1,0 +1,17 @@
+{
+  "name": "app",
+  "version": "1.0.50",
+  "scripts": {
+    "test": "bun test",
+    "dev": "bun run --watch src/index.ts"
+  },
+  "dependencies": {
+    "@elysiajs/cors": "^0.6.0",
+    "@elysiajs/swagger": "^0.6.2",
+    "elysia": "latest"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "module": "src/index.js"
+}

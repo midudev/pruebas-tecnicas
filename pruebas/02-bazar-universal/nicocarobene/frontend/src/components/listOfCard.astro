@@ -1,0 +1,8 @@
+---
+import Card from './Card.astro'
+const { result = [] } = Astro.props
+---
+
+{result.map(item => (
+  <Card id={item.id} body={item.description} to={`item/${item.id}`} price={item.price} img={item.images[0]} rating={item.rating} title={item.title}/>
+))}

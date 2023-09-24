@@ -1,0 +1,21 @@
+---
+import Search from './icons/search.astro'
+import Ecommers from './icons/ecommers.astro'
+import CartFlyoutToggle from './useCartStore'
+interface Props{
+  item: string
+}
+const { item } = Astro.props
+---
+<header class='py-4 mx-4'>
+  <nav class='flex gap-4 items-center justify-evenly'>
+    <a href='/' class='w-20'>
+      <Ecommers/>
+    </a>
+    <form action='/search' class='flex gap-2 p-2 items-center bg-gray-600 rounded-md md:w-full md:max-w-[520px]'>
+      <input type='text' name='items' class='p-1 rounded-sm text-black md:w-full' value={item} placeholder='Iphone 9'>
+      <button><Search/></button>
+    </form>
+    <CartFlyoutToggle client:load/>
+  </nav>
+</header>
