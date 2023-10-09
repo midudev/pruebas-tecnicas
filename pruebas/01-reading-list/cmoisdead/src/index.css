@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@500&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Montserrat", sans-serif;
+  overflow-y: scroll !important;
+}
+
+a {
+  @apply text-rose-700 transition-colors hover:text-rose-500;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply text-rose-700;
+  font-family: "Libre Caslon Text", serif;
+}
+
+.classic {
+  font-family: "Libre Caslon Text", serif;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #0c0a09;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #be123c;
+  border-radius: 0.5rem; /* 8px */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #9f1239;
+}
