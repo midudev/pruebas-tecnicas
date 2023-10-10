@@ -7,7 +7,7 @@ export default function Layout ({
 }) {
   return (
     <>
-      <header className='flex items-center justify-center gap-5 px-2'>
+      <header className='flex items-center justify-between gap-5 px-2'>
         <h1 className='text-2xl font-semibold'>
           Bazar
         </h1>
