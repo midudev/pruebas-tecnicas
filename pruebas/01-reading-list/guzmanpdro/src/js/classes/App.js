@@ -16,14 +16,11 @@ import {
   onGenreChange
 } from '../functions'
 
+import { genres } from '../data/books'
+
 class App {
   initApp (availableBooks, addedBooks) {
-    this.genders = availableBooks.map(book => {
-      const { genre } = book
-      return genre
-    })
-
-    this.fillGenders(this.genders)
+    this.fillGenders(genres)
 
     $gendersFilter.appendChild($fragment)
 
