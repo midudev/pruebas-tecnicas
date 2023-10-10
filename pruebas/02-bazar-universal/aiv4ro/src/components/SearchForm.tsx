@@ -4,9 +4,11 @@ import { useRouter } from 'next/navigation'
 import { SearchInput } from './SearchInput'
 
 export function SearchForm ({
-  children
+  children,
+  initialSearch = ''
 }: {
   children?: React.ReactNode
+  initialSearch?: string
 }) {
   const router = useRouter()
 
@@ -21,7 +23,7 @@ export function SearchForm ({
 
   return (
     <form className='flex flex-col items-center gap-2 mt-2' onSubmit={handleSumbit}>
-      <SearchInput />
+      <SearchInput initialSearch={initialSearch} />
       {children}
     </form>
   )
