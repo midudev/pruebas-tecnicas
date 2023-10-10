@@ -3,8 +3,8 @@ export function HalfStar () {
     <svg className='w-4 h-4 fill-current' viewBox='0 0 24 24'>
       <defs>
         <linearGradient id='grad'>
-          <stop offset='50%' stop-color='rgb(234 179 8)' />
-          <stop offset='50%' stop-color='rgb(209 213 219)' />
+          <stop offset='50%' stopColor='rgb(234 179 8)' />
+          <stop offset='50%' stopColor='rgb(209 213 219)' />
         </linearGradient>
       </defs>
       <path
