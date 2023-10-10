@@ -1,5 +1,6 @@
 import { Product } from '@/types/product'
 import { CategoryLink } from './CategoryLink'
+import { ProductItem } from './ProductItem'
 
 export function ProductList ({
   products
@@ -17,16 +18,17 @@ export function ProductList ({
       <ul className='flex gap-3 flex-wrap'>
         {categoryCounts.map(([category, count]) => {
           return (
-            <CategoryLink key={category} category={category} count={count} />
+            <li key={category}>
+              <CategoryLink category={category} count={count} />
+            </li>
           )
         })}
       </ul>
-      <ul className='flex flex-col'>
+      <ul className='flex flex-col gap-3 mt-3'>
         {products.map(product => {
           return (
             <li key={product.id}>
-              <h2>{product.title}</h2>
-              <p>{product.description}</p>
+              <ProductItem product={product} />
             </li>
           )
         })}
