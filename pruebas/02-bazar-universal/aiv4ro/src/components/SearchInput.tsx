@@ -21,7 +21,6 @@ export function SearchInput ({
         name='search'
         type='text'
         placeholder='laptops, smartphones, ...'
-        required
       />
     </div>
   )
