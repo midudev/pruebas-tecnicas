@@ -4,6 +4,9 @@
 'prueba-1':
 - pruebas/01-reading-list/**
 
+'prueba-2':
+- pruebas/02-bazar-universal/**
+
 'web':
 - web/**
 
