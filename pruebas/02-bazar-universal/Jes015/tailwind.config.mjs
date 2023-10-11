@@ -9,11 +9,12 @@ export default {
 			colors: {
 				"primary": "rgb(3,3,3)",
 				"secondary": "rgb(2,2,2)",
-				"text": "rgb(230,230,230)"
+				"text": "rgb(230,230,230)",
+				"input": "rgb(10,10,10)"
 			},
 			dropShadow: {
 				"text": "0px 0px 0.05em white",
-				"input": "0px 0px 0.6em white"
+				"input": "0px 0px 10em white"
 			},
 			borderColor: {
 				"primary": "rgb(25,25,25)"

@@ -16,6 +16,7 @@ export const CustomImage: React.FC<Props> = ({ src, width, height, alt }) => {
     useEffect(() => {
         if (img.current?.complete) {
             imgContainer.current?.classList.remove(styles["img--loading"])
+            return
         }
 
         console.log('loading')

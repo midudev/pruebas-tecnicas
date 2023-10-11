@@ -1,7 +1,7 @@
 ---
-import Product from "@/components/Product.astro"
+import ProductSection from "@/components/ProductSection.astro"
 import Layout from "@/layouts/Layout.astro"
-import SectionLayout from "@/layouts/SectionLayout.astro"
+import { ProductCategories } from "@/models"
 import data from "../../../products.json"
 ---
 
@@ -10,38 +10,47 @@ import data from "../../../products.json"
 		class="border border-primary p-3 bg-secondary flex items-center gap-5"
 	>
 		<h1 class="drop-shadow-text font-bold text-2xl">Midu Bazar</h1>
-		<search class="grow">
-			<form>
-				<input
-					class="w-full outline-0 p-2 bg-transparent drop-shadow-input border border-primary rounded-[0.2em]"
-					type="text"
-				/>
-			</form>
-		</search>
 	</header>
-	<main class="h-screen flex flex-col p-3">
-		<section>
-			<SectionLayout title="Latest products">
-				<div class="latestProducts flex gap-4">
-					{data.products.map((product) => <Product data={product} />)}
-				</div>
-			</SectionLayout>
-			<SectionLayout title="Phones">
-				<div class="counter" slot="counter">
-					<div class="counter__line"></div>
-				</div>
-				<div class="latestProducts flex gap-4">
-					{data.products.map((product) => <Product data={product} />)}
-				</div>
-			</SectionLayout>
+	<main class="flex flex-col">
+		<section class="search-section flex flex-col justify-center pb-5">
+			<h2 class="self-center text-[2em] font-bold drop-shadow-text">
+				Search now
+			</h2>
+			<search class="self-center">
+				<form>
+					<input
+						class="w-full outline-0 p-2 bg-input drop-shadow-input border border-primary rounded-[0.2em]"
+						type="text"
+					/>
+				</form>
+			</search>
 		</section>
-
-		<style>
-			.latestProducts {
-				overflow-y: scroll;
-				scroll-timeline-name: --contacts-e;
-				scroll-timeline-axis: inline;
-			}
-		</style>
+		<section class="p-3">
+			<section class="flex flex-col gap-5">
+				{
+					Object.values(ProductCategories).map((category) => (
+						<ProductSection
+							title={category}
+							filterByText={category}
+							productList={data.products}
+						/>
+					))
+				}
+			</section>
+		</section>
 	</main>
 </Layout>
+
+<style>
+	.search-section {
+		height: 13em;
+		background-color: #000000;
+		opacity: 1;
+		background-image: repeating-radial-gradient(
+				circle at 0 0,
+				transparent 0,
+				#000000 40px
+			),
+			repeating-linear-gradient(#10101055, #101010);
+	}
+</style>

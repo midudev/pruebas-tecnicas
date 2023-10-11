@@ -4,7 +4,7 @@ import { type Product } from "@/models"
 
 interface Props {
     data: Product;
-    mode?: "all";
+    mode?: "min" | "all";
 }
 
 const { data, mode } = Astro.props;

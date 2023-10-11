@@ -11,3 +11,14 @@ export interface Product {
     thumbnail:          string;
     images:             string[];
 }
+
+export type ProductArray = Product[]
+
+export const ProductCategories = {
+    smartphones: 'smartphones',
+    laptops: 'laptops',
+    fragrances: 'fragrances',
+    skincare: 'skincare',
+    groceries: 'groceries',
+    "home-decoration": "home-decoration"
+}
