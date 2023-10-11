@@ -1,0 +1,60 @@
+---
+import { CustomImage } from "@/components"
+import { type Product } from "@/models"
+
+interface Props {
+    data: Product;
+    mode?: "all";
+}
+
+const { data, mode } = Astro.props;
+---
+
+<article class="product">
+    <div>
+        <CustomImage
+            src={data.images[0]}
+            alt={`${data.title} image`}
+            height="h-40"
+            width="w-40"
+            client:load
+        />
+    </div>
+    {
+        mode === "all" && (
+            <div>
+                <header></header>
+                <main />
+                <footer />
+            </div>
+        )
+    }
+</article>
+
+<style>
+    .product {
+        animation:
+            product-in linear,
+            product-out linear;
+        animation-timeline: view(inline);
+        animation-range: entry, exit;
+    }
+
+    @keyframes product-in {
+        from {
+            translate: 10%;
+        }
+        to {
+            translate: 0%;
+        }
+    }
+
+    @keyframes product-out {
+        from {
+            translate: 0%;
+        }
+        to {
+            translate: -30%;
+        }
+    }
+</style>
