@@ -1,15 +1,19 @@
 ---
-export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {}
+interface Props {
+  class?: string
+  href: string
+}
 
-const { href, class: className, ...props } = Astro.props;
+const { href, class: className, ...props } = Astro.props
 ---
+
 <a
   href={href}
   target="_blank"
   rel="noopener noreferrer"
   class:list={[
     className,
-    "unset rounded-sm ease-in-out bg-left-bottom bg-[length:0%_55%] hover:bg-[length:100%_55%] border-b-2 border-transparent to-primary-yellow dark:hover:text-purple-400 hover:border-current transition text-center",
+    "unset flex justify-center items-center gap-x-1 rounded-sm ease-in-out bg-left-bottom bg-[length:0%_55%] hover:bg-[length:100%_55%] border-b-2 border-transparent to-primary-yellow hover:border-current transition text-center",
   ]}
-  {...props}
-><slot /></a>
+  {...props}><slot /></a
+>
