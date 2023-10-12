@@ -10,7 +10,7 @@ import Layout from "@/layouts/Layout.astro"
         <header>
             <SearchBox
                 label="Search"
-                client:only="react"
+                client:load
                 transition:name={transitions.search}
             />
         </header>
