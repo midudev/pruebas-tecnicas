@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+      body {
+			background: url(../public/img/bg.webp);
+		}
+
+      @layer components {
+         .btn-primary {
+           @apply ;
+         }
+       }
+
+       #readbooks{
+         transition: top .6s linear;
+       }
+
+       
+      .clone{
+         width: 25%;
+         display: flex;
+         justify-content: center;
+         color: #000;
+      }
+
+      .clone .addBtn{
+         display: none;
+      }
+
+      .clone .removeBtn{
+         display: inline;
+      }
+
+      .clone .div{
+         height: 100%;
+         width: 75%;
+      }
+
+      .notification div{
+         transition: .5s all linear;
+        
+      }
+
+      .clone .synopsis{
+         display: none;
+      }
+
+      
+
+
+
+		/* ===== Scrollbar CSS ===== */
+		/* Firefox */
+		* {
+			scrollbar-width: auto;
+			scrollbar-color: #5350ea #ffffff;
+		}
+
+		/* Chrome, Edge, and Safari */
+		*::-webkit-scrollbar {
+         width: 10px;
+		}
+
+		*::-webkit-scrollbar-track {
+			background: #ffffff;
+		}
+      
+		*::-webkit-scrollbar-thumb {
+         background-color: #5350ea;
+			border-radius: 10px;
+		}

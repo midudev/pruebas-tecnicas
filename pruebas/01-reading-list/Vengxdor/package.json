@@ -1,0 +1,15 @@
+{
+  "name": "vengxdor",
+  "version": "1.0.0",
+  "description": "``` npm create astro@latest -- --template basics ```",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.45.0"
+  }
+}

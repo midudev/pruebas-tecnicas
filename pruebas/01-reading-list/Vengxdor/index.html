@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="description" content="Astro description">
+   <meta name="viewport" content="width=device-width" />
+   <meta name="generator" content="Synde Library. The library that have all that you like" />
+   <title>Synde Library</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <link href="/dist/output.css" rel="stylesheet">
+   
+</head>
+
+<body class="bg-back  h-screen overflow-hidden ">
+
+
+   <h1 class="font-semibold text-5xl sm:text-6xl font-amulya flex justify-center gap-3 p-10">
+      <span class="text-primary">Synde</span> Library
+   </h1>
+
+   <header class="m-auto w-3/4 pr-5">
+      <section class="flex justify-between items-center mb-5 ">
+         <article>
+            <h2 class="text-xl font-semibold">
+               <span class="text-primary text-2xl" id="avaiableBooks">0</span> Books Available
+            </h2>
+            <select class="focus:outline-none border-2 rounded-md cursor-pointer border-primary" name="books" id="typeOfbooks">
+               <option value="ALL">ALL</option>
+               <option value="Fantasía">Fantasy</option>
+               <option value="Ciencia ficción">Science Fiction</option>
+               <option value="Terror">Horror</option>
+               <option value="Zombies">Zombies</option>
+               
+            </select>
+         </article>
+
+         <article class="absolute top-12    text-white   gap-3 rounded-xl  notification">
+            <!-- <div class="relative -top-96 w-fit p-4 bg-[#333] text-white flex items-center gap-3 rounded-xl ">
+               <i class="fa-solid fa-check p-1 rounded-full bg-emerald-400"></i>
+               <h2 class="max-w-xs whitespace-nowrap bookAdded">El senor de los Anillos added</h2>
+           </div> -->
+           </article>
+
+         <div class="relative">
+            <label class="toggleList group">
+               <span id="booksInread"
+                  class="text-primary absolute bottom-4 right-5 font-bold text-xl cursor-pointer">0</span>
+
+               <i class="fa-solid fa-book fa-xl cursor-pointer group-hover:scale-110"></i>
+            </label>
+         </div>
+
+         <section id="readbooks"
+            class="absolute bg-books  w-screen h-[120vh] inset-x-0  -top-[100rem] text-white z-50">
+
+            <article class=" p-10  font-semibold font-amulya flex  justify-between mb-6">
+               <div></div>
+               <div class="flex  flex-col items-center">
+                  <h2 class=" text-6xl    ">
+                     <span class="text-primary">Read</span> List
+                  </h2>
+                  <p>Enjoy your <span class="text-primary">Read</span></p>
+
+               </div>
+               <div class="cursor-pointer toggleList">
+                  <i class="fa-solid fa-x fa-2xl"></i>
+               </div>
+            </article>
+
+           
+
+
+            <div class="overflow-auto" id="myBookList">
+               <ul class="flex gap-5 mx-10  w-screen overflow-hidden"  id="readList">
+                  
+                 
+               </ul>
+
+            </div>
+         </section>
+
+      </section>
+   </header>
+
+
+   <main class="w-3/4 h-full m-auto overflow-auto">
+   <section class="">
+
+         <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-flow-col-5 gap-5 pb-60" id="library">
+            <!-- <li class="bg-white shadow rounded-lg ">
+               <div class="p-4 flex flex-col justify-between h-full w-full div">
+     
+                 <picture class="h-full w-full group relative">
+                   <img class="h-full w-full object-fill " src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg">
+                   <div class="text-white bg-black bg-opacity-60  invisible 
+                      group-hover:visible flex justify-center items-center flex-col absolute w-full h-full z-10 top-0">
+                     <h2 class="mb-2 text-2xl font-semibold">Synopsis</h2>
+                     <p class="text-center w-4/5 text-zinc-200">Una aventura épica en un mundo de fantasía llamado la Tierra Media.</p>
+                   </div>
+                 </picture>
+                   <article class="max-h-24">
+                     <h3 class="text-xl font-semibold mt-3 truncate">El Señor de los Anillos</h3>
+                     <p class="text-gray-600 text-sm ">Author: <span class="text-primary">J.R.R. Tolkien</span></p>
+                     <p class="text-gray-600 text-sm ">Genre: <span class="text-primary">Fantasía</span></p>
+                   </article>
+                 <div class="flex justify-end gap-2 mt-2">
+                   <a href="/src/404.html" class="w-20 h-8 flex justify-center items-center bg-primary rounded-md text-white">Read</a>
+                   <button class="w-20 h-8 bg-primary rounded-md text-white addBtn" disabled="">Added!</button>
+                 </div>
+                
+     
+               </div>
+             </li> -->
+
+
+         </ul>
+      </section>
+   </main>
+
+   <script src="/src/main.js"></script>
+</body>
+
+</html>
