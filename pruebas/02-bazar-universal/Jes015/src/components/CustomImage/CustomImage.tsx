@@ -30,11 +30,11 @@ export const CustomImage: React.FC<Props> = ({ src, width, height, alt }) => {
 
     return (
         <div
-            className={["overflow-hidden rounded-md", width, height].join(' ')}
+            className={["overflow-hidden rounded-md relative", styles["img--loading"], width, height].join(' ')}
             ref={imgContainer as LegacyRef<HTMLDivElement>}
         >
             <img
-                className={["w-full h-full object-cover", styles["img--loading"]].join(' ')}
+                className={["w-full h-full object-cover"].join(' ')}
                 ref={img as LegacyRef<HTMLImageElement>}
                 {...{ src, alt }}
             />

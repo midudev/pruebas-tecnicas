@@ -1,5 +1,6 @@
 ---
-import '@fontsource/roboto'
+import '@/styles/global.style.css'
+import "@fontsource/roboto"
 interface Props {
 	title: string;
 }
@@ -17,7 +18,7 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="bg-primary text-text font-roboto ">
+	<body class="bg-primary text-text font-roboto scroll">
 		<slot />
 	</body>
 </html>

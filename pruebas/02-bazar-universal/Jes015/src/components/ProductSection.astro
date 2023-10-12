@@ -18,7 +18,7 @@ const { title, filterByText, productList } = Astro.props;
             <div class="counter__line"></div>
         </div>
     </div>
-    <div class="product__container flex overflow-x-auto gap-3">
+    <div class="product__container flex overflow-x-auto gap-3 scroll p-2">
         {
             (() => {
                 let products = [...productList]

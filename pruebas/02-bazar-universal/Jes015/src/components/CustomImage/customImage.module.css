@@ -1,5 +1,8 @@
 .img--loading {
-    filter: blur(10px)
+    position: relative;
+    overflow: hidden;
+    background-color: rgb(32,32,32);
+    z-index: 100;
 }
 
 .img--loading::after {
@@ -9,10 +12,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, rgba(131,58,180,0) 0%, rgba(196,196,196,1) 50%, rgba(252,176,69,0) 100%);
+    background: linear-gradient(90deg, rgba(131,58,180,0) 0%, rgba(196,196,196,0.2) 50%, rgba(252,176,69,0) 100%);
     animation: loading 1s linear infinite;
     translate: -200%;
-    filter: blur(40px);
 }
 
 .img--loaded {
