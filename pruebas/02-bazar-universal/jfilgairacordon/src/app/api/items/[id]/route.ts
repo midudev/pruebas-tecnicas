@@ -1,10 +1,16 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
+import { findProductById } from '../../services/find'
 
-export async function GET () {
-  const parameters = NextRequest.arguments;
-  console.log(parameters);
-
-  return NextResponse.json({
-    message: 'Hello World'
-  })
+export async function GET (
+  request: Request,
+  { params }: { params: { id: number } }
+) {
+  const { id } = params
+  // usamos el service que irá a buscar el producto a la bbdd.
+  try {
+    const product = await findProductById({ id })
+    return NextResponse.json(product)
+  } catch (e) {
+    return NextResponse.json({ error: 'Product not found' }, { status: 404 })
+  }
 }
