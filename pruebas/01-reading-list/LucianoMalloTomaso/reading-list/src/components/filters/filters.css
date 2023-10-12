@@ -1,0 +1,30 @@
+.filters{
+    align-items:  center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(
+        200px,
+        1fr
+      )
+    );
+    gap: 1rem;
+    padding: 1rem;
+    color: wheat;
+    margin-left: 5rem;
+}
+.filters div{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filters select {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: #09f;
+}

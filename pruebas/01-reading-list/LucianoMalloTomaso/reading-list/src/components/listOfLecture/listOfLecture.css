@@ -1,0 +1,53 @@
+.list {
+    background: #000;
+    display: none;
+    padding: 45px;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    width: 200px;
+    z-index: 1;
+  }
+  
+  .list-button-toggle {
+    align-items: center;
+    background: #09f;
+    border-radius: 9999px;
+    cursor: pointer;
+    display: flex;
+    height: 32px;
+    justify-content: center;
+    padding: 4px;
+    position: fixed;
+    right: 8px;
+    top: 8px;
+    transition: all .3s ease;
+    width: 32px;
+    z-index: 9999;
+  }
+  
+  .list-button-toggle:hover {
+    scale: 1.1;
+  }
+  
+  .list-button-toggle ~ input:checked ~ .list {
+    height: 100%;
+    margin-top: 0px;
+    display: block;
+    overflow-y: scroll;
+  }
+  .removeAllBooksButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 55px;
+    background-color: #f44336;
+    font-size: 12px;
+    padding: 2px;
+    gap: .5rem;
+  }
+  .removeAllBooksButton svg{
+      width: 15px;
+      height: 20px;
+
+  }

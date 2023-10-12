@@ -1,0 +1,42 @@
+.books {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .books ul {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(
+        200px,
+        1fr
+      )
+    );
+    gap: 1rem;
+
+  }
+
+  .books li {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, .1);
+    border-radius: 15px;
+    background: #111;
+    color: #fff;
+    padding: 1rem;
+  }
+  .book-photo {
+    border-radius: 4px;
+    width: 50%;
+    aspect-ratio: 2/3;
+    display: block;
+    object-fit: cover;
+    background: #fff;
+    box-shadow: 0 0 20px 20px #c9c9c91a;
+  }
