@@ -1,5 +1,5 @@
 ---
-import Product from "@/components/Product.astro"
+import { Product } from "@/components"
 import { type ProductArray } from "@/models"
 
 interface Props {
@@ -28,7 +28,7 @@ const { title, filterByText, productList } = Astro.props;
                     products = products.filter((product) => product.category === filterByText)
                 }
 
-                return products.map((data) => <Product mode="min" {...{ data }} />);
+                return products.map((data) => <Product client:load mode="min" {...{ data }} />);
             })()
         }
     </div>

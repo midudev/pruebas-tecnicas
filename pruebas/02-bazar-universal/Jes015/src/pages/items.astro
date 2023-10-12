@@ -1,4 +1,5 @@
 ---
+import { DynamicProductsList } from "@/components/"
 import { SearchBox } from "@/components/Filter/components"
 import { transitions } from "@/config"
 import Layout from "@/layouts/Layout.astro"
@@ -15,7 +16,7 @@ import Layout from "@/layouts/Layout.astro"
         </header>
         <main>
             <h3 class="drop-shadow-text">Results</h3>
-            <div></div>
+            <DynamicProductsList client:load />
         </main>
     </div>
 </Layout>

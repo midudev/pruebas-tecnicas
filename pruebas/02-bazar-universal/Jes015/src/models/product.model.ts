@@ -21,4 +21,4 @@ export const ProductCategories = {
     skincare: 'skincare',
     groceries: 'groceries',
     "home-decoration": "home-decoration"
-}
+} as const

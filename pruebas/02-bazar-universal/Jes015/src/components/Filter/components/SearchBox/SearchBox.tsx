@@ -1,8 +1,8 @@
 import IconSearch from "@/components/Icons"
 import { getFrontRoutes } from "@/config"
 import { SearchService } from "@/services"
-import { navigate } from "astro:transitions/client"
-import { useEffect, useId } from "react"
+import { useEffect, useId, useState } from "react"
+// import { navigate } from "astro:transitions/client"
 
 const inputNames = {
     search: 'search'
@@ -11,14 +11,27 @@ const inputNames = {
 interface Props {
     label?: string
 }
+
+const initialStateValues = {
+    query: ""
+}
+
 export const SearchBox: React.FC<Props> = ({ label }) => {
     const inputId = useId()
+    const [query, setQuery] = useState<string>(initialStateValues.query)
 
     useEffect(() => {
         if (getFrontRoutes().items !== location.pathname) return
-        const query = new URLSearchParams(location.search)
-        SearchService.sendMessage(query)
-    }, [])
+
+        const newSearchTitle = location.search.split('=')[1].replaceAll('+',' ').replaceAll('%C3%', 'ñ')
+        document.title = `${newSearchTitle} - Midu Bazar`
+
+        if (query === "") return
+
+        const newQuery = new URLSearchParams(location.search)
+        SearchService.sendMessage(newQuery)
+    }, [query])
+
 
     const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -30,14 +43,19 @@ export const SearchBox: React.FC<Props> = ({ label }) => {
 
         const newQuery = new URLSearchParams()
         newQuery.append('search', inputValue)
-
         const queryParsed = newQuery.toString()
 
-        const urlRequest = new URL(location.origin)
-        urlRequest.pathname = getFrontRoutes().items
-        urlRequest.search = queryParsed
+        const newUrl = new URL(location.origin)
+        newUrl.pathname = getFrontRoutes().items
+        newUrl.search = queryParsed
 
-        navigate(urlRequest.toString())
+        if (location.pathname === getFrontRoutes().items) {
+            setQuery(inputValue)
+            history.pushState(null, '', newUrl)
+        } else {
+            location.href = newUrl.toString()
+            // navigate(urlRequest.toString()) --> compilation error
+        }
     }
 
     return (
@@ -68,7 +86,7 @@ export const SearchBox: React.FC<Props> = ({ label }) => {
                         name={inputNames.search}
                         className={
                             [
-                                "bg-transparent outline-0 p-2"
+                                "bg-transparent outline-0 p-2 w-full"
                             ].join(' ')
                         }
                         type="text"
