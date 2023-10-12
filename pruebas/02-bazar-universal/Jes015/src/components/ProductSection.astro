@@ -11,7 +11,7 @@ interface Props {
 const { title, filterByText, productList } = Astro.props;
 ---
 
-<section>
+<section class="z-[300]">
     <div class="flex justify-between items-center">
         <h2 class="text-xl drop-shadow-text font-bold capitalize">{title}</h2>
         <div class="counter">
@@ -28,7 +28,7 @@ const { title, filterByText, productList } = Astro.props;
                     products = products.filter((product) => product.category === filterByText)
                 }
 
-                return products.map((data) => <Product {...{ data }} />);
+                return products.map((data) => <Product mode="min" {...{ data }} />);
             })()
         }
     </div>
@@ -36,8 +36,12 @@ const { title, filterByText, productList } = Astro.props;
 
 <style>
     .product__container {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
         scroll-timeline-name: --product-container;
         scroll-timeline-axis: inline; 
+        scroll-snap-type: x mandatory;
     }
 
     .counter {

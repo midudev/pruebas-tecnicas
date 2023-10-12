@@ -1,0 +1,23 @@
+---
+import { SearchBox } from "@/components/Filter/components"
+import { transitions } from "@/config"
+import Layout from "@/layouts/Layout.astro"
+---
+
+<Layout title="Items">
+    <div class="flex flex-col gap-3 p-3">
+        <header>
+            <SearchBox
+                label="Search"
+                client:only="react"
+                transition:name={transitions.search}
+            />
+        </header>
+        <main>
+            <h3 class="drop-shadow-text">Results</h3>
+            <div></div>
+        </main>
+    </div>
+</Layout>
+
+<style></style>

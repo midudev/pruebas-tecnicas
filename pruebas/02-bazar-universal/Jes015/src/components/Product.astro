@@ -4,7 +4,7 @@ import { type Product } from "@/models"
 
 interface Props {
     data: Product;
-    mode?: "min" | "all";
+    mode: "min" | "all";
 }
 
 const { data, mode } = Astro.props;
@@ -13,13 +13,25 @@ const { data, mode } = Astro.props;
 <article class="product">
     <div>
         <CustomImage
-            src={data.images[0]}
+            src={data.thumbnail}
             alt={`${data.title} image`}
             height="h-40"
             width="w-40"
             client:load
+            transition:name={data.title}
         />
     </div>
+    {
+        mode === "min" && (
+            <div>
+                <header>
+                    <span class="text-base drop-shadow-text capitalize">{data.title}</span> <!-- <----- SPAN/SEO -->
+                </header>
+                <main></main>
+                <footer></footer>
+            </div>
+        )
+    }
     {
         mode === "all" && (
             <div>
@@ -38,6 +50,7 @@ const { data, mode } = Astro.props;
             product-out linear;
         animation-timeline: view(inline);
         animation-range: entry, exit;
+        scroll-snap-align: end;
     }
 
     @keyframes product-in {
