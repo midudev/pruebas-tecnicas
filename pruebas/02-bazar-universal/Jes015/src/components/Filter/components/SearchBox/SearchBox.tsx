@@ -1,7 +1,7 @@
 import IconSearch from "@/components/Icons"
 import { getFrontRoutes } from "@/config"
 import { SearchService } from "@/services"
-import { useEffect, useId, useState } from "react"
+import { useEffect, useId, useRef, useState, type LegacyRef } from "react"
 // import { navigate } from "astro:transitions/client"
 
 const inputNames = {
@@ -12,19 +12,20 @@ interface Props {
     label?: string
 }
 
-const initialStateValues = {
-    query: ""
-}
-
 export const SearchBox: React.FC<Props> = ({ label }) => {
     const inputId = useId()
-    const [query, setQuery] = useState<string>(initialStateValues.query)
+    const inputRef = useRef<HTMLInputElement>()
+    const [query, setQuery] = useState<string>("")
 
     useEffect(() => {
         if (getFrontRoutes().items !== location.pathname) return
 
         const newSearchTitle = location.search.split('=')[1].replaceAll('+',' ').replaceAll('%C3%', 'ñ')
         document.title = `${newSearchTitle} - Midu Bazar`
+
+        if (inputRef.current != null) {
+            inputRef.current.value = newSearchTitle
+        }
 
         if (query === "") return
 
@@ -54,13 +55,13 @@ export const SearchBox: React.FC<Props> = ({ label }) => {
             history.pushState(null, '', newUrl)
         } else {
             location.href = newUrl.toString()
-            // navigate(urlRequest.toString()) --> compilation error
+            // navigate(urlRequest.toString()) --> astro compilation error
         }
     }
 
     return (
-        <div
-            className={ // <-- this should be <search />
+        <div // <-- this should be <search />
+            className={ 
                 [
                     "w-full self-center"
                 ].join(' ')
@@ -82,6 +83,7 @@ export const SearchBox: React.FC<Props> = ({ label }) => {
                         }
                     />
                     <input
+                        ref={inputRef as LegacyRef<HTMLInputElement>}
                         id={inputId}
                         name={inputNames.search}
                         className={

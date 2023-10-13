@@ -18,6 +18,7 @@
 }
 
 .img--loaded {
+    display: block;
     animation: loaded 0.3s ease forwards;
 }
 

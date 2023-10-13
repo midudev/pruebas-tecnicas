@@ -14,6 +14,10 @@ export interface Product {
 
 export type ProductArray = Product[]
 
+export type ProductKey = keyof Product
+
+export type ProductKeyArray = ProductKey[]
+
 export const ProductCategories = {
     smartphones: 'smartphones',
     laptops: 'laptops',

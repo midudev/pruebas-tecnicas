@@ -6,3 +6,13 @@ export const getFrontRoutes = () => {
 
     return frontRoutes
 }
+
+export const getBackRoutes = () => {
+    const backRoutes = {
+        items(searchParam: string) {
+            return `/api/items?q=${searchParam}`
+        }
+    }
+
+    return backRoutes
+}

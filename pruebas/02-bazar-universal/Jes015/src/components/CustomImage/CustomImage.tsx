@@ -16,6 +16,7 @@ export const CustomImage: React.FC<Props> = ({ src, width, height, alt }) => {
     useEffect(() => {
         if (img.current?.complete) {
             imgContainer.current?.classList.remove(styles["img--loading"])
+            img.current?.classList.add(styles["img--loaded"])
             return
         }
 
@@ -32,7 +33,7 @@ export const CustomImage: React.FC<Props> = ({ src, width, height, alt }) => {
             ref={imgContainer as LegacyRef<HTMLDivElement>}
         >
             <img
-                className={["w-full h-full object-cover"].join(' ')}
+                className={"w-full h-full object-cover hidden"}
                 ref={img as LegacyRef<HTMLImageElement>}
                 {...{ src, alt }}
             />

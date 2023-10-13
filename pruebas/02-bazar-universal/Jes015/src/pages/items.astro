@@ -16,7 +16,7 @@ import Layout from "@/layouts/Layout.astro"
         </header>
         <main>
             <h3 class="drop-shadow-text">Results</h3>
-            <DynamicProductsList client:load />
+            <DynamicProductsList client:only="react" />
         </main>
     </div>
 </Layout>
