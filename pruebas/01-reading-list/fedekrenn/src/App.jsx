@@ -1,16 +1,15 @@
+// React
 import { useState, useEffect, useRef, useMemo } from 'react'
+// Utils
 import getBooks from './utils/getBooks'
+import { GENRES_LIST } from './utils/constants'
+// Libs
 import { FadeLoader } from 'react-spinners'
-import Dialog from './component/Dialog'
+// Components
+import Dialog from './component/Dialog/Dialog'
+import BooksContainer from './component/BooksContainter/BooksContainer'
+// Styles
 import './App.css'
-
-const GENRES_LIST = [
-  'Todos',
-  'Zombies',
-  'Ciencia ficción',
-  'Fantasía',
-  'Terror'
-]
 
 function App () {
   const [books, setBooks] = useState([])
@@ -34,8 +33,7 @@ function App () {
       setBooks(filteredBooks)
       setLoading(false)
     })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [readingList])
 
   useEffect(() => {
     const handleStorage = (e) => {
@@ -139,23 +137,7 @@ function App () {
         {books.length === 0 && !loading && (<h2>Todos los libros están en la lista de lectura</h2>)}
         {loading
           ? <FadeLoader color='#fff' cssOverride={{ display: 'block', margin: '20px auto' }} />
-          : (
-            <ul>
-              {filteredBooks?.map((book) => {
-                const { ISBN, cover, title } = book.book
-                return (
-                  <li key={ISBN}>
-                    <img
-                      className='cover-img'
-                      src={cover}
-                      alt={title}
-                      onClick={() => addBookToReadingList(book)}
-                    />
-                  </li>
-                )
-              })}
-            </ul>
-            )}
+          : <BooksContainer filteredBooks={filteredBooks} addBookToReadingList={addBookToReadingList} />}
       </section>
       <section>
         <Dialog

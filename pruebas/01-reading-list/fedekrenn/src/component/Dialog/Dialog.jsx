@@ -1,3 +1,6 @@
+// Components
+import Card from '../Card/Card'
+
 function Dialog ({ readingList, dialog, closeModal, setReadingList, baseBooks, setBooks, setGenre }) {
   const removeBookFromReadingList = (book) => {
     const newReadingList = readingList.filter(item => item.book.ISBN !== book.book.ISBN)
@@ -21,17 +24,7 @@ function Dialog ({ readingList, dialog, closeModal, setReadingList, baseBooks, s
             <h2>Lista de lectura</h2>
             <ul>
               {readingList.map((book) => {
-                const { ISBN, cover, title } = book.book
-                return (
-                  <li key={ISBN}>
-                    <img
-                      className='cover-img'
-                      src={cover}
-                      alt={title}
-                      onClick={() => removeBookFromReadingList(book)}
-                    />
-                  </li>
-                )
+                return <Card key={book.book.ISBN} book={book} removeBookFromReadingList={removeBookFromReadingList} />
               })}
             </ul>
           </>

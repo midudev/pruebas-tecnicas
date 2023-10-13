@@ -1,9 +1,9 @@
 import books from './books.json'
 
-export default function getBooks() {
-  return new Promise((res) => {
+export default function getBooks () {
+  return new Promise((resolve) => {
     setTimeout(() => {
-      res(books)
+      resolve(books)
     }, 1000)
   })
 }
