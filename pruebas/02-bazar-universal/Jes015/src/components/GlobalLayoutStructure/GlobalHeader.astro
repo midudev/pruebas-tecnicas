@@ -1,5 +1,10 @@
+---
+import { getFrontRoutes } from "@/config"
+
+---
+
 <header class="border border-primary p-3 bg-secondary flex items-center gap-5">
-    <h1 class="header__title drop-shadow-text font-bold">Midu Bazar</h1>
+    <a href={getFrontRoutes().home} class="header__title drop-shadow-text font-bold">Midu Bazar</a>
 </header>
 
 <style>
