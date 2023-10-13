@@ -1,4 +1,4 @@
-import IconSearch from "@/components/Icons"
+import { IconSearch } from "@/components"
 import { getFrontRoutes } from "@/config"
 import { SearchService } from "@/services"
 import { useEffect, useId, useRef, useState, type LegacyRef } from "react"
@@ -74,7 +74,7 @@ export const SearchBox: React.FC<Props> = ({ label }) => {
                         <label className="drop-shadow-text" htmlFor={inputId}>{label}</label>
                     </header>
                 }
-                <main className="flex gap-1 w-full pl-1 bg-input drop-shadow-input border border-primary rounded-[0.2em]">
+                <div className="flex gap-1 w-full pl-1 bg-input drop-shadow-input border border-primary rounded-[0.2em]">
                     <IconSearch
                         className={
                             [
@@ -93,7 +93,7 @@ export const SearchBox: React.FC<Props> = ({ label }) => {
                         }
                         type="text"
                     />
-                </main>
+                </div>
                 <button className="hidden">submit</button>
             </form>
         </div>

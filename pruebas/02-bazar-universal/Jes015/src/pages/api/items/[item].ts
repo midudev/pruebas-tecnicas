@@ -33,7 +33,7 @@ export const GET: APIRoute = async ({ params }) => {
                 }
             ),
             {
-                status: 400,
+                status: 404,
                 headers: {
                     "Content-Type": "application/json"
                 }

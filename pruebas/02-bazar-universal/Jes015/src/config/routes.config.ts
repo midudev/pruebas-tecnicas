@@ -1,7 +1,10 @@
 export const getFrontRoutes = () => {
     const frontRoutes = {
         home: '/',
-        items: '/items'
+        items: '/items',
+        item(productId: number) {
+            return `/item/${productId}`
+        }
     }
 
     return frontRoutes

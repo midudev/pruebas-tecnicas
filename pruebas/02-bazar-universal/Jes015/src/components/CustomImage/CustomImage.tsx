@@ -3,12 +3,13 @@ import styles from './customImage.module.css'
 
 interface Props {
     src: string,
-    width: string,
-    height: string,
-    alt: string
+    width?: string,
+    height?: string,
+    alt: string,
+    className: string
 }
 
-export const CustomImage: React.FC<Props> = ({ src, width, height, alt }) => {
+export const CustomImage: React.FC<Props> = ({ src, width, height, alt, className }) => {
     const img = useRef<HTMLImageElement>()
     const imgContainer = useRef<HTMLDivElement>()
 
@@ -29,7 +30,7 @@ export const CustomImage: React.FC<Props> = ({ src, width, height, alt }) => {
 
     return (
         <div
-            className={["overflow-hidden rounded-md relative", styles["img--loading"], width, height].join(' ')}
+            className={["overflow-hidden rounded-md relative", styles["img--loading"], width, height, className].join(' ')}
             ref={imgContainer as LegacyRef<HTMLDivElement>}
         >
             <img

@@ -1,4 +1,4 @@
-import { Product } from "@/components"
+import { Loader, Product } from "@/components"
 import { getBackRoutes, swrFetcher } from "@/config"
 import type { ProductArray } from "@/models"
 import { SearchService } from "@/services"
@@ -12,10 +12,9 @@ const defaultValues = {
 
 export const DynamicProductsList = () => {
     const [searchParam, setSearchParam] = useState(defaultValues.searchParam)
-    const { data: products } = useSWR<ProductArray>(searchParam !== '' && getBackRoutes().items(searchParam), swrFetcher)
+    const { data: response, error, isLoading, isValidating } = useSWR<{ error: string } | ProductArray>(searchParam !== '' && getBackRoutes().items(searchParam), swrFetcher)
 
     useEffect(() => {
-
         const setDefaultSearchParam = () => {
             const actualURL = new URL(location.toString())
             const actualSearchParam = actualURL.searchParams.get('search')
@@ -34,7 +33,7 @@ export const DynamicProductsList = () => {
             const newSearchParam = searchParams.get('search')
 
             if (newSearchParam == null) return
-            
+
             setSearchParam(newSearchParam)
         }
 
@@ -45,21 +44,29 @@ export const DynamicProductsList = () => {
         }
     }, [])
 
-    useEffect(() => {
-        if (searchParam === '') return
-
-    }, [searchParam])
+    console.log(response)
 
     return (
-        <ul>
-            <li>
-                {
-                    products?.map((productData) => (
-                        <Product key={productData.id} data={productData} mode="min" />
-                    ))
-                }
-
-            </li>
+        <ul className="flex flex-col gap-2">
+            {
+                (isLoading) &&
+                <div className="flex flex-col justify-center items-center mt-20">
+                    <Loader />
+                </div>
+            }
+            {
+                (!Array.isArray(response) && response?.error === 'NO_ITEMS_FOUND') &&
+                <div className="flex flex-col justify-center items-center">
+                    <h3 className="mt-20 text-5xl drop-shadow-text font-bold">NOT FOUND</h3>
+                </div>
+            }
+            {
+                (Array.isArray(response) && response?.[0] != null && error == null) && response?.map((productData) => (
+                    <li key={productData.id}>
+                        <Product data={productData} mode="all" containerDirection="flex-row" />
+                    </li>
+                ))
+            }
         </ul>
     )
 }

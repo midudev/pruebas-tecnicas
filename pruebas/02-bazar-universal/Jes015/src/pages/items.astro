@@ -6,7 +6,7 @@ import Layout from "@/layouts/Layout.astro"
 ---
 
 <Layout title="Items">
-    <div class="flex flex-col gap-3 p-3">
+    <main class="flex flex-col gap-3 p-3">
         <header>
             <SearchBox
                 label="Search"
@@ -14,11 +14,9 @@ import Layout from "@/layouts/Layout.astro"
                 transition:name={transitions.search}
             />
         </header>
-        <main>
+        <div>
             <h3 class="drop-shadow-text">Results</h3>
             <DynamicProductsList client:only="react" />
-        </main>
-    </div>
+        </div>
+    </main>
 </Layout>
-
-<style></style>

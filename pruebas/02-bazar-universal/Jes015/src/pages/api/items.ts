@@ -33,6 +33,22 @@ export const GET: APIRoute = async ({ request }) => {
         return shouldAddThisProduct
     })
 
+    if (filteredProducts.length === 0) {
+        return new Response(
+            JSON.stringify(
+                {
+                    error: 'NO_ITEMS_FOUND'
+                }
+            ),
+            {
+                status: 404,
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }
+        )
+    }
+
     return new Response(JSON.stringify(filteredProducts), {
         status: 200,
         headers: {
