@@ -1,6 +1,6 @@
 import { Loader, Product } from "@/components"
 import { getBackRoutes, swrFetcher } from "@/config"
-import type { ApiGetItemsBySearchParam } from "@/models"
+import type { ApiGetItemsBySearchParam, Product as ProductType } from "@/models"
 import { SearchService } from "@/services"
 import { useEffect, useState } from "react"
 import useSWR from "swr"
@@ -44,11 +44,33 @@ export const DynamicProductsList = () => {
         }
     }, [])
 
-    console.log(response)
+    // @ts-ignore
+    const productsFilteredByCategory = Array.isArray(response) && Object.groupBy(response, (product: ProductType) => {
+        return product.category.toLocaleLowerCase()
+    })
 
     return (
         <>
-            <h3 className="drop-shadow-text">{Array.isArray(response) && response.length} Results</h3>
+            <div className="flex flex-col gap-3 pb-5">
+                <h3 className="drop-shadow-text">{Array.isArray(response) ? response.length : '0'} Results</h3>
+                <div className="flex flex-wrap gap-3 items-center">
+                    {
+                        Object.entries(productsFilteredByCategory).map(([key, value]) => {
+                            return (
+                                <span
+                                    className="bg-secondary capitalize text-[0.75em]"
+                                    {...{ key }}
+                                >
+                                    {
+                                        // @ts-ignore
+                                        value.length + ' ' + key
+                                    }
+                                </span>
+                            )
+                        })
+                    }
+                </div>
+            </div>
             <ul className="flex flex-col gap-2">
                 {
                     (isLoading) &&
@@ -67,7 +89,7 @@ export const DynamicProductsList = () => {
                         <li key={productData.id}>
                             <Product
                                 as="a"
-                                data={productData} 
+                                data={productData}
                                 mode="all"
                                 imageSizeStyles="w-[7em] h-[7em]"
                                 gridTemplateColumns="1fr 4fr"
