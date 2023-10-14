@@ -92,7 +92,7 @@ export const DynamicProductsList = () => {
                                 data={productData}
                                 mode="all"
                                 imageSizeStyles="w-[7em] h-[7em]"
-                                gridTemplateColumns="1fr 4fr"
+                                gridTemplateColumns="1fr 5fr"
                                 containerGridTemplateArea='"images productData"'
                             />
                         </li>

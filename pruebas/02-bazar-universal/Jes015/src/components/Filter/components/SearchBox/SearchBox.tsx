@@ -10,9 +10,10 @@ const inputNames = {
 
 interface Props {
     label?: string
+    containerStyles?: string
 }
 
-export const SearchBox: React.FC<Props> = ({ label }) => {
+export const SearchBox: React.FC<Props> = ({ label, containerStyles }) => {
     const inputId = useId()
     const inputRef = useRef<HTMLInputElement>()
     const [query, setQuery] = useState<string>("")
@@ -20,7 +21,7 @@ export const SearchBox: React.FC<Props> = ({ label }) => {
     useEffect(() => {
         if (getFrontRoutes().items !== location.pathname) return
 
-        const newSearchTitle = location.search.split('=')[1].replaceAll('+',' ').replaceAll('%C3%', 'ñ')
+        const newSearchTitle = location.search.split('=')[1].replaceAll('+', ' ').replaceAll('%C3%', 'ñ')
         document.title = `${newSearchTitle} - Midu Bazar`
 
         if (inputRef.current != null) {
@@ -61,10 +62,8 @@ export const SearchBox: React.FC<Props> = ({ label }) => {
 
     return (
         <div // <-- this should be <search />
-            className={ 
-                [
-                    "w-full self-center"
-                ].join(' ')
+            className={
+                containerStyles ?? "w-full sm:w-full self-center"
             }
         >
             <form onSubmit={handleOnSubmit} className="w-full">

@@ -1,19 +1,10 @@
 ---
 import { DynamicProductsList } from "@/components/"
-import { SearchBox } from "@/components/Filter/components"
-import { transitions } from "@/config"
 import Layout from "@/layouts/Layout.astro"
 ---
 
 <Layout title="Items">
     <main class="flex flex-col gap-3 p-3">
-        <header>
-            <SearchBox
-                label="Search"
-                client:load
-                transition:name={transitions.search}
-            />
-        </header>
         <div>
             <DynamicProductsList client:only="react" />
         </div>

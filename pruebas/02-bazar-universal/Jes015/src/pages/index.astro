@@ -1,7 +1,6 @@
 ---
 import { SearchBox } from "@/components/Filter/components"
 import ProductSection from "@/components/ProductSection.astro"
-import { transitions } from "@/config"
 import Layout from "@/layouts/Layout.astro"
 import { ProductCategories } from "@/models"
 import data from "../../../products.json"
@@ -15,7 +14,10 @@ import data from "../../../products.json"
 			<h2 class="self-center text-[2em] font-bold drop-shadow-text">
 				Search now
 			</h2>
-			<SearchBox client:load transition:name={transitions.search} />
+			<SearchBox 
+				client:load
+				containerStyles="w-[100%] sm:w-[60%] self-center"
+			/>
 		</section>
 		<section class="products-section p-3">
 			{

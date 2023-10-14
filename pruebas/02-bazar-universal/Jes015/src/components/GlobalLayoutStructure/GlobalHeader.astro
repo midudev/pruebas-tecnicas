@@ -1,14 +1,25 @@
 ---
+import { SearchBox } from "@/components/Filter/components"
 import { getFrontRoutes } from "@/config"
-
 ---
 
-<header class="border border-primary p-3 bg-secondary flex items-center gap-5">
-    <a href={getFrontRoutes().home} class="header__title drop-shadow-text font-bold">Midu Bazar</a>
+<header class="flex justify-between items-center gap-5 border border-primary p-3 bg-secondary">
+    <a
+        href={getFrontRoutes().home}
+        class="flex flex-col gap-1 sm:gap-2 items-center justify-center header__title drop-shadow-text font-bold whitespace-[balance]"
+    >
+        <span class="text-[0.8em] leading-3">Midu</span>
+        <span class="leading-3">Bazar</span>
+    </a>
+
+    <SearchBox
+        client:load
+        containerStyles="w-[100%] sm:w-[60%] self-center"
+    />
 </header>
 
 <style>
     .header__title {
-		font-size: clamp(1.2em, 4vw, 2em)
-	}
+        font-size: clamp(1.2em, 4vw, 2em);
+    }
 </style>
