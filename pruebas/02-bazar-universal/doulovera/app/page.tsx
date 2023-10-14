@@ -1,7 +1,7 @@
 import SearchBox from '@/components/searchbox'
 import Image from 'next/image'
 
-export default function Home() {
+export default function Home () {
   return (
     <main className="flex justify-center items-center flex-col gap-4 h-screen bg-brand">
       <section>

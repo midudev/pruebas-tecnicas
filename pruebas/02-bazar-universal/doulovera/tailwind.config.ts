@@ -15,16 +15,17 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       fontFamily: {
-        title: ["var(--font-title)"],
+        title: ['var(--font-title)'],
       },
       colors: {
         ...tailwindColors,
         brand: {
           DEFAULT: '#c3d8e3',
           light: '#ebf3f7',
-          dark: '#98bed4',
-        }
-      }
+          dark: '#5668cd',
+          darker: '#45508b',
+        },
+      },
     },
   },
   plugins: [],
