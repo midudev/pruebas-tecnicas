@@ -1,0 +1,1 @@
+class n{name;constructor(e){this.name=`custom:${e}`}listenEvent(e){document.addEventListener(this.name,e)}sendMessage(e){const t=new CustomEvent(this.name,{detail:e});document.dispatchEvent(t)}clearEvent(e){document.removeEventListener(this.name,e)}}const c=new n("searchService");export{c as S};
