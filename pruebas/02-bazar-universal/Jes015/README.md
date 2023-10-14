@@ -1,6 +1,6 @@
 # Midu Bazar [demo](https://darling-empanada-9e0f4a.netlify.app/)
 
-## Interezante :P
+## Interesante :P
   - Componente Product:
     -  Es un componente polimórfico que se utiliza para cualquier ocasión en la que se quiera mostrar un producto.
     -  Usa grid y grid-{area, template-areas} para acomodar los elementos, así se puede usar el mismo componente en toda la aplicación.
