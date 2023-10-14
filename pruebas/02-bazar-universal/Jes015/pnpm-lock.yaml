@@ -25,7 +25,7 @@ dependencies:
     version: 18.2.13
   astro:
     specifier: ^3.3.0
-    version: 3.3.0
+    version: 3.3.0(@types/node@20.8.6)
   react:
     specifier: ^18.0.0
     version: 18.2.0
@@ -38,6 +38,14 @@ dependencies:
   tailwindcss:
     specifier: ^3.0.24
     version: 3.3.3
+
+devDependencies:
+  '@playwright/test':
+    specifier: ^1.39.0
+    version: 1.39.0
+  '@types/node':
+    specifier: ^20.8.6
+    version: 20.8.6
 
 packages:
 
@@ -68,7 +76,7 @@ packages:
       astro: ^3.3.0
     dependencies:
       '@astrojs/prism': 3.0.0
-      astro: 3.3.0
+      astro: 3.3.0(@types/node@20.8.6)
       github-slugger: 2.0.0
       import-meta-resolve: 3.0.0
       mdast-util-definitions: 6.0.0
@@ -91,7 +99,7 @@ packages:
     peerDependencies:
       astro: ^3.2.3
     dependencies:
-      astro: 3.3.0
+      astro: 3.3.0(@types/node@20.8.6)
       send: 0.18.0
       server-destroy: 1.0.1
     transitivePeerDependencies:
@@ -131,7 +139,7 @@ packages:
       astro: ^3.2.4
       tailwindcss: ^3.0.24
     dependencies:
-      astro: 3.3.0
+      astro: 3.3.0(@types/node@20.8.6)
       autoprefixer: 10.4.16(postcss@8.4.31)
       postcss: 8.4.31
       postcss-load-config: 4.0.1(postcss@8.4.31)
@@ -919,6 +927,14 @@ packages:
       fastq: 1.15.0
     dev: false
 
+  /@playwright/test@1.39.0:
+    resolution: {integrity: sha512-3u1iFqgzl7zr004bGPYiN/5EZpRUSFddQBra8Rqll5N0/vfpqlP9I9EXqAoGacuAbX6c9Ulg/Cjqglp5VkK6UQ==}
+    engines: {node: '>=16'}
+    hasBin: true
+    dependencies:
+      playwright: 1.39.0
+    dev: true
+
   /@types/babel__core@7.20.2:
     resolution: {integrity: sha512-pNpr1T1xLUc2l3xJKuPtsEky3ybxN3m4fJkknfIpTCTfIZCDW57oAg+EfCgIIp2rvCe0Wn++/FfodDS4YXxBwA==}
     dependencies:
@@ -992,6 +1008,11 @@ packages:
       '@types/unist': 2.0.8
     dev: false
 
+  /@types/node@20.8.6:
+    resolution: {integrity: sha512-eWO4K2Ji70QzKUqRy6oyJWUeB7+g2cRagT3T/nxYibYcT4y2BDL8lqolRXjTHmkZCdJfIPaY73KbJAZmcryxTQ==}
+    dependencies:
+      undici-types: 5.25.3
+
   /@types/parse5@6.0.3:
     resolution: {integrity: sha512-SuT16Q1K51EAVPz1K29DJ/sXjhSQ0zjvsypYJ6tlwVsRV9jwW5Adq2ch8Dq8kDBCkYnELS7N7VNCSB5nC56t/g==}
     dev: false
@@ -1041,7 +1062,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.22.5(@babel/core@7.23.0)
       '@types/babel__core': 7.20.2
       react-refresh: 0.14.0
-      vite: 4.4.11
+      vite: 4.4.11(@types/node@20.8.6)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -1110,7 +1131,7 @@ packages:
     resolution: {integrity: sha512-I1jXZMjAgCMmxT4qxXfPXa6SthSoE8h6gkSI9BGGNv8mP8G/v0blc+qFnZu6K42vTOiuME596QaLO0TP3Lk0xg==}
     dev: false
 
-  /astro@3.3.0:
+  /astro@3.3.0(@types/node@20.8.6):
     resolution: {integrity: sha512-O3MsXULamxQMy6sBgv07iVe5teJ41o+9tVScB/Yo2Io0XwvLXVhjVrjAxKpulBcKpU3/LyOpVfj/x63fcONbPA==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
@@ -1165,7 +1186,7 @@ packages:
       tsconfck: 3.0.0-next.9
       unist-util-visit: 4.1.2
       vfile: 5.3.7
-      vite: 4.4.11
+      vite: 4.4.11(@types/node@20.8.6)
       vitefu: 0.2.4(vite@4.4.11)
       which-pm: 2.1.1
       yargs-parser: 21.1.1
@@ -1833,6 +1854,14 @@ packages:
   /fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
     dev: false
+
+  /fsevents@2.3.2:
+    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
 
   /fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
@@ -3115,6 +3144,22 @@ packages:
       find-up: 4.1.0
     dev: false
 
+  /playwright-core@1.39.0:
+    resolution: {integrity: sha512-+k4pdZgs1qiM+OUkSjx96YiKsXsmb59evFoqv8SKO067qBA+Z2s/dCzJij/ZhdQcs2zlTAgRKfeiiLm8PQ2qvw==}
+    engines: {node: '>=16'}
+    hasBin: true
+    dev: true
+
+  /playwright@1.39.0:
+    resolution: {integrity: sha512-naE5QT11uC/Oiq0BwZ50gDmy8c8WLPRTEWuSSFVG2egBka/1qMoSqYQcROMT9zLwJ86oPofcTH2jBY/5wWOgIw==}
+    engines: {node: '>=16'}
+    hasBin: true
+    dependencies:
+      playwright-core: 1.39.0
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
   /postcss-import@15.1.0(postcss@8.4.31):
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
     engines: {node: '>=14.0.0'}
@@ -3912,6 +3957,9 @@ packages:
     resolution: {integrity: sha512-qh4mBffhlkiXwDAOxvSGxhL0QEQsTbnP9BozOK3OYPEGvPvdWzvAUaXNtUSMdNsKDtuyjEbyVUPFZ52SSLhLqw==}
     dev: false
 
+  /undici-types@5.25.3:
+    resolution: {integrity: sha512-Ga1jfYwRn7+cP9v8auvEXN1rX3sWqlayd4HP7OKk4mZWylEmu3KzXDUGrQUN6Ol7qo1gPvB2e5gX6udnyEPgdA==}
+
   /unherit@3.0.1:
     resolution: {integrity: sha512-akOOQ/Yln8a2sgcLj4U0Jmx0R5jpIg2IUyRrWOzmEbjBtGzBdHtSeFKgoEcoH4KYIG/Pb8GQ/BwtYm0GCq1Sqg==}
     dev: false
@@ -4090,7 +4138,7 @@ packages:
       vfile-message: 4.0.2
     dev: false
 
-  /vite@4.4.11:
+  /vite@4.4.11(@types/node@20.8.6):
     resolution: {integrity: sha512-ksNZJlkcU9b0lBwAGZGGaZHCMqHsc8OpgtoYhsQ4/I2v5cnpmmmqe5pM4nv/4Hn6G/2GhTdj0DhZh2e+Er1q5A==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -4118,6 +4166,7 @@ packages:
       terser:
         optional: true
     dependencies:
+      '@types/node': 20.8.6
       esbuild: 0.18.20
       postcss: 8.4.31
       rollup: 3.29.4
@@ -4133,7 +4182,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.4.11
+      vite: 4.4.11(@types/node@20.8.6)
     dev: false
 
   /web-namespaces@2.0.1:
