@@ -1,7 +1,7 @@
 ---
 import { SearchBox } from "@/components/Filter/components"
 import ProductSection from "@/components/ProductSection.astro"
-import { transitions } from '@/config'
+import { transitions } from "@/config"
 import Layout from "@/layouts/Layout.astro"
 import { ProductCategories } from "@/models"
 import data from "../../../products.json"
@@ -9,24 +9,26 @@ import data from "../../../products.json"
 
 <Layout title="Midu Bazar">
 	<main class="flex flex-col">
-		<section class="search-section h-[15em] flex flex-col justify-center p-5">
+		<section
+			class="search-section h-[15em] flex flex-col justify-center p-5"
+		>
 			<h2 class="self-center text-[2em] font-bold drop-shadow-text">
 				Search now
 			</h2>
 			<SearchBox client:load transition:name={transitions.search} />
 		</section>
 		<section class="products-section p-3">
-			<section class="flex flex-col gap-5">
-				{
-					Object.values(ProductCategories).map((category) => (
+			{
+				Object.values(ProductCategories).map((category) => (
+					<section class="flex flex-col gap-5">
 						<ProductSection
 							title={category}
 							filterByText={category}
 							productList={data.products}
 						/>
-					))
-				}
-			</section>
+					</section>
+				))
+			}
 		</section>
 	</main>
 </Layout>
@@ -49,9 +51,13 @@ import data from "../../../products.json"
 	}
 
 	.search-section::after {
-		content: '';
+		content: "";
 		position: absolute;
-		background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+		background: linear-gradient(
+			0deg,
+			rgba(0, 0, 0, 1) 0%,
+			rgba(0, 0, 0, 0) 100%
+		);
 		bottom: 0;
 		left: 0;
 		width: 100%;
@@ -85,9 +91,13 @@ import data from "../../../products.json"
 	}
 
 	.products-section::after {
-		content: '';
+		content: "";
 		position: absolute;
-		background: linear-gradient(0deg, rgba(34,193,195,0) 0%, rgba(0,0,0,1) 100%);
+		background: linear-gradient(
+			0deg,
+			rgba(34, 193, 195, 0) 0%,
+			rgba(0, 0, 0, 1) 100%
+		);
 		top: 0;
 		left: 0;
 		width: 100%;
@@ -98,18 +108,17 @@ import data from "../../../products.json"
 	@keyframes scroll-background {
 		from {
 			background-position:
-			19px 0,
-			19px 0,
-			0 0,
-			0 0;
+				19px 0,
+				19px 0,
+				0 0,
+				0 0;
 		}
 		to {
 			background-position:
-			99px 0,
-			99px 0,
-			0 0,
-			0 0;
+				99px 0,
+				99px 0,
+				0 0,
+				0 0;
 		}
-		
 	}
 </style>

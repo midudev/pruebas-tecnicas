@@ -21,14 +21,25 @@ const { title, filterByText, productList } = Astro.props;
     <div class="product__container flex overflow-x-auto gap-3 scroll p-2">
         {
             (() => {
-                let products = [...productList]
-                const shouldFilter = filterByText != null
+                let products = [...productList];
+                const shouldFilter = filterByText != null;
 
                 if (shouldFilter) {
-                    products = products.filter((product) => product.category === filterByText)
+                    products = products.filter(
+                        (product) => product.category === filterByText,
+                    );
                 }
 
-                return products.map((data) => <Product client:load mode="min" {...{ data }} />);
+                return products.map((data) => (
+                    <Product
+                        as="a"
+                        client:load
+                        imageSizeStyles="w-[9em] h-[9em]"
+                        mode="min"
+                        containerGridTemplateArea='"images" "productData"'
+                        {...{ data }}
+                    />
+                ));
             })()
         }
     </div>
@@ -40,7 +51,7 @@ const { title, filterByText, productList } = Astro.props;
         overflow-x: auto;
         overflow-y: hidden;
         scroll-timeline-name: --product-container;
-        scroll-timeline-axis: inline; 
+        scroll-timeline-axis: inline;
         scroll-snap-type: x mandatory;
     }
 
