@@ -1,4 +1,4 @@
-import { getProductById } from '@/app/services/getProducts'
+import { getProductById } from '@/services/getProducts'
 import { responseJson } from '@/utils/lib/response'
 
 type Params = { id: string }

@@ -1,26 +1,29 @@
 'use client'
 
-import { useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 
-export default function ResultsLength () {
-  const [searchQuery, setSearchQuery] = useState<string>('pote')
-  const [items, setItems] = useState<any[]>([])
-  const [categories, setCategories] = useState<any[]>([
-    { emoji: '📱', title: 'smartphone', foundLength: 5 },
-    { emoji: '🧴', title: 'fragance', foundLength: 2 },
-  ])
+export type CategoriesState = { title: string; count: number; emoji: string; }
+
+type ResultsLengthProps = {
+  totalItems: number
+  categories: CategoriesState[]
+}
+
+export function ResultsLength ({ totalItems, categories }: ResultsLengthProps) {
+  const searchParams = useSearchParams()
+  const search = searchParams.get('search') || ''
 
   return (
     <div className="flex flex-col gap-3">
       <p>
-        Resultados de búsqueda de &quot;{searchQuery}&quot;: <span className="font-bold">{items.length}</span>
+        Resultados de búsqueda de &quot;{search}&quot;: <span className="font-bold">{totalItems}</span>
       </p>
       <div>
         <ul className="flex gap-4 text-sm">
           {
             categories.map((category, index) => (
               <li key={index} className="bg-brand-light py-1.5 px-2 rounded-lg">
-                <p>{category.emoji}{category.title} - <span>{category.foundLength}</span></p>
+                <p>{category.emoji}{category.title} - <span>{category.count}</span></p>
               </li>
             ))
           }

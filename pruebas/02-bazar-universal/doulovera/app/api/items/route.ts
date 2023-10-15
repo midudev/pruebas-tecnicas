@@ -1,14 +1,14 @@
-import { searchProducts } from '@/app/services/getProducts'
+import { searchProducts } from '@/services/getProducts'
 import { responseJson } from '@/utils/lib/response'
 import { NextRequest } from 'next/server'
 
 export async function GET (request: NextRequest) {
   try {
     const { searchParams } = request.nextUrl
-    const query = searchParams.get('search')
+    const query = searchParams.get('q')
 
     if (!query) {
-      return responseJson(400, { error: 'Missing query parameter "search"' })
+      return responseJson(400, { error: 'Missing query parameter "q"' })
     }
 
     const foundProducts = await searchProducts(query)

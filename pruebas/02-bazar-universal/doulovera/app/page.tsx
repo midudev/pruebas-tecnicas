@@ -11,6 +11,7 @@ export default function Home () {
           width={120}
           height={120}
           className='mx-auto'
+          priority
         />
         <h1 className="font-title text-4xl font-bold tracking-tighter">
           Bazar Online
