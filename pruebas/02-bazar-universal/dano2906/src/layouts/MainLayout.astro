@@ -1,0 +1,11 @@
+---
+import BaseHead from '@components/BaseHead.astro';
+import "@styles/index.css"
+const { title,description,keywords } = Astro.props
+---
+<html lang="es" class="light">
+  <BaseHead title={title} description={description} keywords={keywords}/>
+  <body>
+    <slot />
+  </body>
+</html>
