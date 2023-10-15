@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "reading-list",
+  "short_name": "Reading list",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#1E293B",
+  "description": "Desarrollo de una Aplicación de Lista de Libros (pruebastecnicas.com)"
+}
