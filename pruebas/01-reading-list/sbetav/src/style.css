@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Inter" sans-serif;
+  src: url(./assets/fonts/Inter-Regular.ttf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Inter" sans-serif;
+  src: url(./assets/fonts/Inter-Medium.ttf);
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Inter" sans-serif;
+  src: url(./assets/fonts/Inter-SemiBold.ttf);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Inter" sans-serif;
+  src: url(./assets/fonts/Inter-Bold.ttf);
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Inter" sans-serif;
+  src: url(./assets/fonts/Inter-ExtraBold.ttf);
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "Inter" sans-serif;
+  src: url(./assets/fonts/Inter-Black.ttf);
+  font-weight: 900;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  background-color: #2c181034;
+}
+
+/* Reset the default styles for the range input */
+input[type="range"] {
+  -webkit-appearance: none; /* Hides the default appearance for WebKit (Safari, Chrome) */
+  appearance: none; /* Hides the default appearance for other browsers */
+  width: 100%;
+  height: 3px;
+  background: #c4c4c4;
+  border-radius: 5px;
+  outline: none;
+  margin: 10px 0;
+  /* Add other styles as needed */
+}
+
+/* Set the track and thumb styles */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #2c1810;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+}
+.list-move, /* apply transition to moving elements */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.list-leave-active {
+  position: absolute;
+}
