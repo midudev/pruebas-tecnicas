@@ -1,0 +1,7 @@
+.reading-book-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  cursor: pointer;
+}
