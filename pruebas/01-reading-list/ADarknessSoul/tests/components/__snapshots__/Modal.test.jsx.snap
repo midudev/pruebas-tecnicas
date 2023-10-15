@@ -1,0 +1,306 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en <Books/> Debe hacer match con el snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        aria-hidden="true"
+        aria-labelledby="staticBackdropLabel"
+        class="modal fade"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        id="staticBackdrop-0"
+        tabindex="-1"
+      >
+        <div
+          class="modal-dialog"
+          style="max-width: 600px;"
+        >
+          <div
+            class="modal-content"
+          >
+            <div
+              class="modal-header"
+            >
+              <h4
+                class="modal-title"
+              />
+              <button
+                class="btn-close"
+                data-bs-dismiss="modal"
+                type="button"
+              />
+            </div>
+            <div
+              class="modal-body d-flex flex-sm-row flex-column justify-content-center align-items-center"
+            >
+              <img
+                alt="Portada del libro"
+                class="Modal__image"
+                height="500px"
+                src=""
+                width="300px"
+              />
+              <ul
+                class="list-group ms-3"
+              >
+                <li
+                  class="list-group-item Modal__item"
+                >
+                  <span
+                    class="text-secondColor"
+                  >
+                    Sinopsis:
+                  </span>
+                   
+                </li>
+                <li
+                  class="list-group-item Modal__item"
+                >
+                  <span
+                    class="text-secondColor"
+                  >
+                    Páginas:
+                  </span>
+                   
+                  0
+                </li>
+                <li
+                  class="list-group-item Modal__item"
+                >
+                  <span
+                    class="text-secondColor"
+                  >
+                    Género:
+                  </span>
+                   
+                </li>
+                <li
+                  class="list-group-item Modal__item"
+                >
+                  <span
+                    class="text-secondColor"
+                  >
+                    Año:
+                  </span>
+                   
+                  0
+                </li>
+                <li
+                  class="list-group-item Modal__item"
+                >
+                  <span
+                    class="text-secondColor"
+                  >
+                    ISBN:
+                  </span>
+                   
+                  0
+                </li>
+                <li
+                  class="list-group-item Modal__item"
+                >
+                  <span
+                    class="text-secondColor"
+                  >
+                    Nombre del autor:
+                  </span>
+                   
+                </li>
+              </ul>
+            </div>
+            <div
+              class="modal-footer"
+            >
+              <button
+                class="btn btn-danger"
+                data-bs-dismiss="modal"
+                style="font-size: 1.2rem;"
+                type="button"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      aria-hidden="true"
+      aria-labelledby="staticBackdropLabel"
+      class="modal fade"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      id="staticBackdrop-0"
+      tabindex="-1"
+    >
+      <div
+        class="modal-dialog"
+        style="max-width: 600px;"
+      >
+        <div
+          class="modal-content"
+        >
+          <div
+            class="modal-header"
+          >
+            <h4
+              class="modal-title"
+            />
+            <button
+              class="btn-close"
+              data-bs-dismiss="modal"
+              type="button"
+            />
+          </div>
+          <div
+            class="modal-body d-flex flex-sm-row flex-column justify-content-center align-items-center"
+          >
+            <img
+              alt="Portada del libro"
+              class="Modal__image"
+              height="500px"
+              src=""
+              width="300px"
+            />
+            <ul
+              class="list-group ms-3"
+            >
+              <li
+                class="list-group-item Modal__item"
+              >
+                <span
+                  class="text-secondColor"
+                >
+                  Sinopsis:
+                </span>
+                 
+              </li>
+              <li
+                class="list-group-item Modal__item"
+              >
+                <span
+                  class="text-secondColor"
+                >
+                  Páginas:
+                </span>
+                 
+                0
+              </li>
+              <li
+                class="list-group-item Modal__item"
+              >
+                <span
+                  class="text-secondColor"
+                >
+                  Género:
+                </span>
+                 
+              </li>
+              <li
+                class="list-group-item Modal__item"
+              >
+                <span
+                  class="text-secondColor"
+                >
+                  Año:
+                </span>
+                 
+                0
+              </li>
+              <li
+                class="list-group-item Modal__item"
+              >
+                <span
+                  class="text-secondColor"
+                >
+                  ISBN:
+                </span>
+                 
+                0
+              </li>
+              <li
+                class="list-group-item Modal__item"
+              >
+                <span
+                  class="text-secondColor"
+                >
+                  Nombre del autor:
+                </span>
+                 
+              </li>
+            </ul>
+          </div>
+          <div
+            class="modal-footer"
+          >
+            <button
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+              style="font-size: 1.2rem;"
+              type="button"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

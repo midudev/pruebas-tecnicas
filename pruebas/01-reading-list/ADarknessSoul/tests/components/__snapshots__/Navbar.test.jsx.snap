@@ -1,0 +1,174 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en <Books/> Debe hacer match con el snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <nav
+        class="navbar navbar-expand-lg py-3 Navbar border-bottom align-items-center justify-content-center"
+      >
+        <a
+          class="navbar-brand mx-5 navbar__logo border"
+          href="/"
+        >
+          WhatA
+          <span
+            class="fw-bold"
+          >
+            Book
+          </span>
+        </a>
+        <form
+          class="form-inline my-2 my-lg-0 mx-auto navbar__form"
+        >
+          <label
+            class="text-center navbar__label"
+            for="SearchBook"
+          >
+            Busca un libro
+          </label>
+          <div
+            class="d-flex flex-sm-row flex-column gap-3"
+          >
+            <button
+              class="btn btn-danger me-3 d-none"
+              type="button"
+            >
+              <p
+                class="m-0"
+              >
+                Regresar
+              </p>
+            </button>
+            <input
+              class="form-control mr-sm-2 navbar__input"
+              id="SearchBook"
+              list="bookNames"
+              placeholder="¿Qué buscas hoy?"
+              type="search"
+            />
+            <datalist
+              id="bookNames"
+            />
+            <button
+              class="btn mx-2 my-sm-0 btn__submit"
+              type="submit"
+            >
+              Buscar
+            </button>
+          </div>
+        </form>
+      </nav>
+    </div>
+  </body>,
+  "container": <div>
+    <nav
+      class="navbar navbar-expand-lg py-3 Navbar border-bottom align-items-center justify-content-center"
+    >
+      <a
+        class="navbar-brand mx-5 navbar__logo border"
+        href="/"
+      >
+        WhatA
+        <span
+          class="fw-bold"
+        >
+          Book
+        </span>
+      </a>
+      <form
+        class="form-inline my-2 my-lg-0 mx-auto navbar__form"
+      >
+        <label
+          class="text-center navbar__label"
+          for="SearchBook"
+        >
+          Busca un libro
+        </label>
+        <div
+          class="d-flex flex-sm-row flex-column gap-3"
+        >
+          <button
+            class="btn btn-danger me-3 d-none"
+            type="button"
+          >
+            <p
+              class="m-0"
+            >
+              Regresar
+            </p>
+          </button>
+          <input
+            class="form-control mr-sm-2 navbar__input"
+            id="SearchBook"
+            list="bookNames"
+            placeholder="¿Qué buscas hoy?"
+            type="search"
+          />
+          <datalist
+            id="bookNames"
+          />
+          <button
+            class="btn mx-2 my-sm-0 btn__submit"
+            type="submit"
+          >
+            Buscar
+          </button>
+        </div>
+      </form>
+    </nav>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
