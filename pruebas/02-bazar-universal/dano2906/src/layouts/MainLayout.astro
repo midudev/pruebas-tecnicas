@@ -5,7 +5,9 @@ const { title,description,keywords } = Astro.props
 ---
 <html lang="es" class="light">
   <BaseHead title={title} description={description} keywords={keywords}/>
-  <body>
-    <slot />
+  <body class="w-screen min-h-screen overflow-hidden">
+    <div class="bg-gradient-to-br from-blue-100 via-pink-100 to-orange-100">
+      <slot />
+    </div>  
   </body>
 </html>
