@@ -5,7 +5,7 @@ import netlify from "@astrojs/netlify"
 
 //astro.build/config
 export default defineConfig({
-    output: "hybrid",
+    output: "server",
     adapter: netlify(),
     integrations: [react(),netlify(),tailwind({
         applyBaseStyles:false
