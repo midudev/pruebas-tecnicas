@@ -1,4 +1,4 @@
-import type { ProductDBResponse } from '@/types/product'
+import type { Product, ProductDBResponse } from '@/types/product'
 
 import fs from 'fs/promises'
 
@@ -36,7 +36,6 @@ export const searchProducts = async (query: string) => {
   })
 
   const regex = new RegExp(query, 'i')
-
   const searchBy: ['title', 'description', 'category'] = ['title', 'description', 'category']
   const items = strippedProducts.filter((product) => (
     searchBy.some((field) => regex.test(product[field]))
@@ -58,4 +57,15 @@ export const searchProducts = async (query: string) => {
     total: items.length,
     categories,
   }
+}
+
+export const getProductById = async (id: number): Promise<Product | null> => {
+  const products = await getAllProducts()
+  const product = products.products.find((item) => item.id === id)
+
+  if (!product) {
+    return null
+  }
+
+  return product
 }

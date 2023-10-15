@@ -1,4 +1,5 @@
 import { searchProducts } from '@/app/services/getProducts'
+import { responseJson } from '@/utils/lib/response'
 import { NextRequest } from 'next/server'
 
 export async function GET (request: NextRequest) {
@@ -7,22 +8,13 @@ export async function GET (request: NextRequest) {
     const query = searchParams.get('search')
 
     if (!query) {
-      return Response.json(
-        { error: 'Missing query parameter "search"' },
-        { status: 400 },
-      )
+      return responseJson(400, { error: 'Missing query parameter "search"' })
     }
 
     const foundProducts = await searchProducts(query)
 
-    return Response.json(
-      { ...foundProducts },
-      { status: 200 },
-    )
+    return responseJson(200, { ...foundProducts })
   } catch (error) {
-    return Response.json(
-      { error: (error as Error).message },
-      { status: 500 },
-    )
+    return responseJson(500, { error: (error as Error).message })
   }
 }
