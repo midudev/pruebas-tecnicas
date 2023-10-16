@@ -1,0 +1,16 @@
+---
+const query = Astro.url.searchParams.get('search')
+const res = await fetch(Astro.url.origin + `/api/items/data.json?q=${query}`)
+const {paginatedData: products} = await res.json()
+---
+
+<div>
+    <h1>Productos</h1>
+    <ul>
+        {products.map((product)=>(
+            <a href=`/items/${product.id}`>
+                <li>{product.title}</li>
+            </a>
+        ))}
+    </ul>
+</div>

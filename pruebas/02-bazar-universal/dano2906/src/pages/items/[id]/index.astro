@@ -1,0 +1,8 @@
+---
+import MainLayout from "@layouts/MainLayout.astro";
+    const {id} = Astro.params
+---
+
+<MainLayout title={`Producto numero ${id}`} description="Tienda implementada para la prueba técnica #2 de midudev basada en una prueba de Mercado Libre" keywords={['prueba tecnica','desarrollo','tienda online']}>
+    <h1>{id}</h1>
+</MainLayout>
