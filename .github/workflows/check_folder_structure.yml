@@ -1,0 +1,46 @@
+name: Check Folder Structure
+
+on:
+  pull_request:
+    types: opened
+
+jobs:
+  check-folder-structure:
+    runs-on: ubuntu-latest
+    outputs:
+      comment: ${{ steps.check.outputs.comment }}
+    steps:
+    - uses: actions/checkout@v2
+    - name: Get changed files
+      id: changed_files
+      uses: tj-actions/changed-files@v37.5.0
+    - name: Check if folder structure is correct
+      id: check
+      run: |
+        PR_USERNAME=$(echo "${{ github.event.pull_request.user.login }}")
+        FILES="${{ steps.changed_files.outputs.all_modified_files }}"
+        IFS=' ' read -r -a FILES_ARR <<< "$FILES"
+        
+        for FILE in "${FILES_ARR[@]}"; do
+          if [[ ${FILE} == pruebas/* ]]; then
+            TEST_FOLDER=$(echo ${FILE} | cut -d'/' -f2)
+            if [[ ${FILE} != pruebas/${TEST_FOLDER}/${PR_USERNAME}/* ]]; then
+              echo "Incorrect folder structure in file: ${FILE}. Requesting changes."
+              echo "Asegúrese de que los cambios se realicen en 'pruebas/${TEST_FOLDER}/${PR_USERNAME}/'. :file_folder:" > message.txt
+              echo "::set-output name=comment::$(cat message.txt)"
+              break
+            fi
+          fi
+        done
+    - name: Comment PR
+      if: steps.check.outputs.comment != ''
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: "${{ steps.check.outputs.comment }}"
+          })
