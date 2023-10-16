@@ -1,5 +1,6 @@
 ---
 import BaseHead from '@components/BaseHead.astro';
+import Navigation from '@components/Navigation.astro';
 import "@styles/index.css"
 const { title,description,keywords } = Astro.props
 ---
@@ -7,6 +8,7 @@ const { title,description,keywords } = Astro.props
   <BaseHead title={title} description={description} keywords={keywords}/>
   <body class="w-screen min-h-screen overflow-hidden">
     <div class="bg-gradient-to-br from-blue-100 via-pink-100 to-orange-100">
+      {Astro.url.pathname !== "/" &&<Navigation />}
       <slot />
     </div>  
   </body>

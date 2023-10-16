@@ -1,7 +1,8 @@
 ---
-const query = Astro.url.searchParams.get('search')
-const res = await fetch(Astro.url.origin + `/api/items/data.json?q=${query}`)
-const {paginatedData: products} = await res.json()
+const query = Astro.url.searchParams.get('q')
+const page = Astro.url.searchParams.get('p')
+const res = await fetch(Astro.url.origin + `/api/items/data.json?q=${query}&p=${page || 0}`)
+const {paginatedData: products,nextPage,prevPage,isLastPage} = await res.json()
 ---
 
 <div>
@@ -13,4 +14,6 @@ const {paginatedData: products} = await res.json()
             </a>
         ))}
     </ul>
+    <a href=`/items?q=${query}&p=${prevPage}`>Pagina anterior</a>
+    <a href=`/items?q=${query}&p=${nextPage}` class:list={[isLastPage?"text-red-600":"text-blue-600"]}>Pagina siguiente</a>
 </div>
