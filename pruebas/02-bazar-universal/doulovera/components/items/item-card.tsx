@@ -15,9 +15,9 @@ export function ItemCard ({ item }: { item: ProductChunk }) {
     const rating = Math.floor(item.rating * 2) / 2
     const starIndex = index + 1
 
-    if (starIndex <= rating) return <StarFilled className="w-4 h-4" />
-    if (starIndex > rating && starIndex < rating + 1) return <StarHalf className="w-4 h-4" />
-    if (starIndex >= rating + 1) return <Star className="w-4 h-4" />
+    if (starIndex <= rating) return <StarFilled key={index} className="w-4 h-4" />
+    if (starIndex > rating && starIndex < rating + 1) return <StarHalf key={index} className="w-4 h-4" />
+    if (starIndex >= rating + 1) return <Star key={index} className="w-4 h-4" />
     return null
   })
 
@@ -27,8 +27,8 @@ export function ItemCard ({ item }: { item: ProductChunk }) {
         <Image
           src={item.thumbnail}
           alt={item.title}
-          className="rounded-md"
-          objectFit="cover"
+          className="rounded-md object-cover"
+          sizes='(min-width: 768px) 16rem, 100vw'
           fill
         />
       </div>
@@ -42,7 +42,7 @@ export function ItemCard ({ item }: { item: ProductChunk }) {
 
         <h3 className="text-xl">
           {formattedPrice}
-          <span className="text-xs text-brand-darker align-middle"> {item.discountPercentage}% off</span>
+          <span className="text-xs text-brand-darker align-middle"> -{item.discountPercentage}% OFF</span>
         </h3>
       </div>
     </article>

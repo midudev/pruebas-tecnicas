@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 
 import { ItemsHeader } from '@/components/items/header'
-import { CategoriesState, ResultsLength } from '@/components/items/results-length'
+import { CategoriesState, ResultsCount } from '@/components/items/results-length'
 import { ItemsList } from '@/components/items/items-list'
 
 const CATEGORIES: Record<string, string> = {
@@ -50,7 +50,7 @@ export function SearchResultsContent () {
   return (
     <>
       <ItemsHeader>
-        <ResultsLength categories={categories} totalItems={totalItems} />
+        <ResultsCount categories={categories} totalItems={totalItems} />
       </ItemsHeader>
       <ItemsList items={items} />
     </>
