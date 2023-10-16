@@ -12,17 +12,17 @@
 
 Debes crear una aplicación que consta de **3 componentes principales**:
 
-- Una caja de búsqueda []
-- La lista de resultados []
-- Descripción del detalle del producto []
+- Una caja de búsqueda [✅]
+- La lista de resultados [✅]
+- Descripción del detalle del producto [✅]
 
-La aplicación debe constar de servidor y cliente. El servidor debe exponer un API RESTful y el cliente consumirlo. []
+La aplicación debe constar de servidor y cliente. El servidor debe exponer un API RESTful y el cliente consumirlo. [✅]
 
 ## Contexto
 
 Somos un bazar con todo tipo de productos. Queremos crear nuestra app web. Por ahora **nuestro mercado va a ser el móvil**. []
 
-Esta primera versión los usuarios podrán buscar el nombre del producto, le mostraremos una lista de productos y podrán hacer clic en cada uno para ver el detalle. []
+Esta primera versión los usuarios podrán buscar el nombre del producto, le mostraremos una lista de productos y podrán hacer clic en cada uno para ver el detalle. [✅]
 
 Ten en cuenta:
 - No sabemos si el framework que utilicemos ahora será el definitivo, pero querremos reutilizar el máximo de código posible. []
@@ -39,12 +39,12 @@ Ten en cuenta:
 
 1. **Crea las 3 páginas**: Inicio con caja de búsqueda, resultados de búsqueda y detalle.
 
-2. **Las rutas de las páginas serán**: []
+2. **Las rutas de las páginas serán**: [✅]
   - Home con caja de búsqueda
     - Ruta: `/`
     - Descripción: Simplemente muestra una caja de búsqueda para poder hacer la búsqueda de productos. Al realizar la búsqueda navegar a la vista de Resultados de búsqueda.
   
-  - Resultados de búsqueda: []
+  - Resultados de búsqueda: [✅] 
     - Ruta: `/items?search=`, por ejemplo: `/items/?search=laptop`
     - Descripción: Muestra justo debajo de la caja de búsqueda, el número de resultados y también los resultados que muestra para cada categoría. En cada tarjeta de los resultados muestra: título, descripción, precio, categoría, imagen y puntuación.
 

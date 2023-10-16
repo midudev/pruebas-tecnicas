@@ -1,9 +1,11 @@
 ---
 import ProductsResultSection from "@components/ProductsResultSection.astro";
+import SearchForm from "@components/SearchForm.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 ---
 <MainLayout  title="Resultados de busqueda" description="Tienda implementada para la prueba técnica #2 de midudev basada en una prueba de Mercado Libre" keywords={['prueba tecnica','desarrollo','tienda online']}> 
     <section class="w-full min-h-screen">
+        <SearchForm />
         <ProductsResultSection />
     </section>
 </MainLayout>

@@ -5,6 +5,10 @@ import netlify from "@astrojs/netlify"
 
 //astro.build/config
 export default defineConfig({
+    image: {
+        remotePatterns: [{ protocol: "https" }],
+        domains: ["https://i.dummyjson.com"],
+    },
     output: "server",
     adapter: netlify(),
     integrations: [react(),netlify(),tailwind({
