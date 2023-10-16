@@ -7,6 +7,7 @@ import { useSearchParams } from 'next/navigation'
 
 import { ItemsHeader } from '@/components/items/header'
 import { CategoriesState, ResultsLength } from '@/components/items/results-length'
+import { ItemsList } from '@/components/items/items-list'
 
 const CATEGORIES: Record<string, string> = {
   smartphones: '📱',
@@ -47,8 +48,11 @@ export function SearchResultsContent () {
   }, [search])
 
   return (
-    <ItemsHeader>
-      <ResultsLength categories={categories} totalItems={totalItems} />
-    </ItemsHeader>
+    <>
+      <ItemsHeader>
+        <ResultsLength categories={categories} totalItems={totalItems} />
+      </ItemsHeader>
+      <ItemsList items={items} />
+    </>
   )
 }

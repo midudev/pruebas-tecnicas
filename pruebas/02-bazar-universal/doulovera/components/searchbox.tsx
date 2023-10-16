@@ -26,7 +26,7 @@ export default function SearchBox ({ isMini }: SearchBoxProps) {
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
           </svg>
         </div>
-        <input id="search-box" name="search-box" type="search" className={`block w-full ${isMini ? 'p-2' : 'p-4'} pr-10 text-sm bg-brand-light border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500`} placeholder="Laptops, smartphones..." required />
+        <input id="search-box" name="search-box" type="search" className={`block w-full ${isMini ? 'p-2' : 'p-4'} pr-10 text-sm bg-brand-light border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500`} placeholder="Laptops, smartphones..." autoFocus={!isMini} required />
       </div>
       {
         !isMini && (
