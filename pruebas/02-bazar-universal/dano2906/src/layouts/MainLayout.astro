@@ -1,12 +1,14 @@
 ---
 import BaseHead from '@components/BaseHead.astro';
 import Navigation from '@components/Navigation.astro';
+import { ViewTransitions } from "astro:transitions";
 import "@styles/index.css"
 const { title,description,keywords } = Astro.props
 ---
 <html lang="es" class="light">
+  <ViewTransitions />
   <BaseHead title={title} description={description} keywords={keywords}/>
-  <body class="w-screen min-h-screen overflow-hidden">
+  <body class="w-screen min-h-screen">
     <div class="bg-gradient-to-br from-blue-100 via-pink-100 to-orange-100">
       {Astro.url.pathname !== "/" &&<Navigation />}
       <slot />
