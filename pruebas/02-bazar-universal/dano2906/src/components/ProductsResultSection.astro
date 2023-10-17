@@ -10,9 +10,7 @@ const {paginatedData: products,nextPage,prevPage,isLastPage,quantity} = await re
     <h1 class="text-lg sm:text-3xl font-tilt font-bold text-purple-950">Cantidad de productos encontrados: {quantity}</h1>
     <ul class="p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-2 sm:gap-2">
         {products.map((product)=>(
-            <a href=`/items/${product.id}`>
-                <ProductCard product={product}/>
-            </a>
+            <ProductCard product={product}/>
         ))}
     </ul>
     <a href=`/items?search=${query}&page=${prevPage}`>Pagina anterior</a>
