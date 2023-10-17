@@ -1,9 +1,9 @@
 import './assets/globals.css'
 import type { Metadata } from 'next'
-import { Inter, Montserrat } from 'next/font/google'
+import { Inter, Bricolage_Grotesque as BricolageGrotesque } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
-const title = Montserrat({
+const title = BricolageGrotesque({
   subsets: ['latin'],
   display: 'swap',
   weight: ['700'],
@@ -23,7 +23,7 @@ export default function RootLayout ({
   return (
     <html lang="en">
       <body className={`${inter.className} ${title.variable} h-screen`}>
-        <div className=""> {/* max-w-sm mx-auto */}
+        <div className="">
           {children}
         </div>
       </body>
