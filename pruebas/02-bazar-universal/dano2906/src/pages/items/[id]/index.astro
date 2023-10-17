@@ -1,8 +1,19 @@
 ---
 import MainLayout from "@layouts/MainLayout.astro";
-    const {id} = Astro.params
+import { Image } from "astro:assets";
+import productImage from "../../../../public/placeholder-product-image.png"
+const {id} = Astro.params
+const res = await fetch(Astro.url.origin + `/api/items/${id}/data.json`)
+const {product} = await res.json()
+const {title,description,price,category,rating} = product
+
 ---
 
 <MainLayout title={`Producto numero ${id}`} description="Tienda implementada para la prueba técnica #2 de midudev basada en una prueba de Mercado Libre" keywords={['prueba tecnica','desarrollo','tienda online']}>
-    <h1>{id}</h1>
+    <Image src={productImage} alt={title} width={192} height={192} class="rounded-lg" transition:name="img"/>
+    <h2 class="text-2xl font-tilt font-bold text-purple-950" transition:name="title">{title}</h2>
+        <p class="text-lg font-tilt font-light text-purple-950" transition:name="desc">{description}</p>
+        <span class="text-sm font-tilt font-normal text-purple-950" transition:name="category">{category}</span>
+        <span class="text-sm font-tilt font-light text-purple-950" transition:name="price">Price: ${price}</span>
+        <span class="text-sm font-tilt font-light text-purple-950" transition:name="rating">Rating: {rating}/5</span>
 </MainLayout>
