@@ -20,14 +20,14 @@ La aplicación debe constar de servidor y cliente. El servidor debe exponer un A
 
 ## Contexto
 
-Somos un bazar con todo tipo de productos. Queremos crear nuestra app web. Por ahora **nuestro mercado va a ser el móvil**. []
+Somos un bazar con todo tipo de productos. Queremos crear nuestra app web. Por ahora **nuestro mercado va a ser el móvil**. [✅]
 
 Esta primera versión los usuarios podrán buscar el nombre del producto, le mostraremos una lista de productos y podrán hacer clic en cada uno para ver el detalle. [✅]
 
 Ten en cuenta:
-- No sabemos si el framework que utilicemos ahora será el definitivo, pero querremos reutilizar el máximo de código posible. [:check]
+- No sabemos si el framework que utilicemos ahora será el definitivo, pero querremos reutilizar el máximo de código posible. [✅]
 
-- La aplicación debe ser fácil de usar y **agradable a la vista**. No importa si copias el diseño o usas un catálogo de componentes. []
+- La aplicación debe ser fácil de usar y **agradable a la vista**. No importa si copias el diseño o usas un catálogo de componentes. [✅]
 
 - **Es MUY importante el SEO de la aplicación**. Así que el robot de Google debe poder ver bien nuestra página, navegarla sin problemas y el rendimiento debe ser el adecuado. [✅]
 
@@ -62,9 +62,9 @@ Ten en cuenta:
 
 ## Consejos sobre el código
 
-1. **Estructura del código**: El código debe estar bien organizado y fácil de leer. []
+1. **Estructura del código**: El código debe estar bien organizado y fácil de leer. [✅]
 
-2. **Semántica HTML**: El HTML debe ser semántico y accesible. []
+2. **Semántica HTML**: El HTML debe ser semántico y accesible. [✅]
 
 3. **Pensando en equipo**: Prepara tu proyecto pensando que cualquier persona de tu equipo puede tener que trabajar en él en el futuro. (scripts en el package.json, mínima documentación en el README, comentarios en el código si es necesario, etc) []
 
@@ -77,7 +77,7 @@ Ten en cuenta:
 **¿Quieres ir más allá?** Estos son algunos desafíos adicionales que puedes intentar:
 
 - Implementa la funcionalidad de carrito de la compra. []
-- Haz que el diseño sea responsive. [:check]
+- Haz que el diseño sea responsive. [✅]
 - Integra la paginación tanto en la API como en la web. [✅]
 
 ## Entrevista
