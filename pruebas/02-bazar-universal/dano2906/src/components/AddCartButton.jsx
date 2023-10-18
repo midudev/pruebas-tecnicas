@@ -5,7 +5,7 @@ export default function AddCartButton({id}) {
 
     const [inCart, setInCart] = useState(false)
     useEffect(()=>{
-        if(cart.some(instance => instance === id)) {
+        if(cart.some(product => product.id === id)) {
             setInCart(true)
         }
     },[])
@@ -21,6 +21,6 @@ export default function AddCartButton({id}) {
     }
 
   return (
-    <button className="p-1 text-base font-tilt font-light text-purple-950 bg-gradient-to-br from-blue-200 via-pink-200 to-orange-200 my-1 rounded-lg transition-all hover:scale-105" onClick={()=>handleClick(id)}>{!inCart?"Añadir al carrito 🛒":"Eliminar del carrito 🛒"}</  button>
+    <button className="p-1 my-1 text-base font-light transition-all rounded-lg font-tilt text-purple-950 bg-gradient-to-br from-blue-200 via-pink-200 to-orange-200 hover:scale-105" onClick={()=>handleClick(id)}>{!inCart?"Añadir al carrito 🛒":"Eliminar del carrito 🛒"}</  button>
   )
 }
