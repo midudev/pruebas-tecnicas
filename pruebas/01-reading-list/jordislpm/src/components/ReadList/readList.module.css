@@ -1,0 +1,23 @@
+.readList{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    border: 2px solid var(--secundary-blue);
+    border-radius: 10px;
+    align-items: center;
+    padding: 1rem;
+    gap: 2rem;
+
+}
+
+.list{
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.h2{
+    min-width: max-content;
+    color: var(--secundary-blue)
+}

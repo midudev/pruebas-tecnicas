@@ -1,0 +1,18 @@
+:root {
+    /* Fonts */
+    --font: 'Poppins', sans-serif;
+    /* Colors */
+    --background: #fefdf8;
+    --primary-blue: #5291da;
+    --secundary-blue: #2b3c54;
+    --primary-beige: #e7e1d5;
+    --primary-red: #D11A2A;
+    /* --primary-light: #fff8c7;
+    --primary-dark: #333333;
+    --secundary-dark: #404040;
+    --primary-gray: #EEEEEE;
+    --labels: rgba(17, 15, 1, 0.2216);
+    --blue-facebook: #3155AB;
+    --lines: #E1E0D7;
+   */
+  }

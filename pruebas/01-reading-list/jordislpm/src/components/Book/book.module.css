@@ -1,0 +1,97 @@
+.book{
+display: flex;
+flex-direction: column;
+border: 2px solid var(--primary-blue);
+justify-content: center;
+align-items: center;
+gap: 0.5rem;
+border-radius: 8px;
+overflow: hidden;
+max-width: 20rem;
+height: max-content; 
+padding: 0.4rem 0.1rem 0.4rem 0.1rem;
+}
+
+.cover{
+    display: flex;
+    width: 50px;
+    height: auto;
+}
+
+.tittle{
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--secundary-blue);
+    min-height: 3rem;  
+}
+
+.img{
+    display: flex;
+    max-width: 90%;
+    max-height: 200px;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 1.5rem;
+    border: none;
+    border-radius: 20%;
+    transition: transform .2s;
+    }
+
+.button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.add{
+    position: relative;
+    background-color: var(--primary-blue);
+}
+.remove{
+    background-color: var(--primary-red);
+}
+
+.icon{
+    max-width: 100%;
+}
+
+.add:hover::before {
+    content: "Agregar a la lista de lectura";
+    display: flex;
+    min-width: max-content;
+    font-size: 1.2rem;
+    background: var(--primary-blue);
+    position: absolute;
+    top: -105%;
+    left: -330%;
+    padding: 0px 3px 0px 3px;
+    border-radius: 5px;
+  }
+
+  .remove:hover::before {
+    content: "Eliminar de la lista de lectura";
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: max-content;
+    background: var(--primary-red);
+    position: absolute;
+    top: -110%;
+    left: -270%;
+    padding: 2px;
+    /* padding: 0px 2px 0px 2px; */
+    border-radius: 5px;
+  }
+
+
+  @media only screen and (max-width: 900px) {
+
+  
+    
+}

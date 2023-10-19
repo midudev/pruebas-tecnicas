@@ -1,0 +1,43 @@
+.header{
+     display: flex;
+     flex-direction: column;  
+     background-color: aqua;
+     width: 100%;
+     height: auto;
+     align-items: center;
+     justify-content: center;
+     background-color: var(--primary-blue);
+     padding: 1rem 1rem 1rem 1rem;
+     gap: 1.2rem;
+}
+
+.availables{
+    font-weight: bold;
+    font-size: 2.5rem;
+    color: var(--secundary-blue);
+    text-align: center;
+}
+
+.read{
+    font-weight: bold;
+    font-size: 2.5rem;
+    color: var(--primary-beige);
+    text-align: center;
+}
+
+.boxTitle{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.icon{
+    display: flex;
+    max-width: 4rem;
+}
+
+h1{
+    font-size: 3rem;
+    color: var(--secundary-blue);
+}
+
