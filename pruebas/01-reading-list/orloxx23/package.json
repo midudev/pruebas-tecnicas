@@ -1,0 +1,28 @@
+{
+  "name": "orloxx23",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "jest"
+  },
+  "dependencies": {
+    "autoprefixer": "10.4.14",
+    "next": "13.4.9",
+    "next-themes": "^0.2.1",
+    "postcss": "8.4.25",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.10.1",
+    "tailwindcss": "3.3.3"
+  },
+  "devDependencies": {
+    "jest": "^29.6.1"
+  },
+  "jest": {
+    "verbose": true
+  }
+}
