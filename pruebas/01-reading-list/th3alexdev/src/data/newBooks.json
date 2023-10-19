@@ -1,0 +1,128 @@
+{
+  "library": [
+    {
+      "book": {
+        "title": "Don Quijote de la Mancha",
+        "pages": 1560,
+        "genre": "Aventuras",
+        "cover": "https://m.media-amazon.com/images/I/41iPgMDv8TL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
+        "synopsis": "Don Quijote, un caballero enloquecido por la lectura, busca aventuras y enfrenta molinos como dragones en una sátira épica.",
+        "year": 2022,
+        "ISBN": "978-8417958596",
+        "author": {
+          "name": "Miguel de Cervantes",
+          "otherBooks": ["La Galatea", "El licenciado Vidriera"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "La Isla del Tesoro",
+        "pages": 283,
+        "genre": "Aventuras",
+        "cover": "https://imagessl2.casadellibro.com/a/l/t7/02/9788408260202.jpg",
+        "synopsis": "Un joven y una tripulación buscan un tesoro pirata en una isla desierta, enfrentando traiciones y peligros en el camino.",
+        "year": 2022,
+        "ISBN": "978-8408260202",
+        "author": {
+          "name": "Robert Louis Stevenson",
+          "otherBooks": []
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Las aventuras de Tom Sawyer",
+        "pages": 320,
+        "genre": "Ciencia ficción",
+        "cover": "https://imagessl1.casadellibro.com/a/l/t7/71/9788418395871.jpg",
+        "synopsis": "Las travesuras de Tom Sawyer, un niño travieso del Mississippi, y sus amigos en una pequeña ciudad del siglo XIX.",
+        "year": 2021,
+        "ISBN": "978-8418395871",
+        "author": {
+          "name": "Mark Twain",
+          "otherBooks": []
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "El Resplandor",
+        "pages": 688,
+        "genre": "Terror",
+        "cover": "https://imagessl9.casadellibro.com/a/l/t7/19/9788466357319.jpg",
+        "synopsis": "Jack Torrance, en busca de una nueva vida como cuidador de un hotel, se enfrenta a horrores sobrenaturales que desencadenan su propia oscuridad.",
+        "year": 2020,
+        "ISBN": "978-84663573191",
+        "author": {
+          "name": "Stephen King",
+          "otherBooks": ["It", "Carrie", "Misery"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Guerra Mundial Z",
+        "pages": 472,
+        "genre": "Zombies",
+        "cover": "https://imagessl4.casadellibro.com/a/l/t7/24/9788490624524.jpg",
+        "synopsis": "Narra una lucha global desesperada contra una pandemia zombi a través de relatos testimoniales.",
+        "year": 2020,
+        "ISBN": "978-8490624524",
+        "author": {
+          "name": "Stephen King",
+          "otherBooks": ["It", "Carrie", "Misery"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "La Vuelta al Mundo en 80 Días",
+        "pages": 472,
+        "genre": "Aventuras",
+        "cover": "https://imagessl5.casadellibro.com/a/l/t7/95/9788469836095.jpg",
+        "synopsis": "Phileas Fogg y Passepartout viajan en una aventura global, desafiando el tiempo y obstáculos para ganar una apuesta audaz.",
+        "year": 2018,
+        "ISBN": "978-8469836095",
+        "author": {
+          "name": "Julio Verne",
+          "otherBooks": [
+            "Viaje al centro de la Tierra",
+            "La isla misteriosa",
+            "De la Tierra a la luna"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "El Exorcista",
+        "pages": 376,
+        "genre": "Terror",
+        "cover": "https://imagessl3.casadellibro.com/a/l/t7/03/9788413145303.jpg",
+        "synopsis": "Un inquietante relato donde una madre lucha por salvar a su hija poseída por una presencia demoníaca.",
+        "year": 2023,
+        "ISBN": "978-8413145303",
+        "author": {
+          "name": "William Peter Blatty",
+          "otherBooks": ["Legión", "Dimiter"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Juego de Tronos",
+        "pages": 895,
+        "genre": "Ciencia ficción",
+        "cover": "https://imagessl4.casadellibro.com/a/l/t7/24/9788401032424.jpg",
+        "synopsis": "Intrigas, traiciones y dragones en lucha por el poder mientras los personajes luchan por el control del trono de hierro.",
+        "year": 2023,
+        "ISBN": "978-8401032424",
+        "author": {
+          "name": "George R. R. Martin",
+          "otherBooks": ["Choque de reyes", "Tormenta de espadas"]
+        }
+      }
+    }
+  ]
+}

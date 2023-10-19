@@ -1,0 +1,83 @@
+@font-face {
+  font-family: "General Sans";
+  src: url("/src/assets/fonts/GeneralSans-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans Semibold";
+  src: url("/src/assets/fonts/GeneralSans-Semibold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .filter-pill {
+    @apply px-1 text-base opacity-60 hover:opacity-100 transition-opacity flex items-center gap-1;
+  }
+}
+
+:root {
+  background-color: #18191d;
+  color: #FFF;
+  color-scheme: dark;
+  font-family: 'General Sans', sans-serif;
+}
+
+/* * {
+  outline: 1px solid #ffffff55
+} */
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+h1 {
+  font-family: 'General Sans Semibold';
+  font-weight: 700;
+}
+
+img {
+  -webkit-user-drag: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
+aside::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+  height: 100vh;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #747377;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #1a1920;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
