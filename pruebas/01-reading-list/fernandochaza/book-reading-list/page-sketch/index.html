@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Set the viewport to make the website look good on all devices:-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Set page title-->
+    <title>Page Sketch</title>
+
+    <!-- Meta tags: Description an author. Used in Google results page -->
+    <meta name="description" content="[Page Short Description]" />
+    <meta name="author" content="Fernando Chazarreta" />
+
+    <!-- Meta tags: Open graph properties. Used when the page is shared into Facebook -->
+    <meta property="og:title" content="[Page Title]" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="[Page Image URL]" />
+    <meta property="og:url" content="[Page Home URL]" />
+
+    <!-- Google fonts preconnect -->
+
+    <link rel="stylesheet" href="index.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" />
+  </head>
+
+  <body>
+    <header>
+      <section class="title">
+        <img class="logo" src="../src/assets/book-open-svgrepo-com.svg" alt="Logo" />
+        <h1>MY READING LIST</h1>
+      </section>
+      <nav>
+        <button>
+          <!-- <img src="../src/assets/bookmark-fill-1227-svgrepo-com.svg" alt="" /> -->
+          SEARCH
+        </button>
+        <button>
+          <!-- <img src="../src/assets/bookmark-fill-1227-svgrepo-com.svg" alt="" /> -->
+          MY LIST
+        </button>
+      </nav>
+    </header>
+    <main>
+      <aside class="search">
+        <form>
+          <label for="book-name"
+            >Book name <input id="book-name" type="text" placeholder="Search a book..."
+          /></label>
+          <label for="book-author"
+            >Author <input id="book-author" type="text" placeholder="Search an author..."
+          /></label>
+          <div class="pages-filter">
+            Max. Pages
+            <label><input name="book-pages" type="radio" value="100" /> 100</label>
+            <label><input name="book-pages" type="radio" value="200" /> 200</label>
+            <label><input name="book-pages" type="radio" value="300" /> 300</label>
+            <label><input name="book-pages" type="radio" value="500" /> 500</label>
+          </div>
+          <button type="submit">Find my books</button>
+        </form>
+      </aside>
+      <section class="cards-container">
+        <div class="book-card">
+          <img
+            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg"
+            alt=""
+          />
+          <h3 class="book-title">The lord of the rings</h3>
+          <p class="book-author">(J.R.R. Tolkien)</p>
+          <p class="book-info"> Una aventura épica en un mundo de fantasía llamado la Tierra Media.</p>
+          <p class="book-info"> Pages: 1200</p>
+          <p class="book-info"> More from J.R.R. Tolkien: El Hobbit, El Silmarillion</p>
+        </div>
+        <div class="book-card">
+          <img
+            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg"
+            alt=""
+          />
+        </div>
+        <div class="book-card">
+          <img
+            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg"
+            alt=""
+          />
+        </div>
+        <div class="book-card">
+          <img
+            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg"
+            alt=""
+          />
+        </div>
+        <div class="book-card">
+          <img
+            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg"
+            alt=""
+          />
+        </div>
+        <div class="book-card">
+          <img
+            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg"
+            alt=""
+          />
+        </div>
+      </section>
+      <section class="selected-books"></section>
+    </main>
+    <footer></footer>
+  </body>
+</html>

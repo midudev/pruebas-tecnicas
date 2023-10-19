@@ -1,0 +1,860 @@
+{
+  "bestSellers": [
+    {
+      "kind": "books#volume",
+      "id": "_i6bDeoCQzsC",
+      "etag": "l6pKGhUm8P8",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/_i6bDeoCQzsC",
+      "volumeInfo": {
+        "title": "Clean Code",
+        "subtitle": "A Handbook of Agile Software Craftsmanship",
+        "authors": ["Robert C. Martin"],
+        "publisher": "Pearson Education",
+        "publishedDate": "2008-08-01",
+        "description": "Even bad code can function. But if code isn’t clean, it can bring a development organization to its knees. Every year, countless hours and significant resources are lost because of poorly written code. But it doesn’t have to be that way. Noted software expert Robert C. Martin presents a revolutionary paradigm with Clean Code: A Handbook of Agile Software Craftsmanship. Martin has teamed up with his colleagues from Object Mentor to distill their best agile practice of cleaning code “on the fly” into a book that will instill within you the values of a software craftsman and make you a better programmer–but only if you work at it. What kind of work will you be doing? You’ll be reading code–lots of code. And you will be challenged to think about what’s right about that code, and what’s wrong with it. More importantly, you will be challenged to reassess your professional values and your commitment to your craft. Clean Code is divided into three parts. The first describes the principles, patterns, and practices of writing clean code. The second part consists of several case studies of increasing complexity. Each case study is an exercise in cleaning up code–of transforming a code base that has some problems into one that is sound and efficient. The third part is the payoff: a single chapter containing a list of heuristics and “smells” gathered while creating the case studies. The result is a knowledge base that describes the way we think when we write, read, and clean code. Readers will come away from this book understanding How to tell the difference between good and bad code How to write good code and how to transform bad code into good code How to create good names, good functions, good objects, and good classes How to format code for maximum readability How to implement complete error handling without obscuring code logic How to unit test and practice test-driven development This book is a must for any developer, software engineer, project manager, team lead, or systems analyst with an interest in producing better code.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9780136083252"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "0136083250"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 464,
+        "printType": "BOOK",
+        "categories": ["Computers"],
+        "averageRating": 4.5,
+        "ratingsCount": 9,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "3.19.12.0.preview.3",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=_i6bDeoCQzsC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=_i6bDeoCQzsC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.com.ar/books?id=_i6bDeoCQzsC&printsec=frontcover&dq=intitle:clean+code+inauthor:*&hl=&cd=1&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=_i6bDeoCQzsC&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=_i6bDeoCQzsC"
+      },
+      "saleInfo": {
+        "country": "AR",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 6008.11,
+          "currencyCode": "ARS"
+        },
+        "retailPrice": {
+          "amount": 4486.68,
+          "currencyCode": "ARS"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=_i6bDeoCQzsC&rdid=book-_i6bDeoCQzsC&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 6008110000,
+              "currencyCode": "ARS"
+            },
+            "retailPrice": {
+              "amountInMicros": 4486680000,
+              "currencyCode": "ARS"
+            }
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "AR",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED_FOR_ACCESSIBILITY",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=_i6bDeoCQzsC&hl=&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Readers will come away from this book understanding How to tell the difference between good and bad code How to write good code and how to transform bad code into good code How to create good names, good functions, good objects, and good ..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "tmNNfSkfTlcC",
+      "etag": "WX3nxqIG4T0",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/tmNNfSkfTlcC",
+      "volumeInfo": {
+        "title": "Design Patterns",
+        "subtitle": "Elements of Reusable Object-Oriented Software",
+        "authors": [
+          "Erich Gamma",
+          "Ralph Johnson",
+          "Richard Helm",
+          "Ralph E.. Johnson",
+          "John Vlissides"
+        ],
+        "publisher": "Pearson Deutschland GmbH",
+        "publishedDate": "1995",
+        "description": "Software -- Software Engineering.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_10",
+            "identifier": "3827330432"
+          },
+          {
+            "type": "ISBN_13",
+            "identifier": "9783827330437"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 512,
+        "printType": "BOOK",
+        "categories": ["Computers"],
+        "averageRating": 4,
+        "ratingsCount": 12,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.1.4.0.preview.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=tmNNfSkfTlcC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=tmNNfSkfTlcC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.com.ar/books?id=tmNNfSkfTlcC&printsec=frontcover&dq=intitle:design+patterns+inauthor:*&hl=&cd=10&source=gbs_api",
+        "infoLink": "http://books.google.com.ar/books?id=tmNNfSkfTlcC&dq=intitle:design+patterns+inauthor:*&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Design_Patterns.html?hl=&id=tmNNfSkfTlcC"
+      },
+      "saleInfo": {
+        "country": "AR",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "AR",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com.ar/books/download/Design_Patterns-sample-pdf.acsm?id=tmNNfSkfTlcC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=tmNNfSkfTlcC&hl=&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Software -- Software Engineering."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "AVVoPwAACAAJ",
+      "etag": "wz/H0kgJpfI",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/AVVoPwAACAAJ",
+      "volumeInfo": {
+        "title": "The Lord of the Rings",
+        "authors": ["J. R. R. Tolkien"],
+        "publisher": "Mariner Books",
+        "publishedDate": "2012",
+        "description": "Presents the epic depicting the Great War of the Ring, a struggle between good and evil in Middle-earth, following the odyssey of Frodo the hobbit and his companions on a quest to destroy the Ring of Power.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_10",
+            "identifier": "0544003411"
+          },
+          {
+            "type": "ISBN_13",
+            "identifier": "9780544003415"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": false
+        },
+        "pageCount": 1178,
+        "printType": "BOOK",
+        "categories": ["Fiction"],
+        "averageRating": 4.5,
+        "ratingsCount": 3325,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "preview-1.0.0",
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=AVVoPwAACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=AVVoPwAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.com.ar/books?id=AVVoPwAACAAJ&dq=intitle:lord+of+the+rings+inauthor:*&hl=&cd=1&source=gbs_api",
+        "infoLink": "http://books.google.com.ar/books?id=AVVoPwAACAAJ&dq=intitle:lord+of+the+rings+inauthor:*&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/The_Lord_of_the_Rings.html?hl=&id=AVVoPwAACAAJ"
+      },
+      "saleInfo": {
+        "country": "AR",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "AR",
+        "viewability": "NO_PAGES",
+        "embeddable": false,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=AVVoPwAACAAJ&hl=&source=gbs_api",
+        "accessViewStatus": "NONE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Presents the epic depicting the Great War of the Ring, a struggle between good and evil in Middle-earth, following the odyssey of Frodo the hobbit and his companions on a quest to destroy the Ring of Power."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "_FjrugAACAAJ",
+      "etag": "HECfuUz128I",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/_FjrugAACAAJ",
+      "volumeInfo": {
+        "title": "The Fellowship of the Ring",
+        "subtitle": "Being the First Part of the Lord of the Rings",
+        "authors": ["John Ronald Reuel Tolkien"],
+        "publisher": "HarperCollins Publishers",
+        "publishedDate": "2012",
+        "description": "Continuing the story begun in The Hobbit, this is the first part of Tolkien s epic masterpiece, The Lord of the Rings, featuring an exclusive cover image from the film, the definitive text, and a detailed map of Middle-earth. Sauron, the Dark Lord, has gathered to him all the Rings of Power the means by which he intends to rule Middle-earth. All he lacks in his plans for dominion is the One Ring the ring that rules them all which has fallen into the hands of the hobbit, Bilbo Baggins. In a sleepy village in the Shire, young Frodo Baggins finds himself faced with an immense task, as his elderly cousin Bilbo entrusts the Ring to his care. Frodo must leave his home and make a perilous journey across Middle-earth to the Cracks of Doom, there to destroy the Ring and foil the Dark Lord in his evil purpose. To celebrate the release of the first of Peter Jackson s two-part film adaptation of The Hobbit, THE HOBBIT: AN UNEXPECTED JOURNEY, this first part of The Lord of the Rings is available for a limited time with an exclusive cover image from Peter Jackson s award-winning trilogy.\"",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_10",
+            "identifier": "0007488300"
+          },
+          {
+            "type": "ISBN_13",
+            "identifier": "9780007488308"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": false
+        },
+        "pageCount": 531,
+        "printType": "BOOK",
+        "categories": ["Baggins, Frodo (Fictitious character)"],
+        "averageRating": 4,
+        "ratingsCount": 2427,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "preview-1.0.0",
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=_FjrugAACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=_FjrugAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.com.ar/books?id=_FjrugAACAAJ&dq=intitle:lord+of+the+rings+inauthor:*&hl=&cd=6&source=gbs_api",
+        "infoLink": "http://books.google.com.ar/books?id=_FjrugAACAAJ&dq=intitle:lord+of+the+rings+inauthor:*&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/The_Fellowship_of_the_Ring.html?hl=&id=_FjrugAACAAJ"
+      },
+      "saleInfo": {
+        "country": "AR",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "AR",
+        "viewability": "NO_PAGES",
+        "embeddable": false,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=_FjrugAACAAJ&hl=&source=gbs_api",
+        "accessViewStatus": "NONE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "The Lord of the Rings is an epic adventure, a beautifully written masterpiece of imaginative fiction of the 20th century."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "2ZjHBAAAQBAJ",
+      "etag": "my7FhxaMf9g",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/2ZjHBAAAQBAJ",
+      "volumeInfo": {
+        "title": "Harry Potter and the Philosopher's Stone",
+        "authors": ["J. K. Rowling"],
+        "publisher": "Bloomsbury Publishing",
+        "publishedDate": "2014-01-01",
+        "description": "Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive. Addressed in green ink on yellowish parchment with a purple seal, they are swiftly confiscated by his grisly aunt and uncle. Then, on Harry's eleventh birthday, a great beetle-eyed giant of a man called Rubeus Hagrid bursts in with some astonishing news: Harry Potter is a wizard, and he has a place at Hogwarts School of Witchcraft and Wizardry. An incredible adventure is about to begin!These new editions of the classic and internationally bestselling, multi-award-winning series feature instantly pick-up-able new jackets by Jonny Duddle, with huge child appeal, to bring Harry Potter to the next generation of readers. It's time to PASS THE MAGIC ON .",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9781408855652"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "1408855658"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": false
+        },
+        "pageCount": 353,
+        "printType": "BOOK",
+        "categories": ["Juvenile Fiction"],
+        "averageRating": 5,
+        "ratingsCount": 4,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.1.2.0.preview.0",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=2ZjHBAAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=2ZjHBAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.com.ar/books?id=2ZjHBAAAQBAJ&dq=intitle:stone+inauthor:rowling&hl=&cd=2&source=gbs_api",
+        "infoLink": "http://books.google.com.ar/books?id=2ZjHBAAAQBAJ&dq=intitle:stone+inauthor:rowling&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Harry_Potter_and_the_Philosopher_s_Stone.html?hl=&id=2ZjHBAAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "AR",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "AR",
+        "viewability": "NO_PAGES",
+        "embeddable": false,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=2ZjHBAAAQBAJ&hl=&source=gbs_api",
+        "accessViewStatus": "NONE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "An incredible adventure is about to begin!These new editions of the classic and internationally bestselling, multi-award-winning series feature instantly pick-up-able new jackets by Jonny Duddle, with huge child appeal, to bring Harry ..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "1o7D0m_osFEC",
+      "etag": "S6MMMgBBQA0",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/1o7D0m_osFEC",
+      "volumeInfo": {
+        "title": "Harry Potter and the Chamber of Secrets",
+        "authors": ["J.K. Rowling"],
+        "publisher": "Pottermore Publishing",
+        "publishedDate": "2015-12-08",
+        "description": "'There is a plot, Harry Potter. A plot to make most terrible things happen at Hogwarts School of Witchcraft and Wizardry this year.' Harry Potter's summer has included the worst birthday ever, doomy warnings from a house-elf called Dobby, and rescue from the Dursleys by his friend Ron Weasley in a magical flying car! Back at Hogwarts School of Witchcraft and Wizardry for his second year, Harry hears strange whispers echo through empty corridors - and then the attacks start. Students are found as though turned to stone... Dobby's sinister predictions seem to be coming true. Having become classics of our time, the Harry Potter eBooks never fail to bring comfort and escapism. With their message of hope, belonging and the enduring power of truth and love, the story of the Boy Who Lived continues to delight generations of new readers.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9781781100226"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "1781100225"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 350,
+        "printType": "BOOK",
+        "categories": ["Fiction"],
+        "averageRating": 4,
+        "ratingsCount": 39,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "3.24.24.0.preview.3",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=1o7D0m_osFEC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=1o7D0m_osFEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.com.ar/books?id=1o7D0m_osFEC&printsec=frontcover&dq=intitle:chamber+inauthor:rowling&hl=&cd=2&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=1o7D0m_osFEC&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=1o7D0m_osFEC"
+      },
+      "saleInfo": {
+        "country": "AR",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 104,
+          "currencyCode": "ARS"
+        },
+        "retailPrice": {
+          "amount": 104,
+          "currencyCode": "ARS"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=1o7D0m_osFEC&rdid=book-1o7D0m_osFEC&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 104000000,
+              "currencyCode": "ARS"
+            },
+            "retailPrice": {
+              "amountInMicros": 104000000,
+              "currencyCode": "ARS"
+            }
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "AR",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com.ar/books/download/Harry_Potter_and_the_Chamber_of_Secrets-sample-epub.acsm?id=1o7D0m_osFEC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com.ar/books/download/Harry_Potter_and_the_Chamber_of_Secrets-sample-pdf.acsm?id=1o7D0m_osFEC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=1o7D0m_osFEC&hl=&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "With their message of hope, belonging and the enduring power of truth and love, the story of the Boy Who Lived continues to delight generations of new readers."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "sD5bvgAACAAJ",
+      "etag": "/u7AWKyIGsI",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/sD5bvgAACAAJ",
+      "volumeInfo": {
+        "title": "Harry Potter and the Prisoner of Azkaban",
+        "authors": ["J. K. Rowling"],
+        "publisher": "Bloomsbury Publishing PLC",
+        "publishedDate": "2002",
+        "description": "Harry Potter, along with his best friends, Ron and Hermione, is about to start his third year at Hogwarts School of Witchcraft and Wizardry. Harary can't wait to get back to school after the summer holidays. (Who wouldn't if they lived with the horrible Dursleys?) But when Harry gets to Hogwarts, the atmosphere is tense. There's an escaped mass murderer on the loose, and the sinister prison guards of Azkaban have been called in to guard the school... 'The most eagerly awaited children's book for years' The Evening Standard 'The Harry Potter books are that rare thing, a series of stories adored by by parents and children alike'. The Daily Telegraph All the Harry Potter books are now available in large print.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_10",
+            "identifier": "0747560773"
+          },
+          {
+            "type": "ISBN_13",
+            "identifier": "9780747560777"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": false
+        },
+        "pageCount": 640,
+        "printType": "BOOK",
+        "categories": ["Children's audiobooks"],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "preview-1.0.0",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=sD5bvgAACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=sD5bvgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.com.ar/books?id=sD5bvgAACAAJ&dq=intitle:azkaban+inauthor:rowling&hl=&cd=2&source=gbs_api",
+        "infoLink": "http://books.google.com.ar/books?id=sD5bvgAACAAJ&dq=intitle:azkaban+inauthor:rowling&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Harry_Potter_and_the_Prisoner_of_Azkaban.html?hl=&id=sD5bvgAACAAJ"
+      },
+      "saleInfo": {
+        "country": "AR",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "AR",
+        "viewability": "NO_PAGES",
+        "embeddable": false,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=sD5bvgAACAAJ&hl=&source=gbs_api",
+        "accessViewStatus": "NONE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "For twelve long years, the dread fortress of Azkaban held an infamous prisoner named Sirius Black."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "fFCjDQAAQBAJ",
+      "etag": "0TgowrNdR5g",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/fFCjDQAAQBAJ",
+      "volumeInfo": {
+        "title": "Atomic Habits",
+        "subtitle": "the life-changing million-copy #1 bestseller",
+        "authors": ["James Clear"],
+        "publisher": "Random House",
+        "publishedDate": "2018-10-18",
+        "description": "THE PHENOMENAL INTERNATIONAL BESTSELLER: 1 MILLION COPIES SOLD Transform your life with tiny changes in behaviour, starting now. People think that when you want to change your life, you need to think big. But world-renowned habits expert James Clear has discovered another way. He knows that real change comes from the compound effect of hundreds of small decisions: doing two push-ups a day, waking up five minutes early, or holding a single short phone call. He calls them atomic habits. In this ground-breaking book, Clears reveals exactly how these minuscule changes can grow into such life-altering outcomes. He uncovers a handful of simple life hacks (the forgotten art of Habit Stacking, the unexpected power of the Two Minute Rule, or the trick to entering the Goldilocks Zone), and delves into cutting-edge psychology and neuroscience to explain why they matter. Along the way, he tells inspiring stories of Olympic gold medalists, leading CEOs, and distinguished scientists who have used the science of tiny habits to stay productive, motivated, and happy. These small changes will have a revolutionary effect on your career, your relationships, and your life. ________________________________ A NEW YORK TIMES AND SUNDAY TIMES BESTSELLER 'A supremely practical and useful book.' Mark Manson, author of The Subtle Art of Not Giving A F*ck 'James Clear has spent years honing the art and studying the science of habits. This engaging, hands-on book is the guide you need to break bad routines and make good ones.' Adam Grant, author of Originals 'Atomic Habits is a step-by-step manual for changing routines.' Books of the Month, Financial Times 'A special book that will change how you approach your day and live your life.' Ryan Holiday, author of The Obstacle is the Way",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9781473537804"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "1473537800"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": false
+        },
+        "pageCount": 234,
+        "printType": "BOOK",
+        "categories": ["Self-Help"],
+        "averageRating": 4,
+        "ratingsCount": 4,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "1.12.12.0.preview.2",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=fFCjDQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=fFCjDQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.com.ar/books?id=fFCjDQAAQBAJ&printsec=frontcover&dq=intitle:atomic+habits+inauthor:*&hl=&cd=1&source=gbs_api",
+        "infoLink": "http://books.google.com.ar/books?id=fFCjDQAAQBAJ&dq=intitle:atomic+habits+inauthor:*&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Atomic_Habits.html?hl=&id=fFCjDQAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "AR",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "AR",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com.ar/books/download/Atomic_Habits-sample-epub.acsm?id=fFCjDQAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=fFCjDQAAQBAJ&hl=&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "He calls them atomic habits. In this ground-breaking book, Clears reveals exactly how these minuscule changes can grow into such life-altering outcomes."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "mSiOEAAAQBAJ",
+      "etag": "dgCP/JyNBy8",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/mSiOEAAAQBAJ",
+      "volumeInfo": {
+        "title": "Atomic Habits",
+        "subtitle": "An Easy & Proven Way to Build Good Habits & Break Bad Ones",
+        "authors": ["James Clear"],
+        "publisher": "National Geographic Books",
+        "publishedDate": "2019-09-10",
+        "description": "A leading expert on habit formation reveals practical strategies to form good habits, break bad ones, and master the tiny behaviors that lead to remarkable results.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9780593207093"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "0593207092"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": false
+        },
+        "pageCount": 0,
+        "printType": "BOOK",
+        "categories": ["Business & Economics"],
+        "averageRating": 4,
+        "ratingsCount": 30,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "preview-1.0.0",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=mSiOEAAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=mSiOEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.com.ar/books?id=mSiOEAAAQBAJ&dq=intitle:atomic+habits+inauthor:*&hl=&cd=2&source=gbs_api",
+        "infoLink": "http://books.google.com.ar/books?id=mSiOEAAAQBAJ&dq=intitle:atomic+habits+inauthor:*&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Atomic_Habits.html?hl=&id=mSiOEAAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "AR",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "AR",
+        "viewability": "NO_PAGES",
+        "embeddable": false,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=mSiOEAAAQBAJ&hl=&source=gbs_api",
+        "accessViewStatus": "NONE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "A leading expert on habit formation reveals practical strategies to form good habits, break bad ones, and master the tiny behaviors that lead to remarkable results."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "0XupDAAAQBAJ",
+      "etag": "kNRX+U3dVA0",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/0XupDAAAQBAJ",
+      "volumeInfo": {
+        "title": "The 7 Habits of Highly Effective People",
+        "subtitle": "Powerful Lessons in Personal Change",
+        "authors": ["Stephen R. Covey"],
+        "publisher": "Mango Media Inc.",
+        "publishedDate": "2016-01-01",
+        "description": "Stephen R. Covey's the 7 Habits of Highly Effective People - Interactive Edition explains through infographics, videos and excerpts of teachings the philosophy that has revolutionized life management. For 25 years, Stephen R. Covey’s step-by-step lessons have helped millions from all walks of life lead successful and satisfying lives. A new condensed and transformed interactive edition of Stephen R. Covey’s most famous work, supported with videos, explanatory infographics, self-tests and more, is here to continue those valuable lessons.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9781633533103"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "1633533107"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 393,
+        "printType": "BOOK",
+        "categories": ["Business & Economics"],
+        "averageRating": 4.5,
+        "ratingsCount": 5,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "1.6.6.0.preview.3",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=0XupDAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=0XupDAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.com.ar/books?id=0XupDAAAQBAJ&printsec=frontcover&dq=intitle:habits+effective+inauthor:*&hl=&cd=1&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=0XupDAAAQBAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=0XupDAAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "AR",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 780.08,
+          "currencyCode": "ARS"
+        },
+        "retailPrice": {
+          "amount": 780.08,
+          "currencyCode": "ARS"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=0XupDAAAQBAJ&rdid=book-0XupDAAAQBAJ&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 780080000,
+              "currencyCode": "ARS"
+            },
+            "retailPrice": {
+              "amountInMicros": 780080000,
+              "currencyCode": "ARS"
+            }
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "AR",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com.ar/books/download/The_7_Habits_of_Highly_Effective_People-sample-epub.acsm?id=0XupDAAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com.ar/books/download/The_7_Habits_of_Highly_Effective_People-sample-pdf.acsm?id=0XupDAAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=0XupDAAAQBAJ&hl=&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Stephen R. Covey&#39;s the 7 Habits of Highly Effective People - Interactive Edition explains through infographics, videos and excerpts of teachings the philosophy that has revolutionized life management."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "eh9AzAEACAAJ",
+      "etag": "Ijjofk9rf5A",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/eh9AzAEACAAJ",
+      "volumeInfo": {
+        "title": "Grit",
+        "subtitle": "The Power of Passion and Perseverance",
+        "authors": ["Angela Duckworth"],
+        "publisher": "Scribner",
+        "publishedDate": "2018-08-21",
+        "description": "In this instant New York Times bestseller, Angela Duckworth shows anyone striving to succeed that the secret to outstanding achievement is not talent, but a special blend of passion and persistence she calls “grit.” “Inspiration for non-geniuses everywhere” (People). The daughter of a scientist who frequently noted her lack of “genius,” Angela Duckworth is now a celebrated researcher and professor. It was her early eye-opening stints in teaching, business consulting, and neuroscience that led to her hypothesis about what really drives success: not genius, but a unique combination of passion and long-term perseverance. In Grit, she takes us into the field to visit cadets struggling through their first days at West Point, teachers working in some of the toughest schools, and young finalists in the National Spelling Bee. She also mines fascinating insights from history and shows what can be gleaned from modern experiments in peak performance. Finally, she shares what she’s learned from interviewing dozens of high achievers—from JP Morgan CEO Jamie Dimon to New Yorker cartoon editor Bob Mankoff to Seattle Seahawks Coach Pete Carroll. “Duckworth’s ideas about the cultivation of tenacity have clearly changed some lives for the better” (The New York Times Book Review). Among Grit’s most valuable insights: any effort you make ultimately counts twice toward your goal; grit can be learned, regardless of IQ or circumstances; when it comes to child-rearing, neither a warm embrace nor high standards will work by themselves; how to trigger lifelong interest; the magic of the Hard Thing Rule; and so much more. Winningly personal, insightful, and even life-changing, Grit is a book about what goes through your head when you fall down, and how that—not talent or luck—makes all the difference. This is “a fascinating tour of the psychological research on success” (The Wall Street Journal).",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_10",
+            "identifier": "1501111116"
+          },
+          {
+            "type": "ISBN_13",
+            "identifier": "9781501111112"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": false
+        },
+        "pageCount": 368,
+        "printType": "BOOK",
+        "categories": ["Self-Help"],
+        "averageRating": 3.5,
+        "ratingsCount": 17,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "preview-1.0.0",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=eh9AzAEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=eh9AzAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.com.ar/books?id=eh9AzAEACAAJ&dq=intitle:grit+inauthor:*&hl=&cd=3&source=gbs_api",
+        "infoLink": "http://books.google.com.ar/books?id=eh9AzAEACAAJ&dq=intitle:grit+inauthor:*&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Grit.html?hl=&id=eh9AzAEACAAJ"
+      },
+      "saleInfo": {
+        "country": "AR",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "AR",
+        "viewability": "NO_PAGES",
+        "embeddable": false,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=eh9AzAEACAAJ&hl=&source=gbs_api",
+        "accessViewStatus": "NONE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "This is “a fascinating tour of the psychological research on success” (The Wall Street Journal)."
+      }
+    }
+  ]
+}

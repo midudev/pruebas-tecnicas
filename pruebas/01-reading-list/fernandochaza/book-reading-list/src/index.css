@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif; 
+}
+
+body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #dee4e7;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: #484845;
+}
