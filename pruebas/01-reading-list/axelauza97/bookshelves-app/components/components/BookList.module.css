@@ -1,0 +1,53 @@
+.bookList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+  gap: 1rem;
+  text-align: center;
+}
+
+.image {
+  width: 7rem;
+  height: 8rem;
+}
+
+.darken {
+  filter: brightness(35%);
+  position: relative;
+}
+
+.darken:after {
+  position: absolute;
+  /*height: 1rem;
+  width: 1rem;*/
+  top: -0.5rem;
+  bottom: 0rem;
+  left: 8rem;
+  right: 0rem;
+  content: "\274c";
+  color: #fff;
+}
+
+.title {
+  font-size: 1rem;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+  padding: 0.25rem;
+}
+
+.synopsis {
+  font-size: 0.75rem;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+@media screen and (min-width: 700px) {
+  .bookList {
+    margin: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  }
+  .image {
+    width: 10rem;
+    height: 11rem;
+  }
+  .darken:after {
+    left: 10rem;
+  }
+}

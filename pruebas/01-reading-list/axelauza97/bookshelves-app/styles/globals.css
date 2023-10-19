@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+video,
+section {
+  display: block;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+  font-family: "Oswald";
+  line-height: 1.4;
+  color: white;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+h4 {
+  font-size: 1.4rem;
+}
+
+p {
+  line-height: 1.4;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+html {
+  background-color: black;
+}
