@@ -1,0 +1,127 @@
+:root {
+  --color-white: #fff;
+  --color-black: #000;
+  --font-color-white: #fff;
+  --font-color-black: #000;
+  --font-size-medium: 2rem;
+  --color-orange-main: 255 103 0;
+  --font-monda: 'Monda', sans-serif;
+  --font-jost: 'Jost', sans-serif;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* 1rem = 10px */
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: var(--font-monda);
+  font-size: 1.6rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+h1, h2, h3, h4, p {
+  margin: 0;
+  color: var(--font-color-white);
+}
+
+a {
+  text-decoration: none;
+  color: var(--font-color-white);
+  display: block;
+}
+
+p {
+  font-size: var(--font-size-medium);
+  font-family: var(--font-monda);
+  font-weight: 300;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  color: var(--font-color-white);
+}
+
+svg {
+  width: 32px;
+  height: 32px;
+}
+
+.disableTransitions {
+  transition: unset !important;
+}
+
+.linknav {
+  width: 10rem;
+  background-color: unset;
+  border: unset;
+  position: relative;
+  padding-left: 1.5rem;
+  transition: padding-left .3s ease;
+}
+
+.linknav::before {
+  content: '';
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  display: block;
+  height: 3px;
+  width: 3px;
+  background-color: var(--color-white);
+  position: absolute;
+  transition: width .3s ease;
+}
+
+.linknav:hover,
+.linknav.selected {
+  padding-left: 2.5rem;
+}
+
+.linknav:hover::before,
+.linknav.selected::before {
+  width: 1.5rem;
+}
+
+.bookNotification {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: black;
+  overflow: hidden;
+}
+
+.bookNotification img {
+  width: 3rem;
+  height: 4.8rem;
+}
+
+.bookNotification p {
+  font-size: 1.4rem;
+  color: var(--font-color-black);
+}
+
+.bookNotification p span {
+  font-weight: 600;
+}
+
+.bookNotification a svg {
+  color: var(--font-color-black);
+  opacity: .6;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+}
