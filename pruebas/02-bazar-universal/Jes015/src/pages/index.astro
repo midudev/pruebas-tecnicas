@@ -1,0 +1,126 @@
+---
+import { SearchBox } from "@/components/Filter/components"
+import ProductSection from "@/components/ProductSection.astro"
+import Layout from "@/layouts/Layout.astro"
+import data from "@/lib/data.json"
+import { ProductCategories } from "@/models"
+---
+
+<Layout title="Midu Bazar">
+	<main class="flex flex-col">
+		<section
+			class="search-section h-[15em] flex flex-col justify-center p-5"
+		>
+			<h2 class="self-center text-[2em] font-bold drop-shadow-text">
+				Search now
+			</h2>
+			<SearchBox 
+				client:load
+				containerStyles="w-[100%] sm:w-[60%] self-center"
+			/>
+		</section>
+		<section class="products-section p-3">
+			{
+				Object.values(ProductCategories).map((category) => (
+					<section class="flex flex-col gap-5">
+						<ProductSection
+							title={category}
+							filterByText={category}
+							productList={data.products}
+						/>
+					</section>
+				))
+			}
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.search-section {
+		position: relative;
+		background-color: #000000;
+		opacity: 1;
+		background-image: repeating-radial-gradient(
+				circle at 0 0,
+				transparent 0,
+				#000000 40px
+			),
+			repeating-linear-gradient(#10101055, #101010);
+	}
+
+	.search-section__search-box {
+		width: clamp(18em, 40vw, 305em);
+	}
+
+	.search-section::after {
+		content: "";
+		position: absolute;
+		background: linear-gradient(
+			0deg,
+			rgba(0, 0, 0, 1) 0%,
+			rgba(0, 0, 0, 0) 100%
+		);
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 25%;
+		z-index: 0;
+	}
+
+	.products-section {
+		position: relative;
+		background-color: rgba(3, 3, 3, 1);
+		opacity: 1;
+		background-image: linear-gradient(
+				135deg,
+				rgba(7, 7, 7, 1) 25%,
+				transparent 25%
+			),
+			linear-gradient(225deg, rgba(7, 7, 7, 1) 25%, transparent 25%),
+			linear-gradient(45deg, rgba(7, 7, 7, 1) 25%, transparent 25%),
+			linear-gradient(315deg, rgba(7, 7, 7, 1) 25%, rgba(3, 3, 3, 1) 25%);
+		background-position:
+			19px 0,
+			19px 0,
+			0 0,
+			0 0;
+		background-size: 38px 38px;
+		background-repeat: repeat;
+
+		animation: scroll-background linear;
+		animation-duration: auto;
+		animation-timeline: scroll();
+	}
+
+	.products-section::after {
+		content: "";
+		position: absolute;
+		background: linear-gradient(
+			0deg,
+			rgba(34, 193, 195, 0) 0%,
+			rgba(0, 0, 0, 1) 100%
+		);
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 25%;
+		z-index: 0;
+	}
+
+	@keyframes scroll-background {
+		from {
+			background-position:
+				19px 0,
+				19px 0,
+				0 0,
+				0 0;
+		}
+		to {
+			background-position:
+				99px 0,
+				99px 0,
+				0 0,
+				0 0;
+		}
+	}
+</style>

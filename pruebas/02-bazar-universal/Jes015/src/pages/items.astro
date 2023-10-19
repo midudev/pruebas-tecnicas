@@ -1,0 +1,14 @@
+---
+import { DynamicProductsList } from "@/components/"
+import Layout from "@/layouts/Layout.astro"
+
+export const prerender = false
+---
+
+<Layout title="Items">
+    <main class="flex flex-col gap-3 p-3">
+        <div>
+            <DynamicProductsList client:only="react" />
+        </div>
+    </main>
+</Layout>

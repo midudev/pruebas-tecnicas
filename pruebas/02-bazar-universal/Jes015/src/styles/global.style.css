@@ -1,0 +1,24 @@
+.scroll {
+    --sb-track-color: rgb(3,3,3);
+    --sb-thumb-color: rgb(25,25,25);
+    --sb-size-y: 7px;
+    --sb-size-x: 4px;
+
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+}
+
+.scroll::-webkit-scrollbar {
+    width: var(--sb-size-y);
+    height: var(--sb-size-x);
+}
+
+.scroll::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 0px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    filter: drop-shadow(0px 0px 10px rgb(185, 185, 185));
+    border-radius: 0px;
+}

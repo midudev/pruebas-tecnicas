@@ -1,0 +1,26 @@
+.product {
+    animation:
+        product-in linear,
+        product-out linear;
+    animation-timeline: view(inline);
+    animation-range: entry, exit;
+    scroll-snap-align: end;
+}
+
+@keyframes product-in {
+    from {
+        translate: 10%;
+    }
+    to {
+        translate: 0%;
+    }
+}
+
+@keyframes product-out {
+    from {
+        translate: 0%;
+    }
+    to {
+        translate: -30%;
+    }
+}

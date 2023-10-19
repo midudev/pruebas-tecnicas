@@ -1,0 +1,83 @@
+---
+import { Product } from "@/components"
+import { type ProductArray } from "@/models"
+
+interface Props {
+    title: string;
+    filterByText?: string;
+    productList: ProductArray;
+}
+
+const { title, filterByText, productList } = Astro.props;
+---
+
+<section class="z-[300]">
+    <div class="flex justify-between items-center">
+        <h2 class="text-xl drop-shadow-text font-bold capitalize">{title}</h2>
+        <div class="counter">
+            <div class="counter__line"></div>
+        </div>
+    </div>
+    <div class="product__container flex overflow-x-auto gap-3 scroll p-2">
+        {
+            (() => {
+                let products = [...productList];
+                const shouldFilter = filterByText != null;
+
+                if (shouldFilter) {
+                    products = products.filter(
+                        (product) => product.category === filterByText,
+                    );
+                }
+
+                return products.map((data) => (
+                    <Product
+                        as="a"
+                        client:load
+                        imageSizeStyles="w-[9em] h-[9em]"
+                        mode="min"
+                        containerGridTemplateArea='"images" "productData"'
+                        {...{ data }}
+                    />
+                ));
+            })()
+        }
+    </div>
+</section>
+
+<style>
+    .product__container {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-timeline-name: --product-container;
+        scroll-timeline-axis: inline;
+        scroll-snap-type: x mandatory;
+    }
+
+    .counter {
+        position: relative;
+        height: 0.4em;
+        width: clamp(1em, 40vw, 50em);
+        background-color: rgba(255, 255, 255, 0.281);
+        border-radius: 0.3em;
+    }
+
+    .counter__line {
+        width: 0%;
+        height: 100%;
+        background-color: white;
+        border-radius: 0.3em;
+        filter: drop-shadow(0px 0px 3px white);
+
+        animation: counter-progress linear;
+        animation-duration: auto;
+        animation-timeline: scroll();
+    }
+
+    @keyframes counter-progress {
+        to {
+            width: 100%;
+        }
+    }
+</style>

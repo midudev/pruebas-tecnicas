@@ -1,0 +1,51 @@
+---
+import GlobalHeader from "@/components/GlobalLayoutStructure/GlobalHeader.astro"
+import "@/styles/global.style.css"
+import "@fontsource/roboto"
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta
+			name="description"
+			content="Explore a vast array of high-quality products and discover everything you need on our online marketplace. Uncover exciting deals, exclusive items, and an exceptional shopping experience, all in one place. Join us and uncover a world of online choices to meet your needs and desires!"
+		/>
+		<meta property="og:title" content="Midu Bazar" />
+		<meta property="og:type" content="website" />
+		<meta
+			property="og:url"
+			content="https://darling-empanada-9e0f4a.netlify.app/"
+		/>
+		<meta
+			property="og:image"
+			content="https://avatars.githubusercontent.com/u/1561955?v=4"
+		/>
+		<meta
+			property="og:description"
+			content="Explore a vast array of high-quality products and discover everything you need on our online marketplace. Uncover exciting deals, exclusive items, and an exceptional shopping experience, all in one place. Join us and uncover a world of online choices to meet your needs and desires!"
+		/>
+		<meta property="og:site_name" content="Midu Bazar" />
+		<meta name="twitter:site" content="@Jes015" />
+		<meta name="twitter:creator" content="@Jes015" />
+		<meta name="twitter:title" content="Midu Bazar" />
+		<meta
+			name="twitter:description"
+			content="Explore a vast array of high-quality products and discover everything you need on our online marketplace. Uncover exciting deals, exclusive items, and an exceptional shopping experience, all in one place. Join us and uncover a world of online choices to meet your needs and desires!"
+		/>
+	</head>
+	<body class="bg-primary text-text font-roboto scroll">
+		<GlobalHeader />
+		<slot />
+	</body>
+</html>

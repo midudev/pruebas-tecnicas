@@ -1,0 +1,16 @@
+---
+import { ProductItem } from "@/components/"
+import Layout from "@/layouts/Layout.astro"
+
+export const prerender = false
+const { item } = Astro.params;
+---
+
+<Layout title={`${item as string} - Midu Bazar`}>
+    <main class="flex flex-col gap-3 p-3 w-screen">
+        <ProductItem 
+            productId={Number(item)}
+            client:load
+        />
+    </main>
+</Layout>
