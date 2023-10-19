@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html, body {
+  @apply text-white lg:text-lg;
+}
+body {
+  background: url(/images/background.jpg) center center no-repeat;
+}
+:root {
+  font-family: 'Indie Flower';
+}
+#root:first-child {
+  @apply grid place-items-center;
+}
