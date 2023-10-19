@@ -1,0 +1,35 @@
+.to-read{
+    padding: 30px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.551);
+    color: white;
+    text-align: center;
+    border-radius: 1rem;
+    grid-area: to-read;
+
+}
+.container-list{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.figure{
+    width: 120px;
+    height: 160px;
+}
+.close-button{
+    position: relative;
+    top: 1.7rem;
+    left: 2.7rem;
+}
+.figure img{
+    width: 100%;
+    aspect-ratio: auto;
+}
+.figure:hover{
+    transform: scale(1.05);
+}
