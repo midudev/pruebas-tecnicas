@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Poppins Regular';
+  src: url("/fonts/Poppins-Regular.woff2") format("opentype");
+}
+
+@font-face {
+  font-family: 'Poppins Light';
+  src: url("/fonts/Poppins-Light.woff2") format("opentype");
+}
+
+@font-face {
+  font-family: 'Poppins Bold';
+  src: url("/fonts/Poppins-Bold.woff2") format("opentype");
+}
+
+@font-face {
+  font-family: 'PPRader Bold';
+  src: url("/fonts/PPRader-Bold.woff2") format("opentype");
+}
+
+:root {
+  --bg: #0F0F0F;
+  --bg-light: #272727;
+  --primary: #FDFDFD;
+  --secondary: #004599;
+  --secondary-light: #67DCF8;
+  background-color: var(--bg);
+  scrollbar-gutter: stable both-edges;
+}
+
+.read-book-container:hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
