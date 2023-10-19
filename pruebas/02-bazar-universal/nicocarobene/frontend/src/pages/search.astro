@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro'
+import ListOfCard from '../components/listOfCard.astro'
+import Nav from '../components/nav.astro'
+import { getResult } from '../service/getResult'
+import Product from '../components/product.astro'
+const { searchParams } = Astro.url
+const queryParam = searchParams.get('items') ?? ''
+const { categories, result } = await getResult({ queryParam })
+---
+<Layout title={`Search ${queryParam} | Bazar Online`}>
+  <Nav item={queryParam}/>
+  <main class='px-4 pb-6 max-w-full'>
+    <h1 class='px-3 text-2xl mb-4'>Result of Search <span class='font-bold'>{queryParam}</span> : {result.length}</h1>
+    <div class='mx-8 overflow-auto max-w-xs sm:max-w-full'>
+      <ul class='max-w-screen-sm flex gap-2 my-4 md:justify-center md:gap-6'>
+        <Product categories={categories} />
+      </ul>
+    </div>
+    <section class='px-5 flex flex-col gap-8'>
+      {result.error
+        ? (
+          <img src='https://media3.giphy.com/media/QMHoU66sBXqqLqYvGO/giphy.gif?cid=ecf05e47ozatwfh6k2ihnzgl9x43u0dooe6b865niffytyt2&ep=v1_gifs_search&rid=giphy.gif&ct=g'>
+          <p class='text-center'>Sorry, we could't find any result :(</p>
+          <p class='text-center'>But, we have some product that maybe interestingBut we have some products that may be of interest to you</p>
+          <a href='http://localhost:4321/search?items=iphone' class='text-blue-300 hover:text-blue-500 hover:underline'> Iphone </a>
+          <a href='http://localhost:4321/search?items=laptop' class='text-blue-300 hover:text-blue-500 hover:underline'>Laptop</a>
+          )
+        : <ListOfCard result={result} />
+      }
+    </section>
+  </main>
+</Layout>

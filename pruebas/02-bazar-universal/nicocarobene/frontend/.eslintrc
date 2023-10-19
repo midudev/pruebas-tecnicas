@@ -1,0 +1,71 @@
+{
+	"env": {
+		"es2022": true,
+		"node": true,
+		"browser": true
+	},
+	"globals": {
+		"Astro": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"eslint-config-prettier",
+		"standard",
+		"plugin:astro/recommended"
+	],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": "latest",
+		"sourceType": "module"
+	},
+	"rules": {
+		"no-unused-vars": "warn",
+		"@typescript-eslint/no-unused-vars": [
+			"warn",
+			{
+				"argsIgnorePattern": "^_",
+				"varsIgnorePattern": "^_",
+				"caughtErrorsIgnorePattern": "^_"
+			}
+		],
+		"no-multiple-empty-lines": "off",
+		"no-tabs": "off",
+		"quotes": [
+			"warn",
+			"single"
+		],
+		"jsx-quotes": [
+			"warn",
+			"prefer-single"
+		],
+		"eol-last": "off"
+	},
+	"overrides": [
+		{
+			"files": [
+        "*.astro",
+        "*.tsx",
+        "*.jsx"
+			],
+			"parser": "astro-eslint-parser",
+			"parserOptions": {
+				"ecmaVersion": "latest",
+				"ecmaFeatures": {
+					"jsx": false
+				},
+				"parser": "@typescript-eslint/parser",
+				"extraFileExtensions": [
+					".astro",
+          ".tsx",
+          ".jsx"
+				]
+			},
+			"rules": {
+        "no-mixed-spaces-and-tabs": "off",
+				"astro/no-set-html-directive": "error"
+			}
+		}
+	]
+}

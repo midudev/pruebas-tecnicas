@@ -1,0 +1,11 @@
+---
+const { categories = {} } = Astro.props
+---
+{
+  Object.entries(categories).map(category => (
+    <li class='flex flex-col justify-center items-center [&:nth-child(2n+1)]:bg-yellow-500  [&:nth-child(2n)]:bg-emerald-500 [&:nth-child(3n)]:bg-orange-400 rounded-xl h-16 px-2 gap-2'>
+      <strong class='text-sm'>{category[0]}</strong>
+      <span class='inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-green-700 bg-amber-200 rounded-full'>{category[1]} </span>
+    </li>
+  ))
+}

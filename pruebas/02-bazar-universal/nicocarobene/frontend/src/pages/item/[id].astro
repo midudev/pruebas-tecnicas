@@ -1,0 +1,81 @@
+---
+import Nav from '../../components/nav.astro'
+import Layout from '../../layouts/Layout.astro'
+import AddToCardForm from '../../components/addToCardForm'
+import { getItemById } from '../../service/getResult'
+const { id } = Astro.params
+const item = await getItemById({ id })
+if (item === undefined) {
+  return Astro.redirect('/404')
+}
+const ratin = new Array(Math.ceil(item?.rating ?? 0)).fill(0)
+---
+<Layout title={`${item?.title} | Bazar Online`}>
+  <Nav item={item?.title ?? ''}/>
+  <main class='h-full w-full grid place-content-center md:max-w-xl md:min-w-[800px] sm:min-w-[600px]'>
+  <div class='flex gap-4 justify-center items-center mt-6'>
+    <div>
+      <img id='img' src={item?.images[0]} alt={item?.title} class='rounded-full aspect-square object-cover md:w-80' width='210px' style={`view-transition-name: item-${id}`}>
+    </div>
+    <div>
+      {
+      item?.images.slice(1, 4).map((img) => {
+        return (
+          <img src={img} width='70px' class='rounded-full aspect-square object-cover my-2 md:w-24'/>
+        )
+      })
+      }
+    </div>
+  </div>
+  <div id='description' class='flex flex-col justify-center items-center gap-4 bg-slate-700 mt-10 rounded-md py-5 md:min-w-[580px]  sm:min-w-[400px] mx-8'>
+    <h1 class='text-2xl md:text-3xl font-bold text-center py-2'>{item?.title} - {item?.brand}</h1>
+      <div class='flex gap-4 justify-center'>
+        <div class='flex flex-col items-center'>
+          <span class='font-bold text-lg md:text-2xl'>{item?.price}$</span>
+          <span class='font-semibold text-xs md:text-base'>{item?.stock} available</span>
+        </div>
+        <div>
+          {ratin.map((_, index) => {
+            if (index === ratin.length - 1) {
+              return 	<span class='before:content-["\f089"] before:absolute'>&#9733;</span>
+            }
+            return <span class='text-[#f39c12]'>&#9733;</span>
+          })}
+        </div>
+
+      </div>
+    <p class='text-balance px-4 mx-5 md:text-xl md:my-6'>
+      {item?.description}
+    </p>
+    <AddToCardForm client:load item={{ id: item?.id ?? 0, name: item?.title ?? '', imageSrc: item?.images[0] ?? '', price: item?.price ?? 0 }} >
+      <button type='submit' class='text-white  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-bold rounded-lg text-2xl px-6 py-3  text-center mr-2 mb-2'>
+        Add to card
+      </button>
+    </AddToCardForm>
+  </div>
+
+  </main>
+</Layout>
+<script>
+const head = document.head || document.getElementsByTagName('head')[0]
+const ogTitle = document.createElement('meta')
+ogTitle.setAttribute('property', 'og:title')
+ogTitle.setAttribute('content', 'Bazar Online')
+const ogDescription = document.createElement('meta')
+ogDescription.setAttribute('property', 'og:description')
+ogDescription.setAttribute('content', 'pagina de compras online, donde la calidad se convierte en el mejor precio')
+const ogImage = document.createElement('meta')
+ogImage.setAttribute('property', 'og:image')
+ogImage.setAttribute('content', document.getElementById('img')?.getAttribute('src') ?? '')
+const ogType = document.createElement('meta')
+ogType.setAttribute('property', 'og:type')
+ogType.setAttribute('content', 'website')
+const ogUrl = document.createElement('meta')
+ogUrl.setAttribute('property', 'og:url')
+ogUrl.setAttribute('content', window.location.href)
+head.appendChild(ogTitle)
+head.appendChild(ogDescription)
+head.appendChild(ogImage)
+head.appendChild(ogType)
+head.appendChild(ogUrl)
+</script>

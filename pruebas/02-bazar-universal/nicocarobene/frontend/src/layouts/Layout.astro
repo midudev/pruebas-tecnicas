@@ -1,0 +1,92 @@
+---
+import { ViewTransitions } from 'astro:transitions'
+import CartFlyout from '../components/cartFlyout'
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang='en'>
+	<head>
+		<meta charset='UTF-8' />
+		<meta name='description' content='description of product ecommers' />
+		<meta name='viewport' content='width=device-width' />
+		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<meta name='generator' content={Astro.generator} />
+		<title>{title}</title>
+		<ViewTransitions/>
+	</head>
+	<body class='grid place-content-center'>
+		<slot />
+		<CartFlyout client:load />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	}
+	html {
+		font-family: system-ui, sans-serif;
+		background: #13151a;
+		background-size: 224px;
+		color: #fff;
+	}
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+	@keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @keyframes fade-out {
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes slide-from-right {
+    from {
+      transform: translateX(30px);
+    }
+  }
+
+  @keyframes slide-to-left {
+    to {
+      transform: translateX(-30px);
+    }
+  }
+
+  ::view-transition-old(root) {
+    animation:
+      100ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+      400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+  }
+
+  ::view-transition-new(root) {
+    animation:
+      310ms cubic-bezier(0, 0, 0.2, 1) 100ms both fade-in,
+      400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+  }
+</style>

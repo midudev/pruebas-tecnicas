@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Search from '../components/icons/search.astro'
+import Ecommers from '../components/icons/ecommers.astro'
+---
+<Layout title='Welcome to Bazar Online.'>
+	<main class='grid place-content-center h-screen'>
+		<section class='flex flex-col items-center gap-10'>
+			<div class='animate-float w-64 -mt-32'>
+				<Ecommers/>
+			</div>
+				<h1 class='text-5xl font-bold'>Bazar Online</h1>
+				<form action='/search' class='flex flex-col items-center gap-4 bg-gray-700 rounded-lg p-4'>
+					<div class='flex items-center gap-2'>
+						<input type='text' name='items' class='rounded-sm text-black p-1 outline-none ' autocomplete='off' placeholder='Iphone 9'>
+						<Search/>
+					</div>
+					<button class='text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center mr-2 mb-2'>Search</button>
+				</form>
+		</section>
+	</main>
+</Layout>
+<style>
+</style>

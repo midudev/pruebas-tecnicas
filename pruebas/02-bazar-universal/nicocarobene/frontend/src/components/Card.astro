@@ -1,0 +1,39 @@
+---
+interface Props {
+	title: string;
+	body: string;
+	to: string;
+	img: string;
+	price: number;
+	rating: number;
+	id: number
+}
+const { to, title, body, img, price, rating, id } = Astro.props
+const rate = Math.ceil(rating)
+const stars = new Array(rate).fill(0)
+---
+<a href={to} class='hover:bg-slate-700 rounded-sm'>
+	<li class='list-none flex items-center justify-start p-2 gap-3'>
+			<img alt={title} src={img} width='130px' class='aspect-square rounded-full object-cover' style={`view-transition-name: item-${id}`}>
+			<div>
+				<h3 class='font-bold py-1'>{title}</h3>
+				<p class='text-sm'>
+					{body}
+				</p>
+				<div class='flex mx-4 justify-start gap-6 py-2'>
+					<strong>{price}$</strong>
+					<div class='text-[#f39c12]'>
+					{stars.map((_, index) => {
+					  if (index === stars.length - 1) {
+					    return 	<span class='before:content-["\f089"] before:absolute'>&#9733;</span>
+					  }
+					  return <span class='text-[#f39c12]'>&#9733;</span>
+					})}
+			</div>
+			</div>
+		</div>
+	</li>
+</a>
+<style>
+
+</style>
