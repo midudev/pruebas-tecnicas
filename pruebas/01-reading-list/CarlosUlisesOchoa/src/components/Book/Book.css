@@ -1,0 +1,168 @@
+:root {
+  --dark-color: #111;
+  --light-color: #f0f5ff;
+  --aspect-ratio: 9/14;
+}
+.book {
+  background-color: var(--light-color);
+}
+.book {
+  animation: fadein 0.3s linear forwards;
+}
+.book--fading-out {
+  animation: fadeout 0.3s linear forwards;
+}
+/* media query that applies to all devices that got a pointer */
+@media (hover: hover) {
+  .book__cover:hover .book__options {
+    opacity: 1;
+  }
+  .book__cover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 255, 0);
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .book__cover:hover::before {
+    background-color: rgba(20, 33, 45, 0.5);
+    backdrop-filter: blur(2px);
+    transition: background-color 0.3s ease-in-out;
+  }
+}
+
+.book__cover {
+  position: relative;
+  overflow: hidden;
+}
+
+.book__cover-img {
+  object-fit: contain;
+  aspect-ratio: var(--aspect-ratio, 9/14);
+  opacity: 1;
+  transition:
+    filter 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
+}
+.book__options {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+.book__options-button--add-to-reading-list {
+  color: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 1rem;
+}
+.book__options-icon--add-to-reading-list {
+  width: 24px;
+  height: 24px;
+  fill: #000;
+  margin-bottom: 1.25rem;
+  transition: fill 0.2s ease-in-out;
+}
+.book__options-text--add-to-reading-list {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: white;
+}
+.book__details {
+  font-size: 0.75rem;
+  font-weight: 400;
+  padding: 0.25rem 0.75rem 0.5rem 0.75rem;
+}
+
+.book__details-meta {
+  display: flex;
+  justify-content: space-between; /* Align content to the right */
+}
+
+.book__details-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  padding: 1px;
+}
+
+.book__details-author {
+  text-decoration: underline;
+  margin-bottom: 0.5rem;
+}
+
+.book__details-pages {
+  font-style: italic;
+}
+
+/* Tablet */
+/* @media screen and (min-width: 480px) {
+  .grid__item-inner {
+    height: 274px;
+  }
+} */
+
+/* Small screens, laptops */
+/* @media screen and (min-width: 768px) {
+  .grid__item-inner {
+    height: 274px;
+  }
+} */
+
+/* Large screens */
+/* @media screen and (min-width: 1025px) {
+  .grid__item-inner {
+    height: 274px;
+  }
+} */
+
+@media (prefers-color-scheme: dark) {
+  .book {
+    background-color: var(--dark-color);
+  }
+  .book__options-icon--add-to-reading-list {
+    fill: #fff;
+  }
+  .book__options-text--add-to-reading-list,
+  .book__options-button--add-to-reading-list {
+    color: #fff;
+  }
+  @media (hover: hover) {
+    .book__cover:hover::before {
+      background-color: rgba(0, 0, 0, 0.75);
+    }
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

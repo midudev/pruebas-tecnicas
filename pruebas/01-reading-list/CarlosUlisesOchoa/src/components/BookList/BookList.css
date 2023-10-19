@@ -1,0 +1,48 @@
+.books__filters__pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.books__filters__pages > * {
+  display: inline-block;
+}
+
+.books__filters__pages > .label {
+  white-space: nowrap;
+}
+
+.books__container {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* .books__element {
+  display: grid;
+} */
+
+/* Tablet */
+/* @media screen and (min-width: 480px) {
+  .books__container {
+    max-width: 400px;
+    grid-template-columns: repeat(2, auto);
+  }
+} */
+
+/* Small screens, laptops */
+/* @media screen and (min-width: 768px) {
+  .books__container {
+    grid-template-columns: repeat(3, auto);
+  }
+} */
+
+/* Large screens */
+@media screen and (min-width: 1100px) {
+  .books__container {
+    max-width: 1024px;
+  }
+}
