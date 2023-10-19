@@ -1,0 +1,8 @@
+.library {
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 220px));
+  place-content: center;
+  gap: 25px;
+}

@@ -1,0 +1,261 @@
+.app-header {
+    padding: 5px 10px;
+    background-color: #A78295;
+    min-width: 390px;
+}
+
+.app-nav {
+    display: grid;
+    align-items: center;
+    grid-template-columns: min-content max-content;
+    grid-template-areas: "logo buttons menu";
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.app-title {
+    grid-area: logo;
+}
+
+.app-title h1 {
+    font-size: 43px;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    color: #331D2C;
+    text-align: start;
+    margin-bottom: 10px;
+}
+
+.app-title h1::after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 7px;
+    width: 250px;
+    bottom: -3px;
+    background-color: #331D2C;
+}
+  
+.nav-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    grid-area: buttons;
+}
+  
+.nav-options li {
+    list-style: none;
+}
+
+.nav-options li a {
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 7px;
+    color: #EFE1D1;
+    font-weight: 500;
+}
+
+.nav-options li a:hover {
+    background-color: #8a5f75;
+    transition: all 200ms ease-in;
+}
+
+.svg-menu-open, .svg-menu-close {
+    grid-area: menu;
+}
+
+#checkbox-menu {
+    display: none;
+}
+
+.svg-menu-close, .svg-menu-open {
+    text-decoration: none;
+    color: #EFE1D1;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: opacity 300ms;
+    z-index: 200;
+    display: none;
+}
+
+.svg-menu-close {
+    opacity: 0;
+}
+
+#checkbox-menu:checked ~ .svg-menu-close {
+    opacity: 1;
+}
+
+#checkbox-menu:checked ~ .svg-menu-open {
+    opacity: 0;
+}
+
+
+
+.app-general-info {
+    display: flex;
+    padding: 7px;
+    justify-content: space-between;
+    background-color: #3F2E3E;
+}
+
+.general-info-counter {
+    display: flex;
+    gap: 20px;
+    font-size: 16px;
+    position: relative;
+    color: #EFE1D1;
+}
+
+.general-info-filter {
+    display: none;
+}
+
+.general-info-filter svg {
+    color: #EFE1D1;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.app-general-info p span {
+    font-weight: bold;
+}
+
+.app-general-content {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(250px, 1fr) 5fr;
+}
+
+.main__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 250px;
+    padding: 20px;
+}
+
+
+.option_filter {
+    cursor: pointer;
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: 5px;
+    background-color: #EFE1D1;
+    color: #331D2C;
+}
+
+.option_filter:hover {
+    transition: all 200ms ease;
+    background-color: #e7d3bc;
+}
+
+.filter__title {
+    padding-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: #331D2C;
+}
+
+.option-selected {
+    background-color: #A78295;
+}
+
+.option-selected:hover {
+    transition: all 200ms ease;
+    background-color: #9b6c84;
+}
+
+
+.nav-options-responsive {
+    position: fixed;
+    width: 60%;
+    height: 100vh;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    list-style: none;
+    background-color: #331d2cf5;
+    padding: 100px 5vw;
+    
+    display: grid;
+    place-content: center;
+    gap: 30px;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms;
+}
+
+.nav-options-responsive li {
+    padding: 10px 20px;
+    border: 1px solid transparent;
+}
+
+.nav-options-responsive li a {
+    text-decoration: none;
+    color: #EFE1D1;
+}
+
+.nav-options-responsive li:hover {
+    border-radius: 5px;
+    border: 1px solid red;
+}
+
+#checkbox-menu:checked ~ .nav-options-responsive {
+    opacity: 1;
+    pointer-events: unset;
+}
+
+
+@media (max-width: 700px) {
+    .app-nav {
+        grid-template-areas: "logo menu";
+    }
+
+    .general-info-filter {
+        display: block;
+    }
+
+    .svg-menu-close, .svg-menu-open {
+        display: block;
+    }
+
+    .nav-options {
+        display: none;
+    }
+
+    .app-general-content {
+        grid-template-columns: 1fr;
+        grid-template-rows: min-content 5fr;
+    }
+
+    .main__menu {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
+        grid-auto-rows: min-content;
+        justify-content: space-around;
+        gap: 5px;
+    }
+
+    .filter__title {
+        display: none;
+    }
+
+    .option_filter {
+        padding: 10px;
+    }
+}
+
+@media (min-width: 700px) {
+    .main__menu {
+        display: flex !important;
+    }
+}
