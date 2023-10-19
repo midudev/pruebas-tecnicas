@@ -1,0 +1,60 @@
+@tailwind base;
+
+/* Scrollbar Style */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar:hover {
+	width: 8px;
+	height: 8px;
+	background-color: rgba(0, 0, 0, 0.06);
+}
+
+::-webkit-scrollbar-thumb {
+	border: 2px solid transparent;
+	border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:active {
+	border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: rgb(164, 164, 164);
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+@tailwind components;
+@tailwind utilities;
+
+@keyframes horizontal {   
+
+    0% {
+        transform: translateX(-100%);
+        animation-timing-function: cubic-bezier(0.8,0,1,1);
+    }
+
+    100% {
+        transform: translateX(300%);
+        animation-timing-function: cubic-bezier(0.8,0,1,1);
+    }
+}
+
+.animate-horizontal {
+    animation: horizontal 2s infinite;
+}
+
+.scrollbar-gutter-both-edges {
+	scrollbar-gutter: stable both-edges;
+}
+
+.scrollbar-gutter-stable {
+	scrollbar-gutter: stable;
+}
