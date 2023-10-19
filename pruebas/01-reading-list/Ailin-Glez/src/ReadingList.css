@@ -1,0 +1,95 @@
+.reading-list-header {
+  top: 1.5rem;
+  position: absolute;
+  right: 30%;
+}
+
+.reading-list-container {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  width: 8rem;
+  height: 14rem;
+  overflow: hidden;
+  padding: 0 1rem;
+}
+
+.reading-list-cover {
+  border: 5px solid var(--green-light);
+  width: 100%;
+  box-shadow: 1px -1px 10px 0px rgba(0, 0, 0, 0.3);
+}
+
+.reading-list {
+  position: relative;
+  padding: 8rem 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.6rem;
+  width: 22rem;
+}
+
+.reading-list-btn {
+  top: 4rem;
+  right: 1rem;
+  position: absolute;
+  border-radius: 8px;
+  border: none;
+  padding: 0.6rem 1rem;
+  font-size: 0.8em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--light-color);
+  color: var(--red-dark);
+  cursor: pointer;
+  margin: 5px;
+  transition: all ease 0.3s;
+}
+
+.reading-list-btn:hover {
+  background-color: var(--red-dark);
+  color: var(--light-color);
+  font-size: 1rem;
+}
+
+.reading-list-btn > img {
+  transition: display ease-in-out 0.5s;
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+.reading-list-btn:hover > img {
+  display: inline;
+  width: 13px;
+  padding: 5px 5px 0;
+}
+
+.no-reading-list {
+  width: 32rem;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.no-reading-list > h2 {
+  padding: 15rem;
+}
+
+.x-btn {
+  right: 0.3rem;
+  padding: 0.4rem 0.6rem;
+  position: absolute;
+  cursor: pointer;
+  border: none;
+  transition: font-size ease 0.2s;
+  background-color: var(--light-color);
+  color: var(--red);
+  box-shadow: 1px -1px 10px 0px rgba(0, 0, 0, 0.3);
+}
+
+.x-btn:hover {
+  font-size: 1.5rem;
+  background-color: var(--red);
+  color: var(--light-color);
+}
