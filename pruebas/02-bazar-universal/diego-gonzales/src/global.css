@@ -1,0 +1,147 @@
+/**
+ * Tailwind CSS imports
+ * View the full documentation at https://tailwindcss.com
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Nunito';
+  src:
+    url('/fonts/Nunito-Regular.woff2') format('woff2'),
+    url('/fonts/Nunito-Regular.woff') format('woff'),
+    url('/fonts/Nunito-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src:
+    url('/fonts/Nunito-Bold.woff2') format('woff2'),
+    url('/fonts/Nunito-Bold.woff') format('woff'),
+    url('/fonts/Nunito-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src:
+    url('/fonts/Nunito-Italic.woff2') format('woff2'),
+    url('/fonts/Nunito-Italic.woff') format('woff'),
+    url('/fonts/Nunito-Italic.ttf') format('truetype');
+  font-style: italic;
+  font-display: swap;
+}
+
+/**
+ * WHAT IS THIS FILE?
+ *
+ * Globally applied styles. No matter which components are in the page or matching route,
+ * the styles in here will be applied to the Document, without any sort of CSS scoping.
+ *
+ */
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+}
+
+body {
+  padding: 0;
+  line-height: inherit;
+}
+
+:root {
+  font-family: 'Nunito', sans-serif;
+  /* font-size: 16px; */
+}
+
+/* Animations */
+
+.tracking-in-expand {
+  animation: tracking-in-expand 0.4s linear both;
+}
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.2em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.bounce-right {
+  animation: bounce-right 0.9s linear both;
+}
+@keyframes bounce-right {
+  0% {
+    transform: translateX(48px);
+    animation-timing-function: ease-in;
+    opacity: 1;
+  }
+  24% {
+    opacity: 1;
+  }
+  40% {
+    transform: translateX(26px);
+    animation-timing-function: ease-in;
+  }
+  65% {
+    transform: translateX(13px);
+    animation-timing-function: ease-in;
+  }
+  82% {
+    transform: translateX(6.5px);
+    animation-timing-function: ease-in;
+  }
+  93% {
+    transform: translateX(4px);
+    animation-timing-function: ease-in;
+  }
+  25%,
+  55%,
+  75%,
+  87%,
+  98% {
+    transform: translateX(0);
+    animation-timing-function: ease-out;
+  }
+  100% {
+    transform: translateX(0);
+    animation-timing-function: ease-out;
+    opacity: 1;
+  }
+}
+
+.blur-in {
+  animation: blur-in 0.4s linear both;
+}
+@keyframes blur-in {
+  0% {
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+.scale-up-center {
+  animation: scale-up-center 0.4s;
+}
+@keyframes scale-up-center {
+  0% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

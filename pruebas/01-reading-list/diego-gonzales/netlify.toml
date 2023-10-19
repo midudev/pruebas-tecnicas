@@ -1,0 +1,7 @@
+[build]
+  publish = "dist/diego-gonzales"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

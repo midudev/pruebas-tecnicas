@@ -1,0 +1,56 @@
+{
+  "name": "diego-gonzales",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "16.0.0",
+    "@angular/common": "16.0.0",
+    "@angular/compiler": "16.0.0",
+    "@angular/core": "16.0.0",
+    "@angular/forms": "16.0.0",
+    "@angular/platform-browser": "16.0.0",
+    "@angular/platform-browser-dynamic": "16.0.0",
+    "@angular/router": "16.0.0",
+    "rxjs": "~7.8.0",
+    "tslib": "2.3.0",
+    "zone.js": "~0.13.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "16.0.0",
+    "@angular/cli": "~16.0.0",
+    "@angular/compiler-cli": "16.0.0",
+    "@types/jest": "29.5.3",
+    "@typescript-eslint/eslint-plugin": "5.50.0",
+    "autoprefixer": "10.4.14",
+    "daisyui": "3.2.1",
+    "eslint": "8.0.1",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-config-standard-with-typescript": "36.1.0",
+    "eslint-plugin-import": "2.25.2",
+    "eslint-plugin-n": "15.0.0 || 16.0.0 ",
+    "eslint-plugin-promise": "6.0.0",
+    "jest": "29.6.1",
+    "jest-preset-angular": "13.1.1",
+    "postcss": "8.4.26",
+    "prettier": "3.0.0",
+    "tailwindcss": "3.3.3",
+    "typescript": "~5.0.2"
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/config.jest.ts"
+    ],
+    "moduleNameMapper": {
+      "~/(.*)": "<rootDir>/src/app/$1"
+    }
+  }
+}

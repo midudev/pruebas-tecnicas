@@ -1,0 +1,34 @@
+<form class="flex flex-col sm:flex-row gap-4">
+  <div class="form-control w-full max-w-xs">
+    <label class="label">
+      <span class="label-text">
+        Filter by pages (max. {{ filters().pages }} pages)
+      </span>
+    </label>
+    <input
+      type="range"
+      min="0"
+      max="1500"
+      [value]="filters().pages"
+      class="range range-accent range-sm w-full max-w-xs"
+      (change)="onInputRangeChange($event)"
+    />
+  </div>
+
+  <div class="form-control w-full max-w-xs">
+    <label class="label">
+      <span class="label-text">
+        Filter by genre ({{ filteredBooks().length | i18nPlural: bookMapping }})
+      </span>
+    </label>
+    <select class="select select-bordered" (change)="onSelectChange($event)">
+      <option
+        [value]="genre"
+        [selected]="genre === filters().genre"
+        *ngFor="let genre of genres()"
+      >
+        {{ genre }}
+      </option>
+    </select>
+  </div>
+</form>

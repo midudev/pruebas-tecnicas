@@ -1,0 +1,24 @@
+<figure
+  class="rounded transition-all hover:contrast-75 contenedor relative"
+  (click)="goToBookDetail()"
+>
+  <label class="top-2 right-2">
+    <button
+      [title]="
+        !book.isFavorite ? 'Add to reading list' : 'Remove from reading list'
+      "
+      class="btn btn-accent btn-xs btn-circle"
+      (click)="updateReadingList($event)"
+    >
+      <span class="font-bold">
+        {{ !book.isFavorite ? '♡' : '♥' }}
+      </span>
+    </button>
+  </label>
+
+  <img
+    [src]="'assets/images/' + book.ISBN + '.webp'"
+    class="aspect-[320px/450px] w-full h-auto object-contain rounded-md"
+    [alt]="'Book of ' + book.title"
+  />
+</figure>

@@ -1,0 +1,30 @@
+<section class="mb-4 text-center md:text-left">
+  <h2 class="text-base-300">
+    {{ totalBooksAvailable() | i18nPlural: bookMapping }} available
+  </h2>
+  <h3 class="text-base-300">
+    {{ totalBooksInReadingList() | i18nPlural: bookMapping }} on the reading
+    list
+  </h3>
+</section>
+
+<section class="mb-4">
+  <app-book-filters />
+</section>
+
+<div
+  class="grid grid-cols-1 gap-8 mt-8"
+  [ngClass]="{
+    'md:grid-cols-[2fr_1fr]': totalBooksInReadingList() > 0
+  }"
+>
+  <div>
+    <h2 class="text-xl text-center mb-4 font-bold">Book List</h2>
+    <app-book-list />
+  </div>
+
+  <aside *ngIf="totalBooksInReadingList() > 0">
+    <h2 class="text-xl text-center mb-4 font-bold">My reading list</h2>
+    <app-reading-list />
+  </aside>
+</div>
