@@ -1,0 +1,14 @@
+.books-grid{
+  overflow: hidden;
+}
+.books-grid ul{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+  grid-auto-rows: 250px;
+  gap: 16px;
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  height: 100%;
+}

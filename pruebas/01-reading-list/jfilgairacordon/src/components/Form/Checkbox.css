@@ -1,0 +1,28 @@
+.checkbox {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.checkbox input[type="checkbox"] {
+  background-color: black;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  appearance: none;
+  border: 2px solid #000;
+  border-radius: 4px;
+  transition: all 150ms linear;
+}
+
+.checkbox input[type="checkbox"]:hover {
+  border: 2px solid #09f;
+}
+
+.checkbox input[type="checkbox"]:checked {
+  background-color: #09f;
+  border-width: 4px;
+  transform: rotate(45deg);
+}

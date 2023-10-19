@@ -1,0 +1,49 @@
+.select-container{
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  gap: 4px;
+  position: relative;
+}
+
+.select-container select{
+  height: 42px;
+  border-radius: 8px;
+  padding: 0 12px;
+  background-color: black;
+  border: 2px solid black;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  user-select: none;
+  appearance: none;
+  transition: border-color 150ms linear;
+}
+
+.select-container select:focus{
+  border-color: #09f;
+}
+
+.select-container select:hover{
+  cursor: pointer;
+  border-color: #09f;
+}
+
+.select-container:after {
+  content: '<>';
+  color: white;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  right: 11px;
+
+  /*Adjust for position however you want*/
+  top: 35px;
+  padding: 0 0 2px;
+  border-bottom: 1px solid #999;
+
+  /*left line */
+  position: absolute;
+  pointer-events: none;
+}

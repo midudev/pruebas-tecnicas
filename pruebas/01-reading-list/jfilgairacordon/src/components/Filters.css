@@ -1,0 +1,11 @@
+.app .filters{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px
+}
+
+.app .filters{
+  display: grid;
+  grid-template-columns: repeat(3, 200px) 1fr;
+}
