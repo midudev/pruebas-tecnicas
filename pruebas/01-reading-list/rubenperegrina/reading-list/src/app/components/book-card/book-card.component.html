@@ -1,0 +1,27 @@
+<div
+  class="card text-dark card-has-bg click-col"
+  style="background-image: url('{{ book.cover }}')">
+</div>
+<div class="d-flex flex-column">
+  <div class="card-body">
+    <div class="row mb-3">
+      <h4 class="card-title mt-2">
+        <b class="text-dark">{{ book.title.length < 6 ? book.title : book.title.slice(0, 24) + '...' }}</b>
+      </h4>
+      <mat-chip class="mb-2">
+        {{book.author.name}}
+      </mat-chip>
+      <mat-chip>
+        {{book.genre}}
+      </mat-chip>
+    </div>
+  </div>
+  <div class="card-footer">
+    <button *ngIf="listType === 'reading'" mat-mini-fab color="primary" (click)="addToAvailableList(book)">
+      <mat-icon>library_books</mat-icon>
+    </button>
+    <button *ngIf="listType === 'available'" mat-mini-fab (click)="addToReadingList(book)">
+      <mat-icon>favorite</mat-icon>
+    </button>
+  </div>
+</div>

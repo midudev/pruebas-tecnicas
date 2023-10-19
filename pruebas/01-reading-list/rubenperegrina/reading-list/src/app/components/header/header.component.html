@@ -1,0 +1,14 @@
+<mat-toolbar class="d-flex justify-content-center">
+    <div class="header-buttons">
+      <button mat-fab extended color="primary" [routerLink]="['/available-books']" routerLinkActive="router-link-active" >
+        <mat-icon>library_books</mat-icon>
+        Libros disponibles
+        <span>{{ availableBooks.length }}</span>
+      </button>
+      <button mat-fab extended color="primary" [routerLink]="['/reading-list']" routerLinkActive="router-link-active">
+        <mat-icon>favorite</mat-icon>
+        Lista de lectura
+        <span>{{ readingListBooks.length }}</span>
+      </button>
+    </div>
+  </mat-toolbar>

@@ -1,0 +1,26 @@
+<h1>Lista de libros disponibles</h1>
+<ng-container *ngIf="availableBooks.length; else noBooks">
+  <h1 [ngPlural]="availableBooks.length">
+    <ng-template ngPluralCase="=1">
+      {{ availableBooks.length }} libro disponible
+    </ng-template>
+    <ng-template ngPluralCase="other">
+      {{ availableBooks.length }} libros disponibles
+    </ng-template>
+  </h1>
+  <section class="wrapper">
+    <div class="container">
+      <div class="row">
+        <div
+          *ngFor="let book of availableBooks; trackBy: trackByItems"
+          class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <book-card [book]="book.book" [listType]="'available'" />
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-container>
+
+<ng-template #noBooks>
+  <h1>No hay libros disponibles</h1>
+</ng-template>
