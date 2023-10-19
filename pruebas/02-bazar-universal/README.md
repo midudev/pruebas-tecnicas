@@ -1,3 +1,7 @@
+Realizar Npm Install en el frontend y backend
+npm run dev y listo 
+
+
 # 02 - Desarrollo Full Stack de Bazar
 
 <small>
