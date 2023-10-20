@@ -1,0 +1,22 @@
+.books {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  justify-items: center;
+  gap: 20px;
+  max-width: 1200px;
+}
+
+.empty {
+  text-align: center;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  .books {
+    max-width: 100%;
+    justify-items: center;
+  }
+}

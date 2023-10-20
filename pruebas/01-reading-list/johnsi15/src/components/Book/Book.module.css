@@ -1,0 +1,29 @@
+.title {
+  margin: 5px 0;
+}
+
+.book {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 460px;
+  max-width: 320px;
+  min-width: 320px;
+}
+
+.book .cover {
+  margin: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: var(--color-secondary);
+  mask: linear-gradient(var(--color-secondary));
+  -webkit-mask: linear-gradient(var(--color-secondary) 0 0);
+  background-clip: content-box;
+  padding: 1px;
+}
+
+.cover img {
+  object-fit: cover;
+  min-height: 460px;
+  width: 100%;
+}

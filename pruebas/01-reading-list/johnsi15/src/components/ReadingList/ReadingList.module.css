@@ -1,0 +1,64 @@
+.readingList {
+  min-width: 300px;
+  background: #060616;
+  padding: 20px 10px;
+  box-sizing: border-box;
+  min-height: 100vh;
+  position: relative;
+}
+
+.title {
+  margin: 0 0 20px;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.readingList ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-height: 100vh;
+}
+
+.book {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -180px;
+}
+
+.book:first-child {
+  margin-top: 0;
+}
+
+.cover {
+  margin: 0;
+  position: relative;
+}
+
+.cover button {
+  background: transparent;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: -15px;
+  right: -20px;
+  cursor: pointer;
+  background: rgb(0 0 0 / 70%);
+  padding: 0;
+  height: 30px;
+  width: 30px;
+}
+
+@media screen and (max-width: 768px) {
+  .readingList {
+    position: fixed;
+    top: 0;
+    left: -500px;
+    transition: left ease-in-out .2s;
+  }
+
+  .readingList.active {
+    left: 0;
+  }
+}
