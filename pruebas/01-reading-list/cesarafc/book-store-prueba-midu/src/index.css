@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* .books-library > img {
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 0 30px #000;
+} */
+.books-library {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(230px, 1fr)
+    );
+    gap: 25px;
+    padding: 20px 0;
+}
