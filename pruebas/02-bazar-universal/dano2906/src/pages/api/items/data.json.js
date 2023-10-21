@@ -9,11 +9,12 @@ export async function GET({ params, request }) {
     const paginatedData = data.slice(page*3,page*3+3)
     const nextPage = page+1;
     const prevPage = page === 0 ? 0 : page -1;
+    const isFirtPage = page === 0 ? true : false;
     const isLastPage = paginatedData.length < 3 ? true : false;
     const quantity = data.length
     
     return new Response(
-      JSON.stringify({paginatedData,nextPage,prevPage,isLastPage,quantity}), {
+      JSON.stringify({paginatedData,nextPage,prevPage,isLastPage,isFirtPage,quantity}), {
         status: 200,
         headers: {
           "Content-Type": "application/json"

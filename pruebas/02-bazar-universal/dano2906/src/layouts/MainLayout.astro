@@ -8,7 +8,7 @@ const { title,description,keywords } = Astro.props
 <html lang="es" class="light">
   <ViewTransitions />
   <BaseHead title={title} description={description} keywords={keywords}/>
-  <body class="w-screen min-h-screen">
+  <body class="w-screen min-h-screen overflow-x-hidden">
     <div class="bg-gradient-to-br from-blue-100 via-pink-100 to-orange-100">
       {Astro.url.pathname !== "/" &&<Navigation />}
       <slot />

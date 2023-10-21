@@ -48,7 +48,7 @@ Ten en cuenta:
     - Ruta: `/items?search=`, por ejemplo: `/items/?search=laptop`
     - Descripción: Muestra justo debajo de la caja de búsqueda, el número de resultados y también los resultados que muestra para cada categoría. En cada tarjeta de los resultados muestra: título, descripción, precio, categoría, imagen y puntuación.
 
-  - Detalle de producto: "/items/:id" []
+  - Detalle de producto: "/items/:id" [✅]
     - Ruta: `/items/:id`
     - Descripción: Muestra la descripción completa del producto, incluyendo todos los detalles que tengas: precio, descripción, marca, stock, categoría, etc. Muestra todas las imágenes. También un botón para poder realizar la compra (aunque no funcione)
 
@@ -66,17 +66,17 @@ Ten en cuenta:
 
 2. **Semántica HTML**: El HTML debe ser semántico y accesible. [✅]
 
-3. **Pensando en equipo**: Prepara tu proyecto pensando que cualquier persona de tu equipo puede tener que trabajar en él en el futuro. (scripts en el package.json, mínima documentación en el README, comentarios en el código si es necesario, etc) []
+3. **Pensando en equipo**: Prepara tu proyecto pensando que cualquier persona de tu equipo puede tener que trabajar en él en el futuro. (scripts en el package.json, mínima documentación en el README, comentarios en el código si es necesario, etc) [✅]
 
-4. **Formatea tu código**: Asegúrate de que tu código está formateado de forma consistente. Puedes usar Prettier o cualquier otra herramienta que te guste. []
+4. **Formatea tu código**: Asegúrate de que tu código está formateado de forma consistente. Puedes usar Prettier o cualquier otra herramienta que te guste. [✅]
 
-5. **Preparado para producción**: Asegúrate de que tu aplicación está lista para producción. Minimiza el código, optimiza las imágenes, etc. []
+5. **Preparado para producción**: Asegúrate de que tu aplicación está lista para producción. Minimiza el código, optimiza las imágenes, etc. [✅]
 
 ## Desafíos adicionales
 
 **¿Quieres ir más allá?** Estos son algunos desafíos adicionales que puedes intentar:
 
-- Implementa la funcionalidad de carrito de la compra. []
+- Implementa la funcionalidad de carrito de la compra. [✅]
 - Haz que el diseño sea responsive. [✅]
 - Integra la paginación tanto en la API como en la web. [✅]
 

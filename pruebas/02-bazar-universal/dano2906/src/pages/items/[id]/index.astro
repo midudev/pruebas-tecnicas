@@ -5,15 +5,19 @@ import productImage from "../../../../public/placeholder-product-image.png"
 const {id} = Astro.params
 const res = await fetch(Astro.url.origin + `/api/items/${id}/data.json`)
 const {product} = await res.json()
-const {title,description,price,category,rating} = product
+const {title,description,price,category,rating,stock,brand,discountPercentage} = product
 
 ---
 
 <MainLayout title={`Producto numero ${id}`} description="Tienda implementada para la prueba técnica #2 de midudev basada en una prueba de Mercado Libre" keywords={['prueba tecnica','desarrollo','tienda online']}>
-    <Image src={productImage} alt={title} width={192} height={192} class="rounded-lg" transition:name="img"/>
-    <h2 class="text-2xl font-tilt font-bold text-purple-950" transition:name="title">{title}</h2>
+    <section class="max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-4xl mx-auto h-screen flex flex-col items-center justify-start gap-y-2 mt-10 sm:mt-0">
+        <Image src={productImage} alt={title} width={192} height={192} class="relative rounded-lg" transition:name="img"/>
+        <span class="absolute px-1 rounded-full text-base font-tilt font-normal bg-purple-950 text-purple-50">{stock}</span>
+        <h2 class="text-2xl font-tilt font-bold text-purple-950" transition:name="title">{title}</h2>
         <p class="text-lg font-tilt font-light text-purple-950" transition:name="desc">{description}</p>
-        <span class="text-sm font-tilt font-normal text-purple-950" transition:name="category">{category}</span>
-        <span class="text-sm font-tilt font-light text-purple-950" transition:name="price">Price: ${price}</span>
-        <span class="text-sm font-tilt font-light text-purple-950" transition:name="rating">Rating: {rating}/5</span>
+        <span class="text-sm font-tilt font-normal text-purple-950">Marca: {brand}</span>
+        <span class="text-sm font-tilt font-normal text-purple-950" transition:name="category">Categoría: {category}</span>
+        <span class="text-sm font-tilt font-light text-purple-950" transition:name="price">Precio: ${price}--descuento: ${discountPercentage}%</span>
+        <span class="text-sm font-tilt font-light text-purple-950" transition:name="rating">Evaluación: {rating}/5</span>
+    </section>
 </MainLayout>
