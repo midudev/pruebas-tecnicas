@@ -17,6 +17,9 @@ dependencies:
   astro:
     specifier: 3.3.0
     version: 3.3.0
+  astro-social-share:
+    specifier: ^1.0.0
+    version: 1.0.0
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -1053,6 +1056,10 @@ packages:
 
   /array-iterate@2.0.1:
     resolution: {integrity: sha512-I1jXZMjAgCMmxT4qxXfPXa6SthSoE8h6gkSI9BGGNv8mP8G/v0blc+qFnZu6K42vTOiuME596QaLO0TP3Lk0xg==}
+    dev: false
+
+  /astro-social-share@1.0.0:
+    resolution: {integrity: sha512-6xTtntvyB1VP87AcO2QDb1KoUC+9zjKzN1bobgOWiGilZtygEL1Dobe5Lfbj4HLrJbqKqmjhIjKqFM+/gD32xg==}
     dev: false
 
   /astro@3.3.0:
