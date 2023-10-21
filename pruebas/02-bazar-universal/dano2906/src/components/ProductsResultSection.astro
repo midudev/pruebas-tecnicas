@@ -1,0 +1,21 @@
+---
+import ProductCard from "./ProductCard.astro";
+const query = Astro.url.searchParams.get('search')
+const page = Astro.url.searchParams.get('page')
+const res = await fetch(Astro.url.origin + `/api/items/data.json?search=${query}&page=${page || 0}`)
+const {paginatedData: products,nextPage,prevPage,isLastPage,isFirtPage,quantity} = await res.json()
+---
+
+<div class="max-w-sm p-2 mx-auto sm:max-w-md md:max-w-4xl">
+    <h1 class="text-lg font-bold sm:text-3xl font-tilt text-purple-950">Cantidad de productos encontrados: {quantity}</h1>
+    <ul class="grid grid-cols-1 p-2 sm:grid-cols-2 md:grid-cols-3 gap-y-2 sm:gap-2">
+        {products.map((product: any)=>(
+            <ProductCard product={product}/>
+        ))}
+    </ul>
+    <div class="flex items-start justify-start gap-x-2">
+        <a href=`/items?search=${query}&page=${prevPage}` aria-disabled="true" class:list={["p-1 my-2 text-sm font-light transition-all rounded-lg md:text-lg font-tilt bg-gradient-to-br from-blue-200 via-pink-200 to-orange-200 hover:scale-105",[isFirtPage ?"opacity-20 pointer-events-none shadow-md":"text-purple-950"]]}>Página anterior</a>
+        <a href={isLastPage ? `${Astro.url}`:`/items?search=${query}&page=${nextPage}`} class:list={["p-1 my-2 text-sm font-light transition-all rounded-lg md:text-lg font-tilt bg-gradient-to-br from-blue-200 via-pink-200 to-orange-200 hover:scale-105",[isLastPage?"opacity-20 pointer-events-none shadow-md":"text-purple-950"]]}>Página siguiente</a>
+    </div>
+    
+</div>

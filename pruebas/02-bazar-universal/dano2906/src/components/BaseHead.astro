@@ -1,0 +1,24 @@
+---
+interface Props {
+    title: string
+    description: string
+    keywords: string[]
+}
+
+const { title,description,keywords } = Astro.props
+
+const metaKeys = keywords.join()
+---
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content={title}>
+    <meta name="description" content={description}>
+    <meta name="keywords" content={metaKeys}>
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="Spanish">
+    <link rel="icon" type="image/svg" href="/icon.svg"/>
+    <title>{title}</title>
+</head>

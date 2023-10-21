@@ -1,0 +1,13 @@
+---
+export const prerrender = false;
+import ProductsResultSection from "@components/ProductsResultSection.astro";
+import SearchForm from "@components/SearchForm.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+const query = Astro.url.searchParams.get('search')
+---
+<MainLayout  title={`Resultados de busqueda para ${query}`} description="Tienda implementada para la prueba técnica #2 de midudev basada en una prueba de Mercado Libre" keywords={['busqueda', query,'tiendas online']}> 
+    <section class="max-w-sm min-h-screen mx-auto sm:max-w-md md:max-w-4xl">
+        <SearchForm />
+        <ProductsResultSection />
+    </section>
+</MainLayout>

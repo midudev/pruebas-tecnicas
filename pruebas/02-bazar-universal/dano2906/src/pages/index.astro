@@ -1,0 +1,13 @@
+---
+import MainLayout from "@layouts/MainLayout.astro";
+import { Image } from "astro:assets";
+import SearchForm from "@components/SearchForm.astro";
+---
+
+
+<MainLayout title="Bazar universal" description="Tienda implementada para la prueba técnica #2 de midudev basada en una prueba de Mercado Libre" keywords={['prueba tecnica','desarrollo','tienda online']}>
+    <main class="grid w-full h-screen max-w-sm mx-auto sm:max-w-xl md:max-w-4xl place-content-center gap-y-8">
+        <Image src={"/shopImg.svg"} alt="Shop Image" format="webp" width={256} height={256} class="mx-auto"/>
+        <SearchForm />
+    </main>
+</MainLayout>
