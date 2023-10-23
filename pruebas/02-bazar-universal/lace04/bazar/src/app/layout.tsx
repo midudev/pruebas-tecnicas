@@ -6,7 +6,7 @@ import Header from '@/components/header';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Bazar Online',
+  title: 'Bazar Online Prueba Tecnica #2',
   description: 'Prueba tecnica #2 de Bazar Online',
   keywords: [
     'Bazar Online',
