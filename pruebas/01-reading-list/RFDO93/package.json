@@ -1,0 +1,49 @@
+{
+  "name": "rfdo93",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@types/react-router-dom": "^5.3.3",
+    "localforage": "1.10.0",
+    "match-sorter": "6.3.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.14.2",
+    "sort-by": "1.2.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "5.17.0",
+    "@testing-library/react": "14.0.0",
+    "@types/react": "18.2.15",
+    "@types/react-dom": "18.2.7",
+    "@typescript-eslint/eslint-plugin": "5.62.0",
+    "@typescript-eslint/parser": "6.0.0",
+    "@vitejs/plugin-react-swc": "3.3.2",
+    "autoprefixer": "10.4.14",
+    "eslint": "8.45.0",
+    "eslint-config-standard-with-typescript": "37.0.0",
+    "eslint-plugin-import": "2.25.2",
+    "eslint-plugin-n": "15.0.0 || 16.0.0 ",
+    "eslint-plugin-promise": "6.0.0",
+    "eslint-plugin-react": "7.33.1",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "eslint-plugin-react-refresh": "0.4.3",
+    "happy-dom": "10.9.0",
+    "jsdom": "latest",
+    "postcss": "8.4.27",
+    "react-test-renderer": "18.2.0",
+    "tailwindcss": "3.3.3",
+    "typescript": "5.0.2",
+    "vite": "4.4.5",
+    "vitest": "0.34.1"
+  }
+}
