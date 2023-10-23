@@ -27,28 +27,27 @@ export function Gallery ({ images }: { images: string[] }) {
 
   return (
     <section>
-      <div className="relative">
-        <div className="flex justify-center items-center w-full bg-gray-200 aspect-square rounded-lg overflow-hidden">
+      <div className="relative group">
+        <div className="flex justify-center items-start w-full p-2 bg-gray-200 aspect-square rounded-lg overflow-hidden">
           {
             currentImage && (
               <Image
                 src={currentImage}
                 alt="."
-                width={290}
-                height={290}
+                width={0}
+                height={0}
+                className="w-full h-auto"
+                sizes="(min-width: 768px) 100vw, 16rem"
               />
             )
           }
         </div>
         {
           images.length > 1 && (
-            <div>
-              <div className="absolute bottom-2 left-0 right-0 flex justify-center items-center h-10 w-1/2 mx-auto bg-brand-dark opacity-60 rounded-xl">
-                <Link href={previousImageLink} className="flex justify-center items-center w-20 h-full">&lt;</Link>
-                <div className="mx-1 h-6 w-px bg-brand-darker"></div>
-                <Link href={nextImageLink} className="flex justify-center items-center w-20 h-full">&gt;</Link>
+              <div className="absolute bottom-2 left-0 right-0 flex justify-center items-center gap-2 h-12 w-full mx-auto opacity-40 group-hover:opacity-100 transition-opacity">
+                <Link href={previousImageLink} className="flex justify-center items-center w-12 h-full bg-brand-light rounded-md hover:bg-brand">👈</Link>
+                <Link href={nextImageLink} className="flex justify-center items-center w-12 h-full bg-brand-light rounded-md hover:bg-brand">👉</Link>
               </div>
-            </div>
           )
         }
       </div>
