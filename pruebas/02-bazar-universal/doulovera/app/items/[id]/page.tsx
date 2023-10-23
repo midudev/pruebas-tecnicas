@@ -7,7 +7,7 @@ import { StarsRating } from '@/components/stars-rating'
 import { CATEGORIES } from '@/constants'
 
 const fetchProduct = async (id: string): Promise<ProductExtended> => {
-  const response = await fetch(`${process.env.VERCEL_URL || 'http://localhost:3000'}/api/items/${id}`)
+  const response = await fetch(`${process.env.URL_DEPLOY || 'http://localhost:3000'}/api/items/${id}`)
   const product = await response.json()
   return product
 }
