@@ -1,0 +1,59 @@
+.books__header {
+  margin: 1em 0;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .8em 2em;
+  font: inherit;
+  gap: 2em;
+}
+
+.form__range,
+.form__select {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.form__select {
+  justify-content: space-between;
+}
+
+@media (width < 950px) {
+  .form {
+    flex-direction: column;
+    gap: .6em;
+  }
+
+  .form__select select {
+    min-width: 160px;
+  }
+}
+
+@media (width < 720px) {
+  .form__range,
+  .form__select {
+    flex-direction: column;
+    gap: .4em;
+  }
+
+  .form__range {
+    margin-top: .6em;
+  }
+
+  .form__select select {
+    min-width: 0;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}

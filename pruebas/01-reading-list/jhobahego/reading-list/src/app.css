@@ -1,0 +1,100 @@
+.header {
+  background: #333333;
+  padding: 1em 8em;
+  margin-bottom: .8em;
+  position: relative;
+}
+
+.container {
+  display: grid;
+  grid-template-areas: "books readedbooks";
+  gap: 2em;
+  place-content: center;
+}
+
+.section {
+  padding: 2em 8em;
+}
+
+.books {
+  margin-top: 2em;
+  grid-area: books;
+}
+
+aside {
+  display: none;
+}
+
+.books__read {
+  display: block;
+  grid-area: readedbooks;
+  display: flex;
+  flex-direction: column;
+  padding: .4em;
+  border: 1px solid beige;
+  border-radius: 12px;
+  min-width: 300px;
+  margin-top: 1em;
+}
+
+.books__read h2 {
+  margin: 1em 0;
+  text-align: center;
+}
+
+.notification {
+  margin-top: 4.6em;
+}
+
+@media (width < 950px) {
+  .books__read {
+    max-width: 180px;
+    min-width: 0;
+    padding: 0 1.2em;
+  }
+}
+
+@media (width < 720px) {
+  .container {
+    gap: .4em;
+    padding: 2em 1em;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .section {
+    padding: 2em 1em;
+  }
+}
+
+@media (width < 450px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+  }
+
+  .books__container {
+    width: 90%;
+    grid-template-columns: minmax(165px, 1fr);
+    margin: 0 auto;
+  }
+
+  .books {
+    margin: 0 0;
+  }
+
+  .books__read {
+    margin: 0 auto;
+  }
+
+  .navbar {
+    flex-direction: column;
+  }
+
+  .notification {
+    margin-top: 0;
+  }
+}
