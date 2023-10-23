@@ -12,8 +12,13 @@ export interface Product {
   images: string[]
 }
 
+export interface ProductExtended extends Product {
+  discountPrice: number
+  hasStock: boolean
+}
+
 export interface ProductDBResponse {
-  products: Product[]
+  products: ProductExtended[]
   total: number
 }
 

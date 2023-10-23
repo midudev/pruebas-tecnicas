@@ -8,15 +8,7 @@ import { useSearchParams } from 'next/navigation'
 import { ItemsHeader } from '@/components/items/header'
 import { CategoriesState, ResultsCount } from '@/components/items/results-length'
 import { ItemsList } from '@/components/items/items-list'
-
-const CATEGORIES: Record<string, string> = {
-  smartphones: '📱',
-  laptops: '💻',
-  fragrances: '🌸',
-  skincare: '🧴',
-  groceries: '🍎',
-  'home-decoration': '🏠',
-}
+import { CATEGORIES } from '@/constants'
 
 export function SearchResultsContent () {
   const searchParams = useSearchParams()
@@ -30,7 +22,6 @@ export function SearchResultsContent () {
     const fetchItems = async () => {
       const response = await fetch(`/api/items?q=${search}`)
       const data: ProductsApiResponse = await response.json()
-
       const categories = data.categories.map((category) => {
         return {
           title: category.category,

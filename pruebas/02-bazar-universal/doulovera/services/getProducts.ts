@@ -7,7 +7,17 @@ const PRODUCTS_PATH = process.cwd() + '/app/api/items/products.json'
 export const getAllProducts = async (): Promise<ProductDBResponse> => {
   try {
     const products = await fs.readFile(PRODUCTS_PATH, 'utf8')
-    return JSON.parse(products)
+    const parsedProducts = JSON.parse(products)
+    const mappedProducts = parsedProducts.products.map((product: Product) => {
+      const { price, discountPercentage } = product
+      const discountPrice = price - (price * (discountPercentage / 100))
+      return {
+        ...product,
+        discountPrice,
+        hasStock: Boolean(product.stock),
+      }
+    })
+    return { products: mappedProducts, total: parsedProducts.total }
   } catch (error) {
     throw new Error((error as Error).message)
   }
@@ -17,25 +27,8 @@ export const searchProducts = async (query: string): Promise<ProductsApiResponse
   const products = await getAllProducts()
   // remove not needed categories
   const strippedProducts: ProductChunk[] = products.products.map((product) => {
-    const {
-      brand, category, description, discountPercentage, id, thumbnail, price, rating, stock, title,
-    } = product
-
-    const discountPrice = price - (price * (discountPercentage / 100))
-
-    return {
-      id,
-      title,
-      description,
-      category,
-      price,
-      thumbnail,
-      discountPercentage,
-      rating,
-      brand,
-      discountPrice,
-      hasStock: Boolean(stock),
-    }
+    const { images, stock, ...values } = product
+    return values
   })
 
   const regex = new RegExp(query, 'i')
