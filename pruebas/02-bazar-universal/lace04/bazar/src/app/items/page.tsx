@@ -92,7 +92,7 @@ function ItemsPage() {
           <>
             Resultados para{' '}
             <span className='font-semibold'>
-              "{search}": {results.length}
+              &quot;{search}&quot;: {results.length}
             </span>
           </>
         </h1>
@@ -159,7 +159,7 @@ function ItemsPage() {
           <>
             Resultados de busqueda para
             <span className='font-semibold'>
-              "{search}": {results.length}
+              &quot;{search}&quot;: {results.length}
             </span>
             <div className='text-sm mt-2'>
               Categorías: &nbsp;
