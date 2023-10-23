@@ -17,7 +17,7 @@ export interface ProductDBResponse {
   total: number
 }
 
-export type ProductChunk = Omit<Product, 'images' | 'stock'> & { hasStock: boolean }
+export type ProductChunk = Omit<Product, 'images' | 'stock'> & { discountPrice: number, hasStock: boolean }
 export interface ProductsApiResponse {
   items: ProductChunk[]
   total: number

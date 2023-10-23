@@ -5,12 +5,14 @@ import { StarHalf } from '../icons/star-half'
 import { Star } from '../icons/star'
 import Link from 'next/link'
 
-export function ItemCard ({ item }: { item: ProductChunk }) {
-  const formattedPrice = new Intl.NumberFormat('en-US', {
+const formatPrice = (price: number) => {
+  return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
-  }).format(item.price)
+  }).format(price)
+}
 
+export function ItemCard ({ item }: { item: ProductChunk }) {
   const filledStars = Array.from({ length: 5 }, (_, index) => {
     const rating = Math.floor(item.rating * 2) / 2
     const starIndex = index + 1
@@ -25,6 +27,9 @@ export function ItemCard ({ item }: { item: ProductChunk }) {
     <article>
       <Link href={`/items/${item.id}`} className="flex justify-between flex-col gap-4 w-full min-w-[16rem] px-4">
         <div className="relative w-full h-64">
+          <p className="absolute top-2 right-2 z-10 p-1.5 rounded-lg text-xs font-semibold bg-brand-dark text-white">
+            -{item.discountPercentage}%
+          </p>
           <Image
             src={item.thumbnail}
             alt={item.title}
@@ -41,10 +46,10 @@ export function ItemCard ({ item }: { item: ProductChunk }) {
             {filledStars}
           </div>
 
-          <h3 className="text-xl">
-            {formattedPrice}
-            <span className="text-xs text-brand-darker align-middle"> -{item.discountPercentage}% OFF</span>
-          </h3>
+          <p className="flex items-center gap-4">
+            <span className="text-lg">{formatPrice(item.discountPrice)}</span>
+            <span className="line-through ml">{formatPrice(item.price)}</span>
+          </p>
         </div>
       </Link>
     </article>

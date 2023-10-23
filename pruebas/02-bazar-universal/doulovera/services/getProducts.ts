@@ -1,4 +1,4 @@
-import type { Product, ProductDBResponse } from '@/types/product'
+import type { Product, ProductChunk, ProductDBResponse, ProductsApiResponse } from '@/types/product'
 
 import fs from 'fs/promises'
 
@@ -13,13 +13,15 @@ export const getAllProducts = async (): Promise<ProductDBResponse> => {
   }
 }
 
-export const searchProducts = async (query: string) => {
+export const searchProducts = async (query: string): Promise<ProductsApiResponse> => {
   const products = await getAllProducts()
   // remove not needed categories
-  const strippedProducts = products.products.map((product) => {
+  const strippedProducts: ProductChunk[] = products.products.map((product) => {
     const {
       brand, category, description, discountPercentage, id, thumbnail, price, rating, stock, title,
     } = product
+
+    const discountPrice = price - (price * (discountPercentage / 100))
 
     return {
       id,
@@ -31,6 +33,7 @@ export const searchProducts = async (query: string) => {
       discountPercentage,
       rating,
       brand,
+      discountPrice,
       hasStock: Boolean(stock),
     }
   })
