@@ -1,0 +1,974 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Montserrat:wght@400;500;600&display=swap");
+
+$main-color: #f3e5d0;
+$second-color: #f8f3ed;
+$third-color: #daaa63;
+$text-color: #2c1810;
+$white-color: #ffffff;
+$black-color: #000000;
+$titles-font: "Montserrat", sans-serif;
+$text-font: "Libre Caslon Text", sans-serif;
+
+html {
+  box-sizing: border-box;
+  font-family: $titles-font, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue";
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  background-color: $main-color;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// TITLE
+
+.header-section {
+  h3 {
+    background-color: $third-color;
+    border-radius: 5rem;
+    width: 30%;
+    margin: 0.5rem auto 0 auto;
+    padding: 0.5rem 0;
+    color: $second-color;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+// COUNTER BOOKS
+.counter-books {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+  margin: 0 auto;
+
+  & > div {
+    padding: 1rem 0 0 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: $text-color;
+    gap: 0.5rem;
+
+    span {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      color: $text-color;
+      background-color: transparent;
+      width: 50px;
+      height: 50px;
+      border: 2px solid $third-color;
+      border-radius: 50%;
+    }
+
+    h4 {
+      margin: 0;
+    }
+  }
+}
+
+// FILTERS
+
+.filters-section {
+  width: 70%;
+  height: 2rem;
+  margin: 1rem auto;
+
+  aside {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-weight: bold;
+      color: $text-color;
+
+      select {
+        border: none;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        color: $text-color;
+        font-weight: bold;
+        background-color: $main-color;
+      }
+    }
+  }
+}
+
+// FOOTER
+
+.footer-section {
+  background-color: $text-color;
+  padding: 3rem 0;
+  text-align: center;
+
+  small {
+    color: $second-color;
+    font-weight: bold;
+
+    a {
+      color: $third-color;
+      text-decoration: none;
+      transition: color 300ms ease;
+
+      &:hover {
+        color: $main-color;
+      }
+    }
+  }
+}
+
+// MAIN CONTAINER
+
+.main-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+// BACKGROUND SECTION
+
+.background-section {
+  background-color: $second-color;
+  width: 90%;
+  margin: 2rem auto;
+  border-radius: 1rem;
+  height: 900px;
+  padding: 1rem 0;
+  position: relative;
+
+  .top {
+    border-top-left-radius: 5rem;
+    border-top-right-radius: 5rem;
+    width: 100%;
+    height: 25%;
+  }
+
+  .mid {
+    width: 100%;
+    height: 10%;
+    position: relative;
+    box-shadow: 0px 40px 20px -5px rgba($color: #000000, $alpha: 0.4);
+
+    .mid-table {
+      position: absolute;
+      left: -3.3rem;
+      right: -3.3rem;
+      top: 70%;
+      bottom: 0;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 20px solid rgba($color: #ffdba4, $alpha: 1);
+      box-shadow: 0px 10px $white-color;
+    }
+
+    .mid-table-shadow {
+      position: absolute;
+      left: -3.3rem;
+      right: -3.3rem;
+      top: 70%;
+      bottom: 0;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 20px solid rgba($color: #000000, $alpha: 0.1);
+    }
+  }
+
+  .bottom {
+    position: absolute;
+    width: 100%;
+    bottom: 3rem;
+    border-bottom-left-radius: 5rem;
+    border-bottom-right-radius: 5rem;
+  }
+}
+
+// CONTENT SECTION LIST OF BOOKS
+
+.content-section {
+  position: absolute;
+  bottom: 1rem;
+  width: 100%;
+  margin: 0rem auto;
+  min-height: 250px;
+  max-height: 250px;
+
+  .cards-container {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+
+    .btn-left,
+    .btn-right {
+      position: absolute;
+      background-color: transparent;
+      border: none;
+      color: $text-color;
+      font-weight: bold;
+      height: 30%;
+      width: 2.5rem;
+      cursor: pointer;
+      z-index: 200;
+
+      svg {
+        fill: $text-color;
+        border-radius: 50%;
+        padding: 0.2rem;
+        transition: all 200ms ease;
+
+        &:hover {
+          fill: $third-color;
+          transform: scale(1.2);
+        }
+      }
+    }
+
+    .btn-left {
+      left: 0rem;
+    }
+
+    .btn-right {
+      right: 0;
+    }
+  }
+
+  .carousel-container {
+    scroll-behavior: smooth;
+    height: 100%;
+    width: 95%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+
+    .carousel {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: auto;
+      display: flex;
+      justify-content: flex-start;
+      gap: 1.5rem;
+      padding: 2rem 0 0 1rem;
+      transition: all 1s ease-out;
+      margin-top: 1rem;
+
+      .book {
+        position: relative;
+        min-width: 130px;
+        max-width: 130px;
+        filter: grayscale(1);
+        transition: all 300ms ease;
+
+        &:hover {
+          filter: grayscale(0);
+        }
+
+        img {
+          border-bottom-left-radius: 0.3rem;
+          border-top-left-radius: 0.3rem;
+          width: 100%;
+          height: 100%;
+        }
+
+        .book-btn {
+          background-color: transparent;
+          z-index: 200;
+          border: none;
+          cursor: pointer;
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+        }
+
+        .book-left-shadow {
+          border-right: solid 0.9px rgba($color: #000000, $alpha: 0.3);
+          border-left: solid 0.1 px rgba($color: #000000, $alpha: 0.2);
+          position: absolute;
+          top: 0.2px;
+          bottom: 0.2px;
+          left: 0.5px;
+          right: 95%;
+          border-radius: 0.5rem;
+          box-shadow: 0px 0px 20px 0px inset rgba($color: #000000, $alpha: 0.2);
+        }
+
+        .book-right-shadow {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 100%;
+          right: 0;
+          border-left: 4px solid rgb(209, 209, 209);
+          border-top: 4px solid transparent;
+          border-bottom: 4px solid transparent;
+          z-index: 100;
+        }
+
+        .book-background-shadow {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          box-shadow: 8px 10px 10px 0px rgba($color: #000000, $alpha: 0.7);
+        }
+      }
+    }
+  }
+}
+
+// CONTENT SECTION LIST OF BOOKS TO READ
+
+.content-section-to-read {
+  position: absolute;
+  bottom: 0rem;
+  width: 100%;
+  margin: 0rem auto;
+  min-height: 250px;
+  max-height: 250px;
+
+  .cards-container {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+
+    .btn-left,
+    .btn-right {
+      position: absolute;
+      background-color: transparent;
+      border: none;
+      color: $text-color;
+      font-weight: bold;
+      height: 30%;
+      width: 2.5rem;
+      cursor: pointer;
+      z-index: 200;
+
+      svg {
+        fill: $text-color;
+        border-radius: 50%;
+        padding: 0.2rem;
+        transition: all 200ms ease;
+
+        &:hover {
+          fill: $third-color;
+          transform: scale(1.2);
+        }
+      }
+    }
+
+    .btn-left {
+      left: 0rem;
+    }
+
+    .btn-right {
+      right: 0;
+    }
+  }
+
+  .carousel-container {
+    scroll-behavior: smooth;
+    height: 100%;
+    width: 95%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+
+    .text {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .carousel {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: auto;
+      display: flex;
+      justify-content: flex-start;
+      gap: 1.5rem;
+      padding: 2rem 0 0 1rem;
+      margin-top: 1rem;
+      transition: all 1s ease-out;
+
+      .book {
+        position: relative;
+        min-width: 130px;
+        max-width: 130px;
+        transition: filter 300ms ease;
+
+        &:hover {
+          filter: grayscale(1);
+        }
+
+        img {
+          border-bottom-left-radius: 0.3rem;
+          border-top-left-radius: 0.3rem;
+          width: 100%;
+          height: 100%;
+        }
+
+        .book-btn {
+          background-color: transparent;
+          z-index: 200;
+          border: none;
+          cursor: pointer;
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+        }
+
+        .book-left-shadow {
+          border-right: solid 0.9px rgba($color: #000000, $alpha: 0.3);
+          border-left: solid 0.1 px rgba($color: #000000, $alpha: 0.2);
+          position: absolute;
+          top: 0.2px;
+          bottom: 0.2px;
+          left: 0.5px;
+          right: 95%;
+          border-radius: 0.5rem;
+          box-shadow: 0px 0px 20px 0px inset rgba($color: #000000, $alpha: 0.2);
+        }
+
+        .book-right-shadow {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 100%;
+          right: 0;
+          border-left: 4px solid rgb(209, 209, 209);
+          border-top: 4px solid transparent;
+          border-bottom: 4px solid transparent;
+          z-index: 100;
+        }
+
+        .book-background-shadow {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          box-shadow: 8px 10px 10px 0px rgba($color: #000000, $alpha: 0.7);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  // TITLE
+
+  .header-section {
+    h3 {
+      background-color: $third-color;
+      border-radius: 5rem;
+      width: 70%;
+      margin: 0.5rem auto 0 auto;
+      padding: 0.5rem 0;
+      color: $second-color;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+
+  // COUNTER BOOKS
+  .counter-books {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+
+    & > div {
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      color: $text-color;
+      gap: 0.5rem;
+
+      span {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1rem;
+        color: $text-color;
+        background-color: transparent;
+        width: 40px;
+        height: 40px;
+        border: 2px solid $third-color;
+        border-radius: 50%;
+      }
+
+      h4 {
+        font-size: 0.8rem;
+        margin: 0;
+      }
+    }
+  }
+
+  // FILTERS
+
+  .filters-section {
+    width: 90%;
+    height: 2rem;
+    margin: 1.5rem auto;
+
+    aside {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+
+      label {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-weight: bold;
+        font-size: 0.8rem;
+        color: $text-color;
+
+        select {
+          border: none;
+          border-radius: 0.5rem;
+          padding: 0.5rem;
+          color: $text-color;
+          font-weight: normal;
+          font-size: 0.8rem;
+          background-color: $main-color;
+
+          option {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+
+  // FOOTER
+
+  .footer-section {
+    background-color: $text-color;
+    padding: 5rem 0;
+    text-align: center;
+
+    small {
+      color: $second-color;
+      font-weight: bold;
+
+      a {
+        color: $third-color;
+        text-decoration: none;
+        transition: color 300ms ease;
+
+        &:hover {
+          color: $main-color;
+        }
+      }
+    }
+  }
+
+  // MAIN CONTAINER
+
+  .main-container {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  // BACKGROUND SECTION
+
+  .background-section {
+    background-color: $second-color;
+    width: 100%;
+    margin: 2rem auto;
+    border-radius: 0;
+    height: 900px;
+    padding: 1rem 0;
+    position: relative;
+
+    .top {
+      border-top-left-radius: 5rem;
+      border-top-right-radius: 5rem;
+      width: 100%;
+      height: 25%;
+    }
+
+    .mid {
+      width: 100%;
+      height: 10%;
+      position: relative;
+      box-shadow: 0px 40px 20px -5px rgba($color: #000000, $alpha: 0.4);
+
+      .mid-table {
+        position: absolute;
+        left: -3.3rem;
+        right: -3.3rem;
+        top: 70%;
+        bottom: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 20px solid rgba($color: #ffdba4, $alpha: 1);
+        box-shadow: 0px 10px $white-color;
+      }
+
+      .mid-table-shadow {
+        position: absolute;
+        left: -3.3rem;
+        right: -3.3rem;
+        top: 70%;
+        bottom: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 20px solid rgba($color: #000000, $alpha: 0.1);
+      }
+    }
+
+    .bottom {
+      position: absolute;
+      width: 100%;
+      bottom: 3rem;
+      border-bottom-left-radius: 5rem;
+      border-bottom-right-radius: 5rem;
+    }
+  }
+
+  // CONTENT SECTION LIST OF BOOKS
+
+  .content-section {
+    position: absolute;
+    bottom: 1rem;
+    width: 100%;
+    margin: 0rem auto;
+    min-height: 250px;
+    max-height: 250px;
+
+    .cards-container {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+
+      .btn-left,
+      .btn-right {
+        display: none;
+        position: absolute;
+        background-color: transparent;
+        border: none;
+        color: $text-color;
+        font-weight: bold;
+        height: 30%;
+        width: 2.5rem;
+        cursor: pointer;
+        z-index: 200;
+
+        svg {
+          fill: $text-color;
+          border-radius: 50%;
+          padding: 0.2rem;
+          transition: all 200ms ease;
+
+          &:hover {
+            fill: $third-color;
+            transform: scale(1.2);
+          }
+        }
+      }
+
+      .btn-left {
+        left: 0rem;
+      }
+
+      .btn-right {
+        right: 0;
+      }
+    }
+
+    .carousel-container {
+      scroll-behavior: smooth;
+      height: 100%;
+      width: 95%;
+      margin: 0 auto;
+      position: relative;
+      overflow-x: scroll;
+
+      .carousel {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0rem;
+        right: 0rem;
+        display: flex;
+        justify-content: start;
+        gap: 1.5rem;
+        padding: 2rem 0 0 0;
+
+        .book {
+          position: relative;
+          min-width: 130px;
+          max-width: 130px;
+          filter: grayscale(1);
+          transition: all 300ms ease;
+
+          &:hover {
+            filter: grayscale(0);
+          }
+
+          img {
+            border-bottom-left-radius: 0.3rem;
+            border-top-left-radius: 0.3rem;
+            width: 100%;
+            height: 100%;
+          }
+
+          .book-btn {
+            background-color: transparent;
+            z-index: 200;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+          }
+
+          .book-left-shadow {
+            border-right: solid 0.9px rgba($color: #000000, $alpha: 0.3);
+            border-left: solid 0.1 px rgba($color: #000000, $alpha: 0.2);
+            position: absolute;
+            top: 0.2px;
+            bottom: 0.2px;
+            left: 0.5px;
+            right: 95%;
+            border-radius: 0.5rem;
+            box-shadow: 0px 0px 20px 0px inset
+              rgba($color: #000000, $alpha: 0.2);
+          }
+
+          .book-right-shadow {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 100%;
+            right: 0;
+            border-left: 4px solid rgb(209, 209, 209);
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            z-index: 100;
+          }
+
+          .book-background-shadow {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            box-shadow: 8px 10px 10px 0px rgba($color: #000000, $alpha: 0.7);
+          }
+        }
+      }
+    }
+  }
+
+  // CONTENT SECTION LIST OF BOOKS TO READ
+
+  .content-section-to-read {
+    position: absolute;
+    bottom: -0.5rem;
+    width: 100%;
+    margin: 0rem auto;
+    min-height: 250px;
+    max-height: 250px;
+
+    .cards-container {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+
+      .btn-left,
+      .btn-right {
+        display: none;
+        position: absolute;
+        background-color: transparent;
+        border: none;
+        color: $text-color;
+        font-weight: bold;
+        height: 30%;
+        width: 2.5rem;
+        cursor: pointer;
+        z-index: 200;
+
+        svg {
+          fill: $text-color;
+          border-radius: 50%;
+          padding: 0.2rem;
+          transition: all 200ms ease;
+
+          &:hover {
+            fill: $third-color;
+            transform: scale(1.2);
+          }
+        }
+      }
+
+      .btn-left {
+        left: 0;
+      }
+
+      .btn-right {
+        right: 0;
+      }
+    }
+
+    .carousel-container {
+      scroll-behavior: smooth;
+      height: 100%;
+      width: 95%;
+      margin: 0 auto;
+      position: relative;
+      overflow-x: scroll;
+
+      .text {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .carousel {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: start;
+        gap: 1.5rem;
+        padding: 2rem 0 0 0;
+
+        .book {
+          position: relative;
+          min-width: 130px;
+          max-width: 130px;
+          transition: filter 300ms ease;
+
+          &:hover {
+            filter: grayscale(1);
+          }
+
+          img {
+            border-bottom-left-radius: 0.3rem;
+            border-top-left-radius: 0.3rem;
+            width: 100%;
+            height: 100%;
+          }
+
+          .book-btn {
+            background-color: transparent;
+            z-index: 200;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+          }
+
+          .book-left-shadow {
+            border-right: solid 0.9px rgba($color: #000000, $alpha: 0.3);
+            border-left: solid 0.1 px rgba($color: #000000, $alpha: 0.2);
+            position: absolute;
+            top: 0.2px;
+            bottom: 0.2px;
+            left: 0.5px;
+            right: 95%;
+            border-radius: 0.5rem;
+            box-shadow: 0px 0px 20px 0px inset
+              rgba($color: #000000, $alpha: 0.2);
+          }
+
+          .book-right-shadow {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 100%;
+            right: 0;
+            border-left: 4px solid rgb(209, 209, 209);
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            z-index: 100;
+          }
+
+          .book-background-shadow {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            box-shadow: 8px 10px 10px 0px rgba($color: #000000, $alpha: 0.7);
+          }
+        }
+      }
+    }
+  }
+}
