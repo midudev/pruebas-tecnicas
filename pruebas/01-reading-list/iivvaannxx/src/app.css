@@ -1,0 +1,22 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type='number'] {
+
+    appearance: textfield;
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
+
+    margin: 0;
+  }
+
+  * {
+
+    -webkit-tap-highlight-color: transparent;
+  }
+}
