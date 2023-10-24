@@ -1,0 +1,11 @@
+div.dark > div.ant-statistic-title {
+  color: var(--dark-font-1);
+}
+
+div.dark > div.ant-statistic-content > span.ant-statistic-content-value {
+  color: var(--dark-font-1);
+}
+
+div.dark > div.ant-statistic-content > span.ant-statistic-content-suffix {
+  color: rgb(180, 180, 180);
+}

@@ -1,0 +1,9 @@
+#RL-container {
+  width: 100%;
+  cursor: default
+}
+
+.list-container {
+  transition: unset;
+  cursor: pointer;
+}

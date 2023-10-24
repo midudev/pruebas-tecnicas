@@ -1,0 +1,48 @@
+.dark.PagesNum-container {
+
+}
+
+.dark.MinPage-input {
+  background-color: var(--dark-background-4) !important;
+  color: var(--dark-font-1) !important;
+}
+
+.dark.MinPage-input > .ant-input-number-input-wrap > input {
+  color: var(--dark-font-1) !important;
+}
+
+.dark.MinPage-input > div > span {
+  background-color: var(--dark-background-2);
+}
+
+.dark.MinPage-input > div > span > span > svg {
+  color: var(--dark-font-1);
+}
+
+
+
+.dark.MaxPage-input {
+  background-color: var(--dark-background-4) !important;
+  color: var(--dark-font-1) !important;
+}
+
+.dark.MaxPage-input > .ant-input-number-input-wrap > input {
+  color: var(--dark-font-1) !important;
+}
+
+.dark.MaxPage-input > div > span {
+  background-color: var(--dark-background-2);
+}
+
+.dark.MaxPage-input > div > span > span > svg {
+  color: var(--dark-font-1);
+}
+
+
+.dark.MaxPage-input > .ant-input-number-input-wrap > input::placeholder,
+.dark.MinPage-input > .ant-input-number-input-wrap > input::placeholder {
+  color: rgb(187, 187, 187);
+}
+
+
+

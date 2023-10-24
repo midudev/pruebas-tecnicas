@@ -1,0 +1,68 @@
+#InterestList-container {
+  margin-top: 15px;
+  padding: 0 5px;
+}
+
+#AutoAnimate-parent {
+  cursor: pointer
+}
+
+/* dragable styles */
+.Btr_drag-container {
+  animation: unset;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer
+}
+
+.Btr_drag-container_dragging {
+  pointer-events: none;
+  cursor: pointer;
+  border-radius: 10px;
+  animation: alternate .5s infinite drag_breath;
+}
+
+.Btr_drag-container_dragging.dark {
+  pointer-events: none;
+  cursor: pointer;
+  border-radius: 10px;
+  animation: alternate .5s infinite drag_breath_dark;
+}
+
+.IL_Empty-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30vh;
+  width: 100vw;
+}
+
+.EmptyMessage:hover {
+  text-decoration: underline;
+}
+
+.EmptyMessage.dark {
+  color: var(--dark-font-1);
+}
+
+.EmptyMessage.light {
+  color: #333
+}
+
+@keyframes drag_breath{
+  0% {
+    opacity: .5;
+  }
+  100% {
+    opacity: .9;
+  }
+}
+
+@keyframes drag_breath_dark{
+  0% {
+    opacity: .5;
+  }
+  100% {
+    opacity: .9;
+  }
+}
