@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+  .ribbon {
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%);
+  }
+
+  .grid-auto-fill {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  .theme-toggle path {
+    transition: all .5s ease;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+  }
+
+  .fade-bottom {
+    background: linear-gradient(to bottom, #fbf8f5 0%, transparent 100%);
+  }
+  
+
+}
