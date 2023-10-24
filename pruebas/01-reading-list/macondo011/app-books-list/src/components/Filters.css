@@ -1,0 +1,14 @@
+.filters {
+    display: flex;
+    align-items: center;
+    margin-inline-start: 3rem;
+    
+    font-size: 14px;
+    font-weight: 700;
+    gap: 1.5rem;
+  }
+  
+  .filters > div {
+    display: flex;
+    gap: 0.5rem;
+  }
