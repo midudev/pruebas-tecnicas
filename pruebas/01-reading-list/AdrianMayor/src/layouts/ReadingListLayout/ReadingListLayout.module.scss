@@ -1,0 +1,16 @@
+.readingListLayout_placeholder {
+	width: 7rem;
+	height: 11rem;
+	position: relative;
+	padding-top: 1rem;
+	padding-left: 1rem;
+
+	&::after {
+		position: absolute;
+		content: "";
+		background: no-repeat url("../../../public/assets/listaddicon.svg");
+		background-size: contain;
+		width: 100%;
+		height: 100%;
+	}
+}

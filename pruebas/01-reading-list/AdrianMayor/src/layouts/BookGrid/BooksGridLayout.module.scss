@@ -1,0 +1,21 @@
+.bookGridLayout_card_container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 13rem);
+	grid-auto-rows: 25rem;
+	overflow: auto;
+	justify-items: center;
+	justify-content: center;
+	row-gap: 3rem;
+	margin-bottom: 1rem;
+	padding-top: 1rem;
+
+	@media (max-width: 860px) {
+		padding: 1rem;
+		grid-auto-rows: 35rem;
+		grid-template-columns: repeat(auto-fill, 20rem);
+	}
+	&_list {
+		grid-template-columns: repeat(auto-fill, 8rem);
+		grid-auto-rows: 10rem;
+	}
+}

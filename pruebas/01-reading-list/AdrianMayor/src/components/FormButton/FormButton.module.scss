@@ -1,0 +1,20 @@
+@use "@TUStyles/colors";
+
+.formButton_container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	padding: 0.5rem 1.5rem;
+	background-color: colors.$primary-button-color;
+	border: none;
+	text-decoration: none;
+	font-size: 1rem;
+	width: 100%;
+	cursor: pointer;
+
+	&_reset {
+		background-color: colors.$lateral-panel-color;
+		border: 1px solid colors.$secondary-button-color;
+	}
+}

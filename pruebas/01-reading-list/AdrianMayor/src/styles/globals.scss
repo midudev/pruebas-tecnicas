@@ -1,0 +1,27 @@
+@use "colors";
+@use "fonts";
+@use "texts";
+@use "scrollBar";
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	border: none;
+	list-style-type: none;
+}
+
+html,
+body {
+	max-width: 100vw;
+	height: 100dvh;
+	//overflow-x: hidden;
+}
+
+body {
+	color: colors.$primary-text-color;
+	background: colors.$primary-color;
+	display: flex;
+	flex-direction: column;
+}

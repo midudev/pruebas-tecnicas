@@ -1,0 +1,84 @@
+@use "@TUStyles/colors";
+
+.modalWrapper_content_container {
+	position: relative;
+	height: 90%;
+	width: 90%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	box-shadow: 0px 24px 24px 0px rgba(0, 0, 0, 0.25);
+	border-radius: 0.25rem;
+	background-color: inherit;
+	&::backdrop {
+		background: rgba(0, 0, 0, 0.7);
+	}
+
+	&_close_button {
+		position: absolute;
+		z-index: 1;
+		width: 1.5rem;
+		height: 1.5rem;
+		background: url("../../../public/assets/Close.svg");
+		top: 12px;
+		right: 16px;
+		cursor: pointer;
+	}
+
+	&__filters {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		padding: 2rem 4rem;
+	}
+
+	&__list {
+		background-color: colors.$primary-color;
+		height: 100%;
+		width: 100%;
+		display: grid;
+		overflow: auto;
+		grid-template-rows: 2rem 1fr;
+		padding: 1rem;
+		gap: 1rem;
+	}
+}
+
+.modalWrapper_open_button {
+	&__filters {
+		position: absolute;
+		background: no-repeat url("../../../public/assets/mobileFilterIcon.svg");
+		top: 20%;
+		left: 0;
+		width: 3rem;
+		height: 3rem;
+		z-index: 1;
+	}
+
+	&__list {
+		position: absolute;
+		content: "My List";
+		right: 4px;
+		top: 20%;
+		writing-mode: vertical-rl;
+		transform: rotate(180deg);
+		height: 9rem;
+		width: 3rem;
+		background-color: colors.$primary-text-color;
+		border-radius: 0.25rem;
+		color: colors.$mobile-aux-text-color;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+
+		& > span {
+			color: colors.$mobile-aux-text-color;
+			border: 1px solid colors.$mobile-aux-text-color;
+			padding: 0.4rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+}

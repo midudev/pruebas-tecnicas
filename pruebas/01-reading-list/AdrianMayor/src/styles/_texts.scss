@@ -1,0 +1,306 @@
+@use "colors";
+@use "fonts";
+
+@mixin textStack($fontSize, $color, $fontFamily, $fontWeight, $lineHeight, $letterSpacing) {
+	font-size: $fontSize;
+	color: $color;
+	font-family: $fontFamily;
+	font-weight: $fontWeight;
+	line-height: $lineHeight;
+	letter-spacing: $letterSpacing;
+}
+
+$responsiveTexts: (
+	// Main hero text
+	text_main_large:
+		(
+			fontWeight: fonts.$fontWeight-500,
+			color: colors.$primary-text-color,
+			fontFamily: fonts.$primary-font,
+			letterSpacing: fonts.$fontLetterSpacing-0-12,
+
+			desktop: (
+				fontSize: fonts.$fontSize-6rem,
+				fontLineHeight: fonts.$fontLineHeight-primary,
+			),
+			desktopSmall: (
+				fontSize: fonts.$fontSize-5rem,
+			),
+			mobile: (
+				fontSize: fonts.$fontSize-2-5rem,
+			),
+		),
+
+	//Header text
+	text_main:
+		(
+			fontWeight: fonts.$fontWeight-700,
+			color: colors.$tertiary-text-color,
+			fontFamily: fonts.$secondary-font,
+			fontLineHeight: fonts.$fontLineHeight-secondary,
+			mobile: (
+				fontSize: fonts.$fontSize-2-5rem,
+			),
+			active: (
+				fontWeight: fonts.$fontWeight-900,
+				color: colors.$primary-text-color,
+				mobile: (
+					fontSize: fonts.$fontSize-3rem,
+				),
+			),
+		)
+);
+
+$genericText: (
+	// Site text
+	text_large:
+		(
+			fontSize: fonts.$fontSize-2rem,
+			fontWeight: fonts.$fontWeight-700,
+			color: colors.$primary-text-color,
+			fontFamily: fonts.$primary-font,
+		),
+
+	// Event text
+	text_large_event:
+		(
+			fontSize: fonts.$fontSize-2rem,
+			fontWeight: fonts.$fontWeight-400,
+			color: colors.$primary-text-color,
+			fontFamily: fonts.$primary-font,
+		),
+
+	// Detailed header text
+	text_normal_bold:
+		(
+			fontWeight: fonts.$fontWeight-700,
+			color: colors.$primary-text-color,
+			fontFamily: fonts.$secondary-font,
+		),
+
+	// Home-paragraph
+	text_normal_light:
+		(
+			fontWeight: fonts.$fontWeight-300,
+			color: colors.$secondary-text-color,
+			letterSpacing: fonts.$fontLetterSpacing-0-02,
+			fontFamily: fonts.$secondary-font,
+		),
+
+	//Book modal description
+	text_normal_very_light:
+		(
+			fontSize: fonts.$fontSize-0-875rem,
+			fontWeight: fonts.$fontWeight-400,
+			color: colors.$primary-text-color,
+			fontFamily: fonts.$secondary-font,
+		),
+	// Filter genres
+	text_small:
+		(
+			fontSize: fonts.$fontSize-0-875rem,
+			fontWeight: fonts.$fontWeight-500,
+			color: colors.$tertiary-text-color,
+			fontFamily: fonts.$secondary-font,
+		),
+
+	// Filter input
+	text_small_bold:
+		(
+			fontSize: fonts.$fontSize-0-875rem,
+			fontWeight: fonts.$fontWeight-700,
+			color: colors.$tertiary-text-color,
+			active: (
+				color: colors.$active-text-color,
+			),
+		),
+
+	// Book modal genre
+	text_small_light:
+		(
+			fontSize: fonts.$fontSize-0-875rem,
+			fontWeight: fonts.$fontWeight-400,
+			color: colors.$primary-text-color,
+			fontFamily: fonts.$secondary-font,
+		),
+
+	// Filter placeholder - book detail author
+	text_smaller:
+		(
+			fontSize: fonts.$fontSize-0-75rem,
+			fontWeight: fonts.$fontWeight-400,
+			color: colors.$tertiary-text-color,
+			fontFamily: fonts.$secondary-font,
+		),
+
+	// Book modal title
+	text_smaller_bold:
+		(
+			fontSize: fonts.$fontSize-0-75rem,
+			fontWeight: fonts.$fontWeight-700,
+			fontFamily: fonts.$secondary-font,
+		)
+);
+
+$buttonText: (
+	// Primary button
+	text_primary_button:
+		(
+			fontSize: fonts.$fontSize-1-5rem,
+			fontWeight: fonts.$fontWeight-500,
+			lineHeight: fonts.$fontLineHeight-primary,
+			fontFamily: fonts.$primary-font,
+		),
+
+	// Add/Remove button text
+	text_bookEvent_Button:
+		(
+			fontSize: fonts.$fontSize-0-875rem,
+			fontWeight: fonts.$fontWeight-600,
+			fontFamily: fonts.$secondary-font,
+			add: (
+				color: colors.$primary-text-color,
+			),
+			remove: (
+				color: colors.$quaternary-text-color,
+			),
+		),
+
+	//Mobile List Button
+	text_secondary_button:
+		(
+			fontSize: fonts.$fontSize-1-5rem,
+			fontWeight: fonts.$fontWeight-500,
+			lineHeight: fonts.$fontLineHeight-primary,
+			fontFamily: fonts.$primary-font,
+		)
+);
+
+@each $text, $properties in $genericText {
+	.#{$text} {
+		@include textStack(
+			map-get($properties, "fontSize"),
+			map-get($properties, "color"),
+			map-get($properties, "fontFamily"),
+			map-get($properties, "fontWeight"),
+			map-get($properties, "fontLineHeight"),
+			map-get($properties, "letterSpacing")
+		);
+	}
+}
+
+@each $text, $properties in $responsiveTexts {
+	.#{$text} {
+		@include textStack(
+			map-get($properties, "fontSize"),
+			map-get($properties, "color"),
+			map-get($properties, "fontFamily"),
+			map-get($properties, "fontWeight"),
+			map-get($properties, "fontLineHeight"),
+			map-get($properties, "letterSpacing")
+		);
+
+		@if map-has-key($properties, "desktop") {
+			@media (min-width: 1300px) {
+				@include textStack(
+					map-get(map-get($properties, "desktop"), "fontSize"),
+					map-get(map-get($properties, "desktop"), "color"),
+					map-get(map-get($properties, "desktop"), "fontFamily"),
+					map-get(map-get($properties, "desktop"), "fontWeight"),
+					map-get(map-get($properties, "desktop"), "fontLineHeight"),
+					map-get(map-get($properties, "desktop"), "letterSpacing")
+				);
+			}
+		}
+
+		@if map-has-key($properties, "desktopSmall") {
+			@media (max-width: 1300px) {
+				@include textStack(
+					map-get(map-get($properties, "desktopSmall"), "fontSize"),
+					map-get(map-get($properties, "desktopSmall"), "color"),
+					map-get(map-get($properties, "desktopSmall"), "fontFamily"),
+					map-get(map-get($properties, "desktopSmall"), "fontWeight"),
+					map-get(map-get($properties, "desktopSmall"), "fontLineHeight"),
+					map-get(map-get($properties, "desktopSmall"), "letterSpacing")
+				);
+			}
+		}
+
+		@if map-has-key($properties, "mobile") {
+			@media (max-width: 768px) {
+				@include textStack(
+					map-get(map-get($properties, "mobile"), "fontSize"),
+					map-get(map-get($properties, "mobile"), "color"),
+					map-get(map-get($properties, "mobile"), "fontFamily"),
+					map-get(map-get($properties, "mobile"), "fontWeight"),
+					map-get(map-get($properties, "mobile"), "fontLineHeight"),
+					map-get(map-get($properties, "mobile"), "letterSpacing")
+				);
+			}
+		}
+
+		&--active {
+			@if map-has-key($properties, "active") {
+				@include textStack(
+					map-get(map-get($properties, "active"), "fontSize"),
+					map-get(map-get($properties, "active"), "color"),
+					map-get(map-get($properties, "active"), "fontFamily"),
+					map-get(map-get($properties, "active"), "fontWeight"),
+					map-get(map-get($properties, "active"), "fontLineHeight"),
+					map-get(map-get($properties, "active"), "letterSpacing")
+				);
+				@if map-has-key($properties, "mobile") {
+					@media (max-width: 768px) {
+						@include textStack(
+							map-get(map-get($properties, "mobile"), "fontSize"),
+							map-get(map-get($properties, "mobile"), "color"),
+							map-get(map-get($properties, "mobile"), "fontFamily"),
+							map-get(map-get($properties, "mobile"), "fontWeight"),
+							map-get(map-get($properties, "mobile"), "fontLineHeight"),
+							map-get(map-get($properties, "mobile"), "letterSpacing")
+						);
+					}
+				}
+			}
+		}
+	}
+}
+
+@each $text, $properties in $buttonText {
+	.#{$text} {
+		@include textStack(
+			map-get($properties, "fontSize"),
+			map-get($properties, "color"),
+			map-get($properties, "fontFamily"),
+			map-get($properties, "fontWeight"),
+			map-get($properties, "fontLineHeight"),
+			map-get($properties, "letterSpacing")
+		);
+
+		@if map-has-key($properties, "add") {
+			@media (max-width: 768px) {
+				@include textStack(
+					map-get(map-get($properties, "add"), "fontSize"),
+					map-get(map-get($properties, "add"), "color"),
+					map-get(map-get($properties, "add"), "fontFamily"),
+					map-get(map-get($properties, "add"), "fontWeight"),
+					map-get(map-get($properties, "add"), "fontLineHeight"),
+					map-get(map-get($properties, "add"), "letterSpacing")
+				);
+			}
+		}
+
+		&--remove {
+			@if map-has-key($properties, "remove") {
+				@include textStack(
+					map-get(map-get($properties, "remove"), "fontSize"),
+					map-get(map-get($properties, "remove"), "color"),
+					map-get(map-get($properties, "remove"), "fontFamily"),
+					map-get(map-get($properties, "remove"), "fontWeight"),
+					map-get(map-get($properties, "remove"), "fontLineHeight"),
+					map-get(map-get($properties, "remove"), "letterSpacing")
+				);
+			}
+		}
+	}
+}

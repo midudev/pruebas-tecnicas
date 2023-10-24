@@ -1,0 +1,37 @@
+@use "@TUStyles/colors";
+
+.sectionHeader_header_container {
+	position: relative;
+	border-top: 0.18rem solid colors.$primary-text-color;
+
+	@media (max-width: 860px) {
+		border: none;
+		border-bottom: 0.18rem solid colors.$primary-text-color;
+	}
+
+	&_title {
+		position: absolute;
+		top: -1rem;
+		left: 2rem;
+		background-color: colors.$primary-color;
+		display: flex;
+		gap: 1rem;
+
+		@media (max-width: 860px) {
+			top: 0.8rem;
+		}
+	}
+
+	&_state_container {
+		display: flex;
+		align-items: center;
+		background-color: colors.$primary-color;
+		width: 2.5rem;
+	}
+
+	&_state {
+		padding: 0.3rem;
+		color: colors.$primary-text-color;
+		border: 1px solid colors.$primary-text-color;
+	}
+}

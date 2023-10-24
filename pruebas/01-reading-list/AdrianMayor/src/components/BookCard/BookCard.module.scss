@@ -1,0 +1,47 @@
+.bookCard_container {
+	width: 12rem;
+	height: 24rem;
+
+	@media (max-width: 860px) {
+		width: 17rem;
+	}
+	.bookCard_container_image {
+		position: relative;
+		width: inherit;
+		height: 17rem;
+		transition: transform 0.1s ease-in-out;
+
+		@media (max-width: 860px) {
+			height: 25rem;
+		}
+		&:hover {
+			cursor: pointer;
+			transform: scale(1.05);
+			transition: transform 0.1s ease-in-out;
+		}
+	}
+}
+
+.bookCard_image {
+	box-shadow: 0px 1px 11px 0px #00000082;
+	transition: filter 0.2s ease-in-out;
+
+	&_unavailable {
+		filter: grayscale(1);
+		box-shadow: none;
+		transition: filter 0.2s ease-in-out;
+	}
+}
+
+.bookCard_text_container {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	padding: 0.5rem 0;
+
+	.bookCard_text_title {
+		display: flex;
+		align-items: center;
+		height: 1.8rem;
+	}
+}
