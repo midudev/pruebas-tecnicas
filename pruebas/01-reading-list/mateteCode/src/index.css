@@ -1,0 +1,202 @@
+/* Normalización de estilos (Reset) */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&family=Roboto:wght@400;900&display=swap");
+
+:root {
+  /* Paleta de colores */
+  --color-bg: #b7544c;
+  --color-bg-hover: #b21322;
+
+  /* Tipografía */
+  --font-base: "Roboto", sans-serif;
+  --font-alternative: "Indie Flower", cursive;
+  --font-display: 4.6em;
+  --font-jumbo: 3.8em;
+  --font-xlarge: 3em;
+  --font-large: 2.4em;
+  --font-medium: 1.8em;
+  --font-small: 1.6em;
+  --font-xsmall: 1.4em;
+
+  /* Espaciado */
+  --spacing-128: 12.8rem;
+  --spacing-68: 6.8rem;
+  --spacing-36: 3.6rem;
+  --spacing-28: 2.8rem;
+  --spacing-24: 2.4rem;
+  --spacing-20: 2rem;
+  --spacing-16: 1.6rem;
+  --spacing-12: 1.2rem;
+  --spacing-8: 0.8rem;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: black;
+  font-family: var(--font-alternative);
+  font-size: 62.5%;
+  color: white;
+}
+
+a {
+  font-family: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+h1 {
+  font-family: var(--font-alternative);
+  font-size: 48px;
+  color: black;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+p {
+  font-size: 1.8em;
+}
+
+img {
+  width: 100%;
+}
+
+/* Proyecto */
+.container-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container-app {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.container-app__subtitle {
+  font-size: var(--font-large);
+  color: #5ba0dd;
+  margin: 5px 0;
+}
+
+.container-grid {
+  display: flex;
+  border: 1px solid white;
+  border-radius: 10px;
+  min-height: 90vh;
+}
+
+.main,
+aside {
+  padding: 20px;
+}
+
+.main {
+  width: 75%;
+}
+
+.aside {
+  margin: 60px 15px 15px 0;
+  width: 25%;
+  border: 1px dashed white;
+  border-radius: 10px;
+}
+
+.info {
+  position: relative;
+  padding-bottom: 25px;
+}
+
+h1,
+h2 {
+  color: white;
+  font-size: var(--font-display);
+}
+
+.info__reading {
+  position: absolute;
+  bottom: 5px;
+  font-size: var(--font-large);
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+.range-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-self: flex-start;
+  align-content: flex-start;
+}
+
+.range-input__label {
+  font-size: var(--font-large);
+}
+
+.range-input__values {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: var(--font-small);
+}
+
+.select {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-self: flex-start;
+  align-content: flex-start;
+}
+
+.select__label {
+  font-size: var(--font-large);
+}
+
+.select__select {
+  padding: 4px;
+  font-family: var(--font-alternative);
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+  width: 170px;
+}
+
+select option:hover,
+select option:checked {
+  background: #5ba0dd;
+}
+
+.books {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.book {
+  margin: 5px;
+  padding: 20px 5px 2px 5px;
+  display: flex;
+  justify-content: space-between;
+  width: 135px;
+  height: 200px;
+  box-shadow: 10px 10px 10px #111;
+  transition: background-color 0.25s linear;
+  text-align: center;
+  background-size: cover;
+}
