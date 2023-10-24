@@ -1,0 +1,95 @@
+#Dark-gradient {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(90deg, rgb(51, 48, 48) 0%, rgba(0, 0, 0, 0.510329131652661) 100%);
+}
+
+#Light-gradient {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(90deg, rgb(255, 246, 246) 0%, rgba(195, 187, 187, 0.51) 100%);
+}
+
+.aside {
+  text-align: center;
+  border: 2px solid gray;
+  margin: 20px;
+  border-radius: 10px;
+  width: 60%;
+  min-height: 80vh;
+}
+.aside h2 {
+  font-size: 2rem;
+}
+
+.favoritesBooks {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 5px 0;
+}
+
+ .book_container {
+  margin-bottom: -20vh;
+  width: 200px;
+  position: relative;
+} 
+
+.book_container:hover {
+  margin: 10px 0;
+  transform: scale(1.1);
+}
+
+.book_container-button {
+  background-color: #ccc7c7;
+  color: black;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+
+.book_container-image {
+  border: 1px solid blue;
+  width: 180px;
+  height: 240px;
+  margin-top: 10px;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .aside {
+    width: 30%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .aside {
+    width: 30%;
+  }
+
+  .book_container {
+    margin-bottom: 0;
+    width: 200px;
+    position: relative;
+    opacity: 0.8;
+  } 
+
+  .book_container:hover {
+    opacity: 1;
+    transform: none;
+    margin: 0;
+  }
+
+  .favoritesBooks {
+    justify-content: space-evenly;
+  }
+
+  .book_container-image {
+    width: 180px;
+    height: 280px;
+  }
+
+  .aside h2 {
+    font-size: 2.8rem;
+  }
+}

@@ -1,0 +1,52 @@
+.books {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 10px;
+}
+
+.image {
+  border: 1px solid blue;
+  width: 200px;
+  height: 300px;
+  margin: 15px 0 0 5px;
+  opacity: 0.8;
+}
+
+.image:hover {
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.books p{
+  font-size: 1.5rem;
+  margin: 20px 0;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .books {
+    justify-content: space-around;
+  }
+
+  .books p{
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .books {
+    align-items: flex-end;
+  }
+
+  .image {
+    width: 180px;
+    height: 280px;
+  }
+
+  .books p{
+    font-size: 3rem;
+    margin: 20px 0;
+  }
+}

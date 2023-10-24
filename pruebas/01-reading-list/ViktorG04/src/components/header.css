@@ -1,0 +1,22 @@
+.header {
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2.2rem;
+}
+
+.header button {
+  width: 45px;
+  height: 35px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+  .header h1 {
+    font-size: 3rem;
+  }
+}
