@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#ece4dc] overflow-y-scroll min-h-screen bg-gradient-to-r from-sky-200 to-fuchsia-200;
+    font-family: 'Nunito', sans-serif;
+  }
+  body::-webkit-scrollbar {
+    width: 8px;
+  }
+  body::-webkit-scrollbar-thumb {
+    background-color: #a746a7;
+  }
+
+  body::-webkit-scrollbar-track {
+    background-color: #f5d0fe;
+  }
+}
+
+#dropdownMenu::-webkit-scrollbar {
+  width: 8px;
+}
+#dropdownMenu::-webkit-scrollbar-thumb {
+  background-color: #7ecbdf;
+}
+
+#dropdownMenu::-webkit-scrollbar-track {
+  background-color: #f5d0fe;
+}
+
+.perspective {
+  perspective: 1000px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.rotateY {
+  transform: rotateY(20deg);
+}
+.flip {
+  transform: rotateY(180deg);
+}
+.book-back {
+  transform: rotate(180deg) translateZ(-30px) translateX(5px);
+}
+.text {
+  transform: rotateX(180deg);
+}
+.spine {
+  transform: rotateY(-80deg) translateX(-14px);
+}
