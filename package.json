@@ -17,5 +17,16 @@
   "bugs": {
     "url": "https://github.com/midudev/pruebas-tecnicas/issues"
   },
-  "homepage": "https://github.com/midudev/pruebas-tecnicas#readme"
+  "homepage": "https://github.com/midudev/pruebas-tecnicas#readme",
+  "dependencies": {
+    "@astrojs/rss": "^2.4.3",
+    "@astrojs/sitemap": "^2.0.1",
+    "@astrojs/tailwind": "^4.0.0",
+    "@markdoc/markdoc": "^0.3.0",
+    "@sentry/vite-plugin": "^2.4.0",
+    "@tailwindcss/typography": "^0.5.9",
+    "astro": "^2.9.2",
+    "globby": "^13.2.2",
+    "yarn": "^1.22.19"
+  }
 }

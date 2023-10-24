@@ -1,0 +1,40 @@
+.read-books {
+  display: inline-block;
+  vertical-align: top;
+  width: 35vh;
+  height: 80vh;
+  border-radius: 7px;
+  padding-top: 2.5%;
+  padding-left: 1%;
+  background-image: url(../../images/Bookshelf.jpg);
+  background-size: contain;
+  border: solid blue 1px;
+  overflow-y: auto;
+}
+
+.read-book {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 1vh;
+  height: 35vh;
+  width: 25vh;
+}
+
+.close-button {
+  width: 2vh;
+  height: 2vh;
+  position: relative;
+  top: -4%;
+  left: 92%;
+}
+
+.close-button:hover {
+  cursor: pointer;
+}
+
+#read-amount {
+  margin-left: 3%;
+  font-size: 3vh;
+  color: white;
+}

@@ -1,0 +1,42 @@
+#controls {
+  width: 68%;
+  display: flex;
+  justify-content: space-around;
+  margin: 3vh;
+  padding: 0.5%;
+  border-radius: 7px;
+  background-image: linear-gradient(rgb(211, 141, 11), rgb(180, 159, 36));
+  font-size: 3.2vh;
+}
+
+.availablebooks {
+  display: inline-block;
+  width: 70%;
+  height: 80vh;
+  border-radius: 7px;
+  background-image: url(../../images/desktop-wallpaper-wood-grain-background-wood-grain.jpg);
+  padding-top: 2.5%;
+  margin-right: 2%;
+  margin-left: 2%;
+  overflow-y: auto;
+}
+
+.book {
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 1vh;
+  height: 35vh;
+  width: 25vh;
+}
+
+.book:hover {
+  cursor: grab;
+}
+
+#available-amounts {
+  margin-left: 3%;
+  font-size: 4vh;
+  color: white;
+}
