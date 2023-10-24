@@ -1,0 +1,200 @@
+/* Como el proyecto no es muy grande, pongo todo css en un sólo archivo por comodidad */
+/* De crecer sería mejor separar en módulos */
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+ul {
+  padding: 0;
+}
+li {
+  list-style: none;
+  padding: 0;
+}
+
+img {
+  height: 100%;
+  max-width: 100%;
+  transition: all ease 0.3s;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* User list */
+/*************************************************/
+.readingList-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  padding: 2px;
+  z-index: 20;
+}
+.readingList-container ul {
+  margin: 4px;
+  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-height: 150px;
+}
+
+.readingList-container li {
+  position: relative;
+  width: 102px;
+}
+.readingList-container h2 {
+  margin: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.readingList-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.readingList-header h2 {
+  margin-bottom: 0;
+}
+.readingList-header p {
+  margin: 0;
+  padding: 0;
+}
+
+.readingList-header-btns {
+  color: black;
+  cursor: pointer;
+  background: gainsboro;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.readingList-header-btns:hover {
+  background-color: rgb(187, 187, 187);
+}
+
+/* Book list */
+/*************************************************/
+.close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gainsboro;
+  color: black;
+}
+.close-btn:hover {
+  background-color: rgb(245, 50, 0);
+  color: white;
+}
+
+.booklist-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.booklist-container li {
+  max-height: 320px;
+  display: grid;
+}
+.booklist-btns {
+  max-height: 320px;
+  grid-row: 1/-1;
+  grid-column: 1/-1;
+  align-self: center;
+  justify-self: center;
+  z-index: 10;
+  display: none;
+  gap: 10px;
+}
+.booklist-btns button {
+  width: 140px;
+  font-size: 1.1rem;
+  padding: 8px 1px;
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  letter-spacing: 1px;
+  transition: all ease 0.3s;
+}
+
+.booklist-btns button:hover {
+  transform: scale(1.1);
+  background-color: darkgreen;
+}
+.booklist-container img {
+  justify-self: center;
+  max-height: 320px;
+  grid-row: 1/-1;
+  grid-column: 1/-1;
+}
+
+.booklist-container li:hover img {
+  transform: scale(1.05);
+  box-shadow: 2px 2px 8px whitesmoke;
+}
+
+.booklist-container li:hover .booklist-btns {
+  display: flex;
+  flex-direction: column;
+}
+
+/* FilterDiv */
+/*************************************************/
+.filters-container {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.filters-btns-container {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.filters-btns-container button {
+  font-size: 1rem;
+  line-height: 1.6;
+  padding: 6px 14px;
+  cursor: pointer;
+  border: none;
+  border-radius: 32px;
+  background-color: rgba(237, 237, 237, 0.75);
+  color: rgb(98, 98, 98);
+}
+
+.filters-btns-container .filter-active {
+  font-weight: bolder;
+  font-size: 1.1rem;
+  border: none;
+  background: black;
+  color: #fff;
+}
+
+.filters-container select {
+  font-size: 1rem;
+  text-transform: capitalize;
+  line-height: 1.6;
+  padding: 6px;
+}
