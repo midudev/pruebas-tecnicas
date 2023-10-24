@@ -1,0 +1,21 @@
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  overflow-x: hidden;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #F0EEE2;
+}
+a{
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
