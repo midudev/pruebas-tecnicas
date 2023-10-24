@@ -1,0 +1,30 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  height: 100dvh;
+  background-color: theme('colors.slate.900');
+  overflow: hidden;
+}
+/* Estilo para la barra de desplazamiento */
+::-webkit-scrollbar {
+  width: 4px; /* Ancho de la barra de desplazamiento */
+
+}
+
+/* Estilo para el pulgar de la barra de desplazamiento */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: theme('colors.slate.700') /* Color del pulgar de la barra de desplazamiento */
+}
+
+/* Estilo para la pista de la barra de desplazamiento */
+::-webkit-scrollbar-track {
+  background-color: theme('colors.slate.800'); /* Color de la pista de la barra de desplazamiento */
+  border-radius: 6px;
+
+}

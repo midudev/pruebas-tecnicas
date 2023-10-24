@@ -1,0 +1,46 @@
+{
+  "name": "bgorgal",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "test": "vitest --ui",
+    "convert-images": "bash ./scripts/convert-images.sh"
+  },
+  "dependencies": {
+    "eslint-config-prettier": "^8.8.0",
+    "framer-motion": "^10.13.0",
+    "jsdom": "^22.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^1.14.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "@typescript-eslint/parser": "^5.61.0",
+    "@vitejs/plugin-react-swc": "^3.3.2",
+    "@vitest/ui": "^0.33.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.44.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.1",
+    "postcss": "^8.4.26",
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.4.1",
+    "standard": "^17.1.0",
+    "tailwindcss": "^3.3.3",
+    "ts-standard": "^12.0.2",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.0",
+    "vitest": "^0.33.0",
+    "zustand": "^4.3.9"
+  }
+}
