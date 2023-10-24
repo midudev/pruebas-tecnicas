@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+import jsonBooks from "../../../books.json";
+import Library from "../components/Library";
+
+const readList = localStorage.getItem("books");
+
+const books = jsonBooks;
+---
+
+<Layout title="Lista de libros">
+    <main>
+        <Library
+            library={books}
+            readList={readList}
+            client:only="react"
+        />
+    </main>
+</Layout>
