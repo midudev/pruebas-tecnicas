@@ -1,0 +1,35 @@
+{
+  "name": "maikcyphlock",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "test": "vitest --watch"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "1.9.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "8.0.5",
+    "standard": "^17.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "@vitejs/plugin-react": "3.1.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.44.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.1",
+    "jsdom": "^22.1.0",
+    "postcss": "^8.4.26",
+    "tailwindcss": "^3.3.3",
+    "vite": "^4.4.0",
+    "vitest": "^0.33.0"
+  }
+}
