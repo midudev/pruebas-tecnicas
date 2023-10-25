@@ -1,0 +1,55 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  text-align: center;
+  color-scheme: light dark;
+  color: $color-font;
+  background-color: $color-background;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.listaContainer {
+  @include container;
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
+}
+
+.disponibles {
+  @include listas;
+  background-color: $color-disponibles;
+  width: 80%;
+  @media (max-width: 700px) {
+    .portada {
+      width: 75%;
+      height: auto;
+    }
+  }
+}
+.favoritos {
+  @include listas;
+  background-color: $color-favorites;
+  width: 30%;
+  .portada {
+    width: 75%;
+    height: auto;
+  }
+  @media (max-width: 700px) {
+    width: 80%;
+  }
+}
+
+.libro {
+  padding: 1em;
+}

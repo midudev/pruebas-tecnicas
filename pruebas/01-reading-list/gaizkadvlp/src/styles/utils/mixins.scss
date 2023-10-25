@@ -1,0 +1,19 @@
+@mixin container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin: 5em;
+  width: 90%;
+  @media (max-width: 400px) {
+    flex-direction: column;
+  }
+}
+
+@mixin listas {
+  list-style: none;
+  border-radius: 1em;
+  margin: 1em;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+}
