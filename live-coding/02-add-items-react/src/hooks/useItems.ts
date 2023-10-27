@@ -1,8 +1,8 @@
-import { useState } from "react"
-import { type Item } from "../App"
+import { Item } from "../App"
+import { useItemsReducer } from "./useItemsReducer"
 
-export const useItems = () => {
-  const [items, setItems] = useState<Item[]>([])
+export function useItems () {
+  const { items, actionAddItem, actionRemoveItem } = useItemsReducer()
 
   const addItem = (text: string) => {
     const newItem: Item = {
@@ -11,15 +11,11 @@ export const useItems = () => {
       timestamp: Date.now()
     }
 
-    setItems((prevItems) => {
-      return [...prevItems, newItem]
-    })
+    actionAddItem(newItem)
   }
 
   const removeItem = (id: string) => {
-    setItems((prevItems) => {
-      return prevItems.filter((item) => item.id !== id)
-    })
+    actionRemoveItem(id)
   }
 
   return {
