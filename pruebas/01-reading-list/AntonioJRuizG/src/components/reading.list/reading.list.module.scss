@@ -1,0 +1,41 @@
+.readingListContainer {
+	border-radius: 0.5rem;
+	border: 2px solid white;
+	background-color: rgb(32, 70, 109);
+	height: fit-content;
+	min-height: 450px;
+	padding: 1rem;
+}
+
+.listContainer {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+	gap: 1rem;
+	padding: 1rem;
+}
+
+.bookCoverContainer {
+	position: relative;
+
+	.bookCover {
+		width: 100px;
+		height: 100%;
+		min-height: 100%;
+		min-width: 100%;
+		object-fit: cover;
+	}
+
+	.selectButton {
+		background-color: transparent;
+		border: none;
+		padding: 0;
+		height: 30px;
+		width: 30px;
+		position: absolute;
+		top: 0.5rem;
+		right: 0.5rem;
+		cursor: pointer;
+		z-index: 1;
+		opacity: 0.7;
+	}
+}
