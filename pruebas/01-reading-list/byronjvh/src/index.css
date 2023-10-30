@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base { 
+  @font-face {
+    font-family: 'Maven Pro';
+    src: url('./assets/fonts/MavenPro-VariableFont_wght.ttf') format('truetype');
+  }
+
+  html {
+    font-family: 'Maven Pro', sans-serif;
+    font-weight: 500;
+  }
+
+  body {
+    background-color: #fafaff;
+    overflow: hidden auto;
+    width: 100vw;
+    width: 100svw;
+  }
+
+  /* width */
+  .scroll-sm::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Track */
+  .scroll-sm::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+  }
+
+  /* Handle */
+  .scroll-sm::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+    width: 5px;
+  }
+
+  /* Handle on hover */
+  .scroll-sm::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
