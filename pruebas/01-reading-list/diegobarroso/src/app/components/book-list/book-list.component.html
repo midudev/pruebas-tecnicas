@@ -1,0 +1,44 @@
+<div class="mx-auto">
+  <div class="">
+    <span class="w-auto">Filtered Books</span>
+    <div class="dropdown dropdown-end">
+      <label tabindex="0" class="btn btn-ghost btn-circle">
+        <div class="indicator">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+          </svg>
+          <span class="badge badge-sm indicator-item">{{(books | filterByGenre:genre:minPages).length}} of {{books.length}}</span>
+        </div>
+      </label>
+    </div>
+  </div>
+  <div class="form-control w-full max-w-xs mb-2">
+    <label class="label">
+      <span class="label-text">Select book genre</span>
+    </label>
+    <select class="select select-bordered" [(ngModel)]="genre">
+      <option value="">All</option>
+      <option *ngFor="let genre of genres" [value]="genre">{{genre}}</option>
+    </select>
+  </div>
+  <div class="form-control w-full max-w-xs mb-2">
+    <label class="label">
+      <div class="label-text">Min number of book pages<span class="badge badge-md">{{minPages}}</span> </div>
+    </label>
+    <input type="range" [(ngModel)]="minPages" [min]="pageRange.min" [max]="pageRange.max" [value]="pageRange.min" class="range" />
+  </div>
+
+  <div 
+    class="grid grid-cols-1 gap-x-1 gap-y-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 h-screen"
+    id="bookList"
+    cdkDropList
+    cdkDrop
+    [cdkDropListData]="books"
+    cdkDropListConnectedTo="booksToRead"
+    (cdkDropListDropped)="drop($event)">
+    <Book
+      [book]="book"
+      [cdkDragData]="book"
+      cdkDrag *ngFor="let book of books | filterByGenre:genre:minPages" />
+  </div>
+</div>

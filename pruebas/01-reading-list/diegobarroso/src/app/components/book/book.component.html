@@ -1,0 +1,16 @@
+<article class="group">
+  <div class="w-32 mx-auto">
+    <a [routerLink]="book.ISBN">
+      <img
+        [src]="book.cover"
+        [alt]="book.title"
+        class="aspect-[2/3] h-full object-cover w-full max-w-full rounded">
+    </a>
+    <button 
+      (click)="addOrRemoveBook(book)"
+      type="button"
+      class="btn btn-sm btn-neutral mt-1">
+      {{book.inListToRead ? 'Remove' : 'Add'}}
+    </button>
+  </div>
+</article>
