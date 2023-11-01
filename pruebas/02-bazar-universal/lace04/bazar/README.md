@@ -8,7 +8,7 @@
 Bazar Online es una aplicación web que permite buscar productos similar a Mercado Libre.
 
 
-[Bazar Online](#TODO Agregar link a la app)
+[Bazar Online](https://bazar-online-prueba.vercel.app/)
 
 
 ## Instalación
