@@ -1,0 +1,118 @@
+.randomBookContainer {
+    padding: 2% 5%;
+}
+
+.randomBookContainer .title {
+    padding: 10px 0;
+    font-size: 3rem;
+    word-spacing: 0.3rem;
+    line-height: 4rem;
+}
+
+.randomBookContainer .title span {
+    font-size: 6rem;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
+}
+
+
+
+.randomBook {
+    display: grid;
+    gap: 8%;
+    grid-template-columns: 0.9fr 1fr;
+    margin: 0 auto;
+    justify-content: center;
+    padding: 3% 0;
+}
+
+.randomBookCover {
+    display: flex;
+    justify-content: right;
+}
+
+.randomBookCover img {
+    border-radius: 15px;
+    max-height: 500px;
+    max-width: 350px;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.randomBookTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: 'Dancing Script', cursive;
+    padding: 0;
+    margin: 0;
+}
+
+.randomBookTitle h2 {
+    padding: 5% 0 2%;
+    margin: 0;
+    font-size: 2em;
+    max-width: 90%;
+}
+
+.randomBookAuthor,
+.randomBookGenre {
+    font-weight: 400;
+    font-size: 1rem;
+    color: #292929;
+    margin: 0;
+}
+
+.randomBookAuthor span {
+    font-weight: 600;
+    color: #07e162;
+}
+
+.randomBookDescription {
+    font-weight: 400;
+    font-size: 1.3rem;
+    max-width: 70%;
+    color: #292929;
+    padding: 1rem 0;
+    letter-spacing: 1px;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 900px) {
+    .randomBook {
+        grid-template-columns: 1fr;
+        gap: 5%;
+        padding: 4rem 0;
+    }
+
+    .randomBookCover {
+        justify-content: center;
+    }
+
+    .randomBookCover img {
+        max-width: unset;
+        max-height: unset;
+    }
+
+    .randomBookTitle {
+        font-size: 2rem;
+    }
+
+    .randomBookAuthor,
+    .randomBookGenre {
+        font-size: 1.5rem;
+    }
+
+    .randomBookAuthor {
+        padding-top: 1em;
+    }
+
+    .randomBookDescription {
+        font-size: 2rem;
+        max-width: 90%;
+        padding: 2rem 0;
+    }
+}

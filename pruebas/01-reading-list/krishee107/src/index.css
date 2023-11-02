@@ -1,0 +1,50 @@
+/* Imports */
+/*Poppins font*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/*Dancing Script font*/
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+
+html,
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #292929;
+}
+
+/* General */
+.title {
+    font-weight: 600;
+    font-size: 2rem;
+    color: #292929;
+    margin: 0;
+    padding: 10px 0 5px;
+}
+
+.padre {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 10px;
+    grid-template-areas: "nav content";
+    position: relative;
+}
+
+.content {
+    grid-area: content;
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 900px) {
+
+    .padre {
+        grid-template-columns: 1fr;
+    }
+
+    .title {
+        font-size: 3rem !important;
+        padding: 20px 0;
+    }
+}

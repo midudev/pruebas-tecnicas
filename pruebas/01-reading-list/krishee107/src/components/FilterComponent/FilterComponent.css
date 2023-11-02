@@ -1,0 +1,77 @@
+.filter {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+#filterSelect {
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    background-color: #d0c2b4;
+    border-color: #d0c2b4;
+    color: #eee5da;
+    font-weight: 500;
+}
+
+/* Número de páginas */
+.filterButtonContainer {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2%;
+    width: 100%;
+    color: #292929;
+    font-weight: 600;
+}
+
+.sidebarTitle {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.sidebar {
+    display: flex;
+    gap: 15px;
+    width: 90%;
+    align-items: center;
+}
+
+.rc-slider-track {
+    background-color: #d1c1b4;
+}
+
+.rc-slider-handle {
+    border-color: #d1c1b4;
+}
+
+.inputPages {
+    width: 50px;
+    border-radius: 5px;
+    border: 1px solid #d1c1b4;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media screen and (max-width: 1150px) {
+    .filter {
+        display: unset;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .filterButtonContainer {
+        grid-template-columns: 1fr;
+        gap: 10%;
+        align-items: center;
+    }
+
+    .sidebarTitle,
+    .sidebarMin,
+    .sidebarMax,
+    #filterSelect {
+        font-size: 1.4rem;
+    }
+}

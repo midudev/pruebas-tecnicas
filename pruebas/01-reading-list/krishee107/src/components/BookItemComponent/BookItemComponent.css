@@ -1,0 +1,112 @@
+.bookCover {
+    height: 350px;
+    border-radius: 25px;
+    object-fit: contain;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    margin: 15px 0;
+}
+
+.bookTitle {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #292929;
+    margin: 0;
+    height: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.bookAuthor {
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: #292929;
+    margin: 0;
+}
+
+.bookAuthorName {
+    font-weight: 600;
+    color: #07e162;
+}
+
+.bookItemListed {
+    filter: grayscale(80%) blur(2px);
+    opacity: 0.5;
+}
+
+
+.bookCoverCopy {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 300px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+    opacity: 0;
+    animation: bookItemAnimation 0.3s linear forwards;
+}
+
+@keyframes bookItemAnimation {
+    0% {
+        transform: translateX(0);
+        opacity: 0;
+    }
+
+    25% {
+        transform: translateX(-25%);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateX(-70%);
+        opacity: 0.6;
+    }
+
+    80% {
+        transform: translateX(-100%);
+        opacity: 0.3;
+    }
+
+
+    100% {
+        transform: translateX(-1000%);
+        opacity: 0;
+    }
+}
+
+/* Responsive */
+@media screen and (max-width: 900px) {
+
+    .bookItem {
+        all: unset;
+        display: grid;
+    }
+
+    .bookItemListed {
+        filter: grayscale(80%) blur(2px);
+        opacity: 0.5;
+    }
+
+    .bookCover {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+    }
+
+    .bookInfo {
+        padding: 0.5rem;
+    }
+
+    .bookTitle {
+        all: unset;
+        font-size: 2rem;
+        padding-top: 1rem;
+    }
+
+    .bookAuthor {
+        font-size: 1.5rem;
+    }
+}

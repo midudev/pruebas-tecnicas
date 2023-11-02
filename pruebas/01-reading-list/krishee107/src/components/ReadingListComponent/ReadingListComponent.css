@@ -1,0 +1,139 @@
+.readingListContainer {
+    position: fixed;
+    background-color: rgba(19, 19, 19, 0.649);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+.readingList {
+    width: 50%;
+    height: 100%;
+    max-width: 600px;
+    background-color: #fff;
+    overflow: hidden;
+    border-radius: 25px;
+    margin-left: 250px;
+}
+
+.readingListHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+    padding: 1em 2em;
+    background-color: #faf2e9;
+}
+
+.readingListHeader h1 {
+
+    color: #d0c2b4;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    font-family: 'Dancing Script', cursive;
+
+}
+
+.readingListHeader .closeButton {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #d1c1b4;
+    color: #eee5da;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.readingListContent {
+    height: 100%;
+    padding-top: 10%;
+    overflow-y: auto;
+}
+
+.readingListBooks {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.stackedBook {
+    width: 80%;
+    position: absolute;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.stackedBookClose {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #6b6b6a5c;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.stackedBookClose:hover {
+    background-color: #6b6b6a;
+}
+
+.stackedBook img {
+    width: 100%;
+    object-fit: contain
+}
+
+.stackedBook:hover {
+    cursor: pointer;
+    transform: scale(1.10);
+    transition: transform 0.5s;
+    margin-top: 25px;
+}
+
+.stackedBook:last-child:hover {
+    transform: scale(1.10);
+}
+
+/* Responsive */
+
+@media screen and (max-width: 900px) {
+    .readingListContainer {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        z-index: 100;
+        /* Ajusta el valor del z-index según tus necesidades */
+    }
+
+    .readingList {
+        width: 90%;
+        margin: 0 auto;
+        z-index: 1000;
+        /* Ajusta el valor del z-index según tus necesidades */
+    }
+}
