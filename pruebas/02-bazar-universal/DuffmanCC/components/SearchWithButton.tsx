@@ -16,6 +16,8 @@ export default function SearchWithButton() {
       return;
     }
 
+    if (search.current.value.length < 3) return;
+
     router.push(`/items?search=${search.current.value}`);
   }
 

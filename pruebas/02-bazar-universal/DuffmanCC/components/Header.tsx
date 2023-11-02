@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import React, { useContext, useMemo, useState } from "react";
 import { CartIcon, SearchIcon, Truck } from "./Icons";
 
-export default function Search() {
+export default function Header() {
   const [search, setSearch] = useState<string>("");
   const { productsInCart, setShowCart, showCart } = useContext(CartContext);
   const router = useRouter();
@@ -18,7 +18,11 @@ export default function Search() {
 
     setSearch(query);
 
-    router.push(`/items?search=${query}`);
+    if (query.length > 2) {
+      router.push(`/items?search=${query}`);
+    } else {
+      router.push(`/items`);
+    }
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {

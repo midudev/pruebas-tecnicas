@@ -1,7 +1,6 @@
 export async function fetchSingleProduct(id: number) {
   try {
-    const baseUrl = process.env.HOST;
-    const res = await fetch(`${baseUrl}/api/items/${id}`, {
+    const res = await fetch(`${process.env.HOST}/api/items/${id}`, {
       next: {
         revalidate: 60,
       },
@@ -18,8 +17,7 @@ export async function fetchSingleProduct(id: number) {
 
 export async function fetchProducts(query: string) {
   try {
-    const baseUrl = process.env.HOST;
-    const res = await fetch(`${baseUrl}/api/items?search=${query}`);
+    const res = await fetch(`${process.env.HOST}/api/items?search=${query}`);
 
     if (!res.ok) return;
 

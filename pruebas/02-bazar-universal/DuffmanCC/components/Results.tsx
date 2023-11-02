@@ -33,7 +33,7 @@ export default function Results({ items, query }: Props) {
 
   return (
     <div className="flex flex-col gap-4">
-      {query && (
+      {query?.length > 2 && (
         <div className="font-bold">
           Resultados de búsqueda de {query}: {items.length}
         </div>
