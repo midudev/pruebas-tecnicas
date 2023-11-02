@@ -20,7 +20,7 @@ export default function ProductsList({ items }: Props) {
 
   return (
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {items.map((item) => (
+      {items?.map((item) => (
         <li className="relative pr-10" key={item.id}>
           <Link href={`/items/${item.id}`}>
             <ProductCard product={item} key={item.id} />

@@ -1,6 +1,15 @@
+function getBaseUrl() {
+  if (process.env.NODE_ENV === "development") {
+    return process.env.HOST_DEV;
+  } else {
+    return process.env.HOST_PROD;
+  }
+}
+
 export async function fetchSingleProduct(id: number) {
   try {
-    const res = await fetch(`http://localhost:3000/api/items/${id}`, {
+    const baseUrl = getBaseUrl();
+    const res = await fetch(`${baseUrl}/api/items/${id}`, {
       next: {
         revalidate: 60,
       },
@@ -15,7 +24,8 @@ export async function fetchSingleProduct(id: number) {
 
 export async function fetchProducts(query: string) {
   try {
-    const res = await fetch(`http://localhost:3000/api/items?search=${query}`);
+    const baseUrl = getBaseUrl();
+    const res = await fetch(`${baseUrl}/api/items?search=${query}`);
 
     if (!res.ok) return;
     return await res.json();

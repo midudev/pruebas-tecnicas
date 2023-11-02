@@ -11,7 +11,7 @@ interface Props {
 export default async function Items({ searchParams }: Props) {
   const { search } = searchParams;
 
-  const items = await fetchProducts(search);
+  const items = (await fetchProducts(search)) || [];
 
   return (
     <div className="flex flex-col gap-8">

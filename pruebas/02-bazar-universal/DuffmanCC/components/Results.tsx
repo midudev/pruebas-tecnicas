@@ -2,7 +2,9 @@ import { Product } from "@/types";
 import Badge from "./Badge";
 
 function getCategories(items: Product[]) {
-  const categories = items.map((item) => item.category);
+  const categories = items?.map((item) => item.category);
+
+  if (!categories) return [];
 
   return Object.entries(
     categories.reduce((acc, item) => {
