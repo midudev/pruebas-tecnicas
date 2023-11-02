@@ -1,1 +1,7 @@
-{"/_app":"pages/_app.js","/_error":"pages/_error.js","/api/items":"pages/api/items.js","/api/items/[id]":"pages/api/items/[id].js","/_document":"pages/_document.js","/404":"pages/404.html"}
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/api/items": "pages/api/items.js",
+  "/api/items/[id]": "pages/api/items/[id].js"
+}

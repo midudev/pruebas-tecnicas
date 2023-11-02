@@ -16,6 +16,8 @@ export async function fetchSingleProduct(id: number) {
     });
 
     if (!res.ok) return;
+    console.log("🚀 ~ file: requests.ts:19 ~ fetchSingleProduct ~ res:", res);
+
     return await res.json();
   } catch (error) {
     console.error("Error fetching products:", error);
@@ -28,6 +30,7 @@ export async function fetchProducts(query: string) {
     const res = await fetch(`${baseUrl}/api/items?search=${query}`);
 
     if (!res.ok) return;
+    console.log("🚀 ~ file: requests.ts:33 ~ fetchProducts ~ res:", res);
     return await res.json();
   } catch (error) {
     console.error("Error fetching products:", error);
