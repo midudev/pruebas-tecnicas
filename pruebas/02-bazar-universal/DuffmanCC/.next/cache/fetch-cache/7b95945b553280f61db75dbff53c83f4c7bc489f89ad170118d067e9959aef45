@@ -1,1 +1,0 @@
-{"kind":"FETCH","data":{"headers":{"connection":"keep-alive","content-length":"2","content-type":"application/json; charset=utf-8","date":"Wed, 01 Nov 2023 15:34:33 GMT","etag":"\"38jmpejbxv2\"","keep-alive":"timeout=5","vary":"Accept-Encoding"},"body":"W10=","status":200,"url":"http://localhost:3000/api/items?search=skld"},"revalidate":31536000,"tags":[]}
