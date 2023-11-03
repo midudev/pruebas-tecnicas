@@ -56,12 +56,18 @@ export default function Header() {
       </form>
 
       <div className="relative z-50">
-        <button onClick={() => setShowCart(!showCart)}>
+        <button
+          onClick={() => setShowCart(!showCart)}
+          aria-label="botón para mostrar el carro de compra"
+        >
           <CartIcon width="50" className="" />
         </button>
 
         {productsInCart.length > 0 && (
-          <div className="absolute top-0 right-0 rounded-full border w-6 h-6 flex justify-center items-center bg-blue-500 text-white text-xs">
+          <div
+            className="absolute top-0 right-0 rounded-full border w-6 h-6 flex justify-center items-center bg-blue-500 text-white text-xs"
+            aria-label="número de productos en el carro"
+          >
             {totalItems}
           </div>
         )}

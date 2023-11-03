@@ -11,7 +11,7 @@ export default function ProductsLayout({
 }) {
   return (
     <CartProvider>
-      <div className="flex flex-col gap-8 w-full relative p-4">
+      <div className="flex flex-col gap-8 w-full relative p-4 grow">
         <Cart />
 
         <Header />

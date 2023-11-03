@@ -46,6 +46,7 @@ export function Cart() {
                         <button
                           className="w-6 h-6 border rounded-full flex justify-center items-center"
                           onClick={() => addQuantity(product)}
+                          aria-label="botón para agregar una unidad del producto al carro de compra"
                         >
                           +
                         </button>
@@ -53,6 +54,7 @@ export function Cart() {
                         <button
                           className="w-6 h-6 border rounded-full flex justify-center items-center"
                           onClick={() => removeQuantity(product)}
+                          aria-label="botón para remover una unidad del producto del carro de compra"
                         >
                           -
                         </button>
@@ -65,6 +67,7 @@ export function Cart() {
                       <button
                         className=""
                         onClick={() => removeFromCart(product)}
+                        aria-label="botón para remover el producto del carro de compra"
                       >
                         <TrashIcon width="20" />
                       </button>

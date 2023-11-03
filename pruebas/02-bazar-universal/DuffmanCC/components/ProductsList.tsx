@@ -29,6 +29,7 @@ export default function ProductsList({ items }: Props) {
           <button
             className="absolute right-0 top-0 z-10 border rounded-full w-10 h-10 flex justify-center items-center"
             onClick={() => handleClick(item)}
+            aria-label="agragar al carrito"
           >
             <AddToCartIcon width="30" />
           </button>
