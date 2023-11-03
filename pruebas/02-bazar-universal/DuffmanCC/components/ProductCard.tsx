@@ -17,6 +17,7 @@ export default function ProductCard({ product }: Props) {
           width="150"
           height="150"
           className="object-cover auto aspect-square rounded-full overflow-hidden"
+          priority
         />
       </div>
 
