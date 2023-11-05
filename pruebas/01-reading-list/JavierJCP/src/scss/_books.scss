@@ -1,0 +1,43 @@
+.searchBooks {
+  margin-bottom: 1rem;
+  text-align: left;
+  @media (max-width: 600px) {
+    text-align: center;
+  }
+}
+
+.books {
+  list-style: none;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 2rem;
+
+  .book {
+    display: flex;
+    background-color: #fff;
+    padding: 1rem;
+    gap: 1rem;
+    text-align: left;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+
+    & figure {
+      & img {
+        width: 100px;
+        height: auto;
+      }
+    }
+
+    .book__info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+
+      .btn__añadir {
+        background-color: $primary__color;
+        color: #fff;
+      }
+    }
+  }
+}

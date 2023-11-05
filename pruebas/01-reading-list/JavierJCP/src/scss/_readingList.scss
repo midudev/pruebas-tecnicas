@@ -1,0 +1,18 @@
+.readingList__container {
+  margin-top: 3.5rem;
+  height: 100%;
+  // border: 1px solid gray;
+  .readingList {
+    list-style: none;
+    .readinItem {
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #808080;
+
+      .btn__remove {
+        background-color: $seconfary__color;
+        color: #fff;
+      }
+    }
+  }
+}

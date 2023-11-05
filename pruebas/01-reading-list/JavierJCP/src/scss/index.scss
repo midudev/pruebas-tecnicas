@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap');
+
+@import 'variables.scss';
+@import 'books.scss';
+@import 'filteres.scss';
+@import 'readingList.scss';
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Merriweather', serif;
+  background-color: #edeae2;
+  color: #0f0f0f;
+  text-align: center;
+}
+
+header h1 {
+  width: 90%;
+  margin: 2rem auto;
+  font-size: $fontZise__titulo;
+  @media (max-width: 600px) {
+    font-size: $fontZise__subTitulo;
+  }
+}
+
+main {
+  width: 98%;
+  margin: 2rem auto;
+  .container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 2rem;
+
+    @media (max-width: 800px) {
+      grid-template-columns: 1fr 1fr;
+
+      @media (max-width: 600px) {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+    }
+  }
+}
+
+button {
+  padding: 0.3rem 1rem;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 0.3rem;
+  font-weight: bold;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+input {
+  font-family: inherit;
+  padding: 0.3rem 0;
+  border: none;
+  border-radius: 0.3rem;
+  outline: invert;
+}
+
+.sort {
+  margin-top: 20px;
+}
