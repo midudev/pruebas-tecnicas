@@ -1,0 +1,33 @@
+.range{
+    width: 80%;
+    height: 6px;
+}
+
+.form-label{
+    margin-right: 5px;
+    font-size: large;
+    font-weight: bold;
+}
+
+.form-select{
+    border: 0;
+    width: 60%;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #f2f2f2;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    background-color: #222222;
+}
+
+input[type="range"] {
+    background-color: #222222;
+}
+
+.container-fluid{
+    width: 100%;
+    padding: 0.8rem 0.2rem;
+    background-color: #f2f2f2;
+    box-shadow: 1px 2px 4px 3px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,13 @@
+<div class="card-container" [ngStyle]="">
+    <img [src]="book?.book?.cover" alt="" width="180px" height="250px" (click)="onGoToDetails()">
+    <div class="content">
+        <p>{{ book?.book?.title }}</p>
+        <select class="select-prioridad" aria-label="Default select example" (change)="onChangePrioridad( $event )" [value]="book?.book?.priority">
+            <option selected value="0">Prioridad</option>
+            <option value=1>Alta</option>
+            <option value=2>Media</option>
+            <option value=3>Baja</option>
+          </select>
+        <button class="btn-remove" (click)="onRemoveFromTheReadingList()"> <i class="bi bi-bookmark-x-fill fs-5"></i> </button>
+    </div>
+</div>

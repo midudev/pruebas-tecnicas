@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+html, body{
+    background-color: #f2f2f2;
+}
+
+.btn-primary{
+    width: 100%;
+    border: 2px solid #010101;
+    border-radius: 0;
+    background-color: #010101;
+    color: #f2f2f2;
+}
+
+.btn-primary:hover{
+    width: 100%;
+    border: 2px solid #010101;
+    border-radius: 0;
+    background-color: #f2f2f2;
+    color: #010101;
+}
+
+.btn-secondary{
+    width: 100%;
+    border: 2px solid #f2f2f2;
+    border-radius: 0;
+    background-color: #f2f2f2;
+    color: #010101;
+}
+
+.btn-secondary:hover{
+    width: 100%;
+    border: 2px solid #010101;
+    border-radius: 0;
+    background-color: #010101;
+    color: #f2f2f2;
+}
+
+.btn-back{
+    border: 2px solid #f2f2f2;
+    border-radius: 0;
+    background-color: #f2f2f2;
+    color: #010101;
+}
+
+.btn-back:hover{
+    border: 2px solid #010101;
+    border-radius: 0;
+    background-color: #010101;
+    color: #f2f2f2;
+}

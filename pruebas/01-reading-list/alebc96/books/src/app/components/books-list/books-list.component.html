@@ -1,0 +1,31 @@
+<app-books-filter (genreSelected)="manageGenreSelected($event)" (pagesSelected)="managePagesSelected($event)" (search)="manageSearch($event)"></app-books-filter>
+
+<div class="container-fluid w-100 d-flex justify-content-center">
+    <div class="row w-100">
+        <div [ngClass]="isNotBooksToRead() ? 'col-lg-12 text-center' : 'col-lg-8 text-center'">
+            <h3 class="m-2">Lista de libros ({{ libraryLength }}) disponibles</h3>
+            <div class="container d-flex flex-wrap justify-content-center gap-4">
+                <app-book-card  [book]="book" *ngFor="let book of booksList"></app-book-card>
+            </div>
+        </div>
+        <div class="col-lg-4 reading-container text-center" *ngIf="!isNotBooksToRead()">
+            <div class="row mb-3">
+                <div class="col-lg-8">
+                    <h3 class="m-2">Lista de lectura ({{ readingLength }}) libros</h3>
+                </div>
+                <div class="col-lg-4">
+                    <button class="btn-desc p-2" (click)="sortReadingList()"><i class="bi bi-arrow-down-circle"></i></button>
+                </div>
+            </div>
+            <div class="container d-flex flex-wrap justify-content-center gap-2">
+                <app-reading-book class="w-100" [book]="book" *ngFor="let book of readingList"></app-reading-book>
+                <!-- 
+                    <div class="container-fluid d-flex flex-column align-items-center" *ngIf="isNotBooksToRead()">
+                    <img src="../../../assets/undraw_void_-3-ggu (1).svg" alt="" width="300px" height="300px">
+                    <h3 style="color: #f2f2f2;">Not books to read :(</h3>
+                </div>
+                 -->
+            </div>
+        </div>
+    </div>
+</div>
