@@ -1,0 +1,46 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+.estanteria .contenedorLibros{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 90vw;
+  justify-content: center;
+}
+
+.estanteria-lectura .contenedorLibros{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 90vw;
+  justify-content: center;
+}
+
+.filtros{
+  display: flex;
+  gap: 8px;
+  max-width: 100vw;
+}
+
+@media only screen and (max-width: 600px) {
+  .filtros{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 100vw;
+  }
+}
