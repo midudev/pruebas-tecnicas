@@ -1,0 +1,14 @@
+.nav_container{
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.nav_item{
+  margin-right: 5rem;
+}
+
+.nav_item-form{
+  display: flex;
+  margin-right: 6rem;
+}

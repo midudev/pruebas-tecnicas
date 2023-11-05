@@ -1,0 +1,46 @@
+<header class="container my-3 text-center">
+  <h2>{{title}}</h2>
+
+  <nav class="nav_container">
+    <div class="nav_item">
+      <label>Libros disponibles: {{books.length}}</label>
+    </div>
+
+    <div class="nav_item-form">
+      <label class="me-1">Páginas:{{pageFiltered}}</label>
+      <input class="form-range" type="range" min="0" max="{{maxPage}}" step="50" name="pageFiltered" [(ngModel)]="pageFiltered"
+        (input)="filterByPages()">
+    </div>
+
+    <div class="nav_item-form">
+      <select class="form-control" [(ngModel)]="genre" name="genre">
+        <option value="" selected>- Filtrar por género -</option>
+        <option *ngFor="let gen of genres">{{gen}}</option>
+      </select>
+      <button class="btn btn-dark ms-1" (click)="filterByGenre()" *ngIf="!isFiltered"
+        [disabled]="genre==''">Filtrar</button>
+      <button class="btn btn-dark ms-1" (click)="clearFilter()" *ngIf="isFiltered">Limpiar</button>
+    </div>
+
+    <div class="nav_item">
+      <label>Libros disponibles en lista de lectura: {{readingList.length}}</label>
+    </div>
+  </nav>
+</header>
+
+<main class="container">
+  <div class="row">
+    <!-- Sección libros -->
+    <section class="col-md-8">
+      <app-index [books]="books" [readingList]="readingList"></app-index>
+    </section>
+    <!-- Sección lista de lectura -->
+    <section class="col-md-4">
+      <app-lista-lectura [readingList]="readingList" [books]="books"></app-lista-lectura>
+    </section>
+  </div>
+</main>
+
+<footer class="text-center fixed-bottom">
+  <p>Andres Mariano Fernández &copy; 2023</p>
+</footer>
