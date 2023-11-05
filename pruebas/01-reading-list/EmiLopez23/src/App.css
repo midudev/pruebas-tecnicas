@@ -1,0 +1,147 @@
+*{
+  box-sizing: border-box;
+}
+.App {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  background-color: #0d1425;
+  color: white;
+}
+
+h1,h2,h3,h4,h5,h6{
+  margin: 0;
+}
+
+.input-text{
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid black;
+}
+
+.input-select{
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+
+}
+
+.filters{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 3% 9%;
+  width: 100%;
+  gap: 10px;
+}
+
+.reading-list-btn{
+  padding: 10px;
+  background-color: #2d4379;
+  color: lightgrey;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+
+.list-of-books{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  width: 100%;
+}
+
+.book-container{
+  width: 33%;
+  min-width: 350px;
+  cursor: pointer;
+  height: 220px;
+}
+
+.book-description{
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-cover{
+  border-radius: 10px;
+  width: 35%;
+  height: 100%;
+}
+
+.reading-book-container,.book-container{
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #17223d;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.reading-list{
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: black;
+  height: 100%;
+  padding: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 520px;
+}
+
+.reading-list-header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.remove-btn{
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.empty-reading-list{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 10px;
+}
+
+
+
+@media (max-width:1295px) {
+  .list-of-books{
+    justify-content: center;
+  }
+}
+
+@media (max-width:520px) {
+  .reading-list{
+    width: 100%;
+  }
+}
