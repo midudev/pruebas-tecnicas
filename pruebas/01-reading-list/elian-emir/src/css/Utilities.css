@@ -1,0 +1,45 @@
+/*
+Utilities clases
+*/
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.gap-2r {
+  gap: 2rem;
+}
+
+.flex-gr-1 {
+  flex-grow: 1;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.w-75 {
+  width: 75%;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.w-30 {
+  width: 1/3;
+}
+
+.h-screen {
+  height: 100vh;
+}
+.mt-1r {
+  margin-top: 1rem;
+}
+.mt-2r {
+  margin-top: 2rem;
+}

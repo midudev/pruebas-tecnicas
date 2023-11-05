@@ -1,0 +1,24 @@
+.book_content {
+  width: 20rem;
+  height: 33rem;
+  text-align: center;
+  border-radius: 0.3rem;
+  border: solid 1px var(--colorPrimary);
+  overflow: hidden;
+  padding: 0.2rem;
+  background-color: var(--colorBg);
+}
+
+.book_content>img {
+  max-height: 20rem;
+  width: 100%;
+  height: fit-content;
+}
+
+.book_content .btn {
+  margin-top: 1rem;
+}
+
+.book_content .text-warning {
+  font-size: 1.3rem;
+}

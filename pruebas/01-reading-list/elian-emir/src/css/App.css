@@ -1,0 +1,129 @@
+:root {
+  --colorPrimary: rgb(131, 58, 180);
+  --colorAccent: rgba(253, 29, 29, 1);
+  --colorBg: #060627;
+  --colorBgLight: #00043a;
+  --LightColor: #fff;
+}
+
+body {
+  background: linear-gradient(var(--colorBg) 0%, var(--colorAccent) 100%);
+  color: var(--LightColor);
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  padding: 1rem;
+  box-shadow: 3px 2px 10px 0px var(--colorBgLight);
+  background-color: var(--colorBg);
+}
+
+.first-heading {
+  font-size: 3rem;
+  background: -webkit-linear-gradient(var(--colorPrimary), var(--colorAccent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+.first-heading span {
+  font-size: 1.5rem;
+  margin-top: -12px;
+}
+/*
+custom clases
+*/
+.container {
+  padding-top: 8rem;
+}
+
+.subheading-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: -1;
+}
+
+.subheading-info h2 {
+  font-size: 2.5rem;
+  position: relative;
+}
+
+.subheading-info h2::after {
+  content: '';
+  display: block;
+  z-index: -1;
+  width: 18rem;
+  height: 20px;
+  background-color: var(--colorAccent);
+  position: absolute;
+  top: 20px;
+  left: -8px;
+  rotate: -5deg;
+  border-radius: 2rem;
+}
+
+.subheading-info h2::after:hover {
+  transform: rotate(-10deg);
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}
+
+.main_library {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .main_library {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+select {
+  all: unset;
+  padding: 0.7rem;
+  background-color: var(--colorPrimary);
+  border-radius: 0.3rem;
+}
+
+select::-moz-placeholder {
+  font-size: 1.5rem;
+}
+
+.heading {
+  text-align: center;
+  font-size: 1.7rem;
+}
+
+.btn {
+  all: unset;
+  padding: 0.7rem;
+  text-align: center;
+  color: var(--colorPrimary);
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: medium;
+  display: block;
+  margin: 0 auto;
+  border: solid 1px var(--colorPrimary);
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  background-color: var(--colorBg);
+}
+
+.btn:hover {
+  cursor: pointer;
+  border-color: var(--colorAccent);
+  color: var(--colorAccent)
+}
