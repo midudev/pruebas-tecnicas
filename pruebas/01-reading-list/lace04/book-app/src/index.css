@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html,
+body {
+  background-color: #fff;
+  color: #000;
+}
+
+html.dark body {
+  background-color: #202020;
+  color: #fff;
+}
+
+html {
+  overflow-y: scroll;
+}
