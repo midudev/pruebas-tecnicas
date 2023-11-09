@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { Product } from '@/types/product';
 import Category from '@/components/category';
 import { Button } from '@/components/ui/button';
@@ -69,11 +70,14 @@ function ProductDetail() {
                   key={index}
                   className='w-16 h-16 overflow-hidden rounded-md'
                 >
-                  <img
+                  <Image
                     className='h-[full] w-full object-cover cursor-pointer'
                     src={image}
                     alt={product.title}
                     onClick={() => setMainImage(image)}
+                    width={64}
+                    height={64}
+                    objectFit='cover'
                   />
                 </picture>
               ))}
