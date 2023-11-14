@@ -1,6 +1,6 @@
-import { describe, expect, test } from "vitest";
-import { renderHook, act } from "@testing-library/react";
-import { useItems } from "../src/hooks/useItems";
+import { describe, test, expect } from 'vitest'
+import { renderHook, act } from '@testing-library/react'
+import { useItems } from '../src/hooks/useItems'
 
 describe('useItems hook', () => {
   test('should add and remove items', () => {
@@ -12,9 +12,9 @@ describe('useItems hook', () => {
       result.current.addItem('Jugar a videojuegos')
       result.current.addItem('Ir a correr')
     })
-    
-    expect(result.current.items.length).toBe(2)
 
+    expect(result.current.items.length).toBe(2)
+    
     act(() => {
       result.current.removeItem(result.current.items[0].id)
     })

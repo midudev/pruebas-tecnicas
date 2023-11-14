@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  background-color: #111827;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --color-btn-cards: #0284c7;
+  --color-btn-cards-hover: #0369a1;
+  --color-btn-remove-card: #dc2626;
+  --color-btn-remove-card-hover: #b91c1c;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 1780px;
+}
+
+.titleBook {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.synopsisBook {
+  display: none;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.listBooks {
+  transition: right .5s linear;
+}
+
+.readingList {
+  max-height: calc(100% - 5.5rem);
+}
+
+::-webkit-scrollbar {
+  background-color: #626769;
+}
+
+.scrollApp::-webkit-scrollbar {
+  background-color: #626769;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-btn-cards);
+  border-radius: 10px;
+  width: 3px;
+}
+
+.scrollApp::-webkit-scrollbar-thumb {
+  background-color: var(--color-btn-cards);
+  border-radius: 10px;
+  width: 3px;
+}
+
+@media screen and (min-width: 640px) {
+  .titleBook {
+    -webkit-line-clamp: 3;
+  }
+
+  .synopsisBook {
+    display: -webkit-box;
+  }
+}

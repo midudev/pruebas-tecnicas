@@ -4,6 +4,7 @@ import { useItems } from './hooks/useItems'
 import { useSEO } from './hooks/useSEO'
 
 export type ItemId = `${string}-${string}-${string}-${string}-${string}`
+
 export interface Item {
   id: ItemId
   timestamp: number
@@ -12,7 +13,6 @@ export interface Item {
 
 function App() {
   const { items, addItem, removeItem } = useItems()
-
   useSEO({
     title: `[${items.length}] Prueba técnica de React`,
     description: 'Añadir y eliminar elementos de una lista'
@@ -21,17 +21,9 @@ function App() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    // e.target.value -> para escuchar el onChange de un INPUT
-
     const { elements } = event.currentTarget
-
-    // estrategia 1, trampa de TypeScript
-    // no os lo recomiendo:
-    // const input = elements.namedItem('item') as HTMLInputElement
-
-    // estrategia 2, es asegurarse que realmente es lo que es
     const input = elements.namedItem('item')
-    const isInput = input instanceof HTMLInputElement // JavaScript puro
+    const isInput = input instanceof HTMLInputElement
     if (!isInput || input == null) return
 
     addItem(input.value)
@@ -53,12 +45,13 @@ function App() {
           <label>
             Elemento a introducir:
             <input
-              name="item"
-              required
               type="text"
-              placeholder="Videojuegos 🎮"
+              name='item'
+              placeholder='Videojuegos 🎮'
+              required
             />
           </label>
+
           <button>Añadir elemento a la lista</button>
         </form>
       </aside>
@@ -68,19 +61,18 @@ function App() {
           {
             items.length === 0 ? (
               <p>
-                <strong>No hay elementos en la lista.</strong>
+                <strong>No hay elementos en la lista</strong>
               </p>
             ) : (
               <ul>
                 {
-                  items.map((item) => {
-                    return (
-                      <Item
-                        {...item}
-                        handleClick={createHandleRemoveItem(item.id)}
-                        key={item.id} />
-                    )
-                  })
+                  items.map(item => (
+                    <Item
+                      key={item.id}
+                      {...item}
+                      handleClick={createHandleRemoveItem(item.id)}
+                    />
+                  ))
                 }
               </ul>
             )
