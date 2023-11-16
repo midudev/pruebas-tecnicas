@@ -873,17 +873,17 @@
     }
   },
   {
-    "libro": {
-      "título": "El Feo",
-      "páginas": 240,
-      "género": "Autoayuda",
-      "portada": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348650826i/11401681.jpg",
-      "sinopsis": "",
-      "año": 2010,
+    "book": {
+      "title": "El Feo",
+      "pages": 240,
+      "genre": "Autoayuda",
+      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348650826i/11401681.jpg",
+      "synopsis": "Es un libro de personalidad e imagen, te enseña a ver el mundo de una mejor manera, dejar las cosas que te avergüenzan y no te dejan ser tu mismo, mediante una historia que ocurre en un campamento. -MACP",
+      "year": 2010,
       "ISBN": "978-970-770-365-0",
-      "autor": {
-        "nombre": "Carlos Cuauhtémoc Sánchez",
-        "otrosLibros": [
+      "author": {
+        "name": "Carlos Cuauhtémoc Sánchez",
+        "otherBooks": [
           "Juventud en éxtasis",
           "La fuerza de Sheccid"
         ]
@@ -891,17 +891,17 @@
     }
   },
   {
-    "libro": {
-      "título": "Ojos Azules",
-      "páginas": 150,
-      "género": "Ficción",
-      "portada": "Uhttps://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1178384869i/790415.jpg",
-      "sinopsis": "",
-      "año": 1970,
+    "book": {
+      "title": "Ojos Azules",
+      "pages": 150,
+      "genre": "Ficción",
+      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1178384869i/790415.jpg",
+      "synopsis": "Una familia afroamericana que sufren de racismo y cuenta como es la vida desde la perspectiva de unas niñas de 10 años, trata mucho de los estándares de belleza que antes se tenían. -MACP",
+      "year": 1970,
       "ISBN": "978-970-770-365-0",
-      "autor": {
-        "nombre": "Toni Morrison",
-        "otrosLibros": [
+      "author": {
+        "name": "Toni Morrison",
+        "otherBooks": [
           "Beloved",
           "Song of Solomon"
         ]
