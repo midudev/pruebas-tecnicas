@@ -873,6 +873,42 @@
     }
   },
   {
+    "libro": {
+      "título": "El Feo",
+      "páginas": 240,
+      "género": "Autoayuda",
+      "portada": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348650826i/11401681.jpg",
+      "sinopsis": "La historia de un joven aparentemente feo que descubre la verdadera belleza interior. A través de sus experiencias, el libro aborda temas de autoaceptación, amor propio y superación personal, inspirando a los lectores a encontrar la belleza en sus propias vidas.",
+      "año": 2010,
+      "ISBN": "978-970-770-365-0",
+      "autor": {
+        "nombre": "Carlos Cuauhtémoc Sánchez",
+        "otrosLibros": [
+          "Juventud en éxtasis",
+          "La fuerza de Sheccid"
+        ]
+      }
+    }
+  },
+  {
+    "libro": {
+      "título": "Ojos Azules",
+      "páginas": 150,
+      "género": "Ficción",
+      "portada": "Uhttps://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1178384869i/790415.jpg",
+      "sinopsis": "La historia de Pecola Breedlove, una niña afroamericana que anhela tener ojos azules y cabello rubio para sentirse aceptada y hermosa en un mundo que la discrimina. La novela aborda temas de racismo, identidad y la búsqueda de la belleza en una sociedad que impone estándares poco realistas.",
+      "año": 1970,
+      "ISBN": "978-970-770-365-0",
+      "autor": {
+        "nombre": "Toni Morrison",
+        "otrosLibros": [
+          "Beloved",
+          "Song of Solomon"
+        ]
+      }
+    }
+  },
+  {
     "book": {
       "title": "Dhammapada",
       "pages": 96,
