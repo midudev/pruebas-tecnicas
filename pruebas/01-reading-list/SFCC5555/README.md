@@ -74,7 +74,7 @@ Use the `books.json` file to fetch book data. You can add more books if desired,
 ### Links
 
 - Solution URL: [GitHub](https://github.com/SFCC5555/pruebas-tecnicas/tree/main/pruebas/01-reading-list/SFCC5555)
-- Live Site URL: [Book-List](https://sfcc-book-list.netlify.app/)
+- Live Site URL: [Book-List](https://book-list-sfcc.netlify.app/)
 
 ## My process
 
