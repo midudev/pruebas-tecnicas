@@ -1,0 +1,84 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 24px 0 24px;
+  align-items: center;
+  background: var(--bg-dark);
+  height: 4.86rem;
+}
+
+.navbar div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navbar a.home-link {
+  color: var(--color);
+  font-weight: bold;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.navbar a.home-link:hover {
+  color: var(--color-title);
+  border-bottom: 1px solid var(--color-title);
+  box-sizing: border-box;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.menu {
+  position: relative;
+}
+
+.menu button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+  border-radius: 5px;
+}
+
+.menu button:hover {
+  background: var(--btn-bg);
+}
+
+.menu button img {
+  width: 20px;
+}
+
+app-reading-list {
+  z-index: 10000;
+  position: absolute;
+  top: 4.86rem;
+  right: 0;
+  height: calc(100vh - 5rem);
+  background: var(--bg-dark);
+  color: var(--color);
+  width: 30%;
+  border-top: 3px solid var(--color);
+  overflow: auto;
+  padding: 0 1.5rem 3rem 1.5rem;
+}
+
+.lengthList {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--color-title);
+  color: var(--color);
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: bold;
+  pointer-events: none;
+}

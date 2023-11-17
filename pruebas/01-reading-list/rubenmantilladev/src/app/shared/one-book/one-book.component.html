@@ -1,0 +1,20 @@
+<div class="book-container" *ngFor="let book of books">
+  <img class="cover" [src]="book.cover" alt="{{ book.title }} Cover" title="{{ book.title }}" />
+
+  <button type="button" (click)="addFavorite(book.ISBN)">
+    <img
+      [src]="
+        showBookFavorite(book.ISBN)
+          ? '../../../assets/icons/favorite.svg'
+          : '../../../assets/icons/add-favorite.svg'
+      "
+      alt="Add to read list"
+    />
+  </button>
+
+  <div class="data-book">
+    <p class="title">{{ book.title }}</p>
+    <p class="author-name">{{ book.author.name }}</p>
+    <p class="isbn">{{ book.ISBN }}</p>
+  </div>
+</div>

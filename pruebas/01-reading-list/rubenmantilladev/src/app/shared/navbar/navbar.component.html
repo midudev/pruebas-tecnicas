@@ -1,0 +1,35 @@
+<nav class="navbar">
+  <a routerLink="['/home']" (click)="toHome()" class="logo">
+    <img src="../../../assets/logo.svg" alt="" />
+  </a>
+
+  <a
+    class="home-link"
+    routerLink="['/home']"
+    (click)="toHome()"
+    [ngClass]="{ 'display-none': isPageHomeActive() }"
+    >Home</a
+  >
+
+  <app-search-bar *ngIf="isPageHomeActive()"></app-search-bar>
+
+  <div>
+    <div class="menu">
+      <button (click)="menu()">
+        <img
+          width="10"
+          [src]="
+            hideList
+              ? '../../../assets/icons/close-list.svg'
+              : '../../../assets/icons/read-list.svg'
+          "
+          alt="menu" />
+      </button>
+      <div class="lengthList">
+        <span>{{ lengthList }}</span>
+      </div>
+    </div>
+
+    <app-reading-list *ngIf="hideList"></app-reading-list>
+  </div>
+</nav>
