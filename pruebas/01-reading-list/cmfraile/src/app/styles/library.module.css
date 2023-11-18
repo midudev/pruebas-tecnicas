@@ -1,0 +1,78 @@
+.bookList {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.bookCard {
+    position: relative;
+    min-width: 100px ;
+    min-height: 100px ;
+    max-width: 15% ;
+    max-height: 15% ;
+    overflow: hidden;
+    margin: 5px;
+    border-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.75);
+}
+
+.bookCard > * {
+    user-select: none;
+}
+
+.bookCard > img {
+    min-width: 100%;
+    max-height: 100%;
+    z-index: 1;
+}
+
+.bookCard > p {
+    color: transparent;
+    padding: 5px;
+    font-size: 1rem;
+    top: 15%;
+    right: 0;
+    font-weight: 900;
+    padding: 5px;
+    position: absolute !important ;
+    z-index: 2;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid;
+}
+
+.bookCard:hover p {
+    transition: all 0.3s ease;
+}
+
+.bookCard:hover .addBook,.bookCard:hover .removeBook {
+    color: white;
+}
+
+.bookCard:hover .addBook {
+    background-color: green;
+}
+
+.bookCard:hover .removeBook {
+    background-color: red;
+}
+
+.forReading {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.forReading > p {
+    min-width: 100%;
+}
+
+
+
+

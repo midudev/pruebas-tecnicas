@@ -1,0 +1,27 @@
+.credits{
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333333;
+    z-index: 10;
+}
+
+.credits > p {
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+.divisor{
+    margin: 0px 100px;
+}
+
+@media (max-width: 768px) {
+    .credits > p { font-size: 0.8rem }
+    .divisor { margin: 0 }
+}
