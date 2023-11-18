@@ -1,0 +1,65 @@
+.actionButton {
+  position: relative;
+  padding: 0.2em 0.8em;
+  width: fit-content;
+  background-color: transparent;
+  color: rgb(255 255 255 / 0.75);
+  border: solid 2px rgb(255 255 255 / 0.75);
+  border-radius: 0.375rem;
+  font-weight: 600;
+  overflow: hidden;
+  transition: border-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.actionButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 0;
+  height: 100%;
+  background-color: var(--color-primary);
+  z-index: -1;
+  transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.actionButton:focus {
+  outline-color: var(--color-primary-triad);
+}
+
+@media (hover: hover) {
+  .actionButton:hover {
+    color: #222;
+    border-color: #167eab;
+  }
+
+  .actionButton:hover::before {
+    width: 100%;
+  }
+}
+
+@media (hover: none) {
+  .actionButton {
+    color: #222;
+    border-color: #167eab;
+    transition: none;
+  }
+  .actionButton::before {
+    width: 100%;
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .actionButton {
+    color: #222;
+    border-color: #167eab;
+    transition: none;
+  }
+  .actionButton::before {
+    width: 100%;
+    transition: none;
+  }
+}

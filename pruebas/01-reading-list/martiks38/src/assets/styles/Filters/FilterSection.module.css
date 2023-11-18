@@ -1,0 +1,97 @@
+.filterSection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 3rem;
+  padding: 1em var(--padding-content);
+  height: max-content;
+}
+
+.filterSection__field {
+  padding: 0;
+  width: fit-content;
+  border-width: 0;
+}
+
+.filterSection__field > label {
+  font-size: 1rem;
+  line-height: 1.75rem;
+}
+
+.filterSection__fieldTitle {
+  padding: 0;
+  margin-bottom: 0.6em;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.filterSection__containerOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3em 0.7em;
+  margin-top: -0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.75rem;
+}
+
+.filterSection__pageNumberFilter {
+  max-width: 400px;
+  width: 100%;
+}
+
+.filterSection__checkGenre {
+  /* Hide input:radio without compromising accessibility */
+  width: 0;
+}
+
+.filterSection__labelGenre {
+  padding: 0.2em 0.6em 0.2em 0;
+  margin-right: 0.6em;
+  color: rgb(255 255 255 / 0.75);
+  text-wrap: nowrap;
+}
+
+.filterSection__checkGenre:checked + .filterSection__labelGenre {
+  color: var(--color-primary);
+}
+
+@media (hover: hover) {
+  .filterSection__labelGenre:hover {
+    color: #fff;
+  }
+}
+
+@media (hover: none) {
+  .filterSection__labelGenre {
+    color: #fff;
+  }
+}
+
+@media (min-width: 55rem) {
+  .filterSection {
+    grid-area: filters;
+  }
+}
+
+@media (min-width: 90.0625rem) {
+  .filterSection {
+    border-left-color: var(--border-section-color);
+  }
+}
+
+@media (min-width: 96rem) {
+  .filterSection__fieldTitle {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .filterSection__labelGenre {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .filterSection__field > label {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+}
