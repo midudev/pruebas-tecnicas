@@ -1,0 +1,3 @@
+**/node_modules/*
+.eslintrc.cjs
+src/vite-env.d.ts
