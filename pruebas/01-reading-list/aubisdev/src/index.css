@@ -1,0 +1,36 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: auto;
+  min-height: 80vh;
+  width: 80vw;
+  margin: auto;
+  background: #161b22;
+  border-right: 2px solid rgba(255,255,255,0.2);
+  border-left: 2px solid rgba(255,255,255,0.2)
+}
+
+.card{
+  width: 100%;
+  display: grid !important;
+  grid-auto-columns: 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
+  row-gap: 25px;
+}
+
+.css-i4bv87-MuiSvgIcon-root {
+  display: none !important
+}
+
+label {
+  z-index: 100 !important
+}
