@@ -1,0 +1,8 @@
+.results h1 {
+  font-size: 1em;
+}
+
+.results ul {
+  display: flex;
+  flex-direction: column;
+}

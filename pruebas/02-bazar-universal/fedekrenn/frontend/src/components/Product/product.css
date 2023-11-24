@@ -1,0 +1,21 @@
+li.card {
+  display: flex;
+  gap: 20px;
+  min-height: 150px;
+  align-items: center;
+}
+
+li.card img {
+  width: 100px;
+  height: 100px;
+}
+
+li.card .price-section {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+
+.card .description {
+  font-size: 0.9em;
+}
