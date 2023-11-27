@@ -15,7 +15,7 @@ const getProducts = async (req, res) => {
 
 const getDetail = async (req, res) => {
   const { id } = req.params
-  const result = await itemContainer.getItemById(parseInt(id))
+  const result = await itemContainer.getItemById(id)
 
   if (!result) {
     res.status(404).json({ error: 'Not product found' })

@@ -14,7 +14,7 @@ export default class Item {
   async getItemById (id) {
     try {
       const data = await this.getItems()
-      return data.find(item => item.id === id)
+      return data.find(item => item.id === Number(id))
     } catch (error) {
       console.log(error)
     }
@@ -23,7 +23,7 @@ export default class Item {
   async getItemsByCategory (category) {
     try {
       const data = await this.getItems()
-      return data.filter(item => item.category.includes(category))
+      return data.filter(item => item.category.toLowerCase().includes(category.toLowerCase()))
     } catch (error) {
       console.log(error)
     }

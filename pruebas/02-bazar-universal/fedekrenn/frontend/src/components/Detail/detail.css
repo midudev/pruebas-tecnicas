@@ -4,6 +4,11 @@
 
 .small {
   width: 50px;
+  transition: transform 0.3s ease;
+}
+
+.circle-img.small:hover {
+  transform: scale(1.2);
 }
 
 .row {
@@ -31,6 +36,7 @@
 
 .main-img {
   width: 200px;
+  height: 200px;
 }
 
 .imgs-cointainer {

@@ -9,6 +9,8 @@ import DetailSkeleton from '../../components/Skeleton/DetailSkeleton/DetailSkele
 import Detail from '../../components/Detail/Detail.jsx'
 // Hooks
 import useSeo from '../../customHooks/useSeo.js'
+// Utils
+import DEPLOY_URL from '../../utils/deploy.js'
 
 export default function DetailContainer() {
   const [product, setProduct] = useState(null)
@@ -19,7 +21,7 @@ export default function DetailContainer() {
   useSeo({ title: product?.title, description: product?.description })
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/items/${id}`)
+    fetch(`${DEPLOY_URL}/api/items/${id}`)
       .then(res => {
         if (!res.ok) throw new Error('Producto no encontrado')
         return res.json()

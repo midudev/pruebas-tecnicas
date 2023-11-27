@@ -21,7 +21,9 @@ El proyecto consiste en un ecommerce de productos, versión mobile, donde se pue
 
 `pnpm dev`
 
-4 - Abrir el navegador en http://localhost:5173/ para desplegar la aplicación con la vista de productos. (El servidor con la API corre en el puerto 3000 por defecto, aunque puede tomar el valor de la variable de entorno PORT)
+4 - El frontend lee una variable de entorno llamada 'VITE_DEPLOY_ROUTE' para tomar una api externa que esté bajo deploy, de no existir este archivo .env tomará por default el localhost:3000. Para correr el proyecto con la api externa, crear un archivo .env en la carpeta frontend con la variable de entorno VITE_DEPLOY_ROUTE y asignarle el valor de la api externa.
+
+5 - Abrir el navegador en http://localhost:5173/ para desplegar la aplicación con la vista de productos.
 
 ## 🚀 Endpoints de la API
 

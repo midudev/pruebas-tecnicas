@@ -18,4 +18,5 @@ li.card .price-section {
 
 .card .description {
   font-size: 0.9em;
+  text-wrap: pretty;
 }

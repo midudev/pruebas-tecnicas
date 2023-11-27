@@ -9,6 +9,8 @@ import Empty from '../../components/Empty/Empty.jsx'
 import Results from '../../components/Results/Result.jsx'
 // Hooks
 import useSeo from '../../customHooks/useSeo.js'
+// Utils
+import DEPLOY_URL from '../../utils/deploy.js'
 
 export default function ResultsContainer() {
   const [products, setProducts] = useState([])
@@ -20,7 +22,7 @@ export default function ResultsContainer() {
   useSeo({ title: `Búsqueda de "${category}"`, description: `Resultados de búsqueda de ${category}` })
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/items?q=${category}`)
+    fetch(`${DEPLOY_URL}/api/items?q=${category}`)
       .then(res => res.json())
       .then(data => {
         setLoading(false)
