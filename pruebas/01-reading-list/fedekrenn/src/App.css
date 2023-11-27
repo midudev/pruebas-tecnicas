@@ -1,0 +1,88 @@
+h1,
+h2 {
+  text-align: center;
+}
+
+.open-modal-btn {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
+
+.cover-img {
+  height: 200px;
+  width: 150px;
+  filter: brightness(0.8);
+  object-fit: cover;
+  border-radius: .3em;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cover-img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+  transition: transform 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+ul {
+  margin: 3rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.books-container {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+span {
+  color: rgb(173, 11, 11);
+  font-weight: bold;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+
+.filter-container p {
+  margin-bottom: 1em;
+}
+
+select#select-genre {
+  margin: 0
+}
+
+input[type="range"] {
+  margin: 0;
+}
+
+#readingList {
+  min-width: 50%;
+  max-width: 85%;
+  margin: auto;
+  border-radius: 5px;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#readingList ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#readingList button {
+  display: block;
+  margin: 0 auto;
+}
+
+dialog p {
+  text-align: center;
+  margin: 3em 0;
+}

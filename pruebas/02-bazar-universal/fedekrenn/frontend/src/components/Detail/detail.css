@@ -1,0 +1,51 @@
+.detail h1 {
+  margin: 20px 0 10px 0;
+}
+
+.small {
+  width: 50px;
+  transition: transform 0.3s ease;
+}
+
+.circle-img.small:hover {
+  transform: scale(1.2);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sub-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 10px 0 20px 0;
+}
+
+.sub-info > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sub-info p {
+  font-weight: bold;
+  font-size: 0.7em;
+}
+
+.main-img {
+  width: 200px;
+  height: 200px;
+}
+
+.imgs-cointainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+button.big {
+  display: block;
+  margin: 30px auto 0 auto;
+}

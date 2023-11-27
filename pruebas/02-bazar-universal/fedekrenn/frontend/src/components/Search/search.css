@@ -1,0 +1,30 @@
+.search-product {
+  margin-top: 10px;
+  background-color: #ececec;
+  padding: 5px 10px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 250px;
+  height: 40px;
+}
+
+.search-product input {
+  border: none;
+  background-color: transparent;
+  font-size: 1.1em;
+}
+
+.search-product input:focus {
+  outline: none;
+}
+
+.search-product button {
+  border: none;
+  background-color: transparent;
+}
+
+.search-product + .btn{
+  margin-top: 20px;
+}
