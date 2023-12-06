@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+body * {
+    @apply transition-colors duration-200;
+}
+
+.text-blur {
+    color: transparent;
+    text-shadow: 0 0 7px rgba(0,0,0,0.5);
+    user-select: none;
+}
+
+.dark .dark\:text-blur {
+    color: transparent;
+    text-shadow: 0 0 7px rgba(255,255,255,0.5);
+    user-select: none;
+}
+
+.book-image-shadow {
+    box-shadow: -9px 9px 17px 0px #8f8d8d;
+}
+
+.author-avatar {
+    height: 375px;
+    object-fit: none;
+    object-position: bottom;
+    clip-path: polygon(10% 0, 100% 0%, 100% 100%, 10% 100%);
+}
