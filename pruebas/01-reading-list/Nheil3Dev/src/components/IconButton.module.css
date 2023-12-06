@@ -1,0 +1,46 @@
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background-color: black;
+	color: white;
+	padding: 10px;
+	border-radius: 50%;
+	cursor: pointer;
+	border: none;
+}
+
+.button:hover {
+	background-color: #333;
+}
+
+.button:disabled {
+	background-color: #1a1a1a;
+	cursor: initial;
+	color: black;
+}
+
+.icon {
+	height: 20px;
+	width: 20px;
+}
+
+/* Header buttons */
+
+.transparent {
+	background-color: transparent;
+}
+
+.transparent .icon {
+	height: 30px;
+	width: 30px;
+}
+
+.transparent:focus {
+	background-color: transparent;
+}
+
+.transparent:checked {
+	background-color: transparent;
+}
