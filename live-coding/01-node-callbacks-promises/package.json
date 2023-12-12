@@ -1,0 +1,23 @@
+{
+  "name": "01-node-callbacks-promises",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Ejercicios de live coding sobre callbacks y promises",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [],
+  "author": "Federico Krenn",
+  "license": "ISC",
+  "devDependencies": {
+    "standard": "^17.1.0",
+    "supertest": "^6.3.3"
+  },
+  "eslintConfig": {
+    "extends": "standard"
+  }
+}
