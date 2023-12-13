@@ -8,7 +8,9 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "node --test"
+    "test": "echo \"Please use pnpm test1 or pnpm test2\"",
+    "test1": "node tests/index.test.js",
+    "test2": "node tests/dotenv.test.js"
   },
   "keywords": [],
   "author": "Federico Krenn",
