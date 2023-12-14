@@ -1,0 +1,25 @@
+GET http://localhost:3000/items
+
+###
+
+POST http://localhost:3000/items
+content-type: application/json
+
+{
+    "content": "Producto 1"
+}
+
+###
+
+PUT http://localhost:3000/items/2
+content-type: application/json
+
+{
+    "content": "Producto Modificado"
+}
+
+###
+
+DELETE http://localhost:3000/items/1
+
+

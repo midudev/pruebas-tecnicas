@@ -10,16 +10,20 @@
   "scripts": {
     "test": "echo \"Please use pnpm test1 or pnpm test2\"",
     "test1": "node tests/index.test.js",
-    "test2": "node tests/dotenv.test.js"
+    "test2": "node tests/dotenv.test.js",
+    "test3": "node tests/server.test.js"
   },
   "keywords": [],
   "author": "Federico Krenn",
   "license": "ISC",
   "devDependencies": {
-    "standard": "^17.1.0",
-    "supertest": "^6.3.3"
+    "standard": "17.1.0",
+    "supertest": "6.3.3"
   },
   "eslintConfig": {
     "extends": "standard"
+  },
+  "dependencies": {
+    "express": "4.18.2"
   }
 }
