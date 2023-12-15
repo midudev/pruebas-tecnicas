@@ -1,0 +1,21 @@
+.bc-section {
+  background-color: #20252c;
+  color: #ffffff;
+  width: 740px;
+  height: 700px;
+  border-radius: 16px;
+  overflow-y: scroll;
+}
+
+.bc-title {
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+/* Media query para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+  .bc-section {
+    width: 100%; /* Otra opción: width: auto; */
+    height: auto;
+  }
+}

@@ -1,0 +1,23 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color-scheme: light dark;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  background: #3c4654;
+  background: radial-gradient(at right bottom, #20252c, #3c4654);
+}
+
+/* Media query para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+  body {
+    background: radial-gradient(at right bottom, #20252c, #3c4654);
+    background-attachment: fixed;
+  }
+}
