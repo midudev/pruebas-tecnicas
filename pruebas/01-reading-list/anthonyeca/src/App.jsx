@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Book } from './components/Book'
 import { BookContainer } from './components/BookContainer'
 import data from '../../books.json'
@@ -8,10 +8,20 @@ import { Category } from './components/Category'
 import { Footer } from './components/Footer'
 
 function App() {
-  const [library, setLibrary] = useState(data.library)
+  const library = data.library
   const [lecture, setLecture] = useState([])
   const [filtered, setFiltered] = useState([])
   const [activeGenre, setActiveGenre] = useState('')
+
+  if (activeGenre !== '') {
+    localStorage.setItem('category', activeGenre)
+  }
+  useEffect(() => {
+    const localStorageCategory = localStorage.getItem('category')
+    if (localStorageCategory && localStorageCategory?.length > 1) {
+      setActiveGenre(localStorageCategory)
+    }
+  }, [])
 
   return (
     <>

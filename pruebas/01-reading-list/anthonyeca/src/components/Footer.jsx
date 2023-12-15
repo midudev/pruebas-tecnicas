@@ -13,15 +13,15 @@ export const Footer = () => {
         <a
           href="https://github.com/anthonyeca"
           target="_blank"
-          rel="noopener nofollow"
+          rel="noopener noreferrer nofollow"
           aria-label="Github de @anthonyeca"
         >
           GitHub
         </a>
         <a
-          href="https://anthonyeca-dev.netlify.app/"
+          href="https://anthonyeca.dev/"
           target="_blank"
-          rel="noopener nofollow"
+          rel="noopener noreferrer nofollow"
           aria-label="Portafolio"
         >
           Portafolio
