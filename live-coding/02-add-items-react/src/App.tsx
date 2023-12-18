@@ -33,7 +33,7 @@ function App () {
   return (
     <main>
       <section>
-        <form onSubmit={handleAddItem}>
+        <form onSubmit={handleAddItem} aria-label='Formulario para carga de items'>
           <label>
             Ingresa un elemento:
             <input
@@ -42,12 +42,12 @@ function App () {
               onChange={(e) => setTextValue(e.target.value)}
             />
           </label>
+          <button type='submit'>Agregar</button>
         </form>
-        <button type='submit'>Agregar</button>
       </section>
       <section className='elements'>
         {items.length === 0
-          ? <h2>No hay elemetos</h2>
+          ? <h2>No hay elementos...</h2>
           : (
             <ul>
               {items.map(({ name, id }) => (
