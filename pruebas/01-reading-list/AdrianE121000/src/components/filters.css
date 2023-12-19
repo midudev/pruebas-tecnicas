@@ -1,0 +1,28 @@
+.filters {
+    display: flex;
+    gap: 40px;
+}
+
+.filter-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-item span {
+    margin-left: 10px;
+}
+
+@media (max-width: 500px) {
+    .filters {
+        flex-direction: column;
+    }
+
+    .filter-item {
+        flex-direction: column;
+    }
+
+    .filters input,
+    .filters select {
+        width: 50%;
+    }
+}

@@ -1,0 +1,40 @@
+.read-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.read-list-book {
+    position: relative;
+}
+
+.read-list-book img {
+    width: 100px;
+    height: 120px;
+    margin: 12px;
+    border-radius: 5px;
+}
+
+.title {
+    text-align: center;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: red;
+    color: white;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+@media (max-width: 500px) {
+    .read-list-book {
+        margin: 0 20px;
+    }
+}
