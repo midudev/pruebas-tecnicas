@@ -16,14 +16,14 @@ const LectureList = () => {
 
   return (
     <div>
-      {
+      {/*
         true ? (
           <WraperLectureList>🔖</WraperLectureList>
         ) : (
           null
         )
-      }
-      {/* <h2>Lecture List</h2>
+      */}
+      <h2>Lecture List</h2>
       <p>Libros en lista: <b>{lecturelist.length}</b></p>
       {
         lecturelist.length > 0 ? (
@@ -39,7 +39,7 @@ const LectureList = () => {
         ) : (
           <p>No hay libros 😢</p>
         )
-      } */}
+      }
     </div>
   );
 };
