@@ -1,0 +1,24 @@
+{
+  "name": "challenge-node",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Challenge para prueba técnica de API node",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Federico Krenn",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.18.2",
+    "sequelize": "6.35.2"
+  },
+  "devDependencies": {
+    "standard": "17.1.0"
+  },
+  "eslintConfig": {
+    "extends": "standard"
+  }
+}
