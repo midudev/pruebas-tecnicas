@@ -1,0 +1,38 @@
+.ShelfTable {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+}
+
+.Table {
+  position: relative;
+  width: 110%;
+  height: 75%;
+  background-color: #e9e0d2;
+  clip-path: polygon(5% 0, 95% 0, 100% 100%, 0% 100%);
+  border: 1px solid #e9e0d2;
+  box-shadow: inset rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.BorderTable {
+  position: relative;
+  width: 110%;
+  height: 25%;
+  background-color: #f6f2eb;
+  border-radius: 3px;
+  border: 1px solid #e9e0d2;
+}
+
+.ShadowTable {
+  top: 100%;
+  left: 0;
+  position: absolute;
+  width: 105%;
+  height: 120%;
+  clip-path: polygon(0 0, 98% 0, 100% 100%, 3% 100%);
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 25px -20px inset;
+}

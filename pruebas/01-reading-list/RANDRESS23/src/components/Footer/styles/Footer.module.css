@@ -1,0 +1,27 @@
+.Footer {
+  position: absolute;
+  z-index: 20;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  color: #2c1810;
+  text-align: center;
+}
+
+.HeartIcon {
+  padding-left: 4px;
+  padding-right: 4px;
+  color: red;
+}
+
+.FullName {
+  padding-left: 4px;
+  padding-right: 4px;
+  font-family: 'Libre Caslon Text', serif;
+  font-weight: bold;
+}

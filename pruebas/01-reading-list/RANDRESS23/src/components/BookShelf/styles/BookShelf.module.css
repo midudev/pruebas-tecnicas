@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap');
+
+.BookShelf {
+  width: 80%;
+  min-height: 80vh;
+  background-color: #f8f3ed;
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  border: 1px solid #f8f4eb;
+  margin-bottom: 30px;
+}
+
+.ShelfDown {
+  width: 100%;
+  margin-top: 70px;
+}

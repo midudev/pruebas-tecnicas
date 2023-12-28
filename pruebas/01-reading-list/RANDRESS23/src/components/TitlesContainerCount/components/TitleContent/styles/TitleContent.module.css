@@ -1,0 +1,43 @@
+.TitleContent {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.TitleBooksAvailable {
+  font-size: 30px;
+  font-family: 'Libre Caslon Text', serif;
+  color: #2c1810;
+}
+
+.TitleGenreBooksAvailable {
+  font-size: 20px;
+  font-family: 'Libre Caslon Text', serif;
+  color: #2c1810;
+}
+
+.SignAvailable {
+  position: relative;
+  z-index: 10;
+  background-color: #daaa63;
+  color: #2c1810;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 10px 20px;
+  border-radius: 3px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.SignGenreAvailable {
+  position: relative;
+  z-index: 10;
+  background-color: #daaa63;
+  color: #2c1810;
+  font-weight: bold;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 7px 15px;
+  border-radius: 3px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
