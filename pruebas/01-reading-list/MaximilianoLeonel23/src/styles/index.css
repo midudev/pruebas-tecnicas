@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.input {
+  @apply bg-stone-50 border border-stone-200 rounded px-4 py-1;
+}
