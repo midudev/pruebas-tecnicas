@@ -1,0 +1,23 @@
+.main {
+  @apply h-[40px] w-full flex justify-center bg-dark-alt-bg-opacity;
+}
+
+.footerElements {
+  @apply max-w-[1400px] flex w-full items-center justify-between;
+}
+
+.link {
+  @apply text-xl;
+}
+
+@media (hover: hover) {
+  .link {
+    @apply hover:text-primary-light;
+  }
+}
+
+@media (max-width: 1400px) {
+  .footerElements {
+    max-width: calc(80%);
+  }
+}

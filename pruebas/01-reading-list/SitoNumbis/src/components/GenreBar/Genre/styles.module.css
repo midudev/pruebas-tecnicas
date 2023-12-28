@@ -1,0 +1,17 @@
+.main {
+  @apply px-5 py-3 transition w-fit cursor-default whitespace-nowrap;
+}
+
+.active {
+  @apply bg-primary;
+}
+
+.available {
+  @apply bg-dark-alt-bg;
+}
+
+@media (hover: hover) {
+  .available {
+    @apply hover:bg-primary-dark;
+  }
+}

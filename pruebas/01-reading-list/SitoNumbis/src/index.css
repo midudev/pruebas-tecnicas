@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-dark-bg overflow-x-hidden;
+}
+
+[role="button"] {
+  cursor: initial;
+}
+
+input,
+input:focus,
+input:hover {
+  outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p,
+input,
+textarea,
+button,
+span {
+  @apply text-dark-text;
+}
+
+label,
+.alter-text {
+  @apply text-dark-alt-text;
+}
+
+button {
+  @apply cursor-default;
+}
+
+.secondary {
+  @apply border-primary border-2 rounded-3xl transition px-5 py-2;
+}
+
+@media (hover: hover) {
+  .secondary {
+    @apply hover:border-primary-dark-opacity hover:bg-primary-dark-opacity;
+  }
+}
+
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}

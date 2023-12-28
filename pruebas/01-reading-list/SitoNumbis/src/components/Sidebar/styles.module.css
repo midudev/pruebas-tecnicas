@@ -1,0 +1,22 @@
+.main {
+  backdrop-filter: blur(24px);
+  transition: transform 500ms ease;
+  @apply w-[280px] fixed top-0 right-0 h-screen
+    z-30 bg-dark-alt-bg-opacity shadow-[black] shadow-sm flex flex-col
+    items-start justify-start p-3 overflow-auto;
+}
+
+.verticalGrid {
+  grid-auto-rows: 60px;
+  @apply w-full pt-5 grid;
+}
+
+@media (max-width: 500px) {
+  .main {
+    @apply w-full;
+  }
+
+  .verticalGrid {
+    grid-auto-rows: 80px;
+  }
+}

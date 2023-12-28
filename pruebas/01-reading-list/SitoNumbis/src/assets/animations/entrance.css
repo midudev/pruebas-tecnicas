@@ -1,0 +1,29 @@
+.entrance {
+  animation: entrance 1s ease 1;
+}
+
+.hide {
+  animation: hideA 0.5s ease 1;
+}
+
+@keyframes entrance {
+  0% {
+    opacity: 0;
+    scale: 1.05;
+  }
+
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes hideA {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

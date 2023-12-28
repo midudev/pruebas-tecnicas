@@ -1,0 +1,54 @@
+{
+  "es": {
+    "logo": "Sito's Library",
+    "copyright": "Licencia MIT",
+    "empty": {
+      "title": "No hay libros",
+      "body": "Deberías pasarte por la lista de libros disponibles y comenzar a buscar"
+    },
+    "homeHeader": {
+      "noFilter": "Todos",
+      "title": "Libros disponibles",
+      "pageFilter": "Cantidad de Páginas",
+      "titleFilter": "Título"
+    },
+    "error": {
+      "noBooks": "No hay libros",
+      "title": "Ha ocurrido un error",
+      "reload": "Recargar"
+    },
+    "sidebar": {
+      "title": "Lista de lectura"
+    },
+    "book": {
+      "by": "por",
+      "title": "Título",
+      "pages": "páginas",
+      "genre": "Género",
+      "year": "Año",
+      "author": "Autor",
+      "synopsis": "Sinopsis",
+      "otherBooks": "Otros libros",
+      "add": "Agregar",
+      "remove": "Remover",
+      "seeCover": "Ver cover",
+      "cover":"Cover de"
+    },
+    "ariaLabels": {
+      "filterBy": "Filtrar por",
+      "toReadingList": "Ver lista de lectura",
+      "toMainStock": "Ver libros disponibles",
+      "add": "Agregar a la lista de lectura",
+      "remove": "Remover de la lista de lectura",
+      "logo": "Logo de Sito's Library (ir al inicio)",
+      "toTop": "Ir al tope",
+      "reload": "Recargar",
+      "seeSourceCode": "Ver el código fuente",
+      "genreLeft": "Deslizar géneros a la derecha",
+      "genreRight": "Deslizar géneros a la izquierda",
+      "seeDetails": "Ver detalles del libro",
+      "closeDialog": "Cerrar contenido flotante",
+      "closeSidebar": "Cerrar barra lateral"
+    }
+  }
+}

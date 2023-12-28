@@ -1,0 +1,9 @@
+.main {
+  @apply grid place-items-center transition duration-300 fixed z-50 top-0 left-0 bg-dark-alt-bg-opacity backdrop-blur-xl w-full h-screen;
+}
+
+
+
+.closeButton {
+  @apply z-20 top-1 right-1 text-primary text-xl fixed;
+}
