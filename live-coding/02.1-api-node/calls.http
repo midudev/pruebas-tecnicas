@@ -2,7 +2,7 @@ GET http://localhost:3000/books
 
 ###
 
-GET http://localhost:3000/books/2/pages-average
+GET http://localhost:3000/books/1/pages-average
 
 ###
 
@@ -13,7 +13,8 @@ content-type: application/json
     "id": 1,
     "title": "Harry Potter y la gallina partida",
     "chapters": 13,
-    "pages": 356
+    "pages": 356,
+    "authorsIds": [1]
 }
 
 ###
@@ -26,6 +27,6 @@ POST http://localhost:3000/authors
 content-type: application/json
 
 {
-    "id": 2,
-    "name": "Jorge Luis"
+    "id": 1,
+    "name": "J.K. Rowling"
 }

@@ -1,4 +1,4 @@
-const authors = []
+export const authors = []
 
 export class MemoryAuthor {
   static getAll () {

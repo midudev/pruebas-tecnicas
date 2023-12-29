@@ -24,7 +24,7 @@ Se puede usar almacenamiento en memoria o el sistema gestor de bases de datos de
 - id: number
 - name: string
 
-- [] _Debe existir una relación del tipo Many-to-Many entre los libros y los autores_
+- [x] _Debe existir una relación del tipo Many-to-Many entre los libros y los autores_
 
 **Endpoints:**
 
@@ -34,7 +34,7 @@ Se puede usar almacenamiento en memoria o el sistema gestor de bases de datos de
 4. **Obtener todos los autores**: Deberá devolver un listado de todos los autores con los libros que tengan.
 5. **Obtener Promedio de Páginas por Capítulo**: Obtener el dato de una instancia de Libro ya creada. Se debe devolver el id del libro consultado y un promedio de páginas por capítulo. Ambos en formato cadena, y con 2 decimales para el promedio.
 
-- [] _Para la prueba es necesario realizar lo que dicta el enunciado, aunque se pueden agregar características no mencionadas (manejo de errores, repositorio de datos, validaciones, etc.)._
-- [] _Se pueden asumir los aspectos que no aclare el enunciado, y realizar aclaraciones personales en caso de ser necesario._
+- [x] _Para la prueba es necesario realizar lo que dicta el enunciado, aunque se pueden agregar características no mencionadas (manejo de errores, repositorio de datos, validaciones, etc.)._
+- [x] _Se pueden asumir los aspectos que no aclare el enunciado, y realizar aclaraciones personales en caso de ser necesario._
 
 ¡Mucha suerte!

@@ -6,11 +6,19 @@ export const getAll = (req, res) => {
 }
 
 export const create = (req, res) => {
-  const book = MemoryBook.create(req.body)
-  res.status(201).json(book)
+  try {
+    const book = MemoryBook.create(req.body)
+    res.status(201).json(book)
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
 }
 
 export const getPagesAverage = (req, res) => {
-  const book = MemoryBook.getPagesAverage(Number(req.params.id))
-  res.status(200).json(book)
+  try {
+    const avgInfo = MemoryBook.getPagesAverage(Number(req.params.id))
+    res.status(200).json(avgInfo)
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
 }
