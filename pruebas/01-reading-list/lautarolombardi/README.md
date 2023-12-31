@@ -25,9 +25,8 @@ Elige tus libros favoritos y agrégalos a tu lista de lectura para leerlos cuand
 ## Instalación
 
 1. git clone https://github.com/lautarolombardi/tesoro-literario.git
-2. cd tesoro-literario
-3. cd pruebas/01-reading-list/lautarolombardi
-4. npm install
+2. cd tesoro-literario/pruebas/01-reading-list/lautarolombardi
+3. npm install
 
 ## Uso
 
