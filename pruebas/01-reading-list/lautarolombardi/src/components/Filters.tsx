@@ -47,7 +47,7 @@ const Filters = ({
       <div className="flex flex-col gap-3">
         <label htmlFor="pages">Filtrar por cantidad de páginas:</label>
         <input
-          className="cursor-pointer"
+          className="cursor-pointer accent-[var(--text-color)]"
           id="pages"
           max={1200}
           min={43}

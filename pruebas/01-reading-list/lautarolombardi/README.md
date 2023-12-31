@@ -1,30 +1,40 @@
-# React + TypeScript + Vite
+# Tesoro Literario
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción
 
-Currently, two official plugins are available:
+Aplicacion web de lista de libros
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Características
 
-## Expanding the ESLint configuration
+- Plantilla completa para proyectos de GitHub
+- Estructura clara y organizada
+- Secciones para descripción, instalación, uso, capturas de pantalla, contribución y más
+- Instrucciones de cómo personalizar y utilizar este README
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Instalación
 
-- Configure the top-level `parserOptions` property like this:
+Aquí puedes proporcionar instrucciones claras y detalladas sobre cómo instalar tu proyecto. Puedes incluir comandos, requisitos previos y cualquier otro detalle relevante.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Uso
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Haz una copia de este README y renómbralo para tu proyecto.
+2. Completa la sección de descripción con información sobre tu proyecto.
+3. Personaliza las secciones de uso, capturas de pantalla, contribución y más según las necesidades de tu proyecto.
+4. Añade cualquier otra sección o contenido adicional que consideres relevante para tu proyecto.
+
+## Capturas de pantalla
+
+## Contribución
+
+Si deseas contribuir a este proyecto, sigue estos pasos:
+
+1. Haz un fork de este repositorio.
+2. Crea una nueva rama en tu repositorio local.
+3. Realiza tus cambios y mejoras en la nueva rama.
+4. Envía un pull request para que tus cambios sean revisados y considerados para su incorporación.
+
+## Contacto
+
+Si tienes alguna pregunta o sugerencia, no dudes en contactarme a través de mi perfil de GitHub.
+
+¡Gracias por utilizar esta plantilla de README para tus proyectos de GitHub!
