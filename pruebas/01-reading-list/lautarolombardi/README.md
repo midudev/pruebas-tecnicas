@@ -33,8 +33,8 @@ Elige tus libros favoritos y agrégalos a tu lista de lectura para leerlos cuand
 - npm run dev
 
 ## Capturas de pantalla
-
-![Screenshot_1](https://github.com/lautarolombardi/tesoro-literario/assets/79491042/a090b993-e87e-421d-a001-6702656aabc1)
+![Screenshot_3](https://github.com/lautarolombardi/tesoro-literario/assets/79491042/4042550f-67d8-4c70-b382-011acc2e4f83)
+![Screenshot_4](https://github.com/lautarolombardi/tesoro-literario/assets/79491042/de130c1c-7583-450f-88c6-69cdc494ba55)
 
 ## Contacto
 
