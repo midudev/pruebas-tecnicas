@@ -4,7 +4,7 @@ import Book from './Book'
 
 const BookList = ({ books }: { books: IBook[] }) => {
   return (
-    <div className="flex-1">
+    <div className="h-full flex-1">
       {
         books.length > 0
           ? <ul className='grid grid-cols-[repeat(auto-fill,minmax(230px,1fr))] gap-5 justify-items-center'>
