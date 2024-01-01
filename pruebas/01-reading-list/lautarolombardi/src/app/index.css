@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: #fff5d6;
+  --text-color: #4e5861;
+  --hover-color: #f5e3ae;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Merriweather", serif;
+}
