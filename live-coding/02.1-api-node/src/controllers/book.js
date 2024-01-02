@@ -1,4 +1,5 @@
 import { MemoryBook } from '../models/Book/MemoryBook.js'
+import { validateBook } from '../utils/bookSchema.js'
 
 export const getAll = (req, res) => {
   const books = MemoryBook.getAll()
@@ -7,6 +8,13 @@ export const getAll = (req, res) => {
 
 export const create = (req, res) => {
   try {
+    const result = validateBook(req.body)
+
+    if (!result.success) {
+      const error = JSON.parse(result.error.message)
+      return res.status(400).json({ error })
+    }
+
     const book = MemoryBook.create(req.body)
     res.status(201).json(book)
   } catch (error) {

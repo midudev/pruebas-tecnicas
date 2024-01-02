@@ -22,9 +22,9 @@ export class MemoryBook {
 
   static getPagesAverage (bookId) {
     const book = books.find(book => book.id === bookId)
-    const { id, chapters, pages } = book
 
     if (!book) throw new Error('Book not found')
+    const { id, chapters, pages } = book
 
     const pageAverage = parseFloat((pages / chapters).toFixed(2))
 
@@ -42,7 +42,12 @@ export class MemoryBook {
       throw new Error('Author not found')
     }
 
-    books.push(book)
-    return book
+    const newBook = {
+      id: books.length + 1,
+      ...book
+    }
+
+    books.push(newBook)
+    return newBook
   }
 }

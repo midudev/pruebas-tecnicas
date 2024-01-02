@@ -6,7 +6,12 @@ export class MemoryAuthor {
   }
 
   static create (author) {
-    authors.push(author)
-    return author
+    const newAuthor = {
+      id: authors.length + 1,
+      ...author
+    }
+
+    authors.push(newAuthor)
+    return newAuthor
   }
 }
