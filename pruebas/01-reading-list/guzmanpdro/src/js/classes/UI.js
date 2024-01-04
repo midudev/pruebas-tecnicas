@@ -1,18 +1,21 @@
 // eslint-disable-next-line import/no-absolute-path
 import arrowUpIcon from '/arrow_up.svg'
+import { ReadingList } from './ReadingList'
+import { animateCSS, clearHTMl, SECTION_TITLE_ACTION } from '../utlis'
 
 import {
   $booksContainer,
   $booksTemplate,
+  $booksAvailable,
+  $addedBooks,
   $fragment
 } from '../selectors'
 
-import { clearHTMl } from '../utlis'
-
-import { clickHandler } from '../functions'
+import { filterBooks } from '../functions'
 
 class UI {
   constructor () {
+    this.readingList = new ReadingList()
     this.isOnBooksAvailable = true
     this.checkedGenre = 'Todos'
     this.booksContainer = document.querySelector('#booksContainer')
@@ -34,7 +37,7 @@ class UI {
       $bookImage.src = cover
       $bookTitle.textContent = title
       $bookButton.setAttribute('data-isbn', ISBN)
-      $bookButton.addEventListener('click', (event) => clickHandler(ISBN, this.isOnBooksAvailable, event))
+      $bookButton.addEventListener('click', (event) => this.addBook(ISBN, this.isOnBooksAvailable, event))
 
       this.isOnBooksAvailable ? $bookButton.textContent = 'Agregar' : $bookButton.textContent = 'Eliminar'
 
@@ -44,6 +47,53 @@ class UI {
     clearHTMl($booksContainer)
     $listBooks.appendChild($fragment)
     $booksContainer.appendChild($listBooks)
+  }
+
+  addBook (isbn, isOnBooksAvailable, event) {
+    let book
+    let data
+
+    if (isOnBooksAvailable) {
+      book = this.readingList.booksAvailable.find(elem => elem.ISBN === isbn)
+      this.readingList.addBook(book)
+      data = filterBooks(this.readingList.booksAvailable, this.checkedGenre)
+    } else {
+      book = this.readingList.addedBooks.find(elem => elem.ISBN === isbn)
+      this.readingList.removeBook(book)
+      data = filterBooks(this.readingList.addedBooks, this.checkedGenre)
+    }
+
+    const elementToAnimate = event.target.parentNode.parentNode
+    const animationName = 'bounceOut'
+    $booksAvailable.textContent = `Libros disponibles (${this.readingList.booksAvailable.length})`
+    $addedBooks.textContent = `Lista de lectura (${this.readingList.addedBooks.length})`
+    animateCSS(elementToAnimate, animationName)
+
+    setTimeout(() => {
+      this.renderBooks(data, this.checkedGenre)
+    }, 750)
+  }
+
+  filterBooks (event) {
+    const { booksAvailable, addedBooks } = this.readingList
+    const list = this.isOnBooksAvailable ? booksAvailable : addedBooks
+    this.checkedGenre = event.target.value
+
+    this.renderBooks(filterBooks(list, this.checkedGenre))
+  }
+
+  renderReadingList () {
+    $booksAvailable.classList.remove(SECTION_TITLE_ACTION.ACTIVE)
+    $addedBooks.classList.add(SECTION_TITLE_ACTION.ACTIVE)
+    this.isOnBooksAvailable = false
+    this.renderBooks(filterBooks(this.readingList.addedBooks, this.checkedGenre))
+  }
+
+  renderAvailableBooks () {
+    $booksAvailable.classList.add(SECTION_TITLE_ACTION.ACTIVE)
+    $addedBooks.classList.remove(SECTION_TITLE_ACTION.ACTIVE)
+    this.isOnBooksAvailable = true
+    this.renderBooks(filterBooks(this.readingList.booksAvailable, this.checkedGenre))
   }
 
   renderEmptyLibrary (title, desc) {

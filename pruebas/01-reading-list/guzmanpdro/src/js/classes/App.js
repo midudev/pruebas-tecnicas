@@ -1,3 +1,5 @@
+import { UI } from './UI'
+
 import {
   $gendersFilter,
   $gendersTemplate,
@@ -9,14 +11,12 @@ import {
 import { removeDuplicatesGenders, SECTION_TITLE_ACTION } from '../utlis'
 
 import {
-  renderAddedBooks,
-  backToBooksAvailable,
-  printBooks,
-  filterBooks,
-  onGenreChange
+  filterBooks
 } from '../functions'
 
 import { genres } from '../data/books'
+
+const ui = new UI()
 
 class App {
   initApp (availableBooks, addedBooks) {
@@ -24,14 +24,14 @@ class App {
 
     $gendersFilter.appendChild($fragment)
 
-    printBooks(filterBooks(availableBooks))
+    ui.renderBooks(filterBooks(availableBooks))
 
     $booksAvailable.textContent = `Libros disponibles (${availableBooks.length})`
     $addedBooks.textContent = `Lista de lectura (${addedBooks.length})`
     $booksAvailable.classList.add(SECTION_TITLE_ACTION.ACTIVE)
-    $booksAvailable.addEventListener('click', () => backToBooksAvailable())
+    $booksAvailable.addEventListener('click', () => ui.renderAvailableBooks())
     $addedBooks.textContent = `Lista de lectura (${addedBooks.length})`
-    $addedBooks.addEventListener('click', () => renderAddedBooks())
+    $addedBooks.addEventListener('click', () => ui.renderReadingList())
   }
 
   fillGenders (genders) {
@@ -47,7 +47,7 @@ class App {
       $genre.setAttribute('for', `genreOption-${index + 1}`)
       $genreOption.id = `genreOption-${index + 1}`
       $genreOption.value = `${genre}`
-      $genreOption.addEventListener('change', (event) => onGenreChange(event))
+      $genreOption.addEventListener('change', (event) => ui.filterBooks(event))
 
       if ($genreOption.value === 'Todos') {
         $genreOption.setAttribute('checked', '')
