@@ -1,5 +1,7 @@
 // eslint-disable-next-line import/no-absolute-path
 import arrowUpIcon from '/arrow_up.svg'
+// eslint-disable-next-line import/no-absolute-path
+import faceSadPerson from '/face_sad_person.svg'
 import { ReadingList } from './ReadingList'
 import { animateCSS, clearHTMl, SECTION_TITLE_ACTION } from '../utlis'
 
@@ -22,6 +24,15 @@ class UI {
   }
 
   renderBooks (data) {
+    if (data.length === 0) {
+      const title = 'No hay resultados'
+      const desc = this.isOnBooksAvailable
+        ? 'No se encontraron resultados, prueba filtrando por otro género'
+        : 'Parece que tu lista de lectura está vacía, agrega libros desde la lista de disponibles'
+      clearHTMl($booksContainer)
+      return this.renderEmptyLibrary(title, desc)
+    }
+
     const $listBooks = document.createElement('ul')
     $listBooks.classList.add('book-list')
     $listBooks.id = 'listBooks'
@@ -97,15 +108,19 @@ class UI {
   }
 
   renderEmptyLibrary (title, desc) {
+    const srcImg = this.isOnBooksAvailable ? faceSadPerson : arrowUpIcon
+    const svgAnimation = this.isOnBooksAvailable ? 'no-animation' : 'arrow-up-animation'
+    const emptyContainerClass = this.isOnBooksAvailable ? 'empty-library' : 'empty-reading-list'
+
     const $emptyLibrary = document.createElement('div')
-    $emptyLibrary.classList.add('empty-library')
+    $emptyLibrary.classList.add(emptyContainerClass)
 
     const $infoContainer = document.createElement('div')
     $infoContainer.classList.add('info-container')
 
     const $arrowUpImage = document.createElement('img')
-    $arrowUpImage.classList.add('arrow-up-animation')
-    $arrowUpImage.src = `${arrowUpIcon}`
+    $arrowUpImage.classList.add(svgAnimation)
+    $arrowUpImage.src = srcImg
     $arrowUpImage.setAttribute('width', '180')
     $arrowUpImage.setAttribute('height', '180')
 

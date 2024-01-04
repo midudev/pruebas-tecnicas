@@ -176,11 +176,23 @@ header {
   }
 }
 
+.empty-reading-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  padding-top: 5rem;
+  text-align: center;
+}
+
 .empty-library {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 10rem;
+  gap: 4rem;
   padding-top: 5rem;
+  text-align: center;
 
   &__title {
     margin: 0;
