@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reading List</title>
+  </head>
+  <body>
+    <header>
+      <h1>Library</h1>
+    </header>
+    <main id="app">
+      <aside class="sidebar">
+        <div class="sidebar__container">
+          <h3>Filtrar por</h3>
+          <h4>Género</h4>
+          <div id="gendersFilter" class="genders"></div>
+        </div>
+      </aside>
+      <section class="book-section">
+        <div class="book-section__counters">
+          <h2 class="book-section__title" id="booksAvailable"></h2>
+          <h2 class="book-section__title" id="addedBooks"></h2>
+        </div>
+        <div id="booksContainer"></div>
+      </section>
+      <template id="booksTemplate">
+        <li class="book">
+          <section class="book__image">
+            <img src loading="lazy" id="bookImage">
+          </section>
+          <section class="book__info">
+            <h3 class="book__title" id="bookTitle"></h3>
+            <button class="button" id="addBook"></button>
+          </section>
+        </li>
+      </template>
+      <template id="gendersTemplate">
+        <div class="genders__control">
+          <label class="genders__label" id="genre"></label>
+          <input type="radio" name="genre" id="" value="">
+        </div>
+      </template>
+    </main>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
