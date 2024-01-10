@@ -25,9 +25,9 @@ export const SearchBar = () => {
           type='text'
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder='Pruductos y más...'
+          placeholder='Buscar pruductos y más...'
           autoComplete='off'
-          required
+          className='rounded-sm'
         />
       </div>
       <Button data-test-id='buttonSubmit' type='submit' variant='secondary'>
