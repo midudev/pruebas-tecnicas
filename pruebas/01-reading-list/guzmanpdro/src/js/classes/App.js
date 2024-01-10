@@ -30,7 +30,6 @@ class App {
     $addedBooks.textContent = `Lista de lectura (${addedBooks.length})`
     $booksAvailable.classList.add(SECTION_TITLE_ACTION.ACTIVE)
     $booksAvailable.addEventListener('click', () => ui.renderAvailableBooks())
-    $addedBooks.textContent = `Lista de lectura (${addedBooks.length})`
     $addedBooks.addEventListener('click', () => ui.renderReadingList())
   }
 

@@ -1,4 +1,4 @@
-import './src/scss/styles.scss'
+import './src/css/styles.css'
 import { ReadingList } from './src/js/classes/ReadingList'
 import { App } from './src/js/classes/App'
 

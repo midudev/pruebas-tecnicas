@@ -67,14 +67,15 @@ header {
   width: 200px;
   height: fit-content;
   margin-right: 4rem;
+}
 
-  h3, h4 {
-    margin: 0 0 .8rem;
-  }
+.sidebar h3,
+.sidebar h4 {
+  margin: 0 0 .8rem;
+}
 
-  h4 {
-    color: var(--text-active-color)
-  }
+.sidebar h4 {
+  color: var(--text-active-color)
 }
 
 .genders {
@@ -82,98 +83,98 @@ header {
   padding: .8rem;
   list-style-type: none;
   background-color: #191919;
+}
 
-  &__control {
-    margin-bottom: .8rem;
+.genders__control {
+  margin-bottom: .8rem;
+}
 
-    input {
-      display: none;
-    }
+.genders__control input {
+  display: none;
+}
 
-    &--checked {
-      border-right: 3px solid var(--button-color);
-    }
-  }
+.genders__control--checked {
+  border-right: 3px solid var(--button-color);
+}
 
-  &__label {
-    font-weight: 700;
-    color: var(--dark-theme-text-color);
+.genders__label {
+  font-weight: 700;
+  color: var(--dark-theme-text-color);
+}
 
-    &:hover {
-      color: var(--text-hover-color);
-      cursor: pointer;
-    }
-  }
+.genders__label:hover {
+  color: var(--text-hover-color);
+  cursor: pointer;
 }
 
 .book-section {
   flex-grow: 1;
+}
 
-  &__counters {
-    display: flex;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-    gap: 2.4rem;
-    margin-bottom: 2.4rem;
-  }
+.book-section__counters {
+  display: flex;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  gap: 2.4rem;
+  margin-bottom: 2.4rem;
+}
 
-  &__title {
-    margin: 0;
-    padding-bottom: .8rem;
-    transition: color .15s;
+.book-section__title {
+  margin: 0;
+  padding-bottom: .8rem;
+  transition: color .15s;
+}
 
-    &:hover {
-      color: var(--text-hover-color);
-      cursor: pointer;
-    }
+.book-section__title:hover {
+  color: var(--text-hover-color);
+  cursor: pointer;
+}
 
-    &--active {
-      color: var(--text-active-color);
-      border-bottom: 2px solid var(--text-active-color);
+.book-section__title--active {
+  color: var(--text-active-color);
+  border-bottom: 2px solid var(--text-active-color);
+}
 
-      &:hover {
-        color: var(--text-active-color);
-      }
-    }
-  }
+.book-section__title--active:hover {
+  color: var(--text-active-color);
+}
 
-  .book-list {
-    display: grid;
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(150px, 1fr)
-    );
-    gap: 2.4rem 6rem;
-    margin: 0;
-    padding: 0;
-  }
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(150px, 1fr)
+  );
+  gap: 2.4rem 6rem;
+  margin: 0;
+  padding: 0;
+}
 
-  .book {
-    display: flex;
-    flex-direction: column;
+.book-list .book {
+  display: flex;
+  flex-direction: column;
+}
 
-    &__image {
-      height: 25rem;
-      margin: 0 0 .8rem;
-      
-      img {
-        width: 100%;
-        height: 25rem;
-        object-fit: cover;
-      }
-    }
+.book__image {
+  height: 25rem;
+  margin: 0 0 .8rem;
+}
 
-    &__info {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      flex-grow: 1;
-      text-align: center;
-    }
+.book__image img {
+  width: 100%;
+  height: 25rem;
+  object-fit: cover;
+}
 
-    &__title {
-      margin: 0 0 .8rem;
-    }
-  }
+.book__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.book__title {
+  margin: 0 0 .8rem;
 }
 
 .empty-reading-list {
@@ -193,17 +194,17 @@ header {
   gap: 4rem;
   padding-top: 5rem;
   text-align: center;
+}
 
-  &__title {
-    margin: 0;
-    margin-bottom: .8rem;
-  }
+.empty-library__title {
+  margin: 0;
+  margin-bottom: .8rem;
+}
 
-  &__text {
-    margin: 0;
-    font-size: 1.8rem;
-    font-weight: 700;
-  }
+.empty-library__text {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 
 a {
