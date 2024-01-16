@@ -1,0 +1,18 @@
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+    height: 55px;
+    background-color: #62372d;
+    position: relative;
+    bottom: 0;
+    color: #f5ebe0;
+    font-weight: 700;
+}
+
+.footer strong {
+    color: #dbb596;
+    font-weight: inherit;
+}
