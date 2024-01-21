@@ -1,0 +1,88 @@
+.readingListBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 250px;
+    height: 0;
+    background-color: #78403470;
+    backdrop-filter: blur(5px);
+    top: 0;
+    right: 0;
+    overflow-y: scroll;
+    padding-bottom: 70px;
+    padding-top: 30px;
+    opacity: 0;
+    margin-top: 55px;
+}
+
+.readingListBar::-webkit-scrollbar {
+    display: none;
+}
+
+.readingList {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+}
+
+.bookListElement {
+    list-style: none;
+    height: 260px;
+    width: 180px;
+    margin-bottom: 30px;
+}
+
+.hideReadinglist {
+    animation: 1s ease-in 0s 1 normal forwards running fade-out-animation;
+}
+
+.showReadingList {
+    animation: 1s ease-in 0s 1 normal forwards running fade-in-animation;
+}
+
+
+.noBooksMessage {
+    background-color: rgba(255, 255, 255, 0.503);
+    border-radius: 10px;
+    width: 70%;
+    opacity: 0;
+    animation: 0.3s ease-in 0s 1 normal forwards running message-animation;
+
+}
+
+@keyframes message-animation {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out-animation {
+    from {
+        opacity: 0;
+        height: 0;
+
+    }
+
+    to {
+        height: 100vh;
+        opacity: 1;
+    }
+}
+
+
+
+@keyframes fade-in-animation {
+    from {
+        height: 100vh;
+        opacity: 1;
+
+    }
+
+    to {
+        opacity: 0;
+        height: 0;
+    }
+}

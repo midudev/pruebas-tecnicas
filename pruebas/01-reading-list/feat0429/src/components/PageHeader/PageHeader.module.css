@@ -1,0 +1,25 @@
+.pageHeader {
+    position: sticky;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 5%;
+    background-color: rgb(233 211 191);
+    color: #341b16;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    animation: blur-header ease-in both;
+    animation-timeline: scroll(root);
+    animation-range: 0px 600px;
+}
+
+@keyframes blur-header {
+    to {
+        background: rgb(233 211 191 / 50%);
+        backdrop-filter: blur(3px);
+        border-radius: 0;
+        color: #62372d;
+    }
+}

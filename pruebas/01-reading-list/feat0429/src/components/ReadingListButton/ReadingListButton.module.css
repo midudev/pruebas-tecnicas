@@ -1,0 +1,58 @@
+.readingListButton {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 7%;
+    scale: 1.5;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+}
+
+.readingListButton:hover {
+    background-color: transparent;
+}
+
+.readingListButton:focus {
+    outline: transparent;
+    background-color: transparent;
+}
+
+.readingListButton svg {
+    height: 70px;
+    padding: 0;
+    margin: 0;
+    transition: all 100ms ease-in;
+}
+
+.readingListButton>span {
+    position: absolute;
+    color: #f5ebe0;
+    font-size: 0.5em;
+    line-height: 1;
+    text-align: center;
+    width: 40px;
+}
+
+.readingListButton #Dribbble-Light-Preview {
+    transition: all 100ms ease-in;
+}
+
+.readingListButton:hover svg {
+    scale: 1.1;
+}
+
+.readingListButton:active svg {
+    scale: 1.2;
+}
+
+.readingListButton:hover #Dribbble-Light-Preview {
+    fill: #954f39;
+}
+
+.readingListButton:active #Dribbble-Light-Preview {
+    fill: #b36443;
+}

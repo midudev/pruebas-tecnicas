@@ -1,0 +1,9 @@
+button {
+    border: none;
+    cursor: pointer;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    transition: all 300ms ease-in;
+}

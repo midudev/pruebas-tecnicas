@@ -1,0 +1,36 @@
+.countersContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.availableBooksHeading {
+    font-size: 1.2em;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+
+}
+
+.availableBooksHeading:nth-of-type(2) {
+    border-left: 2px solid #4c2922;
+    padding-left: 20px;
+}
+
+@media(max-width:760px) {
+    .countersContainer {
+        max-width: 175px;
+        line-height: 0;
+        gap: 0;
+    }
+
+    .availableBooksHeading {
+        line-height: 1;
+
+    }
+
+    .availableBooksHeading:nth-of-type(2) {
+        border-left: none;
+        padding-left: 0;
+    }
+}

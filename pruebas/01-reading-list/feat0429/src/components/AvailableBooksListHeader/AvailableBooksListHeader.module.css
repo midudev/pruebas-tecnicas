@@ -1,0 +1,50 @@
+.availableBooksHeader {
+    display: flex;
+    border-radius: 10px 10px 0px 0px;
+    background: #e9d3bf;
+    padding: 10px;
+    font-weight: 600;
+    width: 100%;
+}
+
+.booksFilters {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    flex-wrap: wrap;
+    color: #341b16;
+    padding: 10px;
+    width: 100%;
+}
+
+.booksFilters label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.available-books-filters {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    font-size: 1.5em;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.filter-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pages-filter span {
+    font-size: 0.5em;
+    margin: 0;
+}

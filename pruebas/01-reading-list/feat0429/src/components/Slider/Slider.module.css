@@ -1,0 +1,75 @@
+.sliderContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 600px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('../../assets/books-background.avif');
+}
+
+.slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 500px;
+    width: 100%;
+    padding: 0;
+
+}
+
+.slide {
+    display: flex;
+    gap: 10px;
+    position: relative;
+    height: 100%;
+    width: 700px;
+    padding: 20px;
+    background-color: #62372dcc;
+    backdrop-filter: blur(2px);
+}
+
+.animatedItems {
+    transition: 2s;
+    opacity: 0;
+}
+
+.cover {
+    height: 100%;
+    border-radius: 5px;
+}
+
+.details {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #f9f3ed;
+    font-weight: 500;
+
+
+}
+
+.synopsis {
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    text-align: left;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+}
+
+.author {
+    position: absolute;
+    bottom: 18%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #e9d3bf;
+    font-weight: 900;
+}
+
+.loaded {
+    opacity: 1;
+}

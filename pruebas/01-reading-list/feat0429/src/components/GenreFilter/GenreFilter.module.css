@@ -1,0 +1,21 @@
+.genreSelect {
+    height: 30px;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #784134;
+    border-radius: 5px;
+    padding: 6px;
+    color: #784134;
+    cursor: pointer;
+    text-align: center;
+    transition: all 300ms ease-in;
+    font-weight: 600;
+}
+
+.genreSelect:focus {
+    outline: 1px solid #341b16;
+}
+
+.genreSelect:active {
+    outline: 1px solid #341b16;
+}

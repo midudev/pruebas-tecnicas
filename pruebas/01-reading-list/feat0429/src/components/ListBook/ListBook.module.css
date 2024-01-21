@@ -1,0 +1,65 @@
+.bookCardContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.503);
+    border-radius: 3px;
+}
+
+.bookCardContainer:hover .listBookRemoveButton {
+    opacity: 1;
+}
+
+.bookCoverContainer {
+    width: 120px;
+    position: relative;
+}
+
+.bookCover {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.listBookRemoveButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -10px;
+    top: -10px;
+    padding: 3%;
+    border-radius: 2px;
+    border: none;
+    opacity: 0;
+    background-color: #784034;
+    transition: all 300ms ease-in;
+}
+
+
+.listBookRemoveButton:hover {
+    background-color: #954f39;
+    scale: 1.1;
+}
+
+.listBookRemoveButton:active {
+    background-color: #b36443;
+    scale: 1.2;
+}
+
+
+.bookTitle {
+    font-size: 0.8em;
+    margin-bottom: 0;
+    font-weight: 900;
+    color: black;
+
+}
