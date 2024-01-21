@@ -3,15 +3,16 @@ This web application was developed to solve the code test provided by Spanish Tw
 To get more details about the guidelines, the link is provided: https://github.com/midudev/pruebas-tecnicas/tree/main/pruebas/01-reading-list
 
 <br>
+
 ### 💻Run the following scripts to run the appplication:
 
-  1-cd ./reading-list
-  
-  2-npm install (only if it has not been done before)
-  
-  3-npm run dev
-  
-  4-Open the link displayed on the terminal (http://localhost:5173/). The port can change so it can be different from 5173. 
+    1-cd ./reading-list
+    
+    2-npm install (only if it has not been done before)
+    
+    3-npm run dev
+    
+    4-Open the link displayed on the terminal (http://localhost:5173/). The port can change so it can be different from 5173. 
 
 <br>
 ### ⚙ Run the following scripts to test the appplication:
@@ -23,6 +24,7 @@ To get more details about the guidelines, the link is provided: https://github.c
   3-npm run test
 
 <br>
+
 ### 📝 The application requirements are the following:
 
 ✔ The application shows a list of available books that the user can check.
@@ -41,6 +43,7 @@ To get more details about the guidelines, the link is provided: https://github.c
 ✔ If the user opens the application in two different browser tabs, the changes made in one tab should be reflected in the other one as well.
 
 <br>
+
 ### ✨ Additional Features
 
 ✔Available books search by title, author or ISBN
