@@ -5,14 +5,19 @@ To get more details about the guidelines, the link is provided: https://github.c
 💻Run the following scripts to run the appplication:
 
   1-cd ./reading-list
+  
   2-npm install (only if it has not been done before)
+  
   3-npm run dev
+  
   4-Open the link displayed on the terminal (http://localhost:5173/). The port can change so it can be different from 5173. 
 
 ⚙ Run the following scripts to test the appplication:
 
   1-cd ./reading-list
+  
   2-npm install (only if it has not been done before)
+  
   3-npm run test
 
 📝 The application requirements are the following:
