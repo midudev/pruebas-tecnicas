@@ -15,7 +15,15 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, hsl(var(--tw-color-start)), hsl(var(--tw-color-end)))",
       },
     },
+    keyframes: {
+      shimmer: {
+        "100%": {
+          transform: "translateX(100%)",
+        },
+      },
+    },
   },
+
   plugins: [],
 }
 export default config

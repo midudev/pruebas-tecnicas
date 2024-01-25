@@ -1,7 +1,7 @@
 # 02 - Desarrollo Full Stack de Bazar
 
 El objetivo de esta prueba era diseñar e implementar una pequeña aplicación.
-La aplicación debe constar de servidor y cliente. El servidor debe exponer un API RESTful y el cliente consumirlo..
+Bazar Universal
 
 ## Créditos
 
@@ -24,7 +24,7 @@ Antes de comenzar, asegúrate de tener Node.js instalado en tu sistema.
 1. Clona este repositorio en tu máquina local:
 
 ```bash
-git clone <https://github.com/gasper-dev/02-bazar-universal.git>
+git clone < https://github.com/gasper-dev/BazarUniversal.git >
 ```
 
 2. Instala las dependencias necesarias:

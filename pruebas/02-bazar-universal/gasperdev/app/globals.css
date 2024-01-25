@@ -4,8 +4,8 @@
 
 :root {
   --hue-start: 334;
-  --saturation-start: 71%;
-  --lightness-start: 54%;
+  --saturation-start: 81%;
+  --lightness-start: 40%;
   --hue-end: 332;
   --saturation-end: 68%;
   --lightness-end: 96%;
@@ -20,13 +20,6 @@
      );
  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
 
 
 @layer utilities {

@@ -1,9 +1,25 @@
-import SearchBox from "./components/SearchBox"
+import Logo from "./components/Logo"
+import Search from "./components/ui/Search"
+import Container from "./components/Container"
+import LinkKeypress from "./components/ui/LinkKeyPress"
+interface Params {
+  searchParams?: { search?: string; page?: string }
+}
 
-export default function Home() {
+export default function Home({ searchParams }: Params) {
+  const query = searchParams?.search || ""
+  const currentPage = Number(searchParams?.page) || 1
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-2">
-      <SearchBox />
-    </main>
+    <Container>
+      <section className="max-w-md flex flex-col items-center  justify-center   mx-auto gap-6 ">
+        <div className=" h-96 w-28 blur-3xl bg-pink-400/30" />
+        <div className="flex flex-col items-center gap-4 absolute">
+          <Logo />
+          <Search placeholder="laptops, smartphones, ..." />
+          <LinkKeypress Links={`/items?search=${query}&page=${currentPage}`} />
+        </div>
+      </section>
+    </Container>
   )
 }
