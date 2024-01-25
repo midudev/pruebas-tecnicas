@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --hue-start: 334;
+  --saturation-start: 81%;
+  --lightness-start: 40%;
+  --hue-end: 332;
+  --saturation-end: 68%;
+  --lightness-end: 96%;
+ }
+ 
+ body {
+  color: hsl(var(--hue-start), var(--saturation-start), var(--lightness-start));
+  background: linear-gradient(
+       to bottom,
+       transparent,
+       hsl(var(--hue-end), var(--saturation-end), var(--lightness-end))
+     );
+ }
+
+
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
