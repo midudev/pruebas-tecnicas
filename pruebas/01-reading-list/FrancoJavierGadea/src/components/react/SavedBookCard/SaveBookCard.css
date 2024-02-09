@@ -1,0 +1,33 @@
+
+.saved-book-card {
+
+    display: flex;
+    gap: 15px;
+    align-items: stretch;
+    min-height: 80px;
+}
+.saved-book-card img {
+
+    width: 50px;
+    height: 75px;
+    align-self: center;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.saved-book-card .title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    line-height: 1.5rem;
+    min-height: 3rem;
+    color: #fff;
+}
+
+.saved-book-card .author strong {
+    color: #fff;
+}
+
+.saved-book-card .show-btn {
+    color: #F3B61F;
+}

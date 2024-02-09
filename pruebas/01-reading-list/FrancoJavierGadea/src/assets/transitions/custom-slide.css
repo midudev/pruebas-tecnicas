@@ -1,0 +1,55 @@
+
+@keyframes Fade-In {
+	from {
+		opacity: 0;
+	}
+}
+
+@keyframes Fade-Out {
+	to {
+		opacity: 0;
+	}
+}
+
+
+@keyframes Slide-From-Left {
+    from {
+        transform: translateX(-120%);
+	}
+}
+@keyframes Slide-To-Left {
+    to {
+        transform: translateX(-120%);
+    }
+}
+
+
+@media (max-width: 991.98px) {
+
+    @keyframes Slide-From-Right {
+        from {
+            transform: translateX(120%);
+        }
+    }
+    @keyframes Slide-To-Right {
+        to {
+            transform: translateX(120%);
+        }
+    }
+}
+
+
+@media (min-width: 992px) {
+
+    @keyframes Slide-From-Right {
+        from {
+            transform: translateX(-120%);
+        }
+    }
+    
+    @keyframes Slide-To-Right {
+        to {
+            transform: translateX(-120%);
+        }
+    }
+}

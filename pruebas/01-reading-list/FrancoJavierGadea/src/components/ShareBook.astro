@@ -1,0 +1,79 @@
+---
+const {link, message = ''} = Astro.props
+
+
+const twitter = new URL('https://twitter.com/intent/tweet');
+
+twitter.searchParams.set('text', `${message}\n\n${link}`);
+
+const whatsapp = new URL('https://web.whatsapp.com/send');
+
+whatsapp.searchParams.set('text', `${message}\n\n${link}`);
+
+const telegram = new URL('https://t.me/share/url');
+
+telegram.searchParams.set('url', link);
+telegram.searchParams.set('text', message);
+
+const mail = encodeURI(`mailto:?body=${message}\n\n${link}`)
+---
+
+
+<footer>
+    
+    <div class="d-flex gap-4 align-items-baseline">
+
+        <h5>Compartelo:</h5>
+        
+        <a href={twitter.href} target="_blank" rel="noopener noreferrer" title="Compartir en twitter"
+        
+            style={{color: '#1d9bf0'}}
+        >
+
+            <i class="bi bi-twitter" />
+        </a>
+
+        <a href={whatsapp.href} target="_blank" rel="noopener noreferrer" title="Compartir en whatsapp"
+        
+            style={{color: '#25d366'}}
+        >
+        
+            <i class="bi bi-whatsapp" />
+        </a>
+
+
+        <a href={telegram.href} target="_blank" rel="noopener noreferrer" title="Compartir en telegram"
+        
+            style={{color: '#0088cc'}}
+        >
+        
+            <i class="bi bi-telegram" />
+        </a>
+
+        <a href={mail} target="_blank" rel="noopener noreferrer" title="Compartir por mail"
+        
+            style={{color: '#a7a7a7'}}
+        >
+        
+            <i class="bi bi-envelope" />
+        </a>
+    </div>
+</footer>
+
+
+<style>
+
+    footer {
+
+        margin-top: 50px;
+    }
+
+    h5 {
+        color: #F3B61F;
+    }
+
+    a {
+        text-decoration: none;
+        font-size: 18px;
+    }
+</style>

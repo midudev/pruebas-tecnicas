@@ -1,0 +1,48 @@
+
+.save-button {
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    background-color: transparent;
+    outline: none;
+    border: 0;
+
+    padding: 0 5px;
+    font-size: 21px;
+    
+    color: white;
+}
+.save-button:hover {
+    color: #c7c7c7;
+}
+.save-button i {
+
+    filter: drop-shadow(1px 1px 3px #141414aa);
+}
+
+
+.remove-button {
+    appearance: none;
+    -webkit-appearance: none;
+
+    background-color: transparent;
+    outline: none;
+    border: 0;
+
+    padding: 0 5px;
+    font-size: 21px;
+
+    color: #F3B61F;
+}
+.remove-button::after {
+    content: "\F195";
+    font-family: 'bootstrap-icons';
+    filter: drop-shadow(1px 1px 3px #141414aa);
+}
+.remove-button:hover {
+    color: var(--bs-red);
+}
+.remove-button:hover::after {
+    content: "\F5DD";
+}

@@ -1,0 +1,91 @@
+---
+import {getBooksBy} from '../../data/books.js';
+import BookCard from '../../components/BookCard.astro';
+import RootLayout from '../../layouts/RootLayout.astro';
+import BooksPagination from "../../components/BooksPagination.astro";
+
+import BooksFilters from '../../components/react/BooksFilters/BooksFilters.jsx';
+import {customSlide} from '../../assets/transitions/custom-slide.js';
+
+// Open Filters ?
+const show = Astro.url.searchParams.get('show');
+
+const {page} = Astro.params;
+
+const currentPage = Number(page);
+
+if(!currentPage) return Astro.redirect('/404');
+
+if(currentPage < 1) return Astro.redirect('/404');
+
+
+const BOOKS_PER_PAGE = 12;
+
+const queries = {
+    genre: Astro.url.searchParams.get('genre'),
+    pages: Astro.url.searchParams.get('pages')
+}
+
+const result = getBooksBy(queries);
+
+
+const total = Math.ceil(result.length / BOOKS_PER_PAGE);
+
+const start = (currentPage - 1) * BOOKS_PER_PAGE;
+
+const end = start + BOOKS_PER_PAGE;
+
+const books = result.slice(start, end);
+---
+
+<RootLayout title="Libros">
+
+    <div>
+
+        <BooksFilters client:load path="/Libros/1" pages={queries.pages} genre={queries.genre} total={result.length} show={show} />
+    
+        {
+            result.length !== 0 &&
+    
+            <div class="Books-container" transition:animate={customSlide()}>
+                {
+                    books.map(({book}) => {
+            
+                        return <BookCard book={book} />
+                    })
+                }
+            </div>
+            
+            <BooksPagination path="/Libros" queryParams={queries} current={currentPage} total={total} />
+        }
+
+    </div>
+    
+</RootLayout>
+
+<style>
+
+    .Books-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+        padding: 20px 10px;
+    }
+
+    @media (max-width: 575.98px) {
+
+        .Books-container {
+            gap: 20px;
+        }
+    }
+
+    @media (min-width: 576px) {
+
+        .Books-container {
+            gap: 50px;
+        }
+    }
+
+    
+</style>
