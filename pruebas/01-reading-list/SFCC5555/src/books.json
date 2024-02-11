@@ -1,180 +1,171 @@
 {
-    "library": [
-        {
-          "book": {
-              "title": "El Señor de los Anillos",
-              "pages": 1200,
-              "genre": "Fantasía",
-              "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg",
-              "synopsis": "Una aventura épica en un mundo de fantasía llamado la Tierra Media.",
-              "year": 1954,
-              "ISBN": "978-0618640157",
-              "author": {
-                  "name": "J.R.R. Tolkien",
-                  "otherBooks": [
-                      "El Hobbit",
-                      "El Silmarillion"
-                  ]
-              }
-          }
-        },
-        {
-          "book": {
-            "title": "El Hobbit",
-            "pages": 320,
-            "genre": "Fantasía",
-            "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1353741489i/227221.jpg",
-            "synopsis": "La historia de Bilbo Bolsón y su búsqueda del tesoro custodiado por el dragón Smaug.",
-            "year": 1937,
-            "ISBN": "978-0345534835",
-            "author": {
-              "name": "J.R.R. Tolkien",
-              "otherBooks": [
-                "El Señor de los Anillos",
-                "El Silmarillion"
-              ]
-            }
-          }
-        },
-        {
-          "book": {
-            "title": "El Silmarillion",
-            "pages": 480,
-            "genre": "Fantasía",
-            "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1210732062i/3306190.jpg",
-            "synopsis": "Un relato sobre los inicios del mundo y las guerras entre los dioses y Morgoth, el primer Señor Oscuro.",
-            "year": 1977,
-            "ISBN": "978-0618391110",
-            "author": {
-              "name": "J.R.R. Tolkien",
-              "otherBooks": [
-                "El Señor de los Anillos",
-                "El Hobbit"
-              ]
-            }
-          }
-        },
-        {
-          "book": {
-              "title": "Juego de Tronos",
-              "pages": 694,
-              "genre": "Fantasía",
-              "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1273763400i/8189620.jpg",
-              "synopsis": "En un reino donde las estaciones duran años, una batalla épica por el trono se desarrolla.",
-              "year": 1996,
-              "ISBN": "978-0553103540",
-              "author": {
-                  "name": "George R. R. Martin",
-                  "otherBooks": [
-                      "Choque de Reyes",
-                      "Tormenta de Espadas",
-                      "Festín de Cuervos",
-                      "Danza de Dragones"
-                  ]
-              }
-          }
-      },
-      {
-        "book": {
-          "title": "Choque de Reyes",
-          "pages": 768,
-          "genre": "Fantasía",
-          "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1447268590i/8197084.jpg",
-          "synopsis": "La lucha por el trono continúa mientras los reyes y señores de Poniente se enfrentan en una guerra civil.",
-          "year": 1998,
-          "ISBN": "978-0553381696",
-          "author": {
-            "name": "George R. R. Martin",
-            "otherBooks": [
-              "Juego de Tronos",
-              "Tormenta de Espadas",
-              "Festín de Cuervos",
-              "Danza de Dragones"
-            ]
-          }
+  "library": [
+    {
+      "book": {
+        "title": "El Señor de los Anillos",
+        "pages": 1200,
+        "genre": "Fantasía",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg",
+        "synopsis": "Una aventura épica en un mundo de fantasía llamado la Tierra Media.",
+        "year": 1954,
+        "ISBN": "978-0618640157",
+        "author": {
+          "name": "J.R.R. Tolkien",
+          "otherBooks": ["El Hobbit", "El Silmarillion"]
         }
-      },
-      {
-        "book": {
-          "title": "Tormenta de Espadas",
-          "pages": 992,
-          "genre": "Fantasía",
-          "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1323423581i/4904361.jpg",
-          "synopsis": "La guerra por el trono de hierro alcanza su punto álgido con traiciones, alianzas y batallas épicas.",
-          "year": 2000,
-          "ISBN": "978-0553106633",
-          "author": {
-            "name": "George R. R. Martin",
-            "otherBooks": [
-              "Juego de Tronos",
-              "Choque de Reyes",
-              "Festín de Cuervos",
-              "Danza de Dragones"
-            ]
-          }
+      }
+    },
+    {
+      "book": {
+        "title": "El Hobbit",
+        "pages": 320,
+        "genre": "Fantasía",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1353741489i/227221.jpg",
+        "synopsis": "La historia de Bilbo Bolsón y su búsqueda del tesoro custodiado por el dragón Smaug.",
+        "year": 1937,
+        "ISBN": "978-0345534835",
+        "author": {
+          "name": "J.R.R. Tolkien",
+          "otherBooks": ["El Señor de los Anillos", "El Silmarillion"]
         }
-      },
-      {
-        "book": {
-          "title": "Festín de Cuervos",
-          "pages": 784,
-          "genre": "Fantasía",
-          "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1224705372i/4904243.jpg",
-          "synopsis": "La lucha por el trono continúa mientras los reinos de Poniente se recuperan de la guerra.",
-          "year": 2005,
-          "ISBN": "978-0553582024",
-          "author": {
-            "name": "George R. R. Martin",
-            "otherBooks": [
-              "Juego de Tronos",
-              "Choque de Reyes",
-              "Tormenta de Espadas",
-              "Danza de Dragones"
-            ]
-          }
+      }
+    },
+    {
+      "book": {
+        "title": "El Silmarillion",
+        "pages": 480,
+        "genre": "Fantasía",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1210732062i/3306190.jpg",
+        "synopsis": "Un relato sobre los inicios del mundo y las guerras entre los dioses y Morgoth, el primer Señor Oscuro.",
+        "year": 1977,
+        "ISBN": "978-0618391110",
+        "author": {
+          "name": "J.R.R. Tolkien",
+          "otherBooks": ["El Señor de los Anillos", "El Hobbit"]
         }
-      },
-      {
-        "book": {
-          "title": "Danza de Dragones",
-          "pages": 1016,
-          "genre": "Fantasía",
-          "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1373484071i/15761880.jpg",
-          "synopsis": "Los acontecimientos continúan en Poniente con intrigas, alianzas y la amenaza de los Otros.",
-          "year": 2011,
-          "ISBN": "978-0553801477",
-          "author": {
-            "name": "George R. R. Martin",
-            "otherBooks": [
-              "Juego de Tronos",
-              "Choque de Reyes",
-              "Tormenta de Espadas",
-              "Festín de Cuervos"
-            ]
-          }
+      }
+    },
+    {
+      "book": {
+        "title": "Juego de Tronos",
+        "pages": 694,
+        "genre": "Fantasía",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1273763400i/8189620.jpg",
+        "synopsis": "En un reino donde las estaciones duran años, una batalla épica por el trono se desarrolla.",
+        "year": 1996,
+        "ISBN": "978-0553103540",
+        "author": {
+          "name": "George R. R. Martin",
+          "otherBooks": [
+            "Choque de Reyes",
+            "Tormenta de Espadas",
+            "Festín de Cuervos",
+            "Danza de Dragones"
+          ]
         }
-      },
-      {
-        "book": {
-            "title": "Harry Potter y la piedra filosofal",
-            "pages": 223,
-            "genre": "Fantasía",
-            "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1550337333i/15868.jpg",
-            "synopsis": "Un niño descubre que es un mago y comienza una aventura en una escuela de magia.",
-            "year": 1997,
-            "ISBN": "978-0747532699",
-            "author": {
-                "name": "J.K. Rowling",
-                "otherBooks": [
-                    "Harry Potter y la cámara secreta",
-                    "Harry Potter y el prisionero de Azkaban",
-                    "Harry Potter y el cáliz de fuego",
-                    "Harry Potter y la Orden del Fénix",
-                    "Harry Potter y el misterio del príncipe",
-                    "Harry Potter y las Reliquias de la Muerte"
-                ]
-            }
+      }
+    },
+    {
+      "book": {
+        "title": "Choque de Reyes",
+        "pages": 768,
+        "genre": "Fantasía",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1447268590i/8197084.jpg",
+        "synopsis": "La lucha por el trono continúa mientras los reyes y señores de Poniente se enfrentan en una guerra civil.",
+        "year": 1998,
+        "ISBN": "978-0553381696",
+        "author": {
+          "name": "George R. R. Martin",
+          "otherBooks": [
+            "Juego de Tronos",
+            "Tormenta de Espadas",
+            "Festín de Cuervos",
+            "Danza de Dragones"
+          ]
         }
+      }
+    },
+    {
+      "book": {
+        "title": "Tormenta de Espadas",
+        "pages": 992,
+        "genre": "Fantasía",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1323423581i/4904361.jpg",
+        "synopsis": "La guerra por el trono de hierro alcanza su punto álgido con traiciones, alianzas y batallas épicas.",
+        "year": 2000,
+        "ISBN": "978-0553106633",
+        "author": {
+          "name": "George R. R. Martin",
+          "otherBooks": [
+            "Juego de Tronos",
+            "Choque de Reyes",
+            "Festín de Cuervos",
+            "Danza de Dragones"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Festín de Cuervos",
+        "pages": 784,
+        "genre": "Fantasía",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1224705372i/4904243.jpg",
+        "synopsis": "La lucha por el trono continúa mientras los reinos de Poniente se recuperan de la guerra.",
+        "year": 2005,
+        "ISBN": "978-0553582024",
+        "author": {
+          "name": "George R. R. Martin",
+          "otherBooks": [
+            "Juego de Tronos",
+            "Choque de Reyes",
+            "Tormenta de Espadas",
+            "Danza de Dragones"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Danza de Dragones",
+        "pages": 1016,
+        "genre": "Fantasía",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1373484071i/15761880.jpg",
+        "synopsis": "Los acontecimientos continúan en Poniente con intrigas, alianzas y la amenaza de los Otros.",
+        "year": 2011,
+        "ISBN": "978-0553801477",
+        "author": {
+          "name": "George R. R. Martin",
+          "otherBooks": [
+            "Juego de Tronos",
+            "Choque de Reyes",
+            "Tormenta de Espadas",
+            "Festín de Cuervos"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Harry Potter y la piedra filosofal",
+        "pages": 223,
+        "genre": "Fantasía",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1550337333i/15868.jpg",
+        "synopsis": "Un niño descubre que es un mago y comienza una aventura en una escuela de magia.",
+        "year": 1997,
+        "ISBN": "978-0747532699",
+        "author": {
+          "name": "J.K. Rowling",
+          "otherBooks": [
+            "Harry Potter y la cámara secreta",
+            "Harry Potter y el prisionero de Azkaban",
+            "Harry Potter y el cáliz de fuego",
+            "Harry Potter y la Orden del Fénix",
+            "Harry Potter y el misterio del príncipe",
+            "Harry Potter y las Reliquias de la Muerte"
+          ]
+        }
+      }
     },
     {
       "book": {
@@ -310,38 +301,36 @@
     },
     {
       "book": {
-          "title": "1984",
-          "pages": 328,
-          "genre": "Ciencia ficción",
-          "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1657781256i/61439040.jpg",
-          "synopsis": "Una inquietante visión de un futuro distópico y totalitario.",
-          "year": 1949,
-          "ISBN": "978-0451524935",
-          "author": {
-              "name": "George Orwell",
-              "otherBooks": [
-                  "Rebelión en la granja"
-              ]
-          }
+        "title": "1984",
+        "pages": 328,
+        "genre": "Ciencia ficción",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1657781256i/61439040.jpg",
+        "synopsis": "Una inquietante visión de un futuro distópico y totalitario.",
+        "year": 1949,
+        "ISBN": "978-0451524935",
+        "author": {
+          "name": "George Orwell",
+          "otherBooks": ["Rebelión en la granja"]
+        }
       }
-  },
+    },
     {
       "book": {
-          "title": "Apocalipsis Zombie",
-          "pages": 444,
-          "genre": "Zombies",
-          "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1422626176i/24762432.jpg",
-          "synopsis": "Un gallego se queda en casa en pleno apocalipsis zombie y acaba casi salvando el mundo.",
-          "year": 2001,
-          "ISBN": "978-4444532611",
-          "author": {
-              "name": "Manel Loreiro",
-              "otherBooks": []
-          }
+        "title": "Apocalipsis Zombie",
+        "pages": 444,
+        "genre": "Zombies",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1422626176i/24762432.jpg",
+        "synopsis": "Un gallego se queda en casa en pleno apocalipsis zombie y acaba casi salvando el mundo.",
+        "year": 2001,
+        "ISBN": "978-4444532611",
+        "author": {
+          "name": "Manel Loreiro",
+          "otherBooks": []
+        }
       }
-  },
-  {
-    "book": {
+    },
+    {
+      "book": {
         "title": "Dune",
         "pages": 412,
         "genre": "Ciencia ficción",
@@ -350,16 +339,13 @@
         "year": 1965,
         "ISBN": "978-0441172719",
         "author": {
-            "name": "Frank Herbert",
-            "otherBooks": [
-                "El mesías de Dune",
-                "Hijos de Dune"
-            ]
+          "name": "Frank Herbert",
+          "otherBooks": ["El mesías de Dune", "Hijos de Dune"]
         }
-    }
-  },
-  {
-    "book": {
+      }
+    },
+    {
+      "book": {
         "title": "La Guía del Autoestopista Galáctico",
         "pages": 216,
         "genre": "Ciencia ficción",
@@ -368,16 +354,16 @@
         "year": 1979,
         "ISBN": "978-0345391803",
         "author": {
-            "name": "Douglas Adams",
-            "otherBooks": [
-                "El restaurante del fin del mundo",
-                "La vida, el universo y todo lo demás"
-            ]
+          "name": "Douglas Adams",
+          "otherBooks": [
+            "El restaurante del fin del mundo",
+            "La vida, el universo y todo lo demás"
+          ]
         }
-    }
-  },
-  {
-    "book": {
+      }
+    },
+    {
+      "book": {
         "title": "Neuromante",
         "pages": 271,
         "genre": "Ciencia ficción",
@@ -386,16 +372,13 @@
         "year": 1984,
         "ISBN": "978-0441569595",
         "author": {
-            "name": "William Gibson",
-            "otherBooks": [
-                "Conde Cero",
-                "Mona Lisa Acelerada"
-            ]
+          "name": "William Gibson",
+          "otherBooks": ["Conde Cero", "Mona Lisa Acelerada"]
         }
-    }
-  },
-  {
-    "book": {
+      }
+    },
+    {
+      "book": {
         "title": "Fahrenheit 451",
         "pages": 249,
         "genre": "Ciencia ficción",
@@ -404,70 +387,61 @@
         "year": 1953,
         "ISBN": "978-1451673319",
         "author": {
-            "name": "Ray Bradbury",
-            "otherBooks": [
-                "Crónicas marcianas",
-                "El hombre ilustrado"
-            ]
+          "name": "Ray Bradbury",
+          "otherBooks": ["Crónicas marcianas", "El hombre ilustrado"]
         }
-    }
-  },
+      }
+    },
     {
       "book": {
-          "title": "El resplandor",
-          "pages": 688,
-          "genre": "Terror",
-          "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1641398308i/60038757.jpg",
-          "synopsis": "Una familia se muda a un hotel aislado para el invierno donde una presencia siniestra influye en el padre hacia la violencia.",
-          "year": 1977,
-          "ISBN": "978-0307743657",
-          "author": {
-              "name": "Stephen King",
-              "otherBooks": [
-                  "Carrie",
-                  "It"
-              ]
-          }
+        "title": "El resplandor",
+        "pages": 688,
+        "genre": "Terror",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1641398308i/60038757.jpg",
+        "synopsis": "Una familia se muda a un hotel aislado para el invierno donde una presencia siniestra influye en el padre hacia la violencia.",
+        "year": 1977,
+        "ISBN": "978-0307743657",
+        "author": {
+          "name": "Stephen King",
+          "otherBooks": ["Carrie", "It"]
+        }
       }
-  },
-  {
+    },
+    {
       "book": {
-          "title": "Drácula",
-          "pages": 418,
-          "genre": "Terror",
-          "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1387151694i/17245.jpg",
-          "synopsis": "La historia del infame conde Drácula y su intento de mudarse de Transilvania a Inglaterra.",
-          "year": 1897,
-          "ISBN": "978-0486411095",
-          "author": {
-              "name": "Bram Stoker",
-              "otherBooks": [
-                  "La joya de las siete estrellas",
-                  "La madriguera del gusano blanco"
-              ]
-          }
+        "title": "Drácula",
+        "pages": 418,
+        "genre": "Terror",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1387151694i/17245.jpg",
+        "synopsis": "La historia del infame conde Drácula y su intento de mudarse de Transilvania a Inglaterra.",
+        "year": 1897,
+        "ISBN": "978-0486411095",
+        "author": {
+          "name": "Bram Stoker",
+          "otherBooks": [
+            "La joya de las siete estrellas",
+            "La madriguera del gusano blanco"
+          ]
+        }
       }
-  },
-  {
+    },
+    {
       "book": {
-          "title": "Frankenstein",
-          "pages": 280,
-          "genre": "Terror",
-          "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1669159060i/63631742.jpg",
-          "synopsis": "Un científico obsesionado crea una criatura viva a partir de partes de cuerpos robadas, con consecuencias desastrosas.",
-          "year": 1818,
-          "ISBN": "978-0486282114",
-          "author": {
-              "name": "Mary Shelley",
-              "otherBooks": [
-                  "El último hombre",
-                  "Valperga"
-              ]
-          }
+        "title": "Frankenstein",
+        "pages": 280,
+        "genre": "Terror",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1669159060i/63631742.jpg",
+        "synopsis": "Un científico obsesionado crea una criatura viva a partir de partes de cuerpos robadas, con consecuencias desastrosas.",
+        "year": 1818,
+        "ISBN": "978-0486282114",
+        "author": {
+          "name": "Mary Shelley",
+          "otherBooks": ["El último hombre", "Valperga"]
+        }
       }
-  },
-  {
-    "book": {
+    },
+    {
+      "book": {
         "title": "La llamada de Cthulhu",
         "pages": 43,
         "genre": "Terror",
@@ -476,16 +450,13 @@
         "year": 1928,
         "ISBN": "978-1542461690",
         "author": {
-            "name": "H.P. Lovecraft",
-            "otherBooks": [
-                "El horror de Dunwich",
-                "En las montañas de la locura"
-            ]
+          "name": "H.P. Lovecraft",
+          "otherBooks": ["El horror de Dunwich", "En las montañas de la locura"]
         }
       }
-  },
-  {
-    "book": {
+    },
+    {
+      "book": {
         "title": "El Principito",
         "pages": 93,
         "genre": "Fábula",
@@ -494,469 +465,376 @@
         "year": 1943,
         "ISBN": "978-0156013925",
         "author": {
-            "name": "Antoine de Saint-Exupéry",
-            "otherBooks": []
+          "name": "Antoine de Saint-Exupéry",
+          "otherBooks": []
         }
       }
-  },
-  {
-    "book": {
-      "title": "Orgullo y prejuicio",
-      "pages": 279,
-      "genre": "Romance",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1320399351i/1885.jpg",
-      "synopsis": "Una historia de amor y desencuentros en la Inglaterra del siglo XIX.",
-      "year": 1813,
-      "ISBN": "978-8491050775",
-      "author": {
+    },
+    {
+      "book": {
+        "title": "Orgullo y prejuicio",
+        "pages": 279,
+        "genre": "Romance",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1320399351i/1885.jpg",
+        "synopsis": "Una historia de amor y desencuentros en la Inglaterra del siglo XIX.",
+        "year": 1813,
+        "ISBN": "978-8491050775",
+        "author": {
           "name": "Jane Austen",
+          "otherBooks": ["Sentido y sensibilidad", "Emma"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Crimen y castigo",
+        "pages": 671,
+        "genre": "Novela psicológica",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1171499594i/103582.jpg",
+        "synopsis": "La historia de Raskólnikov, un estudiante que comete un asesinato y lucha con su propia conciencia.",
+        "year": 1866,
+        "ISBN": "978-1981043433",
+        "author": {
+          "name": "Fiodor Dostoievski",
+          "otherBooks": ["Los hermanos Karamazov", "El idiota"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Cien años de soledad",
+        "pages": 432,
+        "genre": "Realismo mágico",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1347626503i/370523.jpg",
+        "synopsis": "La historia de la familia Buendía en el pueblo mágico de Macondo a lo largo de varias generaciones.",
+        "year": 1967,
+        "ISBN": "978-0307474728",
+        "author": {
+          "name": "Gabriel García Márquez",
           "otherBooks": [
-            "Sentido y sensibilidad",
-            "Emma"
+            "El amor en los tiempos del cólera",
+            "Crónica de una muerte anunciada"
           ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "La sombra del viento",
+        "pages": 576,
+        "genre": "Misterio",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1172523503i/184834.jpg",
+        "synopsis": "Daniel Sempere descubre un libro que cambiará su vida y lo llevará a desentrañar oscuros secretos.",
+        "year": 2001,
+        "ISBN": "978-0143034902",
+        "author": {
+          "name": "Carlos Ruiz Zafón",
+          "otherBooks": ["El juego del ángel", "El prisionero del cielo"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "El guardián entre el centeno",
+        "pages": 288,
+        "genre": "Ciencia ficción",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1239812196i/2297057.jpg",
+        "synopsis": "La travesía de Holden Caulfield en busca de autenticidad y significado en un mundo superficial.",
+        "year": 1951,
+        "ISBN": "978-0316769488",
+        "author": {
+          "name": "J.D. Salinger",
+          "otherBooks": ["Nueve cuentos", "Franny y Zooey"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "La Naranja Mecánica",
+        "pages": 192,
+        "genre": "Distopía",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1307658568i/1473671.jpg",
+        "synopsis": "Alex, un joven amante de la violencia y la música clásica, es sometido a un experimento para cambiar su comportamiento criminal.",
+        "year": 1962,
+        "ISBN": "978-0141197531",
+        "author": {
+          "name": "Anthony Burgess",
+          "otherBooks": [
+            "Mil novecientos ochenta y cinco",
+            "Poderes terrenales"
+          ]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "El Lobo Estepario",
+        "pages": 352,
+        "genre": "Ficción existencialista",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1594758965i/2139323.jpg",
+        "synopsis": "La historia de Harry Haller, un lobo estepario que lucha con la dualidad de su naturaleza humana y animal.",
+        "year": 1927,
+        "ISBN": "978-0099286098",
+        "author": {
+          "name": "Hermann Hesse",
+          "otherBooks": ["Siddhartha", "Demian"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "El poder del ahora",
+        "pages": 224,
+        "genre": "Autoayuda",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1385953832i/19092908.jpg",
+        "synopsis": "Una guía espiritual para vivir el presente y encontrar la paz interior.",
+        "year": 1997,
+        "ISBN": "978-1577314806",
+        "author": {
+          "name": "Eckhart Tolle",
+          "otherBooks": ["El silencio habla", "Una nueva Tierra"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "It",
+        "pages": 1138,
+        "genre": "Terror",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1334416842i/830502.jpg",
+        "synopsis": "Un grupo de amigos enfrenta una aterradora criatura que ha atormentado su pueblo durante siglos.",
+        "year": 1986,
+        "ISBN": "978-0451169518",
+        "author": {
+          "name": "Stephen King",
+          "otherBooks": ["El resplandor", "Carrie"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "12 reglas para vivir",
+        "pages": 448,
+        "genre": "Autoayuda",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1539089393i/42263558.jpg",
+        "synopsis": "Doce principios para llevar una vida significativa y superar los desafíos.",
+        "year": 2018,
+        "ISBN": "978-0345816023",
+        "author": {
+          "name": "Jordan B. Peterson",
+          "otherBooks": ["Más allá del orden", "Maps of Meaning"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "La soledad de los números primos",
+        "pages": 288,
+        "genre": "Novela psicológica",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1686653763i/177330260.jpg",
+        "synopsis": "La historia entrelaza las vidas de dos personajes que comparten una extraña conexión emocional.",
+        "year": 2008,
+        "ISBN": "978-0307476720",
+        "author": {
+          "name": "Paolo Giordano",
+          "otherBooks": ["El cuerpo humano", "Conquistar el cielo"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Don Quijote de la Mancha",
+        "pages": 1072,
+        "genre": "Novela",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1677829150i/32765283.jpg",
+        "synopsis": "Las aventuras de un caballero soñador y su fiel escudero, Sancho Panza.",
+        "year": 1605,
+        "ISBN": "978-8424118252",
+        "author": {
+          "name": "Miguel de Cervantes",
+          "otherBooks": ["Novelas ejemplares", "La Galatea"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Alicia en el país de las maravillas",
+        "pages": 96,
+        "genre": "Fantasía",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1429768633i/25411543.jpg",
+        "synopsis": "Las aventuras de una niña que cae en una madriguera y entra en un mundo de maravillas y absurdos.",
+        "year": 1865,
+        "ISBN": "978-0486275437",
+        "author": {
+          "name": "Lewis Carroll",
+          "otherBooks": ["Alicia atraves del espejo"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "El código Da Vinci",
+        "pages": 624,
+        "genre": "Misterio",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1372536207i/67556.jpg",
+        "synopsis": "Un profesor y una criptóloga investigan un misterioso asesinato relacionado con símbolos ocultos.",
+        "year": 2003,
+        "ISBN": "978-1400079179",
+        "author": {
+          "name": "Dan Brown",
+          "otherBooks": ["Ángeles y demonios", "El símbolo perdido"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Sapiens",
+        "pages": 498,
+        "genre": "Ensayo",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1595674533i/23692271.jpg",
+        "synopsis": "Una historia de la humanidad desde sus inicios hasta la actualidad.",
+        "year": 2011,
+        "ISBN": "978-0062316097",
+        "author": {
+          "name": "Yuval Noah Harari",
+          "otherBooks": ["Homo Deus", "21 lecciones para el siglo XXI"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Las mil y una noches",
+        "pages": 544,
+        "genre": "Cuentos",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1440717035i/26177856.jpg",
+        "synopsis": "Una colección de cuentos y fábulas del Oriente Medio, con historias de Scheherazade.",
+        "year": "Siglo IX",
+        "ISBN": "978-8420667747",
+        "author": {
+          "name": "Anónimo",
+          "otherBooks": []
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Moby Dick",
+        "pages": 720,
+        "genre": "Aventura",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327940656i/153747.jpg",
+        "synopsis": "La obsesiva persecución del capitán Ahab hacia el legendario cachalote blanco.",
+        "year": 1851,
+        "ISBN": "978-1503280786",
+        "author": {
+          "name": "Herman Melville",
+          "otherBooks": ["Bartleby, el escribiente", "Billy Budd"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "La Ilíada",
+        "pages": 608,
+        "genre": "Poesía épica",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1328836505i/601188.jpg",
+        "synopsis": "La epopeya griega que narra la Guerra de Troya y las hazañas de los héroes.",
+        "year": "Siglo VIII a.C.",
+        "ISBN": "978-8424935394",
+        "author": {
+          "name": "Homero",
+          "otherBooks": ["La Odisea"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Los miserables",
+        "pages": 1500,
+        "genre": "Novela",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1316069311i/150388.jpg",
+        "synopsis": "La historia de Jean Valjean y su búsqueda de redención en el París del siglo XIX.",
+        "year": 1862,
+        "ISBN": "978-0451419439",
+        "author": {
+          "name": "Victor Hugo",
+          "otherBooks": ["Nuestra Señora de París", "Los trabajadores del mar"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "La Divina comedia",
+        "pages": 752,
+        "genre": "Poesía épica",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1315800260i/2878210.jpg",
+        "synopsis": "Un viaje a través del Infierno, el Purgatorio y el Paraíso, guiado por Virgilio y Beatriz.",
+        "year": 1320,
+        "ISBN": "978-8491043068",
+        "author": {
+          "name": "Dante Alighieri",
+          "otherBooks": ["El Convivio", "Vita nuova"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "El Conde de Montecristo",
+        "pages": 1276,
+        "genre": "Novela",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1331735458i/13541381.jpg",
+        "synopsis": "Un joven marinero es traicionado por sus amigos y encarcelado injustamente. Tras años de cautiverio, escapa y encuentra un tesoro escondido en la isla de Montecristo. Con una nueva identidad como el Conde de Montecristo, planea su venganza contra aquellos que lo traicionaron.",
+        "year": 1844,
+        "ISBN": "978-8497940930",
+        "author": {
+          "name": "Alexandre Dumas",
+          "otherBooks": ["Los tres mosqueteros", "La Reina Margot"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Dhammapada",
+        "pages": 96,
+        "genre": "Filosofía oriental",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1442577801i/159964.jpg",
+        "synopsis": "Una colección de enseñanzas del Buda en forma de aforismos y versos.",
+        "year": "Siglo III a.C.",
+        "ISBN": "978-8472454137",
+        "author": {
+          "name": "Buda Gautama",
+          "otherBooks": []
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "El programador pragmático",
+        "pages": 352,
+        "genre": "Tecnología",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1658397502i/61638668.jpg",
+        "synopsis": "Consejos prácticos para programadores sobre desarrollo de software y productividad.",
+        "year": 1999,
+        "ISBN": "978-0135957059",
+        "author": {
+          "name": "Andrew Hunt, David Thomas",
+          "otherBooks": ["Pragmatic Version Control", "Pragmatic Unit Testing"]
+        }
+      }
+    },
+    {
+      "book": {
+        "title": "Código limpio",
+        "pages": 464,
+        "genre": "Tecnología",
+        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1396795507i/21853078.jpg",
+        "synopsis": "Principios y prácticas para escribir código limpio y de calidad.",
+        "year": 2008,
+        "ISBN": "978-0132350884",
+        "author": {
+          "name": "Robert C. Martin",
+          "otherBooks": ["Arquitectura limpia", "El codificador limpio"]
+        }
       }
     }
-  },
-  {
-    "book": {
-      "title": "Crimen y castigo",
-      "pages": 671,
-      "genre": "Novela psicológica",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1171499594i/103582.jpg",
-      "synopsis": "La historia de Raskólnikov, un estudiante que comete un asesinato y lucha con su propia conciencia.",
-      "year": 1866,
-      "ISBN": "978-1981043433",
-      "author": {
-        "name": "Fiodor Dostoievski",
-        "otherBooks": [
-          "Los hermanos Karamazov",
-          "El idiota"
-        ]
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "Cien años de soledad",
-      "pages": 432,
-      "genre": "Realismo mágico",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1347626503i/370523.jpg",
-      "synopsis": "La historia de la familia Buendía en el pueblo mágico de Macondo a lo largo de varias generaciones.",
-      "year": 1967,
-      "ISBN": "978-0307474728",
-      "author": {
-        "name": "Gabriel García Márquez",
-        "otherBooks": [
-          "El amor en los tiempos del cólera",
-          "Crónica de una muerte anunciada"
-        ]
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "La sombra del viento",
-      "pages": 576,
-      "genre": "Misterio",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1172523503i/184834.jpg",
-      "synopsis": "Daniel Sempere descubre un libro que cambiará su vida y lo llevará a desentrañar oscuros secretos.",
-      "year": 2001,
-      "ISBN": "978-0143034902",
-      "author": {
-        "name": "Carlos Ruiz Zafón",
-        "otherBooks": [
-          "El juego del ángel",
-          "El prisionero del cielo"
-        ]
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "El guardián entre el centeno",
-      "pages": 288,
-      "genre": "Ciencia ficción",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1239812196i/2297057.jpg",
-      "synopsis": "La travesía de Holden Caulfield en busca de autenticidad y significado en un mundo superficial.",
-      "year": 1951,
-      "ISBN": "978-0316769488",
-      "author": {
-        "name": "J.D. Salinger",
-        "otherBooks": [
-          "Nueve cuentos",
-          "Franny y Zooey"
-        ]
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "La Naranja Mecánica",
-      "pages": 192,
-      "genre": "Distopía",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1307658568i/1473671.jpg",
-      "synopsis": "Alex, un joven amante de la violencia y la música clásica, es sometido a un experimento para cambiar su comportamiento criminal.",
-      "year": 1962,
-      "ISBN": "978-0141197531",
-      "author": {
-        "name": "Anthony Burgess",
-        "otherBooks": [
-          "Mil novecientos ochenta y cinco",
-          "Poderes terrenales"
-        ]
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "El Lobo Estepario",
-      "pages": 352,
-      "genre": "Ficción existencialista",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1594758965i/2139323.jpg",
-      "synopsis": "La historia de Harry Haller, un lobo estepario que lucha con la dualidad de su naturaleza humana y animal.",
-      "year": 1927,
-      "ISBN": "978-0099286098",
-      "author": {
-        "name": "Hermann Hesse",
-        "otherBooks": [
-          "Siddhartha",
-          "Demian"
-        ]
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "El poder del ahora",
-      "pages": 224,
-      "genre": "Autoayuda",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1385953832i/19092908.jpg",
-      "synopsis": "Una guía espiritual para vivir el presente y encontrar la paz interior.",
-      "year": 1997,
-      "ISBN": "978-1577314806",
-      "author": {
-        "name": "Eckhart Tolle",
-        "otherBooks": [
-          "El silencio habla",
-          "Una nueva Tierra"
-        ]
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "It",
-      "pages": 1138,
-      "genre": "Terror",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1334416842i/830502.jpg",
-      "synopsis": "Un grupo de amigos enfrenta una aterradora criatura que ha atormentado su pueblo durante siglos.",
-      "year": 1986,
-      "ISBN": "978-0451169518",
-      "author": {
-        "name": "Stephen King",
-        "otherBooks": [
-          "El resplandor",
-          "Carrie"
-        ]
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "12 reglas para vivir",
-      "pages": 448,
-      "genre": "Autoayuda",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1539089393i/42263558.jpg",
-      "synopsis": "Doce principios para llevar una vida significativa y superar los desafíos.",
-      "year": 2018,
-      "ISBN": "978-0345816023",
-      "author": {
-        "name": "Jordan B. Peterson",
-        "otherBooks": [
-          "Más allá del orden",
-          "Maps of Meaning"
-        ]
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "La soledad de los números primos",
-      "pages": 288,
-      "genre": "Novela psicológica",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1686653763i/177330260.jpg",
-      "synopsis": "La historia entrelaza las vidas de dos personajes que comparten una extraña conexión emocional.",
-      "year": 2008,
-      "ISBN": "978-0307476720",
-      "author": {
-        "name": "Paolo Giordano",
-        "otherBooks": [
-          "El cuerpo humano",
-          "Conquistar el cielo"
-        ]
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "Don Quijote de la Mancha",
-      "pages": 1072,
-      "genre": "Novela",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1677829150i/32765283.jpg",
-      "synopsis": "Las aventuras de un caballero soñador y su fiel escudero, Sancho Panza.",
-      "year": 1605,
-      "ISBN": "978-8424118252",
-      "author": {
-        "name": "Miguel de Cervantes",
-        "otherBooks": [
-          "Novelas ejemplares",
-          "La Galatea"
-        ]
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "Alicia en el país de las maravillas",
-      "pages": 96,
-      "genre": "Fantasía",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1429768633i/25411543.jpg",
-      "synopsis": "Las aventuras de una niña que cae en una madriguera y entra en un mundo de maravillas y absurdos.",
-      "year": 1865,
-      "ISBN": "978-0486275437",
-      "author": {
-        "name": "Lewis Carroll",
-        "otherBooks": [
-          "Alicia atraves del espejo"
-        ]
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "El código Da Vinci",
-      "pages": 624,
-      "genre": "Misterio",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1372536207i/67556.jpg",
-      "synopsis": "Un profesor y una criptóloga investigan un misterioso asesinato relacionado con símbolos ocultos.",
-      "year": 2003,
-      "ISBN": "978-1400079179",
-      "author": {
-        "name": "Dan Brown",
-        "otherBooks": [
-          "Ángeles y demonios",
-          "El símbolo perdido"
-        ]
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "Sapiens",
-      "pages": 498,
-      "genre": "Ensayo",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1595674533i/23692271.jpg",
-      "synopsis": "Una historia de la humanidad desde sus inicios hasta la actualidad.",
-      "year": 2011,
-      "ISBN": "978-0062316097",
-      "author": {
-        "name": "Yuval Noah Harari",
-        "otherBooks": [
-          "Homo Deus",
-          "21 lecciones para el siglo XXI"
-        ]
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "Las mil y una noches",
-      "pages": 544,
-      "genre": "Cuentos",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1440717035i/26177856.jpg",
-      "synopsis": "Una colección de cuentos y fábulas del Oriente Medio, con historias de Scheherazade.",
-      "year": "Siglo IX",
-      "ISBN": "978-8420667747",
-      "author": {
-        "name": "Anónimo",
-        "otherBooks": []
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "Moby Dick",
-      "pages": 720,
-      "genre": "Aventura",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327940656i/153747.jpg",
-      "synopsis": "La obsesiva persecución del capitán Ahab hacia el legendario cachalote blanco.",
-      "year": 1851,
-      "ISBN": "978-1503280786",
-      "author": {
-        "name": "Herman Melville",
-        "otherBooks": [
-          "Bartleby, el escribiente",
-          "Billy Budd"
-        ]
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "La Ilíada",
-      "pages": 608,
-      "genre": "Poesía épica",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1328836505i/601188.jpg",
-      "synopsis": "La epopeya griega que narra la Guerra de Troya y las hazañas de los héroes.",
-      "year": "Siglo VIII a.C.",
-      "ISBN": "978-8424935394",
-      "author": {
-        "name": "Homero",
-        "otherBooks": [
-          "La Odisea"
-        ]
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "Los miserables",
-      "pages": 1500,
-      "genre": "Novela",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1316069311i/150388.jpg",
-      "synopsis": "La historia de Jean Valjean y su búsqueda de redención en el París del siglo XIX.",
-      "year": 1862,
-      "ISBN": "978-0451419439",
-      "author": {
-        "name": "Victor Hugo",
-        "otherBooks": [
-          "Nuestra Señora de París",
-          "Los trabajadores del mar"
-        ]
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "La Divina comedia",
-      "pages": 752,
-      "genre": "Poesía épica",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1315800260i/2878210.jpg",
-      "synopsis": "Un viaje a través del Infierno, el Purgatorio y el Paraíso, guiado por Virgilio y Beatriz.",
-      "year": 1320,
-      "ISBN": "978-8491043068",
-      "author": {
-        "name": "Dante Alighieri",
-        "otherBooks": [
-          "El Convivio",
-          "Vita nuova"
-        ]
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "El Conde de Montecristo",
-      "pages": 1276,
-      "genre": "Novela",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1331735458i/13541381.jpg",
-      "synopsis": "Un joven marinero es traicionado por sus amigos y encarcelado injustamente. Tras años de cautiverio, escapa y encuentra un tesoro escondido en la isla de Montecristo. Con una nueva identidad como el Conde de Montecristo, planea su venganza contra aquellos que lo traicionaron.",
-      "year": 1844,
-      "ISBN": "978-8497940930",
-      "author": {
-        "name": "Alexandre Dumas",
-        "otherBooks": [
-          "Los tres mosqueteros",
-          "La Reina Margot"
-        ]
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "El Feo",
-      "pages": 240,
-      "genre": "Autoayuda",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348650826i/11401681.jpg",
-      "synopsis": "Es un libro de personalidad e imagen, te enseña a ver el mundo de una mejor manera, dejar las cosas que te avergüenzan y no te dejan ser tu mismo, mediante una historia que ocurre en un campamento. -MACP",
-      "year": 2010,
-      "ISBN": "978-6079789732",
-      "author": {
-        "name": "Carlos Cuauhtémoc Sánchez",
-        "otherBooks": [
-          "Juventud en éxtasis",
-          "La fuerza de Sheccid"
-        ]
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "Ojos Azules",
-      "pages": 150,
-      "genre": "Ficción",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1178384869i/790415.jpg",
-      "synopsis": "Una familia afroamericana que sufren de racismo y cuenta como es la vida desde la perspectiva de unas niñas de 10 años, trata mucho de los estándares de belleza que antes se tenían. -MACP",
-      "year": 1970,
-      "ISBN": "978-8497932660",
-      "author": {
-        "name": "Toni Morrison",
-        "otherBooks": [
-          "Beloved",
-          "Song of Solomon"
-        ]
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "Dhammapada",
-      "pages": 96,
-      "genre": "Filosofía oriental",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1442577801i/159964.jpg",
-      "synopsis": "Una colección de enseñanzas del Buda en forma de aforismos y versos.",
-      "year": "Siglo III a.C.",
-      "ISBN": "978-8472454137",
-      "author": {
-        "name": "Buda Gautama",
-        "otherBooks": []
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "El programador pragmático",
-      "pages": 352,
-      "genre": "Tecnología",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1658397502i/61638668.jpg",
-      "synopsis": "Consejos prácticos para programadores sobre desarrollo de software y productividad.",
-      "year": 1999,
-      "ISBN": "978-0135957059",
-      "author": {
-        "name": "Andrew Hunt, David Thomas",
-        "otherBooks": [
-          "Pragmatic Version Control",
-          "Pragmatic Unit Testing"
-        ]
-      }
-    }
-  },
-  {
-    "book": {
-      "title": "Código limpio",
-      "pages": 464,
-      "genre": "Tecnología",
-      "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1396795507i/21853078.jpg",
-      "synopsis": "Principios y prácticas para escribir código limpio y de calidad.",
-      "year": 2008,
-      "ISBN": "978-0132350884",
-      "author": {
-        "name": "Robert C. Martin",
-        "otherBooks": [
-          "Arquitectura limpia",
-          "El codificador limpio"
-        ]
-      }
-    }
-  }
-]}
+  ]
+}
