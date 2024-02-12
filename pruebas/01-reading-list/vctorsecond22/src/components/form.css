@@ -1,0 +1,128 @@
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  justify-content: first baseline;
+  background-color: rgb(126, 21, 7);
+  min-height: 10%;
+  min-width: none;
+  font-size: 2rem;
+}
+select {
+  font-style: normal;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  background-color: transparent;
+}
+option {
+  background-color: rgba(10, 1, 1);
+  font-style: normal;
+  color: rgb(243, 235, 235);
+  text-align: center;
+  text-justify: distribute;
+  font-size: 2rem;
+}
+.width {
+  max-width: 25%;
+  text-align: center;
+  text-justify: distribute;
+  color: rgb(243, 235, 235);
+  background-color: transparent;
+  padding: 0% 0.9rem;
+  /* cmabiar medidas del padding */
+}
+
+.form__input--PaginasFilter{
+  background-color: transparent;
+  width: 40VW;
+}
+.form__input--search {
+  background-color: transparent;
+  border-color: gray;
+  border-style: groove;
+  border-width: 2px;
+  border-radius: 14px;
+  color: aliceblue;
+  width: 80%;
+  text-align: center;
+}
+label {
+  color: aliceblue;
+/*   max-width: 15%; */
+  text-align: center;
+  text-justify: distribute;
+  background-color: transparent;
+  padding: 0% 0.9rem;
+  /* cmabiar medidas del padding */
+}
+.form__labelPage{
+  padding-right: .9rem;
+  font-size: 1.3rem;;
+}
+.form__button--style {
+  background-color: rgb(2, 21, 71);
+  color: rgb(228, 233, 238);
+  border-radius: 10px;
+  padding: 2px 7px;
+  /* cmabiar medidas del padding */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 10%;
+}
+.spanbtn {
+  font-size: 1.4rem;
+}
+@media screen and (max-width: 500px) {
+  form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-items: center;
+  }
+  .spanbtn {
+    font-size: 0.9rem;
+  }
+  .form__input--search {
+    width: 90%;
+    padding: 0%;
+    margin: 0%;
+  }
+  .form__button--style {
+    width: 91%;
+  }
+  label {
+    font-size: 0.9rem;
+    padding: 0%;
+  }
+  
+  .form__input--PaginasFilter {
+    width: 60%;
+
+  }
+  select {
+    font-size: 0.9rem;
+  }
+  
+}
+@media screen and (max-width: 370px) {
+  form {
+    display: flex;
+    font-size: 3rem;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-items: center;
+  }
+  select,
+  buttton,
+  label {
+    padding: 0;
+    text-indent: 5%;
+    text-align: start;
+  }
+}
