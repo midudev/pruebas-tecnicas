@@ -1,0 +1,107 @@
+#root {
+  box-sizing: border-box;
+/*  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility; */ 
+/*  color-scheme: light dark; */
+}
+
+*{
+  font-size: 62.5%;   
+  margin: 0;
+  padding: 0;
+  border:  0;
+  /* 1rem dashed black */
+  
+}
+body{
+  width: 100%;
+  overflow: auto;
+  height: 100%;
+}
+
+.container{
+/*   background-color: #242424; */
+ background: radial-gradient(circle, #284f58e7, #000313); 
+  width: 100%;
+  height: 100%;
+}
+
+button{
+  cursor: pointer;
+  border-radius: 7px 7px  7px  7px;  
+  /* display: flex; */
+  transition: 3s;
+
+}
+button:active {
+transform: scale(3);
+
+}
+span{
+  font-size: 0.9rem;
+
+}
+.__span--number{
+  padding-left:.8rem;
+  color: rgba(67, 253, 11, 0.808);
+  font-size: 2.1rem
+}
+
+/* 
+.nav{
+  position: sticky;
+}
+.navbar {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.navbar {
+background-color:  hwb(0 4% 74% / 0.87);  
+}
+.navbar > .nav__item{
+  color: rgba(255, 255, 255, 0.87);  
+  font-size: 2rem;
+  padding: 0% 7%;
+}
+.navbar > .nav__item--vst{
+  color: rgba(255, 255, 255, 0.87);  
+  font-size: 2.53rem;  
+  padding: 0% 7%;
+ }
+
+
+
+
+
+ @media screen and (max-width: 800px) {
+  .navbar > .nav__item{
+    color: rgba(255, 255, 255, 0.87);  
+    font-size: 0%;
+    padding: 0%;
+    visibility: hidden;
+  }
+  .navbar > .nav__item--vst{
+    color: rgba(255, 255, 255, 0.87);  
+    font-size:2rem;  
+    padding: 0% 10%;
+    width: 30%;
+   }  
+   .navbar {
+    display: flex;
+    justify-content:start;
+    align-items: center;
+  }
+
+  .hamburguer {
+    color: rgba(255, 255, 255, 0.87);  
+    font-size: 2rem;  
+    padding: 0% 10%;
+    width: max-content;
+   }
+   
+ }
+ */

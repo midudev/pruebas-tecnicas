@@ -1,0 +1,134 @@
+
+.nav{
+ position: sticky;
+ top: 0%;
+ z-index: 9999;
+}
+.navbar {
+ display: flex;
+ justify-content:space-between;
+ align-items: center;
+ flex-direction: row;
+ background-color:  hwb(0 4% 74% / 0.87);  
+
+}
+
+.navbar > .nav__item{
+ color: rgba(255, 255, 255, 0.87);  
+ font-size: 2rem;
+ padding: 0% 7%;
+}
+.navbar > .nav__item--vst{
+ color: rgba(255, 255, 255, 0.87);  
+ font-size: 2.53rem;  
+ padding: 0% 7%;
+}
+
+.header__menu--visible{
+  position: absolute;
+  top: 0rem;
+  right: 0rem;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 4.5rem;
+ height: 45vh;
+ width: 20vw;
+ color: rgba(255, 255, 255, 0.87); 
+/*  border: .3rem solid #fcf9f970  */
+ 
+}
+.header__menu--hideen{
+
+  display: none;
+
+}
+.menu__iconClose--style{
+  background-color: #3F0A0A ;
+  /* color: rgb(243, 242, 239) ; */
+  color:  rgba(255, 255, 255, 0.87); 
+  
+ /*  right: .6vw; */
+}
+
+/* 
+li > button{
+  font-size: .1rem; 
+} */
+
+
+nav ul li {
+   list-style: none; 
+}
+section > ul> li {
+  border-bottom: .1rem solid  aliceblue;
+  border-left: .1rem solid  aliceblue;
+  background-color: #3F0A0A;
+
+}
+section > ul> li:first-child {
+  border-left: 0 ;
+/*   padding-bottom:1px;
+ */  
+}
+
+/*  cambiar la unidad de medida para los margin y padding */
+nav ul li a {
+/*   display: block; */
+  text-decoration: none;
+  color: white;
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+  border-radius: 0.5rem;
+}
+
+
+
+@media screen and (max-width: 800px) {
+ .navbar > .nav__item{
+   color: rgba(255, 255, 255, 0.87);  
+   font-size: 0%;
+   padding: 0%;
+   visibility: hidden;
+ }
+ .navbar > .nav__item--vst{
+   color: rgba(255, 255, 255, 0.87);  
+   font-size:2rem;  
+   padding: 0% 10%;
+   width: 30%;
+   padding: 0%  0%;
+  }  
+  .navbar {
+   display: flex;
+   justify-content:start;
+   align-items: center;
+ }
+
+/*  .hamburguer {
+   color: rgba(255, 255, 255, 0.87);  
+   font-size: 2rem;  
+   padding: 0% 10%;
+   width: max-content;
+  } */
+.header__menu--visible{
+font-size: 3.2rem;
+width: 14rem;
+
+ }  
+}
+
+
+
+
+@media screen and (max-width: 500PX) {
+/* a{
+width:0%; 
+visibility: hidden;
+}
+ */
+
+ 
+}
+
+/* z-index: 9999; */
+
