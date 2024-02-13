@@ -23,9 +23,9 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
---Node 
---Npm 
-Text editor (VsCode)
+-Node 
+-Npm 
+-Text editor (VsCode)
 
 ### Install
 
@@ -55,8 +55,11 @@ Give a ⭐️ if you like this project! / ¡Dale un ⭐️ si te gusta este proy
 ## Acknowledgments
 I thank Miguel Ángel Durán García (midudev) and Jonathan MirCha for all the material provided and the challenges that served as inspiration to develop this project.
 
- Channel: https://www.youtube.com/playlist?list=PLUofhDIg_38q4D0xNWp7FEHOTcZhjWJ29
- Course:  https://www.youtube.com/playlist?list=PLvq-jIkSeTUZ5XcUw8fJPTBKEHEKPMTKk
+Miguel Ángel Durán García (midudev)
+Channel: https://www.youtube.com/playlist?list=PLUofhDIg_38q4D0xNWp7FEHOTcZhjWJ29
+
+Jonathan MirCha
+Course:  https://www.youtube.com/playlist?list=PLvq-jIkSeTUZ5XcUw8fJPTBKEHEKPMTKk
 
 
 ## Check of project
