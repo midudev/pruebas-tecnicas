@@ -1,0 +1,14 @@
+{
+  "name": "prueba-tecnica-javascript-node",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "supertest": "^6.3.3"
+  },
+  "dependencies": {
+    "express": "4.18.2"
+  }
+}
