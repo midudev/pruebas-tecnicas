@@ -1,0 +1,46 @@
+.app-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  pointer-events: none;
+}
+
+.app-footer > button {
+  position: relative;
+  display: block;
+  width: 6em;
+  height: 6em;
+  background-color: rgb(255, 58, 58);
+  margin: 10px;
+  border-radius: 50%;
+  padding: 1em;
+  transition: all .3s ease;
+  pointer-events: all;
+  color: white;
+  border: none;
+}
+
+.app-footer > button:hover {
+  background-color: white;
+  color: black;
+}
+
+@media only screen and (max-width: 600px){
+  .app-footer > button {
+    width: 4em;
+    height: 4em;
+  }
+
+  .mobile-correction {
+    height: 3.5em;
+    width: 3.5em;
+  }
+
+}
+
+
+
