@@ -1,0 +1,7 @@
+<div *ngIf="book !== undefined" class="min-h-full max-h-[200px] flex flex-col items-center">
+  <div class="w-full h-screen flex justify-center overflow-hidden">
+    <img src="{{book.cover}}" alt="{{book.title}} - {{book.year}}" class="max-w-full h-auto scale-90 hover:scale-100" />
+  </div>
+  <p>{{book.title}}</p>
+  <p>{{book.year}}</p>
+</div>
