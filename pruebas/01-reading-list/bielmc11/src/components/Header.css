@@ -1,0 +1,36 @@
+.header_info{
+    animation: fade-in-left 1s  ;
+}
+
+.header_img{
+    animation: fade-in-rigt 1s  ;
+}
+
+
+@keyframes fade-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    15%{
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fade-in-rigt {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    15%{
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

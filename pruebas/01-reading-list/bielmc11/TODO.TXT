@@ -1,0 +1,6 @@
+TODO
+    - Cambiar el nombre de la app
+    - Cambiar el logo
+    - Todo en ingles o español
+    - El pestañeo cuando se cambia a general books y antes se han puesto filtros
+    - No se ve el filtro texto cuando vuelves pero si salen los resultados ✔

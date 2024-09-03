@@ -1,0 +1,53 @@
+.dropMenu__content {
+    position: absolute;
+    left: 0;
+    bottom: -70%;
+}
+
+.isClosed{
+    background-color: red;
+    display: none;
+}
+
+.isOpen {
+    background-color: blue;
+    display: block;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  
+  /* Estilizar la pista */
+  ::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 10px;
+    border-radius: 10px;
+    background: #e1e3e1; /* Color azul para la pista */
+  }
+  
+
+  
+  /* Personalizar el thumb */
+  ::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 10000%;
+    width: 20px;
+    height: 20px;
+    background: rgb(0, 0, 0); /* Color rojo para la bola */
+    margin-top: -3%;
+    cursor: pointer;
+  }
+  
+  ::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #f00; /* Color rojo para la bola */
+    border: 1px solid #d00;
+    cursor: pointer;
+  }
+

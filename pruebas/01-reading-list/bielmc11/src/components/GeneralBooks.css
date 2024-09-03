@@ -1,0 +1,29 @@
+.myGridBooks {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .myGridBooks {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+
+    }
+}
+
+
+.grid_book img {
+    transition: all 0.3s ease-in-out;
+}
+
+.grid_book:hover img {
+    transform: scale(1.1);
+}
+
+.grid_book{
+    transition: all 0.5s ease-in-out;
+
+}
+
+.grid_book:hover{
+    filter: brightness(0.9);
+}
