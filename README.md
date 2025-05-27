@@ -24,4 +24,7 @@ Pruebas técnicas de programación para desarrolladores frontend y backend.
 - [TikTok](https://tiktok.com/@midudev)
 - [LinkedIn](https://linkedin.com/in/midudev)
 - [Web](https://midu.dev)
+
 "José Romero – Equipo 1"
+"Usuario X – Equipo 2"
+
